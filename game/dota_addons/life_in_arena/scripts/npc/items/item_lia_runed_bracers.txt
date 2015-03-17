@@ -1,0 +1,30 @@
+"item_lia_runed_bracers"
+	{
+
+		"ID"							"1116"
+		"ItemCost"						"220"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"component"
+		
+
+		"AbilityTextureName"			"item_lia_runed_bracers"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" "item_cloak"
+		"AbilitySpecial"
+		{
+			"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_magical_armor" "20"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"tooltip_resist" "20"
+		}
+		}
+	}

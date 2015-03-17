@@ -1,0 +1,46 @@
+"item_lia_amulet_of_spell_shield"
+	{
+
+		"ID"							"1117"
+		"ItemCost"						"300"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"component"
+		
+
+		
+		"AbilityTextureName"			"item_lia_amulet_of_spell_shield"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" "item_sphere"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_all_stats" "0"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_health_regen" "0"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_mana_regen" "0"
+		}
+		"04"
+		{
+			"var_type" "FIELD_FLOAT"
+			"block_cooldown" "30.0"
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage" "0"
+		}
+	}
+	}

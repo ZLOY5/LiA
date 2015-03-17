@@ -1,0 +1,61 @@
+  "item_lia_stormwind_horn"
+{
+	"ID"							"1121"
+	"BaseClass" 					"item_datadriven"
+	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_ALL"
+	"AbilityTextureName" 			"lia_stormwind_horn"
+	
+
+
+	"AbilityCastPoint"    			"0.0"
+	"AbilityCastRange"    			"900"
+	//"AbilityCooldown"    			"0"
+	//"AbilityManaCost"    			"0"
+
+	"ItemCost"                      "250"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"		
+	"ItemQuality"					"component"
+	"ItemKillable"                  "0"
+	"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+
+	
+	"AbilitySpecial"
+	{
+	   	"01"
+	   	{
+		    "var_type" "FIELD_INTEGER"
+		    "Range" "900"
+	   	}
+  	}
+ 
+  	"Modifiers"
+  	{
+   		"horn_aura_Modifier"
+   		{
+    		"Passive" "1"
+    		"IsHidden" "1"
+    		"Aura" "horn_aura_armor"
+    		"Aura_Radius" "900"
+    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+
+   		}
+ 
+   		"horn_aura_armor"
+   		{
+    	
+	    	"IsBuff" "1"
+	    	"IsPurgable" "0"
+	    	
+	    	"Properties"
+	    	{
+	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "10"
+
+	    	}
+	    }
+   	}
+
+}

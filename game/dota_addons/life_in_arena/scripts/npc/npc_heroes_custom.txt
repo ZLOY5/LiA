@@ -1,0 +1,78 @@
+// Dota Heroes File
+// NOTE: This isn't for creating new heroes, this is for taking a currently existing hero as a template and overriding
+// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Minotaur 
+	//=================================================================================================================
+	"npc_dota_hero_minotaur"
+	{
+		"override_hero"				"npc_dota_hero_elder_titan"
+// способности
+//----------------------------------------------------------------
+
+"Ability1" "minotaur_clap"	// способность 1.
+"Ability2" "minotaur_aura" 		// способность 2.
+"Ability3" "minotaur_cleave" 	// способность 3.
+"Ability4" "" 					// способность 4.
+"Ability5" "" 					// способность 5.
+"Ability6" "minotaur_ultimate" 	// способность 6 - Ульт.
+"Ability7" "" 					// способность 7 - Ульт.
+"Ability8" "" 					// способность 8 - Ульт.
+
+// Броня
+//----------------------------------------------------------------
+"ArmorPhysical" "4" 		// Физическое сопротивление.
+"MagicalResistance" "33"	// Магическое сопротивление.
+
+// Атака
+//----------------------------------------------------------------
+"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin" "30" // минимальный урон.
+"AttackDamageMax" "40" // максимальный урон.
+"AttackRate" "0.9" // скорость атаки.
+"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+"AttackAcquisitionRange" "800" // дальность реагирования (когда он нас заметит).
+"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+"ProjectileModel" "" // Модель частиц для дальной атаки.
+"ProjectileSpeed" "" // скорость частиц.
+
+// Награда
+//----------------------------------------------------------------
+"BountyXP" "200" // количества опыта.
+"BountyGoldMin" "200" // минимальное количество золота.
+"BountyGoldMax" "200" // максимальное количества золота.
+
+// Передвижение
+//----------------------------------------------------------------
+"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+"MovementSpeed" "240" // Скорость
+"MovementTurnRate" "0.5" // скорость поворота.
+
+// Общий статус
+//----------------------------------------------------------------
+"StatusHealth" "465" // Базовое количество ХП.
+"StatusHealthRegen" "1" // Базовая Скорость восстановления ХП.
+"StatusMana" "75" // Базовое количество МП.
+"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+
+// Принадлежность к команде
+//----------------------------------------------------------------
+"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
+"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+
+// Обзор Персонажа
+//----------------------------------------------------------------
+"VisionDaytimeRange" "1400" // Днем.
+"VisionNighttimeRange" "1400" // Ночью.
+
+//----------------------------------------------------------------
+//Рюкзак
+"HasInventory" "1" // 0 - не будет инвентаря
+
+
+	}	
+}

@@ -1,0 +1,890 @@
+//Generated using Dota Custom KVScript Files Merger by cris9696
+"DOTAAbilities"
+{
+	
+
+
+	//Start of file item_lia_amulet.txt
+	"item_lia_amulet"
+		{
+	
+			"ID"							"1110"
+			"ItemCost"						"120"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			"AbilityTextureName"			"item_lia_amulet"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_vitality_booster"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_health" "100"
+				}
+			}
+		}
+	//End of file item_lia_amulet.txt
+
+
+	//Start of file item_lia_amulet_of_spell_shield.txt
+	"item_lia_amulet_of_spell_shield"
+		{
+	
+			"ID"							"1117"
+			"ItemCost"						"300"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			
+			"AbilityTextureName"			"item_lia_amulet_of_spell_shield"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_sphere"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_all_stats" "0"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health_regen" "0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana_regen" "0"
+			}
+			"04"
+			{
+				"var_type" "FIELD_FLOAT"
+				"block_cooldown" "30.0"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "0"
+			}
+		}
+		}
+	//End of file item_lia_amulet_of_spell_shield.txt
+
+
+	//Start of file item_lia_ancient_glove.txt
+	//End of file item_lia_ancient_glove.txt
+
+
+	//Start of file item_lia_axe.txt
+	"item_lia_axe"
+		{
+	
+			"ID"							"1100"
+			"ItemCost"						"80"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			"AbilityTextureName"			"item_lia_axe"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_gauntlets"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_strength" "5"
+				}
+			}
+		}
+	//End of file item_lia_axe.txt
+
+
+	//Start of file item_lia_boots.txt
+	"item_lia_boots"
+		{
+	
+			"ID"							"1112"
+			"ItemCost"						"90"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			
+			"AbilityTextureName"			"item_lia_boots"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_boots"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_movement_speed" "50"
+				}
+			}
+		}
+	//End of file item_lia_boots.txt
+
+
+	//Start of file item_lia_claws.txt
+	"item_lia_claws"
+		{
+	
+			"ID"							"1104"
+			"ItemCost"						"65"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			"AbilityTextureName"			"item_lia_claws"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_blades_of_attack"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_damage" "16"
+				}
+			}
+		}
+	//End of file item_lia_claws.txt
+
+
+	//Start of file item_lia_gloves_of_haste.txt
+	"item_lia_gloves_of_haste"
+		{
+	
+			"ID"							"1115"
+			"ItemCost"						"55"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			"AbilityTextureName"			"item_lia_gloves_of_haste"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_gloves"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_attack_speed" "15"
+				}
+			}
+		}
+	//End of file item_lia_gloves_of_haste.txt
+
+
+	//Start of file item_lia_gloves_of_strength.txt
+	"item_lia_gloves_of_strength"
+		{
+	
+			"ID"							"1103"
+			"ItemCost"						"220"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			
+			"AbilityTextureName"			"item_lia_gloves_of_strength"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_gauntlets"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_strength" "15"
+				}
+			}
+		}
+	//End of file item_lia_gloves_of_strength.txt
+
+
+	//Start of file item_lia_health_elixir.txt
+	"item_lia_health_elixir"
+	{
+		"ID"							"1132"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		
+	
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_lia_health_elixir"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"20.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"45"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"		"items.lua"
+				"Function"			"Heal"
+				"Target"			"UNIT"
+				"heal_amount"		"800"
+			}
+	
+			
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"800"
+			}
+		}
+	
+	}
+	//End of file item_lia_health_elixir.txt
+
+
+	//Start of file item_lia_health_stone_potion.txt
+	"item_lia_health_stone_potion"
+	{
+		"ID"							"1130"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	
+		
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"lia_health_stone_potion"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"20.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"15"
+		"ItemShopTags"					"rare"
+		"ItemQuality"					"rare"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+	
+		"Modifiers"
+		{
+			"modifier_health_stone"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	    "5"
+				}	
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"		"items.lua"
+				"Function"			"Heal"
+				"Target"			"UNIT"
+				"heal_amount"		"400"
+			}
+		
+			
+		}
+	
+	// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"400"
+			}
+		}	
+	
+	}
+	//End of file item_lia_health_stone_potion.txt
+
+
+	//Start of file item_lia_helm.txt
+	"item_lia_helm"
+		{
+	
+			"ID"							"1108"
+			"ItemCost"						"175"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			"AbilityTextureName"			"item_lia_helm"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_ring_of_protection"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_armor" "6"
+				}
+			}
+		}
+	//End of file item_lia_helm.txt
+
+
+	//Start of file item_lia_mana_elixir.txt
+	"item_lia_mana_elixir"
+	{
+		"ID"							"1133"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		
+	
+		
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_lia_mana_elixir"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"20"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"45"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"		"items.lua"
+				"Function"			"ReplenishMana"
+				"Target"			"UNIT"
+				"mana_amount"		"500"
+			}
+	
+		
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_amount"				"500"
+			}
+		}
+	
+	}
+	//End of file item_lia_mana_elixir.txt
+
+
+	//Start of file item_lia_mana_stone.txt
+	"item_lia_mana_stone"
+		{
+	
+			"ID"							"1111"
+			"ItemCost"						"120"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			"AbilityTextureName"			"item_lia_mana_stone"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_energy_booster"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_mana" "150"
+				}
+			}
+		}
+	//End of file item_lia_mana_stone.txt
+
+
+	//Start of file item_lia_mana_stone_potion.txt
+	"item_lia_mana_stone_potion"
+	{
+		"ID"							"1131"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		
+	
+		
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"lia_mana_stone_potion"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"20.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"15"
+		"ItemShopTags"					"rare"
+		"ItemQuality"					"rare"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+	
+	
+		"Modifiers"
+		{
+			"modifier_health_stone"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 	    "25"
+				}	
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"		"items.lua"
+				"Function"			"ReplenishMana"
+				"Target"			"UNIT"
+				"mana_amount"		"250"
+			}
+	
+			
+		}
+	
+	// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_regen"			"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manà_amount"				"250"
+			}
+		}
+			
+	
+	}
+	//End of file item_lia_mana_stone_potion.txt
+
+
+	//Start of file item_lia_mask.txt
+	"item_lia_mask"
+		{
+	
+			"ID"							"1114"
+			"ItemCost"						"70"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			"AbilityTextureName"			"item_lia_mask"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_sobi_mask"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_mana_regen" "20"
+				}
+			}
+		}
+	//End of file item_lia_mask.txt
+
+
+	//Start of file item_lia_necklace.txt
+	"item_lia_necklace"
+		{
+	
+			"ID"							"1101"
+			"ItemCost"						"85"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			"AbilityTextureName"			"item_lia_necklace"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_slippers"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_agility" "6"
+				}
+			}
+		}
+	//End of file item_lia_necklace.txt
+
+
+	//Start of file item_lia_orb_of_fire.txt
+	//End of file item_lia_orb_of_fire.txt
+
+
+	//Start of file item_lia_ring_of_protection.txt
+	"item_lia_ring_of_protection"
+		{
+	
+			"ID"							"1107"
+			"ItemCost"						"100"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			"AbilityTextureName"			"item_lia_ring_of_protection"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_ring_of_protection"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_armor" "3"
+				}
+			}
+		}
+	//End of file item_lia_ring_of_protection.txt
+
+
+	//Start of file item_lia_ring_or_regeneration.txt
+	"item_lia_ring_of_regeneration"
+		{
+	
+			"ID"							"1109"
+			"ItemCost"						"75"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			"AbilityTextureName"			"item_lia_ring_of_regeneration"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_ring_of_regen"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_health_regen" "3"
+				}
+			}
+		}
+	//End of file item_lia_ring_or_regeneration.txt
+
+
+	//Start of file item_lia_runed_bracers.txt
+	"item_lia_runed_bracers"
+		{
+	
+			"ID"							"1116"
+			"ItemCost"						"220"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+			
+	
+			"AbilityTextureName"			"item_lia_runed_bracers"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_cloak"
+			"AbilitySpecial"
+			{
+				"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_magical_armor" "20"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"tooltip_resist" "20"
+			}
+			}
+		}
+	//End of file item_lia_runed_bracers.txt
+
+
+	//Start of file item_lia_spear.txt
+	"item_lia_spear"
+		{
+	
+			"ID"							"1105"
+			"ItemCost"						"90"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			"AbilityTextureName"			"item_lia_spear"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_blades_of_attack"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_damage" "24"
+				}
+			}
+		}
+	//End of file item_lia_spear.txt
+
+
+	//Start of file item_lia_staff.txt
+	"item_lia_staff"
+		{
+	
+			"ID"							"1102"
+			"ItemCost"						"200"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			
+			"AbilityTextureName"			"item_lia_staff"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_robe"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_intellect" "12"
+				}
+			}
+		}
+	//End of file item_lia_staff.txt
+
+
+	//Start of file item_lia_steel_sword.txt
+	"item_lia_steel_sword"
+		{
+	
+			"ID"							"1106"
+			"ItemCost"						"60"
+			"ItemKillable" "0" 
+			"ItemDroppable" "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+			"ItemQuality"					"component"
+	
+			"AbilityTextureName"			"item_lia_steel_sword"
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" "item_blades_of_attack"
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type" "FIELD_INTEGER"
+					"bonus_damage" "12"
+				}
+			}
+		}
+	//End of file item_lia_steel_sword.txt
+
+
+	//Start of file item_lia_stormwind_horn.txt
+	  "item_lia_stormwind_horn"
+	{
+		"ID"							"1121"
+		"BaseClass" 					"item_datadriven"
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_ALL"
+		"AbilityTextureName" 			"lia_stormwind_horn"
+		
+	
+	
+		"AbilityCastPoint"    			"0.0"
+		"AbilityCastRange"    			"900"
+		//"AbilityCooldown"    			"0"
+		//"AbilityManaCost"    			"0"
+	
+		"ItemCost"                      "250"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"		
+		"ItemQuality"					"component"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+			"ItemPurchasable"		 "1"
+	
+		
+		"AbilitySpecial"
+		{
+		   	"01"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "Range" "900"
+		   	}
+	  	}
+	 
+	  	"Modifiers"
+	  	{
+	   		"horn_aura_Modifier"
+	   		{
+	    		"Passive" "1"
+	    		"IsHidden" "1"
+	    		"Aura" "horn_aura_armor"
+	    		"Aura_Radius" "900"
+	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+	
+	   		}
+	 
+	   		"horn_aura_armor"
+	   		{
+	    	
+		    	"IsBuff" "1"
+		    	"IsPurgable" "0"
+		    	
+		    	"Properties"
+		    	{
+		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "10"
+	                        "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"    "50"
+		    	}
+		    }
+	   	}
+	
+	}
+	//End of file item_lia_stormwind_horn.txt
+}

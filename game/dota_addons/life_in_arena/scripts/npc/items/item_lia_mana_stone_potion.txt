@@ -1,0 +1,81 @@
+"item_lia_mana_stone_potion"
+{
+	"ID"							"1131"
+
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+
+	
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"lia_mana_stone_potion"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"20.0"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"15"
+	"ItemShopTags"					"rare"
+	"ItemQuality"					"rare"
+	"ItemKillable"                  "0"
+	"ItemSellable"                  "1"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+
+	"Modifiers"
+	{
+		"modifier_health_stone"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 	    "25"
+			}	
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"SpendCharge"
+		{}
+		"RunScript"
+		{
+			"ScriptFile"		"items.lua"
+			"Function"			"ReplenishMana"
+			"Target"			"UNIT"
+			"mana_amount"		"250"
+		}
+
+		
+	}
+
+// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana_regen"			"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"manà_amount"				"250"
+		}
+	}
+		
+
+}
