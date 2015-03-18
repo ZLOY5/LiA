@@ -7,18 +7,18 @@ CREEP_NAME = {
                 "", 
 				"6_wave_creep",
 				"7_wave_creep",
-                "npc_dota_neutral_giant_wolf",
-                "npc_dota_neutral_giant_wolf",
+                "8_wave_creep",
+                "9_wave_creep",
                 "",
-                "npc_dota_neutral_giant_wolf",
-                "npc_dota_neutral_giant_wolf",
-                "npc_dota_neutral_giant_wolf",
-                "npc_dota_neutral_giant_wolf",
+                "11_wave_creep",
+                "12_wave_creep",
+                "13_wave_creep",
+                "14_wave_creep",
                 "",
-                "npc_dota_neutral_giant_wolf",
-                "npc_dota_neutral_giant_wolf",
-                "npc_dota_neutral_giant_wolf",
-                "npc_dota_neutral_giant_wolf",
+                "16_wave_creep",
+                "17_wave_creep",
+                "18_wave_creep",
+                "19_wave_creep",
                 ""
              }
 
@@ -30,26 +30,26 @@ BOSS_NAME = {
                 "",
 				"6_wave_boss",
 				"7_wave_boss",
-                "npc_dota_neutral_alpha_wolf",
-                "npc_dota_neutral_alpha_wolf",
+                "8_wave_boss",
+                "9_wave_boss",
                 "",
-                "npc_dota_neutral_alpha_wolf",
-                "npc_dota_neutral_alpha_wolf",
-                "npc_dota_neutral_alpha_wolf",
-                "npc_dota_neutral_alpha_wolf",
+                "11_wave_boss",
+                "12_wave_boss",
+                "13_wave_boss",
+                "14_wave_boss",
                 "",
-                "npc_dota_neutral_alpha_wolf",
-                "npc_dota_neutral_alpha_wolf",
-                "npc_dota_neutral_alpha_wolf",
-                "npc_dota_neutral_alpha_wolf",
+                "16_wave_boss",
+                "17_wave_boss",
+                "18_wave_boss",
+                "19_wave_boss",
                 ""
             }
 
 MEGABOSS_NAME = {	
 					"5_wave_boss",
-					"npc_dota_neutral_polar_furbolg_champion",
-					"npc_dota_neutral_polar_furbolg_champion",
-					"npc_dota_neutral_polar_furbolg_champion"
+					"10_wave_boss",
+					"15_wave_boss",
+					"orn"
 				}
 
 WAVE_SPAWN_COORD_LEFT    = Vector(-5550,  1900, 0)
