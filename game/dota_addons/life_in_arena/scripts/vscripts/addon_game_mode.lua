@@ -93,4 +93,23 @@ function Precache( context )
 		--15 волна
 		PrecacheModel("models/heroes/life_stealer/life_stealer.vmdl", context)	
 		
+		--17 волна
+		PrecacheModel("models/heroes/nerubian_assassin/nerubian_assassin.vmdl", context)
+		
+		PrecacheModel("models/heroes/nerubian_assassin/nerubian_assassin_helmet.mdl", context)
+		PrecacheModel("models/heroes/nerubian_assassin/nerubian_assassin_weapon.mdl", context)
+		PrecacheModel("models/heroes/nerubian_assassin/nerubian_assassin_armor.mdl", context)
+		
+		--18 волна
+		PrecacheModel("models/heroes/viper/viper.vmdl", context)
+
+		--20 волна
+		PrecacheModel("models/heroes/juggernaut/juggernaut.vmdl", context)
+		
+		PrecacheModel("models/items/juggernaut/thousand_faces_hakama/thousand_faces_hakama.mdl", context)
+		PrecacheModel("models/items/juggernaut/thousand_faces_vest/thousand_faces_vest.mdl"	, context)
+		PrecacheModel("models/items/juggernaut/thousand_faces_mask/thousand_faces_mask.mdl", context)
+		PrecacheModel("models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.mdl", context)
+		PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context)	
+
 end

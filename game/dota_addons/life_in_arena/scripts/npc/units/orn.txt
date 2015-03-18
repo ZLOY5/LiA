@@ -1,74 +1,80 @@
-"orn" // название
+"orn" 
 {
-// основное
-//
-"BaseClass" "npc_dota_creature" // класс персонажа.
-"Model" "models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl" // модель.
-"SoundSet" "Hero_SandKing" // название звукового набора.
-"ModelScale" "1" // масштаб модели.
-"Level" "1" // уровень.
 
-// способности
-//----------------------------------------------------------------
+"BaseClass" "npc_dota_creature" 
+"Model" "models/heroes/juggernaut/juggernaut.vmdl" 
+"SoundSet" "Hero_Juggernaut" 
+"ModelScale" "1" 
+"Level" "1" 
+				"precache"
+		{
+			"model"	"models/heroes/juggernaut/juggernaut.vmdl"
+			"model"	"models/items/juggernaut/thousand_faces_hakama/thousand_faces_hakama.mdl"
+			"model"	"models/items/juggernaut/thousand_faces_vest/thousand_faces_vest.mdl"
+			"model"	"models/items/juggernaut/thousand_faces_mask/thousand_faces_mask.mdl"
+			"model"	"models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.mdl"
+			"model"	"models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl"
 
-"Ability1" "" // способность 1.
-"Ability2" "" // способность 2.
-"Ability3" "" // способность 3.
-"Ability4" "" // способность 4.
-"Ability5" "" // способность 5.
-"Ability6" "" // способность 6 - Ульт.
-"Ability7" "" // способность 7 - Ульт.
-"Ability8" "" // способность 8 - Ульт.
+		}
+		
+"Creature"
+		{
+		"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"4401"		} 
+				"Wearable2" 	{	"ItemDef"		"4411"		} 
+				"Wearable3"		{	"ItemDef"		"4425"		} 
+				"Wearable4"		{	"ItemDef"		"4904"		} 
+				"Wearable5"		{	"ItemDef"		"4395"		} 
+			}
+			}
 
-// Броня
-//----------------------------------------------------------------
-"ArmorPhysical" "0" // Физическое сопротивление.
-"MagicalResistance" "0" // Магическое сопротивление.
+"Ability1" "" 
+"Ability2" "" 
+"Ability3" "" 
+"Ability4" "" 
+"Ability5" "" 
+"Ability6" "" 
+"Ability7" "" 
+"Ability8" "" 
 
-// Атака
-//----------------------------------------------------------------
+
+"ArmorPhysical" "0" 
+"MagicalResistance" "0" 
+
+
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "100" // минимальный урон.
-"AttackDamageMax" "100" // максимальный урон.
-"AttackRate" "1.6" // скорость атаки.
-"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-"ProjectileModel" "" // Модель частиц для дальной атаки.
-"ProjectileSpeed" "" // скорость частиц.
+"AttackDamageMin" "100" 
+"AttackDamageMax" "100" 
+"AttackRate" "1.6" 
+"AttackAnimationPoint" "0.3" 
+"AttackAcquisitionRange" "10000" 
+"AttackRange" "128" 
+"ProjectileModel" "" 
+"ProjectileSpeed" "" 
 
-// Награда
-//----------------------------------------------------------------
-"BountyXP" "0" // количества опыта.
-"BountyGoldMin" "0" // минимальное количество золота.
-"BountyGoldMax" "0" // максимальное количества золота.
+"BountyXP" "0" 
+"BountyGoldMin" "0" 
+"BountyGoldMax" "0" 
 
-// Передвижение
-//----------------------------------------------------------------
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-"MovementSpeed" "300" // Скорость
-"MovementTurnRate" "0.5" // скорость поворота.
+"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+"MovementSpeed" "300" 
+"MovementTurnRate" 
 
-// Общий статус
-//----------------------------------------------------------------
-"StatusHealth" "5000" // Базовое количество ХП.
-"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-"StatusMana" "0" // Базовое количество МП.
-"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
 
-// Принадлежность к команде
-//----------------------------------------------------------------
-"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+"StatusHealth" "5000" 
+"StatusHealthRegen" "0" 
+"StatusMana" "0" 
+"StatusManaRegen" "1" 
+
+"TeamName" "DOTA_TEAM_BADGUYS" 
 "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
-// Обзор Персонажа
-//----------------------------------------------------------------
-"VisionDaytimeRange" "10000" // Днем.
-"VisionNighttimeRange" "10000" // Ночью.
 
-//----------------------------------------------------------------
-//Рюкзак
-"HasInventory" "0" // 0 - не будет инвентаря
+"VisionDaytimeRange" "10000" 
+"VisionNighttimeRange" "10000" 
+
+"HasInventory" "0" 
 }

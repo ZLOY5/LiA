@@ -3,11 +3,28 @@
 // основное
 //
 "BaseClass" "npc_dota_creature" // класс персонажа.
-"Model" "models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl" // модель.
-"SoundSet" "Hero_SandKing" // название звукового набора.
-"ModelScale" "1" // масштаб модели.
+"Model" "models/heroes/nerubian_assassin/nerubian_assassin.vmdl" // модель.
+"SoundSet" "Hero_NyxAssassin" // название звукового набора.
+"ModelScale" "1.5" // масштаб модели.
 "Level" "1" // уровень.
+				"precache"
+		{
+			"model"	"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"
+			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_weapon.mdl"
+			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_armor.mdl"
+			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_helmet.mdl"
+		}
+		
+"Creature"
+		{
+		"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"195"		} 
+				"Wearable2" 	{	"ItemDef"		"196"		} 
+				"Wearable3"		{	"ItemDef"		"197"		} 
 
+			}
+			}
 // способности
 //----------------------------------------------------------------
 
