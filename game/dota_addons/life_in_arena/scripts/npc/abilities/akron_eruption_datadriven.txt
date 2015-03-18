@@ -1,0 +1,99 @@
+ "akron_eruption_datadriven"
+  {
+   // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "alchemist_acid_spray"
+
+    "AbilityType"         "DOTA_ABILITY_TYPE_ULTIMATE"
+
+    "AbilityCooldown" "150 140 130"
+
+    "AbilityCastPoint"  "0.2"
+    "AbilityCastRange"  "0"
+
+    "AbilityManaCost" "120"
+
+    "AoERadius"      "%radius"
+    
+
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+        "OnSpellStart"
+       {
+         "ActOnTargets"
+        {
+          "Target"
+          {
+            "Center"  "CASTER"
+            "Radius"  "%radius"
+            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+            "Flags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+          }
+          
+          "Action"
+          {
+            "Damage"
+            {
+              "Target"    "TARGET"
+              "Damage"    "%AbilityDamage"
+              "Type"      "DAMAGE_TYPE_MAGICAL"
+            }
+            
+            "ApplyModifier"
+            {
+              "Target"    "TARGET"
+              "ModifierName"  "modifier_shrapnel_slow_datadriven"
+            }
+          }
+        }
+      }
+
+
+    "Modifiers"
+    {
+      "modifier_shrapnel_slow_datadriven"
+      {
+        "Passive"       "0"
+        "IsHidden"      "0"
+        "IsDebuff"        "1"
+    
+        "Duration"        "%slow_duration"
+      
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_movement_speed"
+        }
+      }
+    }
+
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+     "01"
+     {
+       "var_type"                "FIELD_INTEGER"
+       "slow_duration"                "5 10 15"
+     }
+     "02"
+      {
+       "var_type"                "FIELD_FLOAT"
+       "slow_movement_speed"     "-40 -60 -80"
+      }
+      "02"
+      {
+       "var_type"                "FIELD_FLOAT"
+       "AbilityDamage"            "150 300 450"
+      }
+      "02"
+      {
+       "var_type"                "FIELD_FLOAT"
+       "radius"                   "1500"
+      }
+    }  
+  }
