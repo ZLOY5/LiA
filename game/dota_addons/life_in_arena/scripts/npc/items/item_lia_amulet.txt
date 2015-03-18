@@ -1,18 +1,29 @@
 "item_lia_amulet"
 	{
-
+                // General
+	        //-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
 		"ID"							"1110"
-		"ItemCost"						"120"
-		"ItemKillable" "0" 
-		"ItemDroppable" "1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		"ItemSellable"                  "1"
-		"ItemPurchasable"		 "1"
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"			                "item_lia_amulet"
+		
+		// Item Info
+	        //-------------------------------------------------------------------------------------------------------------
+		"ItemCost"					"120"
+		"ItemShopTags"					"health_pool"
 		"ItemQuality"					"component"
-
-		"AbilityTextureName"			"item_lia_amulet"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_vitality_booster"
+		"ItemAliases"					"vitality booster"
+		
+		"ItemKillable"                                  "0" 
+		"ItemDroppable"                                 "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                                  "1"
+		"ItemPurchasable"		                "1"
+		
+ 
+        	// Special	
+	        //-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
 			"01"
@@ -21,4 +32,21 @@
 				"bonus_health" "100"
 			}
 		}
+		
+	       // Modifiers	
+	       //-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+	        {
+		  "modifier_item_vitality_booster_datadriven"
+		  {
+			  "Passive"			"1"
+			  "IsHidden"			"1"
+			  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			  "Properties"
+			  {
+			    "MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
+			  }
+	  	   }
+	        }
 	}
