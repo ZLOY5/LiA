@@ -7,19 +7,30 @@
 	//Start of file item_lia_amulet.txt
 	"item_lia_amulet"
 		{
-	
+	                // General
+		        //-------------------------------------------------------------------------------------------------------------
+			"BaseClass"						"item_datadriven"
 			"ID"							"1110"
-			"ItemCost"						"120"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
+			"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"Model"							"models/props_gameplay/red_box.vmdl"
+			"AbilityTextureName"			                "item_lia_amulet"
+			
+			// Item Info
+		        //-------------------------------------------------------------------------------------------------------------
+			"ItemCost"					"120"
+			"ItemShopTags"					"health_pool"
 			"ItemQuality"					"component"
-	
-			"AbilityTextureName"			"item_lia_amulet"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_vitality_booster"
+			"ItemAliases"					"amulet"
+			
+			"ItemKillable"                                  "0" 
+			"ItemDroppable"                                 "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                                  "1"
+			"ItemPurchasable"		                "1"
+			
+	 
+	        	// Special	
+		        //-------------------------------------------------------------------------------------------------------------
 			"AbilitySpecial"
 			{
 				"01"
@@ -28,6 +39,23 @@
 					"bonus_health" "100"
 				}
 			}
+			
+		       // Modifiers	
+		       //-------------------------------------------------------------------------------------------------------------
+			"Modifiers"
+		        {
+			  "modifier_item_amulet_datadriven"
+			  {
+				  "Passive"			"1"
+				  "IsHidden"			"1"
+				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				  "Properties"
+				  {
+				    "MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
+				  }
+		  	   }
+		        }
 		}
 	//End of file item_lia_amulet.txt
 
@@ -88,30 +116,54 @@
 
 	//Start of file item_lia_axe.txt
 	"item_lia_axe"
-		{
-	
-			"ID"							"1100"
-			"ItemCost"						"80"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
-			"ItemQuality"					"component"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"ID"							"1013"  //Valve's version of this item uses the ID "13".
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"AbilityTextureName"			                "item_lia_axe"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"					"80"
+		"ItemShopTags"					"" //add this 
+		"ItemQuality"					"component"
+		"ItemAliases"					"axe"
+		
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                                  "1"
+		"ItemPurchasable"		                "1"
 			
-	
-			"AbilityTextureName"			"item_lia_axe"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_gauntlets"
-			"AbilitySpecial"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"5"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_gauntlets_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_strength" "5"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
 				}
 			}
 		}
+	}
 	//End of file item_lia_axe.txt
 
 
@@ -147,29 +199,57 @@
 
 	//Start of file item_lia_claws.txt
 	"item_lia_claws"
+	   {
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"ID"							"1104"  //Valve's version of this item uses the ID "2".
+		"AbilityBehavior"			        	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			                "item_lia_claws"
+		
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                                  "1"
+		"ItemPurchasable"		                "1"
+		"ItemQuality"					"component"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"65"
+		"ItemShopTags"					        "damage"
+		"ItemQuality"					        "component"
+		"ItemAliases"					        "claws"
+		"SideShop"						"1"
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-	
-			"ID"							"1104"
-			"ItemCost"						"65"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
-			"ItemQuality"					"component"
-	
-			"AbilityTextureName"			"item_lia_claws"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_blades_of_attack"
-			"AbilitySpecial"
+			"01"
 			{
-				"01"
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"			"16"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_claws_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_damage" "16"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%bonus_damage"
 				}
 			}
 		}
+	}
 	//End of file item_lia_claws.txt
 
 
@@ -232,20 +312,84 @@
 	//End of file item_lia_gloves_of_strength.txt
 
 
-	//Start of file item_lia_health_elixir.txt
-	"item_lia_health_elixir"
+	//Start of file item_lia_healing_ward.txt
+	"item_lia_healing_ward"
 	{
-		"ID"							"1132"
-	
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"BaseClass"						      "item_datadriven"
+		"ID"						              "1804"  //Valve's version of this item uses the ID "34".
+		"AbilityBehavior"				              "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"Model"						       	      "models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"			                      "item_lia_healing_ward"
+		
+	
+	        // Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				  "0"
+		"AbilityCastPoint"				  "0.0"
+		"AbilityManaCost"				  "0"
+		
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"					      "30"
+		"ItemShopTags"				              "regen_health"
+		"ItemQuality"					      "consumable"
+		"ItemAliases"					      "healing ward"
+	        "ItemStackable"				              "1"
+		"ItemPermanent"				              "0"
+		"ItemInitialCharges"	                              "2"
+		"ItemRequiresCharges"                                 "1"
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"			        "30"
+			}
+		}
+	
+		
+		
+		"OnSpellStart"
+		{
+	          "SpawnUnit"
+			{
+				"UnitName"			"unit_healing_ward"
+				"Target"			  "POINT"
+				"UnitCount"			"1"
+				"Duration"			"%duration"
+	
+				"GrantsGold"		"0"
+				"GrantsXP"			"1"
+			}
+	   
+	          "SpendCharge" {}
+		}
+	}
+	//End of file item_lia_healing_ward.txt
+
+
+	//Start of file item_lia_health_elixir.txt
+	"item_lia_health_elixir"
+	{       
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+	        "BaseClass"						"item_datadriven"
+		"ID"							"1132"
+	        "AbilityBehavior"                                       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"Model"						        "models/props_gameplay/magic_wand.mdl"
+		
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		
 	
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_lia_health_elixir"
+		
+		"AbilityTextureName"	        "item_lia_health_elixir"
 		"ItemKillable"                  "0"
 		"ItemSellable"                  "1"
 		"ItemDroppable"                 "1"
@@ -258,19 +402,17 @@
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"45"
+		"ItemCost"					"45"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"2"
+		"ItemInitialCharges"			        "2"
 	
 	
 		"OnSpellStart"
 		{
-			"SpendCharge"
-			{}
 			"RunScript"
 			{
 				"ScriptFile"		"items.lua"
@@ -278,8 +420,8 @@
 				"Target"			"UNIT"
 				"heal_amount"		"800"
 			}
-	
-			
+	                
+	                "SpendCharge" {}	
 		}
 	
 		// Special	
@@ -407,6 +549,98 @@
 			}
 		}
 	//End of file item_lia_helm.txt
+
+
+	//Start of file item_lia_horn_of_stormwind.txt
+	//End of file item_lia_horn_of_stormwind.txt
+
+
+	//Start of file item_lia_huge_axe.txt
+	"item_recipe_lia_huge_axe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1300"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"300"	
+		"ItemShopTags"					"str;damage;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_huge_axe"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_axe;item_lia_claws;item_lia_claws"
+		}
+	}
+	
+	"item_lia_huge_axe"
+	{
+		"ID"							"1301"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"510"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"lia_axe_big"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_strength" "15"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "32"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"cleave_percent" "25"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"cleave_radius" "200"
+			}	
+		}
+		"Modifiers"
+		{
+			"item_huge_axe_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
+			    	"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%bonus_damage"
+			    }
+			    "OnAttackLanded"
+			    {
+			    	"CleaveAttack"
+			    	{
+			    		"CleavePercent"         "%cleave_percent"
+			    		"CleaveRadius"          "%cleave_radius"
+			    		"CleaveEffect"          "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+			    	}
+			    }
+			}
+		}
+		
+	}
+	
+	//End of file item_lia_huge_axe.txt
 
 
 	//Start of file item_lia_mana_elixir.txt
@@ -592,6 +826,7 @@
 		{
 	
 			"ID"							"1114"
+			"BaseClass" "item_sobi_mask"
 			"ItemCost"						"70"
 			"ItemKillable" "0" 
 			"ItemDroppable" "1"
@@ -603,7 +838,6 @@
 	
 			"AbilityTextureName"			"item_lia_mask"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_sobi_mask"
 			"AbilitySpecial"
 			{
 				"01"
@@ -618,20 +852,30 @@
 
 	//Start of file item_lia_necklace.txt
 	"item_lia_necklace"
-		{
-	
-			"ID"							"1101"
-			"ItemCost"						"85"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
+		{    
+		        // General
+		        //-------------------------------------------------------------------------------------------------------------
+	                "BaseClass"						"item_datadriven"
+	                "ID"							"1101"
+			"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"Model"							"models/props_gameplay/red_box.vmdl" 
+			"AbilityTextureName"		                	"item_lia_necklace"
+			
+			// Item Info
+		        //-------------------------------------------------------------------------------------------------------------
+			"ItemCost"					"85"
 			"ItemQuality"					"component"
-	
-			"AbilityTextureName"			"item_lia_necklace"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_slippers"
+	                "ItemAliases"					"necklace"
+	                
+	                
+			"ItemKillable"                                  "0" 
+			"ItemDroppable"                                 "1"
+			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+			"ItemSellable"                                  "1"
+			"ItemPurchasable"		                "1"
+			
+			// Special	
+		        //-------------------------------------------------------------------------------------------------------------
 			"AbilitySpecial"
 			{
 				"01"
@@ -640,6 +884,21 @@
 					"bonus_agility" "6"
 				}
 			}
+			
+			"Modifiers"
+		        {
+			        "modifier_necklace_datadriven"
+			        {
+				  "Passive"			"1"
+				  "IsHidden"			"1"
+				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				  "Properties"
+				  {
+				   "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
+				  }
+			        }
+		        }
 		}
 	//End of file item_lia_necklace.txt
 
@@ -741,29 +1000,52 @@
 
 	//Start of file item_lia_spear.txt
 	"item_lia_spear"
+	   {
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"ID"							"1105"  //Valve's version of this item uses the ID "2".
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"AbilityTextureName"		                	"item_lia_spear"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"					"90"
+		"ItemShopTags"					"damage"
+		"ItemAliases"					"spear"
+		"ItemDroppable"                                 "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                                  "1"
+		"ItemPurchasable"		                "1"
+		"ItemQuality"					"component"
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-	
-			"ID"							"1105"
-			"ItemCost"						"90"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
-			"ItemQuality"					"component"
-	
-			"AbilityTextureName"			"item_lia_spear"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_blades_of_attack"
-			"AbilitySpecial"
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			        "24"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_blades_of_attack_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_damage" "24"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%bonus_damage"
 				}
 			}
 		}
+	}
 	//End of file item_lia_spear.txt
 
 
@@ -825,7 +1107,7 @@
 
 
 	//Start of file item_lia_stormwind_horn.txt
-	  "item_lia_stormwind_horn"
+	"item_lia_stormwind_horn"
 	{
 		"ID"							"1121"
 		"BaseClass" 					"item_datadriven"
@@ -880,7 +1162,7 @@
 		    	"Properties"
 		    	{
 		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "10"
-	                        "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"    "50"
+	
 		    	}
 		    }
 	   	}

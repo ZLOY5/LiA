@@ -31,6 +31,9 @@ function Precache( context )
 		PrecacheModel("models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl", context)
 		PrecacheModel("models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl" , context)
 		
+		--4 волна
+		PrecacheResource("particle", "particles/base_attacks/ranged_badguy_launch_b.vpcf" , context)
+		
 		--5 волна (мегабосс)
 		PrecacheModel("models/heroes/ursa/ursa.vmdl", context)
 
@@ -63,6 +66,31 @@ function Precache( context )
 		PrecacheModel("models/heroes/sven/sven_mask.vmdl", context)
 		PrecacheModel("models/heroes/sven/sven_sword.vmdl", context)
 		PrecacheModel("models/heroes/sven/sven_gauntlet.vmdl", context)
+		
+		--9 волна
+		PrecacheModel("models/heroes/morphling/morphling.vmdl", context)
+		
+		PrecacheModel("models/items/morphling/ancient_armor_arms/ancient_armor_arms.mdl", context)
+		PrecacheModel("models/items/morphling/ancient_armor_back/ancient_armor_back.mdl"	, context)
+		PrecacheModel("models/items/morphling/ancient_armor_breastplates/ancient_armor_breastplates.mdl", context)
+		PrecacheModel("models/items/morphling/ancient_armor_head/ancient_armor_head.mdl", context)
+		PrecacheModel("models/items/morphling/ancient_armor_shoulders/ancient_armor_shoulders.mdl", context)	
+		
+		PrecacheResource("particle", "particles/units/heroes/hero_morphling/morphling_base_attack_trail_d.vpcf", context)
 
+		--10 волна
+		PrecacheModel("models/heroes/faceless_void/faceless_void.vmdl", context)
+		
+		PrecacheModel("models/items/faceless_void/timelord_bracers/timelord_bracers.mdl", context)
+		PrecacheModel("models/items/faceless_void/timelord_head/timelord_head.mdl"	, context)
+		PrecacheModel("models/items/faceless_void/timelord_shoulders/timelord_shoulders.mdl", context)
+		PrecacheModel("models/items/faceless_void/timelord_skirt/timelord_skirt.mdl", context)
+		PrecacheModel("models/items/faceless_void/timelord_weapon/timelord_weapon.mdl", context)	
+		
+		--11 волна
+		PrecacheModel("models/items/beastmaster/boar/beast_deming/beast_deming.vmdl", context)
+
+		--15 волна
+		PrecacheModel("models/heroes/life_stealer/life_stealer.vmdl", context)	
 		
 end
