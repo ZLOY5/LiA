@@ -1,0 +1,58 @@
+"item_lia_healing_ward"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						      "item_datadriven"
+	"ID"						          	"1804"  //Valve's version of this item uses the ID "34".
+	"AbilityBehavior"				    "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
+	"Model"						        	"models/props_gameplay/magic_wand.mdl"
+	"AbilityTextureName"			  "item_lia_healing_ward"
+	
+
+    // Stats		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				  "0"
+	"AbilityCastPoint"				"0.0"
+	"AbilityManaCost"				  "0"
+	
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"					      	"200"
+	"ItemShopTags"				      "regen_health"
+	"ItemQuality"					      "consumable"
+	"ItemAliases"					      "healing ward"
+  "ItemStackable"				      "1"
+	"ItemPermanent"				      "0"
+	"ItemInitialCharges"	      "2"
+	"ItemRequiresCharges"       "1"
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"			        "30"
+		}
+	}
+
+	
+	
+	"OnSpellStart"
+	{
+   "SpawnUnit"
+		{
+			"UnitName"			"unit_healing_ward""
+			"Target"			  "POINT"
+			"UnitCount"			"1"
+			"Duration"			"%duration"
+
+			"GrantsGold"		"0"
+			"GrantsXP"			"1"
+		}
+   
+   "SpendCharge" {}
+	}
+}
