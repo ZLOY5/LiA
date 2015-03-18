@@ -1,25 +1,49 @@
 "item_lia_axe"
-	{
-
-		"ID"							"1100"
-		"ItemCost"						"80"
-		"ItemKillable" "0" 
-		"ItemDroppable" "1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		"ItemSellable"                  "1"
-		"ItemPurchasable"		 "1"
-		"ItemQuality"					"component"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"1013"  //Valve's version of this item uses the ID "13".
+	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"Model"							"models/props_gameplay/red_box.vmdl" 
+	"AbilityTextureName"			                "item_lia_axe"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"					"80"
+	"ItemShopTags"					"" //add this 
+	"ItemQuality"					"component"
+	"ItemAliases"					"axe"
+	
+	"ItemKillable" "0" 
+	"ItemDroppable" "1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemSellable"                                  "1"
+	"ItemPurchasable"		                "1"
 		
-
-		"AbilityTextureName"			"item_lia_axe"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_gauntlets"
-		"AbilitySpecial"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"		"5"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_gauntlets_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_strength" "5"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
 			}
 		}
 	}
+}
