@@ -40,6 +40,16 @@ function ShowCenterMessage(msg, dur)
 	FireGameEvent("show_center_message",{message = msg,duration = dur}) 
 end
 
+function GetItemInInventory(unit,itemName)
+	for i = 0, 5 do
+		local Item = unit:GetItemInSlot(i) 
+		if Item:GetName() == itemName then
+			return Item 
+		end
+	end
+	return nil
+end
+
 POPUP_SYMBOL_PRE_PLUS = 0
 POPUP_SYMBOL_PRE_MINUS = 1
 POPUP_SYMBOL_PRE_SADFACE = 2
