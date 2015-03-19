@@ -38,17 +38,17 @@
           "Action"
           {
             "Damage"
-            {
+             {
               "Target"    "TARGET"
-              "Damage"    "%AbilityDamage"
               "Type"      "DAMAGE_TYPE_MAGICAL"
-            }
+              "Damage"    "%Damage"
+             }
             
             "ApplyModifier"
-            {
+             {
               "Target"        "TARGET"
               "ModifierName"  "modifier_eruption_datadriven"
-            }
+             }
           }
         }
       }
@@ -89,7 +89,7 @@
       "03"
       {
        "var_type"                           "FIELD_INTEGER"
-       "AbilityDamage"                      "150 300 450"
+       "Damage"                      "150 300 450"
       }
       "04"
       {
