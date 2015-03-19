@@ -31,10 +31,11 @@
        "OnAttacked"
         { 
          "RunScript"
-         {
-         "ScriptFile"  "heroes/firerage.lua"
-         "Function"    "StackCountIncrease"
-         }
+          {
+           "ScriptFile"  "heroes/Acron/firerage.lua"
+           "Function"    "StackCountIncrease"
+           "Stack"       "%StackForExplosion"
+          }
         } 
       }
 
@@ -70,14 +71,19 @@
     "AbilitySpecial"
     {
      "01"
-     {
+      {
        "var_type"                "FIELD_INTEGER"
-       "radius"                "300"
-     }
+       "radius"                  "300"
+      }
      "02"
       {
-       "var_type"                "FIELD_FLOAT"
-       "damage"                   "80 160 240"
+       "var_type"                "FIELD_INTEGER"
+       "damage"                  "80 160 240"
+      }
+     "03"
+      {
+       "var_type"                "FIELD_INTEGER"
+       "StackForExplosion"       "15"
       }
     } 
   }
