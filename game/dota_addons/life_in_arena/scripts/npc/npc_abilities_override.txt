@@ -1184,42 +1184,5 @@
 	//End of file heavy_punch.txt
 
 
-	//Start of file heavy_sandvich.txt
-	"heavy_sandvich"
-		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"	 "ability_datadriven"
-			"AbilityTextureName" "sandvich"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-			"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	
-			// Casting
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCastPoint"				"0"
-	
-			// Time		
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCooldown"				"35"
-			"AbilityChannelTime"			"3.0"
-	
-			// Cost
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityManaCost"				"0"
-			
-			// Special
-			//-------------------------------------------------------------------------------------------------------------
-			
-		    "OnChannelFinish"
-			{
-				"Heal"
-				{
-					"Target" 		"TARGET"
-					"HealAmount"	"100"
-				}
-			}
-		}
-	//End of file heavy_sandvich.txt
 }

@@ -93,9 +93,9 @@ end
 
 
 XP_TABLE = {}
-XP_TABLE[2] = 200
-for i = 3, MAX_LEVEL do
-    XP_TABLE[i] = XP_TABLE[i-1] + i * 100 + 100
+XP_TABLE[1] = 0
+for i = 2, MAX_LEVEL do
+    XP_TABLE[i] = XP_TABLE[i-1] + i * 100 
 end
 
 
