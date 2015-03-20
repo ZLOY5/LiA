@@ -1,0 +1,105 @@
+"item_recipe_lia_blood_blade"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1312"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"350"	
+	"ItemShopTags"					"damage;lifesteal;hard_to_tag"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_blood_blade"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_alanith_spear;item_lia_steel_sword"
+	}
+}
+
+"item_lia_blood_blade"
+{
+	"ID"							"1313"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"900"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"rare"
+	"AbilityTextureName"			"lia_blood_blade"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ATTACK"
+	"AbilityCastPoint"       		"0.0"
+	"AbilityManaCost"         		"100"
+    "AbilityCooldown"        		"13"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	 "items\blood_blade"
+			"Function" 		 "OnSpellStart"
+			"stealperc" 	 "%stealperc"
+			"radius" 		 "%radius"
+			"maxheal"        "%maxheal"
+		}
+	}
+	"Modifiers"
+	{
+		"item_blood_blade_stat_modifier"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+		    "Attributes" 	   "MODIFIER_ATTRIBUTE_MULTIPLE"
+		    "Orb"
+            {
+                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
+                //"ProjectileName"    "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+            }
+            "OnOrbImpact"
+            {
+            	"Lifesteal"
+        		{
+            		"Target"    "ATTACKER"
+            		"LifestealPercent"  "%lifesteal"
+       			}
+            }
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+		    }  
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"     "FIELD_INTEGER"
+			"bonus_damage" "70"
+		}
+		"02"
+		{
+			"var_type"  "FIELD_INTEGER"
+			"lifesteal" "22"
+		}
+		"03"
+		{
+			"var_type"  "FIELD_FLOAT"
+			"stealperc" "0.08"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"radius"   "525"
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"maxheal"   "1500"
+		}
+	}
+}
+

@@ -1,0 +1,64 @@
+"item_recipe_lia_runed_gloves"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1304"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"105"	
+	"ItemShopTags"					"damage;attack_speed"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_runed_gloves"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_claws;item_lia_gloves_of_haste"
+	}
+}
+
+"item_lia_runed_gloves"
+{
+	"ID"							"1305"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"225"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"common"
+	"AbilityTextureName"			"lia_runed_gloves"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"Modifiers"
+	{
+		"item_runed_gloves_stat_modifier"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+		    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+		    }  
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_attack_speed" "20"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage" "20"
+		}
+	}
+}
+
