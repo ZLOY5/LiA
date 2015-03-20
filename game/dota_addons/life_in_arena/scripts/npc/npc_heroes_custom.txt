@@ -3,21 +3,22 @@
 // the specified key-value combinations.  Use override_hero <hero_to_override> for this.
 "DOTAHeroes"
 {
+	
+		//=================================================================================================================
+	// HERO: Golem 
 	//=================================================================================================================
-	// HERO: Minotaur 
-	//=================================================================================================================
-	"npc_dota_hero_minotaur"
+	"npc_dota_hero_golem"
 	{
-		"override_hero"				"npc_dota_hero_elder_titan"
+		"override_hero"				"npc_dota_hero_tiny"
 // способности
 //----------------------------------------------------------------
 
-"Ability1" "minotaur_clap"	// способность 1.
-"Ability2" "minotaur_aura" 		// способность 2.
-"Ability3" "minotaur_cleave" 	// способность 3.
+"Ability1" "akron_internal_explosion_datadriven"	// способность 1.
+"Ability2" "akron_hellish_heat_datadriven" 		// способность 2.
+"Ability3" "akron_firerage_datadriven" 	// способность 3.
 "Ability4" "" 					// способность 4.
 "Ability5" "" 					// способность 5.
-"Ability6" "minotaur_ultimate" 	// способность 6 - Ульт.
+"Ability6" "akron_eruption_datadriven" 	// способность 6 - Ульт.
 "Ability7" "" 					// способность 7 - Ульт.
 "Ability8" "" 					// способность 8 - Ульт.
 
@@ -29,20 +30,33 @@
 // Атака
 //----------------------------------------------------------------
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "30" // минимальный урон.
-"AttackDamageMax" "40" // максимальный урон.
-"AttackRate" "0.9" // скорость атаки.
+"AttackDamageMin" "33" // минимальный урон.
+"AttackDamageMax" "51" // максимальный урон.
+"AttackRate" "1.7" // скорость атаки.
 "AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 "AttackAcquisitionRange" "800" // дальность реагирования (когда он нас заметит).
-"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+"AttackRange" "100" // дальность атаки 128 ближний бой 800 дальний.
 "ProjectileModel" "" // Модель частиц для дальной атаки.
 "ProjectileSpeed" "" // скорость частиц.
-
+		
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"21"										// Base strength
+		"AttributeStrengthGain"		"3"										// Strength bonus per level.
+		"AttributeBaseIntelligence"	"8"										// Base intelligence
+		"AttributeIntelligenceGain"	"1.5"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"6"										// Base agility
+		"AttributeAgilityGain"		"1.5"	
+		
+		
+		
 // Награда
 //----------------------------------------------------------------
-"BountyXP" "200" // количества опыта.
-"BountyGoldMin" "200" // минимальное количество золота.
-"BountyGoldMax" "200" // максимальное количества золота.
+"BountyXP" "100" // количества опыта.
+"BountyGoldMin" "50" // минимальное количество золота.
+"BountyGoldMax" "50" // максимальное количества золота.
 
 // Передвижение
 //----------------------------------------------------------------
@@ -52,10 +66,10 @@
 
 // Общий статус
 //----------------------------------------------------------------
-"StatusHealth" "465" // Базовое количество ХП.
-"StatusHealthRegen" "1" // Базовая Скорость восстановления ХП.
+"StatusHealth" "450" // Базовое количество ХП.
+"StatusHealthRegen" "1.2" // Базовая Скорость восстановления ХП.
 "StatusMana" "75" // Базовое количество МП.
-"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+"StatusManaRegen" "0.05" // Базовая Скорость восстановления МП.
 
 // Принадлежность к команде
 //----------------------------------------------------------------
@@ -72,7 +86,5 @@
 //----------------------------------------------------------------
 //Рюкзак
 "HasInventory" "1" // 0 - не будет инвентаря
-
-
 	}	
 }

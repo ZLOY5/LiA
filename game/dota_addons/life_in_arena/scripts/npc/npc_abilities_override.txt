@@ -1,288 +1,1713 @@
 //Generated using Dota Custom KVScript Files Merger by cris9696
-// Dota Abilities Override File
-"DOTAAbilities"
+"DotaAbilities"
 {
-	"Version"		"1"
-	//=================================================================================================================
-	// Minotaur: Clap
-	//=================================================================================================================
-	"minotaur_clap"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass" "brewmaster_thunder_clap"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+
+	//Start of file akron_eruption_datadriven.txt
+	 "akron_eruption_datadriven"
+	  {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "akron_eruption"
 	
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"10.0 7.0 4.0"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.4 0.4 0.4"
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	
+	    "AbilityCooldown"         "150 140 130"
+	
+	    "AbilityCastPoint"        "0.2"
+	    "AbilityCastRange"        "0"
+	
+	    "AbilityManaCost"        "120 140 160"
+	
+	    "AoERadius"              "%radius"
+	    
+	
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	        "OnSpellStart"
+	       {
+	         "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"  "CASTER"
+	            "Radius"  "%radius"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+	            "Flags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	          }
+	          
+	          "Action"
+	          {
+	            "Damage"
+	             {
+	              "Target"    "TARGET"
+	              "Type"      "DAMAGE_TYPE_MAGICAL"
+	              "Damage"    "%Damage"
+	             }
+	            
+	            "ApplyModifier"
+	             {
+	              "Target"        "TARGET"
+	              "ModifierName"  "modifier_eruption_datadriven"
+	             }
+	          }
+	        }
+	      }
+	
+	
+	    "Modifiers"
+	    {
+	      "modifier_eruption_datadriven"
+	      {
+	        "Passive"         "0"
+	        "IsHidden"        "0"
+	        "IsDebuff"        "1"
+	    
+	        "Duration"        "%duration"
+	      
+	        "Properties"
+	        {
+	          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_attack_and_movement"
+	          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
+	        }
+	      }
+	    }
+	
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	     "01"
+	     {
+	       "var_type"                            "FIELD_FLOAT"
+	       "duration"                            "5 10 15"
+	     }
+	     "02"
+	      {
+	       "var_type"                            "FIELD_INTEGER"
+	       "slow_speed_attack_and_movement"      "-40 -60 -80"
+	      }
+	      "03"
+	      {
+	       "var_type"                           "FIELD_INTEGER"
+	       "Damage"                      "150 300 450"
+	      }
+	      "04"
+	      {
+	       "var_type"                           "FIELD_INTEGER"
+	       "radius"                             "1500"
+	      }
+	    }  
+	  }
+	//End of file akron_eruption_datadriven.txt
 
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"90 105 130"		
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+	//Start of file akron_firerage_datadriven.txt
+	"akron_firerage_datadriven"
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	    
+	
+	    "AoERadius"                "300"
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	   
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {  
+	     "modifier_firerage_datadriven"
+	      {
+	        "Passive"       "1"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        
+	
+	       "OnAttacked"
+	        { 
+	         "RunScript"
+	          {
+	           "ScriptFile"  "heroes/Acron/firerage.lua"
+	           "Function"    "StackCountIncrease"
+	           "Stack"       "%StackForExplosion"
+	          }
+	        } 
+	      }
+	
+	      "modifier_firerage_explosion"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "1"
+	        "IsDebuff"      "0"
+	      
+	       "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
+	        {
+	
+	         "Damage"
+	          {
+	           "Type"   "DAMAGE_TYPE_MAGICAL"
+	           "Damage" "%damage"
+	          
+	      
+	           "Target"
+	             {
+	              "Center"    "CASTER"
+	              "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	              "Radius"    "%radius"
+	              "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            }
+	          }
+	        }
+	      }
+	    } 
+	
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	     "01"
+	      {
+	       "var_type"                "FIELD_INTEGER"
+	       "radius"                  "300"
+	      }
+	     "02"
+	      {
+	       "var_type"                "FIELD_INTEGER"
+	       "damage"                  "80 160 240"
+	      }
+	     "03"
+	      {
+	       "var_type"                "FIELD_INTEGER"
+	       "StackForExplosion"       "16"
+	      }
+	    } 
+	  }
+	//End of file akron_firerage_datadriven.txt
+
+
+	//Start of file akron_hellish_heat_datadriven.txt
+	 "akron_hellish_heat_datadriven" 
+	  {
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AoERadius"              "%hellish_heat_radius"
+	
+	    
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	          "var_type"                "FIELD_INTEGER"
+	          "hellish_heat_tick"                "1"
+	        }
+	       "02"
+	        {
+	          "var_type"                "FIELD_INTEGER"
+	           "hellish_heat_radius"              "290"
+	        }
+	       "03"
+	        { 
+	          "var_type"  "FIELD_INTEGER"
+	          "hellish_heat_tick_damage" "15 30 60"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	      "modifiers_hellish_heat_datadriven"
+	     {
+	       "Passive"         "1"
+	       "IsHidden"        "1"
+	       "IsPurgable"      "0"
+	
+	       "ThinkInterval" "%hellish_heat_tick"
+	
+	        "OnIntervalThink"
+	        {
+	          "ActOnTargets"
+	           {
+	                "Target"
+	                {
+	                    "Center" "CASTER"
+	                    "Radius" "%hellish_heat_radius"
+	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+	                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                }
+	
+	                "Action"
+	                {
+	                  "Damage"
+	                  {
+	                    "Target"  "TARGET"
+	                    "Type"    "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"  "%hellish_heat_tick_damage"
+	                  }
+	                }
+	            }
+	        }
+	      
+	            "Aura"            "modifiers_hellish_heat_check_datadriven"
+	            "Aura_Radius"     "%hellish_heat_radius"
+	            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
+	      }
+	  
+	
+	
+	      "modifiers_hellish_heat_check_datadriven"
+	      {
+	      "Passive"       "0"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	      "IsPurgable"    "0"
+	      }
+	    }
+	  }
+	   
+	//End of file akron_hellish_heat_datadriven.txt
+
+
+	//Start of file akron_internal_explosion_datadriven.txt
+	"akron_internal_explosion_datadriven"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AbilityCooldown" "22 21 20"
+	
+	    "AbilityManaCost" "70 80 90"
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+	    
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0.2"
+	    "AbilityCastRange"  "0"
+	    "AoERadius"      "%radius"
+	
+	    "OnSpellStart"
+	    {
+	      "Damage"
+	      {
+	        "Type"   "DAMAGE_TYPE_MAGICAL"
+	        "Damage" "%damage"
+	                    
+	        "Target"
+	        {
+	         "Center"    "CASTER"
+	         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	         "Radius"    "%radius"
+	        }
+	      }
+	
+	      "Damage"
+	       {
+	         "Target" "CASTER"
+	         "Type"   "DAMAGE_TYPE_MAGICAL"
+	         "Damage" "%masochism"
+	        }
+	    }
+	    
+	  
+	   
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "radius"                  "200 225 250"
+	        }
+	       "02"
+	        {
+	            "var_type"                "FIELD_FLOAT"
+	            "damage"                   "200 400 600"
+	        }
+	       "03"
+	        {
+	            "var_type"                "FIELD_FLOAT"
+	            "masochism"               "200 400 600"
+	        }
+	    }
+	  }
+	//End of file akron_internal_explosion_datadriven.txt
+
+
+	//Start of file asaassaqwer.txt
+	  "asaassaqwer"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AbilityCooldown" "4"
+	
+	    "AbilityManaCost" ""
+	    
+	    // Precache 
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "precache"
+	    {
+	     "model"     "models/heroes/undying/undying_minion.vmdl"
+	    }
+	    
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0"
+	    "AbilityCastRange"  "0"
+	    "AoERadius"      "%radius"
+	     
+	     "Modifiers"
+	     {
+	       "modifier_jinada_datadriven"
+	       {
+	         "Passive"       "1"
+	         "IsHidden"      "0"
+	         "IsDebuff"      "1"
+	     
+	         
+	
+	         "OnCreated"
+	         {
+	           
+	          "RunScript"
+	            {
+	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
+	             "Function"    "Jinada"
+	             "maxStack"     "3"
+	             
+	            }
+	          }
+	        }
+	
+	        "check"
+	        {
+	          "Passive"       "1"
+	          "IsHidden"      "0"
+	          "IsBuff"        "1"
+	        }
+	
+	        "if_creep_die"
+	        {
+	          "Passive"       "0"
+	          "IsHidden"      "0"
+	          "IsBuff"        "1"
+	
+	          "OnDeath"
+	          {
+	            "RunScript"
+	            {
+	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
+	             "Function"    "Getr"
+	             "maxStack"     "3"
+	             "currentStacks" "%currentStacks"
+	            }
+	          }
+	        }
+	      }
+	    
+	  }
+	//End of file asaassaqwer.txt
+
+
+	//Start of file barrel_no_health_bar.txt
+		//=================================================================================================================
+		// Minotaur: Aura
+		//=================================================================================================================
+		"minotaur_aura"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"400 400 400"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"4.25 4.25 4.25"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"50 100 150"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_slow"				"30 45 60"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"attack_speed_slow"			"30 45 60"
-			}
-		}
-	}
-
-	//=================================================================================================================
-	// Minotaur: Aura
-	//=================================================================================================================
-	"minotaur_aura"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass" "nevermore_dark_lord"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"OnCastbar"					"0"
-		
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"presence_armor_reduction"		"-4 -8 -12"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"presence_radius"				"500"
-			}
-		}
-	}
-	//=================================================================================================================
-	// Minotaur: Cleave
-	//=================================================================================================================
-	"minotaur_cleave"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass" "sven_great_cleave"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"great_cleave_radius"	"300.0"
-			}
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"BaseClass" "nevermore_dark_lord"	
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+			"OnCastbar"					"0"
 			
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"great_cleave_damage"	"20 30 40"
-			}
-		}
-	}
-	//=================================================================================================================
-	// Minotaur: Ultimate
-	//=================================================================================================================
-	"minotaur_ultimate"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass" "chaos_knight_phantasm"	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.4 0.4 0.4"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"120.0 120.0 120.0"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"125 200 275"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"illusion_duration"			"45.0 45.0 45.0"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"outgoing_damage"			"60 80 100"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"incoming_damage"			"175 150 125"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"images_count"				"2 3 4"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"invuln_duration"		"0.5"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"vision_radius"			"400"
-			}
-		}
-	}
+			
+			// Casting
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastRange"				"500"
 	
-	
-	//=================================================================================================================
-	// Barrel: NoHealthBar
-	//=================================================================================================================
-		"barrel_no_health_bar"
-{
-// General
-//-------------------------------------------------------------------------------------------------------------
-"BaseClass" "ability_datadriven"
-"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-		
-		
-	
-	// Modifiers
-	//-------------------------------------------------------------------------------------------------------------
-	"Modifiers"
-		{
-		"barrel_hpbar"
+			// Special
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
 			{
-			"Passive" "1"
-			"States"
+				"01"
 				{
-				"MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
-	            "MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-	            "MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"	
-				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"	
-				"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"	
+					"var_type"						"FIELD_INTEGER"
+					"presence_armor_reduction"		"-4 -8 -12"
 				}
-					
+				"02"
+				{
+					"var_type"						"FIELD_INTEGER"
+					"presence_radius"				"500"
+				}
 			}
-
-			"modifier_item_butterfly_datadriven_evasion"
-{
-"Passive" "0"
-"IsHidden" "1"
-"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
-
-"Properties"
-{
-"MODIFIER_PROPERTY_EVASION_CONSTANT" "100"
-}
-}
-		
 		}
-	
-}	
-
-	//=================================================================================================================
-	// Barrel: Explosion
-	//=================================================================================================================
-		"barrel_explosion"
+		//=================================================================================================================
+		// Minotaur: Cleave
+		//=================================================================================================================
+		"minotaur_cleave"
 		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"BaseClass" "sven_great_cleave"	
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+			
+			// Special
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"great_cleave_radius"	"300.0"
+				}
+				
+				"02"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"great_cleave_damage"	"20 30 40"
+				}
+			}
+		}
+		//=================================================================================================================
+		// Minotaur: Ultimate
+		//=================================================================================================================
+		"minotaur_ultimate"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"BaseClass" "chaos_knight_phantasm"	
+			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+			"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+			
+			// Casting
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCastPoint"				"0.4 0.4 0.4"
+	
+			// Time		
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityCooldown"				"120.0 120.0 120.0"
+	
+			// Cost
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilityManaCost"				"125 200 275"
+	
+			// Special
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"					"FIELD_FLOAT"
+					"illusion_duration"			"45.0 45.0 45.0"
+				}
+				"02"
+				{
+					"var_type"					"FIELD_INTEGER"
+					"outgoing_damage"			"60 80 100"
+				}
+				"03"
+				{
+					"var_type"					"FIELD_INTEGER"
+					"incoming_damage"			"175 150 125"
+				}
+				"04"
+				{
+					"var_type"					"FIELD_INTEGER"
+					"images_count"				"2 3 4"
+				}
+				"05"
+				{
+					"var_type"				"FIELD_FLOAT"
+					"invuln_duration"		"0.5"
+				}
+				"06"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"vision_radius"			"400"
+				}
+			}
+		}
+		
+		
+		//=================================================================================================================
+		// Barrel: NoHealthBar
+		//=================================================================================================================
+			"barrel_no_health_bar"
+	{
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass" "ability_datadriven"
-	"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
-	
-	"OnOwnerDied"
-    {
-        "Damage"
-        {
-            "Target"
-            {
-                "Center" "CASTER"
-                "Radius" "500"
-                "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types" "DOTA_UNIT_TARGET_BASIC"
-            }
-            "Type" "DAMAGE_TYPE_PURE"
-            "Damage" "9999"
-         }
-     }
-	
-		}
-
-	
-"camera_passive"
-	{
-		"AbilityBehavior" 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"            "rubick_empty1"
-		"MaxLevel"                      "1"
-
+	"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+			
+			
+		
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
 		"Modifiers"
-		{
-			"modifier_dummy_camera"
 			{
-				"Passive"                        "1"
-				"IsHidden"                        "1"    
-				"States"
+			"barrel_hpbar"
 				{
-					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				"Passive" "1"
+				"States"
+					{
+					"MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+		            "MODIFIER_STATE_SPECIALLY_DENIABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+		            "MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"	
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"	
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"	
+					}
+						
+				}
+	
+				"modifier_item_butterfly_datadriven_evasion"
+	{
+	"Passive" "0"
+	"IsHidden" "1"
+	"Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	"Properties"
+	{
+	"MODIFIER_PROPERTY_EVASION_CONSTANT" "100"
+	}
+	}
+			
+			}
+		
+	}	
+	
+		//=================================================================================================================
+		// Barrel: Explosion
+		//=================================================================================================================
+			"barrel_explosion"
+			{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass" "ability_datadriven"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+		
+		"OnOwnerDied"
+	    {
+	        "Damage"
+	        {
+	            "Target"
+	            {
+	                "Center" "CASTER"
+	                "Radius" "500"
+	                "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types" "DOTA_UNIT_TARGET_BASIC"
+	            }
+	            "Type" "DAMAGE_TYPE_PURE"
+	            "Damage" "9999"
+	         }
+	     }
+		
+			}
+	
+		
+	"camera_passive"
+		{
+			"AbilityBehavior" 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"BaseClass" 					"ability_datadriven"
+			"AbilityTextureName"            "rubick_empty1"
+			"MaxLevel"                      "1"
+	
+			"Modifiers"
+			{
+				"modifier_dummy_camera"
+				{
+					"Passive"                        "1"
+					"IsHidden"                        "1"    
+					"States"
+					{
+						"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+						"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+						"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
+						"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+						"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					}
 				}
 			}
 		}
-	}
+	
+	
+		//Start of file dota_items_disable.txt
+		//Courier
+			"item_courier"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_flying_courier"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+		
+			//Items
+			"item_abyssal_blade"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_aegis"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ancient_janggo"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_arcane_boots"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_armlet"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_assault"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_band_of_elvenskin"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_basher"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_belt_of_strength"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_bfury"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_black_king_bar"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_blades_of_attack"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_blade_mail"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_blade_of_alacrity"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_blink"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_bloodstone"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_boots"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_boots_of_elves"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_bottle"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_bracer"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_branches"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_broadsword"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_buckler"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_butterfly"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_chainmail"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_cheese"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_circlet"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_clarity"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_claymore"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_cloak"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_dagon"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_dagon_2"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_dagon_3"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_dagon_4"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_dagon_5"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_demon_edge"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_desolator"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_diffusal_blade"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_diffusal_blade_2"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_dust"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_eagle"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_energy_booster"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ethereal_blade"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_cyclone"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_flask"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_flask2"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_force_staff"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_gauntlets"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_gem"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_gem_of_true_sight"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ghost"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ghost_scepter"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_gloves"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_gloves_of_haste"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_greater_clarity"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_greater_crit"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_hand_of_midas"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_headdress"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_heart"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_heavens_halberd"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_helm_of_iron_will"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_helm_of_the_dominator"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_hood_of_defiance"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_hyperstone"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_invis_sword"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_javelin"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_lesser_crit"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_lifesteal"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_maelstrom"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_magic_stick"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_magic_wand"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_manta"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_mantle"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_mask_of_madness"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_medallion_of_courage"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_mekansm"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_mithril_hammer"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_mjollnir"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_monkey_king_bar"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_mystic_staff"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_necronomicon"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_necronomicon_2"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_necronomicon_3"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_null_talisman"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_oblivion_staff"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ogre_axe"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_orb_of_venom"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_orchid"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_pers"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_phase_boots"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_pipe"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_platemail"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_point_booster"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_poor_mans_shield"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_power_treads"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_quarterstaff"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_quelling_blade"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_radiance"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_rapier"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_reaver"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_refresher"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_relic"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ring_of_aquila"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ring_of_basilius"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ring_of_health"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ring_of_protection"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ring_of_regen"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_robe"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_rod_of_atos"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_salve"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_sange"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_sange_and_yasha"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_satanic"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_shadow_amulet"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_sheepstick"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_shivas_guard"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_skadi"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_slippers"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_slippers_of_halcyon"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_smoke_of_deceit"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_sobi_mask"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_soul_booster"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_soul_ring"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_sphere"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_staff_of_wizardry"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_stout_shield"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_talisman_of_evasion"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_tango"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_tango_single"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_tombstone"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_tpscroll"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_tranquil_boots"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_travel_boots"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ultimate_orb"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ultimate_scepter"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_urn_of_shadows"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_vanguard"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_veil_of_discord"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_vitality_booster"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_vladmir"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_void_stone"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ward_observer"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_ward_sentry"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_wraith_band"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+			"item_yasha"
+			{
+				"ItemPurchasable"				"0"
+				"ItemDroppable"					"0"
+			}
+		//End of file dota_items_disable.txt
+	
+	
+		//Start of file heavy_minigun.txt
+		"heavy_minigun"
+			{
+				// General
+				//-------------------------------------------------------------------------------------------------------------
+				"BaseClass"	 "ability_datadriven"
+				"AbilityTextureName" "minigun"
+				"precache"
+		        {
+		            "particle_folder"            "particles/units/heroes/hero_mirana/"
+		        }
+				"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+				"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		
+				// Casting
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityCastPoint"				"0"
+		
+				// Time		
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityCooldown"				"0"
+		
+				// Cost
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityManaCost"				"0"
+				
+				// Special
+				//-------------------------------------------------------------------------------------------------------------
+				
+			    "OnToggleOn"
+			    {
+			        "ApplyModifier"
+			        {
+			        	"Target" 		"CASTER"
+			            "ModifierName" 	"minigun"
+			        }
+			    }
+			    "OnToggleOff"
+			    {
+			        "RemoveModifier"
+					{
+						"Target" 		"CASTER"
+						"ModifierName"	"minigun"
+					}
+			    }
+			    "Modifiers"
+			    {
+				    "minigun"
+				    {
+				        "ThinkInterval" "0.1"
+				        "OnIntervalThink"
+				        {
+				            "RunScript"
+							{
+								"Function"		"MakeForwardLinearProjectile"
+								"ScriptFile"	"scripts/vscripts/general.lua"
+								"EffectName"	"particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
+								"MoveSpeed"		"700"
+								"FixedDistance"	"2000"
+								"StartRadius"	"100"
+								"EndRadius"		"100"
+							}
+							"FireSound"
+							{
+								"EffectName"		"Tower.Fire.Attack"
+								"Target" 			"CASTER"
+							}
+				        }
+				    }
+			    }
+		
+			    "OnProjectileHit"
+		        {
+		                "DeleteOnHit" "true"
+		                "Damage"
+		                {
+		                        "Type"          "DAMAGE_TYPE_PHYSICAL"
+		                        "Damage"        "10"
+		                        "Target" 		"TARGET"
+		                } 
+		        }
+		        "OnProjectileHitUnit"
+		        {
+		                "Damage"
+		                {
+		                        "Type"          "DAMAGE_TYPE_PHYSICAL"
+		                        "MinDamage"     "8"
+		                        "MaxDamage"		"14"
+		                        "Target" 		"TARGET"
+		                } 
+		        }
+		
+			}
+		//End of file heavy_minigun.txt
+	
+	
+		//Start of file heavy_punch.txt
+		"heavy_punch"
+			{
+				// General
+				//-------------------------------------------------------------------------------------------------------------
+				"BaseClass"	 "ability_datadriven"
+				"AbilityTextureName" "punch"
+				"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		
+				// Time		
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityCooldown"				"1"
+		
+				// Cost
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityManaCost"				"0"
+				
+				 "OnToggleOn"
+			    {
+			        "ApplyModifier"
+			        {
+			        	"Target" 		"CASTER"
+			            "ModifierName" 	"punch"
+			        }
+			    }
+			    "OnToggleOff"
+			    {
+			        "RemoveModifier"
+					{
+						"Target" 		"CASTER"
+						"ModifierName"	"punch"
+					}
+			    }
+			    "Modifiers"
+			    {
+				    "punch"
+				    {
+				        "Properties"
+				        {
+				        	"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "25"
+				        	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "-25"
+				        	"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"100"
+				        	"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"50"
+				        }
+		
+				        "ThinkInterval" "0.5"
+				        "OnIntervalThink"
+				        {
+				            "RunScript"
+							{
+								"Function"		"AddLife"
+								"ScriptFile"	"scripts/vscripts/general.lua"
+								"HowMuch"		"-10"
+							}
+				        }
+				    }
+			    }
+			}
+		//End of file heavy_punch.txt
+	
+	
+		//Start of file heavy_sandvich.txt
+		"heavy_sandvich"
+			{
+				// General
+				//-------------------------------------------------------------------------------------------------------------
+				"BaseClass"	 "ability_datadriven"
+				"AbilityTextureName" "sandvich"
+				"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+				"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+				"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		
+				// Casting
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityCastPoint"				"0"
+		
+				// Time		
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityCooldown"				"35"
+				"AbilityChannelTime"			"3.0"
+		
+				// Cost
+				//-------------------------------------------------------------------------------------------------------------
+				"AbilityManaCost"				"0"
+				
+				// Special
+				//-------------------------------------------------------------------------------------------------------------
+				
+			    "OnChannelFinish"
+				{
+					"Heal"
+					{
+						"Target" 		"TARGET"
+						"HealAmount"	"100"
+					}
+				}
+			}
+		//End of file heavy_sandvich.txt
+	//End of file barrel_no_health_bar.txt
+
+
+	//Start of file brewer_power_of_the_mountains_datadriven.txt
+	"brewer_power_of_the_mountains_datadriven" 
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	
+	   "AbilityCooldown"        "200.0 180.0 160.0"
+	   "AbilityManaCost"        "0"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.2"
+	  "AbilityCastRange"  "0"
+	
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "10"
+	    }
+	    "02"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_damage"          "50 150 250"
+	    }
+	    "03"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_armor"           "10 20 30"
+	    }
+	    "04"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_health"           "400 700 1000"
+	    }
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "modifier_pact_with_death"
+	     "Target"         "CASTER"
+	     "Duration"       "%duration"
+	    }
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "modifier_power_of_the_mountains"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+	         "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+	         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
+	         "MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
+	        }
+	
+	        "States"
+	        {
+	         "MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+	        }
+	      }
+	    }
+	  }
+	//End of file brewer_power_of_the_mountains_datadriven.txt
+
+
+	//Start of file Butcher
+	
+	//End of file Butcher
 
 
 	//Start of file dota_items_disable.txt
@@ -1027,199 +2452,526 @@
 	//End of file dota_items_disable.txt
 
 
-	//Start of file heavy_minigun.txt
-	"heavy_minigun"
-		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"	 "ability_datadriven"
-			"AbilityTextureName" "minigun"
-			"precache"
+	//Start of file feryryryryr.txt
+	"feryryryryr"
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	
+	    "Modifiers"
+	    {
+	      "opium"
+	      {
+	        "Passive"       "1"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	       "OnAttackLanded"
 	        {
-	            "particle_folder"            "particles/units/heroes/hero_mirana/"
-	        }
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
-			"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	         "RunScript"
+	          {
+	           "ScriptFile"  "heroes/zxxxx.lua"
+	           "Function"    "BonusHit"
+	          }
+	        } 
+	      }
+	    }
+	  }
 	
-			// Casting
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCastPoint"				"0"
+	  "can_touch"
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
 	
-			// Time		
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCooldown"				"0"
 	
-			// Cost
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityManaCost"				"0"
-			
-			// Special
-			//-------------------------------------------------------------------------------------------------------------
-			
-		    "OnToggleOn"
-		    {
-		        "ApplyModifier"
-		        {
-		        	"Target" 		"CASTER"
-		            "ModifierName" 	"minigun"
-		        }
-		    }
-		    "OnToggleOff"
-		    {
-		        "RemoveModifier"
-				{
-					"Target" 		"CASTER"
-					"ModifierName"	"minigun"
-				}
-		    }
-		    "Modifiers"
-		    {
-			    "minigun"
-			    {
-			        "ThinkInterval" "0.1"
-			        "OnIntervalThink"
-			        {
-			            "RunScript"
-						{
-							"Function"		"MakeForwardLinearProjectile"
-							"ScriptFile"	"scripts/vscripts/general.lua"
-							"EffectName"	"particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
-							"MoveSpeed"		"700"
-							"FixedDistance"	"2000"
-							"StartRadius"	"100"
-							"EndRadius"		"100"
-						}
-						"FireSound"
-						{
-							"EffectName"		"Tower.Fire.Attack"
-							"Target" 			"CASTER"
-						}
-			        }
-			    }
-		    }
-	
-		    "OnProjectileHit"
+	    "Modifiers"
+	    {
+	      "bsod"
+	      {
+	        "Passive"       "1"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "OnAttackLanded"
+	        // "%attack_damage" is set to the damage value before mitigation
 	        {
-	                "DeleteOnHit" "true"
-	                "Damage"
-	                {
-	                        "Type"          "DAMAGE_TYPE_PHYSICAL"
-	                        "Damage"        "10"
-	                        "Target" 		"TARGET"
-	                } 
-	        }
-	        "OnProjectileHitUnit"
+	          "RunScript"
+	          {
+	            "ScriptFile"  "heroes/bsodit.lua"
+	            "Function"    "bsodit"
+	          }
+	        } 
+	      }
+	    }
+	
+	  }
+	//End of file feryryryryr.txt
+
+
+	//Start of file minotaur_bestial_strength_datadriven.txt
+	"minotaur_bestial_strength_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"                "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityTextureName"      "sven_great_cleave"
+	
+	  // Precache
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "particle"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+	  }
+	      
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "great_cleave_radius" "300.0"
+	    }
+	    
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "great_cleave_damage" "20 30 30"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_minotaur_bestial_strength_datadriven"
+	    {
+	      "Passive"   "1"
+	      "IsHidden"  "1"
+	
+	      "OnAttackLanded"
+	      {
+	        "CleaveAttack"
 	        {
-	                "Damage"
-	                {
-	                        "Type"          "DAMAGE_TYPE_PHYSICAL"
-	                        "MinDamage"     "8"
-	                        "MaxDamage"		"14"
-	                        "Target" 		"TARGET"
-	                } 
+	          "CleavePercent"   "%great_cleave_damage"
+	          "CleaveRadius"    "%great_cleave_radius"
+	          "CleaveEffect"    "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+	        }
+	      }
+	    }
+	  }
+	}
+	//End of file minotaur_bestial_strength_datadriven.txt
+
+
+	//Start of file need_name_corect1.txt
+	 "why"
+	 {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AbilityCooldown" "3.0"
+	
+	    "AbilityManaCost" "0"
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0.2"
+	    "AbilityCastRange"  "0"
+	    
+	  
+	
+	    "OnSpellStart"
+	    {
+	      "ApplyModifier"
+	      {
+	        "ModifierName"  "aseoppp"
+	        "Target"     "CASTER"
+	        "Duration"    "8"
+	      }
+	    }
+	
+	
+	
+	    "Modifiers"
+	    {
+	      "aseoppp"
+	      {
+	        
+	
+	        "Passive"      "0"
+	        "IsHidden"      "0"
+	        "IsDebuff"      "0"
+	    
+	        "EffectName"        "particle_name"
+	        "EffectAttachType"  "follow_origin"
+	    
+	        "OnAttackLanded"
+	        {
+	          "RunScript"
+	           {
+	           "ScriptFile"  "heroes/asd.lua"
+	           "Function"    "BiGhit"
+	           }
+	        }
+	      }
+	    }
+	  }
+	
+	 
+	//End of file need_name_corect1.txt
+
+
+	//Start of file need_name_corect2.txt
+	"whyddd"
+	 {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	    
+	    "AoERadius"      "300"
+	
+	    "AbilityCooldown" "3.0"
+	
+	    "AbilityManaCost" "0"
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0.2"
+	    "AbilityCastRange"  "0"
+	    
+	   
+	    "OnSpellStart"
+	    {
+	      "ApplyModifier"
+	      {
+	        "ModifierName"  "modifier_tytret"
+	        
+	        "Target"
+	        {
+	         "Center"    "CASTER"
+	         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	          "Radius"    "300"
+	        }
+	        
+	        "Duration"    "10"
+	      }
+	    }
+	
+	    "Modifiers"
+	    {
+	      "modifier_tytret"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsDebuff"      "1"
+	
+	        "Properties"
+	        {
+	         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "-60" 
 	        }
 	
-		}
-	//End of file heavy_minigun.txt
+	      }
+	    }
+	  }
+	//End of file need_name_corect2.txt
 
 
-	//Start of file heavy_punch.txt
-	"heavy_punch"
-		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"	 "ability_datadriven"
-			"AbilityTextureName" "punch"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+	//Start of file quenn_of_spiders_royal_vitality_datadriven.txt
+	 "quenn_of_spiders_royal_vitality_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"     "spiders_royal_vitality"
 	
-			// Time		
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCooldown"				"1"
 	
-			// Cost
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityManaCost"				"0"
-			
-			 "OnToggleOn"
-		    {
-		        "ApplyModifier"
-		        {
-		        	"Target" 		"CASTER"
-		            "ModifierName" 	"punch"
-		        }
-		    }
-		    "OnToggleOff"
-		    {
-		        "RemoveModifier"
-				{
-					"Target" 		"CASTER"
-					"ModifierName"	"punch"
-				}
-		    }
-		    "Modifiers"
-		    {
-			    "punch"
-			    {
-			        "Properties"
-			        {
-			        	"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "25"
-			        	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "-25"
-			        	"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"100"
-			        	"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"50"
-			        }
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	    
+	"Modifiers"
+	{
+	  "royal_vitality_datadriven"
+	  {
+	    "Passive"       "1"
+	    "IsHidden"      "0"
+	    "IsBuff"        "1"
 	
-			        "ThinkInterval" "0.5"
-			        "OnIntervalThink"
-			        {
-			            "RunScript"
-						{
-							"Function"		"AddLife"
-							"ScriptFile"	"scripts/vscripts/general.lua"
-							"HowMuch"		"-10"
-						}
-			        }
-			    }
-		    }
-		}
-	//End of file heavy_punch.txt
+	    "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%bonus_health_regen"
+	      }
+	  }
+	}
+	
+	  // Special  
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_health_regen"    "20 50 75"
+	    }
+	  }
+	}
+	//End of file quenn_of_spiders_royal_vitality_datadriven.txt
 
 
-	//Start of file heavy_sandvich.txt
-	"heavy_sandvich"
-		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"	 "ability_datadriven"
-			"AbilityTextureName" "sandvich"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-			"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	//Start of file Skeleton Thief
 	
-			// Casting
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCastPoint"				"0"
+	//End of file Skeleton Thief
+
+
+	//Start of file skeleton_thief_pact_with_death_datadriven.txt
+	"skeleton_thief_pact_with_death_datadriven"
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	  
 	
-			// Time		
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCooldown"				"35"
-			"AbilityChannelTime"			"3.0"
+	   "AbilityCooldown"        "12.0"
+	   "AbilityManaCost"        "0"
 	
-			// Cost
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityManaCost"				"0"
-			
-			// Special
-			//-------------------------------------------------------------------------------------------------------------
-			
-		    "OnChannelFinish"
-			{
-				"Heal"
-				{
-					"Target" 		"TARGET"
-					"HealAmount"	"100"
-				}
-			}
-		}
-	//End of file heavy_sandvich.txt
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.2"
+	  "AbilityCastRange"  "0"
+	
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "2.0 3.0 4.0"
+	    }
+	    "02"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_attackspeed"     "50 150 250"
+	    }
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "modifier_pact_with_death"
+	     "Target"         "CASTER"
+	     "Duration"       "%duration"
+	    }
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "modifier_pact_with_death"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
+	        }
+	
+	        "States"
+	        {
+	         "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+	        }
+	      }
+	    }
+	  }
+	//End of file skeleton_thief_pact_with_death_datadriven.txt
+
+
+	//Start of file time_lord_death_datadriven.txt
+	"time_lord_death_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"           "ability_datadriven"
+	  
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	 
+	  "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	  // Stats    
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastRange"        "900"
+	  "AbilityCastPoint"        "0.0"
+	  "AbilityCooldown"         "3.0"
+	  "AbilityManaCost"         "0"
+	  "AoERadius"               "%radius"
+	  
+	  
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "radius"          "300"
+	    }
+	  }
+	  
+	"OnSpellStart"
+	{
+	  "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"  "POINT"
+	        "Radius"  "%radius"
+	        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Type"    "DOTA_UNIT_TARGET_CREEP"
+	        "Flags"   "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	      }
+	
+	      "Action"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "heroes/item_hand_of_midas.lua"
+	          "Function"    "item_hand_of_midas_datadriven_on_spell_start"
+	          "Target"      "TARGET"
+	        }     
+	      }
+	    }
+	}
+	
+	}
+	//End of file time_lord_death_datadriven.txt
+
+
+	//Start of file xvbnnniven.txt
+	 "xvbnnniven" 
+	  {
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    
+	
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "Modifiers"
+	    {
+	      "qwecvvvv"
+	      {
+	        "Passive"       "1"
+	        "IsHidden"      "0"
+	        "IsDebuff"      "0"
+	    
+	        "EffectName"    "particle_name"
+	        "EffectAttachType"  "follow_origin"
+	    
+	        "Properties"
+	        {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"  "12"
+	        }
+	      }  
+	    }
+	  }
+	//End of file xvbnnniven.txt
+
+
+	//Start of file zunggxvbnnniven.txt
+	"xvbnnniven" 
+	  {
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    
+	
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	  
+	  // Time   
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCooldown"       "15 14 13"
+	
+	
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastRange"        "0"
+	  "AbilityCastPoint"        "0.0 0.0 0.0 0.0"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "8.0"
+	    }
+	    "02"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_attackspeed"     "10 20 40"
+	    }
+	  }
+	 
+	
+	  "OnSpellStart"
+	   {
+	    "ApplyModifier"
+	     {
+	     "ModifierName"  "run_in_invis"
+	     "Target"     "CASTER"
+	     "Duration"    "%duration"
+	    }
+	   }
+	
+	
+	    "Modifiers"
+	    {
+	      "run_in_invis"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        
+	    
+	        "Properties"
+	        {
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "30"
+	        }
+	      }  
+	    }
+	  }
+	//End of file zunggxvbnnniven.txt
 }
