@@ -42,6 +42,22 @@
        "Passive"         "1"
        "IsHidden"        "1"
        "IsPurgable"      "0"
+       
+       "OnDeath"
+       {
+        "RemoveModifier"
+         {
+           "ModifierName"  "modifiers_hellish_heat_datadriven"
+           
+           "Target"
+           {
+             "Center"    "CASTER"
+             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+             "Types"   "DOTA_UNIT_TARGET_HERO"
+             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+           }
+         }
+       }
 
        "ThinkInterval" "%hellish_heat_tick"
 
