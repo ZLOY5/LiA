@@ -12,13 +12,30 @@
 
 		"AbilityTextureName"			"item_lia_ring_of_regeneration"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_ring_of_regen"
-		"AbilitySpecial"
+		"BaseClass" "item_datadriven"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"				"FIELD_INTEGER"
+			"bonus_health_regen"	"3"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_ring_of_health_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_health_regen" "3"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
 			}
 		}
+    }
 	}

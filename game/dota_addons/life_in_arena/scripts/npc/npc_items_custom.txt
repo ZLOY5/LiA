@@ -488,15 +488,32 @@
 			
 			"AbilityTextureName"			"item_lia_boots"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_boots"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"						"FIELD_INTEGER"
+				"bonus_movement_speed"			"50"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_boots_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_movement_speed" "50"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"		"%bonus_movement_speed"
 				}
 			}
+		}
 		}
 	//End of file item_lia_boots.txt
 
@@ -603,15 +620,32 @@
 			
 			"AbilityTextureName"			"item_lia_gloves_of_strength"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_gauntlets"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"15"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_gauntlets_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_strength" "15"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
 				}
 			}
+		}
 		}
 	//End of file item_lia_gloves_of_strength.txt
 
@@ -916,15 +950,32 @@
 	
 			"AbilityTextureName"			"item_lia_helm"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_ring_of_protection"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"6"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_ring_of_protection_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_armor" "6"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
 				}
 			}
+		}
 		}
 	//End of file item_lia_helm.txt
 
@@ -1122,15 +1173,32 @@
 	
 			"AbilityTextureName"			"item_lia_mana_stone"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_energy_booster"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"150"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_energy_booster_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_mana" "150"
+					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
 				}
 			}
+		}
 		}
 	//End of file item_lia_mana_stone.txt
 
@@ -1225,7 +1293,7 @@
 		{
 	
 			"ID"							"1114"
-			"BaseClass" "item_sobi_mask"
+			"BaseClass" "item_datadriven"
 			"ItemCost"						"70"
 			"ItemKillable" "0" 
 			"ItemDroppable" "1"
@@ -1237,14 +1305,31 @@
 	
 			"AbilityTextureName"			"item_lia_mask"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"AbilitySpecial"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"							"FIELD_INTEGER"
+				"bonus_mana_regen_percentage"		"20"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_sobi_mask_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_mana_regen" "20"
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
 				}
 			}
+		}
 		}
 	//End of file item_lia_mask.txt
 
@@ -1557,15 +1642,32 @@
 	
 			"AbilityTextureName"			"item_lia_ring_of_protection"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_ring_of_protection"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+	// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"3"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_ring_of_protection_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_armor" "3"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
 				}
 			}
+		}
 		}
 	//End of file item_lia_ring_of_protection.txt
 
@@ -1585,15 +1687,32 @@
 	
 			"AbilityTextureName"			"item_lia_ring_of_regeneration"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_ring_of_regen"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"3"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_ring_of_health_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_health_regen" "3"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%bonus_health_regen"
 				}
 			}
+	    }
 		}
 	//End of file item_lia_ring_or_regeneration.txt
 
@@ -1614,20 +1733,32 @@
 	
 			"AbilityTextureName"			"item_lia_runed_bracers"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_cloak"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"							"FIELD_INTEGER"
+				"bonus_magic_resist_percentage"		"20"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_hood_of_defiance_datadriven"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_magical_armor" "20"
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+			    }
 			}
-			"02"
-			{
-				"var_type" "FIELD_INTEGER"
-				"tooltip_resist" "20"
-			}
-			}
+		}
 		}
 	//End of file item_lia_runed_bracers.txt
 
@@ -1767,15 +1898,32 @@
 			
 			"AbilityTextureName"			"item_lia_staff"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_robe"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intelligence"	"12"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_staff_of_wizardry_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_intellect" "12"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
 				}
 			}
+		}
 		}
 	//End of file item_lia_staff.txt
 
@@ -1795,15 +1943,32 @@
 	
 			"AbilityTextureName"			"item_lia_steel_sword"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_blades_of_attack"
-			"AbilitySpecial"
+			"BaseClass" "item_datadriven"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"01"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"12"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_blades_of_attack_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_damage" "12"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%bonus_damage"
 				}
 			}
+		}
 		}
 	//End of file item_lia_steel_sword.txt
 

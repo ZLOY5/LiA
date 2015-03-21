@@ -12,13 +12,30 @@
 
 		"AbilityTextureName"			"item_lia_steel_sword"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_blades_of_attack"
-		"AbilitySpecial"
+		"BaseClass" "item_datadriven"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"12"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_blades_of_attack_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_damage" "12"
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"%bonus_damage"
 			}
 		}
+	}
 	}

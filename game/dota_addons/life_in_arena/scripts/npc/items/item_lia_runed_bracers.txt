@@ -13,18 +13,30 @@
 
 		"AbilityTextureName"			"item_lia_runed_bracers"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_cloak"
-		"AbilitySpecial"
+		"BaseClass" "item_datadriven"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"							"FIELD_INTEGER"
+			"bonus_magic_resist_percentage"		"20"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_hood_of_defiance_datadriven"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_magical_armor" "20"
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+		    }
 		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"tooltip_resist" "20"
-		}
-		}
+	}
 	}

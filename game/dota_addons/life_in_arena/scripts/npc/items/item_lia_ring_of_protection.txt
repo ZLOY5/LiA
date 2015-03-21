@@ -13,13 +13,30 @@
 
 		"AbilityTextureName"			"item_lia_ring_of_protection"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_ring_of_protection"
-		"AbilitySpecial"
+		"BaseClass" "item_datadriven"
+// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"			"3"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_ring_of_protection_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_armor" "3"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
 			}
 		}
+	}
 	}

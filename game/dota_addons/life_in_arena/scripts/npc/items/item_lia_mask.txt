@@ -2,7 +2,7 @@
 	{
 
 		"ID"							"1114"
-		"BaseClass" "item_sobi_mask"
+		"BaseClass" "item_datadriven"
 		"ItemCost"						"70"
 		"ItemKillable" "0" 
 		"ItemDroppable" "1"
@@ -14,12 +14,29 @@
 
 		"AbilityTextureName"			"item_lia_mask"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilitySpecial"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"							"FIELD_INTEGER"
+			"bonus_mana_regen_percentage"		"20"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_sobi_mask_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_mana_regen" "20"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
 			}
 		}
+	}
 	}

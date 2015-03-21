@@ -12,13 +12,30 @@
 
 		"AbilityTextureName"			"item_lia_mana_stone"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_energy_booster"
-		"AbilitySpecial"
+		"BaseClass" "item_datadriven"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana"			"150"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_energy_booster_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_mana" "150"
+				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
 			}
 		}
+	}
 	}

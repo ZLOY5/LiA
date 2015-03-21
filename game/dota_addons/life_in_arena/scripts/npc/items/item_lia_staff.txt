@@ -13,13 +13,30 @@
 		
 		"AbilityTextureName"			"item_lia_staff"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_robe"
-		"AbilitySpecial"
+		"BaseClass" "item_datadriven"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"01"
+			"var_type"				"FIELD_INTEGER"
+			"bonus_intelligence"	"12"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_staff_of_wizardry_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_intellect" "12"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
 			}
 		}
+	}
 	}
