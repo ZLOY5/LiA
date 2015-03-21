@@ -1,56 +1,4 @@
 
-CREEP_NAME = {   
-				"1_wave_creep",
-               	"2_wave_creep",
-				"3_wave_creep",
-				"4_wave_creep",
-                "", 
-				"6_wave_creep",
-				"7_wave_creep",
-                "8_wave_creep",
-                "9_wave_creep",
-                "",
-                "11_wave_creep",
-                "12_wave_creep",
-                "13_wave_creep",
-                "14_wave_creep",
-                "",
-                "16_wave_creep",
-                "17_wave_creep",
-                "18_wave_creep",
-                "19_wave_creep",
-                ""
-             }
-BOSS_NAME = {   
-				"1_wave_boss",
-            	"2_wave_boss",
-                "3_wave_boss",
-            	"4_wave_boss",
-                "",
-				"6_wave_boss",
-				"7_wave_boss",
-                "8_wave_boss",
-                "9_wave_boss",
-                "",
-                "11_wave_boss",
-                "12_wave_boss",
-                "13_wave_boss",
-                "14_wave_boss",
-                "",
-                "16_wave_boss",
-                "17_wave_boss",
-                "18_wave_boss",
-                "19_wave_boss",
-                ""
-            }
-
-MEGABOSS_NAME = {	
-					"5_wave_boss",
-					"10_wave_boss",
-					"15_wave_boss",
-					"orn"
-				}
-
 WAVE_SPAWN_COORD_LEFT    = Vector(-5550,  1900, 0)
 WAVE_SPAWN_COORD_TOP     = Vector(-3450,  3800, 0)
 ARENA_TELEPORT_COORD_TOP = Vector(-5024, -1360, 0)
@@ -208,12 +156,12 @@ function LiA:onEntityKilled(keys)
             end
         end
     else
-        if ent:GetUnitName() == CREEP_NAME[WAVE_NUM]  then
+        if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then
             WAVE_DEAD_COUNT = WAVE_DEAD_COUNT + 1
             if ownerAtt ~= nil then
                 ownerAtt.creeps = ownerAtt.creeps + 1
             end
-        elseif ent:GetUnitName() == BOSS_NAME[WAVE_NUM] then
+        elseif ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
             WAVE_DEAD_COUNT = WAVE_DEAD_COUNT + 1
             if ownerAtt ~= nil then
                 ownerAtt.bosses = ownerAtt.bosses + 1
@@ -222,7 +170,7 @@ function LiA:onEntityKilled(keys)
                 PopupNumbers(ent, "gold", Vector(0,255,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
             end
         end
-        if WAVE_DEAD_COUNT == WAVE_MAX_COUNT[CalcPlayers()] or ent:GetUnitName() == MEGABOSS_NAME[WAVE_NUM/5] then
+        if WAVE_DEAD_COUNT == WAVE_MAX_COUNT[CalcPlayers()] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
             LiA._EndWave()
         end
     end
@@ -230,7 +178,7 @@ end
 
 function StartWaves()
     Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
-            ShowCenterMessage("#lia_wave_num"..WAVE_NUM,5)
+            ShowCenterMessage("Волна №"..WAVE_NUM,5)
             return nil
         end
     )
@@ -245,20 +193,20 @@ end
 function LiA:_SpawnWave()  
     local nPlayers = CalcPlayers()
     print(nPlayers,"players")
-    CreateUnitByName(BOSS_NAME[WAVE_NUM], WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    CreateUnitByName(BOSS_NAME[WAVE_NUM], WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+    local creepName = tostring(WAVE_NUM).."_wave_creep"
     for i = 1, WAVE_SPAWN_COUNT[nPlayers] do
-        CreateUnitByName(CREEP_NAME[WAVE_NUM], WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-        CreateUnitByName(CREEP_NAME[WAVE_NUM], WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+        CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+        CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     end
     TRIGGER_SHOP:Disable()  
 end
 
 function LiA:_SpawnMegaboss()
-    CreateUnitByName(MEGABOSS_NAME[WAVE_NUM/5], ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
+    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
     LiA._TeleportToArena()
     TRIGGER_SHOP:Disable() 
-
     BossCounter = 5
     Timers:CreateTimer(function()
         if BossCounter == 0 then
@@ -285,7 +233,7 @@ function LiA:_EndWave()
     else
         print("EndWave:wave")
         Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
-                ShowCenterMessage("#lia_wave_num"..tostring(WAVE_NUM),5)
+                ShowCenterMessage("Волна №"..tostring(WAVE_NUM),5)
                 return nil
             end)
         if WAVE_NUM % 5 == 0 then --если босс
