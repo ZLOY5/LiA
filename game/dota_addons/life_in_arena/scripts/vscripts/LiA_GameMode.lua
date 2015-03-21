@@ -21,7 +21,6 @@ CREEP_NAME = {
                 "19_wave_creep",
                 ""
              }
-
 BOSS_NAME = {   
 				"1_wave_boss",
             	"2_wave_boss",
