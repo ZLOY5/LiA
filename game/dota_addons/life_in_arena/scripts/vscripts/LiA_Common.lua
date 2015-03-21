@@ -14,7 +14,9 @@ function RespawnAllHeroes() --говно крашит игру
 	DoWithAllHeroes(function(hero)
 		if not hero:IsAlive() then
 			hero:RespawnHero(false,false,false)
+
 			FindClearSpaceForUnit(hero, hero:GetAbsOrigin(), false)
+
 		end
 	end)
 end

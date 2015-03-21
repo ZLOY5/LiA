@@ -27,13 +27,12 @@ function Precache( context )
 		PrecacheModel("models/heroes/sand_king/sand_king_legs.mdl", context)				
 		
 		PrecacheResource("particle", "particles/units/heroes/hero_sandking/sandking_portrait.vpcf", context)
-		PrecacheResource("particle", "particles/units/heroes/hero_skeletonking/wraith_king_vampiric_aura_lifesteal_b.vpcf", context)
 		--3 волна
 		PrecacheModel("models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl", context)
 		PrecacheModel("models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl" , context)
 		
 		--4 волна
-		PrecacheResource("particle", "particles/base_attacks/ranged_badguy_launch_b.vpcf" , context)
+		PrecacheResource("particle", "particles/base_attacks/ranged_badguy.vpcf" , context)
 		
 		--5 волна (мегабосс)
 		PrecacheModel("models/heroes/ursa/ursa.vmdl", context)
@@ -77,7 +76,7 @@ function Precache( context )
 		PrecacheModel("models/items/morphling/ancient_armor_head/ancient_armor_head.mdl", context)
 		PrecacheModel("models/items/morphling/ancient_armor_shoulders/ancient_armor_shoulders.mdl", context)	
 		
-		PrecacheResource("particle", "particles/units/heroes/hero_morphling/morphling_base_attack_trail_d.vpcf", context)
+		PrecacheResource("particle", "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf", context)
 
 		--10 волна
 		PrecacheModel("models/heroes/faceless_void/faceless_void.vmdl", context)
@@ -93,6 +92,9 @@ function Precache( context )
 
 		--15 волна
 		PrecacheModel("models/heroes/life_stealer/life_stealer.vmdl", context)	
+			
+		--16 волна
+		PrecacheResource("particle", "particles/neutral_fx/ghost_base_attack.vpcf" , context)			
 		
 		--17 волна
 		PrecacheModel("models/heroes/nerubian_assassin/nerubian_assassin.vmdl", context)
@@ -101,9 +103,12 @@ function Precache( context )
 		PrecacheModel("models/heroes/nerubian_assassin/nerubian_assassin_weapon.mdl", context)
 		PrecacheModel("models/heroes/nerubian_assassin/nerubian_assassin_armor.mdl", context)
 		
+
 		--18 волна
 		PrecacheModel("models/heroes/viper/viper.vmdl", context)
-
+		PrecacheResource("particle", "particles/units/heroes/hero_viper/viper_base_attack.vpcf" , context)
+		
+		
 		--20 волна
 		PrecacheModel("models/heroes/juggernaut/juggernaut.vmdl", context)
 		

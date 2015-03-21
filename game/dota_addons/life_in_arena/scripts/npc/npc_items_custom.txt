@@ -39,7 +39,7 @@
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"lia_alanith_spear"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_UNIT_ATTACK"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"Modifiers"
 		{
 			"item_alanith_spear_stat_modifier"
@@ -49,18 +49,17 @@
 			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Orb"
 	            {
-	                "Priority"            "DOTA_ORB_PRIORITY_ITEM"
+	                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
 	                //"ProjectileName"    "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+	   
 	            }
 	            "OnOrbImpact"
 	            {
-	            	"RunScript"
-	            	{
-	            		"ScriptFile"  		"lifesteal"
-	            		"Function"    		"OnOrbImpact"
-	            		"lifesteal_percent" "%lifesteal"
-	            		"damage" 			"%attack_damage"
-	            	}
+	            	"Lifesteal"
+	        		{
+	            		"Target"    "ATTACKER"
+	            		"LifestealPercent"  "%lifesteal"
+	       			}
 	            }
 			    "Properties"
 			    {
@@ -82,8 +81,6 @@
 			}
 		}
 	}
-	
-	
 	
 	//End of file item_lia_alanith_spear.txt
 
@@ -723,7 +720,6 @@
 	        "BaseClass"						"item_datadriven"
 		"ID"							"1132"
 	        "AbilityBehavior"                                       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"Model"						        "models/props_gameplay/magic_wand.mdl"
 		
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
