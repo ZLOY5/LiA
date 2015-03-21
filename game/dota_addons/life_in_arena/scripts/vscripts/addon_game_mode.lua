@@ -27,6 +27,7 @@ function Precache( context )
 		PrecacheModel("models/heroes/sand_king/sand_king_legs.mdl", context)				
 		
 		PrecacheResource("particle", "particles/units/heroes/hero_sandking/sandking_portrait.vpcf", context)
+		PrecacheResource("particle", "particles/units/heroes/hero_skeletonking/wraith_king_vampiric_aura_lifesteal_b.vpcf", context)
 		--3 волна
 		PrecacheModel("models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl", context)
 		PrecacheModel("models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl" , context)

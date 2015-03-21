@@ -61,11 +61,13 @@
             }
             "OnOrbImpact"
             {
-            	"Lifesteal"
-        		{
-            		"Target"    "ATTACKER"
-            		"LifestealPercent"  "%lifesteal"
-       			}
+            	"RunScript"
+            	{
+            		"ScriptFile"  		"lifesteal"
+            		"Function"    		"OnOrbImpact"
+            		"lifesteal_percent" "%lifesteal"
+            		"damage" 			"%attack_damage"
+            	}
             }
 		    "Properties"
 		    {

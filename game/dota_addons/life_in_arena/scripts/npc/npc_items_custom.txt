@@ -39,7 +39,7 @@
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"lia_alanith_spear"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_UNIT_ATTACK"
 		"Modifiers"
 		{
 			"item_alanith_spear_stat_modifier"
@@ -49,17 +49,18 @@
 			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Orb"
 	            {
-	                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
+	                "Priority"            "DOTA_ORB_PRIORITY_ITEM"
 	                //"ProjectileName"    "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-	   
 	            }
 	            "OnOrbImpact"
 	            {
-	            	"Lifesteal"
-	        		{
-	            		"Target"    "ATTACKER"
-	            		"LifestealPercent"  "%lifesteal"
-	       			}
+	            	"RunScript"
+	            	{
+	            		"ScriptFile"  		"lifesteal"
+	            		"Function"    		"OnOrbImpact"
+	            		"lifesteal_percent" "%lifesteal"
+	            		"damage" 			"%attack_damage"
+	            	}
 	            }
 			    "Properties"
 			    {
@@ -81,6 +82,8 @@
 			}
 		}
 	}
+	
+	
 	
 	//End of file item_lia_alanith_spear.txt
 
