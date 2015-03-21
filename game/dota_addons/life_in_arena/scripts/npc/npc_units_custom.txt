@@ -60,7 +60,7 @@
 	"AttackDamageMax" "999" // максимальный урон.
 	"AttackRate" "0.4" // скорость атаки.
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
 	"ProjectileModel" "" // Модель частиц для дальной атаки.
 	"ProjectileSpeed" "" // скорость частиц.
@@ -584,8 +584,8 @@
 	"SoundSet" "n_creep_Ranged" // название звукового набора.
 	"ModelScale" "1" // масштаб модели.
 	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/base_attacks/ranged_badguy_launch_b.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1500" 
+	"ProjectileModel"           "particles/base_attacks/ranged_badguy.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "1800" 
 	// способности
 	//----------------------------------------------------------------
 	
@@ -663,8 +663,8 @@
 	"SoundSet" "n_creep_Ranged" // название звукового набора.
 	"ModelScale" "0.6" // масштаб модели.
 	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/base_attacks/ranged_badguy_launch_b.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1500" 
+	"ProjectileModel"           "particles/base_attacks/ranged_badguy.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "1800" 
 	// способности
 	//----------------------------------------------------------------
 	
@@ -770,7 +770,7 @@
 	"AttackDamageMax" "2850" // максимальный урон.
 	"AttackRate" "1.5" // скорость атаки.
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
 	"ProjectileModel" "" // Модель частиц для дальной атаки.
 	"ProjectileSpeed" "" // скорость частиц.
@@ -902,8 +902,8 @@
 	"SoundSet" "n_creep_Ranged" // название звукового набора.
 	"ModelScale" "1" // масштаб модели.
 	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/base_attacks/ranged_badguy_launch_b.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "500" 
+	"ProjectileModel"           "particles/neutral_fx/ghost_base_attack.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "1500" 
 	// способности
 	//----------------------------------------------------------------
 	
@@ -930,8 +930,7 @@
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "400" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
+	
 	
 	// Награда
 	//----------------------------------------------------------------
@@ -1169,9 +1168,12 @@
 	"SoundSet" "n_creep_Ranged" // название звукового набора.
 	"ModelScale" "1.4" // масштаб модели.
 	"Level" "1" // уровень.
+	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "1200" // скорость частиц.
 		"precache"
 			{
 				"model" "models/heroes/viper/viper.vmdl"
+				"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
 			}
 	// способности
 	//----------------------------------------------------------------
@@ -1199,8 +1201,7 @@
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "250" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
+	
 	
 	// Награда
 	//----------------------------------------------------------------
@@ -1277,8 +1278,8 @@
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "250" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
+	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "1500" // скорость частиц.
 	
 	// Награда
 	//----------------------------------------------------------------
@@ -2006,8 +2007,7 @@
 	"SoundSet" "n_creep_Ranged" // название звукового набора.
 	"ModelScale" "1" // масштаб модели.
 	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/base_attacks/ranged_badguy_launch_b.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1500" 
+	
 	// способности
 	//----------------------------------------------------------------
 	
@@ -2034,8 +2034,9 @@
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "800" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" // Модель частиц для дальной атаки.
 	"ProjectileSpeed" "1200" // скорость частиц.
+	
 	
 	// Награда
 	//----------------------------------------------------------------
@@ -2085,8 +2086,7 @@
 	"SoundSet" "n_creep_Ranged" // название звукового набора.
 	"ModelScale" "0.8" // масштаб модели.
 	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/base_attacks/ranged_badguy.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1500" 	
+		
 			"precache"
 				{
 					"particle" "particles/base_attacks/ranged_badguy.vpcf"
@@ -2119,7 +2119,8 @@
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "450" // дальность атаки 128 ближний бой 800 дальний.
-
+	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "1200" // скорость частиц.
 	
 	// Награда
 	//----------------------------------------------------------------
@@ -2199,7 +2200,7 @@
 	"AttackDamageMax" "260" // максимальный урон.
 	"AttackRate" "0.4" // скорость атаки.
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
 	"ProjectileModel" "" // Модель частиц для дальной атаки.
 	"ProjectileSpeed" "" // скорость частиц.
@@ -2808,8 +2809,8 @@
 	"SoundSet" "Hero_Morphling" // название звукового набора.
 	"ModelScale" "1" // масштаб модели.
 	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack_trail_d.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1500" 	
+	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "1200" 	
 		"precache"
 				{
 					"model"	"models/items/morphling/ancient_armor_arms/ancient_armor_arms.mdl"
@@ -2858,8 +2859,7 @@
 	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
 	"AttackRange" "600" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
+	
 	
 	// Награда
 	//----------------------------------------------------------------
@@ -2909,12 +2909,12 @@
 	"SoundSet" "Hero_Morphling" // название звукового набора.
 	"ModelScale" "0.6" // масштаб модели.
 	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack_trail_d.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1500" 	
+	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "1200" 	
 			"precache"
 				{
 					"model"	"models/heroes/morphling/morphling.vmdl" 
-					"particle" "particles/units/heroes/hero_morphling/morphling_base_attack_trail_d.vpcf"
+					"particle" "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
 				}
 	// способности
 	//----------------------------------------------------------------
@@ -3269,7 +3269,7 @@
 	"AttackDamageMax" "100" 
 	"AttackRate" "1.6" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "128" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 

@@ -170,7 +170,7 @@ function LiA:onEntityKilled(keys)
                 PopupNumbers(ent, "gold", Vector(0,255,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
             end
         end
-        if WAVE_DEAD_COUNT == WAVE_MAX_COUNT[CalcPlayers()] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
+if WAVE_DEAD_COUNT == WAVE_MAX_COUNT[CalcPlayers()] or (ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" and WAVE_NUM % 5 ==0) then
             LiA._EndWave()
         end
     end
