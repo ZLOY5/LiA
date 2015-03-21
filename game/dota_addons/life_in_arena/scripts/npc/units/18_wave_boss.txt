@@ -7,9 +7,12 @@
 "SoundSet" "n_creep_Ranged" // название звукового набора.
 "ModelScale" "1.4" // масштаб модели.
 "Level" "1" // уровень.
+"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" // ћодель частиц дл€ дальной атаки.
+"ProjectileSpeed" "1200" // скорость частиц.
 	"precache"
 		{
 			"model" "models/heroes/viper/viper.vmdl"
+			"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
 		}
 // способности
 //----------------------------------------------------------------
@@ -37,8 +40,7 @@
 "AttackAnimationPoint" "0.3" // скорость повторени€ анимации атаки.
 "AttackAcquisitionRange" "10000" // дальность реагировани€ (когда он нас заметит).
 "AttackRange" "250" // дальность атаки 128 ближний бой 800 дальний.
-"ProjectileModel" "" // ћодель частиц дл€ дальной атаки.
-"ProjectileSpeed" "1200" // скорость частиц.
+
 
 // Ќаграда
 //----------------------------------------------------------------

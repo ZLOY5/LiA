@@ -14,10 +14,9 @@ function RespawnAllHeroes() --говно крашит игру
 	DoWithAllHeroes(function(hero)
 		if not hero:IsAlive() then
 			hero:RespawnHero(false,false,false)
-<<<<<<< HEAD
+
 			FindClearSpaceForUnit(hero, hero:GetAbsOrigin(), false)
-=======
->>>>>>> parent of 1cabfb8... 1
+
 		end
 	end)
 end
