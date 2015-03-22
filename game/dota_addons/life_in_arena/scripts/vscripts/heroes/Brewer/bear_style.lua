@@ -5,7 +5,7 @@ local caster = keys.caster
 local table_target = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
                                  caster:GetAbsOrigin(),
                                  nil,
-                                 300,
+                                 keys.DetectionRadius,
                                  DOTA_UNIT_TARGET_TEAM_BOTH,
                                  DOTA_UNIT_TARGET_ALL,
                                  DOTA_UNIT_TARGET_FLAG_NONE,
