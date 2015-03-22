@@ -300,8 +300,8 @@ end
 
 function StartDuels()
     DuelNumber = 1
-    IsDuel = true
     Timers:CreateTimer(10,function()
+        IsDuel = true
         TRIGGER_SHOP:Disable() 
         DoWithAllHeroes(function(hero)
             hero:SetControllableByPlayer(hero:GetPlayerID(), false) 
