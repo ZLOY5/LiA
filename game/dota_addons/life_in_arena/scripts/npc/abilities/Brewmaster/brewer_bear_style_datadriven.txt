@@ -6,7 +6,7 @@
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
     "AbilityTextureName"     "alchemist_acid_spray"
 
-    "AoERadius"   "300"
+    "AoERadius"   "%radius"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
@@ -39,6 +39,7 @@
         "ScriptFile"  "heroes/Brewer/bear_style.lua"
         "Function"    "CheckingMain"
         "Strength"    "%bonus_strength"
+        "DetectionRadius" "%radius"
       }
     }
   }
@@ -66,6 +67,11 @@
     {
       "var_type"              "FIELD_INTEGER"
       "bonus_strength"        "1 2 3"
+    }
+    "02"
+    {
+      "var_type"              "FIELD_INTEGER"
+      "radius"                "300"
     }
   }
 }
