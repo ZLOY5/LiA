@@ -20,10 +20,9 @@
 	
 		"Modifiers"
 		{
-			"modifier_frozen"
+			"modifier_stun"
 			{
 				"Passive"               "1"
-				"IsHidden"              "0"
 				"IsHidden"              "1"
 				"States"
 		        {
@@ -78,7 +77,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 			    "Orb"
 	            {
 	                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
@@ -161,7 +160,7 @@
 			  {
 				  "Passive"			"1"
 				  "IsHidden"			"1"
-				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				  "Properties"
 				  {
@@ -268,7 +267,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -336,7 +335,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 	   "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 			    "Orb"
 	            {
 	                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
@@ -447,7 +446,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 	
 			    "Properties"
 			    {
@@ -538,7 +537,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -594,7 +593,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -670,7 +669,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -850,7 +849,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	    "5"
@@ -935,7 +934,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
@@ -1001,7 +1000,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1075,7 +1074,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 	
 			    "Properties"
 			    {
@@ -1224,7 +1223,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1278,7 +1277,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 	    "25"
@@ -1356,7 +1355,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1409,7 +1408,7 @@
 			        {
 				  "Passive"			"1"
 				  "IsHidden"			"1"
-				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				  "Properties"
 				  {
@@ -1628,7 +1627,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
@@ -1694,7 +1693,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1739,7 +1738,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1785,7 +1784,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1839,7 +1838,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
@@ -1904,7 +1903,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1950,7 +1949,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
@@ -1995,7 +1994,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 				
 				"Properties"
 				{
