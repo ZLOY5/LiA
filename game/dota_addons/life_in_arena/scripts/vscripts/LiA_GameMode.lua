@@ -170,7 +170,7 @@ function LiA:onEntityKilled(keys)
                 PopupNumbers(ent, "gold", Vector(0,255,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
             end
         end
-if WAVE_DEAD_COUNT == WAVE_MAX_COUNT[CalcPlayers()] or (ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" and WAVE_NUM % 5 ==0) then
+        if WAVE_DEAD_COUNT == WAVE_MAX_COUNT[CalcPlayers()] or (ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" and WAVE_NUM % 5 ==0) then
             LiA._EndWave()
         end
     end
@@ -178,15 +178,13 @@ end
 
 function StartWaves()
     Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
-            ShowCenterMessage("Волна №"..WAVE_NUM,5)
-            return nil
-        end
-    )
+        ShowCenterMessage("Волна №"..WAVE_NUM,5)
+        return nil
+    end)
     Timers:CreateTimer(PRE_WAVE_TIME, function() 
-            LiA._SpawnWave()
-            return nil
-        end
-    )  
+        LiA._SpawnWave()
+        return nil
+    end)  
 end
 
 
@@ -204,15 +202,13 @@ function LiA:_SpawnWave()
 end
 
 function LiA:_SpawnMegaboss()
-    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
+    local boss = CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
+    giveUnitDataDrivenModifier(boss, boss, "modifier_stun",5)
     LiA._TeleportToArena()
     TRIGGER_SHOP:Disable() 
     BossCounter = 5
     Timers:CreateTimer(function()
         if BossCounter == 0 then
-            DoWithAllHeroes(function(hero)
-                hero:SetControllableByPlayer(hero:GetPlayerID(), true) 
-            end)
             return nil
         else
             ShowCenterMessage(tostring(BossCounter),1)
@@ -270,12 +266,12 @@ end
 function LiA:_TeleportToArena() --Телепорт на арену
 	DoWithAllHeroes(function(hero)
 		hero.abs = hero:GetAbsOrigin() 
-        hero:SetControllableByPlayer(hero:GetPlayerID(), false) 
         hero:Stop()
         hero:SetForwardVector(Vector(0, 1, 0))
         FindClearSpaceForUnit(hero, ARENA_TELEPORT_COORD_BOT + Vector(RandomInt(-200,200),RandomInt(-50,50),0), false)
         hero:Heal(9999,hero)
         hero:GiveMana(9999)
+        giveUnitDataDrivenModifier(hero, hero, "modifier_stun",5)
         PlayerResource:SetCameraTarget(hero:GetPlayerID(), hero) --перемещаем камеру игрока на арену
 	end)  
     Timers:CreateTimer(3,function() --через несколько секунд камеру "отцепляем" 
@@ -296,17 +292,18 @@ function LiA:_TeleportWithoutArena() --Телепорт с арены
            PlayerResource:SetCameraTarget(hero:GetPlayerID() ,nil)    
         end)
     end)
+
 end
 
 function StartDuels()
     DuelNumber = 1
-    Timers:CreateTimer(10,function()
+    Timers:CreateTimer(PRE_DUEL_TIME,function()
         IsDuel = true
         TRIGGER_SHOP:Disable() 
         DoWithAllHeroes(function(hero)
-            hero:SetControllableByPlayer(hero:GetPlayerID(), false) 
+            giveUnitDataDrivenModifier(hero, hero, "modifier_stun",999)
         end)
-        GameRules:SendCustomMessage("#lia_duel <br>".."#lia_Player"..PlayerResource:GetPlayerName(PLAYER_PLACE[1]:GetPlayerID()).."#lia_duel_vs"..PlayerResource:GetPlayerName(PLAYER_PLACE[2]:GetPlayerID()), DOTA_TEAM_GOODGUYS, 0)
+        --GameRules:SendCustomMessage("#lia_duel <br>".."#lia_Player"..PlayerResource:GetPlayerName(PLAYER_PLACE[1]:GetPlayerID()).."#lia_duel_vs"..PlayerResource:GetPlayerName(PLAYER_PLACE[2]:GetPlayerID()), DOTA_TEAM_GOODGUYS, 0)
         Duel(PLAYER_PLACE[1],PLAYER_PLACE[2])
         print("firstPlayer",PLAYER_PLACE[1])
         print("secondPlayer",PLAYER_PLACE[2])
@@ -335,8 +332,8 @@ function Duel(player1, player2)
     DuelCounter = 5
     Timers:CreateTimer(function()
         if DuelCounter == 0 then
-            HeroOnDuel1:SetControllableByPlayer(HeroOnDuel1:GetPlayerID(), true)
-            HeroOnDuel2:SetControllableByPlayer(HeroOnDuel2:GetPlayerID(), true)
+            HeroOnDuel1:RemoveModifierByName("modifier_stun")
+            HeroOnDuel2:RemoveModifierByName("modifier_stun")
             Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
                 useGameTime = false,
                 endTime = 120,
@@ -362,10 +359,9 @@ function EndDuel(winner)
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         heroWin:Stop()
         FindClearSpaceForUnit(heroWin, heroWin.abs, false) 
-        heroWin:SetControllableByPlayer(heroWin:GetPlayerID(), false)
         PlayerResource:SetCustomTeamAssignment(HeroOnDuel2:GetPlayerOwnerID(), DOTA_TEAM_GOODGUYS)
         HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)   
-        GameRules:SendCustomMessage("#lia_Player"..PlayerResource:GetPlayerName(winner:GetPlayerID()).."#lia_duel_win", DOTA_TEAM_GOODGUYS, 0)
+        --GameRules:SendCustomMessage("#lia_Player"..PlayerResource:GetPlayerName(winner:GetPlayerID()).."#lia_duel_win", DOTA_TEAM_GOODGUYS, 0)
     else
         PlayerResource:SetCustomTeamAssignment(HeroOnDuel2:GetPlayerOwnerID(), DOTA_TEAM_GOODGUYS)
         HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)   
@@ -375,12 +371,14 @@ function EndDuel(winner)
         HeroOnDuel2:Heal(9999,HeroOnDuel2)
         HeroOnDuel1:GiveMana(9999)
         HeroOnDuel2:GiveMana(9999)
-        GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
+        --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
+    giveUnitDataDrivenModifier(HeroOnDuel1, HeroOnDuel1, "modifier_stun",999)
+    giveUnitDataDrivenModifier(HeroOnDuel2, HeroOnDuel2, "modifier_stun",999)
     if DuelNumber < math.floor(CalcPlayers() / 2) then
         DuelNumber = DuelNumber + 1
         print(DuelNumber,"next duel")
-        GameRules:SendCustomMessage("#lia_duel_next <br>".."#lia_Player"..PlayerResource:GetPlayerName(PLAYER_PLACE[DuelNumber*2-1]:GetPlayerID()).."#lia_duel_vs"..PlayerResource:GetPlayerName(PLAYER_PLACE[DuelNumber*2]:GetPlayerID()), DOTA_TEAM_GOODGUYS, 0)
+        --GameRules:SendCustomMessage("#lia_duel_next <br>".."#lia_Player"..PlayerResource:GetPlayerName(PLAYER_PLACE[DuelNumber*2-1]:GetPlayerID()).."#lia_duel_vs"..PlayerResource:GetPlayerName(PLAYER_PLACE[DuelNumber*2]:GetPlayerID()), DOTA_TEAM_GOODGUYS, 0)
         Duel(PLAYER_PLACE[DuelNumber*2-1],PLAYER_PLACE[DuelNumber*2])
     else
         print(DuelNumber,"end duels")
@@ -388,7 +386,7 @@ function EndDuel(winner)
         IsDuelOccured = true
         WAVE_NUM = WAVE_NUM - 1
         DoWithAllHeroes(function(hero)
-            hero:SetControllableByPlayer(hero:GetPlayerID(), true) 
+            hero:RemoveModifierByName("modifier_stun")
         end)
         LiA:_EndWave()
     end

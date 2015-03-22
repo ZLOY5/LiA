@@ -4,6 +4,38 @@
 	
 
 
+	//Start of file item_apply_modifiers.txt
+	"item_apply_modifiers"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "1190"  // unique ID number for this item.  Do not change this once 
+		"BaseClass"                     "item_datadriven"
+		"ItemBaseLevel"                 "1"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"              "9999"
+		"AbilityCastPoint"                      "0.0"	
+	
+		"Modifiers"
+		{
+			"modifier_frozen"
+			{
+				"Passive"               "1"
+				"IsHidden"              "0"
+				"IsHidden"              "1"
+				"States"
+		        {
+		         
+		          "MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
+		        }
+			}
+		}
+	}
+	//End of file item_apply_modifiers.txt
+
+
 	//Start of file item_lia_alanith_spear.txt
 	"item_recipe_lia_alanith_spear"
 	{

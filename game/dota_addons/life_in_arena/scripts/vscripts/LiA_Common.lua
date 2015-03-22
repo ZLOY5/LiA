@@ -1,5 +1,4 @@
 
-
 function CalcPlayers()
 	local playercounter = 0
 	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
@@ -10,13 +9,14 @@ function CalcPlayers()
 	return playercounter
 end
 
-function RespawnAllHeroes() --говно крашит игру
+function RespawnAllHeroes() 
+	print("RespawnAllHeroes")
 	DoWithAllHeroes(function(hero)
+		print("hero",hero:GetUnitName())
 		if not hero:IsAlive() then
+			print("respawn",hero:GetUnitName())
 			hero:RespawnHero(false,false,false)
-
 			FindClearSpaceForUnit(hero, hero:GetAbsOrigin(), false)
-
 		end
 	end)
 end
@@ -93,7 +93,8 @@ function PopupNumbers(target, pfx, color, lifetime, number, presymbol, postsymbo
     ParticleManager:SetParticleControl(pidx, 3, color)
 end
 
---[[FireGameEvent( "console_command", { pID = player_ID, command = "Kappa" }) 
-for any command 
-<3 
-ConsoleCommands.swf or something ]]
+function giveUnitDataDrivenModifier(source, target, modifier,dur)
+    --source and target should be hscript-units. The same unit can be in both source and target
+    local item = CreateItem( "item_apply_modifiers", source, source)
+    item:ApplyDataDrivenModifier( source, target, modifier, {duration=dur} )
+end
