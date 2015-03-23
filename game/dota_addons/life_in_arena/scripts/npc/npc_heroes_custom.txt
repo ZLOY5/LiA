@@ -7,7 +7,7 @@
 		//=================================================================================================================
 	// HERO: Golem 
 	//=================================================================================================================
-	"npc_dota_hero_golem"
+	"npc_lia_hero_golem"
 	{
 		"override_hero"				"npc_dota_hero_tiny"
 // способности
@@ -25,7 +25,7 @@
 // Броня
 //----------------------------------------------------------------
 "ArmorPhysical" "4" 		// Физическое сопротивление.
-"MagicalResistance" "33"	// Магическое сопротивление.
+"MagicalResistance" "25"	// Магическое сопротивление.
 
 // Атака
 //----------------------------------------------------------------
@@ -67,6 +67,175 @@
 // Общий статус
 //----------------------------------------------------------------
 "StatusHealth" "450" // Базовое количество ХП.
+"StatusHealthRegen" "1.2" // Базовая Скорость восстановления ХП.
+"StatusMana" "75" // Базовое количество МП.
+"StatusManaRegen" "0.05" // Базовая Скорость восстановления МП.
+
+// Принадлежность к команде
+//----------------------------------------------------------------
+"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
+"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+
+// Обзор Персонажа
+//----------------------------------------------------------------
+"VisionDaytimeRange" "1400" // Днем.
+"VisionNighttimeRange" "1400" // Ночью.
+
+//----------------------------------------------------------------
+//Рюкзак
+"HasInventory" "1" // 0 - не будет инвентаря
+	}	
+	
+	
+	//=================================================================================================================
+	// HERO: Brewmaster 
+	//=================================================================================================================
+	"npc_lia_hero_brewmaster"
+	{
+		"override_hero"				"npc_dota_hero_brewmaster"
+// способности
+//----------------------------------------------------------------
+
+"Ability1" "brewer_beer_for_a_breakthrough_datadriven" 	// способность 1.
+"Ability2" "brewer_bear_style_datadriven" 		// способность 2.
+"Ability3" "brewer_drunken_punches_datadriven" 	// способность 3.
+"Ability4" "" 					// способность 4.
+"Ability5" "" 					// способность 5.
+"Ability6" "brewer_power_of_the_mountains_datadriven"  	// способность 6 - Ульт.
+"Ability7" "" 					// способность 7 - Ульт.
+"Ability8" "" 					// способность 8 - Ульт.
+
+// Броня
+//----------------------------------------------------------------
+"ArmorPhysical" "4" 		// Физическое сопротивление.
+"MagicalResistance" "25"	// Магическое сопротивление.
+
+// Атака
+//----------------------------------------------------------------
+"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin" "36" // минимальный урон.
+"AttackDamageMax" "50" // максимальный урон.
+"AttackRate" "1.8" // скорость атаки.
+"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+"AttackAcquisitionRange" "800" // дальность реагирования (когда он нас заметит).
+"AttackRange" "110" // дальность атаки 128 ближний бой 800 дальний.
+"ProjectileModel" "" // Модель частиц для дальной атаки.
+"ProjectileSpeed" "" // скорость частиц.
+		
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"23"										// Base strength
+		"AttributeStrengthGain"		"2.8"										// Strength bonus per level.
+		"AttributeBaseIntelligence"	"10"										// Base intelligence
+		"AttributeIntelligenceGain"	"2.0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"7"										// Base agility
+		"AttributeAgilityGain"		"2.0"	
+		
+		
+		
+// Награда
+//----------------------------------------------------------------
+"BountyXP" "100" // количества опыта.
+"BountyGoldMin" "50" // минимальное количество золота.
+"BountyGoldMax" "50" // максимальное количества золота.
+
+// Передвижение
+//----------------------------------------------------------------
+"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+"MovementSpeed" "245" // Скорость
+"MovementTurnRate" "0.5" // скорость поворота.
+
+// Общий статус
+//----------------------------------------------------------------
+"StatusHealth" "450" // Базовое количество ХП.
+"StatusHealthRegen" "1.2" // Базовая Скорость восстановления ХП.
+"StatusMana" "75" // Базовое количество МП.
+"StatusManaRegen" "0.05" // Базовая Скорость восстановления МП.
+
+// Принадлежность к команде
+//----------------------------------------------------------------
+"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
+"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+
+// Обзор Персонажа
+//----------------------------------------------------------------
+"VisionDaytimeRange" "1400" // Днем.
+"VisionNighttimeRange" "1400" // Ночью.
+
+//----------------------------------------------------------------
+//Рюкзак
+"HasInventory" "1" // 0 - не будет инвентаря
+	}	
+	
+	//=================================================================================================================
+	// HERO: Minotaur
+	//=================================================================================================================
+	"npc_lia_hero_minotaur"
+	{
+		"override_hero"				"npc_dota_hero_elder_titan"
+// способности
+//----------------------------------------------------------------
+
+"Ability1" "akron_internal_explosion_datadriven"	// способность 1.
+"Ability2" "akron_hellish_heat_datadriven" 		// способность 2.
+"Ability3" "akron_firerage_datadriven" 	// способность 3.
+"Ability4" "" 					// способность 4.
+"Ability5" "" 					// способность 5.
+"Ability6" "akron_eruption_datadriven" 	// способность 6 - Ульт.
+"Ability7" "" 					// способность 7 - Ульт.
+"Ability8" "" 					// способность 8 - Ульт.
+
+// Броня
+//----------------------------------------------------------------
+"ArmorPhysical" "4" 		// Физическое сопротивление.
+"MagicalResistance" "25"	// Магическое сопротивление.
+
+// Атака
+//----------------------------------------------------------------
+"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+"AttackDamageMin" "33" // минимальный урон.
+"AttackDamageMax" "52" // максимальный урон.
+"AttackRate" "1.9" // скорость атаки.
+"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+"AttackAcquisitionRange" "800" // дальность реагирования (когда он нас заметит).
+"AttackRange" "110" // дальность атаки 128 ближний бой 800 дальний.
+"ProjectileModel" "" // Модель частиц для дальной атаки.
+"ProjectileSpeed" "" // скорость частиц.
+		
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"20"										// Base strength
+		"AttributeStrengthGain"		"3.0"										// Strength bonus per level.
+		"AttributeBaseIntelligence"	"10"										// Base intelligence
+		"AttributeIntelligenceGain"	"2.0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"5"										// Base agility
+		"AttributeAgilityGain"		"2.0"	
+		
+		
+		
+// Награда
+//----------------------------------------------------------------
+"BountyXP" "100" // количества опыта.
+"BountyGoldMin" "50" // минимальное количество золота.
+"BountyGoldMax" "50" // максимальное количества золота.
+
+// Передвижение
+//----------------------------------------------------------------
+"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+"MovementSpeed" "240" // Скорость
+"MovementTurnRate" "0.5" // скорость поворота.
+
+// Общий статус
+//----------------------------------------------------------------
+"StatusHealth" "465" // Базовое количество ХП.
 "StatusHealthRegen" "1.2" // Базовая Скорость восстановления ХП.
 "StatusMana" "75" // Базовое количество МП.
 "StatusManaRegen" "0.05" // Базовая Скорость восстановления МП.
