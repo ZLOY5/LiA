@@ -1,22 +1,38 @@
-"5_wave_boss" // название
+"10_wave_megaboss" // название
 {
 // основное
 //
 "BaseClass" "npc_dota_creature" // класс персонажа.
-"Model" "models/heroes/ursa/ursa.vmdl" // модель.
-"SoundSet" "Hero_Ursa" // название звукового набора.
-"ModelScale" "1.2" // масштаб модели.
+"Model" "models/heroes/faceless_void/faceless_void.vmdl" // модель.
+"SoundSet" "Hero_FacelessVoid" // название звукового набора.
+"ModelScale" "1.4" // масштаб модели.
 "Level" "1" // уровень.
-
-"precache"
-		{
-			"model" "models/heroes/ursa/ursa.vmdl" 
-		}
-
+	"precache"
+			{	
+				"model"	"models/heroes/faceless_void/faceless_void.vmdl"
+				"model"	"models/items/faceless_void/timelord_bracers/timelord_bracers.mdl"
+				"model"	"models/items/faceless_void/timelord_head/timelord_head.mdl"
+				"model"	"models/items/faceless_void/timelord_shoulders/timelord_shoulders.mdl"
+				"model"	"models/items/faceless_void/timelord_skirt/timelord_skirt.mdl"
+				"model"	"models/items/faceless_void/timelord_weapon/timelord_weapon.mdl"
+	
+			}
+			
+	"Creature"
+			{
+			"AttachWearables"
+				{
+					"Wearable1"		{	"ItemDef"		"5861"		} 
+					"Wearable2" 	{	"ItemDef"		"5868"		} 
+					"Wearable3"		{	"ItemDef"		"5896"		} 
+					"Wearable4"		{	"ItemDef"		"5897"		} 
+					"Wearable5"		{	"ItemDef"		"5898"		} 
+				}
+				}
 // способности
 //----------------------------------------------------------------
 
-"Ability1" "5_wave_boss_bash" // способность 1.
+"Ability1" "" // способность 1.
 "Ability2" "" // способность 2.
 "Ability3" "" // способность 3.
 "Ability4" "" // способность 4.
@@ -27,14 +43,14 @@
 
 // Броня
 //----------------------------------------------------------------
-"ArmorPhysical" "30" // Физическое сопротивление.
+"ArmorPhysical" "90" // Физическое сопротивление.
 "MagicalResistance" "0" // Магическое сопротивление.
 
 // Атака
 //----------------------------------------------------------------
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "260" // минимальный урон.
-"AttackDamageMax" "260" // максимальный урон.
+"AttackDamageMin" "999" // минимальный урон.
+"AttackDamageMax" "999" // максимальный урон.
 "AttackRate" "0.4" // скорость атаки.
 "AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
 "AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
@@ -51,14 +67,14 @@
 // Передвижение
 //----------------------------------------------------------------
 "MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-"MovementSpeed" "350" // Скорость
+"MovementSpeed" "400" // Скорость
 "MovementTurnRate" "0.5" // скорость поворота.
 
 // Общий статус
 //----------------------------------------------------------------
-"StatusHealth" "5000" // Базовое количество ХП.
+"StatusHealth" "25000" // Базовое количество ХП.
 "StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-"StatusMana" "1000" // Базовое количество МП.
+"StatusMana" "2000" // Базовое количество МП.
 "StatusManaRegen" "1" // Базовая Скорость восстановления МП.
 
 // Принадлежность к команде

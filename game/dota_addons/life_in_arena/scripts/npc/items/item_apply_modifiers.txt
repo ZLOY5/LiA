@@ -9,7 +9,7 @@
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"              "9999"
-	"AbilityCastPoint"                      "0.0"	
+	"AbilityCastPoint"              "0.0"	
 
 	"Modifiers"
 	{
@@ -19,9 +19,56 @@
 			"IsHidden"              "1"
 			"States"
 	        {
-	         
-	          "MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
 	        }
+		}
+		"modifier_hero"
+		{
+			"Passive"               "1"
+			"IsHidden"              "1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_PERMANENT"
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"LiA_GameMode.lua"
+					"Function"		"OnHeroDeath"
+				}
+			}
+		}
+		"modifier_orn"
+		{
+			"Passive"               "1"
+			"IsHidden"              "1"
+			"OnTakeDamage"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"LiA_GameMode.lua"
+					"Function"		"OnOrnDamaged"
+				}
+			}
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"LiA_GameMode.lua"
+					"Function"		"OnOrnDeath"
+				}
+			}
+		}
+		"modifier_firststage"
+		{
+			"Passive"               "1"
+			"IsHidden"              "1"
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"LiA_GameMode.lua"
+					"Function"		"OnFirstStageDeath"
+				}
+			}
 		}
 	}
 }

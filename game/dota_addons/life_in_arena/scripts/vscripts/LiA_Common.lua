@@ -24,7 +24,9 @@ end
 function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
 	for i = 1, abilities do
-		unit:GetAbilityByIndex(i):EndCooldown()
+		if unit:GetAbilityByIndex(i) then
+			unit:GetAbilityByIndex(i):EndCooldown()
+		end
 	end
 end
 
@@ -73,10 +75,13 @@ POPUP_SYMBOL_POST_EYE = 6
 POPUP_SYMBOL_POST_SHIELD = 7
 POPUP_SYMBOL_POST_POINTFIVE = 8
 
-function PopupNumbers(target, pfx, color, lifetime, number, presymbol, postsymbol)
+function PopupNumbers(player,target, pfx, color, lifetime, number, presymbol, postsymbol)
     local pfxPath = string.format("particles/msg_fx/msg_%s.vpcf", pfx)
-    local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, target) -- target:GetOwner()
-
+    if player then
+    	local pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, target, player)
+    else
+    	local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, target) -- target:GetOwner()
+    end
     local digits = 0
     if number ~= nil then
         digits = #tostring(number)

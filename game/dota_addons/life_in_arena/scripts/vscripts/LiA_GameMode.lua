@@ -4,35 +4,29 @@ WAVE_SPAWN_COORD_TOP     = Vector(-3450,  3800, 0)
 ARENA_TELEPORT_COORD_TOP = Vector(-5024, -1360, 0)
 ARENA_TELEPORT_COORD_BOT = Vector(-5024, -2360, 0)
 ARENA_CENTER_COORD       = Vector(-5024, -1860, 0)
--- центр босс-арены - -5024, -1860
 
 WAVE_NUM         = 1    --номер волны
 WAVE_SPAWN_COUNT = {20,26,32,38,44,50,56,62}   --крипов на спавн
 WAVE_MAX_COUNT   = {42,54,66,78,90,102,114,126}   --количество крипов и боссов с обоих спавнов
-WAVE_DEAD_COUNT  = 0    --сколько уже умерло
 
-GOLD_PER_WAVE = {0,12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30}
+GOLD_PER_WAVE = {0,12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30,30}
 
 PRE_WAVE_TIME = 60 --время между волнами
 PRE_DUEL_TIME = 30 --время перед дуэлью
 
-MAX_LEVEL = 50
+MAX_LEVEL     = 50
 
-PLAYER_PLACE = {}
+PLAYER_PLACE  = {}
 
-nDeathHeroes = 0
-
-local DEBUG = true --при релизе обязательно поставить false!
-
--- Game end states
-local NOT_ENDED		= 0
-local VICTORIOUS	= 1
-local DEFEATED		= 2
+nPlayers = 0
+nDeathHeroes  = 0    -- мертвых героев
+nDeathCreeps  = 0    --         крипов
 
 IsDuelOccured = false
 IsDuel        = false
 
 --------------------------------------------------------------------------------
+
 if LiA == nil then
 	LiA = class({})
 	LiA.DeltaTime = 0.25
@@ -47,10 +41,10 @@ end
 
 
 function LiA:InitGameMode()
-
 	GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
 	GameRules:SetPreGameTime(0)
+    GameRules:SetPostGameTime(30)
 	GameRules:SetHeroRespawnEnabled(false)
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
@@ -69,13 +63,15 @@ function LiA:InitGameMode()
     GameMode:SetCustomXPRequiredToReachNextLevel(XP_TABLE)
     GameMode:SetUseCustomHeroLevels(true)
     GameMode:SetRecommendedItemsDisabled(true)
-    GameMode:SetHUDVisible(12, false) 
+    GameMode:SetHUDVisible(12, false)
+    GameMode:SetHUDVisible(1, false) 
+    GameMode:SetTopBarTeamValuesVisible(false)
     GameMode:SetBuybackEnabled(false)
     GameMode:SetTopBarTeamValuesVisible(false)
     GameMode:SetThink("onThink", self)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
-     
+      
     --listeners
     ListenToGameEvent('entity_killed', Dynamic_Wrap(LiA, 'onEntityKilled'), self)
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'onGameStateChange'), self)
@@ -97,6 +93,7 @@ function LiA:InitGameMode()
 		end
 	end
 end
+
 
 function LiA:onThink()
     for i = 1, #PLAYER_PLACE do
@@ -123,6 +120,7 @@ function LiA:onHeroPick(keys)
     PlayerResource:SetCustomTeamAssignment(keys.player-1, DOTA_TEAM_GOODGUYS)
     hero:SetTeam(DOTA_TEAM_GOODGUYS) 
     PlayerResource:SetGold(keys.player-1, 0, false) 
+    giveUnitDataDrivenModifier(hero, hero, "modifier_hero",-1)
     if PlayerResource:HasRandomed(keys.player-1) then
         hero:SetGold(150,true)
     else
@@ -136,43 +134,41 @@ function LiA:onGameStateChange()
     end
 end
 
+function OnHeroDeath(keys)
+    ownerHero = keys.unit:GetPlayerOwner()
+    Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end)
+    if IsDuel then
+        Timers:CreateTimer(1,function() EndDuel(keys.attacker:GetPlayerOwner()) return nil end)
+    else
+        ownerHero.deaths = ownerHero.deaths + 1
+        nDeathHeroes = nDeathHeroes + 1
+        if nDeathHeroes == HeroList:GetHeroCount() then
+            GameRules:SetCustomVictoryMessage("#lose_message")
+            GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+            --GameRules:ResetToHeroSelection()
+        end
+    end
+end
 
 function LiA:onEntityKilled(keys)
     local ent = EntIndexToHScript(keys.entindex_killed)
-    local ownerDied = ent:GetPlayerOwner()
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
-    if ent:IsRealHero() then
-        Timers:CreateTimer(0.1,function() ownerDied:SetKillCamUnit(nil) end)
-        if IsDuel then
-            EndDuel(ownerAtt)
-            print("winner",PlayerResource:GetPlayerName(ownerDied:GetPlayerID()))
-        else
-            ownerDied.deaths = ownerDied.deaths + 1
-            nDeathHeroes = nDeathHeroes + 1
-            if nDeathHeroes == HeroList:GetHeroCount() then
-                GameRules:SetCustomVictoryMessage("#lose_message")
-                GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
-                --GameRules:ResetToHeroSelection()
-            end
+    if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then    
+        nDeathCreeps = nDeathCreeps + 1
+        if ownerAtt ~= nil then
+            ownerAtt.creeps = ownerAtt.creeps + 1
         end
-    else
-        if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then
-            WAVE_DEAD_COUNT = WAVE_DEAD_COUNT + 1
-            if ownerAtt ~= nil then
-                ownerAtt.creeps = ownerAtt.creeps + 1
-            end
-        elseif ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
-            WAVE_DEAD_COUNT = WAVE_DEAD_COUNT + 1
-            if ownerAtt ~= nil then
-                ownerAtt.bosses = ownerAtt.bosses + 1
-                ownerAtt.lumber = ownerAtt.lumber + 3
-                FireGameEvent('cgm_player_lumber_changed', { player_ID = ownerAtt:GetPlayerID(), lumber = ownerAtt.lumber })
-                PopupNumbers(ent, "gold", Vector(0,255,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
-            end
+    elseif ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
+        nDeathCreeps = nDeathCreeps + 1
+        if ownerAtt ~= nil then
+            ownerAtt.bosses = ownerAtt.bosses + 1
+            ownerAtt.lumber = ownerAtt.lumber + 3
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = ownerAtt:GetPlayerID(), lumber = ownerAtt.lumber })
+            PopupNumbers(ownerAtt ,ent, "gold", Vector(0,255,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
         end
-        if WAVE_DEAD_COUNT == WAVE_MAX_COUNT[CalcPlayers()] or (ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" and WAVE_NUM % 5 ==0) then
-            LiA._EndWave()
-        end
+    end
+    if nDeathCreeps == WAVE_MAX_COUNT[nPlayers] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
+        Timers:CreateTimer(1,LiA._EndWave())
     end
 end
 
@@ -188,8 +184,8 @@ function StartWaves()
 end
 
 
-function LiA:_SpawnWave()  
-    local nPlayers = CalcPlayers()
+function LiA:SpawnWave()  
+    nPlayers = CalcPlayers()
     print(nPlayers,"players")
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
@@ -201,10 +197,17 @@ function LiA:_SpawnWave()
     TRIGGER_SHOP:Disable()  
 end
 
-function LiA:_SpawnMegaboss()
-    local boss = CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
+function LiA:SpawnMegaboss()
+    if WAVE_NUM == 20 then
+        local boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
+        uFinalBoss = boss
+        giveUnitDataDrivenModifier(boss, boss, "modifier_orn",-1)
+    else
+        local boss = CreateUnitByName(tostring(WAVE_NUM).."_wave_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
+        
+    end
     giveUnitDataDrivenModifier(boss, boss, "modifier_stun",5)
-    LiA._TeleportToArena()
+    LiA.TeleportToArena()
     TRIGGER_SHOP:Disable() 
     BossCounter = 5
     Timers:CreateTimer(function()
@@ -218,34 +221,83 @@ function LiA:_SpawnMegaboss()
     end)
 end
 
+function OnFirstStageDeath(event) --когда умирают боссы первой стадии финального босса
+    for k,v in pairs(FirstStageGroup)
+        if v == event.unit then
+            table.remove(FirstStageGroup,k)
+        end
+    end
+    if #FirstStageGroup == 0 then
+        uFinalBoss:RemoveModifierByName("modifier_stun") 
+        FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
+    end
+end
+
+function OnOrnDeath(event)
+    GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+end
+
+function OnOrnDamaged(event) then
+    if event.unit:GetHealthPercent() <= 30 and not FinalBossStage2 then
+        FinalBossStage2 = true
+        --giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_stun",-1)
+        --uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
+    elseif event.unit:GetHealthPercent() <= 70 and not FinalBossStage1 then --на арену выходят все предыдущие боссы
+        FinalBossStage1 = true
+        giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_stun",-1)
+        uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
+        FinalBossStage1Counter = 5 
+
+        Timers:CreateTimer(2,function()
+            FirstStageGroup = {}
+            if FinalBossStage1Counter <= 19 then
+                if FinalBossStage1Counter % 5 == 0 then
+                    local unit = CreateUnitByName(tostring(FinalBossStage1Counter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                else
+                    local unit = CreateUnitByName(tostring(FinalBossStage1Counter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                end
+                giveUnitDataDrivenModifier(unit, unit, "modifier_firststage",-1)
+                table.insert(FirstStageGroup,unit)
+                FinalBossStage1Counter = FinalBossStage1Counter + 1
+                return 2
+            else
+                return nil
+            end
+        end)
+    end
+end
+
 function LiA:_EndWave()
     print("EndWave:started")
     WAVE_NUM = WAVE_NUM + 1
-    WAVE_DEAD_COUNT = 0
+    nDeathCreeps = 0
     nDeathHeroes = 0
+    if WAVE_NUM % 5 == 1 then  --телепорт героев с арены после мегабосса
+        LiA.TeleportWithoutArena()
+    end
     if WAVE_NUM % 3 == 1 and not IsDuelOccured and CalcPlayers() > 1 then --проверка могут ли начаться дуэли
         print("EndWave:Duels started")
         StartDuels()
     else
         print("EndWave:wave")
-        Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
-                ShowCenterMessage("Волна №"..tostring(WAVE_NUM),5)
-                return nil
-            end)
-        if WAVE_NUM % 5 == 0 then --если босс
+        if WAVE_NUM % 5 == 0 then --мегабосс
             Timers:CreateTimer(PRE_WAVE_TIME, function() 
-                LiA._SpawnMegaboss()
+                LiA.SpawnMegaboss()
                 return nil
             end)
-        else --обычные волны
-            if WAVE_NUM % 5 == 1 then -- если только что был босс
-                LiA._TeleportWithoutArena()
+            if WAVE_NUM == 20 then
+                local message = "#FinalBoss"
+            else
+                local message = "#Megaboss"
             end
+        else --обычные волны
             Timers:CreateTimer( PRE_WAVE_TIME, function() 
-                LiA._SpawnWave()
+                LiA.SpawnWave()
                 return nil
             end)
+            local message = "Wave #"..tostring(WAVE_NUM)
         end
+        ShowCenterMessage(message, PRE_WAVE_TIME + 2)
         IsDuelOccured = false
         GoldAdd = WAVE_SPAWN_COUNT[CalcPlayers()] / CalcPlayers() * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
@@ -263,7 +315,7 @@ function LiA:_EndWave()
     end)
 end
 
-function LiA:_TeleportToArena() --Телепорт на арену
+function LiA:TeleportToArena() --Телепорт на арену
 	DoWithAllHeroes(function(hero)
 		hero.abs = hero:GetAbsOrigin() 
         hero:Stop()
@@ -281,7 +333,7 @@ function LiA:_TeleportToArena() --Телепорт на арену
     end)
 end
 
-function LiA:_TeleportWithoutArena() --Телепорт с арены
+function LiA:TeleportWithoutArena() --Телепорт с арены
     DoWithAllHeroes(function(hero)
         hero:Stop()
         FindClearSpaceForUnit(hero, hero.abs, false)

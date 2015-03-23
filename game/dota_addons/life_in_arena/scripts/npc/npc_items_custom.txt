@@ -16,7 +16,7 @@
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"              "9999"
-		"AbilityCastPoint"                      "0.0"	
+		"AbilityCastPoint"              "0.0"	
 	
 		"Modifiers"
 		{
@@ -26,9 +26,56 @@
 				"IsHidden"              "1"
 				"States"
 		        {
-		         
-		          "MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
 		        }
+			}
+			"modifier_hero"
+			{
+				"Passive"               "1"
+				"IsHidden"              "1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_PERMANENT"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"LiA_GameMode.lua"
+						"Function"		"OnHeroDeath"
+					}
+				}
+			}
+			"modifier_orn"
+			{
+				"Passive"               "1"
+				"IsHidden"              "1"
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"LiA_GameMode.lua"
+						"Function"		"OnOrnDamaged"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"LiA_GameMode.lua"
+						"Function"		"OnOrnDeath"
+					}
+				}
+			}
+			"modifier_firststage"
+			{
+				"Passive"               "1"
+				"IsHidden"              "1"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"LiA_GameMode.lua"
+						"Function"		"OnFirstStageDeath"
+					}
+				}
 			}
 		}
 	}
@@ -77,7 +124,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Orb"
 	            {
 	                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
@@ -160,7 +207,7 @@
 			  {
 				  "Passive"			"1"
 				  "IsHidden"			"1"
-				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				  "Properties"
 				  {
@@ -267,7 +314,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -335,7 +382,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Orb"
 	            {
 	                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
@@ -446,7 +493,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 	
 			    "Properties"
 			    {
@@ -537,7 +584,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -593,7 +640,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -669,7 +716,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -849,7 +896,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	    "5"
@@ -934,7 +981,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
@@ -1000,7 +1047,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1074,7 +1121,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 	
 			    "Properties"
 			    {
@@ -1223,7 +1270,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1277,7 +1324,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 	    "25"
@@ -1355,7 +1402,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1408,7 +1455,7 @@
 			        {
 				  "Passive"			"1"
 				  "IsHidden"			"1"
-				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				  "Properties"
 				  {
@@ -1627,7 +1674,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
@@ -1693,7 +1740,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1738,7 +1785,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1784,7 +1831,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1838,7 +1885,7 @@
 			{
 				"Passive"          "1"    
 			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
@@ -1903,7 +1950,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1949,7 +1996,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
@@ -1994,7 +2041,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				
 				"Properties"
 				{
