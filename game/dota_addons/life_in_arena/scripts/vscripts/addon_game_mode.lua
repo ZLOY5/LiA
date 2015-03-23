@@ -118,4 +118,5 @@ function Precache( context )
 		PrecacheModel("models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.mdl", context)
 		PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context)	
 
+		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)				
 end
