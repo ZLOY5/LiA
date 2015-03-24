@@ -36,8 +36,15 @@ function DoWithAllHeroes(whatDo)
 		return
 	end
 	local heroes = HeroList:GetAllHeroes() 
+	print("ALL HEROES")
+	for k,v in pairs(heroes) do
+		print(k,v:GetUnitName(),v:IsIllusion())
+	end
+	print("END")
 	for i = 1, #heroes do
-		whatDo(heroes[i])
+		if not heroes[i]:IsIllusion() then
+			whatDo(heroes[i])
+		end
 	end
 end
 

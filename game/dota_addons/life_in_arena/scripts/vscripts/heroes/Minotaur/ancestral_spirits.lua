@@ -54,7 +54,7 @@ function AncestralSpirits( event )
 		local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
 		illusion:SetPlayerID(caster:GetPlayerID())
 		illusion:SetControllableByPlayer(player, true)
-
+		
 		illusion:SetAngles( casterAngles.x, casterAngles.y, casterAngles.z )
 		
 		-- Level Up the unit to the casters level
