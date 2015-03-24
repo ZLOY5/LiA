@@ -77,10 +77,11 @@ POPUP_SYMBOL_POST_POINTFIVE = 8
 
 function PopupNumbers(player,target, pfx, color, lifetime, number, presymbol, postsymbol)
     local pfxPath = string.format("particles/msg_fx/msg_%s.vpcf", pfx)
+    local pidx
     if player then
-    	local pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, target, player)
+    	pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, target, player)
     else
-    	local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, target) -- target:GetOwner()
+    	pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, target) -- target:GetOwner()
     end
     local digits = 0
     if number ~= nil then

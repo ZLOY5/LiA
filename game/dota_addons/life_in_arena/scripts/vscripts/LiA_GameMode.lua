@@ -25,6 +25,8 @@ nDeathCreeps  = 0    --         крипов
 IsDuelOccured = false
 IsDuel        = false
 
+uFinalBoss    = nil
+
 --------------------------------------------------------------------------------
 
 if LiA == nil then
@@ -168,17 +170,17 @@ function LiA:onEntityKilled(keys)
         end
     end
     if nDeathCreeps == WAVE_MAX_COUNT[nPlayers] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
-        Timers:CreateTimer(1,LiA._EndWave())
+        Timers:CreateTimer(1,function() LiA._EndWave() return nil end)
     end
 end
 
 function StartWaves()
     Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
-        ShowCenterMessage("Волна №"..WAVE_NUM,5)
+        ShowCenterMessage("Wave #"..WAVE_NUM,5)
         return nil
     end)
     Timers:CreateTimer(PRE_WAVE_TIME, function() 
-        LiA._SpawnWave()
+        LiA.SpawnWave()
         return nil
     end)  
 end
@@ -198,14 +200,15 @@ function LiA:SpawnWave()
 end
 
 function LiA:SpawnMegaboss()
+    local boss
     if WAVE_NUM == 20 then
-        local boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
+        boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
         uFinalBoss = boss
         giveUnitDataDrivenModifier(boss, boss, "modifier_orn",-1)
     else
-        local boss = CreateUnitByName(tostring(WAVE_NUM).."_wave_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS):SetForwardVector(Vector(0,-1,0))
-        
+        boss = CreateUnitByName(tostring(WAVE_NUM).."_wave_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)   
     end
+    boss:SetForwardVector(Vector(0,-1,0))
     giveUnitDataDrivenModifier(boss, boss, "modifier_stun",5)
     LiA.TeleportToArena()
     TRIGGER_SHOP:Disable() 
@@ -222,7 +225,7 @@ function LiA:SpawnMegaboss()
 end
 
 function OnFirstStageDeath(event) --когда умирают боссы первой стадии финального босса
-    for k,v in pairs(FirstStageGroup)
+    for k,v in pairs(FirstStageGroup) do
         if v == event.unit then
             table.remove(FirstStageGroup,k)
         end
@@ -237,7 +240,8 @@ function OnOrnDeath(event)
     GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
 end
 
-function OnOrnDamaged(event) then
+function OnOrnDamaged(event) 
+    print("OrnDamaged")
     if event.unit:GetHealthPercent() <= 30 and not FinalBossStage2 then
         FinalBossStage2 = true
         --giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_stun",-1)
@@ -280,24 +284,19 @@ function LiA:_EndWave()
         StartDuels()
     else
         print("EndWave:wave")
+        local message
         if WAVE_NUM % 5 == 0 then --мегабосс
-            Timers:CreateTimer(PRE_WAVE_TIME, function() 
-                LiA.SpawnMegaboss()
-                return nil
-            end)
+            Timers:CreateTimer(PRE_WAVE_TIME, function() LiA.SpawnMegaboss() return nil end)
             if WAVE_NUM == 20 then
-                local message = "#FinalBoss"
+                message = "#lia_finalboss"
             else
-                local message = "#Megaboss"
+                message = "#lia_megaboss"
             end
         else --обычные волны
-            Timers:CreateTimer( PRE_WAVE_TIME, function() 
-                LiA.SpawnWave()
-                return nil
-            end)
-            local message = "Wave #"..tostring(WAVE_NUM)
+            Timers:CreateTimer( PRE_WAVE_TIME, function() LiA.SpawnWave() return nil end)
+            message = "Wave #"..tostring(WAVE_NUM) --пока что только на одном языке
         end
-        ShowCenterMessage(message, PRE_WAVE_TIME + 2)
+        Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
         IsDuelOccured = false
         GoldAdd = WAVE_SPAWN_COUNT[CalcPlayers()] / CalcPlayers() * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)

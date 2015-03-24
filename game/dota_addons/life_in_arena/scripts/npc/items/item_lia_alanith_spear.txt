@@ -39,25 +39,39 @@
 		{
 			"Passive"          "1"    
 		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "Orb"
-            {
-                "Priority"          "DOTA_ORB_PRIORITY_ITEM"
-                //"ProjectileName"    "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-   
-            }
-            "OnOrbImpact"
-            {
-            	"Lifesteal"
-        		{
-            		"Target"    "ATTACKER"
-            		"LifestealPercent"  "%lifesteal"
-       			}
-            }
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Orb"
+			{
+				"Priority"		"DOTA_ORB_PRIORITY_ITEM"
+			}
+
+			"OnOrbImpact"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"items\alanith.lua"
+					"Function"				"modifier_item_alanith_datadriven_on_orb_impact"
+				}
+			}
+
 		    "Properties"
 		    {
 		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
 		    }  
+		}
+		"modifier_item_alanith_datadriven_lifesteal"
+		{
+			"Passive"			"0"
+			"IsHidden"			"1"
+			
+			"OnDealDamage"
+			{
+				"Lifesteal"
+				{
+					"Target"			"ATTACKER"
+					"LifestealPercent"	"%lifesteal_percent"
+				}
+			}
 		}
 	}
 	"AbilitySpecial"
@@ -70,7 +84,7 @@
 		"02"
 		{
 			"var_type" "FIELD_INTEGER"
-			"lifesteal" "17"
+			"lifesteal_percent" "17"
 		}
 	}
 }
