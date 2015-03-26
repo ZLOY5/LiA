@@ -16,7 +16,7 @@ function check_order( keys )
 						local ability_at_slot = caster:GetAbilityByIndex( i )
 						if ability_at_slot ~= nil and ability_at_slot:GetAbilityName() == event.abilityname then 
 						   ability:ApplyDataDrivenModifier(caster, caster, "modifier_inflicts", {duration = 0.03})
-               break
+                                                   break
 						end
 					end
 				end
