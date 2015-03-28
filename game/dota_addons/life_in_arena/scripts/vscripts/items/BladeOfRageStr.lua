@@ -6,6 +6,6 @@ function OnCreatedModifier(event)
 end
 
 function OnDestroyModifier(event)
-	event.caster:ModifyAgility(-event.ability.strAdd)
+	event.caster:ModifyStrength(-event.ability.strAdd)
 	event.caster:CalculateStatBonus()
 end
