@@ -1,0 +1,150 @@
+"item_recipe_lia_hammer"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1400"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"650"	
+	"ItemShopTags"					"int;str;damage;health_pool;hard_to_tag"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_hammer"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_spear;item_lia_amulet;item_lia_gloves_of_strength;item_lia_staff"
+	}
+}
+
+
+"item_lia_hammer"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"1401"  //Valve's version of this item uses the ID "135".
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"Model"							"models/props_gameplay/red_box.vmdl" 
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_lia_hammer"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1280"
+	"ItemShopTags"					"int;str;damage;health_pool;hard_to_tag"
+	"ItemQuality"					"epic"
+	"ItemAliases"					"basher"
+	"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"35"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"	"25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_intelligence"	"18"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_health"	"200"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_chance"			"40"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_damage"			"300"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"bash_stun"				"0.01"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_lia_hammer"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%bonus_health"
+			}
+			
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"			"%bash_chance"
+					"PseudoRandom"		"DOTA_PSEUDO_RANDOM_ITEM_MKB"
+					"OnSuccess"
+					{
+						"Damage"
+						{
+							"Target"		"TARGET"
+							"Type"			"DAMAGE_TYPE_MAGICAL"
+							"Damage"		"%bash_damage"
+						}
+						
+						"ApplyModifier"
+						{
+							"Target"			"TARGET"
+							"ModifierName"		"modifier_item_lia_hammer"
+						}
+						
+						"FireSound"
+						{
+							"EffectName"		"DOTA_Item.MKB.Minibash"
+							"Target"			"TARGET"
+						}
+					}
+				}
+			}
+		}
+		"modifier_item_lia_hammer"
+		{
+			"Duration"              "%bash_stun"
+			"Passive"				"0"
+			"IsHidden"				"0"
+			"IsBuff"				"0"
+			"IsDebuff"				"1"
+			"IsPurgable"			"1"
+			
+			"EffectName"            "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType"      "follow_overhead"
+			"OverrideAnimation"     "ACT_DOTA_DISABLED"
+			
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" 		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}
