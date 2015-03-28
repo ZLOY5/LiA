@@ -29,6 +29,25 @@
 		         	"MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
 		        }
 			}
+			"modifier_hide"
+			{
+				"Passive"               "1"
+				"IsHidden"              "1"
+				"States"
+		        {
+		         	"MODIFIER_STATE_STUNNED"		 	"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_OUT_OF_GAME"		"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_MUTED"				"MODIFIER_STATE_VALUE_ENABLED"
+		         	"MODIFIER_STATE_NO_TEAM_MOVE_TO"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_SELECT"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
+		        }
+			}
 			"modifier_hero"
 			{
 				"Passive"               "1"
@@ -74,6 +93,19 @@
 					{
 						"ScriptFile"	"LiA_GameMode.lua"
 						"Function"		"OnFirstStageDeath"
+					}
+				}
+			}
+			"modifier_secondstage"
+			{
+				"Passive"               "1"
+				"IsHidden"              "1"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"LiA_GameMode.lua"
+						"Function"		"OnSecondStageDeath"
 					}
 				}
 			}
@@ -375,8 +407,7 @@
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"rare"
 		"AbilityTextureName"			"lia_blood_blade"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ATTACK"
-		"AbilityCastPoint"       		"0.0"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityManaCost"         		"100"
 	    "AbilityCooldown"        		"13"
 		"OnSpellStart"
@@ -679,6 +710,154 @@
 		}
 	}
 	//End of file item_lia_claws.txt
+
+
+	//Start of file item_lia_divine_armor.txt
+	"item_recipe_lia_divine_armor"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1320"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"700"	
+		"ItemShopTags"					"armor;regen_health;health_pool;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_divine_armor"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_shield_of_endurance;item_lia_dwarf_armor;item_lia_magic_helm"
+		}
+	}
+	
+	"item_lia_divine_armor"
+	{
+		"ID"							"1321"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"2540"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"lia_divine_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"item_divine_armor_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
+			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
+			    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
+			    	"MODIFIER_PROPERTY_EVASION_CONSTANT"		"%evasion_percent"
+			    }  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "30"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "700"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health_regen" "30"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"evasion_percent" "30"
+			}
+		}
+	}
+	
+	//End of file item_lia_divine_armor.txt
+
+
+	//Start of file item_lia_dwarf_armor.txt
+	"item_recipe_lia_dwarf_armor"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1316"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"200"	
+		"ItemShopTags"					"armor;health_pool"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_dwarf_armor"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_helm;item_lia_ring_of_protection;item_lia_amulet"
+		}
+	}
+	
+	"item_lia_dwarf_armor"
+	{
+		"ID"							"1317"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"595"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"lia_dwarf_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"item_dwarf_armor_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
+			    }  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "10"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "175"
+			}
+		}
+	}
+	
+	//End of file item_lia_dwarf_armor.txt
 
 
 	//Start of file item_lia_gloves_of_haste.txt
@@ -1355,6 +1534,362 @@
 	//End of file item_lia_huge_axe.txt
 
 
+	//Start of file item_lia_knight_cuirass.txt
+	"item_recipe_lia_knight_cuirass"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1324"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1050"	
+		"ItemShopTags"					"armor;regen_health;health_pool"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_knight_cuirass"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_knight_shield;item_lia_shield_of_endurance"
+		}
+	}
+	
+	"item_lia_knight_cuirass"
+	{
+		"ID"							"1325"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"2245"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"lia_knight_cuirass"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items\onlyone.lua"
+				"Function"		"KnightCuirassShield"
+			}
+		}
+		"OnSpellStart"
+		{
+			"RemoveModifier"
+			{
+				"Target" 		"CASTER"
+				"ModifierName"	"item_knight_cuirass_damage_return_aura_modifier"
+			}
+			"ApplyModifier"
+			{
+				"Target" 		"CASTER"
+				"ModifierName"	"item_knight_cuirass_damage_return_aura_abi_modifier"
+				"Duration"		"5"
+			}
+			"DelayedAction"
+			{
+				"Delay"		"5"
+				"Action"	
+				{
+					"RemoveModifier"
+					{
+						"Target" 		"CASTER"
+						"ModifierName"	"item_knight_cuirass_damage_return_aura_abi_modifier"
+					}
+					"ApplyModifier"
+					{
+						"Target" 		"CASTER"
+						"ModifierName"	"item_knight_cuirass_damage_return_aura_modifier"
+						"Duration"		"-1"
+					}
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"item_knight_cuirass_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
+			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
+			    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
+			    }  
+			    
+			}
+			"item_knight_cuirass_damage_return_aura_modifier"
+			{
+				"Passive"          		"1"    
+			    "IsHidden"         		"1"
+			    "Aura"        			"item_knight_cuirass_damage_return_modifier"
+	        	"Aura_Radius" 			"300"
+	        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        	"Aura_Types"  			"DOTA_UNIT_TARGET_ALL"
+	        	"Aura_Flags"  			"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+	        	"Aura_ApplyToCaster" 	"0"
+	        }
+	        "item_knight_cuirass_damage_return_aura_abi_modifier"
+			{
+				"Passive"          		"0"    
+			    "IsHidden"         		"0"
+			    "TextureName"     		"lia_knight_cuirass"
+			    "Aura"        			"item_knight_cuirass_damage_return_abi_modifier"
+	        	"Aura_Radius" 			"300"
+	        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        	"Aura_Types"  			"DOTA_UNIT_TARGET_ALL"
+	        	"Aura_Flags"  			"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+	        	"Aura_ApplyToCaster" 	"0"
+	        }
+			"item_knight_cuirass_damage_return_modifier"
+			{
+				"IsHidden"          "1"
+				"IsPurgable"		"0"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/knight_cuirass.lua"
+						"Function"			"OnAttackLanded"
+						"damage_return" 	"%damage_return"
+						"attack_damage" 	"%attack_damage"
+					}
+				}
+			}   
+			"item_knight_cuirass_damage_return_abi_modifier"
+			{
+				"IsHidden"          "1"
+				"IsPurgable"		"0"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/knight_cuirass.lua"
+						"Function"			"OnAttackLanded"
+						"damage_return" 	"%damage_return_abi"
+						"attack_damage" 	"%attack_damage"
+					}
+				}
+			}   
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "20"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "650"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health_regen" "25"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"damage_return" "25"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"damage_return_abi" "50"
+			}
+		}
+	}
+	
+	//End of file item_lia_knight_cuirass.txt
+
+
+	//Start of file item_lia_knight_shield.txt
+	"item_recipe_lia_knight_shield"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1322"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"265"	
+		"ItemShopTags"					"armor;health_pool;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_knight_shield"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_claws;item_lia_ring_of_protection;item_lia_amulet"
+		}
+	}
+	
+	"item_lia_knight_shield"
+	{
+		"ID"							"1323"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"550"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"lia_knight_shield"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items\onlyone.lua"
+				"Function"		"KnightCuirassShield"
+			}
+		}
+		"Modifiers"
+		{
+			"item_knight_shield_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
+			    }  
+	        	"Aura"        "item_knight_shield_damage_return_modifier"
+	        	"Aura_Radius" "500"
+	        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
+	        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+	        	"Aura_ApplyToCaster" "0"  
+			}
+			"item_knight_shield_damage_return_modifier"
+			{
+				"IsHidden"          "1"
+				"IsPurgable"		"0"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/knight_shield.lua"
+						"Function"			"OnAttackLanded"
+						"damage_return" 	"%damage_return"
+						"attack_damage" 	"%attack_damage"
+					}
+					"RemoveModifier"
+			    	{
+			    		"Target" 			"ATTACKER"
+			    		"ModifierName"		"item_knight_shield_damage_return_modifier"
+			    	}
+				}
+			}   
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "5"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "200"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"damage_return" "20"
+			}
+		}
+	}
+	
+	//End of file item_lia_knight_shield.txt
+
+
+	//Start of file item_lia_magic_helm.txt
+	"item_recipe_lia_magic_helm"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1314"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"425"	
+		"ItemShopTags"					"armor"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_magic_helm"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_helm"
+		}
+	}
+	
+	"item_lia_magic_helm"
+	{
+		"ID"							"1315"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"600"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"lia_magic_helm"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"item_magic_helm_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+			    	"MODIFIER_PROPERTY_EVASION_CONSTANT"	 "%evasion_percent"
+			    }  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "8"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"evasion_percent" "25"
+			}
+		}
+	}
+	
+	//End of file item_lia_magic_helm.txt
+
+
 	//Start of file item_lia_mana_elixir.txt
 	"item_lia_mana_elixir"
 	{
@@ -1935,7 +2470,7 @@
 	//End of file item_lia_ring_of_protection.txt
 
 
-	//Start of file item_lia_ring_or_regeneration.txt
+	//Start of file item_lia_ring_of_regeneration.txt
 	"item_lia_ring_of_regeneration"
 		{
 	
@@ -1977,7 +2512,7 @@
 			}
 	    }
 		}
-	//End of file item_lia_ring_or_regeneration.txt
+	//End of file item_lia_ring_of_regeneration.txt
 
 
 	//Start of file item_lia_runed_bracers.txt
@@ -2092,6 +2627,80 @@
 	}
 	
 	//End of file item_lia_runed_gloves.txt
+
+
+	//Start of file item_lia_shield_of_endurance.txt
+	"item_recipe_lia_shield_of_endurance"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1318"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"350"	
+		"ItemShopTags"					"armor;regen_health;health_pool"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_shield_of_endurance"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_ring_of_protection;item_lia_ring_of_regeneration;item_lia_amulet"
+		}
+	}
+	
+	"item_lia_shield_of_endurance"
+	{
+		"ID"							"1319"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"645"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"lia_shield_of_endurance"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"item_shield_of_endurance_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
+			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
+			    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
+			    }  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "7"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "400"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health_regen" "15"
+			}
+		}
+	}
+	
+	//End of file item_lia_shield_of_endurance.txt
 
 
 	//Start of file item_lia_spear.txt

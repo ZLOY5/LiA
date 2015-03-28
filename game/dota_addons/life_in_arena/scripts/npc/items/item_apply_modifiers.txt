@@ -22,6 +22,25 @@
 	         	"MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
 	        }
 		}
+		"modifier_hide"
+		{
+			"Passive"               "1"
+			"IsHidden"              "1"
+			"States"
+	        {
+	         	"MODIFIER_STATE_STUNNED"		 	"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_OUT_OF_GAME"		"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_MUTED"				"MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_NO_TEAM_MOVE_TO"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_TEAM_SELECT"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
+	        }
+		}
 		"modifier_hero"
 		{
 			"Passive"               "1"
@@ -67,6 +86,19 @@
 				{
 					"ScriptFile"	"LiA_GameMode.lua"
 					"Function"		"OnFirstStageDeath"
+				}
+			}
+		}
+		"modifier_secondstage"
+		{
+			"Passive"               "1"
+			"IsHidden"              "1"
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"LiA_GameMode.lua"
+					"Function"		"OnSecondStageDeath"
 				}
 			}
 		}

@@ -1,0 +1,176 @@
+"item_recipe_lia_knight_cuirass"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1324"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1050"	
+	"ItemShopTags"					"armor;regen_health;health_pool"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_knight_cuirass"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_knight_shield;item_lia_shield_of_endurance"
+	}
+}
+
+"item_lia_knight_cuirass"
+{
+	"ID"							"1325"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"2245"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"rare"
+	"AbilityTextureName"			"lia_knight_cuirass"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"OnEquip"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items\onlyone.lua"
+			"Function"		"KnightCuirassShield"
+		}
+	}
+	"OnSpellStart"
+	{
+		"RemoveModifier"
+		{
+			"Target" 		"CASTER"
+			"ModifierName"	"item_knight_cuirass_damage_return_aura_modifier"
+		}
+		"ApplyModifier"
+		{
+			"Target" 		"CASTER"
+			"ModifierName"	"item_knight_cuirass_damage_return_aura_abi_modifier"
+			"Duration"		"5"
+		}
+		"DelayedAction"
+		{
+			"Delay"		"5"
+			"Action"	
+			{
+				"RemoveModifier"
+				{
+					"Target" 		"CASTER"
+					"ModifierName"	"item_knight_cuirass_damage_return_aura_abi_modifier"
+				}
+				"ApplyModifier"
+				{
+					"Target" 		"CASTER"
+					"ModifierName"	"item_knight_cuirass_damage_return_aura_modifier"
+					"Duration"		"-1"
+				}
+			}
+		}
+	}
+	"Modifiers"
+	{
+		"item_knight_cuirass_stat_modifier"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
+		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
+		    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
+		    }  
+		    
+		}
+		"item_knight_cuirass_damage_return_aura_modifier"
+		{
+			"Passive"          		"1"    
+		    "IsHidden"         		"1"
+		    "Aura"        			"item_knight_cuirass_damage_return_modifier"
+        	"Aura_Radius" 			"300"
+        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+        	"Aura_Types"  			"DOTA_UNIT_TARGET_ALL"
+        	"Aura_Flags"  			"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+        	"Aura_ApplyToCaster" 	"0"
+        }
+        "item_knight_cuirass_damage_return_aura_abi_modifier"
+		{
+			"Passive"          		"0"    
+		    "IsHidden"         		"0"
+		    "TextureName"     		"lia_knight_cuirass"
+		    "Aura"        			"item_knight_cuirass_damage_return_abi_modifier"
+        	"Aura_Radius" 			"300"
+        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+        	"Aura_Types"  			"DOTA_UNIT_TARGET_ALL"
+        	"Aura_Flags"  			"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+        	"Aura_ApplyToCaster" 	"0"
+        }
+		"item_knight_cuirass_damage_return_modifier"
+		{
+			"IsHidden"          "1"
+			"IsPurgable"		"0"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/knight_cuirass.lua"
+					"Function"			"OnAttackLanded"
+					"damage_return" 	"%damage_return"
+					"attack_damage" 	"%attack_damage"
+				}
+			}
+		}   
+		"item_knight_cuirass_damage_return_abi_modifier"
+		{
+			"IsHidden"          "1"
+			"IsPurgable"		"0"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/knight_cuirass.lua"
+					"Function"			"OnAttackLanded"
+					"damage_return" 	"%damage_return_abi"
+					"attack_damage" 	"%attack_damage"
+				}
+			}
+		}   
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_armor" "20"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_health" "650"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_health_regen" "25"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"damage_return" "25"
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"damage_return_abi" "50"
+		}
+	}
+}
+
