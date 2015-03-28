@@ -10,11 +10,11 @@ function CalcPlayers()
 end
 
 function RespawnAllHeroes() 
-	print("RespawnAllHeroes")
+	--print("RespawnAllHeroes")
 	DoWithAllHeroes(function(hero)
-		print("hero",hero:GetUnitName())
+		--print("hero",hero:GetUnitName())
 		if not hero:IsAlive() then
-			print("respawn",hero:GetUnitName())
+			--print("respawn",hero:GetUnitName())
 			hero:RespawnHero(false,false,false)
 			FindClearSpaceForUnit(hero, hero:GetAbsOrigin(), false)
 		end
@@ -36,11 +36,11 @@ function DoWithAllHeroes(whatDo)
 		return
 	end
 	local heroes = HeroList:GetAllHeroes() 
-	print("ALL HEROES")
+	--[[print("ALL HEROES")
 	for k,v in pairs(heroes) do
 		print(k,v:GetUnitName(),v:IsIllusion())
 	end
-	print("END")
+	print("END")]]
 	for i = 1, #heroes do
 		if not heroes[i]:IsIllusion() then
 			whatDo(heroes[i])

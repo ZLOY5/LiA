@@ -1,0 +1,64 @@
+"item_recipe_lia_magic_helm"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1314"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"425"	
+	"ItemShopTags"					"armor"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_magic_helm"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_helm"
+	}
+}
+
+"item_lia_magic_helm"
+{
+	"ID"							"1315"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"600"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"common"
+	"AbilityTextureName"			"lia_magic_helm"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"Modifiers"
+	{
+		"item_magic_helm_stat_modifier"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+		    	"MODIFIER_PROPERTY_EVASION_CONSTANT"	 "%evasion_percent"
+		    }  
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_armor" "8"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"evasion_percent" "25"
+		}
+	}
+}
+

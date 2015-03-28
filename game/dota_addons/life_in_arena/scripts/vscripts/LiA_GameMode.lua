@@ -225,13 +225,17 @@ function LiA:SpawnMegaboss()
 end
 
 function OnFirstStageDeath(event) --когда умирают боссы первой стадии финального босса
-    for k,v in pairs(FirstStageGroup) do
-        if v == event.unit then
-            table.remove(FirstStageGroup,k)
-        end
+    FinalBossStageDeath = FinalBossStageDeath + 1
+    if FinalBossStageDeath == 15 then
+        uFinalBoss:RemoveModifierByName("modifier_hide") 
+        FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
     end
-    if #FirstStageGroup == 0 then
-        uFinalBoss:RemoveModifierByName("modifier_stun") 
+end
+
+function OnSecondStageDeath(event) 
+    FinalBossStageDeath = FinalBossStageDeath + 1
+    if FinalBossStageDeath == 10 then
+        uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
     end
 end
@@ -241,28 +245,37 @@ function OnOrnDeath(event)
 end
 
 function OnOrnDamaged(event) 
-    print("OrnDamaged")
-    if event.unit:GetHealthPercent() <= 30 and not FinalBossStage2 then
+    if event.unit:GetHealthPercent() <= 30 and not FinalBossStage2 then --зомби
         FinalBossStage2 = true
-        --giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_stun",-1)
-        --uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
+        giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_hide",-1)
+        uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
+        FinalBossStageCounter = 0 
+        FinalBossStageDeath = 0
+        Timers:CreateTimer(2,function()
+            if FinalBossStageCounter <= 10 then
+                local unit = CreateUnitByNam("orn_mutant", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                giveUnitDataDrivenModifier(unit, unit, "modifier_secondstage",-1)
+                FinalBossStageCounter = FinalBossStageCounter + 1
+                return 2
+            else
+                return nil
+            end
+        end)
     elseif event.unit:GetHealthPercent() <= 70 and not FinalBossStage1 then --на арену выходят все предыдущие боссы
         FinalBossStage1 = true
-        giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_stun",-1)
+        giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_hide",-1)
         uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
-        FinalBossStage1Counter = 5 
-
+        FinalBossStageCounter = 5 
+        FinalBossStageDeath = 0
         Timers:CreateTimer(2,function()
-            FirstStageGroup = {}
-            if FinalBossStage1Counter <= 19 then
-                if FinalBossStage1Counter % 5 == 0 then
-                    local unit = CreateUnitByName(tostring(FinalBossStage1Counter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+            if FinalBossStageCounter <= 19 then
+                if FinalBossStageCounter % 5 == 0 then
+                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
                 else
-                    local unit = CreateUnitByName(tostring(FinalBossStage1Counter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
                 end
                 giveUnitDataDrivenModifier(unit, unit, "modifier_firststage",-1)
-                table.insert(FirstStageGroup,unit)
-                FinalBossStage1Counter = FinalBossStage1Counter + 1
+                FinalBossStageCounter = FinalBossStageCounter + 1
                 return 2
             else
                 return nil
@@ -352,7 +365,7 @@ function StartDuels()
         IsDuel = true
         TRIGGER_SHOP:Disable() 
         DoWithAllHeroes(function(hero)
-            giveUnitDataDrivenModifier(hero, hero, "modifier_stun",999)
+            giveUnitDataDrivenModifier(hero, hero, "modifier_stun",-1)
         end)
         --GameRules:SendCustomMessage("#lia_duel <br>".."#lia_Player"..PlayerResource:GetPlayerName(PLAYER_PLACE[1]:GetPlayerID()).."#lia_duel_vs"..PlayerResource:GetPlayerName(PLAYER_PLACE[2]:GetPlayerID()), DOTA_TEAM_GOODGUYS, 0)
         Duel(PLAYER_PLACE[1],PLAYER_PLACE[2])
