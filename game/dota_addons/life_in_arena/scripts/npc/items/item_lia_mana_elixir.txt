@@ -34,14 +34,13 @@
 
 	"OnSpellStart"
 	{
-		"SpendCharge"
-		{}
+
 		"RunScript"
 		{
 			"ScriptFile"		"items.lua"
 			"Function"			"ReplenishMana"
 			"Target"			"UNIT"
-			"mana_amount"		"500"
+			"mana_amount"		"%mana_amount"
 		}
 
 	

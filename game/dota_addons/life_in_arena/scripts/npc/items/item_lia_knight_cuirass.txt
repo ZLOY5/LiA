@@ -33,6 +33,7 @@
 	"ItemQuality"					"rare"
 	"AbilityTextureName"			"lia_knight_cuirass"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityCooldown"        		"30"
 	"OnEquip"
 	{
 		"RunScript"
@@ -43,6 +44,11 @@
 	}
 	"OnSpellStart"
 	{
+		"FireSound"
+		{
+			"EffectName"	"sounds/items/dota_item_blade_mail.vsnd"
+			"Target"		"CASTER"
+		}
 		"RemoveModifier"
 		{
 			"Target" 		"CASTER"
@@ -59,11 +65,6 @@
 			"Delay"		"5"
 			"Action"	
 			{
-				"RemoveModifier"
-				{
-					"Target" 		"CASTER"
-					"ModifierName"	"item_knight_cuirass_damage_return_aura_abi_modifier"
-				}
 				"ApplyModifier"
 				{
 					"Target" 		"CASTER"
@@ -103,7 +104,8 @@
 		{
 			"Passive"          		"0"    
 		    "IsHidden"         		"0"
-		    "TextureName"     		"lia_knight_cuirass"
+		    "EffectName" 			"particles/items_fx/blademail.vpcf"
+   			"EffectAttachType" 		"follow_origin"
 		    "Aura"        			"item_knight_cuirass_damage_return_abi_modifier"
         	"Aura_Radius" 			"300"
         	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"

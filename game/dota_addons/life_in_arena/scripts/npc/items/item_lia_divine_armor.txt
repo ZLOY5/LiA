@@ -33,6 +33,14 @@
 	"ItemQuality"					"rare"
 	"AbilityTextureName"			"lia_divine_armor"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"OnEquip"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items\onlyone.lua"
+			"Function"		"DivineArmor"
+		}
+	}
 	"Modifiers"
 	{
 		"item_divine_armor_stat_modifier"

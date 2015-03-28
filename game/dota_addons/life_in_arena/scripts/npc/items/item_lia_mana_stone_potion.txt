@@ -23,8 +23,8 @@
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemCost"						"15"
-	"ItemShopTags"					"rare"
-	"ItemQuality"					"rare"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
 	"ItemKillable"                  "0"
 	"ItemSellable"                  "1"
 	"ItemStackable"					"1"
@@ -39,7 +39,6 @@
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 	    "25"
@@ -49,14 +48,12 @@
 
 	"OnSpellStart"
 	{
-		"SpendCharge"
-		{}
 		"RunScript"
 		{
 			"ScriptFile"		"items.lua"
 			"Function"			"ReplenishMana"
 			"Target"			"UNIT"
-			"mana_amount"		"250"
+			"mana_amount"		"%manà_amount"
 		}
 
 		

@@ -22,8 +22,8 @@
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemCost"						"15"
-	"ItemShopTags"					"rare"
-	"ItemQuality"					"rare"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
 	"ItemKillable"                  "0"
 	"ItemSellable"                  "1"
 	"ItemStackable"					"1"
@@ -37,7 +37,6 @@
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	    "5"
@@ -47,17 +46,14 @@
 
 	"OnSpellStart"
 	{
-		"SpendCharge"
-		{}
 		"RunScript"
 		{
 			"ScriptFile"		"items.lua"
 			"Function"			"Heal"
 			"Target"			"UNIT"
-			"heal_amount"		"400"
+			"heal_amount"		"%heal_amount"
 		}
 	
-		
 	}
 
 // Special	

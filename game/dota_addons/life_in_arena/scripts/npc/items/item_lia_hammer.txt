@@ -39,8 +39,6 @@
 	"ItemShopTags"					"int;str;damage;health_pool;hard_to_tag"
 	"ItemQuality"					"epic"
 	"ItemAliases"					"basher"
-	"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-
 	// Special	
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilitySpecial"
@@ -116,7 +114,7 @@
 						"ApplyModifier"
 						{
 							"Target"			"TARGET"
-							"ModifierName"		"modifier_item_lia_hammer"
+							"ModifierName"		"modifier_item_lia_hammer_bash"
 						}
 						
 						"FireSound"
@@ -128,7 +126,7 @@
 				}
 			}
 		}
-		"modifier_item_lia_hammer"
+		"modifier_item_lia_hammer_bash"
 		{
 			"Duration"              "%bash_stun"
 			"Passive"				"0"

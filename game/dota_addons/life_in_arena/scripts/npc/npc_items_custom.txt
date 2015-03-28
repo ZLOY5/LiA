@@ -748,6 +748,14 @@
 		"ItemQuality"					"rare"
 		"AbilityTextureName"			"lia_divine_armor"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items\onlyone.lua"
+				"Function"		"DivineArmor"
+			}
+		}
 		"Modifiers"
 		{
 			"item_divine_armor_stat_modifier"
@@ -978,8 +986,6 @@
 		"ItemShopTags"					"int;str;damage;health_pool;hard_to_tag"
 		"ItemQuality"					"epic"
 		"ItemAliases"					"basher"
-		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
-	
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -1055,7 +1061,7 @@
 							"ApplyModifier"
 							{
 								"Target"			"TARGET"
-								"ModifierName"		"modifier_item_lia_hammer"
+								"ModifierName"		"modifier_item_lia_hammer_bash"
 							}
 							
 							"FireSound"
@@ -1067,7 +1073,7 @@
 					}
 				}
 			}
-			"modifier_item_lia_hammer"
+			"modifier_item_lia_hammer_bash"
 			{
 				"Duration"              "%bash_stun"
 				"Passive"				"0"
@@ -1197,10 +1203,9 @@
 				"ScriptFile"		"items.lua"
 				"Function"			"Heal"
 				"Target"			"UNIT"
-				"heal_amount"		"800"
+				"heal_amount"		"%heal_amount"
 			}
 	                
-	                "SpendCharge" {}	
 		}
 	
 		// Special	
@@ -1243,8 +1248,8 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"15"
-		"ItemShopTags"					"rare"
-		"ItemQuality"					"rare"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
 		"ItemKillable"                  "0"
 		"ItemSellable"                  "1"
 		"ItemStackable"					"1"
@@ -1258,7 +1263,6 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	    "5"
@@ -1268,17 +1272,14 @@
 	
 		"OnSpellStart"
 		{
-			"SpendCharge"
-			{}
 			"RunScript"
 			{
 				"ScriptFile"		"items.lua"
 				"Function"			"Heal"
 				"Target"			"UNIT"
-				"heal_amount"		"400"
+				"heal_amount"		"%heal_amount"
 			}
 		
-			
 		}
 	
 	// Special	
@@ -1570,6 +1571,7 @@
 		"ItemQuality"					"rare"
 		"AbilityTextureName"			"lia_knight_cuirass"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"        		"30"
 		"OnEquip"
 		{
 			"RunScript"
@@ -1580,6 +1582,11 @@
 		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"	"sounds/items/dota_item_blade_mail.vsnd"
+				"Target"		"CASTER"
+			}
 			"RemoveModifier"
 			{
 				"Target" 		"CASTER"
@@ -1596,11 +1603,6 @@
 				"Delay"		"5"
 				"Action"	
 				{
-					"RemoveModifier"
-					{
-						"Target" 		"CASTER"
-						"ModifierName"	"item_knight_cuirass_damage_return_aura_abi_modifier"
-					}
 					"ApplyModifier"
 					{
 						"Target" 		"CASTER"
@@ -1640,7 +1642,8 @@
 			{
 				"Passive"          		"0"    
 			    "IsHidden"         		"0"
-			    "TextureName"     		"lia_knight_cuirass"
+			    "EffectName" 			"particles/items_fx/blademail.vpcf"
+	   			"EffectAttachType" 		"follow_origin"
 			    "Aura"        			"item_knight_cuirass_damage_return_abi_modifier"
 	        	"Aura_Radius" 			"300"
 	        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1822,6 +1825,80 @@
 	//End of file item_lia_knight_shield.txt
 
 
+	//Start of file item_lia_magic_bow.txt
+	"item_recipe_lia_magic_bow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1326"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"800"	
+		"ItemShopTags"					"damage;attack_speed;agi"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_magic_bow"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_runed_gloves;item_lia_spear;item_lia_necklace"
+		}
+	}
+	
+	"item_lia_magic_bow"
+	{
+		"ID"							"1327"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1200"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"lia_magic_bow"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"item_magic_bow_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
+			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+				}  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "100"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "30"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_agility" "30"
+			}
+		}
+	}
+	
+	//End of file item_lia_magic_bow.txt
+
+
 	//Start of file item_lia_magic_helm.txt
 	"item_recipe_lia_magic_helm"
 	{
@@ -1927,14 +2004,13 @@
 	
 		"OnSpellStart"
 		{
-			"SpendCharge"
-			{}
+	
 			"RunScript"
 			{
 				"ScriptFile"		"items.lua"
 				"Function"			"ReplenishMana"
 				"Target"			"UNIT"
-				"mana_amount"		"500"
+				"mana_amount"		"%mana_amount"
 			}
 	
 		
@@ -2026,8 +2102,8 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"15"
-		"ItemShopTags"					"rare"
-		"ItemQuality"					"rare"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
 		"ItemKillable"                  "0"
 		"ItemSellable"                  "1"
 		"ItemStackable"					"1"
@@ -2042,7 +2118,6 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 	    "25"
@@ -2052,14 +2127,12 @@
 	
 		"OnSpellStart"
 		{
-			"SpendCharge"
-			{}
 			"RunScript"
 			{
 				"ScriptFile"		"items.lua"
 				"Function"			"ReplenishMana"
 				"Target"			"UNIT"
-				"mana_amount"		"250"
+				"mana_amount"		"%manà_amount"
 			}
 	
 			
@@ -2422,6 +2495,241 @@
 	}
 	
 	//End of file item_lia_pantilus_blade.txt
+
+
+	//Start of file item_lia_rage_sword_agi.txt
+	"item_recipe_lia_blade_of_rage_agi"
+	
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1328"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"600"	
+		"ItemShopTags"					"agi;damage;attack_speed"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_blade_of_rage_agi"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_pantilus_blade"
+		}
+	}
+	
+	"item_lia_blade_of_rage_agi"
+	{
+		"ID"							"1329"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1120"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"lia_blade_of_rage_agi"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"				"16"
+		"AbilityManacost"				"90"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"item_blade_of_rage_agi_abi_modifier"	
+				"Duration"		"%duration"
+			}
+		}
+		"Modifiers"
+		{
+			"item_blade_of_rage_agi_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		    "%bonus_agility"
+			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
+			    }  
+			}
+			"item_blade_of_rage_agi_abi_modifier"
+			{
+				"IsHidden"      "0"
+				"IsBuff"		"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items\BladeOfRageAgi.lua"
+						"Function"		"OnCreatedModifier"
+						"agi_percent"	"%agi_percent"
+					}
+				}  
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items\BladeOfRageAgi.lua"
+						"Function"		"OnDestroyModifier"
+					}
+				}  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "80"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "50"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_agility" "25"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "5"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"agi_percent" "75"
+			}
+		}
+	}
+	
+	//End of file item_lia_rage_sword_agi.txt
+
+
+	//Start of file item_lia_rage_sword_str.txt
+	"item_recipe_lia_blade_of_rage_str"
+	
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1330"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"600"	
+		"ItemShopTags"					"str;damage;attack_speed"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_blade_of_rage_str"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_steel_sword;item_lia_runed_gloves;item_lia_gloves_of_strength"
+		}
+	}
+	
+	"item_lia_blade_of_rage_str"
+	{
+		"ID"							"1331"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1105"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"lia_blade_of_rage_str"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"				"16"
+		"AbilityManacost"				"90"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"item_blade_of_rage_str_abi_modifier"	
+				"Duration"		"%duration"
+			}
+		}
+		"Modifiers"
+		{
+			"item_blade_of_rage_str_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		    "%bonus_strength"
+			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
+			    }  
+			}
+			"item_blade_of_rage_str_abi_modifier"
+			{
+				"IsBuff"		"1"
+				"OnCreated"
+				{	
+					"RunScript"
+					{
+						"ScriptFile"	"items\BladeOfRageStr.lua"
+						"Function"		"OnCreatedModifier"
+						"str_percent"	"%str_percent"
+					}
+				}  
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items\BladeOfRageStr.lua"
+						"Function"		"OnDestroyModifier"
+					}
+				}  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "80"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "50"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_strength" "25"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "5"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"str_percent" "75"
+			}
+		}
+	}
+	
+	//End of file item_lia_rage_sword_str.txt
 
 
 	//Start of file item_lia_ring_of_protection.txt
