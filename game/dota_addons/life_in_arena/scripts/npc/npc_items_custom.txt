@@ -372,6 +372,153 @@
 	//End of file item_lia_axe.txt
 
 
+	//Start of file item_lia_battle_axe.txt
+	"item_recipe_lia_battle_axe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1402"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"180"	
+		"ItemShopTags"					"str;damage;armor;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_battle_axe"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_ring_of_protection;item_lia_axe;item_lia_gloves_of_strength"
+		}
+	}
+	
+	
+	"item_lia_battle_axe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"ID"							"1403"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			"item_lia_battle_axe"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"580"
+		"ItemShopTags"					"str;damage;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"basher"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"16"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"	"16"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"	"4"
+			}
+	
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"16"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"			"80"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_stun"				"1.25"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_battle_axe"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				}
+				
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"			"%bash_chance"
+						"PseudoRandom"		"DOTA_PSEUDO_RANDOM_ITEM_BASHER"
+						"OnSuccess"
+						{
+							"Damage"
+							{
+								"Target"		"TARGET"
+								"Type"			"DAMAGE_TYPE_MAGICAL"
+								"Damage"		"%bash_damage"
+							}
+							
+							"ApplyModifier"
+							{
+								"Target"			"TARGET"
+								"ModifierName"		"modifier_item_lia_battle_axe_bash"
+							}
+							
+							"FireSound"
+							{
+								"EffectName"		"DOTA_Item.MKB.Minibash"
+								"Target"			"TARGET"
+							}
+						}
+					}
+				}
+			}
+			"modifier_item_lia_battle_axe_bash"
+			{
+				"Duration"              "%bash_stun"
+				"Passive"				"0"
+				"IsHidden"				"0"
+				"IsBuff"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				
+				"EffectName"            "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"      "follow_overhead"
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
+				
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" 		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+	//End of file item_lia_battle_axe.txt
+
+
 	//Start of file item_lia_blood_blade.txt
 	"item_recipe_lia_blood_blade"
 	{
@@ -866,6 +1013,191 @@
 	}
 	
 	//End of file item_lia_dwarf_armor.txt
+
+
+	//Start of file item_lia_ghost_blade.txt
+	"item_recipe_lia_ghost_blade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1404"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"900"	
+		"ItemShopTags"					"str;agi;attack;armor;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_ghost_blade"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_pantilus_blade;item_lia_battle_axe"
+		}
+	}
+	
+	
+	"item_lia_ghost_blade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"ID"							"1405"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			"item_lia_ghost_blade"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"2000"
+		"ItemShopTags"					"str;agi;attack;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"basher"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"15"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"	"25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"	"6"
+			}
+	
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed" "60"
+			}
+	
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"18"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"			"100"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_stun"				"1.5"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"175"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_ghost_blade"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 		"%bonus_attack_speed"
+				}
+				
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"			"%bash_chance"
+						"PseudoRandom"		"DOTA_PSEUDO_RANDOM_ITEM_BASHER"
+						"OnSuccess"
+						{
+							"Damage"
+							{
+								"Target"		"TARGET"
+								"Type"			"DAMAGE_TYPE_MAGICAL"
+								"Damage"		"%bash_damage"
+							}
+							
+							"ApplyModifier"
+							{
+								"Target"			"TARGET"
+								"ModifierName"		"modifier_item_lia_ghost_blade_bash"
+							}
+							
+							"ApplyModifier"
+							{
+								"Target"			"CASTER"
+								"ModifierName"		"modifier_item_lia_ghost_blade_crit"
+							}
+	
+							"FireSound"
+							{
+								"EffectName"		"DOTA_Item.MKB.Minibash"
+								"Target"			"TARGET"
+							}
+						}
+					}
+				}
+			}
+			"modifier_item_lia_ghost_blade_bash"
+			{
+				"Duration"              "%bash_stun"
+				"Passive"				"0"
+				"IsHidden"				"0"
+				"IsBuff"				"0"
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				
+				"EffectName"            "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"      "follow_overhead"
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
+				
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" 		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+	
+			}
+	
+			"modifier_item_lia_ghost_blade_crit"
+			{
+			    "IsHidden"  "1"
+			    "Properties"
+			    {
+			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			    }
+			  
+			  "OnAttackLanded"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName"  "modifier_item_lia_ghost_blade_crit"
+			            "Target"   		"CASTER"    
+			        }
+			    }
+			}
+		}
+	}
+	//End of file item_lia_ghost_blade.txt
 
 
 	//Start of file item_lia_gloves_of_haste.txt
