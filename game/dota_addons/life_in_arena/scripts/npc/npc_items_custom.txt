@@ -2299,6 +2299,70 @@
 	//End of file item_lia_magic_helm.txt
 
 
+	//Start of file item_lia_magic_necklace.txt
+	"item_recipe_lia_magic_necklace"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1407"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"550"	
+		"ItemShopTags"					"str;agi;int"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_magic_necklace"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_staff;item_lia_necklace;item_lia_gloves_of_strength"
+		}
+	}
+	
+	"item_lia_magic_necklace"
+	{
+		"ID"							"1408"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1055"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"item_lia_magic_necklace"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"item_lia_magic_necklace_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_all_stats"
+			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_all_stats"
+			    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_all_stats"
+			    }  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_all_stats" "25"
+			}
+	
+		}
+	}
+	//End of file item_lia_magic_necklace.txt
+
+
 	//Start of file item_lia_mana_elixir.txt
 	"item_lia_mana_elixir"
 	{
