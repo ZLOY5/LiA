@@ -488,16 +488,6 @@ function Duel(player1, player2)
     end)
 end
 
-function EndDuels()
-    print(DuelNumber,"end duels")
-    IsDuel = false
-    IsDuelOccured = true
-    WAVE_NUM = WAVE_NUM - 1
-    DoWithAllHeroes(function(hero)
-        hero:RemoveModifierByName("modifier_stun")
-    end)
-    LiA:_EndWave()
-end
 
 function EndDuel(winner)
     print("winner",winner)
