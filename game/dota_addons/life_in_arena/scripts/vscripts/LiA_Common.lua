@@ -35,16 +35,13 @@ function DoWithAllHeroes(whatDo)
 		print("DoWithAllHeroes:not func")
 		return
 	end
-	local heroes = HeroList:GetAllHeroes() 
 	--[[print("ALL HEROES")
 	for k,v in pairs(heroes) do
 		print(k,v:GetUnitName(),v:IsIllusion())
 	end
 	print("END")]]
-	for i = 1, #heroes do
-		if not heroes[i]:IsIllusion() then
-			whatDo(heroes[i])
-		end
+	for i = 1, #tHeroes do
+		whatDo(tHeroes[i])
 	end
 end
 

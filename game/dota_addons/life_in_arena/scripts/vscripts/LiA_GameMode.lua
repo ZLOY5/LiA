@@ -16,9 +16,11 @@ PRE_DUEL_TIME = 30 --время перед дуэлью
 
 MAX_LEVEL     = 50
 
-PLAYER_PLACE  = {}
+tPlayersTop  = {}
+tHeroes = {}
 
 nPlayers = 0
+nHeroCount    = 0
 nDeathHeroes  = 0    -- мертвых героев
 nDeathCreeps  = 0    --         крипов
 
@@ -50,7 +52,7 @@ function LiA:InitGameMode()
 	GameRules:SetHeroRespawnEnabled(false)
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
-	GameRules:SetTreeRegrowTime(0)
+	GameRules:SetTreeRegrowTime(-1)
     GameRules:SetHeroMinimapIconScale(0.5)
     GameRules:SetCreepMinimapIconScale(0.5)
     GameRules:SetFirstBloodActive(false)
@@ -75,9 +77,11 @@ function LiA:InitGameMode()
     GameMode:SetStashPurchasingDisabled(true)
       
     --listeners
-    ListenToGameEvent('entity_killed', Dynamic_Wrap(LiA, 'onEntityKilled'), self)
-    ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'onGameStateChange'), self)
-    ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(LiA, 'onHeroPick'), self)
+    ListenToGameEvent('entity_killed', Dynamic_Wrap(LiA, 'OnEntityKilled'), self)
+    ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
+    ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(LiA, 'OnPlayerPickHero'), self)
+    ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
+    ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
 
     CAMERA_GUY = CreateUnitByName("camera_guy", ARENA_CENTER_COORD, true, nil, nil, DOTA_TEAM_GOODGUYS) 
 
@@ -96,33 +100,67 @@ function LiA:InitGameMode()
 	end
 end
 
-
-function LiA:onThink()
-    for i = 1, #PLAYER_PLACE do
-        local player = PLAYER_PLACE[i]
-        local hero = player:GetAssignedHero()
-        player.rating = player.creeps * 2 + player.bosses * 20 + hero:GetLevel() * 30 + player.deaths * -15
-        --print(player.rating,PlayerResource:GetPlayerName(player:GetPlayerID()))       
-    end 
-    table.sort(PLAYER_PLACE,function(a,b) return a.rating < b.rating end)
-    return LiA.DeltaTime
-end
-
-
-function LiA:onHeroPick(keys)
-    local player = PlayerResource:GetPlayer(keys.player-1) 
-    local hero = EntIndexToHScript(keys.heroindex)
+function LiA:OnConnectFull(event)
+    for k,v in pairs(event) do
+        print(k,v)
+    end
+    local entIndex = event.index+1
+    local player = EntIndexToHScript(entIndex)
+    local playerID =player:GetPlayerID()
     player.creeps = 0
     player.bosses = 0
     player.deaths = 0
     player.rating = 0
     player.lumber = 3
-    FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = player.lumber })
-    table.insert(PLAYER_PLACE, player)
-    PlayerResource:SetCustomTeamAssignment(keys.player-1, DOTA_TEAM_GOODGUYS)
-    hero:SetTeam(DOTA_TEAM_GOODGUYS) 
+    FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = player.lumber })
+    table.insert(tPlayersTop, player)
+    nPlayers = nPlayers + 1
+
+end
+
+function LiA:OnDisconnect(event)
+    print("OnDisconnect")
+    for k,v in pairs(event) do
+        print(k,v)
+    end
+    print(" ")
+    local entIndex = keys.index+1
+    local player = EntIndexToHScript(entIndex)
+    nPlayers   = nPlayers   - 1
+    if player:GetAssignedHero() then
+        nHeroCount = nHeroCount - 1
+
+    end
+    player.IsDisconnect = true
+end
+
+
+function LiA:onThink()
+    for i = 1, #tPlayersTop do
+        local player = tPlayersTop[i]
+        local hero = player:GetAssignedHero()
+        player.rating = player.creeps * 2 + player.bosses * 20 + player.deaths * -15
+        if hero then
+            player.rating = player.rating + hero:GetLevel() * 30
+        end
+        --print(player.rating,PlayerResource:GetPlayerName(player:GetPlayerID()))       
+    end 
+    table.sort(tPlayersTop,function(a,b) return a.rating < b.rating end)
+    return LiA.DeltaTime
+end
+
+
+function LiA:OnPlayerPickHero(keys)
+    print("OnPlayerPickHero")
+    local player = PlayerResource:GetPlayer(keys.player-1) 
+    local hero = EntIndexToHScript(keys.heroindex)
+    table.insert(tHeroes, hero)
+    nHeroCount = nHeroCount + 1
+    player:SetTeam(DOTA_TEAM_GOODGUYS)
+    PlayerResource:UpdateTeamSlot(player:GetPlayerID(), DOTA_TEAM_GOODGUYS,true)
+    hero:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:SetGold(keys.player-1, 0, false) 
-    giveUnitDataDrivenModifier(hero, hero, "modifier_hero",-1)
+    --giveUnitDataDrivenModifier(hero, hero, "modifier_hero",-1)
     if PlayerResource:HasRandomed(keys.player-1) then
         hero:SetGold(150,true)
     else
@@ -130,21 +168,24 @@ function LiA:onHeroPick(keys)
     end
 end
 
-function LiA:onGameStateChange()  
+function LiA:OnGameStateChange()  
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         StartWaves()
     end
 end
 
 function OnHeroDeath(keys)
-    ownerHero = keys.unit:GetPlayerOwner()
-    Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end)
+    print("OnHeroDeath")
+    local hero = EntIndexToHScript(keys.entindex_killed)
+    local ownerHero = hero:GetPlayerOwner()
+    local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
+    Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     if IsDuel then
-        Timers:CreateTimer(1,function() EndDuel(keys.attacker:GetPlayerOwner()) return nil end)
+        EndDuel(ownerAtt)
     else
         ownerHero.deaths = ownerHero.deaths + 1
         nDeathHeroes = nDeathHeroes + 1
-        if nDeathHeroes == HeroList:GetHeroCount() then
+        if nDeathHeroes == nHeroCount then
             GameRules:SetCustomVictoryMessage("#lose_message")
             GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
             --GameRules:ResetToHeroSelection()
@@ -152,9 +193,12 @@ function OnHeroDeath(keys)
     end
 end
 
-function LiA:onEntityKilled(keys)
+function LiA:OnEntityKilled(keys)
     local ent = EntIndexToHScript(keys.entindex_killed)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
+    if ent:IsRealHero() then
+        OnHeroDeath(keys)
+    end
     if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then    
         nDeathCreeps = nDeathCreeps + 1
         if ownerAtt ~= nil then
@@ -169,7 +213,7 @@ function LiA:onEntityKilled(keys)
             PopupNumbers(ownerAtt ,ent, "gold", Vector(0,255,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
         end
     end
-    if nDeathCreeps == WAVE_MAX_COUNT[nPlayers] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
+    if nDeathCreeps == WAVE_MAX_COUNT[nHeroCount] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
         Timers:CreateTimer(1,function() LiA._EndWave() return nil end)
     end
 end
@@ -187,12 +231,11 @@ end
 
 
 function LiA:SpawnWave()  
-    nPlayers = CalcPlayers()
     print(nPlayers,"players")
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     local creepName = tostring(WAVE_NUM).."_wave_creep"
-    for i = 1, WAVE_SPAWN_COUNT[nPlayers] do
+    for i = 1, WAVE_SPAWN_COUNT[nHeroCount] do
         CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
         CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     end
@@ -292,7 +335,7 @@ function LiA:_EndWave()
     if WAVE_NUM % 5 == 1 then  --телепорт героев с арены после мегабосса
         LiA.TeleportWithoutArena()
     end
-    if WAVE_NUM % 3 == 1 and not IsDuelOccured and CalcPlayers() > 1 then --проверка могут ли начаться дуэли
+    if WAVE_NUM % 3 == 1 and not IsDuelOccured and nHeroCount > 1 then --проверка могут ли начаться дуэли
         print("EndWave:Duels started")
         StartDuels()
     else
@@ -311,7 +354,7 @@ function LiA:_EndWave()
         end
         Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
         IsDuelOccured = false
-        GoldAdd = WAVE_SPAWN_COUNT[CalcPlayers()] / CalcPlayers() * GOLD_PER_WAVE[WAVE_NUM]
+        GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
             local player = hero:GetPlayerOwner()
             hero:ModifyGold(GoldAdd, true, DOTA_ModifyGold_Unspecified)
@@ -359,6 +402,16 @@ function LiA:TeleportWithoutArena() --Телепорт с арены
 
 end
 
+function GetPlayerToDuel()
+    for i = 1, #tPlayersTop do
+        if not tPlayersTop[i].IsDisconnect and tPlayersTop[i]:GetAssignedHero() and tPlayersTop[i].IsDueled then
+            tPlayersTop[i].IsDueled = true
+            return tPlayersTop[i]
+        end
+    end
+    return nil 
+end
+
 function StartDuels()
     DuelNumber = 1
     Timers:CreateTimer(PRE_DUEL_TIME,function()
@@ -367,12 +420,32 @@ function StartDuels()
         DoWithAllHeroes(function(hero)
             giveUnitDataDrivenModifier(hero, hero, "modifier_stun",-1)
         end)
-        --GameRules:SendCustomMessage("#lia_duel <br>".."#lia_Player"..PlayerResource:GetPlayerName(PLAYER_PLACE[1]:GetPlayerID()).."#lia_duel_vs"..PlayerResource:GetPlayerName(PLAYER_PLACE[2]:GetPlayerID()), DOTA_TEAM_GOODGUYS, 0)
-        Duel(PLAYER_PLACE[1],PLAYER_PLACE[2])
-        print("firstPlayer",PLAYER_PLACE[1])
-        print("secondPlayer",PLAYER_PLACE[2])
+        local firstPlayer = GetPlayerToDuel()
+        local secondPlayer = GetPlayerToDuel()
+        if firstPlayer and secondPlayer then
+            Duel(firstPlayer,secondPlayer)
+        else
+            EndDuels()
+        end
+        print("firstPlayer",firstPlayer)
+        print("secondPlayer",secondPlayer)
     end)
 end
+
+function EndDuels()
+    print(DuelNumber,"end duels")
+    IsDuel = false
+    IsDuelOccured = true
+    for i = 1, #tPlayersTop do
+        tPlayersTop[i].IsDueled = false
+    end
+    WAVE_NUM = WAVE_NUM - 1
+    DoWithAllHeroes(function(hero)
+        hero:RemoveModifierByName("modifier_stun")
+    end)
+    LiA:_EndWave()
+end
+
 
 function Duel(player1, player2)
     HeroOnDuel1 = player1:GetAssignedHero() 
@@ -385,8 +458,9 @@ function Duel(player1, player2)
     HeroOnDuel2:SetForwardVector(Vector(0,-1,0))
     FindClearSpaceForUnit(HeroOnDuel1, ARENA_TELEPORT_COORD_BOT, false) 
     FindClearSpaceForUnit(HeroOnDuel2, ARENA_TELEPORT_COORD_TOP, false) 
-    PlayerResource:SetCustomTeamAssignment(player2:GetPlayerID(), 7)
-    HeroOnDuel2:SetTeam(7)
+    player2:SetTeam(DOTA_TEAM_BADGUYS)
+    HeroOnDuel2:SetTeam(DOTA_TEAM_BADGUYS)
+    PlayerResource:UpdateTeamSlot(player2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
     HeroOnDuel1:Heal(9999,HeroOnDuel1)
     HeroOnDuel2:Heal(9999,HeroOnDuel2)
     HeroOnDuel1:GiveMana(9999)
@@ -414,7 +488,19 @@ function Duel(player1, player2)
     end)
 end
 
+function EndDuels()
+    print(DuelNumber,"end duels")
+    IsDuel = false
+    IsDuelOccured = true
+    WAVE_NUM = WAVE_NUM - 1
+    DoWithAllHeroes(function(hero)
+        hero:RemoveModifierByName("modifier_stun")
+    end)
+    LiA:_EndWave()
+end
+
 function EndDuel(winner)
+    print("winner",winner)
     if winner ~= nil then
         Timers:RemoveTimer("duelExpireTime")
         local heroWin = winner:GetAssignedHero()
@@ -423,12 +509,8 @@ function EndDuel(winner)
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         heroWin:Stop()
         FindClearSpaceForUnit(heroWin, heroWin.abs, false) 
-        PlayerResource:SetCustomTeamAssignment(HeroOnDuel2:GetPlayerOwnerID(), DOTA_TEAM_GOODGUYS)
-        HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)   
         --GameRules:SendCustomMessage("#lia_Player"..PlayerResource:GetPlayerName(winner:GetPlayerID()).."#lia_duel_win", DOTA_TEAM_GOODGUYS, 0)
     else
-        PlayerResource:SetCustomTeamAssignment(HeroOnDuel2:GetPlayerOwnerID(), DOTA_TEAM_GOODGUYS)
-        HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)   
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
         HeroOnDuel1:Heal(9999,HeroOnDuel1)
@@ -437,21 +519,24 @@ function EndDuel(winner)
         HeroOnDuel2:GiveMana(9999)
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
+    HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
+    HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerOwner():GetPlayerID(), DOTA_TEAM_GOODGUYS,true)     
     giveUnitDataDrivenModifier(HeroOnDuel1, HeroOnDuel1, "modifier_stun",999)
     giveUnitDataDrivenModifier(HeroOnDuel2, HeroOnDuel2, "modifier_stun",999)
-    if DuelNumber < math.floor(CalcPlayers() / 2) then
+    if DuelNumber < math.floor(nPlayers / 2) then
         DuelNumber = DuelNumber + 1
         print(DuelNumber,"next duel")
-        --GameRules:SendCustomMessage("#lia_duel_next <br>".."#lia_Player"..PlayerResource:GetPlayerName(PLAYER_PLACE[DuelNumber*2-1]:GetPlayerID()).."#lia_duel_vs"..PlayerResource:GetPlayerName(PLAYER_PLACE[DuelNumber*2]:GetPlayerID()), DOTA_TEAM_GOODGUYS, 0)
-        Duel(PLAYER_PLACE[DuelNumber*2-1],PLAYER_PLACE[DuelNumber*2])
+        local firstPlayer = GetPlayerToDuel()
+        local secondPlayer = GetPlayerToDuel()
+        if firstPlayer and secondPlayer then
+            Duel(firstPlayer,secondPlayer)
+        else
+            EndDuels()
+        end
+        print("firstPlayer",firstPlayer)
+        print("secondPlayer",secondPlayer)
     else
-        print(DuelNumber,"end duels")
-        IsDuel = false
-        IsDuelOccured = true
-        WAVE_NUM = WAVE_NUM - 1
-        DoWithAllHeroes(function(hero)
-            hero:RemoveModifierByName("modifier_stun")
-        end)
-        LiA:_EndWave()
+        EndDuels()
     end
 end

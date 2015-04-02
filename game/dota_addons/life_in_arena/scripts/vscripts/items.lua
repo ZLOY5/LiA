@@ -92,6 +92,9 @@ function Heal(event)
     if event.caster:GetHealthPercent() ~= 100 then
         event.caster:Heal(event.heal_amount, event.caster)
         event.ability:SetCurrentCharges(event.ability:GetCurrentCharges()-1)
+        if event.ability:GetCurrentCharges() == 0 then
+            event.caster:RemoveItem(event.ability)
+        end
     else
         FireGameEvent( 'custom_error_show', { player_ID = event.caster:GetPlayerOwnerID(), _error = "#lia_hud_error_heal_potion_full_hp" } )
         event.ability:EndCooldown()
@@ -103,6 +106,9 @@ function ReplenishMana(event)
     if event.caster:GetManaPercent() ~= 100 then
         event.caster:GiveMana(event.mana_amount)
         event.ability:SetCurrentCharges(event.ability:GetCurrentCharges()-1)
+        if event.ability:GetCurrentCharges() == 0 then
+            event.caster:RemoveItem(event.ability)
+        end
     else
         FireGameEvent( 'custom_error_show', { player_ID = event.caster:GetPlayerOwnerID(), _error = "#lia_hud_error_mana_potion_full_mana" } )
         event.ability:EndCooldown()
