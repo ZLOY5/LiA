@@ -2877,6 +2877,74 @@
 	//End of file item_lia_magic_necklace.txt
 
 
+	//Start of file item_lia_magic_staff.txt
+	"item_recipe_lia_magic_staff"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1420"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"300"	
+		"ItemShopTags"					"int"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_magic_staff"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_staff;item_lia_staff;item_lia_mask"
+		}
+	}
+	
+	"item_lia_magic_staff"
+	{
+		"ID"							"1421"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"770"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_magic_staff"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"item_magic_staff_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
+			    }  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "24"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana_regen_percentage" "40"
+			}
+	
+		}
+	}
+	//End of file item_lia_magic_staff.txt
+
+
 	//Start of file item_lia_mana_elixir.txt
 	"item_lia_mana_elixir"
 	{
