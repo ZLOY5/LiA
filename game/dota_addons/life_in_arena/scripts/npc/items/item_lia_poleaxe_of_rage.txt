@@ -1,0 +1,176 @@
+"item_recipe_lia_poleaxe_of_rage"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1421"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"600"	
+	"ItemShopTags"					"int"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_poleaxe_of_rage"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_fire_sword;item_lia_fire_sword"
+	}
+}
+
+"item_lia_poleaxe_of_rage"
+{
+	"ID"							"1422"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"1380"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"common"
+	"AbilityTextureName"			"item_lia_poleaxe_of_rage"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	
+
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"16.0"
+	"AbilityManaCost"				"90"
+	
+		"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"			"CASTER"
+			"ModifierName"		"modifier_item_poleaxe_of_rage_berserk"
+		}
+		
+		"FireSound"
+		{
+			"EffectName"		"DOTA_Item.MaskOfMadness.Activate"
+			"Target"			"CASTER"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"item_poleaxe_of_rage_stat_modifier"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+		    }  
+			
+						"OnAttackStart"
+					{
+						"RemoveModifier"
+						{
+							"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
+							"Target" "CASTER"
+						}
+						"Random"
+						{
+							"Chance" "%crit_chance"
+							"OnSuccess"
+							{
+								"ApplyModifier"
+								{
+									"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
+									"Target"    "CASTER"    
+								}        
+							}
+						}
+					}
+		}
+		
+			"modifier_item_lia_poleaxe_of_rage_crit"
+			{
+				"IsHidden"  "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+				}
+
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"  "modifier_item_lia_poleaxe_of_rage_crit"
+						"Target"    "CASTER"    
+					}
+
+					// Basic blood particle effect
+					"FireEffect"
+					{
+					"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
+					}
+				}
+			}
+		
+				"modifier_item_poleaxe_of_rage_berserk"
+		{
+			"Duration"			"%berserk_duration"
+			"Passive"			"0"
+			"IsHidden"			"0"
+			
+			"EffectName"			"particles/items2_fx/mask_of_madness.vpcf"
+			"EffectAttachType"		"follow_origin"
+				
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%berserk_bonus_movement_speed_percentage"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%berserk_bonus_attack_speed"
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"		"%berserk_extra_incoming_damage_percentage"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage" "40"
+		}
+	
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"crit_chance" "25"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_mult"					"220"
+		}
+		"04"
+		{
+			"var_type"										"FIELD_INTEGER"
+			"berserk_bonus_attack_speed"					"250"
+		}
+		"05"
+		{
+			"var_type"										"FIELD_INTEGER"
+			"berserk_bonus_movement_speed_percentage"		"20"
+		}
+		"06"
+		{
+			"var_type"										"FIELD_INTEGER"
+			"berserk_extra_incoming_damage_percentage"		"10"
+		}
+		"07"
+		{
+			"var_type"										"FIELD_FLOAT"
+			"berserk_duration"								"8.0"
+		}
+
+	}
+}
