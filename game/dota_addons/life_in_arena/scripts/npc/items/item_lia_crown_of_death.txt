@@ -1,0 +1,93 @@
+"item_recipe_lia_crown_of_death"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1425"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"200"	
+	"ItemShopTags"					"int"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_crown_of_death"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_runed_bracers;item_lia_amulet"
+	}
+}
+
+"item_lia_crown_of_death"
+{
+	"ID"							"1426"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"540"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"common"
+	"AbilityTextureName"			"item_lia_crown_of_death"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+	"AbilityCastRange"				"500"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"12.0"
+	"AbilityManaCost"				"80"
+	
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"		"items/item_crown_of_death.lua"
+			"Function"			"item_crown_of_death_datadriven_on_spell_start"
+			"Damage"			"%damage"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_crown_of_death_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_magic_resist_percentage"			"25"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_health" "200"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"275"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"range_tooltip"			"500"
+		}
+	}
+}
