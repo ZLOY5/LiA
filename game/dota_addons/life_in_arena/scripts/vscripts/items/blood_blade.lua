@@ -23,7 +23,7 @@ function OnSpellStart(event)
 									false)
     for _, unit in pairs(units) do 
     	if unit:IsAlive() and unit:GetHealthPercent() >= 50 then
-    		damageTable.damage = unit:GetMaxHealth() * event.stealperc
+    		damageTable.damage = unit:GetMaxHealth() * event.stealperc * 0.01
     		damageTable.victim = unit
     		heal_amount = heal_amount + ApplyDamage(damageTable)
     	end
