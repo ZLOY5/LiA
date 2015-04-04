@@ -160,7 +160,6 @@ function LiA:OnPlayerPickHero(keys)
     PlayerResource:UpdateTeamSlot(player:GetPlayerID(), DOTA_TEAM_GOODGUYS,true)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:SetGold(keys.player-1, 0, false) 
-    --giveUnitDataDrivenModifier(hero, hero, "modifier_hero",-1)
     if PlayerResource:HasRandomed(keys.player-1) then
         hero:SetGold(150,true)
     else
@@ -198,6 +197,13 @@ function LiA:OnEntityKilled(keys)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
     if ent:IsRealHero() then
         OnHeroDeath(keys)
+        return
+    elseif ent:HasAttribute("FirstStage") then
+        OnFirstStageDeath(keys)
+        return
+    elseif ent:HasAttribute("SecondStage") then
+        OnSecondStageDeath(keys)   
+        return
     end
     if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then    
         nDeathCreeps = nDeathCreeps + 1
@@ -269,7 +275,6 @@ end
 
 function OnFirstStageDeath(event) --когда умирают боссы первой стадии финального босса
     FinalBossStageDeath = FinalBossStageDeath + 1
-    print(FinalBossStageDeath)
     if FinalBossStageDeath == 15 then
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
@@ -297,8 +302,8 @@ function OnOrnDamaged(event)
         FinalBossStageDeath = 0
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 10 then
-                local unit = CreateUnitByNam("orn_mutant", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-                giveUnitDataDrivenModifier(unit, unit, "modifier_secondstage",-1)
+                local unit = CreateUnitByName("orn_mutant", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                unit:Attribute_SetIntValue("SecondStage",1)
                 FinalBossStageCounter = FinalBossStageCounter + 1
                 return 2
             else
@@ -314,11 +319,13 @@ function OnOrnDamaged(event)
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 19 then
                 if FinalBossStageCounter % 5 == 0 then
-                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                    unit:Attribute_SetIntValue("FirstStage",1)
                 else
-                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                    unit:Attribute_SetIntValue("FirstStage",1)
+
                 end
-                giveUnitDataDrivenModifier(unit, unit, "modifier_firststage",-1)
                 FinalBossStageCounter = FinalBossStageCounter + 1
                 return 2
             else
