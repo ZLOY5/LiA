@@ -23,6 +23,7 @@ nPlayers = 0
 nHeroCount    = 0
 nDeathHeroes  = 0    -- мертвых героев
 nDeathCreeps  = 0    --         крипов
+FinalBossStageDeath = 0
 
 IsDuelOccured = false
 IsDuel        = false
@@ -115,7 +116,7 @@ function LiA:OnConnectFull(event)
     FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = player.lumber })
     table.insert(tPlayersTop, player)
     nPlayers = nPlayers + 1
-
+    
 end
 
 function LiA:OnDisconnect(event)
@@ -154,6 +155,7 @@ function LiA:OnPlayerPickHero(keys)
     print("OnPlayerPickHero")
     local player = PlayerResource:GetPlayer(keys.player-1) 
     local hero = EntIndexToHScript(keys.heroindex)
+    
     table.insert(tHeroes, hero)
     nHeroCount = nHeroCount + 1
     player:SetTeam(DOTA_TEAM_GOODGUYS)
@@ -298,7 +300,7 @@ function OnOrnDamaged(event)
         FinalBossStage2 = true
         giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_hide",-1)
         uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
-        FinalBossStageCounter = 0 
+        FinalBossStageCounter = 1 
         FinalBossStageDeath = 0
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 10 then
