@@ -269,6 +269,7 @@ end
 
 function OnFirstStageDeath(event) --когда умирают боссы первой стадии финального босса
     FinalBossStageDeath = FinalBossStageDeath + 1
+    print(FinalBossStageDeath)
     if FinalBossStageDeath == 15 then
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
@@ -379,32 +380,21 @@ function LiA:TeleportToArena() --Телепорт на арену
         hero:Heal(9999,hero)
         hero:GiveMana(9999)
         giveUnitDataDrivenModifier(hero, hero, "modifier_stun",5)
-        PlayerResource:SetCameraTarget(hero:GetPlayerID(), hero) --перемещаем камеру игрока на арену
+        SetCameraToPosForAll(ARENA_CENTER_COORD) 
 	end)  
-    Timers:CreateTimer(3,function() --через несколько секунд камеру "отцепляем" 
-        DoWithAllHeroes(function(hero)
-           PlayerResource:SetCameraTarget(hero:GetPlayerID() ,nil)    
-        end)
-    end)
 end
 
 function LiA:TeleportWithoutArena() --Телепорт с арены
     DoWithAllHeroes(function(hero)
         hero:Stop()
         FindClearSpaceForUnit(hero, hero.abs, false)
-        PlayerResource:SetCameraTarget(hero:GetPlayerID(), hero) --перемещаем камеру игрока к юниту   
+        SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero.abs) 
     end)
-    Timers:CreateTimer(2,function() --через время камеру "отцепляем" от героя
-        DoWithAllHeroes(function(hero)
-           PlayerResource:SetCameraTarget(hero:GetPlayerID() ,nil)    
-        end)
-    end)
-
 end
 
 function GetPlayerToDuel()
     for i = 1, #tPlayersTop do
-        if not tPlayersTop[i].IsDisconnect and tPlayersTop[i]:GetAssignedHero() and tPlayersTop[i].IsDueled then
+        if not tPlayersTop[i].IsDisconnect and tPlayersTop[i]:GetAssignedHero() and not tPlayersTop[i].IsDueled then
             tPlayersTop[i].IsDueled = true
             return tPlayersTop[i]
         end
@@ -424,6 +414,7 @@ function StartDuels()
         local secondPlayer = GetPlayerToDuel()
         if firstPlayer and secondPlayer then
             Duel(firstPlayer,secondPlayer)
+            SetCameraToPosForAll(ARENA_CENTER_COORD) 
         else
             EndDuels()
         end
@@ -442,6 +433,7 @@ function EndDuels()
     WAVE_NUM = WAVE_NUM - 1
     DoWithAllHeroes(function(hero)
         hero:RemoveModifierByName("modifier_stun")
+        SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero:GetAbsOrigin())
     end)
     LiA:_EndWave()
 end
@@ -516,7 +508,7 @@ function EndDuel(winner)
     giveUnitDataDrivenModifier(HeroOnDuel2, HeroOnDuel2, "modifier_stun",999)
     if DuelNumber < math.floor(nPlayers / 2) then
         DuelNumber = DuelNumber + 1
-        print(DuelNumber,"next duel")
+        print("next duel", DuelNumber)
         local firstPlayer = GetPlayerToDuel()
         local secondPlayer = GetPlayerToDuel()
         if firstPlayer and secondPlayer then

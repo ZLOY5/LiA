@@ -1,6 +1,7 @@
 require('LiA_GameMode')
 require('LiA_Common')
 require('timers')
+require('consolecommands')
 
 function Precache( context )
 end

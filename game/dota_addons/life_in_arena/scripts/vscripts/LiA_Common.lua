@@ -108,3 +108,16 @@ function giveUnitDataDrivenModifier(source, target, modifier,dur)
     local item = CreateItem( "item_apply_modifiers", source, source)
     item:ApplyDataDrivenModifier( source, target, modifier, {duration=dur} )
 end
+
+function SetCameraToPosForAll(vector) 
+	ConsoleCommands:SendToAll("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
+	print("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
+end
+
+function SetCameraToPosForPlayer(player,vector)
+	if type(player) == "number" then
+		ConsoleCommands:SendToPlayer(player,"dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
+	else
+		ConsoleCommands:SendToPlayer(player:GetPlayerID(),"dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
+	end
+end

@@ -41,8 +41,7 @@
 		"ApplyModifier"
 		{
 			"Target"		"CASTER"
-			"ModifierName"	"item_blade_of_rage_str_abi_modifier"	
-			"Duration"		"%duration"
+			"ModifierName"	"modifier_item_blade_of_rage_str"	
 		}
 	}
 	"Modifiers"
@@ -59,8 +58,9 @@
 		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
 		    }  
 		}
-		"item_blade_of_rage_str_abi_modifier"
+		"modifier_item_blade_of_rage_str"
 		{
+			"Duration"		"%duration"
 			"IsBuff"		"1"
 			"OnCreated"
 			{	
