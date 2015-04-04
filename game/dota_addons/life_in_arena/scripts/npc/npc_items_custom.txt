@@ -3610,7 +3610,7 @@
 		"ItemDroppable" 				"1"
 		"ItemSellable"                  "1"
 		"ItemPurchasable"		 		"1"
-		"ItemQuality"					"common"
+		"ItemQuality"					"rare"
 		"AbilityTextureName"			"item_lia_poleaxe_of_rage"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		
@@ -3619,7 +3619,7 @@
 		"AbilityCooldown"				"16.0"
 		"AbilityManaCost"				"90"
 		
-			"OnSpellStart"
+		"OnSpellStart"
 		{
 			"ApplyModifier"
 			{
@@ -3646,55 +3646,55 @@
 			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
 			    }  
 				
-							"OnAttackStart"
+				"OnAttackStart"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
+						"Target" "CASTER"
+					}
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"OnSuccess"
 						{
-							"RemoveModifier"
+							"ApplyModifier"
 							{
 								"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
-								"Target" "CASTER"
-							}
-							"Random"
-							{
-								"Chance" "%crit_chance"
-								"OnSuccess"
-								{
-									"ApplyModifier"
-									{
-										"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
-										"Target"    "CASTER"    
-									}        
-								}
-							}
-						}
-			}
-			
-				"modifier_item_lia_poleaxe_of_rage_crit"
-				{
-					"IsHidden"  "1"
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-					}
-	
-					"OnAttackLanded"
-					{
-						"RemoveModifier"
-						{
-							"ModifierName"  "modifier_item_lia_poleaxe_of_rage_crit"
-							"Target"    "CASTER"    
-						}
-	
-						// Basic blood particle effect
-						"FireEffect"
-						{
-						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-							"EffectAttachType"  "follow_origin"
-							"Target"    "TARGET"
+								"Target"    "CASTER"    
+							}        
 						}
 					}
 				}
+			}
 			
-					"modifier_item_poleaxe_of_rage_berserk"
+			"modifier_item_lia_poleaxe_of_rage_crit"
+			{
+				"IsHidden"  "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+				}
+	
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"  "modifier_item_lia_poleaxe_of_rage_crit"
+						"Target"    "CASTER"    
+					}
+	
+					// Basic blood particle effect
+					"FireEffect"
+					{
+						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
+					}
+				}
+			}
+		
+			"modifier_item_poleaxe_of_rage_berserk"
 			{
 				"Duration"			"%berserk_duration"
 				"Passive"			"0"
@@ -3799,8 +3799,7 @@
 			"ApplyModifier"
 			{
 				"Target"		"CASTER"
-				"ModifierName"	"item_blade_of_rage_agi_abi_modifier"	
-				"Duration"		"%duration"
+				"ModifierName"	"modifier_item_blade_of_rage_agi"	
 			}
 		}
 		"Modifiers"
@@ -3817,9 +3816,9 @@
 			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
 			    }  
 			}
-			"item_blade_of_rage_agi_abi_modifier"
+			"modifier_item_blade_of_rage_agi"
 			{
-				"IsHidden"      "0"
+				"Duration"		"%duration"
 				"IsBuff"		"1"
 				"OnCreated"
 				{
@@ -3917,8 +3916,7 @@
 			"ApplyModifier"
 			{
 				"Target"		"CASTER"
-				"ModifierName"	"item_blade_of_rage_str_abi_modifier"	
-				"Duration"		"%duration"
+				"ModifierName"	"modifier_item_blade_of_rage_str"	
 			}
 		}
 		"Modifiers"
@@ -3935,8 +3933,9 @@
 			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
 			    }  
 			}
-			"item_blade_of_rage_str_abi_modifier"
+			"modifier_item_blade_of_rage_str"
 			{
+				"Duration"		"%duration"
 				"IsBuff"		"1"
 				"OnCreated"
 				{	
