@@ -1298,7 +1298,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_blocked"			"50"
+				"damage_blocked"			"50 70"
 			}
 		}
 		
@@ -4283,6 +4283,173 @@
 	}
 	
 	//End of file item_lia_runed_gloves.txt
+
+
+	//Start of file item_lia_shield_of_death.txt
+	"item_recipe_lia_shield_of_death"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1427"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"440"	
+		"ItemShopTags"					"hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_shield_of_death"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_crown_of_death;item_lia_amulet"
+		}
+	}
+	
+	"item_lia_shield_of_death"
+	{
+		"ID"							"1428"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1100"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_shield_of_death"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		
+	
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"12.0"
+		"AbilityManaCost"				"180"
+		
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
+		}
+		
+		"OnSpellStart"
+		{
+	
+				"AttachEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"		"CASTER"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_shield_of_death_damage"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				}
+			}
+		
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_shield_of_death_armor"
+				"Target" "CASTER"
+			}		
+	
+			"Damage"
+			{
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				}
+				"Type"			"DAMAGE_TYPE_MAGICAL"
+				"Damage"		"%damage"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_shield_of_death_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
+				}
+			}
+			
+					"modifier_item_shield_of_death_damage"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+		
+		
+			}
+			
+					"modifier_item_shield_of_death_armor"
+			{
+				"Passive"				"0"
+				"IsHidden"				"0"
+				"IsBuff"				"1"
+				"IsDebuff"				"0"
+				"IsPurgable"			"1"
+				"TextureName"			"item_lia_shield_of_death"
+				"Duration"				"%duration"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_resist_percentage"			"30"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "450"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"350"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"			"500"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"active_armor"			"25"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"			"6.0"
+			}
+		}
+	}
+	//End of file item_lia_shield_of_death.txt
 
 
 	//Start of file item_lia_shield_of_endurance.txt

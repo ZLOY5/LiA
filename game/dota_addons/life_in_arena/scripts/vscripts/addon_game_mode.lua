@@ -119,5 +119,7 @@ function Precache( context )
 		PrecacheModel("models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.mdl", context)
 		PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context)	
 
-		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)				
+		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)		
+
+		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)		
 end
