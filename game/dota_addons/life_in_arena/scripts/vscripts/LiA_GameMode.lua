@@ -76,6 +76,21 @@ function LiA:InitGameMode()
     GameMode:SetThink("onThink", self)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
+
+
+    --[[Convars:RegisterCommand( "testElement", function(name, _element, _bool, _x, _y, _width, _height)
+        local cmdPlayer = Convars:GetCommandClient()
+        if cmdPlayer then 
+            FireGameEvent('testswf_test_element', { _element = _element, _bool = _bool, _x = _x, _y = _y, _width = _width, _height = _height } )
+        end
+    end, "Test valve element", 0 )
+
+    Convars:RegisterCommand( "testCmd", function(name, _cmd, _type, _value, _splice)
+        local cmdPlayer = Convars:GetCommandClient()
+        if cmdPlayer then 
+            FireGameEvent('testswf_test_cmd', { _cmd = _cmd, _type = _type, _value = _value, _splice = _splice } )
+        end
+    end, "Test valve element", 0 )]]
       
     --listeners
     ListenToGameEvent('entity_killed', Dynamic_Wrap(LiA, 'OnEntityKilled'), self)
@@ -155,7 +170,6 @@ function LiA:OnPlayerPickHero(keys)
     print("OnPlayerPickHero")
     local player = PlayerResource:GetPlayer(keys.player-1) 
     local hero = EntIndexToHScript(keys.heroindex)
-    
     table.insert(tHeroes, hero)
     nHeroCount = nHeroCount + 1
     player:SetTeam(DOTA_TEAM_GOODGUYS)
@@ -227,6 +241,7 @@ function LiA:OnEntityKilled(keys)
 end
 
 function StartWaves()
+    timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
     Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
         ShowCenterMessage("Wave #"..WAVE_NUM,5)
         return nil
@@ -285,7 +300,7 @@ end
 
 function OnSecondStageDeath(event) 
     FinalBossStageDeath = FinalBossStageDeath + 1
-    if FinalBossStageDeath == 10 then
+    if FinalBossStageDeath >= 10 then
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
     end
@@ -358,11 +373,13 @@ function LiA:_EndWave()
             else
                 message = "#lia_megaboss"
             end
+            timerPopup:Start(PRE_WAVE_TIME,message,WAVE_NUM)
         else --обычные волны
             Timers:CreateTimer( PRE_WAVE_TIME, function() LiA.SpawnWave() return nil end)
             message = "Wave #"..tostring(WAVE_NUM) --пока что только на одном языке
+            timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
         end
-        Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
+         Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
         IsDuelOccured = false
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
@@ -413,6 +430,7 @@ end
 
 function StartDuels()
     DuelNumber = 1
+    timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
     Timers:CreateTimer(PRE_DUEL_TIME,function()
         IsDuel = true
         TRIGGER_SHOP:Disable() 
@@ -473,6 +491,7 @@ function Duel(player1, player2)
         if DuelCounter == 0 then
             HeroOnDuel1:RemoveModifierByName("modifier_stun")
             HeroOnDuel2:RemoveModifierByName("modifier_stun")
+            timerPopup:Start(120,"#lia_expire_duel",0)
             Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
                 useGameTime = false,
                 endTime = 120,
@@ -492,7 +511,9 @@ end
 
 function EndDuel(winner)
     print("winner",winner)
+
     if winner ~= nil then
+        timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
         local heroWin = winner:GetAssignedHero()
         heroWin:ModifyGold(300-50*DuelNumber, true, DOTA_ModifyGold_Unspecified)
@@ -531,3 +552,4 @@ function EndDuel(winner)
         EndDuels()
     end
 end
+
