@@ -127,5 +127,8 @@ function Precache( context )
 		--Мифриловый Доспех
 		PrecacheResource("particle", "particles/units/heroes/hero_sven/sven_spell_warcry.vpcf", context)
 		PrecacheResource("particle", "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf", context)		
-		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts", context)			
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts", context)		
+		--Лунное Колье
+		PrecacheResource("particle", "particles/units/heroes/hero_luna/luna_eclipse.vpcf", context)		
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_luna.vsndevts", context)		
 end
