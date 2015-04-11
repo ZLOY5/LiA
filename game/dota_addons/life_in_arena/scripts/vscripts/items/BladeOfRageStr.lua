@@ -1,5 +1,5 @@
 function OnCreatedModifier(event)
-	local strAdd = event.caster:GetStrength()*event.str_percent*0.01
+	local strAdd = event.caster:GetBaseStrength()*event.str_percent*0.01
 	event.caster:ModifyStrength(strAdd)
 	event.caster:CalculateStatBonus()
 	event.ability.strAdd = strAdd

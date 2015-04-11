@@ -46,11 +46,16 @@
 	"precache"
 	{
 		"particle"			"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
 	}
 	
 	"OnSpellStart"
 	{
-
+		"FireSound"
+		{
+			"EffectName"	"Hero_Invoker.EMP.Discharge"
+			"Target"		"CASTER"
+		}
 			"AttachEffect"
 		{
 			"EffectName"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
@@ -147,7 +152,7 @@
 		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"radius"			"500"
+			"radius"			"200"
 		}
 		"05"
 		{

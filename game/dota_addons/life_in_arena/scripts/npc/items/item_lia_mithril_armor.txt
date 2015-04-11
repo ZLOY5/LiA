@@ -1,0 +1,172 @@
+"item_recipe_lia_mithril_armor"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1429"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"250"	
+	"ItemShopTags"					"health;armor;hard_to_tag"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_mithril_armor"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_dwarf_armor;item_lia_ring_of_protection;item_lia_ring_of_protection"
+	}
+}
+
+
+
+"item_lia_mithril_armor"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"1430"  //Valve's version of this item uses the ID "135".
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+	"Model"							"models/props_gameplay/red_box.vmdl" 
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_lia_mithril_armor"
+	
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+		"particle"			"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+		"particle"			"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+	}
+
+	"AbilityCooldown"				"14.0"
+
+	"AbilityManaCost"				"80"	
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1045"
+	"ItemShopTags"					"health;armor;hard_to_tag"
+	"ItemQuality"					"epic"
+	"ItemAliases"					"basher"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"	"16"
+		}
+
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_health" "250"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_blocked"			"45"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"500"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"5.0"
+		}
+	}
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Sven.Warcry"
+			"Target" 		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+			"EffectAttachType"  "start_at_customorigin"
+
+			"ControlPointEntities"
+			{
+				"CASTER"	"follow_origin"
+				"CASTER"	"follow_origin"
+				"CASTER"	"follow_origin"
+			}
+		}
+
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_beserkers_call_enemy_datadriven"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_item_lia_mithril_armor"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
+			}
+			
+			
+		}
+
+		"modifier_beserkers_call_enemy_datadriven"
+		{
+			"IsPurgable"		"0"
+			"IsDebuff"			"1"
+
+			"StatusEffectName" 		"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf" 	   
+			"StatusEffectPriority"  "10"
+
+			"ThinkInterval"  "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/mithril_armor.lua"
+					"Function"		"Taunt"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/mithril_armor.lua"
+					"Function"		"TauntEnd"
+				}
+			}
+		}
+	}
+}

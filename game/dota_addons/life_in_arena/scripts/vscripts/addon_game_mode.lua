@@ -120,6 +120,12 @@ function Precache( context )
 		PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context)	
 
 		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)		
-
-		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)		
+		
+		--Щит Смерти
+		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts", context)		
+		--Мифриловый Доспех
+		PrecacheResource("particle", "particles/units/heroes/hero_sven/sven_spell_warcry.vpcf", context)
+		PrecacheResource("particle", "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf", context)		
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts", context)			
 end
