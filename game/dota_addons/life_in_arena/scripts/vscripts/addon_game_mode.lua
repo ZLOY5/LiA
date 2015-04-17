@@ -132,4 +132,11 @@ function Precache( context )
 		--Лунное Колье
 		PrecacheResource("particle", "particles/units/heroes/hero_luna/luna_eclipse.vpcf", context)		
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_luna.vsndevts", context)		
+		--Перчатки Огня
+		PrecacheResource("particle", "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf", context)		
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts", context)		
+		--Посох Помощи
+		PrecacheResource("particle", "particles/custom/dazzle_shadow_wave_copy.vpcf", context)
+		PrecacheResource("particle", "particles/custom/dazzle_shadow_wave.vpcf", context)		
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts", context)			
 end

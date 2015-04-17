@@ -1,0 +1,357 @@
+"item_recipe_lia_fire_gloves"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1433"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"350"	
+	"ItemShopTags"					"mana;hard_to_tag"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_fire_gloves"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_runed_gloves;item_lia_mana_stone"
+	}
+}
+
+"item_recipe_lia_fire_gloves_2"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1434"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"0"	
+	"ItemShopTags"					"mana;hard_to_tag"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_fire_gloves_2"
+	"ItemRequirements"
+	{
+		"01"						"item_recipe_lia_fire_gloves;item_lia_fire_gloves"
+	}
+}
+
+"item_lia_fire_gloves"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"1435"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"Model"							"models/props_gameplay/red_box.vmdl" 
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_lia_fire_gloves"
+	
+	"UpgradesItems"					"item_lia_fire_gloves;item_lia_fire_gloves_2"
+	"UpgradeRecipe"					"item_recipe_lia_fire_gloves"
+	
+	"MaxUpgradeLevel"				"2"
+	"ItemBaseLevel"					"1"
+	
+
+
+	"AbilityCastRange"				"220"
+
+	"AbilityManaCost"				"20 30"
+
+	"precache"
+	{
+		"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+		"particle" "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+	}
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"695"
+	"ItemShopTags"					"mana;hard_to_tag"
+	"ItemQuality"					"epic"
+	"ItemAliases"					"basher"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana"	"350 500"
+		}
+
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage" "30 50"
+		}
+
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_attack_speed"			"30 45"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_per_second"		"80 100"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_cost_per_second"	"10 15"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"220"
+		}
+	}
+			"OnToggleOn"
+			{
+				"ApplyModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_immolation"
+				}
+				"FireSound"
+				{
+					"EffectName"		"Hero_EmberSpirit.FlameGuard.Cast"
+					"Target"			"CASTER"
+				}
+			}
+
+			"OnToggleOff"
+			{
+				"RemoveModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_immolation"
+				}
+			}	
+	"Modifiers"
+	{
+		"modifier_item_fire_gloves"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
+			}
+			
+
+		}
+		"modifier_immolation"
+		{	
+			"IsPassive"		"1"
+			"IsBuff"		"1"
+			"IsPurgable"	"0"
+			
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"				"TARGET"
+					"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+					"EffectAttachType"		"start_at_customorigin"
+					"ControlPointEntities"
+					{
+						"TARGET"			"attach_origin"
+						"TARGET"			"attach_origin"
+					}
+				}
+			}
+			
+			"ThinkInterval"		"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+    			{
+			        "ScriptFile"    "items/FireGloves.lua"
+			        "Function"      "Immolation"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"%radius"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				}
+			}
+		}
+	}
+}
+
+"item_lia_fire_gloves_2"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"1436"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"Model"							"models/props_gameplay/red_box.vmdl" 
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_lia_fire_gloves"
+	
+	"UpgradesItems"					"item_lia_fire_gloves;item_lia_fire_gloves_2"
+	"UpgradeRecipe"					"item_recipe_lia_fire_gloves"
+	
+	"MaxUpgradeLevel"				"2"
+	"ItemBaseLevel"					"2"
+	
+
+
+	"AbilityCastRange"				"220"
+
+	"AbilityManaCost"				"30"
+
+	"precache"
+	{
+		"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+		"particle" "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+	}
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1045"
+	"ItemShopTags"					"mana;hard_to_tag"
+	"ItemQuality"					"epic"
+	"ItemAliases"					"basher"
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana"	"500"
+		}
+
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage" "50"
+		}
+
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_attack_speed"			"45"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_per_second"		"100"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_cost_per_second"	"15"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"220"
+		}
+	}
+			"OnToggleOn"
+			{
+				"ApplyModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_immolation"
+				}
+				"FireSound"
+				{
+					"EffectName"		"Hero_EmberSpirit.FlameGuard.Cast"
+					"Target"			"CASTER"
+				}
+			}
+
+			"OnToggleOff"
+			{
+				"RemoveModifier"
+				{
+					"Target"			"CASTER"
+					"ModifierName"		"modifier_immolation"
+				}
+			}	
+	"Modifiers"
+	{
+		"modifier_item_fire_gloves_2"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
+			}
+			
+
+		}
+		"modifier_immolation"
+		{	
+			"IsPassive"		"1"
+			"IsBuff"		"1"
+			"IsPurgable"	"0"
+			
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"				"TARGET"
+					"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+					"EffectAttachType"		"start_at_customorigin"
+					"ControlPointEntities"
+					{
+						"TARGET"			"attach_origin"
+						"TARGET"			"attach_origin"
+					}
+				}
+			}
+			
+			"ThinkInterval"		"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+    			{
+			        "ScriptFile"    "items/FireGloves.lua"
+			        "Function"      "Immolation"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"%radius"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				}
+			}
+		}
+	}
+}

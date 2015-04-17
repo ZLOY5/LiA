@@ -27,10 +27,20 @@
 	   	"01"
 	   	{
 		    "var_type" "FIELD_INTEGER"
-		    "Range" "900"
+		    "radius" "900"
+	   	}
+		"02"
+	   	{
+		    "var_type" "FIELD_INTEGER"
+		    "regen_percent" "50"
+	   	}
+		"03"
+	   	{
+		    "var_type" "FIELD_INTEGER"
+		    "bonus_movement_speed_percent" "10"
 	   	}
   	}
- 
+
   	"Modifiers"
   	{
    		"horn_aura_Modifier"
@@ -52,8 +62,7 @@
 	    	
 	    	"Properties"
 	    	{
-	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "10"
-
+	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "bonus_movement_speed_percent"
 	    	}
 	    }
    	}

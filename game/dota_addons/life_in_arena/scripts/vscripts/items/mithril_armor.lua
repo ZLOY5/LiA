@@ -1,3 +1,5 @@
+
+--[[Based on Pizzalol's datadriven Berserker's Call]]
 function Taunt( keys )
 	local caster = keys.caster
 	local target = keys.target

@@ -2674,6 +2674,60 @@
 	//End of file dota_items_disable.txt
 
 
+	//Start of file dummy_passive.txt
+	"dummy_passive"
+	{
+		"BaseClass" 		"ability_datadriven"
+		"AbilityBehavior" 	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"dummy_modifier"
+			{
+				"Passive"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_MOVE_TO"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		   "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+	
+	"dummy_passive_vulnerable"
+	{
+		"BaseClass" 		"ability_datadriven"
+		"AbilityBehavior" 	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"dummy_modifier"
+			{
+				"Passive"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_MOVE_TO"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		   "MODIFIER_STATE_VALUE_ENABLED"	
+				}
+			}
+		}
+	}
+	//End of file dummy_passive.txt
+
+
 	//Start of file feryryryryr.txt
 	"feryryryryr"
 	  {
@@ -3262,6 +3316,77 @@
 	//End of file quenn_of_spiders_royal_vitality_datadriven.txt
 
 
+	//Start of file shaman_total_madness_datadriven.txt
+	"shaman_total_madness_datadriven" 
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	
+	   "AbilityCooldown"        "20.0 25.0 30.0"
+	   "AbilityManaCost"        "100"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.2"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                      "FIELD_FLOAT"
+	      "duration"                      "10 15 20"
+	    }
+	    "02"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "bonus_movespeed_percentage"    "20 40 60"
+	    }
+	    "03"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "bonus_attackspeed"             "50 100 150"
+	    }
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "total_madness_datadriven"
+	     "Target"         "CASTER"
+	     "Duration"       "%duration"
+	    }
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "total_madness_datadriven"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+	         
+	         "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
+	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
+	        }
+	      }
+	    }
+	  }
+	//End of file shaman_total_madness_datadriven.txt
+
+
 	//Start of file skeleton_thief_pact_with_death_datadriven.txt
 	"skeleton_thief_pact_with_death_datadriven"
 	  {
@@ -3331,6 +3456,195 @@
 	    }
 	  }
 	//End of file skeleton_thief_pact_with_death_datadriven.txt
+
+
+	//Start of file sorcerer_magic_splash_datadriven.txt
+	"sorcerer_magic_splash_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AoERadius"              "300"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	
+	
+	
+	     "OnSpellStart"
+	     {
+	         "RunScript"
+	             {
+	               "ScriptFile"      "heroes/Sorcerer/magic_splash.lua"
+	               "Function"        "check_order"
+	             }
+	     }
+	
+	  "Modifiers"
+	 {
+	   "modifier_inflicts"
+	   {
+	     "Passive"     "0"
+	     "IsHidden"    "1"
+	     "IsBuff"      "1"
+	     
+	     "OnCreated"
+	     {
+	       "Damage"
+	        {
+	          "Type"   "DAMAGE_TYPE_MAGICAL"
+	          "Damage" "1000"
+	          
+	      
+	        "Target"
+	          {
+	           "Center"    "CASTER"
+	           "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	           "Radius"    "300"
+	           "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	           }
+	        }
+	     }
+	   }
+	 }
+	}
+	//End of file sorcerer_magic_splash_datadriven.txt
+
+
+	//Start of file sorcerer_unholy_ritual_datadriven.txt
+	"sorcerer_unholy_ritual_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AoERadius"              "%radius"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  
+	  "AbilityCastPoint"        "0.3"
+	  "AbilityCooldown"         "60.0"
+	  "AbilityChannelTime"      "100"
+	   
+	
+	    "OnSpellStart"
+	     {
+	      "ApplyModifier"
+	       {
+	         "ModifierName"  "unholy_ritual_datadriven"
+	         "Target"        "CASTER"
+	       } 
+	     } 
+	     
+	
+	     "OnChannelInterrupted"
+	     {
+	       "RemoveModifier"
+	       {
+	         "ModifierName"  "unholy_ritual_datadriven"
+	         "Target"        "CASTER"
+	       }
+	     }
+	
+	
+	
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	
+	  "Modifiers"
+	  {
+	    
+	    "unholy_ritual_datadriven"
+	    {
+	      "Passive"       "0"
+	      "IsHidden"      "1"
+	      "IsBuff"        "1"
+	       
+	       "ThinkInterval"  "%tick_interval"
+	       
+	       "OnIntervalThink"
+	       {
+	         "RunScript"
+	         {
+	         "ScriptFile"  "heroes/Sorcerer/unholy_ritual.lua"
+	         "Function"    "Director"
+	
+	         "Radius"               "%radius"
+	         "Barrier_reduction"    "%barrier_reduction" 
+	         "Fee_per_teak"         "%fee_per_teak" 
+	         "Healing_per_teak"     "%healing_per_teak"
+	         }
+	       }
+	    }
+	    
+	    
+	    "modifier_invulnerability"
+	    {
+	      "Passive"       "0"
+	      "IsHidden"      "0"
+	      "IsBuff"        "1"
+	
+	      "Duration"     "%duration_invulnerable"
+	    
+	     "States"
+	      {
+	       "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	   "01"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "radius"                "300"
+	   }
+	   "02"
+	   {
+	     "var_type"              "FIELD_FLOAT"
+	     "tick_interval"         ".05"
+	   }
+	   "03"
+	   {
+	     "var_type"               "FIELD_FLOAT"
+	     "duration_invulnerable"  "3.0 6.0 9.0"
+	   }
+	   "04"
+	   {
+	     "var_type"               "FIELD_FLOAT"
+	     "barrier_reduction"      "2.7"
+	   }
+	   "05"
+	   {
+	     "var_type"               "FIELD_FLOAT"
+	     "fee_per_teak"           "2.5"
+	   }
+	   "06"
+	   {
+	     "var_type"               "FIELD_FLOAT"
+	     "healing_per_teak"       "2.5"
+	   }
+	  }
+	
+	}
+	//End of file sorcerer_unholy_ritual_datadriven.txt
 
 
 	//Start of file time_lord_death_datadriven.txt
