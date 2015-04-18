@@ -895,6 +895,187 @@
 	//End of file item_lia_boots.txt
 
 
+	//Start of file item_lia_boots_of_invisibility.txt
+	"item_recipe_lia_boots_of_invisibility"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1446"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"310"	
+		"ItemShopTags"					"damage;attack_speed"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_boots_of_invisibility"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_necklace;item_lia_boots"
+		}
+	}
+	
+	"item_lia_boots_of_invisibility"
+	{
+		"ID"							"1447"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"485"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_boots_of_invisibility"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"18.0"
+	
+		"AbilityManaCost"				"70"
+	
+		"precache"
+		{
+		  	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+		  	"particle"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
+		}
+		
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+				"EffectAttachType"	"attach_origin"
+			}
+	
+			"FireSound"
+			{
+				"Target"		"CASTER"
+				"EffectName"	"Hero_BountyHunter.WindWalk"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_invisible"
+				"Target"		"CASTER"
+				"Duration"		"%duration"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_windwalk"
+				"Target"		"CASTER"
+				"Duration"		"%duration"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"item_boots_of_invisibility_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"		"%bonus_movement_speed"
+			    }  
+			}
+			"modifier_windwalk"
+			{
+				"IsBuff"			"1"
+				"Duration"          "%duration"
+				//"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+				//"EffectAttachType"	"follow_origin"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_movespeed"
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+	
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_windwalk"
+						"Target"		"CASTER"
+					}
+	
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_PHYSICAL"
+						"Damage"	"%bonus_damage"
+					}
+	
+					"FireEffect"
+					{
+						"EffectName"		"particles/msg_fx/msg_crit.vpcf"
+						"EffectAttachType"	"follow_overhead"
+						"Target"			"TARGET"
+					}
+				}
+	
+				"OnAbilityExecuted"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+	
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_windwalk"
+						"Target"		"CASTER"
+					}
+				}
+			}		
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_movement_speed" "60"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"6"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"invis_movespeed_percent"	"25"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"invis_damage"		"50"
+			}
+		}
+	}
+	//End of file item_lia_boots_of_invisibility.txt
+
+
 	//Start of file item_lia_claws.txt
 	"item_lia_claws"
 	   {
@@ -2242,6 +2423,205 @@
 	//End of file item_lia_gloves_of_strength.txt
 
 
+	//Start of file item_lia_glove_of_pain.txt
+	"item_recipe_lia_glove_of_pain"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1452"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"800"	
+		"ItemShopTags"					"int"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_glove_of_pain"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_mana_staff;item_lia_mask"
+		}
+	}
+	
+	"item_lia_glove_of_pain"
+	{
+		"ID"							"1426"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1590"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_glove_of_pain"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"25.0"
+		"AbilityManaCost"				"350"
+		
+			"precache"
+		{
+			"soundfile"			"sounds/items/item_mjoll_on.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+			"particle"			"particles/items2_fx/mjollnir_shield.vpcf"
+			"particle"			"particles/items2_fx/mjollnir_shield_arc_01.vpcf"
+		}
+		
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_heavenly_punishment"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_glove_of_pain_stats"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				}
+			}
+			"modifier_item_glove_of_pain_aura_emitter"
+			{
+				"Passive"				"1"
+				"IsHidden"				"0"
+				
+				"Aura" 					"modifier_item_glove_of_pain_aura"
+				"Aura_Radius" 			"%aura_radius"
+				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags" 			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster" 	"1"
+			}
+			"modifier_item_glove_of_pain_aura"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"						"8.0"  //This is hardcoded due to an obscure engine bug.
+				}
+			}
+			"modifier_heavenly_punishment"
+			{
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+		
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"DOTA_Item.Mjollnir.Activate"
+						"Target" 		"TARGET"
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName"        "particles/items2_fx/mjollnir_shield.vpcf"
+						"EffectAttachType"  "attach_hitloc"
+						"Target"            "TARGET"
+	
+						"ControlPoints"
+						{
+							"01"	"100 100 100"
+						}
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+						"EffectName"	"DOTA_Item.Mjollnir.DeActivate"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					}
+				}
+	
+				"ThinkInterval"  "%think_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/GloveOfPain.lua"
+						"Function"		"HeavenlyPunishment"
+						"ion_particle"	"particles/items2_fx/mjollnir_shield_arc_01.vpcf"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"400"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"1000"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_mana_regen"		"8"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "8"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"			"250"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"		"230"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"think_interval"		"1.0"
+			}
+		}
+	}
+	//End of file item_lia_glove_of_pain.txt
+
+
 	//Start of file item_lia_hammer.txt
 	"item_recipe_lia_hammer"
 	{
@@ -3128,7 +3508,7 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1433"						
+		"ID"							"1450"						
 		"Model"							"models/props_gameplay/recipe.mdl"
 		"BaseClass"                     "item_datadriven"
 		
@@ -3151,7 +3531,7 @@
 	
 	"item_lia_lunar_necklace"
 	{
-		"ID"							"1434"
+		"ID"							"1451"
 		"BaseClass" 					"item_datadriven"
 		"ItemCost"						"1700"
 		"ItemKillable" 					"0" 
@@ -3708,7 +4088,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"aura_radius"			"900"
+				"aura_radius"			"1000"
 			}
 			"04"
 			{

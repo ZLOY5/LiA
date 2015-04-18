@@ -138,5 +138,13 @@ function Precache( context )
 		--Посох Помощи
 		PrecacheResource("particle", "particles/custom/dazzle_shadow_wave_copy.vpcf", context)
 		PrecacheResource("particle", "particles/custom/dazzle_shadow_wave.vpcf", context)		
-		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts", context)			
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts", context)	
+		--Сапоги-Неведимки
+		PrecacheResource("particle", "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf", context)		
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts", context)		
+		--Перчатка Боли
+		PrecacheResource("particle", "particles/items2_fx/mjollnir_shield_arc_01.vpcf", context)		
+		PrecacheResource("soundfile", "sounds/items/item_mjoll_on.vsnd", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts", context)	
+
 end
