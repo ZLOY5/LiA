@@ -37,7 +37,8 @@ function HeavenlyPunishment( keys )
 			ParticleManager:SetParticleControlEnt(particle, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target_location, true) 
 			ParticleManager:SetParticleControlEnt(particle, 1, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
 			ParticleManager:ReleaseParticleIndex(particle)
-
+			keys.caster:EmitSound("Hero_Zuus.ArcLightning.Cast")
+			keys.target:EmitSound("Hero_Zuus.ArcLightning.Target")
 			damage_table.victim = unit
 			ApplyDamage(damage_table)
 		end
