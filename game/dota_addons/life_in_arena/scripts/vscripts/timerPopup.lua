@@ -8,7 +8,7 @@ end
 
 function timerPopup:Start(time,title,waveNum)
   timeLeft = time
-  FireGameEvent('lia_timer_popup_start', { time = time, title = title, waveNum = WAVE_NUM }) 
+  FireGameEvent('lia_timer_popup_start', { time = time, title = title, waveNum = waveNum }) 
   Timers:CreateTimer(1, function()
       timeLeft = timeLeft - 1
       FireGameEvent('lia_timer_popup_tick', { time = timeLeft}) 

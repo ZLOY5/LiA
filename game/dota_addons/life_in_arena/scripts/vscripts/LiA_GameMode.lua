@@ -243,7 +243,7 @@ end
 function StartWaves()
     timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
     Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
-        ShowCenterMessage("Wave #"..WAVE_NUM,5)
+        ShowCenterMessage("Wave #"..WAVE_NUM,5,WAVE_NUM)
         return nil
     end)
     Timers:CreateTimer(PRE_WAVE_TIME, function() 
@@ -300,6 +300,7 @@ end
 
 function OnSecondStageDeath(event) 
     FinalBossStageDeath = FinalBossStageDeath + 1
+    print(FinalBossStageDeath)
     if FinalBossStageDeath >= 10 then
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
@@ -373,13 +374,15 @@ function LiA:_EndWave()
             else
                 message = "#lia_megaboss"
             end
-            timerPopup:Start(PRE_WAVE_TIME,message,WAVE_NUM)
+            timerPopup:Start(PRE_WAVE_TIME,message,0)
+            Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
         else --обычные волны
             Timers:CreateTimer( PRE_WAVE_TIME, function() LiA.SpawnWave() return nil end)
             message = "Wave #"..tostring(WAVE_NUM) --пока что только на одном языке
             timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
+            Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5,WAVE_NUM) return nil end)
         end
-         Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
+         
         IsDuelOccured = false
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)

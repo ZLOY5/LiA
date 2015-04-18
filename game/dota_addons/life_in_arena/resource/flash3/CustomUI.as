@@ -1,5 +1,6 @@
-﻿package {
+package {
 	import flash.display.MovieClip;
+
 
 	//import some stuff from the valve lib
 	import ValveLib.Globals;
@@ -34,6 +35,7 @@
 			this.gameAPI.SubscribeToGameEvent("lia_timer_popup_start", this.onTimerPopupStart);
 			this.gameAPI.SubscribeToGameEvent("lia_timer_popup_tick",  this.onTimerPopupTick);
 			this.gameAPI.SubscribeToGameEvent("lia_timer_popup_end",  this.onTimerPopupEnd);
+			this.gameAPI.SubscribeToGameEvent("show_center_message_fix",  this.onCenterMessage);
 			
 			var newObjectClass = getDefinitionByName("s_RoshanPopup");
 			timerPopup = new newObjectClass();
@@ -41,32 +43,32 @@
 			timerPopup.visible = false;
 			timerPopup.x = Globals.instance.resizeManager.ScreenWidth-(timerPopup.width/2)-5;
 			timerPopup.y = Globals.instance.resizeManager.ScreenHeight-(Globals.instance.resizeManager.ScreenHeight-50);
-			timerPopup.setup
 			timerPopup.height = 50;
-			//timerPopup.title.text = "#lia_wave_num";
+			timerPopup.width = 200;
 			timerPopup.itemImage.visible = false;
-			//let the client rescale the UI
+
 			Globals.instance.resizeManager.AddListener(this);
-			trace(globals.Loader_shop.movieClip.width)
+
 			var oldShopOpened:Function = globals.Loader_shop.movieClip.gameAPI.OnShopOpened;
 			globals.Loader_shop.movieClip.gameAPI.OnShopOpened = function() {
-				trace(globals.Loader_shop.movieClip.shop.MainShop.MainShopContents.width);
-				var xTween = Globals.instance.resizeManager.ScreenWidth-10-globals.Loader_shop.movieClip.shop.MainShop.MainShopContents.width-(timerPopup.width/2);
+				var xTween = Globals.instance.resizeManager.ScreenWidth-5-globals.Loader_shop.movieClip.shop.MainShop.MainShopContents.width-(timerPopup.width/2);
 				TweenLite.to(timerPopup, 0.3, {x:xTween});
 				oldShopOpened();
+				globals.Loader_shop.movieClip.collapseShop();	
 			};
-
 			var oldShopCollapsed:Function = globals.Loader_shop.movieClip.gameAPI.OnShopCollapsed;
 			globals.Loader_shop.movieClip.gameAPI.OnShopCollapsed = function() {
-				trace(globals.Loader_shop.movieClip.width,"COLLAPSED");
 				var xTween = Globals.instance.resizeManager.ScreenWidth-(timerPopup.width/2)-5;
 				TweenLite.to(timerPopup, 0.1, {x:xTween});
 				oldShopCollapsed();
 			};
-			//this is not needed, but it shows you your UI has loaded (needs 'scaleform_spew 1' in console)
+
+			globals.Loader_inventory.movieClip.gameAPI.OnGlyphButtonPress = function() {};	
+			
 			trace("Custom UI loaded!");
 		}
 
+	
 		/*public function onResize(re:ResizeManager) : * {
             //Calculate scale ratio
 			var scaleRatioY:Number = re.ScreenHeight/900;
@@ -75,6 +77,14 @@
 			if (re.ScreenHeight > 900){
 				scaleRatioY = 1;
 		}*/
+
+		public function onCenterMessage(args:Object) : void {
+			var s:String = globals.GameInterface.Translate("#lia_wave_num");
+			s = s + String(args.wave)+"\n";
+			s = s + globals.GameInterface.Translate("#"+String(args.wave)+"_wave_creeps")
+			trace("Center message set to :",s);
+			globals.Loader_overlay.movieClip.center_message.title.text = s;
+		}
 
 		public function onTimerPopupStart(args:Object) : void {
 			timerPopup.visible = true;
