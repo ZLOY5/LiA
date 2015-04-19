@@ -496,7 +496,7 @@ function Duel(player1, player2)
             HeroOnDuel2:RemoveModifierByName("modifier_stun")
             timerPopup:Start(120,"#lia_expire_duel",0)
             Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
-                useGameTime = false,
+                useGameTime = true,
                 endTime = 120,
                 callback = function()
                     EndDuel(nil)
