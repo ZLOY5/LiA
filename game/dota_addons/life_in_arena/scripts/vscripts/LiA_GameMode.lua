@@ -108,8 +108,8 @@ function LiA:InitGameMode()
         local destrName = destr[i]:GetUnitName()
 		if destrName == "npc_dota_creature_barrel" or destrName == "small_barrel" or destrName == "barricades" or destrName == "arena_rock" or destrName == "tnt_barrel" then
 			destr[i]:FindAbilityByName("barrel_no_health_bar"):SetLevel(1)
-            destr[i]:SetTeam(DOTA_TEAM_GOODGUYS) 
-            if destrName == "tnt_barrel" then
+            destr[i]:SetTeam(DOTA_TEAM_GOODGUYS)
+             if destrName == "tnt_barrel" then
                 destr[i]:FindAbilityByName("barrel_explosion"):SetLevel(1)
             end
 		end
@@ -378,7 +378,7 @@ function LiA:_EndWave()
             Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
         else --обычные волны
             Timers:CreateTimer( PRE_WAVE_TIME, function() LiA.SpawnWave() return nil end)
-            message = "Wave #"..tostring(WAVE_NUM) --пока что только на одном языке
+            message = "#lia_wave_num"
             timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
             Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5,WAVE_NUM) return nil end)
         end
