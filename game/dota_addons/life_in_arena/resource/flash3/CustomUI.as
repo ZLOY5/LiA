@@ -41,27 +41,30 @@ package {
 			timerPopup = new newObjectClass();
 			this.addChild(timerPopup);
 			timerPopup.visible = false;
-			timerPopup.x = Globals.instance.resizeManager.ScreenWidth-(timerPopup.width/2)-5;
-			timerPopup.y = Globals.instance.resizeManager.ScreenHeight-(Globals.instance.resizeManager.ScreenHeight-50);
 			timerPopup.height = 50;
 			timerPopup.width = 200;
+			timerPopup.x = Globals.instance.resizeManager.ScreenWidth-5;
+			timerPopup.y = Globals.instance.resizeManager.ScreenHeight-(Globals.instance.resizeManager.ScreenHeight-50);
 			timerPopup.itemImage.visible = false;
 
 			Globals.instance.resizeManager.AddListener(this);
 
 			var oldShopOpened:Function = globals.Loader_shop.movieClip.gameAPI.OnShopOpened;
 			globals.Loader_shop.movieClip.gameAPI.OnShopOpened = function() {
-				var xTween = Globals.instance.resizeManager.ScreenWidth-5-globals.Loader_shop.movieClip.shop.MainShop.MainShopContents.width-(timerPopup.width/2);
+				trace("Shop width",globals.Loader_shop.movieClip.shop.MainShop.MainShopContents.width)
+				trace("Screen width",Globals.instance.resizeManager.ScreenWidth)
+				trace("Timer width",timerPopup.width)
+				trace("Timer XY",timerPopup.x,timerPopup.y)
+				var xTween = Globals.instance.resizeManager.ScreenWidth-5-globals.Loader_shop.movieClip.shop.MainShop.MainShopContents.width;
 				TweenLite.to(timerPopup, 0.3, {x:xTween});
 				oldShopOpened();
-				globals.Loader_shop.movieClip.collapseShop();	
 			};
-			var oldShopCollapsed:Function = globals.Loader_shop.movieClip.gameAPI.OnShopCollapsed;
+			/*var oldShopCollapsed:Function = globals.Loader_shop.movieClip.gameAPI.OnShopCollapsed;
 			globals.Loader_shop.movieClip.gameAPI.OnShopCollapsed = function() {
-				var xTween = Globals.instance.resizeManager.ScreenWidth-(timerPopup.width/2)-5;
+				var xTween = Globals.instance.resizeManager.ScreenWidth-5;
 				TweenLite.to(timerPopup, 0.1, {x:xTween});
 				oldShopCollapsed();
-			};
+			};*/
 
 			globals.Loader_inventory.movieClip.gameAPI.OnGlyphButtonPress = function() {};	
 			
@@ -69,14 +72,18 @@ package {
 		}
 
 	
-		/*public function onResize(re:ResizeManager) : * {
+		public function onResize(re:ResizeManager) : * {
             //Calculate scale ratio
-			var scaleRatioY:Number = re.ScreenHeight/900;
+			//var scaleRatioY:Number = re.ScreenHeight/900;
+			if (globals.Loader_shop.movieClip.shopOpen)
+				timerPopup.x = re.ScreenWidth-globals.Loader_shop.movieClip.shop.MainShop.MainShopContents.width-5;
+			else
+				timerPopup.x = re.ScreenWidth-5;
 			
-			//If the screen is bigger than our stage, keep elements the same size (you can remove this)
+			/*//If the screen is bigger than our stage, keep elements the same size (you can remove this)
 			if (re.ScreenHeight > 900){
-				scaleRatioY = 1;
-		}*/
+				scaleRatioY = 1;*/
+		}
 
 		public function onCenterMessage(args:Object) : void {
 			var s:String = globals.GameInterface.Translate("#lia_wave_num");
