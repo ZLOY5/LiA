@@ -1,3 +1,7 @@
+--[[ ============================================================================================================
+	Based on Rook's Mekansm datadriven
+	https://github.com/Pizzalol/SpellLibrary/blob/SpellLibrary/game/dota_addons/spelllibrary/scripts/vscripts/items/item_mekansm.lua
+================================================================================================================= ]]
 function Salvation(keys)	
 	keys.caster:EmitSound("DOTA_Item.Mekansm.Activate")
 	ParticleManager:CreateParticle("particles/items2_fx/mekanism.vpcf", PATTACH_ABSORIGIN_FOLLOW, keys.caster)

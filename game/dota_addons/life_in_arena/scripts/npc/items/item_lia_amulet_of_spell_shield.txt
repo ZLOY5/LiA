@@ -1,5 +1,5 @@
 "item_lia_amulet_of_spell_shield"
-	{
+{
 
 		"ID"							"1117"
 		"ItemCost"						"300"
@@ -9,38 +9,78 @@
 		"ItemSellable"                  "1"
 		"ItemPurchasable"		 "1"
 		"ItemQuality"					"component"
-		
 
+	"AbilityCooldown"				"30.0"
 		
 		"AbilityTextureName"			"item_lia_amulet_of_spell_shield"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_sphere"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" "item_datadriven"
 	"AbilitySpecial"
 	{
 		"01"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_all_stats" "0"
-		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_health_regen" "0"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_mana_regen" "0"
-		}
-		"04"
-		{
 			"var_type" "FIELD_FLOAT"
 			"block_cooldown" "30.0"
 		}
-		"05"
+	}
+
+	"Modifiers"
+	{
+		"modifier_item_lia_amulet_of_spell_shield"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "0"
+			"Passive"			"1"
+			"IsHidden"			"1"
+			
+			"OnCreated"
+			{			
+				"RunScript"
+				{
+					"ScriptFile"		"items/SpellShield.lua"
+					"Function"			"modifier_item_lia_amulet_of_spell_shield_on_created"
+			"Duration"			"%block_cooldown"
+				}
+			}
+			
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/SpellShield.lua"
+					"Function"			"modifier_item_lia_amulet_of_spell_shield_on_destroy"
+			"Duration"			"%block_cooldown"
+				}
+			}
+			
+			"ThinkInterval" 		".03"
+			"OnIntervalThink"
+			{
+				//Check if the caster has the correct number of Linken's modifiers on them.  If they have less than they are
+				//supposed to, we can assume that a sphere was popped due to an enemy's targeted spell, and put the player's 
+				//Linken's Spheres on cooldown.
+				"RunScript"
+				{
+					"ScriptFile"			"items/SpellShield.lua"
+					"Function"				"modifier_item_lia_amulet_of_spell_shield_on_interval_think"
+				}
+			}
+		}
+		//A modifier that is applied to a unit when they receive the modifier_item_sphere_target modifier.
+		//So long as they still have that modifier, this one will remain and provide a public face on the modifier icon bar.
+		//This modifier deletes itself when modifier_item_sphere_target no longer exists on the unit.
+		"modifier_item_lia_amulet_of_spell_shield_icon"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			
+			"ThinkInterval" 		".03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"items/SpellShield.lua"
+					"Function"				"modifier_item_lia_amulet_of_spell_shield_icon_on_interval_think"
+				}
+			}
 		}
 	}
-	}
+}
