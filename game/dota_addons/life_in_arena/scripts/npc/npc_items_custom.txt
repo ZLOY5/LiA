@@ -6246,6 +6246,11 @@
 			    "var_type" "FIELD_INTEGER"
 			    "bonus_movement_speed_percent" "10"
 		   	}
+			"04"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "regen" "0"
+		   	}
 	  	}
 	
 	  	"Modifiers"
@@ -6266,12 +6271,46 @@
 	    	
 		    	"IsBuff" "1"
 		    	"IsPurgable" "0"
+		    	"OnCreated"
+		    	{
+		    		"RunScript"
+		    		{
+		    			"ScriptFile"	"items/StormwindHorn.lua"
+		    			"Function"		"CalcRegeneration"
+		    		}
+		    	}
+		    	"OnDestroy"
+		    	{
+		    		"RemoveModifier"
+		    		{
+		    			"Target"		"TARGET"
+		    			"ModifierName"	"horn_regeneration"
+		    		}
+		    	}
+		    	"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+	    			{
+				        "ScriptFile"    "items/StormwindHorn.lua"
+				        "Function"      "CalcRegeneration"
+					}
+				}
 		    	
 		    	"Properties"
 		    	{
 		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "bonus_movement_speed_percent"
 		    	}
 		    }
+		    "horn_regeneration"
+	   		{
+	   			"IsHidden"	"0"
+	   			"Properties"
+		    	{
+		     		"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%regen"
+		    	}
+	
+	   		}
 	   	}
 	
 	}

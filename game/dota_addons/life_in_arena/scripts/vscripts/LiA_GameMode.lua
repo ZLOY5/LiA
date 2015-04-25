@@ -27,6 +27,7 @@ FinalBossStageDeath = 0
 
 IsDuelOccured = false
 IsDuel        = false
+IsPreWaveTime = false
 
 uFinalBoss    = nil
 
@@ -240,6 +241,7 @@ function LiA:OnEntityKilled(keys)
 end
 
 function StartWaves()
+    IsPreWaveTime = true
     timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
     Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
         ShowCenterMessage("Wave #"..WAVE_NUM,5,WAVE_NUM)
@@ -254,6 +256,7 @@ end
 
 function LiA:SpawnWave()  
     print(nPlayers,"players")
+    IsPreWaveTime = false
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     local creepName = tostring(WAVE_NUM).."_wave_creep"
@@ -265,6 +268,7 @@ function LiA:SpawnWave()
 end
 
 function LiA:SpawnMegaboss()
+    IsPreWaveTime = false
     local boss
     if WAVE_NUM == 20 then
         boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
@@ -364,22 +368,23 @@ function LiA:_EndWave()
         print("EndWave:Duels started")
         StartDuels()
     else
+        IsPreWaveTime = true
         print("EndWave:wave")
         local message
         if WAVE_NUM % 5 == 0 then --мегабосс
-            Timers:CreateTimer(PRE_WAVE_TIME, function() LiA.SpawnMegaboss() return nil end)
+            Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnMegaboss() return nil end)
             if WAVE_NUM == 20 then
                 message = "#lia_finalboss"
             else
                 message = "#lia_megaboss"
             end
             timerPopup:Start(PRE_WAVE_TIME,message,0)
-            Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5) return nil end)
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5) return nil end})
         else --обычные волны
-            Timers:CreateTimer( PRE_WAVE_TIME, function() LiA.SpawnWave() return nil end)
+            Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end})
             message = "#lia_wave_num"
             timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
-            Timers:CreateTimer(PRE_WAVE_TIME-3, function() ShowCenterMessage(message,5,WAVE_NUM) return nil end)
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5,WAVE_NUM) return nil end})
         end
          
         IsDuelOccured = false
