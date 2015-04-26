@@ -1,0 +1,138 @@
+"item_recipe_lia_totem_of_persistence"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1463"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"250"	
+	"ItemShopTags"					"armor"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_totem_of_persistence"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_dwarf_armor;item_lia_scepter_of_power"
+	}
+}
+
+"item_lia_totem_of_persistence"
+{
+
+		"ID"							"1464"
+		"ItemCost"						"1635"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"rare"
+
+	"AbilityCooldown"				"22.0"
+		
+		"AbilityTextureName"			"item_lia_totem_of_persistence"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass" "item_datadriven"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_magic_resist_percentage" "45"
+		}
+		"02"
+		{
+			"var_type"							"FIELD_INTEGER"
+			"bonus_mana_regen_percentage"		"175"
+		}	
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_armor" "15"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_health" "250"
+		}		
+		"05"
+		{
+			"var_type" "FIELD_FLOAT"
+			"duration" "6.0"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_item_totem_of_persistence_active"
+			"Target" "CASTER"
+		}	
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_lia_totem_of_persistence"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
+			    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
+		    }
+			"ThinkInterval" 		".03"
+			"OnIntervalThink"
+			{
+				"ApplyModifier"
+				{
+					"Target" "CASTER"
+					"ModifierName" "modifier_item_totem_of_persistence_spell_block"
+				}
+			}
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"Target" "CASTER"
+					"ModifierName" "modifier_item_totem_of_persistence_spell_block"
+				}
+			}
+		}
+		"modifier_item_totem_of_persistence_active"
+		{
+			"Duration"              	"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"EffectName"            	"particles/items_fx/black_king_bar_avatar.vpcf"
+			"EffectAttachType"      	"PATTACH_ABSORIGIN"
+			
+			"States"
+			{
+				"MODIFIER_STATE_MAGIC_IMMUNE" 			"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+		"modifier_item_totem_of_persistence_spell_block"
+		{
+			"IsHidden"			"1"
+			"OnCreated"
+			{			
+				"RunScript"
+				{
+					"ScriptFile"		"items/TotemOfPersistence.lua"
+					"Function"			"modifier_item_lia_totem_of_persistence_block"
+				}
+			}
+		}
+	}
+}
