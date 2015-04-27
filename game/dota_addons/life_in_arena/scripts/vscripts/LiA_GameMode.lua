@@ -372,7 +372,7 @@ function LiA:_EndWave()
         print("EndWave:wave")
         local message
         if WAVE_NUM % 5 == 0 then --мегабосс
-            Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnMegaboss() return nil end)
+            Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnMegaboss() return nil end})
             if WAVE_NUM == 20 then
                 message = "#lia_finalboss"
             else

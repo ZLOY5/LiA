@@ -5,7 +5,7 @@
 	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_ALL"
-	"AbilityTextureName" 			"lia_stormwind_horn"
+	"AbilityTextureName" 			"item_lia_stormwind_horn"
 	
 
 
@@ -74,25 +74,16 @@
 	    	}
 	    	"OnDestroy"
 	    	{
-	    		"RemoveModifier"
-	    		{
-	    			"Target"		"TARGET"
-	    			"ModifierName"	"horn_regeneration"
-	    		}
-	    	}
-	    	"ThinkInterval"		"1"
-			"OnIntervalThink"
-			{
 				"RunScript"
     			{
 			        "ScriptFile"    "items/StormwindHorn.lua"
-			        "Function"      "CalcRegeneration"
+			        "Function"      "AuraNone"	
 				}
-			}
-	    	
+	    	}
+
 	    	"Properties"
 	    	{
-	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "bonus_movement_speed_percent"
+	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percent"
 	    	}
 	    }
 	    "horn_regeneration"
