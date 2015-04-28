@@ -2983,7 +2983,7 @@
 				{
 				// основное
 				//
-				"BaseClass" "npc_dota_tower" // класс персонажа.
+				"BaseClass" "npc_dota_building" // класс персонажа.
 				"Model" "models/props_rock/riveredge_rocks_wallstep002.vmdl" // модель.
 				"ModelScale" "1.1" // масштаб модели.
 				"Level" "1" // уровень.
@@ -3043,6 +3043,7 @@
 				//----------------------------------------------------------------
 				//–юкзак
 				"HasInventory" "0" // 0 - не будет инвентар€
+				"vscripts"                    "destrSpawn.lua"
 				}
 	//End of file arena_rock.txt
 
@@ -3055,7 +3056,7 @@
 				{
 				// основное
 				//
-				"BaseClass" "npc_dota_tower" // класс персонажа.
+				"BaseClass" "npc_dota_building" // класс персонажа.
 				"Model" "models/props_debris/shop_set_cage001.vmdl" // модель.
 				"ModelScale" "0.85" // масштаб модели.
 				"Level" "1" // уровень.
@@ -3115,6 +3116,7 @@
 				//----------------------------------------------------------------
 				//–юкзак
 				"HasInventory" "0" // 0 - не будет инвентар€
+				"vscripts"                    "destrSpawn.lua"
 				}
 				
 	//End of file barricades.txt
@@ -3156,7 +3158,7 @@
 				{
 				// основное
 				//
-				"BaseClass" "npc_dota_tower" // класс персонажа.
+				"BaseClass" "npc_dota_building" // класс персонажа.
 				"Model" "models/props_debris/barrel002.vmdl" // модель.
 				"ModelScale" "1" // масштаб модели.
 				"Level" "1" // уровень.
@@ -3220,6 +3222,8 @@
 			{
 				"model"	"models/heroes/sand_king/sand_king.mdl"
 			}
+	
+				"vscripts"                    "destrSpawn.lua"
 				 
 				}
 	//End of file npc_dota_creature_barrel.txt
@@ -3399,7 +3403,7 @@
 				{
 				// основное
 				//
-				"BaseClass" "npc_dota_tower" // класс персонажа.
+				"BaseClass" "npc_dota_building" // класс персонажа.
 				"Model" "models/props_debris/barrel002.vmdl" // модель.
 				"ModelScale" "0.85" // масштаб модели.
 				"Level" "1" // уровень.
@@ -3459,6 +3463,7 @@
 				//----------------------------------------------------------------
 				//–юкзак
 				"HasInventory" "0" // 0 - не будет инвентар€
+				"vscripts"                    "destrSpawn.lua"
 				}
 	//End of file small_barrel.txt
 
@@ -3471,7 +3476,7 @@
 				{
 				// основное
 				//
-				"BaseClass" "npc_dota_tower" // класс персонажа.
+				"BaseClass" "npc_dota_building" // класс персонажа.
 				"Model" "models/heroes/techies/fx_techies_remotebomb.vmdl" // модель.
 				"ModelScale" "1.5" // масштаб модели.
 				"Level" "1" // уровень.
@@ -3531,6 +3536,7 @@
 				//----------------------------------------------------------------
 				//–юкзак
 				"HasInventory" "0" // 0 - не будет инвентар€
+				"vscripts"                    "destrSpawn.lua"
 				}
 	//End of file tnt_barrel.txt
 }

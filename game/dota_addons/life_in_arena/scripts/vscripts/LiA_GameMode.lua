@@ -77,6 +77,7 @@ function LiA:InitGameMode()
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
 
+    Convars:RegisterCommand( "lia_force_round", onPlayerReadyToWave, "For force round", 0 )
 
     --[[Convars:RegisterCommand( "testElement", function(name, _element, _bool, _x, _y, _width, _height)
         local cmdPlayer = Convars:GetCommandClient()
@@ -102,18 +103,6 @@ function LiA:InitGameMode()
     CAMERA_GUY = CreateUnitByName("camera_guy", ARENA_CENTER_COORD, true, nil, nil, DOTA_TEAM_GOODGUYS) 
 
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
-    
-    local destr = Entities:FindAllByClassname("npc_dota_tower")
-    for i = 1, #destr do
-        local destrName = destr[i]:GetUnitName()
-		if destrName == "npc_dota_creature_barrel" or destrName == "small_barrel" or destrName == "barricades" or destrName == "arena_rock" or destrName == "tnt_barrel" then
-			destr[i]:FindAbilityByName("barrel_no_health_bar"):SetLevel(1)
-            destr[i]:SetTeam(DOTA_TEAM_GOODGUYS)
-             if destrName == "tnt_barrel" then
-                destr[i]:FindAbilityByName("barrel_explosion"):SetLevel(1)
-            end
-		end
-	end
 end
 
 function LiA:OnConnectFull(event)
@@ -142,7 +131,10 @@ function LiA:OnDisconnect(event)
     print(" ")
     local entIndex = keys.index+1
     local player = EntIndexToHScript(entIndex)
-    nPlayers   = nPlayers   - 1
+    if player.readyToWave then
+        nPlayersReady = nPlayersReady - 1
+    end
+    nPlayers = nPlayers - 1
     if player:GetAssignedHero() then
         nHeroCount = nHeroCount - 1
 
@@ -379,12 +371,12 @@ function LiA:_EndWave()
                 message = "#lia_megaboss"
             end
             timerPopup:Start(PRE_WAVE_TIME,message,0)
-            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5) return nil end})
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5) IsPreWaveTime = false return nil end})
         else --обычные волны
             Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end})
             message = "#lia_wave_num"
             timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
-            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5,WAVE_NUM) return nil end})
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5,WAVE_NUM) IsPreWaveTime = false return nil end})
         end
          
         IsDuelOccured = false
