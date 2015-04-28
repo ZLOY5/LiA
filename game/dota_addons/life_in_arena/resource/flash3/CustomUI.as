@@ -21,7 +21,7 @@ package {
 		public var gameAPI:Object;
 		public var globals:Object;
 		public var elementName:String;
-
+		public var lastShopState:Boolean;
 		public var timerPopup;
 		//constructor, you usually will use onLoaded() instead
 		public function CustomUI() : void {
@@ -48,6 +48,9 @@ package {
 			timerPopup.itemImage.visible = false;
 
 			Globals.instance.resizeManager.AddListener(this);
+			var timer:Timer = new Timer(20, 0);
+			timer.addEventListener(TimerEvent.TIMER, timerHandler);
+			timer.start()
 
 			var oldShopOpened:Function = globals.Loader_shop.movieClip.gameAPI.OnShopOpened;
 			globals.Loader_shop.movieClip.gameAPI.OnShopOpened = function() {
@@ -71,7 +74,11 @@ package {
 			trace("Custom UI loaded!");
 		}
 
-	
+		private function timerHandler(e:TimerEvent):void{
+            if (lastShopState && !globals.Loader_shop.movieClip.shopOpen)
+            	TweenLite.to(timerPopup, 0.1, {x:Globals.instance.resizeManager.ScreenWidth-5});
+           	lastShopState = globals.Loader_shop.movieClip.shopOpen;
+        }
 		public function onResize(re:ResizeManager) : * {
             //Calculate scale ratio
 			//var scaleRatioY:Number = re.ScreenHeight/900;

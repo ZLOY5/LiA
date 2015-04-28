@@ -1,9 +1,8 @@
 
 nPlayersReady = 0
 
-function onPlayerReadyToWave(name)
+function onPlayerReadyToWave(player)
 	if IsPreWaveTime then
-		player = Convars:GetCommandClient() 
 		player.readyToWave = true
 		nPlayersReady = nPlayersReady + 1
 		if nPlayersReady == nPlayers then
