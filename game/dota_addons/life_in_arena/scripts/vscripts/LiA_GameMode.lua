@@ -235,14 +235,8 @@ end
 function StartWaves()
     IsPreWaveTime = true
     timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
-    Timers:CreateTimer(PRE_WAVE_TIME-3, function() 
-        ShowCenterMessage("Wave #"..WAVE_NUM,5,WAVE_NUM)
-        return nil
-    end)
-    Timers:CreateTimer(PRE_WAVE_TIME, function() 
-        LiA.SpawnWave()
-        return nil
-    end)  
+    Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage("#lia_wave_num",5,WAVE_NUM) IsPreWaveTime = false return nil end})
+    Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end}) 
 end
 
 
