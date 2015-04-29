@@ -2687,7 +2687,15 @@
 			"particle"			"particles/items2_fx/mjollnir_shield.vpcf"
 			"particle"			"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
 		}
-		
+			"OnUnequip" 
+		{
+			"RunScript"
+			{
+				"ScriptFile" "items\AuraFix.lua"
+				"Function"  "OnUnequip"
+				"ModifierName" "modifier_item_glove_of_pain_aura_emitter"
+			}
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -2731,7 +2739,7 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"						"8.0"  //This is hardcoded due to an obscure engine bug.
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"						"8.0"  //This is hardcoded due to an obscure engine bug.
 				}
 			}
 			"modifier_heavenly_punishment"
@@ -3421,6 +3429,249 @@
 	}
 	
 	//End of file item_lia_huge_axe.txt
+
+
+	//Start of file item_lia_ice_sword.txt
+	"item_recipe_lia_ice_sword"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1467"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"400"	
+		"ItemShopTags"					"int"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_ice_sword"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_orb_of_frost;item_lia_steel_sword"
+		}
+	}
+	
+	"item_lia_ice_sword"
+	{
+		"ID"							"1468"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1330"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_ice_sword"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		"AbilityCooldown"				"14.0"
+		"AbilityManaCost"				"275"
+		
+		"OnUnequip" 
+		{
+			"RunScript"
+			{
+				"ScriptFile" "items\AuraFix.lua"
+				"Function"  "OnUnequip"
+				"ModifierName" "ice_sword_aura_Modifier"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"hero_Crystal.frostbite"
+				"Target" 			"CASTER"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  				"CASTER"
+					"Radius" 				"%stun_radius"
+					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+	
+				"Action"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%stun_damage"
+					}
+	
+					"ApplyModifier"
+					{
+						"Target" 		"TARGET"
+						"ModifierName"	"modifier_ice_sword_stun"
+					}
+				}
+			}		
+		}	
+		
+		"Modifiers"
+		{
+			"item_ice_sword_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+			    }  
+				
+				  "Orb"
+				{
+					"Priority"  "DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
+				}
+	
+				"OnOrbImpact"
+				{
+					"ApplyModifier"
+					{
+						"Target"    "TARGET"
+						"ModifierName"  "modifier_ice_sword_slow"
+						"Duration"  "%slow_duration"
+					}   
+				} 
+			}
+			"modifier_ice_sword_slow" 
+			{
+				"IsDebuff" "1"
+				"Duration"  "3"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
+				}
+				"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
+				"EffectAttachType" "attach_hitloc"
+				"Target" "TARGET"
+	
+			}
+			"ice_sword_aura_armor"
+	   		{
+	    	
+		    	"IsBuff" "1"
+		    	"IsPurgable" "0"
+		    	"OnCreated"
+		    	{	
+	
+		    		"RunScript"
+		    		{
+		    			"ScriptFile"	"items/StormwindHorn.lua"
+		    			"Function"		"CalcRegeneration"
+		    		}
+	
+		    	}
+		    	"OnDestroy"
+		    	{
+					"RunScript"
+	    			{
+				        "ScriptFile"    "items/StormwindHorn.lua"
+				        "Function"      "AuraNone"	
+					}
+		    	}
+	
+		    	"Properties"
+		    	{
+		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+		    	}
+		    }
+			 "ice_sword_aura_Modifier"
+	   		{
+	    		"Passive" "1"
+	    		"IsHidden" "1"
+	    		"Aura" "ice_sword_aura_armor"
+	    		"Aura_Radius" "900"
+	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+	
+	   		}
+			"modifier_ice_sword_stun"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%stun_duration"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
+				}
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana" "600"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "60"
+			}
+		   	"03"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "radius" "900"
+		   	}
+			"04"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "regen_percent" "810"
+		   	}
+			"05"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "bonus_movement_speed_percent" "15"
+		   	}
+			"06"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "slow_duration" "3"
+		   	}
+			"07"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "move_speed_slow" "-40"
+		   	}
+			"08"
+		   	{
+			    "var_type" "FIELD_INTEGER"
+			    "attack_speed_slow" "-25"
+		   	}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"stun_duration"					"3.0"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"stun_damage"					"200"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"stun_radius"					"250"
+			}
+		}
+	}
+	//End of file item_lia_ice_sword.txt
 
 
 	//Start of file item_lia_knight_cuirass.txt
@@ -4246,6 +4497,17 @@
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"item_lia_mana_staff"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"OnUnequip" 
+		{
+			"RunScript"
+			{
+				"ScriptFile" "items\AuraFix.lua"
+				"Function"  "OnUnequip"
+				"ModifierName" "modifier_item_mana_staff_aura_emitter"
+			}
+		}
+		
 		"Modifiers"
 		{
 			"modifier_item_mana_staff"
@@ -4279,7 +4541,7 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"						"4.0"  //This is hardcoded due to an obscure engine bug.
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"						"4.0"  //This is hardcoded due to an obscure engine bug.
 				}
 			}
 		}
@@ -4838,6 +5100,17 @@
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"item_lia_orb_of_frost"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"OnUnequip" 
+		{
+			"RunScript"
+			{
+				"ScriptFile" "items\AuraFix.lua"
+				"Function"  "OnUnequip"
+				"ModifierName" "orb_of_frost_aura_Modifier"
+			}
+		}
+	
 		"Modifiers"
 		{
 			"item_orb_of_frost_modifier"
@@ -4907,7 +5180,7 @@
 	
 		    	"Properties"
 		    	{
-		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percent"
+		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
 		    	}
 		    }
 			 "orb_of_frost_aura_Modifier"
@@ -4956,7 +5229,7 @@
 			"07"
 		   	{
 			    "var_type" "FIELD_INTEGER"
-			    "move_speed_slow" "-50"
+			    "move_speed_slow" "-40"
 		   	}
 			"08"
 		   	{
@@ -5922,7 +6195,7 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%active_armor"
 				}
 			}
 		}
@@ -6263,7 +6536,15 @@
 			"particle"	"particles/custom/dazzle_shadow_wave.vpcf"
 			"particle"	"particles/custom/dazzle_shadow_wave_copy.vpcf"
 		}
-		
+		"OnUnequip" 
+		{
+			"RunScript"
+			{
+				"ScriptFile" "items\AuraFix.lua"
+				"Function"  "OnUnequip"
+				"ModifierName" "modifier_item_staff_of_help_aura"
+			}
+		}
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -6398,7 +6679,15 @@
 			"particle"	"particles/custom/dazzle_shadow_wave.vpcf"
 			"particle"	"particles/custom/dazzle_shadow_wave_copy.vpcf"
 		}
-		
+		"OnUnequip" 
+		{
+			"RunScript"
+			{
+				"ScriptFile" "items\AuraFix.lua"
+				"Function"  "OnUnequip"
+				"ModifierName" "modifier_item_staff_of_help_aura_2"
+			}
+		}
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -6549,6 +6838,17 @@
 		   	}
 	  	}
 	
+		
+			"OnUnequip" 
+		{
+			"RunScript"
+			{
+				"ScriptFile" "items\AuraFix.lua"
+				"Function"  "OnUnequip"
+				"ModifierName" "horn_aura_Modifier"
+			}
+		}
+		
 	  	"Modifiers"
 	  	{
 	   		"horn_aura_Modifier"
@@ -6586,7 +6886,7 @@
 	
 		    	"Properties"
 		    	{
-		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percent"
+		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
 		    	}
 		    }
 		    "horn_regeneration"
@@ -6734,12 +7034,12 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"replenish_amount"					"200 400"
+				"replenish_amount"			"200 400"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health_regen"	"5 15"					"900"
+				"bonus_health_regen"	"5 15"				
 			}
 			"06"
 			{
@@ -6842,7 +7142,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health_regen"	"15"					"900"
+				"bonus_health_regen"	"15"		
 			}
 			"06"
 			{

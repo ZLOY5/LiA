@@ -1,38 +1,43 @@
-"item_recipe_lia_orb_of_frost"
+"item_recipe_lia_ice_sword"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1465"						
+	"ID"							"1467"						
 	"Model"							"models/props_gameplay/recipe.mdl"
 	"BaseClass"                     "item_datadriven"
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"500"	
+	"ItemCost"						"400"	
 	"ItemShopTags"					"int"
 	
 	// Recipe
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemRecipe"					"1"
-	"ItemResult"					"item_lia_orb_of_frost"
+	"ItemResult"					"item_lia_ice_sword"
 	"ItemRequirements"
 	{
-		"01"						"item_lia_mana_stone;item_lia_stormwind_horn"
+		"01"						"item_lia_orb_of_frost;item_lia_steel_sword"
 	}
 }
 
-"item_lia_orb_of_frost"
+"item_lia_ice_sword"
 {
-	"ID"							"1466"
+	"ID"							"1468"
 	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"870"
+	"ItemCost"						"1330"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
 	"ItemSellable"                  "1"
 	"ItemPurchasable"		 		"1"
 	"ItemQuality"					"common"
-	"AbilityTextureName"			"item_lia_orb_of_frost"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_lia_ice_sword"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	
+	"AbilityCooldown"				"14.0"
+	"AbilityManaCost"				"275"
 	
 	"OnUnequip" 
 	{
@@ -40,13 +45,48 @@
 		{
 			"ScriptFile" "items\AuraFix.lua"
 			"Function"  "OnUnequip"
-			"ModifierName" "orb_of_frost_aura_Modifier"
+			"ModifierName" "ice_sword_aura_Modifier"
 		}
 	}
 
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"		"hero_Crystal.frostbite"
+			"Target" 			"CASTER"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"  				"CASTER"
+				"Radius" 				"%stun_radius"
+				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+
+			"Action"
+			{
+				"Damage"
+				{
+					"Target"	"TARGET"
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%stun_damage"
+				}
+
+				"ApplyModifier"
+				{
+					"Target" 		"TARGET"
+					"ModifierName"	"modifier_ice_sword_stun"
+				}
+			}
+		}		
+	}	
+	
 	"Modifiers"
 	{
-		"item_orb_of_frost_modifier"
+		"item_ice_sword_modifier"
 		{
 			"Passive"          "1"    
 		    "IsHidden"         "1"
@@ -68,12 +108,12 @@
 				"ApplyModifier"
 				{
 					"Target"    "TARGET"
-					"ModifierName"  "modifier_orb_of_frost_slow"
+					"ModifierName"  "modifier_ice_sword_slow"
 					"Duration"  "%slow_duration"
 				}   
 			} 
 		}
-		"modifier_orb_of_frost_slow" 
+		"modifier_ice_sword_slow" 
 		{
 			"IsDebuff" "1"
 			"Duration"  "3"
@@ -87,7 +127,7 @@
 			"Target" "TARGET"
 
 		}
-		"orb_of_frost_aura_armor"
+		"ice_sword_aura_armor"
    		{
     	
 	    	"IsBuff" "1"
@@ -116,28 +156,39 @@
 	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
 	    	}
 	    }
-		 "orb_of_frost_aura_Modifier"
+		 "ice_sword_aura_Modifier"
    		{
     		"Passive" "1"
     		"IsHidden" "1"
-    		"Aura" "orb_of_frost_aura_armor"
+    		"Aura" "ice_sword_aura_armor"
     		"Aura_Radius" "900"
     		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
     		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
 
    		}
+		"modifier_ice_sword_stun"
+		{
+			"IsDebuff"	"1"
+			"Duration"	"%stun_duration"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
+			}
+			"OverrideAnimation"	"ACT_DOTA_DISABLED"
+			"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+		}
 	}
 	"AbilitySpecial"
 	{
 		"01"
 		{
 			"var_type" "FIELD_INTEGER"
-			"bonus_mana" "500"
+			"bonus_mana" "600"
 		}
 		"02"
 		{
 			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "30"
+			"bonus_damage" "60"
 		}
 	   	"03"
 	   	{
@@ -152,7 +203,7 @@
 		"05"
 	   	{
 		    "var_type" "FIELD_INTEGER"
-		    "bonus_movement_speed_percent" "10"
+		    "bonus_movement_speed_percent" "15"
 	   	}
 		"06"
 	   	{
@@ -169,5 +220,20 @@
 		    "var_type" "FIELD_INTEGER"
 		    "attack_speed_slow" "-25"
 	   	}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"stun_duration"					"3.0"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"stun_damage"					"200"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"stun_radius"					"250"
+		}
 	}
 }

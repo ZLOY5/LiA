@@ -51,7 +51,15 @@
 		"particle"			"particles/items2_fx/mjollnir_shield.vpcf"
 		"particle"			"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
 	}
-	
+		"OnUnequip" 
+	{
+		"RunScript"
+		{
+			"ScriptFile" "items\AuraFix.lua"
+			"Function"  "OnUnequip"
+			"ModifierName" "modifier_item_glove_of_pain_aura_emitter"
+		}
+	}
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -95,7 +103,7 @@
 			
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"						"8.0"  //This is hardcoded due to an obscure engine bug.
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"						"8.0"  //This is hardcoded due to an obscure engine bug.
 			}
 		}
 		"modifier_heavenly_punishment"

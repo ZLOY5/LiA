@@ -54,9 +54,11 @@ end
 
 function GetItemInInventory(unit,itemName)
 	for i = 0, 5 do
-		local Item = unit:GetItemInSlot(i) 
-		if Item:GetName() == itemName then
-			return Item 
+		local item = unit:GetItemInSlot(i) 
+		if item then
+			if item:GetName() == itemName then
+				return item 
+			end
 		end
 	end
 	return nil

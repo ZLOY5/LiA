@@ -1,0 +1,195 @@
+"xvbnnniven" 
+  {
+    // General  
+    // ----------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    
+
+    "AbilityTextureName"     "alchemist_acid_spray"
+
+  
+  // Time   
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCooldown"       "15 14 13"
+
+
+  // Casting
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCastRange"        "0"
+  "AbilityCastPoint"        "0.0 0.0 0.0 0.0"
+
+  // Stats
+  //-------------------------------------------------------------------------------------------------------------
+"AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"              "FIELD_FLOAT"
+      "duration"              "8.0"
+    }
+    "02"
+    {
+      "var_type"              "FIELD_INTEGER"
+      "bonus_attackspeed"     "10 20 40"
+    }
+  }
+ 
+
+  "OnSpellStart"
+   {
+    "ApplyModifier"
+     {
+     "ModifierName"  "run_in_invis"
+     "Target"     "CASTER"
+     "Duration"    "%duration"
+    }
+   }
+
+
+    "Modifiers"
+    {
+      "run_in_invis"
+      {
+        "Passive"       "0"
+        "IsHidden"      "0"
+        "IsBuff"        "1"
+    
+        
+    
+        "Properties"
+        {
+        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "30"
+        }
+      }  
+    }
+  }
+"skeleton_thief_pact_with_death_datadriven"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "alchemist_acid_spray"
+  
+
+   "AbilityCooldown"        "12.0"
+   "AbilityManaCost"        "0"
+
+  // Stats
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCastPoint"  "0.2"
+  "AbilityCastRange"  "0"
+
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"              "FIELD_FLOAT"
+      "duration"              "2.0 3.0 4.0"
+    }
+    "02"
+    {
+      "var_type"              "FIELD_INTEGER"
+      "bonus_attackspeed"     "50 150 250"
+    }
+  }
+    
+  // Casting
+  //-------------------------------------------------------------------------------------------------------------
+  "OnSpellStart"
+  {
+   "ApplyModifier"
+    {
+     "ModifierName"   "modifier_pact_with_death"
+     "Target"         "CASTER"
+     "Duration"       "%duration"
+    }
+  }
+    
+    // Modifiers
+    //-------------------------------------------------------------------------------------------------------------
+    "Modifiers"
+    {
+      "modifier_pact_with_death"
+      {
+        "Passive"       "0"
+        "IsHidden"      "0"
+        "IsBuff"        "1"
+    
+        "Properties"
+        {
+         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
+        }
+
+        "States"
+        {
+         "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
+  }
+
+"feryryryryr"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+    "AbilityTextureName"     "alchemist_acid_spray"
+
+
+    "Modifiers"
+    {
+      "opium"
+      {
+        "Passive"       "1"
+        "IsHidden"      "0"
+        "IsBuff"        "1"
+    
+       "OnAttackLanded"
+        {
+         "RunScript"
+          {
+           "ScriptFile"  "heroes/zxxxx.lua"
+           "Function"    "BonusHit"
+          }
+        } 
+      }
+    }
+  }
+
+  "can_touch"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "alchemist_acid_spray"
+
+
+    "Modifiers"
+    {
+      "bsod"
+      {
+        "Passive"       "1"
+        "IsHidden"      "0"
+        "IsBuff"        "1"
+    
+        "OnAttackLanded"
+        // "%attack_damage" is set to the damage value before mitigation
+        {
+          "RunScript"
+          {
+            "ScriptFile"  "heroes/bsodit.lua"
+            "Function"    "bsodit"
+          }
+        } 
+      }
+    }
+
+  }

@@ -126,7 +126,15 @@
 		"particle"	"particles/custom/dazzle_shadow_wave.vpcf"
 		"particle"	"particles/custom/dazzle_shadow_wave_copy.vpcf"
 	}
-	
+	"OnUnequip" 
+	{
+		"RunScript"
+		{
+			"ScriptFile" "items\AuraFix.lua"
+			"Function"  "OnUnequip"
+			"ModifierName" "modifier_item_staff_of_help_aura"
+		}
+	}
 	"OnSpellStart"
 	{
 		"FireSound"
@@ -261,7 +269,15 @@
 		"particle"	"particles/custom/dazzle_shadow_wave.vpcf"
 		"particle"	"particles/custom/dazzle_shadow_wave_copy.vpcf"
 	}
-	
+	"OnUnequip" 
+	{
+		"RunScript"
+		{
+			"ScriptFile" "items\AuraFix.lua"
+			"Function"  "OnUnequip"
+			"ModifierName" "modifier_item_staff_of_help_aura_2"
+		}
+	}
 	"OnSpellStart"
 	{
 		"FireSound"

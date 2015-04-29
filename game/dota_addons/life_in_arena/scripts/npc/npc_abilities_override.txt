@@ -3,474 +3,6 @@
 {
 
 
-	//Start of file akron_eruption_datadriven.txt
-	 "akron_eruption_datadriven"
-	  {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "akron_eruption"
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
-	
-	    "AbilityCooldown"         "150 140 130"
-	
-	    "AbilityCastPoint"        "0.2"
-	    "AbilityCastRange"        "0"
-	
-	    "AbilityManaCost"        "120 140 160"
-	
-	    "AoERadius"              "%radius"
-	    
-	
-	
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	        "OnSpellStart"
-	       {
-	         "ActOnTargets"
-	        {
-	          "Target"
-	          {
-	            "Center"  "CASTER"
-	            "Radius"  "%radius"
-	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	          }
-	          
-	          "Action"
-	          {
-	            "Damage"
-	             {
-	              "Target"    "TARGET"
-	              "Type"      "DAMAGE_TYPE_MAGICAL"
-	              "Damage"    "%Damage"
-	             }
-	            
-	            "ApplyModifier"
-	             {
-	              "Target"        "TARGET"
-	              "ModifierName"  "modifier_eruption_datadriven"
-	             }
-	          }
-	        }
-	      }
-	
-	
-	    "Modifiers"
-	    {
-	      "modifier_eruption_datadriven"
-	      {
-	        "Passive"         "0"
-	        "IsHidden"        "0"
-	        "IsDebuff"        "1"
-	    
-	        "Duration"        "%duration"
-	      
-	        "Properties"
-	        {
-	          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_attack_and_movement"
-	          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
-	        }
-	      }
-	    }
-	
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	     "01"
-	     {
-	       "var_type"                            "FIELD_FLOAT"
-	       "duration"                            "5 10 15"
-	     }
-	     "02"
-	      {
-	       "var_type"                            "FIELD_INTEGER"
-	       "slow_speed_attack_and_movement"      "-40 -60 -80"
-	      }
-	      "03"
-	      {
-	       "var_type"                           "FIELD_INTEGER"
-	       "Damage"                      "150 300 450"
-	      }
-	      "04"
-	      {
-	       "var_type"                           "FIELD_INTEGER"
-	       "radius"                             "1500"
-	      }
-	    }  
-	  }
-	//End of file akron_eruption_datadriven.txt
-
-
-	//Start of file akron_firerage_datadriven.txt
-	"akron_firerage_datadriven"
-	  {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	    
-	
-	    "AoERadius"                "300"
-	
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-	   
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    "Modifiers"
-	    {  
-	     "modifier_firerage_datadriven"
-	      {
-	        "Passive"       "1"
-	        "IsHidden"      "0"
-	        "IsBuff"        "1"
-	    
-	        
-	
-	       "OnAttacked"
-	        { 
-	         "RunScript"
-	          {
-	           "ScriptFile"  "heroes/Acron/firerage.lua"
-	           "Function"    "StackCountIncrease"
-	           "Stack"       "%StackForExplosion"
-	          }
-	        } 
-	      }
-	
-	      "modifier_firerage_explosion"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "1"
-	        "IsDebuff"      "0"
-	      
-	       "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
-	        {
-	
-	         "Damage"
-	          {
-	           "Type"   "DAMAGE_TYPE_MAGICAL"
-	           "Damage" "%damage"
-	          
-	      
-	           "Target"
-	             {
-	              "Center"    "CASTER"
-	              "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	              "Radius"    "%radius"
-	              "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	            }
-	          }
-	        }
-	      }
-	    } 
-	
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	     "01"
-	      {
-	       "var_type"                "FIELD_INTEGER"
-	       "radius"                  "300"
-	      }
-	     "02"
-	      {
-	       "var_type"                "FIELD_INTEGER"
-	       "damage"                  "80 160 240"
-	      }
-	     "03"
-	      {
-	       "var_type"                "FIELD_INTEGER"
-	       "StackForExplosion"       "16"
-	      }
-	    } 
-	  }
-	//End of file akron_firerage_datadriven.txt
-
-
-	//Start of file akron_hellish_heat_datadriven.txt
-	 "akron_hellish_heat_datadriven" 
-	  {
-	    // General  
-	    // ----------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AoERadius"              "%hellish_heat_radius"
-	
-	    
-	
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-	
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	          "var_type"                "FIELD_INTEGER"
-	          "hellish_heat_tick"                "1"
-	        }
-	       "02"
-	        {
-	          "var_type"                "FIELD_INTEGER"
-	           "hellish_heat_radius"              "290"
-	        }
-	       "03"
-	        { 
-	          "var_type"  "FIELD_INTEGER"
-	          "hellish_heat_tick_damage" "15 30 60"
-	        }
-	    }
-	
-	    "Modifiers"
-	    {
-	      "modifiers_hellish_heat_datadriven"
-	     {
-	       "Passive"         "1"
-	       "IsHidden"        "1"
-	       "IsPurgable"      "0"
-	       
-	       "OnDeath"
-	       {
-	        "RemoveModifier"
-	         {
-	           "ModifierName"  "modifiers_hellish_heat_datadriven"
-	           
-	           "Target"
-	           {
-	             "Center"    "CASTER"
-	             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	             "Types"   "DOTA_UNIT_TARGET_HERO"
-	             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-	           }
-	         }
-	       }
-	
-	       "ThinkInterval" "%hellish_heat_tick"
-	
-	        "OnIntervalThink"
-	        {
-	          "ActOnTargets"
-	           {
-	                "Target"
-	                {
-	                    "Center" "CASTER"
-	                    "Radius" "%hellish_heat_radius"
-	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
-	                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	                }
-	
-	                "Action"
-	                {
-	                  "Damage"
-	                  {
-	                    "Target"  "TARGET"
-	                    "Type"    "DAMAGE_TYPE_MAGICAL"
-	                    "Damage"  "%hellish_heat_tick_damage"
-	                  }
-	                }
-	            }
-	        }
-	      
-	            "Aura"            "modifiers_hellish_heat_check_datadriven"
-	            "Aura_Radius"     "%hellish_heat_radius"
-	            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-	      }
-	  
-	
-	
-	      "modifiers_hellish_heat_check_datadriven"
-	      {
-	      "Passive"       "0"
-	      "IsHidden"      "0"
-	      "IsDebuff"      "1"
-	      "IsPurgable"    "0"
-	      }
-	    }
-	  }
-	   
-	//End of file akron_hellish_heat_datadriven.txt
-
-
-	//Start of file akron_internal_explosion_datadriven.txt
-	"akron_internal_explosion_datadriven"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	
-	    "AbilityCooldown" "22 21 20"
-	
-	    "AbilityManaCost" "70 80 90"
-	
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "1"
-	    "LevelsBetweenUpgrades"  "2"
-	    
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "AbilityCastPoint"  "0.2"
-	    "AbilityCastRange"  "0"
-	    "AoERadius"      "%radius"
-	
-	    "OnSpellStart"
-	    {
-	      "Damage"
-	      {
-	        "Type"   "DAMAGE_TYPE_MAGICAL"
-	        "Damage" "%damage"
-	                    
-	        "Target"
-	        {
-	         "Center"    "CASTER"
-	         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	         "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	         "Radius"    "%radius"
-	        }
-	      }
-	
-	      "Damage"
-	       {
-	         "Target" "CASTER"
-	         "Type"   "DAMAGE_TYPE_MAGICAL"
-	         "Damage" "%masochism"
-	        }
-	    }
-	    
-	  
-	   
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	      "01"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "radius"                  "200 225 250"
-	        }
-	       "02"
-	        {
-	            "var_type"                "FIELD_FLOAT"
-	            "damage"                   "200 400 600"
-	        }
-	       "03"
-	        {
-	            "var_type"                "FIELD_FLOAT"
-	            "masochism"               "200 400 600"
-	        }
-	    }
-	  }
-	//End of file akron_internal_explosion_datadriven.txt
-
-
-	//Start of file asaassaqwer.txt
-	  "asaassaqwer"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	
-	    "AbilityCooldown" "4"
-	
-	    "AbilityManaCost" ""
-	    
-	    // Precache 
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "precache"
-	    {
-	     "model"     "models/heroes/undying/undying_minion.vmdl"
-	    }
-	    
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "AbilityCastPoint"  "0"
-	    "AbilityCastRange"  "0"
-	    "AoERadius"      "%radius"
-	     
-	     "Modifiers"
-	     {
-	       "modifier_jinada_datadriven"
-	       {
-	         "Passive"       "1"
-	         "IsHidden"      "0"
-	         "IsDebuff"      "1"
-	     
-	         
-	
-	         "OnCreated"
-	         {
-	           
-	          "RunScript"
-	            {
-	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
-	             "Function"    "Jinada"
-	             "maxStack"     "3"
-	             
-	            }
-	          }
-	        }
-	
-	        "check"
-	        {
-	          "Passive"       "1"
-	          "IsHidden"      "0"
-	          "IsBuff"        "1"
-	        }
-	
-	        "if_creep_die"
-	        {
-	          "Passive"       "0"
-	          "IsHidden"      "0"
-	          "IsBuff"        "1"
-	
-	          "OnDeath"
-	          {
-	            "RunScript"
-	            {
-	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
-	             "Function"    "Getr"
-	             "maxStack"     "3"
-	             "currentStacks" "%currentStacks"
-	            }
-	          }
-	        }
-	      }
-	    
-	  }
-	//End of file asaassaqwer.txt
-
-
 	//Start of file barrel_no_health_bar.txt
 		//=================================================================================================================
 		// Minotaur: Aura
@@ -1639,297 +1171,281 @@
 	//End of file barrel_no_health_bar.txt
 
 
-	//Start of file brewer_bear_style_datadriven.txt
-	 "brewer_bear_style_datadriven"
+	//Start of file creep_passives.txt
+	"true_sight"
 	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
-	    "AbilityTextureName"     "alchemist_acid_spray"
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel" 						"1"
 	
-	    "AoERadius"   "%radius"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
-	    
-	    "OnUpgrade"
-	    {
-	      "RunScript"
-	      {
-	        "ScriptFile"  "heroes/Brewer/bear_style.lua"
-	        "Function"    "CheckinLvlup"
-	      }
-	    }
+		"Modifiers"
+		{
+			"modifier_true_sight"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"ThinkInterval"  "0.03"
+				"OnIntervalThink"
+				{
+					"ActOnTargets"
+					{
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Radius" 	"2000"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					
+						"Action"    
+						{
+							"RemoveModifier"
+							{
+								"ModifierName"	"modifier_truesight"
+								"Target" 		"TARGET"
+							}
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_truesight"
+								"Target" 		"TARGET"
+							}
+						}
+					}			
+				}
+			}
 	
-	"Modifiers"
-	{
-	  "bear_style_datadriven"
-	  {
-	    "Passive"       "1"
-	    "IsHidden"      "0"
-	    "IsBuff"        "1"
-	
-	    "ThinkInterval" ".03"
-	
-	    "OnIntervalThink"
-	    {
-	      "RunScript"
-	      {
-	        "ScriptFile"  "heroes/Brewer/bear_style.lua"
-	        "Function"    "CheckingMain"
-	        "Strength"    "%bonus_strength"
-	        "DetectionRadius" "%radius"
-	      }
-	    }
-	  }
-	
-	  "bonus_strength"
-	  {
-	    "Passive"       "0"
-	    "IsHidden"      "1"
-	    "IsBuff"        "1"
-	
-	    "Attributes"  "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
-	
-	   "Properties"
-	   {
-	     "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
-	   }
-	  }
+			"modifier_true_sight_reveal"
+			{
+				"IsHidden"			"1"
+				"Duration"			"0.03"
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+			}
+		}	
 	}
 	
-	  // Special  
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_strength"        "1 2 3"
-	    }
-	    "02"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "radius"                "300"
-	    }
-	  }
-	}
-	//End of file brewer_bear_style_datadriven.txt
-
-
-	//Start of file brewer_beer_for_a_breakthrough_datadriven.txt
-	"brewer_beer_for_a_breakthrough_datadriven" 
-	  {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	  
-	
-	   "AbilityCooldown"        "20.0"
-	   "AbilityManaCost"        "0"
-	
-	  // Stats
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastPoint"  "0.2"
-	  "AbilityCastRange"  "0"
-	
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"              "FIELD_FLOAT"
-	      "duration"              "15"
-	    }
-	    "02"
-	    {
-	      "var_type"                      "FIELD_INTEGER"
-	      "bonus_movespeed_percentage"    "5 10 20"
-	    }
-	    "03"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_attackspeed"           "10 20 40"
-	    }
-	    "04"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_strength"           "15 30 45"
-	    }
-	  }
-	    
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	  "OnSpellStart"
-	  {
-	   "ApplyModifier"
-	    {
-	     "ModifierName"   "beer_for_a_breakthrough_datadriven"
-	     "Target"         "CASTER"
-	     "Duration"       "%duration"
-	    }
-	  }
-	    
-	    // Modifiers
-	    //-------------------------------------------------------------------------------------------------------------
-	    "Modifiers"
-	    {
-	      "beer_for_a_breakthrough_datadriven"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "0"
-	        "IsBuff"        "1"
-	    
-	        "Properties"
-	        {
-	         
-	         "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
-	         "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"         "%bonus_strength"
-	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
-	        }
-	      }
-	    }
-	  }
-	//End of file brewer_beer_for_a_breakthrough_datadriven.txt
-
-
-	//Start of file brewer_drunken_punches_datadriven.txt
-	"brewer_drunken_punches_datadriven"
+	"3_wave_evasion"
 	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	   
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
-	    
-	"Modifiers"
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"evasion"		"25"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"evasion"
+			{
+				"Passive"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+				}
+			}
+		}
+	}
+	
+	"5_megaboss_bash"
 	{
-	  "drunken_punches_datadriven"
-	  {
-	    "Passive"       "1"
-	    "IsHidden"      "1"
-	    "IsBuff"        "1"
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"faceless_void_time_lock"
 	
-	   "OnAttacked"
-	   {
-	     "RunScript"
-	      {
-	        "ScriptFile"   "heroes/Brewer/drunken_punches.lua"
-	        "Function"     "Return"
-	        "Coefficient"  "%strength_percentage_return"
-	      }
-	   }
-	  }
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	
-	  
+		"AbilityDamage"					"100"
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+			"particle"	"particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"16"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_hero_duration"	"2.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_creep_duration"	"2.0"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_bash"	
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+	
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"%bash_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+	
+						"OnSuccess"
+						{
+							"FireSound"
+							{
+								"EffectName"	"Roshan.Bash"
+								"Target"		"TARGET"
+							}
+	
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_bash_stun"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Types"		"DOTA_UNIT_TARGET_HERO"
+								}
+								"Duration"		"%stun_hero_duration"	
+							}
+	
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_bash_stun"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Types"		"DOTA_UNIT_TARGET_BASIC"
+								}
+								"Duration"		"%stun_creep_duration"
+							}
+	
+							"Damage"
+							{
+								"Target"	"TARGET"
+								"Type"		"DAMAGE_TYPE_MAGICAL"
+								"Damage"	"%AbilityDamage"
+							}
+						}
+					}
+				}
+			}
+	
+			"modifier_bash_stun"
+			{
+				"IsDebuff"			"1"
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+	
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
+	
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
 	}
 	
-	  // Special  
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    { 
-	      "var_type"                          "FIELD_FLOAT"
-	      "strength_percentage_return"        "0.6 0.8 1.0"
-	    }
-	  }
+	"5_megaboss_crit"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"			"ursa_fury_swipes"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"32"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+			"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_weapon_blur_critical.vpcf"
+		}
+	
+		"Modifiers"
+		{
+			"modifier_megaboss_crit"
+			{
+			    "Passive"   "1"
+			    "IsHidden"  "1"
+			    "OnAttackStart"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName" 	"modifier_megaboss_crit_crit"
+			            "Target" 		"CASTER"
+			        }
+	
+			        "Random"
+			        {
+			            "Chance" "%crit_chance"
+			            "OnSuccess"
+			            {
+			                "ApplyModifier"
+			                {
+			                    "ModifierName" 	"modifier_megaboss_crit_crit"
+			                    "Target"    	"CASTER"    
+			                }        
+			            }
+			        }
+			    }
+			}
+	
+			"modifier_megaboss_crit_crit"
+			{
+			    "IsHidden"  "1"
+			    "Properties"
+			    {
+			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			    }
+	
+			    "OnAttackLanded"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName"  "modifier_megaboss_crit_crit"
+			            "Target"   		"CASTER"    
+			        }
+			    }
+			}
+		}
 	}
-	//End of file brewer_drunken_punches_datadriven.txt
-
-
-	//Start of file brewer_power_of_the_mountains_datadriven.txt
-	"brewer_power_of_the_mountains_datadriven" 
-	  {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	  
-	
-	   "AbilityCooldown"        "200.0 180.0 160.0"
-	   "AbilityManaCost"        "0"
-	
-	  // Stats
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastPoint"  "0.2"
-	  "AbilityCastRange"  "0"
-	
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"              "FIELD_FLOAT"
-	      "duration"              "10"
-	    }
-	    "02"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_damage"          "50 150 250"
-	    }
-	    "03"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_armor"           "10 20 30"
-	    }
-	    "04"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_health"           "400 700 1000"
-	    }
-	  }
-	    
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	  "OnSpellStart"
-	  {
-	   "ApplyModifier"
-	    {
-	     "ModifierName"   "modifier_power_of_the_mountains"
-	     "Target"         "CASTER"
-	     "Duration"       "%duration"
-	    }
-	  }
-	    
-	    // Modifiers
-	    //-------------------------------------------------------------------------------------------------------------
-	    "Modifiers"
-	    {
-	      "modifier_power_of_the_mountains"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "0"
-	        "IsBuff"        "1"
-	    
-	        "Properties"
-	        {
-	         "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-	         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
-	         "MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
-	        }
-	
-	        "States"
-	        {
-	         "MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
-	        }
-	      }
-	    }
-	  }
-	//End of file brewer_power_of_the_mountains_datadriven.txt
+	//End of file creep_passives.txt
 
 
 	//Start of file dota_items_disable.txt
@@ -2728,7 +2244,1110 @@
 	//End of file dummy_passive.txt
 
 
-	//Start of file feryryryryr.txt
+	//Start of file npc_lia_hero_acron.txt
+	"akron_internal_explosion_datadriven"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AbilityCooldown" "22 21 20"
+	
+	    "AbilityManaCost" "70 80 90"
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+	    
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0.2"
+	    "AbilityCastRange"  "0"
+	    "AoERadius"      "%radius"
+	
+	    "OnSpellStart"
+	    {
+	      "Damage"
+	      {
+	        "Type"   "DAMAGE_TYPE_MAGICAL"
+	        "Damage" "%damage"
+	                    
+	        "Target"
+	        {
+	         "Center"    "CASTER"
+	         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	         "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	         "Radius"    "%radius"
+	        }
+	      }
+	
+	      "Damage"
+	       {
+	         "Target" "CASTER"
+	         "Type"   "DAMAGE_TYPE_MAGICAL"
+	         "Damage" "%masochism"
+	        }
+	    }
+	    
+	  
+	   
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "radius"                  "200 225 250"
+	        }
+	       "02"
+	        {
+	            "var_type"                "FIELD_FLOAT"
+	            "damage"                   "200 400 600"
+	        }
+	       "03"
+	        {
+	            "var_type"                "FIELD_FLOAT"
+	            "masochism"               "200 400 600"
+	        }
+	    }
+	  }
+	
+	 "akron_hellish_heat_datadriven" 
+	  {
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AoERadius"              "%hellish_heat_radius"
+	
+	    
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	          "var_type"                "FIELD_INTEGER"
+	          "hellish_heat_tick"                "1"
+	        }
+	       "02"
+	        {
+	          "var_type"                "FIELD_INTEGER"
+	           "hellish_heat_radius"              "290"
+	        }
+	       "03"
+	        { 
+	          "var_type"  "FIELD_INTEGER"
+	          "hellish_heat_tick_damage" "15 30 60"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	      "modifiers_hellish_heat_datadriven"
+	     {
+	       "Passive"         "1"
+	       "IsHidden"        "1"
+	       "IsPurgable"      "0"
+	       
+	       "OnDeath"
+	       {
+	        "RemoveModifier"
+	         {
+	           "ModifierName"  "modifiers_hellish_heat_datadriven"
+	           
+	           "Target"
+	           {
+	             "Center"    "CASTER"
+	             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	             "Types"   "DOTA_UNIT_TARGET_HERO"
+	             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+	           }
+	         }
+	       }
+	
+	       "ThinkInterval" "%hellish_heat_tick"
+	
+	        "OnIntervalThink"
+	        {
+	          "ActOnTargets"
+	           {
+	                "Target"
+	                {
+	                    "Center" "CASTER"
+	                    "Radius" "%hellish_heat_radius"
+	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+	                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                }
+	
+	                "Action"
+	                {
+	                  "Damage"
+	                  {
+	                    "Target"  "TARGET"
+	                    "Type"    "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"  "%hellish_heat_tick_damage"
+	                  }
+	                }
+	            }
+	        }
+	      
+	            "Aura"            "modifiers_hellish_heat_check_datadriven"
+	            "Aura_Radius"     "%hellish_heat_radius"
+	            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
+	      }
+	  
+	
+	
+	      "modifiers_hellish_heat_check_datadriven"
+	      {
+	      "Passive"       "0"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	      "IsPurgable"    "0"
+	      }
+	    }
+	  }
+	   
+	"akron_firerage_datadriven"
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	    
+	
+	    "AoERadius"                "300"
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	   
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {  
+	     "modifier_firerage_datadriven"
+	      {
+	        "Passive"       "1"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        
+	
+	       "OnAttacked"
+	        { 
+	         "RunScript"
+	          {
+	           "ScriptFile"  "heroes/Acron/firerage.lua"
+	           "Function"    "StackCountIncrease"
+	           "Stack"       "%StackForExplosion"
+	          }
+	        } 
+	      }
+	
+	      "modifier_firerage_explosion"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "1"
+	        "IsDebuff"      "0"
+	      
+	       "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
+	        {
+	
+	         "Damage"
+	          {
+	           "Type"   "DAMAGE_TYPE_MAGICAL"
+	           "Damage" "%damage"
+	          
+	      
+	           "Target"
+	             {
+	              "Center"    "CASTER"
+	              "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	              "Radius"    "%radius"
+	              "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            }
+	          }
+	        }
+	      }
+	    } 
+	
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	     "01"
+	      {
+	       "var_type"                "FIELD_INTEGER"
+	       "radius"                  "300"
+	      }
+	     "02"
+	      {
+	       "var_type"                "FIELD_INTEGER"
+	       "damage"                  "80 160 240"
+	      }
+	     "03"
+	      {
+	       "var_type"                "FIELD_INTEGER"
+	       "StackForExplosion"       "16"
+	      }
+	    } 
+	  }
+	
+	 "akron_eruption_datadriven"
+	  {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "akron_eruption"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	
+	    "AbilityCooldown"         "150 140 130"
+	
+	    "AbilityCastPoint"        "0.2"
+	    "AbilityCastRange"        "0"
+	
+	    "AbilityManaCost"        "120 140 160"
+	
+	    "AoERadius"              "%radius"
+	    
+	
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	        "OnSpellStart"
+	       {
+	         "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"  "CASTER"
+	            "Radius"  "%radius"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	          }
+	          
+	          "Action"
+	          {
+	            "Damage"
+	             {
+	              "Target"    "TARGET"
+	              "Type"      "DAMAGE_TYPE_MAGICAL"
+	              "Damage"    "%Damage"
+	             }
+	            
+	            "ApplyModifier"
+	             {
+	              "Target"        "TARGET"
+	              "ModifierName"  "modifier_eruption_datadriven"
+	             }
+	          }
+	        }
+	      }
+	
+	
+	    "Modifiers"
+	    {
+	      "modifier_eruption_datadriven"
+	      {
+	        "Passive"         "0"
+	        "IsHidden"        "0"
+	        "IsDebuff"        "1"
+	    
+	        "Duration"        "%duration"
+	      
+	        "Properties"
+	        {
+	          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_attack_and_movement"
+	          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
+	        }
+	      }
+	    }
+	
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	     "01"
+	     {
+	       "var_type"                            "FIELD_FLOAT"
+	       "duration"                            "5 10 15"
+	     }
+	     "02"
+	      {
+	       "var_type"                            "FIELD_INTEGER"
+	       "slow_speed_attack_and_movement"      "-40 -60 -80"
+	      }
+	      "03"
+	      {
+	       "var_type"                           "FIELD_INTEGER"
+	       "Damage"                      "150 300 450"
+	      }
+	      "04"
+	      {
+	       "var_type"                           "FIELD_INTEGER"
+	       "radius"                             "1500"
+	      }
+	    }  
+	  }
+	//End of file npc_lia_hero_acron.txt
+
+
+	//Start of file npc_lia_hero_brewmaster.txt
+	"brewer_power_of_the_mountains_datadriven" 
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	
+	   "AbilityCooldown"        "200.0 180.0 160.0"
+	   "AbilityManaCost"        "0"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.2"
+	  "AbilityCastRange"  "0"
+	
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "10"
+	    }
+	    "02"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_damage"          "50 150 250"
+	    }
+	    "03"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_armor"           "10 20 30"
+	    }
+	    "04"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_health"           "400 700 1000"
+	    }
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "modifier_power_of_the_mountains"
+	     "Target"         "CASTER"
+	     "Duration"       "%duration"
+	    }
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "modifier_power_of_the_mountains"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+	         "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+	         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
+	         "MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
+	        }
+	
+	        "States"
+	        {
+	         "MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+	        }
+	      }
+	    }
+	  }
+	"brewer_drunken_punches_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	   
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	    
+	"Modifiers"
+	{
+	  "drunken_punches_datadriven"
+	  {
+	    "Passive"       "1"
+	    "IsHidden"      "1"
+	    "IsBuff"        "1"
+	
+	   "OnAttacked"
+	   {
+	     "RunScript"
+	      {
+	        "ScriptFile"   "heroes/Brewer/drunken_punches.lua"
+	        "Function"     "Return"
+	        "Coefficient"  "%strength_percentage_return"
+	      }
+	   }
+	  }
+	
+	  
+	}
+	
+	  // Special  
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	      "var_type"                          "FIELD_FLOAT"
+	      "strength_percentage_return"        "0.6 0.8 1.0"
+	    }
+	  }
+	}
+	"brewer_beer_for_a_breakthrough_datadriven" 
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	
+	   "AbilityCooldown"        "20.0"
+	   "AbilityManaCost"        "0"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.2"
+	  "AbilityCastRange"  "0"
+	
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "15"
+	    }
+	    "02"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "bonus_movespeed_percentage"    "5 10 20"
+	    }
+	    "03"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_attackspeed"           "10 20 40"
+	    }
+	    "04"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_strength"           "15 30 45"
+	    }
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "beer_for_a_breakthrough_datadriven"
+	     "Target"         "CASTER"
+	     "Duration"       "%duration"
+	    }
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "beer_for_a_breakthrough_datadriven"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+	         
+	         "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
+	         "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"         "%bonus_strength"
+	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
+	        }
+	      }
+	    }
+	  }
+	 "brewer_bear_style_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AoERadius"   "%radius"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	    
+	    "OnUpgrade"
+	    {
+	      "RunScript"
+	      {
+	        "ScriptFile"  "heroes/Brewer/bear_style.lua"
+	        "Function"    "CheckinLvlup"
+	      }
+	    }
+	
+	"Modifiers"
+	{
+	  "bear_style_datadriven"
+	  {
+	    "Passive"       "1"
+	    "IsHidden"      "0"
+	    "IsBuff"        "1"
+	
+	    "ThinkInterval" ".03"
+	
+	    "OnIntervalThink"
+	    {
+	      "RunScript"
+	      {
+	        "ScriptFile"  "heroes/Brewer/bear_style.lua"
+	        "Function"    "CheckingMain"
+	        "Strength"    "%bonus_strength"
+	        "DetectionRadius" "%radius"
+	      }
+	    }
+	  }
+	
+	  "bonus_strength"
+	  {
+	    "Passive"       "0"
+	    "IsHidden"      "1"
+	    "IsBuff"        "1"
+	
+	    "Attributes"  "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+	
+	   "Properties"
+	   {
+	     "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
+	   }
+	  }
+	}
+	
+	  // Special  
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_strength"        "1 2 3"
+	    }
+	    "02"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "radius"                "300"
+	    }
+	  }
+	}
+	
+	//End of file npc_lia_hero_brewmaster.txt
+
+
+	//Start of file npc_lia_hero_butcher.txt
+	"whyddd"
+	 {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	    
+	    "AoERadius"      "300"
+	
+	    "AbilityCooldown" "3.0"
+	
+	    "AbilityManaCost" "0"
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0.2"
+	    "AbilityCastRange"  "0"
+	    
+	   
+	    "OnSpellStart"
+	    {
+	      "ApplyModifier"
+	      {
+	        "ModifierName"  "modifier_tytret"
+	        
+	        "Target"
+	        {
+	         "Center"    "CASTER"
+	         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	          "Radius"    "300"
+	        }
+	        
+	        "Duration"    "10"
+	      }
+	    }
+	
+	    "Modifiers"
+	    {
+	      "modifier_tytret"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsDebuff"      "1"
+	
+	        "Properties"
+	        {
+	         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "-60" 
+	        }
+	
+	      }
+	    }
+	  }
+	 "why"
+	 {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AbilityCooldown" "3.0"
+	
+	    "AbilityManaCost" "0"
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0.2"
+	    "AbilityCastRange"  "0"
+	    
+	  
+	
+	    "OnSpellStart"
+	    {
+	      "ApplyModifier"
+	      {
+	        "ModifierName"  "aseoppp"
+	        "Target"     "CASTER"
+	        "Duration"    "8"
+	      }
+	    }
+	
+	
+	
+	    "Modifiers"
+	    {
+	      "aseoppp"
+	      {
+	        
+	
+	        "Passive"      "0"
+	        "IsHidden"      "0"
+	        "IsDebuff"      "0"
+	    
+	        "EffectName"        "particle_name"
+	        "EffectAttachType"  "follow_origin"
+	    
+	        "OnAttackLanded"
+	        {
+	          "RunScript"
+	           {
+	           "ScriptFile"  "heroes/asd.lua"
+	           "Function"    "BiGhit"
+	           }
+	        }
+	      }
+	    }
+	  }
+	
+	 
+	  "asaassaqwer"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    "AbilityCooldown" "4"
+	
+	    "AbilityManaCost" ""
+	    
+	    // Precache 
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "precache"
+	    {
+	     "model"     "models/heroes/undying/undying_minion.vmdl"
+	    }
+	    
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    
+	    "AbilityCastPoint"  "0"
+	    "AbilityCastRange"  "0"
+	    "AoERadius"      "%radius"
+	     
+	     "Modifiers"
+	     {
+	       "modifier_jinada_datadriven"
+	       {
+	         "Passive"       "1"
+	         "IsHidden"      "0"
+	         "IsDebuff"      "1"
+	     
+	         
+	
+	         "OnCreated"
+	         {
+	           
+	          "RunScript"
+	            {
+	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
+	             "Function"    "Jinada"
+	             "maxStack"     "3"
+	             
+	            }
+	          }
+	        }
+	
+	        "check"
+	        {
+	          "Passive"       "1"
+	          "IsHidden"      "0"
+	          "IsBuff"        "1"
+	        }
+	
+	        "if_creep_die"
+	        {
+	          "Passive"       "0"
+	          "IsHidden"      "0"
+	          "IsBuff"        "1"
+	
+	          "OnDeath"
+	          {
+	            "RunScript"
+	            {
+	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
+	             "Function"    "Getr"
+	             "maxStack"     "3"
+	             "currentStacks" "%currentStacks"
+	            }
+	          }
+	        }
+	      }
+	    
+	  }
+	//End of file npc_lia_hero_butcher.txt
+
+
+	//Start of file npc_lia_hero_queen_of_spiders.txt
+	 "quenn_of_spiders_royal_vitality_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"     "spiders_royal_vitality"
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	    
+	"Modifiers"
+	{
+	  "royal_vitality_datadriven"
+	  {
+	    "Passive"       "1"
+	    "IsHidden"      "0"
+	    "IsBuff"        "1"
+	
+	    "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%bonus_health_regen"
+	      }
+	  }
+	}
+	
+	  // Special  
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_health_regen"    "20 50 75"
+	    }
+	  }
+	}
+	//End of file npc_lia_hero_queen_of_spiders.txt
+
+
+	//Start of file npc_lia_hero_shaman.txt
+	"shaman_total_madness_datadriven" 
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	
+	   "AbilityCooldown"        "20.0 25.0 30.0"
+	   "AbilityManaCost"        "100"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.2"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                      "FIELD_FLOAT"
+	      "duration"                      "10 15 20"
+	    }
+	    "02"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "bonus_movespeed_percentage"    "20 40 60"
+	    }
+	    "03"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "bonus_attackspeed"             "50 100 150"
+	    }
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "total_madness_datadriven"
+	     "Target"         "CASTER"
+	     "Duration"       "%duration"
+	    }
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "total_madness_datadriven"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+	         
+	         "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
+	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
+	        }
+	      }
+	    }
+	  }
+	//End of file npc_lia_hero_shaman.txt
+
+
+	//Start of file npc_lia_hero_skeleton_thief.txt
+	"xvbnnniven" 
+	  {
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    
+	
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	  
+	  // Time   
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCooldown"       "15 14 13"
+	
+	
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastRange"        "0"
+	  "AbilityCastPoint"        "0.0 0.0 0.0 0.0"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "8.0"
+	    }
+	    "02"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_attackspeed"     "10 20 40"
+	    }
+	  }
+	 
+	
+	  "OnSpellStart"
+	   {
+	    "ApplyModifier"
+	     {
+	     "ModifierName"  "run_in_invis"
+	     "Target"     "CASTER"
+	     "Duration"    "%duration"
+	    }
+	   }
+	
+	
+	    "Modifiers"
+	    {
+	      "run_in_invis"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        
+	    
+	        "Properties"
+	        {
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "30"
+	        }
+	      }  
+	    }
+	  }
+	"skeleton_thief_pact_with_death_datadriven"
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	
+	   "AbilityCooldown"        "12.0"
+	   "AbilityManaCost"        "0"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.2"
+	  "AbilityCastRange"  "0"
+	
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "2.0 3.0 4.0"
+	    }
+	    "02"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_attackspeed"     "50 150 250"
+	    }
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "modifier_pact_with_death"
+	     "Target"         "CASTER"
+	     "Duration"       "%duration"
+	    }
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "modifier_pact_with_death"
+	      {
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
+	        }
+	
+	        "States"
+	        {
+	         "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+	        }
+	      }
+	    }
+	  }
+	
 	"feryryryryr"
 	  {
 	    // General
@@ -2790,10 +3409,231 @@
 	    }
 	
 	  }
-	//End of file feryryryryr.txt
+	//End of file npc_lia_hero_skeleton_thief.txt
 
 
-	//Start of file minotaur_ancestral_spirits_datadriven.txt
+	//Start of file npc_lia_hero_taur.txt
+	
+	"minotaur_infernal_nature_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityTextureName"      "vengefulspirit_command_aura"
+	
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastRange"        "900"
+	  
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "penalty_armor"  "-4 -8 -12"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "aura_radius"   "900"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_infernal_nature_aura_caster_datadriven"
+	    {
+	      "Passive"       "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	  
+	      "Aura"            "modifier_infernal_nature_aura_enemy"
+	      "Aura_Radius"     "%aura_radius"
+	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    }
+	      
+	    "modifier_infernal_nature_aura_enemy"
+	    {
+	      "IsDebuff"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%penalty_armor" 
+	      }     
+	    }
+	  } 
+	}
+	
+	"minotaur_hoof_stomp_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	  "FightRecapLevel"         "1"
+	  "AbilityTextureName"      "centaur_hoof_stomp"
+	  
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"      "0.5 0.5 0.5 0.5"
+	  "AbilityCooldown"       "10.0 7.0 3.0"
+	  "AbilityManaCost"       "50"
+	  
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "radius"              "315"
+	    }
+	    "02"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "duration"            "3"
+	    }
+	    "03"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "stomp_damage"          "50 100 150"
+	    }
+	    "04"
+	    {
+	      "var_type"                                "FIELD_INTEGER"
+	      "slow_movement_and_attack_speed"          "-30 -45 -60"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+	    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"         "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+	      "EffectAttachType"   "follow_origin"
+	      "EffectRadius"       "%radius"
+	      "Target"             "CASTER"
+	      "ControlPoints"
+	      {
+	        "01"  "%radius 0 %radius"
+	      }
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Centaur.HoofStomp"
+	      "Target"        "CASTER"
+	    }
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"        "CASTER"
+	        "Radius"        "%radius"
+	        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      }
+	
+	      "Action"
+	      {
+	        "Damage"
+	        {
+	          "Target"  "TARGET"
+	          "Type"    "DAMAGE_TYPE_MAGICAL"
+	          "Damage"  "%stomp_damage"
+	        }
+	
+	        "ApplyModifier"
+	        {
+	          "Target"        "TARGET"
+	          "ModifierName"  "modifier_hoof_stomp"
+	        }
+	      }
+	    }   
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_hoof_stomp"
+	    {
+	      "IsDebuff"  "1"
+	      "Duration"  "%duration"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%slow_movement_and_attack_speed"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_movement_and_attack_speed" 
+	      }
+	    }
+	  }
+	}
+	
+	"minotaur_bestial_strength_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"                "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityTextureName"      "sven_great_cleave"
+	
+	  // Precache
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "particle"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+	  }
+	      
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "great_cleave_radius" "300.0"
+	    }
+	    
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "great_cleave_damage" "20 30 30"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_minotaur_bestial_strength_datadriven"
+	    {
+	      "Passive"   "1"
+	      "IsHidden"  "1"
+	
+	      "OnAttackLanded"
+	      {
+	        "CleaveAttack"
+	        {
+	          "CleavePercent"   "%great_cleave_damage"
+	          "CleaveRadius"    "%great_cleave_radius"
+	          "CleaveEffect"    "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+	        }
+	      }
+	    }
+	  }
+	}
+	
 	"minotaur_ancestral_spirits_datadriven"
 	{
 	  // General
@@ -2917,606 +3757,69 @@
 	    }
 	  }
 	}
-	//End of file minotaur_ancestral_spirits_datadriven.txt
+	//End of file npc_lia_hero_taur.txt
 
 
-	//Start of file minotaur_bestial_strength_datadriven.txt
-	"minotaur_bestial_strength_datadriven"
+	//Start of file npc_lia_hero_time_lord.txt
+	"time_lord_death_datadriven"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"                "ability_datadriven"
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-	  "AbilityTextureName"      "sven_great_cleave"
-	
-	  // Precache
+	  "BaseClass"           "ability_datadriven"
+	  
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	 
+	  "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	  // Stats    
 	  //-------------------------------------------------------------------------------------------------------------
-	  "precache"
-	  {
-	    "particle"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-	  }
-	      
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastRange"        "900"
+	  "AbilityCastPoint"        "0.0"
+	  "AbilityCooldown"         "3.0"
+	  "AbilityManaCost"         "0"
+	  "AoERadius"               "%radius"
+	  
+	  
+	  
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "great_cleave_radius" "300.0"
-	    }
-	    
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "great_cleave_damage" "20 30 30"
+	      "radius"          "300"
 	    }
 	  }
-	
-	  "Modifiers"
-	  {
-	    "modifier_minotaur_bestial_strength_datadriven"
-	    {
-	      "Passive"   "1"
-	      "IsHidden"  "1"
-	
-	      "OnAttackLanded"
-	      {
-	        "CleaveAttack"
-	        {
-	          "CleavePercent"   "%great_cleave_damage"
-	          "CleaveRadius"    "%great_cleave_radius"
-	          "CleaveEffect"    "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-	        }
-	      }
-	    }
-	  }
-	}
-	//End of file minotaur_bestial_strength_datadriven.txt
-
-
-	//Start of file minotaur_hoof_stomp_datadriven.txt
-	"minotaur_hoof_stomp_datadriven"
+	  
+	"OnSpellStart"
 	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"               "ability_datadriven"
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
-	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-	  "FightRecapLevel"         "1"
-	  "AbilityTextureName"      "centaur_hoof_stomp"
-	  
-	  // Stats
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastPoint"      "0.5 0.5 0.5 0.5"
-	  "AbilityCooldown"       "10.0 7.0 3.0"
-	  "AbilityManaCost"       "50"
-	  
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"            "FIELD_INTEGER"
-	      "radius"              "315"
-	    }
-	    "02"
-	    {
-	      "var_type"            "FIELD_FLOAT"
-	      "duration"            "3"
-	    }
-	    "03"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "stomp_damage"          "50 100 150"
-	    }
-	    "04"
-	    {
-	      "var_type"                                "FIELD_INTEGER"
-	      "slow_movement_and_attack_speed"          "-30 -45 -60"
-	    }
-	  }
-	
-	  "precache"
-	  {
-	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
-	    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-	  }
-	
-	  "OnSpellStart"
-	  {
-	    "FireEffect"
-	    {
-	      "EffectName"         "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-	      "EffectAttachType"   "follow_origin"
-	      "EffectRadius"       "%radius"
-	      "Target"             "CASTER"
-	      "ControlPoints"
-	      {
-	        "01"  "%radius 0 %radius"
-	      }
-	    }
-	
-	    "FireSound"
-	    {
-	      "EffectName"    "Hero_Centaur.HoofStomp"
-	      "Target"        "CASTER"
-	    }
-	    "ActOnTargets"
+	  "ActOnTargets"
 	    {
 	      "Target"
 	      {
-	        "Center"        "CASTER"
-	        "Radius"        "%radius"
-	        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        "Center"  "POINT"
+	        "Radius"  "%radius"
+	        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Type"    "DOTA_UNIT_TARGET_CREEP"
+	        "Flags"   "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	      }
 	
 	      "Action"
 	      {
-	        "Damage"
+	        "RunScript"
 	        {
-	          "Target"  "TARGET"
-	          "Type"    "DAMAGE_TYPE_MAGICAL"
-	          "Damage"  "%stomp_damage"
-	        }
-	
-	        "ApplyModifier"
-	        {
-	          "Target"        "TARGET"
-	          "ModifierName"  "modifier_hoof_stomp"
-	        }
-	      }
-	    }   
-	  }
-	
-	  "Modifiers"
-	  {
-	    "modifier_hoof_stomp"
-	    {
-	      "IsDebuff"  "1"
-	      "Duration"  "%duration"
-	      
-	      "Properties"
-	      {
-	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%slow_movement_and_attack_speed"
-	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_movement_and_attack_speed" 
+	          "ScriptFile"  "heroes/item_hand_of_midas.lua"
+	          "Function"    "item_hand_of_midas_datadriven_on_spell_start"
+	          "Target"      "TARGET"
+	        }     
 	      }
 	    }
-	  }
-	}
-	//End of file minotaur_hoof_stomp_datadriven.txt
-
-
-	//Start of file minotaur_infernal_nature_datadriven.txt
-	
-	"minotaur_infernal_nature_datadriven"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"               "ability_datadriven"
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "vengefulspirit_command_aura"
-	
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastRange"        "900"
-	  
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "penalty_armor"  "-4 -8 -12"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "aura_radius"   "900"
-	    }
-	  }
-	
-	  "Modifiers"
-	  {
-	    "modifier_infernal_nature_aura_caster_datadriven"
-	    {
-	      "Passive"       "1"
-	      "IsHidden"      "1"
-	      "IsDebuff"      "0"
-	  
-	      "Aura"            "modifier_infernal_nature_aura_enemy"
-	      "Aura_Radius"     "%aura_radius"
-	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    }
-	      
-	    "modifier_infernal_nature_aura_enemy"
-	    {
-	      "IsDebuff"  "1"
-	
-	      "Properties"
-	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%penalty_armor" 
-	      }     
-	    }
-	  } 
-	}
-	//End of file minotaur_infernal_nature_datadriven.txt
-
-
-	//Start of file need_name_corect1.txt
-	 "why"
-	 {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	
-	    "AbilityCooldown" "3.0"
-	
-	    "AbilityManaCost" "0"
-	
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "AbilityCastPoint"  "0.2"
-	    "AbilityCastRange"  "0"
-	    
-	  
-	
-	    "OnSpellStart"
-	    {
-	      "ApplyModifier"
-	      {
-	        "ModifierName"  "aseoppp"
-	        "Target"     "CASTER"
-	        "Duration"    "8"
-	      }
-	    }
-	
-	
-	
-	    "Modifiers"
-	    {
-	      "aseoppp"
-	      {
-	        
-	
-	        "Passive"      "0"
-	        "IsHidden"      "0"
-	        "IsDebuff"      "0"
-	    
-	        "EffectName"        "particle_name"
-	        "EffectAttachType"  "follow_origin"
-	    
-	        "OnAttackLanded"
-	        {
-	          "RunScript"
-	           {
-	           "ScriptFile"  "heroes/asd.lua"
-	           "Function"    "BiGhit"
-	           }
-	        }
-	      }
-	    }
-	  }
-	
-	 
-	//End of file need_name_corect1.txt
-
-
-	//Start of file need_name_corect2.txt
-	"whyddd"
-	 {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	    
-	    "AoERadius"      "300"
-	
-	    "AbilityCooldown" "3.0"
-	
-	    "AbilityManaCost" "0"
-	
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "AbilityCastPoint"  "0.2"
-	    "AbilityCastRange"  "0"
-	    
-	   
-	    "OnSpellStart"
-	    {
-	      "ApplyModifier"
-	      {
-	        "ModifierName"  "modifier_tytret"
-	        
-	        "Target"
-	        {
-	         "Center"    "CASTER"
-	         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	          "Radius"    "300"
-	        }
-	        
-	        "Duration"    "10"
-	      }
-	    }
-	
-	    "Modifiers"
-	    {
-	      "modifier_tytret"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "0"
-	        "IsDebuff"      "1"
-	
-	        "Properties"
-	        {
-	         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "-60" 
-	        }
-	
-	      }
-	    }
-	  }
-	//End of file need_name_corect2.txt
-
-
-	//Start of file quenn_of_spiders_royal_vitality_datadriven.txt
-	 "quenn_of_spiders_royal_vitality_datadriven"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"     "spiders_royal_vitality"
-	
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
-	    
-	"Modifiers"
-	{
-	  "royal_vitality_datadriven"
-	  {
-	    "Passive"       "1"
-	    "IsHidden"      "0"
-	    "IsBuff"        "1"
-	
-	    "Properties"
-	      {
-	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%bonus_health_regen"
-	      }
-	  }
 	}
 	
-	  // Special  
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_health_regen"    "20 50 75"
-	    }
-	  }
 	}
-	//End of file quenn_of_spiders_royal_vitality_datadriven.txt
+	//End of file npc_lia_hero_time_lord.txt
 
 
-	//Start of file shaman_total_madness_datadriven.txt
-	"shaman_total_madness_datadriven" 
-	  {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	  
-	
-	   "AbilityCooldown"        "20.0 25.0 30.0"
-	   "AbilityManaCost"        "100"
-	
-	  // Stats
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastPoint"  "0.2"
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"                      "FIELD_FLOAT"
-	      "duration"                      "10 15 20"
-	    }
-	    "02"
-	    {
-	      "var_type"                      "FIELD_INTEGER"
-	      "bonus_movespeed_percentage"    "20 40 60"
-	    }
-	    "03"
-	    {
-	      "var_type"                      "FIELD_INTEGER"
-	      "bonus_attackspeed"             "50 100 150"
-	    }
-	  }
-	    
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	  "OnSpellStart"
-	  {
-	   "ApplyModifier"
-	    {
-	     "ModifierName"   "total_madness_datadriven"
-	     "Target"         "CASTER"
-	     "Duration"       "%duration"
-	    }
-	  }
-	    
-	    // Modifiers
-	    //-------------------------------------------------------------------------------------------------------------
-	    "Modifiers"
-	    {
-	      "total_madness_datadriven"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "0"
-	        "IsBuff"        "1"
-	    
-	        "Properties"
-	        {
-	         
-	         "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
-	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
-	        }
-	      }
-	    }
-	  }
-	//End of file shaman_total_madness_datadriven.txt
-
-
-	//Start of file skeleton_thief_pact_with_death_datadriven.txt
-	"skeleton_thief_pact_with_death_datadriven"
-	  {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	  
-	
-	   "AbilityCooldown"        "12.0"
-	   "AbilityManaCost"        "0"
-	
-	  // Stats
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastPoint"  "0.2"
-	  "AbilityCastRange"  "0"
-	
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"              "FIELD_FLOAT"
-	      "duration"              "2.0 3.0 4.0"
-	    }
-	    "02"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_attackspeed"     "50 150 250"
-	    }
-	  }
-	    
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	  "OnSpellStart"
-	  {
-	   "ApplyModifier"
-	    {
-	     "ModifierName"   "modifier_pact_with_death"
-	     "Target"         "CASTER"
-	     "Duration"       "%duration"
-	    }
-	  }
-	    
-	    // Modifiers
-	    //-------------------------------------------------------------------------------------------------------------
-	    "Modifiers"
-	    {
-	      "modifier_pact_with_death"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "0"
-	        "IsBuff"        "1"
-	    
-	        "Properties"
-	        {
-	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
-	        }
-	
-	        "States"
-	        {
-	         "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
-	        }
-	      }
-	    }
-	  }
-	//End of file skeleton_thief_pact_with_death_datadriven.txt
-
-
-	//Start of file sorcerer_magic_splash_datadriven.txt
-	"sorcerer_magic_splash_datadriven"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	
-	    "AoERadius"              "300"
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
-	
-	
-	
-	     "OnSpellStart"
-	     {
-	         "RunScript"
-	             {
-	               "ScriptFile"      "heroes/Sorcerer/magic_splash.lua"
-	               "Function"        "check_order"
-	             }
-	     }
-	
-	  "Modifiers"
-	 {
-	   "modifier_inflicts"
-	   {
-	     "Passive"     "0"
-	     "IsHidden"    "1"
-	     "IsBuff"      "1"
-	     
-	     "OnCreated"
-	     {
-	       "Damage"
-	        {
-	          "Type"   "DAMAGE_TYPE_MAGICAL"
-	          "Damage" "1000"
-	          
-	      
-	        "Target"
-	          {
-	           "Center"    "CASTER"
-	           "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	           "Radius"    "300"
-	           "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	           }
-	        }
-	     }
-	   }
-	 }
-	}
-	//End of file sorcerer_magic_splash_datadriven.txt
-
-
-	//Start of file sorcerer_unholy_ritual_datadriven.txt
+	//Start of file npc_lia_hero_witcher.txt
 	"sorcerer_unholy_ritual_datadriven"
 	{
 	  // General
@@ -3644,166 +3947,60 @@
 	  }
 	
 	}
-	//End of file sorcerer_unholy_ritual_datadriven.txt
-
-
-	//Start of file time_lord_death_datadriven.txt
-	"time_lord_death_datadriven"
+	
+	"sorcerer_magic_splash_datadriven"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"           "ability_datadriven"
-	  
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	 
-	  "AbilityTextureName"     "alchemist_acid_spray"
-	  
-	  // Stats    
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastRange"        "900"
-	  "AbilityCastPoint"        "0.0"
-	  "AbilityCooldown"         "3.0"
-	  "AbilityManaCost"         "0"
-	  "AoERadius"               "%radius"
-	  
-	  
-	  
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "radius"          "300"
-	    }
-	  }
-	  
-	"OnSpellStart"
-	{
-	  "ActOnTargets"
-	    {
-	      "Target"
-	      {
-	        "Center"  "POINT"
-	        "Radius"  "%radius"
-	        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        "Type"    "DOTA_UNIT_TARGET_CREEP"
-	        "Flags"   "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	      }
-	
-	      "Action"
-	      {
-	        "RunScript"
-	        {
-	          "ScriptFile"  "heroes/item_hand_of_midas.lua"
-	          "Function"    "item_hand_of_midas_datadriven_on_spell_start"
-	          "Target"      "TARGET"
-	        }     
-	      }
-	    }
-	}
-	
-	}
-	//End of file time_lord_death_datadriven.txt
-
-
-	//Start of file xvbnnniven.txt
-	 "xvbnnniven" 
-	  {
-	    // General  
-	    // ----------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    
-	
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
 	    "AbilityTextureName"     "alchemist_acid_spray"
 	
-	    "Modifiers"
-	    {
-	      "qwecvvvv"
-	      {
-	        "Passive"       "1"
-	        "IsHidden"      "0"
-	        "IsDebuff"      "0"
-	    
-	        "EffectName"    "particle_name"
-	        "EffectAttachType"  "follow_origin"
-	    
-	        "Properties"
-	        {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"  "12"
-	        }
-	      }  
-	    }
-	  }
-	//End of file xvbnnniven.txt
-
-
-	//Start of file zunggxvbnnniven.txt
-	"xvbnnniven" 
-	  {
-	    // General  
-	    // ----------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    
+	    "AoERadius"              "300"
 	
-	    "AbilityTextureName"     "alchemist_acid_spray"
-	
-	  
-	  // Time   
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCooldown"       "15 14 13"
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
 	
 	
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastRange"        "0"
-	  "AbilityCastPoint"        "0.0 0.0 0.0 0.0"
 	
-	  // Stats
-	  //-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"              "FIELD_FLOAT"
-	      "duration"              "8.0"
-	    }
-	    "02"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_attackspeed"     "10 20 40"
-	    }
-	  }
-	 
-	
-	  "OnSpellStart"
-	   {
-	    "ApplyModifier"
+	     "OnSpellStart"
 	     {
-	     "ModifierName"  "run_in_invis"
-	     "Target"     "CASTER"
-	     "Duration"    "%duration"
-	    }
-	   }
+	         "RunScript"
+	             {
+	               "ScriptFile"      "heroes/Sorcerer/magic_splash.lua"
+	               "Function"        "check_order"
+	             }
+	     }
 	
-	
-	    "Modifiers"
-	    {
-	      "run_in_invis"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "0"
-	        "IsBuff"        "1"
-	    
-	        
-	    
-	        "Properties"
+	  "Modifiers"
+	 {
+	   "modifier_inflicts"
+	   {
+	     "Passive"     "0"
+	     "IsHidden"    "1"
+	     "IsBuff"      "1"
+	     
+	     "OnCreated"
+	     {
+	       "Damage"
 	        {
-	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "30"
+	          "Type"   "DAMAGE_TYPE_MAGICAL"
+	          "Damage" "1000"
+	          
+	      
+	        "Target"
+	          {
+	           "Center"    "CASTER"
+	           "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	           "Radius"    "300"
+	           "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	           }
 	        }
-	      }  
-	    }
-	  }
-	//End of file zunggxvbnnniven.txt
+	     }
+	   }
+	 }
+	}
+	//End of file npc_lia_hero_witcher.txt
 }

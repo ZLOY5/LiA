@@ -1,0 +1,372 @@
+"akron_internal_explosion_datadriven"
+ {
+   // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "alchemist_acid_spray"
+
+    "AbilityCooldown" "22 21 20"
+
+    "AbilityManaCost" "70 80 90"
+
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    
+    "AbilityCastPoint"  "0.2"
+    "AbilityCastRange"  "0"
+    "AoERadius"      "%radius"
+
+    "OnSpellStart"
+    {
+      "Damage"
+      {
+        "Type"   "DAMAGE_TYPE_MAGICAL"
+        "Damage" "%damage"
+                    
+        "Target"
+        {
+         "Center"    "CASTER"
+         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+         "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+         "Radius"    "%radius"
+        }
+      }
+
+      "Damage"
+       {
+         "Target" "CASTER"
+         "Type"   "DAMAGE_TYPE_MAGICAL"
+         "Damage" "%masochism"
+        }
+    }
+    
+  
+   
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "radius"                  "200 225 250"
+        }
+       "02"
+        {
+            "var_type"                "FIELD_FLOAT"
+            "damage"                   "200 400 600"
+        }
+       "03"
+        {
+            "var_type"                "FIELD_FLOAT"
+            "masochism"               "200 400 600"
+        }
+    }
+  }
+
+ "akron_hellish_heat_datadriven" 
+  {
+    // General  
+    // ----------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AoERadius"              "%hellish_heat_radius"
+
+    
+
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+        "01"
+        {
+          "var_type"                "FIELD_INTEGER"
+          "hellish_heat_tick"                "1"
+        }
+       "02"
+        {
+          "var_type"                "FIELD_INTEGER"
+           "hellish_heat_radius"              "290"
+        }
+       "03"
+        { 
+          "var_type"  "FIELD_INTEGER"
+          "hellish_heat_tick_damage" "15 30 60"
+        }
+    }
+
+    "Modifiers"
+    {
+      "modifiers_hellish_heat_datadriven"
+     {
+       "Passive"         "1"
+       "IsHidden"        "1"
+       "IsPurgable"      "0"
+       
+       "OnDeath"
+       {
+        "RemoveModifier"
+         {
+           "ModifierName"  "modifiers_hellish_heat_datadriven"
+           
+           "Target"
+           {
+             "Center"    "CASTER"
+             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+             "Types"   "DOTA_UNIT_TARGET_HERO"
+             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+           }
+         }
+       }
+
+       "ThinkInterval" "%hellish_heat_tick"
+
+        "OnIntervalThink"
+        {
+          "ActOnTargets"
+           {
+                "Target"
+                {
+                    "Center" "CASTER"
+                    "Radius" "%hellish_heat_radius"
+                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+                }
+
+                "Action"
+                {
+                  "Damage"
+                  {
+                    "Target"  "TARGET"
+                    "Type"    "DAMAGE_TYPE_MAGICAL"
+                    "Damage"  "%hellish_heat_tick_damage"
+                  }
+                }
+            }
+        }
+      
+            "Aura"            "modifiers_hellish_heat_check_datadriven"
+            "Aura_Radius"     "%hellish_heat_radius"
+            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
+      }
+  
+
+
+      "modifiers_hellish_heat_check_datadriven"
+      {
+      "Passive"       "0"
+      "IsHidden"      "0"
+      "IsDebuff"      "1"
+      "IsPurgable"    "0"
+      }
+    }
+  }
+   
+"akron_firerage_datadriven"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "alchemist_acid_spray"
+    
+
+    "AoERadius"                "300"
+
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+   
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "Modifiers"
+    {  
+     "modifier_firerage_datadriven"
+      {
+        "Passive"       "1"
+        "IsHidden"      "0"
+        "IsBuff"        "1"
+    
+        
+
+       "OnAttacked"
+        { 
+         "RunScript"
+          {
+           "ScriptFile"  "heroes/Acron/firerage.lua"
+           "Function"    "StackCountIncrease"
+           "Stack"       "%StackForExplosion"
+          }
+        } 
+      }
+
+      "modifier_firerage_explosion"
+      {
+        "Passive"       "0"
+        "IsHidden"      "1"
+        "IsDebuff"      "0"
+      
+       "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
+        {
+
+         "Damage"
+          {
+           "Type"   "DAMAGE_TYPE_MAGICAL"
+           "Damage" "%damage"
+          
+      
+           "Target"
+             {
+              "Center"    "CASTER"
+              "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Radius"    "%radius"
+              "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            }
+          }
+        }
+      }
+    } 
+
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+     "01"
+      {
+       "var_type"                "FIELD_INTEGER"
+       "radius"                  "300"
+      }
+     "02"
+      {
+       "var_type"                "FIELD_INTEGER"
+       "damage"                  "80 160 240"
+      }
+     "03"
+      {
+       "var_type"                "FIELD_INTEGER"
+       "StackForExplosion"       "16"
+      }
+    } 
+  }
+
+ "akron_eruption_datadriven"
+  {
+   // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "akron_eruption"
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
+
+    "AbilityCooldown"         "150 140 130"
+
+    "AbilityCastPoint"        "0.2"
+    "AbilityCastRange"        "0"
+
+    "AbilityManaCost"        "120 140 160"
+
+    "AoERadius"              "%radius"
+    
+
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+        "OnSpellStart"
+       {
+         "ActOnTargets"
+        {
+          "Target"
+          {
+            "Center"  "CASTER"
+            "Radius"  "%radius"
+            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+          }
+          
+          "Action"
+          {
+            "Damage"
+             {
+              "Target"    "TARGET"
+              "Type"      "DAMAGE_TYPE_MAGICAL"
+              "Damage"    "%Damage"
+             }
+            
+            "ApplyModifier"
+             {
+              "Target"        "TARGET"
+              "ModifierName"  "modifier_eruption_datadriven"
+             }
+          }
+        }
+      }
+
+
+    "Modifiers"
+    {
+      "modifier_eruption_datadriven"
+      {
+        "Passive"         "0"
+        "IsHidden"        "0"
+        "IsDebuff"        "1"
+    
+        "Duration"        "%duration"
+      
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_attack_and_movement"
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
+        }
+      }
+    }
+
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+     "01"
+     {
+       "var_type"                            "FIELD_FLOAT"
+       "duration"                            "5 10 15"
+     }
+     "02"
+      {
+       "var_type"                            "FIELD_INTEGER"
+       "slow_speed_attack_and_movement"      "-40 -60 -80"
+      }
+      "03"
+      {
+       "var_type"                           "FIELD_INTEGER"
+       "Damage"                      "150 300 450"
+      }
+      "04"
+      {
+       "var_type"                           "FIELD_INTEGER"
+       "radius"                             "1500"
+      }
+    }  
+  }

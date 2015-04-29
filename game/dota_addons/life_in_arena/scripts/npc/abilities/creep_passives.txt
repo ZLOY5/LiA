@@ -1,0 +1,273 @@
+"true_sight"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+	"Modifiers"
+	{
+		"modifier_true_sight"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+	
+			"ThinkInterval"  "0.03"
+			"OnIntervalThink"
+			{
+				"ActOnTargets"
+				{
+					"Target"
+					{
+						"Center"  	"TARGET"
+						"Radius" 	"2000"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				
+					"Action"    
+					{
+						"RemoveModifier"
+						{
+							"ModifierName"	"modifier_truesight"
+							"Target" 		"TARGET"
+						}
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_truesight"
+							"Target" 		"TARGET"
+						}
+					}
+				}			
+			}
+		}
+
+		"modifier_true_sight_reveal"
+		{
+			"IsHidden"			"1"
+			"Duration"			"0.03"
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+			}
+		}
+	}	
+}
+
+"3_wave_evasion"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"evasion"		"25"
+		}
+	}
+
+	"Modifiers"
+	{
+		"evasion"
+		{
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+			}
+		}
+	}
+}
+
+"5_megaboss_bash"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"faceless_void_time_lock"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+	"AbilityDamage"					"100"
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+		"particle"	"particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+		"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_chance"			"16"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_hero_duration"	"2.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_creep_duration"	"2.0"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_bash"	
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"		"%bash_chance"
+					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+					"OnSuccess"
+					{
+						"FireSound"
+						{
+							"EffectName"	"Roshan.Bash"
+							"Target"		"TARGET"
+						}
+
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_bash_stun"
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Types"		"DOTA_UNIT_TARGET_HERO"
+							}
+							"Duration"		"%stun_hero_duration"	
+						}
+
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_bash_stun"
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Types"		"DOTA_UNIT_TARGET_BASIC"
+							}
+							"Duration"		"%stun_creep_duration"
+						}
+
+						"Damage"
+						{
+							"Target"	"TARGET"
+							"Type"		"DAMAGE_TYPE_MAGICAL"
+							"Damage"	"%AbilityDamage"
+						}
+					}
+				}
+			}
+		}
+
+		"modifier_bash_stun"
+		{
+			"IsDebuff"			"1"
+			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType"	"follow_overhead"
+
+			"OverrideAnimation"     "ACT_DOTA_DISABLED"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}
+
+"5_megaboss_crit"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"ursa_fury_swipes"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_mult"					"200"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"32"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+		"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_weapon_blur_critical.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_megaboss_crit"
+		{
+		    "Passive"   "1"
+		    "IsHidden"  "1"
+		    "OnAttackStart"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName" 	"modifier_megaboss_crit_crit"
+		            "Target" 		"CASTER"
+		        }
+
+		        "Random"
+		        {
+		            "Chance" "%crit_chance"
+		            "OnSuccess"
+		            {
+		                "ApplyModifier"
+		                {
+		                    "ModifierName" 	"modifier_megaboss_crit_crit"
+		                    "Target"    	"CASTER"    
+		                }        
+		            }
+		        }
+		    }
+		}
+
+		"modifier_megaboss_crit_crit"
+		{
+		    "IsHidden"  "1"
+		    "Properties"
+		    {
+		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+		    }
+
+		    "OnAttackLanded"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName"  "modifier_megaboss_crit_crit"
+		            "Target"   		"CASTER"    
+		        }
+		    }
+		}
+	}
+}

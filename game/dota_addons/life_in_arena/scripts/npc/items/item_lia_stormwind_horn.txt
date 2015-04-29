@@ -46,6 +46,17 @@
 	   	}
   	}
 
+	
+		"OnUnequip" 
+	{
+		"RunScript"
+		{
+			"ScriptFile" "items\AuraFix.lua"
+			"Function"  "OnUnequip"
+			"ModifierName" "horn_aura_Modifier"
+		}
+	}
+	
   	"Modifiers"
   	{
    		"horn_aura_Modifier"
@@ -83,7 +94,7 @@
 
 	    	"Properties"
 	    	{
-	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percent"
+	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
 	    	}
 	    }
 	    "horn_regeneration"
