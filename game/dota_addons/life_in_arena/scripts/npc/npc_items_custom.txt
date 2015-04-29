@@ -6744,6 +6744,204 @@
 	//End of file item_lia_staff_of_help.txt
 
 
+	//Start of file item_lia_staff_of_light.txt
+	"item_recipe_lia_staff_of_light"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1350"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"700"	
+		"ItemShopTags"					"int"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_staff_of_light"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_magic_staff;item_lia_ring_of_regeneration"
+		}
+	}
+	
+	"item_lia_staff_of_light"
+	{
+		"ID"							"1351"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1545"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"item_lia_staff_of_light"
+		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitDamageType" 		"DAMAGE_TYPE_PURE"
+	
+	    "AbilityCastRange" "600"   
+	    "AbilityCooldown"  "15"       
+	    "AbilityManaCost"  "300"
+		"AoERadius"						"%ability_radius"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items\StaffOfLight.lua"
+				"Function"				"OnSpellStart"	
+				"Target"
+				{
+				    "Center"    	"POINT"
+				    "Radius"    	"%ability_radius"
+				    "Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				    "Types"  	    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				    "Flags"  		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"item_staff_of_light_stat_modifier"
+			{
+				"Passive"           "1"    
+			    "IsHidden"          "1"
+			    "Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Aura"        		"item_staff_of_light_aura_modifier"
+	        	"Aura_Radius" 		"%aura_radius"
+	        	"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	        	"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        	"Properties"
+			    {
+			    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intelligence"
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
+			    }  
+			}
+			"item_staff_of_light_ability_heal_modifier"
+			{
+				"IsHidden"          "1"
+				"Duration"			"%ability_duration"
+				"ThinkInterval" 	"1"
+				"OnIntervalThink"
+				{
+					"Heal"
+					{
+						"Target"
+						{
+						    "Center"    	"CASTER"
+						    "Radius"    	"%aura_radius"
+						    "Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+						    "Types"  	    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}	
+						"HealAmount"	"%ability_damage"
+					}
+				}
+			}
+			"item_staff_of_light_ability_damage_modifier"
+			{
+				"Duration"			"%ability_duration"
+				"ThinkInterval" 	"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_PURE"
+						"Damage"	"%ability_damage"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items\StaffOfLight.lua"
+						"Function"		"OnAbilityModifierDestroy"	
+					}
+				}
+			}
+			"item_staff_of_light_aura_modifier"
+			{
+				"IsHidden"          "1"
+				"ThinkInterval"		"0.5"
+	    		"OnIntervalThink"
+	    		{
+		    		"RunScript"	
+					{
+						"ScriptFile"			"items\StaffOfLight.lua"
+						"Function"				"OnIntervalThinkAura"
+						"aura_health_perc_max" 	"%aura_health_perc_max"
+					}
+	    		}
+	    		"OnDestroy"
+	    		{
+	    			"RemoveModifier"
+	    			{
+	    				"Target"		"TARGET"
+	    				"ModifierName"	"item_staff_of_light_aura_regen_modifier"
+	    			}
+	    		}
+			}
+			"item_staff_of_light_aura_regen_modifier"
+			{
+				"Properties"
+			    {
+			    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%aura_health_regen"
+			    }
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "35"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana_regen_percentage" "120"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"ability_radius" "300"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"ability_damage" "50"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"ability_duration" "10"
+			}
+			"06"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_radius" "550"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_health_regen" "40"
+			}
+			"08"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_health_perc_max" "50"
+			}
+			
+	
+		}
+	}
+	//End of file item_lia_staff_of_light.txt
+
+
 	//Start of file item_lia_steel_sword.txt
 	"item_lia_steel_sword"
 		{
