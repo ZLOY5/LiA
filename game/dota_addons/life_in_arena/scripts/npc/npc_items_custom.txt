@@ -6788,6 +6788,13 @@
 	    "AbilityCooldown"  "15"       
 	    "AbilityManaCost"  "300"
 		"AoERadius"						"%ability_radius"
+		"precache"
+		{
+			"soundfile"			"sounds/items/item_mjoll_on.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+			"particle"			"particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf"
+			"particle"			"particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -6839,6 +6846,16 @@
 						}	
 						"HealAmount"	"%ability_damage"
 					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "CASTER"
+						"ControlPoints"
+						{
+							"01"	"%ability_radius %ability_radius %ability_radius"
+						}
+					}
 				}
 			}
 			"item_staff_of_light_ability_damage_modifier"
@@ -6852,6 +6869,16 @@
 						"Target"	"TARGET"
 						"Type"		"DAMAGE_TYPE_PURE"
 						"Damage"	"%ability_damage"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
+						"EffectAttachType"  "follow_overhead"
+						"Target"            "TARGET"
+						"ControlPoints"
+						{
+							"01"	"50 50 50"
+						}
 					}
 				}
 				"OnDestroy"

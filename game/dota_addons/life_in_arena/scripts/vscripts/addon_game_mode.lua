@@ -96,7 +96,10 @@ function Precache( context )
 
 		--15 волна
 		PrecacheModel("models/heroes/life_stealer/life_stealer.vmdl", context)	
-			
+
+		PrecacheResource("particle", "particles/generic_gameplay/generic_manaburn.vpcf", context)		
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts", context)		
+		
 		--16 волна
 		PrecacheResource("particle", "particles/neutral_fx/ghost_base_attack.vpcf" , context)			
 		
@@ -151,4 +154,7 @@ function Precache( context )
 		--Жезл Огня
 		PrecacheResource("particle", "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf", context)		
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts", context)	
+		--Посох Света
+		PrecacheResource("particle", "particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf", context)
+		PrecacheResource("particle", "particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf", context)		
 end
