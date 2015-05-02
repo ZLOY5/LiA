@@ -103,322 +103,6 @@
 	//End of file 10_wave_megaboss.txt
 
 
-	//Start of file 11_wave_boss.txt
-	"11_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/items/beastmaster/boar/beast_deming/beast_deming.vmdl" // модель.
-	"SoundSet" "n_creep_Melee" // название звукового набора.
-	"ModelScale" "1.2" // масштаб модели.
-	"Level" "1" // уровень.
-		"precache"
-			{
-				"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"
-			}
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "6" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "150" // минимальный урон.
-	"AttackDamageMax" "150" // максимальный урон.
-	"AttackRate" "1.05" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "33" // количества опыта.
-	"BountyGoldMin" "40" // минимальное количество золота.
-	"BountyGoldMax" "40" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "400" // Скорость
-	"MovementTurnRate" "0.6" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "1250" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "350" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 11_wave_boss.txt
-
-
-	//Start of file 12_wave_boss.txt
-	"12_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl" // модель.
-	"SoundSet" "n_creep_Melee" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "12_wave_bash" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "15" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "480" // минимальный урон.
-	"AttackDamageMax" "480" // максимальный урон.
-	"AttackRate" "0.85" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "48" // количества опыта.
-	"BountyGoldMin" "50" // минимальное количество золота.
-	"BountyGoldMax" "50" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "300" // Скорость
-	"MovementTurnRate" "0.6" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "4200" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "600" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 12_wave_boss.txt
-
-
-	//Start of file 13_wave_boss.txt
-	"13_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl" // модель.
-	"SoundSet" "n_creep_Melee" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "spell_immunity" // способность 1.
-	"Ability2" "13_wave_aura" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "20" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "500" // минимальный урон.
-	"AttackDamageMax" "500" // максимальный урон.
-	"AttackRate" "1" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "48" // количества опыта.
-	"BountyGoldMin" "50" // минимальное количество золота.
-	"BountyGoldMax" "50" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "270" // Скорость
-	"MovementTurnRate" "0.6" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "3500" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "800" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 13_wave_boss.txt
-
-
-	//Start of file 14_wave_boss.txt
-	"14_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl" // модель.
-	"SoundSet" "n_creep_Ranged" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/base_attacks/ranged_badguy.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1800" 
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "20" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "500" // минимальный урон.
-	"AttackDamageMax" "500" // максимальный урон.
-	"AttackRate" "1" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "500" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "48" // количества опыта.
-	"BountyGoldMin" "45" // минимальное количество золота.
-	"BountyGoldMax" "45" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "270" // Скорость
-	"MovementTurnRate" "0.8" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "3500" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "800" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 14_wave_boss.txt
-
-
 	//Start of file 15_wave_megaboss.txt
 	"15_wave_megaboss" // название
 	{
@@ -500,672 +184,6 @@
 	//End of file 15_wave_megaboss.txt
 
 
-	//Start of file 16_wave_boss.txt
-	"16_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl" // модель.
-	"SoundSet" "n_creep_Ranged" // название звукового набора.
-	"ModelScale" "1.5" // масштаб модели.
-	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/base_attacks/ranged_badguy_launch_b.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "500" 
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "30" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "750" // минимальный урон.
-	"AttackDamageMax" "750" // максимальный урон.
-	"AttackRate" "1" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "400" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "63" // количества опыта.
-	"BountyGoldMin" "50" // минимальное количество золота.
-	"BountyGoldMax" "50" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "270" // Скорость
-	"MovementTurnRate" "0.8" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "4500" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "800" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 16_wave_boss.txt
-
-
-	//Start of file 17_wave_boss.txt
-	"17_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/heroes/nerubian_assassin/nerubian_assassin.vmdl" // модель.
-	"SoundSet" "Hero_NyxAssassin" // название звукового набора.
-	"ModelScale" "1.5" // масштаб модели.
-	"Level" "1" // уровень.
-					"precache"
-			{
-				"model"	"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"
-				"model"	"models/heroes/nerubian_assassin/nerubian_assassin_weapon.mdl"
-				"model"	"models/heroes/nerubian_assassin/nerubian_assassin_armor.mdl"
-				"model"	"models/heroes/nerubian_assassin/nerubian_assassin_helmet.mdl"
-			}
-			
-	"Creature"
-			{
-			"AttachWearables"
-				{
-					"Wearable1"		{	"ItemDef"		"195"		} 
-					"Wearable2" 	{	"ItemDef"		"196"		} 
-					"Wearable3"		{	"ItemDef"		"197"		} 
-	
-				}
-				}
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "66" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "900" // минимальный урон.
-	"AttackDamageMax" "900" // максимальный урон.
-	"AttackRate" "0.85" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "63" // количества опыта.
-	"BountyGoldMin" "60" // минимальное количество золота.
-	"BountyGoldMax" "60" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "350" // Скорость
-	"MovementTurnRate" "0.5" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "5200" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "400" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 17_wave_boss.txt
-
-
-	//Start of file 18_wave_boss.txt
-	"18_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/heroes/viper/viper.vmdl" // модель.
-	"SoundSet" "n_creep_Ranged" // название звукового набора.
-	"ModelScale" "1.4" // масштаб модели.
-	"Level" "1" // уровень.
-	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
-		"precache"
-			{
-				"model" "models/heroes/viper/viper.vmdl"
-				"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
-			}
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "18_megaboss_bash" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "30" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "1400" // минимальный урон.
-	"AttackDamageMax" "1400" // максимальный урон.
-	"AttackRate" "1.5" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "250" // дальность атаки 128 ближний бой 800 дальний.
-	
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "63" // количества опыта.
-	"BountyGoldMin" "55" // минимальное количество золота.
-	"BountyGoldMax" "55" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "350" // Скорость
-	"MovementTurnRate" "0.8" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "5500" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "0" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 18_wave_boss.txt
-
-
-	//Start of file 19_wave_boss.txt
-	"19_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/creeps/neutral_creeps/n_creep_satyr_a/n_creep_satyr_a.vmdl" // модель.
-	"SoundSet" "n_creep_Melee" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "35" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "998" // минимальный урон.
-	"AttackDamageMax" "998" // максимальный урон.
-	"AttackRate" "2.05" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "63" // количества опыта.
-	"BountyGoldMin" "65" // минимальное количество золота.
-	"BountyGoldMax" "65" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "320" // Скорость
-	"MovementTurnRate" "0.5" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "7000" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "1000" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 19_wave_boss.txt
-
-
-	//Start of file 1_wave_boss.txt
-	"1_wave_boss" // название
-			{
-			// основное
-			//
-			"BaseClass" "npc_dota_creature" // класс персонажа.
-			"Model" "models/heroes/sand_king/sand_king.mdl" // модель.
-			"Portrait"     "vgui/hud/heroportraits/portrait_sandking"
-			"SoundSet" "Hero_SandKing" // название звукового набора.
-			"ModelScale" "1" // масштаб модели.
-			"Level" "1" // уровень.
-			 
-			// способности
-			//----------------------------------------------------------------
-			 
-			"Ability1" "1_wave_skill" // способность 1.
-			"Ability2" "" // способность 2.
-			"Ability3" "" // способность 3.
-			"Ability4" "" // способность 4.
-			"Ability5" "" // способность 5.
-			"Ability6" "" // способность 6 - Ульт.
-			"Ability7" "" // способность 7 - Ульт.
-			"Ability8" "" // способность 8 - Ульт.
-			 
-			// Броня
-			//----------------------------------------------------------------
-			"ArmorPhysical" "2" // Физическое сопротивление.
-			"MagicalResistance" "0" // Магическое сопротивление.
-			 
-			// Атака
-			//----------------------------------------------------------------
-			"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-			"AttackDamageMin" "30" // минимальный урон.
-			"AttackDamageMax" "30" // максимальный урон.
-			"AttackRate" "1.55" // скорость атаки.
-			"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-			"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-			"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-			"ProjectileModel" "" // Модель частиц для дальной атаки.
-			"ProjectileSpeed" "" // скорость частиц.
-			 
-			// Награда
-			//----------------------------------------------------------------
-			"BountyXP" "25" // количества опыта.
-			"BountyGoldMin" "35" // минимальное количество золота.
-			"BountyGoldMax" "35" // максимальное количества золота.
-			 
-			// Передвижение
-			//----------------------------------------------------------------
-			"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-			"MovementSpeed" "300" // Скорость
-			"MovementTurnRate" "0.8" // скорость поворота.
-			 
-			// Общий статус
-			//----------------------------------------------------------------
-			"StatusHealth" "250" // Базовое количество ХП.
-			"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-			"StatusMana" "0" // Базовое количество МП.
-			"StatusManaRegen" "0" // Базовая Скорость восстановления МП.
-			 
-			// Принадлежность к команде
-			//----------------------------------------------------------------
-			"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-			"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-			"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-			"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-			 
-			// Обзор Персонажа
-			//----------------------------------------------------------------
-			"VisionDaytimeRange" "10000" // Днем.
-			"VisionNighttimeRange" "10000" // Ночью.
-			 
-			//----------------------------------------------------------------
-			//Рюкзак
-			"HasInventory" "0" // 0 - не будет инвентаря
-			
-			"precache"
-			{
-				"model"	"models/heroes/sand_king/sand_king.mdl"
-				"model"	"models/items/sand_king/deserts_deathly_embrace_arms/deserts_deathly_embrace_arms.mdl"
-				"model"	"models/items/sand_king/deserts_deathly_embrace_head/deserts_deathly_embrace_head.mdl"
-				"model"	"models/items/sand_king/deserts_deathly_embrace_shoulder/deserts_deathly_embrace_shoulder.mdl"
-				"model"	"models/items/sand_king/deserts_deathly_embrace_tail/deserts_deathly_embrace_tail.mdl"
-				"model"	"models/items/sand_king/deserts_deathly_embrace_legs/deserts_deathly_embrace_legs.mdl"
-			}
-			
-	"Creature"
-			{
-			"AttachWearables"
-				{
-					"Wearable1"		{	"ItemDef"		"4771"		} 
-					"Wearable2" 	{	"ItemDef"		"4712"		} 
-					"Wearable3"		{	"ItemDef"		"4713"		} 
-					"Wearable4"		{	"ItemDef"		"4381"		} 
-					"Wearable5"		{	"ItemDef"		"4382"		} 
-				}
-				}
-			}
-	//End of file 1_wave_boss.txt
-
-
-	//Start of file 2_wave_boss.txt
-	"2_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl" // модель.
-	"SoundSet" "n_creep_Melee" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "2_wave_return_aura" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "4" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "60" // минимальный урон.
-	"AttackDamageMax" "60" // максимальный урон.
-	"AttackRate" "1.25" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "25" // количества опыта.
-	"BountyGoldMin" "35" // минимальное количество золота.
-	"BountyGoldMax" "35" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "350" // Скорость
-	"MovementTurnRate" "0.8" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "300" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "200" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 2_wave_boss.txt
-
-
-	//Start of file 3_wave_boss.txt
-	"3_wave_boss" 
-	{
-		"BaseClass" 	"npc_dota_creature" 
-		"Model" 		"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl" 
-		"SoundSet" 		"n_creep_Melee" 
-		"ModelScale" 	"1" 
-		"Level" 		"1" 
-	
-		"precache"
-		{
-			"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl"
-		}
-	
-		"Ability1" "3_wave_evasion" 
-		"Ability2" "" 
-		"Ability3" "" 
-		"Ability4" "" 
-		"Ability5" "" 
-		"Ability6" "" 
-		"Ability7" "" 
-		"Ability8" "" 
-	
-		"ArmorPhysical" 		"6" 
-		"MagicalResistance" 	"0" 
-		"AttackCapabilities" 	"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" 		"100" 
-		"AttackDamageMax"		"100" 
-		"AttackRate" 			"1.3" 
-		"AttackAnimationPoint" 	"0.3" 
-		"AttackAcquisitionRange" "10000" 
-		"AttackRange" 			"128" 
-		"ProjectileModel"	 	"" 
-		"ProjectileSpeed" 		"" 
-	
-	
-	
-		"BountyXP" "25" 
-		"BountyGoldMin" "35" 
-		"BountyGoldMax" "35" 
-	
-	
-	
-		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-		"MovementSpeed" "270" 
-		"MovementTurnRate" "0.8" 
-	
-	
-	
-		"StatusHealth" "500" 
-		"StatusHealthRegen" "0" 
-		"StatusMana" "250" 
-		"StatusManaRegen" "1" 
-	
-	
-	
-		"TeamName" "DOTA_TEAM_BADGUYS" 
-		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	
-	
-		"VisionDaytimeRange" "10000" 
-		"VisionNighttimeRange" "10000" 
-	
-	
-	
-		"HasInventory" "0" 
-	}
-	//End of file 3_wave_boss.txt
-
-
-	//Start of file 4_wave_boss.txt
-	"4_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/creeps/neutral_creeps/n_creep_troll_dark_b/n_creep_troll_dark_b.vmdl" // модель.
-	"SoundSet" "n_creep_Ranged" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "4_wave_skill" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "7" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "80" // минимальный урон.
-	"AttackDamageMax" "80" // максимальный урон.
-	"AttackRate" "0.9" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "800" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "1200" // скорость частиц.
-	
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "25" // количества опыта.
-	"BountyGoldMin" "35" // минимальное количество золота.
-	"BountyGoldMax" "35" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "270" // Скорость
-	"MovementTurnRate" "0.8" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "650" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "300" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 4_wave_boss.txt
-
-
 	//Start of file 5_wave_megaboss.txt
 	"5_wave_megaboss" // название
 	{
@@ -1235,7 +253,7 @@
 	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
 	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 	// Обзор Персонажа
 	//----------------------------------------------------------------
@@ -1247,389 +265,6 @@
 	"HasInventory" "0" // 0 - не будет инвентаря
 	}
 	//End of file 5_wave_megaboss.txt
-
-
-	//Start of file 6_wave_boss.txt
-	"6_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/heroes/bounty_hunter/bounty_hunter.vmdl" // модель.
-	"SoundSet" "Hero_BountyHunter" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	
-					"precache"
-			{
-				"model"	"models/heroes/bounty_hunter/bounty_hunter.vmdl"
-				"model"	"models/items/bounty_hunter/corruption_armor/corruption_armor.mdl"
-				"model"	"models/items/bounty_hunter/corruption_mask/corruption_mask.mdl"
-				"model"	"models/items/bounty_hunter/corruption_offhand/corruption_offhand.mdl"
-				"model"	"models/items/bounty_hunter/corruption_shoulder/corruption_shoulder.mdl"
-				"model"	"models/items/bounty_hunter/corruption_weapon/corruption_weapon.mdl"
-	
-			}
-			
-	"Creature"
-			{
-			"AttachWearables"
-				{
-					"Wearable1"		{	"ItemDef"		"6219"		} 
-					"Wearable2" 	{	"ItemDef"		"6220"		} 
-					"Wearable3"		{	"ItemDef"		"6221"		} 
-					"Wearable4"		{	"ItemDef"		"6222"		} 
-					"Wearable5"		{	"ItemDef"		"6223"		} 
-				}
-				}
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "6_wave_spell_resist" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "6" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "150" // минимальный урон.
-	"AttackDamageMax" "150" // максимальный урон.
-	"AttackRate" "1.05" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "33" // количества опыта.
-	"BountyGoldMin" "40" // минимальное количество золота.
-	"BountyGoldMax" "40" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "400" // Скорость
-	"MovementTurnRate" "0.6" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "1250" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "350" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 6_wave_boss.txt
-
-
-	//Start of file 7_wave_boss.txt
-	"7_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/items/furion/treant_stump.vmdl" // модель.
-	"SoundSet" "n_creep_Melee" // название звукового набора.
-	"ModelScale" "1.5" // масштаб модели.
-	"Level" "1" // уровень.
-	
-					"precache"
-			{
-				"model"	"models/items/furion/treant_stump.vmdl" 
-			}
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "6" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "220" // минимальный урон.
-	"AttackDamageMax" "220" // максимальный урон.
-	"AttackRate" "0.55" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "33" // количества опыта.
-	"BountyGoldMin" "40" // минимальное количество золота.
-	"BountyGoldMax" "40" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "500" // Скорость
-	"MovementTurnRate" "0.5" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "1600" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "450" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 7_wave_boss.txt
-
-
-	//Start of file 8_wave_boss.txt
-	"8_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/heroes/sven/sven.vmdl" // модель.
-	"SoundSet" "Hero_Sven" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-					
-		"precache"
-				{
-					"model"	"models/heroes/sven/sven.vmdl"
-					"model"	"models/items/sven/mask_freelancer.mdl"
-					"model"	"models/items/sven/shoulder_freelancer.mdl"				
-					"model"	"models/items/sven/belt_freelancer.mdl"
-					"model"	"models/items/sven/sword_freelancer.mdl"				
-	
-				}
-				
-		"Creature"
-				{
-				"AttachWearables"
-					{
-						"Wearable1"		{	"ItemDef"		"4150"		} 
-						"Wearable2" 	{	"ItemDef"		"4151"		} 
-						"Wearable3"		{	"ItemDef"		"4152"		} 
-						"Wearable4" 	{	"ItemDef"		"4153"		} 
-					}
-					}
-	
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "8_wave_cleave" // способность 1.
-	"Ability2" "spell_immunity" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "8" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "250" // минимальный урон.
-	"AttackDamageMax" "250" // максимальный урон.
-	"AttackRate" "1.25" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
-	"ProjectileModel" "" // Модель частиц для дальной атаки.
-	"ProjectileSpeed" "" // скорость частиц.
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "33" // количества опыта.
-	"BountyGoldMin" "50" // минимальное количество золота.
-	"BountyGoldMax" "50" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "270" // Скорость
-	"MovementTurnRate" "0.5" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "1900" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "300" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 8_wave_boss.txt
-
-
-	//Start of file 9_wave_boss.txt
-	"9_wave_boss" // название
-	{
-	// основное
-	//
-	"BaseClass" "npc_dota_creature" // класс персонажа.
-	"Model" "models/heroes/morphling/morphling.vmdl" // модель.
-	"SoundSet" "Hero_Morphling" // название звукового набора.
-	"ModelScale" "1" // масштаб модели.
-	"Level" "1" // уровень.
-	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" // Particle system model for projectile.
-	"ProjectileSpeed"           "1200" 	
-		"precache"
-				{
-					"model"	"models/items/morphling/ancient_armor_arms/ancient_armor_arms.mdl"
-					"model"	"models/items/morphling/ancient_armor_back/ancient_armor_back.mdl"
-					"model"	"models/items/morphling/ancient_armor_breastplates/ancient_armor_breastplates.mdl"
-					"model"	"models/items/morphling/ancient_armor_head/ancient_armor_head.mdl"
-					"model"	"models/items/morphling/ancient_armor_shoulders/ancient_armor_shoulders.mdl"
-		
-				}
-				
-		"Creature"
-				{
-				"AttachWearables"
-					{
-						"Wearable1"		{	"ItemDef"		"5442"		} 
-						"Wearable2" 	{	"ItemDef"		"5443"		} 
-						"Wearable3"		{	"ItemDef"		"5444"		} 
-						"Wearable4"		{	"ItemDef"		"5445"		} 
-						"Wearable5"		{	"ItemDef"		"5446"		} 
-					}
-					}
-		
-	// способности
-	//----------------------------------------------------------------
-	
-	"Ability1" "" // способность 1.
-	"Ability2" "" // способность 2.
-	"Ability3" "" // способность 3.
-	"Ability4" "" // способность 4.
-	"Ability5" "" // способность 5.
-	"Ability6" "" // способность 6 - Ульт.
-	"Ability7" "" // способность 7 - Ульт.
-	"Ability8" "" // способность 8 - Ульт.
-	
-	// Броня
-	//----------------------------------------------------------------
-	"ArmorPhysical" "4" // Физическое сопротивление.
-	"MagicalResistance" "0" // Магическое сопротивление.
-	
-	// Атака
-	//----------------------------------------------------------------
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "280" // минимальный урон.
-	"AttackDamageMax" "280" // максимальный урон.
-	"AttackRate" "0.7" // скорость атаки.
-	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
-	"AttackRange" "600" // дальность атаки 128 ближний бой 800 дальний.
-	
-	
-	// Награда
-	//----------------------------------------------------------------
-	"BountyXP" "33" // количества опыта.
-	"BountyGoldMin" "45" // минимальное количество золота.
-	"BountyGoldMax" "45" // максимальное количества золота.
-	
-	// Передвижение
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-	"MovementSpeed" "220" // Скорость
-	"MovementTurnRate" "0.8" // скорость поворота.
-	
-	// Общий статус
-	//----------------------------------------------------------------
-	"StatusHealth" "2400" // Базовое количество ХП.
-	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
-	"StatusMana" "400" // Базовое количество МП.
-	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
-	
-	// Принадлежность к команде
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Обзор Персонажа
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "10000" // Днем.
-	"VisionNighttimeRange" "10000" // Ночью.
-	
-	//----------------------------------------------------------------
-	//Рюкзак
-	"HasInventory" "0" // 0 - не будет инвентаря
-	}
-	//End of file 9_wave_boss.txt
 
 
 	//Start of file camera_guy.txt
@@ -1984,6 +619,1305 @@
 		"Ability1"					"dummy_passive"
 	}
 	//End of file dummy_unit.txt
+
+
+	//Start of file normal_mode_bosses.txt
+	"1_wave_boss" 
+	{
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/sand_king/sand_king.mdl" // модель.
+	"Portrait"     "vgui/hud/heroportraits/portrait_sandking"
+	"SoundSet" "Hero_SandKing" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	 
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "2" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	 
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "30" // минимальный урон.
+	"AttackDamageMax" "30" // максимальный урон.
+	"AttackRate" "1.55" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	 
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "25" // количества опыта.
+	"BountyGoldMin" "35" // минимальное количество золота.
+	"BountyGoldMax" "35" // максимальное количества золота.
+	 
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "300" // Скорость
+	"MovementTurnRate" "0.8" // скорость поворота.
+	 
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "250" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "0" // Базовое количество МП.
+	"StatusManaRegen" "0" // Базовая Скорость восстановления МП.
+	 
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	 
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	 
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	
+	"precache"
+	{
+		"model"	"models/heroes/sand_king/sand_king.mdl"
+		"model"	"models/items/sand_king/deserts_deathly_embrace_arms/deserts_deathly_embrace_arms.mdl"
+		"model"	"models/items/sand_king/deserts_deathly_embrace_head/deserts_deathly_embrace_head.mdl"
+		"model"	"models/items/sand_king/deserts_deathly_embrace_shoulder/deserts_deathly_embrace_shoulder.mdl"
+		"model"	"models/items/sand_king/deserts_deathly_embrace_tail/deserts_deathly_embrace_tail.mdl"
+		"model"	"models/items/sand_king/deserts_deathly_embrace_legs/deserts_deathly_embrace_legs.mdl"
+	}
+	
+	"Creature"
+	{
+	"AttachWearables"
+		{
+			"Wearable1"		{	"ItemDef"		"4771"		} 
+			"Wearable2" 	{	"ItemDef"		"4712"		} 
+			"Wearable3"		{	"ItemDef"		"4713"		} 
+			"Wearable4"		{	"ItemDef"		"4381"		} 
+			"Wearable5"		{	"ItemDef"		"4382"		} 
+		}
+		}
+	}
+	
+	"2_wave_boss" 
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "2_wave_return_aura" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "4" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "60" // минимальный урон.
+	"AttackDamageMax" "60" // максимальный урон.
+	"AttackRate" "1.25" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "25" // количества опыта.
+	"BountyGoldMin" "35" // минимальное количество золота.
+	"BountyGoldMax" "35" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "350" // Скорость
+	"MovementTurnRate" "0.8" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "300" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "200" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"3_wave_boss" 
+	{
+	"BaseClass" 	"npc_dota_creature" 
+	"Model" 		"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl" 
+	"SoundSet" 		"n_creep_Melee" 
+	"ModelScale" 	"1" 
+	"Level" 		"1" 
+	
+	"precache"
+	{
+		"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl"
+	}
+	
+	"Ability1" "3_wave_evasion" 
+	"Ability2" "" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+	
+	"ArmorPhysical" 		"6" 
+	"MagicalResistance" 	"0" 
+	"AttackCapabilities" 	"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" 		"100" 
+	"AttackDamageMax"		"100" 
+	"AttackRate" 			"1.3" 
+	"AttackAnimationPoint" 	"0.3" 
+	"AttackAcquisitionRange" "10000" 
+	"AttackRange" 			"128" 
+	"ProjectileModel"	 	"" 
+	"ProjectileSpeed" 		"" 
+	
+	"BountyXP" "25" 
+	"BountyGoldMin" "35" 
+	"BountyGoldMax" "35" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "270" 
+	"MovementTurnRate" "0.8" 
+	
+	"StatusHealth" "500" 
+	"StatusHealthRegen" "0" 
+	"StatusMana" "250" 
+	"StatusManaRegen" "1" 
+	
+	"TeamName" "DOTA_TEAM_BADGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	"VisionDaytimeRange" "10000" 
+	"VisionNighttimeRange" "10000" 
+	
+	"HasInventory" "0" 
+	}
+	
+	"4_wave_boss" 
+	{
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_troll_dark_b/n_creep_troll_dark_b.vmdl" // модель.
+	"SoundSet" "n_creep_Ranged" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "4_wave_skill" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "7" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "80" // минимальный урон.
+	"AttackDamageMax" "80" // максимальный урон.
+	"AttackRate" "0.9" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "800" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "1200" // скорость частиц.
+	
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "25" // количества опыта.
+	"BountyGoldMin" "35" // минимальное количество золота.
+	"BountyGoldMax" "35" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.8" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "650" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "300" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"6_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/bounty_hunter/bounty_hunter.vmdl" // модель.
+	"SoundSet" "Hero_BountyHunter" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+					"precache"
+			{
+				"model"	"models/heroes/bounty_hunter/bounty_hunter.vmdl"
+				"model"	"models/items/bounty_hunter/corruption_armor/corruption_armor.mdl"
+				"model"	"models/items/bounty_hunter/corruption_mask/corruption_mask.mdl"
+				"model"	"models/items/bounty_hunter/corruption_offhand/corruption_offhand.mdl"
+				"model"	"models/items/bounty_hunter/corruption_shoulder/corruption_shoulder.mdl"
+				"model"	"models/items/bounty_hunter/corruption_weapon/corruption_weapon.mdl"
+	
+			}
+			
+	"Creature"
+			{
+			"AttachWearables"
+				{
+					"Wearable1"		{	"ItemDef"		"6219"		} 
+					"Wearable2" 	{	"ItemDef"		"6220"		} 
+					"Wearable3"		{	"ItemDef"		"6221"		} 
+					"Wearable4"		{	"ItemDef"		"6222"		} 
+					"Wearable5"		{	"ItemDef"		"6223"		} 
+				}
+				}
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "6_wave_spell_resist" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "6" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "150" // минимальный урон.
+	"AttackDamageMax" "150" // максимальный урон.
+	"AttackRate" "1.05" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "33" // количества опыта.
+	"BountyGoldMin" "40" // минимальное количество золота.
+	"BountyGoldMax" "40" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "400" // Скорость
+	"MovementTurnRate" "0.6" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "1250" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "350" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"7_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/items/furion/treant_stump.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "1.5" // масштаб модели.
+	"Level" "1" // уровень.
+	
+					"precache"
+			{
+				"model"	"models/items/furion/treant_stump.vmdl" 
+			}
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "6" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "220" // минимальный урон.
+	"AttackDamageMax" "220" // максимальный урон.
+	"AttackRate" "0.55" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "33" // количества опыта.
+	"BountyGoldMin" "40" // минимальное количество золота.
+	"BountyGoldMax" "40" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "500" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "1600" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "450" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"8_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/sven/sven.vmdl" // модель.
+	"SoundSet" "Hero_Sven" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+					
+		"precache"
+				{
+					"model"	"models/heroes/sven/sven.vmdl"
+					"model"	"models/items/sven/mask_freelancer.mdl"
+					"model"	"models/items/sven/shoulder_freelancer.mdl"				
+					"model"	"models/items/sven/belt_freelancer.mdl"
+					"model"	"models/items/sven/sword_freelancer.mdl"				
+	
+				}
+				
+		"Creature"
+				{
+				"AttachWearables"
+					{
+						"Wearable1"		{	"ItemDef"		"4150"		} 
+						"Wearable2" 	{	"ItemDef"		"4151"		} 
+						"Wearable3"		{	"ItemDef"		"4152"		} 
+						"Wearable4" 	{	"ItemDef"		"4153"		} 
+					}
+					}
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "8_wave_cleave" // способность 1.
+	"Ability2" "spell_immunity" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "8" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "250" // минимальный урон.
+	"AttackDamageMax" "250" // максимальный урон.
+	"AttackRate" "1.25" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "33" // количества опыта.
+	"BountyGoldMin" "50" // минимальное количество золота.
+	"BountyGoldMax" "50" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "1900" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "300" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"9_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/morphling/morphling.vmdl" // модель.
+	"SoundSet" "Hero_Morphling" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "1200" 	
+		"precache"
+				{
+					"model"	"models/items/morphling/ancient_armor_arms/ancient_armor_arms.mdl"
+					"model"	"models/items/morphling/ancient_armor_back/ancient_armor_back.mdl"
+					"model"	"models/items/morphling/ancient_armor_breastplates/ancient_armor_breastplates.mdl"
+					"model"	"models/items/morphling/ancient_armor_head/ancient_armor_head.mdl"
+					"model"	"models/items/morphling/ancient_armor_shoulders/ancient_armor_shoulders.mdl"
+		
+				}
+				
+		"Creature"
+				{
+				"AttachWearables"
+					{
+						"Wearable1"		{	"ItemDef"		"5442"		} 
+						"Wearable2" 	{	"ItemDef"		"5443"		} 
+						"Wearable3"		{	"ItemDef"		"5444"		} 
+						"Wearable4"		{	"ItemDef"		"5445"		} 
+						"Wearable5"		{	"ItemDef"		"5446"		} 
+					}
+					}
+		
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "4" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "280" // минимальный урон.
+	"AttackDamageMax" "280" // максимальный урон.
+	"AttackRate" "0.7" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "600" // дальность атаки 128 ближний бой 800 дальний.
+	
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "33" // количества опыта.
+	"BountyGoldMin" "45" // минимальное количество золота.
+	"BountyGoldMax" "45" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "220" // Скорость
+	"MovementTurnRate" "0.8" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "2400" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "400" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"11_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/items/beastmaster/boar/beast_deming/beast_deming.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "1.2" // масштаб модели.
+	"Level" "1" // уровень.
+		"precache"
+			{
+				"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"
+			}
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "6" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "150" // минимальный урон.
+	"AttackDamageMax" "150" // максимальный урон.
+	"AttackRate" "1.05" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "33" // количества опыта.
+	"BountyGoldMin" "40" // минимальное количество золота.
+	"BountyGoldMax" "40" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "400" // Скорость
+	"MovementTurnRate" "0.6" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "1250" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "350" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"12_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "12_wave_bash" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "15" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "480" // минимальный урон.
+	"AttackDamageMax" "480" // максимальный урон.
+	"AttackRate" "0.85" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "48" // количества опыта.
+	"BountyGoldMin" "50" // минимальное количество золота.
+	"BountyGoldMax" "50" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "300" // Скорость
+	"MovementTurnRate" "0.6" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "4200" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "600" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"13_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "spell_immunity" // способность 1.
+	"Ability2" "13_wave_aura" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "20" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "500" // минимальный урон.
+	"AttackDamageMax" "500" // максимальный урон.
+	"AttackRate" "1" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "48" // количества опыта.
+	"BountyGoldMin" "50" // минимальное количество золота.
+	"BountyGoldMax" "50" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.6" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "3500" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "800" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"14_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl" // модель.
+	"SoundSet" "n_creep_Ranged" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	"ProjectileModel"           "particles/base_attacks/ranged_badguy.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "1800" 
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "20" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "500" // минимальный урон.
+	"AttackDamageMax" "500" // максимальный урон.
+	"AttackRate" "1" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "500" // дальность атаки 128 ближний бой 800 дальний.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "48" // количества опыта.
+	"BountyGoldMin" "45" // минимальное количество золота.
+	"BountyGoldMax" "45" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.8" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "3500" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "800" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"16_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl" // модель.
+	"SoundSet" "n_creep_Ranged" // название звукового набора.
+	"ModelScale" "1.5" // масштаб модели.
+	"Level" "1" // уровень.
+	"ProjectileModel"           "particles/base_attacks/ranged_badguy_launch_b.vpcf" // Particle system model for projectile.
+	"ProjectileSpeed"           "500" 
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "30" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "750" // минимальный урон.
+	"AttackDamageMax" "750" // максимальный урон.
+	"AttackRate" "1" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "400" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "1200" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "63" // количества опыта.
+	"BountyGoldMin" "50" // минимальное количество золота.
+	"BountyGoldMax" "50" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.8" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "4500" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "800" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"17_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/nerubian_assassin/nerubian_assassin.vmdl" // модель.
+	"SoundSet" "Hero_NyxAssassin" // название звукового набора.
+	"ModelScale" "1.5" // масштаб модели.
+	"Level" "1" // уровень.
+					"precache"
+			{
+				"model"	"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"
+				"model"	"models/heroes/nerubian_assassin/nerubian_assassin_weapon.mdl"
+				"model"	"models/heroes/nerubian_assassin/nerubian_assassin_armor.mdl"
+				"model"	"models/heroes/nerubian_assassin/nerubian_assassin_helmet.mdl"
+			}
+			
+	"Creature"
+			{
+			"AttachWearables"
+				{
+					"Wearable1"		{	"ItemDef"		"195"		} 
+					"Wearable2" 	{	"ItemDef"		"196"		} 
+					"Wearable3"		{	"ItemDef"		"197"		} 
+	
+				}
+				}
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "66" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "900" // минимальный урон.
+	"AttackDamageMax" "900" // максимальный урон.
+	"AttackRate" "0.85" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "63" // количества опыта.
+	"BountyGoldMin" "60" // минимальное количество золота.
+	"BountyGoldMax" "60" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "350" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "5200" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "400" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"18_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/viper/viper.vmdl" // модель.
+	"SoundSet" "n_creep_Ranged" // название звукового набора.
+	"ModelScale" "1.4" // масштаб модели.
+	"Level" "1" // уровень.
+	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "1200" // скорость частиц.
+		"precache"
+			{
+				"model" "models/heroes/viper/viper.vmdl"
+				"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
+			}
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "18_megaboss_bash" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "30" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "1400" // минимальный урон.
+	"AttackDamageMax" "1400" // максимальный урон.
+	"AttackRate" "1.5" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "250" // дальность атаки 128 ближний бой 800 дальний.
+	
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "63" // количества опыта.
+	"BountyGoldMin" "55" // минимальное количество золота.
+	"BountyGoldMax" "55" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "350" // Скорость
+	"MovementTurnRate" "0.8" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "5500" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "0" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"19_wave_boss" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_satyr_a/n_creep_satyr_a.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "35" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "998" // минимальный урон.
+	"AttackDamageMax" "998" // максимальный урон.
+	"AttackRate" "2.05" // скорость атаки.
+	"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "10000" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "63" // количества опыта.
+	"BountyGoldMin" "65" // минимальное количество золота.
+	"BountyGoldMax" "65" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "320" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "7000" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "1000" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	//End of file normal_mode_bosses.txt
 
 
 	//Start of file normal_mode_creeps.txt
