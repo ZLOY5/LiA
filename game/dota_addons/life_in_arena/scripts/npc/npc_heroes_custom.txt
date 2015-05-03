@@ -1,259 +1,367 @@
-// Dota Heroes File
-// NOTE: This isn't for creating new heroes, this is for taking a currently existing hero as a template and overriding
-// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
-"DOTAHeroes"
+//Generated using Dota Custom KVScript Files Merger by cris9696
+"DotaHeroes"
 {
-	
-		//=================================================================================================================
-	// HERO: Golem 
-	//=================================================================================================================
-	"npc_lia_hero_golem"
+
+
+
+	//Start of file npc_lia_hero_berserker.txt
+	"npc_lia_hero_berserker"
 	{
-		"override_hero"				"npc_dota_hero_tiny"
-// способности
-//----------------------------------------------------------------
-
-"Ability1" "akron_internal_explosion_datadriven"	// способность 1.
-"Ability2" "akron_hellish_heat_datadriven" 		// способность 2.
-"Ability3" "akron_firerage_datadriven" 	// способность 3.
-"Ability4" "akron_eruption_datadriven" 					// способность 4.
-"Ability5" "" 					// способность 5.
-"Ability6" "" 	// способность 6 - Ульт.
-"Ability7" "" 					// способность 7 - Ульт.
-"Ability8" "" 					// способность 8 - Ульт.
-
-// Броня
-//----------------------------------------------------------------
-"ArmorPhysical" "4" 		// Физическое сопротивление.
-"MagicalResistance" "25"	// Магическое сопротивление.
-
-// Атака
-//----------------------------------------------------------------
-"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "33" // минимальный урон.
-"AttackDamageMax" "51" // максимальный урон.
-"AttackRate" "1.7" // скорость атаки.
-"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-"AttackAcquisitionRange" "800" // дальность реагирования (когда он нас заметит).
-"AttackRange" "100" // дальность атаки 128 ближний бой 800 дальний.
-"ProjectileModel" "" // Модель частиц для дальной атаки.
-"ProjectileSpeed" "" // скорость частиц.
-		
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"21"										// Base strength
-		"AttributeStrengthGain"		"3"										// Strength bonus per level.
-		"AttributeBaseIntelligence"	"8"										// Base intelligence
-		"AttributeIntelligenceGain"	"1.5"										// Intelligence bonus per level.
-		"AttributeBaseAgility"		"6"										// Base agility
-		"AttributeAgilityGain"		"1.5"	
-		
-		
-		
-// Награда
-//----------------------------------------------------------------
-"BountyXP" "100" // количества опыта.
-"BountyGoldMin" "50" // минимальное количество золота.
-"BountyGoldMax" "50" // максимальное количества золота.
-
-// Передвижение
-//----------------------------------------------------------------
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-"MovementSpeed" "240" // Скорость
-"MovementTurnRate" "0.5" // скорость поворота.
-
-// Общий статус
-//----------------------------------------------------------------
-"StatusHealth" "450" // Базовое количество ХП.
-"StatusHealthRegen" "1.2" // Базовая Скорость восстановления ХП.
-"StatusMana" "75" // Базовое количество МП.
-"StatusManaRegen" "0.05" // Базовая Скорость восстановления МП.
-
-// Принадлежность к команде
-//----------------------------------------------------------------
-"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
-
-// Обзор Персонажа
-//----------------------------------------------------------------
-"VisionDaytimeRange" "1400" // Днем.
-"VisionNighttimeRange" "1400" // Ночью.
-
-//----------------------------------------------------------------
-//Рюкзак
-"HasInventory" "1" // 0 - не будет инвентаря
+	"override_hero"				"npc_dota_hero_huskar"
+			
+	"precache"
+		{
+			"particle" "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
+		}
+				
+	"Ability1" "berserker_fire_spear"	
+	"Ability2" "berserker_frenzy_aura" 		
+	"Ability3" "berserker_desperation" 	
+	"Ability4" "berserker_madness" 					
+	"Ability5" "" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "0" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "13" 
+	"AttackDamageMax" "32" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "425" 
+	"ProjectileModel"   "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf"
+	"ProjectileSpeed"   "1200"
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"		"7"										
+	"AttributeStrengthGain"		"2.0"										
+	"AttributeBaseIntelligence"	"7"										
+	"AttributeIntelligenceGain"	"2.0"										
+	"AttributeBaseAgility"		"21"										
+	"AttributeAgilityGain"		"2.8"	
+	
+	"BountyXP" "100"
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "240" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "510"
+	"StatusHealthRegen" "1.2" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "1400"
+	"VisionNighttimeRange" "1400" 
+	
+	"HasInventory" "1" 
 	}	
-	
-	
-	//=================================================================================================================
-	// HERO: Brewmaster 
-	//=================================================================================================================
+	//End of file npc_lia_hero_berserker.txt
+
+
+	//Start of file npc_lia_hero_brewmaster.txt
 	"npc_lia_hero_brewmaster"
 	{
-		"override_hero"				"npc_dota_hero_brewmaster"
-// способности
-//----------------------------------------------------------------
-
-"Ability1" "brewer_beer_for_a_breakthrough_datadriven" 	// способность 1.
-"Ability2" "brewer_bear_style_datadriven" 		// способность 2.
-"Ability3" "brewer_drunken_punches_datadriven" 	// способность 3.
-"Ability4" "brewer_power_of_the_mountains_datadriven" 					// способность 4.
-"Ability5" "" 					// способность 5.
-"Ability6" ""  	// способность 6 - Ульт.
-"Ability7" "" 					// способность 7 - Ульт.
-"Ability8" "" 					// способность 8 - Ульт.
-
-// Броня
-//----------------------------------------------------------------
-"ArmorPhysical" "4" 		// Физическое сопротивление.
-"MagicalResistance" "25"	// Магическое сопротивление.
-
-// Атака
-//----------------------------------------------------------------
-"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "36" // минимальный урон.
-"AttackDamageMax" "50" // максимальный урон.
-"AttackRate" "1.8" // скорость атаки.
-"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-"AttackAcquisitionRange" "800" // дальность реагирования (когда он нас заметит).
-"AttackRange" "110" // дальность атаки 128 ближний бой 800 дальний.
-"ProjectileModel" "" // Модель частиц для дальной атаки.
-"ProjectileSpeed" "" // скорость частиц.
-		
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"23"										// Base strength
-		"AttributeStrengthGain"		"2.8"										// Strength bonus per level.
-		"AttributeBaseIntelligence"	"10"										// Base intelligence
-		"AttributeIntelligenceGain"	"2.0"										// Intelligence bonus per level.
-		"AttributeBaseAgility"		"7"										// Base agility
-		"AttributeAgilityGain"		"2.0"	
-		
-		
-		
-// Награда
-//----------------------------------------------------------------
-"BountyXP" "100" // количества опыта.
-"BountyGoldMin" "50" // минимальное количество золота.
-"BountyGoldMax" "50" // максимальное количества золота.
-
-// Передвижение
-//----------------------------------------------------------------
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-"MovementSpeed" "245" // Скорость
-"MovementTurnRate" "0.5" // скорость поворота.
-
-// Общий статус
-//----------------------------------------------------------------
-"StatusHealth" "450" // Базовое количество ХП.
-"StatusHealthRegen" "1.2" // Базовая Скорость восстановления ХП.
-"StatusMana" "75" // Базовое количество МП.
-"StatusManaRegen" "0.05" // Базовая Скорость восстановления МП.
-
-// Принадлежность к команде
-//----------------------------------------------------------------
-"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
-
-// Обзор Персонажа
-//----------------------------------------------------------------
-"VisionDaytimeRange" "1400" // Днем.
-"VisionNighttimeRange" "1400" // Ночью.
-
-//----------------------------------------------------------------
-//Рюкзак
-"HasInventory" "1" // 0 - не будет инвентаря
-	}	
+	"override_hero"				"npc_dota_hero_brewmaster"
 	
-	//=================================================================================================================
-	// HERO: Minotaur
-	//=================================================================================================================
+	"Ability1" "brewer_beer_for_a_breakthrough_datadriven" 	
+	"Ability2" "brewer_bear_style_datadriven" 		
+	"Ability3" "brewer_drunken_punches_datadriven" 	
+	"Ability4" "brewer_power_of_the_mountains_datadriven" 					
+	"Ability5" "" 					
+	"Ability6" ""  	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "4" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "13" 
+	"AttackDamageMax" "27" 
+	"AttackRate" "1.8" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "110" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"23"										
+	"AttributeStrengthGain"		"2.8"										
+	"AttributeBaseIntelligence"	"10"										
+	"AttributeIntelligenceGain"	"2.0"									
+	"AttributeBaseAgility"		"7"									
+	"AttributeAgilityGain"		"2.0"	
+	
+	"BountyXP" "100" 
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "245" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "450" 
+	"StatusHealthRegen" "1.2" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS"
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "1400" 
+	"VisionNighttimeRange" "1400" 
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_brewmaster.txt
+
+
+	//Start of file npc_lia_hero_general.txt
+	"npc_lia_hero_general"
+	{
+	"override_hero"				"npc_dota_hero_chaos_knight"
+	
+	"Ability1" "general_rumble"	
+	"Ability2" "general_dark_magic_flow" 		
+	"Ability3" "general_furious_strike" 	
+	"Ability4" "general_magic_armor" 					
+	"Ability5" "" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "4" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "12" 
+	"AttackDamageMax" "28" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.433" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "110" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"20"										
+	"AttributeStrengthGain"		"3.0"										
+	"AttributeBaseIntelligence"	"5"										
+	"AttributeIntelligenceGain"	"2.0"										
+	"AttributeBaseAgility"		"10"										
+	"AttributeAgilityGain"		"2.0"	
+	
+	"BountyXP" "100"
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "250" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "445"
+	"StatusHealthRegen" "1.25" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "1400"
+	"VisionNighttimeRange" "1400" 
+	
+	"HasInventory" "1" 
+	}
+	//End of file npc_lia_hero_general.txt
+
+
+	//Start of file npc_lia_hero_golem.txt
+	"npc_lia_hero_golem"
+	{
+	"override_hero"				"npc_dota_hero_tiny"
+	
+	"Ability1" "akron_internal_explosion_datadriven"	
+	"Ability2" "akron_hellish_heat_datadriven" 		
+	"Ability3" "akron_firerage_datadriven" 
+	"Ability4" "akron_eruption_datadriven" 					
+	"Ability5" "" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "4" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "12" 
+	"AttackDamageMax" "30" 
+	"AttackRate" "1.7" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "100" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"21"										
+	"AttributeStrengthGain"		"3"										
+	"AttributeBaseIntelligence"	"8"										
+	"AttributeIntelligenceGain"	"1.5"										
+	"AttributeBaseAgility"		"6"										
+	"AttributeAgilityGain"		"1.5"	
+			
+	"BountyXP" "100" 
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "240" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "450" 
+	"StatusHealthRegen" "1.2" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05"
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "1400" 
+	"VisionNighttimeRange" "1400" 
+	
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_golem.txt
+
+
+	//Start of file npc_lia_hero_minotaur.txt
 	"npc_lia_hero_minotaur"
 	{
-		"override_hero"				"npc_dota_hero_elder_titan"
-// способности
-//----------------------------------------------------------------
-
-"Ability1" "minotaur_hoof_stomp_datadriven"	// способность 1.
-"Ability2" "minotaur_infernal_nature_datadriven" 		// способность 2.
-"Ability3" "minotaur_bestial_strength_datadriven" 	// способность 3.
-"Ability4" "minotaur_ancestral_spirits_datadriven" 					// способность 4.
-"Ability5" "" 					// способность 5.
-"Ability6" "" 	// способность 6 - Ульт.
-"Ability7" "" 					// способность 7 - Ульт.
-"Ability8" "" 					// способность 8 - Ульт.
-
-// Броня
-//----------------------------------------------------------------
-"ArmorPhysical" "4" 		// Физическое сопротивление.
-"MagicalResistance" "25"	// Магическое сопротивление.
-
-// Атака
-//----------------------------------------------------------------
-"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "33" // минимальный урон.
-"AttackDamageMax" "52" // максимальный урон.
-"AttackRate" "1.9" // скорость атаки.
-"AttackAnimationPoint" "0.3" // скорость повторения анимации атаки.
-"AttackAcquisitionRange" "800" // дальность реагирования (когда он нас заметит).
-"AttackRange" "110" // дальность атаки 128 ближний бой 800 дальний.
-"ProjectileModel" "" // Модель частиц для дальной атаки.
-"ProjectileSpeed" "" // скорость частиц.
-		
-		
-		// Attributes
-		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"20"										// Base strength
-		"AttributeStrengthGain"		"3.0"										// Strength bonus per level.
-		"AttributeBaseIntelligence"	"10"										// Base intelligence
-		"AttributeIntelligenceGain"	"2.0"										// Intelligence bonus per level.
-		"AttributeBaseAgility"		"5"										// Base agility
-		"AttributeAgilityGain"		"2.0"	
-		
-		
-		
-// Награда
-//----------------------------------------------------------------
-"BountyXP" "100" // количества опыта.
-"BountyGoldMin" "50" // минимальное количество золота.
-"BountyGoldMax" "50" // максимальное количества золота.
-
-// Передвижение
-//----------------------------------------------------------------
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
-"MovementSpeed" "240" // Скорость
-"MovementTurnRate" "0.5" // скорость поворота.
-
-// Общий статус
-//----------------------------------------------------------------
-"StatusHealth" "465" // Базовое количество ХП.
-"StatusHealthRegen" "1.2" // Базовая Скорость восстановления ХП.
-"StatusMana" "75" // Базовое количество МП.
-"StatusManaRegen" "0.05" // Базовая Скорость восстановления МП.
-
-// Принадлежность к команде
-//----------------------------------------------------------------
-"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
-
-// Обзор Персонажа
-//----------------------------------------------------------------
-"VisionDaytimeRange" "1400" // Днем.
-"VisionNighttimeRange" "1400" // Ночью.
-
-//----------------------------------------------------------------
-//Рюкзак
-"HasInventory" "1" // 0 - не будет инвентаря
+	"override_hero"				"npc_dota_hero_elder_titan"
+	
+	"Ability1" "minotaur_hoof_stomp_datadriven"	
+	"Ability2" "minotaur_infernal_nature_datadriven" 		
+	"Ability3" "minotaur_bestial_strength_datadriven" 	
+	"Ability4" "minotaur_ancestral_spirits_datadriven" 					
+	"Ability5" "" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "4" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "13" 
+	"AttackDamageMax" "32" 
+	"AttackRate" "1.9" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "110" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"20"										
+	"AttributeStrengthGain"		"3.0"										
+	"AttributeBaseIntelligence"	"10"										
+	"AttributeIntelligenceGain"	"2.0"										
+	"AttributeBaseAgility"		"5"										
+	"AttributeAgilityGain"		"2.0"	
+	
+	"BountyXP" "100"
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "240" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "465"
+	"StatusHealthRegen" "1.2" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "1400"
+	"VisionNighttimeRange" "1400" 
+	
+	"HasInventory" "1" 
 	}	
+	//End of file npc_lia_hero_minotaur.txt
+
+
+	//Start of file npc_lia_hero_naga_royal_guard.txt
+	"npc_lia_hero_naga_royal_guard"
+	{
+	"override_hero"				"npc_dota_hero_slardar"
+	
+	"Ability1" "royal_naga_guard_sea_wave"	
+	"Ability2" "naga_royal_guard_persistence" 		
+	"Ability3" "naga_royal_guard_bash" 	
+	"Ability4" "naga_royal_guard_crush" 					
+	"Ability5" "" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "4" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "12" 
+	"AttackDamageMax" "32" 
+	"AttackRate" "1.8" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "120" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"21"										
+	"AttributeStrengthGain"		"3.0"										
+	"AttributeBaseIntelligence"	"5"										
+	"AttributeIntelligenceGain"	"2.0"										
+	"AttributeBaseAgility"		"9"										
+	"AttributeAgilityGain"		"2.0"	
+	
+	"BountyXP" "100"
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "245" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "440"
+	"StatusHealthRegen" "1.2" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "1400"
+	"VisionNighttimeRange" "1400" 
+	
+	"HasInventory" "1" 
+	}
+	//End of file npc_lia_hero_naga_royal_guard.txt
 }

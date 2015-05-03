@@ -15,6 +15,23 @@ function Activate()
 end
 
 function Precache( context )
+		--Берсеркер
+		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf" , context)
+		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_burning_spear.vpcf" , context)
+		PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf" , context)
+		PrecacheResource("particle", "particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf" , context)
+		PrecacheResource("particle", "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf" , context)
+		--Нага-Гвардеец
+		PrecacheResource("particle", "particles/generic_gameplay/generic_stunned.vpcfs", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts", context)	
+		PrecacheResource("particle", "particles/units/heroes/hero_morphling/morphling_waveform.vpcf", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts", context)
+		PrecacheResource("particle", "particles/units/heroes/hero_slardar/slardar_crush.vpcf", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)
+		--Генерал
+		PrecacheResource("particle", "particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts", context)	
+		PrecacheResource("particle", "particles/units/heroes/hero_chaos_knight/chaos_knight_bolt_msg.vpcf", context)		
 		--1 волна
 		PrecacheModel("models/heroes/sand_king/sand_king.mdl", context)
 		
@@ -154,6 +171,7 @@ function Precache( context )
 		--Жезл Огня
 		PrecacheResource("particle", "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf", context)		
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts", context)	
+		
 		--Посох Света
 		PrecacheResource("particle", "particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf", context)
 		PrecacheResource("particle", "particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf", context)		

@@ -3586,6 +3586,300 @@
 	//End of file npc_lia_hero_acron.txt
 
 
+	//Start of file npc_lia_hero_berserker.txt
+	"berserker_fire_spear"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"huskar_burning_spear"
+	
+		"AbilityCastAnimation" "ACT_DOTA_ATTACK"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
+			"particle"			"particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
+			"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600 750 900"
+		"AbilityCastPoint"				"0.3 0.3 0.3"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13.0 12.0 11.0"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"90 180 270"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"60 70 80"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"spear_speed"		"1400.0"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"spear_width"		"30"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"movement_speed_slow"	"-45"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"slow_duration"	"3.0 4.0 5.0"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"spear_range"		"600 750 900"
+			}	
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"vision_aoe"		"500 500 500"
+			}		
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Huskar.Burning_Spear"
+				"Target" 		"CASTER"
+			}
+	
+			"LinearProjectile"
+			{
+			    "Target"      	 "POINT"
+				"EffectName"	 "particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
+				"MoveSpeed"		 "%spear_speed"
+				"StartRadius"	 "%spear_width"
+				"StartPosition"  "attach_attack1"
+				"EndRadius"      "%spear_width"
+				"HasFrontalCone" "0"
+				"FixedDistance"  "%spear_range"
+				"TargetTeams"	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"	 "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				"TargetFlags"	 "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"						
+			    "ProvidesVision" "1"
+			    "VisionRadius" 	 "%vision_aoe"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"0"
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_fire_spear_slow"
+				"Target" 		"TARGET"
+			}
+	
+			"Damage"
+			{
+				"Target"		"TARGET"
+				"Type"			"DAMAGE_TYPE_PURE"
+				"Damage"		"%AbilityDamage"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_fire_spear_slow"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"Duration"		"%slow_duration"	
+				"EffectName"		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed_slow"
+				}
+			}
+		}
+	}
+	
+	"berserker_frenzy_aura"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityTextureName"      "huskar_life_break"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "bonus_attack_speed"  "6 12 18"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "bonus_damage"   "15 30 45"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {   
+	    "modifier_frenzy_aura"
+	    {
+	      "Passive"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed" 
+			"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+	      }     
+	    }
+	  } 
+	}
+	
+	"berserker_desperation"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityTextureName"      "huskar_inner_vitality"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	  
+	  "AbilityCastRange"        "500"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "penalty_attack_speed"  "-12 -24 -36"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "aura_radius"   "500"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_desperation_aura"
+	    {
+	      "Passive"       "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	  
+	      "Aura"            "modifier_desperation"
+	      "Aura_Radius"     "%aura_radius"
+	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    }
+	      
+	    "modifier_desperation"
+	    {
+	      "IsDebuff"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%penalty_attack_speed" 
+	      }     
+	    }
+	  } 
+	}
+	
+	"berserker_madness"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityTextureName"      "huskar_berserkers_blood"
+		
+		"AbilityCooldown"				"80"
+		"AbilityManacost"				"125 150 175"
+		
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	  
+	 "precache"
+		{
+			"particle" "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+		}
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "bonus_all_stats"  "30 60 90"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "duration"  "8.0 9.0 10.0"
+	    }
+	  }
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_berserker_madness"	
+			}
+		}
+	  "Modifiers"
+	  {
+	    "modifier_berserker_madness"
+	    {
+		"Duration"		"%duration"
+		"IsBuff"		"1"
+	      "Properties"
+	      {
+			"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_all_stats"
+			"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_all_stats"
+			"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_all_stats"
+	      } 
+				"EffectName"			"particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+				"EffectAttachType"		"follow_origin"	  
+	    }
+	  } 
+	}
+	
+	//End of file npc_lia_hero_berserker.txt
+
+
 	//Start of file npc_lia_hero_brewmaster.txt
 	"brewer_power_of_the_mountains_datadriven" 
 	  {
@@ -4062,6 +4356,708 @@
 	    
 	  }
 	//End of file npc_lia_hero_butcher.txt
+
+
+	//Start of file npc_lia_hero_general.txt
+	"general_rumble"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	  "FightRecapLevel"         "1"
+	  
+	    "AbilityTextureName"     "centaur_hoof_stomp"
+	 	"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"      "0.0"
+	  "AbilityCooldown"       "8.0 9.0 10.0"
+	  "AbilityManaCost"       "60 80 100"
+	  
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "radius"              "275 275 300"
+	    }
+	    "02"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "duration"            "6.0"
+	    }
+	    "03"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "stomp_damage"          "40 120 240"
+	    }
+	    "04"
+	    {
+	      "var_type"                                "FIELD_INTEGER"
+	      "attack_slow"          "-30 -50 -70"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+	    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"         "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+	      "EffectAttachType"   "follow_origin"
+	      "EffectRadius"       "%radius"
+	      "Target"             "CASTER"
+	      "ControlPoints"
+	      {
+	        "01"  "%radius 0 %radius"
+	      }
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Centaur.HoofStomp"
+	      "Target"        "CASTER"
+	    }
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"        "CASTER"
+	        "Radius"        "%radius"
+	        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      }
+	
+	      "Action"
+	      {
+	        "Damage"
+	        {
+	          "Target"  "TARGET"
+	          "Type"    "DAMAGE_TYPE_MAGICAL"
+	          "Damage"  "%stomp_damage"
+	        }
+	
+	        "ApplyModifier"
+	        {
+	          "Target"        "TARGET"
+	          "ModifierName"  "modifier_general_rumble"
+	        }
+	      }
+	    }   
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_general_rumble"
+	    {
+	      "IsDebuff"  "1"
+	      "Duration"  "%duration"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_slow"
+	      }
+	    }
+	  }
+	}
+	
+	"general_dark_magic_flow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"chaos_knight_chaos_bolt"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_chaos_knight.vsndevts"
+			"particle"		"particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf"
+			"particle"		"particles/units/heroes/hero_chaos_knight/chaos_knight_bolt_msg.vpcf"
+		}
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10.0 9.0 8.0"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"100 200 300"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"60 65 70"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"projectile_speed"	"1250"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"projectile_stun"	"2.0 2.5 3.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"	"5 10 15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"	"7.0"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_ChaosKnight.ChaosBolt.Cast"
+				"Target" 		"CASTER"
+			}
+			
+			"TrackingProjectile"
+			{
+				"Target"           	"TARGET"
+				"EffectName"		"particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf"
+				"Dodgeable"			"1"
+				"ProvidesVision"	"0"
+				"MoveSpeed"        	"%projectile_speed"
+				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}	
+			"ApplyModifier"
+			{
+			"ModifierName" "modifier_dark_magic_flow"
+			"Target"	"CASTER"
+			"Duration"	"%duration"
+			}			
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+			"FireSound"
+			{
+				"EffectName"	"Hero_ChaosKnight.ChaosBolt.Impact"
+				"Target" 		"TARGET"
+			}
+			
+			"Stun"
+			{
+				"Duration"   "%projectile_stun"
+				"Target" 	 "TARGET"
+			}
+	
+			"Damage"
+			{
+				"Target"		"TARGET"
+				"Type"			"DAMAGE_TYPE_MAGICAL"
+				"Damage"		"%AbilityDamage"
+			}	
+		
+		}	
+		"Modifiers"
+		{
+			"modifier_dark_magic_flow"
+			{
+				"Passive"               "0"
+				"IsHidden"				"0"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	    "%bonus_armor"
+				}
+			}
+		}
+	}
+	
+	"general_furious_strike"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityTextureName"			                "chaos_knight_reality_rift"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"		"60 120 180"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"		"150"
+			}
+		}
+		
+	
+		"Modifiers"
+		{
+			"modifier_furious_strike"
+			{
+				"Passive"               "1"
+				"IsHidden"				"0"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
+				}
+	
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}		
+				"OnOrbImpact"
+				{
+					"Damage"
+					{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Radius"	"%radius"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							}
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "%bonus_damage"
+					}
+				}
+			}
+		}
+	}
+	
+	"general_magic_armor"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityTextureName"      "centaur_return"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "incoming_damage_percentage"  "-15 -30 -45"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {   
+	    "modifier_frenzy_aura"
+	    {
+	      "Passive"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
+	      }     
+	    }
+	  } 
+	}
+	//End of file npc_lia_hero_general.txt
+
+
+	//Start of file npc_lia_hero_naga_royal_guard.txt
+	"royal_naga_guard_sea_wave"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"naga_siren_rip_tide"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+			"particle"		"particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
+		}
+	
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13.0 12.0 11.0"
+		
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"80 160 320"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"45 60 75"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"start_radius"			"90 90 90"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"end_radius"			"100 100 100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"700 700 700"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"1050"
+			}
+					
+		}
+		
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target" "POINT"
+				"EffectName" "particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
+				"MoveSpeed" "%speed"
+				"StartRadius" "%start_radius"
+				"StartPosition" "attach_origin"
+				"EndRadius" "%end_radius"
+				"FixedDistance" "%range"
+				"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
+				"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone" "1"
+				"ProvidesVision" "0"
+			}
+			"FireSound"
+			{
+				"EffectName" "Hero_Morphling.Waveform"
+				"Target" "CASTER"
+			}
+		}
+			"OnProjectileHitUnit"
+			{
+				"DeleteOnHit" "0"
+				"Damage"
+				{
+					"Target" "TARGET"
+					"Type" "DAMAGE_TYPE_MAGICAL"
+					"Damage" "%AbilityDamage"
+				}
+			}
+	}
+	"naga_royal_guard_persistence"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityTextureName"      "slardar_sprint"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "bonus_armor"  "3 6 9"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "bonus_strength"   "9 18 27"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {   
+	    "modifier_frenzy_aura"
+	    {
+	      "Passive"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor" 
+			"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+	      }     
+	    }
+	  } 
+	}
+	
+	"naga_royal_guard_bash"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"slardar_bash"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"precache"
+		{
+		  "soundfile"   "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+		  "particle"	"particles/generic_gameplay/generic_stunned.vpcf" 
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"25 30 35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_hero_duration"	"1.0 1.5 2.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_creep_duration"	"1.0 1.5 2.0"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_naga_royal_guard_bash"	
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+	
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"%bash_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+	
+						"OnSuccess"
+						{
+							"FireSound"
+							{
+								"EffectName"	"Hero_Slardar.Bash"
+								"Target"		"TARGET"
+							}
+	
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_naga_royal_guard_bash_stun"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Types"		"DOTA_UNIT_TARGET_HERO"
+								}
+								"Duration"		"%stun_hero_duration"	
+							}
+	
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_naga_royal_guard_bash_stun"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Types"		"DOTA_UNIT_TARGET_BASIC"
+								}
+								"Duration"		"%stun_creep_duration"
+							}
+	
+							"Damage"
+							{
+								"Target"	"TARGET"
+								"Type"		"DAMAGE_TYPE_MAGICAL"
+								"Damage"	"%AbilityDamage"
+							}
+						}
+					}
+				}
+			}
+	
+			"modifier_naga_royal_guard_bash_stun"
+			{
+				"IsDebuff"			"1"
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+	
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
+	
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+	
+	"naga_royal_guard_crush"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"	
+	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityTextureName"      "slardar_slithereen_crush"
+		
+		"AbilityCooldown"				"180 140 100"
+		"AbilityManacost"				"100 120 140"
+		"AbilityDamage"					"200 200 200"
+		"AbilityCastRange"				"300"
+		
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	  
+	 "precache"
+		{
+			"particle" "particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		}
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "bonus_move_speed_percentage"  "25 50 75"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "duration"  "6.0 9.0 12.0"
+	    }
+		"03"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "damage_per_second"  "200 200 200"
+	    }
+		"04"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "radius"  "300 300 300"
+	    }
+	  }
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_crush_bonus_movespeed"	
+			}
+	
+		}
+	  "Modifiers"
+	  {
+	    "modifier_crush_bonus_movespeed"
+	    {
+		"Duration"		"%duration"
+		"IsBuff"		"1"
+	      "Properties"
+	      {
+			"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_move_speed_percentage"
+	      } 
+			"ThinkInterval" "0.25"
+			"OnIntervalThink"
+			{	
+				"FireEffect"
+				{
+					"Target" "CASTER"
+					"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+					"EffectAttachType"		"follow_origin"	
+				}
+				"FireSound"
+				{
+					"EffectName" "Hero_NagaSiren.Riptide.Cast"
+					"Target" "CASTER"
+				}
+					"RunScript"
+	    			{
+				        "ScriptFile"    "heroes/NagaRoyalGuard/crush.lua"
+				        "Function"      "Immolation"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					}
+			}
+	    }
+	  } 
+	}
+	//End of file npc_lia_hero_naga_royal_guard.txt
 
 
 	//Start of file npc_lia_hero_queen_of_spiders.txt
