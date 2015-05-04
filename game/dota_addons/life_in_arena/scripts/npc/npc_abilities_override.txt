@@ -1174,15 +1174,27 @@
 	//Start of file creep_passives.txt
 	"true_sight"
 	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
-		"MaxLevel" 						"1"
-	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"neutral_spell_immunity"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1100"
+			}
+		}
 	
 		"Modifiers"
 		{
-			"modifier_true_sight"
+			"modifier_truesight_datadriven"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
@@ -1195,7 +1207,7 @@
 						"Target"
 						{
 							"Center"  	"TARGET"
-							"Radius" 	"2000"
+							"Radius" 	"%radius"
 							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 						}
@@ -1204,29 +1216,30 @@
 						{
 							"RemoveModifier"
 							{
-								"ModifierName"	"modifier_truesight"
+								"ModifierName"	"modifier_truesight_reveal"
 								"Target" 		"TARGET"
 							}
+	
 							"ApplyModifier"
 							{
-								"ModifierName"	"modifier_truesight"
+								"ModifierName"	"modifier_truesight_reveal"
 								"Target" 		"TARGET"
 							}
 						}
 					}			
-				}
+				}		
 			}
 	
-			"modifier_true_sight_reveal"
+			"modifier_truesight_reveal"
 			{
 				"IsHidden"			"1"
-				"Duration"			"0.03"
+				"Duration"			"0.5"	//The True Sight effect lingers for 0.5 seconds.
 				"States"
 				{
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
 				}
 			}
-		}	
+		}
 	}
 	
 	"spell_immunity"
