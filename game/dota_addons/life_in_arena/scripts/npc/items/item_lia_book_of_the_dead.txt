@@ -1,0 +1,65 @@
+    "item_lia_book_of_the_dead"
+{
+	"ID"                            "1470"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"            "item_lia_book_of_the_dead"
+
+	"ItemStockMax" "1" 
+	"ItemStockTime" "20"
+	"ItemStockInitial" "1"
+	
+	"ItemCost"                      "40" 
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemShopTags"					"epic"
+	"ItemQuality"					"epic"
+	"ItemPermanent"					"0"
+	"AbilityCastRange"              "400"
+	"AbilityCooldown"               "20"
+	"AbilityManaCost"               "0"
+	"ItemKillable"                  "0"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+	"ItemInitialCharges"            "1"
+	"ItemStackable"					"1"
+	
+	"OnSpellStart"
+	{
+		"SpendCharge"
+		{}
+		"SpawnUnit"
+		{
+			"Target"            "CASTER"
+			"UnitName"              "book_of_the_dead_skeleton_melee"
+			"UnitCount"             "1"
+			"Duration"				"30"
+			"SpawnRadius"			"100"
+		}
+		"SpawnUnit"
+		{
+			"Target"            "CASTER"
+			"UnitName"              "book_of_the_dead_skeleton_melee_ranged"
+			"UnitCount"             "1"
+			"Duration"				"30"
+			"SpawnRadius"			"150"
+		}
+		"SpawnUnit"
+		{
+			"Target"            "CASTER"
+			"UnitName"              "book_of_the_dead_skeleton_melee_ranged"
+			"UnitCount"             "1"
+			"Duration"				"30"
+			"SpawnRadius"			"150"
+		}
+		"SpawnUnit"
+		{
+			"Target"            "CASTER"
+			"UnitName"              "book_of_the_dead_skeleton_melee"
+			"UnitCount"             "1"
+			"Duration"				"30"
+			"SpawnRadius"			"100"
+		}
+		
+	}
+
+}

@@ -1701,7 +1701,7 @@
 	// способности
 	//----------------------------------------------------------------
 	
-	"Ability1" "" // способность 1.
+	"Ability1" "17_wave_evasion" // способность 1.
 	"Ability2" "" // способность 2.
 	"Ability3" "" // способность 3.
 	"Ability4" "" // способность 4.
@@ -3222,7 +3222,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/juggernaut/juggernaut.mdl" 
 	"SoundSet" "Hero_Juggernaut" 
-	"ModelScale" "1" 
+	"ModelScale" "1.3" 
 	"Level" "1" 
 					"precache"
 			{
@@ -3379,4 +3379,395 @@
 		"HasInventory" "0" // 0 - РЅРµ Р±СѓРґРµС‚ РёРЅРІРµРЅС‚Р°СЂСЏ
 		}
 	//End of file orn_mutant.txt
+
+
+	//Start of file purchasable_units.txt
+	"book_of_the_dead_skeleton_melee" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "1" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "1" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "22" // минимальный урон.
+	"AttackDamageMax" "22" // максимальный урон.
+	"AttackRate" "1.5" // скорость атаки.
+	"AttackAnimationPoint" "0.4" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "128" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "100" // количества опыта.
+	"BountyGoldMin" "5" // минимальное количество золота.
+	"BountyGoldMax" "5" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "180" // Скорость
+	"MovementTurnRate" "0.4" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "250" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "0" // Базовое количество МП.
+	"StatusManaRegen" "0" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"book_of_the_dead_skeleton_melee_ranged" // название
+	{
+	// General
+	//
+	"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+	"Model"						"models/heroes/clinkz/clinkz.vmdl"	// Model.
+	"ModelScale"				"0.5"
+	"SoundSet"                  "Hero_Clinkz"			
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+	"VoiceFile"					"soundevents/voscripts/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+	"Level"						"1"
+	
+	"UseNeutralCreepBehavior" 	"0"
+	
+	// Abilities
+	//----------------------------------------------------------------
+	
+	"Ability1"					""			// Ability 1. 
+	"Ability2"					""			// Ability 2.
+	"Ability3"					""			// Ability 3.
+	"Ability4"					""			// Ability 4.
+	"Ability5"					""			// Ability 5.
+	"Ability6"					""			// Ability 6 - Extra.
+	"Ability7"					""			// Ability 7 - Extra.
+	"Ability8"					""			// Ability 8 - Extra.
+	
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"1"			// Physical protection.
+	//"MagicalResistance"			"35"		// Magical protection.
+	
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin"			"18"								// Damage range min.
+	"AttackDamageMax"			"18"								// Damage range max.
+	"AttackRate"				"1.2"								// Speed of attack.
+	"AttackAnimationPoint"		"0.3"								// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"500"								// Range within a target can be acquired.
+	"AttackRange"				"500"								// Range within a target can be attacked.
+	"ProjectileModel"			"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"				// Particle system model for projectile.
+	"ProjectileSpeed"			"900"								// Speed of projectile.
+	
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"100"		// Experience earn.
+	"BountyGoldMin"				"5"		// Gold earned min.
+	"BountyGoldMax"				"5"		// Gold earned max.
+	
+	// Bounds
+	//----------------------------------------------------------------
+	//"RingRadius"				"40"
+	"HealthBarOffset"			"140"
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+	
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+	"MovementSpeed"				"180"		// Speed
+	"MovementTurnRate"			"0.4"		// Turning rate.
+	
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"210"			// Base health.
+	"StatusHealthRegen"			"0.5"			// Health regeneration rate.
+	"StatusMana"				"0"			// Base mana.
+	"StatusManaRegen"			"0.75"			// Mana regeneration rate.
+	
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_BADGUYS"			// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"1400"		// Range of vision during day light.
+	"VisionNighttimeRange"		"1400"		// Range of vision at night time.
+	
+	"precache"
+	{
+	"model"	"models/heroes/clinkz/clinkz_head.mdl"
+	"model"	"models/heroes/clinkz/clinkz.vmdl"
+	"model"	"models/heroes/clinkz/clinkz_back.mdl"
+	"model"	"models/items/clinkz/demonspinerecurve_lod1/demonspinerecurve_lod1.mdl"
+	"model"	"models/items/clinkz/clinkz_hands_goc/clinkz_hands_goc.mdl"
+	"model"	"models/items/clinkz/clinkz_shoulders_goc/clinkz_shoulders_goc.mdl"
+	"model"	"models/items/clinkz/clinkz_helmet01_goc/clinkz_helmet01_goc.mdl"
+	"particle"	"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"	
+	"particle"	"particles/units/heroes/hero_clinkz/clinkz_body_fire.vpcf"
+	"particle"	"particles/units/heroes/hero_clinkz/clinkz_bow.vpcf"
+	"particle"	"particles/units/heroes/hero_clinkz/clinkz_body_arm_fire.vpcf"
+	}
+	
+	// Creature Data
+	//----------------------------------------------------------------------------------------------------------------------
+	"Creature"
+	{
+			
+		"AttachWearables"
+		{
+			"Wearable1"	{ "ItemDef" "4600" } //spine bow
+			"Wearable2"	{ "ItemDef"	"56" } //skull
+			"Wearable3" { "ItemDef"	"4972" } //gauntlets
+			"Wearable4" { "ItemDef"	"59" } //quiver
+			"Wearable5" { "ItemDef"	"4742" } //pauldrons
+			"Wearable6" { "ItemDef"	"4971" } //horns crypt guardian
+		}
+	}
+	}
+	
+	"troll_defender" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/troll_warlord/troll_warlord.vmdl" // модель.
+	"SoundSet" "n_creep_Ranged" // название звукового набора.
+	"ModelScale" "0.9" // масштаб модели.
+	"Level" "1" // уровень.
+	
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "invulnerability" // способность 1.
+	"Ability2" "troll_defender_armor_aura" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "1" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "30" // минимальный урон.
+	"AttackDamageMax" "30" // максимальный урон.
+	"AttackRate" "1.6" // скорость атаки.
+	"AttackAnimationPoint" "0.4" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "500" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "1200" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "100" // количества опыта.
+	"BountyGoldMin" "5" // минимальное количество золота.
+	"BountyGoldMax" "5" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "290" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "100" // Базовое количество ХП.
+	"StatusHealthRegen" "0" // Базовая Скорость восстановления ХП.
+	"StatusMana" "100" // Базовое количество МП.
+	"StatusManaRegen" "0" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_BADGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+	"model"	"models/heroes/troll_warlord/troll_warlord_axe_ranged_r.mdl"
+	"model"	"models/heroes/troll_warlord/troll_warlord_axe_ranged_l.mdl"
+	}
+	"Creature"
+	{
+			
+		"AttachWearables"
+		{
+			"Wearable1"	{ "ItemDef" "373" } //правый топор
+			"Wearable2"	{ "ItemDef"	"374" } //левый топор
+		}
+	}
+	}
+	
+	"npc_doom_guard_spawn"
+	{
+	// General
+	//
+	"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+	"Model"						"models/heroes/doom/doom.vmdl"	// Model.	
+	"ModelScale"				"1.2"
+	"Level"						"6"
+	"Portrait"					"vgui/hud/heroportraits/portrait_doom_bringer"
+	"SoundSet"					"Hero_DoomBringer"			
+	"IdleSoundLoop"				"Hero_DoomBringer.IdleLoop"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
+	"IsAncient"					"1"
+	
+	
+	"UseNeutralCreepBehavior" 	"0"
+	
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"					"doom_spawn_cripple"			// Ability 1.
+	"Ability2"					"doom_spawn_stomp"			// Ability 2.
+	"Ability3"					""			// Ability 3.
+	"Ability4"					""			// Ability 4.
+	
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"7"			// Physical protection.
+	//"MagicalResistance"			"0"			// Magical protection.
+	
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"140"		// Damage range min.
+	"AttackDamageMax"			"140"		// Damage range max.
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	"AttackRate"				"1.30"			// Speed of attack.
+	"AttackAnimationPoint"		"0.467"		// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
+	"AttackRange"				"128"		// Range within a target can be attacked.
+	"ProjectileModel"			""			// Particle system model for projectile.
+	"ProjectileSpeed"			""			// Speed of projectile.
+	
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"100"		// Experience earn.
+	"BountyGoldMin"				"100"		// Gold earned min.
+	"BountyGoldMax"				"100"		// Gold earned max.
+	
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"1700"		// Base health.
+	"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+	"StatusMana"				"500"			// Base mana.
+	"StatusManaRegen"			"1.25"			// Mana regeneration rate.
+	
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_BADGUYS"			// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Vision
+	//-------------------------------------------------------------------------------------------------------------
+	"VisionDaytimeRange"		"1400"									// Range of vision during day light.
+	"VisionNighttimeRange"		"1400"									// Range of vision at night time.
+	
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+	"MovementSpeed"				"270"									// Speed.
+	"MovementTurnRate"			"0.4"									// Turning rate.
+	
+	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"			"250"
+	
+	"precache"
+	{
+	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
+	"model"	"models/heroes/doom/doom.vmdl"
+	"model"	"models/items/doom/impending_transgressions_back/impending_transgressions_back.mdl"
+	"model"	"models/items/doom/crown_of_omoz/crown_of_omoz.mdl"
+	"model"	"models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.mdl"
+	"model"	"models/items/doom/impending_transgressions_arms/impending_transgressions_arms.mdl"
+	"model"	"models/items/doom/impending_transgressions_tail/impending_transgressions_tail.mdl"
+	"model"	"models/items/doom/impending_transgressions_shoulders/impending_transgressions_shoulders.mdl"
+	"model"	"models/items/doom/impending_transgressions_belt/impending_transgressions_belt.mdl"
+	"particle"	"particles/units/heroes/hero_doom_bringer/doom_loadout.vpcf"
+	"particle_folder" "particles/units/heroes/hero_doom_bringer"
+	}
+	
+	// Creature Data
+	//----------------------------------------------------------------------------------------------------------------------
+	"Creature"
+	{					
+	"AttachWearables"
+	{
+		"Wearable1"		{	"ItemDef"	"5121"		}
+		"Wearable2"		{	"ItemDef"	"5574"		}
+		"Wearable3"		{	"ItemDef"	"4905"		}
+		"Wearable4"		{	"ItemDef"	"5122"		}
+		"Wearable5"		{	"ItemDef"	"5123"		}
+		"Wearable6"		{	"ItemDef"	"5124"		}
+		"Wearable7"		{	"ItemDef"	"5126"		}
+		
+	}
+	}
+	}
+	//End of file purchasable_units.txt
 }

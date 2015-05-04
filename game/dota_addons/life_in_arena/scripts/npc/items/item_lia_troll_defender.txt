@@ -1,0 +1,41 @@
+    "item_lia_troll_defender"
+{
+	"ID"                            "1471"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"            "item_lia_troll_warlord"
+	
+	"ItemStockMax" "1" 
+	"ItemStockTime" "30"
+	"ItemStockInitial" "1"
+	
+	"ItemCost"                      "125" 
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemShopTags"					"epic"
+	"ItemQuality"					"epic"
+	"ItemPermanent"					"0"
+	"AbilityCastRange"              "400"
+	"AbilityCooldown"               "20"
+	"AbilityManaCost"               "0"
+	"ItemKillable"                  "0"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+	"ItemInitialCharges"            "1"
+	"ItemStackable"					"1"
+	
+	"OnSpellStart"
+	{
+		"SpendCharge"
+		{}
+		"SpawnUnit"
+		{
+			"Target"            "CASTER"
+			"UnitName"              "troll_defender"
+			"UnitCount"             "1"
+			"Duration"				"45"
+			"SpawnRadius"			"100"
+		}
+		
+	}
+
+}
