@@ -5,7 +5,6 @@ function OnIntervalThinkAura(event)
 	else
 		unit:RemoveModifierByName("item_staff_of_light_aura_regen_modifier")
 	end
-	print("LOL")
 end
 
 function OnSpellStart(event)

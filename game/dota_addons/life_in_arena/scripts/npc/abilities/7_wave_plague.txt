@@ -1,0 +1,114 @@
+"7_wave_plague"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"250"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"immunity_time"			"2"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"			    "35"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"plague_time"			    "10"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_plague_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Aura"		  		"modifier_plague_aura_datadriven"
+			"Aura_Radius" 		"%radius"
+	        "Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+		}
+		"modifier_plague_aura_datadriven"
+		{
+			"IsHidden"			"1"
+			"DelayedAction"
+			{
+				"Delay"	"%immunity_time"
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"Target" 		"TARGET"
+						"ModifierName"	"modifier_plague_damage_datadriven"
+					}
+				}
+			}
+			"OnCreated"
+			{
+				"RemoveModifier"
+				{
+					"Target"		"TARGET"
+					"ModifierName"	"modifier_plague_time_datadriven"
+				}
+			}
+			"OnDestroy"
+			{
+				"ApplyModifier"
+				{
+					"Target" 		"TARGET"
+					"ModifierName"	"modifier_plague_time_datadriven"
+				}
+			}
+		}
+		"modifier_plague_damage_datadriven"
+		{
+			"ThinkInterval"		"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"abilities\plague.lua"
+					"Function"		"OnIntervalThink"
+					"damage"		"%damage"
+				}
+			}
+		}
+		"modifier_plague_time_datadriven"
+		{
+			"IsHidden"			"1"
+			"DelayedAction"
+			{
+				"Delay"		"%plague_time"
+				"Action"
+				{
+					"RemoveModifier"
+					{
+						"Target"		"TARGET"
+						"ModifierName"	"modifier_plague_time_datadriven"
+					}
+					"RemoveModifier"
+					{
+						"Target"		"TARGET"
+						"ModifierName"	"modifier_plague_damage_datadriven"
+					}
+				}
+			}
+		}
+	}
+}
