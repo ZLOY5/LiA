@@ -3,7 +3,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
 	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
@@ -107,7 +107,6 @@
 {
   "BaseClass"               "ability_datadriven"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityTextureName"      "slardar_sprint"
 
 	"MaxLevel"               "3"
@@ -149,7 +148,6 @@
 	"AbilityTextureName"			"slardar_bash"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
@@ -261,7 +259,6 @@
 	
 	"AbilityCooldown"				"180 140 100"
 	"AbilityManacost"				"100 120 140"
-	"AbilityDamage"					"200 200 200"
 	"AbilityCastRange"				"300"
 	
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -276,22 +273,27 @@
 	}
   "AbilitySpecial"
   {
-    "01"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "bonus_move_speed_percentage"  "25 50 75"
-    }
-    "02"
-    {
-      "var_type"      "FIELD_FLOAT"
-      "duration"  "6.0 9.0 12.0"
-    }
-	"03"
+  	"01"
     {
       "var_type"      "FIELD_FLOAT"
       "damage_per_second"  "200 200 200"
     }
-	"04"
+	"02"
+    {
+      "var_type"      "FIELD_FLOAT"
+      "str_tooltip"  "100"
+    }
+    "03"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "bonus_move_speed_percentage"  "25 50 75"
+    }
+    "04"
+    {
+      "var_type"      "FIELD_FLOAT"
+      "duration"  "6.0 9.0 12.0"
+    }
+	"05"
     {
       "var_type"      "FIELD_INTEGER"
       "radius"  "300 300 300"

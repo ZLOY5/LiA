@@ -3,6 +3,44 @@
 {
 
 
+	//Start of file attribute_bonus.txt
+	"attribute_bonuses"
+	 {
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+	  "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "BaseClass"	"ability_datadriven" 
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	   "01"
+	   {
+	    "var_type"      "FIELD_FLOAT"
+	    "attribute_bonus_per_level"  "3.0"
+	   }
+	  }
+		"Modifiers"
+		{
+			"modifier_attribute_bonuses"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%attribute_bonus_per_level"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%attribute_bonus_per_level"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%attribute_bonus_per_level"
+				}
+			}
+		}
+	 }
+	//End of file attribute_bonus.txt
+
+
 	//Start of file barrel_no_health_bar.txt
 		//=================================================================================================================
 		// Minotaur: Aura
@@ -1178,7 +1216,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"neutral_spell_immunity"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
 	
 	
 		// Special	
@@ -4392,7 +4430,8 @@
 	  "AbilityCastPoint"      "0.0"
 	  "AbilityCooldown"       "8.0 9.0 10.0"
 	  "AbilityManaCost"       "60 80 100"
-	  
+		"AbilityCastRange"	"275 275 300"
+		
 	  // Special
 	  //-------------------------------------------------------------------------------------------------------------
 	  "AbilitySpecial"
@@ -4631,6 +4670,8 @@
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"				"150"
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -4684,7 +4725,6 @@
 	{
 	  "BaseClass"               "ability_datadriven"
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityTextureName"      "centaur_return"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -4723,7 +4763,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
@@ -4827,7 +4867,6 @@
 	{
 	  "BaseClass"               "ability_datadriven"
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityTextureName"      "slardar_sprint"
 	
 		"MaxLevel"               "3"
@@ -4869,7 +4908,6 @@
 		"AbilityTextureName"			"slardar_bash"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
@@ -4981,7 +5019,6 @@
 		
 		"AbilityCooldown"				"180 140 100"
 		"AbilityManacost"				"100 120 140"
-		"AbilityDamage"					"200 200 200"
 		"AbilityCastRange"				"300"
 		
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -4996,22 +5033,27 @@
 		}
 	  "AbilitySpecial"
 	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "bonus_move_speed_percentage"  "25 50 75"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "duration"  "6.0 9.0 12.0"
-	    }
-		"03"
+	  	"01"
 	    {
 	      "var_type"      "FIELD_FLOAT"
 	      "damage_per_second"  "200 200 200"
 	    }
-		"04"
+		"02"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "str_tooltip"  "100"
+	    }
+	    "03"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "bonus_move_speed_percentage"  "25 50 75"
+	    }
+	    "04"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "duration"  "6.0 9.0 12.0"
+	    }
+		"05"
 	    {
 	      "var_type"      "FIELD_INTEGER"
 	      "radius"  "300 300 300"
@@ -5804,8 +5846,11 @@
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
 		
+		"AbilityCooldown"				"14.0 18.0 22.0"	
 		"AbilityDuration"	"8.0 12.0 16.0"
-	
+		"AbilityCastRange"	"260"
+		"AbilityManaCost"				"80"	
+		
 		"precache"
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
@@ -5821,6 +5866,11 @@
 				"bonus_damage"		"20 50 80"
 			}
 			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"		"15 30 45"
+			}
+			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"		"260"
@@ -5842,8 +5892,12 @@
 			{
 				"Passive"               "0"
 				"IsHidden"				"0"
-				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
 	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+				}			
+				
 				"Orb"
 				{
 					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
@@ -5873,7 +5927,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 		"AbilityTextureName"			                "valkyrie_true_hit"
 	
 		"MaxLevel"               "3"
@@ -5889,12 +5943,12 @@
 				"var_type"				"FIELD_INTEGER"
 				"main_target_percent"		"3 6 9"
 			}
-			"01"
+			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"secondary_target_percent"		"3"
 			}
-			"02"
+			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"		"275"

@@ -1,0 +1,34 @@
+"attribute_bonuses"
+ {
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+  "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "BaseClass"	"ability_datadriven" 
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+   "01"
+   {
+    "var_type"      "FIELD_FLOAT"
+    "attribute_bonus_per_level"  "3.0"
+   }
+  }
+	"Modifiers"
+	{
+		"modifier_attribute_bonuses"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%attribute_bonus_per_level"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%attribute_bonus_per_level"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%attribute_bonus_per_level"
+			}
+		}
+	}
+ }
