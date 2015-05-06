@@ -11,8 +11,11 @@
 	"RequiredLevel"          "1"
 	"LevelsBetweenUpgrades"  "2"
 	
+	"AbilityCooldown"				"14.0 18.0 22.0"	
 	"AbilityDuration"	"8.0 12.0 16.0"
-
+	"AbilityCastRange"	"260"
+	"AbilityManaCost"				"80"	
+	
 	"precache"
 	{
 		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
@@ -28,6 +31,11 @@
 			"bonus_damage"		"20 50 80"
 		}
 		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agility"		"15 30 45"
+		}
+		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"radius"		"260"
@@ -49,8 +57,12 @@
 		{
 			"Passive"               "0"
 			"IsHidden"				"0"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
 
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+			}			
+			
 			"Orb"
 			{
 				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
@@ -80,7 +92,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
 	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 	"AbilityTextureName"			                "valkyrie_true_hit"
 
 	"MaxLevel"               "3"
@@ -96,12 +108,12 @@
 			"var_type"				"FIELD_INTEGER"
 			"main_target_percent"		"3 6 9"
 		}
-		"01"
+		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"secondary_target_percent"		"3"
 		}
-		"02"
+		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"radius"		"275"
