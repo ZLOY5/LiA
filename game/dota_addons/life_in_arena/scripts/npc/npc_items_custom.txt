@@ -6896,6 +6896,7 @@
 		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	    "AbilityUnitDamageType" 		"DAMAGE_TYPE_PURE"
 	
 	    "AbilityCastRange" "600"   
@@ -6921,7 +6922,7 @@
 				    "Radius"    	"%ability_radius"
 				    "Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				    "Types"  	    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				    "Flags"  		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				    "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				}
 			}
 		}
@@ -6980,15 +6981,23 @@
 				{
 					"Damage"
 					{
-						"Target"	"TARGET"
-						"Type"		"DAMAGE_TYPE_PURE"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"Type"		"DAMAGE_TYPE_NONE"
 						"Damage"	"%ability_damage"
 					}
 					"FireEffect"
 					{
 						"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
 						"EffectAttachType"  "follow_overhead"
-						"Target"            "TARGET"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
 						"ControlPoints"
 						{
 							"01"	"50 50 50"
