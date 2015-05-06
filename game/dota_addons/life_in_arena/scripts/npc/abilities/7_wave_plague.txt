@@ -84,24 +84,5 @@
 				}
 			}
 		}
-
-		"modifier_plague_time_datadriven"
-		{
-			"Duration"	"%plague_time"
-			"IsHidden"			"1"
-			"OnDestroy"
-			{
-				"RemoveModifier"
-				{
-					"Target"		"TARGET"
-					"ModifierName"	"modifier_plague_time_datadriven"
-				}
-				"RemoveModifier"
-				{
-					"Target"		"TARGET"
-					"ModifierName"	"modifier_plague_damage_datadriven"
-				}	
-			}		
-		}
 	}
 }
