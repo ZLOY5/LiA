@@ -46,19 +46,6 @@
 					"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
 		        }
 			}
-			"modifier_hero"
-			{
-				"IsHidden"              "1"
-				"Attributes"			"MODIFIER_ATTRIBUTE_PERMANENT"
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"LiA_GameMode.lua"
-						"Function"		"OnHeroDeath"
-					}
-				}
-			}
 			"modifier_orn"
 			{
 				"IsHidden"              "1"
@@ -76,30 +63,6 @@
 					{
 						"ScriptFile"	"LiA_GameMode.lua"
 						"Function"		"OnOrnDeath"
-					}
-				}
-			}
-			"modifier_firststage"
-			{
-				"IsHidden"              "1"
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"LiA_GameMode.lua"
-						"Function"		"OnFirstStageDeath"
-					}
-				}
-			}
-			"modifier_secondstage"
-			{
-				"IsHidden"              "1"
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"LiA_GameMode.lua"
-						"Function"		"OnSecondStageDeath"
 					}
 				}
 			}
@@ -1097,6 +1060,7 @@
 			}
 			"modifier_windwalk"
 			{
+				"IsHidden"          "1"
 				"IsBuff"			"1"
 				"Duration"          "%duration"
 				//"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
@@ -6986,7 +6950,7 @@
 							"Center"	"TARGET"
 							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
-						"Type"		"DAMAGE_TYPE_NONE"
+						"Type"		"DAMAGE_TYPE_PURE"
 						"Damage"	"%ability_damage"
 					}
 					"FireEffect"

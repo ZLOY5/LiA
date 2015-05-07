@@ -3,44 +3,84 @@
 {
 
 
-<<<<<<< HEAD
-	//Start of file attribute_bonus.txt
-	"attribute_bonuses"
-	 {
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
-	  "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "BaseClass"	"ability_datadriven" 
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	   "01"
-	   {
-	    "var_type"      "FIELD_FLOAT"
-	    "attribute_bonus_per_level"  "3.0"
-	   }
-	  }
+	//Start of file 11_wave_invisibility.txt
+	"11_wave_invisibility"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}
+		}
+	
 		"Modifiers"
 		{
-			"modifier_attribute_bonuses"
+			"modifier_11_wave_datadriven"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-				
-				"Properties"
+				"OnCreated"	
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%attribute_bonus_per_level"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%attribute_bonus_per_level"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%attribute_bonus_per_level"
+					"ApplyModifier"
+					{
+						"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+						"Target"		"CASTER"
+					}
+				}
+				"OnAttack"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+						"Target"		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"abilities\11_wave_invisibility.lua"
+						"Function"		"modifier_11_wave_datadriven_on_attack_landed"
+					}
+				}		
+			}
+			"modifier_11_wave_invisibility_datadriven"
+			{
+				"IsHidden"			"1"
+				"OnCreated"	
+				{
+					"ApplyModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+				}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+				}
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
-	 }
-	//End of file attribute_bonus.txt
-=======
+	}
+	//End of file 11_wave_invisibility.txt
+
+
 	//Start of file 7_wave_plague.txt
 	"7_wave_plague"
 	{
@@ -128,29 +168,119 @@
 					}
 				}
 			}
-	
-			"modifier_plague_time_datadriven"
-			{
-				"Duration"	"%plague_time"
-				"IsHidden"			"1"
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target"		"TARGET"
-						"ModifierName"	"modifier_plague_time_datadriven"
-					}
-					"RemoveModifier"
-					{
-						"Target"		"TARGET"
-						"ModifierName"	"modifier_plague_damage_datadriven"
-					}	
-				}		
-			}
 		}
 	}
 	//End of file 7_wave_plague.txt
->>>>>>> origin/master
+
+
+	//Start of file 8_wave_lifesteal_aura.txt
+	"8_wave_lifesteal_aura"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"75"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_8_wave_lifesteal_aura_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_8_wave_lifesteal_datadriven"
+				"Aura_Radius" 		"%radius"
+		        "Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		        "Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+			"modifier_8_wave_lifesteal_datadriven"
+			{
+				"Orb"
+				{
+					"Priority"		"DOTA_ORB_PRIORITY_ABILITY"
+				}
+				"OnOrbImpact"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"abilities\8_wave_lifesteal_aura.lua"
+						"Function"				"modifier_8_wave_lifesteal_datadriven_on_orb_impact"
+					}
+				}
+			}
+			"modifier_8_wave_lifesteal_datadriven_lifesteal"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+				
+				"OnDealDamage"
+				{
+					"Lifesteal"
+					{
+						"Target"			"ATTACKER"
+						"LifestealPercent"	"%lifesteal_percent"
+					}
+				}
+			}
+		}
+	}
+	//End of file 8_wave_lifesteal_aura.txt
+
+
+	//Start of file attribute_bonus.txt
+	"attribute_bonuses"
+	 {
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+	  "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "BaseClass"	"ability_datadriven" 
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	   "01"
+	   {
+	    "var_type"      "FIELD_FLOAT"
+	    "attribute_bonus_per_level"  "3.0"
+	   }
+	  }
+		"Modifiers"
+		{
+			"modifier_attribute_bonuses"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%attribute_bonus_per_level"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%attribute_bonus_per_level"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%attribute_bonus_per_level"
+				}
+			}
+		}
+	 }
+	//End of file attribute_bonus.txt
 
 
 	//Start of file barrel_no_health_bar.txt
