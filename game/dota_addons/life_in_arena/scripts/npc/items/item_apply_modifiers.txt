@@ -39,19 +39,6 @@
 				"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
 	        }
 		}
-		"modifier_hero"
-		{
-			"IsHidden"              "1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_PERMANENT"
-			"OnDeath"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"LiA_GameMode.lua"
-					"Function"		"OnHeroDeath"
-				}
-			}
-		}
 		"modifier_orn"
 		{
 			"IsHidden"              "1"
@@ -69,30 +56,6 @@
 				{
 					"ScriptFile"	"LiA_GameMode.lua"
 					"Function"		"OnOrnDeath"
-				}
-			}
-		}
-		"modifier_firststage"
-		{
-			"IsHidden"              "1"
-			"OnDeath"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"LiA_GameMode.lua"
-					"Function"		"OnFirstStageDeath"
-				}
-			}
-		}
-		"modifier_secondstage"
-		{
-			"IsHidden"              "1"
-			"OnDeath"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"LiA_GameMode.lua"
-					"Function"		"OnSecondStageDeath"
 				}
 			}
 		}

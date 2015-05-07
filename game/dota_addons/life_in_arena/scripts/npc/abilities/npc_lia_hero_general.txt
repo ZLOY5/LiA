@@ -193,7 +193,11 @@
 		
 		"TrackingProjectile"
 		{
-			"Target"           	"TARGET"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
 			"EffectName"		"particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf"
 			"Dodgeable"			"1"
 			"ProvidesVision"	"0"
@@ -202,9 +206,9 @@
 		}	
 		"ApplyModifier"
 		{
-		"ModifierName" "modifier_dark_magic_flow"
-		"Target"	"CASTER"
-		"Duration"	"%duration"
+			"ModifierName" "modifier_dark_magic_flow"
+			"Target"	"CASTER"
+			"Duration"	"%duration"
 		}			
 	}
 
@@ -218,14 +222,22 @@
 		}
 		
 		"Stun"
-		{
+		{	
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
 			"Duration"   "%projectile_stun"
-			"Target" 	 "TARGET"
 		}
 
 		"Damage"
 		{
-			"Target"		"TARGET"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
 			"Type"			"DAMAGE_TYPE_MAGICAL"
 			"Damage"		"%AbilityDamage"
 		}	
@@ -285,8 +297,6 @@
 		{
 			"Passive"               "1"
 			"IsHidden"				"0"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-
 			"Orb"
 			{
 				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"

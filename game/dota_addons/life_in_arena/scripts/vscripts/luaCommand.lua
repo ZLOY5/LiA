@@ -24,5 +24,8 @@ Convars:RegisterCommand('player_say', function(...)
       if keys.text == "+" then
         onPlayerReadyToWave(cmdPlayer)
       end
+      if keys.text == "KV_Update" then
+        GameRules:Playtesting_UpdateAddOnKeyValues()
+      end
     end
   end, 'player say', 0)

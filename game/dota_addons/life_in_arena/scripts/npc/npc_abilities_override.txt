@@ -3,6 +3,87 @@
 {
 
 
+<<<<<<< HEAD
+=======
+	//Start of file 11_wave_invisibility.txt
+	"11_wave_invisibility"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_11_wave_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"OnCreated"	
+				{
+					"ApplyModifier"
+					{
+						"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+						"Target"		"CASTER"
+					}
+				}
+				"OnAttack"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+						"Target"		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"abilities\11_wave_invisibility.lua"
+						"Function"		"modifier_11_wave_datadriven_on_attack_landed"
+					}
+				}		
+			}
+			"modifier_11_wave_invisibility_datadriven"
+			{
+				"IsHidden"			"1"
+				"OnCreated"	
+				{
+					"ApplyModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+				}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+				}
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+	//End of file 11_wave_invisibility.txt
+
+
+>>>>>>> 0882895f340a6f94ffe3a0ba276c37a424f1fabe
 	//Start of file 7_wave_plague.txt
 	"7_wave_plague"
 	{
@@ -24,7 +105,7 @@
 			}
 			"02"
 			{
-				"var_type"				"FIELD_FLOAT"
+				"var_type"				"FIELD_INTEGER"
 				"immunity_time"			"2"
 			}
 			"03"
@@ -53,35 +134,30 @@
 			"modifier_plague_aura_datadriven"
 			{
 				"IsHidden"			"1"
-				"DelayedAction"
-				{
-					"Delay"	"%immunity_time"
-					"Action"
-					{
-						"ApplyModifier"
-						{
-							"Target" 		"TARGET"
-							"ModifierName"	"modifier_plague_damage_datadriven"
-						}
-					}
-				}
+				
 				"OnCreated"
 				{
-					"RemoveModifier"
+					"RunScript"
 					{
-						"Target"		"TARGET"
-						"ModifierName"	"modifier_plague_time_datadriven"
+						"ScriptFile"			"abilities\plague.lua"
+						"Function"				"modifier_plague_aura_datadriven_on_created"
+						"immunity_time"			"%immunity_time"
+						"modifier_name"			"modifier_plague_aura_datadriven"
+						"modifier_name_damage" 	"modifier_plague_damage_datadriven"
 					}
 				}
 				"OnDestroy"
 				{
-					"ApplyModifier"
+					"RunScript"
 					{
-						"Target" 		"TARGET"
-						"ModifierName"	"modifier_plague_time_datadriven"
+						"ScriptFile"			"abilities\plague.lua"
+						"Function"				"modifier_plague_aura_datadriven_on_destroy"
+						"modifier_name_damage" 	"modifier_plague_damage_datadriven"
+						"plague_time"			"%plague_time"
 					}
 				}
 			}
+	
 			"modifier_plague_damage_datadriven"
 			{
 				"ThinkInterval"		"1"
@@ -95,30 +171,85 @@
 					}
 				}
 			}
-			"modifier_plague_time_datadriven"
+		}
+	}
+	//End of file 7_wave_plague.txt
+
+
+	//Start of file 8_wave_lifesteal_aura.txt
+	"8_wave_lifesteal_aura"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"75"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_8_wave_lifesteal_aura_datadriven"
+			{
+				"Passive"			"1"
 				"IsHidden"			"1"
-				"DelayedAction"
+				"Aura"		  		"modifier_8_wave_lifesteal_datadriven"
+				"Aura_Radius" 		"%radius"
+		        "Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		        "Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+			"modifier_8_wave_lifesteal_datadriven"
+			{
+				"Orb"
 				{
-					"Delay"		"%plague_time"
-					"Action"
+					"Priority"		"DOTA_ORB_PRIORITY_ABILITY"
+				}
+				"OnOrbImpact"
+				{
+					"RunScript"
 					{
-						"RemoveModifier"
-						{
-							"Target"		"TARGET"
-							"ModifierName"	"modifier_plague_time_datadriven"
-						}
-						"RemoveModifier"
-						{
-							"Target"		"TARGET"
-							"ModifierName"	"modifier_plague_damage_datadriven"
-						}
+						"ScriptFile"			"abilities\8_wave_lifesteal_aura.lua"
+						"Function"				"modifier_8_wave_lifesteal_datadriven_on_orb_impact"
+					}
+				}
+			}
+			"modifier_8_wave_lifesteal_datadriven_lifesteal"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+				
+				"OnDealDamage"
+				{
+					"Lifesteal"
+					{
+						"Target"			"ATTACKER"
+						"LifestealPercent"	"%lifesteal_percent"
 					}
 				}
 			}
 		}
 	}
+<<<<<<< HEAD
 	//End of file 7_wave_plague.txt
+=======
+	//End of file 8_wave_lifesteal_aura.txt
+>>>>>>> 0882895f340a6f94ffe3a0ba276c37a424f1fabe
 
 
 	//Start of file attribute_bonus.txt
@@ -4723,7 +4854,11 @@
 			
 			"TrackingProjectile"
 			{
-				"Target"           	"TARGET"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
 				"EffectName"		"particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt.vpcf"
 				"Dodgeable"			"1"
 				"ProvidesVision"	"0"
@@ -4732,9 +4867,9 @@
 			}	
 			"ApplyModifier"
 			{
-			"ModifierName" "modifier_dark_magic_flow"
-			"Target"	"CASTER"
-			"Duration"	"%duration"
+				"ModifierName" "modifier_dark_magic_flow"
+				"Target"	"CASTER"
+				"Duration"	"%duration"
 			}			
 		}
 	
@@ -4748,14 +4883,22 @@
 			}
 			
 			"Stun"
-			{
+			{	
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
 				"Duration"   "%projectile_stun"
-				"Target" 	 "TARGET"
 			}
 	
 			"Damage"
 			{
-				"Target"		"TARGET"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
 				"Type"			"DAMAGE_TYPE_MAGICAL"
 				"Damage"		"%AbilityDamage"
 			}	
@@ -4815,8 +4958,6 @@
 			{
 				"Passive"               "1"
 				"IsHidden"				"0"
-				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-	
 				"Orb"
 				{
 					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
