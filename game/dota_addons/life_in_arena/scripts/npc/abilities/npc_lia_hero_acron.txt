@@ -3,7 +3,7 @@
    // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
     "AbilityTextureName"     "alchemist_acid_spray"
 
@@ -11,8 +11,6 @@
 
     "AbilityManaCost" "70 80 90"
 
-
-    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
     "RequiredLevel"          "1"
     "LevelsBetweenUpgrades"  "2"
@@ -22,7 +20,6 @@
     
     "AbilityCastPoint"  "0.2"
     "AbilityCastRange"  "0"
-    "AoERadius"      "%radius"
 
     "OnSpellStart"
     {
@@ -44,7 +41,7 @@
        {
          "Target" "CASTER"
          "Type"   "DAMAGE_TYPE_MAGICAL"
-         "Damage" "%masochism"
+         "Damage" "%damage"
         }
     }
     
@@ -63,11 +60,6 @@
         {
             "var_type"                "FIELD_FLOAT"
             "damage"                   "200 400 600"
-        }
-       "03"
-        {
-            "var_type"                "FIELD_FLOAT"
-            "masochism"               "200 400 600"
         }
     }
   }
