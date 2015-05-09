@@ -88,7 +88,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"AbilityTextureName"			"pudge_rot"
 	
 	
 		// Special	
@@ -180,7 +180,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"AbilityTextureName"			"sven_gods_strength"
 	
 	
 		// Special	
@@ -3509,7 +3509,7 @@
 	   // General
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 	    "AbilityTextureName"     "alchemist_acid_spray"
 	
@@ -3517,8 +3517,6 @@
 	
 	    "AbilityManaCost" "70 80 90"
 	
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "1"
 	    "LevelsBetweenUpgrades"  "2"
@@ -3528,7 +3526,6 @@
 	    
 	    "AbilityCastPoint"  "0.2"
 	    "AbilityCastRange"  "0"
-	    "AoERadius"      "%radius"
 	
 	    "OnSpellStart"
 	    {
@@ -3546,11 +3543,11 @@
 	        
 	      }
 	      "Damage"
-	      {
-	        "Target" "CASTER"
-	        "Type"   "DAMAGE_TYPE_MAGICAL"
-	        "Damage" "%masochism"
-	      }
+	       {
+	         "Target" "CASTER"
+	         "Type"   "DAMAGE_TYPE_MAGICAL"
+	         "Damage" "%damage"
+	        }
 	    }
 	    
 	  
@@ -3568,11 +3565,6 @@
 	        {
 	            "var_type"                "FIELD_FLOAT"
 	            "damage"                   "200 400 600"
-	        }
-	       "03"
-	        {
-	            "var_type"                "FIELD_FLOAT"
-	            "masochism"               "200 400 600"
 	        }
 	    }
 	  }
@@ -3943,7 +3935,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"slow_duration"	"3.0 4.0 5.0"
+				"slow_duration"	"3 4 5"
 			}
 			"05"
 			{
@@ -6092,7 +6084,7 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"AbilityTextureName"			                "valkyrie_rage"
+		"AbilityTextureName"			                "valkyrie_fury"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
@@ -6295,7 +6287,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityTextureName"			"valkyrie_fury"
+		"AbilityTextureName"			"valkyrie_rage"
 		
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 		"MaxLevel"               "3"
@@ -6308,7 +6300,12 @@
 		"AbilityCooldown"				"35.0 30.0 25.0"
 	
 		"AbilityManaCost"				"80 90 100"	
-		// Casting
+	
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+		}
+		
 		"AbilitySpecial"
 		{
 			"01"
@@ -6331,6 +6328,8 @@
 			"Target"	"TARGET"
 			"Duration"	"%duration"
 			}
+	
+			
 		}
 		"Modifiers"
 		{
@@ -6340,6 +6339,8 @@
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 				}
+				"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+				"EffectAttachType"  "follow_origin"
 			}
 		}
 	}

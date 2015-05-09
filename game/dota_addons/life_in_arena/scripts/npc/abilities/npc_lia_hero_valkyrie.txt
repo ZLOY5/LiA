@@ -5,7 +5,7 @@
 	"BaseClass"						"ability_datadriven"
 	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"AbilityTextureName"			                "valkyrie_rage"
+	"AbilityTextureName"			                "valkyrie_fury"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
@@ -208,7 +208,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"valkyrie_fury"
+	"AbilityTextureName"			"valkyrie_rage"
 	
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 	"MaxLevel"               "3"
@@ -221,7 +221,12 @@
 	"AbilityCooldown"				"35.0 30.0 25.0"
 
 	"AbilityManaCost"				"80 90 100"	
-	// Casting
+
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+	}
+	
 	"AbilitySpecial"
 	{
 		"01"
@@ -244,6 +249,8 @@
 		"Target"	"TARGET"
 		"Duration"	"%duration"
 		}
+
+		
 	}
 	"Modifiers"
 	{
@@ -253,6 +260,8 @@
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 			}
+			"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+			"EffectAttachType"  "follow_origin"
 		}
 	}
 }

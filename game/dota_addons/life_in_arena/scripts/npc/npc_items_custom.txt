@@ -915,7 +915,14 @@
 			}
 			
 		}
-	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+		}
 	}
 	//End of file item_lia_book_of_the_dead.txt
 
@@ -1342,7 +1349,14 @@
 			}
 			
 		}
-	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"60"
+			}
+		}
 	}
 	//End of file item_lia_demonic_figure.txt
 
@@ -3551,6 +3565,10 @@
 		"AbilityCooldown"				"14.0"
 		"AbilityManaCost"				"275"
 		
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+		}
 		"OnUnequip" 
 		{
 			"RunScript"
@@ -3732,17 +3750,17 @@
 			    "var_type" "FIELD_INTEGER"
 			    "attack_speed_slow" "-25"
 		   	}
-			"02"
+			"09"
 			{
 				"var_type"						"FIELD_FLOAT"
 				"stun_duration"					"3.0"
 			}
-			"02"
+			"10"
 			{
 				"var_type"						"FIELD_INTEGER"
 				"stun_damage"					"200"
 			}
-			"02"
+			"11"
 			{
 				"var_type"						"FIELD_INTEGER"
 				"stun_radius"					"250"
@@ -7341,7 +7359,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"replenish_radius"			"800"
+				"bonus_health_regen"	"5 15"				
 			}
 			"04"
 			{
@@ -7351,12 +7369,12 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health_regen"	"5 15"				
+				"active_armor"					"14 24"
 			}
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"active_armor"					"14 24"
+				"replenish_radius"			"800"
 			}
 			"07"
 			{
@@ -7653,7 +7671,14 @@
 			}
 			
 		}
-	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"45"
+			}
+		}
 	}
 	//End of file item_lia_troll_defender.txt
 }

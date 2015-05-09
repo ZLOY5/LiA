@@ -39,6 +39,10 @@
 	"AbilityCooldown"				"14.0"
 	"AbilityManaCost"				"275"
 	
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+	}
 	"OnUnequip" 
 	{
 		"RunScript"
@@ -174,7 +178,6 @@
 			{
 				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
 			}
-			"OverrideAnimation"	"ACT_DOTA_DISABLED"
 			"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
 		}
 	}
@@ -220,17 +223,17 @@
 		    "var_type" "FIELD_INTEGER"
 		    "attack_speed_slow" "-25"
 	   	}
-		"02"
+		"09"
 		{
 			"var_type"						"FIELD_FLOAT"
 			"stun_duration"					"3.0"
 		}
-		"02"
+		"10"
 		{
 			"var_type"						"FIELD_INTEGER"
 			"stun_damage"					"200"
 		}
-		"02"
+		"11"
 		{
 			"var_type"						"FIELD_INTEGER"
 			"stun_radius"					"250"
