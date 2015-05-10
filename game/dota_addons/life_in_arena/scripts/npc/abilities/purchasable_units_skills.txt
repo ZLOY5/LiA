@@ -267,16 +267,16 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityTextureName"			"ogre_magi_bloodlust"
 
-	"AbilityCastRange"				"700"
+	"AbilityCastRange"				"600"
 	"AbilityCastPoint"				"0.0"
 
-	"AbilityCooldown"				"35.0 30.0 25.0"
+	"AbilityCooldown"				"9.0"
 
-	"AbilityManaCost"				"80 90 100"	
+	"AbilityManaCost"				"80"	
 
 	"precache"
 	{
-	"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+	"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
 	}
 	
 	"AbilitySpecial"
@@ -284,12 +284,17 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"150 200 250"
+			"bonus_attack_speed"	"50"
 		}
 		"02"
 		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_movement_speed"	"10"
+		}
+		"03"
+		{
 			"var_type"				"FIELD_FLOAT"
-			"duration"				"10.0"
+			"duration"				"20.0"
 		}
 	}
 
@@ -297,7 +302,7 @@
 	{
 		"ApplyModifier"
 		{
-		"ModifierName" "modifier_valkyrie_fury_buff"
+		"ModifierName" "modifier_bloodlust_hell_beast"
 		"Target"	"TARGET"
 		"Duration"	"%duration"
 		}
@@ -306,14 +311,21 @@
 	}
 	"Modifiers"
 	{
-		"modifier_valkyrie_fury_buff"
+		"modifier_bloodlust_hell_beast"
 		{
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed"
 			}
-			"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+			"EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
 			"EffectAttachType"  "follow_origin"
+		}
+		"red_hellbeast"
+		{
+		"Passive"	"1"
+		"IsHidden"	"1"
+		"StatusEffectName"     "particles/status_fx/status_effect_gods_strength.vpcf"
 		}
 	}
 }

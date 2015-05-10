@@ -210,4 +210,7 @@ function Precache( context )
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts", context)	
 		PrecacheResource("particle", "particles/units/heroes/hero_doom_bringer/doom_loadout.vpcf", context)		
 		PrecacheResource("particle_folder", "particles/units/heroes/hero_doom_bringer", context)	
+		--Адская тварь
+		PrecacheResource("particle", "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf", context)	
+		
 end
