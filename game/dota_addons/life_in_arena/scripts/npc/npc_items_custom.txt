@@ -1395,7 +1395,7 @@
 		"ItemSellable"                  "1"
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"rare"
-		"AbilityTextureName"			"lia_divine_armor"
+		"AbilityTextureName"			"item_lia_divine_armor"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"OnEquip"
 		{
@@ -2278,7 +2278,7 @@
 	
 				"Orb"
 				{
-					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"Priority"			"DOTA_ORB_PRIORITY_ITEM"
 					"ProjectileName"    "particles\items_fx\desolator_projectile.vpcf"
 				}
 				"OnOrbFire"
@@ -3364,6 +3364,85 @@
 	//End of file item_lia_hell_gloves.txt
 
 
+	//Start of file item_lia_hell_mask.txt
+	"item_recipe_lia_hell_mask"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1474"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"350"	
+		"ItemShopTags"					"int"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_hell_mask"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_mask"
+		}
+	}
+	
+	"item_lia_hell_mask"
+	{
+		"ID"							"1475"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"420"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_hell_mask"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"AbilityCooldown"				"30.0"
+		"AbilityManaCost"				"100"
+		
+		"OnSpellStart"
+		{
+			"SpawnUnit"
+			{
+				"Target"            "CASTER"
+				"UnitName"              "hell_beast"
+				"UnitCount"             "1"
+				"Duration"				"80"
+				"SpawnRadius"			"100"
+			}
+			
+		}
+		
+		"Modifiers"
+		{
+			"item_hell_mask_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
+			    }  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana_regen_percentage" "60"
+			}
+	
+		}
+	}
+	//End of file item_lia_hell_mask.txt
+
+
 	//Start of file item_lia_helm.txt
 	"item_lia_helm"
 		{
@@ -3629,7 +3708,7 @@
 				
 				  "Orb"
 				{
-					"Priority"  "DOTA_ORB_PRIORITY_ABILITY"
+					"Priority"  "DOTA_ORB_PRIORITY_ITEM"
 					"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
 				}
 	
@@ -3704,7 +3783,6 @@
 				{
 					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
 				}
-				"OverrideAnimation"	"ACT_DOTA_DISABLED"
 				"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
 			}
 		}
@@ -5126,7 +5204,7 @@
 	
 				"Orb"
 				{
-					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"Priority"			"DOTA_ORB_PRIORITY_ITEM"
 					"ProjectileName"    "particles\items_fx\desolator_projectile.vpcf"
 				}
 				"OnOrbFire"
@@ -5222,7 +5300,7 @@
 				
 				  "Orb"
 				{
-					"Priority"  "DOTA_ORB_PRIORITY_ABILITY"
+					"Priority"  "DOTA_ORB_PRIORITY_ITEM"
 					"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
 				}
 	

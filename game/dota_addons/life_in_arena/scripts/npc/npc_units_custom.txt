@@ -2365,7 +2365,7 @@
 	// способности
 	//----------------------------------------------------------------
 	
-	"Ability1" "7_wave_plague" // способность 1.
+	"Ability1" "" // способность 1.
 	"Ability2" "" // способность 2.
 	"Ability3" "" // способность 3.
 	"Ability4" "" // способность 4.
@@ -3768,6 +3768,102 @@
 		
 	}
 	}
+	}
+	
+	"hell_beast" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/faceless_void/faceless_void.vmdl" // модель.
+	"SoundSet" "Hero_FacelessVoid" // название звукового набора.
+	"ModelScale" "0.9" // масштаб модели.
+	"Level" "1" // уровень.
+		"precache"
+				{	
+					"model"	"models/heroes/faceless_void/faceless_void.vmdl"
+					"model"	"models/items/faceless_void/timelord_bracers/timelord_bracers.mdl"
+					"model"	"models/items/faceless_void/timelord_head/timelord_head.mdl"
+					"model"	"models/items/faceless_void/timelord_shoulders/timelord_shoulders.mdl"
+					"model"	"models/items/faceless_void/timelord_skirt/timelord_skirt.mdl"
+					"model"	"models/items/faceless_void/timelord_weapon/timelord_weapon.mdl"
+					"particle_folder" "particles/units/heroes/hero_faceless_void"
+				}
+				
+		"Creature"
+				{
+				"AttachWearables"
+					{
+						"Wearable1"		{	"ItemDef"		"5861"		} 
+						"Wearable2" 	{	"ItemDef"		"5868"		} 
+						"Wearable3"		{	"ItemDef"		"5896"		} 
+						"Wearable4"		{	"ItemDef"		"5897"		} 
+						"Wearable5"		{	"ItemDef"		"5898"		} 
+					}
+					}
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "5" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "59" // минимальный урон.
+	"AttackDamageMax" "59" // максимальный урон.
+	"AttackRate" "0.9" // скорость атаки.
+	"AttackAnimationPoint" "0.56" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "100" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "0" // количества опыта.
+	"BountyGoldMin" "0" // минимальное количество золота.
+	"BountyGoldMax" "0" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "300" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "900" // Базовое количество ХП.
+	"StatusHealthRegen" "0.5" // Базовая Скорость восстановления ХП.
+	"StatusMana" "300" // Базовое количество МП.
+	"StatusManaRegen" "1" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
 	}
 	//End of file purchasable_units.txt
 }

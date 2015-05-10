@@ -256,3 +256,64 @@
 		}
 	}
 }
+
+"hell_beast_bloodlust"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityTextureName"			"ogre_magi_bloodlust"
+
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.0"
+
+	"AbilityCooldown"				"35.0 30.0 25.0"
+
+	"AbilityManaCost"				"80 90 100"	
+
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_attack_speed"	"150 200 250"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"10.0"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+		"ModifierName" "modifier_valkyrie_fury_buff"
+		"Target"	"TARGET"
+		"Duration"	"%duration"
+		}
+
+		
+	}
+	"Modifiers"
+	{
+		"modifier_valkyrie_fury_buff"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+			}
+			"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+			"EffectAttachType"  "follow_origin"
+		}
+	}
+}

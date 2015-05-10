@@ -111,7 +111,7 @@ function Precache( context )
 		PrecacheModel("models/items/faceless_void/timelord_shoulders/timelord_shoulders.mdl", context)
 		PrecacheModel("models/items/faceless_void/timelord_skirt/timelord_skirt.mdl", context)
 		PrecacheModel("models/items/faceless_void/timelord_weapon/timelord_weapon.mdl", context)	
-		
+		PrecacheResource("particle_folder", "particles/units/heroes/hero_faceless_void", context)		
 		--11 волна
 		PrecacheModel("models/items/beastmaster/boar/beast_deming/beast_deming.vmdl", context)
 
