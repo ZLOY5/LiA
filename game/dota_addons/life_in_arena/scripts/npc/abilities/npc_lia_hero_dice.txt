@@ -269,7 +269,7 @@
 		"01"
 		{
 			"var_type"					"FIELD_FLOAT"
-			"steelstorm_damage_tick"	"0.2"
+			"steelstorm_damage_tick"	"0.06"
 		}
 		"02"
 		{
@@ -297,6 +297,7 @@
 	{
 		"modifier_steelstorm"
 		{	
+			"OverrideAnimation"     	"ACT_DOTA_CHANNEL_ABILITY_3"
 			"States"
 			{
 				"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
@@ -333,18 +334,21 @@
 						"Radius" 	"%steelstorm_radius"
 						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 					}
 				
 					"Action"    
 					{
 						"Damage"
 						{
-							"Target"		"TARGET"
+							"Target"		
+							{
+								"Center"	"TARGET"
+								"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
 							"Type"			"DAMAGE_TYPE_PHYSICAL"
 							"Damage"		"%AbilityDamage * %steelstorm_damage_tick"
 						}
-
-
 						"FireSound"
 						{
 							"EffectName"	"Hero_Juggernaut.BladeFury.Impact"
@@ -355,7 +359,7 @@
 				"Rotate"
 				{
 					"Target"	"CASTER"
-					"PitchYawRoll"	"0 180 0"
+					"PitchYawRoll"	"0 30 0"
 				}
 			}
 			"OnDestroy"
