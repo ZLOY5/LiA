@@ -329,3 +329,75 @@
 		}
 	}
 }
+
+"hell_beast_sleep"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityTextureName"			"bane_nightmare"
+
+	"AbilityCastRange"				"800"
+	"AbilityCastPoint"				"0.0"
+
+	"AbilityCooldown"				"12.0"
+
+	"AbilityManaCost"				"100"	
+
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration_hero"	"4"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration_creep"	"12"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_hellbeast_sleep"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Types"		"DOTA_UNIT_TARGET_HERO"
+			}
+			"Duration"		"%duration_hero"	
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_hellbeast_sleep"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Types"		"DOTA_UNIT_TARGET_BASIC"
+			}
+			"Duration"		"%duration_creep"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_hellbeast_sleep"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
+			"EffectAttachType"  "follow_overhead"
+			"OverrideAnimation"     "ACT_DOTA_DISABLED"
+		}
+	}
+}
