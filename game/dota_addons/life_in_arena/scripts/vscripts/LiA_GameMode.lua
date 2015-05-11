@@ -177,7 +177,7 @@ end
 
 function LiA:OnGameStateChange()  
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        StartWaves()
+        --StartWaves()
     end
 end
 
