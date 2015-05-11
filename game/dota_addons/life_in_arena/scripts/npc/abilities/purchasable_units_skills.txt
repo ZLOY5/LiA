@@ -366,30 +366,22 @@
 			"var_type"				"FIELD_FLOAT"
 			"duration_creep"	"12"
 		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration_invul"	"2"
+		}
 	}
 
 	"OnSpellStart"
 	{
-		"ApplyModifier"
+		"RunScript"
 		{
-			"ModifierName"	"modifier_hellbeast_sleep"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Types"		"DOTA_UNIT_TARGET_HERO"
-			}
-			"Duration"		"%duration_hero"	
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_hellbeast_sleep"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Types"		"DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"		"%duration_creep"
+			"ScriptFile"		"abilities\hell_beast_sleep.lua"
+			"Function"			"hell_beast_sleep_on_spell_start"
+			"duration_hero" 	"%duration_hero"
+			"duration_creep"	"%duration_creep"
+			"duration_invul"	"%duration_invul"
 		}
 	}
 	"Modifiers"
@@ -398,12 +390,19 @@
 		{
 			"States"
 			{
-				"MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 			"EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
 			"EffectAttachType"  "follow_overhead"
 			"OverrideAnimation"     "ACT_DOTA_DISABLED"
+			"OnAttacked"
+			{
+				"RemoveModifier"
+				{
+					"Target"		"TARGET"
+					"ModifierName"	"modifier_hellbeast_sleep"
+				}
+			}
 		}
 	}
 }
