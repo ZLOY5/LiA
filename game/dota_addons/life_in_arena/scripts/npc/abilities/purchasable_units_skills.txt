@@ -277,6 +277,7 @@
 	"precache"
 	{
 	"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 	}
 	
 	"AbilitySpecial"
@@ -300,6 +301,11 @@
 
 	"OnSpellStart"
 	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
+			"Target"		"TARGET"
+		}
 		"ApplyModifier"
 		{
 		"ModifierName" "modifier_bloodlust_hell_beast"

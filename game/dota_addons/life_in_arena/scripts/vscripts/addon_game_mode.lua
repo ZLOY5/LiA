@@ -35,6 +35,9 @@ function Precache( context )
 		--Валькирия
 		PrecacheResource("particle", "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf", context)	
 		PrecacheResource("particle", "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf", context)			
+		--Дайс
+		PrecacheResource("particle", "particles/status_fx/status_effect_beserkers_call.vpcf", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)	
 		
 		--1 волна
 		PrecacheModel("models/heroes/sand_king/sand_king.mdl", context)
@@ -212,5 +215,6 @@ function Precache( context )
 		PrecacheResource("particle_folder", "particles/units/heroes/hero_doom_bringer", context)	
 		--Адская тварь
 		PrecacheResource("particle", "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf", context)	
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts", context)
 		
 end
