@@ -3866,4 +3866,244 @@
 	"HasInventory" "0" // 0 - не будет инвентаря
 	}
 	//End of file purchasable_units.txt
+
+
+	//Start of file queen_of_spiders_spiders.txt
+	"queen_of_spiders_spider_1" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/broodmother/spiderling.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "0.4" // масштаб модели.
+	"Level" "1" // уровень.
+		"precache"
+				{	
+					"model"	"models/heroes/broodmother/spiderling.vmdl"
+				}
+				
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "queen_of_spiders_spider_poision_1" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "0" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "11" // минимальный урон.
+	"AttackDamageMax" "12" // максимальный урон.
+	"AttackRate" "1.05" // скорость атаки.
+	"AttackAnimationPoint" "0.5" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "100" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "0" // количества опыта.
+	"BountyGoldMin" "0" // минимальное количество золота.
+	"BountyGoldMax" "0" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "70" // Базовое количество ХП.
+	"StatusHealthRegen" "0.5" // Базовая Скорость восстановления ХП.
+	"StatusMana" "0" // Базовое количество МП.
+	"StatusManaRegen" "0" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"queen_of_spiders_spider_2" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/broodmother/spiderling.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "0.5" // масштаб модели.
+	"Level" "1" // уровень.
+		"precache"
+				{	
+					"model"	"models/heroes/broodmother/spiderling.vmdl"
+				}
+				
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "queen_of_spiders_spider_poision_2" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "0" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "24" // минимальный урон.
+	"AttackDamageMax" "25" // максимальный урон.
+	"AttackRate" "0.75" // скорость атаки.
+	"AttackAnimationPoint" "0.5" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "100" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "0" // количества опыта.
+	"BountyGoldMin" "0" // минимальное количество золота.
+	"BountyGoldMax" "0" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "220" // Базовое количество ХП.
+	"StatusHealthRegen" "1" // Базовая Скорость восстановления ХП.
+	"StatusMana" "0" // Базовое количество МП.
+	"StatusManaRegen" "0" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	
+	"queen_of_spiders_spider_3" // название
+	{
+	// основное
+	//
+	"BaseClass" "npc_dota_creature" // класс персонажа.
+	"Model" "models/heroes/broodmother/spiderling.vmdl" // модель.
+	"SoundSet" "n_creep_Melee" // название звукового набора.
+	"ModelScale" "0.6" // масштаб модели.
+	"Level" "1" // уровень.
+		"precache"
+				{	
+					"model"	"models/heroes/broodmother/spiderling.vmdl"
+				}
+				
+	// способности
+	//----------------------------------------------------------------
+	
+	"Ability1" "queen_of_spiders_spider_poision_3" // способность 1.
+	"Ability2" "" // способность 2.
+	"Ability3" "" // способность 3.
+	"Ability4" "" // способность 4.
+	"Ability5" "" // способность 5.
+	"Ability6" "" // способность 6 - Ульт.
+	"Ability7" "" // способность 7 - Ульт.
+	"Ability8" "" // способность 8 - Ульт.
+	
+	// Броня
+	//----------------------------------------------------------------
+	"ArmorPhysical" "0" // Физическое сопротивление.
+	"MagicalResistance" "0" // Магическое сопротивление.
+	
+	// Атака
+	//----------------------------------------------------------------
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "51" // минимальный урон.
+	"AttackDamageMax" "52" // максимальный урон.
+	"AttackRate" "0.55" // скорость атаки.
+	"AttackAnimationPoint" "0.5" // скорость повторения анимации атаки.
+	"AttackAcquisitionRange" "500" // дальность реагирования (когда он нас заметит).
+	"AttackRange" "100" // дальность атаки 128 ближний бой 800 дальний.
+	"ProjectileModel" "" // Модель частиц для дальной атаки.
+	"ProjectileSpeed" "" // скорость частиц.
+	
+	// Награда
+	//----------------------------------------------------------------
+	"BountyXP" "0" // количества опыта.
+	"BountyGoldMin" "0" // минимальное количество золота.
+	"BountyGoldMax" "0" // максимальное количества золота.
+	
+	// Передвижение
+	//----------------------------------------------------------------
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // тип создания наземный или воздушный
+	"MovementSpeed" "270" // Скорость
+	"MovementTurnRate" "0.5" // скорость поворота.
+	
+	// Общий статус
+	//----------------------------------------------------------------
+	"StatusHealth" "550" // Базовое количество ХП.
+	"StatusHealthRegen" "1.5" // Базовая Скорость восстановления ХП.
+	"StatusMana" "0" // Базовое количество МП.
+	"StatusManaRegen" "0" // Базовая Скорость восстановления МП.
+	
+	// Принадлежность к команде
+	//----------------------------------------------------------------
+	"TeamName" "DOTA_TEAM_GOODGUYS" // Название.
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Обзор Персонажа
+	//----------------------------------------------------------------
+	"VisionDaytimeRange" "10000" // Днем.
+	"VisionNighttimeRange" "10000" // Ночью.
+	
+	//----------------------------------------------------------------
+	//Рюкзак
+	"HasInventory" "0" // 0 - не будет инвентаря
+	}
+	//End of file queen_of_spiders_spiders.txt
 }
