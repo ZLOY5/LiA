@@ -4,6 +4,10 @@
 	
 
 
+	//Start of file 1357
+	//End of file 1357
+
+
 	//Start of file item_apply_modifiers.txt
 	"item_apply_modifiers"
 	{
@@ -4245,6 +4249,373 @@
 	}
 	
 	//End of file item_lia_knight_shield.txt
+
+
+	//Start of file item_lia_lightning_bow.txt
+	"item_recipe_lia_lightning_bow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1356"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"900"	
+		"ItemShopTags"					"crit;damage;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_lightning_bow"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_lightning_spear;item_lia_magic_bow"
+		}
+	}
+	
+	"item_lia_lightning_bow"
+	
+	{
+		"ID"							"1357"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"2980"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"epic"
+		
+		"AbilityTextureName"			"item_lia_magic_bow"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		//"AbilityCastRange"				"700"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"30.0"
+		"AbilityManaCost"				"120"
+	
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"bonus_attack_speed" 	"100"
+			}
+			"02"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"bonus_agility" 		"90"
+			}
+			"03"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"crit_chance" 			"25"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_mult"				"200"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heaven_wrath_damage"	"500"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heaven_wrath_duration"	"8"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heaven_wrath_radius"	"600"
+			}
+			"08"
+			{
+				"var_type"								"FIELD_FLOAT"
+				"heaven_wrath_time_between_lightings"	"0.5"
+			}
+			"09"
+			{
+				"var_type"								"FIELD_FLOAT"
+				"heaven_wrath_min_health_heroes"		"35"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"item_lighting_bow_heaven_wrath_modifier"
+				"Duration"			"%heaven_wrath_duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"item_lightning_bow_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_agility"
+			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+			    }  
+				"OnAttackStart"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" "modifier_item_lia_lightning_bow_crit"
+						"Target" "CASTER"
+					}
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" 	"modifier_item_lia_lightning_bow_crit"
+								"Target"    	"CASTER"
+								"Duration"		"%heaven_wrath_duration"    
+							}        
+						}
+					}
+				}
+			}
+			"modifier_item_lia_lightning_bow_crit"
+			{
+				"IsHidden"  "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+				}
+	
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"  "modifier_item_lia_lightning_bow_crit"
+						"Target"    "CASTER"    
+					}
+	
+					// Basic blood particle effect
+					"FireEffect"
+					{
+						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
+					}
+				}
+			}
+			"item_lighting_bow_heaven_wrath_modifier"
+			{
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"ThinkInterval"		"%heaven_wrath_time_between_lightings"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items\LightningBow.lua"
+						"Function"		"HeavenWrath"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%heaven_wrath_radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+						}
+						"heaven_wrath_damage"	"%heaven_wrath_damage"
+						"heaven_wrath_min_health_heroes" 	"%heaven_wrath_min_health_heroes"
+					}
+				}
+			}
+		}
+	}
+	//End of file item_lia_lightning_bow.txt
+
+
+	//Start of file item_lia_lightning_spear.txt
+	"item_recipe_lia_lightning_spear"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1354"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"250"	
+		"ItemShopTags"					"crit;damage;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_lightning_spear"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_fire_sword;item_lia_ancient_glove;item_lia_spear"
+		}
+	}
+	
+	"item_lia_lightning_spear"
+	{
+		"ID"							"1355"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"880"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		
+		"AbilityTextureName"			"item_lia_spear"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"AbilityCastRange"				"700"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"8.0"
+		"AbilityManaCost"				"100"
+	
+		"precache"
+		{
+			"particle" 	"particles/items_fx/chain_lightning.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"bonus_damage" 			"45"
+			}
+		
+			"02"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"crit_chance" 			"22"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_mult"				"190"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage"		"400"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces"		"8"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"700"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"20"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/LightningSpear.lua"
+				"Function"		"ChainLightning"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"item_lightning_spear_stat_modifier"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+			    }  
+				"OnAttackStart"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" "modifier_item_lia_lightning_spear_crit"
+						"Target" "CASTER"
+					}
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" "modifier_item_lia_lightning_spear_crit"
+								"Target"    "CASTER"    
+							}        
+						}
+					}
+				}
+			}
+			
+			"modifier_item_lia_lightning_spear_crit"
+			{
+				"IsHidden"  "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+				}
+	
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"  "modifier_item_lia_lightning_spear_crit"
+						"Target"    "CASTER"    
+					}
+	
+					// Basic blood particle effect
+					"FireEffect"
+					{
+					"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
+					}
+				}
+			}
+		}
+	}
+	//End of file item_lia_lightning_spear.txt
 
 
 	//Start of file item_lia_lunar_necklace.txt

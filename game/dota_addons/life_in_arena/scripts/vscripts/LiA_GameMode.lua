@@ -100,7 +100,7 @@ function LiA:InitGameMode()
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
 
-    CAMERA_GUY = CreateUnitByName("camera_guy", ARENA_CENTER_COORD, true, nil, nil, DOTA_TEAM_GOODGUYS) 
+    --CAMERA_GUY = CreateUnitByName("camera_guy", ARENA_CENTER_COORD, true, nil, nil, DOTA_TEAM_GOODGUYS) 
 
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
 end
@@ -388,6 +388,9 @@ function LiA:_EndWave()
         hero:Heal(9999,hero)
         hero:GiveMana(9999)
     end)
+
+    PrecacheUnitByNameAsync(tostring(WAVE_NUM).."_wave_creep", function(...) end)
+    PrecacheUnitByNameAsync(tostring(WAVE_NUM).."_wave_boss", function(...) end)
 end
 
 function LiA:TeleportToArena() --Телепорт на арену

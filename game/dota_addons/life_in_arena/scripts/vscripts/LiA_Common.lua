@@ -127,6 +127,10 @@ function SetCameraToPosForPlayer(player,vector)
 	end
 end
 
+function DistanceBetweenPoints(v1,v2)
+	return math.sqrt(math.pow(v2.x - v1.x,2) + math.pow(v2.y - v1.y,2) + math.pow(v2.z - v1.z,2))
+end
+
 --[[can u help me with your ConsoleCommands? 
 Kidney
 i use ConsoleCommands:SendToAll("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y)) 

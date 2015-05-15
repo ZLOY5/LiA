@@ -6,9 +6,6 @@ require('consolecommands')
 require('timerPopup')
 require('luaCommand')
 
-function Precache( context )
-end
-
 function Activate()
 	GameRules.LiA = LiA()
 	GameRules.LiA:InitGameMode()
@@ -22,7 +19,7 @@ function Precache( context )
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf" , context)
 		PrecacheResource("particle", "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf" , context)
 		--Нага-Гвардеец
-		PrecacheResource("particle", "particles/generic_gameplay/generic_stunned.vpcfs", context)	
+		PrecacheResource("particle", "particles/generic_gameplay/generic_stunned.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts", context)	
 		PrecacheResource("particle", "particles/units/heroes/hero_morphling/morphling_waveform.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts", context)
@@ -38,12 +35,26 @@ function Precache( context )
 		--Дайс
 		PrecacheResource("particle", "particles/status_fx/status_effect_beserkers_call.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)	
+<<<<<<< HEAD
 		--Пивовар
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf", context)	
 		--Голем
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_fire_immolation_child.vpcf", context)			
 		PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", context)		
 	
+=======
+		
+		--короч вот тут заменил немного, если не будет пахать то верну на место
+		PrecacheUnitByNameAsync("1_wave_creep", context)
+		PrecacheUnitByNameAsync("1_wave_boss", context)
+		
+		PrecacheUnitByNameAsync("5_wave_megaboss", context)
+		PrecacheUnitByNameAsync("10_wave_megaboss", context)
+		PrecacheUnitByNameAsync("15_wave_megaboss", context)
+		PrecacheUnitByNameAsync("orn", context)
+		PrecacheUnitByNameAsync("orn_mutant", context)
+		--[[
+>>>>>>> origin/master
 		--1 волна
 		PrecacheModel("models/heroes/sand_king/sand_king.mdl", context)
 		
@@ -154,7 +165,10 @@ function Precache( context )
 		PrecacheModel("models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.mdl", context)
 		PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context)	
 
-		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)		
+		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)
+		]]	
+
+		PrecacheItemByNameAsync("item_lia_lightning_bow", context)	
 		
 		--Щит Смерти
 		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	

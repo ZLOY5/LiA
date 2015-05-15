@@ -18,7 +18,7 @@ function modifier_plague_aura_datadriven_on_created(event)
 end
 
 function modifier_plague_aura_datadriven_on_destroy(event)
-	if event.target:HasModifier(event.modifier_name_damage) then
+	if event.target:HasModifier(event.modifier_name_damage) and event.ability then
 		event.ability:ApplyDataDrivenModifier(event.caster, event.target, event.modifier_name_damage,{duration = event.plague_time}) 
 	end
 end
