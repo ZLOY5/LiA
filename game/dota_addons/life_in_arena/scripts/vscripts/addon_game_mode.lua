@@ -35,16 +35,16 @@ function Precache( context )
 		--Дайс
 		PrecacheResource("particle", "particles/status_fx/status_effect_beserkers_call.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)	
-		
+
 		--короч вот тут заменил немного, если не будет пахать то верну на место
-		PrecacheUnitByNameAsync("1_wave_creep", context)
-		PrecacheUnitByNameAsync("1_wave_boss", context)
+		PrecacheUnitByNameAsync("1_wave_creep", function(...) end)
+		PrecacheUnitByNameAsync("1_wave_boss", function(...) end)
 		
-		PrecacheUnitByNameAsync("5_wave_megaboss", context)
-		PrecacheUnitByNameAsync("10_wave_megaboss", context)
-		PrecacheUnitByNameAsync("15_wave_megaboss", context)
-		PrecacheUnitByNameAsync("orn", context)
-		PrecacheUnitByNameAsync("orn_mutant", context)
+		PrecacheUnitByNameAsync("5_wave_megaboss", function(...) end)
+		PrecacheUnitByNameAsync("10_wave_megaboss", function(...) end)
+		PrecacheUnitByNameAsync("15_wave_megaboss", function(...) end)
+		PrecacheUnitByNameAsync("orn", function(...) end)
+		PrecacheUnitByNameAsync("orn_mutant", function(...) end)
 		--[[
 		--1 волна
 		PrecacheModel("models/heroes/sand_king/sand_king.mdl", context)
@@ -159,7 +159,7 @@ function Precache( context )
 		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)
 		]]	
 
-		PrecacheItemByNameAsync("item_lia_lightning_bow", context)	
+		PrecacheItemByNameAsync("item_lia_lightning_bow", function(...) end)	
 		
 		--Щит Смерти
 		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	
