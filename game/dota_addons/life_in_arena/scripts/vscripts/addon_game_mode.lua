@@ -38,7 +38,12 @@ function Precache( context )
 		--Дайс
 		PrecacheResource("particle", "particles/status_fx/status_effect_beserkers_call.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)	
-		
+		--Пивовар
+		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf", context)	
+		--Голем
+		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_fire_immolation_child.vpcf", context)			
+		PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", context)		
+	
 		--1 волна
 		PrecacheModel("models/heroes/sand_king/sand_king.mdl", context)
 		

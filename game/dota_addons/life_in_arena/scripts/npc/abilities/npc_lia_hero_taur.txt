@@ -1,60 +1,4 @@
-
-"minotaur_infernal_nature_datadriven"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-  "AbilityTextureName"      "vengefulspirit_command_aura"
-
-  // Casting
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastRange"        "900"
-  
-  // Special
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "penalty_armor"  "-4 -8 -12"
-    }
-    "02"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "aura_radius"   "900"
-    }
-  }
-
-  "Modifiers"
-  {
-    "modifier_infernal_nature_aura_caster_datadriven"
-    {
-      "Passive"       "1"
-      "IsHidden"      "1"
-      "IsDebuff"      "0"
-  
-      "Aura"            "modifier_infernal_nature_aura_enemy"
-      "Aura_Radius"     "%aura_radius"
-      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    }
-      
-    "modifier_infernal_nature_aura_enemy"
-    {
-      "IsDebuff"  "1"
-
-      "Properties"
-      {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%penalty_armor" 
-      }     
-    }
-  } 
-}
-
-"minotaur_hoof_stomp_datadriven"
+"minotaur_thunder_strike"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
@@ -63,14 +7,18 @@
   "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
   "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
   "FightRecapLevel"         "1"
-  "AbilityTextureName"      "centaur_hoof_stomp"
+  "AbilityTextureName"      "elder_titan_echo_stomp"
   
+  	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+	
   // Stats
   //-------------------------------------------------------------------------------------------------------------
   "AbilityCastPoint"      "0.5 0.5 0.5 0.5"
-  "AbilityCooldown"       "10.0 7.0 3.0"
-  "AbilityManaCost"       "50"
-  
+  "AbilityCooldown"       "10.0 7.0 4.0"
+  "AbilityManaCost"       "50 70 90"
+ 	"AbilityCastRange"				"250 300 350" 
   // Special
   //-------------------------------------------------------------------------------------------------------------
   "AbilitySpecial"
@@ -78,7 +26,7 @@
     "01"
     {
       "var_type"            "FIELD_INTEGER"
-      "radius"              "315"
+      "radius"              "250 300 350"
     }
     "02"
     {
@@ -94,6 +42,11 @@
     {
       "var_type"                                "FIELD_INTEGER"
       "slow_movement_and_attack_speed"          "-30 -45 -60"
+    }
+	"05"
+    {
+      "var_type"                                "FIELD_INTEGER"
+      "slow_tooltip"          "-30 -45 -60"
     }
   }
 
@@ -144,7 +97,7 @@
         "ApplyModifier"
         {
           "Target"        "TARGET"
-          "ModifierName"  "modifier_hoof_stomp"
+          "ModifierName"  "modifier_minotaur_thunder_strike"
         }
       }
     }   
@@ -152,7 +105,7 @@
 
   "Modifiers"
   {
-    "modifier_hoof_stomp"
+    "modifier_minotaur_thunder_strike"
     {
       "IsDebuff"  "1"
       "Duration"  "%duration"
@@ -166,15 +119,80 @@
   }
 }
 
-"minotaur_bestial_strength_datadriven"
+"minotaur_fear"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"               "ability_datadriven"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityTextureName"      "elder_titan_natural_order"
+  
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+	
+  // Casting
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCastRange"        "700"
+  
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "penalty_armor"  "-4 -8 -12"
+    }
+    "02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "aura_radius"   "700"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_minotaur_fear"
+    {
+      "Passive"       "1"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+  
+      "Aura"            "modifier_minotaur_fear_enemy"
+      "Aura_Radius"     "%aura_radius"
+      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    }
+      
+    "modifier_minotaur_fear_enemy"
+    {
+      "IsDebuff"  "1"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%penalty_armor" 
+      }     
+    }
+  } 
+}
+
+
+
+"minotaur_demonic_power"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
   "BaseClass"                "ability_datadriven"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-  "AbilityTextureName"      "sven_great_cleave"
-
+  "AbilityTextureName"      "elder_titan_earth_splitter"
+  
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+	
   // Precache
   //-------------------------------------------------------------------------------------------------------------
   "precache"
@@ -189,19 +207,19 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "great_cleave_radius" "300.0"
+      "great_cleave_radius" "225 250 275"
     }
     
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "great_cleave_damage" "20 30 30"
+      "great_cleave_damage" "20 30 40"
     }
   }
 
   "Modifiers"
   {
-    "modifier_minotaur_bestial_strength_datadriven"
+    "modifier_minotaur_demonic_power"
     {
       "Passive"   "1"
       "IsHidden"  "1"
@@ -219,16 +237,19 @@
   }
 }
 
-"minotaur_ancestral_spirits_datadriven"
+"minotaur_guardian_spirits"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
   "BaseClass"             "ability_datadriven"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "AbilityTextureName"    "naga_siren_mirror_image"
+  "AbilityTextureName"    "elder_titan_ancestral_spirit"
   
    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-   
+  	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+	
   // Casting
   //-------------------------------------------------------------------------------------------------------------
   "AbilityCastPoint"        "0.65"
@@ -239,7 +260,7 @@
 
   // Cost
   //-------------------------------------------------------------------------------------------------------------
-  "AbilityManaCost"       "120"
+  "AbilityManaCost"       "120 150 180"
 
   // Special
   //-------------------------------------------------------------------------------------------------------------
@@ -263,12 +284,12 @@
     "04"
     {
       "var_type"          "FIELD_INTEGER"
-      "incoming_damage"     "275 250 225"
+      "incoming_damage"     "175 150 125"
     }
     "05"
     {
       "var_type"          "FIELD_INTEGER"
-      "tooltip_incoming_damage_total_pct"     "175 150 125"
+      "tooltip_incoming_damage_total_pct"     "75 50 25"
     }
     "06"
     {
@@ -294,14 +315,14 @@
   {
     "ApplyModifier"
     {
-      "ModifierName"  "modifier_ancestral_spirits"
+      "ModifierName"  "modifier_minotaur_guardian_spirits"
       "Target"        "CASTER"
     }
   }
 
   "Modifiers"
   {
-    "modifier_ancestral_spirits"
+    "modifier_minotaur_guardian_spirits"
     { 
       "Duration"      "%invuln_duration"
       "IsHidden"      "1"
@@ -315,21 +336,6 @@
         "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
       }
 
-      "OnCreated"
-      {
-        "AttachEffect"
-        {
-          "EffectName"    "particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
-          "EffectAttachType"  "follow_origin"
-          "Target"      "CASTER"
-        }
-
-        "FireSound"
-        {
-          "EffectName"  "Hero_NagaSiren.MirrorImage"
-          "Target"    "CASTER"
-        }
-        }
 
         "OnDestroy"
         {
