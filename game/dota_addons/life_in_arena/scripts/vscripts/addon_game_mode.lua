@@ -36,6 +36,12 @@ function Precache( context )
 		PrecacheResource("particle", "particles/status_fx/status_effect_beserkers_call.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)	
 
+		--Пивовар
+		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf", context)	
+		--Голем
+		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_fire_immolation_child.vpcf", context)			
+		PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", context)		
+	
 		--короч вот тут заменил немного, если не будет пахать то верну на место
 		PrecacheUnitByNameAsync("1_wave_creep", function(...) end)
 		PrecacheUnitByNameAsync("1_wave_boss", function(...) end)

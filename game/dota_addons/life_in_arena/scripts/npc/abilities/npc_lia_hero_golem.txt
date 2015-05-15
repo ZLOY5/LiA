@@ -1,26 +1,29 @@
-"akron_internal_explosion_datadriven"
+"akron_explosion"
  {
    // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "AbilityTextureName"     "alchemist_acid_spray"
+    "AbilityTextureName"     "golem_explosion"
 
     "AbilityCooldown" "22 21 20"
-
+	"AbilityCastRange"	"200 225 250"
     "AbilityManaCost" "70 80 90"
 
     "MaxLevel"               "3"
     "RequiredLevel"          "1"
     "LevelsBetweenUpgrades"  "2"
-    
-    // Casting
-    //-------------------------------------------------------------------------------------------------------------
-    
+	
     "AbilityCastPoint"  "0.2"
     "AbilityCastRange"  "0"
 
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+	}
+	
     "OnSpellStart"
     {
       "Damage"
@@ -33,9 +36,19 @@
           "Radius"    "%radius"
         }
         "Type"   "DAMAGE_TYPE_MAGICAL"
-        "Damage" "%damage"           
-        
+        "Damage" "%damage"             
       }
+	  	"FireSound"
+		{
+			"EffectName"	"Hero_EarthShaker.EchoSlam"
+			"Target"		"CASTER"
+		}
+		"AttachEffect"
+		{
+		"EffectName"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
+		"EffectAttachType"	"attach_origin"
+		"Target"		"CASTER"
+		}
       "Damage"
        {
          "Target" "CASTER"
@@ -63,14 +76,14 @@
     }
   }
 
- "akron_hellish_heat_datadriven" 
+ "akron_immolation" 
   {
     // General  
     // ----------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AoERadius"              "%hellish_heat_radius"
-
+    "AbilityTextureName"     "ember_spirit_flame_guard"
     
 
 
@@ -79,6 +92,11 @@
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
 
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient.vpcf"
+	}
+	
     // Special    
     //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
@@ -107,7 +125,22 @@
        "Passive"         "1"
        "IsHidden"        "1"
        "IsPurgable"      "0"
-       
+		
+		"OnCreated"
+		{
+				"AttachEffect"
+				{
+					"Target"				"TARGET"
+					"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient.vpcf"
+					"EffectAttachType"		"start_at_customorigin"
+					"ControlPointEntities"
+					{
+						"TARGET"			"attach_origin"
+						"TARGET"			"attach_origin"
+					}
+				}
+		}
+		
        "OnDeath"
        {
         "RemoveModifier"
@@ -169,23 +202,28 @@
     }
   }
    
-"akron_firerage_datadriven"
+"akron_firerage"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "AbilityTextureName"     "alchemist_acid_spray"
+    "AbilityTextureName"     "earthshaker_aftershock"
     
 
-    "AoERadius"                "300"
-
+    "AoERadius"                "280"
+	"AbilityCastRange"			"280"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
+   
+   "precache"
+   {
+   "particle"	"particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
+   }
    
     // Casting
     //-------------------------------------------------------------------------------------------------------------
@@ -221,10 +259,9 @@
 
          "Damage"
           {
-           "Type"   "DAMAGE_TYPE_MAGICAL"
+           "Type"   "DAMAGE_TYPE_PHYSICAL"
            "Damage" "%damage"
-          
-      
+  	
            "Target"
              {
               "Center"    "CASTER"
@@ -233,6 +270,7 @@
               "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
             }
           }
+
         }
       }
     } 
@@ -259,14 +297,14 @@
     } 
   }
 
- "akron_eruption_datadriven"
+ "akron_ground_slam"
   {
    // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "AbilityTextureName"     "akron_eruption"
+    "AbilityTextureName"     "golem_ground_slam"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
     "MaxLevel"               "3"
@@ -276,7 +314,7 @@
     "AbilityCooldown"         "150 140 130"
 
     "AbilityCastPoint"        "0.2"
-    "AbilityCastRange"        "0"
+    "AbilityCastRange"        "1500"
 
     "AbilityManaCost"        "120 140 160"
 
