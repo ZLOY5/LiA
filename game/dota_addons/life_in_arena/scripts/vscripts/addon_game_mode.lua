@@ -22,7 +22,7 @@ function Precache( context )
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf" , context)
 		PrecacheResource("particle", "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf" , context)
 		--Нага-Гвардеец
-		PrecacheResource("particle", "particles/generic_gameplay/generic_stunned.vpcfs", context)	
+		PrecacheResource("particle", "particles/generic_gameplay/generic_stunned.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts", context)	
 		PrecacheResource("particle", "particles/units/heroes/hero_morphling/morphling_waveform.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts", context)
@@ -149,7 +149,9 @@ function Precache( context )
 		PrecacheModel("models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.mdl", context)
 		PrecacheModel("models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.mdl", context)	
 
-		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)		
+		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)	
+
+		PrecacheItemByNameAsync("item_lia_lightning_bow", context)	
 		
 		--Щит Смерти
 		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	
