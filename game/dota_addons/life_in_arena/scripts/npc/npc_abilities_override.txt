@@ -4602,7 +4602,7 @@
 		{
 			"modifier_steelstorm"
 			{	
-				"OverrideAnimation"     	"ACT_DOTA_CHANNEL_ABILITY_3"
+				"OverrideAnimation"     	"ACT_DOTA_OVERRIDE_ABILITY_3"
 				"States"
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
@@ -4982,24 +4982,11 @@
 	
 		"Modifiers"
 		{
-<<<<<<< HEAD
 			"modifier_furious_strike"
 			{
 				"Passive"               "1"
 				"IsHidden"				"0"
 				"Orb"
-=======
-			"modifier_steelstorm"
-			{	
-				"OverrideAnimation"     	"ACT_DOTA_OVERRIDE_ABILITY_3"
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_SILENCED"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_DISARMED"			"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				"OnCreated"
->>>>>>> origin/master
 				{
 					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
 				}		
@@ -5331,12 +5318,7 @@
 	              "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	            }
 	          }
-			  		  "AttachEffect"
-			  {
-				"EffectName"	"particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
-				"EffectAttachType"	"attach_origin"
-				"Target"		"CASTER"  
-			  }
+	
 	        }
 	      }
 	    } 
