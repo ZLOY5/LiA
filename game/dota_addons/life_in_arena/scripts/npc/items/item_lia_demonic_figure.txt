@@ -29,11 +29,19 @@
 		{}
 		"SpawnUnit"
 		{
-			"Target"            "CASTER"
+			"Target"
+			{
+				"Center"				"CASTER"
+				"ScriptSelectPoints"
+				{
+					"ScriptFile"    "abilities/SummonLocation.lua"
+        			"Function"      "SummonLocation"
+					"Target"		"CASTER"
+				}
+			}
 			"UnitName"              "npc_doom_guard_spawn"
 			"UnitCount"             "1"
 			"Duration"				"60"
-			"SpawnRadius"			"100"
 		}
 		
 	}
