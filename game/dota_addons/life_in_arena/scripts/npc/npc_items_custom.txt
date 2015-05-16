@@ -1001,7 +1001,16 @@
 			{}
 			"SpawnUnit"
 			{
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+	        			"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
 				"UnitName"              "book_of_the_dead_skeleton_melee"
 				"UnitCount"             "1"
 				"Duration"				"30"
@@ -1009,7 +1018,16 @@
 			}
 			"SpawnUnit"
 			{
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+	        			"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
 				"UnitName"              "book_of_the_dead_skeleton_melee_ranged"
 				"UnitCount"             "1"
 				"Duration"				"30"
@@ -1017,7 +1035,16 @@
 			}
 			"SpawnUnit"
 			{
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+	        			"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
 				"UnitName"              "book_of_the_dead_skeleton_melee_ranged"
 				"UnitCount"             "1"
 				"Duration"				"30"
@@ -1025,7 +1052,16 @@
 			}
 			"SpawnUnit"
 			{
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+	        			"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
 				"UnitName"              "book_of_the_dead_skeleton_melee"
 				"UnitCount"             "1"
 				"Duration"				"30"
@@ -1459,11 +1495,19 @@
 			{}
 			"SpawnUnit"
 			{
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+	        			"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
 				"UnitName"              "npc_doom_guard_spawn"
 				"UnitCount"             "1"
 				"Duration"				"60"
-				"SpawnRadius"			"100"
 			}
 			
 		}
@@ -3525,11 +3569,19 @@
 		{
 			"SpawnUnit"
 			{
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+	        			"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
 				"UnitName"              "hell_beast"
 				"UnitCount"             "1"
 				"Duration"				"80"
-				"SpawnRadius"			"100"
 			}
 			
 		}
@@ -4372,7 +4424,7 @@
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Properties"
 			    {
-			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_agility"
+			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_agility"
 			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
 			    }  
 				"OnAttackStart"
@@ -8221,7 +8273,16 @@
 			{}
 			"SpawnUnit"
 			{
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+	        			"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
 				"UnitName"              "troll_defender"
 				"UnitCount"             "1"
 				"Duration"				"45"
