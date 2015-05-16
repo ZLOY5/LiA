@@ -3692,7 +3692,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
 	    "AbilityTextureName"     "brewmaster_fire_permanent_immolation"
-	
+	    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	    "AoERadius"   "%radius"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
@@ -4803,6 +4803,7 @@
 								"Radius"	"%radius"
 								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							}
 						"Type" "DAMAGE_TYPE_PHYSICAL"
 						"Damage" "%bonus_damage"
@@ -5059,9 +5060,9 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
 	    "AbilityTextureName"     "earthshaker_aftershock"
-	    
+	     "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"   
 	
 	    "AoERadius"                "280"
 		"AbilityCastRange"			"280"
@@ -5112,13 +5113,14 @@
 	          {
 	           "Type"   "DAMAGE_TYPE_PHYSICAL"
 	           "Damage" "%damage"
-	  	
+	
 	           "Target"
 	             {
 	              "Center"    "CASTER"
 	              "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	              "Radius"    "%radius"
 	              "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	            }
 	          }
 	
@@ -5171,7 +5173,10 @@
 	
 	    "AoERadius"              "%radius"
 	    
-	
+		"precache"
+		{
+		"particle"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
+		}
 	
 	    // Casting
 	    //-------------------------------------------------------------------------------------------------------------
@@ -5201,8 +5206,21 @@
 	              "Target"        "TARGET"
 	              "ModifierName"  "modifier_eruption_datadriven"
 	             }
+	
 	          }
 	        }
+			"FireSound"
+			{
+				"EffectName"	"Hero_EarthShaker.EchoSlam"
+				"Target"		"CASTER"
+			}
+			"AttachEffect"
+			{
+			"EffectName"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
+			"EffectAttachType"	"start_at_customorigin"
+			"Target"		"CASTER"
+			"EffectRadius"				"%radius"
+			}
 	      }
 	
 	
@@ -5228,22 +5246,27 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilitySpecial"
 	    {
-	     "01"
-	     {
-	       "var_type"                            "FIELD_FLOAT"
-	       "duration"                            "5 10 15"
-	     }
+	      "01"
+	      {
+	       "var_type"                           "FIELD_INTEGER"
+	       "Damage"                      "150 300 450"
+	      }
 	     "02"
 	      {
 	       "var_type"                            "FIELD_INTEGER"
 	       "slow_speed_attack_and_movement"      "-40 -60 -80"
 	      }
-	      "03"
+		  "03"
 	      {
-	       "var_type"                           "FIELD_INTEGER"
-	       "Damage"                      "150 300 450"
+	       "var_type"                            "FIELD_INTEGER"
+	       "slow_tooltip"      "-40 -60 -80"
 	      }
-	      "04"
+		 "04"
+	     {
+	       "var_type"                            "FIELD_FLOAT"
+	       "duration"                            "5 10 15"
+	     }
+	      "05"
 	      {
 	       "var_type"                           "FIELD_INTEGER"
 	       "radius"                             "1500"
@@ -5639,38 +5662,48 @@
 		{
 			"01"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"buff_duration"			"10.0"
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"20 40 60"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"spiderling_duration"	"60.0"
+				"buff_duration"			"10.0"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"20 40 60"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"count_1"					"1 0 0"
 			}	 
-			"05"
+			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"count_2"					"0 1 0"
 			}	
-			"06"
+			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"count_3"					"0 0 1"
 			}	
-			"07"
+			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"projectile_speed"	"900"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spider_hp_tooltip"	"70 220 550"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"spider_damage_tooltip"	"11 24 51"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"spiderling_duration"	"60.0"
 			}
 		}
 	
@@ -5827,7 +5860,141 @@
 		}
 	}
 	
-	 
+	 "queen_of_spiders_poison" 
+	  {
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AoERadius"              "%radius"
+	    "AbilityTextureName"     "broodmother_poison_sting"
+	    
+		"AbilityCastRange"	"290"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+		}
+		
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	       "01"
+	        {
+	          "var_type"                "FIELD_INTEGER"
+	           "radius"              "290"
+	        }
+	       "02"
+	        { 
+	          "var_type"  "FIELD_INTEGER"
+	          "damage" "15 30 45"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	      "modifiers_queen_of_spiders_poison"
+	     {
+	       "Passive"         "1"
+	       "IsHidden"        "1"
+	       "IsPurgable"      "0"
+			
+			"OnCreated"
+			{
+					"AttachEffect"
+					{
+						"Target"				"TARGET"
+						"EffectName"			"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+						"EffectAttachType"		"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET"			"attach_origin"
+							"TARGET"			"attach_origin"
+						}
+					}
+			}
+			
+	       "OnDeath"
+	       {
+	        "RemoveModifier"
+	         {
+	           "ModifierName"  "modifiers_queen_of_spiders_poison"
+	           
+	           "Target"
+	           {
+	             "Center"    "CASTER"
+	             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	             "Types"   "DOTA_UNIT_TARGET_HERO"
+	             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+	           }
+	         }
+	       }
+	
+	       "ThinkInterval" "1"
+	
+	        "OnIntervalThink"
+	        {
+	          "ActOnTargets"
+	           {
+	                "Target"
+	                {
+	                    "Center" "CASTER"
+	                    "Radius" "%radius"
+	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+	                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                }
+	
+	                "Action"
+	                {
+	                  "Damage"
+	                  {
+	                    "Target"  "TARGET"
+	                    "Type"    "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"  "%damage"
+	                  }
+	                }
+	            }
+	        }
+	      
+	            "Aura"            "modifiers_queen_of_spiders_poison_aura"
+	            "Aura_Radius"     "%radius"
+	            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
+	      }
+	  
+	
+	
+	      "modifiers_queen_of_spiders_poison_aura"
+	      {
+	      "Passive"       "0"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	      "IsPurgable"    "0"
+		  		"OnCreated"
+			{
+					"AttachEffect"
+					{
+						"Target"				"TARGET"
+						"EffectName"			"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+						"EffectAttachType"		"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET"			"attach_origin"
+							"TARGET"			"attach_origin"
+						}
+					}
+			}
+	      }
+	    }
+	  }
+	  
 	 "queen_of_spiders_furious_strike"
 	{
 		"BaseClass"             		"ability_datadriven"
@@ -5837,7 +6004,8 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 	
 		"AbilityDamage"					"100 175 250"
-	
+		"AbilityCastRange"	"240"
+		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
@@ -5847,7 +6015,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"strike_chance"			"100 35 40"
+				"strike_chance"			"30 35 40"
 			}
 			"02"
 			{
@@ -5877,12 +6045,6 @@
 	
 						"OnSuccess"
 						{
-							"FireSound"
-							{
-								"EffectName"	"Roshan.Bash"
-								"Target"		"TARGET"
-							}
-	
 							  "Damage"
 							  {
 								"Target"
@@ -5891,6 +6053,7 @@
 								  "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 								  "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 								  "Radius"    "%radius"
+								  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 								}
 								"Type"   "DAMAGE_TYPE_PHYSICAL"
 								"Damage" "%AbilityDamage/2"           
@@ -5904,6 +6067,7 @@
 								  "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 								  "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 								  "Radius"    "%half_damage_radius"
+								  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 								}
 								"Type"   "DAMAGE_TYPE_PHYSICAL"
 								"Damage" "%AbilityDamage/2"           
@@ -6889,6 +7053,7 @@
 								"Radius"	"%radius"
 								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							}
 						"Type" "DAMAGE_TYPE_PHYSICAL"
 						"Damage" "%bonus_damage"
@@ -6952,6 +7117,7 @@
 							"Radius"	"%radius"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 						"Damage"	"%bonus_damage"
 					}
@@ -7267,10 +7433,10 @@
 
 
 	//Start of file purchasable_units_skills.txt
-	"invulnerability"
+		"invulnerability"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"neutral_spell_immunity"
+		"AbilityTextureName"			"modifier_invulnerable"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	

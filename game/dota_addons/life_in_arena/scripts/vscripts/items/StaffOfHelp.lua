@@ -13,11 +13,11 @@ function HealingWave( event )
 	local radius = ability:GetSpecialValueFor("bounce_range")
 
 	-- main target first
-	local particle = ParticleManager:CreateParticle("particles/custom/dazzle_shadow_wave.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
+	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
 	ParticleManager:SetParticleControl(particle, 0, hero:GetAbsOrigin()) --origin
 	ParticleManager:SetParticleControl(particle, 1, target:GetAbsOrigin()) --destination
 
-	local particle = ParticleManager:CreateParticle("particles/custom/dazzle_shadow_wave_copy.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
+	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero)
 	ParticleManager:SetParticleControl(particle, 0, hero:GetAbsOrigin()) --origin
 	ParticleManager:SetParticleControl(particle, 1, target:GetAbsOrigin()) --destination
 
@@ -75,9 +75,9 @@ function HealingWave( event )
 				return
 			end
 
-			local particle = ParticleManager:CreateParticle("particles/custom/dazzle_shadow_wave.vpcf", PATTACH_ABSORIGIN_FOLLOW, dummy)
+			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf", PATTACH_ABSORIGIN_FOLLOW, dummy)
 			ParticleManager:SetParticleControl(particle,0,dummy:GetAbsOrigin()) --Vector(dummy:GetAbsOrigin().x,dummy:GetAbsOrigin().y,dummy:GetAbsOrigin().z + dummy:GetBoundingMaxs().z ))	-- origin
-			local particle2 = ParticleManager:CreateParticle("particles/custom/dazzle_shadow_wave_copy.vpcf", PATTACH_ABSORIGIN_FOLLOW, dummy)
+			local particle2 = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf", PATTACH_ABSORIGIN_FOLLOW, dummy)
 			ParticleManager:SetParticleControl(particle2,0,dummy:GetAbsOrigin()) --Vector(dummy:GetAbsOrigin().x,dummy:GetAbsOrigin().y,dummy:GetAbsOrigin().z + dummy:GetBoundingMaxs().z ))	-- origin
 
 			-- heal and decay

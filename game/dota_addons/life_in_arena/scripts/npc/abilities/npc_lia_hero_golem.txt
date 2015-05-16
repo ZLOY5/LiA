@@ -208,9 +208,9 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
     "AbilityTextureName"     "earthshaker_aftershock"
-    
+     "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"   
 
     "AoERadius"                "280"
 	"AbilityCastRange"			"280"
@@ -261,13 +261,14 @@
           {
            "Type"   "DAMAGE_TYPE_PHYSICAL"
            "Damage" "%damage"
-  	
+
            "Target"
              {
               "Center"    "CASTER"
               "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
               "Radius"    "%radius"
               "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
             }
           }
 
@@ -320,7 +321,10 @@
 
     "AoERadius"              "%radius"
     
-
+	"precache"
+	{
+	"particle"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
+	}
 
     // Casting
     //-------------------------------------------------------------------------------------------------------------
@@ -350,8 +354,21 @@
               "Target"        "TARGET"
               "ModifierName"  "modifier_eruption_datadriven"
              }
+
           }
         }
+		"FireSound"
+		{
+			"EffectName"	"Hero_EarthShaker.EchoSlam"
+			"Target"		"CASTER"
+		}
+		"AttachEffect"
+		{
+		"EffectName"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
+		"EffectAttachType"	"start_at_customorigin"
+		"Target"		"CASTER"
+		"EffectRadius"				"%radius"
+		}
       }
 
 
@@ -377,22 +394,27 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
     {
-     "01"
-     {
-       "var_type"                            "FIELD_FLOAT"
-       "duration"                            "5 10 15"
-     }
+      "01"
+      {
+       "var_type"                           "FIELD_INTEGER"
+       "Damage"                      "150 300 450"
+      }
      "02"
       {
        "var_type"                            "FIELD_INTEGER"
        "slow_speed_attack_and_movement"      "-40 -60 -80"
       }
-      "03"
+	  "03"
       {
-       "var_type"                           "FIELD_INTEGER"
-       "Damage"                      "150 300 450"
+       "var_type"                            "FIELD_INTEGER"
+       "slow_tooltip"      "-40 -60 -80"
       }
-      "04"
+	 "04"
+     {
+       "var_type"                            "FIELD_FLOAT"
+       "duration"                            "5 10 15"
+     }
+      "05"
       {
        "var_type"                           "FIELD_INTEGER"
        "radius"                             "1500"

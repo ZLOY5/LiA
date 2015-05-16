@@ -4287,7 +4287,7 @@
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"epic"
 		
-		"AbilityTextureName"			"item_lia_magic_bow"
+		"AbilityTextureName"			"item_lia_lightning_bow"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -4372,7 +4372,7 @@
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 			    "Properties"
 			    {
-			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_agility"
+			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_agility"
 			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
 			    }  
 				"OnAttackStart"
@@ -4484,7 +4484,7 @@
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"rare"
 		
-		"AbilityTextureName"			"item_lia_spear"
+		"AbilityTextureName"			"item_lia_lightning_spear"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -7187,8 +7187,8 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
-			"particle"	"particles/custom/dazzle_shadow_wave.vpcf"
-			"particle"	"particles/custom/dazzle_shadow_wave_copy.vpcf"
+			"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+			"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 		}
 		"OnUnequip" 
 		{

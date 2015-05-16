@@ -8,7 +8,7 @@ local table_target = FindUnitsInRadius(DOTA_TEAM_BADGUYS,
                                  keys.DetectionRadius,
                                  DOTA_UNIT_TARGET_TEAM_BOTH,
                                  DOTA_UNIT_TARGET_ALL,
-                                 DOTA_UNIT_TARGET_FLAG_NONE,
+                                 DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
                                  FIND_ANY_ORDER,
                                  false) 
 

@@ -166,6 +166,8 @@ function Precache( context )
 		]]	
 
 		PrecacheItemByNameAsync("item_lia_lightning_bow", function(...) end)	
+		PrecacheItemByNameAsync("item_lia_staff_of_help", function(...) end)
+		PrecacheItemByNameAsync("item_lia_staff_of_help_2", function(...) end)
 		
 		--Щит Смерти
 		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	
@@ -232,5 +234,5 @@ function Precache( context )
 		--Адская тварь
 		PrecacheResource("particle", "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts", context)
-		
+		PrecacheResource("particle_folder", "particles/units/heroes/hero_faceless_void", context)		
 end
