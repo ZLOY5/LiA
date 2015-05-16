@@ -1,0 +1,103 @@
+"item_recipe_lia_staff_of_illusions"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1358"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"600"	
+	"ItemShopTags"					"int;mana;hard_to_tag"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_staff_of_illusions"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_magic_staff;item_lia_mana_stone"
+	}
+}
+
+"item_lia_staff_of_illusions"
+{
+	"ID"							"1359"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"1490"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"rare"
+
+	"AbilityTextureName"			"item_lia_staff_of_illusions"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+
+	"AbilityCastRange"				"600"
+
+	"AbilityCooldown"				"18.0"
+	"AbilityManaCost"				"240"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{	
+			"ScriptFile"	"items\StaffOfIllusions"
+			"Function"		"MakeIllusion"
+		}
+	}
+	"Modifiers"
+	{
+		"item_staff_of_illusions_stat_modifier"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
+				"MODIFIER_PROPERTY_MANA_BONUS"				"%bonus_mana"
+		    }  
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_intelligence" "28"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_mana_regen_percentage" "140"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_mana" "250"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"illusion_duration" "10"
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"illusion_outgoing_damage" "100"
+		}
+		"06"
+		{
+			"var_type" "FIELD_INTEGER"
+			"illusion_incoming_damage" "200"
+		}
+
+	}
+}
