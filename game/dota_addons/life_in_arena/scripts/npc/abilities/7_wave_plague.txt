@@ -73,14 +73,14 @@
 
 		"modifier_plague_damage_datadriven"
 		{
-			"ThinkInterval"		"1"
+			"ThinkInterval"		"0.25"
 			"OnIntervalThink"
 			{
 				"RunScript"
 				{
 					"ScriptFile"	"abilities\plague.lua"
 					"Function"		"OnIntervalThink"
-					"damage"		"%damage"
+					"damage"		"%damage/4"
 				}
 			}
 		}
