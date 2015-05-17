@@ -1,45 +1,133 @@
-"whyddd"
+"butcher_skin"
+{
+  "BaseClass"               "ability_datadriven"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "pudge_flesh_heap"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+  
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "bonus_armor"  "5 10 15"
+    }
+    "02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "damage_return"   "4 8 12"
+    }
+  }
+
+  "Modifiers"
+  {  
+  		"empty_modifier_return_butcher"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+		}
+		"modifier_butcher_skin"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+		    }  
+        	"Aura"        "modifier_butcher_skin_return"
+        	"Aura_Radius" "500"
+        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
+        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+        	"Aura_ApplyToCaster" "0"  
+		}
+		"modifier_butcher_skin_return"
+		{
+			"IsHidden"          "1"
+			"IsPurgable"		"0"
+			"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"heroes/Butcher/Skin.lua"
+					"Function"			"OnAttackLanded"
+					"damage_return" 	"%damage_return"
+					"attack_damage" 	"%attack_damage"
+				}
+				"RemoveModifier"
+		    	{
+		    		"Target" 			"ATTACKER"
+		    		"ModifierName"		"modifier_butcher_skin_return"
+		    	}
+			}
+		}   
+
+  } 
+}
+
+"butcher_howl_of_terror"
  {
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "AbilityTextureName"     "alchemist_acid_spray"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"     "butcher_howl_of_terror"
     
-    "AoERadius"      "300"
+	"AbilityCastRange"	"1500"
+    "AbilityCooldown" "60.0"
 
-    "AbilityCooldown" "3.0"
-
-    "AbilityManaCost" "0"
-
-    // Casting
-    //-------------------------------------------------------------------------------------------------------------
-    
-    "AbilityCastPoint"  "0.2"
-    "AbilityCastRange"  "0"
-    
-   
+    "AbilityManaCost" "100 150 200"
+	
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+	
+		"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_penalty_percentage"	"-60 -70 -80"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"			"20.0 25.0 30.0"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"					"1500"
+		}
+	}
+	
     "OnSpellStart"
     {
       "ApplyModifier"
       {
-        "ModifierName"  "modifier_tytret"
+        "ModifierName"  "modifier_butcher_howl_of_terror"
         
         "Target"
         {
          "Center"    "CASTER"
          "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-          "Radius"    "300"
+		 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+         "Radius"    "%radius"
         }
         
-        "Duration"    "10"
+        "Duration"    "%duration"
       }
     }
 
     "Modifiers"
     {
-      "modifier_tytret"
+      "modifier_butcher_howl_of_terror"
       {
         "Passive"       "0"
         "IsHidden"      "0"
@@ -47,12 +135,68 @@
 
         "Properties"
         {
-         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "-60" 
+         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 
         }
 
       }
     }
   }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  "why"
  {
     // General
