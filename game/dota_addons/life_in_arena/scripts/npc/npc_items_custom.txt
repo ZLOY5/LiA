@@ -2868,10 +2868,14 @@
 				"bonus_strength"		"15"
 			}
 		}
+		"OnRespawn"
+		{
+		"ApplyModifier"		"modifier_gloves_of_strength_stats"
+		}
 		
 		"Modifiers"
 		{
-			"modifier_item_gauntlets_datadriven"
+			"modifier_gloves_of_strength_stats"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
@@ -3640,9 +3644,14 @@
 			}
 		}
 		
+		"OnRespawn"
+		{
+		"ApplyModifier"		"modifier_helm_stats"
+		}
+		
 		"Modifiers"
 		{
-			"modifier_item_ring_of_protection_datadriven"
+			"modifier_helm_stats"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
@@ -7049,9 +7058,15 @@
 			}
 		}
 		
+		"OnRespawn"
+		{
+		"RemoveModifier"	"modifier_spear_stats"
+		"ApplyModifier"		"modifier_spear_stats"
+		}
+		
 		"Modifiers"
 		{
-			"modifier_item_blades_of_attack_datadriven"
+			"modifier_spear_stats"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
@@ -7095,9 +7110,15 @@
 			}
 		}
 		
+			"OnRespawn"
+		{
+		"RemoveModifier"	"modifier_staff_stats"
+		"ApplyModifier"		"modifier_staff_stats"
+		}
+		
 		"Modifiers"
 		{
-			"modifier_item_staff_of_wizardry_datadriven"
+			"modifier_staff_stats"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
