@@ -3047,6 +3047,87 @@
 
 
 	//Start of file npc_lia_hero_butcher.txt
+	"butcher_rage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityTextureName"			                "pudge_dismember"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCooldown"				"20.0 17.0 15.0"	
+		"AbilityDuration"	"10.0"
+		"AbilityCastRange"	"225"
+		"AbilityManaCost"				"60 70 80"	
+		
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
+			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
+			"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_damage_percentage"		"10 15 20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"		"225"
+			}
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+			"ModifierName" "modifier_butcher_rage"
+			"Target"	"CASTER"
+			"Duration"	"%AbilityDuration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_butcher_rage"
+			{
+				"Passive"               "0"
+				"IsHidden"				"0"
+	
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}		
+				"OnOrbImpact"
+				{
+					"RunScript"
+	    			{
+				        "ScriptFile"    "heroes/Butcher/ButcherRage.lua"
+				        "Function"      "DealDamage"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"Damage"	"%bonus_damage"
+					}
+				}
+			}
+		}
+	}
+	
+	
 	"butcher_skin"
 	{
 	  "BaseClass"               "ability_datadriven"
@@ -3073,11 +3154,6 @@
 	
 	  "Modifiers"
 	  {  
-	  		"empty_modifier_return_butcher"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-			}
 			"modifier_butcher_skin"
 			{
 				"Passive"          "1"    
@@ -3103,7 +3179,7 @@
 					"RunScript"
 					{
 						"ScriptFile"		"heroes/Butcher/Skin.lua"
-						"Function"			"OnAttackLanded"
+						"Function"			"ButcherReturn"
 						"damage_return" 	"%damage_return"
 						"attack_damage" 	"%attack_damage"
 					}
@@ -3116,6 +3192,97 @@
 			}   
 	
 	  } 
+	}
+	
+	 "butcher_zombie"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"butcher_zombie"
+			
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+	
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"count_1"					"1 0 0"
+			}	 
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"count_2"					"0 1 0"
+			}	
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"count_3"					"0 0 1"
+			}	
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_hp_tooltip"	"70 220 550"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_damage_tooltip"	"11 24 51"
+			}
+		}
+	
+		"Modifiers"
+		{
+				"modifier_butcher_zombie"
+				{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"ThinkInterval"	"15"
+				"OnIntervalThink"
+				{
+					"SpawnUnit"
+							{
+								"UnitName"	"butcher_zombie_1"
+								"UnitCount"	"%count_1"
+								"SpawnRadius"	"150"
+								"Duration"	"%spiderling_duration"
+								"Target"
+								{
+									"Center"	"CASTER"
+								}
+	
+							}
+							"SpawnUnit"
+							{
+								"UnitName"	"butcher_zombie_2"
+								"UnitCount"	"%count_2"
+								"SpawnRadius"	"150"
+								"Duration"	"%spiderling_duration"
+								"Target"
+								{
+									"Center"	"CASTER"
+								}
+	
+							}
+							"SpawnUnit"
+							{
+								"UnitName"	"butcher_zombie_3"
+								"UnitCount"	"%count_3"
+								"SpawnRadius"	"150"
+								"Duration"	"%spiderling_duration"
+								"Target"
+								{
+									"Center"	"CASTER"
+								}
+							}
+				}
+			
+			}
+	}
 	}
 	
 	"butcher_howl_of_terror"
@@ -3192,197 +3359,98 @@
 	  }
 	 
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 "why"
-	 {
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
+	 "butcher_zombie_bash"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"faceless_void_time_lock"
 	
-	    "AbilityCooldown" "3.0"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"%AbilityDamage"	"50"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"	"0.5"
+			}
 	
-	    "AbilityManaCost" "0"
+		}
 	
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "AbilityCastPoint"  "0.2"
-	    "AbilityCastRange"  "0"
-	    
-	  
+		"Modifiers"
+		{
+			"modifier_zombie_bash"	
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
 	
-	    "OnSpellStart"
-	    {
-	      "ApplyModifier"
-	      {
-	        "ModifierName"  "aseoppp"
-	        "Target"     "CASTER"
-	        "Duration"    "8"
-	      }
-	    }
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance"		"%bash_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+	
+						"OnSuccess"
+						{
+	
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_naga_royal_guard_bash_stun"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Types"		"DOTA_UNIT_TARGET_ALL"
+								}
+								"Duration"		"%stun_duration"	
+							}
 	
 	
+							"Damage"
+							{
+								"Target"	"TARGET"
+								"Type"		"DAMAGE_TYPE_MAGICAL"
+								"Damage"	"%AbilityDamage"
+							}
+						}
+					}
+				}
+			}
 	
-	    "Modifiers"
-	    {
-	      "aseoppp"
-	      {
-	        
+			"modifier_naga_royal_guard_bash_stun"
+			{
+				"IsDebuff"			"1"
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
 	
-	        "Passive"      "0"
-	        "IsHidden"      "0"
-	        "IsDebuff"      "0"
-	    
-	        "EffectName"        "particle_name"
-	        "EffectAttachType"  "follow_origin"
-	    
-	        "OnAttackLanded"
-	        {
-	          "RunScript"
-	           {
-	           "ScriptFile"  "heroes/asd.lua"
-	           "Function"    "BiGhit"
-	           }
-	        }
-	      }
-	    }
-	  }
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
 	
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
 	 
-	  "asaassaqwer"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "alchemist_acid_spray"
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	
-	    "AbilityCooldown" "4"
-	
-	    "AbilityManaCost" ""
-	    
-	    // Precache 
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "precache"
-	    {
-	     "model"     "models/heroes/undying/undying_minion.vmdl"
-	    }
-	    
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
-	    
-	    "AbilityCastPoint"  "0"
-	    "AbilityCastRange"  "0"
-	    "AoERadius"      "%radius"
-	     
-	     "Modifiers"
-	     {
-	       "modifier_jinada_datadriven"
-	       {
-	         "Passive"       "1"
-	         "IsHidden"      "0"
-	         "IsDebuff"      "1"
-	     
-	         
-	
-	         "OnCreated"
-	         {
-	           
-	          "RunScript"
-	            {
-	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
-	             "Function"    "Jinada"
-	             "maxStack"     "3"
-	             
-	            }
-	          }
-	        }
-	
-	        "check"
-	        {
-	          "Passive"       "1"
-	          "IsHidden"      "0"
-	          "IsBuff"        "1"
-	        }
-	
-	        "if_creep_die"
-	        {
-	          "Passive"       "0"
-	          "IsHidden"      "0"
-	          "IsBuff"        "1"
-	
-	          "OnDeath"
-	          {
-	            "RunScript"
-	            {
-	             "ScriptFile"  "scripts/vscripts/heroes/qwert.lua" 
-	             "Function"    "Getr"
-	             "maxStack"     "3"
-	             "currentStacks" "%currentStacks"
-	            }
-	          }
-	        }
-	      }
-	    
-	  }
 	//End of file npc_lia_hero_butcher.txt
 
 
@@ -4686,7 +4754,13 @@
 	      "bonus_strength"   "9 18 27"
 	    }
 	  }
-	
+	  
+		"OnRespawn"
+		{
+		"RemoveModifier"	"modifier_naga_royal_guard_persistence"
+		"ApplyModifier"		"modifier_naga_royal_guard_persistence"
+		}
+		
 	  "Modifiers"
 	  {   
 	    "modifier_naga_royal_guard_persistence"

@@ -1,5 +1,5 @@
-function MegabossReturn(event)
-	if event.target == event.caster and event.target:HasModifier("empty_modifier_return_butcher") then
+function ButcherReturn(event)
+	if event.target == event.caster and event.target:HasModifier("modifier_butcher_skin") then
 		ApplyDamage(
 		{
 			victim = event.attacker,
