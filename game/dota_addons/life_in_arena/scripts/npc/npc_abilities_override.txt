@@ -6601,6 +6601,438 @@
 	//End of file npc_lia_hero_valkyrie.txt
 
 
+	//Start of file npc_lia_hero_vowen_from_blood.txt
+	"vowen_from_blood_steal_blood"
+	{
+	
+		"BaseClass" 					"ability_datadriven"
+	
+		"AbilityTextureName"			"vowen_from_blood_steal_blood"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"AbilityCastRange"				"800"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"10.0 11.0 12.0"
+		"AbilityManaCost"				"110 150 190"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage"		"50 150 300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces"		"5 7 9"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"800"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"15 10 5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"		"150 300 450"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"Heal"
+			{
+			"HealAmount"	"%heal"
+			"Target"	"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/VowenFromBlood/StealBlood.lua"
+				"Function"		"StealBlood"
+			}
+		}
+	
+	}
+	
+	
+	"vowen_from_blood_spiritual_flame"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"vowen_from_blood_spiritual_flame"
+		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
+	
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"15.0 12.0 10.0"
+	
+		"AbilityManaCost"				"90 150 210"	
+	
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage_percentage"	"25 50 75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage_percentage_scepter"	"50 75 100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp_regen"	"10 20 30"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_hp_regen_scepter"	"20 40 80"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"20.0"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+			"ModifierName" "modifier_vowen_from_blood_spiritual_flame"
+			"Target"	"TARGET"
+			"Duration"	"%duration"
+			}	
+		}
+		"Modifiers"
+		{
+			"modifier_vowen_from_blood_spiritual_flame"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_percentage"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%bonus_hp_regen"
+				}
+				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+		}
+	}
+	
+	
+	"voven_from_blood_soul_burn"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityTextureName"			"voven_from_blood_soul_burn"
+		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"	
+	
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"15.0"
+	
+		"AbilityManaCost"				"80 120 160"	
+	
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"		"10 20 40"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_penalty_percentage"		"-20 -30 -40"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attack_speed"		"400"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"buff_duration"	"2 3 4"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration_hero"	"4"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration_creep"	"10"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+			"ModifierName" "voven_from_blood_soul_burn_buff"
+			"Target"	"CASTER"
+			"Duration"	"%buff_duration"
+			}	
+			"ApplyModifier"
+			{
+			"ModifierName" "voven_from_blood_soul_burn_debuff"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Types"		"DOTA_UNIT_TARGET_HERO"
+			}
+			"Duration"	"%duration_hero"
+			}	
+			"ApplyModifier"
+			{
+			"ModifierName" "voven_from_blood_soul_burn_debuff"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Types"		"DOTA_UNIT_TARGET_BASIC"
+			}
+			"Duration"	"%duration_creep"
+			}	
+		}
+		"Modifiers"
+		{
+			"voven_from_blood_soul_burn_buff"
+			{
+				"IsBuff"	"1"
+				"IsPurgable"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
+				}
+			}
+			"voven_from_blood_soul_burn_debuff"
+			{
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage"
+				}
+				
+				"States"
+				{
+				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+						{
+						"Target"
+							{
+								"Center"	"TARGET"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							}
+						"Type" "DAMAGE_TYPE_MAGICAL"
+						"Damage" "%damage"
+						}
+				}
+				"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+		}
+	}
+	
+	
+	"vowen_from_blood_chaos"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"vowen_from_blood_chaos"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+			"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher.vpcf"		
+					
+		}
+		
+		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
+		
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"AoERadius"	"475"
+		
+		"AbilityCastRange"				"1750"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"140.0"
+	
+		"AbilityManaCost"				"250 300 350"	
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"		"300 600 900"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_penalty_percentage"		"-60 -70 -80"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"10"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"475"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{	
+				"EffectName"	"particles/items2_fx/veil_of_discord.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"	"POINT"	
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+				}
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Silencer.Curse.Cast"
+				"Target"		"CASTER"
+			}	
+	
+	
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO"
+				}
+				
+				"Action"
+				{
+					"Damage"
+					{
+					"Type" "DAMAGE_TYPE_PHYSICAL"
+					"Target"	"TARGET"
+					"Damage" "%damage"
+					}
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_vowen_from_blood_chaos"
+						"Target"	"TARGET"
+					}				
+				}
+			}
+	
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_vowen_from_blood_chaos"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
+				"IsPurgable"	"1"
+				"EffectName"	"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+				"EffectAttachType"	"follow_overhead"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage"
+				}			
+	
+			}
+		}
+	}	
+	//End of file npc_lia_hero_vowen_from_blood.txt
+
+
 	//Start of file npc_lia_hero_witcher.txt
 	"sorcerer_unholy_ritual_datadriven"
 	{
