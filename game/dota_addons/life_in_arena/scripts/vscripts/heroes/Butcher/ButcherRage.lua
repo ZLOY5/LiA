@@ -7,7 +7,6 @@ function DealDamage( event )
 	for _,v in pairs(targets) do
 		if v ~= target then
 			ApplyDamage({ victim = v, attacker = caster, damage = damage_to_deal, damage_type = DAMAGE_TYPE_PHYSICAL })
-			else	
 		end
 	end
 end
