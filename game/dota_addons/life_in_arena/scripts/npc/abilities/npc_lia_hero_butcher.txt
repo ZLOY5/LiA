@@ -148,92 +148,58 @@
  "butcher_zombie"
 {
 	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"butcher_zombie"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"	"butcher_zombie"
 		
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCooldown"		 "15"
 	
-
-
 	"AbilitySpecial"
 	{
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"count_1"					"1 0 0"
-		}	 
+			"zombie_hp_tooltip"		"200 400 600"
+		}
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"count_2"					"0 1 0"
-		}	
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"count_3"					"0 0 1"
-		}	
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"zombie_hp_tooltip"	"70 220 550"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"zombie_damage_tooltip"	"11 24 51"
+			"zombie_damage_tooltip"	"14 39 69"
 		}
 	}
 
 	"Modifiers"
 	{
-			"modifier_butcher_zombie"
-			{
+		"modifier_butcher_zombie"
+		{
 			"Passive"	"1"
-			"IsHidden"	"1"
+			//"IsHidden"	"1"
 			"ThinkInterval"	"15"
 			"OnIntervalThink"
 			{
-				"SpawnUnit"
-						{
-							"UnitName"	"butcher_zombie_1"
-							"UnitCount"	"%count_1"
-							"SpawnRadius"	"150"
-							"Duration"	"%spiderling_duration"
-							"Target"
-							{
-								"Center"	"CASTER"
-							}
-
-						}
-						"SpawnUnit"
-						{
-							"UnitName"	"butcher_zombie_2"
-							"UnitCount"	"%count_2"
-							"SpawnRadius"	"150"
-							"Duration"	"%spiderling_duration"
-							"Target"
-							{
-								"Center"	"CASTER"
-							}
-
-						}
-						"SpawnUnit"
-						{
-							"UnitName"	"butcher_zombie_3"
-							"UnitCount"	"%count_3"
-							"SpawnRadius"	"150"
-							"Duration"	"%spiderling_duration"
-							"Target"
-							{
-								"Center"	"CASTER"
-							}
-						}
+				"RunScript"
+				{
+					"ScriptFile"	"heroes\Butcher\Zombie.lua"
+					"Function"		"SpawnZombie"
+				}
 			}
-		
 		}
-}
+		"modifier_butcher_zombie_death"
+		{
+			"IsHidden"	"1"
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes\Butcher\Zombie.lua"
+					"Function"		"ZombieDeath"
+				}
+			}
+		}	
+	}
 }
 
 "butcher_howl_of_terror"

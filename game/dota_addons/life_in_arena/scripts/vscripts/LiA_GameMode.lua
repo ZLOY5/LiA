@@ -129,15 +129,13 @@ function LiA:OnDisconnect(event)
         print(k,v)
     end
     print(" ")
-    local entIndex = keys.index+1
-    local player = EntIndexToHScript(entIndex)
+    local player = PlayerResource:GetPlayer(event.userid-1) 
     if player.readyToWave then
         nPlayersReady = nPlayersReady - 1
     end
     nPlayers = nPlayers - 1
     if player:GetAssignedHero() then
         nHeroCount = nHeroCount - 1
-
     end
     player.IsDisconnect = true
 end
@@ -255,6 +253,7 @@ end
 
 function LiA:SpawnMegaboss()
     IsPreWaveTime = false
+    CleanUnitsOnMap()
     local boss
     if WAVE_NUM == 20 then
         boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
@@ -389,6 +388,9 @@ function LiA:_EndWave()
         hero:GiveMana(9999)
     end)
 
+    --убиваем всех оставшихся после волны юнитов
+    CleanUnitsOnMap()
+
     PrecacheUnitByNameAsync(tostring(WAVE_NUM).."_wave_creep", function(...) end)
     PrecacheUnitByNameAsync(tostring(WAVE_NUM).."_wave_boss", function(...) end)
 end
@@ -426,6 +428,7 @@ end
 
 function StartDuels()
     DuelNumber = 1
+    CleanUnitsOnMap()
     timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
     Timers:CreateTimer(PRE_DUEL_TIME,function()
         IsDuel = true
@@ -507,7 +510,7 @@ end
 
 function EndDuel(winner)
     print("winner",winner)
-
+    CleanUnitsOnMap()
     if winner ~= nil then
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")

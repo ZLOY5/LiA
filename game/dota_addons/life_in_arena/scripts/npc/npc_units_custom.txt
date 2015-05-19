@@ -274,7 +274,7 @@
 	
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/undying/undying_minion.vmdl" 
-	"SoundSet" "n_creep_Melee" 
+	"SoundSet" "Undying_Zombie" 
 	"ModelScale" "0.7" 
 	"Level" "1" 
 	
@@ -347,7 +347,7 @@
 	
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/undying/undying_minion.vmdl" 
-	"SoundSet" "n_creep_Melee" 
+	"SoundSet" "Undying_Zombie" 
 	"ModelScale" "0.7" 
 	"Level" "1" 
 	
@@ -420,7 +420,7 @@
 	
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/undying/undying_minion.vmdl" 
-	"SoundSet" "n_creep_Melee" 
+	"SoundSet" "Undying_Zombie" 
 	"ModelScale" "0.7" 
 	"Level" "1" 
 	
@@ -2057,7 +2057,7 @@
 		"Model" "models/heroes/sand_king/sand_king.mdl" 
 		"Portrait"     "vgui/hud/heroportraits/portrait_sandking"
 		"SoundSet" "Hero_SandKing" 
-		"ModelScale" "0.6" 
+		"ModelScale" "0.85" 
 		"Level" "1" 
 		 
 	
@@ -2135,7 +2135,7 @@
 		"BaseClass" "npc_dota_creature" 
 		"Model" "models/creeps/neutral_creeps/n_creep_centaur_med/n_creep_centaur_med.vmdl" 
 		"SoundSet" "n_creep_Melee" 
-		"ModelScale" "0.6" 
+		"ModelScale" "0.85" 
 		"Level" "1" 
 	
 		"Ability1" "" 
@@ -2189,7 +2189,7 @@
 		"BaseClass" "npc_dota_creature" 
 		"Model" "models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl" 
 		"SoundSet" "n_creep_Melee" 
-		"ModelScale" "0.6" 
+		"ModelScale" "0.85" 
 		"Level" "1" 
 		"precache"
 		{
@@ -2247,7 +2247,7 @@
 		"BaseClass" "npc_dota_creature" 
 		"Model" "models/creeps/neutral_creeps/n_creep_troll_dark_a/n_creep_troll_dark_a.vmdl" 
 		"SoundSet" "n_creep_Ranged" 
-		"ModelScale" "0.8" 
+		"ModelScale" "0.9" 
 		"Level" "1" 
 			
 		"precache"
@@ -2309,7 +2309,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/bounty_hunter/bounty_hunter.vmdl" 
 	"SoundSet" "Hero_BountyHunter" 
-	"ModelScale" "0.75" 
+	"ModelScale" "0.85" 
 	"Level" "1" 
 	
 					"precache"
@@ -2481,7 +2481,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/sven/sven.vmdl" 
 	"SoundSet" "Hero_Sven" 
-	"ModelScale" "0.7" 
+	"ModelScale" "0.8" 
 	"Level" "1" 
 					
 		"precache"
@@ -2573,7 +2573,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/morphling/morphling.vmdl" 
 	"SoundSet" "Hero_Morphling" 
-	"ModelScale" "0.6" 
+	"ModelScale" "0.7" 
 	"Level" "1" 
 	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" 
 	"ProjectileSpeed"           "1200" 	
@@ -2652,7 +2652,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/items/beastmaster/boar/beast_deming/beast_deming.vmdl" 
 	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.7" 
+	"ModelScale" "0.8" 
 	"Level" "1" 
 	
 	
@@ -2877,7 +2877,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_small.vmdl" 
 	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "0.6" 
+	"ModelScale" "0.7" 
 	"Level" "1" 
 	"ProjectileModel"           "particles/base_attacks/ranged_badguy.vpcf" 
 	"ProjectileSpeed"           "1800" 
@@ -3915,80 +3915,64 @@
 	
 	"spherical_staff_fire_golem" 
 	{
+		"BaseClass" 				"npc_dota_creature" 
+		"Model" 					"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 
+		"SoundSet"					"Hero_WarlockGolem"
+		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
+		"ModelScale" "1" 
+		"Level" "1" 
 	
+		"precache"
+		{
+			"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
+		}
 	
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
-	"Level" "1" 
+		"Ability1" "spell_immunity" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
 	
-	"precache"
-	{
-	"particle"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
-	}
+		"ArmorPhysical" 			"16" 
+		"MagicalResistance" 		"100" 
 	
+		"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" 			"99" 
+		"AttackDamageMax" 			"99" 
+		"AttackRate" 				"0.9" 
+		"AttackAnimationPoint" 		"0.26" 
+		"AttackAcquisitionRange" 	"500" 
+		"AttackRange" 				"100" 
+		"ProjectileModel"			""			
+		"ProjectileSpeed"			"0"
 	
-	"Ability1" "spell_immunity" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
+		"HealthBarOffset"			"260"
 	
+		"BountyXP" 					"0" 
+		"BountyGoldMin" 			"0" 
+		"BountyGoldMax" 			"0" 
 	
+		"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" 			"320" 
+		"MovementTurnRate" 			"0.4" 
 	
-	"ArmorPhysical" "16" 
-	"MagicalResistance" "100" 
+		"StatusHealth" 				"1800" 
+		"StatusHealthRegen" 		"1" 
+		"StatusMana" 				"0" 
+		"StatusManaRegen" 			"0" 
 	
+		"TeamName" 					"DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" 		"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend" 		"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
+		"VisionDaytimeRange" 		"10000" 
+		"VisionNighttimeRange" 		"10000" 
 	
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "99" 
-	"AttackDamageMax" "99" 
-	"AttackRate" "0.9" 
-	"AttackAnimationPoint" "0.26" 
-	"AttackAcquisitionRange" "500" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-	
-	
-	
-	"BountyXP" "0" 
-	"BountyGoldMin" "0" 
-	"BountyGoldMax" "0" 
-	
-	
-	
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "320" 
-	"MovementTurnRate" "0.4" 
-	
-	
-	
-	"StatusHealth" "1800" 
-	"StatusHealthRegen" "1" 
-	"StatusMana" "0" 
-	"StatusManaRegen" "0" 
-	
-	
-	
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	
-	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
-	
-	
-	
-	"HasInventory" "0" 
+		"HasInventory" 				"0" 
 	}
 	//End of file purchasable_units.txt
 

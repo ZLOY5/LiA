@@ -131,6 +131,15 @@ function DistanceBetweenPoints(v1,v2)
 	return math.sqrt(math.pow(v2.x - v1.x,2) + math.pow(v2.y - v1.y,2) + math.pow(v2.z - v1.z,2))
 end
 
+function CleanUnitsOnMap()
+	local units =FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 9999, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_BASIC+DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_MECHANICAL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, true)
+    for _,unit in pairs(units) do
+        if not unit:IsRealHero() then
+            unit:ForceKill(true)
+        end
+    end
+end
+
 --[[can u help me with your ConsoleCommands? 
 Kidney
 i use ConsoleCommands:SendToAll("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y)) 
