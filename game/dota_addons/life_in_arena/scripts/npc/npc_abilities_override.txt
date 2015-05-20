@@ -341,6 +341,7 @@
 				}
 			}
 		}
+	}
 	//End of file araman_power_of_scourge.txt
 
 
@@ -5857,6 +5858,7 @@
 				"ControlPoints"
 				{
 					"01"	"%radius 0 0"
+					"15"	"255 200 255"
 				}
 			}
 	
@@ -5955,7 +5957,7 @@
 	    "AbilityTextureName"     "pugna_nether_blast"
 	
 	    "AbilityCooldown" "15 17 19"
-		"AbilityCastRange"	"100"
+		"AbilityCastRange"	"500"
 	    "AbilityManaCost" "80 120 160"
 	
 	    "MaxLevel"               "3"
@@ -5963,7 +5965,7 @@
 	    "LevelsBetweenUpgrades"  "2"
 		
 	    "AbilityCastPoint"  "0.3"
-	    "AbilityCastRange"  "0"
+	
 	
 		"precache"
 		{
@@ -6071,6 +6073,205 @@
 	    }
 	  }
 	
+	 "skeleton_mage_dark_magic"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      "pugna_life_drain"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "damage_return"  "30 40 50"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "damage_return_scepter"   "50 60 70"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {  
+			"modifier_skeleton_mage_dark_magic"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+	        	"Aura"        "modifier_skeleton_mage_dark_magic_return"
+	        	"Aura_Radius" "1000"
+	        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
+	        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	        	"Aura_ApplyToCaster" "0"  
+			}
+			"modifier_skeleton_mage_dark_magic_return"
+			{
+				"IsHidden"          "1"
+				"IsPurgable"		"0"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/SkeletonMage/DarkMagic.lua"
+						"Function"			"Return"
+						"damage_return" 	"%damage_return"
+						"attack_damage" 	"%attack_damage"
+					}
+					"RemoveModifier"
+			    	{
+			    		"Target" 			"ATTACKER"
+			    		"ModifierName"		"modifier_skeleton_mage_dark_magic_return"
+			    	}
+				}
+			}   
+	
+	  } 
+	}
+	
+	"skeleton_mage_death_energy"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "pugna_decrepify"
+	
+	    "AbilityCooldown" "100"
+		"AbilityCastRange"	"450"
+	    "AbilityManaCost" "80 120 160"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+	    "AbilityCastPoint"  "1"
+		"AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_1"
+	    "AnimationPlaybackRate"  "0.5"
+		
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
+		"particle"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
+		}
+		
+	    "OnSpellStart"
+	    {
+			"Damage"
+			{
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"%radius"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				"Type" "DAMAGE_TYPE_MAGICAL"
+				"Damage" "%damage_initial"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_skeleton_mage_death_energy_damage"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}	
+		  	"FireSound"
+			{
+				"EffectName"	"Hero_ObsidianDestroyer.SanityEclipse"
+				"Target"		"CASTER"
+			}
+			"AttachEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"Target"	"CASTER"	
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+					"15"	"0 200 100"
+				}
+			}
+	    }
+		
+		"Modifiers"
+		{
+			"modifier_skeleton_mage_death_energy_damage"
+			{
+				"Duration"	"%duration"
+				"EffectName"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
+				   "Properties"
+				  {
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed_slow_percentage" 
+				  }
+				
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/SkeletonMage/DeathEnergy.lua"
+						"Function"      "DealDamage"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					}
+				}
+	
+			}
+			
+		}
+		
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	       "01"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "damage_initial"         "150 300 450"
+	        }
+			"02"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "damage_percentage"       "3 4 5"
+	        }
+			"03"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "movement_speed_slow_percentage"         "-50"
+	        }
+			"04"
+	        {
+	            "var_type"                "FIELD_FLOAT"
+	            "duration"       "7"
+	        }
+	        "09"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "radius"                  "450"
+	        }
+	    }
+	  }
 	//End of file npc_lia_hero_skeleton_mage.txt
 
 
