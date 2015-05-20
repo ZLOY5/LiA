@@ -162,31 +162,43 @@
     }
   }
 
-  "can_touch"
+  "skeleton_thief_obsession"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
     "AbilityTextureName"     "alchemist_acid_spray"
 
 
+    "AbilitySpecial"
+      {
+        "01"
+        {
+          "var_type"              "FIELD_FLOAT"
+          "damage"                "150 300 450"
+        }
+        "02"
+        {
+          "var_type"              "FIELD_INTEGER"
+          "number_of_attacks"        "5 5 5"
+        }
+      }
+
     "Modifiers"
     {
-      "bsod"
+      "modifier_skeleton_thief_obsession"
       {
         "Passive"       "1"
-        "IsHidden"      "0"
-        "IsBuff"        "1"
+        "IsHidden"      "1"
     
         "OnAttackLanded"
-        // "%attack_damage" is set to the damage value before mitigation
         {
           "RunScript"
           {
-            "ScriptFile"  "heroes/bsodit.lua"
-            "Function"    "bsodit"
+            "ScriptFile"  "heroes\SkeletonThief\Obsession.lua"
+            "Function"    "Obsession"
           }
         } 
       }

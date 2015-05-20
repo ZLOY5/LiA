@@ -13,8 +13,9 @@ function SpawnZombie(event)
 
 	local zombie = CreateUnitByName(unit_name[level], spawnLoc, true, caster, nil, caster:GetTeamNumber())
 	zombie:SetControllableByPlayer(caster:GetPlayerID(), true)
-	zombie:MoveToNPC(caster)
 	ability:ApplyDataDrivenModifier(caster, zombie, "modifier_butcher_zombie_death", nil) 
+
+	Timers:CreateTimer(0.1,function() zombie:MoveToNPC(caster) end)
 	
 	ability.zombieCount = ability.zombieCount+1
 	caster:SetModifierStackCount("modifier_butcher_zombie", ability, ability.zombieCount) 
