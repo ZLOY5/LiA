@@ -4,8 +4,9 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"			""
+	"AbilityTextureName"			"night_stalker_hunter_in_the_night"
 
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
 	"MaxLevel"               "3"
 	"RequiredLevel"          "5"
 	"LevelsBetweenUpgrades"  "4"
@@ -43,6 +44,7 @@
 			"var_type"				"FIELD_INTEGER"
 			"damage_stack_max"		"11 21 30"
 		}
+
 	}
 
 	"OnSpellStart"
@@ -51,7 +53,7 @@
 		{
 			"ModifierName"	"modifier_araman_power_of_scourge"
 			"Target"		"CASTER"
-			"Duration"		"%duration"
+			"Duration"		"%AbilityDuration"
 		}
 	}
 	"Modifiers"
