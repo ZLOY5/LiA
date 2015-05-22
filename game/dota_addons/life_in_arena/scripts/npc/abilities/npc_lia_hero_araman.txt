@@ -8,9 +8,9 @@
     "AbilityTextureName"     "night_stalker_void"
 
     "AbilityCooldown" "15 13 11"
-	"AbilityCastRange"	"200 225 250"
+	"AbilityCastRange"	"400 500 600"
     "AbilityManaCost" "70 90 100"
-	"AbilityCastPoint"	"0.3"
+	"AbilityCastPoint"	"0.4"
 	
     "MaxLevel"               "3"
     "RequiredLevel"          "1"
@@ -35,9 +35,11 @@
           "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
           "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
           "Radius"    "%radius"
+		  "MaxTargets" "%max_targets"
         }
         "Type"   "DAMAGE_TYPE_MAGICAL"
-        "Damage" "%damage"             
+        "Damage" "%damage"    
+		
       }
 	  	"FireSound"
 		{
@@ -83,7 +85,7 @@
       "01"
         {
             "var_type"                "FIELD_INTEGER"
-            "radius"                  "200 225 250"
+            "radius"                  "400 500 600"
         }
        "02"
         {
@@ -100,6 +102,11 @@
             "var_type"                "FIELD_FLOAT"
             "stun_duration"            "2"
         }
+		"05"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "max_targets"             "10 10 8"
+        }
     }
   }
 
@@ -107,7 +114,7 @@
 {
   "BaseClass"               "ability_datadriven"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"      "centaur_return"
+  "AbilityTextureName"      "araman_armor_of_darkness"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
