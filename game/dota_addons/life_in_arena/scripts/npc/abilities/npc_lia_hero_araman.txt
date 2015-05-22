@@ -1,3 +1,212 @@
+"araman_curse"
+ {
+   // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "night_stalker_void"
+
+    "AbilityCooldown" "15 13 11"
+	"AbilityCastRange"	"200 225 250"
+    "AbilityManaCost" "70 90 100"
+	"AbilityCastPoint"	"0.3"
+	
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+	
+    "AbilityCastPoint"  "0.2"
+    "AbilityCastRange"  "0"
+
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+	}
+	
+    "OnSpellStart"
+    {
+      "Damage"
+      {
+        "Target"
+        {
+          "Center"    "CASTER"
+          "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+          "Radius"    "%radius"
+        }
+        "Type"   "DAMAGE_TYPE_MAGICAL"
+        "Damage" "%damage"             
+      }
+	  	"FireSound"
+		{
+			"EffectName"	"Hero_Nightstalker.Void"
+			"Target"		"CASTER"
+		}
+		"AttachEffect"
+		{
+		"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+		"EffectAttachType"	"attach_origin"
+		"Target"		"CASTER"
+		}
+		"Random"
+		{
+			"Chance"		"%stun_chance"
+			"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+			"OnSuccess"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_stunned"
+					"Target"
+					{
+						"Center"	"CASTER"
+			            "Radius"  "%radius"
+					    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+					"Duration"		"%stun_duration"	
+				}
+
+			}
+		}
+    }
+    
+  
+   
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "radius"                  "200 225 250"
+        }
+       "02"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage"                   "100 200 400"
+        }
+       "03"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "stun_chance"             "50"
+        }
+       "04"
+        {
+            "var_type"                "FIELD_FLOAT"
+            "stun_duration"            "2"
+        }
+    }
+  }
+
+"araman_armor_of_darkness"
+{
+  "BaseClass"               "ability_datadriven"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "centaur_return"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+  
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "incoming_damage_percentage"  "-15 -30 -45"
+    }
+	"02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "bonus_armor"  "4 8 12"
+    }
+  }
+
+  "OnRespawn"
+  {
+  "ApplyModifier"	"modifier_araman_armor_of_darkness"
+  }
+  
+  "Modifiers"
+  {   
+    "modifier_araman_armor_of_darkness"
+    {
+      "Passive"  "1"
+
+      "Properties"
+      {
+	  	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+        "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
+      }     
+    }
+  } 
+}
+
+"araman_morale"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityTextureName"			"night_stalker_crippling_fear"
+	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+	
+	"AbilityCastRange"	"800"
+	
+	// Casting
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"800"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage_percentage"	"20 30 40"
+		}
+	}
+	
+	  "OnRespawn"
+	  {
+	  "ApplyModifier"	"modifier_araman_morale"
+	  }
+  
+	"Modifiers"
+	{
+		"modifier_araman_morale"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+	
+			"Aura"          	"modifier_araman_morale_buff"
+			"Aura_Radius"   	"%radius"
+			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+			"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES" 
+		}
+
+		"modifier_araman_morale_buff"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_percentage"
+			}
+		}
+	}
+}
+
+
 "araman_power_of_scourge"
 {
 	// General
@@ -19,7 +228,8 @@
 	{
 		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
 		"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
-		"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
+		"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"	
+		"particke"			"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
 	}
 	
 	"AbilitySpecial"
@@ -55,6 +265,11 @@
 			"Target"		"CASTER"
 			"Duration"		"%AbilityDuration"
 		}
+	  	"FireSound"
+		{
+			"EffectName"	"Hero_Nightstalker.Darkness	"
+			"Target"		"CASTER"
+		}
 	}
 	"Modifiers"
 	{
@@ -84,6 +299,9 @@
 					"Function"		"RemoveDamage"
 				}	
 			}
+			"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
+			"EffectAttachType"	"attach_origin"
+
 		}
 		"modifier_araman_power_of_scourge_damage"
 		{
