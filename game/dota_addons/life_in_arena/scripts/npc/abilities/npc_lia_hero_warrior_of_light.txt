@@ -126,7 +126,7 @@
 	  "AbilityTextureName"      ""
 	
 	  "MaxLevel"               "3"
-	  "RequiredLevel"          "1"  // dwDWQQWEqweqweqweqweqweqweqweqwew
+	  "RequiredLevel"          "2"
 	  "LevelsBetweenUpgrades"  "2"
 	  
 	  "AbilitySpecial"
@@ -159,7 +159,7 @@
      									"Center" "CASTER"
      									"Radius" "%AuraRadius"
      									"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-     									"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+     									"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     								}   
             							"HealAmount" "%attack_damage*%absord_proc"
         						}
@@ -170,7 +170,7 @@
      									"Center" "CASTER"
      									"Radius" "%AuraRadius"
      									"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-     									"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+     									"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     								}   
 								"Type"		"DAMAGE_TYPE_PHYSICAL"
 								"Damage"	"%attack_damage*%absord_proc"

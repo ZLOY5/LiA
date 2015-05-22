@@ -309,6 +309,8 @@ function OnOrnDamaged(event)
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 10 then
                 local unit = CreateUnitByName("orn_mutant", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, unit)
+                unit:EmitSound("DOTA_Item.BlinkDagger.Activate")
                 unit:Attribute_SetIntValue("SecondStage",1)
                 FinalBossStageCounter = FinalBossStageCounter + 1
                 return 2
@@ -324,14 +326,15 @@ function OnOrnDamaged(event)
         FinalBossStageDeath = 0
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 19 then
+                local unit
                 if FinalBossStageCounter % 5 == 0 then
-                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-                    unit:Attribute_SetIntValue("FirstStage",1)
+                    unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
                 else
-                    local unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-                    unit:Attribute_SetIntValue("FirstStage",1)
-
-                end
+                    unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                 end
+                unit:Attribute_SetIntValue("FirstStage",1)
+                ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, unit)
+                unit:EmitSound("DOTA_Item.BlinkDagger.Activate")
                 FinalBossStageCounter = FinalBossStageCounter + 1
                 return 2
             else
