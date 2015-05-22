@@ -244,65 +244,28 @@
 		{
 			"modifier_holy_power"
 			{
-				"Passive"               "1"
+				"Passive"       "1"
 				"IsHidden"		"0"
-				
-				
-				"OnCreated"
-				{
+				"OnTakeDamage"
+    			{
 					"Random"
 					{
-						"Chance" "%block_chance"
+						"Chance"		"%block_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
 						"OnSuccess"
 						{
-							"ApplyModifier"
-							{
+    						"Heal"
+    						{          
 								"Target" "CASTER"
-								"ModifierName" "modifier_warrior_of_light_holy_power_block"
+        						"HealAmount" "%attack_damage"
+    						}
+							"AttachEffect"
+							{
+								"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+								"EffectAttachType"	"follow_origin"	
+								"Target" "CASTER"
 							}
 						}
-					}
-				}
-				"OnAttacked"
-				{
-					"Random"
-					{
-						"Chance" "%block_chance"
-						"OnSuccess"
-						{
-							"ApplyModifier"
-							{
-								"Target" "CASTER"
-								"ModifierName" "modifier_warrior_of_light_holy_power_block"
-							}
-						}
-						"OnFailure"
-						{
-							"RemoveModifier"
-							{
-								"Target" "CASTER"
-								"ModifierName" "modifier_warrior_of_light_holy_power_block"
-							}
-						}
-					}
-				}
-	
-
-			}
-				"modifier_warrior_of_light_holy_power_block"
-			{
-				"IsBuff" "1"
-				"IsHidden" "1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%attack_damage"
-				}
-				"OnAttacked"
-				{
-					"RemoveModifier"
-					{
-						"Target" "CASTER"
-						"ModifierName" "modifier_warrior_of_light_holy_power_block"
 					}
 				}
 			}
