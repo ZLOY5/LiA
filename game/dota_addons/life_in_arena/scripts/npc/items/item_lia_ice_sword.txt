@@ -30,7 +30,7 @@
 	"ItemDroppable" 				"1"
 	"ItemSellable"                  "1"
 	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
+	"ItemQuality"					"rare"
 	"AbilityTextureName"			"item_lia_ice_sword"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
@@ -41,7 +41,8 @@
 	
 	"precache"
 	{
-	"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+		"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"
 	}
 	"OnUnequip" 
 	{
@@ -57,7 +58,7 @@
 	{
 		"FireSound"
 		{
-			"EffectName"		"hero_Crystal.frostbite"
+			"EffectName"		"Hero_Ancient_Apparition.ColdFeetTick"
 			"Target" 			"CASTER"
 		}
 		"ActOnTargets"
@@ -176,7 +177,8 @@
 			"Duration"	"%stun_duration"
 			"States"
 			{
-				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
+				"MODIFIER_STATE_STUNNED" 	"MODIFIER_STATE_VALUE_ENABLED"	
+				"MODIFIER_STATE_FROZEN"		"MODIFIER_STATE_VALUE_ENABLED"	
 			}
 			"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
 		}

@@ -8010,6 +8010,405 @@
 	//End of file npc_lia_hero_witcher.txt
 
 
+// WarriorOfLight
+
+
+
+"warrior_of_light_divine_protection"
+{
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"     ""
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	
+	    "AbilityCooldown"         "120"
+	
+	    "AbilityCastPoint"        "0.15"
+	    //"AbilityCastRange"        "1500"
+	
+	    "AbilityManaCost"        "150 200 250"
+	
+	    "AoERadius"              "1000"
+	    
+	    "precache"
+	    {
+		"particle"	"particles/units/heroes/hero_magnataur/magnataur_skewer_debuff.vpcf"
+	    }
+	    "AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"//"ACT_DOTA_ATTACK"
+
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+
+	     "01"
+	      {
+	       "var_type"                            "FIELD_INTEGER"
+	       "armor"      "1000"
+	      }
+	     "02"
+	      {
+	       "var_type"                            "FIELD_INTEGER"
+	       "attack_damage_proc"      "15 30 45"
+	      }
+	     "03"
+	     {
+	       "var_type"                            "FIELD_FLOAT"
+	       "duration"                            "8 10 12"
+	     }
+	      "04"
+	      {
+	       "var_type"                           "FIELD_INTEGER"
+	       "radius"                             "1000"
+	      }
+	    }  	
+
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+
+	    "OnSpellStart"
+	    {
+		//"FireSound"
+		//{
+		//	"EffectName"	"Hero_EarthShaker.EchoSlam"
+		//	"Target"		"CASTER"
+		//}
+		//
+	    	"ActOnTargets"
+	        {
+	          	"Target"
+	          	{
+	            		"Center"  "CASTER"
+	            		"Radius"  "%radius"
+	            		"Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	            		"Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	          	}
+	          
+	          	"Action"
+	          	{
+	            
+	            		"ApplyModifier"
+	             		{
+	              			"Target"        "TARGET"
+	              			"ModifierName"  "modifier_divine_protection_datadriven"
+	             		}
+	
+	          	}
+	        }
+	}
+
+
+	
+	"Modifiers"
+	{
+	      "modifier_divine_protection_datadriven"
+	      {
+	        "Passive"         "0"
+	        "IsHidden"        "0"
+	        "IsBuff"        "1"
+	    
+	        "Duration"        "%duration"
+
+		"EffectName"		"particles/units/heroes/hero_magnataur/magnataur_skewer_debuff.vpcf"
+		"EffectAttachType"	"follow_origin"	      
+
+	        "Properties"
+	        {
+	          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%armor"
+
+	          "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%attack_damage_proc"
+	        }
+
+	      }
+	}
+	
+}
+
+
+
+	"warrior_of_light_will_light"
+	{
+
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      ""
+	
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "1"  // dwDWQQWEqweqweqweqweqweqweqweqwew
+	  "LevelsBetweenUpgrades"  "2"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "absord_proc"  "0.10 0.20 0.30"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "AuraRadius"   "500"
+	    }
+	  }
+
+
+	  "Modifiers"
+	  {  
+			"modifier_warrior_of_light_will_light"
+			{
+			    	"Passive"          "1"    
+			    	"IsHidden"         "0"
+				"OnTakeDamage"
+				{
+        						"Heal"
+        						{          
+     								"Target"
+    								{
+     									"Center" "CASTER"
+     									"Radius" "%AuraRadius"
+     									"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+     									"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    								}   
+            							"HealAmount" "%attack_damage*%absord_proc"
+        						}
+							"Damage"
+							{
+     								"Target"
+    								{
+     									"Center" "CASTER"
+     									"Radius" "%AuraRadius"
+     									"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+     									"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    								}   
+								"Type"		"DAMAGE_TYPE_PHYSICAL"
+								"Damage"	"%attack_damage*%absord_proc"
+							}
+				}
+
+
+
+
+
+	        		"Aura"        		"modifier_warrior_of_light_will_light_aura"
+	        		"Aura_Radius" 		"%AuraRadius"
+	        		"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_BOTH"
+	        		"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        		"Aura_Flags"  		"DOTA_UNIT_TARGET_FLAG_NONE"
+	        		"Aura_ApplyToCaster" 	"1"  
+			}
+
+
+			"modifier_warrior_of_light_will_light_aura"
+			{
+				"IsHidden"          "1"
+				"IsPurgable"		"0"
+				//"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			}
+		}
+
+
+	}
+
+
+
+	"warrior_of_light_holy_power"
+	{
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			""
+		//"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2" // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+		"LevelsBetweenUpgrades"  "2"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance_safe"		"15 20 25"
+			}
+		}
+		
+
+		"Modifiers"
+		{
+			"modifier_holy_power"
+			{
+				"Passive"               "1"
+				"IsHidden"		"0"
+				//
+    				"OnTakeDamage"
+    				{
+					"Random"
+					{
+						"Chance"		"%chance_safe"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+	
+						"OnSuccess"
+						{
+
+        						"Heal"
+        						{          
+								"Target" "CASTER"
+            							"HealAmount" "%attack_damage"
+        						}
+							//
+							"AttachEffect"
+							{
+							"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+							"EffectAttachType"	"follow_origin"	
+							"Target" "CASTER"
+							}
+						}
+
+					}
+
+    				}		
+
+			}
+		}
+	}
+
+
+	"warrior_of_light_fetters"
+	{
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName" 			""
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+
+
+		"precache"
+		{
+			//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			"particle"		"particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_debuff_creep.vpcf"	
+					
+		}
+		
+		"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_1"//"ACT_DOTA_ATTACK"
+		
+	        //"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AoERadius"	"300"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"22.0 20.0 18.0"
+	
+		"AbilityManaCost"				"80 110 140"	
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"penalty_ms"			"-20 -30 -40"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_for_attack"		"30 60 120"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"9.0"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"	"300"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+	
+			//"FireSound"
+			//{
+			//	"EffectName"	"particles/units/heroes/hero_silencer/silencer_curse_cast_flares.vpcf"
+			//	"Target"		"CASTER"
+			//}
+			"ApplyModifier"
+     			{
+      				"ModifierName" "warrior_of_light_fetters"
+     				"Target"
+    				{
+     					"Center" "POINT"
+     					"Radius" "%radius"
+     					"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+     					"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    				}     
+			}
+	
+
+	
+		}
+	
+		"Modifiers"
+		{
+			"warrior_of_light_fetters"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
+				"IsPurgable"	"1"
+				//
+				//
+				//
+				"OnAttack"
+				{
+
+					"Damage"
+					{
+						"Target"	"ATTACKER"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage_for_attack"
+					}
+
+
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%penalty_ms"
+				}
+				//
+				"EffectName"		"particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_debuff_creep.vpcf"
+				"EffectAttachType"	"follow_origin"	
+
+			}
+
+		}
+	}
+
+
+
 	//Start of file purchasable_units_skills.txt
 		"invulnerability"
 	{

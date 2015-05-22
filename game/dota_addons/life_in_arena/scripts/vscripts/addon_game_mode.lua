@@ -165,9 +165,12 @@ function Precache( context )
 		PrecacheModel("models/heroes/undying/undying_minion.vmdl", context)
 		]]	
 
+		
 		PrecacheItemByNameAsync("item_lia_lightning_bow", function(...) end)	
 		PrecacheItemByNameAsync("item_lia_staff_of_help", function(...) end)
 		PrecacheItemByNameAsync("item_lia_staff_of_help_2", function(...) end)
+		PrecacheItemByNameAsync("item_lia_ice_sword", function(...) end)
+		
 		
 		--Щит Смерти
 		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	
@@ -196,8 +199,6 @@ function Precache( context )
 		--Жезл Огня
 		PrecacheResource("particle", "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf", context)		
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts", context)	
-		--Меч Льда
-		PrecacheResource("particle", "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf", context)			
 		--Посох Света
 		PrecacheResource("particle", "particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf", context)
 		PrecacheResource("particle", "particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf", context)	
