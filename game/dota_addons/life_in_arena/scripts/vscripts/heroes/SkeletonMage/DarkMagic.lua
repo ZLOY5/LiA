@@ -1,5 +1,5 @@
 function Return(event)
-	if event.target == event.caster and event.target:HasModifier("modifier_skeleton_mage_dark_magic") then
+	if event.target == event.caster and event.target:HasModifier("modifier_skeleton_thief_shield_of_death") then
 		ApplyDamage(
 		{
 			victim = event.attacker,

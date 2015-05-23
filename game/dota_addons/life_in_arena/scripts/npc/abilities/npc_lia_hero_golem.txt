@@ -26,6 +26,12 @@
 	
     "OnSpellStart"
     {
+	      "Damage"
+       {
+         "Target" "CASTER"
+         "Type"   "DAMAGE_TYPE_MAGICAL"
+         "Damage" "%damage"
+        }
       "Damage"
       {
         "Target"
@@ -49,12 +55,6 @@
 		"EffectAttachType"	"attach_origin"
 		"Target"		"CASTER"
 		}
-      "Damage"
-       {
-         "Target" "CASTER"
-         "Type"   "DAMAGE_TYPE_MAGICAL"
-         "Damage" "%damage"
-        }
     }
     
   
