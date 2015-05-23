@@ -171,6 +171,11 @@ function Precache( context )
 		PrecacheItemByNameAsync("item_lia_staff_of_help_2", function(...) end)
 		PrecacheItemByNameAsync("item_lia_ice_sword", function(...) end)
 		
+		PrecacheItemByNameAsync("item_lia_spherical_staff", function(...) end)
+		PrecacheUnitByNameAsync("spherical_staff_fire_golem", function(...) end)
+		
+
+		
 		
 		--Щит Смерти
 		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	
