@@ -18,17 +18,17 @@
 		"01"
 		{
 			"var_type"			"FIELD_INTEGER"
-			"duration"			"8"
+			"bonus_movespeed"	"10 20 40"
 		}
 		"02"
 		{
 			"var_type"			"FIELD_INTEGER"
-			"bonus_movespeed"	"10 20 40"
+			"bonus_damage"		"80 160 240"
 		}
 		"03"
 		{
 			"var_type"			"FIELD_INTEGER"
-			"bonus_damage"		"80 160 240"
+			"duration"			"8"
 		}
 	}
 
@@ -250,6 +250,12 @@
 		  "additional_damage_return_amount"   "100 150 200"
 		}
 	}
+	
+	 	"OnRespawn"
+	{
+		"ApplyModifier"	"modifier_skeleton_thief_shield_of_death"
+		"ApplyModifier"	"modifier_skeleton_thief_shield_of_death_chance"
+	}
 
 	  "Modifiers"
 	  {  
@@ -364,7 +370,12 @@
           "number_of_attacks"        "5 5 5"
         }
       }
-
+	  
+	 	"OnRespawn"
+	{
+		"ApplyModifier"	"modifier_skeleton_thief_obsession"
+	}
+	
     "Modifiers"
     {
       "modifier_skeleton_thief_obsession"

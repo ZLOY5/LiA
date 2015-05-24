@@ -157,7 +157,7 @@
 }
 
 
-"voven_from_blood_soul_burn"
+"vowen_from_blood_soul_burn"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
@@ -222,31 +222,31 @@
 	{
 		"ApplyModifier"
 		{
-		"ModifierName" "voven_from_blood_soul_burn_buff"
-		"Target"	"CASTER"
-		"Duration"	"%buff_duration"
+			"ModifierName" "voven_from_blood_soul_burn_buff"
+			"Target"	"CASTER"
+			"Duration"	"%buff_duration"
 		}	
 		"ApplyModifier"
 		{
-		"ModifierName" "voven_from_blood_soul_burn_debuff"
-		"Target"
-		{
-			"Center"	"TARGET"
-			"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			"Types"		"DOTA_UNIT_TARGET_HERO"
-		}
-		"Duration"	"%duration_hero"
+			"ModifierName" "voven_from_blood_soul_burn_debuff"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Types"		"DOTA_UNIT_TARGET_HERO"
+			}
+			"Duration"	"%duration_hero"
 		}	
 		"ApplyModifier"
 		{
-		"ModifierName" "voven_from_blood_soul_burn_debuff"
-		"Target"
-		{
-			"Center"	"TARGET"
-			"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			"Types"		"DOTA_UNIT_TARGET_BASIC"
-		}
-		"Duration"	"%duration_creep"
+			"ModifierName" "voven_from_blood_soul_burn_debuff"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Types"		"DOTA_UNIT_TARGET_BASIC"
+			}
+			"Duration"	"%duration_creep"
 		}	
 	}
 	"Modifiers"
@@ -393,7 +393,7 @@
 			{
 				"Damage"
 				{
-				"Type" "DAMAGE_TYPE_PHYSICAL"
+				"Type" "DAMAGE_TYPE_MAGICAL"
 				"Target"	"TARGET"
 				"Damage" "%damage"
 				}

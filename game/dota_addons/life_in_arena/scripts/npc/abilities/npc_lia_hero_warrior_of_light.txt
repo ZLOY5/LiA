@@ -127,8 +127,9 @@
 	
 	  "MaxLevel"               "3"
 	  "RequiredLevel"          "2" 
-
 	  "LevelsBetweenUpgrades"  "2"
+	  
+	  "AbilityCastRange"	"500"
 	  
 	  "AbilitySpecial"
 	  {
@@ -149,6 +150,10 @@
 	    }
 	  }
 
+			"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_warrior_of_light_will_light"
+		}
 
 	  "Modifiers"
 	  {  
@@ -235,11 +240,15 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"block_chance"		"10 20 25"
+				"block_chance"		"15 20 25"
 			}
 		}
 		
-
+			"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_holy_power"
+		}
+		
 		"Modifiers"
 		{
 			"modifier_holy_power"
@@ -293,8 +302,7 @@
 	    "AbilityCastRange"        "1000"
 	
 	    "AbilityManaCost"        "150 200 250"
-	
-	    "AoERadius"              "1000"
+
 	    
 	    "precache"
 	    {

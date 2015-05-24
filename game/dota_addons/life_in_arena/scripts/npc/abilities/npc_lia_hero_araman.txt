@@ -107,6 +107,11 @@
             "var_type"                "FIELD_INTEGER"
             "max_targets"             "10 10 8"
         }
+		"06"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "sum_damage"             "1000 2000 3200"
+        }
     }
   }
 
@@ -125,7 +130,7 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "incoming_damage_percentage"  "-15 -30 -45"
+      "incoming_damage_percentage"  "-10 -15 -20"
     }
 	"02"
     {
@@ -261,7 +266,11 @@
 			"var_type"				"FIELD_INTEGER"
 			"damage_stack_max"		"11 21 30"
 		}
-
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"sum_damage_tooltip"		"220 420 600"
+		}
 	}
 
 	"OnSpellStart"

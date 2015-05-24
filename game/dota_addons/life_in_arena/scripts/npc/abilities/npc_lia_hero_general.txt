@@ -182,7 +182,7 @@
 			"duration"	"7.0"
 		}
 	}
-
+	
 	"OnSpellStart"
 	{
 		"FireSound"
@@ -289,7 +289,11 @@
 			"radius"		"150"
 		}
 	}
-	
+
+		"OnRespawn"
+	{
+		"ApplyModifier"	"modifier_furious_strike"
+	}	
 
 	"Modifiers"
 	{
@@ -341,6 +345,11 @@
     }
   }
 
+  		"OnRespawn"
+	{
+		"ApplyModifier"	"modifier_magic_armor"
+	}	
+  
   "Modifiers"
   {   
     "modifier_magic_armor"

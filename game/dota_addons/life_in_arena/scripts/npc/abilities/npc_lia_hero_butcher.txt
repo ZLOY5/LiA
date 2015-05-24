@@ -3,7 +3,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 	"AbilityTextureName"			                "pudge_dismember"
 
@@ -103,6 +103,11 @@
     }
   }
 
+		"OnRespawn"
+	{
+		"ApplyModifier"	"modifier_butcher_skin"
+	}
+  
   "Modifiers"
   {  
 		"modifier_butcher_skin"
@@ -171,6 +176,11 @@
 		}
 	}
 
+	"OnRespawn"
+	{
+		"ApplyModifier"	"modifier_butcher_zombie"
+	}
+	
 	"Modifiers"
 	{
 		"modifier_butcher_zombie"
@@ -220,6 +230,13 @@
 	"RequiredLevel"          "5"
 	"LevelsBetweenUpgrades"  "4"
 	
+		"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+	}
+	
 		"AbilitySpecial"
 	{
 		"01"
@@ -241,21 +258,33 @@
 	
     "OnSpellStart"
     {
-      "ApplyModifier"
-      {
-        "ModifierName"  "modifier_butcher_howl_of_terror"
-        
-        "Target"
-        {
-         "Center"    "CASTER"
-         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-         "Radius"    "%radius"
-        }
-        
-        "Duration"    "%duration"
-      }
+			"FireSound"
+		{
+			"EffectName"	"Hero_Beastmaster.Primal_Roar"
+			"Target" 		"CASTER"
+		}
+		"AttachEffect"
+		{	
+			"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"EffectRadius"       "%radius"
+			"Target"	"CASTER"	
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"  "modifier_butcher_howl_of_terror"
+
+			"Target"
+			{
+				 "Center"    "CASTER"
+				 "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				 "Radius"    "%radius"
+			}
+
+			"Duration"    "%duration"
+		}
     }
 
     "Modifiers"
@@ -265,7 +294,12 @@
         "Passive"       "0"
         "IsHidden"      "0"
         "IsDebuff"      "1"
+		
 
+		"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+		"EffectAttachType"	"follow_origin"
+		
+		
         "Properties"
         {
          "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 

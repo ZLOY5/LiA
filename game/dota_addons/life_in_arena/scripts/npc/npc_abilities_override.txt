@@ -2553,6 +2553,11 @@
 	            "var_type"                "FIELD_INTEGER"
 	            "max_targets"             "10 10 8"
 	        }
+			"06"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "sum_damage"             "1000 2000 3200"
+	        }
 	    }
 	  }
 	
@@ -2571,7 +2576,7 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "incoming_damage_percentage"  "-15 -30 -45"
+	      "incoming_damage_percentage"  "-10 -15 -20"
 	    }
 		"02"
 	    {
@@ -2707,7 +2712,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"damage_stack_max"		"11 21 30"
 			}
-	
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"sum_damage_tooltip"		"220 420 600"
+			}
 		}
 	
 		"OnSpellStart"
@@ -2936,6 +2945,11 @@
 	    }
 	  }
 	
+	  	  "OnRespawn"
+		  {
+		  "ApplyModifier"	"modifier_frenzy_aura"
+		  }
+	  
 	  "Modifiers"
 	  {   
 	    "modifier_frenzy_aura"
@@ -2978,6 +2992,11 @@
 	    }
 	  }
 	
+		"OnRespawn"
+	    {
+			"ApplyModifier"	"modifier_desperation_aura"
+		}
+	  
 	  "Modifiers"
 	  {
 	    "modifier_desperation_aura"
@@ -3173,6 +3192,11 @@
 	      }
 	    }
 	
+			"OnRespawn"
+	    {
+			"ApplyModifier"	"bear_style_datadriven"
+		}
+		
 	"Modifiers"
 	{
 	  "bear_style_datadriven"
@@ -3242,27 +3266,32 @@
 	    "RequiredLevel"          "2"
 	    "LevelsBetweenUpgrades"  "2"
 	    
-	"Modifiers"
-	{
-	  "drunken_punches_datadriven"
-	  {
-	    "Passive"       "1"
-	    "IsHidden"      "1"
-	    "IsBuff"        "1"
+		"OnRespawn"
+	    {
+			"ApplyModifier"	"drunken_punches_datadriven"
+		}
+		
+		"Modifiers"
+		{
+		  "drunken_punches_datadriven"
+		  {
+			"Passive"       "1"
+			"IsHidden"      "1"
+			"IsBuff"        "1"
 	
-	   "OnAttacked"
-	   {
-	     "RunScript"
-	      {
-	        "ScriptFile"   "heroes/Brewer/drunken_punches.lua"
-	        "Function"     "Return"
-	        "Coefficient"  "%strength_percentage_return"
-	      }
-	   }
-	  }
+		   "OnAttacked"
+		   {
+			 "RunScript"
+			  {
+				"ScriptFile"   "heroes/Brewer/drunken_punches.lua"
+				"Function"     "Return"
+				"Coefficient"  "%strength_percentage_return"
+			  }
+		   }
+		  }
 	
 	  
-	}
+		}
 	
 	  // Special  
 	  //-------------------------------------------------------------------------------------------------------------
@@ -3379,7 +3408,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 		"AbilityTextureName"			                "pudge_dismember"
 	
@@ -3479,6 +3508,11 @@
 	    }
 	  }
 	
+			"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_butcher_skin"
+		}
+	  
 	  "Modifiers"
 	  {  
 			"modifier_butcher_skin"
@@ -3547,6 +3581,11 @@
 			}
 		}
 	
+		"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_butcher_zombie"
+		}
+		
 		"Modifiers"
 		{
 			"modifier_butcher_zombie"
@@ -3596,6 +3635,13 @@
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
 		
+			"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+		}
+		
 			"AbilitySpecial"
 		{
 			"01"
@@ -3617,21 +3663,33 @@
 		
 	    "OnSpellStart"
 	    {
-	      "ApplyModifier"
-	      {
-	        "ModifierName"  "modifier_butcher_howl_of_terror"
-	        
-	        "Target"
-	        {
-	         "Center"    "CASTER"
-	         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	         "Radius"    "%radius"
-	        }
-	        
-	        "Duration"    "%duration"
-	      }
+				"FireSound"
+			{
+				"EffectName"	"Hero_Beastmaster.Primal_Roar"
+				"Target" 		"CASTER"
+			}
+			"AttachEffect"
+			{	
+				"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"EffectRadius"       "%radius"
+				"Target"	"CASTER"	
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"  "modifier_butcher_howl_of_terror"
+	
+				"Target"
+				{
+					 "Center"    "CASTER"
+					 "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					 "Radius"    "%radius"
+				}
+	
+				"Duration"    "%duration"
+			}
 	    }
 	
 	    "Modifiers"
@@ -3641,7 +3699,12 @@
 	        "Passive"       "0"
 	        "IsHidden"      "0"
 	        "IsDebuff"      "1"
+			
 	
+			"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+			"EffectAttachType"	"follow_origin"
+			
+			
 	        "Properties"
 	        {
 	         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 
@@ -3858,6 +3921,11 @@
 			}
 		}
 	
+			"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_dice_bash"
+		}
+		
 		"Modifiers"
 		{
 			"modifier_dice_bash"	
@@ -3962,6 +4030,11 @@
 			}
 		}
 	
+		"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_dice_endurance_aura"
+		}
+		
 		"Modifiers"
 		{
 			"modifier_dice_endurance_aura"
@@ -4316,7 +4389,7 @@
 				"duration"	"7.0"
 			}
 		}
-	
+		
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -4423,7 +4496,11 @@
 				"radius"		"150"
 			}
 		}
-		
+	
+			"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_furious_strike"
+		}	
 	
 		"Modifiers"
 		{
@@ -4475,6 +4552,11 @@
 	    }
 	  }
 	
+	  		"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_magic_armor"
+		}	
+	  
 	  "Modifiers"
 	  {   
 	    "modifier_magic_armor"
@@ -4612,6 +4694,11 @@
 	        }
 	    }
 	
+		"OnRespawn"
+		{
+			"ApplyModifier"	"modifiers_hellish_heat_datadriven"
+		}	
+		
 	    "Modifiers"
 	    {
 	      "modifiers_hellish_heat_datadriven"
@@ -4718,6 +4805,11 @@
 	   {
 	   "particle"	"particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
 	   }
+	   
+	   	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_firerage_datadriven"
+		}	
 	   
 	    // Casting
 	    //-------------------------------------------------------------------------------------------------------------
@@ -4919,10 +5011,265 @@
 
 
 	//Start of file npc_lia_hero_highlander.txt
+	"highlander_storm_bolt"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"highlander_storm_bolt"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCastRange"				"650"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"15"
+	
+		"AbilityManaCost"				"55 70 85"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bolt_speed"			"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_main_target_duration"	"1.0 2.0 3.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_radius_duration"	"1.0 1.5 2.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_main_target"	"50"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_main_target_tooltip"	"100 150 200"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_radius"			"50 100 150"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"			"250"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"			"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+			"particle"			"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+			"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"           	"TARGET"
+			    "EffectName"       	"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+			    "Dodgeable"        	"1"
+			    "ProvidesVision"   	"1"
+			    "VisionRadius"		"%radius"
+			    "MoveSpeed"        	"%bolt_speed"
+			    "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"		"Hero_Sven.StormBolt"
+				"Target"			"CASTER"
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_Sven.StormBoltImpact"
+				"Target"			"TARGET"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"			"TARGET"
+				"ControlPointEntities"
+				{
+					"TARGET"	"attach_origin"
+					"TARGET"	"attach_origin"
+					"TARGET"	"attach_origin"
+					"TARGET"	"attach_origin"	//CP3 has a child explosion origin
+				}
+			}
+			
+			"Damage"
+			{
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				"Type"			"DAMAGE_TYPE_MAGICAL"
+				"Damage"		"%damage_radius"
+			}
+			
+			"Damage"
+			{
+				"Target"		"TARGET"
+				"Type"			"DAMAGE_TYPE_MAGICAL"
+				"Damage"		"%damage_main_target"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_stunned"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				"Duration"		"%stun_radius_duration"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_stunned"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				"Duration"		"%stun_main_target_duration"
+			}
+		}
+	
+	}
+	
+	"highlander_heavy_axe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityTextureName"			"hightlander_heavy_axe"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCooldown"	"13 15 17"
+		"AbilityManaCost"	"60 80 100"
+		
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_tusk/tusk_walruspunch_status.vpcf"
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"		"50 100 150"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed_percentage"		"10 15 20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"		"8"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_highlander_heavy_axe"
+				"Target"	"CASTER"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_highlander_heavy_axe"
+			{
+				"IsHidden"				"0"
+				"Duration"		"%duration"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"					"CASTER"
+						"EffectName"				"particles/units/heroes/hero_tusk/tusk_walruspunch_status.vpcf"
+						"EffectAttachType"			"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"CASTER"				"attach_attack1"
+						}
+					}
+	
+				}
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percentage"
+				}			
+				
+				"OnAttackLanded"
+				{
+					"Damage"
+					{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "%bonus_damage"
+					}
+				}
+			}
+		}
+	}
+	
 	"highlander_improved_armor"
 	{
 	    "BaseClass"						"ability_datadriven"
-		"AbilityTextureName" 			""
+		"AbilityTextureName" 			"lich_frost_armor"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
@@ -4935,25 +5282,30 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"max_armor"			"21 21 21"
+				"bonus_armor"			"3 6 9"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"armor_per_attack"	"3 3 3"
+				"armor_per_attack"	"3"
 			}
 			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
 				"duration"			"2 3 4"
 			}
-			"03"
+			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_armor"			"3 6 9"
+				"max_armor"			"21"
 			}
 		}
-	
+		
+	   	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_improved_armor"
+		}	
+		
 		"Modifiers"
 		{
 			"modifier_improved_armor"
@@ -4991,6 +5343,142 @@
 			}
 		}
 	}
+	"highlander_might_of_the_highlander"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"crystal_maiden_crystal_nova"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+			"particle"		"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf"		
+					
+		}
+		
+		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
+		
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"AoERadius"	"350"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"80 100 120"
+	
+		"AbilityManaCost"				"130 150 170"	
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"		"250 500 750"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"movement_speed_slow"		"-70 -80 -90"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"5 6 7"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"350"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"aoe_tooltip"			"700"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{	
+				"EffectName"	"particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"	"POINT"	
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+				}
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Crystal.CrystalNova"
+				"Target"		"CASTER"
+			}	
+	
+	
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO"
+				}
+				
+				"Action"
+				{
+					"Damage"
+					{
+					"Type" "DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+					"Damage" "%damage"
+					}
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_highlander_might_of_the_highlander"
+						"Target"	"TARGET"
+					}				
+				}
+			}
+	
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_highlander_might_of_the_highlander"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
+				"IsPurgable"	"1"
+				"StatusEffectName"     "particles/status_fx/status_effect_frost_lich.vpcf"
+				"StatusEffectPriority" "10"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed_slow"
+				}			
+	
+			}
+		}
+	}	
 	//End of file npc_lia_hero_highlander.txt
 
 
@@ -5126,7 +5614,6 @@
 	  
 		"OnRespawn"
 		{
-		"RemoveModifier"	"modifier_naga_royal_guard_persistence"
 		"ApplyModifier"		"modifier_naga_royal_guard_persistence"
 		}
 		
@@ -5181,6 +5668,11 @@
 			}
 		}
 	
+		   	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_naga_royal_guard_bash"
+		}	
+		
 		"Modifiers"
 		{
 			"modifier_naga_royal_guard_bash"	
@@ -5352,6 +5844,10 @@
 	  } 
 	}
 	//End of file npc_lia_hero_naga_royal_guard.txt
+
+
+	//Start of file npc_lia_hero_naga_siren.txt
+	//End of file npc_lia_hero_naga_siren.txt
 
 
 	//Start of file npc_lia_hero_queen_of_spiders.txt
@@ -5621,6 +6117,11 @@
 	        }
 	    }
 	
+		   	"OnRespawn"
+		{
+			"ApplyModifier"	"modifiers_queen_of_spiders_poison"
+		}	
+		
 	    "Modifiers"
 	    {
 	      "modifiers_queen_of_spiders_poison"
@@ -5752,7 +6253,12 @@
 				"half_damage_radius"	"240"
 			}
 		}
-	
+		
+		   	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_queen_of_spiders_furious_strikes"
+		}	
+		
 		"Modifiers"
 		{
 			"modifier_queen_of_spiders_furious_strikes"	
@@ -5816,7 +6322,12 @@
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "5"
 	    "LevelsBetweenUpgrades"  "4"
-	    
+	  
+		   	"OnRespawn"
+		{
+			"ApplyModifier"	"royal_vitality_datadriven"
+		}
+	  
 	"Modifiers"
 	{
 	  "royal_vitality_datadriven"
@@ -6399,6 +6910,11 @@
 	    }
 	  }
 	
+	  	   	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_skeleton_mage_dark_magic"
+		}
+	  
 	  "Modifiers"
 	  {  
 			"modifier_skeleton_mage_dark_magic"
@@ -6598,17 +7114,17 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"duration"			"8"
+				"bonus_movespeed"	"10 20 40"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_movespeed"	"10 20 40"
+				"bonus_damage"		"80 160 240"
 			}
 			"03"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_damage"		"80 160 240"
+				"duration"			"8"
 			}
 		}
 	
@@ -6830,6 +7346,12 @@
 			  "additional_damage_return_amount"   "100 150 200"
 			}
 		}
+		
+		 	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_skeleton_thief_shield_of_death"
+			"ApplyModifier"	"modifier_skeleton_thief_shield_of_death_chance"
+		}
 	
 		  "Modifiers"
 		  {  
@@ -6944,7 +7466,12 @@
 	          "number_of_attacks"        "5 5 5"
 	        }
 	      }
-	
+		  
+		 	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_skeleton_thief_obsession"
+		}
+		
 	    "Modifiers"
 	    {
 	      "modifier_skeleton_thief_obsession"
@@ -7122,6 +7649,11 @@
 	    }
 	  }
 	
+	  	 	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_minotaur_fear"
+		}
+	  
 	  "Modifiers"
 	  {
 	    "modifier_minotaur_fear"
@@ -7187,6 +7719,11 @@
 	    }
 	  }
 	
+	    	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_minotaur_demonic_power"
+		}
+	  
 	  "Modifiers"
 	  {
 	    "modifier_minotaur_demonic_power"
@@ -7504,6 +8041,10 @@
 			}
 		}
 		
+	    	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_true_hit"
+		}	
 	
 		"Modifiers"
 		{
@@ -7560,7 +8101,12 @@
 				"bonus_attack_speed"	"15 30 45"
 			}
 		}
-	
+		
+	    	"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_valkyrie_agility"
+		}	
+		
 		"Modifiers"
 		{
 			"modifier_valkyrie_agility"
@@ -7813,7 +8359,7 @@
 	}
 	
 	
-	"voven_from_blood_soul_burn"
+	"vowen_from_blood_soul_burn"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -7878,31 +8424,31 @@
 		{
 			"ApplyModifier"
 			{
-			"ModifierName" "voven_from_blood_soul_burn_buff"
-			"Target"	"CASTER"
-			"Duration"	"%buff_duration"
+				"ModifierName" "voven_from_blood_soul_burn_buff"
+				"Target"	"CASTER"
+				"Duration"	"%buff_duration"
 			}	
 			"ApplyModifier"
 			{
-			"ModifierName" "voven_from_blood_soul_burn_debuff"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Types"		"DOTA_UNIT_TARGET_HERO"
-			}
-			"Duration"	"%duration_hero"
+				"ModifierName" "voven_from_blood_soul_burn_debuff"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					"Types"		"DOTA_UNIT_TARGET_HERO"
+				}
+				"Duration"	"%duration_hero"
 			}	
 			"ApplyModifier"
 			{
-			"ModifierName" "voven_from_blood_soul_burn_debuff"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Types"		"DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"	"%duration_creep"
+				"ModifierName" "voven_from_blood_soul_burn_debuff"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					"Types"		"DOTA_UNIT_TARGET_BASIC"
+				}
+				"Duration"	"%duration_creep"
 			}	
 		}
 		"Modifiers"
@@ -8049,7 +8595,7 @@
 				{
 					"Damage"
 					{
-					"Type" "DAMAGE_TYPE_PHYSICAL"
+					"Type" "DAMAGE_TYPE_MAGICAL"
 					"Target"	"TARGET"
 					"Damage" "%damage"
 					}
@@ -8215,8 +8761,9 @@
 		
 		  "MaxLevel"               "3"
 		  "RequiredLevel"          "2" 
-	
 		  "LevelsBetweenUpgrades"  "2"
+		  
+		  "AbilityCastRange"	"500"
 		  
 		  "AbilitySpecial"
 		  {
@@ -8237,6 +8784,10 @@
 		    }
 		  }
 	
+				"OnRespawn"
+			{
+				"ApplyModifier"	"modifier_warrior_of_light_will_light"
+			}
 	
 		  "Modifiers"
 		  {  
@@ -8323,11 +8874,15 @@
 				"01"
 				{
 					"var_type"				"FIELD_INTEGER"
-					"block_chance"		"10 20 25"
+					"block_chance"		"15 20 25"
 				}
 			}
 			
-	
+				"OnRespawn"
+			{
+				"ApplyModifier"	"modifier_holy_power"
+			}
+			
 			"Modifiers"
 			{
 				"modifier_holy_power"
@@ -8381,8 +8936,7 @@
 		    "AbilityCastRange"        "1000"
 		
 		    "AbilityManaCost"        "150 200 250"
-		
-		    "AoERadius"              "1000"
+	
 		    
 		    "precache"
 		    {
@@ -9078,7 +9632,7 @@
 	//End of file purchasable_units_skills.txt
 
 
-	//Start of file spherical_staff_fire_golem_immolation
+	//Start of file spherical_staff_fire_golem_immolation.txt
 	"spherical_staff_fire_golem_immolation"
 	{
 		"BaseClass"             		"ability_datadriven"
@@ -9147,5 +9701,5 @@
 		    }
 		}
 	}
-	//End of file spherical_staff_fire_golem_immolation
+	//End of file spherical_staff_fire_golem_immolation.txt
 }
