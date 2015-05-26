@@ -3,10 +3,12 @@ nPlayersReady = 0
 
 function onPlayerReadyToWave(player)
 	if IsPreWaveTime then
-		player.readyToWave = true
-		nPlayersReady = nPlayersReady + 1
-		if nPlayersReady == nPlayers then
-			ForceRound()
+		if not player.readyToWave then
+			player.readyToWave = true
+			nPlayersReady = nPlayersReady + 1
+			if nPlayersReady == nPlayers then
+				ForceRound()
+			end
 		end
 	else
 		FireGameEvent( 'custom_error_show', { player_ID = player:GetPlayerID(), _error = "#lia_hud_error_cant_force_round" } )
