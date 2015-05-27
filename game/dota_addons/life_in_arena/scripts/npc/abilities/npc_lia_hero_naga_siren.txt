@@ -101,14 +101,21 @@
 			"heal_percentage"		"15 20 25"
 		}
 	}
-
-	"OnKill"
+	"Modifiers"
 	{
-			"RunScript"
+		"modifier_naga_siren_eating"
 		{
-			"ScriptFile"    "heroes/Valkyrie/Eating.lua"
-			"Function"      "Heal"
-			"Target"		"TARGET"
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"OnKill"
+			{
+				"RunScript"
+				{
+					"ScriptFile"    "heroes/NagaSiren/Eating.lua"
+					"Function"      "Heal"
+					"Target"		"TARGET"
+				}
+			}
 		}
 	}
 }
