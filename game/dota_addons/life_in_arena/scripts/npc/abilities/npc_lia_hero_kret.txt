@@ -201,20 +201,16 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilitySpecial"
 	{
+		
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"procVal_porog"					"40"
+			"bonus_health"				"100 200 300"
 		}
 		"02"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"hpVal"						"100 200 300"
-		}
-		"03"
-		{
 			"var_type"					"FIELD_FLOAT"
-			"procVal_hp"					"1.0 2.0 3.0"
+			"health_regen_percent"		"0.15 0.25 0.35" 
 		}
 	}
 
@@ -228,35 +224,35 @@
 		"modifier_lust_for_life"
 		{
 			"Passive"	"1"
-			//
-
-
+			"IsHidden"	"1"
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_HEALTH_BONUS"           "%hpVal"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
 			}
 
 			"ThinkInterval" "1"
-				//
+				
 			"OnIntervalThink"
-    			{
-
+    		{
 				"RunScript"
 				{
 					"ScriptFile"	"heroes\Kret\lustForLife.lua"
-					"Function"	"SetHealKret"
-					"procVal_porog" "%procVal_porog"
-					"procVal_hp"	"%procVal_hp"
+					"Function"		"UpdateRegen"
 				}
-
-
-    			}	
+    		}	
 		}
+		"modifier_lust_for_life_health_regen"
+		{
+			"IsHidden"		"1"
+			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%health_regen_percent"   
+			}
+		}
+
 	}
-
-
-
-
 
 }
 
@@ -272,8 +268,8 @@
 	"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 	"AbilityTextureName"            	""
-	"AbilityUnitTargetType"         	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetTeam"         	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetTeam"         	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"         	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
