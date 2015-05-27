@@ -1,0 +1,533 @@
+// kret
+
+
+	"kret_virus"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			""
+		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+	
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.2"
+	
+		"AbilityCooldown"				"15.0 20.0 25.0"
+	
+		"AbilityManaCost"				"80 100 120"	
+	
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+			"particle" 	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"main_damage"				"150 300 450"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"other_damage"				"100 200 300"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_ms"				"-50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4.5+0.1"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick"					"4.5"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_speed"				"1300.0"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_vision"				"500.0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"450"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Huskar.Burning_Spear"
+				"Target" 		"CASTER"
+			}
+			//
+                	"TrackingProjectile"
+                	{
+                    		"Target" "TARGET"
+                    		"EffectName" "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+                    		"Dodgeable" "1"
+                    		"ProvidesVision" "1"
+                    		"VisionRadius" "%acid_vision"
+                    		"MoveSpeed" "%acid_speed"
+                    		"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+                	}
+
+
+		}
+
+    		"OnProjectileHitUnit"
+    		{
+        		"DeleteOnHit" "1"
+			//
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_kret_virus_main_target"
+				"Target"	"TARGET"	
+			}
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_kret_virus_other_target"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}				
+    		}
+
+
+
+
+
+		"Modifiers"
+		{
+			"modifier_kret_virus_other_target"
+			{
+				"OnCreated"
+				{
+					"FireEffect"
+					{
+						"Target"		"TARGET"
+						"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+						"EffectAttachType"	"attach_origin"
+					}
+		
+					"Damage"
+					{
+						"Type" "DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" "%other_damage"
+					}
+				}
+
+				//
+
+			}
+			//
+			"modifier_kret_virus_main_target"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"			"1"
+				//
+				"Duration"	"%duration"
+				"ThinkInterval" "%tick"
+				//
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type" "DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" "%main_damage"
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
+				}
+				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+				"EffectAttachType"  "follow_origin"
+				//
+				"FireSound"
+				{
+					"Target"		"TARGET"
+					"EffectName"	"Hero_BountyHunter.WindWalk"
+				}
+			}
+		}
+	}
+
+
+"kret_lust_for_life"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"            	""
+	//
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_health"				"100 200 300"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"health_regen_percent"		"0.15 0.25 0.35" 
+		}
+	}
+
+	"OnRespawn"
+	{
+		"ApplyModifier"		"modifier_lust_for_life"
+	}
+
+	"Modifiers"
+	{
+		"modifier_lust_for_life"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
+			}
+
+			"ThinkInterval" "1"
+				
+			"OnIntervalThink"
+    		{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes\Kret\lustForLife.lua"
+					"Function"		"UpdateRegen"
+				}
+    		}	
+		}
+		"modifier_lust_for_life_health_regen"
+		{
+			"IsHidden"		"1"
+			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%health_regen_percent"   
+			}
+		}
+
+	}
+
+}
+
+
+
+
+"kret_poisoning"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"AbilityTextureName"            	""
+	"AbilityUnitTargetTeam"         	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"         	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"precache"
+	{
+		"particle"			"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"chanceVal"					"33"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"adsorbVal"					"50 100 150"
+		}
+	}
+
+	"OnRespawn"
+	{
+		"ApplyModifier"		"modifier_kret_poisoning"
+	}
+
+	"Modifiers"
+	{
+		"modifier_kret_poisoning"
+		{
+			"Passive"	"1"
+			//
+    			"OnAttacked"
+    			{
+
+				"Random"
+				{
+					"Chance"		"%chanceVal"
+					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+					//
+					"OnSuccess"
+					{
+
+						"RunScript"
+						{
+							"ScriptFile"	"heroes\Kret\poisoning.lua"
+							"Function"	"SetAdsorbFromKret"
+							"adsorbVal"	"%adsorbVal"
+						}
+						//
+						"AttachEffect"
+						{
+							"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+							"EffectAttachType"	"follow_origin"	
+							"Target" "ATTACKER"
+						}
+					}
+				}
+
+
+    			}	
+		}
+	}
+
+
+
+
+
+}
+
+
+
+	"kret_acid"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			""
+		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+	
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"16.0"
+	
+		"AbilityManaCost"				"40 50 60"	
+	
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+			"particle" 	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_armor"				"-6 -8 -10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"main_damage"				"140 280 420"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"other_damage"				"120 240 360"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_ms"				"-25"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"8.0"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick"					"0.5"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_speed"				"1400.0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_vision"				"300.0"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"250"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Huskar.Burning_Spear"
+				"Target" 		"CASTER"
+			}
+			//
+                	"TrackingProjectile"
+                	{
+                    		"Target" "TARGET"
+                    		"EffectName" "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+                    		"Dodgeable" "1"
+                    		"ProvidesVision" "1"
+                    		"VisionRadius" "%acid_vision"
+                    		"MoveSpeed" "%acid_speed"
+                    		"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+                	}
+
+
+		}
+
+    		"OnProjectileHitUnit"
+    		{
+        		"DeleteOnHit" "1"
+			//
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_kret_acid_main_target"
+				"Target"	"TARGET"	
+			}
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_kret_acid_all_target"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}				
+    		}
+
+
+
+
+
+		"Modifiers"
+		{
+			"modifier_kret_acid_all_target"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"			"1"
+				//
+				"Duration"	"%duration"
+				"ThinkInterval" "%tick"
+				//
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type" "DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" "%other_damage/(%duration*2)"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
+				}
+				//
+				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+			//
+			"modifier_kret_acid_main_target"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"			"1"
+				//
+				"Duration"	"%duration"
+				"ThinkInterval" "%tick"
+				//
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type" "DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" "(%main_damage-%other_damage)/(%duration*2)"
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%reduce_armor"
+				}
+			}
+		}
+	}

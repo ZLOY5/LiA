@@ -1,0 +1,483 @@
+// huntress
+
+
+
+
+
+// Rewrite of the Luna Moon Glaive ability
+// Author: jacklarnes
+// Date: 03.04.2015.
+// NOTE: ------------------- THIS ABILITY REQUIRES luna_moon_glaive_datadriven TO WORK ----------------
+"huntress_moon_glaive_dummy"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_luna.vsndevts"
+		"particle"			"particles/units/heroes/hero_luna/luna_base_attack.vpcf"
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Luna.MoonGlaive.Impact"
+			"Target" 		"TARGET"
+		}
+		
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/Huntress/MoonGlaive.lua"
+			"Function"		"moon_glaive_dummy_created"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_moon_glaive_dummy_unit"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"				"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_UNSELECTABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_FLYING"							"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnCreated"
+			{
+				"RunScript"
+				{ 
+					"ScriptFile"	"heroes/Huntress/MoonGlaive.lua"   //"scripts/vscripts/heroes/hero_luna/moon_glaive.lua"
+					"Function"		"moon_glaive_dummy_created"
+				}
+			}
+		}
+	}
+}
+
+
+
+// Rewrite of the Luna Moon Glaive ability
+// Author: jacklarnes
+// Date: 03.04.2015.
+// NOTE: ------------------- THIS ABILITY REQUIRES luna_moon_glaive_dummy_datadriven TO WORK ----------------
+"huntress_moon_glaive"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"AbilityTextureName"            "luna_moon_glaive"
+	"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"precache"
+	{
+		"particle"			"particles/units/heroes/hero_luna/luna_base_attack.vpcf"
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"range"						"400 400 400"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bounces"					"1 2 3"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_reduction_percent"	"20"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_moon_glaive"
+		{
+			"Passive" "1"
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Huntress/MoonGlaive.lua"     //"scripts/vscripts/heroes/hero_luna/moon_glaive.lua"
+					"Function"		"moon_glaive_start_create_dummy"
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+	"huntress_curse_of_elune"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			""
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+
+
+		"precache"
+		{
+			//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			//"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+			//"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher.vpcf"		
+					
+		}
+		
+		"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_1"
+		
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AoERadius"	"230"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"15.0 14.0 13.0"
+	
+		"AbilityManaCost"				"80 100 120"	
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_per_sec"		"10 20 30"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_inst"			"20 40 60"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"4.0"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_proc_for_creeps"	"5 10 15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_proc_for_heroes_and_mega"	"2 4 6"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"			"230"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{	
+				"EffectName"	"particles/items2_fx/veil_of_discord.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"	"POINT"	
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+				}
+			}
+
+	
+			//"FireSound"
+			//{
+			//	"EffectName"	"Hero_Silencer.Curse.Cast"
+			//	"Target"		"CASTER"
+			//}	
+	
+	
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				
+				"Action"
+				{
+					"Damage"
+					{
+						"Type" "DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" "%damage_inst"
+					}
+					"ApplyModifier"
+					{
+						"ModifierName"	"huntress_curse_of_elune1"
+						"Target"	"TARGET"
+					}				
+				}
+			}
+	
+	
+		}
+	
+		"Modifiers"
+		{
+			"huntress_curse_of_elune1"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%duration"
+				"IsPurgable"	"1"
+				
+				"EffectName"	"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+				"EffectAttachType"	"follow_overhead"
+
+				"ThinkInterval" "1.00"
+				"OnIntervalThink"
+				{
+
+					"FireEffect"
+					{
+						"Target" "TARGET"
+						"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+						"EffectAttachType"		"follow_origin"	
+					}
+					"FireSound"
+					{
+						"EffectName" "Hero_NagaSiren.Riptide.Cast"
+						"Target" "TARGET"
+					}
+					//
+					"RunScript"
+	    				{
+				        	"ScriptFile"    "heroes/Huntress/CurseOfElune.lua"   //"1.lua"
+				        	"Function"      "SetDamageFromHuntress"
+						"Target" "TARGET"
+						"damage_per_sec" "%damage_per_sec"
+						"damage_proc_for_creeps" "%damage_proc_for_creeps"
+						"damage_proc_for_heroes_and_mega" "%damage_proc_for_heroes_and_mega"
+					}
+				}
+
+	       			"OnDeath"
+	       			{
+	        			"RemoveModifier"
+	         			{
+	           				"ModifierName"  "huntress_curse_of_elune1"
+	       	 				"Target" "TARGET"
+
+	         			}
+	       			}
+
+	
+			}
+		}
+
+
+
+	}	
+
+
+
+
+
+
+
+
+
+
+
+//power of the moon
+//
+"huntress_power_of_the_moon"
+	{
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      ""
+	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "immun_magic"  	"10 20 30"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "attackSpeed"  	"8 16 24"
+	    }
+	    "03"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "moveSpeed"  	"5 10 15"
+	    }
+	    "04"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "agility"  	"5 10 15"
+	    }
+	  }
+	
+	  "OnRespawn"
+		{
+			"ApplyModifier"	"power_of_the_moon"
+		}
+
+	  "Modifiers"
+	  {   
+	    "power_of_the_moon"
+	    {
+	      "Passive"  "1"
+	
+	      "Properties"
+	      {
+		"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%immun_magic"
+		//
+		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
+		//
+		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%moveSpeed"
+		//
+		"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%agility"
+	      }     
+	    }
+	  } 
+	}
+
+
+
+
+
+"huntress_ritual"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"     ""
+	
+	    "AbilityCooldown" "70 80 90"
+	    "AbilityManaCost" "100 125 150"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+		
+	    "AbilityCastPoint"  "1"
+	    "AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_4"
+	    //"AnimationPlaybackRate"  "0.5"
+		
+		//"precache"
+		//{
+		//"particle"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
+		//"particle"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+		//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
+		//}
+
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "attackSpeed"  	"40 80 120"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "attackDamage"  	"80 160 240"
+	    }
+	    "03"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "duration"  	"9.0"
+	    }
+	  }
+
+	    "OnSpellStart"
+	    {
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_huntress_ritual"
+				"Target" "CASTER"
+			}	
+		  	//"FireSound"
+			//{
+			//	"EffectName"	"Hero_ObsidianDestroyer.SanityEclipse"
+			//	"Target"		"CASTER"
+			//}
+			//"AttachEffect"
+			//{
+			//	"EffectName"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
+			//	"EffectAttachType"	"start_at_customorigin"
+			//	"Target"	"CASTER"	
+			//	"ControlPoints"
+			//	{
+			//		"01"	"%radius 0 0"
+			//		"15"	"0 200 100"
+			//	}
+			//}
+	    }
+		
+		"Modifiers"
+		{
+			"modifier_huntress_ritual"
+			{
+				"Duration"	"%duration"
+				//"EffectName"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+				//"EffectAttachType"	"follow_origin"
+	
+				   "Properties"
+				  {
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
+					//
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%attackDamage"
+				  }
+	
+			}
+			
+		}
+}
