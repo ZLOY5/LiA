@@ -1,0 +1,200 @@
+"naga_siren_fury"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"AbilityTextureName"			                "naga_siren_fury"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+	
+	"AbilityCooldown"				"14.0 16.0 19.0"	
+	"AbilityDuration"	"10.0 12.0 15.0"
+	"AbilityCastRange"	"250"
+	"AbilityManaCost"				"60 70 80"	
+	
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
+		"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
+		"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_percentage"		"50 75 100"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"constant_damage"		"5 10 15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"		"250"
+		}
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+		"ModifierName" "modifier_naga_siren_fury"
+		"Target"	"CASTER"
+		"Duration"	"%AbilityDuration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_naga_siren_fury"
+		{
+			"Passive"               "0"
+			"IsHidden"				"0"		
+			
+			"Orb"
+			{
+				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+			}		
+			"OnOrbImpact"
+			{
+				"RunScript"
+    			{
+			        "ScriptFile"    "heroes/NagaSiren/Fury.lua"
+			        "Function"      "DealDamage"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Radius"	"%radius"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					}
+					"Damage"	"%bonus_damage"
+				}
+			}
+		}
+	}
+}
+
+"naga_siren_eating"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"naga_siren_eating"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"heal_percentage"		"15 20 25"
+		}
+	}
+
+	"OnKill"
+	{
+			"RunScript"
+		{
+			"ScriptFile"    "heroes/Valkyrie/Eating.lua"
+			"Function"      "Heal"
+			"Target"		"TARGET"
+		}
+	}
+}
+
+"naga_siren_art_of_battle"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"naga_siren_mirror_image"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"evasion"		"5 10 15"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"crit_chance"		"15 30 45"
+		}
+		"03"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"crit_mult"		"150"
+		}
+	}
+
+	"Modifiers"
+	{
+			"modifier_naga_siren_art_of_battle_crit_random"
+		{
+		    "Passive"   "1"
+		    "IsHidden"  "1"
+		    "OnAttackStart"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName" 	"modifier_naga_siren_art_of_battle_crit"
+		            "Target" 		"CASTER"
+		        }
+
+		        "Random"
+		        {
+		            "Chance" "%crit_chance"
+		            "OnSuccess"
+		            {
+		                "ApplyModifier"
+		                {
+		                    "ModifierName" 	"modifier_naga_siren_art_of_battle_crit"
+		                    "Target"    	"CASTER"    
+		                }        
+		            }
+		        }
+		    }
+		}
+
+		"modifier_naga_siren_art_of_battle_crit"
+		{
+		    "IsHidden"  "1"
+		    "Properties"
+		    {
+		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+		    }
+
+		    "OnAttackLanded"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName"  "modifier_naga_siren_art_of_battle_crit"
+		            "Target"   		"CASTER"    
+		        }
+		    }
+		}
+		"modifier_naga_siren_art_of_battle_evasion"
+		{
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+			}
+		}
+	}
+}
