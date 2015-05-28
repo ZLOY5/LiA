@@ -10258,35 +10258,45 @@
 	//End of file npc_lia_hero_warrior_of_light.txt
 
 
-	//Start of file npc_lia_hero_witcher.txt
-	"sorcerer_unholy_ritual_datadriven"
+
+
+// WARLOCK
+
+	"warlock_sacrifice"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    "AbilityTextureName"     "alchemist_acid_spray"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityTextureName"     ""
 	
-	    "AoERadius"              "%radius"
+	    //"AoERadius"              "%radius"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
 	
 	  // Stats
 	  //-------------------------------------------------------------------------------------------------------------
 	  
 	  "AbilityCastPoint"        "0.3"
-	  "AbilityCooldown"         "60.0"
-	  "AbilityChannelTime"      "100"
-	   
+	  "AbilityCooldown"         "60"//"60.0"
+	  "AbilityChannelTime"      "2"
+
+		"precache"
+		{
+			//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			"particle"		"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+					
+		}	   
+
 	
 	    "OnSpellStart"
 	     {
 	      "ApplyModifier"
 	       {
-	         "ModifierName"  "unholy_ritual_datadriven"
+	         "ModifierName"  "modifier_sacrifice"
 	         "Target"        "CASTER"
 	       } 
 	     } 
@@ -10296,7 +10306,7 @@
 	     {
 	       "RemoveModifier"
 	       {
-	         "ModifierName"  "unholy_ritual_datadriven"
+	         "ModifierName"  "modifier_sacrifice"
 	         "Target"        "CASTER"
 	       }
 	     }
@@ -10309,7 +10319,7 @@
 	  "Modifiers"
 	  {
 	    
-	    "unholy_ritual_datadriven"
+	    "modifier_sacrifice"
 	    {
 	      "Passive"       "0"
 	      "IsHidden"      "1"
@@ -10321,30 +10331,33 @@
 	       {
 	         "RunScript"
 	         {
-	         "ScriptFile"  "heroes/Sorcerer/unholy_ritual.lua"
+	         "ScriptFile"  "heroes/Warlock/sacrifice.lua"
 	         "Function"    "Director"
 	
-	         "Radius"               "%radius"
-	         "Barrier_reduction"    "%barrier_reduction" 
-	         "Fee_per_teak"         "%fee_per_teak" 
-	         "Healing_per_teak"     "%healing_per_teak"
+	         "radius"               "%radius"
+	         "barrier_reduction"    "%barrier_reduction" 
+	         "change_per_teak"      "%change_per_teak" 
 	         }
 	       }
 	    }
 	    
 	    
-	    "modifier_invulnerability"
+	    "modifier_sacrifice_invulnerability"
 	    {
 	      "Passive"       "0"
 	      "IsHidden"      "0"
 	      "IsBuff"        "1"
-	
+	      "IsPurgable"    "0"
+
 	      "Duration"     "%duration_invulnerable"
 	    
 	     "States"
 	      {
 	       "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
 	      }
+
+		"EffectName"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+		"EffectAttachType"	"follow_overhead"
 	    }
 	  }
 	
@@ -10356,7 +10369,7 @@
 	   "01"
 	   {
 	     "var_type"              "FIELD_INTEGER"
-	     "radius"                "300"
+	     "radius"                "9999"
 	   }
 	   "02"
 	   {
@@ -10376,72 +10389,114 @@
 	   "05"
 	   {
 	     "var_type"               "FIELD_FLOAT"
-	     "fee_per_teak"           "2.5"
-	   }
-	   "06"
-	   {
-	     "var_type"               "FIELD_FLOAT"
-	     "healing_per_teak"       "2.5"
+	     "change_per_teak"        "2.5"
 	   }
 	  }
 	
 	}
+
+
 	
-	"sorcerer_magic_splash_datadriven"
+	"warlock_magic_splash"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
-	    "AbilityTextureName"     "alchemist_acid_spray"
+	    "AbilityTextureName"     ""
 	
-	    "AoERadius"              "300"
+	    "AoERadius"              "375"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
 	
+		"AbilitySpecial"
+		{
+	   		"01"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"damage"                "80 160 240"
+	   		}
+	   		"02"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"radius"                "375"
+	   		}
+		}
+
+		"precache"
+		{
+			//"soundfile"		"Hero_NagaSiren.Riptide.Cast"
+			"particle"		"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+					
+		}	
+
+		"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_magic_splash"
+		}
 	
-	
-	     "OnSpellStart"
-	     {
-	         "RunScript"
-	             {
-	               "ScriptFile"      "heroes/Sorcerer/magic_splash.lua"
-	               "Function"        "check_order"
-	             }
-	     }
+
 	
 	  "Modifiers"
 	 {
-	   "modifier_inflicts"
-	   {
-	     "Passive"     "0"
-	     "IsHidden"    "1"
-	     "IsBuff"      "1"
+
+		"modifier_magic_splash"
+		{
+			"Passive"     "1"
+			"IsHidden"    "0"
+	     		"OnCreated"
+	     		{
+	         		"RunScript"
+	             		{
+	               			"ScriptFile"      "heroes/Warlock/magicSplash.lua"  //"heroes/Sorcerer/magic_splash.lua"
+	               			"Function"        "check_order"
+				}
+	             	}
+	     	}
+
+
+	   	"modifier_inflicts"
+	   	{
+	     		"Passive"     "0"
+	     		"IsHidden"    "0"
+	     		"IsBuff"      "1"
 	     
-	     "OnCreated"
-	     {
-	       "Damage"
-	        {
-	          "Type"   "DAMAGE_TYPE_MAGICAL"
-	          "Damage" "1000"
-	          
-	      
-	        "Target"
-	          {
-	           "Center"    "CASTER"
-	           "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	           "Radius"    "300"
-	           "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	           }
-	        }
-	     }
-	   }
+	     		"OnCreated"
+	     		{
+				"FireEffect"
+				{
+					"Target" "TARGET"
+					"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+					"EffectAttachType"		"follow_origin"	
+				}
+				"FireSound"
+				{
+					"EffectName" "Hero_NagaSiren.Riptide.Cast"
+					"Target" "TARGET"
+				}
+	       			"Damage"
+	        		{
+	          			"Type"   "DAMAGE_TYPE_MAGICAL"
+	          			"Damage" "%damage"
+	        			"Target"
+	          			{
+	           				"Center"    "CASTER"
+	           				"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	           				"Radius"    "%radius"
+	           				"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	           			}
+	        		}
+	     		}
+	   	}
 	 }
 	}
-	//End of file npc_lia_hero_witcher.txt
+
+
+
+
 
 
 	//Start of file purchasable_units_skills.txt

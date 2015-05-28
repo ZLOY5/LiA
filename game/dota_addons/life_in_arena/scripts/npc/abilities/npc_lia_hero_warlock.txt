@@ -1,0 +1,231 @@
+	"warlock_sacrifice"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	    "AbilityTextureName"     ""
+	
+	    //"AoERadius"              "%radius"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  
+	  "AbilityCastPoint"        "0.3"
+	  "AbilityCooldown"         "60"//"60.0"
+	  "AbilityChannelTime"      "2"
+
+		"precache"
+		{
+			//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+			"particle"		"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+					
+		}	   
+
+	
+	    "OnSpellStart"
+	     {
+	      "ApplyModifier"
+	       {
+	         "ModifierName"  "modifier_sacrifice"
+	         "Target"        "CASTER"
+	       } 
+	     } 
+	     
+	
+	     "OnChannelInterrupted"
+	     {
+	       "RemoveModifier"
+	       {
+	         "ModifierName"  "modifier_sacrifice"
+	         "Target"        "CASTER"
+	       }
+	     }
+	
+	
+	
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	
+	  "Modifiers"
+	  {
+	    
+	    "modifier_sacrifice"
+	    {
+	      "Passive"       "0"
+	      "IsHidden"      "1"
+	      "IsBuff"        "1"
+	       
+	       "ThinkInterval"  "%tick_interval"
+	       
+	       "OnIntervalThink"
+	       {
+	         "RunScript"
+	         {
+	         "ScriptFile"  "heroes/Warlock/sacrifice.lua"
+	         "Function"    "Director"
+	
+	         "radius"               "%radius"
+	         "barrier_reduction"    "%barrier_reduction" 
+	         "change_per_teak"      "%change_per_teak" 
+	         }
+	       }
+	    }
+	    
+	    
+	    "modifier_sacrifice_invulnerability"
+	    {
+	      "Passive"       "0"
+	      "IsHidden"      "0"
+	      "IsBuff"        "1"
+	      "IsPurgable"    "0"
+
+	      "Duration"     "%duration_invulnerable"
+	    
+	     "States"
+	      {
+	       "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+
+		"EffectName"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+		"EffectAttachType"	"follow_overhead"
+	    }
+	  }
+	
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	   "01"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "radius"                "9999"
+	   }
+	   "02"
+	   {
+	     "var_type"              "FIELD_FLOAT"
+	     "tick_interval"         ".05"
+	   }
+	   "03"
+	   {
+	     "var_type"               "FIELD_FLOAT"
+	     "duration_invulnerable"  "3.0 6.0 9.0"
+	   }
+	   "04"
+	   {
+	     "var_type"               "FIELD_FLOAT"
+	     "barrier_reduction"      "2.7"
+	   }
+	   "05"
+	   {
+	     "var_type"               "FIELD_FLOAT"
+	     "change_per_teak"        "2.5"
+	   }
+	  }
+	
+	}
+
+
+	
+	"warlock_magic_splash"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityTextureName"     ""
+	
+	    "AoERadius"              "375"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+		"AbilitySpecial"
+		{
+	   		"01"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"damage"                "80 160 240"
+	   		}
+	   		"02"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"radius"                "375"
+	   		}
+		}
+
+		"precache"
+		{
+			//"soundfile"		"Hero_NagaSiren.Riptide.Cast"
+			"particle"		"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+					
+		}	
+
+		"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_magic_splash"
+		}
+	
+
+	
+	  "Modifiers"
+	 {
+
+		"modifier_magic_splash"
+		{
+			"Passive"     "1"
+			"IsHidden"    "0"
+	     		"OnCreated"
+	     		{
+	         		"RunScript"
+	             		{
+	               			"ScriptFile"      "heroes/Warlock/magicSplash.lua"  //"heroes/Sorcerer/magic_splash.lua"
+	               			"Function"        "check_order"
+				}
+	             	}
+	     	}
+
+
+	   	"modifier_inflicts"
+	   	{
+	     		"Passive"     "0"
+	     		"IsHidden"    "0"
+	     		"IsBuff"      "1"
+	     
+	     		"OnCreated"
+	     		{
+				"FireEffect"
+				{
+					"Target" "TARGET"
+					"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+					"EffectAttachType"		"follow_origin"	
+				}
+				"FireSound"
+				{
+					"EffectName" "Hero_NagaSiren.Riptide.Cast"
+					"Target" "TARGET"
+				}
+	       			"Damage"
+	        		{
+	          			"Type"   "DAMAGE_TYPE_MAGICAL"
+	          			"Damage" "%damage"
+	        			"Target"
+	          			{
+	           				"Center"    "CASTER"
+	           				"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	           				"Radius"    "%radius"
+	           				"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	           			}
+	        		}
+	     		}
+	   	}
+	 }
+	}
