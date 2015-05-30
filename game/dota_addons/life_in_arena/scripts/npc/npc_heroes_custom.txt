@@ -553,8 +553,8 @@
 		"Ability1" "kret_acid"	
 		"Ability2" "kret_poisoning" 		
 		"Ability3" "kret_lust_for_life" 	
-		"Ability4" "kret_acid" 					
-		"Ability5" "attribute_bonus" 					
+		"Ability4" "kret_virus" 					
+		"Ability5" "attribute_bonuses" 					
 		"Ability6" "" 	
 		"Ability7" "" 					
 		"Ability8" "" 					
@@ -570,7 +570,7 @@
 		"AttackAcquisitionRange" "800" 
 		"AttackRange" "105" 
 	
-		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"22"										
 		"AttributeStrengthGain"		"2.00"										
 		"AttributeBaseIntelligence"	"6"										
@@ -730,7 +730,7 @@
 	"Ability1" "naga_siren_fury"	
 	"Ability2" "naga_siren_eating" 		
 	"Ability3" "naga_siren_art_of_battle" 	
-	"Ability4" "dice_steelstorm"					
+	"Ability4" "naga_siren_song"					
 	"Ability5" "attribute_bonuses" 					
 	"Ability6" "" 	
 	"Ability7" "" 					
@@ -1096,6 +1096,65 @@
 	//End of file npc_lia_hero_vowen_from_blood.txt
 
 
+	//Start of file npc_lia_hero_warlock.txt
+		"npc_lia_hero_warlock"
+		{
+		"override_hero"				"npc_dota_hero_lion"
+	
+		"Ability1" ""	
+		"Ability2" "warlock_sacrifice" 		
+		"Ability3" "warlock_magic_splash" 	
+		"Ability4" "" 					
+		"Ability5" "" 					
+		"Ability6" "" 	
+		"Ability7" "" 					
+		"Ability8" "" 					
+	
+		"ArmorPhysical" "0" 		
+		"MagicalResistance" "25"	
+	
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "5" 
+		"AttackDamageMax" "23" 
+		"AttackRate" "1.90" 
+		"AttackAnimationPoint" "0.740" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "400" 
+	
+		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"		"9"										
+		"AttributeStrengthGain"		"1.10"										
+		"AttributeBaseIntelligence"	"20"										
+		"AttributeIntelligenceGain"	"2.00"										
+		"AttributeBaseAgility"		"6"										
+		"AttributeAgilityGain"		"1.20"	
+	
+		"BountyXP" "100"
+		"BountyGoldMin" "50" 
+		"BountyGoldMax" "50" 
+	
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "250" 
+		"MovementTurnRate" "0.5" 
+	
+		"StatusHealth" "525"
+		"StatusHealthRegen" "1.15" 
+		"StatusMana" "75" 
+		"StatusManaRegen" "0.01" 
+	
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+		"VisionDaytimeRange" "900"
+		"VisionNighttimeRange" "800" 
+	
+		"HasInventory" "1" 
+		}
+	//End of file npc_lia_hero_warlock.txt
+
+
 	//Start of file npc_lia_hero_warrior_of_light.txt
 		"npc_lia_hero_warrior_of_light"
 		{
@@ -1153,63 +1212,4 @@
 		"HasInventory" "1" 
 		}
 	//End of file npc_lia_hero_warrior_of_light.txt
-
-
-	"npc_lia_hero_warlock"
-	{
-	"override_hero"				"npc_dota_hero_lion"
-
-	"Ability1" ""	
-	"Ability2" "warlock_sacrifice" 		
-	"Ability3" "warlock_magic_splash" 	
-	"Ability4" "" 					
-	"Ability5" "" 					
-	"Ability6" "" 	
-	"Ability7" "" 					
-	"Ability8" "" 					
-
-	"ArmorPhysical" "0" 		
-	"MagicalResistance" "25"	
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "5" 
-	"AttackDamageMax" "23" 
-	"AttackRate" "1.90" 
-	"AttackAnimationPoint" "0.740" 
-	"AttackAcquisitionRange" "800" 
-	"AttackRange" "400" 
-
-	"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
-	"AttributeBaseStrength"		"9"										
-	"AttributeStrengthGain"		"1.10"										
-	"AttributeBaseIntelligence"	"20"										
-	"AttributeIntelligenceGain"	"2.00"										
-	"AttributeBaseAgility"		"6"										
-	"AttributeAgilityGain"		"1.20"	
-
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "250" 
-	"MovementTurnRate" "0.5" 
-
-	"StatusHealth" "525"
-	"StatusHealthRegen" "1.15" 
-	"StatusMana" "75" 
-	"StatusManaRegen" "0.01" 
-
-	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
-
-	"VisionDaytimeRange" "900"
-	"VisionNighttimeRange" "800" 
-
-	"HasInventory" "1" 
-	}
-
-
 }
