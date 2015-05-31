@@ -1,4 +1,115 @@
-	"warlock_sacrifice"
+"sorcerer_storm_datadriven"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "alchemist_acid_spray"
+
+    
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "-1"
+    "LevelsBetweenUpgrades"  "1"
+
+
+// Precache
+  //-------------------------------------------------------------------------------------------------------------
+  "precache"
+  {
+    "particle"      "particles/units/heroes/hero_zuus/zuus_arc_lightning_e.vpcf"
+  }
+
+
+// Stats
+//-------------------------------------------------------------------------------------------------------------
+  
+  "AbilityCastPoint"        "0.3"
+  "AbilityCooldown"         "18.0"
+  "AbilityManaCost"         "100"
+  "AbilityCastRange"        "700"
+
+  "AoERadius"               "%radius"
+ 
+
+ "OnSpellStart"  
+ {
+   "Damage"
+    {
+      "Target"
+      {
+        "Center"    "POINT"
+        "Radius"    "%radius"
+        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+      }
+
+      "Type"      "DAMAGE_TYPE_MAGICAL"
+      "Damage"    "%damage"
+    }
+
+
+    "ActOnTargets"
+    {
+      "Target"
+      {
+        "Center" "POINT"
+                "Radius" "%radius"
+                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+      }
+
+      "Action"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_sorcerer_storm"
+          "Target"        "TARGET"
+        }
+      }
+    }
+  }                                           //Туча particles/units/heroes/hero_razor/razor_rain_storm.vpcf
+
+// Modifiers
+//-------------------------------------------------------------------------------------------------------------
+"Modifiers"
+{
+  "modifier_sorcerer_storm"
+  {
+    "Passive"       "0"
+    "IsHidden"      "0"
+    "IsDebuff"      "1"
+
+    "Duration"  "1.7"
+
+    "EffectName"        "particles/units/heroes/hero_zuus/zuus_arc_lightning_e.vpcf"
+    "EffectAttachType"  "follow_origin"
+  }
+}
+
+// Special
+//-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+   "01"
+   {
+     "var_type"              "FIELD_INTEGER"
+     "radius"                "250"
+   }
+   "02"
+   {
+     "var_type"              "FIELD_INTEGER"
+     "damage"         "250"
+   }
+  }
+
+}	
+
+
+
+       "warlock_sacrifice"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
@@ -229,3 +340,4 @@
 	   	}
 	 }
 	}
+
