@@ -3205,7 +3205,7 @@
 	    "IsHidden"      "0"
 	    "IsBuff"        "1"
 	
-	    "ThinkInterval" ".03"
+	    "ThinkInterval" ".1"
 	
 	    "OnIntervalThink"
 	    {
@@ -7876,6 +7876,104 @@
 	//End of file npc_lia_hero_queen_of_spiders.txt
 
 
+	//Start of file npc_lia_hero_shadow_master.txt
+	"shadow_master_shadow"
+	{
+		"BaseClass"               	"ability_datadriven"
+	  	"AbilityBehavior"         	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  	"AbilityTextureName"      	""
+	
+	  	"AbilityCooldown"			"12"
+		"AbilityManacost"			"30 40 50"
+	    "AbilityCastPoint"          "0.5"
+		
+	    "MaxLevel"               	"3"
+		"RequiredLevel"          	"1"
+		"LevelsBetweenUpgrades"  	"2"
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+	        "particle"  "particles/status_fx/status_effect_terrorblade_reflection.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_reflection_cast.vpcf"
+	        "particle"  "particles/generic_gameplay/illusion_killed.vpcf"
+		}
+	
+		"AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	    		"var_type"      			"FIELD_INTEGER"
+	      		"shadow_lifetime"  			"120"
+	    	}
+	    	"02"
+	    	{
+	    		"var_type"      			"FIELD_INTEGER"
+	      		"shadow_attributes_perc"  	"75 125 175"
+	    	}
+	    }
+	
+	    "OnOwnerDied"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
+	    		"Function"		"KillShadow"
+	    	}
+	    }
+	
+	    "OnAbilityPhaseStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "heroes\ShadowMaster\Shadow.lua"
+	            "Function"          "ShadowCast"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
+	    		"Function"		"SpawnShadow"
+	    	}
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_shadow"
+	        {
+	            "IsHidden"  "1"
+	
+	            "StatusEffectName"      "particles/status_fx/status_effect_terrorblade_reflection.vpcf"
+	            "StatusEffectPriority"  "100"
+	
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_IS_ILLUSION" "0"
+	            }
+	
+	            "OnDeath"
+	            {
+	                "FireEffect"
+	                {
+	                    "EffectName"        "particles/generic_gameplay/illusion_killed.vpcf"
+	                    "EffectAttachType"  "follow_worldorigin"
+	                    "Target"            "UNIT"
+	                }
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "heroes\ShadowMaster\Shadow.lua"    
+	                    "Function"      "RemoveShadow"
+	                }
+	            }
+	        }
+	    }
+	}
+	//End of file npc_lia_hero_shadow_master.txt
+
+
 	//Start of file npc_lia_hero_shaman.txt
 	"shaman_total_madness_datadriven" 
 	  {
@@ -9983,7 +10081,118 @@
 
 
 	//Start of file npc_lia_hero_warlock.txt
-		"warlock_sacrifice"
+	"sorcerer_storm_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	
+	
+	// Precache
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "particle"      "particles/units/heroes/hero_zuus/zuus_arc_lightning_e.vpcf"
+	  }
+	
+	
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	  
+	  "AbilityCastPoint"        "0.3"
+	  "AbilityCooldown"         "18.0"
+	  "AbilityManaCost"         "100"
+	  "AbilityCastRange"        "700"
+	
+	  "AoERadius"               "%radius"
+	 
+	
+	 "OnSpellStart"  
+	 {
+	   "Damage"
+	    {
+	      "Target"
+	      {
+	        "Center"    "POINT"
+	        "Radius"    "%radius"
+	        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      }
+	
+	      "Type"      "DAMAGE_TYPE_MAGICAL"
+	      "Damage"    "%damage"
+	    }
+	
+	
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center" "POINT"
+	                "Radius" "%radius"
+	                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      }
+	
+	      "Action"
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_sorcerer_storm"
+	          "Target"        "TARGET"
+	        }
+	      }
+	    }
+	  }                                           //Туча particles/units/heroes/hero_razor/razor_rain_storm.vpcf
+	
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	{
+	  "modifier_sorcerer_storm"
+	  {
+	    "Passive"       "0"
+	    "IsHidden"      "0"
+	    "IsDebuff"      "1"
+	
+	    "Duration"  "1.7"
+	
+	    "EffectName"        "particles/units/heroes/hero_zuus/zuus_arc_lightning_e.vpcf"
+	    "EffectAttachType"  "follow_origin"
+	  }
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	   "01"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "radius"                "250"
+	   }
+	   "02"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "damage"         "250"
+	   }
+	  }
+	
+	}	
+	
+	
+	
+	       "warlock_sacrifice"
 		{
 		  // General
 		  //-------------------------------------------------------------------------------------------------------------
@@ -10154,26 +10363,21 @@
 						
 			}	
 	
-			"OnRespawn"
-			{
-				"ApplyModifier"	"modifier_magic_splash"
-			}
-		
 	
-		
+	
 		  "Modifiers"
 		 {
 	
 			"modifier_magic_splash"
 			{
 				"Passive"     "1"
-				"IsHidden"    "0"
+				"IsHidden"    "1"
 		     		"OnCreated"
 		     		{
 		         		"RunScript"
 		             		{
 		               			"ScriptFile"      "heroes/Warlock/magicSplash.lua"  //"heroes/Sorcerer/magic_splash.lua"
-		               			"Function"        "check_order"
+		               			"Function"        "overload_check_order"
 					}
 		             	}
 		     	}
@@ -10214,6 +10418,7 @@
 		   	}
 		 }
 		}
+	
 	//End of file npc_lia_hero_warlock.txt
 
 
@@ -11030,6 +11235,50 @@
 		}
 	}
 	//End of file purchasable_units_skills.txt
+
+
+	//Start of file shadow_abilities.txt
+	"shadow_return_to_owner"
+	{
+		"BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"    ""
+	
+	    "AbilityCooldown"           "0"
+	    "AbilityManacost"           "0"
+	
+	    "MaxLevel"              "1"
+	
+	    "AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	    		"var_type"      			"FIELD_INTEGER"
+	      		"owner_health_restore"  	"200"
+	    	}
+	    }
+	
+	    "OnOwnerDied"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+	    		"Function"				"HealOwner"
+	    		"owner_health_restore"	"%owner_health_restore"
+	    	}
+	    }
+	
+	    "OnSpellStart"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+	    		"Function"				"KillShadow"
+	    	}
+	    }
+	}
+	
+	//End of file shadow_abilities.txt
 
 
 	//Start of file spherical_staff_fire_golem_immolation.txt

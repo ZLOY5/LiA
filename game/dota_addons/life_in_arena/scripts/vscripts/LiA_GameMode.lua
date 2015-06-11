@@ -201,7 +201,7 @@ end
 function LiA:OnEntityKilled(keys)
     local ent = EntIndexToHScript(keys.entindex_killed)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
-    if ent:IsRealHero() then
+    if ent:IsRealHero() and not ent:HasModifier("modifier_shadow") then
         OnHeroDeath(keys)
         return
     elseif ent:HasAttribute("FirstStage") then
