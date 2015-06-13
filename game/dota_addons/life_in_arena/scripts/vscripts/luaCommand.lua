@@ -27,5 +27,12 @@ Convars:RegisterCommand('player_say', function(...)
       if keys.text == "KV_Update" then
         GameRules:Playtesting_UpdateAddOnKeyValues()
       end
+      if keys.text == "1" then
+        local u = CreateUnitByName("orn_mutant", Vector(0,0,0), true, nil, nil, DOTA_TEAM_GOODGUYS)
+        print("Base attack time: ",u:GetBaseAttackTime())
+        print("Attack Speed: ",u:GetAttackSpeed())
+        print("Increased attack Speed: ",u:GetIncreasedAttackSpeed())
+        print("Seconds per attack: ",u:GetSecondsPerAttack())
+      end
     end
   end, 'player say', 0)

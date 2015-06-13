@@ -41,6 +41,8 @@ function Precache( context )
 		--Голем
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_fire_immolation_child.vpcf", context)			
 		PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", context)		
+
+		PrecacheUnitByNameAsync("npc_dota_hero_terrorblade", function(...) end)
 	
 		--короч вот тут заменил немного, если не будет пахать то верну на место
 		PrecacheUnitByNameAsync("1_wave_creep", function(...) end)

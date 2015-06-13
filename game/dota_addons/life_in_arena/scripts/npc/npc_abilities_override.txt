@@ -3205,7 +3205,7 @@
 	    "IsHidden"      "0"
 	    "IsBuff"        "1"
 	
-	    "ThinkInterval" ".03"
+	    "ThinkInterval" ".1"
 	
 	    "OnIntervalThink"
 	    {
@@ -6022,7 +6022,7 @@
 				"04"
 				{
 					"var_type"				"FIELD_FLOAT"
-					"duration"				"4.5+0.1"
+					"duration"				"4.6"
 				}
 				"05"
 				{
@@ -8330,6 +8330,99 @@
 	//End of file npc_lia_hero_queen_of_spiders.txt
 
 
+	//Start of file npc_lia_hero_shadow_master.txt
+	"shadow_master_shadow"
+	{
+		"BaseClass"               	"ability_datadriven"
+	  	"AbilityBehavior"         	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  	"AbilityTextureName"      	""
+	
+	  	"AbilityCooldown"			"12"
+		"AbilityManacost"			"30 40 50"
+	    "AbilityCastPoint"          "0.5"
+		
+	    "MaxLevel"               	"3"
+		"RequiredLevel"          	"1"
+		"LevelsBetweenUpgrades"  	"2"
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+	        "particle"  "particles/status_fx/status_effect_terrorblade_reflection.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_reflection_cast.vpcf"
+	        "particle"  "particles/generic_gameplay/illusion_killed.vpcf"
+		}
+	
+		"AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	    		"var_type"      			"FIELD_INTEGER"
+	      		"shadow_lifetime"  			"120"
+	    	}
+	    	"02"
+	    	{
+	    		"var_type"      			"FIELD_INTEGER"
+	      		"shadow_attributes_perc"  	"75 125 175"
+	    	}
+	    }
+	
+	    "OnOwnerDied"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
+	    		"Function"		"KillShadow"
+	    	}
+	    }
+	
+	    "OnAbilityPhaseStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "heroes\ShadowMaster\Shadow.lua"
+	            "Function"          "ShadowCast"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
+	    		"Function"		"SpawnShadow"
+	    	}
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_shadow"
+	        {
+	            "IsHidden"  "1"
+	
+	            "StatusEffectName"      "particles/status_fx/status_effect_terrorblade_reflection.vpcf"
+	            "StatusEffectPriority"  "100"
+	
+	            "OnDeath"
+	            {
+	                "FireEffect"
+	                {
+	                    "EffectName"        "particles/generic_gameplay/illusion_killed.vpcf"
+	                    "EffectAttachType"  "follow_worldorigin"
+	                    "Target"            "UNIT"
+	                }
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "heroes\ShadowMaster\Shadow.lua"    
+	                    "Function"      "RemoveShadow"
+	                }
+	            }
+	        }
+	    }
+	}
+	//End of file npc_lia_hero_shadow_master.txt
+
+
 	//Start of file npc_lia_hero_shaman.txt
 	"shaman_total_madness_datadriven" 
 	  {
@@ -9710,13 +9803,295 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"  "heroes/item_hand_of_midas.lua"
+	          "ScriptFile"  "heroes/TimeLord/item_hand_of_midas.lua"
 	          "Function"    "item_hand_of_midas_datadriven_on_spell_start"
 	          "Target"      "TARGET"
 	        }     
 	      }
 	    }
 	}
+	
+	}
+	
+	"time_lord_timelapse_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	
+	
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	  
+	  "AbilityCastPoint"        "0.3"
+	  "AbilityCooldown"         "13 11 9"
+	  "AbilityManaCost"         "100"
+	 
+	"OnSpellStart"
+	{
+	  "RunScript"
+	     {
+	       "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
+	       "Function"    "Do_fucking_Lapse"
+	     }
+	}
+	
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	{
+	 "modifier_name"
+	  {
+	    "Passive"       "1"
+	    "IsHidden"      "0"
+	    "IsDebuff"      "0"
+	  
+	    "EffectName"    "particle_name"
+	    "EffectAttachType"  "follow_origin"
+	  
+	   "ThinkInterval"  "0.03"
+	
+	   "OnIntervalThink"
+	   {
+	     "RunScript"
+	     {
+	       "ScriptFile"  "heroes/TimeLord/time_lord_timelapse.lua"
+	       "Function"    "TickLapse"
+	     }
+	   }
+	
+	  } 
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	   "01"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "radius"                "250"
+	   }
+	  }
+	
+	}
+	
+	
+	"time_lord_supporting_of_time_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"           "ability_datadriven"
+	  
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	 
+	  "AbilityTextureName"     "alchemist_acid_spray"
+	  
+	  // Stats    
+	  //-------------------------------------------------------------------------------------------------------------
+	  
+	  "AbilityCastPoint"        "0.0"
+	  "AbilityCooldown"         "60.0"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                          "FIELD_INTEGER"
+	      "intellect_buff_amount"             "1 2 3"
+	    }
+	    "02"
+	    {
+	      "var_type"                          "FIELD_INTEGER"
+	      "Interval_Of_Intellect_Stuck"             "60"
+	    }
+	  }
+	
+	
+	  "Modifiers"
+	  {
+	    "modifier_time_lord_supporting_of_time_datadriven"
+	    {
+	      "Passive"       "1"
+	      "IsHidden"      "0"
+	      "IsBuff"        "1"
+	
+	      
+	
+	      "OnCreated"
+	      {
+	       "RunScript"
+	        {
+	         "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
+	         "Function"    "start_cooldawn_after_respawn"
+	        }
+	      }
+	
+	      "OnDeath"
+	      { 
+	       "RunScript"
+	        {
+	         "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
+	         "Function"    "stop_cooldawn"
+	        }
+	      }
+	      
+	      "ThinkInterval"  "%Interval_Of_Intellect_Stuck"
+	
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	         "ScriptFile"  "heroes/time_lord_bonus.lua"
+	         "Function"    "information_of_spell"
+	         "Bonus"       "%intellect_buff_amount"
+	
+	        }
+	      
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_time_lord_supporting_of_time_bonus_datadriven"
+	          "Target"        "CASTER"
+	        }
+	      }      
+	    }
+	
+	    "modifier_time_lord_supporting_of_time_bonus_datadriven"
+	    {
+	      "IsHidden"  "1"
+	
+	      "IsBuff"    "1"
+	      
+	
+	      "Attributes"  "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"  "%intellect_buff_amount"
+	      }
+	    }
+	  }
+	}
+	
+	
+	"stop_time_datadriven"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"     "alchemist_acid_spray"
+	
+	    
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "-1"
+	    "LevelsBetweenUpgrades"  "1"
+	
+	
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	  
+	  "AbilityCastPoint"        "0.3"
+	  "AbilityCooldown"         "200"
+	  "AbilityManaCost"         "100"
+	
+	"OnSpellStart"
+	{
+	  "RunScript"
+	  {
+	    "ScriptFile"  "heroes/TimeLord/stop_time.lua"
+	    "Function"    "Finde_and_apply"
+	    "Sran_hero"    "%hero_stop"
+	    "Stan_ather"   "%ather_stop"
+	  }
+	
+	  "ApplyModifier"
+	  {
+	    "ModifierName"  "modifier_time_lock_bonus"
+	    "Target"        "CASTER"
+	    "Duration"      "%bonus_duration"
+	  }
+	}
+	 
+	
+	
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	  {
+	    "modifier_time_lock_stun_datadriven"
+	    {
+	      "IsDebuff"  "1"
+	
+	      "EffectName"        "particles/generic_gameplay/generic_stunned.vpcf"
+	      "EffectAttachType"  "follow_overhead"
+	
+	      "StatusEffectName"      "particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+	      "StatusEffectPriority"  "1"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_STUNNED"  "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_FROZEN"   "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	
+	    "modifier_time_lock_bonus"
+	    {
+	      "Passive"       "0"
+	      "IsHidden"      "0"
+	      "IsBuff"        "1"
+	     
+	     "Properties"
+	     {
+	       "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"     "%bonus_movespeed_percentage"
+	       "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"     "%bonus_attackspeed"
+	     }
+	    }
+	  }
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	   "01"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "hero_stop"                "3 4 5"
+	   }
+	   "02"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "ather_stop"                "4 6 8"
+	   }
+	   "03"
+	   {
+	     "var_type"                                 "FIELD_INTEGER"
+	     "bonus_movespeed_percentage"                "20 40 60"
+	   }
+	   "04"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "bonus_attackspeed"                "200 250 300"
+	   }
+	   "05"
+	   {
+	     "var_type"              "FIELD_INTEGER"
+	     "bonus_duration"        "4 6 8"
+	   }
+	  }
 	
 	}
 	//End of file npc_lia_hero_time_lord.txt
@@ -10437,7 +10812,180 @@
 
 
 	//Start of file npc_lia_hero_warlock.txt
-		"warlock_sacrifice"
+	﻿// warlock
+	
+	
+	
+	
+	"warlock_storm_datadriven"
+	{
+	  	// General
+	  	//-------------------------------------------------------------------------------------------------------------
+	    	"BaseClass"              "ability_datadriven"
+	    	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
+	    	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    	"AbilityTextureName"     ""
+	
+	    
+	
+	    	"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    	"MaxLevel"               "3"
+	    	"RequiredLevel"          "1"
+	    	"LevelsBetweenUpgrades"  "2"
+		"AbilityChannelTime"      "2.5"
+	
+	
+		// Precache
+	  	//-------------------------------------------------------------------------------------------------------------
+	  	"precache"
+	  	{
+	    		"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+			//"particle" "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+			
+	  	}
+	
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+	  
+	  	"AbilityCastPoint"        "0.3"
+	  	"AbilityCooldown"         "9.0 10.0 11.0"
+	  	"AbilityManaCost"         "130 160 190"
+	  	"AbilityCastRange"        "400"
+	
+	  	"AoERadius"               "200 225 250"
+	 
+	
+	 	"OnSpellStart"  
+	 	{
+	        	"ApplyModifier"
+	        	{
+	          		"ModifierName"  "modifier_warlock_storm_hero"
+	          		"Target"        "CASTER"
+	        	}
+	    		"ActOnTargets"
+	    		{
+	      			"Target"
+	      			{
+	        			"Center" "POINT"
+	                		"Radius" "%radius"
+	                		"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                		"Type"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      			}
+	
+	      			"Action"
+	      			{
+	        			"ApplyModifier"
+	        			{
+	          				"ModifierName"  "modifier_warlock_storm"
+	          				"Target"        "TARGET"
+	        			}
+	      			}
+	    		}
+	  	}  
+	
+		"OnChannelInterrupted"
+		{
+			"RemoveModifier"
+		       {
+		         "ModifierName"  "modifier_warlock_storm_hero"
+		         "Target"        "CASTER"
+		       }
+		}                                         //particles/units/heroes/hero_razor/razor_rain_storm.vpcf
+	
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+	  		"modifier_warlock_storm_hero"
+	  		{
+	    			"Passive"       "0"
+	    			"IsHidden"      "1"
+	    			"IsDebuff"      "0"
+				"IsBuff"      	"0"
+				"IsPurgable"	"0"
+				//
+	    			"Duration"  "%duration"
+	  		}
+	  		"modifier_warlock_storm"
+	  		{
+	    			"Passive"       "0"
+	    			"IsHidden"      "0"
+	    			"IsDebuff"      "1"
+	
+	    			"Duration"  "%duration"
+	
+				"ThinkInterval"  "%tick_interval"
+		       
+				"OnIntervalThink"
+				{
+	        			"RunScript"
+	        			{
+	            				"ScriptFile" "heroes/Warlock/storm.lua"
+	            				"Function"   "stormCauseDamage"
+						"damage" "%damage"
+						//"heroCaster" "CASTER"
+	        			}
+					"FireEffect"
+					{
+						"Target" "TARGET"
+						"EffectName"			"particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+						"EffectAttachType"		"follow_overhead"	
+					}
+					//
+	                		//"AttachEffect"
+	                		//{
+	                    		//	"Target" "TARGET"
+	                    		//	"EffectName" "particles/units/heroes/hero_mirana/mirana_moonlight_cast.vpcf"
+	                    		//	"EffectAttachType" "follow_origin"
+					//
+	 			        //           "ControlPoints"
+	                    		//	{
+	                        	//		"00" "0 0 0"
+	                        	//		"01" "100 0 0"
+	                    		//	}
+	                		//}
+	    				//"EffectName"        "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+	    				//"EffectAttachType"  "follow_origin"
+		       		}
+	
+	
+	  		}
+		}
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+	  	"AbilitySpecial"
+	  	{
+	   		"01"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"radius"                "200 225 250"
+	   		}
+	   		"02"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"damage"         		"40 80 120"
+	   		}
+	   		"03"
+	   		{
+	     			"var_type"              "FIELD_FLOAT"
+	     			"tick_interval"         	"0.8"
+	   		}
+	   		"04"
+	   		{
+	     			"var_type"              "FIELD_FLOAT"
+	     			"duration"         	"2.5"
+	   		}
+	
+	
+	 	}
+	
+	}	
+	
+	
+	
+	       "warlock_sacrifice"
 		{
 		  // General
 		  //-------------------------------------------------------------------------------------------------------------
@@ -10462,7 +11010,7 @@
 			"precache"
 			{
 				//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
-				"particle"		"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+				"particle"		"particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_debuff.vpcf"
 						
 			}	   
 	
@@ -10530,9 +11078,23 @@
 		      {
 		       "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
 		      }
+			"OnCreated"
+			{
+	                "AttachEffect"
+	                {
+	                    "Target" "TARGET"
+	                    "EffectName" "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_debuff.vpcf"
+	                    "EffectAttachType" "follow_origin"
 	
-			"EffectName"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
-			"EffectAttachType"	"follow_overhead"
+	                    //"ControlPoints"
+	                    //{
+	                    //    "00" "0 0 0"
+	                    //    "01" "200 0 0"
+	                    //}
+	                }
+			}
+			//"EffectName"	"particles/units/heroes/hero_disruptor/disruptor_thunder_strike_buff_sphere3.vpcf"
+			//"EffectAttachType"	"follow_origin"
 		    }
 		  }
 		
@@ -10604,54 +11166,22 @@
 			"precache"
 			{
 				//"soundfile"		"Hero_NagaSiren.Riptide.Cast"
-				"particle"		"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+				"particle"		"particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf"
 						
 			}	
 	
-			"OnRespawn"
-			{
-				"ApplyModifier"	"modifier_magic_splash"
-			}
-		
 	
-		
+	
 		  "Modifiers"
 		 {
 	
 			"modifier_magic_splash"
 			{
 				"Passive"     "1"
-				"IsHidden"    "0"
-		     		"OnCreated"
-		     		{
-		         		"RunScript"
-		             		{
-		               			"ScriptFile"      "heroes/Warlock/magicSplash.lua"  //"heroes/Sorcerer/magic_splash.lua"
-		               			"Function"        "check_order"
-					}
-		             	}
-		     	}
+				"IsHidden"    "1"
 	
-	
-		   	"modifier_inflicts"
-		   	{
-		     		"Passive"     "0"
-		     		"IsHidden"    "0"
-		     		"IsBuff"      "1"
-		     
-		     		"OnCreated"
-		     		{
-					"FireEffect"
-					{
-						"Target" "TARGET"
-						"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
-						"EffectAttachType"		"follow_origin"	
-					}
-					"FireSound"
-					{
-						"EffectName" "Hero_NagaSiren.Riptide.Cast"
-						"Target" "TARGET"
-					}
+				"OnAbilityEndChannel"
+				{
 		       			"Damage"
 		        		{
 		          			"Type"   "DAMAGE_TYPE_MAGICAL"
@@ -10664,10 +11194,298 @@
 		           				"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		           			}
 		        		}
-		     		}
-		   	}
+					"FireEffect"
+					{
+		        			"Target"
+		          			{
+		           				"Center"    "CASTER"
+		           				"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		           				"Radius"    "%radius"
+		           				"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		           			}
+						"EffectName"			"particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf"
+						"EffectAttachType"		"follow_origin"	
+					}	
+					
+	
+				}
+	
+		     		//"OnCreated"
+		     		//{
+		         		//"RunScript"
+		             		//{
+		               		//	"ScriptFile"     "magicSplash.lua" //"heroes/Warlock/magicSplash.lua"
+		               		//	"Function"        "overload_check_order"
+					//}
+		             	//}
+		     	}
+	
+	
+		   	//"modifier_inflicts"
+		   	//{
+		     	//	"Passive"     "0"
+		     	//	"IsHidden"    "0"
+		     	//	"IsBuff"      "1"
+		     //
+		     	//	"OnCreated"
+		     	//	{
+			//		"FireEffect"
+			//		{
+			//			"Target" "TARGET"
+			//			"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+			//			"EffectAttachType"		"follow_origin"	
+			//		}
+			//		"FireSound"
+			//		{
+			//			"EffectName" "Hero_NagaSiren.Riptide.Cast"
+			//			"Target" "TARGET"
+			//		}
+		       	//		"Damage"
+		        //		{
+		          //			"Type"   "DAMAGE_TYPE_MAGICAL"
+		          //			"Damage" "%damage"
+		        	//		"Target"
+		          	//		{
+		           	//			"Center"    "CASTER"
+		           	//			"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		           	//			"Radius"    "%radius"
+		           	//			"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		           	//		}
+		        	//	}
+		     		//}
+		   	//}
 		 }
 		}
+	
+	
+	
+	
+	
+	
+	
+	"warlock_firestorm_datadriven"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.4"
+		"AoERadius"              			"280 290 300"
+		//"FightRecapLevel"				"1"
+		"AbilityTextureName"			""
+		    "MaxLevel"               "3"
+		    "RequiredLevel"          "5"
+		    "LevelsBetweenUpgrades"  "4"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"150.0 160.0 170.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"250 300 350"
+		//
+		"AbilityChannelTime"      "7"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"280 290 300"
+			}		
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"wave_count"					"6"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"wave_damage"					"90 120 150"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"wave_interval"					"1.0"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"burn_damage"					"20 40 60"
+			}
+			"06"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"burn_interval"					"1.0"
+			}
+			"07"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"burn_duration"					"10.0"
+			}
+			//"08"
+			//{
+			//	"var_type"						"FIELD_FLOAT"
+			//	"first_wave_delay"				"0.9"
+			//}
+			"09"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"wave_num_exp"					"6"
+			}
+			"10"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"exp_radius"					"100"
+			}
+		}
+	
+		"precache"
+		{
+			//"soundfile"				"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			//"particle"				"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_snow.vpcf"
+			//"particle"				"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_explosion.vpcf"
+			//
+			//
+			"particle"				"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"particle"				"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
+		}
+		//
+		//
+		//
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_warlock_firestorm_datadriven"
+			}
+	
+	
+	                "RunScript"
+	                {
+	                	"ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                      	"Function"  "firestormWave_castpoint"
+				"EventName" "OnSpellStart"
+	 			"Target" "POINT"
+			}
+			
+			//"FireSound"
+			//{
+			//	"Target"			"CASTER"
+			//	"EffectName"		"hero_Crystal.freezingField.wind"
+			//}
+		}
+		
+		"OnChannelFinish"
+		{
+			"RemoveModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_warlock_firestorm_datadriven"
+			}
+			
+		}
+	
+	
+		//
+		//
+		//
+	
+	
+		"Modifiers"
+		{
+			"modifier_warlock_firestorm_datadriven"
+			{
+				"IsPurgable"			"0"
+				"IsHidden"				"1"
+				"OverrideAnimation"		"ACT_DOTA_IDLE"
+	
+				"Duration"				"%wave_count*%wave_interval"
+	
+				"ThinkInterval"  "%wave_interval"
+	
+				"OnIntervalThink"
+				{
+	
+	                        	"RunScript"
+	                                {
+	                                	"ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                                	"Function"  "firestormWave_order"
+						"wave_num_exp" "%wave_num_exp"
+					}
+				}
+	
+	
+				//"OnCreated"
+				//{
+					//"AttachEffect"
+					//{
+					//	"Target"			"CASTER"
+					//	"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_snow.vpcf"
+					//	"EffectAttachType"	"follow_origin"
+					//	"EffectRadius"		"%radius"
+					//}
+					
+					// run actions, which cause damage and cause debuff every wave
+	                        	//"DelayedAction"
+	                        	//{
+	                            	//	"Delay" "%first_wave_delay"
+	                            	//	"Action"
+	                            	//	{
+	
+	                                //		"RunScript"
+	                                //		{
+	                                //    			"ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                                //    			"Function"  "firestormWave"
+					//		}
+	                                //	}
+	                        	//}
+				//}
+			}
+			// burn
+			//
+			"modifier_warlock_firestorm_burn"
+			{
+				"IsDebuff" 			"1"
+				"IsPurgable"			"1"
+				"IsHidden"				"0"
+				//"OverrideAnimation"		"ACT_DOTA_IDLE"
+	
+				"Duration"				"%burn_duration"
+	
+				"ThinkInterval"  "%burn_interval"
+		       
+				"OnIntervalThink"
+				{
+	
+					"Damage"
+					{
+						"Type" "DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" "%burn_damage"
+					}
+	
+				}	
+				//
+	    			"EffectName"        "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
+	    			"EffectAttachType"  "follow_origin"
+				//		
+	
+			}
+		}
+	
+	
+	}
 	//End of file npc_lia_hero_warlock.txt
 
 
@@ -11484,6 +12302,50 @@
 		}
 	}
 	//End of file purchasable_units_skills.txt
+
+
+	//Start of file shadow_abilities.txt
+	"shadow_return_to_owner"
+	{
+		"BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"    ""
+	
+	    "AbilityCooldown"           "0"
+	    "AbilityManacost"           "0"
+	
+	    "MaxLevel"              "1"
+	
+	    "AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	    		"var_type"      			"FIELD_INTEGER"
+	      		"owner_health_restore"  	"200"
+	    	}
+	    }
+	
+	    "OnOwnerDied"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+	    		"Function"				"HealOwner"
+	    		"owner_health_restore"	"%owner_health_restore"
+	    	}
+	    }
+	
+	    "OnSpellStart"
+	    {
+	    	"RunScript"
+	    	{
+	    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+	    		"Function"				"KillShadow"
+	    	}
+	    }
+	}
+	
+	//End of file shadow_abilities.txt
 
 
 	//Start of file spherical_staff_fire_golem_immolation.txt

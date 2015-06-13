@@ -1,0 +1,40 @@
+"shadow_return_to_owner"
+{
+	"BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"    ""
+
+    "AbilityCooldown"           "0"
+    "AbilityManacost"           "0"
+
+    "MaxLevel"              "1"
+
+    "AbilitySpecial"
+  	{
+    	"01"
+    	{
+    		"var_type"      			"FIELD_INTEGER"
+      		"owner_health_restore"  	"200"
+    	}
+    }
+
+    "OnOwnerDied"
+    {
+    	"RunScript"
+    	{
+    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+    		"Function"				"HealOwner"
+    		"owner_health_restore"	"%owner_health_restore"
+    	}
+    }
+
+    "OnSpellStart"
+    {
+    	"RunScript"
+    	{
+    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+    		"Function"				"KillShadow"
+    	}
+    }
+}
+
