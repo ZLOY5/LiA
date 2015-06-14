@@ -7202,6 +7202,480 @@
 	//End of file npc_lia_hero_naga_siren.txt
 
 
+	//Start of file npc_lia_hero_pirate.txt
+	"pirate_magic_rum"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			"kobold_taskmaster_speed_aura"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"	
+			"particle"		"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze.vpcf"
+			"particle"		"particles/units/heroes/hero_batrider/batrider_stickynapalm_impact.vpcf"		
+					
+		}
+		
+		//"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
+			
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AoERadius"	"250"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"14 13 12"
+	
+		"AbilityManaCost"				"60 70 80"	
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"		"20 40 60"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"miss_percentage"		"10 20 30"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"6"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"250"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{	
+				"EffectName"	"particles/units/heroes/hero_batrider/batrider_stickynapalm_impact.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"	"POINT"	
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+					"15" "255 0 0"
+				}
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Brewmaster.DrunkenHaze.Cast"
+				"Target"		"CASTER"
+			}	
+	
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_pirate_magic_rum"
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"	"%radius"
+					"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}	
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_pirate_magic_rum"
+			{
+				"Duration"	"%duration"
+				"EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+				"EffectAttachType"  "follow_origin"
+				
+				"Properties"
+				{
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss_percentage"
+				}
+				
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+						{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							}
+							"Type" "DAMAGE_TYPE_MAGICAL"
+							"Damage" "%damage"
+						}
+				}
+	
+			}
+		}
+	}	
+	
+	"pirate_poisoned_weapon"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityTextureName"			"chaos_knight_reality_rift"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"10 25 40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_and_attack_slow"		"-10 -20 -30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"4"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"		"130"
+			}
+		}
+	
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"	
+			{
+				"ModifierName"	"modifier_poisoned_weapon"
+				"Target"	"CASTER"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_poisoned_weapon"
+			{
+				"Passive"               "1"
+				"IsHidden"				"0"
+		
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_poisoned_weapon_debuff"
+						"Target"	
+						{
+						"Center"	"TARGET"
+						"Radius"	"%radius"
+						"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
+						}
+					}
+				}
+			}
+			
+			"modifier_poisoned_weapon_debuff"
+			{
+				"Passive"               "0"
+				"IsHidden"				"0"
+				"Duration"				"%duration"
+				
+				"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_and_attack_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%movement_and_attack_slow"
+				}
+				
+				"ThinkInterval"	"1.0"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage_per_second"
+					}
+				}
+			}
+		}
+	}
+	
+	"pirate_evasion"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"kunkka_ghostship"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"	
+			{
+				"ModifierName"	"modifier_pirate_evasion"
+				"Target"	"CASTER"
+			}
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"evasion"		"15 25 35"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_pirate_evasion"
+			{
+				"Passive"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+				}
+			}
+		}
+	}
+	
+	"pirate_metamorphosis"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"terrorblade_metamorphosis"
+		
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"160.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 150 200"
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"15 17 20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"transformation_time"	"0.35"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"base_attack_time"		"1.67"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_range"			"450"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_attack_range"			"550"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"100 200 300"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"  "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+			"model"		"models/heroes/terrorblade/demon.vmdl"
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_Terrorblade.Metamorphosis"
+				"Target"			"CASTER"
+			}
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"CASTER"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_metamorphosis"
+				"Target"			"CASTER"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_metamorphosis"
+			{
+				"Duration"	"%duration"
+				
+				"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+				"EffectAttachType"  "follow_origin"
+	
+				"AllowsIllusionDuplicate"	"1"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/Pirate/Metamorphosis.lua"
+						"Function"				"ModelSwapStart"
+						"model"					"models/heroes/terrorblade/demon.vmdl"
+						"projectile_model"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+					}
+	
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/Pirate/Metamorphosis.lua"
+						"Function"			"HideWearables"
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}
+				}
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"
+					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT" 	"%base_attack_time"				
+				}
+				
+				"OnAttackLanded"
+				{
+					"Damage"
+					{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Radius"	"50"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "%attack_damage / 2"
+					}
+					"Damage"
+					{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Radius"	"150"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "%attack_damage / 4"
+					}
+					"Damage"
+					{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Radius"	"250"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "%attack_damage / 4"
+					}
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
+						"Function"		"ModelSwapEnd"
+					}
+	
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
+						"Function"		"ShowWearables"
+					}
+				}
+			}
+		}
+	}
+	//End of file npc_lia_hero_pirate.txt
+
+
 	//Start of file npc_lia_hero_queen_of_spiders.txt
 	 "queen_of_spiders_infection"
 	{
@@ -9303,7 +9777,7 @@
 
 
 	//Start of file npc_lia_hero_time_lord.txt
-	"time_lord_death_datadriven"
+	"time_lord_death"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
@@ -9323,6 +9797,7 @@
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "1"
 	    "LevelsBetweenUpgrades"  "2"
+	
 	  
 	    "AbilitySpecial"
 	    {
@@ -9352,7 +9827,7 @@
 	}
 	
 	
-	"time_lord_timelapse_datadriven"
+	"time_lord_timelapse"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
@@ -9367,21 +9842,13 @@
 	    "LevelsBetweenUpgrades"  "2"
 	
 	
+	
 	    // Stats
 	    //-------------------------------------------------------------------------------------------------------------
 	  
 	    "AbilityCastPoint"        "0.3"
 	    "AbilityCooldown"         "13 11 9"
 	    "AbilityManaCost"         "150 200 250"
-	     
-	    "OnSpellStart"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
-	            "Function"    "Do_fucking_Lapse"
-	        }
-	    }
 	
 	    "AbilitySpecial"
 	    {
@@ -9396,21 +9863,26 @@
 	            "damage"                "50 100 150"
 	        }
 	    }
-	
-	    // Modifiers
-	    //-------------------------------------------------------------------------------------------------------------
+	     
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
+	            "Function"    "Do_fucking_Lapse"
+	        }
+	    }
 	    "Modifiers"
 	    {
-	        "modifier_name"
+	        "modifier_time_lord_timelapse"
 	        {
-	            "Passive"       "1"
-	            "IsHidden"      "0"
-	            "IsDebuff"      "0"
-	  
-	            "EffectName"    "particle_name"
+	            "Passive"           "1"
+	            "IsHidden"          "0"
+	            "IsDebuff"          "0"
+	
+	            "EffectName"        "particle_name"
 	            "EffectAttachType"  "follow_origin"
-	  
-	            "ThinkInterval"  "0.03"
+	            "ThinkInterval"     "0.03"
 	            "OnIntervalThink"
 	            {
 	                "RunScript"
@@ -9419,12 +9891,13 @@
 	                    "Function"    "TickLapse"
 	                }
 	            }
-	        } 
-	    }
+	        }
+	    }  
 	}
 	
 	
-	"time_lord_supporting_of_time_datadriven"
+	
+	"time_lord_supporting_of_time"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
@@ -9459,7 +9932,7 @@
 	
 	    "Modifiers"
 	    {
-	        "modifier_time_lord_supporting_of_time_datadriven"
+	        "modifier_time_lord_supporting_of_time"
 	        {
 	            "Passive"       "1"
 	            "IsHidden"      "0"
@@ -9516,7 +9989,7 @@
 	}
 	
 	
-	"stop_time_datadriven"
+	"time_lord_stop_time"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
@@ -9524,10 +9997,11 @@
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityTextureName"     "alchemist_acid_spray"
 	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
 	
 	    // Stats
 	    //-------------------------------------------------------------------------------------------------------------

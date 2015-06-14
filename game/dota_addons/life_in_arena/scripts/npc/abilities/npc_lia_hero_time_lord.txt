@@ -18,6 +18,7 @@
     "MaxLevel"               "3"
     "RequiredLevel"          "1"
     "LevelsBetweenUpgrades"  "2"
+
   
     "AbilitySpecial"
     {
@@ -62,21 +63,13 @@
     "LevelsBetweenUpgrades"  "2"
 
 
+
     // Stats
     //-------------------------------------------------------------------------------------------------------------
   
     "AbilityCastPoint"        "0.3"
     "AbilityCooldown"         "13 11 9"
     "AbilityManaCost"         "150 200 250"
-     
-    "OnSpellStart"
-    {
-        "RunScript"
-        {
-            "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
-            "Function"    "Do_fucking_Lapse"
-        }
-    }
 
     "AbilitySpecial"
     {
@@ -91,21 +84,26 @@
             "damage"                "50 100 150"
         }
     }
-
-    // Modifiers
-    //-------------------------------------------------------------------------------------------------------------
+     
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
+            "Function"    "Do_fucking_Lapse"
+        }
+    }
     "Modifiers"
     {
-        "modifier_name"
+        "modifier_time_lord_timelapse"
         {
-            "Passive"       "1"
-            "IsHidden"      "0"
-            "IsDebuff"      "0"
-  
-            "EffectName"    "particle_name"
+            "Passive"           "1"
+            "IsHidden"          "0"
+            "IsDebuff"          "0"
+
+            "EffectName"        "particle_name"
             "EffectAttachType"  "follow_origin"
-  
-            "ThinkInterval"  "0.03"
+            "ThinkInterval"     "0.03"
             "OnIntervalThink"
             {
                 "RunScript"
@@ -114,9 +112,10 @@
                     "Function"    "TickLapse"
                 }
             }
-        } 
-    }
+        }
+    }  
 }
+
 
 
 "time_lord_supporting_of_time"
@@ -219,10 +218,11 @@
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityTextureName"     "alchemist_acid_spray"
 
-    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "5"
-    "LevelsBetweenUpgrades"  "4"
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+
 
     // Stats
     //-------------------------------------------------------------------------------------------------------------
