@@ -7495,15 +7495,15 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.0"
 	
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"140.0"
+		"AbilityCooldown"				"160.0"
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"50"
+		"AbilityManaCost"				"100 150 200"
 	
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -7512,7 +7512,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"40 44 48"
+				"duration"				"15 17 20"
 			}
 			"02"
 			{
@@ -7522,12 +7522,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"base_attack_time"		"1.6"
+				"base_attack_time"		"1.67"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_range"			"422"
+				"bonus_range"			"450"
 			}
 			"05"
 			{
@@ -7537,12 +7537,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"20 40 60"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"speed_loss"				"-25"
+				"bonus_health"			"100 200 300"
 			}
 		}
 	
@@ -7614,8 +7609,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" 	"%speed_loss"
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" 		"%bonus_damage"		
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"
 					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT" 	"%base_attack_time"				
 				}
 				
@@ -7626,13 +7620,39 @@
 							"Target"
 							{
 								"Center"	"TARGET"
-								"Radius"	"240"
+								"Radius"	"50"
 								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							}
 						"Type" "DAMAGE_TYPE_PHYSICAL"
-						"Damage" "%attack_damage"
+						"Damage" "%attack_damage / 2"
+					}
+					"Damage"
+					{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Radius"	"150"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "%attack_damage / 4"
+					}
+					"Damage"
+					{
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Radius"	"250"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "%attack_damage / 4"
 					}
 				}
 				
@@ -9757,7 +9777,7 @@
 
 
 	//Start of file npc_lia_hero_time_lord.txt
-	"time_lord_death_datadriven"
+	"time_lord_death"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
@@ -9775,7 +9795,9 @@
 	  "AbilityManaCost"         "0"
 	  "AoERadius"               "%radius"
 	  
-	  
+	 	"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2" 
 	  
 	  "AbilitySpecial"
 	  {
@@ -9813,7 +9835,7 @@
 	
 	}
 	
-	"time_lord_timelapse_datadriven"
+	"time_lord_timelapse"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
@@ -9824,10 +9846,9 @@
 	
 	    
 	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 	
 	
 	// Stats
@@ -9887,7 +9908,7 @@
 	}
 	
 	
-	"time_lord_supporting_of_time_datadriven"
+	"time_lord_supporting_of_time"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
@@ -9902,7 +9923,11 @@
 	  
 	  "AbilityCastPoint"        "0.0"
 	  "AbilityCooldown"         "60.0"
-	  
+	 
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -9984,7 +10009,7 @@
 	}
 	
 	
-	"stop_time_datadriven"
+	"time_lord_stop_time"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
@@ -9994,10 +10019,10 @@
 	
 	    
 	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "-1"
-	    "LevelsBetweenUpgrades"  "1"
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
 	
 	
 	// Stats

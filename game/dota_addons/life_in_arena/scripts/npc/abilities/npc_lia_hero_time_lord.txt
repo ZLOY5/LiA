@@ -1,4 +1,4 @@
-"time_lord_death_datadriven"
+"time_lord_death"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
@@ -16,7 +16,9 @@
   "AbilityManaCost"         "0"
   "AoERadius"               "%radius"
   
-  
+ 	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2" 
   
   "AbilitySpecial"
   {
@@ -54,7 +56,7 @@
 
 }
 
-"time_lord_timelapse_datadriven"
+"time_lord_timelapse"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
@@ -65,10 +67,9 @@
 
     
 
-    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "-1"
-    "LevelsBetweenUpgrades"  "1"
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
 
 
 // Stats
@@ -128,7 +129,7 @@
 }
 
 
-"time_lord_supporting_of_time_datadriven"
+"time_lord_supporting_of_time"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
@@ -143,7 +144,11 @@
   
   "AbilityCastPoint"        "0.0"
   "AbilityCooldown"         "60.0"
-  
+ 
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+	
   "AbilitySpecial"
   {
     "01"
@@ -225,7 +230,7 @@
 }
 
 
-"stop_time_datadriven"
+"time_lord_stop_time"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
@@ -235,10 +240,10 @@
 
     
 
-    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "-1"
-    "LevelsBetweenUpgrades"  "1"
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
 
 
 // Stats
