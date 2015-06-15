@@ -20,7 +20,7 @@ function StackAddAgility(keys)
     	if ability.damageStack >= maxStack then 
 		ability.damageStack = 0
 		ability:ApplyDataDrivenModifier( caster, caster, "modifier_resourcefulness_add_agility", nil)
-		caster:ReduceMana(1000)
+		--caster:ReduceMana(1000)
 	end	
 	--
 
