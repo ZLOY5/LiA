@@ -18,7 +18,7 @@
 "paladin_blizzard"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"archmage_blizzard"
+	"AbilityTextureName"			"crystal_maiden_freezing_field"
 						//DOTA_ABILITY_BEHAVIOR_CHANNELLED |
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT |  DOTA_ABILITY_BEHAVIOR_AOE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -230,12 +230,12 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		//"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"chen_holy_persuasion"
 		"AbilityCastAnimation"   		"ACT_DOTA_CAST_ABILITY_2"
 	
 		
 		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
+		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
 		"AoERadius"               "400"	
@@ -347,10 +347,10 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"            	""
+	"AbilityTextureName"            	"chen_penitence"
 	//
 	"MaxLevel"               "3"
-	"RequiredLevel"          "-1"
+	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
 
 	// Special
@@ -459,9 +459,10 @@
 	
 
 	"AbilityCastPoint"				"0.5"
-	"AbilityTextureName"	
-		""
-        "MaxLevel"               "3"
+	"AbilityTextureName"			"chen_hand_of_god"
+	
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+    "MaxLevel"               "3"
 	"RequiredLevel"          "5"
 	"LevelsBetweenUpgrades"  "4"
 	
