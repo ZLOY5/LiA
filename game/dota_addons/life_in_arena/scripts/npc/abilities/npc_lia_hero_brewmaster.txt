@@ -86,68 +86,18 @@
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
+    "BaseClass"              "ability_lua"
+    "ScriptFile"             "brewmaster_ferocity"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
     "AbilityTextureName"     "brewmaster_fire_permanent_immolation"
-    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-    "AoERadius"   "%radius"
+    "AbilityUnitTargetFlags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "AoERadius"               "%radius"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
     
-    "OnUpgrade"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "heroes/Brewer/bear_style.lua"
-        "Function"    "CheckinLvlup"
-      }
-    }
-
-		"OnRespawn"
-    {
-		"ApplyModifier"	"bear_style_datadriven"
-	}
-	
-"Modifiers"
-{
-  "bear_style_datadriven"
-  {
-    "Passive"       "1"
-    "IsHidden"      "0"
-    "IsBuff"        "1"
-
-    "ThinkInterval" ".1"
-
-    "OnIntervalThink"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "heroes/Brewer/bear_style.lua"
-        "Function"    "CheckingMain"
-        "Strength"    "%bonus_strength"
-        "DetectionRadius" "%radius"
-      }
-    }
-  }
-
-  "bonus_strength"
-  {
-    "Passive"       "0"
-    "IsHidden"      "1"
-    "IsBuff"        "1"
-
-    "Attributes"  "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
-
-   "Properties"
-   {
-     "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
-   }
-  }
-}
-
   // Special  
   //-------------------------------------------------------------------------------------------------------------
   "AbilitySpecial"

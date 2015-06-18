@@ -8,10 +8,10 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"viper_viper_strike"
 		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 	
-		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"			
 		"MaxLevel"               "3"
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
@@ -25,8 +25,11 @@
 	
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
-			"particle" 	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf" 
+			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf" 
+			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_warmup.vpcf" 
+			"particle"		"particles/status_fx/status_effect_poison_viper.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
 		}
 		
 		"AbilitySpecial"
@@ -84,7 +87,7 @@
                 	"TrackingProjectile"
                 	{
                     		"Target" "TARGET"
-                    		"EffectName" "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+                    		"EffectName" "particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
                     		"Dodgeable" "1"
                     		"ProvidesVision" "1"
                     		"VisionRadius" "%acid_vision"
@@ -128,12 +131,6 @@
 				"Duration" 	"0.03"
 				"OnCreated"
 				{
-					"FireEffect"
-					{
-						"Target"		"TARGET"
-						"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-						"EffectAttachType"	"attach_origin"
-					}
 		
 					"Damage"
 					{
@@ -143,7 +140,8 @@
 					}
 				}
 
-				//
+				"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
+				"StatusEffectPriority"	"15"
 
 			}
 			//
@@ -192,8 +190,8 @@
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
 				}
-				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-				"EffectAttachType"  "follow_origin"
+				"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
+				"StatusEffectPriority"	"15"
 				//
 			}
 		}
@@ -206,7 +204,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"            	""
+	"AbilityTextureName"            	"slark_dark_pact"
 	//
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
@@ -282,7 +280,7 @@
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"AbilityTextureName"            	""
+	"AbilityTextureName"            	"viper_corrosive_skin"
 	"AbilityUnitTargetTeam"         	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"         	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"MaxLevel"               "3"
@@ -369,7 +367,7 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"viper_poison_attack"
 		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 	
 		
@@ -386,8 +384,8 @@
 	
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
-			"particle" 	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+			"particle"	"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
+			"particle" 	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
 		}
 		
 		"AbilitySpecial"
@@ -450,7 +448,7 @@
                 	"TrackingProjectile"
                 	{
                     		"Target" "TARGET"
-                    		"EffectName" "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+                    		"EffectName" "particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
                     		"Dodgeable" "1"
                     		"ProvidesVision" "1"
                     		"VisionRadius" "%acid_vision"
@@ -514,7 +512,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
 				}
 				//
-				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+				"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
 				"EffectAttachType"  "follow_origin"
 			}
 			//
