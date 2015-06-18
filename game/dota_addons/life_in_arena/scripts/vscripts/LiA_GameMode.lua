@@ -80,6 +80,8 @@ function LiA:InitGameMode()
     GameRules:LockCustomGameSetupTeamAssignment(true)
     GameRules:SetCustomGameSetupRemainingTime(0)
     GameRules:SetCustomGameSetupAutoLaunchDelay(0)
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )
 
     Convars:RegisterCommand( "lia_force_round", onPlayerReadyToWave, "For force round", 0 )
       
