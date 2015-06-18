@@ -1,6 +1,5 @@
 // kret
 
-
 	"kret_virus"
 	{
 		// General
@@ -126,6 +125,7 @@
 		{
 			"modifier_kret_virus_other_target"
 			{
+				"Duration" 	"0.03"
 				"OnCreated"
 				{
 					"FireEffect"
@@ -156,17 +156,37 @@
 				"IsPurgable"			"1"
 				//
 				"Duration"	"%duration"
-				"ThinkInterval" "%tick"
-				//
-				"OnIntervalThink"
+
+				"OnCreated"
 				{
+					"FireSound"
+					{
+						"Target"		"TARGET"
+						"EffectName"	"Hero_BountyHunter.WindWalk"
+					}
 					"Damage"
 					{
 						"Type" "DAMAGE_TYPE_MAGICAL"
 						"Target"	"TARGET"
-						"Damage" "%main_damage"
+						"Damage" "%main_damage-%other_damage"
+					}
+
+					"DelayedAction"
+					{
+						"Delay"     "%tick" 
+								
+						"Action"    
+						{	
+							"Damage"
+							{
+								"Type" "DAMAGE_TYPE_MAGICAL"
+								"Target"	"TARGET"
+								"Damage" "%main_damage"
+							}
+						}
 					}
 				}
+
 
 				"Properties"
 				{
@@ -175,11 +195,6 @@
 				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
 				"EffectAttachType"  "follow_origin"
 				//
-				"FireSound"
-				{
-					"Target"		"TARGET"
-					"EffectName"	"Hero_BountyHunter.WindWalk"
-				}
 			}
 		}
 	}
@@ -491,7 +506,7 @@
 					{
 						"Type" "DAMAGE_TYPE_MAGICAL"
 						"Target"	"TARGET"
-						"Damage" "%other_damage/(%duration*2)"
+						"Damage" "%other_damage * %tick / %duration"
 					}
 				}
 				"Properties"
@@ -520,7 +535,7 @@
 					{
 						"Type" "DAMAGE_TYPE_MAGICAL"
 						"Target"	"TARGET"
-						"Damage" "(%main_damage-%other_damage)/(%duration*2)"
+						"Damage" "(%main_damage-%other_damage) * %tick / %duration"
 					}
 				}
 
