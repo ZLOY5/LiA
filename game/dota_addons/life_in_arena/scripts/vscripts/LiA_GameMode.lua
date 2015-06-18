@@ -55,8 +55,8 @@ function LiA:InitGameMode()
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
 	GameRules:SetTreeRegrowTime(60)
-    GameRules:SetHeroMinimapIconScale(0.5)
-    GameRules:SetCreepMinimapIconScale(0.5)
+    GameRules:SetHeroMinimapIconScale(0.8)
+    GameRules:SetCreepMinimapIconScale(0.8)
     GameRules:SetFirstBloodActive(false)
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
@@ -157,11 +157,10 @@ function LiA:OnPlayerPickHero(keys)
     player:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:UpdateTeamSlot(player:GetPlayerID(), DOTA_TEAM_GOODGUYS,true)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
-    PlayerResource:SetGold(keys.player-1, 0, false) 
     if PlayerResource:HasRandomed(keys.player-1) then
-        hero:SetGold(150,true)
+        PlayerResource:SetGold(keys.player-1, 100, false) 
     else
-        hero:SetGold(100,true)
+        PlayerResource:SetGold(keys.player-1, 150, false) 
     end
 end
 
