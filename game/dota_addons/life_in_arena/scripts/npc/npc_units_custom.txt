@@ -267,6 +267,76 @@
 	//End of file 5_wave_megaboss.txt
 
 
+	//Start of file beetle.txt
+	"npc_crypt_lord_locust"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"			"npc_dota_creature"
+		"Model"				"models/development/invisiblebox.vmdl"
+		"ModelScale"		"1"
+		"Level"				"1"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"			""	 //Reference: Aloc
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"			"0"
+		"MagicalResistance"		"0"
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"		"13.0"
+		"AttackDamageMax"		"14.0"
+		"AttackDamageType"		"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"			"1"
+		"AttackAnimationPoint"		"0"
+		"AttackAcquisitionRange"	"900"
+		"AttackRange"			"10"
+		"ProjectileModel"		""	 //Add projectile models
+		"ProjectileSpeed"		"500"
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyGoldMin"			"26.0"
+		"BountyGoldMax"			"38.0"
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementSpeed"			"400"
+		"MovementTurnRate"		"0.2"
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"			"65"
+		"StatusHealthRegen"		"0.25"
+		"StatsManaRegen"		"-"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"10"
+		
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"			"DOTA_TEAM_BADGUYS"
+		"CombatClassAttack"		"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"		"DOTA_COMBAT_CLASS_DEFEND_WEAK"
+		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		"BoundsHullName"		"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"		"140"
+		
+		// Creature Data
+		//----------------------------------------------------------------
+	}
+	//End of file beetle.txt
+
+
 	//Start of file butcher_zombies.txt
 	"butcher_zombie_1" 
 	{
@@ -923,14 +993,14 @@
 	"3_wave_boss" 
 	{
 	"BaseClass" 	"npc_dota_creature" 
-	"Model" 		"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl" 
+	"Model" 		"models/creeps/neutral_creeps/n_creep_worg_large/n_creep_worg_large.vmdl" 
 	"SoundSet" 		"n_creep_Melee" 
 	"ModelScale" 	"1" 
 	"Level" 		"1" 
 	
 	"precache"
 	{
-		"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl"
+		"model"	"models/creeps/neutral_creeps/n_creep_worg_large/n_creep_worg_large.vmdl"
 	}
 	
 	"Ability1" "3_wave_evasion" 
@@ -2187,13 +2257,13 @@
 	"3_wave_creep" 
 	{
 		"BaseClass" "npc_dota_creature" 
-		"Model" "models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl" 
+		"Model" "models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl" 
 		"SoundSet" "n_creep_Melee" 
 		"ModelScale" "0.85" 
 		"Level" "1" 
 		"precache"
 		{
-			"model" "models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"
+			"model" "models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl"
 		}
 	
 		"Ability1" "3_wave_evasion" 

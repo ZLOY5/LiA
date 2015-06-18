@@ -9,10 +9,10 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"viper_viper_strike"
 		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 	
-		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"			
 		"MaxLevel"               "3"
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
@@ -26,8 +26,11 @@
 	
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
-			"particle" 	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf" 
+			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf" 
+			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_warmup.vpcf" 
+			"particle"		"particles/status_fx/status_effect_poison_viper.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
 		}
 		
 		"AbilitySpecial"
@@ -85,7 +88,7 @@
                 	"TrackingProjectile"
                 	{
                     		"Target" "TARGET"
-                    		"EffectName" "particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+                    		"EffectName" "particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
                     		"Dodgeable" "1"
                     		"ProvidesVision" "1"
                     		"VisionRadius" "%acid_vision"
@@ -128,12 +131,6 @@
 			{
 				"OnCreated"
 				{
-					"FireEffect"
-					{
-						"Target"		"TARGET"
-						"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-						"EffectAttachType"	"attach_origin"
-					}
 		
 					"Damage"
 					{
@@ -143,7 +140,8 @@
 					}
 				}
 
-				//
+				"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
+				"StatusEffectPriority"	"15"
 
 			}
 			//
@@ -172,8 +170,8 @@
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
 				}
-				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-				"EffectAttachType"  "follow_origin"
+				"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
+				"StatusEffectPriority"	"15"
 				//
 				"FireSound"
 				{
