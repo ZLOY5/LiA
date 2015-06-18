@@ -6,8 +6,8 @@ ARENA_TELEPORT_COORD_BOT = Vector(-5024, -2360, 0)
 ARENA_CENTER_COORD       = Vector(-5024, -1860, 0)
 
 WAVE_NUM         = 1    --номер волны
-WAVE_SPAWN_COUNT = {20,26,32,38,44,50,56,62}   --крипов на спавн
-WAVE_MAX_COUNT   = {42,54,66,78,90,102,114,126}   --количество крипов и боссов с обоих спавнов
+WAVE_SPAWN_COUNT = {20,26,32,38,44,50,56,62,68,74}   --крипов на спавн
+WAVE_MAX_COUNT   = {42,54,66,78,90,102,114,126,138,150}   --количество крипов и боссов с обоих спавнов
 
 GOLD_PER_WAVE = {0,12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30,30}
 
@@ -77,21 +77,11 @@ function LiA:InitGameMode()
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
 
+    GameRules:LockCustomGameSetupTeamAssignment(true)
+    GameRules:SetCustomGameSetupRemainingTime(0)
+    GameRules:SetCustomGameSetupAutoLaunchDelay(0)
+
     Convars:RegisterCommand( "lia_force_round", onPlayerReadyToWave, "For force round", 0 )
-
-    --[[Convars:RegisterCommand( "testElement", function(name, _element, _bool, _x, _y, _width, _height)
-        local cmdPlayer = Convars:GetCommandClient()
-        if cmdPlayer then 
-            FireGameEvent('testswf_test_element', { _element = _element, _bool = _bool, _x = _x, _y = _y, _width = _width, _height = _height } )
-        end
-    end, "Test valve element", 0 )
-
-    Convars:RegisterCommand( "testCmd", function(name, _cmd, _type, _value, _splice)
-        local cmdPlayer = Convars:GetCommandClient()
-        if cmdPlayer then 
-            FireGameEvent('testswf_test_cmd', { _cmd = _cmd, _type = _type, _value = _value, _splice = _splice } )
-        end
-    end, "Test valve element", 0 )]]
       
     --listeners
     ListenToGameEvent('entity_killed', Dynamic_Wrap(LiA, 'OnEntityKilled'), self)
@@ -100,9 +90,9 @@ function LiA:InitGameMode()
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
 
-    --CAMERA_GUY = CreateUnitByName("camera_guy", ARENA_CENTER_COORD, true, nil, nil, DOTA_TEAM_GOODGUYS) 
-
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
+
+    LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
 end
 
 function LiA:OnConnectFull(event)
@@ -263,7 +253,7 @@ function LiA:SpawnMegaboss()
         boss = CreateUnitByName(tostring(WAVE_NUM).."_wave_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)   
     end
     boss:SetForwardVector(Vector(0,-1,0))
-    giveUnitDataDrivenModifier(boss, boss, "modifier_stun",5)
+    boss:AddNewModifier(boss, nil, "modifier_stun_lua", {duration = 5})
     LiA.TeleportToArena()
     TRIGGER_SHOP:Disable() 
     BossCounter = 5
@@ -406,7 +396,7 @@ function LiA:TeleportToArena() --Телепорт на арену
         FindClearSpaceForUnit(hero, ARENA_TELEPORT_COORD_BOT + Vector(RandomInt(-200,200),RandomInt(-50,50),0), false)
         hero:Heal(9999,hero)
         hero:GiveMana(9999)
-        giveUnitDataDrivenModifier(hero, hero, "modifier_stun",5)
+        hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = 5})
         SetCameraToPosForAll(ARENA_CENTER_COORD) 
 	end)  
 end
@@ -540,16 +530,17 @@ function EndDuel(winner)
     giveUnitDataDrivenModifier(HeroOnDuel2, HeroOnDuel2, "modifier_stun",999)
     if DuelNumber < math.floor(nPlayers / 2) then
         DuelNumber = DuelNumber + 1
-        print("next duel", DuelNumber)
         local firstPlayer = GetPlayerToDuel()
         local secondPlayer = GetPlayerToDuel()
         if firstPlayer and secondPlayer then
+            print("Next duel", DuelNumber)
+            print("firstPlayer",firstPlayer)
+            print("secondPlayer",secondPlayer)
             Duel(firstPlayer,secondPlayer)
         else
             EndDuels()
         end
-        print("firstPlayer",firstPlayer)
-        print("secondPlayer",secondPlayer)
+
     else
         EndDuels()
     end
