@@ -1,244 +1,222 @@
 "time_lord_death"
 {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"           "ability_datadriven"
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"           "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityTextureName"     "alchemist_acid_spray"
   
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
- 
-  "AbilityTextureName"     "alchemist_acid_spray"
+    // Stats    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.0"
+    "AbilityCooldown"         "18 17 16"
+    "AbilityManaCost"         "100 150 200"
+    "AoERadius"               "%radius"
   
-  // Stats    
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastRange"        "900"
-  "AbilityCastPoint"        "0.0"
-  "AbilityCooldown"         "3.0"
-  "AbilityManaCost"         "0"
-  "AoERadius"               "%radius"
-  
- 	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2" 
-  
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "radius"          "300"
-    }
-  }
-  
-"OnSpellStart"
-{
-  "ActOnTargets"
-    {
-      "Target"
-      {
-        "Center"  "POINT"
-        "Radius"  "%radius"
-        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "Type"    "DOTA_UNIT_TARGET_CREEP"
-        "Flags"   "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-      }
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
 
-      "Action"
-      {
+  
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "radius"          "150 175 200"
+        }
+    }
+  
+    "OnSpellStart"
+    {
         "RunScript"
         {
-          "ScriptFile"  "heroes/TimeLord/item_hand_of_midas.lua"
-          "Function"    "item_hand_of_midas_datadriven_on_spell_start"
-          "Target"      "TARGET"
+            "ScriptFile"  "heroes/TimeLord/Death.lua" 
+            "Function"    "Death"
+            "Target"
+            {
+                "Center"  "POINT"
+                "Radius"  "%radius"
+                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Type"    "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+                "Flags"   "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+            }
         }     
-      }
-    }
+    }  
 }
 
-}
 
 "time_lord_timelapse"
 {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
+    // General
+    //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
     "AbilityTextureName"     "alchemist_acid_spray"
 
-    
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
 
 
-// Stats
-//-------------------------------------------------------------------------------------------------------------
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
   
-  "AbilityCastPoint"        "0.3"
-  "AbilityCooldown"         "13 11 9"
-  "AbilityManaCost"         "100"
- 
-"OnSpellStart"
-{
-  "RunScript"
-     {
-       "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
-       "Function"    "Do_fucking_Lapse"
-     }
+    "AbilityCastPoint"        "0.3"
+    "AbilityCooldown"         "13 11 9"
+    "AbilityManaCost"         "150 200 250"
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "radius"                "250"
+        }
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "damage"                "50 100 150"
+        }
+    }
+     
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
+            "Function"    "Do_fucking_Lapse"
+        }
+    }
+    "Modifiers"
+    {
+        "modifier_time_lord_timelapse"
+        {
+            "Passive"           "1"
+            "IsHidden"          "0"
+            "IsDebuff"          "0"
+
+            "EffectName"        "particle_name"
+            "EffectAttachType"  "follow_origin"
+            "ThinkInterval"     "0.03"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"  "heroes/TimeLord/time_lord_timelapse.lua"
+                    "Function"    "TickLapse"
+                }
+            }
+        }
+    }  
 }
 
-// Modifiers
-//-------------------------------------------------------------------------------------------------------------
-"Modifiers"
-{
- "modifier_name"
-  {
-    "Passive"       "1"
-    "IsHidden"      "0"
-    "IsDebuff"      "0"
-  
-    "EffectName"    "particle_name"
-    "EffectAttachType"  "follow_origin"
-  
-   "ThinkInterval"  "0.03"
-
-   "OnIntervalThink"
-   {
-     "RunScript"
-     {
-       "ScriptFile"  "heroes/TimeLord/time_lord_timelapse.lua"
-       "Function"    "TickLapse"
-     }
-   }
-
-  } 
-}
-
-// Special
-//-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-   "01"
-   {
-     "var_type"              "FIELD_INTEGER"
-     "radius"                "250"
-   }
-  }
-
-}
 
 
 "time_lord_supporting_of_time"
 {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"           "ability_datadriven"
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"     "alchemist_acid_spray"
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
   
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
- 
-  "AbilityTextureName"     "alchemist_acid_spray"
+    // Stats    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"        "0.0"
+    "AbilityCooldown"         "60.0"
   
-  // Stats    
-  //-------------------------------------------------------------------------------------------------------------
-  
-  "AbilityCastPoint"        "0.0"
-  "AbilityCooldown"         "60.0"
- 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-  "AbilitySpecial"
-  {
-    "01"
+    "AbilitySpecial"
     {
-      "var_type"                          "FIELD_INTEGER"
-      "intellect_buff_amount"             "1 2 3"
-    }
-    "02"
-    {
-      "var_type"                          "FIELD_INTEGER"
-      "Interval_Of_Intellect_Stuck"             "60"
-    }
-  }
-
-
-  "Modifiers"
-  {
-    "modifier_time_lord_supporting_of_time_datadriven"
-    {
-      "Passive"       "1"
-      "IsHidden"      "0"
-      "IsBuff"        "1"
-
-      
-
-      "OnCreated"
-      {
-       "RunScript"
+        "01"
         {
-         "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
-         "Function"    "start_cooldawn_after_respawn"
+            "var_type"                          "FIELD_INTEGER"
+            "intellect_buff_amount"             "1 2 3"
         }
-      }
-
-      "OnDeath"
-      { 
-       "RunScript"
+        "02"
         {
-         "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
-         "Function"    "stop_cooldawn"
+            "var_type"                          "FIELD_INTEGER"
+            "Interval_Of_Intellect_Stuck"         "60"
         }
-      }
-      
-      "ThinkInterval"  "%Interval_Of_Intellect_Stuck"
-
-      "OnIntervalThink"
-      {
-        "RunScript"
-        {
-         "ScriptFile"  "heroes/time_lord_bonus.lua"
-         "Function"    "information_of_spell"
-         "Bonus"       "%intellect_buff_amount"
-
-        }
-      
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_time_lord_supporting_of_time_bonus_datadriven"
-          "Target"        "CASTER"
-        }
-      }      
     }
 
-    "modifier_time_lord_supporting_of_time_bonus_datadriven"
+
+    "Modifiers"
     {
-      "IsHidden"  "1"
+        "modifier_time_lord_supporting_of_time"
+        {
+            "Passive"       "1"
+            "IsHidden"      "0"
+            "IsBuff"        "1"
 
-      "IsBuff"    "1"
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
+                    "Function"    "start_cooldawn_after_respawn"
+                }
+            }
+
+            "OnDeath"
+            { 
+                "RunScript"
+                {
+                    "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
+                    "Function"    "stop_cooldawn"
+                }
+            }
       
+            "ThinkInterval"  "%Interval_Of_Intellect_Stuck"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"  "heroes/time_lord_bonus.lua"
+                    "Function"    "information_of_spell"
+                    "Bonus"       "%intellect_buff_amount"
+                }
+      
+                "ApplyModifier"
+                {
+                    "ModifierName"  "modifier_time_lord_supporting_of_time_bonus_datadriven"
+                    "Target"        "CASTER"
+                }
+            }      
+        }
 
-      "Attributes"  "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
+        "modifier_time_lord_supporting_of_time_bonus_datadriven"
+        {
+            "IsHidden"  "1"
+            "IsBuff"    "1"
+            "Attributes"  "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
 
-      "Properties"
-      {
-        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"  "%intellect_buff_amount"
-      }
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"  "%intellect_buff_amount"
+            }
+        }
     }
-  }
 }
 
 
 "time_lord_stop_time"
 {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
+    // General
+    //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityTextureName"     "alchemist_acid_spray"
-
-    
 
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 	"MaxLevel"               "3"
@@ -246,97 +224,112 @@
 	"LevelsBetweenUpgrades"  "4"
 
 
-// Stats
-//-------------------------------------------------------------------------------------------------------------
-  
-  "AbilityCastPoint"        "0.3"
-  "AbilityCooldown"         "200"
-  "AbilityManaCost"         "100"
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"        "0.3"
+    "AbilityCooldown"         "200"
+    "AbilityManaCost"         "200 400 600"
 
-"OnSpellStart"
-{
-  "RunScript"
-  {
-    "ScriptFile"  "heroes/TimeLord/stop_time.lua"
-    "Function"    "Finde_and_apply"
-    "Sran_hero"    "%hero_stop"
-    "Stan_ather"   "%ather_stop"
-  }
+    "OnSpellStart"
+    {
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_time_lock_stun_datadriven"
+            "Duration"      "%hero_stop"
+            "Target"        
+            {
+                "Center"    "CASTER"
+                "Radius"    "9999"
+                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"     "DOTA_UNIT_TARGET_HERO"
+            }  
+        }
 
-  "ApplyModifier"
-  {
-    "ModifierName"  "modifier_time_lock_bonus"
-    "Target"        "CASTER"
-    "Duration"      "%bonus_duration"
-  }
-}
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_time_lock_stun_datadriven"
+            "Duration"      "%other_stop"
+            "Target"        
+            {
+                "Center"    "CASTER"
+                "Radius"    "9999"
+                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+            }  
+        }
+
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_time_lock_bonus"
+            "Target"        "CASTER"
+            "Duration"      "%bonus_duration"
+        }
+    }
  
 
-
-// Modifiers
-//-------------------------------------------------------------------------------------------------------------
-"Modifiers"
-  {
-    "modifier_time_lock_stun_datadriven"
+    // Modifiers
+    //-------------------------------------------------------------------------------------------------------------
+    "Modifiers"
     {
-      "IsDebuff"  "1"
+        "modifier_time_lock_stun_datadriven"
+        {
+            "IsDebuff"  "1"
 
-      "EffectName"        "particles/generic_gameplay/generic_stunned.vpcf"
-      "EffectAttachType"  "follow_overhead"
+            "EffectName"        "particles/generic_gameplay/generic_stunned.vpcf"
+            "EffectAttachType"  "follow_overhead"
 
-      "StatusEffectName"      "particles/status_fx/status_effect_faceless_chronosphere.vpcf"
-      "StatusEffectPriority"  "1"
+            "StatusEffectName"      "particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+            "StatusEffectPriority"  "1"
 
-      "States"
-      {
-        "MODIFIER_STATE_STUNNED"  "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_FROZEN"   "MODIFIER_STATE_VALUE_ENABLED"
-      }
-    }
+            "States"
+            {
+                "MODIFIER_STATE_STUNNED"  "MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_FROZEN"   "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
 
-    "modifier_time_lock_bonus"
-    {
-      "Passive"       "0"
-      "IsHidden"      "0"
-      "IsBuff"        "1"
+        "modifier_time_lock_bonus"
+        {
+            "Passive"       "0"
+            "IsHidden"      "0"
+            "IsBuff"        "1"
      
-     "Properties"
-     {
-       "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"     "%bonus_movespeed_percentage"
-       "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"     "%bonus_attackspeed"
-     }
+            "Properties"
+            {
+                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"     "%bonus_movespeed_percentage"
+                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"     "%bonus_attackspeed"
+            }
+        }
     }
-  }
 
-// Special
-//-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-   "01"
-   {
-     "var_type"              "FIELD_INTEGER"
-     "hero_stop"                "3 4 5"
-   }
-   "02"
-   {
-     "var_type"              "FIELD_INTEGER"
-     "ather_stop"                "4 6 8"
-   }
-   "03"
-   {
-     "var_type"                                 "FIELD_INTEGER"
-     "bonus_movespeed_percentage"                "20 40 60"
-   }
-   "04"
-   {
-     "var_type"              "FIELD_INTEGER"
-     "bonus_attackspeed"                "200 250 300"
-   }
-   "05"
-   {
-     "var_type"              "FIELD_INTEGER"
-     "bonus_duration"        "4 6 8"
-   }
-  }
-
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "hero_stop"                "3 4 5"
+        }
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "other_stop"                "4 6 8"
+        }
+        "03"
+        {
+            "var_type"                                 "FIELD_INTEGER"
+            "bonus_movespeed_percentage"                "20 40 60"
+        }
+        "04"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "bonus_attackspeed"                "200 250 300"
+        }
+        "05"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "bonus_duration"        "4 6 8"
+        }
+    }
 }

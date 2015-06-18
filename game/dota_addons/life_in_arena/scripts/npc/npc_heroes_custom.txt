@@ -513,11 +513,11 @@
 	
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
 		"AttributeBaseStrength"		"8"										
-		"AttributeStrengthGain"		"1.10"										
+		"AttributeStrengthGain"		"2.00"										
 		"AttributeBaseIntelligence"	"9"										
-		"AttributeIntelligenceGain"	"1.00"										
+		"AttributeIntelligenceGain"	"1.90"										
 		"AttributeBaseAgility"		"18"										
-		"AttributeAgilityGain"		"2.10"	
+		"AttributeAgilityGain"		"3.00"	
 	
 		"BountyXP" "100"
 		"BountyGoldMin" "50" 
@@ -572,11 +572,11 @@
 	
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"22"										
-		"AttributeStrengthGain"		"2.00"										
+		"AttributeStrengthGain"		"3.00"										
 		"AttributeBaseIntelligence"	"6"										
-		"AttributeIntelligenceGain"	"1.00"										
+		"AttributeIntelligenceGain"	"1.90"										
 		"AttributeBaseAgility"		"7"										
-		"AttributeAgilityGain"		"1.00"	
+		"AttributeAgilityGain"		"1.90"	
 	
 		"BountyXP" "100"
 		"BountyGoldMin" "50" 
@@ -1371,11 +1371,11 @@
 	
 		"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength"		"9"										
-		"AttributeStrengthGain"		"1.10"										
+		"AttributeStrengthGain"		"2.10"										
 		"AttributeBaseIntelligence"	"20"										
-		"AttributeIntelligenceGain"	"2.00"										
+		"AttributeIntelligenceGain"	"3.00"										
 		"AttributeBaseAgility"		"6"										
-		"AttributeAgilityGain"		"1.20"	
+		"AttributeAgilityGain"		"2.20"	
 	
 		"BountyXP" "100"
 		"BountyGoldMin" "50" 
@@ -1430,11 +1430,11 @@
 	
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"19"										
-		"AttributeStrengthGain"		"2.10"										
+		"AttributeStrengthGain"		"3.10"										
 		"AttributeBaseIntelligence"	"12"										
-		"AttributeIntelligenceGain"	"1.20"										
+		"AttributeIntelligenceGain"	"2.20"										
 		"AttributeBaseAgility"		"4"										
-		"AttributeAgilityGain"		"1.20"	
+		"AttributeAgilityGain"		"2.20"	
 	
 		"BountyXP" "100"
 		"BountyGoldMin" "50" 
@@ -1460,4 +1460,121 @@
 		"HasInventory" "1" 
 		}
 	//End of file npc_lia_hero_warrior_of_light.txt
+
+
+	"npc_lia_hero_shaman"
+	{
+	"override_hero"				"npc_dota_hero_bloodseeker"
+
+	"Ability1" "shaman_starfall_datadriven"	
+	"Ability2" "shaman_madness_datadriven" 		
+	"Ability3" "shaman_resourcefulness" 	
+	"Ability4" "shaman_ancient_forces" 					
+	"Ability5" "attribute_bonuses"				
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+
+	"ArmorPhysical" "0" 		
+	"MagicalResistance" "25"	
+
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "2" 
+	"AttackDamageMax" "16" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.740" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "105" 
+
+	"AttributePrimary"		"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"		"8"										
+	"AttributeStrengthGain"		"2.00"										
+	"AttributeBaseIntelligence"	"13"										
+	"AttributeIntelligenceGain"	"2.70"										
+	"AttributeBaseAgility"		"14"										
+	"AttributeAgilityGain"		"2.70"	
+
+	"BountyXP" "100"
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "270" 
+	"MovementTurnRate" "0.5" 
+
+	"StatusHealth" "500"
+	"StatusHealthRegen" "1.00" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+
+	"HasInventory" "1" 
+	}
+
+
+
+	"npc_lia_hero_paladin"
+	{
+	"override_hero"				"npc_dota_hero_chen"
+
+	"Ability1" "paladin_blizzard"	
+	"Ability2" "paladin_grace" 		
+	"Ability3" "paladin_elect" 	
+	"Ability4" "paladin_impregnability" 					
+	"Ability5" "attribute_bonuses"				
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+
+	"ArmorPhysical" "0" 		
+	"MagicalResistance" "25"	
+
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "9" 
+	"AttackDamageMax" "29" 
+	"AttackRate" "1.80" 
+	"AttackAnimationPoint" "0.567" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "100" 
+
+	"AttributePrimary"		"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength"		"8"										
+	"AttributeStrengthGain"		"2.30"										
+	"AttributeBaseIntelligence"	"21"										
+	"AttributeIntelligenceGain"	"3.20"										
+	"AttributeBaseAgility"		"6"										
+	"AttributeAgilityGain"		"2.20"	
+
+	"BountyXP" "100"
+	"BountyGoldMin" "50" 
+	"BountyGoldMax" "50" 
+
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "250" 
+	"MovementTurnRate" "0.6" 
+
+	"StatusHealth" "530"
+	"StatusHealthRegen" "1.10" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.01" 
+
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+
+	"HasInventory" "1" 
+	}
+
+
 }
