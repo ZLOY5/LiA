@@ -212,16 +212,7 @@
 	
 		"OnSpellStart"
 		{
-			"FireEffect"
-			{	
-				"EffectName"	"particles/items2_fx/veil_of_discord.vpcf"
-				"EffectAttachType"	"start_at_customorigin"
-				"TargetPoint"	"POINT"	
-				"ControlPoints"
-				{
-					"01"	"%radius 0 0"
-				}
-			}
+
 
 	
 			//"FireSound"
@@ -275,17 +266,6 @@
 				"OnIntervalThink"
 				{
 
-					"FireEffect"
-					{
-						"Target" "TARGET"
-						"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
-						"EffectAttachType"		"follow_origin"	
-					}
-					"FireSound"
-					{
-						"EffectName" "Hero_NagaSiren.Riptide.Cast"
-						"Target" "TARGET"
-					}
 					//
 					"RunScript"
 	    				{
