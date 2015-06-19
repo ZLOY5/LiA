@@ -5,7 +5,7 @@ function SummonLocation( event )
     
     local front_position = origin + fv * 250
 
-    local result = { }
+    local result = {}
     table.insert(result, front_position)
 
     return result

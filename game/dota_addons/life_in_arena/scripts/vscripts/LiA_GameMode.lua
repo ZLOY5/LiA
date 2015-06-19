@@ -95,6 +95,7 @@ function LiA:InitGameMode()
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
 
     LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
+    LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 end
 
 function LiA:OnConnectFull(event)
@@ -161,7 +162,8 @@ function LiA:OnPlayerPickHero(keys)
         PlayerResource:SetGold(keys.player-1, 100, false) 
     else
         PlayerResource:SetGold(keys.player-1, 150, false) 
-    end
+    end 
+    --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
 end
 
 function LiA:OnGameStateChange()  
@@ -177,7 +179,7 @@ function OnHeroDeath(keys)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
     Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     if IsDuel then
-        EndDuel(ownerAtt)
+        EndDuel(ownerAtt,ownerHero)
     else
         ownerHero.deaths = ownerHero.deaths + 1
         nDeathHeroes = nDeathHeroes + 1
@@ -279,8 +281,9 @@ end
 
 function OnSecondStageDeath(event) 
     FinalBossStageDeath = FinalBossStageDeath + 1
-    print(FinalBossStageDeath)
-    if FinalBossStageDeath >= 10 then
+    print("FinalBossStageDeath",FinalBossStageDeath)
+    if FinalBossStageDeath == 10 then
+        print("Second Stage Ended")
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
     end
@@ -428,7 +431,7 @@ function StartDuels()
         IsDuel = true
         TRIGGER_SHOP:Disable() 
         DoWithAllHeroes(function(hero)
-            giveUnitDataDrivenModifier(hero, hero, "modifier_stun",-1)
+            hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
         end)
         local firstPlayer = GetPlayerToDuel()
         local secondPlayer = GetPlayerToDuel()
@@ -452,7 +455,7 @@ function EndDuels()
     end
     WAVE_NUM = WAVE_NUM - 1
     DoWithAllHeroes(function(hero)
-        hero:RemoveModifierByName("modifier_stun")
+        hero:RemoveModifierByName("modifier_stun_lua")
         SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero:GetAbsOrigin())
     end)
     LiA:_EndWave()
@@ -482,8 +485,8 @@ function Duel(player1, player2)
     DuelCounter = 5
     Timers:CreateTimer(function()
         if DuelCounter == 0 then
-            HeroOnDuel1:RemoveModifierByName("modifier_stun")
-            HeroOnDuel2:RemoveModifierByName("modifier_stun")
+            HeroOnDuel1:RemoveModifierByName("modifier_stun_lua")
+            HeroOnDuel2:RemoveModifierByName("modifier_stun_lua")
             timerPopup:Start(120,"#lia_expire_duel",0)
             Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
                 useGameTime = true,
@@ -502,18 +505,23 @@ function Duel(player1, player2)
 end
 
 
-function EndDuel(winner)
+function EndDuel(winner,loser)
     print("winner",winner)
     CleanUnitsOnMap()
     if winner ~= nil then
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
+        
         local heroWin = winner:GetAssignedHero()
         heroWin:ModifyGold(300-50*DuelNumber, true, DOTA_ModifyGold_Unspecified)
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         heroWin:Stop()
         FindClearSpaceForUnit(heroWin, heroWin.abs, false) 
+        
+        local heroLoser = loser:GetAssignedHero()
+        heroLoser:RespawnHero(false, false, false)
+        FindClearSpaceForUnit(heroLoser, heroLoser.abs, false) 
         --GameRules:SendCustomMessage("#lia_Player"..PlayerResource:GetPlayerName(winner:GetPlayerID()).."#lia_duel_win", DOTA_TEAM_GOODGUYS, 0)
     else
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
@@ -527,8 +535,8 @@ function EndDuel(winner)
     HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
     HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerOwner():GetPlayerID(), DOTA_TEAM_GOODGUYS,true)     
-    giveUnitDataDrivenModifier(HeroOnDuel1, HeroOnDuel1, "modifier_stun",999)
-    giveUnitDataDrivenModifier(HeroOnDuel2, HeroOnDuel2, "modifier_stun",999)
+    HeroOnDuel1:AddNewModifier(HeroOnDuel1, nil, "modifier_stun_lua", {duration = -1})
+    HeroOnDuel2:AddNewModifier(HeroOnDuel2, nil, "modifier_stun_lua", {duration = -1})
     if DuelNumber < math.floor(nPlayers / 2) then
         DuelNumber = DuelNumber + 1
         local firstPlayer = GetPlayerToDuel()

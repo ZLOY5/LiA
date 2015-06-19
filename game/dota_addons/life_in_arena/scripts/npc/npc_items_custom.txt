@@ -999,75 +999,11 @@
 		{
 			"SpendCharge"
 			{}
-			"SpawnUnit"
+			"RunScript"
 			{
-				"Target"
-				{
-					"Center"				"CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "abilities/SummonLocation.lua"
-	        			"Function"      "SummonLocation"
-						"Target"		"CASTER"
-					}
-				}
-				"UnitName"              "book_of_the_dead_skeleton_melee"
-				"UnitCount"             "1"
-				"Duration"				"30"
-				"SpawnRadius"			"100"
-			}
-			"SpawnUnit"
-			{
-				"Target"
-				{
-					"Center"				"CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "abilities/SummonLocation.lua"
-	        			"Function"      "SummonLocation"
-						"Target"		"CASTER"
-					}
-				}
-				"UnitName"              "book_of_the_dead_skeleton_melee_ranged"
-				"UnitCount"             "1"
-				"Duration"				"30"
-				"SpawnRadius"			"150"
-			}
-			"SpawnUnit"
-			{
-				"Target"
-				{
-					"Center"				"CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "abilities/SummonLocation.lua"
-	        			"Function"      "SummonLocation"
-						"Target"		"CASTER"
-					}
-				}
-				"UnitName"              "book_of_the_dead_skeleton_melee_ranged"
-				"UnitCount"             "1"
-				"Duration"				"30"
-				"SpawnRadius"			"150"
-			}
-			"SpawnUnit"
-			{
-				"Target"
-				{
-					"Center"				"CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "abilities/SummonLocation.lua"
-	        			"Function"      "SummonLocation"
-						"Target"		"CASTER"
-					}
-				}
-				"UnitName"              "book_of_the_dead_skeleton_melee"
-				"UnitCount"             "1"
-				"Duration"				"30"
-				"SpawnRadius"			"100"
-			}
-			
+				"ScriptFile"	"items\BookOfTheDeath.lua"
+				"Function"		"SpawnSkeletons"
+			}			
 		}
 		"AbilitySpecial"
 		{
@@ -3571,21 +3507,10 @@
 		
 		"OnSpellStart"
 		{
-			"SpawnUnit"
+			"RunScript"
 			{
-				"Target"
-				{
-					"Center"				"CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "abilities/SummonLocation.lua"
-	        			"Function"      "SummonLocation"
-						"Target"		"CASTER"
-					}
-				}
-				"UnitName"              "hell_beast"
-				"UnitCount"             "1"
-				"Duration"				"80"
+				"ScriptFile"	"items\HellMask.lua"
+				"Function"		"SpawnHellBeast"
 			}
 			
 		}
@@ -3609,6 +3534,11 @@
 			{
 				"var_type" "FIELD_INTEGER"
 				"bonus_mana_regen_percentage" "60"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"creep_duration" "80"
 			}
 	
 		}
@@ -8641,22 +8571,10 @@
 		{
 			"SpendCharge"
 			{}
-			"SpawnUnit"
+			"RunScript"
 			{
-				"Target"
-				{
-					"Center"				"CASTER"
-					"ScriptSelectPoints"
-					{
-						"ScriptFile"    "abilities/SummonLocation.lua"
-	        			"Function"      "SummonLocation"
-						"Target"		"CASTER"
-					}
-				}
-				"UnitName"              "troll_defender"
-				"UnitCount"             "1"
-				"Duration"				"45"
-				"SpawnRadius"			"100"
+				"ScriptFile"	"items\TrollDefender.lua"
+				"Function"		"SpawnTroll"
 			}
 			
 		}

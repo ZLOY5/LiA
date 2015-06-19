@@ -27,22 +27,10 @@
 	{
 		"SpendCharge"
 		{}
-		"SpawnUnit"
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"				"CASTER"
-				"ScriptSelectPoints"
-				{
-					"ScriptFile"    "abilities/SummonLocation.lua"
-        			"Function"      "SummonLocation"
-					"Target"		"CASTER"
-				}
-			}
-			"UnitName"              "troll_defender"
-			"UnitCount"             "1"
-			"Duration"				"45"
-			"SpawnRadius"			"100"
+			"ScriptFile"	"items\TrollDefender.lua"
+			"Function"		"SpawnTroll"
 		}
 		
 	}
