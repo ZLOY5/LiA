@@ -95,6 +95,7 @@ function LiA:InitGameMode()
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
 
     LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
+    LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 end
 
 function LiA:OnConnectFull(event)
@@ -162,6 +163,7 @@ function LiA:OnPlayerPickHero(keys)
     else
         PlayerResource:SetGold(keys.player-1, 150, false) 
     end 
+    --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
 end
 
 function LiA:OnGameStateChange()  
@@ -279,8 +281,9 @@ end
 
 function OnSecondStageDeath(event) 
     FinalBossStageDeath = FinalBossStageDeath + 1
-    print(FinalBossStageDeath)
-    if FinalBossStageDeath >= 10 then
+    print("FinalBossStageDeath",FinalBossStageDeath)
+    if FinalBossStageDeath == 10 then
+        print("Second Stage Ended")
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
     end
