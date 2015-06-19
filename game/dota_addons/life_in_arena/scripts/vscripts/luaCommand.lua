@@ -27,10 +27,5 @@ Convars:RegisterCommand('player_say', function(...)
       if keys.text == "KV_Update" then
         GameRules:Playtesting_UpdateAddOnKeyValues()
       end
-      if keys.text == "1" then
-        --local unit = CreateUnitByName("book_of_the_dead_skeleton_melee", Vector(-1000,1000,0), true, nil, nil, DOTA_TEAM_GOODGUYS)
-        --unit:SetControllableByPlayer(playerID, true)
-        --unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})
-      end
     end
   end, 'player say', 0)

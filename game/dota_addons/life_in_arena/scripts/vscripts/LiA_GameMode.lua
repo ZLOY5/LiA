@@ -159,9 +159,12 @@ function LiA:OnPlayerPickHero(keys)
     PlayerResource:UpdateTeamSlot(player:GetPlayerID(), DOTA_TEAM_GOODGUYS,true)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
     if PlayerResource:HasRandomed(keys.player-1) then
-        PlayerResource:SetGold(keys.player-1, 100, false) 
-    else
+        print(PlayerResource:GetPlayerName(keys.player-1),"randomed hero")
         PlayerResource:SetGold(keys.player-1, 150, false) 
+    else
+        print(PlayerResource:GetPlayerName(keys.player-1),"not randomed hero")
+        
+        PlayerResource:SetGold(keys.player-1, 100, false) 
     end 
     --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
 end
@@ -179,7 +182,7 @@ function OnHeroDeath(keys)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
     Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     if IsDuel then
-        EndDuel(ownerAtt,ownerHero)
+        Timers:CreateTimer(1,function() EndDuel(ownerAtt,ownerHero) end)
     else
         ownerHero.deaths = ownerHero.deaths + 1
         nDeathHeroes = nDeathHeroes + 1
@@ -521,7 +524,7 @@ function EndDuel(winner,loser)
         
         local heroLoser = loser:GetAssignedHero()
         heroLoser:RespawnHero(false, false, false)
-        FindClearSpaceForUnit(heroLoser, heroLoser.abs, false) 
+        --FindClearSpaceForUnit(heroLoser, heroLoser.abs, false) 
         --GameRules:SendCustomMessage("#lia_Player"..PlayerResource:GetPlayerName(winner:GetPlayerID()).."#lia_duel_win", DOTA_TEAM_GOODGUYS, 0)
     else
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
