@@ -39,21 +39,10 @@
 	
 	"OnSpellStart"
 	{
-		"SpawnUnit"
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"				"CASTER"
-				"ScriptSelectPoints"
-				{
-					"ScriptFile"    "abilities/SummonLocation.lua"
-        			"Function"      "SummonLocation"
-					"Target"		"CASTER"
-				}
-			}
-			"UnitName"              "hell_beast"
-			"UnitCount"             "1"
-			"Duration"				"80"
+			"ScriptFile"	"items\HellMask.lua"
+			"Function"		"SpawnHellBeast"
 		}
 		
 	}
@@ -77,6 +66,11 @@
 		{
 			"var_type" "FIELD_INTEGER"
 			"bonus_mana_regen_percentage" "60"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"creep_duration" "80"
 		}
 
 	}
