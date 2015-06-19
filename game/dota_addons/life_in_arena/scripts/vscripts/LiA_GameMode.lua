@@ -23,7 +23,8 @@ nPlayers = 0
 nHeroCount    = 0
 nDeathHeroes  = 0    -- мертвых героев
 nDeathCreeps  = 0    --         крипов
-FinalBossStageDeath = 0
+FinalBossStageDeath1 = 0
+FinalBossStageDeath2 = 0
 
 IsDuelOccured = false
 IsDuel        = false
@@ -159,9 +160,12 @@ function LiA:OnPlayerPickHero(keys)
     PlayerResource:UpdateTeamSlot(player:GetPlayerID(), DOTA_TEAM_GOODGUYS,true)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
     if PlayerResource:HasRandomed(keys.player-1) then
-        PlayerResource:SetGold(keys.player-1, 100, false) 
-    else
+        print(PlayerResource:GetPlayerName(keys.player-1),"randomed hero")
         PlayerResource:SetGold(keys.player-1, 150, false) 
+    else
+        print(PlayerResource:GetPlayerName(keys.player-1),"not randomed hero")
+        
+        PlayerResource:SetGold(keys.player-1, 100, false) 
     end 
     --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
 end
@@ -179,7 +183,7 @@ function OnHeroDeath(keys)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
     Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     if IsDuel then
-        EndDuel(ownerAtt,ownerHero)
+        Timers:CreateTimer(1,function() EndDuel(ownerAtt,ownerHero) end)
     else
         ownerHero.deaths = ownerHero.deaths + 1
         nDeathHeroes = nDeathHeroes + 1
@@ -194,7 +198,7 @@ end
 function LiA:OnEntityKilled(keys)
     local ent = EntIndexToHScript(keys.entindex_killed)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
-    if ent:IsRealHero() and not ent:HasModifier("modifier_shadow") then
+    if ent:IsRealHero() then
         OnHeroDeath(keys)
         return
     elseif ent:HasAttribute("FirstStage") then
@@ -272,20 +276,26 @@ function LiA:SpawnMegaboss()
 end
 
 function OnFirstStageDeath(event) --когда умирают боссы первой стадии финального босса
-    FinalBossStageDeath = FinalBossStageDeath + 1
-    if FinalBossStageDeath == 15 then
+    FinalBossStageDeath1 = FinalBossStageDeath1 + 1
+    if FinalBossStageDeath1 == 15 then
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
+        ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
+        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
+                
     end
 end
 
 function OnSecondStageDeath(event) 
-    FinalBossStageDeath = FinalBossStageDeath + 1
-    print("FinalBossStageDeath",FinalBossStageDeath)
-    if FinalBossStageDeath == 10 then
+    FinalBossStageDeath2 = FinalBossStageDeath2 + 1
+    print("FinalBossStageDeath2",FinalBossStageDeath2)
+    if FinalBossStageDeath2 == 10 then
         print("Second Stage Ended")
         uFinalBoss:RemoveModifierByName("modifier_hide") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
+        ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
+        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
+                
     end
 end
 
@@ -294,12 +304,14 @@ function OnOrnDeath(event)
 end
 
 function OnOrnDamaged(event) 
-    if event.unit:GetHealthPercent() <= 30 and not FinalBossStage2 then --зомби
+    if event.unit:GetHealthPercent() <= 30 and not FinalBossStage2 and FinalBossStage1 then --зомби
         FinalBossStage2 = true
+        ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
+        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
         giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_hide",-1)
         uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
         FinalBossStageCounter = 1 
-        FinalBossStageDeath = 0
+        FinalBossStageDeath2 = 0
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 10 then
                 local unit = CreateUnitByName("orn_mutant", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
@@ -314,10 +326,12 @@ function OnOrnDamaged(event)
         end)
     elseif event.unit:GetHealthPercent() <= 70 and not FinalBossStage1 then --на арену выходят все предыдущие боссы
         FinalBossStage1 = true
+        ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
+        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
         giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_hide",-1)
         uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
         FinalBossStageCounter = 5 
-        FinalBossStageDeath = 0
+        FinalBossStageDeath1 = 0
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 19 then
                 local unit
@@ -521,7 +535,7 @@ function EndDuel(winner,loser)
         
         local heroLoser = loser:GetAssignedHero()
         heroLoser:RespawnHero(false, false, false)
-        FindClearSpaceForUnit(heroLoser, heroLoser.abs, false) 
+        --FindClearSpaceForUnit(heroLoser, heroLoser.abs, false) 
         --GameRules:SendCustomMessage("#lia_Player"..PlayerResource:GetPlayerName(winner:GetPlayerID()).."#lia_duel_win", DOTA_TEAM_GOODGUYS, 0)
     else
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
