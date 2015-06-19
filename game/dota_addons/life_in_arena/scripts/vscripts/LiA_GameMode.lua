@@ -506,7 +506,7 @@ function Duel(player1, player2)
                 useGameTime = true,
                 endTime = 120,
                 callback = function()
-                    EndDuel(nil)
+                    EndDuel(nil,nil)
                     return nil
                 end})
             return nil
