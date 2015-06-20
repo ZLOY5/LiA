@@ -50,7 +50,7 @@ end
 function LiA:InitGameMode()
 
     self.vUserIds = {}
-    
+
 	GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
 	GameRules:SetPreGameTime(0)
@@ -95,14 +95,13 @@ function LiA:InitGameMode()
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(LiA, 'OnPlayerPickHero'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
-    ListenToGameEvent("player_reconnected", Dynamic_Wrap(LiA, 'OnPlayerReconnect'), self)
-
+    
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
 
     LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 
-    InitLogFile("log/LiA.txt","Init LiA")
+    --InitLogFile("log/LiA.txt","Init LiA")
 end
 
 function LiA:OnConnectFull(event)
@@ -110,36 +109,26 @@ function LiA:OnConnectFull(event)
     local entIndex = event.index+1
     local player = EntIndexToHScript(entIndex)
     local playerID =player:GetPlayerID()
-
     self.vUserIds[event.userid] = player
-
-    player.creeps = 0
-    player.bosses = 0
-    player.deaths = 0
-    player.rating = 0
-    player.lumber = 3
-    FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = player.lumber })
-    table.insert(tPlayersTop, player)
-    nPlayers = nPlayers + 1
-    
+    player.IsDisconnect = false
+    nPlayers = nPlayers + 1  
 end
 
 function LiA:OnDisconnect(event)
     PrintTable("OnDisconnect",event)
     local player = self.vUserIds[event.userid]
     if player.readyToWave then
+        print("readyToWave")
+        player.readyToWave = false
         nPlayersReady = nPlayersReady - 1
     end
     nPlayers = nPlayers - 1
-    if player:GetAssignedHero() then
-        nHeroCount = nHeroCount - 1
-    end
+    --if player:GetAssignedHero() then
+    --    nHeroCount = nHeroCount - 1
+    --end
     player.IsDisconnect = true
 end
 
-function OnPlayerReconnect(event)
-    PrintTable("OnPlayerReconnect",event)
-end
 
 
 function LiA:onThink()
@@ -161,18 +150,27 @@ function LiA:OnPlayerPickHero(keys)
     PrintTable("OnPlayerPickHero",keys)
     local player = PlayerResource:GetPlayer(keys.player-1) 
     local hero = EntIndexToHScript(keys.heroindex)
+
+    player.creeps = 0
+    player.bosses = 0
+    player.deaths = 0
+    player.rating = 0
+    player.lumber = 3
+    FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = player.lumber })
+    table.insert(tPlayersTop, player)
+
     table.insert(tHeroes, hero)
+    
     nHeroCount = nHeroCount + 1
+    
     player:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:UpdateTeamSlot(player:GetPlayerID(), DOTA_TEAM_GOODGUYS,true)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
+    
+    hero:SetGold(100, false)
     if PlayerResource:HasRandomed(keys.player-1) then
-        print(PlayerResource:GetPlayerName(keys.player-1),"randomed hero")
-        PlayerResource:SetGold(keys.player-1, 150, false) 
-    else
-        print(PlayerResource:GetPlayerName(keys.player-1),"not randomed hero")
-        
-        PlayerResource:SetGold(keys.player-1, 100, false) 
+        print(player:GetName() ,"randomed hero")
+        hero:ModifyGold(50, false, DOTA_ModifyGold_Unspecified)
     end 
     --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
 end
@@ -395,7 +393,7 @@ function LiA:_EndWave()
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
             local player = hero:GetPlayerOwner()
-            hero:ModifyGold(GoldAdd, true, DOTA_ModifyGold_Unspecified)
+            hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
             player.lumber = player.lumber + 3 + WAVE_NUM
             FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = player.lumber })
         end)        
@@ -437,7 +435,7 @@ end
 
 function GetPlayerToDuel()
     for i = 1, #tPlayersTop do
-        if not tPlayersTop[i].IsDisconnect and tPlayersTop[i]:GetAssignedHero() and not tPlayersTop[i].IsDueled then
+        if --[[not tPlayersTop[i].IsDisconnect and ]]tPlayersTop[i]:GetAssignedHero() and not tPlayersTop[i].IsDueled then
             tPlayersTop[i].IsDueled = true
             return tPlayersTop[i]
         end
@@ -535,7 +533,7 @@ function EndDuel(winner,loser)
         Timers:RemoveTimer("duelExpireTime")
         
         local heroWin = winner:GetAssignedHero()
-        heroWin:ModifyGold(300-50*DuelNumber, true, DOTA_ModifyGold_Unspecified)
+        heroWin:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         heroWin:Stop()
