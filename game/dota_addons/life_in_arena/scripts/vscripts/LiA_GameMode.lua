@@ -48,6 +48,9 @@ end
 
 
 function LiA:InitGameMode()
+
+    self.vUserIds = {}
+    
 	GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
 	GameRules:SetPreGameTime(0)
@@ -92,6 +95,7 @@ function LiA:InitGameMode()
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(LiA, 'OnPlayerPickHero'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
+    ListenToGameEvent("player_reconnected", Dynamic_Wrap(LiA, 'OnPlayerReconnect'), self)
 
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
 
@@ -106,6 +110,9 @@ function LiA:OnConnectFull(event)
     local entIndex = event.index+1
     local player = EntIndexToHScript(entIndex)
     local playerID =player:GetPlayerID()
+
+    self.vUserIds[event.userid] = player
+
     player.creeps = 0
     player.bosses = 0
     player.deaths = 0
@@ -119,7 +126,7 @@ end
 
 function LiA:OnDisconnect(event)
     PrintTable("OnDisconnect",event)
-    local player = PlayerResource:GetPlayer(event.userid-1) 
+    local player = self.vUserIds[event.userid]
     if player.readyToWave then
         nPlayersReady = nPlayersReady - 1
     end
@@ -128,6 +135,10 @@ function LiA:OnDisconnect(event)
         nHeroCount = nHeroCount - 1
     end
     player.IsDisconnect = true
+end
+
+function OnPlayerReconnect(event)
+    PrintTable("OnPlayerReconnect",event)
 end
 
 
