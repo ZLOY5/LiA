@@ -26,24 +26,11 @@
 	
     "OnSpellStart"
     {
-	      "Damage"
-       {
-         "Target" "CASTER"
-         "Type"   "DAMAGE_TYPE_MAGICAL"
-         "Damage" "%damage"
-        }
-      "Damage"
-      {
-        "Target"
+	    "RunScript"
         {
-          "Center"    "CASTER"
-          "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-          "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-          "Radius"    "%radius"
+            "ScriptFile"    "heroes\Acron\Explosion.lua"
+            "Function"      "Explosion"
         }
-        "Type"   "DAMAGE_TYPE_MAGICAL"
-        "Damage" "%damage"             
-      }
 	  	"FireSound"
 		{
 			"EffectName"	"Hero_EarthShaker.EchoSlam"
@@ -51,9 +38,9 @@
 		}
 		"AttachEffect"
 		{
-		"EffectName"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
-		"EffectAttachType"	"attach_origin"
-		"Target"		"CASTER"
+		  "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+		  "EffectAttachType"	"attach_origin"
+		  "Target"		        "CASTER"
 		}
     }
     
@@ -264,23 +251,32 @@
         "IsHidden"      "1"
         "IsDebuff"      "0"
       
-       "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
+        "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
         {
-
-         "Damage"
-          {
-           "Type"   "DAMAGE_TYPE_PHYSICAL"
-           "Damage" "%damage"
-
-           "Target"
-             {
-              "Center"    "CASTER"
-              "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-              "Radius"    "%radius"
-              "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+            "AttachEffect"
+            {
+                "EffectName"          "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+                "EffectAttachType"    "attach_origin"
+                "Target"              "CASTER"
             }
-          }
+            "FireSound"
+            {
+                "EffectName"    "Hero_EarthShaker.EchoSlam"
+                "Target"        "CASTER"
+            }
+            "Damage"
+            {
+                "Type"   "DAMAGE_TYPE_PHYSICAL"
+                "Damage" "%damage"
+                "Target"
+                {
+                    "Center"    "CASTER"
+                    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                    "Radius"    "%radius"
+                    "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                    "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+                }
+            }
 
         }
       }

@@ -20,7 +20,8 @@
 	{
 		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
 		"particle"			"particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
-		"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
+		"particle"  		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
+		"particle"          "particles/units/heroes/hero_huskar/huskar_burning_spear.vpcf"		
 	}
 	
 	// Casting
@@ -114,7 +115,7 @@
 		"Damage"
 		{
 			"Target"		"TARGET"
-			"Type"			"DAMAGE_TYPE_PURE"
+			"Type"			"DAMAGE_TYPE_PHYSICAL"
 			"Damage"		"%AbilityDamage"
 		}
 	}
@@ -127,7 +128,7 @@
 			"IsHidden"			"0"
 			"IsDebuff"			"1"
 			"Duration"		"%slow_duration"	
-			"EffectName"		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"
+			"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
 			"EffectAttachType"	"follow_origin"
 	
 			"Properties"

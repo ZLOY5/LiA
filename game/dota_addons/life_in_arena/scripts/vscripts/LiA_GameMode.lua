@@ -97,12 +97,12 @@ function LiA:InitGameMode()
 
     LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
+
+    InitLogFile("log/LiA.txt","Init LiA")
 end
 
 function LiA:OnConnectFull(event)
-    for k,v in pairs(event) do
-        print(k,v)
-    end
+    PrintTable("OnConnectFull",event)
     local entIndex = event.index+1
     local player = EntIndexToHScript(entIndex)
     local playerID =player:GetPlayerID()
@@ -118,11 +118,7 @@ function LiA:OnConnectFull(event)
 end
 
 function LiA:OnDisconnect(event)
-    print("OnDisconnect")
-    for k,v in pairs(event) do
-        print(k,v)
-    end
-    print(" ")
+    PrintTable("OnDisconnect",event)
     local player = PlayerResource:GetPlayer(event.userid-1) 
     if player.readyToWave then
         nPlayersReady = nPlayersReady - 1
@@ -151,7 +147,7 @@ end
 
 
 function LiA:OnPlayerPickHero(keys)
-    print("OnPlayerPickHero")
+    PrintTable("OnPlayerPickHero",keys)
     local player = PlayerResource:GetPlayer(keys.player-1) 
     local hero = EntIndexToHScript(keys.heroindex)
     table.insert(tHeroes, hero)
@@ -171,6 +167,7 @@ function LiA:OnPlayerPickHero(keys)
 end
 
 function LiA:OnGameStateChange()  
+
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         StartWaves()
     end

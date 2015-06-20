@@ -16,7 +16,7 @@ function Precache( context )
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf" , context)
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_burning_spear.vpcf" , context)
 		PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf" , context)
-		PrecacheResource("particle", "particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf" , context)
+		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf" , context)
 		PrecacheResource("particle", "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf" , context)
 		--Нага-Гвардеец
 		PrecacheResource("particle", "particles/generic_gameplay/generic_stunned.vpcf", context)	
