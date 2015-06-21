@@ -80,7 +80,8 @@ function LiA:InitGameMode()
     GameMode:SetThink("onThink", self)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
-
+    GameMode:SetLoseGoldOnDeath(false)
+    
     GameRules:LockCustomGameSetupTeamAssignment(true)
     GameRules:SetCustomGameSetupRemainingTime(0)
     GameRules:SetCustomGameSetupAutoLaunchDelay(0)
@@ -225,7 +226,7 @@ function LiA:OnEntityKilled(keys)
             ownerAtt.bosses = ownerAtt.bosses + 1
             ownerAtt.lumber = ownerAtt.lumber + 3
             FireGameEvent('cgm_player_lumber_changed', { player_ID = ownerAtt:GetPlayerID(), lumber = ownerAtt.lumber })
-            PopupNumbers(ownerAtt ,ent, "gold", Vector(0,255,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
+            PopupNumbers(ownerAtt ,ent, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
         end
     end
     if nDeathCreeps == WAVE_MAX_COUNT[nHeroCount] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then

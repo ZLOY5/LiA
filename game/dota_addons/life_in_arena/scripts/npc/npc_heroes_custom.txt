@@ -37,9 +37,9 @@
 	"AttributeBaseAgility"		"11"										
 	"AttributeAgilityGain"		"2.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "245" 
@@ -162,9 +162,9 @@
 	"AttributeBaseAgility"		"7"									
 	"AttributeAgilityGain"		"2.0"	
 	
-	"BountyXP" "100" 
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0" 
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "245" 
@@ -221,9 +221,9 @@
 	"AttributeBaseAgility"		"7"										
 	"AttributeAgilityGain"		"2.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "240" 
@@ -281,9 +281,9 @@
 	"AttributeBaseAgility"		"22"										
 	"AttributeAgilityGain"		"3.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "270" 
@@ -340,9 +340,9 @@
 	"AttributeBaseAgility"		"10"										
 	"AttributeAgilityGain"		"2.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "250" 
@@ -369,59 +369,60 @@
 	//Start of file npc_lia_hero_golem.txt
 	"npc_lia_hero_golem"
 	{
-	"override_hero"				"npc_dota_hero_tiny"
+		"override_hero"				"npc_dota_hero_tiny"
 	
-	"Ability1" "akron_explosion"	
-	"Ability2" "akron_immolation" 		
-	"Ability3" "akron_firerage" 
-	"Ability4" "akron_ground_slam" 					
-	"Ability5" "attribute_bonuses" 					
-	"Ability6" "" 	
-	"Ability7" "" 					
-	"Ability8" "" 					
+		"ModelScale"				"1.1"
 	
-	"ArmorPhysical" "4" 		
-	"MagicalResistance" "25"	
+		"Ability1" "akron_explosion"	
+		"Ability2" "akron_immolation" 		
+		"Ability3" "akron_firerage" 
+		"Ability4" "akron_ground_slam" 					
+		"Ability5" "attribute_bonuses" 					
+		"Ability6" "" 	
+		"Ability7" "" 					
+		"Ability8" "" 					
 	
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "12" 
-	"AttackDamageMax" "30" 
-	"AttackRate" "1.7" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "800" 
-	"AttackRange" "100" 
+		"ArmorPhysical" "4" 		
+		"MagicalResistance" "25"	
 	
-	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-	"AttributeBaseStrength"		"21"										
-	"AttributeStrengthGain"		"3"										
-	"AttributeBaseIntelligence"	"8"										
-	"AttributeIntelligenceGain"	"1.5"										
-	"AttributeBaseAgility"		"6"										
-	"AttributeAgilityGain"		"1.5"	
-			
-	"BountyXP" "100" 
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "12" 
+		"AttackDamageMax" "30" 
+		"AttackRate" "1.7" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "100" 
 	
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "240" 
-	"MovementTurnRate" "0.5" 
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"21"										
+		"AttributeStrengthGain"		"3"										
+		"AttributeBaseIntelligence"	"8"										
+		"AttributeIntelligenceGain"	"1.5"										
+		"AttributeBaseAgility"		"6"										
+		"AttributeAgilityGain"		"1.5"	
+				
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
 	
-	"StatusHealth" "450" 
-	"StatusHealthRegen" "1.2" 
-	"StatusMana" "75" 
-	"StatusManaRegen" "0.05"
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "240" 
+		"MovementTurnRate" "0.5" 
 	
-	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+		"StatusHealth" "450" 
+		"StatusHealthRegen" "1.2" 
+		"StatusMana" "75" 
+		"StatusManaRegen" "0.05"
 	
-	"VisionDaytimeRange" "1400" 
-	"VisionNighttimeRange" "1400" 
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
 	
+		"VisionDaytimeRange" "1400" 
+		"VisionNighttimeRange" "1400" 
 	
-	"HasInventory" "1" 
+		"HasInventory" "1" 
 	}	
 	//End of file npc_lia_hero_golem.txt
 
@@ -519,9 +520,9 @@
 		"AttributeBaseAgility"		"18"										
 		"AttributeAgilityGain"		"3.00"	
 	
-		"BountyXP" "100"
-		"BountyGoldMin" "50" 
-		"BountyGoldMax" "50" 
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "265" 
@@ -578,9 +579,9 @@
 		"AttributeBaseAgility"		"7"										
 		"AttributeAgilityGain"		"1.90"	
 	
-		"BountyXP" "100"
-		"BountyGoldMin" "50" 
-		"BountyGoldMax" "50" 
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "250" 
@@ -637,9 +638,9 @@
 	"AttributeBaseAgility"		"5"										
 	"AttributeAgilityGain"		"2.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "240" 
@@ -696,9 +697,9 @@
 	"AttributeBaseAgility"		"9"										
 	"AttributeAgilityGain"		"2.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "245" 
@@ -815,9 +816,9 @@
 		"AttributeBaseAgility"		"6"										
 		"AttributeAgilityGain"		"2.20"	
 	
-		"BountyXP" "100"
-		"BountyGoldMin" "50" 
-		"BountyGoldMax" "50" 
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "250" 
@@ -936,9 +937,9 @@
 	"AttributeBaseAgility"		"17"										
 	"AttributeAgilityGain"		"2.9"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "270" 
@@ -995,9 +996,9 @@
 		"AttributeBaseAgility"		"14"										
 		"AttributeAgilityGain"		"2.70"	
 	
-		"BountyXP" "100"
-		"BountyGoldMin" "50" 
-		"BountyGoldMax" "50" 
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "270" 
@@ -1122,9 +1123,9 @@
 	"AttributeBaseAgility"		"19"										
 	"AttributeAgilityGain"		"3.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "275" 
@@ -1182,9 +1183,9 @@
 	"AttributeBaseAgility"		"21"										
 	"AttributeAgilityGain"		"3.0"	
 	
-	"BountyXP" "100"
-	"BountyGoldMin" "50" 
-	"BountyGoldMax" "50" 
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "275" 
@@ -1308,9 +1309,9 @@
 		"AttributeBaseAgility"		"4"										
 		"AttributeAgilityGain"		"2.20"	
 	
-		"BountyXP" "100"
-		"BountyGoldMin" "50" 
-		"BountyGoldMax" "50" 
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "255" 

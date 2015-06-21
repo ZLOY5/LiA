@@ -7979,9 +7979,14 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"		"4"
+				"tooltip_slow"		"10 20 30"
 			}
 			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"4"
+			}
+			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"		"130"
@@ -9136,11 +9141,11 @@
 				"var_type"			"FIELD_FLOAT"
 				"tick"	"0.10"
 			}
-			//"04"
-			//{
-			//	"var_type"			"FIELD_FLOAT"
-			//	"starfall_secondary_damage_pct"	"0.75"
-			//}
+			"05"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"3"
+			}
 			//"05"
 			//{
 			//	"var_type"			"FIELD_INTEGER"
@@ -9351,18 +9356,18 @@
 	  {
 	    "01"
 	    {
-	      "var_type"                      "FIELD_FLOAT"
-	      "duration"                      "10 15 20"
+	      "var_type"                      "FIELD_INTEGER"
+	      "bonus_movespeed_percentage"    "20 40 60"
 	    }
 	    "02"
 	    {
 	      "var_type"                      "FIELD_INTEGER"
-	      "bonus_movespeed_percentage"    "20 40 60"
-	    }
-	    "03"
-	    {
-	      "var_type"                      "FIELD_INTEGER"
 	      "bonus_attackspeed"             "50 100 150"
+	    }
+		"03"
+	    {
+	      "var_type"                      "FIELD_FLOAT"
+	      "duration"                      "10 15 20"
 	    }
 	  }
 	    
@@ -10816,24 +10821,23 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"AbilityTextureName"			                "valkyrie_fury"
+		"AbilityTextureName"			"valkyrie_fury"
 	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"1"
+		"LevelsBetweenUpgrades"  		"2"
 		
 		"AbilityCooldown"				"14.0 18.0 22.0"	
-		"AbilityDuration"	"8.0 12.0 16.0"
-		"AbilityCastRange"	"260"
+		"AbilityDuration"				"8.0 12.0 16.0"
+		"AbilityCastRange"				"260"
 		"AbilityManaCost"				"80"	
 		
 		"precache"
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
 			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
-			"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
 		}
 		
 		"AbilitySpecial"
@@ -10841,26 +10845,26 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"		"20 50 80"
+				"bonus_damage"			"20 50 80"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"		"15 30 45"
+				"bonus_agility"			"15 30 45"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"		"260"
+				"radius"				"260"
 			}
 		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
 			{
-			"ModifierName" "modifier_valkyrie_rage"
-			"Target"	"CASTER"
-			"Duration"	"%AbilityDuration"
+				"ModifierName" 		"modifier_valkyrie_rage"
+				"Target"			"CASTER"
+				"Duration"			"%AbilityDuration"
 			}
 		}
 	
@@ -10882,18 +10886,31 @@
 				}		
 				"OnOrbImpact"
 				{
-					"Damage"
+					"ActOnTargets"
 					{
-							"Target"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"Action"
+						{
+							"Damage"
 							{
-								"Center"	"TARGET"
-								"Radius"	"%radius"
-								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+								"Target"	"TARGET"
+								"Type" 		"DAMAGE_TYPE_PHYSICAL"
+								"Damage" 	"%bonus_damage"
 							}
-						"Type" "DAMAGE_TYPE_PHYSICAL"
-						"Damage" "%bonus_damage"
+							"FireEffect"
+							{
+								"EffectName"		"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
+								"EffectAttachType"	"follow_origin"
+								"Target"			"TARGET"
+							}
+						}
 					}
 				}
 			}
@@ -10905,13 +10922,13 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
-		"AbilityTextureName"			                "valkyrie_true_hit"
+		"AbilityTextureName"			"valkyrie_true_hit"
 	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"2"
+		"LevelsBetweenUpgrades"  		"2"
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -10958,7 +10975,7 @@
 							"Radius"	"%radius"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 						"Damage"	"%bonus_damage"
 					}
