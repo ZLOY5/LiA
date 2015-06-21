@@ -6121,6 +6121,11 @@
 			"02"
 			{
 				"var_type"					"FIELD_FLOAT"
+				"tolltip"		"10" 
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
 				"health_regen_percent"		"0.15 0.25 0.35" 
 			}
 		}
@@ -8128,32 +8133,32 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"15 17 20"
+				"transformation_time"	"0.35"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"transformation_time"	"0.35"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
 				"base_attack_time"		"1.67"
 			}
-			"04"
+			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_range"			"450"
 			}
-			"05"
+			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"tooltip_attack_range"			"550"
 			}
-			"06"
+			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_health"			"100 200 300"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"15 17 20"
 			}
 		}
 	
@@ -9097,7 +9102,7 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.5 0.5 0.5 0.5"
+		"AbilityCastPoint"				"0.8"
 	
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -9121,15 +9126,10 @@
 				"var_type"			"FIELD_INTEGER"
 				"starfall_radius"	"350 375 400"		
 			}
-			//"02"
-			//{
-			//	"var_type"			"FIELD_INTEGER"
-			//	"starfall_secondary_radius"	"175"
-			//}
 			"02"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"starfall_delay"	"0.60"//"0.57"
+				"starfall_delay"	"0.60"  //"0.57"
 			}
 			"03"
 			{
@@ -9139,18 +9139,13 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"tick"	"0.10"
+				"tick"				"0.10"
 			}
 			"05"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"duration"	"3"
+				"duration"			"3"
 			}
-			//"05"
-			//{
-			//	"var_type"			"FIELD_INTEGER"
-			//	"starfall_secondary_targets"	"100"
-			//}
 		}
 	
 		"OnChannelInterrupted"
@@ -9172,113 +9167,56 @@
 	
 			"FireEffect"
 			{
-				"EffectName"	"particles/units/heroes/hero_mirana/mirana_starfall_circle.vpcf"
+				"EffectName"		"particles/units/heroes/hero_mirana/mirana_starfall_circle.vpcf"
 				"EffectAttachType"	"attach_origin"
-				"Target"		"CASTER"
+				"Target"			"CASTER"
 			}
-			//
-	        	"ApplyModifier"
-	        	{
-	          		"ModifierName"  "starfall_regen"
-	          		"Target"        "CASTER"
-	        	}
-			//
+	    	"ApplyModifier"
+	    	{
+	      		"ModifierName"  "starfall_regen"
+	      		"Target"        "CASTER"
+	    	}
 	
 			"ActOnTargets"
 			{
 				"Target"
-	            		{
-	                		"Center" "CASTER"
-	                		"Radius" "%starfall_radius"
-	                		"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
-	                		"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	            		}
-	
-	            		"Action"
-	            		{
-	            			"FireEffect"
-	            			{
-	            				"EffectName"	"particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf"
-	            				"EffectAttachType"	"follow_origin"
-	            				"Target"		"TARGET"
-	            			}
-	
-	            			"DelayedAction"
-	            			{
-	            				"Delay"		"%starfall_delay"
-	
-	            				"Action"
-	            				{
-	
-	            					"FireSound"
-	            					{
-	            						"EffectName"	"Ability.StarfallImpact"
-	            						"Target"		"TARGET"
-	            					}
-	
-	            					"Damage"
-	            					{
-	            						"Target"	"TARGET"
-	            						"Type"		"DAMAGE_TYPE_MAGICAL"
-	            						"Damage"	"%AbilityDamage"
-	            					}
-	            				}
-	            			}
+				{
+		    		"Center" "CASTER"
+		    		"Radius" "%starfall_radius"
+		    		"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+		    		"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
-			}
 	
-			// Secondary starfall
-			"ActOnTargets"
-			{
-				"Target"
-	            		{
-	                		"Center" "CASTER"
-	                		"Radius" "%starfall_radius"
-	                		"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
-	                		"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	                		//"MaxTargets"	"%starfall_secondary_targets"
-	                		//"Random"		"1"
-	            		}
+				"Action"
+				{
+					"FireEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}
 	
-	            		"Action"
-	            		{
-	            			"DelayedAction"
-	            			{
-	            				"Delay"	"%starfall_delay"
+					"DelayedAction"
+					{
+						"Delay"		"%starfall_delay"
+						"Action"
+						{
 	
-	            				"Action"
-	            				{
-	            					"FireEffect"
-			            			{
-			            				"EffectName"	"particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf"
-			            				"EffectAttachType"	"follow_origin"
-			            				"Target"		"TARGET"
-			            			}
+							"FireSound"
+							{
+								"EffectName"	"Ability.StarfallImpact"
+								"Target"		"TARGET"
+							}
 	
-			            			"DelayedAction"
-			            			{
-			            				"Delay"		"%starfall_delay"
-	
-			            				"Action"
-			            				{
-	
-			            					"FireSound"
-			            					{
-			            						"EffectName"	"Ability.StarfallImpact"
-			            						"Target"		"TARGET"
-			            					}
-	
-			            					"Damage"
-			            					{
-			            						"Target"	"TARGET"
-			            						"Type"		"DAMAGE_TYPE_MAGICAL"
-			            						"Damage"	"%AbilityDamage"
-			            					}
-			            				}
-			            			}
-	            				}
-	            			}
-	            		}
+							"Damage"
+							{
+								"Target"	"TARGET"
+								"Type"		"DAMAGE_TYPE_MAGICAL"
+								"Damage"	"%AbilityDamage"
+							}
+						}
+					}
+				}
 			}
 		}
 	
@@ -9288,39 +9226,33 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "Modifiers"
 	    {
-	      "starfall_regen"
-	      {
-	        "Passive"       "0"
-	        "IsHidden"      "0"
-	        "IsBuff"        "1"
-		"IsPurgable"	"0"
+	      	"starfall_regen"
+	      	{
+		        "Passive"       "0"
+		        "IsHidden"      "0"
+		        "IsBuff"        "1"
+				"IsPurgable"	"0"
 	
-		"Duration" "%AbilityDuration"
+				"Duration" "%AbilityDuration"
 	
+				"ThinkInterval"  "%tick"
+				"OnIntervalThink"
+				{
+		        	"RunScript"
+		        	{
+		            	"ScriptFile" 		"heroes\Shaman\starfall.lua"
+		            	"Function"   		"starfallRegen"
+						"regen_percentage"  "%regen_percentage"
+						"tick" 				"%tick"
+		        	}
+		 		}
 	
-		"ThinkInterval"  "%tick"
-		     
-		"OnIntervalThink"
-		{
-	        	"RunScript"
-	        	{
-	            		"ScriptFile" "heroes\Shaman\starfall.lua"
-	            		"Function"   "starfallRegen"
-				"regen_percentage" "%regen_percentage"
-				"tick" "%tick"
-	        	}
-	
-	 	}
-	    	//
-		//
-	        "States"
-	        {
-	         	"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-	        }
-		//
-	      }
+		        "States"
+		        {
+		         	"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+		        }
+	      	}
 	    }
-	
 	}
 	
 	

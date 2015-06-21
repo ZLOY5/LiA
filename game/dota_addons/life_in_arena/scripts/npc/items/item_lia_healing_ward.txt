@@ -3,10 +3,10 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						      "item_datadriven"
-	"ID"						              "1804"  //Valve's version of this item uses the ID "34".
-	"AbilityBehavior"				              "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
-	"Model"						       	      "models/props_gameplay/red_box.vmdl"
-	"AbilityTextureName"			                      "item_lia_healing_ward"
+	"ID"						          "1804"  //Valve's version of this item uses the ID "34".
+	"AbilityBehavior"				      "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
+	"Model"						       	  "models/props_gameplay/red_box.vmdl"
+	"AbilityTextureName"			      "item_lia_healing_ward"
 	
 
         // Stats		
@@ -18,14 +18,14 @@
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"					      "30"
-	"ItemShopTags"				              "regen_health"
-	"ItemQuality"					      "consumable"
-	"ItemAliases"					      "healing ward"
-        "ItemStackable"				              "1"
-	"ItemPermanent"				              "0"
-	"ItemInitialCharges"	                              "2"
-	"ItemRequiresCharges"                                 "1"
+	"ItemCost"					      	"30"
+	"ItemShopTags"				      	"regen_health"
+	"ItemQuality"					  	"consumable"
+	"ItemAliases"					  	"healing ward"
+    "ItemStackable"				   		"1"
+	"ItemPermanent"				       	"0"
+	"ItemInitialCharges"	            "2"
+	"ItemRequiresCharges"               "1"
 
 	// Special	
 	//-------------------------------------------------------------------------------------------------------------
@@ -34,25 +34,27 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"duration"			        "30"
+			"heal_percent_tooltip"	"3"
 		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"			    "30"
+		}
+
 	}
 
-	
-	
 	"OnSpellStart"
 	{
-          "SpawnUnit"
+        "SpawnUnit"
 		{
-			"UnitName"			"unit_healing_ward"
-			"Target"			  "POINT"
+			"UnitName"			"item_lia_healing_ward_unit"
+			"Target"			"POINT"
 			"UnitCount"			"1"
 			"Duration"			"%duration"
-
 			"GrantsGold"		"0"
-			"GrantsXP"			"1"
+			"GrantsXP"			"0"
 		}
-   
-          "SpendCharge" {}
+        "SpendCharge" {}
 	}
 }
