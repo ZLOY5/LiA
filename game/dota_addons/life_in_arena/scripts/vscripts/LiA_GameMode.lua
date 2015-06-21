@@ -81,12 +81,15 @@ function LiA:InitGameMode()
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
     GameMode:SetLoseGoldOnDeath(false)
+    GameMode:SetModifyExperienceFilter( Dynamic_Wrap( LiA, "ExperienceFilter" ), self )
+
     
     GameRules:LockCustomGameSetupTeamAssignment(true)
     GameRules:SetCustomGameSetupRemainingTime(0)
     GameRules:SetCustomGameSetupAutoLaunchDelay(0)
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )
+
 
     Convars:RegisterCommand( "lia_force_round", onPlayerReadyToWave, "For force round", 0 )
       
@@ -103,6 +106,12 @@ function LiA:InitGameMode()
     LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 
     --InitLogFile("log/LiA.txt","Init LiA")
+end
+
+function LiA:ExperienceFilter(filterTable)
+    if IsDuel then
+        return false
+    end
 end
 
 function LiA:OnConnectFull(event)
