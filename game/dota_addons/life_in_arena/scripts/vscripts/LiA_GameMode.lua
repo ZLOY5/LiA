@@ -149,7 +149,8 @@ end
 
 function LiA:OnPlayerPickHero(keys)
     PrintTable("OnPlayerPickHero",keys)
-    local player = PlayerResource:GetPlayer(keys.player-1) 
+    local player = EntIndexToHScript(keys.player)
+    local playerID = player:GetPlayerID()
     local hero = EntIndexToHScript(keys.heroindex)
 
     player.creeps = 0
@@ -165,12 +166,12 @@ function LiA:OnPlayerPickHero(keys)
     nHeroCount = nHeroCount + 1
     
     player:SetTeam(DOTA_TEAM_GOODGUYS)
-    PlayerResource:UpdateTeamSlot(player:GetPlayerID(), DOTA_TEAM_GOODGUYS,true)
+    PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS,true)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
     
     hero:SetGold(100, false)
-    if PlayerResource:HasRandomed(keys.player-1) then
-        print(player:GetName() ,"randomed hero")
+    if PlayerResource:HasRandomed(playerID) then
+        print(PlayerResource:GetPlayerName(playerID),"randomed hero")
         hero:ModifyGold(50, false, DOTA_ModifyGold_Unspecified)
     end 
     --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
