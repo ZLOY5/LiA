@@ -288,10 +288,6 @@
 		}
 	}
 	
-   	"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_improved_armor"
-	}	
 	
 	"Modifiers"
 	{
@@ -313,6 +309,7 @@
 		}
 		"modifier_improved_armor_stackable"
 		{
+			"IsHidden"		"1"
 			"Duration"		"%duration"
 			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 			"Properties"
