@@ -195,9 +195,10 @@ function LiA:OnGameStateChange()
 end
 
 function OnHeroDeath(keys)
-    print("OnHeroDeath")
+    PrintTable("OnHeroDeath",keys)
     local hero = EntIndexToHScript(keys.entindex_killed)
     local ownerHero = hero:GetPlayerOwner()
+    print(ownerHero)
     local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
     Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     if IsDuel then
