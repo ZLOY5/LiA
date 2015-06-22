@@ -62,8 +62,8 @@
 	{
 		"Heal"
 		{
-		"HealAmount"	"%heal"
-		"Target"	"CASTER"
+			"HealAmount"	"%heal"
+			"Target"		"CASTER"
 		}
 		"RunScript"
 		{
@@ -209,45 +209,22 @@
 		"05"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"duration_hero"	"4"
+			"duration_hero"			"4"
 		}
 		"06"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"duration_creep"	"10"
+			"duration_creep"		"10"
 		}
 	}
 
 	"OnSpellStart"
 	{
-		"ApplyModifier"
+		"RunScript"
 		{
-			"ModifierName" "voven_from_blood_soul_burn_buff"
-			"Target"	"CASTER"
-			"Duration"	"%buff_duration"
-		}	
-		"ApplyModifier"
-		{
-			"ModifierName" "voven_from_blood_soul_burn_debuff"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Types"		"DOTA_UNIT_TARGET_HERO"
-			}
-			"Duration"	"%duration_hero"
-		}	
-		"ApplyModifier"
-		{
-			"ModifierName" "voven_from_blood_soul_burn_debuff"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Types"		"DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"	"%duration_creep"
-		}	
+			"ScriptFile"	"heroes\VowenFromBlood\SoulBurn.lua"
+			"FUnction"		"SoulBurn"
+		}
 	}
 	"Modifiers"
 	{
@@ -271,22 +248,22 @@
 			
 			"States"
 			{
-			"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 			"ThinkInterval"	"1"
 			"OnIntervalThink"
 			{
 				"Damage"
-					{
+				{
 					"Target"
-						{
-							"Center"	"TARGET"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
+					{
+						"Center"	"TARGET"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
 					"Type" "DAMAGE_TYPE_MAGICAL"
 					"Damage" "%damage"
-					}
+				}
 			}
 			"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
 			"EffectAttachType"  "follow_origin"

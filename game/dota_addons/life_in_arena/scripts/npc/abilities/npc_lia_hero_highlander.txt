@@ -36,11 +36,6 @@
 			"var_type"				"FIELD_FLOAT"
 			"stun_radius_duration"	"1.0 1.5 2.0"
 		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_main_target"	"50"
-		}
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
@@ -107,52 +102,12 @@
 				"TARGET"	"attach_origin"	//CP3 has a child explosion origin
 			}
 		}
-		
-		"Damage"
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Type"			"DAMAGE_TYPE_MAGICAL"
-			"Damage"		"%damage_radius"
-		}
-		
-		"Damage"
-		{
-			"Target"		"TARGET"
-			"Type"			"DAMAGE_TYPE_MAGICAL"
-			"Damage"		"%damage_main_target"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_stunned"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"		"%stun_radius_duration"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_stunned"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"		"%stun_main_target_duration"
-		}
+			"ScriptFile"	"heroes\Highlander\StormBolt.lua"
+			"Function"		"StormBolt"
+		}	
 	}
-
 }
 
 "highlander_heavy_axe"

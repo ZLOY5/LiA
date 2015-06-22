@@ -2443,6 +2443,61 @@
 	//End of file dummy_passive.txt
 
 
+	//Start of file healing_ward_ability.txt
+	"healing_ward_ability"
+	{
+	  	// General
+	  	//-------------------------------------------------------------------------------------------------------------
+	  	"BaseClass"			 "ability_datadriven" 
+	  	"AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	  	"AOERadius"			 "500"
+	
+	  	"preload"
+	  	{
+	  		"particle"	"particles/econ/items/juggernaut/bladekeeper_healing_ward/juggernaut_healing_ward_basesparks_dc.vpcf"
+	  	}
+	  	
+	  	// Special
+	  	//-------------------------------------------------------------------------------------------------------------
+	  	"AbilitySpecial"
+	  	{
+	   		"01"
+	   		{
+	    		"var_type"      "FIELD_FLOAT"
+	    		"heal_percent"  "3.0"
+	   		}
+	  	}
+		"Modifiers"
+		{
+			"modifier_healing_ward_ability"
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				
+				"Aura"       			"modifier_healing_ward_ability_effect"
+	        	"Aura_Radius" 			"%AOERadius"
+	        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	        	"Aura_Types"  			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        	"Aura_ApplyToCaster" 	"0"   
+				
+			}
+	
+			"modifier_healing_ward_ability_effect"
+			{	
+				"IsHidden"			"1"
+				"Properties" 
+	        	{
+	            	"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%heal_percent"
+	        	}
+	
+	        	"EffectName"		"particles/econ/items/juggernaut/bladekeeper_healing_ward/juggernaut_healing_ward_basesparks_dc.vpcf"
+	        	"EffectAttachType"	"follow_origin"
+			}
+		}
+	 }
+	//End of file healing_ward_ability.txt
+
+
 	//Start of file npc_lia_hero_araman.txt
 	"araman_curse"
 	 {
@@ -4995,11 +5050,6 @@
 				"var_type"				"FIELD_FLOAT"
 				"stun_radius_duration"	"1.0 1.5 2.0"
 			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_main_target"	"50"
-			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
@@ -5066,52 +5116,12 @@
 					"TARGET"	"attach_origin"	//CP3 has a child explosion origin
 				}
 			}
-			
-			"Damage"
+			"RunScript"
 			{
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Type"			"DAMAGE_TYPE_MAGICAL"
-				"Damage"		"%damage_radius"
-			}
-			
-			"Damage"
-			{
-				"Target"		"TARGET"
-				"Type"			"DAMAGE_TYPE_MAGICAL"
-				"Damage"		"%damage_main_target"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_stunned"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"%stun_radius_duration"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_stunned"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"		"%stun_main_target_duration"
-			}
+				"ScriptFile"	"heroes\Highlander\StormBolt.lua"
+				"Function"		"StormBolt"
+			}	
 		}
-	
 	}
 	
 	"highlander_heavy_axe"
@@ -5247,10 +5257,6 @@
 			}
 		}
 		
-	   	"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_improved_armor"
-		}	
 		
 		"Modifiers"
 		{
@@ -5272,6 +5278,7 @@
 			}
 			"modifier_improved_armor_stackable"
 			{
+				"IsHidden"		"1"
 				"Duration"		"%duration"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
@@ -9087,9 +9094,9 @@
 	       "RequiredLevel"          "1"
 	       "LevelsBetweenUpgrades"  "2"
 	
-		"AbilityChannelTime"      "3.1"
+		"AbilityChannelTime"      "2.1"
 	
-		"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"
 	
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
@@ -9107,7 +9114,7 @@
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"15.0 14.0 13.0"
-		"AbilityDuration"				"3.1"
+		"AbilityDuration"				"2.1"
 	
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -11106,8 +11113,8 @@
 		{
 			"Heal"
 			{
-			"HealAmount"	"%heal"
-			"Target"	"CASTER"
+				"HealAmount"	"%heal"
+				"Target"		"CASTER"
 			}
 			"RunScript"
 			{
@@ -11253,45 +11260,22 @@
 			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration_hero"	"4"
+				"duration_hero"			"4"
 			}
 			"06"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration_creep"	"10"
+				"duration_creep"		"10"
 			}
 		}
 	
 		"OnSpellStart"
 		{
-			"ApplyModifier"
+			"RunScript"
 			{
-				"ModifierName" "voven_from_blood_soul_burn_buff"
-				"Target"	"CASTER"
-				"Duration"	"%buff_duration"
-			}	
-			"ApplyModifier"
-			{
-				"ModifierName" "voven_from_blood_soul_burn_debuff"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					"Types"		"DOTA_UNIT_TARGET_HERO"
-				}
-				"Duration"	"%duration_hero"
-			}	
-			"ApplyModifier"
-			{
-				"ModifierName" "voven_from_blood_soul_burn_debuff"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					"Types"		"DOTA_UNIT_TARGET_BASIC"
-				}
-				"Duration"	"%duration_creep"
-			}	
+				"ScriptFile"	"heroes\VowenFromBlood\SoulBurn.lua"
+				"FUnction"		"SoulBurn"
+			}
 		}
 		"Modifiers"
 		{
@@ -11315,22 +11299,22 @@
 				
 				"States"
 				{
-				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"ThinkInterval"	"1"
 				"OnIntervalThink"
 				{
 					"Damage"
-						{
+					{
 						"Target"
-							{
-								"Center"	"TARGET"
-								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							}
+						{
+							"Center"	"TARGET"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
 						"Type" "DAMAGE_TYPE_MAGICAL"
 						"Damage" "%damage"
-						}
+					}
 				}
 				"EffectName"        "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
 				"EffectAttachType"  "follow_origin"
