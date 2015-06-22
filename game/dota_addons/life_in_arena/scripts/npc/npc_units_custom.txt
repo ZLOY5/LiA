@@ -1,4 +1,4 @@
-//Generated using Dota Custom KVScript Files Merger by cris9696
+﻿//Generated using Dota Custom KVScript Files Merger by cris9696
 "DOTAUnits"
 {
 	
@@ -4010,11 +4010,12 @@
 		"HasInventory" "0" 
 	}
 	
-	"spherical_staff_fire_golem" 
+"spherical_staff_fire_golem" 
 	{
 		"BaseClass" 				"npc_dota_creature" 
-		"Model" 					"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 
-		"SoundSet"					"Hero_WarlockGolem"
+							//
+		"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 						//"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
+		"SoundSet"				"Hero_WarlockGolem"
 		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
 		"ModelScale" "1" 
 		"Level" "1" 
@@ -4024,7 +4025,7 @@
 			"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
 		}
 	
-		"Ability1" "spell_immunity" 
+		"Ability1" "spell_immunity" // 
 		"Ability2" "spherical_staff_fire_golem_immolation" 
 		"Ability3" "" 
 		"Ability4" "" 
@@ -4033,23 +4034,23 @@
 		"Ability7" "" 
 		"Ability8" "" 
 	
-		"ArmorPhysical" 			"16" 
+		"ArmorPhysical" 		"16" 
 		"MagicalResistance" 		"100" 
 	
 		"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin" 			"99" 
-		"AttackDamageMax" 			"99" 
-		"AttackRate" 				"0.9" 
+		"AttackDamageMin" 			"100" 
+		"AttackDamageMax" 			"120" 
+		"AttackRate" 				"0.95" 
 		"AttackAnimationPoint" 		"0.26" 
 		"AttackAcquisitionRange" 	"500" 
 		"AttackRange" 				"100" 
-		"ProjectileModel"			""			
-		"ProjectileSpeed"			"0"
+
+		//"ProjectileModel"			""			
+		//"ProjectileSpeed"			"0"
 	
 		"HealthBarOffset"			"260"
 	
-		"BountyXP" 					"0" 
+		"BountyXP" 				"0" 
 		"BountyGoldMin" 			"0" 
 		"BountyGoldMax" 			"0" 
 	
@@ -4058,19 +4059,19 @@
 		"MovementTurnRate" 			"0.4" 
 	
 		"StatusHealth" 				"1800" 
-		"StatusHealthRegen" 		"1" 
+		"StatusHealthRegen" 			"1" 
 		"StatusMana" 				"0" 
 		"StatusManaRegen" 			"0" 
 	
-		"TeamName" 					"DOTA_TEAM_BADGUYS" 
+		"TeamName" 			"DOTA_TEAM_GOODGUYS" 
 		"CombatClassAttack" 		"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend" 		"DOTA_COMBAT_CLASS_DEFEND_STRONG"
 		"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 		"VisionDaytimeRange" 		"900" 
-		"VisionNighttimeRange" 		"900" 
+		"VisionNighttimeRange" 		"800" 
 	
-		"HasInventory" 				"0" 
+		"HasInventory" 				"0" 		
 	}
 	//End of file purchasable_units.txt
 
