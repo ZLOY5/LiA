@@ -9155,15 +9155,6 @@
 			}
 		}
 	
-		"OnChannelInterrupted"
-		{
-			"RemoveModifier"
-		       {
-		         "ModifierName"  "starfall_regen"
-		         "Target"        "CASTER"
-		       }
-		}    
-	
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -9178,20 +9169,21 @@
 				"EffectAttachType"	"attach_origin"
 				"Target"			"CASTER"
 			}
-	    	"ApplyModifier"
-	    	{
-	      		"ModifierName"  "starfall_regen"
-	      		"Target"        "CASTER"
-	    	}
+
+	    		"ApplyModifier"
+	    		{
+	      			"ModifierName"  "starfall_regen"
+	      			"Target"        "CASTER"
+	    		}
 	
 			"ActOnTargets"
 			{
 				"Target"
 				{
-		    		"Center" "CASTER"
-		    		"Radius" "%starfall_radius"
-		    		"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
-		    		"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		    			"Center" "CASTER"
+		    			"Radius" "%starfall_radius"
+		    			"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+		    			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
 	
 				"Action"
@@ -9226,6 +9218,20 @@
 				}
 			}
 		}
+
+		//"OnChannelInterrupted"
+		"OnChannelFinish"
+		{
+			"RemoveModifier"
+	       		{
+	         		"ModifierName"  "starfall_regen"
+	         		"Target"        
+		 		{		
+					"Center"	"CASTER"
+					"Flags"  "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		 		}
+	       		}
+		}  
 	
 	
 	
@@ -9238,21 +9244,21 @@
 		        "Passive"       "0"
 		        "IsHidden"      "0"
 		        "IsBuff"        "1"
-				"IsPurgable"	"0"
+			"IsPurgable"	"0"
 	
-				"Duration" "%AbilityDuration"
+			"Duration" "%AbilityDuration"
 	
-				"ThinkInterval"  "%tick"
-				"OnIntervalThink"
-				{
+			"ThinkInterval"  "%tick"
+			"OnIntervalThink"
+			{
 		        	"RunScript"
 		        	{
-		            	"ScriptFile" 		"heroes\Shaman\starfall.lua"
-		            	"Function"   		"starfallRegen"
-						"regen_percentage"  "%regen_percentage"
-						"tick" 				"%tick"
+			            	"ScriptFile" 		"heroes\Shaman\starfall.lua"
+		        	    	"Function"   		"starfallRegen"
+					"regen_percentage"  	"%regen_percentage"
+					"tick" 			"%tick"
 		        	}
-		 		}
+		 	}
 	
 		        "States"
 		        {
