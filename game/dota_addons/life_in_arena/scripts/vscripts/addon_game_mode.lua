@@ -53,6 +53,8 @@ function Precache( context )
 		PrecacheUnitByNameAsync("15_wave_megaboss", function(...) end)
 		PrecacheUnitByNameAsync("orn", function(...) end)
 		PrecacheUnitByNameAsync("orn_mutant", function(...) end)
+
+		PrecacheUnitByNameAsync("item_lia_healing_ward_unit", function(...) end)
 		--[[
 		--1 волна
 		PrecacheModel("models/heroes/sand_king/sand_king.mdl", context)
