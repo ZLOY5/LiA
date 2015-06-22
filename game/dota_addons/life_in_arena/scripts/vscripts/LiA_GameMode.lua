@@ -112,6 +112,7 @@ function LiA:ExperienceFilter(filterTable)
     if IsDuel then
         return false
     end
+    return true
 end
 
 function LiA:OnConnectFull(event)
