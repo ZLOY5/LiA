@@ -577,6 +577,7 @@ function EndDuel(winner,loser)
     PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerOwner():GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
 
     if HeroOnDuel1:IsAlive() then
+        HeroOnDuel1:Purge(false, true, false, true, false)
         HeroOnDuel1:AddNewModifier(HeroOnDuel1, nil, "modifier_stun_lua", {duration = -1})
         HeroOnDuel1:Heal(9999,HeroOnDuel1)
         HeroOnDuel1:GiveMana(9999)    
