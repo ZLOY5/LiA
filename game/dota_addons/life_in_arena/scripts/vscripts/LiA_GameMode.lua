@@ -213,9 +213,7 @@ end
 function LiA:OnEntityKilled(keys)
     local ent = EntIndexToHScript(keys.entindex_killed)
     local attacker = EntIndexToHScript(keys.entindex_attacker)
-    print("attacker",attacker)
     local ownedHeroAtt = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
-    print("ownedHeroAtt",ownedHeroAtt)
     if ent:IsRealHero() then
         OnHeroDeath(keys)
         return
