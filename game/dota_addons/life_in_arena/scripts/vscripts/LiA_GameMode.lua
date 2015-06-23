@@ -568,10 +568,6 @@ function EndDuel(winner,loser)
     else --ничья
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
-        HeroOnDuel1:Heal(9999,HeroOnDuel1)
-        HeroOnDuel2:Heal(9999,HeroOnDuel2)
-        HeroOnDuel1:GiveMana(9999)
-        HeroOnDuel2:GiveMana(9999)
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
     if HeroOnDuel2:GetPlayerOwner() then
@@ -582,9 +578,15 @@ function EndDuel(winner,loser)
 
     if HeroOnDuel1:IsAlive() then
         HeroOnDuel1:AddNewModifier(HeroOnDuel1, nil, "modifier_stun_lua", {duration = -1})
+        HeroOnDuel1:Heal(9999,HeroOnDuel1)
+        HeroOnDuel1:GiveMana(9999)    
     end
+
     if HeroOnDuel2:IsAlive() then
+        HeroOnDuel2:Purge(false, true, false, true, false)
         HeroOnDuel2:AddNewModifier(HeroOnDuel2, nil, "modifier_stun_lua", {duration = -1})
+        HeroOnDuel2:Heal(9999,HeroOnDuel2)
+        HeroOnDuel2:GiveMana(9999) 
     end
 
     HeroOnDuel1 = nil
