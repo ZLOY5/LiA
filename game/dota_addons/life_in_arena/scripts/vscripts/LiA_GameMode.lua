@@ -16,6 +16,7 @@ PRE_DUEL_TIME = 30 --время перед дуэлью
 
 MAX_LEVEL     = 50
 
+tPlayers = {}
 tHeroes = {}
 
 nPlayers = 0
@@ -34,7 +35,7 @@ uFinalBoss    = nil
 --------------------------------------------------------------------------------
 
 if LiA == nil then
-	LiA = class({})
+	_G.LiA = class({})
 	LiA.DeltaTime = 0.5
 end
 
@@ -100,6 +101,8 @@ function LiA:InitGameMode()
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
 
     LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
+    LinkLuaModifier( "modifier_hide_lua", LUA_MODIFIER_MOTION_NONE )
+    LinkLuaModifier( "modifier_orn_lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 
     --InitLogFile("log/LiA.txt","Init LiA")
@@ -118,6 +121,7 @@ function LiA:OnConnectFull(event)
     local player = EntIndexToHScript(entIndex)
     local playerID =player:GetPlayerID()
     player.IsDisconnect = false
+    table.insert(tPlayers,player)
     nPlayers = nPlayers + 1  
 end
 
@@ -193,7 +197,7 @@ function OnHeroDeath(keys)
     if ownerHero then
         Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     end
-    if IsDuel and (hero = HeroOnDuel1 or hero = HeroOnDuel2) then
+    if IsDuel and (hero == HeroOnDuel1 or hero == HeroOnDuel2) then
         EndDuel(attacker,hero)
     else
         hero.deaths = hero.deaths + 1
@@ -209,7 +213,9 @@ end
 function LiA:OnEntityKilled(keys)
     local ent = EntIndexToHScript(keys.entindex_killed)
     local attacker = EntIndexToHScript(keys.entindex_attacker)
-    local ownedHeroAtt = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
+    print("attacker",attacker)
+    local ownedHeroAtt = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+    print("ownedHeroAtt",ownedHeroAtt)
     if ent:IsRealHero() then
         OnHeroDeath(keys)
         return
@@ -227,10 +233,10 @@ function LiA:OnEntityKilled(keys)
         end
     elseif ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
         nDeathCreeps = nDeathCreeps + 1
-        if ownedHeroAtt ~= nil then
+        if ownedHeroAtt then
             ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
             ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
-            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownerAtt.lumber })
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
             if attacker:GetPlayerOwner() then
                 PopupNumbers(attacker:GetPlayerOwner() ,ent, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
             end
@@ -268,8 +274,8 @@ function LiA:SpawnMegaboss()
     local boss
     if WAVE_NUM == 20 then
         boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        boss:AddNewModifier(boss, nil, "modifier_orn_lua", {duration = -1})
         uFinalBoss = boss
-        giveUnitDataDrivenModifier(boss, boss, "modifier_orn",-1)
     else
         boss = CreateUnitByName(tostring(WAVE_NUM).."_wave_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)   
     end
@@ -292,7 +298,7 @@ end
 function OnFirstStageDeath(event) --когда умирают боссы первой стадии финального босса
     FinalBossStageDeath1 = FinalBossStageDeath1 + 1
     if FinalBossStageDeath1 == 15 then
-        uFinalBoss:RemoveModifierByName("modifier_hide") 
+        uFinalBoss:RemoveModifierByName("modifier_hide_lua") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
         ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
         uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
@@ -305,7 +311,7 @@ function OnSecondStageDeath(event)
     print("FinalBossStageDeath2",FinalBossStageDeath2)
     if FinalBossStageDeath2 == 10 then
         print("Second Stage Ended")
-        uFinalBoss:RemoveModifierByName("modifier_hide") 
+        uFinalBoss:RemoveModifierByName("modifier_hide_lua") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
         ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
         uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
@@ -313,16 +319,16 @@ function OnSecondStageDeath(event)
     end
 end
 
-function OnOrnDeath(event)
+function LiA:OnOrnDeath(event)
     GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
 end
 
-function OnOrnDamaged(event) 
+function LiA:OnOrnDamaged(event) 
     if event.unit:GetHealthPercent() <= 30 and not FinalBossStage2 and FinalBossStage1 then --зомби
         FinalBossStage2 = true
         ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
         uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
-        giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_hide",-1)
+        uFinalBoss:AddNewModifier(uFinalBoss, nil, "modifier_hide_lua", {duration = -1})
         uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
         FinalBossStageCounter = 1 
         FinalBossStageDeath2 = 0
@@ -342,7 +348,7 @@ function OnOrnDamaged(event)
         FinalBossStage1 = true
         ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
         uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
-        giveUnitDataDrivenModifier(uFinalBoss, uFinalBoss, "modifier_hide",-1)
+        uFinalBoss:AddNewModifier(uFinalBoss, nil, "modifier_hide_lua", {duration = -1})
         uFinalBoss:SetAbsOrigin(Vector(0,0,0)) 
         FinalBossStageCounter = 5 
         FinalBossStageDeath1 = 0
@@ -482,7 +488,7 @@ function EndDuels()
     end
     WAVE_NUM = WAVE_NUM - 1
     DoWithAllHeroes(function(hero)
-        if hero:IsAlive()
+        if hero:IsAlive() then
             hero:RemoveModifierByName("modifier_stun_lua")
             SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero:GetAbsOrigin())
         else

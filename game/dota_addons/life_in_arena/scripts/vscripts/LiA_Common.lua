@@ -108,12 +108,6 @@ function PopupNumbers(player,target, pfx, color, lifetime, number, presymbol, po
     ParticleManager:SetParticleControl(pidx, 3, color)
 end
 
-function giveUnitDataDrivenModifier(source, target, modifier,dur)
-    --source and target should be hscript-units. The same unit can be in both source and target
-    local item = CreateItem( "item_apply_modifiers", source, source)
-    item:ApplyDataDrivenModifier( source, target, modifier, {duration=dur} )
-end
-
 function SetCameraToPosForAll(vector) 
 	ConsoleCommands:SendToAll("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
 	print("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))

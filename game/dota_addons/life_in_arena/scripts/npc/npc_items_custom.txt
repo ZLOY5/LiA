@@ -8,73 +8,6 @@
 	//End of file 1362
 
 
-	//Start of file item_apply_modifiers.txt
-	"item_apply_modifiers"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"                            "1190"  // unique ID number for this item.  Do not change this once 
-		"BaseClass"                     "item_datadriven"
-		"ItemBaseLevel"                 "1"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"              "9999"
-		"AbilityCastPoint"              "0.0"	
-	
-		"Modifiers"
-		{
-			"modifier_stun"
-			{
-				"IsHidden"              "1"
-				"States"
-		        {
-		         	"MODIFIER_STATE_STUNNED"		  "MODIFIER_STATE_VALUE_ENABLED"
-		        }
-			}
-			"modifier_hide"
-			{
-				"IsHidden"              "1"
-				"States"
-		        {
-		         	"MODIFIER_STATE_STUNNED"		 	"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_OUT_OF_GAME"		"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_MUTED"				"MODIFIER_STATE_VALUE_ENABLED"
-		         	"MODIFIER_STATE_NO_TEAM_MOVE_TO"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_TEAM_SELECT"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
-		        }
-			}
-			"modifier_orn"
-			{
-				"IsHidden"              "1"
-				"OnTakeDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"LiA_GameMode.lua"
-						"Function"		"OnOrnDamaged"
-					}
-				}
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"LiA_GameMode.lua"
-						"Function"		"OnOrnDeath"
-					}
-				}
-			}
-		}
-	}
-	//End of file item_apply_modifiers.txt
-
-
 	//Start of file item_lia_alanith_spear.txt
 	"item_recipe_lia_alanith_spear"
 	{
@@ -3248,10 +3181,10 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						      "item_datadriven"
-		"ID"						              "1804"  //Valve's version of this item uses the ID "34".
-		"AbilityBehavior"				              "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
-		"Model"						       	      "models/props_gameplay/red_box.vmdl"
-		"AbilityTextureName"			                      "item_lia_healing_ward"
+		"ID"						          "1804"  //Valve's version of this item uses the ID "34".
+		"AbilityBehavior"				      "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"Model"						       	  "models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"			      "item_lia_healing_ward"
 		
 	
 	        // Stats		
@@ -3263,14 +3196,14 @@
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"					      "30"
-		"ItemShopTags"				              "regen_health"
-		"ItemQuality"					      "consumable"
-		"ItemAliases"					      "healing ward"
-	        "ItemStackable"				              "1"
-		"ItemPermanent"				              "0"
-		"ItemInitialCharges"	                              "2"
-		"ItemRequiresCharges"                                 "1"
+		"ItemCost"					      	"30"
+		"ItemShopTags"				      	"regen_health"
+		"ItemQuality"					  	"consumable"
+		"ItemAliases"					  	"healing ward"
+	    "ItemStackable"				   		"1"
+		"ItemPermanent"				       	"0"
+		"ItemInitialCharges"	            "2"
+		"ItemRequiresCharges"               "1"
 	
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -3279,26 +3212,28 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"			        "30"
+				"heal_percent_tooltip"	"3"
 			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"			    "30"
+			}
+	
 		}
 	
-		
-		
 		"OnSpellStart"
 		{
-	          "SpawnUnit"
+	        "SpawnUnit"
 			{
-				"UnitName"			"unit_healing_ward"
-				"Target"			  "POINT"
+				"UnitName"			"item_lia_healing_ward_unit"
+				"Target"			"POINT"
 				"UnitCount"			"1"
 				"Duration"			"%duration"
-	
 				"GrantsGold"		"0"
-				"GrantsXP"			"1"
+				"GrantsXP"			"0"
 			}
-	   
-	          "SpendCharge" {}
+	        "SpendCharge" {}
 		}
 	}
 	//End of file item_lia_healing_ward.txt

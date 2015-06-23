@@ -2,6 +2,7 @@
 nPlayersReady = 0
 
 function onPlayerReadyToWave(player)
+
 	if IsPreWaveTime then
 		if not player.readyToWave then
 			player.readyToWave = true
@@ -17,7 +18,7 @@ end
 
 function ForceRound() 
 	nPlayersReady = 0
-	for _,player in pairs(tPlayersTop) do
+	for _,player in pairs(tPlayers) do
 		player.readyToWave = false
 	end
 	Timers:RemoveTimer("preWaveMessageTimer")
