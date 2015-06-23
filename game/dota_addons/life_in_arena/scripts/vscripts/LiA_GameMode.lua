@@ -561,16 +561,10 @@ function EndDuel(winner,loser)
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         
-        --[[if not winner:IsAlive() then
-            --winner:SetRespawnPosition(winner.abs)
-            Timers:CreateTimer(1,function() winner:RespawnHero(false, false, false) end)
-        else
+        if winner:IsAlive() then
             winner:Stop()
             FindClearSpaceForUnit(winner, winner.abs, false)
         end
-
-        --loser:SetRespawnPosition(loser.abs)
-        Timers:CreateTimer(1,function() loser:RespawnHero(false, false, false) end)]]
     else --ничья
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
