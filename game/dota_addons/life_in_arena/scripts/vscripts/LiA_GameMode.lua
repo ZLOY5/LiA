@@ -193,9 +193,8 @@ function OnHeroDeath(keys)
     if ownerHero then
         Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     end
-    if IsDuel then
-        CleanUnitsOnMap()
-        Timers:CreateTimer(1,function() EndDuel(attacker,hero) end)
+    if IsDuel and (hero = HeroOnDuel1 or hero = HeroOnDuel2) then
+        EndDuel(attacker,hero)
     else
         hero.deaths = hero.deaths + 1
         nDeathHeroes = nDeathHeroes + 1
@@ -483,8 +482,12 @@ function EndDuels()
     end
     WAVE_NUM = WAVE_NUM - 1
     DoWithAllHeroes(function(hero)
-        hero:RemoveModifierByName("modifier_stun_lua")
-        SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero:GetAbsOrigin())
+        if hero:IsAlive()
+            hero:RemoveModifierByName("modifier_stun_lua")
+            SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero:GetAbsOrigin())
+        else
+            hero:RespawnHero(false, false, false)
+        end
     end)
     LiA:_EndWave()
 end
@@ -542,7 +545,7 @@ function EndDuel(winner,loser)
     print("winner",winner)
     CleanUnitsOnMap()
     if not winner and not loser then --проверка на отсутствие ничьей
-        if winner = loser or not winner then -- проверяем самоубился ли герой
+        if winner == loser or not winner then -- проверяем самоубился ли герой
             if loser == HeroOnDuel2 then -- устанавливаем другого героя победителем
                 winner = HeroOnDuel1
             else
@@ -557,11 +560,17 @@ function EndDuel(winner,loser)
         winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
-        winner:Stop()
-        FindClearSpaceForUnit(winner, winner.abs, false) 
         
-        loser:SetRespawnPosition(loser.abs)
-        loser:RespawnHero(false, false, false)
+        --[[if not winner:IsAlive() then
+            --winner:SetRespawnPosition(winner.abs)
+            Timers:CreateTimer(1,function() winner:RespawnHero(false, false, false) end)
+        else
+            winner:Stop()
+            FindClearSpaceForUnit(winner, winner.abs, false)
+        end
+
+        --loser:SetRespawnPosition(loser.abs)
+        Timers:CreateTimer(1,function() loser:RespawnHero(false, false, false) end)]]
     else --ничья
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
@@ -577,8 +586,16 @@ function EndDuel(winner,loser)
     HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerOwner():GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
 
-    HeroOnDuel1:AddNewModifier(HeroOnDuel1, nil, "modifier_stun_lua", {duration = -1})
-    HeroOnDuel2:AddNewModifier(HeroOnDuel2, nil, "modifier_stun_lua", {duration = -1})
+    if HeroOnDuel1:IsAlive() then
+        HeroOnDuel1:AddNewModifier(HeroOnDuel1, nil, "modifier_stun_lua", {duration = -1})
+    end
+    if HeroOnDuel2:IsAlive() then
+        HeroOnDuel2:AddNewModifier(HeroOnDuel2, nil, "modifier_stun_lua", {duration = -1})
+    end
+
+    HeroOnDuel1 = nil
+    HeroOnDuel2 = nil
+
     if DuelNumber < math.floor(nPlayers / 2) then
         DuelNumber = DuelNumber + 1
         local firstHero = GetHeroToDuel()
