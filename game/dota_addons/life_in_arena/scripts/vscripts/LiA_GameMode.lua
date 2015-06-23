@@ -16,7 +16,6 @@ PRE_DUEL_TIME = 30 --время перед дуэлью
 
 MAX_LEVEL     = 50
 
-tPlayersTop  = {}
 tHeroes = {}
 
 nPlayers = 0
@@ -36,7 +35,7 @@ uFinalBoss    = nil
 
 if LiA == nil then
 	LiA = class({})
-	LiA.DeltaTime = 0.25
+	LiA.DeltaTime = 0.5
 end
 
 
@@ -48,8 +47,6 @@ end
 
 
 function LiA:InitGameMode()
-
-    self.vUserIds = {}
 
 	GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
@@ -120,7 +117,6 @@ function LiA:OnConnectFull(event)
     local entIndex = event.index+1
     local player = EntIndexToHScript(entIndex)
     local playerID =player:GetPlayerID()
-    self.vUserIds[event.userid] = player
     player.IsDisconnect = false
     nPlayers = nPlayers + 1  
 end
@@ -143,16 +139,12 @@ end
 
 
 function LiA:onThink()
-    for i = 1, #tPlayersTop do
-        local player = tPlayersTop[i]
-        local hero = player:GetAssignedHero()
-        player.rating = player.creeps * 2 + player.bosses * 20 + player.deaths * -15
-        if hero then
-            player.rating = player.rating + hero:GetLevel() * 30
-        end
-        --print(player.rating,PlayerResource:GetPlayerName(player:GetPlayerID()))       
+    for i = 1, #tHeroes do
+        local hero = tHeroes[i]
+        hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
+        --print(hero.rating,PlayerResource:GetPlayerName(hero:GetPlayerID()))       
     end 
-    table.sort(tPlayersTop,function(a,b) return a.rating < b.rating end)
+    table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
     return LiA.DeltaTime
 end
 
@@ -163,14 +155,13 @@ function LiA:OnPlayerPickHero(keys)
     local playerID = player:GetPlayerID()
     local hero = EntIndexToHScript(keys.heroindex)
 
-    player.creeps = 0
-    player.bosses = 0
-    player.deaths = 0
-    player.rating = 0
-    player.lumber = 3
-    FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = player.lumber })
-    table.insert(tPlayersTop, player)
-
+    hero.creeps = 0
+    hero.bosses = 0
+    hero.deaths = 0
+    hero.rating = 0
+    hero.lumber = 3
+    FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
+    
     table.insert(tHeroes, hero)
     
     nHeroCount = nHeroCount + 1
@@ -198,13 +189,15 @@ function OnHeroDeath(keys)
     PrintTable("OnHeroDeath",keys)
     local hero = EntIndexToHScript(keys.entindex_killed)
     local ownerHero = hero:GetPlayerOwner()
-    print(ownerHero)
-    local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
-    Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
+    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    if ownerHero then
+        Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
+    end
     if IsDuel then
-        Timers:CreateTimer(1,function() EndDuel(ownerAtt,ownerHero) end)
+        CleanUnitsOnMap()
+        Timers:CreateTimer(1,function() EndDuel(attacker,hero) end)
     else
-        ownerHero.deaths = ownerHero.deaths + 1
+        hero.deaths = hero.deaths + 1
         nDeathHeroes = nDeathHeroes + 1
         if nDeathHeroes == nHeroCount then
             GameRules:SetCustomVictoryMessage("#lose_message")
@@ -216,7 +209,8 @@ end
 
 function LiA:OnEntityKilled(keys)
     local ent = EntIndexToHScript(keys.entindex_killed)
-    local ownerAtt = EntIndexToHScript(keys.entindex_attacker):GetPlayerOwner()
+    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    local ownedHeroAtt = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
     if ent:IsRealHero() then
         OnHeroDeath(keys)
         return
@@ -229,16 +223,18 @@ function LiA:OnEntityKilled(keys)
     end
     if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then    
         nDeathCreeps = nDeathCreeps + 1
-        if ownerAtt ~= nil then
-            ownerAtt.creeps = ownerAtt.creeps + 1
+        if ownedHeroAtt then
+            ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
         end
     elseif ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
         nDeathCreeps = nDeathCreeps + 1
-        if ownerAtt ~= nil then
-            ownerAtt.bosses = ownerAtt.bosses + 1
-            ownerAtt.lumber = ownerAtt.lumber + 3
-            FireGameEvent('cgm_player_lumber_changed', { player_ID = ownerAtt:GetPlayerID(), lumber = ownerAtt.lumber })
-            PopupNumbers(ownerAtt ,ent, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
+        if ownedHeroAtt ~= nil then
+            ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
+            ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownerAtt.lumber })
+            if attacker:GetPlayerOwner() then
+                PopupNumbers(attacker:GetPlayerOwner() ,ent, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
+            end
         end
     end
     if nDeathCreeps == WAVE_MAX_COUNT[nHeroCount] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
@@ -405,10 +401,9 @@ function LiA:_EndWave()
         IsDuelOccured = false
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
-            local player = hero:GetPlayerOwner()
             hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
-            player.lumber = player.lumber + 3 + WAVE_NUM
-            FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = player.lumber })
+            hero.lumber = hero.lumber + 3 + WAVE_NUM
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
         end)        
     end
     TRIGGER_SHOP:Enable() 
@@ -446,11 +441,11 @@ function LiA:TeleportWithoutArena() --Телепорт с арены
     end)
 end
 
-function GetPlayerToDuel()
-    for i = 1, #tPlayersTop do
-        if --[[not tPlayersTop[i].IsDisconnect and ]]tPlayersTop[i]:GetAssignedHero() and not tPlayersTop[i].IsDueled then
-            tPlayersTop[i].IsDueled = true
-            return tPlayersTop[i]
+function GetHeroToDuel()
+    for i = 1, #tHeroes do
+        if not tHeroes[i].IsDueled and IsValidEntity(tHeroes[i]) then
+            tHeroes[i].IsDueled = true
+            return tHeroes[i]
         end
     end
     return nil 
@@ -466,16 +461,16 @@ function StartDuels()
         DoWithAllHeroes(function(hero)
             hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
         end)
-        local firstPlayer = GetPlayerToDuel()
-        local secondPlayer = GetPlayerToDuel()
-        if firstPlayer and secondPlayer then
-            Duel(firstPlayer,secondPlayer)
+        local firstHero = GetHeroToDuel()
+        local secondHero = GetHeroToDuel()
+        if firstHero and secondHero then
+            Duel(firstHero,secondHero)
             SetCameraToPosForAll(ARENA_CENTER_COORD) 
         else
             EndDuels()
         end
-        print("firstPlayer",firstPlayer)
-        print("secondPlayer",secondPlayer)
+        print("firstHero",firstHero)
+        print("secondHeror",secondHero)
     end)
 end
 
@@ -483,8 +478,8 @@ function EndDuels()
     print(DuelNumber,"end duels")
     IsDuel = false
     IsDuelOccured = true
-    for i = 1, #tPlayersTop do
-        tPlayersTop[i].IsDueled = false
+    for i = 1, #tHeroes do
+        tHeroes[i].IsDueled = false
     end
     WAVE_NUM = WAVE_NUM - 1
     DoWithAllHeroes(function(hero)
@@ -495,9 +490,9 @@ function EndDuels()
 end
 
 
-function Duel(player1, player2)
-    HeroOnDuel1 = player1:GetAssignedHero() 
-    HeroOnDuel2 = player2:GetAssignedHero() 
+function Duel(hero1, hero2)
+    HeroOnDuel1 = hero1 
+    HeroOnDuel2 = hero2 
     HeroOnDuel1.abs = HeroOnDuel1:GetAbsOrigin()
     HeroOnDuel2.abs = HeroOnDuel2:GetAbsOrigin()
     HeroOnDuel1:Stop()
@@ -505,16 +500,21 @@ function Duel(player1, player2)
     HeroOnDuel1:SetForwardVector(Vector(0,1,0))
     HeroOnDuel2:SetForwardVector(Vector(0,-1,0))
     FindClearSpaceForUnit(HeroOnDuel1, ARENA_TELEPORT_COORD_BOT, false) 
-    FindClearSpaceForUnit(HeroOnDuel2, ARENA_TELEPORT_COORD_TOP, false) 
-    player2:SetTeam(DOTA_TEAM_BADGUYS)
+    FindClearSpaceForUnit(HeroOnDuel2, ARENA_TELEPORT_COORD_TOP, false)
+
+    if hero2:GetPlayerOwner() then 
+       hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
+    end
     HeroOnDuel2:SetTeam(DOTA_TEAM_BADGUYS)
     PlayerResource:UpdateTeamSlot(player2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
+
     HeroOnDuel1:Heal(9999,HeroOnDuel1)
     HeroOnDuel2:Heal(9999,HeroOnDuel2)
     HeroOnDuel1:GiveMana(9999)
     HeroOnDuel2:GiveMana(9999)
     ResetAllAbilitiesCooldown(HeroOnDuel1)
     ResetAllAbilitiesCooldown(HeroOnDuel2)
+
     DuelCounter = 5
     Timers:CreateTimer(function()
         if DuelCounter == 0 then
@@ -541,22 +541,28 @@ end
 function EndDuel(winner,loser)
     print("winner",winner)
     CleanUnitsOnMap()
-    if winner ~= nil then
+    if not winner and not loser then --проверка на отсутствие ничьей
+        if winner = loser or not winner then -- проверяем самоубился ли герой
+            if loser == HeroOnDuel2 then -- устанавливаем другого героя победителем
+                winner = HeroOnDuel1
+            else
+                winner = HeroOnDuel2
+            end
+        end
+    end
+    if winner ~= nil then 
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
         
-        local heroWin = winner:GetAssignedHero()
-        heroWin:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
+        winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
-        heroWin:Stop()
-        FindClearSpaceForUnit(heroWin, heroWin.abs, false) 
+        winner:Stop()
+        FindClearSpaceForUnit(winner, winner.abs, false) 
         
-        local heroLoser = loser:GetAssignedHero()
-        heroLoser:RespawnHero(false, false, false)
-        --FindClearSpaceForUnit(heroLoser, heroLoser.abs, false) 
-        --GameRules:SendCustomMessage("#lia_Player"..PlayerResource:GetPlayerName(winner:GetPlayerID()).."#lia_duel_win", DOTA_TEAM_GOODGUYS, 0)
-    else
+        loser:SetRespawnPosition(loser.abs)
+        loser:RespawnHero(false, false, false)
+    else --ничья
         FindClearSpaceForUnit(HeroOnDuel1, HeroOnDuel1.abs, false) 
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
         HeroOnDuel1:Heal(9999,HeroOnDuel1)
@@ -565,20 +571,23 @@ function EndDuel(winner,loser)
         HeroOnDuel2:GiveMana(9999)
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
-    HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
+    if HeroOnDuel2:GetPlayerOwner() then
+        HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
+    end
     HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
-    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerOwner():GetPlayerID(), DOTA_TEAM_GOODGUYS,true)     
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerOwner():GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
+
     HeroOnDuel1:AddNewModifier(HeroOnDuel1, nil, "modifier_stun_lua", {duration = -1})
     HeroOnDuel2:AddNewModifier(HeroOnDuel2, nil, "modifier_stun_lua", {duration = -1})
     if DuelNumber < math.floor(nPlayers / 2) then
         DuelNumber = DuelNumber + 1
-        local firstPlayer = GetPlayerToDuel()
-        local secondPlayer = GetPlayerToDuel()
-        if firstPlayer and secondPlayer then
+        local firstHero = GetHeroToDuel()
+        local secondHero = GetHeroToDuel()
+        if firstHero and secondHero then
             print("Next duel", DuelNumber)
-            print("firstPlayer",firstPlayer)
-            print("secondPlayer",secondPlayer)
-            Duel(firstPlayer,secondPlayer)
+            print("firstHero",firstHero)
+            print("secondHero",secondHero)
+            Duel(firstHero,secondHero)
         else
             EndDuels()
         end
