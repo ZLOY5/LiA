@@ -1,0 +1,114 @@
+"1_wave_stomp"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"               "ability_datadriven"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "AbilityTextureName"      "sandking_epicenter"
+  
+
+  // Stats
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCastPoint"      "0.2"
+  "AbilityCooldown"       "6.0"
+  "AbilityManaCost"       "100"
+
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "radius"              "250"
+    }
+    "02"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "duration"            "4"
+    }
+    "03"
+    {
+      "var_type"              "FIELD_INTEGER"
+      "stomp_damage"          "150"
+    }
+    "04"
+    {
+      "var_type"                                "FIELD_INTEGER"
+      "slow_movement_and_attack_speed"          "-40"
+    }
+	"05"
+    {
+      "var_type"                                "FIELD_INTEGER"
+      "slow_tooltip"          "-40"
+    }
+  }
+
+  "precache"
+  {
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+    "FireEffect"
+    {
+      "EffectName"         "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+      "EffectAttachType"   "follow_origin"
+      "EffectRadius"       "%radius"
+      "Target"             "CASTER"
+      "ControlPoints"
+      {
+        "01"  "%radius 0 %radius"
+      }
+    }
+
+    "FireSound"
+    {
+      "EffectName"    "Hero_Centaur.HoofStomp"
+      "Target"        "CASTER"
+    }
+    "ActOnTargets"
+    {
+      "Target"
+      {
+        "Center"        "CASTER"
+        "Radius"        "%radius"
+        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+      }
+
+      "Action"
+      {
+        "Damage"
+        {
+          "Target"  "TARGET"
+          "Type"    "DAMAGE_TYPE_MAGICAL"
+          "Damage"  "%stomp_damage"
+        }
+
+        "ApplyModifier"
+        {
+          "Target"        "TARGET"
+          "ModifierName"  "1_wave_stomp"
+        }
+      }
+    }   
+  }
+
+  "Modifiers"
+  {
+    "1_wave_stomp"
+    {
+      "IsDebuff"  "1"
+      "Duration"  "%duration"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%slow_movement_and_attack_speed"
+        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_movement_and_attack_speed" 
+      }
+    }
+  }
+}
