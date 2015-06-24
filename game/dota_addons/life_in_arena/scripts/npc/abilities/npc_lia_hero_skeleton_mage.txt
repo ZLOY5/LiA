@@ -5,11 +5,11 @@
 	"BaseClass"				"ability_datadriven"
 	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"AbilityTextureName"			"skeleton_mage_aqua_vitae"
+	//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityUnitDamageType"				"DAMAGE_TYPE_PURE"
+	//"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"AbilityTextureName"				"skeleton_mage_aqua_vitae"
 
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
@@ -123,14 +123,8 @@
 			{
 				"Damage"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Target"	"TARGET"
+						"Type" "DAMAGE_TYPE_PURE" //"DAMAGE_TYPE_PHYSICAL"
 						"Damage" "%damage"
 					}
 			}
@@ -148,12 +142,7 @@
 			{
 				"Heal"
 					{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
+						"Target"	"TARGET"
 						"HealAmount" "%heal"
 					}
 			}
@@ -162,13 +151,14 @@
 	}
 }	
 
+
 "skeleton_mage_light_magic"
  {
    // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
     "AbilityTextureName"     "pugna_nether_blast"
 
     "AbilityCooldown" "15 17 19"
@@ -192,7 +182,7 @@
     {
 		"RunScript"
 		{
-			"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua"
+			"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
 			"Function"      "DealDamage"
 			"Target"
 			{
@@ -200,12 +190,12 @@
 				"Radius"	"%radius"
 				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
 		}
 		"RunScript"
 		{
-			"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua"
+			"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
 			"Function"      "Heal"
 			"Target"
 			{
@@ -213,7 +203,7 @@
 				"Radius"	"%radius"
 				"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
 			}
 		}
 	  	"FireSound"
@@ -312,45 +302,59 @@
     }
   }
 
-  	   	"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_skeleton_mage_dark_magic"
-	}
+  	   	//"OnRespawn"
+		//{
+		//	"ApplyModifier"	"modifier_skeleton_mage_dark_magic"
+		//}
   
   "Modifiers"
   {  
 		"modifier_skeleton_mage_dark_magic"
 		{
 			"Passive"          "1"    
-		    "IsHidden"         "1"
-        	"Aura"        "modifier_skeleton_mage_dark_magic_return"
-        	"Aura_Radius" "1000"
-        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-        	"Aura_ApplyToCaster" "0"  
-		}
-		"modifier_skeleton_mage_dark_magic_return"
-		{
-			"IsHidden"          "1"
+		    	"IsHidden"         "0"
 			"IsPurgable"		"0"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"OnAttackLanded"
+
+			"OnTakeDamage"
 			{
-				"RunScript"
-				{
-					"ScriptFile"		"heroes/SkeletonMage/DarkMagic.lua"
-					"Function"			"Return"
-					"damage_return" 	"%damage_return"
-					"attack_damage" 	"%attack_damage"
-				}
-				"RemoveModifier"
-		    	{
-		    		"Target" 			"ATTACKER"
-		    		"ModifierName"		"modifier_skeleton_mage_dark_magic_return"
-		    	}
+        			"Damage"
+        			{
+            				"Target" "ATTACKER"              
+            				"Type"   "DAMAGE_TYPE_MAGICAL"
+            				"Damage" "%damage_return"
+        			}
+
 			}
-		}   
+
+        		//"Aura"        "modifier_skeleton_mage_dark_magic_return"
+        		//"Aura_Radius" "1000"
+        		//"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        		//"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
+        		//"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        		//"Aura_ApplyToCaster" "0"  
+		}
+
+		//"modifier_skeleton_mage_dark_magic_return"
+		//{
+		//	"IsHidden"          "1"
+		//	"IsPurgable"		"0"
+		//	"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+		//	"OnAttackLanded"
+		//	{
+		//		"RunScript"
+		//		{
+		//			"ScriptFile"		"heroes/SkeletonMage/DarkMagic.lua"
+		//			"Function"			"Return"
+		//			"damage_return" 	"%damage_return"
+		//			"attack_damage" 	"%attack_damage"
+		//		}
+		//		"RemoveModifier"
+		//    	{
+		//    		"Target" 			"ATTACKER"
+		//    		"ModifierName"		"modifier_skeleton_mage_dark_magic_return"
+		//    	}
+		//	}
+		//}   
 
   } 
 }
