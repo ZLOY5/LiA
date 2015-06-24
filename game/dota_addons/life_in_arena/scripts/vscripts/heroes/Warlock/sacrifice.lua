@@ -7,7 +7,7 @@ function changeAll(caster, radius, change_per_teak)
                                  nil,
                                  radius,
                                  DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-                                 DOTA_UNIT_TARGET_HERO,
+                                 DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
                                  DOTA_UNIT_TARGET_FLAG_NONE,
                                  FIND_ANY_ORDER,
                                  false)
@@ -18,25 +18,7 @@ function changeAll(caster, radius, change_per_teak)
    		end
 
 	end
-	--
-	--
-	local table_target2 = FindUnitsInRadius(caster:GetTeam(),
-                                 caster:GetAbsOrigin(),
-                                 nil,
-                                 radius,
-                                 DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-                                 DOTA_UNIT_TARGET_BASIC,
-                                 DOTA_UNIT_TARGET_FLAG_NONE,
-                                 FIND_ANY_ORDER,
-                                 false)
-	for _,unit in pairs(table_target2) do
-   		if unit ~= caster then
-   			unit:SetHealth(unit:GetHealth()+unit:GetMaxHealth()*change_per_teak )
-   			unit:SetMana(unit:GetMana()+unit:GetMaxMana()*change_per_teak )                          
-   		end
-
-	end
-
+	
 	return nil
 end
 
@@ -76,25 +58,11 @@ function give_invulnerability(caster, radius, ability)
                                  nil,
                                  radius,
                                  DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-                                 DOTA_UNIT_TARGET_HERO,
+                                 DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
                                  DOTA_UNIT_TARGET_FLAG_NONE,
                                  FIND_ANY_ORDER,
                                  false)
 	for _,unit in pairs(table_target) do
-		ability:ApplyDataDrivenModifier(caster, unit, "modifier_sacrifice_invulnerability", {} )
-	end
-	--
-	--
-	local table_target2 = FindUnitsInRadius(caster:GetTeam(),   --DOTA_TEAM_GOODGUYS,
-                                 caster:GetAbsOrigin(),
-                                 nil,
-                                 radius,
-                                 DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-                                 DOTA_UNIT_TARGET_BASIC,
-                                 DOTA_UNIT_TARGET_FLAG_NONE,
-                                 FIND_ANY_ORDER,
-                                 false)
-	for _,unit in pairs(table_target2) do
 		ability:ApplyDataDrivenModifier(caster, unit, "modifier_sacrifice_invulnerability", {} )
 	end
 
