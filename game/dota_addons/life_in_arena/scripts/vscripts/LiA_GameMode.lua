@@ -140,7 +140,7 @@ function LiA:OnDisconnect(event)
         nPlayersReady = nPlayersReady - 1
     end
     for k,v in pairs(tPlayers) do 
-        if player = v then
+        if player == v then
             table.remove(tPlayers,k)
         end
     end

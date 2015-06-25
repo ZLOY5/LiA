@@ -27,5 +27,11 @@ Convars:RegisterCommand('player_say', function(...)
       if keys.text == "KV_Update" then
         GameRules:Playtesting_UpdateAddOnKeyValues()
       end
+      if keys.text == "-score" then
+        if cmdPlayer:GetAssignedHero() then
+          local hero = cmdPlayer:GetAssignedHero()
+          Msg("Creeps:" .. hero.creeps .. " ; Bosses:" .. hero.bosses .. " ; Score:" .. hero.rating) --выводит в консоль
+        end
+      end
     end
   end, 'player say', 0)
