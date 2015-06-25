@@ -113,6 +113,89 @@
   }
 }
 
+"4_wave_death_coil"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+	"AbilityTextureName"			"abaddon_death_coil"
+
+"precache"
+{
+"particle"	"particles/units/heroes/hero_abaddon/abaddon_death_coil.vpcf"
+"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"800"
+	"AbilityCastPoint"				"0.0"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"10.0"
+
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"500"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"75"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"projectile_speed"	"1250"
+		}
+	}
+	
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Abaddon.DeathCoil.Cast"
+			"Target" 		"CASTER"
+		}
+		
+		"TrackingProjectile"
+		{
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil.vpcf"
+			"Dodgeable"			"1"
+			"ProvidesVision"	"0"
+			"MoveSpeed"        	"%projectile_speed"
+			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}			
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+
+		"Damage"
+		{
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"Type"			"DAMAGE_TYPE_MAGICAL"
+			"Damage"		"%AbilityDamage"
+		}	
+	
+	}	
+}
+
 "5_megaboss_stomp"
 {
 	// General
@@ -125,7 +208,10 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCooldown"				"10.0"
 	"AbilityManaCost"				"150"
-	
+	"AbilityCastPoint"      "0.2"
+  
+    "AnimationPlaybackRate"  "5"  
+  
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilitySpecial"
@@ -323,6 +409,93 @@
 	}
 }
 
+"7_wave_howl_of_terror"
+ {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"     "butcher_howl_of_terror"
+    
+    "AbilityCooldown" "12.0"
+
+    "AbilityManaCost" "100"
+	
+	
+		"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+	}
+	
+		"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_penalty_percentage"	"-50"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"			"10.0"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"					"800"
+		}
+	}
+	
+    "OnSpellStart"
+    {
+		"AttachEffect"
+		{	
+			"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"EffectRadius"       "%radius"
+			"Target"	"CASTER"	
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"  "modifier_7_wave_howl_of_terror"
+
+			"Target"
+			{
+				 "Center"    "CASTER"
+				 "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				 "Radius"    "%radius"
+			}
+
+			"Duration"    "%duration"
+		}
+    }
+
+    "Modifiers"
+    {
+      "modifier_7_wave_howl_of_terror"
+      {
+        "Passive"       "0"
+        "IsHidden"      "0"
+        "IsDebuff"      "1"
+		
+
+		"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+		"EffectAttachType"	"follow_origin"
+		
+		
+        "Properties"
+        {
+         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 
+        }
+
+      }
+    }
+  }
+ 
 "8_wave_storm_bolt"
 {
 	// General
@@ -364,6 +537,103 @@
 		{
 			"var_type"				"FIELD_FLOAT"
 			"projectile_stun"	"3.0"
+		}
+	}
+	
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Sven.StormBolt"
+			"Target" 		"CASTER"
+		}
+		
+		"TrackingProjectile"
+		{
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"EffectName"		"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+			"Dodgeable"			"1"
+			"ProvidesVision"	"0"
+			"MoveSpeed"        	"%projectile_speed"
+			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}			
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+		"FireSound"
+		{
+			"EffectName"	"Hero_ChaosKnight.ChaosBolt.Impact"
+			"Target" 		"TARGET"
+		}
+		
+		"Stun"
+		{	
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"Duration"   "%projectile_stun"
+		}
+
+		"Damage"
+		{
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"Type"			"DAMAGE_TYPE_MAGICAL"
+			"Damage"		"%AbilityDamage"
+		}	
+	
+	}	
+}
+
+"14_wave_storm_bolt"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+	"AbilityTextureName"			"sven_storm_bolt"
+
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"900"
+	"AbilityCastPoint"				"0.0"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"10.0"
+
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"750"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"500"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"projectile_speed"	"1250"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"projectile_stun"	"4.0"
 		}
 	}
 	

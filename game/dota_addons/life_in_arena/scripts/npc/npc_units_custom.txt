@@ -1192,7 +1192,7 @@
 	
 	
 	
-	"Ability1" "4_wave_skill" 
+	"Ability1" "4_wave_death_coil" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -1253,6 +1253,31 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"90.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"				"4_wave_death_coil"
+				"Damage"            "1"
+			}
+		}	
+		
+	}
 	}
 	
 	"6_wave_boss" 
@@ -1371,7 +1396,7 @@
 	
 	
 	
-	"Ability1" "" 
+	"Ability1" "7_wave_howl_of_terror" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -1431,6 +1456,32 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"90.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"		 		 "7_wave_howl_of_terror"
+				"AOE"                "1"
+				"Radius"             "700"
+				"MinimumTargets"     "1"
+			}
+		}
+	}
 	}
 	
 	"8_wave_boss" 
@@ -1890,7 +1941,7 @@
 	
 	
 	
-	"Ability1" "" 
+	"Ability1" "14_wave_storm_bolt" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -1948,6 +1999,32 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"90.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"				"14_wave_storm_bolt"
+				"Damage"            "1"
+				"Stun"              "1"
+			}
+		}	
+		
+	}
 	}
 	
 	"16_wave_boss" 
@@ -2068,7 +2145,7 @@
 	
 	
 	"ArmorPhysical" "66" 
-	"MagicalResistance" "0" 
+	"MagicalResistance" "50" 
 	
 	
 	
@@ -3286,7 +3363,7 @@
 	
 	
 	"ArmorPhysical" "40" 
-	"MagicalResistance" "0" 
+	"MagicalResistance" "50" 
 	
 	
 	
