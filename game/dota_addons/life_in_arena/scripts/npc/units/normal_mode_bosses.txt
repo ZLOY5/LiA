@@ -518,16 +518,38 @@
 
 			}
 			
-	"Creature"
-			{
-			"AttachWearables"
-				{
-					"Wearable1"		{	"ItemDef"		"4150"		} 
-					"Wearable2" 	{	"ItemDef"		"4151"		} 
-					"Wearable3"		{	"ItemDef"		"4152"		} 
-					"Wearable4" 	{	"ItemDef"		"4153"		} 
-				}
-				}
+"Creature"
+{
+	"AttachWearables"
+	{
+		"Wearable1"		{	"ItemDef"		"4150"		} 
+		"Wearable2" 	{	"ItemDef"		"4151"		} 
+		"Wearable3"		{	"ItemDef"		"4152"		} 
+		"Wearable4" 	{	"ItemDef"		"4153"		} 
+	}
+	"DefaultState"			"Invade"
+	"States"	
+	{
+		"Invade"
+		{
+			"Name"				"Invade"
+			"Aggression"		"90.0" //cast offensive spells whenever
+			"Avoidance"			"0.0" //dont flee
+			"Support"			"0.0" //start buffing
+		}
+	}
+	
+	"OffensiveAbilities"
+	{
+		"Ability1"
+		{
+			"Name"				"8_wave_storm_bolt"
+			"Damage"            "1"
+			"Stun"              "1"
+		}
+	}	
+	
+}
 
 
 
@@ -535,7 +557,7 @@
 "Ability1" "8_wave_cleave" 
 "Ability2" "spell_immunity" 
 "Ability3" "8_wave_lifesteal_aura" 
-"Ability4" "" 
+"Ability4" "8_wave_storm_bolt" 
 "Ability5" "" 
 "Ability6" "" 
 "Ability7" "" 

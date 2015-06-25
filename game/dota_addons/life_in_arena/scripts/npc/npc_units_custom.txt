@@ -206,7 +206,7 @@
 	"Ability1" "true_sight" 
 	"Ability2" "5_megaboss_crit" 
 	"Ability3" "5_megaboss_bash" 
-	"Ability4" "" 
+	"Ability4" "5_megaboss_stomp" 
 	"Ability5" "" 
 	"Ability6" "" 
 	"Ability7" "" 
@@ -263,6 +263,32 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"90.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"				"5_megaboss_stomp"
+				"AOE"                "1"
+				"Radius"             "190"
+				"MinimumTargets"     "1"
+			}
+		}
+	}
 	}
 	//End of file 5_wave_megaboss.txt
 
@@ -1427,16 +1453,38 @@
 	
 				}
 				
-		"Creature"
-				{
-				"AttachWearables"
-					{
-						"Wearable1"		{	"ItemDef"		"4150"		} 
-						"Wearable2" 	{	"ItemDef"		"4151"		} 
-						"Wearable3"		{	"ItemDef"		"4152"		} 
-						"Wearable4" 	{	"ItemDef"		"4153"		} 
-					}
-					}
+	"Creature"
+	{
+		"AttachWearables"
+		{
+			"Wearable1"		{	"ItemDef"		"4150"		} 
+			"Wearable2" 	{	"ItemDef"		"4151"		} 
+			"Wearable3"		{	"ItemDef"		"4152"		} 
+			"Wearable4" 	{	"ItemDef"		"4153"		} 
+		}
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"90.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"				"8_wave_storm_bolt"
+				"Damage"            "1"
+				"Stun"              "1"
+			}
+		}	
+		
+	}
 	
 	
 	
@@ -1444,7 +1492,7 @@
 	"Ability1" "8_wave_cleave" 
 	"Ability2" "spell_immunity" 
 	"Ability3" "8_wave_lifesteal_aura" 
-	"Ability4" "" 
+	"Ability4" "8_wave_storm_bolt" 
 	"Ability5" "" 
 	"Ability6" "" 
 	"Ability7" "" 
@@ -2910,7 +2958,7 @@
 	
 	
 	
-	"Ability1" "" 
+	"Ability1" "12_wave_stomp" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -2970,6 +3018,7 @@
 	
 	
 	"HasInventory" "0" 
+	
 	}
 	
 	"13_wave_creep" 

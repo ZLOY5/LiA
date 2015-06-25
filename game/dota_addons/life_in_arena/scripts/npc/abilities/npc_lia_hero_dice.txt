@@ -101,11 +101,6 @@
 			"var_type"				"FIELD_FLOAT"
 			"stun_hero_duration"	"1.0"
 		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"stun_creep_duration"	"1.0"
-		}
 	}
 
 		"OnRespawn"
@@ -141,20 +136,9 @@
 							"Target"
 							{
 								"Center"	"TARGET"
-								"Types"		"DOTA_UNIT_TARGET_HERO"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 							}
 							"Duration"		"%stun_hero_duration"	
-						}
-
-						"ApplyModifier"
-						{
-							"ModifierName"	"modifier_dice_bash_stun"
-							"Target"
-							{
-								"Center"	"TARGET"
-								"Types"		"DOTA_UNIT_TARGET_BASIC"
-							}
-							"Duration"		"%stun_creep_duration"
 						}
 
 						"Damage"
