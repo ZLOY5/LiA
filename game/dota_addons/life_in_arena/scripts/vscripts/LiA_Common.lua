@@ -112,7 +112,7 @@ end
 function SetCameraToPosForPlayer(playerID,vector)
 	local camera_guy = CreateUnitByName("camera_guy", vector, false, nil, nil, DOTA_TEAM_GOODGUYS)
 	Timers:CreateTimer(1,function() camera_guy:RemoveSelf() end)
-	Times:CreateTimer(0.06, function()
+	Timers:CreateTimer(0.06, function()
 		if playerID == -1 then
 			DoWithAllHeroes(function(hero)
 				PlayerResource:SetCameraTarget(hero:GetPlayerID(),camera_guy)
