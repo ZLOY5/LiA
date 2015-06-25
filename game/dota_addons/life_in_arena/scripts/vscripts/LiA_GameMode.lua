@@ -49,6 +49,8 @@ end
 
 function LiA:InitGameMode()
 
+    self.vUserIds = {}
+
 	GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
 	GameRules:SetPreGameTime(0)
@@ -120,7 +122,11 @@ function LiA:OnConnectFull(event)
     local entIndex = event.index+1
     local player = EntIndexToHScript(entIndex)
     local playerID =player:GetPlayerID()
+
+    self.vUserIds[event.userid] = player
+    
     player.IsDisconnect = false
+    
     table.insert(tPlayers,player)
     nPlayers = nPlayers + 1  
 end
@@ -132,6 +138,11 @@ function LiA:OnDisconnect(event)
         print("readyToWave")
         player.readyToWave = false
         nPlayersReady = nPlayersReady - 1
+    end
+    for k,v in pairs(tPlayers) do 
+        if player = v then
+            table.remove(tPlayers,k)
+        end
     end
     nPlayers = nPlayers - 1
     --if player:GetAssignedHero() then
@@ -513,7 +524,7 @@ function Duel(hero1, hero2)
        hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
     end
     HeroOnDuel2:SetTeam(DOTA_TEAM_BADGUYS)
-    PlayerResource:UpdateTeamSlot(player2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
 
     HeroOnDuel1:Heal(9999,HeroOnDuel1)
     HeroOnDuel2:Heal(9999,HeroOnDuel2)

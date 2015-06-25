@@ -4,7 +4,7 @@ function Explosion(event)
 	local damage = ability:GetSpecialValueFor("damage")
 	local radius = ability:GetSpecialValueFor("radius")
 
-	Timer:CreateTimer(0.2,function()
+	Timers:CreateTimer(0.2,function()
 		ApplyDamage({victim = caster, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 	end)
 	
