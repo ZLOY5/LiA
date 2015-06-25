@@ -479,12 +479,13 @@ function StartDuels()
         local secondHero = GetHeroToDuel()
         if firstHero and secondHero then
             Duel(firstHero,secondHero)
+            print("firstHero",firstHero:GetUnitName())
+            print("secondHero",secondHero:GetUnitName())
             SetCameraToPosForAll(ARENA_CENTER_COORD) 
         else
             EndDuels()
         end
-        print("firstHero",firstHero)
-        print("secondHeror",secondHero)
+
     end)
 end
 
@@ -557,17 +558,20 @@ end
 
 
 function EndDuel(winner,loser)
-    print("winner",winner)
     CleanUnitsOnMap()
-    if not winner and not loser then --проверка на отсутствие ничьей
-        if winner == loser or not winner then -- проверяем самоубился ли герой
+    winner = PlayerResource:GetSelectedHeroEntity(winner:GetPlayerOwnerID()) --находим героя, владеющего юнитом-убийцей(если убил не сам герой, а его саммон)
+    if winner and loser then --проверка на отсутствие ничьей
+        if winner == loser then -- проверяем самоубился ли герой
             if loser == HeroOnDuel2 then -- устанавливаем другого героя победителем
                 winner = HeroOnDuel1
             else
                 winner = HeroOnDuel2
             end
         end
+        print("Winner",winner:GetUnitName())
+        print("Loser",loser:GetUnitName())
     end
+
     if winner ~= nil then 
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
@@ -614,8 +618,8 @@ function EndDuel(winner,loser)
         local secondHero = GetHeroToDuel()
         if firstHero and secondHero then
             print("Next duel", DuelNumber)
-            print("firstHero",firstHero)
-            print("secondHero",secondHero)
+            print("firstHero",firstHero:GetUnitName())
+            print("secondHero",secondHero:GetUnitName())
             Duel(firstHero,secondHero)
         else
             EndDuels()
