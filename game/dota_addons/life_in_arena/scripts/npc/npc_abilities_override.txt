@@ -3276,15 +3276,11 @@
 	    }
 	  }
 	
-	  "OnRespawn"
-	  {
-	  "ApplyModifier"	"modifier_araman_armor_of_darkness"
-	  }
-	  
 	  "Modifiers"
 	  {   
 	    "modifier_araman_armor_of_darkness"
 	    {
+	    	"IsHidden"	"1"
 	      "Passive"  "1"
 	
 	      "Properties"
@@ -3359,7 +3355,8 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/Araman/araman_power_of_scourge.lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"			"night_stalker_hunter_in_the_night"
 	
@@ -3374,9 +3371,6 @@
 		
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
-			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
-			"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"	
 			"particle"			"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
 		}
 		
@@ -3405,64 +3399,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"sum_damage_tooltip"		"220 420 600"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_araman_power_of_scourge"
-				"Target"		"CASTER"
-				"Duration"		"%AbilityDuration"
-			}
-		  	"FireSound"
-			{
-				"EffectName"	"Hero_Nightstalker.Darkness	"
-				"Target"		"CASTER"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_araman_power_of_scourge"
-			{
-				"IsPurgable"	"1"
-				"IsBuff"		"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_move_speed"
-				}
-				"OnAttack"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes\Araman\PowerOfScourge"
-						"Function"		"UpdateDamage"
-						"damage_stack_max"	"%damage_stack_max"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes\Araman\PowerOfScourge"
-						"Function"		"RemoveDamage"
-					}	
-				}
-				"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
-				"EffectAttachType"	"attach_origin"
-	
-			}
-			"modifier_araman_power_of_scourge_damage"
-			{
-				"IsHidden"		"1"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage_per_attack"
-				}
+				"sum_damage_tooltip"	"220 420 600"
 			}
 		}
 	}
@@ -10095,285 +10032,286 @@
 
 
 	//Start of file npc_lia_hero_skeleton_mage.txt
-	"skeleton_mage_aqua_vitae"
+"skeleton_mage_aqua_vitae"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	//"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"AbilityTextureName"				"skeleton_mage_aqua_vitae"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityUnitDamageType"				"DAMAGE_TYPE_PURE"
-		//"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityTextureName"				"skeleton_mage_aqua_vitae"
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"		
+		"particle"		"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
+		"particle"		"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"		
+				
+	}
 	
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"		
-			"particle"		"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
-			"particle"		"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"		
-					
-		}
+	"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
 		
-		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AoERadius"	"250"
+	
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.0"
+
+	"AbilityCooldown"				"18.0"
+
+	"AbilityManaCost"				"100 175 250"	
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage"		"20 40 60"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"heal"		"40 55 70"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"	"8"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"250"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{	
+			"EffectName"	"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
+			"EffectAttachType"	"start_at_customorigin"
+			"TargetPoint"	"POINT"	
+			"ControlPoints"
+			{
+				"01"	"%radius 0 0"
+				"03"	"255 0 0"
+			}
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_NagaSiren.Riptide.Cast"
+			"Target"		"CASTER"
+		}	
+
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_skeleton_mage_aqua_vitae_damage"
+			"Target"
+			{
+				"Center"	"POINT"
+				"Radius"	"%radius"
+				"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags"     	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
+		}	
+
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_skeleton_mage_aqua_vitae_heal"
+			"Target"
+			{
+				"Center"	"POINT"
+				"Radius"	"%radius"
+				"Teams"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				//"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+		}	
+	}
+
+	"Modifiers"
+	{
+		"modifier_skeleton_mage_aqua_vitae_damage"
+		{
+			"Duration"	"%duration"
+			"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
 			
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-	
-		"AoERadius"	"250"
-		
-		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.0"
-	
-		"AbilityCooldown"				"18.0"
-	
-		"AbilityManaCost"				"100 175 250"	
-	
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
+
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"		"20 40 60"
+				"Damage"
+					{
+						"Target"	"TARGET"
+						"Type" "DAMAGE_TYPE_PHYSICAL" //"DAMAGE_TYPE_PURE"
+						"Damage" "%damage"
+					}
 			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"heal"		"40 55 70"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"	"8"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"250"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"FireEffect"
-			{	
-				"EffectName"	"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
-				"EffectAttachType"	"start_at_customorigin"
-				"TargetPoint"	"POINT"	
-				"ControlPoints"
-				{
-					"01"	"%radius 0 0"
-					"03"	"255 0 0"
-				}
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_NagaSiren.Riptide.Cast"
-				"Target"		"CASTER"
-			}	
-	
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_skeleton_mage_aqua_vitae_damage"
-				"Target"
-				{
-					"Center"	"POINT"
-					"Radius"	"%radius"
-					"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-			}	
-	
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_skeleton_mage_aqua_vitae_heal"
-				"Target"
-				{
-					"Center"	"POINT"
-					"Radius"	"%radius"
-					"Teams"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-			}	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_skeleton_mage_aqua_vitae_damage"
-			{
-				"Duration"	"%duration"
-				"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-				"EffectAttachType"	"follow_origin"
-	
-				"ThinkInterval"	"1"
-				"OnIntervalThink"
-				{
-					"Damage"
-						{
-							"Target"	"TARGET"
-							"Type" "DAMAGE_TYPE_PURE" //"DAMAGE_TYPE_PHYSICAL"
-							"Damage" "%damage"
-						}
-				}
-	
-			}
-			
-			"modifier_skeleton_mage_aqua_vitae_heal"
-			{
-				"Duration"	"%duration"
-				"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-				"EffectAttachType"	"follow_overhead"
-	
-				"ThinkInterval"	"1"
-				"OnIntervalThink"
-				{
-					"Heal"
-						{
-							"Target"	"TARGET"
-							"HealAmount" "%heal"
-						}
-				}
-	
-			}
-		}
-	}	
-	
-	
-	"skeleton_mage_light_magic"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "pugna_nether_blast"
-	
-	    "AbilityCooldown" "15 17 19"
-		"AbilityCastRange"	"500"
-	    "AbilityManaCost" "80 120 160"
-	
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-		
-	    "AbilityCastPoint"  "0.3"
-	
-	
-		"precache"
-		{
-		"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+
 		}
 		
-	    "OnSpellStart"
-	    {
-			"RunScript"
+		"modifier_skeleton_mage_aqua_vitae_heal"
+		{
+			"Duration"	"%duration"
+			"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
+			"EffectAttachType"	"follow_overhead"
+
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
 			{
-				"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
-				"Function"      "DealDamage"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
+				"Heal"
+					{
+						"Target"	"TARGET"
+						"HealAmount" "%heal"
+					}
 			}
-			"RunScript"
+
+		}
+	}
+}	
+
+
+"skeleton_mage_light_magic"
+ {
+   // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "pugna_nether_blast"
+
+    "AbilityCooldown" "15 17 19"
+	"AbilityCastRange"	"500"
+    "AbilityManaCost" "80 120 160"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+	
+    "AbilityCastPoint"  "0.3"
+
+
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+	}
+	
+    "OnSpellStart"
+    {
+		"RunScript"
+		{
+			"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua" 
+			"Function"      "DealDamageAndHeal"
+			"Target"
 			{
-				"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
-				"Function"      "Heal"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-				}
+				"Center"	"CASTER"
+				"Radius"	"%radius"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
-		  	"FireSound"
+		}
+		//"RunScript"
+		//{
+		//	"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
+		//	"Function"      "Heal"
+		//	"Target"
+		//	{
+		//		"Center"	"CASTER"
+		//		"Radius"	"%radius"
+		//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		//		"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
+		//	}
+		//}
+	  	"FireSound"
+		{
+			"EffectName"	"Hero_Pugna.NetherBlast"
+			"Target"		"CASTER"
+		}
+		"AttachEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+			"EffectAttachType"	"start_at_customorigin"
+			"Target"	"CASTER"	
+			"ControlPoints"
 			{
-				"EffectName"	"Hero_Pugna.NetherBlast"
-				"Target"		"CASTER"
+				"01"	"%radius 0 0"
+				"15"	"255 200 100"
 			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
-				"EffectAttachType"	"start_at_customorigin"
-				"Target"	"CASTER"	
-				"ControlPoints"
-				{
-					"01"	"%radius 0 0"
-					"15"	"255 200 100"
-				}
-			}
-	    }
-	    
-	  
-	   
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	       "01"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_constant"         "60 150 0"
-	        }
-			"02"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_percentage"       "0 0 20"
-	        }
-			"03"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_constant_scepter"         "150 300 0"
-	        }
-			"04"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_percentage_scepter"       "0 0 25"
-	        }
-			"05"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_constant"           "100 300 0"
-	        }
-			"06"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_percentage"         "0 0 25"
-	        }
-			"07"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_constant_scepter"           "300 500 0"
-	        }
-			"08"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_percentage_scepter"         "0 0 35"
-	        }
-	        "09"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "radius"                  "500"
-	        }
-	    }
-	  }
+		}
+    }
+    
+  
+   
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+       "01"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_constant"         "60 150 0"
+        }
+		"02"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_percentage"       "0 0 20"
+        }
+		"03"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_constant_scepter"         "150 300 0"
+        }
+		"04"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_percentage_scepter"       "0 0 25"
+        }
+		"05"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_constant"           "100 300 0"
+        }
+		"06"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_percentage"         "0 0 25"
+        }
+		"07"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_constant_scepter"           "300 500 0"
+        }
+		"08"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_percentage_scepter"         "0 0 35"
+        }
+        "09"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "radius"                  "500"
+        }
+    }
+  }
 	
 	 "skeleton_mage_dark_magic"
 	{

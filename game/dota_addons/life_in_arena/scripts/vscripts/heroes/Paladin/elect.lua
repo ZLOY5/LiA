@@ -15,6 +15,6 @@ function electRegen(keys)
 		reg = value1perc * value_regen * tick
 	end
 	--
-	target:Heal(reg,target)
+	target:Heal(reg,keys.caster)
 
 end

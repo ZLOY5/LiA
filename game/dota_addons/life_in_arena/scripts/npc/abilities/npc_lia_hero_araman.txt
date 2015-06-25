@@ -139,15 +139,11 @@
     }
   }
 
-  "OnRespawn"
-  {
-  "ApplyModifier"	"modifier_araman_armor_of_darkness"
-  }
-  
   "Modifiers"
   {   
     "modifier_araman_armor_of_darkness"
     {
+    	"IsHidden"	"1"
       "Passive"  "1"
 
       "Properties"
@@ -222,7 +218,8 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"heroes/Araman/araman_power_of_scourge.lua"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityTextureName"			"night_stalker_hunter_in_the_night"
 
@@ -237,9 +234,6 @@
 	
 	"precache"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
-		"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
-		"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"	
 		"particle"			"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
 	}
 	
@@ -268,64 +262,7 @@
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"sum_damage_tooltip"		"220 420 600"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_araman_power_of_scourge"
-			"Target"		"CASTER"
-			"Duration"		"%AbilityDuration"
-		}
-	  	"FireSound"
-		{
-			"EffectName"	"Hero_Nightstalker.Darkness	"
-			"Target"		"CASTER"
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_araman_power_of_scourge"
-		{
-			"IsPurgable"	"1"
-			"IsBuff"		"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_move_speed"
-			}
-			"OnAttack"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Araman\PowerOfScourge"
-					"Function"		"UpdateDamage"
-					"damage_stack_max"	"%damage_stack_max"
-				}
-			}
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Araman\PowerOfScourge"
-					"Function"		"RemoveDamage"
-				}	
-			}
-			"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
-			"EffectAttachType"	"attach_origin"
-
-		}
-		"modifier_araman_power_of_scourge_damage"
-		{
-			"IsHidden"		"1"
-			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage_per_attack"
-			}
+			"sum_damage_tooltip"	"220 420 600"
 		}
 	}
 }

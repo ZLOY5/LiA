@@ -2,7 +2,6 @@ require('LiA_GameMode')
 require('LiA_Common')
 require('LiA_ForceRound')
 require('timers')
-require('consolecommands')
 require('timerPopup')
 require('luaCommand')
 

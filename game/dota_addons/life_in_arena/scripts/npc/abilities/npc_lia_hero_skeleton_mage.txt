@@ -6,9 +6,9 @@
 	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityUnitDamageType"				"DAMAGE_TYPE_PURE"
-	//"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	//"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	"AbilityTextureName"				"skeleton_mage_aqua_vitae"
 
 	// Precache
@@ -91,8 +91,8 @@
 				"Center"	"POINT"
 				"Radius"	"%radius"
 				"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags"     	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
 		}	
 
@@ -104,7 +104,7 @@
 				"Center"	"POINT"
 				"Radius"	"%radius"
 				"Teams"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
+				//"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
 				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 			}
 		}	
@@ -117,6 +117,7 @@
 			"Duration"	"%duration"
 			"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
 			"EffectAttachType"	"follow_origin"
+			
 
 			"ThinkInterval"	"1"
 			"OnIntervalThink"
@@ -124,7 +125,7 @@
 				"Damage"
 					{
 						"Target"	"TARGET"
-						"Type" "DAMAGE_TYPE_PURE" //"DAMAGE_TYPE_PHYSICAL"
+						"Type" "DAMAGE_TYPE_PHYSICAL" //"DAMAGE_TYPE_PURE"
 						"Damage" "%damage"
 					}
 			}
@@ -182,30 +183,30 @@
     {
 		"RunScript"
 		{
-			"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
-			"Function"      "DealDamage"
+			"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua" 
+			"Function"      "DealDamageAndHeal"
 			"Target"
 			{
 				"Center"	"CASTER"
 				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
 		}
-		"RunScript"
-		{
-			"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
-			"Function"      "Heal"
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-			}
-		}
+		//"RunScript"
+		//{
+		//	"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
+		//	"Function"      "Heal"
+		//	"Target"
+		//	{
+		//		"Center"	"CASTER"
+		//		"Radius"	"%radius"
+		//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		//		"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
+		//	}
+		//}
 	  	"FireSound"
 		{
 			"EffectName"	"Hero_Pugna.NetherBlast"
