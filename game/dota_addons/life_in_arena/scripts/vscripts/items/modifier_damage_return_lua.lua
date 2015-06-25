@@ -1,4 +1,4 @@
-modifier_damage_return_lua = ({})
+modifier_damage_return_lua = class ({})
 
 --чтобы способность могла использовать модификатор в ней должен быть special value "damage_return"
 
