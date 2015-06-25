@@ -49,7 +49,7 @@
 
 "StatusHealth" "250" 
 "StatusHealthRegen" "0" 
-"StatusMana" "0" 
+"StatusMana" "300" 
 "StatusManaRegen" "0" 
  
 
@@ -79,16 +79,38 @@
 }
 
 "Creature"
-	{
+{
 	"AttachWearables"
+	{
+		"Wearable1"		{	"ItemDef"		"4771"		} 
+		"Wearable2" 	{	"ItemDef"		"4712"		} 
+		"Wearable3"		{	"ItemDef"		"4713"		} 
+		"Wearable4"		{	"ItemDef"		"4381"		} 
+		"Wearable5"		{	"ItemDef"		"4382"		} 
+	}
+	"DefaultState"			"Invade"
+	"States"	
+	{
+		"Invade"
 		{
-			"Wearable1"		{	"ItemDef"		"4771"		} 
-			"Wearable2" 	{	"ItemDef"		"4712"		} 
-			"Wearable3"		{	"ItemDef"		"4713"		} 
-			"Wearable4"		{	"ItemDef"		"4381"		} 
-			"Wearable5"		{	"ItemDef"		"4382"		} 
+			"Name"				"Invade"
+			"Aggression"		"90.0" //cast offensive spells whenever
+			"Avoidance"			"0.0" //dont flee
+			"Support"			"0.0" //start buffing
 		}
 	}
+	
+	"OffensiveAbilities"
+	{
+		"Ability1"
+		{
+			"Name"				"1_wave_stomp"
+			"AOE"                "1"
+			"Radius"             "245"
+			"MinimumTargets"     "1"
+		}
+	}
+}
 }
 
 "2_wave_boss" 
