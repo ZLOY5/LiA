@@ -101,12 +101,14 @@ function LiA:InitGameMode()
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
     
     TRIGGER_SHOP = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
-
+    
     LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier( "modifier_hide_lua", LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier( "modifier_orn_lua", LUA_MODIFIER_MOTION_NONE )
+    --LinkLuaModifier( "modifier_damage_return_lua", "items/modifier_damage_return_lua.lua" ,LUA_MODIFIER_MOTION_NONE )
     LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 
+   
     --InitLogFile("log/LiA.txt","Init LiA")
 end
 
@@ -368,7 +370,8 @@ function LiA:OnOrnDamaged(event)
                     unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
                 else
                     unit = CreateUnitByName(tostring(FinalBossStageCounter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-                 end
+                end
+                print("Spawned Boss",FinalBossStageCounter,unit:GetUnitName())    
                 unit:Attribute_SetIntValue("FirstStage",1)
                 ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, unit)
                 unit:EmitSound("DOTA_Item.BlinkDagger.Activate")
@@ -443,15 +446,15 @@ function LiA:TeleportToArena() --Телепорт на арену
         hero:Heal(9999,hero)
         hero:GiveMana(9999)
         hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = 5})
-        SetCameraToPosForAll(ARENA_CENTER_COORD) 
-	end)  
+	end) 
+    SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD) 
 end
 
 function LiA:TeleportWithoutArena() --Телепорт с арены
     DoWithAllHeroes(function(hero)
         hero:Stop()
         FindClearSpaceForUnit(hero, hero.abs, false)
-        SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero.abs) 
+        SetCameraToPosForPlayer(hero:GetPlayerID(),hero.abs)
     end)
 end
 
@@ -481,7 +484,7 @@ function StartDuels()
             Duel(firstHero,secondHero)
             print("firstHero",firstHero:GetUnitName())
             print("secondHero",secondHero:GetUnitName())
-            SetCameraToPosForAll(ARENA_CENTER_COORD) 
+            SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD) 
         else
             EndDuels()
         end
@@ -500,7 +503,7 @@ function EndDuels()
     DoWithAllHeroes(function(hero)
         if hero:IsAlive() then
             hero:RemoveModifierByName("modifier_stun_lua")
-            SetCameraToPosForPlayer(hero:GetPlayerOwnerID(),hero:GetAbsOrigin())
+            SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
         else
             hero:RespawnHero(false, false, false)
         end
@@ -533,6 +536,8 @@ function Duel(hero1, hero2)
     HeroOnDuel2:GiveMana(9999)
     ResetAllAbilitiesCooldown(HeroOnDuel1)
     ResetAllAbilitiesCooldown(HeroOnDuel2)
+
+    SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD)
 
     DuelCounter = 5
     Timers:CreateTimer(function()

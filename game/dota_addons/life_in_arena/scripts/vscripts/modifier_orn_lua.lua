@@ -13,9 +13,17 @@ function modifier_orn_lua:DeclareFunctions()
 end
 
 function modifier_orn_lua:OnTakeDamage(params)
-	LiA:OnOrnDamaged(params)
+	if IsServer() then
+		if params.unit == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
+			LiA:OnOrnDamaged(params)
+		end
+	end
 end
 
 function modifier_orn_lua:OnDeath(params)
-	LiA:OnOrnDeath(params)
+	if IsServer() then
+		if params.unit == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
+			LiA:OnOrnDeath(params)
+		end
+	end
 end

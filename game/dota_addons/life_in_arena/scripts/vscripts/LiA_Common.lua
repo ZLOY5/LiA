@@ -108,16 +108,16 @@ function PopupNumbers(player,target, pfx, color, lifetime, number, presymbol, po
     ParticleManager:SetParticleControl(pidx, 3, color)
 end
 
-function SetCameraToPosForAll(vector) 
-	ConsoleCommands:SendToAll("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
-	print("dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
-end
 
-function SetCameraToPosForPlayer(player,vector)
-	if type(player) == "number" then
-		ConsoleCommands:SendToPlayer(player,"dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
+function SetCameraToPosForPlayer(playerID,vector)
+	local camera_guy = CreateUnitByName("camera_guy", vector, false, nil, nil, DOTA_TEAM_GOODGUYS)
+	Timers:CreateTimer(1,function() camera_guy:RemoveSelf() end)
+	if playerID == -1 then
+		DoWithAllHeroes(function(hero)
+			PlayerResource:SetCameraTarget(hero:GetPlayerID(),camera_guy)
+		end)
 	else
-		ConsoleCommands:SendToPlayer(player:GetPlayerID(),"dota_camera_set_lookatpos "..tostring(vector.x).." "..tostring(vector.y))
+		PlayerResource:SetCameraTarget(playerID,camera_guy)
 	end
 end
 
