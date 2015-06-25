@@ -10119,70 +10119,103 @@
 
 		"ApplyModifier"
 		{
-			"ModifierName" "modifier_skeleton_mage_aqua_vitae_damage"
+			"ModifierName" "modifier_skeleton_mage_aqua_vitae_all"
 			"Target"
 			{
 				"Center"	"POINT"
 				"Radius"	"%radius"
-				"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags"     	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
 		}	
 
-		"ApplyModifier"
-		{
-			"ModifierName" "modifier_skeleton_mage_aqua_vitae_heal"
-			"Target"
-			{
-				"Center"	"POINT"
-				"Radius"	"%radius"
-				"Teams"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				//"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-		}	
+		//"ApplyModifier"
+		//{
+		//	"ModifierName" "modifier_skeleton_mage_aqua_vitae_damage"
+		//	"Target"
+		//	{
+		//		"Center"	"POINT"
+		//		"Radius"	"%radius"
+		//		"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		//		"Flags"     	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		//	}
+		//}	
+
+		//"ApplyModifier"
+		//{
+		//	"ModifierName" "modifier_skeleton_mage_aqua_vitae_heal"
+		//	"Target"
+		//	{
+		//		"Center"	"POINT"
+		//		"Radius"	"%radius"
+		//		"Teams"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		//		//"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
+		//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		//	}
+		//}	
 	}
 
 	"Modifiers"
 	{
-		"modifier_skeleton_mage_aqua_vitae_damage"
+		"modifier_skeleton_mage_aqua_vitae_all"
 		{
 			"Duration"	"%duration"
 			"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
 			"EffectAttachType"	"follow_origin"
-			
-
+			//
 			"ThinkInterval"	"1"
 			"OnIntervalThink"
 			{
-				"Damage"
-					{
-						"Target"	"TARGET"
-						"Type" "DAMAGE_TYPE_PHYSICAL" //"DAMAGE_TYPE_PURE"
-						"Damage" "%damage"
-					}
+				"RunScript"
+				{
+					"ScriptFile" 	"heroes/SkeletonMage/aqua_vitae.lua" //"aqua_vitae.lua"
+					"Function"      "DealDamageAndHeal"
+					"damage" 	"%damage"
+					"heal"		"%heal"
+				}
 			}
 
+
 		}
+		//"modifier_skeleton_mage_aqua_vitae_damage"
+		//{
+		//	"Duration"	"%duration"
+		//	"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
+		//	"EffectAttachType"	"follow_origin"
+		//	
+		//
+		//	"ThinkInterval"	"1"
+		//	"OnIntervalThink"
+		//	{
+		//		"Damage"
+		//			{
+		//				"Target"	"TARGET"
+		//				"Type" "DAMAGE_TYPE_PHYSICAL" //"DAMAGE_TYPE_PURE"
+		//				"Damage" "%damage"
+		//			}
+		//	}
+		//
+		//}
 		
-		"modifier_skeleton_mage_aqua_vitae_heal"
-		{
-			"Duration"	"%duration"
-			"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-			"EffectAttachType"	"follow_overhead"
-
-			"ThinkInterval"	"1"
-			"OnIntervalThink"
-			{
-				"Heal"
-					{
-						"Target"	"TARGET"
-						"HealAmount" "%heal"
-					}
-			}
-
-		}
+		//"modifier_skeleton_mage_aqua_vitae_heal"
+		//{
+		//	"Duration"	"%duration"
+		//	"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
+		//	"EffectAttachType"	"follow_overhead"
+		//
+		//	"ThinkInterval"	"1"
+		//	"OnIntervalThink"
+		//	{
+		//		"Heal"
+		//			{
+		//				"Target"	"TARGET"
+		//				"HealAmount" "%heal"
+		//			}
+		//	}
+		//
+		//}
 	}
 }	
 
