@@ -430,11 +430,15 @@ function LiA:_EndWave()
             FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
         end)        
     end
-    TRIGGER_SHOP:Enable() 
-    RespawnAllHeroes()
+    TRIGGER_SHOP:Enable()
+    Timers:CreateTimer(0.5,function() 
+        RespawnAllHeroes()
+    end
     DoWithAllHeroes(function(hero)
-        hero:Heal(9999,hero)
-        hero:GiveMana(9999)
+        if hero:IsAlive() then
+            hero:Heal(9999,hero)
+            hero:GiveMana(9999)
+        end
     end)
 
     --убиваем всех оставшихся после волны юнитов
@@ -512,9 +516,9 @@ function EndDuels()
             hero:RemoveModifierByName("modifier_stun_lua")
             SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
         else
-            Timers:CreateTimer(0.5,function() 
-                hero:RespawnHero(false, false, false)
-            end)
+            --Timers:CreateTimer(0.5,function() 
+            --    hero:RespawnHero(false, false, false)
+            --end)
         end
     end)
     LiA:_EndWave()
