@@ -611,7 +611,7 @@ function EndDuel(winner,loser)
         HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
     end
     HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
-    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerOwner():GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
 
     if HeroOnDuel1:IsAlive() then
         HeroOnDuel1:Purge(false, true, false, true, false)
