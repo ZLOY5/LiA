@@ -577,7 +577,9 @@ end
 
 function EndDuel(winner,loser)
     CleanUnitsOnMap()
-    winner = PlayerResource:GetSelectedHeroEntity(winner:GetPlayerOwnerID()) --находим героя, владеющего юнитом-убийцей(если убил не сам герой, а его саммон)
+    if winner and IsValidEntity(winner) then
+        winner = PlayerResource:GetSelectedHeroEntity(winner:GetPlayerOwnerID()) --находим героя, владеющего юнитом-убийцей(если убил не сам герой, а его саммон)
+    end
     if winner and loser then --проверка на отсутствие ничьей
         if winner == loser then -- проверяем самоубился ли герой
             if loser == HeroOnDuel2 then -- устанавливаем другого героя победителем
