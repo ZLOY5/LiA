@@ -2793,10 +2793,6 @@
 				"bonus_strength"		"15"
 			}
 		}
-		"OnRespawn"
-		{
-		"ApplyModifier"		"modifier_gloves_of_strength_stats"
-		}
 		
 		"Modifiers"
 		{
@@ -3563,11 +3559,6 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_armor"			"6"
 			}
-		}
-		
-		"OnRespawn"
-		{
-		"ApplyModifier"		"modifier_helm_stats"
 		}
 		
 		"Modifiers"
@@ -6981,12 +6972,6 @@
 			}
 		}
 		
-		"OnRespawn"
-		{
-		"RemoveModifier"	"modifier_spear_stats"
-		"ApplyModifier"		"modifier_spear_stats"
-		}
-		
 		"Modifiers"
 		{
 			"modifier_spear_stats"
@@ -7122,7 +7107,6 @@
 							"UnitName"			"spherical_staff_fire_golem"
 							"Target"			"POINT"
 							"UnitCount"			"1"
-							"UnitLimit"			"1"
 							"Duration"			"%infernal_duration"
 	
 							"OnSpawn"
@@ -7267,12 +7251,6 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_intelligence"	"12"
 			}
-		}
-		
-			"OnRespawn"
-		{
-		"RemoveModifier"	"modifier_staff_stats"
-		"ApplyModifier"		"modifier_staff_stats"
 		}
 		
 		"Modifiers"
