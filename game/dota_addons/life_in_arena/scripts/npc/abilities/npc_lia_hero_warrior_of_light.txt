@@ -150,10 +150,10 @@
 	    }
 	  }
 
-			"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_warrior_of_light_will_light"
-		}
+		//"OnRespawn"
+		//{
+		//	"ApplyModifier"	"modifier_warrior_of_light_will_light"
+		//}
 
 	  "Modifiers"
 	  {  
@@ -183,6 +183,7 @@
      									"Radius" "%AuraRadius"
      									"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
      									"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+									"Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
     								}   
 								"Type"		"DAMAGE_TYPE_PHYSICAL"
 								"Damage"	"%attack_damage*%absord_proc"
