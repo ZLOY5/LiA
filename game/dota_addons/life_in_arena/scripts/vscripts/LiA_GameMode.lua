@@ -255,7 +255,7 @@ function LiA:OnEntityKilled(keys)
     end
     if nDeathCreeps == WAVE_MAX_COUNT[nHeroCount] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
         print("Wave",WAVE_NUM,"finished")
-        Timers:CreateTimer(1,function() LiA._EndWave() return nil end)
+        LiA._EndWave()
     end
 end
 
