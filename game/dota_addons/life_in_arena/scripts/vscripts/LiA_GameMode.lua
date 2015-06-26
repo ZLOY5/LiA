@@ -512,7 +512,9 @@ function EndDuels()
             hero:RemoveModifierByName("modifier_stun_lua")
             SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
         else
-            hero:RespawnHero(false, false, false)
+            Timers:CreateTimer(0.5,function() 
+                hero:RespawnHero(false, false, false)
+            end)
         end
     end)
     LiA:_EndWave()
