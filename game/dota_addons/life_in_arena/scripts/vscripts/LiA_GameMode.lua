@@ -433,7 +433,7 @@ function LiA:_EndWave()
     TRIGGER_SHOP:Enable()
     Timers:CreateTimer(0.5,function() 
         RespawnAllHeroes()
-    end
+    end)
     DoWithAllHeroes(function(hero)
         if hero:IsAlive() then
             hero:Heal(9999,hero)
