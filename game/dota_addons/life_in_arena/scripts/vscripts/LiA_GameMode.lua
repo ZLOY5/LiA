@@ -254,6 +254,7 @@ function LiA:OnEntityKilled(keys)
         end
     end
     if nDeathCreeps == WAVE_MAX_COUNT[nHeroCount] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
+        print("Wave",WAVE_NUM,"finished")
         Timers:CreateTimer(1,function() LiA._EndWave() return nil end)
     end
 end
@@ -267,7 +268,7 @@ end
 
 
 function LiA:SpawnWave()  
-    print(nPlayers,"players")
+    print("Spawn wave", WAVE_NUM, "for", nPlayers, "players")
     IsPreWaveTime = false
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
@@ -280,6 +281,7 @@ function LiA:SpawnWave()
 end
 
 function LiA:SpawnMegaboss()
+    print("Spawn megaboss",WAVE_NUM)
     IsPreWaveTime = false
     CleanUnitsOnMap()
     local boss
@@ -385,7 +387,11 @@ function LiA:OnOrnDamaged(event)
 end
 
 function LiA:_EndWave()
-    print("EndWave:started")
+    print("EndWave")
+    nPlayersReady = 0
+    for _,player in pairs(tPlayers) do
+        player.readyToWave = false
+    end
     WAVE_NUM = WAVE_NUM + 1
     nDeathCreeps = 0
     nDeathHeroes = 0
@@ -397,7 +403,9 @@ function LiA:_EndWave()
         StartDuels()
     else
         IsPreWaveTime = true
-        print("EndWave:wave")
+        IsDuelOccured = false
+        print("EndWave: next wave",WAVE_NUM)
+
         local message
         if WAVE_NUM % 5 == 0 then --мегабосс
             Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnMegaboss() return nil end})
@@ -415,7 +423,6 @@ function LiA:_EndWave()
             Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5,WAVE_NUM) IsPreWaveTime = false return nil end})
         end
          
-        IsDuelOccured = false
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
             hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)

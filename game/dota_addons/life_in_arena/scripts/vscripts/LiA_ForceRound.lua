@@ -17,6 +17,7 @@ function onPlayerReadyToWave(player)
 end
 
 function ForceRound() 
+	print("Wave",WAVE_NUM,"forced")
 	nPlayersReady = 0
 	for _,player in pairs(tPlayers) do
 		player.readyToWave = false

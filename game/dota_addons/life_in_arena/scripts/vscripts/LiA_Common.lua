@@ -112,15 +112,24 @@ end
 function SetCameraToPosForPlayer(playerID,vector)
 	local camera_guy = CreateUnitByName("camera_guy", vector, false, nil, nil, DOTA_TEAM_GOODGUYS)
 	Timers:CreateTimer(1,function() camera_guy:RemoveSelf() end)
-	Timers:CreateTimer(0.06, function()
-		if playerID == -1 then
+	if playerID == -1 then --для всех игроков
+		DoWithAllHeroes(function(hero)
+			PlayerResource:SetCameraTarget(hero:GetPlayerID(),camera_guy)
+			PlayerResource:SetCameraTarget(playerID,nil)
+		end)
+		Timers:CreateTimer(0.1,function()
 			DoWithAllHeroes(function(hero)
-				PlayerResource:SetCameraTarget(hero:GetPlayerID(),camera_guy)
+				PlayerResource:SetCameraTarget(hero:GetPlayerID(),nil)
 			end)
-		else
-			PlayerResource:SetCameraTarget(playerID,camera_guy)
-		end
-	end)
+		end)
+	else --для одного игрока
+		PlayerResource:SetCameraTarget(playerID,camera_guy)
+		Timers:CreateTimer(0.1,function()
+			PlayerResource:SetCameraTarget(playerID,nil)
+		end)
+	end
+
+	
 end
 
 function DistanceBetweenPoints(v1,v2)
