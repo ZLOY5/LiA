@@ -281,14 +281,10 @@ function LiA:SpawnWave()
             CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
             spawnCount = spawnCount + 1
             if spawnCount == WAVE_SPAWN_COUNT[nHeroCount] then
-                break
+                return nil
             end
         end
-        if spawnCount == WAVE_SPAWN_COUNT[nHeroCount] then
-            return nil
-        else
-            return 0.03
-        end
+        return 0.05
     end)
 
 end
