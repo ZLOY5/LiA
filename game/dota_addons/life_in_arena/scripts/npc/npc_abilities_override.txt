@@ -9894,16 +9894,15 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\Shaman\shaman_resourcefulness.lua"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"            	"bloodseeker_thirst"
-		//
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
+		"AbilityTextureName"    	"bloodseeker_thirst"
 	
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
+		"MaxLevel"               	"3"
+		"RequiredLevel"          	"2"
+		"LevelsBetweenUpgrades"  	"2"
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -9914,60 +9913,9 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"need_for_bonus_agility"				"6 5 4"
+				"kills_for_bonus_agility"	"6 5 4"
 			}
 		}
-	
-		"OnOwnerSpawned"
-		{
-			"ApplyModifier"		"modifier_resourcefulness"
-		}
-	
-		"Modifiers"
-		{
-			"modifier_resourcefulness"
-			{
-				"Passive"	"1"
-				//
-	
-				"OnKill"
-				{
-					"RunScript"
-					{
-	           				"ScriptFile"  "heroes\Shaman\resoursefulness.lua"
-	           				"Function"    "StackAddAgility"
-	           				"maxStack"    "%need_for_bonus_agility"
-					}
-				}
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%ms_percentage"
-				}
-	
-			}
-	
-	
-			"modifier_resourcefulness_add_agility"
-			{
-				//"Passive"	"1"
-				"IsHidden"      "1"
-				"IsPurgable"	"0"
-				//
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				//
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "1"
-				}
-	
-			}
-	
-	
-		}
-	
-	
-	
 	}
 	
 	
@@ -12213,7 +12161,7 @@
 	     									"Radius" "%AuraRadius"
 	     									"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	     									"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-										"ExcludeTypes" "DOTA_UNIT_TARGET_BUILDING"
+										    "ExcludeTypes" "DOTA_UNIT_TARGET_BUILDING"
 	    								}   
 	            							"HealAmount" "%attack_damage*%absord_proc"
 	        						}
