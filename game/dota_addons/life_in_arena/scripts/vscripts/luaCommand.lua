@@ -33,5 +33,12 @@ Convars:RegisterCommand('player_say', function(...)
           Msg("Creeps:" .. hero.creeps .. " ; Bosses:" .. hero.bosses .. " ; Score:" .. hero.rating) --выводит в консоль
         end
       end
+      if keys.text == "-pos" then
+        print(cmdPlayer:GetAssignedHero():GetAbsOrigin())
+      end
+      --if keys.text == "-test" then
+      --    local unit = CreateUnitByName("8_wave_creep", WAVE_SPAWN_COORD_TOP, true, nil, nil, DOTA_TEAM_BADGUYS)
+      --   unit:AddNewModifier(unit, nil, "modifier_test_lia", nil)
+      --end
     end
   end, 'player say', 0)

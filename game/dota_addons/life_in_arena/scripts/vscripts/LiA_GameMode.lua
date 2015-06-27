@@ -1,6 +1,6 @@
 
-WAVE_SPAWN_COORD_LEFT    = Vector(-5550,  1900, 0)
-WAVE_SPAWN_COORD_TOP     = Vector(-3450,  3800, 0)
+WAVE_SPAWN_COORD_LEFT    = Vector(-5700,  1850, 0)
+WAVE_SPAWN_COORD_TOP     = Vector(-3670,  3970, 0)
 ARENA_TELEPORT_COORD_TOP = Vector(-5024, -1360, 0)
 ARENA_TELEPORT_COORD_BOT = Vector(-5024, -2360, 0)
 ARENA_CENTER_COORD       = Vector(-5024, -1860, 0)
@@ -270,14 +270,27 @@ end
 function LiA:SpawnWave()  
     print("Spawn wave", WAVE_NUM, "for", nPlayers, "players")
     IsPreWaveTime = false
-    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    local creepName = tostring(WAVE_NUM).."_wave_creep"
-    for i = 1, WAVE_SPAWN_COUNT[nHeroCount] do
-        CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-        CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-300, 300)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    end
     TRIGGER_SHOP:Disable()  
+    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+    local creepName = tostring(WAVE_NUM).."_wave_creep"
+    local spawnCount = 0
+    Timers:CreateTimer(0.05,function()
+        for i = 1, 10 do 
+            CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+            CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+            spawnCount = spawnCount + 1
+            if spawnCount == WAVE_SPAWN_COUNT[nHeroCount] then
+                break
+            end
+        end
+        if spawnCount == WAVE_SPAWN_COUNT[nHeroCount] then
+            return nil
+        else
+            return 0.03
+        end
+    end)
+
 end
 
 function LiA:SpawnMegaboss()
@@ -539,9 +552,10 @@ function Duel(hero1, hero2)
 
     if hero2:GetPlayerOwner() then 
        hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
+       PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
     end
     HeroOnDuel2:SetTeam(DOTA_TEAM_BADGUYS)
-    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
+    
 
     HeroOnDuel1:Heal(9999,HeroOnDuel1)
     HeroOnDuel2:Heal(9999,HeroOnDuel2)
@@ -611,9 +625,10 @@ function EndDuel(winner,loser)
     end
     if HeroOnDuel2:GetPlayerOwner() then
         HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
+        PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
     end
     HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
-    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
+    
 
     if HeroOnDuel1:IsAlive() then
         HeroOnDuel1:Purge(false, true, false, true, false)
