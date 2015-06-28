@@ -6,7 +6,7 @@ function DealDamageAndHeal( event )
 	local heal= event.heal
 	--
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
-		ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability })
+		ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PURE, ability = ability })
 	else
 		target:Heal(heal, caster)	
 	end
