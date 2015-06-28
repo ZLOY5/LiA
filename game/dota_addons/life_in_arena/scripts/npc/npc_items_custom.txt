@@ -2739,7 +2739,7 @@
 	//Start of file item_lia_gloves_of_haste.txt
 	"item_lia_gloves_of_haste"
 		{
-	
+			
 			"ID"							"1115"
 			"ItemCost"						"55"
 			"ItemKillable" "0" 
@@ -2752,7 +2752,8 @@
 	
 			"AbilityTextureName"			"item_lia_gloves_of_haste"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_gloves"
+			//"BaseClass" "item_gloves"
+			"BaseClass" 				"item_datadriven"
 			"AbilitySpecial"
 			{
 				"01"
@@ -2761,6 +2762,22 @@
 					"bonus_attack_speed" "15"
 				}
 			}
+			
+			"Modifiers"
+			{
+				"modifier_gloves_of_haste"
+				{
+					"Passive"			"1"
+					"IsHidden"			"1"
+					"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+					
+					"Properties"
+					{
+						"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+					}
+				}
+			}
+			
 		}
 	//End of file item_lia_gloves_of_haste.txt
 
