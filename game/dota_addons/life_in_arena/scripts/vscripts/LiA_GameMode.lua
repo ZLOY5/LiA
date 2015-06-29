@@ -269,6 +269,11 @@ end
 
 function LiA:SpawnWave()  
     print("Spawn wave", WAVE_NUM, "for", nPlayers, "players")
+    if nHeroCount == 0 then
+        GameRules:SetCustomVictoryMessage("#lose_message")
+        GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+        return   
+    end
     IsPreWaveTime = false
     TRIGGER_SHOP:Disable()  
     CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
@@ -607,6 +612,7 @@ function EndDuel(winner,loser)
         Timers:RemoveTimer("duelExpireTime")
         
         winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
+        print("Winner added "..tostring(300-50*DuelNumber).." gold")
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         
