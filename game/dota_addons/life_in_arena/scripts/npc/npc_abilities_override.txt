@@ -9991,10 +9991,10 @@
 		"BaseClass"				"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-		//"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityTextureName"				"skeleton_mage_aqua_vitae"
 	
 		// Precache
@@ -10082,31 +10082,6 @@
 				}
 			}	
 	
-			//"ApplyModifier"
-			//{
-			//	"ModifierName" "modifier_skeleton_mage_aqua_vitae_damage"
-			//	"Target"
-			//	{
-			//		"Center"	"POINT"
-			//		"Radius"	"%radius"
-			//		"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			//		"Flags"     	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			//	}
-			//}	
-	
-			//"ApplyModifier"
-			//{
-			//	"ModifierName" "modifier_skeleton_mage_aqua_vitae_heal"
-			//	"Target"
-			//	{
-			//		"Center"	"POINT"
-			//		"Radius"	"%radius"
-			//		"Teams"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			//		//"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-			//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			//	}
-			//}	
 		}
 	
 		"Modifiers"
@@ -10131,43 +10106,7 @@
 	
 	
 			}
-			//"modifier_skeleton_mage_aqua_vitae_damage"
-			//{
-			//	"Duration"	"%duration"
-			//	"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-			//	"EffectAttachType"	"follow_origin"
-			//	
-			//
-			//	"ThinkInterval"	"1"
-			//	"OnIntervalThink"
-			//	{
-			//		"Damage"
-			//			{
-			//				"Target"	"TARGET"
-			//				"Type" "DAMAGE_TYPE_PHYSICAL" //"DAMAGE_TYPE_PURE"
-			//				"Damage" "%damage"
-			//			}
-			//	}
-			//
-			//}
 			
-			//"modifier_skeleton_mage_aqua_vitae_heal"
-			//{
-			//	"Duration"	"%duration"
-			//	"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-			//	"EffectAttachType"	"follow_overhead"
-			//
-			//	"ThinkInterval"	"1"
-			//	"OnIntervalThink"
-			//	{
-			//		"Heal"
-			//			{
-			//				"Target"	"TARGET"
-			//				"HealAmount" "%heal"
-			//			}
-			//	}
-			//
-			//}
 		}
 	}	
 	

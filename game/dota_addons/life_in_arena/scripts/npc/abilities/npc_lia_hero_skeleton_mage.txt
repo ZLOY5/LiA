@@ -1,189 +1,128 @@
-"skeleton_mage_aqua_vitae"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	//"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"AbilityTextureName"				"skeleton_mage_aqua_vitae"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
+	"skeleton_mage_aqua_vitae"
 	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"		
-		"particle"		"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
-		"particle"		"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"		
-				
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetFlags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityTextureName"				"skeleton_mage_aqua_vitae"
 	
-	"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"		
+			"particle"		"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
+			"particle"		"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"		
+					
+		}
 		
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AoERadius"	"250"
+		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
+			
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 	
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.0"
-
-	"AbilityCooldown"				"18.0"
-
-	"AbilityManaCost"				"100 175 250"	
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"AoERadius"	"250"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"18.0"
+	
+		"AbilityManaCost"				"100 175 250"	
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"damage"		"20 40 60"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"heal"		"40 55 70"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"duration"	"8"
-		}
-		"04"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"radius"			"250"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"FireEffect"
-		{	
-			"EffectName"	"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
-			"EffectAttachType"	"start_at_customorigin"
-			"TargetPoint"	"POINT"	
-			"ControlPoints"
+			"01"
 			{
-				"01"	"%radius 0 0"
-				"03"	"255 0 0"
+				"var_type"			"FIELD_INTEGER"
+				"damage"		"20 40 60"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"heal"		"40 55 70"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"8"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"250"
 			}
 		}
-
-		"FireSound"
+	
+		"OnSpellStart"
 		{
-			"EffectName"	"Hero_NagaSiren.Riptide.Cast"
-			"Target"		"CASTER"
-		}	
-
-		"ApplyModifier"
-		{
-			"ModifierName" "modifier_skeleton_mage_aqua_vitae_all"
-			"Target"
-			{
-				"Center"	"POINT"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			}
-		}	
-
-		//"ApplyModifier"
-		//{
-		//	"ModifierName" "modifier_skeleton_mage_aqua_vitae_damage"
-		//	"Target"
-		//	{
-		//		"Center"	"POINT"
-		//		"Radius"	"%radius"
-		//		"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		//		"Flags"     	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		//	}
-		//}	
-
-		//"ApplyModifier"
-		//{
-		//	"ModifierName" "modifier_skeleton_mage_aqua_vitae_heal"
-		//	"Target"
-		//	{
-		//		"Center"	"POINT"
-		//		"Radius"	"%radius"
-		//		"Teams"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		//		//"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-		//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		//	}
-		//}	
-	}
-
-	"Modifiers"
-	{
-		"modifier_skeleton_mage_aqua_vitae_all"
-		{
-			"Duration"	"%duration"
-			"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-			"EffectAttachType"	"follow_origin"
-			//
-			"ThinkInterval"	"1"
-			"OnIntervalThink"
-			{
-				"RunScript"
+			"FireEffect"
+			{	
+				"EffectName"	"particles/units/heroes/hero_siren/naga_siren_riptide.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"	"POINT"	
+				"ControlPoints"
 				{
-					"ScriptFile" 	"heroes/SkeletonMage/aqua_vitae.lua" //"aqua_vitae.lua"
-					"Function"      "DealDamageAndHeal"
-					"damage" 	"%damage"
-					"heal"		"%heal"
+					"01"	"%radius 0 0"
+					"03"	"255 0 0"
 				}
 			}
-
-
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_NagaSiren.Riptide.Cast"
+				"Target"		"CASTER"
+			}	
+	
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_skeleton_mage_aqua_vitae_all"
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}	
+	
 		}
-		//"modifier_skeleton_mage_aqua_vitae_damage"
-		//{
-		//	"Duration"	"%duration"
-		//	"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-		//	"EffectAttachType"	"follow_origin"
-		//	
-		//
-		//	"ThinkInterval"	"1"
-		//	"OnIntervalThink"
-		//	{
-		//		"Damage"
-		//			{
-		//				"Target"	"TARGET"
-		//				"Type" "DAMAGE_TYPE_PHYSICAL" //"DAMAGE_TYPE_PURE"
-		//				"Damage" "%damage"
-		//			}
-		//	}
-		//
-		//}
-		
-		//"modifier_skeleton_mage_aqua_vitae_heal"
-		//{
-		//	"Duration"	"%duration"
-		//	"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
-		//	"EffectAttachType"	"follow_overhead"
-		//
-		//	"ThinkInterval"	"1"
-		//	"OnIntervalThink"
-		//	{
-		//		"Heal"
-		//			{
-		//				"Target"	"TARGET"
-		//				"HealAmount" "%heal"
-		//			}
-		//	}
-		//
-		//}
-	}
-}	
+	
+		"Modifiers"
+		{
+			"modifier_skeleton_mage_aqua_vitae_all"
+			{
+				"Duration"	"%duration"
+				"EffectName"	"particles/units/heroes/hero_rubick/rubick_fade_bolt_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				//
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile" 	"heroes/SkeletonMage/aqua_vitae.lua" //"aqua_vitae.lua"
+						"Function"      "DealDamageAndHeal"
+						"damage" 	"%damage"
+						"heal"		"%heal"
+					}
+				}
+	
+	
+			}
+			
+		}
+	}	
 
 
 "skeleton_mage_light_magic"

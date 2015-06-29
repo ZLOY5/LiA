@@ -269,29 +269,53 @@ end
 
 function LiA:SpawnWave()  
     print("Spawn wave", WAVE_NUM, "for", nPlayers, "players")
+    
     if nHeroCount == 0 then
         GameRules:SetCustomVictoryMessage("#lose_message")
         GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
         return   
     end
+    
     IsPreWaveTime = false
     TRIGGER_SHOP:Disable()  
-    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    CreateUnitByName(tostring(WAVE_NUM).."_wave_boss", WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    local creepName = tostring(WAVE_NUM).."_wave_creep"
+
+	local unit1, unit2, boss1, boss2
+	local creepName = tostring(WAVE_NUM).."_wave_creep"
+	local bossName = tostring(WAVE_NUM).."_wave_boss"
+	local pathEffect = "particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf"
+    
+    boss1 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+    boss2 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+	ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss1)
+	ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss2)
+	boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
+	boss2:EmitSound("DOTA_Item.BlinkDagger.Activate")
+	 
     local spawnCount = 0
-    Timers:CreateTimer(0.05,function()
-        for i = 1, 10 do 
-            CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-            CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+	
+	local all_time = 2.0
+	local tick = all_time/WAVE_SPAWN_COUNT[nHeroCount]
+	--
+	Timers:CreateTimer(tick,
+		function()
+			unit1 = CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+			unit2 = CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+			--
+			ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, unit1)
+			ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, unit2)
+			unit1:EmitSound("DOTA_Item.BlinkDagger.Activate")
+			unit2:EmitSound("DOTA_Item.BlinkDagger.Activate")
+			--particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf
             spawnCount = spawnCount + 1
             if spawnCount == WAVE_SPAWN_COUNT[nHeroCount] then
-                return nil
+			    return nil
+            else
+                return tick
             end
-        end
-        return 0.05
-    end)
+		end
+	)
 
+	
 end
 
 function LiA:SpawnMegaboss()

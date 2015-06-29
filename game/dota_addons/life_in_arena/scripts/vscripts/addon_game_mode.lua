@@ -244,4 +244,6 @@ function Precache( context )
 		PrecacheResource("particle", "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts", context)
 		PrecacheResource("particle_folder", "particles/units/heroes/hero_faceless_void", context)		
+
+		PrecacheUnitByNameAsync("particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf", function(...) end)
 end
