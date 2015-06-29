@@ -245,5 +245,5 @@ function Precache( context )
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts", context)
 		PrecacheResource("particle_folder", "particles/units/heroes/hero_faceless_void", context)		
 
-		PrecacheUnitByNameAsync("particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf", function(...) end)
+		PrecacheResource("particle","particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf", context) --партикл для спавна крипов на волнах
 end
