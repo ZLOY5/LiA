@@ -8843,234 +8843,163 @@
 
 
 	//Start of file npc_lia_hero_queen_of_spiders.txt
-	 "queen_of_spiders_infection"
-	{
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityTextureName"			"broodmother_spawn_spiderlings"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-			
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
+"queen_of_spiders_infection"
+{
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityTextureName"			"broodmother_spawn_spiderlings"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		
-		"AbilityCastRange"				"900"
-		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"5.0"
-		"AbilityManaCost"				"15 30 45"
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
 	
-		"precache"
+	"AbilityCastRange"				"900"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"5.0"
+	"AbilityManaCost"				"15 30 45"
+
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_broodmother.vsndevts"
+		"particle"			"particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
+		"particle"			"particles/units/heroes/hero_broodmother/broodmother_web_cast.vpcf"
+		"particle"			"particles/units/heroes/hero_broodmother/broodmother_spiderlings_spawn.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_broodmother.vsndevts"
-			"particle"			"particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
-			"particle"			"particles/units/heroes/hero_broodmother/broodmother_web_cast.vpcf"
-			"particle"			"particles/units/heroes/hero_broodmother/broodmother_spiderlings_spawn.vpcf"
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"20 40 60"
 		}
-	
-		"AbilitySpecial"
+		"02"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"20 40 60"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"buff_duration"			"10.0"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"count_1"					"1 0 0"
-			}	 
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"count_2"					"0 1 0"
-			}	
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"count_3"					"0 0 1"
-			}	
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"projectile_speed"	"900"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"spider_hp_tooltip"	"70 220 550"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"spider_damage_tooltip"	"11 24 51"
-			}
-			"09"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"spiderling_duration"	"60.0"
-			}
+			"var_type"				"FIELD_FLOAT"
+			"buff_duration"			"10.0"
 		}
-	
-		"OnSpellStart"
+		"03"
 		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Broodmother.SpawnSpiderlingsCast"
-				"Target"		"CASTER"
-			}
-	
-			"TrackingProjectile"
-			{
-				"Target" "TARGET"
-				"EffectName" "particles/units/heroes/hero_broodmother/broodmother_web_cast.vpcf"
-				"Dodgeable" "1"
-				"ProvidesVision" "0"
-				"MoveSpeed" "%projectile_speed"
-				"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}
+			"var_type"				"FIELD_INTEGER"
+			"projectile_speed"	"900"
 		}
-	
-		"OnProjectileHitUnit"
+		"04"
 		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Broodmother.SpawnSpiderlingsImpact"
-				"Target"		"TARGET"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_infection"
-				"Target"		"TARGET"
-			}
-	
+			"var_type"				"FIELD_INTEGER"
+			"spider_hp_tooltip"	"70 220 550"
 		}
-	
-		"Modifiers"
+		"05"
 		{
-			"modifier_infection"
-			{
-				"Duration"	"%buff_duration"
-				"IsDebuff"	"1"
-	
-				"EffectName"	"particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
-				"EffectAttachType"	"follow_origin"
-				
-				"ThinkInterval"	"1"
-				"OnIntervalThink"
-				{
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type"		"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"%damage"
-					}
-				}
+			"var_type"				"FIELD_INTEGER"
+			"spider_damage_tooltip"	"11 24 51"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"spiderling_duration"	"60.0"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Broodmother.SpawnSpiderlingsCast"
+			"Target"		"CASTER"
+		}
+
+		"TrackingProjectile"
+		{
+			"Target" "TARGET"
+			"EffectName" "particles/units/heroes/hero_broodmother/broodmother_web_cast.vpcf"
+			"Dodgeable" "1"
+			"ProvidesVision" "0"
+			"MoveSpeed" "%projectile_speed"
+			"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Broodmother.SpawnSpiderlingsImpact"
+			"Target"		"TARGET"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_infection"
+			"Target"		"TARGET"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		
+		"modifier_infection"
+		{
+			"Duration"	"%buff_duration"
+			"IsDebuff"	"1"
+
+			"EffectName"	"particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
 			
-				"OnDeath"
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
+			{
+				"Damage"
 				{
-					"FireSound"
+					"Target"	"TARGET"
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%damage"
+				}
+			}
+		
+			"OnDeath"
+			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Broodmother.SpawnSpiderlings"
+					"Target"
 					{
-						"EffectName"	"Hero_Broodmother.SpawnSpiderlings"
-						"Target"
-						{
-							"Center"	"UNIT"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-					}
-	
-					"FireEffect"
-					{
-						"EffectName"        "particles/units/heroes/hero_broodmother/broodmother_spiderlings_spawn.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"
-						{
-							"Center"	"UNIT"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-					}
-	
-					"SpawnUnit"
-					{
-						"UnitName"	"queen_of_spiders_spider_1"
-						"UnitCount"	"%count_1"
-						"SpawnRadius"	"50"
-						"Duration"	"%spiderling_duration"
-						"Target"
-						{
-							"Center"	"UNIT"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-	
-						"OnSpawn"
-						{
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_phased"
-								"Target"		"TARGET"
-								"Duration"		"0.03"
-							}
-						}
-	
-					}
-					"SpawnUnit"
-					{
-						"UnitName"	"queen_of_spiders_spider_2"
-						"UnitCount"	"%count_2"
-						"SpawnRadius"	"50"
-						"Duration"	"%spiderling_duration"
-						"Target"
-						{
-							"Center"	"UNIT"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-	
-						"OnSpawn"
-						{
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_phased"
-								"Target"		"TARGET"
-								"Duration"		"0.03"
-							}
-						}
-	
-					}
-					"SpawnUnit"
-					{
-						"UnitName"	"queen_of_spiders_spider_3"
-						"UnitCount"	"%count_3"
-						"SpawnRadius"	"50"
-						"Duration"	"%spiderling_duration"
-						"Target"
-						{
-							"Center"	"UNIT"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-	
-						"OnSpawn"
-						{
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_phased"
-								"Target"		"TARGET"
-								"Duration"		"0.03"
-							}
-						}
-	
+						"Center"	"UNIT"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
 					}
 				}
+
+				"FireEffect"
+				{
+					"EffectName"        "particles/units/heroes/hero_broodmother/broodmother_spiderlings_spawn.vpcf"
+					"EffectAttachType"  "follow_origin"
+					"Target"
+					{
+						"Center"	"UNIT"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+					}
+				}
+
+				"RunScript"
+				{
+					"ScriptFile"    "heroes\QueenOfSpiders\spiders.lua"    
+					"Function"      "spiderCreate"
+					"Target"		
+					{
+						"Center" 	"UNIT"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+					}
+					"durat" 	"%spiderling_duration"
+				}
+
 			}
 		}
 	}
+}
 	
 	 "queen_of_spiders_poison" 
 	  {

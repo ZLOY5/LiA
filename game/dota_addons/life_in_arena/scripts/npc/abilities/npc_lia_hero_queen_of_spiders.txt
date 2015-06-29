@@ -1,4 +1,4 @@
- "queen_of_spiders_infection"
+"queen_of_spiders_infection"
 {
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -40,34 +40,19 @@
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"count_1"					"1 0 0"
-		}	 
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"count_2"					"0 1 0"
-		}	
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"count_3"					"0 0 1"
-		}	
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
 			"projectile_speed"	"900"
 		}
-		"07"
+		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"spider_hp_tooltip"	"70 220 550"
 		}
-		"08"
+		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"spider_damage_tooltip"	"11 24 51"
 		}
-		"09"
+		"06"
 		{
 			"var_type"				"FIELD_FLOAT"
 			"spiderling_duration"	"60.0"
@@ -111,6 +96,7 @@
 
 	"Modifiers"
 	{
+		
 		"modifier_infection"
 		{
 			"Duration"	"%buff_duration"
@@ -153,75 +139,18 @@
 					}
 				}
 
-				"SpawnUnit"
+				"RunScript"
 				{
-					"UnitName"	"queen_of_spiders_spider_1"
-					"UnitCount"	"%count_1"
-					"SpawnRadius"	"50"
-					"Duration"	"%spiderling_duration"
-					"Target"
+					"ScriptFile"    "heroes\QueenOfSpiders\spiders.lua"    
+					"Function"      "spiderCreate"
+					"Target"		
 					{
-						"Center"	"UNIT"
+						"Center" 	"UNIT"
 						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
 					}
-
-					"OnSpawn"
-					{
-						"ApplyModifier"
-						{
-							"ModifierName"	"modifier_phased"
-							"Target"		"TARGET"
-							"Duration"		"0.03"
-						}
-					}
-
+					"durat" 	"%spiderling_duration"
 				}
-				"SpawnUnit"
-				{
-					"UnitName"	"queen_of_spiders_spider_2"
-					"UnitCount"	"%count_2"
-					"SpawnRadius"	"50"
-					"Duration"	"%spiderling_duration"
-					"Target"
-					{
-						"Center"	"UNIT"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-					}
 
-					"OnSpawn"
-					{
-						"ApplyModifier"
-						{
-							"ModifierName"	"modifier_phased"
-							"Target"		"TARGET"
-							"Duration"		"0.03"
-						}
-					}
-
-				}
-				"SpawnUnit"
-				{
-					"UnitName"	"queen_of_spiders_spider_3"
-					"UnitCount"	"%count_3"
-					"SpawnRadius"	"50"
-					"Duration"	"%spiderling_duration"
-					"Target"
-					{
-						"Center"	"UNIT"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-					}
-
-					"OnSpawn"
-					{
-						"ApplyModifier"
-						{
-							"ModifierName"	"modifier_phased"
-							"Target"		"TARGET"
-							"Duration"		"0.03"
-						}
-					}
-
-				}
 			}
 		}
 	}
