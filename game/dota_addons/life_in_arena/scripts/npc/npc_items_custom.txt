@@ -417,7 +417,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 	
-		"AbilityCooldown"				"12"
+		"AbilityCooldown"				"18"
 		
 		"ItemKillable"                  "0"
 		"ItemSellable"                  "1"
@@ -942,7 +942,7 @@
 		"ItemQuality"					"epic"
 		"AbilityTextureName"			"lia_blood_moon"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
+	
 		"Modifiers"
 		{
 			"item_blood_moon_stat_modifier"
@@ -950,7 +950,7 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-
+	
 				"OnCreated"
 				{
 					"RunScript"
@@ -1020,6 +1020,55 @@
 		}
 	}
 	//End of file item_lia_blood_moon.txt
+
+
+	//Start of file item_lia_boar.txt
+	    "item_lia_boar"
+	{
+		"ID"                            "1496"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"            "item_lia_boar"
+		
+		"ItemStockMax" "1" 
+		"ItemStockTime" "30"
+		"ItemStockInitial" "1"
+		
+		"ItemCost"                      "110" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCastRange"              "400"
+		"AbilityCooldown"               "20"
+		"AbilityManaCost"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"	"items\Boar.lua"
+				"Function"		"SpawnBoar"
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+		}
+	}
+	//End of file item_lia_boar.txt
 
 
 	//Start of file item_lia_book_of_the_dead.txt
@@ -2801,48 +2850,48 @@
 
 
 	//Start of file item_lia_gloves_of_haste.txt
-	"item_lia_gloves_of_haste"
-		{
-			
-			"ID"							"1115"
-			"ItemCost"						"55"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
-			"ItemQuality"					"component"
-			
-	
-			"AbilityTextureName"			"item_lia_gloves_of_haste"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			//"BaseClass" "item_gloves"
-			"BaseClass" 				"item_datadriven"
-			"AbilitySpecial"
+		"item_lia_gloves_of_haste"
 			{
-				"01"
+				
+				"ID"							"1115"
+				"ItemCost"						"55"
+				"ItemKillable" "0" 
+				"ItemDroppable" "1"
+				"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+				"ItemSellable"                  "1"
+				"ItemPurchasable"		 "1"
+				"ItemQuality"					"component"
+				
+		
+				"AbilityTextureName"			"item_lia_gloves_of_haste"
+				"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+				//"BaseClass" "item_gloves"
+				"BaseClass" 				"item_datadriven"
+				"AbilitySpecial"
 				{
-					"var_type" "FIELD_INTEGER"
-					"bonus_attack_speed" "15"
-				}
-			}
-			
-			"Modifiers"
-			{
-				"modifier_gloves_of_haste"
-				{
-					"Passive"			"1"
-					"IsHidden"			"1"
-					"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-					
-					"Properties"
+					"01"
 					{
-						"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+						"var_type" "FIELD_INTEGER"
+						"bonus_attack_speed" "15"
 					}
 				}
+				
+				"Modifiers"
+				{
+					"modifier_gloves_of_haste"
+					{
+						"Passive"			"1"
+						"IsHidden"			"1"
+						"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+						
+						"Properties"
+						{
+							"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+						}
+					}
+				}
+				
 			}
-			
-		}
 	//End of file item_lia_gloves_of_haste.txt
 
 
@@ -3340,7 +3389,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"40.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3400,7 +3449,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"40.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3696,7 +3745,7 @@
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"lia_huge_axe"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
+	
 		"Modifiers"
 		{
 			"item_huge_axe_stat_modifier"
@@ -3704,7 +3753,7 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-
+				
 				"OnCreated"
 				{
 					"RunScript"
@@ -5133,7 +5182,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20"
+		"AbilityCooldown"				"40"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -5351,7 +5400,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"40.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -6208,6 +6257,183 @@
 	//End of file item_lia_poleaxe_of_rage.txt
 
 
+	//Start of file item_lia_potion_of_invisibility.txt
+	"item_lia_potion_of_invisibility"
+	{
+		"BaseClass"						"item_datadriven"
+		"ID"							"1498"
+		"AbilityTextureName"			"item_lia_potion_of_invisibility"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		
+		"AbilityCooldown"				"13"
+		
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+	
+		"ItemCost"						"60"
+		"ItemShopTags"					"common"
+		"ItemQuality"					"common"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"7"
+			}
+		}
+	
+		"precache"
+		{
+			"particle_folder" "particles/units/heroes/hero_bounty_hunter"
+		}
+		
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"FireEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+				"EffectAttachType"	"attach_origin"
+			}
+	
+			"FireSound"
+			{
+				"Target"		"CASTER"
+				"EffectName"	"Hero_BountyHunter.WindWalk"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_invisible"
+				"Target"		"CASTER"
+				"Duration"		"%duration"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_lia_potion_of_invisibility_windwalk"
+				"Target"		"CASTER"
+				"Duration"		"%duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_lia_potion_of_invisibility_windwalk"
+			{			
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+	
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_lia_potion_of_invisibility_windwalk"
+						"Target"		"CASTER"
+					}
+				}
+	
+				"OnAbilityExecuted"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+	
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_lia_potion_of_invisibility_windwalk"
+						"Target"		"CASTER"
+					}
+				}
+			}
+		}
+	}
+	//End of file item_lia_potion_of_invisibility.txt
+
+
+	//Start of file item_lia_potion_of_invulnerability.txt
+	"item_lia_potion_of_invulnerability"
+	{
+		"BaseClass"						"item_datadriven"
+		"ID"							"1497"	
+		"AbilityTextureName"			"item_lia_bottle"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+		"AbilityCooldown"				"12"
+		
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemPermanent"					"0"
+		
+		"ItemCost"						"80"
+		"ItemShopTags"					"common"
+		"ItemQuality"					"common"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemInitialCharges"			"1"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"3"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_potion_of_invulnerability"
+				"Duration"		"%duration"
+			}
+			"SpendCharge"
+			{}	
+		}
+		
+		"Modifiers"
+		{
+			"modifier_potion_of_invulnerability"
+			{
+				"EffectName"		"particles/items3_fx/lotus_orb_shield.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"	
+				}
+			}
+		}
+	}
+	//End of file item_lia_potion_of_invulnerability.txt
+
+
 	//Start of file item_lia_rage_sword_agi.txt
 	"item_recipe_lia_blade_of_rage_agi"
 	
@@ -6777,6 +7003,194 @@
 		}
 	}
 	//End of file item_lia_scepter_of_power.txt
+
+
+	//Start of file item_lia_scroll_of_restoration.txt
+	"item_lia_scroll_of_restoration"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ID"							"1511"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"            "item_lia_scroll_of_restoration"
+		"AbilityCooldown"               "25"
+			
+		
+		"ItemCost"                      "70"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"		
+		"ItemShopTags"					"rare"
+		"ItemQuality"					"rare"
+		"ItemPermanent"					"0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"health_restored"	"500"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"mana_restored"		"250"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1000"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"Target" 			"CASTER"
+				"EffectName"		"particles/items_fx/buckler.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				}
+			
+				"Action"    
+				{
+					"Heal"
+					{
+						"Target"        "TARGET"
+						"HealAmount"	"%health_restored"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"items/mana.lua"
+						"Function"		"GiveMana"
+						"mana_amount"	"%mana_restored"
+					}
+				}
+			}
+				
+			"FireSound"
+			{
+				"EffectName"	"DOTA_Item.Mekansm.Activate"
+				"Target" 		"CASTER"
+			}
+	
+			"SpendCharge"
+			{}
+		}
+	}
+	//End of file item_lia_scroll_of_restoration.txt
+
+
+	//Start of file item_lia_scroll_of_secret_knowledge.txt
+	"item_lia_scroll_of_secret_knowledge"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ID"							"1512"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"            "item_lia_scroll_of_secret_knowledge"
+		"AbilityCooldown"               "12"
+			
+		
+		"ItemCost"                      "90"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"		
+		"ItemShopTags"					"rare"
+		"ItemQuality"					"rare"
+		"ItemPermanent"					"0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_armor"	"100"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"		"6"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"600"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" "CASTER"
+	                "Radius" "%radius"
+	                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+	                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+	
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_item_lia_scroll_of_secret_knowledge"
+						"Target"		"TARGET"
+					}
+				}
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Sven.WarCry"
+				"Target"		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"		"CASTER"
+			}
+			"SpendCharge"
+			{}
+		}
+		"Modifiers"
+		{
+			"modifier_item_lia_scroll_of_secret_knowledge"
+			{
+				"IsBuff"	"1"
+				"Duration"	"%duration"
+	
+				"EffectName"	"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				}
+			}
+		}
+	}
+	//End of file item_lia_scroll_of_secret_knowledge.txt
 
 
 	//Start of file item_lia_shield_of_death.txt
@@ -8610,8 +9024,8 @@
 		
 		"ItemCost"                      "125" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemShopTags"					"epic"
-		"ItemQuality"					"epic"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
 		"ItemPermanent"					"0"
 		"AbilityCastRange"              "400"
 		"AbilityCooldown"               "20"
