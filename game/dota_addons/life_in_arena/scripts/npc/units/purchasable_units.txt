@@ -136,7 +136,7 @@
 	}
 }
 
-"troll_defender" 
+"npc_lia_troll_defender" 
 {
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/troll_warlord/troll_warlord.vmdl" 
@@ -427,65 +427,140 @@
 }
 
 "spherical_staff_fire_golem" 
-	{
-		"BaseClass" 				"npc_dota_creature" 
-							//
-		"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 						//"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
-		"SoundSet"				"Hero_WarlockGolem"
-		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
-		"ModelScale" "1" 
-		"Level" "1" 
-	
-		"precache"
-		{
-			"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
-		}
-	
-		"Ability1" "spell_immunity" // 
-		"Ability2" "spherical_staff_fire_golem_immolation" 
-		"Ability3" "" 
-		"Ability4" "" 
-		"Ability5" "" 
-		"Ability6" "" 
-		"Ability7" "" 
-		"Ability8" "" 
-	
-		"ArmorPhysical" 		"16" 
-		"MagicalResistance" 		"100" 
-	
-		"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" 			"100" 
-		"AttackDamageMax" 			"120" 
-		"AttackRate" 				"0.95" 
-		"AttackAnimationPoint" 		"0.26" 
-		"AttackAcquisitionRange" 	"500" 
-		"AttackRange" 				"100" 
+{
+	"BaseClass" 				"npc_dota_creature" 
+						//
+	"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 						//"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
+	"SoundSet"				"Hero_WarlockGolem"
+	"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
+	"ModelScale" "1" 
+	"Level" "1" 
 
-		//"ProjectileModel"			""			
-		//"ProjectileSpeed"			"0"
-	
-		"HealthBarOffset"			"260"
-	
-		"BountyXP" 				"0" 
-		"BountyGoldMin" 			"0" 
-		"BountyGoldMax" 			"0" 
-	
-		"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
-		"MovementSpeed" 			"320" 
-		"MovementTurnRate" 			"0.4" 
-	
-		"StatusHealth" 				"1800" 
-		"StatusHealthRegen" 			"1" 
-		"StatusMana" 				"0" 
-		"StatusManaRegen" 			"0" 
-	
-		"TeamName" 			"DOTA_TEAM_GOODGUYS" 
-		"CombatClassAttack" 		"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend" 		"DOTA_COMBAT_CLASS_DEFEND_STRONG"
-		"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-		"VisionDaytimeRange" 		"900" 
-		"VisionNighttimeRange" 		"800" 
-	
-		"HasInventory" 				"0" 		
+	"precache"
+	{
+		"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
 	}
+
+	"Ability1" "spell_immunity" // 
+	"Ability2" "spherical_staff_fire_golem_immolation" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+
+	"ArmorPhysical" 		"16" 
+	"MagicalResistance" 		"100" 
+
+	"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" 			"100" 
+	"AttackDamageMax" 			"120" 
+	"AttackRate" 				"0.95" 
+	"AttackAnimationPoint" 		"0.26" 
+	"AttackAcquisitionRange" 	"500" 
+	"AttackRange" 				"100" 
+
+	//"ProjectileModel"			""			
+	//"ProjectileSpeed"			"0"
+
+	"HealthBarOffset"			"260"
+
+	"BountyXP" 				"0" 
+	"BountyGoldMin" 			"0" 
+	"BountyGoldMax" 			"0" 
+
+	"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" 			"320" 
+	"MovementTurnRate" 			"0.4" 
+
+	"StatusHealth" 				"1800" 
+	"StatusHealthRegen" 			"1" 
+	"StatusMana" 				"0" 
+	"StatusManaRegen" 			"0" 
+
+	"TeamName" 			"DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" 		"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" 		"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+	"VisionDaytimeRange" 		"900" 
+	"VisionNighttimeRange" 		"800" 
+
+	"HasInventory" 				"0" 		
+}
+
+"npc_lia_boar" 
+{
+	"BaseClass" "npc_dota_creature" 
+	"Model" "models/heroes/beastmaster/beastmaster_beast.vmdl" 
+	"SoundSet" "n_creep_Ranged" 
+	"ModelScale" "0.9" 
+	"Level" "1" 
+
+
+
+
+	"Ability1" "invulnerability" 
+	"Ability2" "boar_poison" 
+
+
+
+
+	"ArmorPhysical" "1" 
+	"MagicalResistance" "0" 
+
+
+
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	"AttackDamageMin" "30" 
+	"AttackDamageMax" "30" 
+	"AttackRate" "1.6" 
+	"AttackAnimationPoint" "0.4" 
+	"AttackAcquisitionRange" "500" 
+	"AttackRange" "500" 
+	"ProjectileModel" "particles/units/heroes/hero_beastmaster/beastmaster_boar_attack.vpcf" 
+	"ProjectileSpeed" "1000" 
+
+
+
+	"BountyXP" "100" 
+	"BountyGoldMin" "5" 
+	"BountyGoldMax" "5" 
+
+
+
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "290" 
+	"MovementTurnRate" "0.5" 
+
+
+
+	"StatusHealth" "100" 
+	"StatusHealthRegen" "0" 
+	"StatusMana" "100" 
+	"StatusManaRegen" "0" 
+
+
+
+	"TeamName" "DOTA_TEAM_BADGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+
+
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "900" 
+
+
+
+	"HasInventory" "0" 
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_beastmaster/beastmaster_boar_attack.vpcf"
+		"model"	"models/heroes/beastmaster/beastmaster_beast.vmdl"
+	}
+}

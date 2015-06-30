@@ -406,3 +406,88 @@
 		}
 	}
 }
+
+"boar_poison"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"AbilityTextureName"			"beastmaster_boar_poison"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+	}
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movement_and_attack_slow"		"-25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_slow"		"25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"3"
+		}
+	}
+
+	"OnOwnerSpawned"
+	{
+		"ApplyModifier"	
+		{
+			"ModifierName"	"modifier_boar_poison"
+			"Target"	"CASTER"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_boar_poison"
+		{
+			"Passive"               "1"
+			"IsHidden"				"0"
+	
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_poisoned_weapon_debuff"
+					"Target"	
+					{
+					"Center"	"TARGET"
+					"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
+					}
+				}
+			}
+		}
+		
+		"modifier_poisoned_weapon_debuff"
+		{
+			"Passive"               "0"
+			"IsHidden"				"0"
+			"Duration"				"%duration"
+			
+			"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_and_attack_slow"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%movement_and_attack_slow"
+			}
+		}
+	}
+}
