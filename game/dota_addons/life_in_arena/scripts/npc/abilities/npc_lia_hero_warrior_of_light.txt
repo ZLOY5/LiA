@@ -14,8 +14,7 @@
 
 		"precache"
 		{
-			"particle"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura_debuff.vpcf"	
-					
+			"particle"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura_debuff.vpcf"				
 		}
 		
 		"MaxLevel"               "3"
@@ -66,15 +65,15 @@
 				"Target"		"CASTER"
 			}
 			"ApplyModifier"
-     			{
-      				"ModifierName" "warrior_of_light_fetters"
-     				"Target"
-    				{
-     					"Center" "POINT"
-     					"Radius" "%radius"
-     					"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-     					"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    				}     
+     		{
+      			"ModifierName" "warrior_of_light_fetters"
+     			"Target"
+    			{
+     				"Center" "POINT"
+     				"Radius" "%radius"
+     				"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+     				"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    			}     
 			}
 	
 
@@ -150,10 +149,6 @@
 	    }
 	  }
 
-		//"OnRespawn"
-		//{
-		//	"ApplyModifier"	"modifier_warrior_of_light_will_light"
-		//}
 
 	  "Modifiers"
 	  {  
