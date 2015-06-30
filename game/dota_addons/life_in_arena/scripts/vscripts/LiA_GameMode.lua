@@ -479,6 +479,8 @@ function LiA:_EndWave()
         end
     end)
 
+    _G.TimeLapse_NeedClean = true
+    
     --убиваем всех оставшихся после волны юнитов
     CleanUnitsOnMap()
 
@@ -492,6 +494,9 @@ function LiA:TeleportToArena() --Телепорт на арену
         hero:Stop()
         hero:SetForwardVector(Vector(0, 1, 0))
         FindClearSpaceForUnit(hero, ARENA_TELEPORT_COORD_BOT + Vector(RandomInt(-200,200),RandomInt(-50,50),0), false)
+
+        _G.TimeLapse_NeedClean = true
+
         hero:Heal(9999,hero)
         hero:GiveMana(9999)
         hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = 5})
@@ -574,6 +579,8 @@ function Duel(hero1, hero2)
     HeroOnDuel2:SetForwardVector(Vector(0,-1,0))
     FindClearSpaceForUnit(HeroOnDuel1, ARENA_TELEPORT_COORD_BOT, false) 
     FindClearSpaceForUnit(HeroOnDuel2, ARENA_TELEPORT_COORD_TOP, false)
+
+    _G.TimeLapse_NeedClean = true
 
     if hero2:GetPlayerOwner() then 
        hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)

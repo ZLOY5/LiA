@@ -4,7 +4,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"           "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityTextureName"     "alchemist_acid_spray"
+    "AbilityTextureName"     "spirit_breaker_greater_bash"
   
     // Stats    
     //-------------------------------------------------------------------------------------------------------------
@@ -55,14 +55,12 @@
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "AbilityTextureName"     "alchemist_acid_spray"
+    "AbilityTextureName"     "spirit_breaker_charge_of_darkness"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
-
-
 
     // Stats
     //-------------------------------------------------------------------------------------------------------------
@@ -71,12 +69,18 @@
     "AbilityCooldown"         "13 11 9"
     "AbilityManaCost"         "150 200 250"
 
+    "preload"
+    {
+        "particle"  "particles/items_fx/blink_dagger_start.vpcf"
+        "particle"  "particles/items_fx/blink_dagger_end.vpcf"
+    }
+
     "AbilitySpecial"
     {
         "01"
         {
             "var_type"              "FIELD_INTEGER"
-            "radius"                "250"
+            "damage_radius"         "300"
         }
         "02"
         {
@@ -89,28 +93,34 @@
     {
         "RunScript"
         {
-            "ScriptFile"  "heroes/TemiLord/time_lord_timelapse.lua"
-            "Function"    "Do_fucking_Lapse"
+            "ScriptFile"  "heroes/TimeLord/TimeLapse.lua"
+            "Function"    "TimeLapse"
         }
     }
+
     "Modifiers"
     {
         "modifier_time_lord_timelapse"
         {
             "Passive"           "1"
-            "IsHidden"          "0"
-            "IsDebuff"          "0"
-
-            "EffectName"        "particle_name"
-            "EffectAttachType"  "follow_origin"
-            "ThinkInterval"     "0.03"
+            "IsHidden"          "1"
+            
+            "ThinkInterval"     "0.1"
             "OnIntervalThink"
             {
                 "RunScript"
                 {
-                    "ScriptFile"  "heroes/TimeLord/time_lord_timelapse.lua"
+                    "ScriptFile"  "heroes/TimeLord/TimeLapse.lua"
                     "Function"    "TickLapse"
                 }
+            }
+        }
+        "modifier_time_lord_timelapse_invul"
+        {
+            "IsHidden"          "1"
+            "States"
+            {
+                "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
             }
         }
     }  
@@ -118,13 +128,13 @@
 
 
 
-"time_lord_supporting_of_time"
+"time_lord_wisdom_flow"
 {
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"     "alchemist_acid_spray"
+    "AbilityTextureName"     "time_lord_wisdom_flow"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
@@ -133,38 +143,35 @@
   
     // Stats    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCastPoint"        "0.0"
-    "AbilityCooldown"         "60.0"
+    "AbilityCooldown"         "%stack_interval"
   
     "AbilitySpecial"
     {
         "01"
         {
-            "var_type"                          "FIELD_INTEGER"
-            "intellect_buff_amount"             "1 2 3"
+            "var_type"                    "FIELD_INTEGER"
+            "bonus_intellect"             "1 2 3"
         }
         "02"
         {
-            "var_type"                          "FIELD_INTEGER"
-            "Interval_Of_Intellect_Stuck"         "60"
+            "var_type"                    "FIELD_INTEGER"
+            "stack_interval"              "60"
         }
     }
 
 
     "Modifiers"
     {
-        "modifier_time_lord_supporting_of_time"
+        "modifier_time_lord_wisdom_flow"
         {
             "Passive"       "1"
-            "IsHidden"      "0"
-            "IsBuff"        "1"
-
+            
             "OnCreated"
             {
                 "RunScript"
                 {
-                    "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
-                    "Function"    "start_cooldawn_after_respawn"
+                    "ScriptFile"  "heroes/TimeLord/WisdomFlow.lua"
+                    "Function"    "StartCooldown"
                 }
             }
 
@@ -172,39 +179,21 @@
             { 
                 "RunScript"
                 {
-                    "ScriptFile"  "heroes/TimeLord/time_lord_bonus.lua"
-                    "Function"    "stop_cooldawn"
+                    "ScriptFile"  "heroes/TimeLord/WisdomFlow.lua"
+                    "Function"    "StopCooldown"
                 }
             }
       
-            "ThinkInterval"  "%Interval_Of_Intellect_Stuck"
+            "ThinkInterval"  "%stack_interval"
             "OnIntervalThink"
             {
                 "RunScript"
                 {
-                    "ScriptFile"  "heroes/time_lord_bonus.lua"
-                    "Function"    "information_of_spell"
-                    "Bonus"       "%intellect_buff_amount"
-                }
-      
-                "ApplyModifier"
-                {
-                    "ModifierName"  "modifier_time_lord_supporting_of_time_bonus_datadriven"
-                    "Target"        "CASTER"
+                    "ScriptFile"            "heroes/TimeLord/WisdomFlow.lua"
+                    "Function"              "AddIntellect"
+                    "bonus_intellect"       "%bonus_intellect"
                 }
             }      
-        }
-
-        "modifier_time_lord_supporting_of_time_bonus_datadriven"
-        {
-            "IsHidden"  "1"
-            "IsBuff"    "1"
-            "Attributes"  "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_PERMANENT"
-
-            "Properties"
-            {
-                "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"  "%intellect_buff_amount"
-            }
         }
     }
 }
@@ -216,7 +205,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"     "alchemist_acid_spray"
+    "AbilityTextureName"     "spirit_breaker_nether_strike"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 	"MaxLevel"               "3"
@@ -232,37 +221,18 @@
 
     "OnSpellStart"
     {
-        "ApplyModifier"
+        "RunScript"
         {
-            "ModifierName"  "modifier_time_lock_stun_datadriven"
-            "Duration"      "%hero_stop"
-            "Target"        
+            "ScriptFile"    "heroes\TimeLord\StopTime.lua"
+            "Function"      "StopTime"
+            "Target"
             {
-                "Center"    "CASTER"
-                "Radius"    "9999"
-                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"     "DOTA_UNIT_TARGET_HERO"
-            }  
-        }
-
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_time_lock_stun_datadriven"
-            "Duration"      "%other_stop"
-            "Target"        
-            {
-                "Center"    "CASTER"
-                "Radius"    "9999"
-                "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"     "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
-            }  
-        }
-
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_time_lock_bonus"
-            "Target"        "CASTER"
-            "Duration"      "%bonus_duration"
+                "Center"        "CASTER"
+                "Radius"        "9999"
+                "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"         "DOTA_UNIT_TARGET_ALL"
+                "ExcludeTypes"  "DOTA_UNIT_TARGET_BUILDING"
+            }
         }
     }
  
@@ -273,10 +243,8 @@
     {
         "modifier_time_lock_stun_datadriven"
         {
-            "IsDebuff"  "1"
-
-            "EffectName"        "particles/generic_gameplay/generic_stunned.vpcf"
-            "EffectAttachType"  "follow_overhead"
+            "IsDebuff"              "1"
+            "IsPurgable"            "1"
 
             "StatusEffectName"      "particles/status_fx/status_effect_faceless_chronosphere.vpcf"
             "StatusEffectPriority"  "1"
@@ -290,10 +258,11 @@
 
         "modifier_time_lock_bonus"
         {
-            "Passive"       "0"
-            "IsHidden"      "0"
             "IsBuff"        "1"
-     
+            "IsPurgable"    "1"
+
+            "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
             "Properties"
             {
                 "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"     "%bonus_movespeed_percentage"
@@ -308,28 +277,28 @@
     {
         "01"
         {
-            "var_type"              "FIELD_INTEGER"
-            "hero_stop"                "3 4 5"
+            "var_type"                          "FIELD_INTEGER"
+            "hero_stop"                         "3 4 5"
         }
         "02"
         {
-            "var_type"              "FIELD_INTEGER"
-            "other_stop"                "4 6 8"
+            "var_type"                          "FIELD_INTEGER"
+            "other_stop"                        "4 6 8"
         }
         "03"
         {
-            "var_type"                                 "FIELD_INTEGER"
-            "bonus_movespeed_percentage"                "20 40 60"
+            "var_type"                          "FIELD_INTEGER"
+            "bonus_movespeed_percentage"        "20 40 60"
         }
         "04"
         {
-            "var_type"              "FIELD_INTEGER"
-            "bonus_attackspeed"                "200 250 300"
+            "var_type"                          "FIELD_INTEGER"
+            "bonus_attackspeed"                 "200 250 300"
         }
         "05"
         {
-            "var_type"              "FIELD_INTEGER"
-            "bonus_duration"        "4 6 8"
+            "var_type"                          "FIELD_INTEGER"
+            "bonus_duration"                    "4 6 8"
         }
     }
 }
