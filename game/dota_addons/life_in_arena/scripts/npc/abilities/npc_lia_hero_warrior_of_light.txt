@@ -159,47 +159,44 @@
 	  {  
 			"modifier_warrior_of_light_will_light"
 			{
-			    	"Passive"          "1"    
-			    	"IsHidden"         "0"
-				"OnTakeDamage"
-				{
-        						"Heal"
-        						{          
-     								"Target"
-    								{
-     									"Center" "CASTER"
-     									"Radius" "%AuraRadius"
-     									"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-     									"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-									    "ExcludeTypes" "DOTA_UNIT_TARGET_BUILDING"
-    								}   
-            							"HealAmount" "%attack_damage*%absord_proc"
-        						}
-							"Damage"
+					"Passive"          "1"    
+					"IsHidden"         "0"
+					"OnTakeDamage"
+					{
+						"Heal"
+						{          
+							"Target"
 							{
-     								"Target"
-    								{
-     									"Center" "CASTER"
-     									"Radius" "%AuraRadius"
-     									"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-     									"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-									"Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-    								}   
-								"Type"		"DAMAGE_TYPE_PHYSICAL"
-								"Damage"	"%attack_damage*%absord_proc"
-							}
-				}
+								"Center" "CASTER"
+								"Radius" "%AuraRadius"
+								"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+								"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								//"ExcludeTypes" "DOTA_UNIT_TARGET_BUILDING"
+							}   
+							"HealAmount" "%attack_damage*%absord_proc"
+						}
+						"Damage"
+						{
+							"Target"
+							{
+								"Center" "CASTER"
+								"Radius" "%AuraRadius"
+								"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}   
+							"Type"		"DAMAGE_TYPE_PHYSICAL"
+							"Damage"	"%attack_damage*%absord_proc"
+						}
+					}
 
-
-
-
-
-	        		"Aura"        		"modifier_warrior_of_light_will_light_aura"
-	        		"Aura_Radius" 		"%AuraRadius"
-	        		"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_BOTH"
-	        		"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	        		"Aura_Flags"  		"DOTA_UNIT_TARGET_FLAG_NONE"
-	        		"Aura_ApplyToCaster" 	"1"  
+					"Aura"        		"modifier_warrior_of_light_will_light_aura"
+					"Aura_Radius" 		"%AuraRadius"
+					"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_BOTH"
+					"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Aura_Flags"  		"DOTA_UNIT_TARGET_FLAG_NONE"
+					"Aura_ApplyToCaster" 	"1"  
+				
 			}
 
 
