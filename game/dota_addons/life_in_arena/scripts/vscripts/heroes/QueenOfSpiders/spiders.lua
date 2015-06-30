@@ -28,8 +28,8 @@ function spiderCreate(keys)
 	cre:SetControllableByPlayer(PID, false)
 	--
 	
-	cre:AddNewModifier(caster, cre, "modifier_kill", { duration = durat })
-	cre:AddNewModifier(caster, cre, "modifier_phased", { duration = 0.03 })
+	cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
+	cre:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
 	
 	
 	--ability:ApplyDataDrivenModifier( caster, cre, 'modifier_infection_expire', {} )

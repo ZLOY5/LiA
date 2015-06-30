@@ -942,22 +942,7 @@
 		"ItemQuality"					"epic"
 		"AbilityTextureName"			"lia_blood_moon"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"OnEquip"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\cleave_axes"
-				"Function"   "OnEquipBloodMoon"
-			}
-		}
-		"OnUnequip"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\cleave_axes"
-				"Function"   "OnUnequip"
-			}
-		}
+
 		"Modifiers"
 		{
 			"item_blood_moon_stat_modifier"
@@ -965,7 +950,24 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-	
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile" "items\cleave_axes"
+						"Function"   "OnEquipBloodMoon"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile" "items\cleave_axes"
+						"Function"   "OnUnequip"
+					}
+				}
+				
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
@@ -3694,22 +3696,7 @@
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"lia_huge_axe"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"OnEquip"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\cleave_axes"
-				"Function"   "OnEquipHugeAxe"
-			}
-		}
-		"OnUnequip"
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\cleave_axes"
-				"Function"   "OnUnequip"
-			}
-		}
+
 		"Modifiers"
 		{
 			"item_huge_axe_stat_modifier"
@@ -3717,7 +3704,24 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-	
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile" "items\cleave_axes"
+						"Function"   "OnEquipHugeAxe"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile" "items\cleave_axes"
+						"Function"   "OnUnequip"
+					}
+				}
+				
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
