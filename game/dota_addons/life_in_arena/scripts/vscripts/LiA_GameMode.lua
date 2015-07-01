@@ -36,7 +36,7 @@ uFinalBoss    = nil
 
 if LiA == nil then
 	_G.LiA = class({})
-	LiA.DeltaTime = 0.10
+	LiA.DeltaTime = 0.25
 end
 
 
