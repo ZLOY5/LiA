@@ -4,6 +4,7 @@ require('LiA_ForceRound')
 require('timers')
 require('timerPopup')
 require('luaCommand')
+require('checkitemmodifies')
 
 function Activate()
 	GameRules.LiA = LiA()

@@ -36,7 +36,7 @@ uFinalBoss    = nil
 
 if LiA == nil then
 	_G.LiA = class({})
-	LiA.DeltaTime = 0.5
+	LiA.DeltaTime = 0.10
 end
 
 
@@ -162,8 +162,16 @@ function LiA:onThink()
         --print(hero.rating,PlayerResource:GetPlayerName(hero:GetPlayerID()))       
     end 
     table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
+
+    DoWithAllHeroes(function(hero)
+        CheckItemModifies(hero)
+        end)
     return LiA.DeltaTime
 end
+
+    
+
+
 
 
 function LiA:OnPlayerPickHero(keys)
@@ -193,6 +201,7 @@ function LiA:OnPlayerPickHero(keys)
         hero:ModifyGold(50, false, DOTA_ModifyGold_Unspecified)
     end 
     --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
+
 end
 
 function LiA:OnGameStateChange()  
