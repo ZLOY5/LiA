@@ -2,7 +2,11 @@ require('timers')
 
 function Spawn(entityKeyValues)
 	thisEntity:FindAbilityByName("barrel_no_health_bar"):SetLevel(1)
-	thisEntity:SetHullRadius(26)
+	if thisEntity:GetUnitName() == "barricades" or thisEntity:GetUnitName() == "arena_rock" then
+		thisEntity:SetHullRadius(40)
+	else 
+		thisEntity:SetHullRadius(26)
+	end
 	if thisEntity:GetUnitName() == "tnt_barrel" then
         thisEntity:FindAbilityByName("barrel_explosion"):SetLevel(1)
     end
