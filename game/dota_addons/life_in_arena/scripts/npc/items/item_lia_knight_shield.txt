@@ -53,33 +53,22 @@
 		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
 		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
 		    }  
-        	"Aura"        "item_knight_shield_damage_return_modifier"
-        	"Aura_Radius" "500"
-        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-        	"Aura_ApplyToCaster" "0"  
-		}
-		"item_knight_shield_damage_return_modifier"
-		{
-			"IsHidden"          "1"
-			"IsPurgable"		"0"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_MULTIPLE"
-			"OnAttackLanded"
-			{
-				"RunScript"
-				{
-					"ScriptFile"		"items/knight_shield.lua"
-					"Function"			"OnAttackLanded"
-					"damage_return" 	"%damage_return"
-					"attack_damage" 	"%attack_damage"
-				}
-				"RemoveModifier"
-		    	{
-		    		"Target" 			"ATTACKER"
-		    		"ModifierName"		"item_knight_shield_damage_return_modifier"
-		    	}
-			}
+        	"OnCreated"
+        	{
+        		"ApplyModifier"
+        		{
+        			"ModifierName"	"modifier_knight_shield_damage_return_lua"
+        			"Target"		"CASTER"
+        		}
+        	}
+        	"OnDestroy"
+        	{
+        		"RemoveModifier"
+        		{
+        			"ModifierName"	"modifier_knight_shield_damage_return_lua"
+        			"Target"		"CASTER"
+        		}
+        	}
 		}   
 	}
 	"AbilitySpecial"

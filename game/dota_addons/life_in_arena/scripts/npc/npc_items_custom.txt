@@ -4071,29 +4071,11 @@
 				"EffectName"	"sounds/items/dota_item_blade_mail.vsnd"
 				"Target"		"CASTER"
 			}
-			"RemoveModifier"
-			{
-				"Target" 		"CASTER"
-				"ModifierName"	"item_knight_cuirass_damage_return_aura_modifier"
-			}
 			"ApplyModifier"
 			{
 				"Target" 		"CASTER"
-				"ModifierName"	"item_knight_cuirass_damage_return_aura_abi_modifier"
+				"ModifierName"	"modifier_item_lia_knight_cuirass_ability"
 				"Duration"		"5"
-			}
-			"DelayedAction"
-			{
-				"Delay"		"5"
-				"Action"	
-				{
-					"ApplyModifier"
-					{
-						"Target" 		"CASTER"
-						"ModifierName"	"item_knight_cuirass_damage_return_aura_modifier"
-						"Duration"		"-1"
-					}
-				}
 			}
 		}
 		"Modifiers"
@@ -4108,65 +4090,39 @@
 			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
 			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
 			    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-			    }  
-			    
-			}
-			"item_knight_cuirass_damage_return_aura_modifier"
+			    }
+			    "OnCreated"
+			    {
+			    	"ApplyModifier"
+			    	{
+			    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
+			    		"Target"		"CASTER"
+			    	}
+			    }
+			    "OnDestroy"
+			    {
+			    	"RemoveModifier"
+			    	{
+			    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
+			    		"Target"		"CASTER"
+			    	}
+			    }
+			  
+			}   
+		}
+		"Modifiers"
+		{
+			"modifier_item_lia_knight_cuirass_ability" 
 			{
-				"Passive"          		"1"    
-			    "IsHidden"         		"1"
-			    "Aura"        			"item_knight_cuirass_damage_return_modifier"
-	        	"Aura_Radius" 			"300"
-	        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        	"Aura_Types"  			"DOTA_UNIT_TARGET_ALL"
-	        	"Aura_Flags"  			"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-	        	"Aura_ApplyToCaster" 	"0"
-	        }
-	        "item_knight_cuirass_damage_return_aura_abi_modifier"
-			{
-				"Passive"          		"0"    
-			    "IsHidden"         		"0"
-			    "EffectName" 			"particles/items_fx/blademail.vpcf"
+				//"IsHidden"				"1"
+				"IsBuff"				"1"
+				"IsPurgable"			"1"
+				
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				
+				"EffectName" 			"particles/items_fx/blademail.vpcf"
 	   			"EffectAttachType" 		"follow_origin"
-			    "Aura"        			"item_knight_cuirass_damage_return_abi_modifier"
-	        	"Aura_Radius" 			"300"
-	        	"Aura_Teams"  			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        	"Aura_Types"  			"DOTA_UNIT_TARGET_ALL"
-	        	"Aura_Flags"  			"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-	        	"Aura_ApplyToCaster" 	"0"
-	        }
-			"item_knight_cuirass_damage_return_modifier"
-			{
-				"IsHidden"          "1"
-				"IsPurgable"		"0"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_MULTIPLE"
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"items/knight_cuirass.lua"
-						"Function"			"OnAttackLanded"
-						"damage_return" 	"%damage_return"
-						"attack_damage" 	"%attack_damage"
-					}
-				}
-			}   
-			"item_knight_cuirass_damage_return_abi_modifier"
-			{
-				"IsHidden"          "1"
-				"IsPurgable"		"0"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_MULTIPLE"
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"items/knight_cuirass.lua"
-						"Function"			"OnAttackLanded"
-						"damage_return" 	"%damage_return_abi"
-						"attack_damage" 	"%attack_damage"
-					}
-				}
-			}   
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -4257,33 +4213,22 @@
 			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
 			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
 			    }  
-	        	"Aura"        "item_knight_shield_damage_return_modifier"
-	        	"Aura_Radius" "500"
-	        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-	        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-	        	"Aura_ApplyToCaster" "0"  
-			}
-			"item_knight_shield_damage_return_modifier"
-			{
-				"IsHidden"          "1"
-				"IsPurgable"		"0"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_MULTIPLE"
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"items/knight_shield.lua"
-						"Function"			"OnAttackLanded"
-						"damage_return" 	"%damage_return"
-						"attack_damage" 	"%attack_damage"
-					}
-					"RemoveModifier"
-			    	{
-			    		"Target" 			"ATTACKER"
-			    		"ModifierName"		"item_knight_shield_damage_return_modifier"
-			    	}
-				}
+	        	"OnCreated"
+	        	{
+	        		"ApplyModifier"
+	        		{
+	        			"ModifierName"	"modifier_knight_shield_damage_return_lua"
+	        			"Target"		"CASTER"
+	        		}
+	        	}
+	        	"OnDestroy"
+	        	{
+	        		"RemoveModifier"
+	        		{
+	        			"ModifierName"	"modifier_knight_shield_damage_return_lua"
+	        			"Target"		"CASTER"
+	        		}
+	        	}
 			}   
 		}
 		"AbilitySpecial"
