@@ -1,5 +1,7 @@
-particle_names = {base = "particles/units/heroes/hero_luna/luna_base_attack.vpcf"}
-projectile_speeds = {base = 900}
+--particle_names = {base = "particles/units/heroes/hero_luna/luna_base_attack.vpcf"}
+--projectile_speeds = {base = 900}
+particle_name = "particles/units/heroes/hero_luna/luna_base_attack.vpcf"
+projectile_speed = 900
 
 --[[
 	author: jacklarnes
@@ -7,6 +9,8 @@ projectile_speeds = {base = 900}
 	reddit: /u/jacklarnes
 	Date: 03.04.2015.
 	Much help from Noya and BMD
+	--
+	author this modification: CeZaRRR
 ]]
 
 --[[
@@ -20,6 +24,7 @@ projectile_speeds = {base = 900}
 
 -- this finds the units particle infomation, if they're melee then it'll just use lunas default glaives
 -- the results are stored in partile_names and projectile_speeds so it doesn't have to reload the KV file each time
+--[[
 function findProjectileInfo(class_name)
 	if particle_names[class_name] ~= nil then
 		return particle_names[class_name], projectile_speeds[class_name]
@@ -38,6 +43,7 @@ function findProjectileInfo(class_name)
 
 	return particle_names[class_name], projectile_speeds[class_name]
 end
+]]
 
 
 function moon_glaive_start_create_dummy( keys )
@@ -45,9 +51,11 @@ function moon_glaive_start_create_dummy( keys )
 	local target = keys.target
 	local ability = keys.ability
 
-	local dummy = CreateUnitByName( "npc_dummy_blank", target:GetAbsOrigin(), false, caster, caster, target:GetTeamNumber() )
-	dummy:AddAbility("huntress_moon_glaive_dummy")
-	dummy:FindAbilityByName("huntress_moon_glaive_dummy"):ApplyDataDrivenModifier( caster, dummy, "modifier_moon_glaive_dummy_unit", {} )
+	if caster:GetTeamNumber() ~= target:GetTeamNumber() then
+		local dummy = CreateUnitByName( "npc_dummy_blank", target:GetAbsOrigin(), false, caster, caster, target:GetTeamNumber() )
+		dummy:AddAbility("huntress_moon_glaive_dummy")
+		dummy:FindAbilityByName("huntress_moon_glaive_dummy"):ApplyDataDrivenModifier( caster, dummy, "modifier_moon_glaive_dummy_unit", {} )
+	end
 end
 
 
@@ -70,7 +78,9 @@ function moon_glaive_dummy_created( keys )
 		ability.bounceRange = unit_ability:GetLevelSpecialValueFor("range", unit_ability:GetLevel() - 1)
 		ability.dmgMultiplier = unit_ability:GetLevelSpecialValueFor("damage_reduction_percent", unit_ability:GetLevel() - 1) / 100
 
-		ability.particle_name, ability.projectile_speed = findProjectileInfo(caster:GetClassname())
+		ability.particle_name = particle_name
+		ability.projectile_speed = projectile_speed
+		--ability.particle_name, ability.projectile_speed = findProjectileInfo(caster:GetClassname())
 		first = true
 	else
 		local damageTable = {
