@@ -120,90 +120,36 @@
 	"warrior_of_light_will_light"
 	{
 
-	  "BaseClass"               "ability_datadriven"
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName"      "omniknight_purification"
+	  	"BaseClass"               "ability_lua"
+	  	"ScriptFile"			  "heroes\WarriorOfLight\warrior_of_light_will_light.lua"
+
+	  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"AbilityTextureName"      "omniknight_purification"
 	
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "2" 
-	  "LevelsBetweenUpgrades"  "2"
+	  	"MaxLevel"               "3"
+	  	"RequiredLevel"          "2" 
+	  	"LevelsBetweenUpgrades"  "2"
 	  
-	  "AbilityCastRange"	"500"
+	  	"AbilityCastRange"	"500"
 	  
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "absord_proc"  "0.10 0.20 0.30"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "AuraRadius"   "500"
-	    }
-		"03"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "absord_proc_tooltip"  "10 20 30"
-	    }
-	  }
-
-
-	  "Modifiers"
-	  {  
-			"modifier_warrior_of_light_will_light"
-			{
-					"Passive"          "1"    
-					"IsHidden"         "0"
-					"OnTakeDamage"
-					{
-						"Heal"
-						{          
-							"Target"
-							{
-								"Center" "CASTER"
-								"Radius" "%AuraRadius"
-								"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-								"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								//"ExcludeTypes" "DOTA_UNIT_TARGET_BUILDING"
-							}   
-							"HealAmount" "%attack_damage*%absord_proc"
-						}
-						"Damage"
-						{
-							"Target"
-							{
-								"Center" "CASTER"
-								"Radius" "%AuraRadius"
-								"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								"Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}   
-							"Type"		"DAMAGE_TYPE_PHYSICAL"
-							"Damage"	"%attack_damage*%absord_proc"
-						}
-					}
-
-					"Aura"        		"modifier_warrior_of_light_will_light_aura"
-					"Aura_Radius" 		"%AuraRadius"
-					"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_BOTH"
-					"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Aura_Flags"  		"DOTA_UNIT_TARGET_FLAG_NONE"
-					"Aura_ApplyToCaster" 	"1"  
-				
-			}
-
-
-			"modifier_warrior_of_light_will_light_aura"
-			{
-				"IsHidden"          "1"
-				"IsPurgable"		"0"
-				//"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			}
-		}
-
-
+	  	"AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	      		"var_type"      			"FIELD_FLOAT"
+	      		"absord_proc"  				"0.10 0.20 0.30"
+	    	}
+	    	"02"
+	    	{
+	      		"var_type"      			"FIELD_INTEGER"
+	      		"AuraRadius"   				"500"
+	    	}
+			"03"
+	    	{
+	      		"var_type"      			"FIELD_FLOAT"
+	      		"absord_proc_tooltip"  		"10 20 30"
+	    	}
+	  	}
 	}
 
 

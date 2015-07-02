@@ -253,83 +253,29 @@
 
  "skeleton_mage_dark_magic"
 {
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"      "pugna_life_drain"
+  	"BaseClass"               "ability_lua"
+  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic.lua"
+
+  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  	"AbilityTextureName"      "pugna_life_drain"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
   
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "damage_return"  "30 40 50"
-    }
-    "02"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "damage_return_scepter"   "50 60 70"
-    }
-  }
-
-  	   	//"OnRespawn"
-		//{
-		//	"ApplyModifier"	"modifier_skeleton_mage_dark_magic"
-		//}
-  
-  "Modifiers"
-  {  
-		"modifier_skeleton_mage_dark_magic"
-		{
-			"Passive"          "1"    
-		    	"IsHidden"         "0"
-			"IsPurgable"		"0"
-
-			"OnTakeDamage"
-			{
-        			"Damage"
-        			{
-            				"Target" "ATTACKER"              
-            				"Type"   "DAMAGE_TYPE_MAGICAL"
-            				"Damage" "%damage_return"
-        			}
-
-			}
-
-        		//"Aura"        "modifier_skeleton_mage_dark_magic_return"
-        		//"Aura_Radius" "1000"
-        		//"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        		//"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-        		//"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-        		//"Aura_ApplyToCaster" "0"  
-		}
-
-		//"modifier_skeleton_mage_dark_magic_return"
-		//{
-		//	"IsHidden"          "1"
-		//	"IsPurgable"		"0"
-		//	"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-		//	"OnAttackLanded"
-		//	{
-		//		"RunScript"
-		//		{
-		//			"ScriptFile"		"heroes/SkeletonMage/DarkMagic.lua"
-		//			"Function"			"Return"
-		//			"damage_return" 	"%damage_return"
-		//			"attack_damage" 	"%attack_damage"
-		//		}
-		//		"RemoveModifier"
-		//    	{
-		//    		"Target" 			"ATTACKER"
-		//    		"ModifierName"		"modifier_skeleton_mage_dark_magic_return"
-		//    	}
-		//	}
-		//}   
-
-  } 
+  	"AbilitySpecial"
+  	{
+    	"01"
+    	{
+      		"var_type"      			"FIELD_INTEGER"
+      		"damage_return"  			"30 40 50"
+    	}
+    	"02"
+    	{
+      		"var_type"      			"FIELD_INTEGER"
+      		"damage_return_scepter"   	"50 60 70"
+    	}
+  	} 
 }
 
 "skeleton_mage_death_energy"

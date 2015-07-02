@@ -10127,83 +10127,29 @@
 	
 	 "skeleton_mage_dark_magic"
 	{
-	  "BaseClass"               "ability_datadriven"
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName"      "pugna_life_drain"
+	  	"BaseClass"               "ability_lua"
+	  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic.lua"
+	
+	  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"AbilityTextureName"      "pugna_life_drain"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 	  
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage_return"  "30 40 50"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage_return_scepter"   "50 60 70"
-	    }
-	  }
-	
-	  	   	//"OnRespawn"
-			//{
-			//	"ApplyModifier"	"modifier_skeleton_mage_dark_magic"
-			//}
-	  
-	  "Modifiers"
-	  {  
-			"modifier_skeleton_mage_dark_magic"
-			{
-				"Passive"          "1"    
-			    	"IsHidden"         "0"
-				"IsPurgable"		"0"
-	
-				"OnTakeDamage"
-				{
-	        			"Damage"
-	        			{
-	            				"Target" "ATTACKER"              
-	            				"Type"   "DAMAGE_TYPE_MAGICAL"
-	            				"Damage" "%damage_return"
-	        			}
-	
-				}
-	
-	        		//"Aura"        "modifier_skeleton_mage_dark_magic_return"
-	        		//"Aura_Radius" "1000"
-	        		//"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        		//"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-	        		//"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	        		//"Aura_ApplyToCaster" "0"  
-			}
-	
-			//"modifier_skeleton_mage_dark_magic_return"
-			//{
-			//	"IsHidden"          "1"
-			//	"IsPurgable"		"0"
-			//	"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			//	"OnAttackLanded"
-			//	{
-			//		"RunScript"
-			//		{
-			//			"ScriptFile"		"heroes/SkeletonMage/DarkMagic.lua"
-			//			"Function"			"Return"
-			//			"damage_return" 	"%damage_return"
-			//			"attack_damage" 	"%attack_damage"
-			//		}
-			//		"RemoveModifier"
-			//    	{
-			//    		"Target" 			"ATTACKER"
-			//    		"ModifierName"		"modifier_skeleton_mage_dark_magic_return"
-			//    	}
-			//	}
-			//}   
-	
-	  } 
+	  	"AbilitySpecial"
+	  	{
+	    	"01"
+	    	{
+	      		"var_type"      			"FIELD_INTEGER"
+	      		"damage_return"  			"30 40 50"
+	    	}
+	    	"02"
+	    	{
+	      		"var_type"      			"FIELD_INTEGER"
+	      		"damage_return_scepter"   	"50 60 70"
+	    	}
+	  	} 
 	}
 	
 	"skeleton_mage_death_energy"
@@ -10572,7 +10518,9 @@
 	  {
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
+	    "BaseClass"              "ability_lua"
+	    "ScriptFile"			 "heroes\SkeletonThief\skeleton_thief_shield_of_death.lua"
+	
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
 	    "AbilityTextureName"     "skeleton_thief_shield_of_death"
@@ -10585,111 +10533,21 @@
 		{
 			"01"
 			{
-			  "var_type"      "FIELD_INTEGER"
-			  "damage_return"  "10 50 100"
+			  	"var_type"      				"FIELD_INTEGER"
+			  	"damage_return"  				"10 50 100"
 			}
 			"02"
 			{
-			  "var_type"      "FIELD_INTEGER"
-			  "additional_damage_return_chance"   "20"
+			  	"var_type"      				"FIELD_INTEGER"
+			  	"chance_additional_damage"   	"20"
 			}
 			"03"
 			{
-			  "var_type"      "FIELD_INTEGER"
-			  "additional_damage_return_amount"   "100 150 200"
+			  	"var_type"      				"FIELD_INTEGER"
+			  	"additional_damage"   			"100 150 200"
 			}
 		}
-		
-		 	"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_skeleton_thief_shield_of_death"
-			"ApplyModifier"	"modifier_skeleton_thief_shield_of_death_chance"
-		}
-	
-		  "Modifiers"
-		  {  
-				"modifier_skeleton_thief_shield_of_death"
-				{
-					"Passive"          "1"    
-					"IsHidden"         "1"
-					"Aura"        "modifier_skeleton_thief_shield_of_death_return"
-					"Aura_Radius" "500"
-					"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-					"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					"Aura_ApplyToCaster" "0"  
-				}
-				"modifier_skeleton_thief_shield_of_death_return"
-				{
-					"IsHidden"          "1"
-					"IsPurgable"		"0"
-					"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-					"OnAttackLanded"
-					{
-						"RunScript"
-						{
-							"ScriptFile"		"heroes/SkeletonThief/ShieldOfDeath.lua"
-							"Function"			"Return"
-							"damage_return" 	"%damage_return"
-							"attack_damage" 	"%attack_damage"
-						}
-						"RemoveModifier"
-						{
-							"Target" 			"ATTACKER"
-							"ModifierName"		"modifier_skeleton_thief_shield_of_death_return"
-						}
-					}
-				}  
-				"modifier_skeleton_thief_shield_of_death_chance"
-				{
-					"Passive"          "1"    
-					"IsHidden"         "1"
-					"Aura"        "modifier_skeleton_thief_shield_of_death_return_chance"
-					"Aura_Radius" "500"
-					"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-					"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					"Aura_ApplyToCaster" "0"  
-				}		
-				"modifier_skeleton_thief_shield_of_death_return_chance"
-				{
-					"IsHidden"          "1"
-					"IsPurgable"		"0"
-					"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-					"OnAttackLanded"
-					{
-						"Random"
-						{
-							"Chance" "%additional_damage_return_chance"
-							"OnSuccess"
-							{
-								"RunScript"
-								{
-									"ScriptFile"		"heroes/SkeletonThief/ShieldOfDeath.lua"
-									"Function"			"ReturnChance"
-									"damage_return" 	"%additional_damage_return_amount"
-									"attack_damage" 	"%attack_damage"
-								}
-								"RemoveModifier"
-								{
-									"Target" 			"ATTACKER"
-									"ModifierName"		"modifier_skeleton_thief_shield_of_death_return_chance"
-								}
-							}
-							"OnFailure"
-							{
-								"RemoveModifier"
-								{
-									"Target" "CASTER"
-									"ModifierName" "modifier_skeleton_thief_shield_of_death_return_chance"
-								}
-							}
-						}
-	
-					}
-				}   
-	
-		  } 
+	 
 	  }
 	
 	  "skeleton_thief_obsession"
@@ -12244,90 +12102,36 @@
 		"warrior_of_light_will_light"
 		{
 	
-		  "BaseClass"               "ability_datadriven"
-		  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		  "AbilityTextureName"      "omniknight_purification"
+		  	"BaseClass"               "ability_lua"
+		  	"ScriptFile"			  "heroes\WarriorOfLight\warrior_of_light_will_light.lua"
+	
+		  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		  	"AbilityTextureName"      "omniknight_purification"
 		
-		  "MaxLevel"               "3"
-		  "RequiredLevel"          "2" 
-		  "LevelsBetweenUpgrades"  "2"
+		  	"MaxLevel"               "3"
+		  	"RequiredLevel"          "2" 
+		  	"LevelsBetweenUpgrades"  "2"
 		  
-		  "AbilityCastRange"	"500"
+		  	"AbilityCastRange"	"500"
 		  
-		  "AbilitySpecial"
-		  {
-		    "01"
-		    {
-		      "var_type"      "FIELD_FLOAT"
-		      "absord_proc"  "0.10 0.20 0.30"
-		    }
-		    "02"
-		    {
-		      "var_type"      "FIELD_INTEGER"
-		      "AuraRadius"   "500"
-		    }
-			"03"
-		    {
-		      "var_type"      "FIELD_FLOAT"
-		      "absord_proc_tooltip"  "10 20 30"
-		    }
-		  }
-	
-	
-		  "Modifiers"
-		  {  
-				"modifier_warrior_of_light_will_light"
-				{
-						"Passive"          "1"    
-						"IsHidden"         "0"
-						"OnTakeDamage"
-						{
-							"Heal"
-							{          
-								"Target"
-								{
-									"Center" "CASTER"
-									"Radius" "%AuraRadius"
-									"Teams"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-									"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-									//"ExcludeTypes" "DOTA_UNIT_TARGET_BUILDING"
-								}   
-								"HealAmount" "%attack_damage*%absord_proc"
-							}
-							"Damage"
-							{
-								"Target"
-								{
-									"Center" "CASTER"
-									"Radius" "%AuraRadius"
-									"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-									"Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-								}   
-								"Type"		"DAMAGE_TYPE_PHYSICAL"
-								"Damage"	"%attack_damage*%absord_proc"
-							}
-						}
-	
-						"Aura"        		"modifier_warrior_of_light_will_light_aura"
-						"Aura_Radius" 		"%AuraRadius"
-						"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_BOTH"
-						"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Aura_Flags"  		"DOTA_UNIT_TARGET_FLAG_NONE"
-						"Aura_ApplyToCaster" 	"1"  
-					
-				}
-	
-	
-				"modifier_warrior_of_light_will_light_aura"
-				{
-					"IsHidden"          "1"
-					"IsPurgable"		"0"
-					//"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				}
-			}
-	
-	
+		  	"AbilitySpecial"
+		  	{
+		    	"01"
+		    	{
+		      		"var_type"      			"FIELD_FLOAT"
+		      		"absord_proc"  				"0.10 0.20 0.30"
+		    	}
+		    	"02"
+		    	{
+		      		"var_type"      			"FIELD_INTEGER"
+		      		"AuraRadius"   				"500"
+		    	}
+				"03"
+		    	{
+		      		"var_type"      			"FIELD_FLOAT"
+		      		"absord_proc_tooltip"  		"10 20 30"
+		    	}
+		  	}
 		}
 	
 	
