@@ -565,6 +565,7 @@ function EndDuels()
     end
     WAVE_NUM = WAVE_NUM - 1
     DoWithAllHeroes(function(hero)
+        ResetAllAbilitiesCooldown(hero)
         if hero:IsAlive() then
             hero:RemoveModifierByName("modifier_stun_lua")
             SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())

@@ -1,25 +1,31 @@
-modifier_knight_shield_damage_return_lua = class ({})
+modifier_butcher_skin = class ({})
 
---чтобы способность могла использовать модификатор в ней должен быть special value "damage_return"
-
-function modifier_knight_shield_damage_return_lua:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE
-end
-
-function modifier_knight_shield_damage_return_lua:IsHidden()
+function modifier_butcher_skin:IsHidden()
 	return true
 end
 
-function modifier_knight_shield_damage_return_lua:DeclareFunctions()
+function modifier_butcher_skin:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
+		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
 	}
  
 	return funcs
 end
 
+function modifier_butcher_skin:GetModifierPhysicalArmorBonus(params)
+	return self.bonus_armor
+end
 
-function modifier_knight_shield_damage_return_lua:OnAttackLanded(params)
+function modifier_butcher_skin:OnCreated(kv)
+	self.bonus_armor = self:GetAbility():GetSpecialValueFor("bonus_armor")
+end
+
+function modifier_butcher_skin:OnRefresh(kv)
+	self.bonus_armor = self:GetAbility():GetSpecialValueFor("bonus_armor")
+end
+
+function modifier_butcher_skin:OnAttackLanded(params)
 	if IsServer() then
 		if params.target == self:GetParent() and (not self:GetParent():IsIllusion()) and not params.ranged_attack then
 			if self:GetParent():PassivesDisabled() then
@@ -39,4 +45,3 @@ function modifier_knight_shield_damage_return_lua:OnAttackLanded(params)
 		end
 	end
 end
-

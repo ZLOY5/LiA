@@ -41,7 +41,8 @@ function modifier_knight_cuirass_damage_return_lua:OnAttackLanded(params)
 				victim = params.attacker, 
 				attacker = target, 
 				damage = return_damage, 
-				damage_type = DAMAGE_TYPE_MAGICAL
+				damage_type = DAMAGE_TYPE_MAGICAL,
+				damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
 			})
 		end
 	end

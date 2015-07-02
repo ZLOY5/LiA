@@ -24,8 +24,9 @@ end
 function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
 	for i = 1, abilities do
-		if unit:GetAbilityByIndex(i) then
-			unit:GetAbilityByIndex(i):EndCooldown()
+		local ability = unit:GetAbilityByIndex(i)
+		if ability and not ability:IsPassive() then
+			ability:EndCooldown()
 		end
 	end
 end
