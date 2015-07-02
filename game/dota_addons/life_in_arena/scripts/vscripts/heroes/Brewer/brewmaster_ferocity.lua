@@ -1,5 +1,5 @@
 brewmaster_ferocity = class({})
-LinkLuaModifier( "modifier_brewmaster_ferocity_lua", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_brewmaster_ferocity_lua", "heroes/Brewer/modifier_brewmaster_ferocity_lua",LUA_MODIFIER_MOTION_NONE )
 
 --------------------------------------------------------------------------------
 
