@@ -5,7 +5,7 @@ function Spawn(entityKeyValues)
 	if thisEntity:GetUnitName() == "barricades" or thisEntity:GetUnitName() == "arena_rock" then
 		thisEntity:SetHullRadius(40)
 	else 
-		thisEntity:SetHullRadius(26)
+		thisEntity:SetHullRadius(24)
 	end
 	if thisEntity:GetUnitName() == "tnt_barrel" then
         thisEntity:FindAbilityByName("barrel_explosion"):SetLevel(1)

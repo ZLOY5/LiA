@@ -164,9 +164,9 @@ function LiA:onThink()
     end 
     table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
 
-    DoWithAllHeroes(function(hero)
-        CheckItemModifies(hero)
-        end)
+    --DoWithAllHeroes(function(hero)
+    --    CheckItemModifies(hero)
+    --end)
     return LiA.DeltaTime
 end
 

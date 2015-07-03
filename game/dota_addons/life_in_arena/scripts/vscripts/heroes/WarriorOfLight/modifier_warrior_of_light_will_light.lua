@@ -31,7 +31,7 @@ function modifier_warrior_of_light_will_light:OnTakeDamage(params)
 					victim = target, 
 					attacker = params.unit, 
 					damage = damage_return, 
-					damage_type = DAMAGE_TYPE_MAGICAL,
+					damage_type = DAMAGE_TYPE_PHYSICAL,
 					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
 				})
 			end
