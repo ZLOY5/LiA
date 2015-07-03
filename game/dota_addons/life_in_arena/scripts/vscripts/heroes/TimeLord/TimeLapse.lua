@@ -34,7 +34,7 @@ function TimeLapse(keys)
 		ApplyDamage({victim = unit, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 	end
 
-	ParticleManager:CreateParticle("particles/items_fx/blink_dagger_start.vpcf", PATTACH_ABSORIGIN, caster)
+	ParticleManager:CreateParticle("particles/units/heroes/hero_weaver/weaver_timelapse.vpcf", PATTACH_ABSORIGIN, caster)
 
 	caster:EmitSound("DOTA_Item.BlinkDagger.Activate")
 	
@@ -49,7 +49,7 @@ function TimeLapse(keys)
 				ApplyDamage({victim = unit, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 			end
 
-			ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, caster)
+			ParticleManager:CreateParticle("particles/units/heroes/hero_weaver/weaver_timelapse.vpcf", PATTACH_ABSORIGIN, caster)
 	
 			caster:RemoveModifierByName("modifier_time_lord_timelapse_invul")
 		end
