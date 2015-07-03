@@ -9,7 +9,7 @@ function electRegen(keys)
 	local value1perc = target:GetMaxHealth() / 100	
 	local reg 
 	--
-	if ability:GetLevel() == 0 then
+	if ability:GetLevel()-1 == 0 then
 		reg = value_regen * tick
 	else
 		reg = value1perc * value_regen * tick
