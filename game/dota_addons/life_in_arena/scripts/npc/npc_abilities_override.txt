@@ -13420,4 +13420,162 @@
 		}
 	}
 	//End of file spherical_staff_fire_golem_immolation.txt
+	
+"water_elemental_4_orb"
+{
+	"BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"    ""
+
+    "AbilityCooldown"           "0"
+    "AbilityManacost"           "0"
+
+    "MaxLevel"              "1"
+
+    "AbilitySpecial"
+  	{
+    	"01"
+    	{
+    		"var_type"      			"FIELD_INTEGER"
+      		"extra_dmg"  				"5"
+    	}
+    	"02"
+    	{
+    		"var_type"      			"FIELD_FLOAT"
+      		"duration"  				"4.0"
+    	}
+    	"03"
+    	{
+    		"var_type"      			"FIELD_INTEGER"
+      		"reduce_armor"  				"-9"
+    	}
+    }
+	
+	"Modifiers"
+	{
+		"modifier_water_elemental_4_orb"
+		{
+			"Passive"          "1"    
+			"IsHidden"         "1"
+			//"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+ 
+			"Orb"
+			{
+				"Priority"  "DOTA_ORB_PRIORITY_ABILITY"
+				//"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
+			}
+
+			"OnOrbImpact"
+			{
+				"ApplyModifier"
+				{
+					"Target"    "TARGET"
+					"ModifierName"  "modifier_water_elemental_4_orb_hit"
+					"Duration"  "%duration"
+				}
+				
+				"Damage"
+				{
+					"Target" 	"TARGET"
+					"Type" 		"DAMAGE_TYPE_PHYSICAL"
+					"Damage" 	"%extra_dmg"
+				}
+				
+			}
+		}
+		"modifier_water_elemental_4_orb_hit" 
+		{
+			"IsDebuff" "1"
+			//"Duration"  "3"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%reduce_armor"
+			} 
+			
+			//"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
+			//"EffectAttachType" "attach_hitloc"
+			//"Target" "TARGET"
+
+		}
+	}
+	
+}
+
+
+
+
+
+
+"hermit_summon_water_elemental"
+{
+	//"BaseClass"             		"ability_datadriven"
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
+	"AbilityTextureName"			"archmage_summon_water_elemental"
+	"MaxLevel" 						"3"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCooldown"				"20 19 18"
+	"AbilityManaCost"				"100 125 150"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"60"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hit_points"			"300 550 800"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"15 30 60"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"unit_count"			"2 2 2"
+		}	
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"spawn_radius"			"200"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"ManaCost_Scepter"			"150 200 250"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"Cooldown_Scepter"			"22 22 22"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hit_points_Scepter"	"550 800 1450"
+		}
+		"09"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_Scepter"		"30 60 120"
+		}
+	}
+
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+	}
+
+}
+
+	
+	
 }

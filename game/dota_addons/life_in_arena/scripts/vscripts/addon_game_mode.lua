@@ -12,6 +12,11 @@ function Activate()
 end
 
 function Precache( context )
+		--
+		PrecacheUnitByNameAsync("npc_water_elemental_1", function(...) end)
+		PrecacheUnitByNameAsync("npc_water_elemental_2", function(...) end)
+		PrecacheUnitByNameAsync("npc_water_elemental_3", function(...) end)
+		PrecacheUnitByNameAsync("npc_water_elemental_4", function(...) end)
 		--Берсеркер
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf" , context)
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_burning_spear.vpcf" , context)
