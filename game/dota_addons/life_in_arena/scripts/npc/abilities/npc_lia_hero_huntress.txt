@@ -212,15 +212,6 @@
 	
 		"OnSpellStart"
 		{
-
-
-	
-			//"FireSound"
-			//{
-			//	"EffectName"	"Hero_Silencer.Curse.Cast"
-			//	"Target"		"CASTER"
-			//}	
-	
 	
 			"ActOnTargets"
 			{
@@ -259,8 +250,8 @@
 				"Duration"	"%duration"
 				"IsPurgable"	"1"
 				
-				"EffectName"	"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
-				"EffectAttachType"	"follow_overhead"
+				"StatusEffectName" 		"particles/status_fx/status_effect_maledict.vpcf" 	   
+				"StatusEffectPriority"  "10"
 
 				"ThinkInterval" "1.00"
 				"OnIntervalThink"
