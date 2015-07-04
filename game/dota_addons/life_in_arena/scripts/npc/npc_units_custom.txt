@@ -850,7 +850,7 @@
 	//Start of file item_lia_healing_ward_unit.txt
 	"item_lia_healing_ward_unit"
 	{
-		"BaseClass"					"npc_dota_creature"	
+		"BaseClass"					"npc_dota_building"	
 		"Model"						"models/heroes/juggernaut/jugg_healing_ward.mdl"
 		"SoundSet"					"Creep_Good_Range"	
 		"Level"						"1"
@@ -876,7 +876,7 @@
 		// Armor
 		//----------------------------------------------------------------
 		"ArmorPhysical"				"0"			// Physical protection.
-		"MagicalResistance"			"0"			// Magical protection.
+		"MagicalResistance"			"100"			// Magical protection.
 	
 		// Attack
 		//----------------------------------------------------------------
@@ -927,7 +927,9 @@
 		"VisionDaytimeRange"		"600"		// Range of vision during day light.
 		"VisionNighttimeRange"		"600"		// Range of vision at night time.
 	
-		"HasInventory" 				"0" 
+		"HasInventory" 				"0"
+	
+		"vscripts"                    "units\item_lia_healing_ward_unit.lua" 
 	}
 	//End of file item_lia_healing_ward_unit.txt
 

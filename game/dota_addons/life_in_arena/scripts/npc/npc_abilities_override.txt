@@ -7985,98 +7985,98 @@
 	
 	
 	
-	"paladin_elect"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"            	"chen_penitence"
-		//
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-	
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"paladin_elect"
 		{
-			"01"
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"BaseClass"				"ability_datadriven"
+			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"AbilityTextureName"            	"chen_penitence"
+			//
+			"MaxLevel"               "3"
+			"RequiredLevel"          "2"
+			"LevelsBetweenUpgrades"  "2"
+		
+			// Special
+			//-------------------------------------------------------------------------------------------------------------
+			"AbilitySpecial"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"value_regen"				"10 0 0"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"value_regen_percen"		"0 1 2"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"aura_radius"				"800"
-			}
-			//"04"
-			//{
-			//	"var_type"					"FIELD_FLOAT"
-			//	"tick"						"0.5"
-			//}
-		}
-	
-		//"OnOwnerSpawned"
-		//{
-		//	"ApplyModifier"		"modifier_elect"
-		//}
-	
-		"Modifiers"
-		{
-			"modifier_elect"
-			{
-				"Passive"	"1"
-				"IsHidden"      "1"
-				//
-				"Aura"            "modifier_elect_aura"
-				"Aura_Radius"     "%aura_radius"
-				"Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-				//
-			}
-	
-	
-			"modifier_elect_aura"
-			{
-				//"Passive"       "1"
-				"IsHidden"      "0"
-				"IsPurgable"    "0"
-				
-				"Properties" 
-	        	{
-	            	"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%value_regen_percen"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%value_regen"
-	        	}
-				
-				//
-				//"ThinkInterval"  "%tick"
-		     
-				//"OnIntervalThink"
+				"01"
+				{
+					"var_type"					"FIELD_INTEGER"
+					"value_regen"				"10 0 0"
+				}
+				"02"
+				{
+					"var_type"					"FIELD_INTEGER"
+					"value_regen_percen"		"0 1 2"
+				}
+				"03"
+				{
+					"var_type"					"FIELD_INTEGER"
+					"aura_radius"				"800"
+				}
+				//"04"
 				//{
-	        	//		"RunScript"
-	        	//		{
-	            //				"ScriptFile" "heroes\Paladin\elect.lua"
-	            //				"Function"   "electRegen"
-				//				"value_regen" "%value_regen"
-				//				"tick" "%tick"
-	        	//		}
-				//
-	 			//}
-	
+				//	"var_type"					"FIELD_FLOAT"
+				//	"tick"						"0.5"
+				//}
 			}
+		
+			//"OnOwnerSpawned"
+			//{
+			//	"ApplyModifier"		"modifier_elect"
+			//}
+		
+			"Modifiers"
+			{
+				"modifier_elect"
+				{
+					"Passive"	"1"
+					"IsHidden"      "1"
+					//
+					"Aura"            "modifier_elect_aura"
+					"Aura_Radius"     "%aura_radius"
+					"Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
+					//
+				}
+		
+		
+				"modifier_elect_aura"
+				{
+					//"Passive"       "1"
+					"IsHidden"      "0"
+					"IsPurgable"    "0"
+					
+					"Properties" 
+		        	{
+		            	"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%value_regen_percen"
+						"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%value_regen"
+		        	}
+					
+					//
+					//"ThinkInterval"  "%tick"
+			     
+					//"OnIntervalThink"
+					//{
+		        	//		"RunScript"
+		        	//		{
+		            //				"ScriptFile" "heroes\Paladin\elect.lua"
+		            //				"Function"   "electRegen"
+					//				"value_regen" "%value_regen"
+					//				"tick" "%tick"
+		        	//		}
+					//
+		 			//}
+		
+				}
+			}
+		
+		
+		
 		}
-	
-	
-	
-	}
 	
 	
 		"paladin_impregnability"
@@ -12232,7 +12232,7 @@
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
 	    "AbilityTextureName"     "skywrath_mage_concussive_shot"
 	
-	    "AoERadius"              "375"
+	    "AbilityCastRange"              "375"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 	    "MaxLevel"               "3"
