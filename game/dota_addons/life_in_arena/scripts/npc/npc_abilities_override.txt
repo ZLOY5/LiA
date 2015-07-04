@@ -8013,25 +8013,29 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-										// first = not percentage, other = percentage
-				"value_regen"					"10 1 2"
+				"value_regen"				"10 0 0"
 			}
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"aura_radius"					"800"
+				"value_regen_percen"		"0 1 2"
 			}
 			"03"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"tick"						"0.5"
+				"var_type"					"FIELD_INTEGER"
+				"aura_radius"				"800"
 			}
+			//"04"
+			//{
+			//	"var_type"					"FIELD_FLOAT"
+			//	"tick"						"0.5"
+			//}
 		}
 	
-		"OnOwnerSpawned"
-		{
-			"ApplyModifier"		"modifier_elect"
-		}
+		//"OnOwnerSpawned"
+		//{
+		//	"ApplyModifier"		"modifier_elect"
+		//}
 	
 		"Modifiers"
 		{
@@ -8040,50 +8044,41 @@
 				"Passive"	"1"
 				"IsHidden"      "1"
 				//
-	
-		            	"Aura"            "modifier_elect_aura"
-		            	"Aura_Radius"     "%aura_radius"
-		            	"Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		            	"Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		            	"Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-	
+				"Aura"            "modifier_elect_aura"
+				"Aura_Radius"     "%aura_radius"
+				"Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
 				//
-				//
-	                	//"AttachEffect"
-	                	//{
-	                    	//	"Target" "TARGET"
-	                    	//	"EffectName" "particles/units/heroes/hero_mirana/mirana_moonlight_cast.vpcf"
-	                    	//	"EffectAttachType" "follow_origin"
-				//
-	 			//           "ControlPoints"
-	                    	//	{
-	                        //		"00" "0 0 0"
-	                        //		"01" "100 0 0"
-	                    	//	}
-	                	//}
-	
 			}
 	
 	
 			"modifier_elect_aura"
 			{
-		      		//"Passive"       "1"
-		      		"IsHidden"      "0"
-		      		"IsPurgable"    "0"
+				//"Passive"       "1"
+				"IsHidden"      "0"
+				"IsPurgable"    "0"
+				
+				"Properties" 
+	        	{
+	            	"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%value_regen_percen"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%value_regen"
+	        	}
+				
 				//
-				"ThinkInterval"  "%tick"
+				//"ThinkInterval"  "%tick"
 		     
-				"OnIntervalThink"
-				{
-	        			"RunScript"
-	        			{
-	            				"ScriptFile" "heroes\Paladin\elect.lua"
-	            				"Function"   "electRegen"
-						"value_regen" "%value_regen"
-						"tick" "%tick"
-	        			}
-	
-	 			}
+				//"OnIntervalThink"
+				//{
+	        	//		"RunScript"
+	        	//		{
+	            //				"ScriptFile" "heroes\Paladin\elect.lua"
+	            //				"Function"   "electRegen"
+				//				"value_regen" "%value_regen"
+				//				"tick" "%tick"
+	        	//		}
+				//
+	 			//}
 	
 			}
 		}
