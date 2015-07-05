@@ -263,7 +263,7 @@ function LiA:OnEntityKilled(keys)
             end
         end
     end
-    if nDeathCreeps == WAVE_MAX_COUNT[nHeroCount] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
+    if nDeathCreeps == WAVE_MAX_COUNT[LiA.nHeroCountCreepsSpawned] or ent:GetUnitName() == tostring(WAVE_NUM).."_wave_megaboss" then
         print("Wave",WAVE_NUM,"finished")
         LiA._EndWave()
     end
@@ -278,7 +278,7 @@ end
 
 
 function LiA:SpawnWave()  
-    print("Spawn wave", WAVE_NUM, "for", nPlayers, "players")
+    print("Spawn wave", WAVE_NUM, "for", nHeroCount, "heroes")
     
     if nHeroCount == 0 then
         GameRules:SetCustomVictoryMessage("#lose_message")
@@ -286,6 +286,7 @@ function LiA:SpawnWave()
         return   
     end
     
+    LiA.nHeroCountCreepsSpawned = nHeroCount --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)
     IsPreWaveTime = false
     TRIGGER_SHOP:Disable()  
 
