@@ -7484,6 +7484,24 @@
 		
 			}
 			
+			"OnEquip"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items\STupgrades.lua"
+					"Function"		"OnEquip"
+				}
+			}
+			
+			"OnUnequip"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items\STupgrades.lua"
+					"Function"		"OnUnequip"
+				}
+			}
+			
 			"OnSpellStart"
 			{
 				"DelayedAction"
@@ -7507,11 +7525,11 @@
 	
 							"OnSpawn"
 							{
-								//"RunScript"
-								//{
-								//	"ScriptFile"    "items/SphericalStaff.lua"
-				        			//"Function"      "RenderInferno"
-								//}
+								"RunScript"
+								{
+									"ScriptFile"    "items/SphericalStaff.lua"
+				        			"Function"      "RenderInferno"
+								}
 	
 								"FireEffect"
 								{
@@ -7519,16 +7537,16 @@
 									"EffectAttachType"  "follow_origin"
 									"Target"            "TARGET"
 								}
-								//"ApplyModifier"
-								//{
-								//	"ModifierName"	"modifier_phased"
-								//	"Target"		"TARGET"
-								//	"Duration"		"0.03"
-								//}
+								
+								"ApplyModifier"
+								{
+									"ModifierName"	"modifier_phased"
+									"Target"		"TARGET"
+									"Duration"		"0.03"
+								}
 							}
 						}
 	
-		
 						"DestroyTrees"
 						{
 							"Target"	"POINT"
@@ -7569,41 +7587,20 @@
 			{
 				"modifier_item_lia_spherical_staff"
 				{
-				    	"Passive"          "1"    
-				    	"IsHidden"         "0" //"1"
-				   	"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				    "Passive"          "1"    
+				    "IsHidden"         "1"
+				   	"Attributes" 	   "MODIFIER_ATTRIBUTE_MULTIPLE"
 		
-				    	"Properties"
-				    	{
+				    "Properties"
+				    {
 						"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
 						"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_int"
-				    	}  
+				    }  
 		
-	
 					"Aura" 			"item_lia_spherical_staff_modifier_aura"
-		    			"Aura_Radius" 		"%auraRadius"
-		    			"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		    			"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					
-	
-					// modifief for ALL mags ???
-				        //"OnCreated"
-					//{
-					//	"RunScript"
-					//	{
-					//		"ScriptFile"		"items/SphericalStaff.lua"
-					//		"Function"			"modifier_item_spherical_staff_datadriven_on_created"
-					//	}
-					//}
-					
-					//"OnDestroy"
-					//{
-					//	"RunScript"
-					//	{
-					//		"ScriptFile"		"items/SphericalStaff.lua"
-					//		"Function"			"modifier_item_spherical_staff_datadriven_on_destroy"
-					//	}
-					//}
+		    		"Aura_Radius" 	"%auraRadius"
+		    		"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		    		"Aura_Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
 				"item_lia_spherical_staff_modifier_aura"
 				{
