@@ -53,7 +53,9 @@ function modifier_hermit_summon_water_elemental:OnCreated(params)
 			ability.tUnits = {}
 		else
 			for i=1, #ability.tUnits do
-				ability.tUnits[i]:ForceKill(false)
+				if not ability.tUnits[i]:IsNull() then
+					ability.tUnits[i]:ForceKill(false)
+				end
 				--ability.tUnits[i]:AddNewModifier(hCaster, nil, "modifier_kill", { duration = 0.00 })
 			end
 			ability.tUnits = {}

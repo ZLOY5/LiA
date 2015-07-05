@@ -18,7 +18,9 @@ function DestroyModifiers(keys)
 	local ability = keys.ability
 	--for k,unit in pairs(ability.tAlliesPal) do
 	for i = 1, #ability.tAlliesPal do
-		ability.tAlliesPal[i]:RemoveModifierByName("modifier_impregnability_aura_inv")
+		if not ability.tAlliesPal[i]:IsNull() then
+			ability.tAlliesPal[i]:RemoveModifierByName("modifier_impregnability_aura_inv")
+		end
 		--table.remove(ability.tAlliesPal,i)
 	end
 	ability.tAlliesPal = {}
