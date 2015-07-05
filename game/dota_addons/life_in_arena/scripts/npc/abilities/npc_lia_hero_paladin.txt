@@ -44,32 +44,32 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"max_targets"				"16 16 12"
+			"wave_damage"			"30 60 120"
 		}
 		"02"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"			"175 200 225"
-		}		
+			"var_type"				"FIELD_FLOAT"
+			"stun"					"0.25"
+		}
 		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"wave_count"			"6 8 10"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"wave_damage"			"30 60 120"
-		}
-		"05"
 		{
 			"var_type"				"FIELD_FLOAT"
 			"wave_interval"			"1.0"
 		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"wave_count"			"6 8 10"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"			"175 200 225"
+		}		
 		"06"
 		{
-			"var_type"				"FIELD_FLOAT"
-			"stun"				"0.25"
+			"var_type"				"FIELD_INTEGER"
+			"max_targets"				"16 16 12"
 		}
 	}
 
@@ -462,7 +462,7 @@
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"200 300 400"
-		//
+		"AbilityCastRange"				"2400"
 		"AbilityChannelTime"      "8 14 20"
 	
 		// Special
