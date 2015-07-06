@@ -5717,7 +5717,174 @@
 	}
 	
 	
-	"hermit_frost_arrows_scepter"
+	
+	"hermit_astral"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_OTHER"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"pugna_decrepify"
+	
+		// Casting
+		"MaxLevel"              "3"
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700 700 700"
+		"AbilityCastPoint"				"0.0 0.0 0.0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13.0 15.0 17.0"
+		//"AbilityDuration"				"0.0 0.0 0.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 200 300"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reduce_spell_damage_pct"	"-40"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reduce_movement_speed"		"-10 -20 -30"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_on_hero"			"3.0 4.0 5.0"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_on_other"			"4.0 5.0 6.0"
+			}
+		}
+	
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Pugna.Decrepify"
+				"Target" 		"TARGET"
+			}
+			
+			//"ApplyModifier"
+			//{
+			//	"ModifierName"	"modifier_decrepify_all"
+			//	"Target"		"TARGET"
+			//	"Duration"		"%AbilityDuration"
+			//}
+			
+			"RunScript"
+			{
+				"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
+				"Function"      "addMod"
+			}
+			
+			//"ApplyModifier"
+			//{
+			//	"ModifierName"	"modifier_decrepify_ally"
+			//	"Target"
+			//	{
+			//		"Center"	"TARGET"
+			//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			//	}
+			//	"Duration"		"%AbilityDuration"
+			//}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_decrepify_units_by_hero"
+			{
+				"Duration"		"%duration_on_other"
+				//
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
+						"Function"      "attackLanded"
+					}
+				}
+				//
+				//"OnDestroy"
+				//{
+				//	"RunScript"
+				//	{
+				//		"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
+				//		"Function"      "destr"
+				//	}
+				//}
+			}
+			
+			"modifier_decrepify_other"
+			{
+				"IsDebuff"			"1"
+				"Duration"			"%duration_on_other"
+		
+				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
+				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					//"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}			
+			}
+	
+			"modifier_decrepify_hero"
+			{
+				"IsDebuff"			"1"
+				"Duration"			"%duration_on_hero"
+		
+				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
+				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					//"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}			
+			}
+		}
+		
+		
+	}
+	
+	
+	
+	"hermit_frost_arrows"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -5738,15 +5905,15 @@
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"0.0 0.0 0.0"
-		"AbilityDuration"				"4 4 4"
+		"AbilityDuration"				"3 3 3"
 	
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"50 100 150"
+		"AbilityDamage"					"20 40 60"
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"45 60 75"
+		"AbilityManaCost"				"15 30 45"
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -5755,19 +5922,18 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_movement_speed"	"-20 -30 -40"
+				"frost_arrows_movement_speed"	"-10 -20 -30"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_attack_speed"		"-50 -60 -70"
+				"frost_arrows_attack_speed"		"-20 -30 -40"
 			}
 			"03"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"frost_arrows_duration"			"4.0 4.0 4.0"
+				"frost_arrows_duration"			"3.0 3.0 3.0"
 			}
-	
 		}
 		
 		// Data driven
@@ -5845,7 +6011,7 @@
 		}
 	}
 	
-	"hermit_frost_arrows"
+	"hermit_frost_arrows_scepter"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -5866,15 +6032,15 @@
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"0.0 0.0 0.0"
-		"AbilityDuration"				"3 3 3"
+		"AbilityDuration"				"4 4 4"
 	
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"20 40 60"
+		"AbilityDamage"					"50 100 150"
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"15 30 45"
+		"AbilityManaCost"				"45 60 75"
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
@@ -5883,18 +6049,19 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_movement_speed"	"-10 -20 -30"
+				"frost_arrows_movement_speed"	"-20 -30 -40"
 			}
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_attack_speed"		"-20 -30 -40"
+				"frost_arrows_attack_speed"		"-50 -60 -70"
 			}
 			"03"
 			{
 				"var_type"						"FIELD_FLOAT"
-				"frost_arrows_duration"			"3.0 3.0 3.0"
+				"frost_arrows_duration"			"4.0 4.0 4.0"
 			}
+	
 		}
 		
 		// Data driven
@@ -12410,144 +12577,165 @@
 
 	//Start of file npc_lia_hero_warlock.txt
 	
-	"warlock_storm_datadriven"
-	{
-	    	"BaseClass"              "ability_datadriven"
-	    	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-	    	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    	"AbilityTextureName"     "razor_eye_of_the_storm"
-	
-	    
-	
-	    	"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    	"MaxLevel"               "3"
-	    	"RequiredLevel"          "1"
-	    	"LevelsBetweenUpgrades"  "2"
-		"AbilityChannelTime"      "2.5"
-	
-	
-	  	"precache"
-	  	{
-	    		"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-	  	}
-	
-	
-	  	"AbilityCastPoint"        "0.3"
-	  	"AbilityCooldown"         "9.0 10.0 11.0"
-	  	"AbilityManaCost"         "130 160 190"
-	  	"AbilityCastRange"        "400"
-	
-	  	"AoERadius"               "200 225 250"
-	 
-	
-	 	"OnSpellStart"  
-	 	{
-	        	"ApplyModifier"
-	        	{
-	          		"ModifierName"  "modifier_warlock_storm_hero"
-	          		"Target"        "CASTER"
-	        	}
-	    		"ActOnTargets"
-	    		{
-	      			"Target"
-	      			{
-	        			"Center" "POINT"
-	                		"Radius" "%radius"
-	                		"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                		"Type"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	      			}
-	
-	      			"Action"
-	      			{
-	        			"ApplyModifier"
-	        			{
-	          				"ModifierName"  "modifier_warlock_storm"
-	          				"Target"        "TARGET"
-	        			}
-	      			}
-	    		}
-	  	}  
-	
-		"OnChannelInterrupted"
+		"warlock_storm_datadriven"
 		{
-			"RemoveModifier"
-		       {
-		         "ModifierName"  "modifier_warlock_storm_hero"
-		         "Target"        "CASTER"
-		       }
-		}                               
+		    	"BaseClass"              "ability_datadriven"
+		    	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		    	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+		    	"AbilityTextureName"     "razor_eye_of_the_storm"
+		
+		    
+		
+		    	"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+		    	"MaxLevel"               "3"
+		    	"RequiredLevel"          "1"
+		    	"LevelsBetweenUpgrades"  "2"
+			"AbilityChannelTime"      "2.5"
+		
+		
+		  	"precache"
+		  	{
+		    		"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+					//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_e.vpcf"
+					//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+		  	}
+		
+		
+		  	"AbilityCastPoint"        "0.3"
+		  	"AbilityCooldown"         "9.0 10.0 11.0"
+		  	"AbilityManaCost"         "130 160 190"
+		  	"AbilityCastRange"        "400"
+		
+		  	"AoERadius"               "200 225 250"
+		 
+		
+		 	"OnSpellStart"  
+		 	{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/Warlock/storm.lua"
+						"Function"  	"storm_castpoint"
+						"EventName" 	"OnSpellStart"
+						"Target" 		"POINT"
+					}
+		        	"ApplyModifier"
+		        	{
+		          		"ModifierName"  "modifier_warlock_storm_hero"
+		          		"Target"        "CASTER"
+		        	}
+		    		"ActOnTargets"
+		    		{
+		      			"Target"
+		      			{
+		        			"Center" "POINT"
+		                		"Radius" "%radius"
+		                		"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		                		"Type"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		      			}
+		
+		      			"Action"
+		      			{
+		        			"ApplyModifier"
+		        			{
+		          				"ModifierName"  "modifier_warlock_storm"
+		          				"Target"        "TARGET"
+		        			}
+		      			}
+		    		}
+		  	}  
+		
+			"OnChannelInterrupted"
+			{
+				"RemoveModifier"
+			       {
+			         "ModifierName"  "modifier_warlock_storm_hero"
+			         "Target"        "CASTER"
+			       }
+			}                               
+		
+			"Modifiers"
+			{
+		  		"modifier_warlock_storm_hero"
+		  		{
+					"Passive"       "0"
+					"IsHidden"      "1"
+					"IsDebuff"      "0"
+					"IsBuff"      	"0"
+					"IsPurgable"	"0"
+					
+					"ThinkInterval"  "%tick_interval"
+					"OnIntervalThink"
+					{
+						"RunScript"
+						{
+								"ScriptFile" "heroes/Warlock/storm.lua"
+								"Function"   "stormEffect"
 	
-		"Modifiers"
-		{
-	  		"modifier_warlock_storm_hero"
-	  		{
-	    			"Passive"       "0"
-	    			"IsHidden"      "1"
-	    			"IsDebuff"      "0"
-				"IsBuff"      	"0"
-				"IsPurgable"	"0"
-				
-	    			"Duration"  "%duration"
-	  		}
-	  		"modifier_warlock_storm"
-	  		{
-	    			"Passive"       "0"
-	    			"IsHidden"      "0"
-	    			"IsDebuff"      "1"
+						}
+						
+					}
+					//
+		    		"Duration"  "%duration"
+		  		}
+		  		"modifier_warlock_storm"
+		  		{
+					"Passive"       "0"
+					"IsHidden"      "0"
+					"IsDebuff"      "1"
 	
-	    			"Duration"  "%duration"
-	
-				"ThinkInterval"  "%tick_interval"
-		       
-				"OnIntervalThink"
-				{
-	        			"RunScript"
-	        			{
-	            				"ScriptFile" "heroes/Warlock/storm.lua"
-	            				"Function"   "stormCauseDamage"
+					"Duration"  "%duration"
+		
+					"ThinkInterval"  "%tick_interval"
+			       
+					"OnIntervalThink"
+					{
+						"RunScript"
+						{
+								"ScriptFile" "heroes/Warlock/storm.lua"
+								"Function"   "stormCauseDamage"
 						"damage" "%damage"
 	
-	        			}
-					"FireEffect"
-					{
-						"Target" "TARGET"
-						"EffectName"			"particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-						"EffectAttachType"		"follow_overhead"	
-					}
-	
-		       	}
-	
-	
-	  		}
+						}
+						//"FireEffect"
+						//{
+						//	"Target" "TARGET"
+						//	"EffectName"			"particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+						//	"EffectAttachType"		"follow_overhead"	
+						//}
+		
+			       	}
+		
+		
+		  		}
+			}
+		
+		  	"AbilitySpecial"
+		  	{
+		   		"01"
+		   		{
+		     			"var_type"              "FIELD_INTEGER"
+		     			"radius"                "200 225 250"
+		   		}
+		   		"02"
+		   		{
+		     			"var_type"              "FIELD_INTEGER"
+		     			"damage"         		"40 80 120"
+		   		}
+		   		"03"
+		   		{
+		     			"var_type"              "FIELD_FLOAT"
+		     			"tick_interval"         	"0.8"
+		   		}
+		   		"04"
+		   		{
+		     			"var_type"              "FIELD_FLOAT"
+		     			"duration"         	"2.5"
+		   		}
+		
+		
+		 	}
+		
 		}
-	
-	  	"AbilitySpecial"
-	  	{
-	   		"01"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"radius"                "200 225 250"
-	   		}
-	   		"02"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"damage"         		"40 80 120"
-	   		}
-	   		"03"
-	   		{
-	     			"var_type"              "FIELD_FLOAT"
-	     			"tick_interval"         	"0.8"
-	   		}
-	   		"04"
-	   		{
-	     			"var_type"              "FIELD_FLOAT"
-	     			"duration"         	"2.5"
-	   		}
-	
-	
-	 	}
-	
-	}
 	
 	
 	"warlock_sacrifice"
