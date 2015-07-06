@@ -113,6 +113,75 @@
   }
 }
 
+"3_wave_rejuvenation"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"               "ability_datadriven"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "AbilityTextureName"      "alpha_wolf_command_aura"
+  
+
+  // Stats
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCooldown"       "5.0"
+  "AbilityManaCost"       "125"
+
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "heal"              "100"
+    }
+    "02"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "duration"            "6"
+    }
+  }
+
+  "precache"
+  {
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+	"ApplyModifier"
+	 {
+	 	"ModifierName"	"3_wave_rejuvenation"
+	 	"Target" 		"CASTER"
+	 	"Duration"		"%duration"
+	 } 
+  }
+
+  "Modifiers"
+  {
+    "3_wave_rejuvenation"
+    {
+      "IsBuff"  "1"
+      "Duration"  "%duration"
+      
+      "EffectName"	"particles/items_fx/healing_flask.vpcf"
+      "EffectAttachType"	"follow_origin"
+
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+      	"Heal"
+      	{
+      		"Target"        "CASTER"
+      		"HealAmount"	"%heal"
+      	}
+      }
+    }
+  }
+}
+
 "4_wave_death_coil"
 {
 	// General
@@ -302,6 +371,75 @@
 			"EffectAttachType"	"follow_overhead"
 		}
 	}
+}
+
+"10_wave_rejuvenation"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"               "ability_datadriven"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "AbilityTextureName"      "faceless_void_backtrack"
+  
+
+  // Stats
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCooldown"       "20.0"
+  "AbilityManaCost"       "250"
+
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "heal"              "250"
+    }
+    "02"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "duration"            "8"
+    }
+  }
+
+  "precache"
+  {
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+	"ApplyModifier"
+	 {
+	 	"ModifierName"	"3_wave_rejuvenation"
+	 	"Target" 		"CASTER"
+	 	"Duration"		"%duration"
+	 } 
+  }
+
+  "Modifiers"
+  {
+    "10_wave_rejuvenation"
+    {
+      "IsBuff"  "1"
+      "Duration"  "%duration"
+      
+      "EffectName"	"particles/items_fx/healing_flask.vpcf"
+      "EffectAttachType"	"follow_origin"
+
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+      	"Heal"
+      	{
+      		"Target"        "CASTER"
+      		"HealAmount"	"%heal"
+      	}
+      }
+    }
+  }
 }
 
 "12_wave_stomp"

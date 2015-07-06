@@ -35,13 +35,36 @@
 						"Wearable4"		{	"ItemDef"		"5897"		} 
 						"Wearable5"		{	"ItemDef"		"5898"		} 
 					}
+	
+				"DefaultState"			"Invade"
+				"States"	
+					{
+						"Invade"
+						{
+							"Name"				"Invade"
+							"Aggression"		"0.0" //cast offensive spells whenever
+							"Avoidance"			"0.0" //dont flee
+							"Support"			"80.0" //start buffing
+						}
 					}
+				
+				"DefensiveAbilities"
+					{
+					    "Ability1"              
+					    {
+					        "Name"                "10_wave_rejuvenation"
+					        "UseSelfishly"        "1"
+					        "Buff"                "1"
+					        "UseAtHealthPercent"  "80"
+					    }
+					}
+				}
 	
 	
 	
 	"Ability1" "true_sight" 
 	"Ability2" "10_megaboss_return" 
-	"Ability3" "" 
+	"Ability3" "10_wave_rejuvenation" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -1491,7 +1514,7 @@
 	}
 	
 	"Ability1" "3_wave_evasion" 
-	"Ability2" "" 
+	"Ability2" "3_wave_rejuvenation" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -1533,6 +1556,32 @@
 	"VisionNighttimeRange" "10000" 
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+		{
+			"DefaultState"			"Invade"
+			"States"	
+				{
+					"Invade"
+					{
+						"Name"				"Invade"
+						"Aggression"		"0.0" //cast offensive spells whenever
+						"Avoidance"			"0.0" //dont flee
+						"Support"			"50.0" //start buffing
+					}
+				}
+			
+			"DefensiveAbilities"
+				{
+				    "Ability1"              
+				    {
+				        "Name"                "3_wave_rejuvenation"
+				        "UseSelfishly"        "1"
+				        "Buff"                "1"
+				        "UseAtHealthPercent"  "50"
+				    }
+				}
+		}
 	}
 	
 	"4_wave_boss" 

@@ -202,7 +202,7 @@
 }
 
 "Ability1" "3_wave_evasion" 
-"Ability2" "" 
+"Ability2" "3_wave_rejuvenation" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -244,6 +244,32 @@
 "VisionNighttimeRange" "10000" 
 
 "HasInventory" "0" 
+
+"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"0.0" //cast offensive spells whenever
+					"Avoidance"			"0.0" //dont flee
+					"Support"			"50.0" //start buffing
+				}
+			}
+		
+		"DefensiveAbilities"
+			{
+			    "Ability1"              
+			    {
+			        "Name"                "3_wave_rejuvenation"
+			        "UseSelfishly"        "1"
+			        "Buff"                "1"
+			        "UseAtHealthPercent"  "50"
+			    }
+			}
+	}
 }
 
 "4_wave_boss" 

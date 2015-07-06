@@ -28,13 +28,36 @@
 					"Wearable4"		{	"ItemDef"		"5897"		} 
 					"Wearable5"		{	"ItemDef"		"5898"		} 
 				}
+
+			"DefaultState"			"Invade"
+			"States"	
+				{
+					"Invade"
+					{
+						"Name"				"Invade"
+						"Aggression"		"0.0" //cast offensive spells whenever
+						"Avoidance"			"0.0" //dont flee
+						"Support"			"80.0" //start buffing
+					}
 				}
+			
+			"DefensiveAbilities"
+				{
+				    "Ability1"              
+				    {
+				        "Name"                "10_wave_rejuvenation"
+				        "UseSelfishly"        "1"
+				        "Buff"                "1"
+				        "UseAtHealthPercent"  "80"
+				    }
+				}
+			}
 
 
 
 "Ability1" "true_sight" 
 "Ability2" "10_megaboss_return" 
-"Ability3" "" 
+"Ability3" "10_wave_rejuvenation" 
 "Ability4" "" 
 "Ability5" "" 
 "Ability6" "" 
