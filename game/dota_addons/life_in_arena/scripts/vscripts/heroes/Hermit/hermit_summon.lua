@@ -64,24 +64,17 @@ function summonCreate(keys)
 		cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
 		cre:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
 		--
+		if caster:HasModifier("modifier_decrepify_units_by_hero") then
+			caster:FindAbilityByName("hermit_astral"):ApplyDataDrivenModifier( caster, cre, 'modifier_decrepify_units_by_hero', {} )
+		end
+		--modifier_decrepify_all
+		--
 		if flag then
 			cre:SetRenderColor(255,0,0)
 		end
 		--
 		table.insert(caster.tUnits,cre)
 	end
-
-	
-	--local cre = CreateUnitByName(unitname, target:GetAbsOrigin(), false, caster, caster, caster:GetTeam())
-	--cre:SetControllableByPlayer(PID, false)
-	--
-	
-	--cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
-	--cre:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
-	
-	
-	--ability:ApplyDataDrivenModifier( caster, cre, 'modifier_infection_expire', {} )
-	--ability:ApplyDataDrivenModifier( caster, cre, 'modifier_phased', {duration = 0.03} )
 
 
 end
