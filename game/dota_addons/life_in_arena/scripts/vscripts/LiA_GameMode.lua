@@ -133,8 +133,8 @@ function LiA:OnConnectFull(event)
     
     player.IsDisconnect = false
 
-    local playerSteamID = PlayerResource:GetSteamAccountID(playerID)
-    print("SteamID = ",playerSteamID)
+    --local playerSteamID = PlayerResource:GetSteamAccountID(playerID)
+    --print("SteamID = ",playerSteamID)
     
     table.insert(tPlayers,player)
     nPlayers = nPlayers + 1  

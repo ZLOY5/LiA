@@ -36,19 +36,16 @@ Convars:RegisterCommand('player_say', function(...)
       if keys.text == "-pos" then
         print(cmdPlayer:GetAssignedHero():GetAbsOrigin())
       end
-      if keys.text == "-test" then
-        local playerSteamID = PlayerResource:GetSteamAccountID(cmdPlayer:GetPlayerID())
-        for _,SteamID in pairs(TEST_MODE_STEAM_ID) do 
-          if playerSteamID == SteamID then
-            LiA.TestMode = true
-          end
-        end
-      end
-      if keys.text:sub(0,5) == "-gold" and LiA.TestMode then --   -gold 9999
-        gold = tonumber(keys.text:sub(7))
-        if gold then
-          PlayerResource:ModifyGold(cmdPlayer:GetPlayerID(), gold, false, 0)
-        end
+      --if keys.text == "-test" then
+      --  local playerSteamID = PlayerResource:GetSteamAccountID(cmdPlayer:GetPlayerID())
+      --  for _,SteamID in pairs(TEST_MODE_STEAM_ID) do 
+      --    if playerSteamID == SteamID then
+      --      LiA.TestMode = true
+      --    end
+      --  end
+      --end
+      if keys.text== "-givemegold" then 
+        PlayerResource:ModifyGold(cmdPlayer:GetPlayerID(), 9999, false, 0)
       end
     end
   end, 'player say', 0)
