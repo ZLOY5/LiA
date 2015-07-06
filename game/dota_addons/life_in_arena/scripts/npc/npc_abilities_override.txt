@@ -12579,17 +12579,17 @@
 	
 		"warlock_storm_datadriven"
 		{
-		    	"BaseClass"              "ability_datadriven"
-		    	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-		    	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-		    	"AbilityTextureName"     "razor_eye_of_the_storm"
+			"BaseClass"              "ability_datadriven"
+			"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+			"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+			"AbilityTextureName"     "razor_eye_of_the_storm"
+	
 		
-		    
-		
-		    	"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-		    	"MaxLevel"               "3"
-		    	"RequiredLevel"          "1"
-		    	"LevelsBetweenUpgrades"  "2"
+	
+			"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+			"MaxLevel"               "3"
+			"RequiredLevel"          "1"
+			"LevelsBetweenUpgrades"  "2"
 			"AbilityChannelTime"      "2.5"
 		
 		
@@ -12666,11 +12666,15 @@
 					"ThinkInterval"  "%tick_interval"
 					"OnIntervalThink"
 					{
+						"FireSound"
+						{
+							"EffectName"	"Hero_Zuus.GodsWrath"
+							"Target" 		"CASTER"
+						}
 						"RunScript"
 						{
 								"ScriptFile" "heroes/Warlock/storm.lua"
 								"Function"   "stormEffect"
-	
 						}
 						
 					}
