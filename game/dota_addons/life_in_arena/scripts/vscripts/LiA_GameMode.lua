@@ -32,12 +32,15 @@ IsPreWaveTime = false
 
 uFinalBoss    = nil
 
+TEST_MODE_STEAM_ID = {}
+
 --------------------------------------------------------------------------------
 
 if LiA == nil then
 	_G.LiA = class({})
 	LiA.DeltaTime = 0.25
 end
+
 
 
 XP_TABLE = {}
@@ -129,6 +132,9 @@ function LiA:OnConnectFull(event)
     self.vUserIds[event.userid] = player
     
     player.IsDisconnect = false
+
+    local playerSteamID = PlayerResource:GetSteamAccountID(playerID)
+    print("SteamID = ",playerSteamID)
     
     table.insert(tPlayers,player)
     nPlayers = nPlayers + 1  

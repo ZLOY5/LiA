@@ -36,12 +36,19 @@ Convars:RegisterCommand('player_say', function(...)
       if keys.text == "-pos" then
         print(cmdPlayer:GetAssignedHero():GetAbsOrigin())
       end
-      --if keys.text == "-respawn" then
-      --  cmdPlayer:GetAssignedHero():RespawnHero(false, false, false)
-      --end
-      --if keys.text == "-test" then
-      --    local unit = CreateUnitByName("8_wave_creep", WAVE_SPAWN_COORD_TOP, true, nil, nil, DOTA_TEAM_BADGUYS)
-      --   unit:AddNewModifier(unit, nil, "modifier_test_lia", nil)
-      --end
+      if keys.text == "-test" then
+        local playerSteamID = PlayerResource:GetSteamAccountID(cmdPlayer:GetPlayerID())
+        for _,SteamID in pairs(TEST_MODE_STEAM_ID) do 
+          if playerSteamID == SteamID then
+            LiA.TestMode = true
+          end
+        end
+      end
+      if keys.text:sub(0,5) == "-gold" and LiA.TestMode then --   -gold 9999
+        gold = tonumber(keys.text:sub(7))
+        if gold then
+          PlayerResource:ModifyGold(cmdPlayer:GetPlayerID(), gold, false, 0)
+        end
+      end
     end
   end, 'player say', 0)
