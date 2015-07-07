@@ -44,8 +44,8 @@ Convars:RegisterCommand('player_say', function(...)
       --    end
       --  end
       --end
-      if keys.text== "-givemegold" then 
+     --[[ if keys.text== "-givemegold" then 
         PlayerResource:ModifyGold(cmdPlayer:GetPlayerID(), 9999, false, 0)
-      end
+      end]]
     end
   end, 'player say', 0)
