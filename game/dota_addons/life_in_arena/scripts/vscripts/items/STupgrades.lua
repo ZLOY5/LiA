@@ -20,6 +20,7 @@ function OnEquip(event)
 				unit = caster,
 				oldAbi = "hermit_frost_arrows",
 				newAbi = "hermit_frost_arrows_scepter",
+				tPassiveModifiers_by_oldAbi = {"modifier_frost_arrows_caster_datadriven"},
 			}
 			ReplaceAbi(par)
 			--
@@ -27,6 +28,7 @@ function OnEquip(event)
 				unit = caster,
 				oldAbi = "hermit_summon_water_elemental_new",
 				newAbi = "hermit_summon_water_elemental_new_scepter",
+				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
 			--
@@ -66,6 +68,7 @@ function OnUnequip(event)
 				unit = caster,
 				oldAbi = "hermit_frost_arrows_scepter",
 				newAbi = "hermit_frost_arrows",
+				tPassiveModifiers_by_oldAbi = {"modifier_frost_arrows_caster_datadriven"},
 			}
 			ReplaceAbi(par)
 			--
@@ -73,6 +76,7 @@ function OnUnequip(event)
 				unit = caster,
 				oldAbi = "hermit_summon_water_elemental_new_scepter",
 				newAbi = "hermit_summon_water_elemental_new",
+				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
 			--
@@ -88,6 +92,10 @@ function OnUnequip(event)
 end
 
 function ReplaceAbi(params)
+	--local maxPassiveModifiers = 6
+	--local modifier
+	local autocast
+	local buf
 	local ability
 	local abilityNew
 	local cooldownRe
@@ -95,15 +103,38 @@ function ReplaceAbi(params)
 	local unit = params.unit
 	local oldAbi = params.oldAbi
 	local newAbi = params.newAbi
+	local tPassiveModifiers_by_oldAbi = params.tPassiveModifiers_by_oldAbi
 	--
 	ability = unit:FindAbilityByName(oldAbi)
 	cooldownRe = ability:GetCooldownTimeRemaining()
 	lvlRe = ability:GetLevel()
-	print(cooldownRe)
+	--print(cooldownRe)
+	
+	-- also remove all passive modifiers
+	-- if this need
+	for i=1, #tPassiveModifiers_by_oldAbi do
+		--if not unit:FindModifierByName(tPassiveModifiers_by_oldAbi[i]):IsNull() then
+		if unit:FindModifierByName(tPassiveModifiers_by_oldAbi[i]) ~= nil then
+			unit:RemoveModifierByName(tPassiveModifiers_by_oldAbi[i])
+		end
+	end
+	-- autocast state
+	if ability:GetAutoCastState() ~= nil then
+		autocast = ability:GetAutoCastState()
+	else
+		autocast = false
+	end
+	--
 	unit:RemoveAbility(oldAbi)
+	--
 	unit:AddAbility(newAbi)
 	abilityNew = unit:FindAbilityByName(newAbi)
 	abilityNew:SetLevel(lvlRe)
 	abilityNew:StartCooldown(cooldownRe)
+	--
+	if autocast then
+		abilityNew:ToggleAutoCast()
+	end
+	--
 end
 
