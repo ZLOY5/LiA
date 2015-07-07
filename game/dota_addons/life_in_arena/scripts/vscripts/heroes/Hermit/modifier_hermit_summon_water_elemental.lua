@@ -95,6 +95,10 @@ function modifier_hermit_summon_water_elemental:OnCreated(params)
 			cre:AddNewModifier(hCaster, nil, "modifier_kill", { duration = durat })
 			cre:AddNewModifier(hCaster, nil, "modifier_phased", { duration = 0.03 })
 			--
+			if hCaster:HasModifier("modifier_decrepify_units_by_hero") then
+				hCaster:FindAbilityByName("hermit_astral"):ApplyDataDrivenModifier( hCaster, cre, 'modifier_decrepify_units_by_hero', {} )
+			end
+			--
 			if flag then
 				cre:SetRenderColor(255,0,0)
 			end
