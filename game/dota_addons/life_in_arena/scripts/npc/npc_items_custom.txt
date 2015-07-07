@@ -6771,6 +6771,241 @@
 	//End of file item_lia_runed_gloves.txt
 
 
+	//Start of file item_lia_rune_of_healing.txt
+	    "item_lia_rune_of_healing"
+	{
+		"ID"                            "1601"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	
+		
+		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				}
+			
+				"Action"    
+				{
+					"Heal"
+					{
+						"Target"        "TARGET"
+						"HealAmount"	"%heal"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+					}
+				}
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"450"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"2000"
+			}
+		}
+	}
+	//End of file item_lia_rune_of_healing.txt
+
+
+	//Start of file item_lia_rune_of_mana.txt
+	    "item_lia_rune_of_mana"
+	{
+		"ID"                            "1602"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/rune_doubledamage01.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				}
+			
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/mana.lua"
+						"Function"		"GiveMana"
+						"mana_amount"	"%mana"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/items3_fx/mango_active.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+					}
+				}
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana"					"250"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"2000"
+			}
+		}
+	}
+	//End of file item_lia_rune_of_mana.txt
+
+
+	//Start of file item_lia_rune_of_restoration.txt
+	    "item_lia_rune_of_restoration"
+	{
+		"ID"                            "1603"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/rune_invisibility01.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				}
+			
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/mana.lua"
+						"Function"		"GiveMana"
+						"mana_amount"	"%mana"
+					}
+					"Heal"
+					{
+						"Target"        "TARGET"
+						"HealAmount"	"%heal"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+					}
+				}
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana"					"300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"300"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"2000"
+			}
+		}
+	}
+	//End of file item_lia_rune_of_restoration.txt
+
+
 	//Start of file item_lia_scepter_of_power.txt
 	"item_recipe_lia_scepter_of_power"
 	{
