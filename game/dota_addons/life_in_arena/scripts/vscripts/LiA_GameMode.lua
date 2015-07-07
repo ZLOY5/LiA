@@ -541,6 +541,7 @@ end
 
 function StartDuels()
     DuelNumber = 1
+    GameRules:SetGoldPerTick(0)
     CleanUnitsOnMap()
     timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
     Timers:CreateTimer(PRE_DUEL_TIME,function()
@@ -565,6 +566,7 @@ end
 
 function EndDuels()
     print(DuelNumber,"end duels")
+    GameRules:SetGoldPerTick(1)
     IsDuel = false
     IsDuelOccured = true
     for i = 1, #tHeroes do
