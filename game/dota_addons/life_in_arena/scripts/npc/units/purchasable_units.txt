@@ -335,7 +335,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/faceless_void/faceless_void.vmdl" 
 	"SoundSet" "Hero_FacelessVoid" 
-	"ModelScale" "0.9" 
+	"ModelScale" "1.0" 
 	"Level" "1" 
 	"precache"
 	{	
@@ -379,12 +379,13 @@
 	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
 	"HealthBarOffset"			"250"
 
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-	"AttackDamageMin" "59" 
-	"AttackDamageMax" "59" 
+	"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	//"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	//"AttackDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"AttackDamageMin" "60" 
+	"AttackDamageMax" "65" 
 	"AttackRate" "0.9" 
-	"AttackAnimationPoint" "0.56" 
+	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
@@ -412,14 +413,14 @@
 
 
 	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassAttack"  "DOTA_COMBAT_CLASS_ATTACK_LIGHT" //
 	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 
 
 	"VisionDaytimeRange" "900" 
-	"VisionNighttimeRange" "900" 
+	"VisionNighttimeRange" "800" 
 
 
 
