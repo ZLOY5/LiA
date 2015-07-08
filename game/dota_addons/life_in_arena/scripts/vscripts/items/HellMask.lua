@@ -8,7 +8,7 @@ function SpawnHellBeast(event)
     
     local front_position = origin + fv * 220
     
-    unit = CreateUnitByName("hell_beast", front_position, false, caster, caster, caster:GetTeam())
+    local unit = CreateUnitByName("hell_beast", front_position, true, caster, caster, caster:GetTeam())
     unit:SetControllableByPlayer(playerID, false)
     unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})
 	--
