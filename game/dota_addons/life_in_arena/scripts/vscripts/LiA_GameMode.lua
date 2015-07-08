@@ -620,6 +620,7 @@ function Duel(hero1, hero2)
 
     DuelCounter = 5
     Timers:CreateTimer(function()
+        CleanUnitsOnMap()
         if DuelCounter == 0 then
             HeroOnDuel1:RemoveModifierByName("modifier_stun_lua")
             HeroOnDuel2:RemoveModifierByName("modifier_stun_lua")
