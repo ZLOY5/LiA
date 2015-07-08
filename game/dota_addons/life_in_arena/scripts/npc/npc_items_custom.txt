@@ -3301,15 +3301,11 @@
 	
 		"OnSpellStart"
 		{
-	        "SpawnUnit"
-			{
-				"UnitName"			"item_lia_healing_ward_unit"
-				"Target"			"POINT"
-				"UnitCount"			"1"
-				"Duration"			"%duration"
-				"GrantsGold"		"0"
-				"GrantsXP"			"0"
-			}
+	        "RunScript"
+	        {
+	        	"ScriptFile"	"items\HealingWard.lua"
+	        	"Function"		"SpawnWard"
+	        }
 	        "SpendCharge" {}
 		}
 	}
