@@ -2821,7 +2821,6 @@
 			"model"	"models/heroes/sand_king/sand_king_legs.mdl"
 			"particle"	"particles/units/heroes/hero_sandking/sandking_portrait.vpcf"
 		}
-	
 		"Creature"
 		{
 		"AttachWearables"
@@ -2833,6 +2832,9 @@
 				"Wearable5"		{	"ItemDef"		"201"		} 
 			}
 		}
+	
+		"PathfindingSearchDepthScale" "0.1"
+		
 	}
 			
 	"2_wave_creep" 
@@ -2887,6 +2889,8 @@
 		"VisionNighttimeRange" "10000" 
 	
 		"HasInventory" "0" 
+	
+		"PathfindingSearchDepthScale" "0.2"
 	}
 	
 	"3_wave_creep" 
@@ -2945,6 +2949,8 @@
 		"VisionNighttimeRange" "10000" 
 	
 		"HasInventory" "0" 
+	
+		"PathfindingSearchDepthScale" "0.3"
 	}
 	
 	"4_wave_creep" 
