@@ -1,10 +1,9 @@
 "1_wave_boss" 
 {
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/sand_king/sand_king.mdl" 
-"Portrait"     "vgui/hud/heroportraits/portrait_sandking"
-"SoundSet" "Hero_SandKing" 
-"ModelScale" "1" 
+"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl" 
+"SoundSet" "n_creep_Melee" 
+"ModelScale" "1.2" 
 "Level" "1" 
 
 "Ability1" "1_wave_stomp" 
@@ -68,26 +67,8 @@
 
 "HasInventory" "0" 
 
-"precache"
-{
-	"model"	"models/heroes/sand_king/sand_king.mdl"
-	"model"	"models/items/sand_king/deserts_deathly_embrace_arms/deserts_deathly_embrace_arms.mdl"
-	"model"	"models/items/sand_king/deserts_deathly_embrace_head/deserts_deathly_embrace_head.mdl"
-	"model"	"models/items/sand_king/deserts_deathly_embrace_shoulder/deserts_deathly_embrace_shoulder.mdl"
-	"model"	"models/items/sand_king/deserts_deathly_embrace_tail/deserts_deathly_embrace_tail.mdl"
-	"model"	"models/items/sand_king/deserts_deathly_embrace_legs/deserts_deathly_embrace_legs.mdl"
-}
-
 "Creature"
 {
-	"AttachWearables"
-	{
-		"Wearable1"		{	"ItemDef"		"4771"		} 
-		"Wearable2" 	{	"ItemDef"		"4712"		} 
-		"Wearable3"		{	"ItemDef"		"4713"		} 
-		"Wearable4"		{	"ItemDef"		"4381"		} 
-		"Wearable5"		{	"ItemDef"		"4382"		} 
-	}
 	"DefaultState"			"Invade"
 	"States"	
 	{
@@ -376,35 +357,10 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/bounty_hunter/bounty_hunter.vmdl" 
-"SoundSet" "Hero_BountyHunter" 
+"Model" "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl" 
+"SoundSet" "n_creep_Melee" 
 "ModelScale" "1" 
 "Level" "1" 
-
-				"precache"
-		{
-			"model"	"models/heroes/bounty_hunter/bounty_hunter.vmdl"
-			"model"	"models/items/bounty_hunter/corruption_armor/corruption_armor.mdl"
-			"model"	"models/items/bounty_hunter/corruption_mask/corruption_mask.mdl"
-			"model"	"models/items/bounty_hunter/corruption_offhand/corruption_offhand.mdl"
-			"model"	"models/items/bounty_hunter/corruption_shoulder/corruption_shoulder.mdl"
-			"model"	"models/items/bounty_hunter/corruption_weapon/corruption_weapon.mdl"
-
-		}
-		
-"Creature"
-		{
-		"AttachWearables"
-			{
-				"Wearable1"		{	"ItemDef"		"6219"		} 
-				"Wearable2" 	{	"ItemDef"		"6220"		} 
-				"Wearable3"		{	"ItemDef"		"6221"		} 
-				"Wearable4"		{	"ItemDef"		"6222"		} 
-				"Wearable5"		{	"ItemDef"		"6223"		} 
-			}
-			}
-
-
 
 
 "Ability1" "6_wave_spell_resist" 
@@ -580,30 +536,14 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/sven/sven.vmdl" 
+"Model" "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl" 
 "SoundSet" "Hero_Sven" 
-"ModelScale" "1" 
+"ModelScale" "1.5" 
 "Level" "1" 
 				
-	"precache"
-			{
-				"model"	"models/heroes/sven/sven.vmdl"
-				"model"	"models/items/sven/mask_freelancer.mdl"
-				"model"	"models/items/sven/shoulder_freelancer.mdl"				
-				"model"	"models/items/sven/belt_freelancer.mdl"
-				"model"	"models/items/sven/sword_freelancer.mdl"				
 
-			}
-			
 "Creature"
 {
-	"AttachWearables"
-	{
-		"Wearable1"		{	"ItemDef"		"4150"		} 
-		"Wearable2" 	{	"ItemDef"		"4151"		} 
-		"Wearable3"		{	"ItemDef"		"4152"		} 
-		"Wearable4" 	{	"ItemDef"		"4153"		} 
-	}
 	"DefaultState"			"Invade"
 	"States"	
 	{
@@ -1199,29 +1139,10 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/nerubian_assassin/nerubian_assassin.vmdl" 
-"SoundSet" "Hero_NyxAssassin" 
+"Model" "models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl" 
+"SoundSet" "n_creep_Melee" 
 "ModelScale" "1.5" 
 "Level" "1" 
-				"precache"
-		{
-			"model"	"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"
-			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_weapon.mdl"
-			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_armor.mdl"
-			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_helmet.mdl"
-		}
-		
-"Creature"
-		{
-		"AttachWearables"
-			{
-				"Wearable1"		{	"ItemDef"		"195"		} 
-				"Wearable2" 	{	"ItemDef"		"196"		} 
-				"Wearable3"		{	"ItemDef"		"197"		} 
-
-			}
-			}
-
 
 
 "Ability1" "17_wave_evasion" 

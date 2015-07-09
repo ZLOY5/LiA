@@ -1,10 +1,9 @@
 "1_wave_creep" 
 {
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/sand_king/sand_king.mdl" 
-	"Portrait"     "vgui/hud/heroportraits/portrait_sandking"
-	"SoundSet" "Hero_SandKing" 
-	"ModelScale" "0.85" 
+	"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
+	"SoundSet" "n_creep_Melee" 
+	"ModelScale" "1" 
 	"Level" "1" 
 	 
 
@@ -52,29 +51,6 @@
 	"VisionNighttimeRange" "10000" 
 	 
 	"HasInventory" "0" 
-
-	"precache"
-	{
-		"model"	"models/heroes/sand_king/sand_king.mdl"
-		"model"	"models/heroes/sand_king/sand_king_head.mdl"
-		"model"	"models/heroes/sand_king/sand_king_shoulder.mdl"
-		"model"	"models/heroes/sand_king/sand_king_arms.mdl"
-		"model"	"models/heroes/sand_king/sand_king_tail.mdl"
-		"model"	"models/heroes/sand_king/sand_king_legs.mdl"
-		"particle"	"particles/units/heroes/hero_sandking/sandking_portrait.vpcf"
-	}
-
-	"Creature"
-	{
-	"AttachWearables"
-		{
-			"Wearable1"		{	"ItemDef"		"180"		} 
-			"Wearable2" 	{	"ItemDef"		"198"		} 
-			"Wearable3"		{	"ItemDef"		"199"		} 
-			"Wearable4"		{	"ItemDef"		"200"		} 
-			"Wearable5"		{	"ItemDef"		"201"		} 
-		}
-	}
 }
 		
 "2_wave_creep" 
@@ -254,34 +230,10 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/bounty_hunter/bounty_hunter.vmdl" 
-"SoundSet" "Hero_BountyHunter" 
-"ModelScale" "0.85" 
+"Model" "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl" 
+"SoundSet" "n_creep_Melee" 
+"ModelScale" "0.75" 
 "Level" "1" 
-
-				"precache"
-		{
-			"model"	"models/heroes/bounty_hunter/bounty_hunter.vmdl"
-			"model"	"models/heroes/bounty_hunter/bounty_hunter_pads.mdl"
-			"model"	"models/heroes/bounty_hunter/bounty_hunter_bweapon.mdl"
-			"model"	"models/heroes/bounty_hunter/bounty_hunter_rweapon.mdl"
-			"model"	"models/heroes/bounty_hunter/bounty_hunter_lweapon.mdl"
-
-
-		}
-		
-"Creature"
-		{
-		"AttachWearables"
-			{
-				"Wearable1"		{	"ItemDef"		"53"		} 
-				"Wearable2" 	{	"ItemDef"		"54"		} 
-				"Wearable3"		{	"ItemDef"		"50"		} 
-				"Wearable4"		{	"ItemDef"		"51"		} 
-			}
-			}
-
-
 
 
 "Ability1" "6_wave_spell_resist" 
@@ -426,28 +378,11 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/sven/sven.vmdl" 
+"Model" "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl" 
 "SoundSet" "Hero_Sven" 
-"ModelScale" "0.8" 
+"ModelScale" "1.25" 
 "Level" "1" 
-				
-	"precache"
-			{
-				"model"	"models/heroes/sven/sven.vmdl"
-				"model"	"models/heroes/sven/sven_mask.vmdl"
-				"model"	"models/heroes/sven/sven_sword.vmdl"				
-				"model"	"models/heroes/sven/sven_gauntlet.vmdl"
-			}
-			
-	"Creature"
-			{
-			"AttachWearables"
-				{
-					"Wearable1"		{	"ItemDef"		"16"		} 
-					"Wearable2" 	{	"ItemDef"		"17"		} 
-					"Wearable3"		{	"ItemDef"		"19"		} 
-				}
-				}
+
 
 
 
@@ -973,26 +908,10 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/nerubian_assassin/nerubian_assassin.vmdl" 
-"SoundSet" "Hero_NyxAssassin" 
+"Model" "models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl" 
+"SoundSet" "n_creep_Melee" 
 "ModelScale" "1" 
 "Level" "1" 
-				"precache"
-		{
-			"model"	"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"
-			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_weapon.mdl"
-			"model"	"models/heroes/nerubian_assassin/nerubian_assassin_armor.mdl"
-		}
-		
-"Creature"
-		{
-		"AttachWearables"
-			{
-				"Wearable1"		{	"ItemDef"		"195"		} 
-				"Wearable2" 	{	"ItemDef"		"196"		} 
-
-			}
-}
 
 
 
