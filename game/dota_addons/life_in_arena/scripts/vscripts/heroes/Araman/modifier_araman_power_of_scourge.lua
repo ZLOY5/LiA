@@ -53,7 +53,7 @@ function modifier_araman_power_of_scourge:OnAttackLanded(params)
 			if self.power_of_scourge_stacks < self.power_of_scourge_max_stacks then
 				self.bonus_damage = self.bonus_damage + self.damage_per_stack
 				self.power_of_scourge_stacks = self.power_of_scourge_stacks + 1
-				self:SetStackCount(self.power_of_scourge_stacks)
+				self:SetStackCount(self.bonus_damage)
 			end
 		end
 	end
