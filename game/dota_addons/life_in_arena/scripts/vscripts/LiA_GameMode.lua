@@ -1,4 +1,4 @@
-
+--dota_hud_netgraph 1 - фпс в игре
 WAVE_SPAWN_COORD_LEFT    = Vector(-5700,  1850, 0)
 WAVE_SPAWN_COORD_TOP     = Vector(-3670,  3970, 0)
 ARENA_TELEPORT_COORD_TOP = Vector(-5024, -1360, 0)
@@ -620,6 +620,7 @@ function Duel(hero1, hero2)
 
     DuelCounter = 5
     Timers:CreateTimer(function()
+        CleanUnitsOnMap()
         if DuelCounter == 0 then
             HeroOnDuel1:RemoveModifierByName("modifier_stun_lua")
             HeroOnDuel2:RemoveModifierByName("modifier_stun_lua")
