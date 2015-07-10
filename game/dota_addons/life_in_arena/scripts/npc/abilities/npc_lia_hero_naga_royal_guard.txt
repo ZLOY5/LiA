@@ -137,7 +137,7 @@
     "modifier_naga_royal_guard_persistence"
     {
       "Passive"  "1"
-
+      "IsHidden"	"1"
       "Properties"
       {
         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor" 
@@ -177,11 +177,7 @@
 			"stun_hero_duration"	"1.0 1.5 2.0"
 		}
 	}
-
-	   	"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_naga_royal_guard_bash"
-	}	
+	
 	
 	"Modifiers"
 	{
@@ -207,7 +203,7 @@
 
 						"ApplyModifier"
 						{
-							"ModifierName"	"modifier_naga_royal_guard_bash_stun"
+							"ModifierName"	"modifier_stunned"
 							"Target"
 							{
 								"Center"	"TARGET"
@@ -224,20 +220,6 @@
 						}
 					}
 				}
-			}
-		}
-
-		"modifier_naga_royal_guard_bash_stun"
-		{
-			"IsDebuff"			"1"
-			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-			"EffectAttachType"	"follow_overhead"
-
-			"OverrideAnimation"     "ACT_DOTA_DISABLED"
-
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
 	}
