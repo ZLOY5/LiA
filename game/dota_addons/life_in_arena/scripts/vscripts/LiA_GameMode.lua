@@ -192,7 +192,7 @@ function LiA:OnPlayerPickHero(keys)
     hero.deaths = 0
     hero.rating = 0
     hero.lumber = 3
-    FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
+    --FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
     
     table.insert(tHeroes, hero)
     
@@ -263,7 +263,7 @@ function LiA:OnEntityKilled(keys)
         if ownedHeroAtt then
             ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
             ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
-            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
+            --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
             if attacker:GetPlayerOwner() then
                 PopupNumbers(attacker:GetPlayerOwner() ,ent, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
             end
@@ -277,7 +277,7 @@ end
 
 function StartWaves()
     IsPreWaveTime = true
-    timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
+    --timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
     Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage("#lia_wave_num",5,WAVE_NUM) IsPreWaveTime = false return nil end})
     Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end}) 
 end
@@ -356,7 +356,7 @@ function LiA:SpawnMegaboss()
         if BossCounter == 0 then
             return nil
         else
-            ShowCenterMessage(tostring(BossCounter),1)
+            --ShowCenterMessage(tostring(BossCounter),1)
             BossCounter = BossCounter - 1
             return 1
         end
@@ -369,8 +369,7 @@ function OnFirstStageDeath(event) --когда умирают боссы пер�
         uFinalBoss:RemoveModifierByName("modifier_hide_lua") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
         ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
-        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
-                
+        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")           
     end
 end
 
@@ -470,19 +469,19 @@ function LiA:_EndWave()
                 message = "#lia_megaboss"
             end
             timerPopup:Start(PRE_WAVE_TIME,message,0)
-            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5) IsPreWaveTime = false return nil end})
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() --[[ShowCenterMessage(message,5)]] IsPreWaveTime = false return nil end})
         else --обычные волны
             Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end})
-            message = "#lia_wave_num"
-            timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
-            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5,WAVE_NUM) IsPreWaveTime = false return nil end})
+            --message = "#lia_wave_num"
+            --timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() --[[ShowCenterMessage(message,5,WAVE_NUM)]] IsPreWaveTime = false return nil end})
         end
          
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
             hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
             hero.lumber = hero.lumber + 3 + WAVE_NUM
-            FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
+            --FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
         end)        
     end
     TRIGGER_SHOP:Enable()
@@ -543,7 +542,7 @@ function StartDuels()
     DuelNumber = 1
     GameRules:SetGoldPerTick(0)
     CleanUnitsOnMap()
-    timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
+    --timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
     Timers:CreateTimer(PRE_DUEL_TIME,function()
         IsDuel = true
         TRIGGER_SHOP:Disable() 
@@ -624,7 +623,7 @@ function Duel(hero1, hero2)
         if DuelCounter == 0 then
             HeroOnDuel1:RemoveModifierByName("modifier_stun_lua")
             HeroOnDuel2:RemoveModifierByName("modifier_stun_lua")
-            timerPopup:Start(120,"#lia_expire_duel",0)
+            --timerPopup:Start(120,"#lia_expire_duel",0)
             Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
                 useGameTime = true,
                 endTime = 120,
@@ -634,7 +633,7 @@ function Duel(hero1, hero2)
                 end})
             return nil
         else
-            ShowCenterMessage(tostring(DuelCounter),1)
+            --ShowCenterMessage(tostring(DuelCounter),1)
             DuelCounter = DuelCounter - 1
             return 1
         end
@@ -660,13 +659,13 @@ function EndDuel(winner,loser)
     end
 
     if winner ~= nil then 
-        timerPopup:Stop()
+        --timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
         
         winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         print("Winner added "..tostring(300-50*DuelNumber).." gold")
         winner.lumber = winner.lumber + 9 - DuelNumber
-        FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
+        --FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         
         if winner:IsAlive() then
             winner:Stop()
