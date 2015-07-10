@@ -8019,7 +8019,7 @@
 	    "modifier_naga_royal_guard_persistence"
 	    {
 	      "Passive"  "1"
-	
+	      "IsHidden"	"1"
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor" 
@@ -8059,11 +8059,7 @@
 				"stun_hero_duration"	"1.0 1.5 2.0"
 			}
 		}
-	
-		   	"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_naga_royal_guard_bash"
-		}	
+		
 		
 		"Modifiers"
 		{
@@ -8089,7 +8085,7 @@
 	
 							"ApplyModifier"
 							{
-								"ModifierName"	"modifier_naga_royal_guard_bash_stun"
+								"ModifierName"	"modifier_stunned"
 								"Target"
 								{
 									"Center"	"TARGET"
@@ -8106,20 +8102,6 @@
 							}
 						}
 					}
-				}
-			}
-	
-			"modifier_naga_royal_guard_bash_stun"
-			{
-				"IsDebuff"			"1"
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-	
-				"OverrideAnimation"     "ACT_DOTA_DISABLED"
-	
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
@@ -8428,6 +8410,7 @@
 			"modifier_naga_siren_art_of_battle_evasion"
 			{
 				"Passive"	"1"
+				"IsHidden"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
@@ -8715,7 +8698,7 @@
 	
 							"ApplyModifier"
 							{
-								"ModifierName"	"modifier_stun_wave"
+								"ModifierName"	"modifier_stunned"
 								"Target"
 								{
 									"Center"  	"TARGET"
@@ -8763,20 +8746,6 @@
 				
 			}
 	
-	
-			"modifier_stun_wave"
-			{
-				"IsDebuff"		"1"
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-		
-				"OverrideAnimation"     "ACT_DOTA_DISABLED"
-	
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
 	
 	
 		}
@@ -9332,9 +9301,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"AbilityTextureName"			"pirate_poisoned_weapon"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
@@ -9390,7 +9358,7 @@
 			"modifier_poisoned_weapon"
 			{
 				"Passive"               "1"
-				"IsHidden"				"0"
+				"IsHidden"				"1"
 		
 				"OnAttackLanded"
 				{
@@ -9471,6 +9439,7 @@
 			"modifier_pirate_evasion"
 			{
 				"Passive"	"1"
+				"IsHidden"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
@@ -10110,7 +10079,7 @@
 	  "royal_vitality_datadriven"
 	  {
 	    "Passive"       "1"
-	    "IsHidden"      "0"
+	    "IsHidden"      "1"
 	
 	    "Properties"
 	      {
@@ -10743,7 +10712,7 @@
 			"modifier_ancient_forces"
 			{
 				"Passive"	"1"
-				//
+				"IsHidden"	"1"
 	
 	
 				"Properties"
@@ -11272,9 +11241,10 @@
 			"modifier_skeleton_thief_wind_walk"
 			{
 				"IsBuff"			"1"
+				"IsHidden"			"1"
 				"Duration"          "%duration"
-				//"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-				//"EffectAttachType"	"follow_origin"
+				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+				"EffectAttachType"	"follow_origin"
 				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"
 				{
@@ -12347,7 +12317,7 @@
 			"modifier_true_hit"
 			{
 				"Passive"               "1"
-				"IsHidden"				"0"
+				"IsHidden"				"1"
 			
 				"OnAttackStart"
 				{
@@ -13013,7 +12983,7 @@
 		  		"modifier_warlock_storm"
 		  		{
 					"Passive"       "0"
-					"IsHidden"      "0"
+					"IsHidden"      "1"
 					"IsDebuff"      "1"
 	
 					"Duration"  "%duration"
@@ -13634,7 +13604,7 @@
 				"modifier_holy_power"
 				{
 					"Passive"       "1"
-					"IsHidden"		"0"
+					"IsHidden"		"1"
 					"OnTakeDamage"
 	    			{
 						"Random"

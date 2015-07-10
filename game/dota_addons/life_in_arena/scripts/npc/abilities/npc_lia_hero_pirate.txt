@@ -133,9 +133,8 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 	"AbilityTextureName"			"pirate_poisoned_weapon"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
@@ -191,7 +190,7 @@
 		"modifier_poisoned_weapon"
 		{
 			"Passive"               "1"
-			"IsHidden"				"0"
+			"IsHidden"				"1"
 	
 			"OnAttackLanded"
 			{
@@ -272,6 +271,7 @@
 		"modifier_pirate_evasion"
 		{
 			"Passive"	"1"
+			"IsHidden"	"1"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
