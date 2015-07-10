@@ -370,23 +370,21 @@
 					"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
 				}
 			}
-	
-	        "Damage"
-	        {
-	            "Target"
-	            {
-	                "Center" "CASTER"
-	                "Radius" "500"
-	                "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	                "Types" "DOTA_UNIT_TARGET_BASIC"
-	            }
-	            "Type" "DAMAGE_TYPE_PHYSICAL"
-	            "Damage" "999999"
-	         }
-	     }
-		
+			"RunScript"
+			{
+				"ScriptFile"	"abilities\ExplosiveBarrels.lua"
+				"Function"		"ForceKill"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"500"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_ALL"
+				}
 			}
+	    }
+		
+	}
 	
 		
 	"camera_passive"
@@ -6729,7 +6727,8 @@
 	
 	"highlander_improved_armor"
 	{
-	    "BaseClass"						"ability_datadriven"
+	    "BaseClass"						"ability_lua"
+	    "ScriptFile"					"heroes\Highlander\highlander_improved_armor.lua"
 		"AbilityTextureName" 			"lich_frost_armor"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -6761,46 +6760,8 @@
 				"max_armor"			"21"
 			}
 		}
-		
-		
-		"Modifiers"
-		{
-			"modifier_improved_armor"
-			{
-				"Passive"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
-				}
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes\Highlander\ImprovedArmor.lua"
-						"Function"		"AddArmor"
-					}
-				}
-			}
-			"modifier_improved_armor_stackable"
-			{
-				"IsHidden"		"0"
-				"Duration"		"%duration"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_per_attack"
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes\Highlander\ImprovedArmor.lua"
-						"Function"		"DecrementStack"
-					}
-				}
-			}
-		}
 	}
+	
 	"highlander_might_of_the_highlander"
 	{
 		// General
@@ -7438,12 +7399,12 @@
 				"01"
 				{
 					"var_type"				"FIELD_INTEGER"
-					"main_damage"				"150 300 450"
+					"main_damage"			"150 300 450"
 				}
 				"02"
 				{
 					"var_type"				"FIELD_INTEGER"
-					"other_damage"				"100 200 300"
+					"other_damage"			"100 200 300"
 				}
 				"03"
 				{
@@ -7453,22 +7414,17 @@
 				"04"
 				{
 					"var_type"				"FIELD_FLOAT"
-					"duration"				"4.6"
-				}
-				"05"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"tick"					"4.5"
+					"duration"				"4.5"
 				}
 				"06"
 				{
 					"var_type"				"FIELD_FLOAT"
-					"acid_speed"				"1300.0"
+					"acid_speed"			"1300.0"
 				}
 				"07"
 				{
 					"var_type"				"FIELD_FLOAT"
-					"acid_vision"				"500.0"
+					"acid_vision"			"500.0"
 				}
 				"08"
 				{
@@ -7484,33 +7440,33 @@
 					"EffectName"	"Hero_Huskar.Burning_Spear"
 					"Target" 		"CASTER"
 				}
-				//
-	                	"TrackingProjectile"
-	                	{
-	                    		"Target" "TARGET"
-	                    		"EffectName" "particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
-	                    		"Dodgeable" "1"
-	                    		"ProvidesVision" "1"
-	                    		"VisionRadius" "%acid_vision"
-	                    		"MoveSpeed" "%acid_speed"
-	                    		"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-	                	}
-	
-	
+				
+	            "TrackingProjectile"
+	            {
+	                "Target" 			"TARGET"
+	                "EffectName" 		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
+	                "Dodgeable" 		"1"
+	                "ProvidesVision" 	"1"
+	                "VisionRadius" 		"%acid_vision"
+	                "MoveSpeed" 		"%acid_speed"
+	                "SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	            }
 			}
 	
-	    		"OnProjectileHitUnit"
-	    		{
-	        		"DeleteOnHit" "1"
-				//
+	    	"OnProjectileHitUnit"
+	    	{
+	        	"DeleteOnHit" "1"
+				
 				"ApplyModifier"
 				{
-					"ModifierName" "modifier_kret_virus_main_target"
-					"Target"	"TARGET"	
+					"ModifierName" 	"modifier_kret_virus_main_target"
+					"Target"		"TARGET"	
 				}
-				"ApplyModifier"
+	
+				"Damage"
 				{
-					"ModifierName" "modifier_kret_virus_other_target"
+					"Type" 			"DAMAGE_TYPE_MAGICAL"
+					"Damage" 		"%other_damage"
 					"Target"
 					{
 						"Center"	"TARGET"
@@ -7518,42 +7474,16 @@
 						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 					}
-				}				
-	    		}
-	
-	
-	
-	
+				}			
+	    	}
 	
 			"Modifiers"
-			{
-				"modifier_kret_virus_other_target"
-				{
-					"Duration" 	"0.03"
-					"OnCreated"
-					{
-			
-						"Damage"
-						{
-							"Type" "DAMAGE_TYPE_MAGICAL"
-							"Target"	"TARGET"
-							"Damage" "%other_damage"
-						}
-					}
-	
-					"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
-					"StatusEffectPriority"	"15"
-	
-				}
-				//
+			{			
 				"modifier_kret_virus_main_target"
 				{
-					"Passive"			"0"
-					"IsHidden"			"0"
-					"IsBuff"			"0"
 					"IsDebuff"			"1"
-					"IsPurgable"			"1"
-					//
+					"IsPurgable"		"1"
+					
 					"Duration"	"%duration"
 	
 					"OnCreated"
@@ -7565,35 +7495,29 @@
 						}
 						"Damage"
 						{
-							"Type" "DAMAGE_TYPE_MAGICAL"
+							"Type" 		"DAMAGE_TYPE_MAGICAL"
 							"Target"	"TARGET"
-							"Damage" "%main_damage-%other_damage"
-						}
-	
-						"DelayedAction"
-						{
-							"Delay"     "%tick" 
-									
-							"Action"    
-							{	
-								"Damage"
-								{
-									"Type" "DAMAGE_TYPE_MAGICAL"
-									"Target"	"TARGET"
-									"Damage" "%main_damage"
-								}
-							}
+							"Damage" 	"%main_damage-%other_damage"
 						}
 					}
 	
+					"OnDestroy"
+					{
+						"Damage"
+						{
+							"Type" 		"DAMAGE_TYPE_MAGICAL"
+							"Target"	"TARGET"
+							"Damage" 	"%main_damage"
+						}
+					}
 	
 					"Properties"
 					{
 						"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
 					}
+					
 					"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
 					"StatusEffectPriority"	"15"
-					//
 				}
 			}
 		}
@@ -7869,23 +7793,24 @@
 	    		"OnProjectileHitUnit"
 	    		{
 	        		"DeleteOnHit" "1"
-				//
-				"ApplyModifier"
-				{
-					"ModifierName" "modifier_kret_acid_main_target"
-					"Target"	"TARGET"	
-				}
-				"ApplyModifier"
-				{
-					"ModifierName" "modifier_kret_acid_all_target"
-					"Target"
+				
+					"ApplyModifier"
 					{
-						"Center"	"TARGET"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"ModifierName" "modifier_kret_acid_main_target"
+						"Target"	"TARGET"	
 					}
-				}				
+					
+					"ApplyModifier"
+					{
+						"ModifierName" "modifier_kret_acid_all_target"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					}				
 	    		}
 	
 	
