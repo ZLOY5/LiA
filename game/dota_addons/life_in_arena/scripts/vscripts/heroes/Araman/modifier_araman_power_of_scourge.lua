@@ -34,7 +34,7 @@ function modifier_araman_power_of_scourge:GetModifierAttackSpeedBonus_Constant(p
 end
 
 function modifier_araman_power_of_scourge:GetModifierPreAttack_BonusDamage(params)
-	return self.bonus_damage
+	return self:GetStackCount()
 end
 
 function modifier_araman_power_of_scourge:OnCreated(params)

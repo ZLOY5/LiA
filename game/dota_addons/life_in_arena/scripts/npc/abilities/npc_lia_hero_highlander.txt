@@ -210,7 +210,8 @@
 
 "highlander_improved_armor"
 {
-    "BaseClass"						"ability_datadriven"
+    "BaseClass"						"ability_lua"
+    "ScriptFile"					"heroes\Highlander\highlander_improved_armor.lua"
 	"AbilityTextureName" 			"lich_frost_armor"
 	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -242,46 +243,8 @@
 			"max_armor"			"21"
 		}
 	}
-	
-	
-	"Modifiers"
-	{
-		"modifier_improved_armor"
-		{
-			"Passive"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
-			}
-			"OnAttacked"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Highlander\ImprovedArmor.lua"
-					"Function"		"AddArmor"
-				}
-			}
-		}
-		"modifier_improved_armor_stackable"
-		{
-			"IsHidden"		"1"
-			"Duration"		"%duration"
-			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_per_attack"
-			}
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Highlander\ImprovedArmor.lua"
-					"Function"		"DecrementStack"
-				}
-			}
-		}
-	}
 }
+
 "highlander_might_of_the_highlander"
 {
 	// General
