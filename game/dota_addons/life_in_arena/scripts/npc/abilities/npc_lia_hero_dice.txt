@@ -132,7 +132,7 @@
 
 						"ApplyModifier"
 						{
-							"ModifierName"	"modifier_dice_bash_stun"
+							"ModifierName"	"modifier_stunned"
 							"Target"
 							{
 								"Center"	"TARGET"
@@ -152,19 +152,6 @@
 			}
 		}
 
-		"modifier_dice_bash_stun"
-		{
-			"IsDebuff"			"1"
-			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-			"EffectAttachType"	"follow_overhead"
-
-			"OverrideAnimation"     "ACT_DOTA_DISABLED"
-
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
 
 	}
 }	

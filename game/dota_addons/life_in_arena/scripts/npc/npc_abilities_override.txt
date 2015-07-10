@@ -343,8 +343,34 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass" "ability_datadriven"
 		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		}
 		"OnOwnerDied"
 	    {
+			"FireSound"
+			{
+				"EffectName"	"Hero_Techies.RemoteMine.Detonate"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
+				"EffectAttachType"  "follow_hitloc"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+	
 	        "Damage"
 	        {
 	            "Target"
@@ -4620,7 +4646,7 @@
 	
 							"ApplyModifier"
 							{
-								"ModifierName"	"modifier_dice_bash_stun"
+								"ModifierName"	"modifier_stunned"
 								"Target"
 								{
 									"Center"	"TARGET"
@@ -4640,19 +4666,6 @@
 				}
 			}
 	
-			"modifier_dice_bash_stun"
-			{
-				"IsDebuff"			"1"
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-	
-				"OverrideAnimation"     "ACT_DOTA_DISABLED"
-	
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
 	
 		}
 	}	
@@ -5166,7 +5179,7 @@
 			"modifier_furious_strike"
 			{
 				"Passive"               "1"
-				"IsHidden"				"0"
+				"IsHidden"				"1"
 				"Orb"
 				{
 					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
@@ -5221,7 +5234,8 @@
 	    "modifier_magic_armor"
 	    {
 	      "Passive"  "1"
-	
+		  "IsHidden"	"1"
+		  
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
@@ -6468,7 +6482,7 @@
 				"modifier_storm_hero"
 				{
 					"Passive"			"0"
-					"IsHidden"			"0"
+					"IsHidden"			"1"
 					"IsBuff"			"1"
 	
 					//"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"

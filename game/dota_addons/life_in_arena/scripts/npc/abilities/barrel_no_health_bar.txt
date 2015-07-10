@@ -57,8 +57,34 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass" "ability_datadriven"
 	"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	}
 	"OnOwnerDied"
     {
+		"FireSound"
+		{
+			"EffectName"	"Hero_Techies.RemoteMine.Detonate"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+			}
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
+			"EffectAttachType"  "follow_hitloc"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
+			}
+		}
+
         "Damage"
         {
             "Target"
