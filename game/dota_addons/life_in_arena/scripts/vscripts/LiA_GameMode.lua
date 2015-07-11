@@ -68,7 +68,7 @@ function LiA:InitGameMode()
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
     GameRules:SetCustomVictoryMessage("#victory_message")
-    GameRules:SetCustomGameEndDelay(1)
+    GameRules:SetCustomGameEndDelay(30)
     
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetFogOfWarDisabled(true)
