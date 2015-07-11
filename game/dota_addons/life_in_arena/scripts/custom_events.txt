@@ -1,4 +1,34 @@
 "CustomEvents"
 {
+	//This is fired when a player's lumber changes
+	"cgm_player_lumber_changed"
+	{
+		"player_ID"		"short"
+		"lumber"		"long"
+	}
 
+	"custom_error_show"
+	{
+		"player_ID"		"short"
+		"_error"		"string"
+	}
+	"lia_timer_popup_start"
+	{
+		"time"		"short"
+		"title"		"string"
+		"waveNum" 	"short"
+	}
+	"lia_timer_popup_tick"
+	{
+		"time"		"short"
+	}
+	"lia_timer_popup_end"
+	{
+
+	}
+	"show_center_message_fix"
+	{
+		"message"	"string"
+		"wave"		"short"
+	}
 }
