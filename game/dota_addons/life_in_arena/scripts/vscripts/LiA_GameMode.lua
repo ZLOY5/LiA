@@ -68,7 +68,7 @@ function LiA:InitGameMode()
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
     GameRules:SetCustomVictoryMessage("#victory_message")
-    GameRules:SetCustomGameEndDelay(30)
+    GameRules:SetCustomGameEndDelay(1)
     
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetFogOfWarDisabled(true)
@@ -541,12 +541,12 @@ end
 
 function StartDuels()
     DuelNumber = 1
-    GameRules:SetGoldPerTick(0)
     CleanUnitsOnMap()
     timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
     Timers:CreateTimer(PRE_DUEL_TIME,function()
         IsDuel = true
         TRIGGER_SHOP:Disable() 
+        GameRules:SetGoldPerTick(0)
         DoWithAllHeroes(function(hero)
             hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
         end)
