@@ -1022,6 +1022,53 @@
 	//End of file item_lia_blood_moon.txt
 
 
+	//Start of file item_lia_boar.txt
+	    "item_lia_summon_faggot"
+	{
+		"ID"                            "1520"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"            "item_lia_boar"
+		
+	 	//"ItemStockInitial" "1"
+		//"ItemStockMax" "1"
+		//"ItemStockTime" "30"	
+	
+		"ItemCost"                      "110" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "20"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"	"items\Boar.lua"
+				"Function"		"SpawnBoar"
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+		}
+	}
+	//End of file item_lia_boar.txt
+
+
 	//Start of file item_lia_book_of_the_dead.txt
 	    "item_lia_book_of_the_dead"
 	{
@@ -9139,15 +9186,15 @@
 	//Start of file item_lia_troll_defender.txt
 	    "item_lia_troll_defender"
 	{
-		"ID"                            "1471"
+		"ID"                            "1526"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"            "item_lia_troll_defender"
 		
-		"ItemStockMax" "1" 
+		"ItemStockInitial" "1" 
+		"ItemStockMax" "1"
 		"ItemStockTime" "30"
-		"ItemStockInitial" "1"
-		
+	
 		"ItemCost"                      "125" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemShopTags"					"consumable"

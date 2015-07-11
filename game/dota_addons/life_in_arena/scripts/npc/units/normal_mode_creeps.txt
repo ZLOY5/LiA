@@ -700,7 +700,7 @@
 
 
 "Ability1" "spell_immunity" 
-"Ability2" "" 
+"Ability2" "13_wave_hurl_boulder" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -759,6 +759,33 @@
 
 
 "HasInventory" "0" 
+
+"Creature"
+{
+	"DefaultState"			"Invade"
+	"States"	
+	{
+		"Invade"
+		{
+			"Name"				"Invade"
+			"Aggression"		"90.0" //cast offensive spells whenever
+			"Avoidance"			"0.0" //dont flee
+			"Support"			"0.0" //start buffing
+		}
+	}
+	
+	"OffensiveAbilities"
+	{
+		"Ability1"
+		{
+			"Name"				"13_wave_hurl_boulder"
+			"Damage"            "1"
+			"Stun"              "1"
+		}
+	}	
+	
+}
+
 }
 
 "14_wave_creep" 

@@ -1,15 +1,15 @@
-    "item_lia_troll_defender"
+    "item_lia_summon_faggot"
 {
-	"ID"                            "1526"
+	"ID"                            "1520"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"            "item_lia_troll_defender"
+	"AbilityTextureName"            "item_lia_boar"
 	
-	"ItemStockInitial" "1" 
-	"ItemStockMax" "1"
-	"ItemStockTime" "30"
+ 	//"ItemStockInitial" "1"
+	//"ItemStockMax" "1"
+	//"ItemStockTime" "30"	
 
-	"ItemCost"                      "125" 
+	"ItemCost"                      "110" 
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemShopTags"					"consumable"
 	"ItemQuality"					"consumable"
@@ -27,8 +27,8 @@
 		{}
 		"RunScript"
 		{
-			"ScriptFile"	"items\TrollDefender.lua"
-			"Function"		"SpawnTroll"
+			"ScriptFile"	"items\Boar.lua"
+			"Function"		"SpawnBoar"
 		}
 		
 	}
@@ -37,7 +37,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"duration"				"45"
+			"duration"				"30"
 		}
 	}
 }
