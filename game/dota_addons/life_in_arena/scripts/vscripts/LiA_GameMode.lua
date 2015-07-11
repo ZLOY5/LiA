@@ -68,7 +68,7 @@ function LiA:InitGameMode()
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
     GameRules:SetCustomVictoryMessage("#victory_message")
-    GameRules:SetCustomGameEndDelay(1)
+    GameRules:SetCustomGameEndDelay(20)
     
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetFogOfWarDisabled(true)
@@ -88,11 +88,9 @@ function LiA:InitGameMode()
 
     
     GameRules:LockCustomGameSetupTeamAssignment(true)
-    GameRules:SetCustomGameSetupRemainingTime(0)
-    GameRules:SetCustomGameSetupAutoLaunchDelay(0)
+    GameRules:SetCustomGameSetupRemainingTime(5)
+    GameRules:SetCustomGameSetupAutoLaunchDelay(5)
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
-    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )
-
 
     Convars:RegisterCommand( "lia_force_round", onPlayerReadyToWave, "For force round", 0 )
       
@@ -278,7 +276,7 @@ end
 function StartWaves()
     IsPreWaveTime = true
     --timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
-    Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage("#lia_wave_num",5,WAVE_NUM) IsPreWaveTime = false return nil end})
+    Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() --[[ShowCenterMessage("#lia_wave_num",5,WAVE_NUM)]] IsPreWaveTime = false return nil end})
     Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end}) 
 end
 
