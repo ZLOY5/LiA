@@ -3368,10 +3368,12 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
 		"AbilityTextureName"			"13_wave_hurl_boulder"
+	
+		"AnimationPlaybackRate"	"4"
 	
 		"precache"
 		{
@@ -3384,7 +3386,7 @@
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"5.0"
+		"AbilityCooldown"				"1.0"
 	
 		// Damage.
 		//-------------------------------------------------------------------------------------------------------------
@@ -5720,7 +5722,8 @@
 			{
 		      "IsDebuff"  "1"
 		      "Duration"  "%slow_duration"
-		      
+			  "Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"	
+	
 		      "EffectName"	"particles/units/heroes/hero_life_stealer/life_stealer_infested_unit.vpcf"
 			  "EffectAttachType"	"follow_overhead"
 	
@@ -5835,10 +5838,11 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
-		"AbilityTextureName"			"life_stealer_feast"
+		"AbilityTextureName"			"life_stealer_infest"
 	
 		"AbilityCastRange"				"500"
-		
+	
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 		"MaxLevel"               		"3"
 		"RequiredLevel"          		"5"
 		"LevelsBetweenUpgrades"  		"4"
@@ -6810,7 +6814,7 @@
 		// Casting
 		"MaxLevel" 						"3"
 		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "1"
+		"LevelsBetweenUpgrades"  "2"
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"475"
 		"AbilityCastPoint"				"0.0 0.0 0.0"

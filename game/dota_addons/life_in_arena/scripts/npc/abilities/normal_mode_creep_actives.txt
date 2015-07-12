@@ -899,10 +899,12 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
 	"AbilityTextureName"			"13_wave_hurl_boulder"
+
+	"AnimationPlaybackRate"	"4"
 
 	"precache"
 	{
@@ -915,7 +917,7 @@
 	
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"5.0"
+	"AbilityCooldown"				"1.0"
 
 	// Damage.
 	//-------------------------------------------------------------------------------------------------------------
