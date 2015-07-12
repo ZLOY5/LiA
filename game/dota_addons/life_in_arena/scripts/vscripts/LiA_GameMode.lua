@@ -4,7 +4,6 @@ _G.LIA_MODE_BATTLE_OF_CLANS = 2
 
 ------------------------------------------------------------------------------
 
-require('shop')
 require('survival/survival')
 
 ------------------------------------------------------------------------------
@@ -35,9 +34,11 @@ end
 ------------------------------------------------------------------------------
 
 function LiA:InitGameMode()
+    LiA = self
 
     self.vUserIds = {}
     self.tPlayers = {}
+    self.nPlayers = 0
     self.GameMode = LIA_MODE_SURVIVAL
 
     GameRules:SetSafeToLeave(true)
@@ -72,13 +73,14 @@ function LiA:InitGameMode()
     GameRules:SetCustomGameSetupRemainingTime(5)
     GameRules:SetCustomGameSetupAutoLaunchDelay(5)
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
-
-    --Convars:RegisterCommand( "lia_force_round", LiA:OnPlayerReadyToWave, "For force round", 0 )
-      
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
+  
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
+
+    trigger_shop = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
     
     --InitLogFile("log/LiA.txt","Init LiA")
 end
@@ -106,7 +108,7 @@ function LiA:OnConnectFull(event)
     --print("SteamID = ",playerSteamID)
     
     table.insert(self.tPlayers,player)
-    nPlayers = nPlayers + 1  
+    self.nPlayers = self.nPlayers + 1  
 end
 
 function LiA:OnDisconnect(event)
@@ -122,4 +124,12 @@ function LiA:OnDisconnect(event)
         end
     end
     nPlayers = nPlayers - 1
+end
+
+function DisableShop()
+    trigger_shop:Disable()
+end
+
+function EnableShop()
+    trigger_shop:Enable()
 end

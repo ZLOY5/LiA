@@ -41,15 +41,15 @@ function DoWithAllHeroes(whatDo)
 		print(k,v:GetUnitName(),v:IsIllusion())
 	end
 	print("END")]]
-	for i = 1, #tHeroes do
-		whatDo(tHeroes[i])
+	for i = 1, #Survival.tHeroes do
+		whatDo(Survival.tHeroes[i])
 	end
 end
 
 function ShowCenterMessage(msg, dur,wave)
 	FireGameEvent("show_center_message",{message = msg,duration = dur}) 
 	if wave then
-		Timers:CreateTimer(0.01, function() FireGameEvent("show_center_message_fix",{wave = WAVE_NUM}) return nil end)
+		Timers:CreateTimer(0.01, function() FireGameEvent("show_center_message_fix",{wave = wave}) return nil end)
 	end
 end
 
