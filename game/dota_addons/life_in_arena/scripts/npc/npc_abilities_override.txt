@@ -5794,6 +5794,43 @@
 			}
 		}
 	}
+	
+	"ghoul_persistence"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes\Ghoul\ghoul_persistence.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+		"AbilityTextureName"			"life_stealer_feast"
+	
+		"AbilityCastRange"				"500"
+		
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"5"
+		"LevelsBetweenUpgrades"  		"4"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_strength"	"25 50 75"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"500"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"regen_mult"		"0.5"
+			}
+		}
+	}
 	//End of file npc_lia_hero_ghoul.txt
 
 
