@@ -373,6 +373,88 @@
 	}
 }
 
+"6_wave_cripple"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+	
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"10"
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.0"
+	"AbilityManaCost"				"100"
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"cripple_damage_decrease_pct"			"-30"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"cripple_attack_slow"					"-60"
+		}
+		"03"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"cripple_movespeed_slow_pct"	"-60"
+		}
+		"04"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"10"
+		}
+	}
+	
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"		"DOTA_Item.RodOfAtos.Activate"
+			"Target"			"TARGET"
+		}
+			
+		"ApplyModifier"
+		{
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_6_wave_cripple"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_6_wave_cripple"
+		{
+			"Duration"			"%duration"
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsBuff"			"0"
+			"IsDebuff"			"1"
+			"IsPurgable"		"1"
+			
+			"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
+			"EffectAttachType"		"follow_origin"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"		"%cripple_damage_decrease_pct"
+			}
+		}
+	}
+}
+
 "10_wave_rejuvenation"
 {
   // General
@@ -710,6 +792,183 @@
 		"FireSound"
 		{
 			"EffectName"	"Hero_ChaosKnight.ChaosBolt.Impact"
+			"Target" 		"TARGET"
+		}
+		
+		"Stun"
+		{	
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"Duration"   "%projectile_stun"
+		}
+
+		"Damage"
+		{
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"Type"			"DAMAGE_TYPE_MAGICAL"
+			"Damage"		"%AbilityDamage"
+		}	
+	
+	}	
+}
+
+"12_wave_bloodlust"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityTextureName"			"ogre_magi_bloodlust"
+
+	"AbilityCastPoint"				"0.0"
+
+	"AbilityCooldown"				"20.0"
+
+	"AbilityManaCost"				"150"	
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_attack_speed"	"90"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_movement_speed"	"50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"15.0"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
+			"Target"		"CASTER"
+		}
+		"ApplyModifier"
+		{
+		"ModifierName" "modifier_12_wave_bloodlust"
+		"Target"	"CASTER"
+		"Duration"	"%duration"
+		}
+
+		
+	}
+	"Modifiers"
+	{
+		"modifier_12_wave_bloodlust"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed"
+			}
+			"EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+			"EffectAttachType"  "follow_origin"
+		}
+		"red_hellbeast"
+		{
+		"Passive"	"1"
+		"IsHidden"	"1"
+		"StatusEffectName"     "particles/status_fx/status_effect_gods_strength.vpcf"
+		}
+	}
+}
+
+"13_wave_hurl_boulder"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+	"AbilityTextureName"			"13_wave_hurl_boulder"
+
+	"precache"
+	{
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+	}
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"600"
+	"AbilityCastPoint"				"0.0"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"5.0"
+
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"100"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"75"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"projectile_speed"	"1000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"projectile_stun"	"2.0"
+		}
+	}
+	
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"n_creep_golemRock.Death"
+			"Target" 		"CASTER"
+		}
+		
+		"TrackingProjectile"
+		{
+			"Target"
+			{
+				"Center"	"TARGET"
+			}
+			"EffectName"		"particles/neutral_fx/mud_golem_hurl_boulder.vpcf"
+			"Dodgeable"			"1"
+			"ProvidesVision"	"0"
+			"MoveSpeed"        	"%projectile_speed"
+			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}			
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+		"FireSound"
+		{
+			"EffectName"	"Hero_EarthSpirit.GeomagneticGrip.Stun"
 			"Target" 		"TARGET"
 		}
 		

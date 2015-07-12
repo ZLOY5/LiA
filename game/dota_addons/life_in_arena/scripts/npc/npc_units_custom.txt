@@ -35,7 +35,8 @@
 						"Wearable4"		{	"ItemDef"		"5897"		} 
 						"Wearable5"		{	"ItemDef"		"5898"		} 
 					}
-	
+					
+				"DisableResistance"            "60.0"
 				"DefaultState"			"Invade"
 				"States"	
 					{
@@ -202,7 +203,13 @@
 	
 	
 	
-	"HasInventory" "0" 
+	"HasInventory" "0"
+	
+	"Creature"
+		{
+			"DisableResistance"            "60.0"
+	
+		} 
 	}
 	//End of file 15_wave_megaboss.txt
 
@@ -289,6 +296,7 @@
 	
 	"Creature"
 	{
+		"DisableResistance"            "60.0"
 		"DefaultState"			"Invade"
 		"States"	
 		{
@@ -1682,7 +1690,7 @@
 	
 	
 	"Ability1" "6_wave_spell_resist" 
-	"Ability2" "" 
+	"Ability2" "6_wave_cripple" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -1741,6 +1749,32 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"90.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"				"6_wave_cripple"
+				"IsDebuff"              "1"
+			}
+		}	
+		
+	}
+	
 	}
 	
 	"7_wave_boss" 
@@ -2140,7 +2174,7 @@
 	
 	
 	"Ability1" "12_wave_bash" 
-	"Ability2" "" 
+	"Ability2" "12_wave_bloodlust" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -2199,6 +2233,32 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+		{
+			"DefaultState"			"Invade"
+			"States"	
+				{
+					"Invade"
+					{
+						"Name"				"Invade"
+						"Aggression"		"0.0" //cast offensive spells whenever
+						"Avoidance"			"0.0" //dont flee
+						"Support"			"90.0" //start buffing
+					}
+				}
+			
+			"DefensiveAbilities"
+				{
+				    "Ability1"              
+				    {
+				        "Name"                "12_wave_bloodlust"
+				        "UseSelfishly"        "1"
+				        "Buff"                "1"
+				        "UseAtHealthPercent"  "90"
+				    }
+				}
+		}
 	}
 	
 	"13_wave_boss" 
@@ -2216,7 +2276,7 @@
 	
 	"Ability1" "spell_immunity" 
 	"Ability2" "13_wave_aura" 
-	"Ability3" "" 
+	"Ability3" "13_wave_hurl_boulder" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -2274,6 +2334,33 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"90.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"				"13_wave_hurl_boulder"
+				"Damage"            "1"
+				"Stun"              "1"
+				"IsDebuff"			"1"
+			}
+		}	
+		
+	}
 	}
 	
 	"14_wave_boss" 
@@ -3444,6 +3531,9 @@
 	
 	
 	"HasInventory" "0" 
+	
+	
+	
 	}
 	
 	"14_wave_creep" 
