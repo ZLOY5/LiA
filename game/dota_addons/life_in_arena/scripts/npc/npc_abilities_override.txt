@@ -5339,6 +5339,130 @@
 	  }
 	}
 	
+	"earth_lord_stone_skin"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetTeam"  "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	  
+	    "AbilityTextureName"     "earth_lord_might_of_the_earth"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    "AbilityCooldown"         "8"
+	
+	    "AbilityCastPoint"        "0.2"
+	    "AbilityCastRange"        "800"
+	
+	    "AbilityManaCost"        "100 150 200"
+	
+	    "precache"
+	    {
+	
+	    }
+	
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                            "FIELD_INTEGER"
+	            "bonus_armor"                         "10 15 20"
+	        }
+	        "02"
+	        {
+	            "var_type"                            "FIELD_INTEGER"
+	            "magical_resistance"                  "20 30 40"
+	        }
+	        "03"
+	        {
+	            "var_type"                            "FIELD_INTEGER"
+	            "chance"                              "10"
+	        }
+	        "04"
+	        {
+	            "var_type"                            "FIELD_INTEGER"
+	            "damage_reduction"                    "-40"
+	        }
+	        "05"
+	        {
+	            "var_type"                            "FIELD_INTEGER"
+	            "debuff_duration"                            "12 15 18"
+	        }
+	        "05"
+	        {
+	            "var_type"                            "FIELD_INTEGER"
+	            "duration"                            "12 15 18"
+	        }
+	    }   
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "OnSpellStart"
+	    {
+	        "ApplyModifier"
+	        {
+	            "ModifierName"  "modifier_earth_lord_stone_skin"
+	            "Target"        "TARGET"
+	            "Duration"      "%duration"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_earth_lord_stone_skin"
+	        {
+	            "IsBuff"        "1"
+	            "IsPurgable"    "1"
+	
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
+	                "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"    "%magical_resistance"
+	            }
+	
+	            "OnAttacked"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "heroes\EarthLord\StoneSkin.lua"
+	                    "Function"      "OnAttacked"
+	                }
+	            }
+	        }
+	        "modifier_earth_lord_stone_skin_melee_damage_reduction"
+	        {
+	            "IsDebuff"      "1"
+	            "IsPurgable"    "1"
+	
+	            "Duration"      "%debuff_duration"
+	
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"   "%damage_reduction"
+	            }
+	        }
+	        "modifier_earth_lord_stone_skin_ranged_no_damage"
+	        {
+	            "IsHidden"      "1"
+	
+	            "Duration"      "0.03"
+	
+	            "Properties"
+	            {
+	                MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL   "1"
+	            }
+	        }
+	    }
+	
+	}
+	
 	 "earth_lord_might_of_the_earth"
 	{
 	  // General
