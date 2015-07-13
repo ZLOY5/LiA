@@ -272,9 +272,9 @@
         "05"
         {
             "var_type"                            "FIELD_INTEGER"
-            "debuff_duration"                            "12 15 18"
+            "debuff_duration"                     "4"
         }
-        "05"
+        "06"
         {
             "var_type"                            "FIELD_INTEGER"
             "duration"                            "12 15 18"
@@ -312,6 +312,7 @@
                 {
                     "ScriptFile"    "heroes\EarthLord\StoneSkin.lua"
                     "Function"      "OnAttacked"
+                    "attack_damage" "%attack_damage"
                 }
             }
         }
@@ -327,19 +328,7 @@
                 "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"   "%damage_reduction"
             }
         }
-        "modifier_earth_lord_stone_skin_ranged_no_damage"
-        {
-            "IsHidden"      "1"
-
-            "Duration"      "0.03"
-
-            "Properties"
-            {
-                MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL   "1"
-            }
-        }
     }
-
 }
 
  "earth_lord_might_of_the_earth"
