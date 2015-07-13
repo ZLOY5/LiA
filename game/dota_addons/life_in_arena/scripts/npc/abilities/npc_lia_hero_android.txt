@@ -1,0 +1,131 @@
+"android_war_stomp"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"			"ursa_earthshock"
+	
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"10.0"
+	"AbilityManaCost"				"70 60 80"
+	"AbilityCastPoint"      "0.2"
+  
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"  
+  
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"radius"						"500"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"stun_duration"					"1.5 2 2.5"
+		}
+		"03"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"damage"					"60 120 240"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
+		"particle"	"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp_physical.vpcf"
+		"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"EffectName"		"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp_physical.vpcf"
+			"EffectAttachType" 	"follow_origin"
+			"EffectRadius"		"%radius"
+			"Target" 			"CASTER"
+			"ControlPoints"
+			{
+				"01"	"%radius 0 %radius"
+			}
+		}
+
+		"FireSound"
+		{
+			"EffectName"		"Hero_ElderTitan.EchoStomp"
+			"Target" 			"CASTER"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"  				"CASTER"
+				"Radius" 				"%radius"
+				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+
+			"Action"
+			{
+				"Damage"
+				{
+					"Target"	"TARGET"
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%damage"
+				}
+
+				"ApplyModifier"
+				{
+					"Target" 		"TARGET"
+					"ModifierName"	"modifier_stunned"
+					"Duration"	"%stun_duration"
+				}
+			}
+		}		
+	}
+}
+
+"android_armor"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"shredder_reactive_armor"
+	
+	"MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2" 
+
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_blocked"			"20 40 80"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_item_lia_mithril_armor"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
+			}			
+		}
+	}
+}

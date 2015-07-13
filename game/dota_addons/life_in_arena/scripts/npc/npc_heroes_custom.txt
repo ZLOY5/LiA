@@ -4,6 +4,73 @@
 
 
 
+	//Start of file npc_lia_hero_android.txt
+	"npc_lia_hero_android"
+	{
+		"override_hero"				"npc_dota_hero_shredder"
+	
+		"Ability1" "android_war_stomp"	
+		"Ability2" "ghoul_devour" 		
+		"Ability3" "android_armor" 
+		"Ability4" "ghoul_persistence" 					
+		"Ability5" "attribute_bonuses" 					
+		"Ability6" "" 	
+		"Ability7" "" 					
+		"Ability8" "" 					
+	
+		"ArmorPhysical" "4" 		
+		"MagicalResistance" "25"	
+	
+		"precache"
+		{
+			"particle" "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_base_attack.vpcf"
+		}
+	
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "11" 
+		"AttackDamageMax" "33" 
+		"AttackRate" "1.85" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "250" 
+	
+		"ProjectileModel"   "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_base_attack.vpcf"
+		"ProjectileSpeed"   "1800"
+	
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"19"										
+		"AttributeStrengthGain"		"3"										
+		"AttributeBaseIntelligence"	"11"										
+		"AttributeIntelligenceGain"	"2"										
+		"AttributeBaseAgility"		"5"										
+		"AttributeAgilityGain"		"2"	
+				
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+	
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "245" 
+		"MovementTurnRate" "0.5" 
+	
+		"StatusHealth" "460" 
+		"StatusHealthRegen" "1.2" 
+		"StatusMana" "75" 
+		"StatusManaRegen" "0.05"
+	
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+		"VisionDaytimeRange" "900" 
+		"VisionNighttimeRange" "800" 
+	
+		"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_android.txt
+
+
 	//Start of file npc_lia_hero_araman.txt
 	"npc_lia_hero_araman"
 	{
@@ -61,6 +128,66 @@
 	"HasInventory" "1" 
 	}
 	//End of file npc_lia_hero_araman.txt
+
+
+	//Start of file npc_lia_hero_archer.txt
+	"npc_lia_hero_archer"
+	{
+	"override_hero"				"npc_dota_hero_drow_ranger"
+	
+				
+	"Ability1" "berserker_fire_spear"	
+	"Ability2" "berserker_frenzy_aura" 		
+	"Ability3" "berserker_desperation" 	
+	"Ability4" "berserker_madness" 					
+	"Ability5" "attribute_bonuses" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "1" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "12" 
+	"AttackDamageMax" "20" 
+	"AttackRate" "1.8" 
+	"AttackAnimationPoint" "0.7" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "550" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"		"4"										
+	"AttributeStrengthGain"		"2.3"										
+	"AttributeBaseIntelligence"	"8"										
+	"AttributeIntelligenceGain"	"2.2"										
+	"AttributeBaseAgility"		"23"										
+	"AttributeAgilityGain"		"3.1"	
+	
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "275" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "500"
+	"StatusHealthRegen" "1" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_archer.txt
 
 
 	//Start of file npc_lia_hero_berserker.txt

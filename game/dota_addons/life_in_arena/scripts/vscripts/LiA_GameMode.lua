@@ -341,7 +341,7 @@ function LiA:SpawnMegaboss()
     CleanUnitsOnMap()
     local boss
     if WAVE_NUM == 20 then
-        boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        boss = CreateUnitByName("orn_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
         boss:AddNewModifier(boss, nil, "modifier_orn_lua", {duration = -1})
         uFinalBoss = boss
     else
