@@ -5152,8 +5152,8 @@
 	  //-------------------------------------------------------------------------------------------------------------
 	  "precache"
 	  {
-	    "soundfile"   "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"  
-	    "particle"    "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"        
+	    "particle"   "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"  
+	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"        
 	  }
 	  
 	  //"AbilityCastAnimation"   "ACT_DOTA_ATTACK"  
@@ -5188,51 +5188,69 @@
 	    "03"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "radius"      "175 200 225"
+	      "radius"      "150 175 200"
 	    }
 	  }
 	
-	  "OnSpellStart"
+	    "OnSpellStart"
 	  {
-	    "FireEffect"
-	    { 
-	      "EffectName"  "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"
-	      "EffectAttachType"  "start_at_customorigin"
-	      "TargetPoint" "POINT" 
-	      "ControlPoints"
-	      {
-	        "01"  "%radius 0 0"
-	      }
-	    }
-	
-	    "FireSound"
+	    "CreateThinker"
 	    {
-	      "EffectName"  "Hero_Leshrac.Split_Earth"
-	      "Target"    "CASTER"
-	    } 
+	      "ModifierName"  "modifier_earth_lord_earth_burn_thinker"
+	      "Target"    "POINT"
+	    }
+	  } 
 	
-	      "ActOnTargets"
+	  "Modifiers"
+	  {
+	    "modifier_earth_lord_earth_burn_thinker"
+	    {
+	      "Aura"          "modifier_earth_lord_earth_burn"
+	      "Aura_Radius"     "%radius"
+	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	      "Duration"        "%duration"
+	
+	      "OnCreated"
 	      {
-	        "Target"
+	        "RunScript"
 	        {
-	          "Center"  "POINT"
-	          "Radius"  "%radius"
-	          "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	          "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	          "ScriptFile"  "heroes/EarthLord/EarthBurn.lua"
+	          "Function"    "EarthBurnSound"
 	        }
-	      
-	        "Action"    
+	
+	        "AttachEffect"
 	        {
-	          "Damage"
+	          "EffectName"    "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"
+	          "EffectAttachType"  "follow_origin"
+	          "Target"      "TARGET"
+	          "ControlPoints"
 	          {
-	            "Type"      "DAMAGE_TYPE_MAGICAL"
-	            "Target"  "TARGET"              
-	            "Damage"    "%damage"
+	            "00" "0 0 0"
+	            "01" "%radius 1 1"
+	            "15" "25 150 25"
+	            "16" "1 0 0"
 	          }
 	        }
 	      }
-	    
+	    }
 	
+	    "modifier_earth_lord_earth_burn"
+	    {
+	      "IsDebuff"    "1"
+	      "ThinkInterval" "1"
+	
+	      "OnIntervalThink"
+	      {
+	        "Damage"
+	        {
+	          "Target"     "TARGET"
+	          "Type"       "DAMAGE_TYPE_PHYSICAL"
+	          "Damage"     "%damage"
+	        }
+	      }
+	    }
 	  }
 	}
 	
