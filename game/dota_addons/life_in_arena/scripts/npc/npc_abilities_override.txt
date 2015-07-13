@@ -5381,7 +5381,9 @@
 	
 	    "precache"
 	    {
-	
+	      "particle"  "particles/units/heroes/hero_earth_spirit/earthspirit_petrify_shockwave.vpcf"
+	      "particle"  "particles/econ/items/earth_spirit/earth_spirit_vanquishingdemons_summons/espirit_stoneremnant_base_vanquishingdemons.vpcf"
+	      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"  
 	    }
 	
 	    // Special    
@@ -5413,7 +5415,7 @@
 	            "var_type"                            "FIELD_INTEGER"
 	            "debuff_duration"                     "4"
 	        }
-	        "05"
+	        "06"
 	        {
 	            "var_type"                            "FIELD_INTEGER"
 	            "duration"                            "12 15 18"
@@ -5430,6 +5432,17 @@
 	            "Target"        "TARGET"
 	            "Duration"      "%duration"
 	        }
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_earth_spirit/earthspirit_petrify_shockwave.vpcf"
+	          "EffectAttachType"  "follow_origin"
+	          "Target"            "TARGET"
+	        }
+	        "FireSound"
+	        {
+	          "EffectName"  "Hero_EarthSpirit.BoulderSmash.Damage"
+	          "Target"     "TARGET"
+	        }
 	    }
 	
 	    "Modifiers"
@@ -5439,6 +5452,8 @@
 	            "IsBuff"        "1"
 	            "IsPurgable"    "1"
 	
+	            "EffectName"  "particles/econ/items/earth_spirit/earth_spirit_vanquishingdemons_summons/espirit_stoneremnant_base_vanquishingdemons.vpcf"
+	            "EffectAttachType"  "follow_origin"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
@@ -5467,19 +5482,7 @@
 	                "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"   "%damage_reduction"
 	            }
 	        }
-	        "modifier_earth_lord_stone_skin_ranged_no_damage"
-	        {
-	            "IsHidden"      "1"
-	
-	            "Duration"      "0.03"
-	
-	            "Properties"
-	            {
-	                "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"   "1"
-	            }
-	        }
 	    }
-	
 	}
 	
 	 "earth_lord_might_of_the_earth"

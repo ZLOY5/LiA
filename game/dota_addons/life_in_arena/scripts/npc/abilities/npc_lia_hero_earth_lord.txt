@@ -242,7 +242,9 @@
 
     "precache"
     {
-
+      "particle"  "particles/units/heroes/hero_earth_spirit/earthspirit_petrify_shockwave.vpcf"
+      "particle"  "particles/econ/items/earth_spirit/earth_spirit_vanquishingdemons_summons/espirit_stoneremnant_base_vanquishingdemons.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"  
     }
 
     // Special    
@@ -291,6 +293,17 @@
             "Target"        "TARGET"
             "Duration"      "%duration"
         }
+        "FireEffect"
+        {
+          "EffectName"        "particles/units/heroes/hero_earth_spirit/earthspirit_petrify_shockwave.vpcf"
+          "EffectAttachType"  "follow_origin"
+          "Target"            "TARGET"
+        }
+        "FireSound"
+        {
+          "EffectName"  "Hero_EarthSpirit.BoulderSmash.Damage"
+          "Target"     "TARGET"
+        }
     }
 
     "Modifiers"
@@ -300,6 +313,8 @@
             "IsBuff"        "1"
             "IsPurgable"    "1"
 
+            "EffectName"  "particles/econ/items/earth_spirit/earth_spirit_vanquishingdemons_summons/espirit_stoneremnant_base_vanquishingdemons.vpcf"
+            "EffectAttachType"  "follow_origin"
             "Properties"
             {
                 "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
