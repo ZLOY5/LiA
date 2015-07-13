@@ -480,7 +480,10 @@ function LiA:_EndWave()
          
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         DoWithAllHeroes(function(hero)
-            hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
+            --hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
+            --print(hero:GetGold(),GoldAdd)
+            hero:SetGold(hero:GetGold()+GoldAdd,false)
+            --print(hero:GetGold())
             hero.lumber = hero.lumber + 3 + WAVE_NUM
             FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
         end)        
@@ -662,8 +665,8 @@ function EndDuel(winner,loser)
     if winner ~= nil then 
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
-        
-        winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
+        winner:SetGold(winner:GetGold()+300-50*DuelNumber,false)
+        --winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         print("Winner added "..tostring(300-50*DuelNumber).." gold")
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
