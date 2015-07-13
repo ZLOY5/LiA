@@ -5136,6 +5136,328 @@
 	//End of file npc_lia_hero_dice.txt
 
 
+	//Start of file npc_lia_hero_earth_lord.txt
+	  "earth_lord_earth_burn"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityType"         "DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityTextureName"      "earth_lord_earth_burn"
+	
+	  // Precache
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "soundfile"   "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"  
+	    "particle"    "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"        
+	  }
+	  
+	  //"AbilityCastAnimation"   "ACT_DOTA_ATTACK"  
+	    
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "1"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AoERadius" "%radius"
+	  
+	  "AbilityCastRange"        "700"
+	  "AbilityCastPoint"        "0.3"
+	
+	  "AbilityCooldown"       "16"
+	
+	  "AbilityManaCost"       "100 150 200"  
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "damage"    "40 80 120"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "duration"  "4"
+	    }
+	    "03"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "radius"      "175 200 225"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    { 
+	      "EffectName"  "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "TargetPoint" "POINT" 
+	      "ControlPoints"
+	      {
+	        "01"  "%radius 0 0"
+	      }
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Leshrac.Split_Earth"
+	      "Target"    "CASTER"
+	    } 
+	
+	      "ActOnTargets"
+	      {
+	        "Target"
+	        {
+	          "Center"  "POINT"
+	          "Radius"  "%radius"
+	          "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	          "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	        }
+	      
+	        "Action"    
+	        {
+	          "Damage"
+	          {
+	            "Type"      "DAMAGE_TYPE_MAGICAL"
+	            "Target"  "TARGET"              
+	            "Damage"    "%damage"
+	          }
+	        }
+	      }
+	    
+	
+	  }
+	}
+	
+	 "earth_lord_split_earth"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityType"         "DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityTextureName"      "leshrac_split_earth"
+	
+	  // Precache
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"  
+	    "particle"    "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"        
+	  }
+	  
+	  //"AbilityCastAnimation"   "ACT_DOTA_ATTACK"  
+	    
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AoERadius" "%radius"
+	  
+	  "AbilityCastRange"        "700"
+	  "AbilityCastPoint"        "0.3"
+	
+	  "AbilityCooldown"       "18"
+	
+	  "AbilityManaCost"       "150 200 250"  
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "damage"    "150 200 300"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "stun_duration"  "1 2 3"
+	    }
+	    "03"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "radius"      "175 200 225"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    { 
+	      "EffectName"  "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "TargetPoint" "POINT" 
+	      "ControlPoints"
+	      {
+	        "01"  "%radius 0 0"
+	      }
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Leshrac.Split_Earth"
+	      "Target"    "CASTER"
+	    } 
+	
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"  "POINT"
+	        "Radius"  "%radius"
+	        "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      }
+	    
+	      "Action"    
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName" "modifier_stunned"
+	          "Target"  "TARGET"
+	          "Duration"  "%stun_duration"
+	        } 
+	        "Damage"
+	        {
+	          "Type"      "DAMAGE_TYPE_MAGICAL"
+	          "Target"  "TARGET"              
+	          "Damage"    "%damage"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	 "earth_lord_might_of_the_earth"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"              "ability_datadriven"
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	  "AbilityTextureName"     "earth_lord_might_of_the_earth"
+	
+	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "5"
+	  "LevelsBetweenUpgrades"  "4"
+	
+	  "AbilityCooldown"         "160"
+	
+	  "AbilityCastPoint"        "0.2"
+	  "AbilityCastRange"        "600"
+	
+	  "AbilityManaCost"        "150 300 450"
+	
+	  "precache"
+	  {
+	    "particle"	"particles/units/heroes/hero_earthshaker/earthshaker_echoslam_start_fallback_mid.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+	  }
+	
+	// Special    
+	//-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                           "FIELD_INTEGER"
+	      "Damage"                      "300 600 900"
+	    }
+	    "02"
+	    {
+	      "var_type"                            "FIELD_INTEGER"
+	      "armor_reduction"         "-10 -20 -30"
+	    }
+	    "03"
+	    {
+	      "var_type"                            "FIELD_FLOAT"
+	      "duration"                            "10"
+	    }
+	    "04"
+	    {
+	      "var_type"                           "FIELD_INTEGER"
+	      "radius"                             "600"
+	    }
+	  }  
+	
+	  // Casting
+	//-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"  "CASTER"
+	        "Radius"  "%radius"
+	        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      }
+	
+	      "Action"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_MAGICAL"
+	          "Damage"    "%Damage"
+	        }
+	
+	        "ApplyModifier"
+	        {
+	          "Target"        "TARGET"
+	          "ModifierName"  "modifier_earth_lord_might_of_the_earth"
+	        }
+	
+	      }
+	    }
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_EarthShaker.Totem"
+	      "Target"    "CASTER"
+	    }
+	    "AttachEffect"
+	    {
+	      "EffectName"  "particles/units/heroes/hero_earthshaker/earthshaker_echoslam_start_fallback_mid.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "Target"    "CASTER"
+	      "EffectRadius"        "%radius"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_earth_lord_might_of_the_earth"
+	    {
+	      "Passive"         "0"
+	      "IsHidden"        "0"
+	      "IsDebuff"        "1"
+	
+	      "Duration"        "%duration"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor_reduction"
+	      }
+	    }
+	  }
+	
+	}
+	//End of file npc_lia_hero_earth_lord.txt
+
+
 	//Start of file npc_lia_hero_general.txt
 	"general_rumble"
 	{
