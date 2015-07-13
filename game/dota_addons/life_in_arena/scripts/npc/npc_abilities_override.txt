@@ -5411,7 +5411,7 @@
 	        "05"
 	        {
 	            "var_type"                            "FIELD_INTEGER"
-	            "debuff_duration"                            "12 15 18"
+	            "debuff_duration"                     "4"
 	        }
 	        "05"
 	        {
@@ -5451,6 +5451,7 @@
 	                {
 	                    "ScriptFile"    "heroes\EarthLord\StoneSkin.lua"
 	                    "Function"      "OnAttacked"
+	                    "attack_damage" "%attack_damage"
 	                }
 	            }
 	        }
@@ -5474,7 +5475,7 @@
 	
 	            "Properties"
 	            {
-	                MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL   "1"
+	                "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"   "1"
 	            }
 	        }
 	    }
