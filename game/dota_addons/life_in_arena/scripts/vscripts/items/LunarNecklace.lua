@@ -1,19 +1,24 @@
 function OnCreatedModifier(event)
-	local agiAdd = event.target:GetAgility()*event.stat_percent*0.01
-	local strAdd = event.target:GetStrength()*event.stat_percent*0.01
-	local intAdd = event.target:GetIntellect()*event.stat_percent*0.01
-	event.target:ModifyAgility(agiAdd)
-	event.target:ModifyStrength(strAdd)
-	event.target:ModifyIntellect(intAdd)	
-	event.target:CalculateStatBonus()
-	event.ability.agiAdd = agiAdd
-	event.ability.strAdd = strAdd
-	event.ability.intAdd = intAdd	
-end
+	local target = event.target
+	local modifier = target:FindModifierByNameAndCaster("modifier_item_lunar_necklace",event.caster)
+	
+	local agiAdd = target:GetAgility()*event.stat_percent*0.01
+	local strAdd = target:GetStrength()*event.stat_percent*0.01
+	local intAdd = target:GetIntellect()*event.stat_percent*0.01
+	
+	target:ModifyAgility(agiAdd)
+	target:ModifyStrength(strAdd)
+	target:ModifyIntellect(intAdd)	
+	target:CalculateStatBonus()
 
-function OnDestroyModifier(event)
-	event.target:ModifyAgility(-event.ability.agiAdd)
-	event.target:ModifyStrength(-event.ability.strAdd)
-	event.target:ModifyIntellect(-event.ability.intAdd)	
-	event.target:CalculateStatBonus()
+	local duration = event.ability:GetSpecialValueFor("duration")
+
+	Timers:CreateTimer(duration,
+		function()
+			target:ModifyAgility(-agiAdd)
+			target:ModifyStrength(-strAdd)
+			target:ModifyIntellect(-intAdd)	
+			target:CalculateStatBonus()
+		end
+	)
 end
