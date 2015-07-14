@@ -112,9 +112,18 @@ function LiA:InitGameMode()
     LinkLuaModifier( "modifier_knight_cuirass_damage_return_lua", "items/modifier_knight_cuirass_damage_return_lua.lua", LUA_MODIFIER_MOTION_NONE)
     --LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 
-   
+    GameMode:SetContextThink( "AIThink", AIThink , 3)
+    LiA.AICreepCasts = 0
+    LiA.AIMaxCreepCasts = 2
     --InitLogFile("log/LiA.txt","Init LiA")
 end
+
+function AIThink()
+    --print("CleanAICasts")
+    LiA.AICreepCasts = 0
+    return 3
+end
+
 
 function LiA:ExperienceFilter(filterTable)
     if IsDuel then
@@ -214,6 +223,7 @@ end
 function LiA:OnGameStateChange()  
 
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        --WAVE_NUM = 12
         StartWaves()
     end
 end
