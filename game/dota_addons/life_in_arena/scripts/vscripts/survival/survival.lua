@@ -254,6 +254,7 @@ function Survival:PrepareNextRound()
     
     if self.nRoundNum % 3 == 1 and not self.IsDuelOccured and self.nHeroCount > 1 then
         print("Next round - duels")
+        self.IsDuelOccured = true
         Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
 
     else
@@ -297,7 +298,7 @@ function Survival:_SpawnMegaboss()
     if self.nRoundNum == 20 then
         boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
         boss:AddNewModifier(boss, nil, "modifier_orn_lua", {duration = -1})
-        uFinalBoss = boss
+        self.hFinalBoss = boss
     else
         boss = CreateUnitByName(tostring(self.nRoundNum).."_wave_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)   
     end
@@ -374,7 +375,7 @@ function Survival:StartRound()
     Timers:CreateTimer(3,function()
             DisableShop()
             
-            if self.nRoundNum % 5 == 0 then
+            if self.nRoundNum % 5 == 0 then -- мегабоосс
                 CleanUnitsOnMap()
                 Survival:_TeleportHeroesToBossArena()
                 Survival:_SpawnMegaboss()
@@ -391,7 +392,7 @@ function Survival:StartRound()
                         end
                     end
                 )
-            else
+            else -- обычная волна
                 Survival:_SpawnWave()
             end
         end
