@@ -12,12 +12,19 @@ function BuildPocketFactory( event )
 	local ability_level = ability:GetLevel()
 	local building_name = "android_pocket_factory_building"..ability_level
 
+	local dummy = CreateUnitByName("npc_dummy_blank", point, false, caster, nil, caster:GetTeam()) 
+	dummy:SetHullRadius(144)
+	FindClearSpaceForUnit(dummy, point, false)
+	
 	-- Create the building, set to time out after a duration
-	caster.pocket_factory = CreateUnitByName(building_name, point, true, caster, caster, caster:GetTeam())
+	caster.pocket_factory = CreateUnitByName(building_name, dummy:GetAbsOrigin(), false, caster, caster, caster:GetTeam())
+
+	dummy:RemoveSelf()
+
 	caster.pocket_factory:AddNewModifier(caster, nil, "modifier_kill", {duration = factory_duration})
 	caster.pocket_factory:RemoveModifierByName("modifier_invulnerable")
 	caster.pocket_factory.no_corpse = true
-	Timers:CreateTimer(0.03, function() caster.pocket_factory:SetAbsOrigin(point) end)
+	--Timers:CreateTimer(0.03, function() caster.pocket_factory:SetAbsOrigin(point) end)
 
 	-- Add the ability and set its level
 	caster.pocket_factory:AddAbility("android_pocket_factory_spawn_goblin")
