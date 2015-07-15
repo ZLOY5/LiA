@@ -2,15 +2,9 @@ function summonCreate(keys)
 	--
 	local ability = keys.ability
 	local caster = keys.caster --hero
-	local durat = keys.durat
-	--local scepter = keys.scepter
-	local cre
-	--
-	local PID = caster:GetPlayerOwnerID()
-	--
+	
 	local num = ability:GetSpecialValueFor( "unit_count" )
 	local durat = ability:GetSpecialValueFor( "duration" )
-	local obl = ability:GetSpecialValueFor( "spawn_radius" )
 	
 	if not caster.tUnits then
 		caster.tUnits = {}
@@ -22,14 +16,10 @@ function summonCreate(keys)
 		end
 		caster.tUnits = {}
 	end
-    --local playerID =player:GetPlayerID()
-	--local target = keys.target --enemy
-	--local target = keys.target_entities[1] --enemy
-	--local target = keys.target
-	--local targets = keys.target_entities
+
 	local lvl = ability:GetLevel()-1
 	local unitname
-	--
+	
 	local flag = false
 	if caster:HasItemInInventory("item_lia_spherical_staff") then
 		if lvl == 0 then
@@ -53,26 +43,23 @@ function summonCreate(keys)
 			unitname = "npc_water_elemental_3"
 		end
 	end
-	--
-	--print("caster = ", caster:GetUnitName())
-	--print("target = ", target:GetUnitName())
-	--
+	
+	local front_position = caster:GetAbsOrigin() + caster:GetForwardVector() * 200
+   
 	for i=1, num do
-		cre = CreateUnitByName(unitname, caster:GetAbsOrigin() + RandomVector(RandomInt(-obl,obl )), false, caster, caster, caster:GetTeam())
-		cre:SetControllableByPlayer(PID, false)
+		local cre = CreateUnitByName(unitname, front_position, true, caster, caster, caster:GetTeam())
+		cre:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 		--
 		cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
-		cre:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
-		--
+		
 		if caster:HasModifier("modifier_decrepify_units_by_hero") then
 			caster:FindAbilityByName("hermit_astral"):ApplyDataDrivenModifier( caster, cre, 'modifier_decrepify_units_by_hero', {} )
 		end
-		--modifier_decrepify_all
-		--
+
 		if flag then
 			cre:SetRenderColor(255,0,0)
 		end
-		--
+
 		table.insert(caster.tUnits,cre)
 	end
 
