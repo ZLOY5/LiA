@@ -3579,6 +3579,8 @@
 		"AbilityManaCost"				"70 60 80"
 		"AbilityCastPoint"      "0.2"
 	  
+		"AbilityCastRange"				"500"
+	
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "1"
 	    "LevelsBetweenUpgrades"  "2"  
@@ -3705,6 +3707,16 @@
 				"var_type"			"FIELD_INTEGER"
 				"factory_duration"	"18"
 			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goblin_hp"	"125 400 700"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"goblin_damage"	"10 43 76"
+			}
 		}
 	
 		"OnSpellStart"
@@ -3730,7 +3742,7 @@
 		"AbilityTextureName"			"rattletrap_power_cogs"
 		"MaxLevel" 						"1"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	
 		"AbilityCooldown"				"2.0"
 		
