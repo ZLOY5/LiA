@@ -1,3 +1,4 @@
+
 _G.SURVIVAL_STATE_PRE_GAME = 0
 _G.SURVIVAL_STATE_PRE_ROUND_TIME = 1
 _G.SURVIVAL_STATE_ROUND_WAVE = 2
@@ -8,17 +9,20 @@ _G.SURVIVAL_STATE_DUEL_TIME = 6
 _G.SURVIVAL_STATE_POST_GAME = 7
 
 _G.WAVE_SPAWN_COORD_LEFT    = Vector(-5700,  1850, 0)
-_G.WAVE_SPAWN_COORD_TOP     = Vector(-3670,  3970, 0)
+_G.WAVE_SPAWN_COORD_TOP     = Vector(-3670,  3970, 0) 
 _G.ARENA_TELEPORT_COORD_TOP = Vector(-5024, -1360, 0)
 _G.ARENA_TELEPORT_COORD_BOT = Vector(-5024, -2360, 0)
 _G.ARENA_CENTER_COORD       = Vector(-5024, -1860, 0)
 
+------------------------------------------------------------------------------------------------
 
 if Survival == nil then
     print("Survival")
     
 	_G.Survival = class({})
 end
+
+------------------------------------------------------------------------------------------------
 
 function Survival:InitSurvival()
     self.tHeroes = {}
@@ -200,15 +204,15 @@ function Survival:_TeleportHeroesWithoutBossArena()
 end
 
 function Survival:EndRound()
+    self.nDeathCreeps = 0
+    self.nDeathHeroes = 0
+    
     CleanUnitsOnMap()
 
     nPlayersReady = 0
     for _,player in pairs(LiA.tPlayers) do
         player.readyToWave = false
     end
-
-    self.nDeathCreeps = 0
-    self.nDeathHeroes = 0
     
     local GoldAdd = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
     DoWithAllHeroes(function(hero)
@@ -305,8 +309,6 @@ function Survival:_SpawnMegaboss()
     boss:SetForwardVector(Vector(0,-1,0))
     boss:AddNewModifier(boss, nil, "modifier_stun_lua", {duration = 5})
 end
-
-
 
 function Survival:_SpawnWave()  
     print("Spawn wave", self.nRoundNum, "for", self.nHeroCount, "heroes")
