@@ -491,10 +491,10 @@ function LiA:_EndWave()
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
         print("Gold after wave ",GoldAdd)
         DoWithAllHeroes(function(hero)
-            --hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
             --print(hero:GetGold(),GoldAdd)
             print(hero:GetUnitName(),"gold",tostring(hero:GetGold()))
-            hero:SetGold(hero:GetGold()+GoldAdd,false)
+            hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
+            --hero:SetGold(hero:GetGold()+GoldAdd,false)
             print(hero:GetUnitName(),"new gold",tostring(hero:GetGold()))
             --print(hero:GetGold())
             hero.lumber = hero.lumber + 3 + WAVE_NUM
@@ -661,7 +661,9 @@ end
 function EndDuel(winner,loser)
     CleanUnitsOnMap()
     if winner and IsValidEntity(winner) then
+        print("Killer",winner:GetUnitName(),winner,"playerID",winner:GetPlayerOwnerID())
         winner = PlayerResource:GetSelectedHeroEntity(winner:GetPlayerOwnerID()) --находим героя, владеющего юнитом-убийцей(если убил не сам герой, а его саммон)
+        print("Hero of killer",winner) 
     end
     if winner and loser then --проверка на отсутствие ничьей
         if winner == loser then -- проверяем самоубился ли герой
@@ -671,16 +673,15 @@ function EndDuel(winner,loser)
                 winner = HeroOnDuel2
             end
         end
-        print("Winner",winner:GetUnitName())
-        print("Loser",loser:GetUnitName())
+        print("Winner",winner:GetUnitName(),winner)
+        print("Loser",loser:GetUnitName(),loser)
     end
 
     if winner ~= nil then 
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
         print("Winner gold "..tostring(winner:GetGold()))
-        winner:SetGold(winner:GetGold()+300-50*DuelNumber,false)
-        --winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
+        winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         print("Winner added "..tostring(300-50*DuelNumber).." gold")
         print("Winner gold "..tostring(winner:GetGold()))
         winner.lumber = winner.lumber + 9 - DuelNumber

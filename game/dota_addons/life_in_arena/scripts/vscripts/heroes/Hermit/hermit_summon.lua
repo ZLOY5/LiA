@@ -49,6 +49,7 @@ function summonCreate(keys)
 	for i=1, num do
 		local cre = CreateUnitByName(unitname, front_position, true, caster, caster, caster:GetTeam())
 		cre:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+			
 		--
 		cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
 		

@@ -9,7 +9,7 @@ function createWave(keys)
 	local wave_width = ability:GetSpecialValueFor( "wave_width" )
 	local vision_aoe = ability:GetSpecialValueFor( "vision_aoe" )
 	local radius = ability:GetSpecialValueFor( "radius" )
-	print("radius ", radius)
+	--print("radius ", radius)
 	--
 	-- Get random point
 	local castPoint = caster:GetAbsOrigin()
@@ -29,7 +29,7 @@ function createWave(keys)
 	else										
 		attackPoint = Vector( castPoint.x - dx, castPoint.y - dy, castPoint.z )
 	end
-	print(attackPoint)
+	--print(attackPoint)
 	--local ti = radius/wave_speed
 	--
     local info = {

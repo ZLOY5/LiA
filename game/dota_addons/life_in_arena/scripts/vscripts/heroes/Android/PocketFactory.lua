@@ -18,6 +18,7 @@ function BuildPocketFactory( event )
 	
 	-- Create the building, set to time out after a duration
 	caster.pocket_factory = CreateUnitByName(building_name, dummy:GetAbsOrigin(), false, caster, caster, caster:GetTeam())
+	caster.pocket_factory:SetControllableByPlayer(caster:GetPlayerID(), true)
 
 	dummy:RemoveSelf()
 
@@ -57,8 +58,8 @@ function StartGoblinSpawn( event )
 			ability:StartCooldown(spawn_ratio)
 
 			-- Create the unit, making it controllable by the building owner, and time out after a duration.
-			local goblin = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
-			goblin:SetControllableByPlayer(player, true)
+			local goblin = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, hero, hero, caster:GetTeamNumber())
+			goblin:SetControllableByPlayer(player, true)..
 			goblin:AddNewModifier(caster, nil, "modifier_kill", {duration = goblin_duration})
 			goblin.no_corpse = true
 
