@@ -60,19 +60,3 @@ function createWave(keys)
     }
     ProjectileManager:CreateLinearProjectile(info)
 end
-
-function CauseDamageDecor(event)
-	local ability = event.ability
-	local caster = event.caster
-	print("caster = ", caster:GetUnitName())
-	--local target = event.target
-	local targets = event.target_entities
-	local damage = event.damage
-	for _,v in pairs(targets) do
-		if v.destructable == 1 then
-			print("try")
-			ApplyDamage({victim = v, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
-		end
-	end
-
-end
