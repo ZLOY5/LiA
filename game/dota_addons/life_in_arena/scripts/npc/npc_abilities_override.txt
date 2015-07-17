@@ -8132,8 +8132,8 @@
 			//-------------------------------------------------------------------------------------------------------------
 			"BaseClass"				"ability_datadriven"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT" //| DOTA_ABILITY_BEHAVIOR_AOE
-			"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-			//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+			"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 			"AbilityTextureName"			"morphling_adaptive_strike"
 			
 			"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"
@@ -8278,8 +8278,23 @@
 								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 								"Types" 	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 							}
-							"Type"			"DAMAGE_TYPE_MAGICAL"
+							"Type"			"DAMAGE_TYPE_PHYSICAL"
 							"Damage"		"%AbilityDamage"
+						}
+						//
+						"RunScript"
+						{
+							"ScriptFile"	"heroes\Hermit\hermit_storm.lua"
+							"Function"		"CauseDamageDecor"
+							"damage" 		"%AbilityDamage"
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Radius"	"150"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+								"Types"		"DOTA_UNIT_TARGET_BUILDING"
+								//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							}
 						}
 					}
 				}
