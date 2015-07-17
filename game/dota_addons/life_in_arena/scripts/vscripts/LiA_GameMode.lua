@@ -627,7 +627,7 @@ function Duel(hero1, hero2)
     if HeroOnDuel2:GetPlayerOwner() then
         HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
     end
-    --PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true) 
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true) 
 
     hero2:SetGold(gold, false)
     
@@ -691,7 +691,7 @@ function EndDuel(winner,loser)
     if HeroOnDuel2:GetPlayerOwner() then
         HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
     end
-    --PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
     
     if winner ~= nil then 
         timerPopup:Stop()
@@ -714,8 +714,6 @@ function EndDuel(winner,loser)
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
-
-    
 
     if HeroOnDuel1:IsAlive() then
         HeroOnDuel1:Purge(false, true, false, true, false)

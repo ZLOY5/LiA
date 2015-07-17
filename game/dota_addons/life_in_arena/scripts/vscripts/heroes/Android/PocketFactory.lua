@@ -12,13 +12,12 @@ function BuildPocketFactory( event )
 	local ability_level = ability:GetLevel()
 	local building_name = "android_pocket_factory_building"..ability_level
 
-	local dummy = CreateUnitByName("npc_dummy_blank", point, false, caster, nil, caster:GetTeam()) 
-	dummy:SetHullRadius(144)
+	local dummy = CreateUnitByName("npc_dummy_blank", point, false, caster, nil, caster:GetTeam())
+	dummy:SetHullRadius(160) 
 	FindClearSpaceForUnit(dummy, point, false)
 	
 	-- Create the building, set to time out after a duration
 	caster.pocket_factory = CreateUnitByName(building_name, dummy:GetAbsOrigin(), false, caster, caster, caster:GetTeam())
-	caster.pocket_factorySetHullRadius(120)
 	caster.pocket_factory:SetControllableByPlayer(caster:GetPlayerID(), true)
 
 	dummy:RemoveSelf()
@@ -57,13 +56,12 @@ function StartGoblinSpawn( event )
 		if caster and IsValidEntity(caster) and caster:IsAlive() then
 			-- Start another cooldown
 			ability:StartCooldown(spawn_ratio)
-
 			-- Create the unit, making it controllable by the building owner, and time out after a duration.
-			local goblin = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, hero, hero, caster:GetTeamNumber())
+			local goblin = CreateUnitByName(unit_name, caster:GetOrigin(), true, hero, hero, caster:GetTeamNumber())
 			goblin:SetControllableByPlayer(player, true)
 			goblin:AddNewModifier(caster, nil, "modifier_kill", {duration = goblin_duration})
-			goblin.no_corpse = true
 
+			
 			-- Add the ability and set its level to the main ability level
 			goblin:AddAbility(goblin_ability_name)
 			local goblin_ability = goblin:FindAbilityByName(goblin_ability_name)
