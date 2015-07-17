@@ -74,6 +74,8 @@ function LiA:InitGameMode()
     GameRules:SetCustomGameSetupAutoLaunchDelay(5)
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
+
+    --PlayerResource:SetCustomPlayerColor(0, r, g, b )
   
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)

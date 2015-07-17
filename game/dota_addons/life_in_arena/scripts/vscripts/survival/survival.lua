@@ -16,6 +16,10 @@ _G.ARENA_CENTER_COORD       = Vector(-5024, -1860, 0)
 
 ------------------------------------------------------------------------------------------------
 
+require('survival/duels')
+
+------------------------------------------------------------------------------------------------
+
 if Survival == nil then
     print("Survival")
     
@@ -47,6 +51,7 @@ function Survival:InitSurvival()
 
 	self.nPreRoundTime = 60
 	self.nPreDuelTime = 30
+    self.nDuelTime = 120
 
     self.State = SURVIVAL_STATE_PRE_GAME
 
@@ -260,7 +265,7 @@ function Survival:PrepareNextRound()
         print("Next round - duels")
         self.IsDuelOccured = true
         Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
-
+        Survival:StartDuels()
     else
         print("Next round - ", self.nRoundNum)
         self.IsDuelOccured = false
