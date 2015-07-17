@@ -387,16 +387,18 @@
 				"RunScript"
 				{
 					"ScriptFile"			"heroes/Pirate/Metamorphosis.lua"
-					"Function"				"ModelSwapStart"
 					"model"					"models/heroes/terrorblade/demon.vmdl"
 					"projectile_model"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+					"Function"				"ModelSwapStart"
+					//
+					"Function"				"HideWearables"
 				}
 
-				"RunScript"
-				{
-					"ScriptFile"		"heroes/Pirate/Metamorphosis.lua"
-					"Function"			"HideWearables"
-				}
+				//"RunScript"
+				//{
+				//	"ScriptFile"		"heroes/Pirate/Metamorphosis.lua"
+				//	"Function"			"HideWearables"
+				//}
 
 				"AttachEffect"
 				{
@@ -422,7 +424,7 @@
 							"Center"	"TARGET"
 							"Radius"	"50"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 					"Type" "DAMAGE_TYPE_PHYSICAL"
@@ -435,7 +437,7 @@
 							"Center"	"TARGET"
 							"Radius"	"150"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 					"Type" "DAMAGE_TYPE_PHYSICAL"
@@ -448,7 +450,7 @@
 							"Center"	"TARGET"
 							"Radius"	"250"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 					"Type" "DAMAGE_TYPE_PHYSICAL"
@@ -462,13 +464,14 @@
 				{
 					"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
 					"Function"		"ModelSwapEnd"
-				}
-
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
 					"Function"		"ShowWearables"
 				}
+
+				//"RunScript"
+				//{
+				//	"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
+				//	"Function"		"ShowWearables"
+				//}
 			}
 		}
 	}

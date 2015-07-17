@@ -6,7 +6,8 @@ function ModelSwapStart( keys )
 	local caster = keys.caster
 	local model = keys.model
 	local projectile_model = keys.projectile_model
-
+	--
+	caster:Stop()
 	-- Saves the original model and attack capability
 	if caster.caster_model == nil then 
 		caster.caster_model = caster:GetModelName()
@@ -27,7 +28,9 @@ end
 ]]
 function ModelSwapEnd( keys )
 	local caster = keys.caster
-
+	--
+	caster:Stop()
+	--
 	caster:SetModel(caster.caster_model)
 	caster:SetOriginalModel(caster.caster_model)
 	caster:SetAttackCapability(caster.caster_attack)
@@ -50,7 +53,7 @@ function HideWearables( event )
     while model ~= nil do
         if model:GetClassname() ~= "" and model:GetClassname() == "dota_item_wearable" then
             local modelName = model:GetModelName()
-            if string.find(modelName, "invisiblebox") == nil then
+            if string.find(modelName, "invisiblebox") == nil and modelName ~= "" and modelName ~= nil then
             	-- Add the original model name to revert later
             	table.insert(hero.wearableNames,modelName)
             	print("Hidden "..modelName.."")
@@ -77,11 +80,11 @@ function ShowWearables( event )
 
 	-- Iterate on both tables to set each item back to their original modelName
 	for i,v in ipairs(hero.hiddenWearables) do
-		for index,modelName in ipairs(hero.wearableNames) do
-			if i==index then
-				print("Changed "..v:GetModelName().. " back to "..modelName)
-				v:SetModel(modelName)
-			end
-		end
+		--for index,modelName in ipairs(hero.wearableNames) do
+		--	if i==index then
+				print("Changed "..v:GetModelName().. " back to "..hero.wearableNames[i])
+				v:SetModel(hero.wearableNames[i])
+		--	end
+		--end
 	end
 end
