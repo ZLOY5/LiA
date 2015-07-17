@@ -456,6 +456,23 @@
 					"Type" "DAMAGE_TYPE_PHYSICAL"
 					"Damage" "%attack_damage / 4"
 				}
+				
+				//
+				
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
+					"Function"		"CauseDamageDecor"
+					"attack_damage" "%attack_damage"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Radius"	"150"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+						"Types"		"DOTA_UNIT_TARGET_BUILDING"
+						//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					}
+				}
 			}
 			
 			"OnDestroy"

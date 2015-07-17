@@ -88,3 +88,17 @@ function ShowWearables( event )
 		--end
 	end
 end
+
+function CauseDamageDecor(event)
+	local ability = event.ability
+	local attacker = event.attacker
+	--local target = event.target
+	local targets = event.target_entities
+	local attack_damage = event.attack_damage
+	for _,v in pairs(targets) do
+		if v.destructable == 1 then
+			ApplyDamage({victim = v, attacker = attacker, damage = attack_damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
+		end
+	end
+
+end
