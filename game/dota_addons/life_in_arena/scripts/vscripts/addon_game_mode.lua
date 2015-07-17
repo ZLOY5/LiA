@@ -50,6 +50,8 @@ function Precache( context )
 		PrecacheUnitByNameAsync("npc_dota_hero_terrorblade", function(...) end)
 	
 		--короч вот тут заменил немного, если не будет пахать то верну на место
+		PrecacheUnitByNameAsync("npc_dota_creature_barrel", function(...) end)
+
 		PrecacheUnitByNameAsync("1_wave_creep", function(...) end)
 		PrecacheUnitByNameAsync("1_wave_boss", function(...) end)
 		

@@ -618,11 +618,21 @@ function Duel(hero1, hero2)
 
     _G.TimeLapse_NeedClean = true
 
-    if hero2:GetPlayerOwner() then 
-       hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
-       PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
-    end
+    print("hero2:GetGold()"..tostring(hero2:GetGold()))
+    print(hero2:GetPlayerID())
+
+    local gold = hero2:GetGold()
+    
     HeroOnDuel2:SetTeam(DOTA_TEAM_BADGUYS)
+    if HeroOnDuel2:GetPlayerOwner() then
+        HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
+    end
+    --PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true) 
+
+    hero2:SetGold(gold, false)
+    
+    print(hero2:GetPlayerID())
+    print("hero2:GetGold()"..tostring(hero2:GetGold()))
     
 
     HeroOnDuel1:Heal(9999,HeroOnDuel1)
@@ -677,13 +687,21 @@ function EndDuel(winner,loser)
         print("Loser",loser:GetUnitName(),loser)
     end
 
+    HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
+    if HeroOnDuel2:GetPlayerOwner() then
+        HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
+    end
+    --PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
+    
     if winner ~= nil then 
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
-        print("Winner gold "..tostring(winner:GetGold()))
+        print("winner:GetGold()"..tostring(winner:GetGold()))
+        print("PlayerResource:GetUnreliableGold(winner:GetPlayerID())",PlayerResource:GetUnreliableGold(winner:GetPlayerID()))
         winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         print("Winner added "..tostring(300-50*DuelNumber).." gold")
-        print("Winner gold "..tostring(winner:GetGold()))
+        print("winner:GetGold()"..tostring(winner:GetGold()))
+        print("PlayerResource:GetUnreliableGold(winner:GetPlayerID())",PlayerResource:GetUnreliableGold(winner:GetPlayerID()))
         winner.lumber = winner.lumber + 9 - DuelNumber
         FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         
@@ -696,11 +714,7 @@ function EndDuel(winner,loser)
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
-    if HeroOnDuel2:GetPlayerOwner() then
-        HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
-        PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
-    end
-    HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
+
     
 
     if HeroOnDuel1:IsAlive() then
