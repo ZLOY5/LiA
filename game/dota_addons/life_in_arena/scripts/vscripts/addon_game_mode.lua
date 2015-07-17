@@ -57,7 +57,7 @@ function Precache( context )
 		PrecacheUnitByNameAsync("10_wave_megaboss", function(...) end)
 		PrecacheUnitByNameAsync("15_wave_megaboss", function(...) end)
 		PrecacheUnitByNameAsync("orn_megaboss", function(...) end)
-		PrecacheUnitByNameAsync("orn_mutant", function(...) end)
+		PrecacheUnitByNameAsync("orn_mutant_boss", function(...) end)
 
 		PrecacheUnitByNameAsync("item_lia_healing_ward_unit", function(...) end)
 		--[[

@@ -412,7 +412,7 @@ function LiA:OnOrnDamaged(event)
         FinalBossStageDeath2 = 0
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 10 then
-                local unit = CreateUnitByName("orn_mutant", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                local unit = CreateUnitByName("orn_mutant_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
                 ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, unit)
                 unit:EmitSound("DOTA_Item.BlinkDagger.Activate")
                 unit:Attribute_SetIntValue("SecondStage",1)
