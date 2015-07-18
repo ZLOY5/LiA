@@ -47,16 +47,16 @@
 			"EffectName"	"Hero_BountyHunter.WindWalk"
 		}
 
-		"ApplyModifier"
-		{
-			"ModifierName" 	"modifier_invisible"
-			"Target"		
-			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"Duration"		"%duration"
-		}
+		//"ApplyModifier"
+		//{
+		//	"ModifierName" 	"modifier_invisible"
+		//	"Target"		
+		//	{
+		//		"Center"	"CASTER"
+		//		"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		//	}
+		//	"Duration"		"%duration"
+		//}
 
 		"ApplyModifier"
 		{
@@ -80,6 +80,17 @@
 			"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
 			"EffectAttachType"	"follow_origin"
 			"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" 	"modifier_invisible"
+					"Target"		"CASTER"
+					"Duration"		"%duration"
+				}
+			}
+			
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_movespeed"
