@@ -433,7 +433,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_cluster_rockets"
-			"Target" 		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 
 		"RunScript"
@@ -505,6 +509,7 @@
 		"modifier_cluster_rockets"
 		{
 			"IsHidden"			"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			"OnCreated"
 			{
 				"AttachEffect"

@@ -279,7 +279,11 @@
 	{
 		"ApplyModifier"
 		{
-			"Target"		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"ModifierName"	"modifier_crush_bonus_movespeed"	
 		}
 
@@ -290,6 +294,7 @@
     {
 	"Duration"		"%duration"
 	"IsBuff"		"1"
+	"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
       "Properties"
       {
 		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_move_speed_percentage"

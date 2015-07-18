@@ -4000,7 +4000,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_cluster_rockets"
-				"Target" 		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 	
 			"RunScript"
@@ -4072,6 +4076,7 @@
 			"modifier_cluster_rockets"
 			{
 				"IsHidden"			"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -5183,8 +5188,12 @@
 			"ApplyModifier"
 			{
 			"ModifierName" "modifier_butcher_rage"
-			"Target"	"CASTER"
 			"Duration"	"%AbilityDuration"
+			"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 		}
 	
@@ -5194,6 +5203,7 @@
 			{
 				"Passive"               "0"
 				"IsHidden"				"0"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	
 				"Orb"
 				{
@@ -9997,7 +10007,11 @@
 		{
 			"ApplyModifier"
 			{
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"	"modifier_crush_bonus_movespeed"	
 			}
 	
@@ -10008,6 +10022,7 @@
 	    {
 		"Duration"		"%duration"
 		"IsBuff"		"1"
+		"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	      "Properties"
 	      {
 			"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_move_speed_percentage"
@@ -11598,13 +11613,17 @@
 					"EffectName"	"Hero_Broodmother.SpawnSpiderlingsImpact"
 					"Target"		"TARGET"
 				}
-		
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+					"Damage"		"%damage"
+				}
 				"ApplyModifier"
 				{
 					"ModifierName"	"modifier_infection"
 					"Target"		"TARGET"
 				}
-		
 			}
 		
 			"Modifiers"
