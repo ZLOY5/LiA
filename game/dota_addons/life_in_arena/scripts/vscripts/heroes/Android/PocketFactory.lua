@@ -11,14 +11,22 @@ function BuildPocketFactory( event )
 	local factory_duration =  ability:GetLevelSpecialValueFor( "factory_duration" , ability:GetLevel() - 1  )
 	local ability_level = ability:GetLevel()
 	local building_name = "android_pocket_factory_building"..ability_level
+	local sizeBuild = 144
 
 	local dummy = CreateUnitByName("npc_dummy_blank", point, false, caster, nil, caster:GetTeam())
-	dummy:SetHullRadius(160) 
-	FindClearSpaceForUnit(dummy, point, false)
+	dummy:SetHullRadius(sizeBuild) --160
+	FindClearSpaceForUnit(dummy, point, true)
 	
 	-- Create the building, set to time out after a duration
 	caster.pocket_factory = CreateUnitByName(building_name, dummy:GetAbsOrigin(), false, caster, caster, caster:GetTeam())
+	caster.pocket_factory:SetHullRadius(sizeBuild)
+	Timers:CreateTimer(0.01,
+	function()
+		ResolveNPCPositions(point,sizeBuild*2)
+		FindClearSpaceForUnit(caster.pocket_factory, point, true)
+	end)
 	caster.pocket_factory:SetControllableByPlayer(caster:GetPlayerID(), true)
+	
 
 	dummy:RemoveSelf()
 
@@ -46,6 +54,13 @@ function StartGoblinSpawn( event )
 	local unit_name = "android_clockwerk_goblin"..ability_level
 	local goblin_ability_name = "android_clockwerk_goblin_kaboom"
 	local goblin_ability_bash = "android_pocket_factory_spawn_goblin"..ability_level
+	--
+	local locHero = caster:GetOrigin()
+	local sizeBuild = 144
+	local offsetExtra = 16
+	local offX = sizeBuild/math.sqrt(2)
+	local pointToCreate = Vector(locHero.x + (offX+offsetExtra),locHero.y - (offX+offsetExtra), locHero.z)
+	
 
 	-- Display the spawn ability as cooling down, this is purely cosmetic but helps showing the interval
 	ability:StartCooldown(spawn_ratio)
@@ -54,10 +69,17 @@ function StartGoblinSpawn( event )
 	Timers:CreateTimer(spawn_ratio, function()
 
 		if caster and IsValidEntity(caster) and caster:IsAlive() then
+			print("Create Goblin")
 			-- Start another cooldown
 			ability:StartCooldown(spawn_ratio)
 			-- Create the unit, making it controllable by the building owner, and time out after a duration.
-			local goblin = CreateUnitByName(unit_name, caster:GetOrigin(), true, hero, hero, caster:GetTeamNumber())
+			local goblin = CreateUnitByName(unit_name, pointToCreate, true, hero, hero, caster:GetTeamNumber())
+			local sizeUnit = goblin:GetPaddedCollisionRadius()
+			Timers:CreateTimer(0.01,
+			function()
+				ResolveNPCPositions(pointToCreate,sizeUnit*2)
+				FindClearSpaceForUnit(goblin, pointToCreate, false)
+			end)
 			goblin:SetControllableByPlayer(player, true)
 			goblin:AddNewModifier(caster, nil, "modifier_kill", {duration = goblin_duration})
 
@@ -75,5 +97,19 @@ function StartGoblinSpawn( event )
 			return spawn_ratio
 		end
 	end)
+
+end
+
+function CauseDamageDecor(event)
+	local ability = event.ability
+	local attacker = event.caster
+	--local target = event.target
+	local targets = event.target_entities
+	local attack_damage = event.attack_damage
+	for _,v in pairs(targets) do
+		if v.destructable == 1 then
+			ApplyDamage({victim = v, attacker = attacker, damage = attack_damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
+		end
+	end
 
 end
