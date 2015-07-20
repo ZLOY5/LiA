@@ -16,10 +16,6 @@ _G.ARENA_CENTER_COORD       = Vector(-5024, -1860, 0)
 
 ------------------------------------------------------------------------------------------------
 
-require('survival/duels')
-
-------------------------------------------------------------------------------------------------
-
 if Survival == nil then
     print("Survival")
     
@@ -28,7 +24,14 @@ end
 
 ------------------------------------------------------------------------------------------------
 
+require('survival/duels')
+
+------------------------------------------------------------------------------------------------
+
+
 function Survival:InitSurvival()
+    Survival = self
+
     self.tHeroes = {}
 	self.nRoundNum = 0
 
@@ -142,13 +145,16 @@ end
 function Survival:_OnHeroDeath(keys)
     PrintTable("OnHeroDeath",keys)
     local hero = EntIndexToHScript(keys.entindex_killed)
-    local ownerHero = hero:GetPlayerOwner()
     local attacker = EntIndexToHScript(keys.entindex_attacker)
+    local attackerHero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
+    
+    local ownerHero = hero:GetPlayerOwner()
     if ownerHero then
         Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     end
-    if IsDuel and (hero == HeroOnDuel1 or hero == HeroOnDuel2) then
-        EndDuel(attacker,hero)
+    
+    if (self.State == SURVIVAL_STATE_DUEL_TIME) and (hero == self.DuelFirstHero or hero == self.DuelSecondHero) then
+        Survival:EndDuel(attackerHero,hero)
     else
         hero.deaths = hero.deaths + 1
         self.nDeathHeroes = self.nDeathHeroes + 1
@@ -186,6 +192,9 @@ function Survival:OnEntityKilled(keys)
     
     if killed:IsRealHero() then
         Survival:_OnHeroDeath(keys)
+        return
+    elseif self.State == SURVIVAL_STATE_ROUND_FINALBOSS then
+        Survival:_OnFinalBossDeath(keys)
         return
     elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_creep"  then 
         Survival:_OnCreepDeath()   

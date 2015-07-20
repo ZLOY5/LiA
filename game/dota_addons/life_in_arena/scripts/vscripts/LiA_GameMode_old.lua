@@ -68,7 +68,7 @@ function LiA:InitGameMode()
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
     GameRules:SetCustomVictoryMessage("#victory_message")
-    GameRules:SetCustomGameEndDelay(20)
+    GameRules:SetCustomGameEndDelay(1)
     
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetFogOfWarDisabled(true)
@@ -88,9 +88,11 @@ function LiA:InitGameMode()
 
     
     GameRules:LockCustomGameSetupTeamAssignment(true)
-    GameRules:SetCustomGameSetupRemainingTime(5)
-    GameRules:SetCustomGameSetupAutoLaunchDelay(5)
+    GameRules:SetCustomGameSetupRemainingTime(0)
+    GameRules:SetCustomGameSetupAutoLaunchDelay(0)
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )
+
 
     Convars:RegisterCommand( "lia_force_round", onPlayerReadyToWave, "For force round", 0 )
       
@@ -110,9 +112,18 @@ function LiA:InitGameMode()
     LinkLuaModifier( "modifier_knight_cuirass_damage_return_lua", "items/modifier_knight_cuirass_damage_return_lua.lua", LUA_MODIFIER_MOTION_NONE)
     --LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 
-   
+    GameMode:SetContextThink( "AIThink", AIThink , 3)
+    LiA.AICreepCasts = 0
+    LiA.AIMaxCreepCasts = 2
     --InitLogFile("log/LiA.txt","Init LiA")
 end
+
+function AIThink()
+    --print("CleanAICasts")
+    LiA.AICreepCasts = 0
+    return 3
+end
+
 
 function LiA:ExperienceFilter(filterTable)
     if IsDuel then
@@ -190,7 +201,7 @@ function LiA:OnPlayerPickHero(keys)
     hero.deaths = 0
     hero.rating = 0
     hero.lumber = 3
-    --FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
+    FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
     
     table.insert(tHeroes, hero)
     
@@ -212,6 +223,7 @@ end
 function LiA:OnGameStateChange()  
 
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        --WAVE_NUM = 12
         StartWaves()
     end
 end
@@ -261,7 +273,7 @@ function LiA:OnEntityKilled(keys)
         if ownedHeroAtt then
             ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
             ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
-            --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
             if attacker:GetPlayerOwner() then
                 PopupNumbers(attacker:GetPlayerOwner() ,ent, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
             end
@@ -275,8 +287,8 @@ end
 
 function StartWaves()
     IsPreWaveTime = true
-    --timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
-    Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() --[[ShowCenterMessage("#lia_wave_num",5,WAVE_NUM)]] IsPreWaveTime = false return nil end})
+    timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
+    Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage("#lia_wave_num",5,WAVE_NUM) IsPreWaveTime = false return nil end})
     Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end}) 
 end
 
@@ -339,7 +351,7 @@ function LiA:SpawnMegaboss()
     CleanUnitsOnMap()
     local boss
     if WAVE_NUM == 20 then
-        boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        boss = CreateUnitByName("orn_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
         boss:AddNewModifier(boss, nil, "modifier_orn_lua", {duration = -1})
         uFinalBoss = boss
     else
@@ -354,7 +366,7 @@ function LiA:SpawnMegaboss()
         if BossCounter == 0 then
             return nil
         else
-            --ShowCenterMessage(tostring(BossCounter),1)
+            ShowCenterMessage(tostring(BossCounter),1)
             BossCounter = BossCounter - 1
             return 1
         end
@@ -367,7 +379,8 @@ function OnFirstStageDeath(event) --когда умирают боссы пер�
         uFinalBoss:RemoveModifierByName("modifier_hide_lua") 
         FindClearSpaceForUnit(uFinalBoss, ARENA_CENTER_COORD + RandomVector(RandomInt(-600, 600)), false)
         ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, uFinalBoss)
-        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")           
+        uFinalBoss:EmitSound("DOTA_Item.BlinkDagger.Activate")
+                
     end
 end
 
@@ -399,7 +412,7 @@ function LiA:OnOrnDamaged(event)
         FinalBossStageDeath2 = 0
         Timers:CreateTimer(2,function()
             if FinalBossStageCounter <= 10 then
-                local unit = CreateUnitByName("orn_mutant", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                local unit = CreateUnitByName("orn_mutant_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
                 ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, unit)
                 unit:EmitSound("DOTA_Item.BlinkDagger.Activate")
                 unit:Attribute_SetIntValue("SecondStage",1)
@@ -467,19 +480,25 @@ function LiA:_EndWave()
                 message = "#lia_megaboss"
             end
             timerPopup:Start(PRE_WAVE_TIME,message,0)
-            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() --[[ShowCenterMessage(message,5)]] IsPreWaveTime = false return nil end})
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5) IsPreWaveTime = false return nil end})
         else --обычные волны
             Timers:CreateTimer("preWaveTimer",{ endTime = PRE_WAVE_TIME, callback = function() LiA.SpawnWave() return nil end})
-            --message = "#lia_wave_num"
-            --timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
-            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() --[[ShowCenterMessage(message,5,WAVE_NUM)]] IsPreWaveTime = false return nil end})
+            message = "#lia_wave_num"
+            timerPopup:Start(PRE_WAVE_TIME,"#lia_wave_num",WAVE_NUM)
+            Timers:CreateTimer("preWaveMessageTimer",{ endTime = PRE_WAVE_TIME-3, callback = function() ShowCenterMessage(message,5,WAVE_NUM) IsPreWaveTime = false return nil end})
         end
          
         GoldAdd = WAVE_SPAWN_COUNT[nPlayers] / nPlayers * GOLD_PER_WAVE[WAVE_NUM]
+        print("Gold after wave ",GoldAdd)
         DoWithAllHeroes(function(hero)
+            --print(hero:GetGold(),GoldAdd)
+            print(hero:GetUnitName(),"gold",tostring(hero:GetGold()))
             hero:ModifyGold(GoldAdd, false, DOTA_ModifyGold_Unspecified)
+            --hero:SetGold(hero:GetGold()+GoldAdd,false)
+            print(hero:GetUnitName(),"new gold",tostring(hero:GetGold()))
+            --print(hero:GetGold())
             hero.lumber = hero.lumber + 3 + WAVE_NUM
-            --FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
         end)        
     end
     TRIGGER_SHOP:Enable()
@@ -538,12 +557,12 @@ end
 
 function StartDuels()
     DuelNumber = 1
-    GameRules:SetGoldPerTick(0)
     CleanUnitsOnMap()
-    --timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
+    timerPopup:Start(PRE_DUEL_TIME,"#lia_duel",0)
     Timers:CreateTimer(PRE_DUEL_TIME,function()
         IsDuel = true
         TRIGGER_SHOP:Disable() 
+        GameRules:SetGoldPerTick(0)
         DoWithAllHeroes(function(hero)
             hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
         end)
@@ -599,11 +618,21 @@ function Duel(hero1, hero2)
 
     _G.TimeLapse_NeedClean = true
 
-    if hero2:GetPlayerOwner() then 
-       hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
-       PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
-    end
+    print("hero2:GetGold()"..tostring(hero2:GetGold()))
+    print(hero2:GetPlayerID())
+
+    local gold = hero2:GetGold()
+    
     HeroOnDuel2:SetTeam(DOTA_TEAM_BADGUYS)
+    if HeroOnDuel2:GetPlayerOwner() then
+        HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
+    end
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_BADGUYS,true) 
+
+    hero2:SetGold(gold, false)
+    
+    print(hero2:GetPlayerID())
+    print("hero2:GetGold()"..tostring(hero2:GetGold()))
     
 
     HeroOnDuel1:Heal(9999,HeroOnDuel1)
@@ -621,7 +650,7 @@ function Duel(hero1, hero2)
         if DuelCounter == 0 then
             HeroOnDuel1:RemoveModifierByName("modifier_stun_lua")
             HeroOnDuel2:RemoveModifierByName("modifier_stun_lua")
-            --timerPopup:Start(120,"#lia_expire_duel",0)
+            timerPopup:Start(120,"#lia_expire_duel",0)
             Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
                 useGameTime = true,
                 endTime = 120,
@@ -631,7 +660,7 @@ function Duel(hero1, hero2)
                 end})
             return nil
         else
-            --ShowCenterMessage(tostring(DuelCounter),1)
+            ShowCenterMessage(tostring(DuelCounter),1)
             DuelCounter = DuelCounter - 1
             return 1
         end
@@ -642,7 +671,9 @@ end
 function EndDuel(winner,loser)
     CleanUnitsOnMap()
     if winner and IsValidEntity(winner) then
+        print("Killer",winner:GetUnitName(),winner,"playerID",winner:GetPlayerOwnerID())
         winner = PlayerResource:GetSelectedHeroEntity(winner:GetPlayerOwnerID()) --находим героя, владеющего юнитом-убийцей(если убил не сам герой, а его саммон)
+        print("Hero of killer",winner) 
     end
     if winner and loser then --проверка на отсутствие ничьей
         if winner == loser then -- проверяем самоубился ли герой
@@ -652,18 +683,27 @@ function EndDuel(winner,loser)
                 winner = HeroOnDuel2
             end
         end
-        print("Winner",winner:GetUnitName())
-        print("Loser",loser:GetUnitName())
+        print("Winner",winner:GetUnitName(),winner)
+        print("Loser",loser:GetUnitName(),loser)
     end
 
+    HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
+    if HeroOnDuel2:GetPlayerOwner() then
+        HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
+    end
+    PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
+    
     if winner ~= nil then 
-        --timerPopup:Stop()
+        timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
-        
+        print("winner:GetGold()"..tostring(winner:GetGold()))
+        print("PlayerResource:GetUnreliableGold(winner:GetPlayerID())",PlayerResource:GetUnreliableGold(winner:GetPlayerID()))
         winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
         print("Winner added "..tostring(300-50*DuelNumber).." gold")
+        print("winner:GetGold()"..tostring(winner:GetGold()))
+        print("PlayerResource:GetUnreliableGold(winner:GetPlayerID())",PlayerResource:GetUnreliableGold(winner:GetPlayerID()))
         winner.lumber = winner.lumber + 9 - DuelNumber
-        --FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
+        FireGameEvent('cgm_player_lumber_changed', { player_ID = winner:GetPlayerID(), lumber = winner.lumber })
         
         if winner:IsAlive() then
             winner:Stop()
@@ -674,12 +714,6 @@ function EndDuel(winner,loser)
         FindClearSpaceForUnit(HeroOnDuel2, HeroOnDuel2.abs, false) 
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
-    if HeroOnDuel2:GetPlayerOwner() then
-        HeroOnDuel2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
-        PlayerResource:UpdateTeamSlot(HeroOnDuel2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
-    end
-    HeroOnDuel2:SetTeam(DOTA_TEAM_GOODGUYS)
-    
 
     if HeroOnDuel1:IsAlive() then
         HeroOnDuel1:Purge(false, true, false, true, false)
