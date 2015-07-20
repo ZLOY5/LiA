@@ -7,7 +7,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"AbilityTextureName"			"lich_frost_nova"
+	"AbilityTextureName"			"ancient_apparition_chilling_touch"
 	
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
@@ -140,6 +140,97 @@
 	}
 }
 
+"frost_lord_freezing"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"crystal_maiden_frostbite"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+	"AbilityDamage"					"50 100 150"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"precache"
+	{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+		"particle"				"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+		"particle"				"particles/units/heroes/hero_crystalmaiden/maiden_frostbite.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"freezing_chance"			"18"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_hero_duration"	"0.5 1.0 1.5"
+		}
+	}
+
+	
+	"Modifiers"
+	{
+		"modifier_frost_lord_freezing"	
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"OnAttacked"
+			{
+				"Random"
+				{
+					"Chance"		"%freezing_chance"
+					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+					"OnSuccess"
+					{
+						"FireSound"
+						{
+							"EffectName"	"hero_Crystal.frostbite"
+							"Target"		"ATTACKER"
+						}
+
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_frost_lord_freezing_block"
+							"Target"		"ATTACKER"
+							"Duration"		"%stun_hero_duration"	
+						}
+
+						"Damage"
+						{
+							"Target"	"ATTACKER"
+							"Type"		"DAMAGE_TYPE_MAGICAL"
+							"Damage"	"%AbilityDamage"
+						}
+					}
+				}
+			}
+		}
+
+		"modifier_frost_lord_freezing_block"
+		{
+
+			"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_FROZEN"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+
+	}
+}	
+
 "frost_lord_cold"
 {
 	// General
@@ -149,7 +240,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"AbilityTextureName"			"ancient_apparition_chilling_touch"
+	"AbilityTextureName"			"lich_frost_nova"
 
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
@@ -447,7 +538,7 @@
     {	
     	"IsDebuff"	"1"
     	"StatusEffectName" 		"particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf" 	   
-    	"StatusEffectPriority"  "15"
+    	"StatusEffectPriority"  "10"
     	"Properties"
     	{
     	    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_slow" 
