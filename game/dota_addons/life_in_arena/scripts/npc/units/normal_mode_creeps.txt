@@ -24,7 +24,7 @@
 	"AttackDamageMax" "15" 
 	"AttackRate" "1.55" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" //"10000"
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -47,12 +47,14 @@
 	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	 
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" //"10000"
+	"VisionNighttimeRange" "800" //"10000"
 	 
 	"HasInventory" "0" 
 
-	"PathfindingSearchDepthScale" "0.3"
+	"PathfindingSearchDepthScale" "0.22"
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 
 }
@@ -82,7 +84,7 @@
 	"AttackDamageMax" "30" 
 	"AttackRate" "1.55" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -105,12 +107,14 @@
 	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 
 	"HasInventory" "0" 
 
-	"PathfindingSearchDepthScale" "0.4"
+	"PathfindingSearchDepthScale" "0.22"
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 }
 
 "3_wave_creep" 
@@ -142,7 +146,7 @@
 	"AttackDamageMax" "50" 
 	"AttackRate" "1.5" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -165,12 +169,14 @@
 	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 
 	"HasInventory" "0" 
 
-	"PathfindingSearchDepthScale" "0.5"
+	"PathfindingSearchDepthScale" "0.22"
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 }
 
 "4_wave_creep" 

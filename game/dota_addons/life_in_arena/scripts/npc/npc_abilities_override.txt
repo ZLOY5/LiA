@@ -4056,7 +4056,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"projectile_speed"		"1100"
+				"projectile_speed"		"700"
 			}
 			"06"
 			{
@@ -4762,13 +4762,21 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_fire_spear_slow"
-				"Target" 		"TARGET"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
 			}
 	
 			"Damage"
 			{
-				"Target"		"TARGET"
-				"Type"			"DAMAGE_TYPE_PURE" //"DAMAGE_TYPE_PHYSICAL"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+				"Type"			"DAMAGE_TYPE_PURE"
 				"Damage"		"%AbilityDamage"
 			}
 		}
@@ -6950,7 +6958,7 @@
 	    {	
 	    	"IsDebuff"	"1"
 	    	"StatusEffectName" 		"particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf" 	   
-	    	"StatusEffectPriority"  "15"
+	    	"StatusEffectPriority"  "10"
 	    	"Properties"
 	    	{
 	    	    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_slow" 

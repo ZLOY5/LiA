@@ -1,3 +1,5 @@
+require('LiA_AIcreeps')
+
 function Spawn(entityKeyValues)
 	--print("Spawn")
 	ABILILTY_12_wave_stomp = thisEntity:FindAbilityByName("12_wave_stomp")
@@ -14,6 +16,7 @@ function Think12Wave()
 		return 1
 	end
 
+	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(LiA.AICreepCasts)
 		
 	if ABILILTY_12_wave_stomp:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then

@@ -29,6 +29,7 @@ FinalBossStageDeath2 = 0
 IsDuelOccured = false
 IsDuel        = false
 IsPreWaveTime = false
+IsWave = false 			--LiA_AIcreeps
 
 uFinalBoss    = nil
 
@@ -38,7 +39,7 @@ TEST_MODE_STEAM_ID = {}
 
 if LiA == nil then
 	_G.LiA = class({})
-	LiA.DeltaTime = 0.25
+	LiA.DeltaTime = 0.5
 end
 
 
@@ -81,6 +82,8 @@ function LiA:InitGameMode()
     GameMode:SetTopBarTeamValuesVisible(false)
     GameMode:SetBuybackEnabled(false)
     GameMode:SetThink("onThink", self)
+	--LiA_AIcreeps
+	GameMode:SetThink("onThinkAIcreepsUpdate", self)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
     GameMode:SetLoseGoldOnDeath(false)
@@ -265,6 +268,8 @@ function LiA:OnEntityKilled(keys)
     end
     if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then    
         nDeathCreeps = nDeathCreeps + 1
+		--LiA_AIcreeps
+		LiA:AICreepsRemoveFromTable({removeUnit = ent})
         if ownedHeroAtt then
             ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
         end
@@ -302,6 +307,8 @@ function LiA:SpawnWave()
         return   
     end
     
+	IsWave = true
+	
     LiA.nHeroCountCreepsSpawned = nHeroCount --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)
     IsPreWaveTime = false
     TRIGGER_SHOP:Disable()  
@@ -327,6 +334,9 @@ function LiA:SpawnWave()
 		function()
 			unit1 = CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
 			unit2 = CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+			--
+			--LiA_AIcreeps
+			LiA:AICreepsInsertToTable({addUnit1 = unit1, addUnit2 = unit2})
 			--
 			ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, unit1)
 			ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, unit2)
@@ -457,6 +467,7 @@ function LiA:_EndWave()
     for _,player in pairs(tPlayers) do
         player.readyToWave = false
     end
+	IsWave = false
     WAVE_NUM = WAVE_NUM + 1
     nDeathCreeps = 0
     nDeathHeroes = 0
