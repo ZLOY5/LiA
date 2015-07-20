@@ -21,7 +21,14 @@ function modifier_brewmaster_ferocity_lua:OnIntervalThink(event)
 	if IsServer() and self:GetParent():IsAlive() then
 		local previous_bonus_strength = self.bonus_strength
 
-		local units = FindUnitsInRadius(self:GetParent():GetTeam(), self:GetParent():GetAbsOrigin(), nil, self.radius, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+		local units = FindUnitsInRadius(self:GetParent():GetTeam(), 
+										self:GetParent():GetAbsOrigin(), 
+										nil, self.radius, 
+										DOTA_UNIT_TARGET_TEAM_BOTH, 
+										DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_HERO, 
+										DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 
+										FIND_ANY_ORDER, 
+										false)
 	
 		self.bonus_strength_per_unit = self:GetAbility():GetSpecialValueFor("bonus_strength")
 		self.bonus_strength = self.bonus_strength_per_unit * (#units-1) -- отнимаем 1 чтобы исключить самого героя	

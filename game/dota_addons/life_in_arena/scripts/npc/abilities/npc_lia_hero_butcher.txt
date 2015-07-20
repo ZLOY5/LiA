@@ -41,8 +41,12 @@
 		"ApplyModifier"
 		{
 		"ModifierName" "modifier_butcher_rage"
-		"Target"	"CASTER"
 		"Duration"	"%AbilityDuration"
+		"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 	}
 
@@ -52,6 +56,7 @@
 		{
 			"Passive"               "0"
 			"IsHidden"				"0"
+			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 
 			"Orb"
 			{
@@ -305,7 +310,7 @@
 
 						"ApplyModifier"
 						{
-							"ModifierName"	"modifier_naga_royal_guard_bash_stun"
+							"ModifierName"	"modifier_stunned"
 							"Target"
 							{
 								"Center"	"TARGET"
@@ -323,20 +328,6 @@
 						}
 					}
 				}
-			}
-		}
-
-		"modifier_naga_royal_guard_bash_stun"
-		{
-			"IsDebuff"			"1"
-			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-			"EffectAttachType"	"follow_overhead"
-
-			"OverrideAnimation"     "ACT_DOTA_DISABLED"
-
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
 	}

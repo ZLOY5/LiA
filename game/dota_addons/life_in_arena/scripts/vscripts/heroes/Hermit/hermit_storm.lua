@@ -9,7 +9,7 @@ function createWave(keys)
 	local wave_width = ability:GetSpecialValueFor( "wave_width" )
 	local vision_aoe = ability:GetSpecialValueFor( "vision_aoe" )
 	local radius = ability:GetSpecialValueFor( "radius" )
-	print("radius ", radius)
+	--print("radius ", radius)
 	--
 	-- Get random point
 	local castPoint = caster:GetAbsOrigin()
@@ -29,7 +29,7 @@ function createWave(keys)
 	else										
 		attackPoint = Vector( castPoint.x - dx, castPoint.y - dy, castPoint.z )
 	end
-	print(attackPoint)
+	--print(attackPoint)
 	--local ti = radius/wave_speed
 	--
     local info = {
@@ -59,4 +59,20 @@ function createWave(keys)
 		--bDeleteOnHit = true,
     }
     ProjectileManager:CreateLinearProjectile(info)
+end
+
+
+function CauseDamageDecor(event)
+	local ability = event.ability
+	local caster = event.caster
+	print("caster = ", caster:GetUnitName())
+	--local target = event.target
+	local targets = event.target_entities
+	local damage = event.damage
+	for _,v in pairs(targets) do
+		if v.destructable == 1 then
+			print("try")
+			ApplyDamage({victim = v, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
+		end
+	end
 end

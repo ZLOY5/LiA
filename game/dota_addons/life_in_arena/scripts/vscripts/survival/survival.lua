@@ -25,6 +25,7 @@ end
 ------------------------------------------------------------------------------------------------
 
 require('survival/duels')
+require('survival/finalBoss')
 
 ------------------------------------------------------------------------------------------------
 
@@ -97,6 +98,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        self.nRoundNum = 19
         Survival:PrepareNextRound()
     end
 end
@@ -301,7 +303,7 @@ function Survival:_TeleportHeroesToBossArena()
         hero.abs = hero:GetAbsOrigin() 
         hero:Stop()
         hero:SetForwardVector(Vector(0, 1, 0))
-        FindClearSpaceForUnit(hero, ARENA_TELEPORT_COORD_BOT + Vector(RandomInt(-200,200),RandomInt(-50,50),0), false)
+        FindClearSpaceForUnit(hero, ARENA_TELEPORT_COORD_BOT + Vector(RandomInt(-400,400),RandomInt(-50,50),0), false)
 
         hero:Heal(9999,hero)
         hero:GiveMana(9999)

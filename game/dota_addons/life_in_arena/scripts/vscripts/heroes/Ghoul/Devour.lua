@@ -4,6 +4,9 @@ function Devour(keys)
 	if string.find(target:GetUnitName(),"boss") or target:IsHero() then 
 	 	keys.ability:ApplyDataDrivenModifier(keys.caster, target, "modifier_ghoul_devour_slow", nil)		
 	else
+		keys.target:SetMinimumGoldBounty(0)
+		keys.target:SetMaximumGoldBounty(0)
+		keys.target:SetDeathXP(0)
 		keys.target:Kill(keys.ability, keys.caster)
 		keys.caster:Heal(instant_heal, keys.caster)
 		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.caster, "modifier_ghoul_devour_heal", nil)

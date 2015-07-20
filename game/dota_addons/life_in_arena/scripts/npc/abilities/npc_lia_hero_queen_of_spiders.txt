@@ -95,13 +95,17 @@
 				"EffectName"	"Hero_Broodmother.SpawnSpiderlingsImpact"
 				"Target"		"TARGET"
 			}
-	
+			"Damage"
+			{
+				"Target"		"TARGET"
+				"Type"			"DAMAGE_TYPE_MAGICAL"
+				"Damage"		"%damage"
+			}
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_infection"
 				"Target"		"TARGET"
 			}
-	
 		}
 	
 		"Modifiers"

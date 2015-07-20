@@ -32,7 +32,7 @@ function modifier_knight_cuirass_damage_return_lua:OnAttackLanded(params)
 			else
 				damage_return_perc = self:GetAbility():GetSpecialValueFor("damage_return")
 			end
-			print(damage_return_perc)
+			--print(damage_return_perc)
 
 			local target = params.target
 			local return_damage = damage_return_perc*0.01*params.damage

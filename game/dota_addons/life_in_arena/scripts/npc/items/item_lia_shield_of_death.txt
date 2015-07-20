@@ -76,7 +76,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_item_shield_of_death_armor"
-			"Target" "CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}		
 
 		"Damage"
@@ -116,7 +120,7 @@
 	
 		}
 		
-				"modifier_item_shield_of_death_armor"
+		"modifier_item_shield_of_death_armor"
 		{
 			"Passive"				"0"
 			"IsHidden"				"0"
@@ -125,7 +129,8 @@
 			"IsPurgable"			"1"
 			"TextureName"			"item_lia_shield_of_death"
 			"Duration"				"%duration"
-			
+			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%active_armor"

@@ -4,6 +4,73 @@
 
 
 
+	//Start of file npc_lia_hero_android.txt
+	"npc_lia_hero_android"
+	{
+		"override_hero"				"npc_dota_hero_shredder"
+	
+		"Ability1" "android_war_stomp"	
+		"Ability2" "android_pocket_factory" 		
+		"Ability3" "android_armor" 
+		"Ability4" "android_cluster_rockets" 					
+		"Ability5" "attribute_bonuses" 					
+		"Ability6" "" 	
+		"Ability7" "" 					
+		"Ability8" "" 					
+	
+		"ArmorPhysical" "4" 		
+		"MagicalResistance" "25"	
+	
+		"precache"
+		{
+			"particle" "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_base_attack.vpcf"
+		}
+	
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "11" 
+		"AttackDamageMax" "33" 
+		"AttackRate" "1.85" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "250" 
+	
+		"ProjectileModel"   "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_base_attack.vpcf"
+		"ProjectileSpeed"   "1800"
+	
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"19"										
+		"AttributeStrengthGain"		"3"										
+		"AttributeBaseIntelligence"	"11"										
+		"AttributeIntelligenceGain"	"2"										
+		"AttributeBaseAgility"		"5"										
+		"AttributeAgilityGain"		"2"	
+				
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+	
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "245" 
+		"MovementTurnRate" "0.5" 
+	
+		"StatusHealth" "460" 
+		"StatusHealthRegen" "1.2" 
+		"StatusMana" "75" 
+		"StatusManaRegen" "0.05"
+	
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+		"VisionDaytimeRange" "900" 
+		"VisionNighttimeRange" "800" 
+	
+		"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_android.txt
+
+
 	//Start of file npc_lia_hero_araman.txt
 	"npc_lia_hero_araman"
 	{
@@ -61,6 +128,66 @@
 	"HasInventory" "1" 
 	}
 	//End of file npc_lia_hero_araman.txt
+
+
+	//Start of file npc_lia_hero_archer.txt
+	"npc_lia_hero_archer"
+	{
+	"override_hero"				"npc_dota_hero_drow_ranger"
+	
+				
+	"Ability1" "berserker_fire_spear"	
+	"Ability2" "berserker_frenzy_aura" 		
+	"Ability3" "berserker_desperation" 	
+	"Ability4" "berserker_madness" 					
+	"Ability5" "attribute_bonuses" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "1" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "12" 
+	"AttackDamageMax" "20" 
+	"AttackRate" "1.8" 
+	"AttackAnimationPoint" "0.7" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "550" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"		"4"										
+	"AttributeStrengthGain"		"2.3"										
+	"AttributeBaseIntelligence"	"8"										
+	"AttributeIntelligenceGain"	"2.2"										
+	"AttributeBaseAgility"		"23"										
+	"AttributeAgilityGain"		"3.1"	
+	
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "275" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "500"
+	"StatusHealthRegen" "1" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_archer.txt
 
 
 	//Start of file npc_lia_hero_berserker.txt
@@ -307,6 +434,128 @@
 	//End of file npc_lia_hero_dice.txt
 
 
+	//Start of file npc_lia_hero_earth_lord.txt
+	"npc_lia_hero_earth_lord"
+	{
+	"override_hero"				"npc_dota_hero_warlock"
+			
+	
+		
+	"Ability1" "earth_lord_earth_burn"	
+	"Ability2" "earth_lord_split_earth" 		
+	"Ability3" "earth_lord_stone_skin" 	
+	"Ability4" "earth_lord_might_of_the_earth" 					
+	"Ability5" "attribute_bonuses" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "0" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "12" 
+	"AttackDamageMax" "21" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.53" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "450" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength"		"6"										
+	"AttributeStrengthGain"		"2.2"										
+	"AttributeBaseIntelligence"	"22"										
+	"AttributeIntelligenceGain"	"3"										
+	"AttributeBaseAgility"		"7"										
+	"AttributeAgilityGain"		"2.1"	
+	
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "245" 
+	"MovementTurnRate" "0.6" 
+	
+	"StatusHealth" "500"
+	"StatusHealthRegen" "1.15" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_earth_lord.txt
+
+
+	//Start of file npc_lia_hero_frost_lord.txt
+	"npc_lia_hero_frost_lord"
+	{
+	"override_hero"				"npc_dota_hero_lich"		
+	
+	"AbilityLayout"               "4"	
+	"Ability1" "frost_lord_frost_breath"	
+	"Ability2" "frost_lord_cold"		
+	"Ability3" "witch_doctor_discharge" 	
+	"Ability4" "frost_lord_ice" 					
+	"Ability5" "attribute_bonuses" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "0" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "11" 
+	"AttackDamageMax" "23" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.46" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "575" 
+	
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength"		"9"										
+	"AttributeStrengthGain"		"2.1"										
+	"AttributeBaseIntelligence"	"18"										
+	"AttributeIntelligenceGain"	"3.15"										
+	"AttributeBaseAgility"		"8"										
+	"AttributeAgilityGain"		"2.2"	
+	
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "260" 
+	"MovementTurnRate" "0.5" 
+	
+	"StatusHealth" "525"
+	"StatusHealthRegen" "1.15" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_frost_lord.txt
+
+
 	//Start of file npc_lia_hero_general.txt
 	"npc_lia_hero_general"
 	{
@@ -430,7 +679,7 @@
 	{
 		"override_hero"				"npc_dota_hero_tiny"
 	
-		"ModelScale"				"1.1"
+		"ModelScale"				"1.4"
 	
 		"Ability1" "akron_explosion"	
 		"Ability2" "akron_immolation" 		
@@ -906,6 +1155,7 @@
 		{
 		"override_hero"				"npc_dota_hero_skywrath_mage"
 	
+		"AbilityLayout"               "4"
 		"Ability1" "paladin_blizzard"	
 		"Ability2" "paladin_grace" 		
 		"Ability3" "paladin_elect" 	
@@ -1573,4 +1823,65 @@
 		"HasInventory" "1" 
 		}
 	//End of file npc_lia_hero_warrior_of_light.txt
+
+
+	//Start of file npc_lia_hero_witch_doctor.txt
+	"npc_lia_hero_witch_doctor"
+	{
+	"override_hero"				"npc_dota_hero_shadow_shaman"		
+	
+	"AbilityLayout"               "4"	
+	"Ability1" "witch_doctor_negative_energy"	
+	"Ability2" "witch_doctor_frost_armor"		
+	"Ability3" "witch_doctor_discharge" 	
+	"Ability4" "witch_doctor_regeneration" 					
+	"Ability5" "attribute_bonuses" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "0" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "15" 
+	"AttackDamageMax" "35" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "575" 
+	
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength"		"8"										
+	"AttributeStrengthGain"		"2"										
+	"AttributeBaseIntelligence"	"20"										
+	"AttributeIntelligenceGain"	"3"										
+	"AttributeBaseAgility"		"7"										
+	"AttributeAgilityGain"		"2.3"	
+	
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "250" 
+	"MovementTurnRate" "0.4" 
+	
+	"StatusHealth" "525"
+	"StatusHealthRegen" "1.15" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_witch_doctor.txt
 }

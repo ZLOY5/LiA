@@ -2499,6 +2499,7 @@
 							"Center"	"TARGET"
 							"Radius"	"%radius"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 						}
 						"Damage"	"%bonus_damage"
@@ -4778,15 +4779,7 @@
 						"Function"		"OnCreatedModifier"
 						"stat_percent"	"%stat_percent"
 					}
-				}  
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items\LunarNecklace.lua"
-						"Function"		"OnDestroyModifier"
-					}
-				}  
+				}   
 			}
 		}
 		"AbilitySpecial"
@@ -5756,6 +5749,7 @@
 							"Center"	"TARGET"
 							"Radius"	"%radius"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 						}
 						"Damage"	"%bonus_damage"
@@ -7448,7 +7442,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_item_shield_of_death_armor"
-				"Target" "CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}		
 	
 			"Damage"
@@ -7488,7 +7486,7 @@
 		
 			}
 			
-					"modifier_item_shield_of_death_armor"
+			"modifier_item_shield_of_death_armor"
 			{
 				"Passive"				"0"
 				"IsHidden"				"0"
@@ -7497,7 +7495,8 @@
 				"IsPurgable"			"1"
 				"TextureName"			"item_lia_shield_of_death"
 				"Duration"				"%duration"
-				
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%active_armor"
@@ -7731,11 +7730,11 @@
 					"var_type" 						"FIELD_INTEGER"
 					"bonus_int" 					"30"
 				}
-				"03"
-				{
-					"var_type" 						"FIELD_FLOAT"
-					"aura_health_regen_percentage" 		"1.50"
-				}
+				//"03"
+				//{
+				//	"var_type" 						"FIELD_FLOAT"
+				//	"aura_health_regen_percentage" 		"1.50"
+				//}
 				"04"
 				{
 					"var_type" 						"FIELD_INTEGER"
@@ -7756,11 +7755,11 @@
 					"var_type" 						"FIELD_INTEGER"
 					"damage" 						"300"
 				}
-				"08"
-				{
-					"var_type" 						"FIELD_INTEGER"
-					"auraRadius" 						"1000"
-				}
+				//"08"
+				//{
+				//	"var_type" 						"FIELD_INTEGER"
+				//	"auraRadius" 						"1000"
+				//}
 		
 			}
 			
@@ -7877,21 +7876,21 @@
 						"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_int"
 				    }  
 		
-					"Aura" 			"item_lia_spherical_staff_modifier_aura"
-		    		"Aura_Radius" 	"%auraRadius"
-		    		"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		    		"Aura_Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					//"Aura" 			"item_lia_spherical_staff_modifier_aura"
+		    		//"Aura_Radius" 	"%auraRadius"
+		    		//"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		    		//"Aura_Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
-				"item_lia_spherical_staff_modifier_aura"
-				{
-					"IsHidden"		"0"
-					"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-		
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%aura_health_regen_percentage"   
-					}
-				}
+				//"item_lia_spherical_staff_modifier_aura"
+				//{
+				//	"IsHidden"		"0"
+				//	//"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				//
+				//	"Properties"
+				//	{
+				//		"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%aura_health_regen_percentage"   
+				//	}
+				//}
 			}
 			
 		}
@@ -8889,7 +8888,7 @@
 				"IsBuff"			"1"
 				"IsDebuff"			"0"
 				"IsPurgable"		"1"
-				
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"
@@ -8992,7 +8991,7 @@
 				"IsBuff"			"1"
 				"IsDebuff"			"0"
 				"IsPurgable"		"1"
-				
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"

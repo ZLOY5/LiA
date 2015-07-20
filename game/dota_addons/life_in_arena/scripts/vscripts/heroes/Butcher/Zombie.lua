@@ -12,7 +12,7 @@ function SpawnZombie(event)
 		--точку спавна устанавливаем позади героя
 		local spawnLoc = caster:GetAbsOrigin()-caster:GetForwardVector()*75 
 
-		local zombie = CreateUnitByName(unit_name[level], spawnLoc, true, caster, nil, caster:GetTeamNumber())
+		local zombie = CreateUnitByName(unit_name[level], spawnLoc, true, caster, caster, caster:GetTeamNumber())
 		zombie:SetControllableByPlayer(caster:GetPlayerID(), true)
 		ability:ApplyDataDrivenModifier(caster, zombie, "modifier_butcher_zombie_death", nil) 
 

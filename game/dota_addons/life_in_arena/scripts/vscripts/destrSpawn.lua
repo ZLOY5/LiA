@@ -1,6 +1,7 @@
 require('timers')
 
 function Spawn(entityKeyValues)
+	thisEntity.destructable = 1
 	thisEntity:FindAbilityByName("barrel_no_health_bar"):SetLevel(1)
 	if thisEntity:GetUnitName() == "barricades" or thisEntity:GetUnitName() == "arena_rock" then
 		thisEntity:SetHullRadius(40)
