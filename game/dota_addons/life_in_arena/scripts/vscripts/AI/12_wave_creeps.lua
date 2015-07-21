@@ -16,7 +16,7 @@ function Think12WaveCreeps()
 		return 1
 	end
 
-	AICreepsAttackOneUnit({unit = thisEntity})
+	--AICreepsAttackOneUnit({unit = thisEntity})
 	--print(LiA.AICreepCasts)
 		
 	if ABILITY_12_wave_stomp:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
