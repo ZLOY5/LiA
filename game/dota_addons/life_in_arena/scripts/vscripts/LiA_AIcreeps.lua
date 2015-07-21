@@ -64,10 +64,11 @@
 			and/or --"vscripts" in used units if can it do
 		4. if need --"PathfindingSearchDepthScale"	"0.22"
 		
-		HOW its work for 1,2,3 wave
+		NOW its work for 1,2,3 wave
 	 
 	 
 ]]
+
 
 tCreeps1 = {} -- for creeps LEFT
 tCreeps2 = {} -- for creeps TOP
