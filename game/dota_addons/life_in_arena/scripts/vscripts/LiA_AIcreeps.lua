@@ -21,7 +21,7 @@
 	- in function LiA:SpawnWave()  
 			in, after create units:
 +				LiA:AICreepsInsertToTable({addUnit1 = unit1, addUnit2 = unit2})
-		(delete) LiA:AICreepsInsertToTable({addUnit1 = boss1, addUnit2 = boss2})
+		LiA:AICreepsInsertToTable({addUnit1 = boss1, addUnit2 = boss2})
 		
 	- IsWave = false
 		function LiA:SpawnWave() 
@@ -31,7 +31,7 @@
 		
 		
 	- function LiA:OnEntityKilled(keys)
-		(delete) in two place:
+		in two place:
 		only creeps where
 		nDeathCreeps = nDeathCreeps + 1
 +		--
@@ -49,6 +49,7 @@
 +		"VisionDaytimeRange" "800" 
 		"VisionNighttimeRange" "800" 
 		
++		delete from bosses KV cast
 		
 		
 	 Also make:
@@ -65,6 +66,8 @@
 		4. if need --"PathfindingSearchDepthScale"	"0.22"
 		
 		NOW its work for 1,2,3 wave
+			(disable)
+	 
 	 
 	 
 ]]

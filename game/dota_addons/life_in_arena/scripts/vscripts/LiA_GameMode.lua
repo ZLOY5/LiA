@@ -275,6 +275,8 @@ function LiA:OnEntityKilled(keys)
         end
     elseif ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
         nDeathCreeps = nDeathCreeps + 1
+		--LiA_AIcreeps
+		LiA:AICreepsRemoveFromTable({removeUnit = ent})
         if ownedHeroAtt then
             ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
             ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
@@ -320,6 +322,10 @@ function LiA:SpawnWave()
     
     boss1 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     boss2 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+	--
+	--LiA_AIcreeps
+	LiA:AICreepsInsertToTable({addUnit1 = boss1, addUnit2 = boss2})
+	--
 	ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss1)
 	ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss2)
 	boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
