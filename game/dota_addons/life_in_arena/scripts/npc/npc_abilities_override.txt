@@ -6839,27 +6839,27 @@
 	      "var_type"      "FIELD_INTEGER"
 	      "damage"    "100 250 400"
 	    }
-	    "01"
+	    "02"
 	    {
 	      "var_type"      "FIELD_INTEGER"
 	      "movement_slow"    "-50"
 	    }
-	    "02"
+	    "03"
 	    {
 	      "var_type"      "FIELD_FLOAT"
 	      "slow_duration"  "4"
 	    }
-	    "02"
+	    "04"
 	    {
 	      "var_type"      "FIELD_FLOAT"
 	      "duration"  "3 4 5"
 	    }
-	    "03"
+	    "05"
 	    {
 	      "var_type"      "FIELD_INTEGER"
 	      "radius"      "500"
 	    }
-	    "03"
+	    "06"
 	    {
 	      "var_type"      "FIELD_INTEGER"
 	      "damage_radius"      "190"
@@ -6886,7 +6886,7 @@
 			{
 			 "Target"
 			 {
-			  "Center" "TARGET" //мб TARGET нужно
+			  "Center" "TARGET" 
 			  "Radius" "%radius"
 		      "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
 		      "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -6895,30 +6895,11 @@
 			 }
 			 "Action"
 			 {
-			  "Damage"
+			  "RunScript"
 			  {
-			   "Target"
-			   {
-			    "Center" "TARGET"
-			    "Radius" "%damage_radius"
-		        "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			   }
-			   "Damage" "%damage"
-			   "Type"  "DAMAGE_TYPE_MAGICAL"
-			  }
-	
-			  "ApplyModifier"
-			  {
-			  	"ModifierName"	"modifier_modifier_frost_lord_ice_damage"
-			  	"Target"
-			   {
-			    "Center" "TARGET"
-			    "Radius" "%damage_radius"
-		        "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			   }
-			  	"Duration"		"%slow_duration"
+			  	"ScriptFile"	"heroes/FrostLord/Ice.lua"
+			  	"Function"		"Ice"
+			  	"Target"		"TARGET"
 			  }
 			  "FireEffect"
 			  {
@@ -6959,6 +6940,7 @@
 	    	"IsDebuff"	"1"
 	    	"StatusEffectName" 		"particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf" 	   
 	    	"StatusEffectPriority"  "10"
+	    	"Duration"	"%slow_duration"
 	    	"Properties"
 	    	{
 	    	    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_slow" 
