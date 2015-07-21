@@ -12761,7 +12761,7 @@
 
 
 	//Start of file npc_lia_hero_serpent_queen.txt
-	"crypt_lord_locust_swarm"
+	"serpent_queen_ball_lightning"
 	{
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"storm_spirit_ball_lightning"
@@ -12835,7 +12835,7 @@
 			"09"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"locust_heal_threshold"	"100	0"	//The amount of physical damage that needs to be done to return and heal the caster
+				"locust_heal_threshold"	"1000"	//The amount of physical damage that needs to be done to return and heal the caster
 			}
 			"10"
 			{
@@ -12855,7 +12855,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_locust_swarm"
-				"Target" 		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"		"%duration"
 			}
 	
@@ -12870,6 +12874,7 @@
 		{
 			"modifier_locust_swarm"
 			{	
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"OnCreated"
 				{
 					"RunScript"
@@ -12976,7 +12981,11 @@
 			"ApplyModifier"
 			{
 			"ModifierName" "modifier_serpent_queen_heavenly_power"
-			"Target"	"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"	"%duration"
 			}
 	
@@ -12986,6 +12995,7 @@
 		{
 			"modifier_serpent_queen_heavenly_power"
 			{
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
@@ -13117,6 +13127,11 @@
 				"var_type"			"FIELD_INTEGER"
 				"radius"	"1000"
 			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"	"20 25 30"
+			}
 		}
 	
 		"OnSpellStart"
@@ -13129,6 +13144,7 @@
 	                "Radius" "%radius"
 	                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
 	                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 	
 				"Action"
@@ -13156,7 +13172,7 @@
 			{
 				"IsBuff"	"1"
 				"Duration"	"%AbilityDuration"
-	
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
 				"EffectAttachType"	"follow_origin"
 	
