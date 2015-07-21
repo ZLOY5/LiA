@@ -83,9 +83,9 @@ function Survival:ExperienceFilter(filterTable)
         return false
     end
 
-    local expMultiplier = self.flExpFix[self.nHeroCount] -- коррекция получаемого опыта зависимо от кол-ва героев в игре
+    local expMultiplier = self.flExpFix[self.nHeroCount] -- коррекция получаемого опыта в зависимости от кол-ва героев в игре
     
-    if self.IsExtreme then --множитель опыта для экстрима и лайта
+    if self.IsExtreme then --множители опыта для экстрима или лайта
         expMultiplier = expMultiplier + self.flExtremeExpMultiplier
     elseif self.IsLight then
         expMultiplier = expMultiplier + self.flLightExpMultiplier
@@ -98,7 +98,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        self.nRoundNum = 19
+        --self.nRoundNum = 19
         Survival:PrepareNextRound()
     end
 end
