@@ -535,11 +535,11 @@ function AICreepsAttackEachUnit(params)
 	if length < range+300 then
 		--print("1")
 		unit:MoveToTargetToAttack(target)
-	elseif length < range+600 then
+	else--if length < range+600 then
 			--print("2")
 			--unit:MoveToNPC(target)
-			unit:MoveToPosition(absTarget)
-		else
+		--	  unit:MoveToPosition(absTarget)
+		--else
 			--print("3")
 			unit:MoveToPositionAggressive(absTarget)
 		--

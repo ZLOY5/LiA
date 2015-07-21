@@ -1,7 +1,7 @@
 require('LiA_AIcreeps')
 
 function Spawn(entityKeyValues)
-	thisEntity:SetContextThink( "attack_wave_only", ThinkAllWave , 1)
+	thisEntity:SetContextThink( "attack_wave_only", ThinkAllWave , 0.1)
 end
 
 function ThinkAllWave()
