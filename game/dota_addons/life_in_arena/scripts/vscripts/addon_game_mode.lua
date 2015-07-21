@@ -6,6 +6,7 @@ require('timers')
 require('timerPopup')
 require('luaCommand')
 require('checkitemmodifies')
+require('physics')
 
 function Activate()
 	GameRules.LiA = LiA()

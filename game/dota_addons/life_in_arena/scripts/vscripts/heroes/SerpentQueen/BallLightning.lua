@@ -53,8 +53,7 @@ function LocustSwarmPhysics( event )
 	local give_up_distance = ability:GetLevelSpecialValueFor( "give_up_distance", ability:GetLevel() - 1 )
 	local abilityDamageType = ability:GetAbilityDamageType()
 	local abilityTargetType = ability:GetAbilityTargetType()
-	local particleName = "particles/units/heroes/hero_weaver/weaver_base_attack_explosion.vpcf"
-	local particleNameHeal = "particles/units/heroes/hero_nyx_assassin/nyx_assassin_vendetta_start_sparks_b.vpcf"
+	local particleName = "particles/units/heroes/hero_stormspirit/stormspirit_base_attack_explosion.vpcf"
 
 	-- Make the locust a physics unit
 	Physics:Unit(unit)
@@ -273,12 +272,6 @@ function LocustSwarmPhysics( event )
 			if collision then 
 				unit.state = "acquiring"
 
-				caster:Heal(locust_heal_threshold, ability)
-				print("Healed")
-
-				-- Heal particle
-				local particle = ParticleManager:CreateParticle(particleNameHeal, PATTACH_ABSORIGIN_FOLLOW, caster)
-				ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
 
 				-- Reset the damage done
 				unit.damage_done = 0
