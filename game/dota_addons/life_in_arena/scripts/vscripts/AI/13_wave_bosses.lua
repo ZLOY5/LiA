@@ -2,12 +2,12 @@ require('LiA_AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
-	ABILILTY_12_wave_stomp = thisEntity:FindAbilityByName("12_wave_stomp")
+	ABILITY_13_wave_hurl_boulder = thisEntity:FindAbilityByName("13_wave_hurl_boulder")
 
-	thisEntity:SetContextThink( "12_wave_think", Think12Wave , 1)
+	thisEntity:SetContextThink( "13_wave_think", Think13Wave , 0.1)
 end
 
-function Think12Wave()
+function Think13Wave()
 	if not thisEntity:IsAlive() then
 		return nil 
 	end
@@ -16,24 +16,24 @@ function Think12Wave()
 		return 1
 	end
 
-	--AICreepsAttackOneUnit({unit = thisEntity})
+	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(LiA.AICreepCasts)
 		
-	if ABILILTY_12_wave_stomp:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
+	if ABILITY_13_wave_hurl_boulder:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
-						  250, 
+						  600, 
 						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
-						  DOTA_UNIT_TARGET_ALL - DOTA_UNIT_TARGET_BUILDING, 
+						  DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
 						  DOTA_UNIT_TARGET_FLAG_NONE, 
 						  FIND_ANY_ORDER, 
 						  false)
-		--print(#targets)
 		if #targets ~= 0 then
-			thisEntity:CastAbilityNoTarget(ABILILTY_12_wave_stomp, -1)
+			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_13_wave_hurl_boulder, -1)
 			LiA.AICreepCasts = LiA.AICreepCasts + 1
 		end
-	end
+	end	
+	
 	return 1
 end

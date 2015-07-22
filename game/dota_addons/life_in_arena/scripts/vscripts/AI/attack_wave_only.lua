@@ -1,7 +1,7 @@
 require('LiA_AIcreeps')
 
 function Spawn(entityKeyValues)
-	thisEntity:SetContextThink( "attack_wave_only", ThinkAllWave , 1)
+	thisEntity:SetContextThink( "attack_wave_only", ThinkAllWave , 0.1)
 end
 
 function ThinkAllWave()
@@ -11,6 +11,6 @@ function ThinkAllWave()
 	if GameRules:IsGamePaused() then
 		return 1
 	end
-	--AICreepsAttackOneUnit({unit = thisEntity})
+	AICreepsAttackOneUnit({unit = thisEntity})
 	return 1
 end

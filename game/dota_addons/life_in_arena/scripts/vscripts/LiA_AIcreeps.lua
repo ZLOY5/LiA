@@ -21,7 +21,7 @@
 	- in function LiA:SpawnWave()  
 			in, after create units:
 +				LiA:AICreepsInsertToTable({addUnit1 = unit1, addUnit2 = unit2})
-		(delete) LiA:AICreepsInsertToTable({addUnit1 = boss1, addUnit2 = boss2})
+		LiA:AICreepsInsertToTable({addUnit1 = boss1, addUnit2 = boss2})
 		
 	- IsWave = false
 		function LiA:SpawnWave() 
@@ -31,7 +31,7 @@
 		
 		
 	- function LiA:OnEntityKilled(keys)
-		(delete) in two place:
+		in two place:
 		only creeps where
 		nDeathCreeps = nDeathCreeps + 1
 +		--
@@ -49,6 +49,7 @@
 +		"VisionDaytimeRange" "800" 
 		"VisionNighttimeRange" "800" 
 		
++		delete from bosses KV cast (agressionRange = 0, so can not do it)
 		
 		
 	 Also make:
@@ -63,8 +64,12 @@
 		3. in comment AICreepsAttackOneUnit({unit = thisEntity}) in files in papka AI
 			and/or --"vscripts" in used units if can it do
 		4. if need --"PathfindingSearchDepthScale"	"0.22"
+		. (not actual) uncomment spell cast bosses in normal_mode_bosses
 		
-		NOW its work for 1,2,3 wave
+		NOW its work for 1,2,3,4 wave
+		12 wave 		--AICreepsAttackOneUnit({unit = thisEntity})
+			(enable)
+	 
 	 
 	 
 ]]
@@ -535,11 +540,11 @@ function AICreepsAttackEachUnit(params)
 	if length < range+300 then
 		--print("1")
 		unit:MoveToTargetToAttack(target)
-	elseif length < range+600 then
+	else--if length < range+600 then
 			--print("2")
 			--unit:MoveToNPC(target)
-			unit:MoveToPosition(absTarget)
-		else
+		--	  unit:MoveToPosition(absTarget)
+		--else
 			--print("3")
 			unit:MoveToPositionAggressive(absTarget)
 		--
