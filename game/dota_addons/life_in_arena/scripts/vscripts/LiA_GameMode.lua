@@ -749,7 +749,7 @@ function EndDuel(winner,loser)
     HeroOnDuel1 = nil
     HeroOnDuel2 = nil
 
-    if DuelNumber < math.floor(nPlayers / 2) then
+    if DuelNumber < math.floor(nHeroCount / 2) then
         DuelNumber = DuelNumber + 1
         local firstHero = GetHeroToDuel()
         local secondHero = GetHeroToDuel()
