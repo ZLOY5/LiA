@@ -16,7 +16,7 @@ function Think12Wave()
 		return 1
 	end
 
-	AICreepsAttackOneUnit({unit = thisEntity})
+	--AICreepsAttackOneUnit({unit = thisEntity})
 	--print(LiA.AICreepCasts)
 		
 	if ABILITY_12_wave_bloodlust:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
