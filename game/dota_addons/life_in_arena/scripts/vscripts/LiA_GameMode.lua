@@ -308,7 +308,8 @@ function LiA:SpawnWave()
         GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
         return   
     end
-    
+	--LiA_AIcreeps
+    LiA:AICreepsDefault()
 	IsWave = true
 	
     LiA.nHeroCountCreepsSpawned = nHeroCount --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)

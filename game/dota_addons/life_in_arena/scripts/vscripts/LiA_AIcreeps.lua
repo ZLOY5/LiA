@@ -61,8 +61,10 @@
 		force disable system (not full, but minimum need)
 		1. LiA_GameMode in comment --GameMode:SetThink("onThinkAIcreepsUpdate", self)
 		2. npc_units "AttackAcquisitionRange" "0" replace "AttackAcquisitionRange" "10000" 
+				now: 4 waves*2 type units = 8 positions
 		3. in comment AICreepsAttackOneUnit({unit = thisEntity}) in files in papka AI
 			and/or --"vscripts" in used units if can it do
+				now: 1_wave_bosses.lua, 2_wave_bosses.lua, 3_wave_bosses.lua, 4_wave_bosses.lua
 		4. if need --"PathfindingSearchDepthScale"	"0.22"
 		. (not actual) uncomment spell cast bosses in normal_mode_bosses
 		
@@ -81,6 +83,13 @@ tCreeps2 = {} -- for creeps TOP
 --tBoss2 = nil
 tHeroTarget = {} -- targets for tCreeps1 and tCreeps2
 --tTargetParams = {{}} -- for find hero
+
+
+function LiA:AICreepsDefault()
+	tCreeps1 = {}
+	tCreeps2 = {}
+	tHeroTarget = {}
+end
 
 
 
@@ -505,8 +514,8 @@ function AICreepsAttackEachUnit(params)
 	end
 	--
 	--local length = GridNav:FindPathLength(absTarget,absUnit)
-	local length = MyFindPathLength({abs1 = absTarget, abs2 = absUnit})
-	local range = unit:GetAttackRange()
+	--local length = MyFindPathLength({abs1 = absTarget, abs2 = absUnit})
+	--local range = unit:GetAttackRange()
 	-- if unit cant move then nothing do
 	--if not GridNav:CanFindPath( absUnit,absTarget ) then
 	--if not GridNav:IsTraversable(absTarget) then
@@ -537,19 +546,21 @@ function AICreepsAttackEachUnit(params)
 		end
 		unit:Interrupt()
 	end
-	if length < range+300 then
+	--if length < range+300 then
 		--print("1")
-		unit:MoveToTargetToAttack(target)
-	else--if length < range+600 then
+	--	unit:MoveToTargetToAttack(target)
+	--else--if length < range+600 then
 			--print("2")
 			--unit:MoveToNPC(target)
 		--	  unit:MoveToPosition(absTarget)
 		--else
 			--print("3")
-			unit:MoveToPositionAggressive(absTarget)
+	local fv = target:GetForwardVector()
+    local front_position = absTarget + fv * 100
+			unit:MoveToPositionAggressive(front_position)
 		--
 		
-	end
+	--end
 end
 
 
