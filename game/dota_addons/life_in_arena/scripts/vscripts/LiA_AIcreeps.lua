@@ -49,7 +49,7 @@
 +		"VisionDaytimeRange" "800" 
 		"VisionNighttimeRange" "800" 
 		
-+		delete from bosses KV cast
++		delete from bosses KV cast (agressionRange = 0, so can not do it)
 		
 		
 	 Also make:
@@ -64,9 +64,11 @@
 		3. in comment AICreepsAttackOneUnit({unit = thisEntity}) in files in papka AI
 			and/or --"vscripts" in used units if can it do
 		4. if need --"PathfindingSearchDepthScale"	"0.22"
+		. (not actual) uncomment spell cast bosses in normal_mode_bosses
 		
-		NOW its work for 1,2,3 wave
-			(disable)
+		NOW its work for 1,2,3,4 wave
+		12 wave 		--AICreepsAttackOneUnit({unit = thisEntity})
+			(enable)
 	 
 	 
 	 

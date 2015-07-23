@@ -11,6 +11,6 @@ function ThinkAllWave()
 	if GameRules:IsGamePaused() then
 		return 1
 	end
-	--AICreepsAttackOneUnit({unit = thisEntity})
+	AICreepsAttackOneUnit({unit = thisEntity})
 	return 1
 end

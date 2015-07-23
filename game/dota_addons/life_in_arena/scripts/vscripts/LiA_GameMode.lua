@@ -83,7 +83,7 @@ function LiA:InitGameMode()
     GameMode:SetBuybackEnabled(false)
     GameMode:SetThink("onThink", self)
 	--LiA_AIcreeps
-	--GameMode:SetThink("onThinkAIcreepsUpdate", self)
+	GameMode:SetThink("onThinkAIcreepsUpdate", self)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
     GameMode:SetLoseGoldOnDeath(false)
