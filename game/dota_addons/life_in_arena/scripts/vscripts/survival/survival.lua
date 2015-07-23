@@ -46,13 +46,18 @@ function Survival:InitSurvival()
 
     self.flExpFix = {0.8, 0.9, 1., 1.1, 1.2, 1.3, 1.4, 1.5}
     
-    self.flExtremeExpMultiplier = -0.3
-    self.flLightExpMultiplier = 0.2
-
     self.IsAllRandom = false
     self.IsExtreme = false
     self.IsLight = false
 
+    self.flExtremeExpMultiplier = -0.3
+    self.flLightExpMultiplier = 0.2
+
+    self.flExtremeGoldMultiplier = -0.3
+    self.flLightGoldMultiplier = 0.8
+
+    self.nEqualGoldPool = 0
+    
 	self.nPreRoundTime = 60
 	self.nPreDuelTime = 30
     self.nDuelTime = 120
@@ -219,40 +224,62 @@ function Survival:_TeleportHeroesWithoutBossArena()
     end)
 end
 
+function Survival:_GiveRoundBounty()
+    local goldBounty = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
+    local lumberBounty = 3 + self.nRoundNum
+
+    if self.IsExtreme then
+        goldBounty = goldBounty * (1 + self.flExtremeGoldMultiplier)
+    else if self.IsLight then
+        goldBounty = goldBounty * (1 + self.flLightGoldMultiplier)
+    end
+
+    if self.nRoundNum % 5 == 0 then
+        goldBounty = goldBounty + (self.nRoundNum * 40)
+        lumberBounty = lumberBounty + 5
+    end
+
+    if self.IsEqualGold then
+        goldBounty = goldBounty + (self.nEqualGoldPool / self.nHeroCount)
+    end
+
+    DoWithAllHeroes(function(hero)
+        hero:ModifyGold(goldBounty, false, DOTA_ModifyGold_Unspecified)
+        hero.lumber = hero.lumber + lumberBounty
+    end)
+end
+
 function Survival:EndRound()
     self.nDeathCreeps = 0
     self.nDeathHeroes = 0
     
-    CleanUnitsOnMap()
-
-    nPlayersReady = 0
-    for _,player in pairs(LiA.tPlayers) do
-        player.readyToWave = false
-    end
-    
-    local GoldAdd = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
-    DoWithAllHeroes(function(hero)
-        if hero:IsAlive() then
-            hero:Purge(false, true, false, true, false)
-            hero:Heal(9999,hero)
-            hero:GiveMana(9999)
-        end
-        hero:SetGold(hero:GetGold()+GoldAdd, false)
-        hero.lumber = hero.lumber + 3 + self.nRoundNum
-        --FireGameEvent('cgm_player_lumber_changed', { player_ID = hero:GetPlayerID(), lumber = hero.lumber })
-    end)
-    Timers:CreateTimer(0.5,function() 
-        RespawnAllHeroes()
-    end)  
-
     Timers:CreateTimer(1,function()
+        CleanUnitsOnMap()
+
+        nPlayersReady = 0
+        for _,player in pairs(LiA.tPlayers) do
+            player.readyToWave = false
+        end
+
+        Survival:_GiveRoundBounty()
+        
+        DoWithAllHeroes(function(hero)
+            if hero:IsAlive() then
+                hero:Purge(false, true, false, true, false)
+                hero:Heal(9999,hero)
+                hero:GiveMana(9999)
+            end
+        end)
+    
+        RespawnAllHeroes() 
+
         if Survival.State == SURVIVAL_STATE_ROUND_MEGABOSS then
             Survival:_TeleportHeroesWithoutBossArena()
         end
+
         EnableShop()
         Survival:PrepareNextRound()
-        end
-    )
+    end)
 end
 
 function Survival:_TimerMessage()
@@ -343,6 +370,14 @@ function Survival:_SpawnWave()
     boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
     boss2:EmitSound("DOTA_Item.BlinkDagger.Activate")
      
+    if self.IsEqualGold then
+        self.nEqualGoldPool = self.nEqualGoldPool + boss1:GetGoldBounty()*2
+        boss1:SetMinimumGoldBounty(0)
+        boss2:SetMinimumGoldBounty(0)
+        boss1:SetMaximumGoldBounty(0)
+        boss2:SetMaximumGoldBounty(0)
+    end
+
     local spawnCount = 0
     
     local all_time = 2.0
@@ -358,6 +393,15 @@ function Survival:_SpawnWave()
             unit1:EmitSound("DOTA_Item.BlinkDagger.Activate")
             unit2:EmitSound("DOTA_Item.BlinkDagger.Activate")
             --particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf
+            
+            if self.IsEqualGold then
+                self.nEqualGoldPool = unit1:GetGoldBounty()*2
+                unit1:SetMinimumGoldBounty(0)
+                unit2:SetMinimumGoldBounty(0)
+                unit1:SetMaximumGoldBounty(0)
+                unit2:SetMaximumGoldBounty(0)
+            end
+
             spawnCount = spawnCount + 1
             if spawnCount == self.nWaveSpawnCount[self.nHeroCountCreepsSpawned] then
                 return nil
