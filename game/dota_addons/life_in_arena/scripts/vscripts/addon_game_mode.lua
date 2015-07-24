@@ -1,10 +1,16 @@
 require('LiA_GameMode')
 require('LiA_Common')
 require('LiA_ForceRound')
+require('LiA_AIcreeps')
 require('timers')
 require('timerPopup')
 require('luaCommand')
+<<<<<<< HEAD
 --require('checkitemmodifies')
+=======
+require('checkitemmodifies')
+require('physics')
+>>>>>>> origin/master
 
 function Activate()
 	GameRules.LiA = LiA()
