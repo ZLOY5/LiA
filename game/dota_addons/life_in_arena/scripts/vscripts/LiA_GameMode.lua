@@ -39,8 +39,7 @@ function LiA:InitGameMode()
     self.vUserIds = {}
     self.tPlayers = {}
     self.nPlayers = 0
-    self.GameMode = LIA_MODE_SURVIVAL
-
+    
     GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
 	GameRules:SetPreGameTime(0)
@@ -76,7 +75,9 @@ function LiA:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
     --PlayerResource:SetCustomPlayerColor(0, r, g, b )
-  
+    print("DOTA_CONNECTION_STATE_CONNECTED",DOTA_CONNECTION_STATE_CONNECTED)
+    print("DOTA_CONNECTION_STATE_DISCONNECTED",DOTA_CONNECTION_STATE_DISCONNECTED)
+    print("DOTA_CONNECTION_STATE_ABANDONED",DOTA_CONNECTION_STATE_ABANDONED)
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
@@ -89,6 +90,7 @@ end
 
 function LiA:OnGameStateChange()  
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION then
+        self.GameMode = LIA_MODE_SURVIVAL
         Survival:InitSurvival() --пока только так)
     end
     if self.GameMode == LIA_MODE_SURVIVAL then
@@ -111,21 +113,36 @@ function LiA:OnConnectFull(event)
     
     table.insert(self.tPlayers,player)
     self.nPlayers = self.nPlayers + 1  
+
+    if self.GameMode == LIA_MODE_SURVIVAL then
+        Survival:OnConnectFull(event)
+    end
 end
 
 function LiA:OnDisconnect(event)
     PrintTable("OnDisconnect",event)
     local player = self.vUserIds[event.userid]
+    
+    if not player then
+        return 
+    end
+    
     if player.readyToWave then
         player.readyToWave = false
         nPlayersReady = nPlayersReady - 1
     end
+    
     for k,v in pairs(self.tPlayers) do 
         if player == v then
             table.remove(self.tPlayers,k)
         end
     end
+   
     nPlayers = nPlayers - 1
+
+    if self.GameMode == LIA_MODE_SURVIVAL then
+        Survival:OnDisconnect(event)
+    end
 end
 
 function DisableShop()
