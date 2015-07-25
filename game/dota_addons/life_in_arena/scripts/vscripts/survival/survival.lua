@@ -1,10 +1,10 @@
 
 _G.SURVIVAL_STATE_PRE_GAME = 0
 _G.SURVIVAL_STATE_PRE_ROUND_TIME = 1
-_G.SURVIVAL_STATE_ROUND_WAVE = 2
-_G.SURVIVAL_STATE_ROUND_MEGABOSS = 3
-_G.SURVIVAL_STATE_ROUND_FINALBOSS = 4
-_G.SURVIVAL_STATE_PRE_DUEL_TIME = 5
+_G.SURVIVAL_STATE_PRE_DUEL_TIME = 2
+_G.SURVIVAL_STATE_ROUND_WAVE = 3
+_G.SURVIVAL_STATE_ROUND_MEGABOSS = 4
+_G.SURVIVAL_STATE_ROUND_FINALBOSS = 5
 _G.SURVIVAL_STATE_DUEL_TIME = 6
 _G.SURVIVAL_STATE_POST_GAME = 7
 
@@ -27,6 +27,7 @@ end
 require('survival/events')
 require('survival/duels')
 require('survival/finalBoss')
+require('survival/utils')
 
 ------------------------------------------------------------------------------------------------
 
@@ -36,6 +37,9 @@ function Survival:InitSurvival()
 
     self.tHeroes = {}
 	self.nRoundNum = 0
+
+    self.tProrogueHide = {}
+    self.tProrogueUnhide = {}
 
     self.nHeroCount = 0
 	self.nDeathHeroes = 0
@@ -75,6 +79,11 @@ function Survival:InitSurvival()
     local GameMode = GameRules:GetGameModeEntity()
     GameMode:SetThink("onThink", self)
     GameMode:SetFogOfWarDisabled(true)
+
+    for playerID = 0, DOTA_MAX_PLAYERS-1 do
+        PlayerResource:SetGold(playerID, 0, true)
+        PlayerResource:SetGold(playerID, 100, false)
+    end
 
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
 
@@ -215,6 +224,14 @@ function Survival:PrepareNextRound()
 
         PrecacheUnitByNameAsync(tostring(self.nRoundNum).."_wave_creep", function(...) end)
         PrecacheUnitByNameAsync(tostring(self.nRoundNum).."_wave_boss", function(...) end)
+    end
+
+    for k,v in pairs(self.tProrogueHide) do --прячем героев ливеров
+        self:HideHero(v)
+    end
+
+    for k,v in pairs(self.tProrogueUnhide) do
+        self:UnhideHero(v)
     end
 end
 

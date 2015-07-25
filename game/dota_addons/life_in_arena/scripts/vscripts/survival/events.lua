@@ -19,12 +19,11 @@ function Survival:OnPlayerPickHero(keys)
     PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS,true)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
     
-    hero:SetGold(100, false)
     if PlayerResource:HasRandomed(playerID) then
         print(PlayerResource:GetPlayerName(playerID),"randomed hero")
         hero:SetGold(hero:GetGold()+50, false)
     end 
-    --hero:AddNewModifier(hero, nil, "modifier_test_lia", nil)
+    hero:AddNewModifier(hero, nil, "modifier_stats_bonus_fix", nil)
 
 end
 
@@ -107,13 +106,13 @@ end
 ---------------------------------------------------------------------------------------------------------------------------
 
 function Survival:OnConnectFull(event)
-    for playerID = 0,DOTA_MAX_PLAYERS do
+    for playerID = 0,DOTA_MAX_PLAYERS-1 do
         if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             
             if hero then
                 if hero.hidden then
-                    Survival:UnhideHero(hero)
+                    Survival:UnhideHero(hero) --in utils.lua
                 end
             end
         end
@@ -121,13 +120,13 @@ function Survival:OnConnectFull(event)
 end
 
 function Survival:OnDisconnect(event)
-    for playerID = 0,DOTA_MAX_PLAYERS do
+    for playerID = 0,DOTA_MAX_PLAYERS-1 do
         if PlayerResource:GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_CONNECTED then
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             
             if hero then
                 if hero.hidden then
-                    Survival:HideHero(hero)
+                    Survival:HideHero(hero) --in utils.lua
                 end
             end
         end

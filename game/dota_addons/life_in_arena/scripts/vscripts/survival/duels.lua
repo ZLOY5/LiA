@@ -1,6 +1,6 @@
 function Survival:GetHeroToDuel()
     for i = 1, #self.tHeroes do
-        if not self.tHeroes[i].IsDueled and IsValidEntity(self.tHeroes[i]) then
+        if not self.tHeroes[i].IsDueled and IsValidEntity(self.tHeroes[i]) and not hero.hidden then
             self.tHeroes[i].IsDueled = true
             return self.tHeroes[i]
         end

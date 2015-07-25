@@ -9,18 +9,6 @@ function CalcPlayers()
 	return playercounter
 end
 
-function RespawnAllHeroes() 
-	--print("RespawnAllHeroes")
-	DoWithAllHeroes(function(hero)
-		--print("hero",hero:GetUnitName())
-		if not hero:IsAlive() then
-			--print("respawn",hero:GetUnitName())
-			hero:RespawnHero(false,false,false)
-			FindClearSpaceForUnit(hero, hero:GetAbsOrigin(), false)
-		end
-	end)
-end
-
 function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
 	for i = 1, abilities do
@@ -28,21 +16,6 @@ function ResetAllAbilitiesCooldown(unit)
 		if ability and not ability:IsPassive() then
 			ability:EndCooldown()
 		end
-	end
-end
-
-function DoWithAllHeroes(whatDo)
-	if type(whatDo) ~= "function" then
-		print("DoWithAllHeroes:not func")
-		return
-	end
-	--[[print("ALL HEROES")
-	for k,v in pairs(heroes) do
-		print(k,v:GetUnitName(),v:IsIllusion())
-	end
-	print("END")]]
-	for i = 1, #Survival.tHeroes do
-		whatDo(Survival.tHeroes[i])
 	end
 end
 

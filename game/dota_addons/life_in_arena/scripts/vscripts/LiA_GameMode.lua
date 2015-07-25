@@ -8,6 +8,7 @@ require('survival/survival')
 
 ------------------------------------------------------------------------------
 
+LinkLuaModifier( "modifier_stats_bonus_fix", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_hide_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_orn_lua", LUA_MODIFIER_MOTION_NONE )
