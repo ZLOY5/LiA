@@ -75,9 +75,7 @@ function LiA:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
     --PlayerResource:SetCustomPlayerColor(0, r, g, b )
-    print("DOTA_CONNECTION_STATE_CONNECTED",DOTA_CONNECTION_STATE_CONNECTED)
-    print("DOTA_CONNECTION_STATE_DISCONNECTED",DOTA_CONNECTION_STATE_DISCONNECTED)
-    print("DOTA_CONNECTION_STATE_ABANDONED",DOTA_CONNECTION_STATE_ABANDONED)
+
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)

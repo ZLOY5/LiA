@@ -238,7 +238,7 @@ function Survival:_SpawnMegaboss()
     print("Spawn megaboss")
     local boss
     if self.nRoundNum == 20 then
-        boss = CreateUnitByName("orn", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
+        boss = CreateUnitByName("orn_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
         boss:AddNewModifier(boss, nil, "modifier_orn_lua", {duration = -1})
         self.hFinalBoss = boss
     else
