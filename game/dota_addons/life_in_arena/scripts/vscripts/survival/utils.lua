@@ -70,7 +70,7 @@ function DoWithAllHeroes(whatDo)
 		return
 	end
 	for i = 1, #Survival.tHeroes do
-		if not Survival.tHeroes[i].hidden
+		if not Survival.tHeroes[i].hidden then
 			whatDo(Survival.tHeroes[i])
 		end
 	end

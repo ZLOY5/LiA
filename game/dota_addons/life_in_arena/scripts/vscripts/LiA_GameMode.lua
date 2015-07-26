@@ -137,7 +137,7 @@ function LiA:OnDisconnect(event)
         end
     end
    
-    nPlayers = nPlayers - 1
+    self.nPlayers = self.nPlayers - 1
 
     if self.GameMode == LIA_MODE_SURVIVAL then
         Survival:OnDisconnect(event)

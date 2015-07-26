@@ -1,6 +1,6 @@
 function Survival:GetHeroToDuel()
     for i = 1, #self.tHeroes do
-        if not self.tHeroes[i].IsDueled and IsValidEntity(self.tHeroes[i]) and not hero.hidden then
+        if not self.tHeroes[i].IsDueled and IsValidEntity(self.tHeroes[i]) and not self.tHeroes[i].hidden then
             self.tHeroes[i].IsDueled = true
             return self.tHeroes[i]
         end
@@ -129,8 +129,8 @@ function Survival:EndDuel(winner,loser)
     if winner ~= nil then 
         timerPopup:Stop()
         Timers:RemoveTimer("duelExpireTime")
-        winner:ModifyGold(300-50*DuelNumber, false, DOTA_ModifyGold_Unspecified)
-        winner.lumber = winner.lumber + 9 - DuelNumber 
+        winner:ModifyGold(300-50*self.DuelNumber, false, DOTA_ModifyGold_Unspecified)
+        winner.lumber = winner.lumber + 9 - self.DuelNumber 
     else --ничья
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
