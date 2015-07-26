@@ -18,11 +18,11 @@ function LocustSwarmStart( event )
 	print("Spawning "..locusts.." locusts")
 	for i=1,locusts do
 		Timers:CreateTimer(i * delay_between_locusts, function()
-			local unit = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
+			local unit = ability:ApplyDataDrivenThinker(caster,caster:GetAbsOrigin() , "modifier_locust", nil)
 			--unit:SetControllableByPlayer(playerID, true)
 
 			-- The modifier takes care of the logic and particles of each unit
-			ability:ApplyDataDrivenModifier(caster, unit, "modifier_locust", {})
+			--ability:ApplyDataDrivenModifier(caster, unit, "modifier_locust", {})
 			
 			-- Add the spawned unit to the table
 			table.insert(caster.swarm, unit)

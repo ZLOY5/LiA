@@ -10145,206 +10145,182 @@
 							}
 						}
 					}
-	
-	
-	    			}	
+	    		}	
 			}
 		}
-	
-	
-	
-	
-	
 	}
 	
 	
 	
-		"kret_acid"
+	"kret_acid"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			"viper_poison_attack"
+		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+	
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"16.0"
+	
+		"AbilityManaCost"				"40 50 60"	
+	
+		"precache"
 		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"				"ability_datadriven"
-			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"AbilityTextureName"			"viper_poison_attack"
-			"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+			"particle"	"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
+			"particle" 	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+		}
 		
-			
-			"MaxLevel"               "3"
-			"RequiredLevel"          "1"
-			"LevelsBetweenUpgrades"  "2"
-		
-			"AbilityCastRange"				"600"
-			"AbilityCastPoint"				"0.0"
-		
-			"AbilityCooldown"				"16.0"
-		
-			"AbilityManaCost"				"40 50 60"	
-		
-			"precache"
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"particle"	"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
-				"particle" 	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"var_type"				"FIELD_INTEGER"
+				"reduce_armor"				"-6 -8 -10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"main_damage"				"140 280 420"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"other_damage"				"120 240 360"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_ms"				"-25"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"8.0"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick"					"0.5"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_speed"				"1400.0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_vision"				"300.0"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"250"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Huskar.Burning_Spear"
+				"Target" 		"CASTER"
 			}
 			
-			"AbilitySpecial"
+	    	"TrackingProjectile"
+	    	{
+	        		"Target" 			"TARGET"
+	        		"EffectName" 		"particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
+	        		"Dodgeable" 		"1"
+	        		"ProvidesVision" 	"1"
+	        		"VisionRadius" 		"%acid_vision"
+	        		"MoveSpeed" 		"%acid_speed"
+	        		"SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	    	}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "1"
+			"ApplyModifier"
 			{
-				"01"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"reduce_armor"				"-6 -8 -10"
-				}
-				"02"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"main_damage"				"140 280 420"
-				}
-				"03"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"other_damage"				"120 240 360"
-				}
-				"04"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"reduce_ms"				"-25"
-				}
-				"05"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"duration"				"8.0"
-				}
-				"06"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"tick"					"0.5"
-				}
-				"07"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"acid_speed"				"1400.0"
-				}
-				"08"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"acid_vision"				"300.0"
-				}
-				"09"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"radius"				"250"
-				}
+				"ModifierName" 	"modifier_kret_acid_main_target"
+				"Target"		"TARGET"	
 			}
-		
-			"OnSpellStart"
+			
+			"RunScript"
 			{
-				"FireSound"
+				"ScriptFile"	"heroes\Kret\Acid.lua"
+				"Function"		"Acid"
+				"Target"
 				{
-					"EffectName"	"Hero_Huskar.Burning_Spear"
-					"Target" 		"CASTER"
+					"Center"	"TARGET"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
-				//
-	                	"TrackingProjectile"
-	                	{
-	                    		"Target" "TARGET"
-	                    		"EffectName" "particles/units/heroes/hero_viper/viper_poison_attack.vpcf"
-	                    		"Dodgeable" "1"
-	                    		"ProvidesVision" "1"
-	                    		"VisionRadius" "%acid_vision"
-	                    		"MoveSpeed" "%acid_speed"
-	                    		"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-	                	}
+			}				
+		}
 	
-	
-			}
-	
-	    		"OnProjectileHitUnit"
-	    		{
-	        		"DeleteOnHit" "1"
+		"Modifiers"
+		{
+			"modifier_kret_acid_all_target"
+			{
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				"Duration"				"%duration"
 				
-					"ApplyModifier"
-					{
-						"ModifierName" "modifier_kret_acid_main_target"
-						"Target"	"TARGET"	
-					}
-					
-					"ApplyModifier"
-					{
-						"ModifierName" "modifier_kret_acid_all_target"
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"%radius"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-					}				
-	    		}
-	
-	
-	
-	
-	
-			"Modifiers"
-			{
-				"modifier_kret_acid_all_target"
+				"ThinkInterval" 		"%tick"
+				"OnIntervalThink"
 				{
-					"Passive"			"0"
-					"IsHidden"			"0"
-					"IsBuff"			"0"
-					"IsDebuff"			"1"
-					"IsPurgable"			"1"
-					//
-					"Duration"	"%duration"
-					"ThinkInterval" "%tick"
-					//
-					"OnIntervalThink"
+					"Damage"
 					{
-						"Damage"
-						{
-							"Type" "DAMAGE_TYPE_MAGICAL"
-							"Target"	"TARGET"
-							"Damage" "%other_damage * %tick / %duration"
-						}
+						"Type" 		"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" 	"%other_damage * %tick / %duration"
 					}
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
-					}
-					//
-					"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
-					"EffectAttachType"  "follow_origin"
 				}
-				//
-				"modifier_kret_acid_main_target"
+				"Properties"
 				{
-					"Passive"			"0"
-					"IsHidden"			"0"
-					"IsBuff"			"0"
-					"IsDebuff"			"1"
-					"IsPurgable"			"1"
-					//
-					"Duration"	"%duration"
-					"ThinkInterval" "%tick"
-					//
-					"OnIntervalThink"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%reduce_ms"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+				}
+				
+				"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+			
+			"modifier_kret_acid_main_target"
+			{
+				"IsHidden"			"1"
+				"IsDebuff"			"1"
+				"IsPurgable"			"1"
+				"Duration"	"%duration"
+				
+				"ThinkInterval" "%tick"
+				"OnIntervalThink"
+				{
+					"Damage"
 					{
-						"Damage"
-						{
-							"Type" "DAMAGE_TYPE_MAGICAL"
-							"Target"	"TARGET"
-							"Damage" "(%main_damage-%other_damage) * %tick / %duration"
-						}
-					}
-	
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%reduce_armor"
+						"Type" 		"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" 	"(%main_damage-%other_damage) * %tick / %duration"
 					}
 				}
 			}
 		}
+	}
 	//End of file npc_lia_hero_kret.txt
 
 
