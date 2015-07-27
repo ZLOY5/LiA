@@ -250,6 +250,134 @@
         }
     }
   }
+  
+"skeleton_mage_light_magic_scepter"
+ {
+   // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "pugna_nether_blast"
+
+    "AbilityCooldown" "15 17 19"
+	"AbilityCastRange"	"500"
+    "AbilityManaCost" "80 150 250"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+	
+    "AbilityCastPoint"  "0.3"
+
+
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+	}
+	
+    "OnSpellStart"
+    {
+		"RunScript"
+		{
+			"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua" 
+			"Function"      "DealDamageAndHeal"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%radius"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
+		}
+		//"RunScript"
+		//{
+		//	"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
+		//	"Function"      "Heal"
+		//	"Target"
+		//	{
+		//		"Center"	"CASTER"
+		//		"Radius"	"%radius"
+		//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		//		"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
+		//	}
+		//}
+	  	"FireSound"
+		{
+			"EffectName"	"Hero_Pugna.NetherBlast"
+			"Target"		"CASTER"
+		}
+		"AttachEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+			"EffectAttachType"	"start_at_customorigin"
+			"Target"	"CASTER"	
+			"ControlPoints"
+			{
+				"01"	"%radius 0 0"
+				"15"	"255 200 100"
+			}
+		}
+    }
+    
+  
+   
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_constant"         "150 300 0"
+        }
+		"02"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_percentage"       "0 0 30"
+        }
+		//"03"
+        //{
+        //    "var_type"                "FIELD_INTEGER"
+        //    "damage_constant_scepter"         "150 300 0"
+        //}
+		//"04"
+        //{
+        //    "var_type"                "FIELD_INTEGER"
+        //    "damage_percentage_scepter"       "0 0 25"
+        //}
+		"03"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_constant"           "250 500 0"
+        }
+		"04"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_percentage"         "0 0 35"
+        }
+		//"07"
+        //{
+        //    "var_type"                "FIELD_INTEGER"
+        //    "heal_constant_scepter"           "300 500 0"
+        //}
+		//"08"
+        //{
+        //    "var_type"                "FIELD_INTEGER"
+        //    "heal_percentage_scepter"         "0 0 35"
+        //}
+        "05"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "radius"                  "500"
+        }
+    }
+  }
+  
+
 
  "skeleton_mage_dark_magic"
 {
@@ -270,11 +398,38 @@
       		"var_type"      			"FIELD_INTEGER"
       		"damage_return"  			"30 40 50"
     	}
-    	"02"
+    	//"02"
+    	//{
+      	//	"var_type"      			"FIELD_INTEGER"
+      	//	"damage_return_scepter"   	"50 60 70"
+    	//}
+  	} 
+}
+
+ "skeleton_mage_dark_magic_scepter"
+{
+  	"BaseClass"               "ability_lua"
+  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic.lua"
+
+  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  	"AbilityTextureName"      "pugna_life_drain"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+  
+  	"AbilitySpecial"
+  	{
+    	"01"
     	{
       		"var_type"      			"FIELD_INTEGER"
-      		"damage_return_scepter"   	"50 60 70"
+      		"damage_return"  			"50 60 70"
     	}
+    	//"02"
+    	//{
+      	//	"var_type"      			"FIELD_INTEGER"
+      	//	"damage_return_scepter"   	"50 60 70"
+    	//}
   	} 
 }
 

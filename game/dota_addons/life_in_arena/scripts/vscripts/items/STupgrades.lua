@@ -35,6 +35,47 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		--
+		if name == "npc_dota_hero_skywrath_mage" then
+			par = {
+				unit = caster,
+				oldAbi = "paladin_blizzard",
+				newAbi = "paladin_blizzard_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "paladin_grace",
+				newAbi = "paladin_grace_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
+		--
+		--[[
+		if name == "npc_dota_hero_pugna" then
+			par = {
+				unit = caster,
+				oldAbi = "skeleton_mage_light_magic",
+				newAbi = "skeleton_mage_light_magic_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "skeleton_mage_dark_magic",
+				newAbi = "skeleton_mage_dark_magic_scepter",
+				tPassiveModifiers_by_oldAbi = {"modifier_skeleton_mage_dark_magic"},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
+		]]
 		-- next heroes
 	end
 	--end
@@ -83,6 +124,47 @@ function OnUnequip(event)
 			caster.STupgrades = false
 		end
 		-- next heroes
+		--
+		if name == "npc_dota_hero_skywrath_mage" then
+			par = {
+				unit = caster,
+				oldAbi = "paladin_blizzard_scepter",
+				newAbi = "paladin_blizzard",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "paladin_grace_scepter",
+				newAbi = "paladin_grace",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		--
+		--[[if name == "npc_dota_hero_pugna" then
+			par = {
+				unit = caster,
+				oldAbi = "skeleton_mage_light_magic_scepter",
+				newAbi = "skeleton_mage_light_magic",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "skeleton_mage_dark_magic_scepter",
+				newAbi = "skeleton_mage_dark_magic",
+				tPassiveModifiers_by_oldAbi = {"modifier_skeleton_mage_dark_magic"},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		]]
 		
 	end
 	--end

@@ -11208,6 +11208,218 @@
 	}
 	
 	
+	// max damage 1000 1500 2000
+	// damage     60  120   180
+	// targets    16  12   11
+	
+	"paladin_blizzard_scepter"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"crystal_maiden_freezing_field"
+							//DOTA_ABILITY_BEHAVIOR_CHANNELLED |
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT |  DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	
+		"MaxLevel" 				"3"
+		"RequiredLevel"          		"1"
+		"LevelsBetweenUpgrades"  		"2"
+	
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"19.0 18.0 17.0"
+		"AbilityManaCost"				"200 275 300"
+	
+		"AOERadius"     				"%radius"
+	
+		//"AbilityChannelTime"				"7.0 9.0 11.0"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"wave_damage"			"60 120 180"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun"					"0.25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"wave_interval"			"1.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"wave_count"			"8 10 12"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"			"175 200 225"
+			}		
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_targets"				"16 12 11"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_snow.vpcf"
+			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_explosion.vpcf"
+			"particle"	"particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes\Paladin\blizzard.lua"
+				"Function"		"BlizzardStart"
+				"Target"		"POINT"
+			}
+	
+			//"ApplyModifier"
+			//{
+			//	"ModifierName"	"modifier_blizzard_removeDummy"
+			//	"Target" 		"CASTER"
+			//}
+			
+			"FireSound"
+			{
+				"EffectName"	"hero_Crystal.freezingField.wind"
+				"Target"		"CASTER"
+			}
+		}
+	
+		//"OnChannelFinish"
+	    	//{
+	    	//	"RunScript"
+	    	//	{
+	    	//		"ScriptFile"	"heroes/archmage/blizzard.lua"
+		//		"Function"		"BlizzardEnd"
+	    	//	} 
+		//
+	    	//	"RemoveModifier"
+		//	{
+		//		"ModifierName"	"modifier_blizzard_channelling"
+		//		"Target" 		"CASTER"
+		//	}
+	   	//		
+	    	//}
+	
+		"Modifiers"
+	    	{
+	
+			"modifier_blizzard_thinker"
+			{
+				"Duration"	"%wave_count*%wave_interval+0.7"
+				"ThinkInterval"  "%wave_interval"
+				"OnIntervalThink"
+				{
+					"DelayedAction"
+					{
+						"Delay"     "0.65" // 0.3 old
+									// with 0.7 and +0.5 in duration = crash
+						"Action"    
+						{						
+							"Damage"
+							{
+								"Target"
+								{
+									"Center"  	"TARGET"
+									"Radius" 	"%radius"
+									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	                						"MaxTargets"	"%max_targets"
+	                						"Random"	"0"
+									
+								}
+								"Type"			"DAMAGE_TYPE_MAGICAL"
+								"Damage"		"%wave_damage"
+							}
+	
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_stun_wave"
+								"Target"
+								{
+									"Center"  	"TARGET"
+									"Radius" 	"%radius"
+									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	                						"MaxTargets"	"%max_targets"
+	                						"Random"	"0"
+									
+								}
+								"Duration"	"%stun"	
+							}
+	
+							"FireSound"
+							{
+								"EffectName"	"hero_Crystal.freezingField.explosion"
+								"Target"
+								{
+									"Center"  	"TARGET"
+									"Radius" 	"%radius"
+									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								}
+							}
+						}
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\Paladin\blizzard.lua"
+						"Function"		"BlizzardWave"
+					}
+				}
+	
+				"OnDestroy"
+				{
+	    				"RunScript"
+	    				{
+	    					"ScriptFile"	"heroes\Paladin\blizzard.lua"
+						"Function"		"BlizzardEnd"
+	    				} 
+				}
+	
+	
+				
+			}
+	
+	
+			"modifier_stun_wave"
+			{
+				"IsDebuff"		"1"
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+		
+				"OverrideAnimation"     "ACT_DOTA_DISABLED"
+	
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+	
+	
+		}
+	}
+	
+	
+	
+	
 	"paladin_grace"
 		{
 			// General
@@ -11327,6 +11539,125 @@
 		}
 	
 	
+	"paladin_grace_scepter"
+		{
+			// General
+			//-------------------------------------------------------------------------------------------------------------
+			"BaseClass"				"ability_datadriven"
+			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			//"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"AbilityTextureName"			"chen_holy_persuasion"
+			"AbilityCastAnimation"   		"ACT_DOTA_CAST_ABILITY_2"
+		
+			
+			"MaxLevel"               "3"
+			"RequiredLevel"          "2"
+			"LevelsBetweenUpgrades"  "2"
+	
+			"AoERadius"               "400"	
+	
+			"AbilityCastRange"				"800"
+			"AbilityCastPoint"				"0.3"
+		
+			"AbilityCooldown"				"8.0"
+		
+			"AbilityManaCost"				"225 250 275"	
+		
+			"precache"
+			{
+				"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+				"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+				//"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+				"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+	
+			}
+			
+			"AbilitySpecial"
+			{
+				"01"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"value_heal"				"800 1000 1200"
+				}
+				"02"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"value_heal_other"			"150 300 450"
+				}
+				"03"
+				{
+					"var_type"				"FIELD_INTEGER"
+					"radius"				"400"
+				}
+			}
+		
+			"OnSpellStart"
+			{
+	
+	
+				"ActOnTargets"
+				{
+					"Target"
+	            			{
+	                			"Center" "TARGET"
+	                			"Radius" "%radius"
+	                			"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+	                			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            			}
+	
+	            			"Action"
+	            			{
+						"FireSound"
+						{
+							"EffectName"	"Hero_Omniknight.Purification"
+							"Target"		"TARGET"
+						}
+	
+						"FireEffect"
+						{
+							"Target"			"TARGET"
+							"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+							"EffectAttachType"	"follow_origin"
+							"ControlPoints"
+							{
+								"00"	"0 0 0"
+								"01"	"%radius %radius %radius"
+							}
+						}
+			
+						"FireEffect"
+						{
+							"Target"			"TARGET"
+							"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+							"EffectAttachType"	"follow_origin"
+						}
+	
+						"Heal"
+	        				{          
+	     						"Target"		"TARGET"
+	            					"HealAmount" "%value_heal_other"
+	        				}
+					}
+	
+	
+				}
+	
+				"Heal"
+	        		{          
+	     				"Target"		"TARGET"
+	            			"HealAmount" "%value_heal-%value_heal_other"
+	        		}
+	
+				
+			}
+	
+		
+	
+		}
+		
+		
 	
 		"paladin_elect"
 		{
@@ -13901,6 +14232,134 @@
 	        }
 	    }
 	  }
+	  
+	"skeleton_mage_light_magic_scepter"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
+	    "AbilityTextureName"     "pugna_nether_blast"
+	
+	    "AbilityCooldown" "15 17 19"
+		"AbilityCastRange"	"500"
+	    "AbilityManaCost" "80 150 250"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+		
+	    "AbilityCastPoint"  "0.3"
+	
+	
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+		}
+		
+	    "OnSpellStart"
+	    {
+			"RunScript"
+			{
+				"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua" 
+				"Function"      "DealDamageAndHeal"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}
+			//"RunScript"
+			//{
+			//	"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
+			//	"Function"      "Heal"
+			//	"Target"
+			//	{
+			//		"Center"	"CASTER"
+			//		"Radius"	"%radius"
+			//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			//		"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
+			//	}
+			//}
+		  	"FireSound"
+			{
+				"EffectName"	"Hero_Pugna.NetherBlast"
+				"Target"		"CASTER"
+			}
+			"AttachEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"Target"	"CASTER"	
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+					"15"	"255 200 100"
+				}
+			}
+	    }
+	    
+	  
+	   
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "damage_constant"         "150 300 0"
+	        }
+			"02"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "damage_percentage"       "0 0 30"
+	        }
+			//"03"
+	        //{
+	        //    "var_type"                "FIELD_INTEGER"
+	        //    "damage_constant_scepter"         "150 300 0"
+	        //}
+			//"04"
+	        //{
+	        //    "var_type"                "FIELD_INTEGER"
+	        //    "damage_percentage_scepter"       "0 0 25"
+	        //}
+			"03"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "heal_constant"           "250 500 0"
+	        }
+			"04"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "heal_percentage"         "0 0 35"
+	        }
+			//"07"
+	        //{
+	        //    "var_type"                "FIELD_INTEGER"
+	        //    "heal_constant_scepter"           "300 500 0"
+	        //}
+			//"08"
+	        //{
+	        //    "var_type"                "FIELD_INTEGER"
+	        //    "heal_percentage_scepter"         "0 0 35"
+	        //}
+	        "05"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "radius"                  "500"
+	        }
+	    }
+	  }
+	  
+	
 	
 	 "skeleton_mage_dark_magic"
 	{
@@ -13921,11 +14380,38 @@
 	      		"var_type"      			"FIELD_INTEGER"
 	      		"damage_return"  			"30 40 50"
 	    	}
-	    	"02"
+	    	//"02"
+	    	//{
+	      	//	"var_type"      			"FIELD_INTEGER"
+	      	//	"damage_return_scepter"   	"50 60 70"
+	    	//}
+	  	} 
+	}
+	
+	 "skeleton_mage_dark_magic_scepter"
+	{
+	  	"BaseClass"               "ability_lua"
+	  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic.lua"
+	
+	  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"AbilityTextureName"      "pugna_life_drain"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	  
+	  	"AbilitySpecial"
+	  	{
+	    	"01"
 	    	{
 	      		"var_type"      			"FIELD_INTEGER"
-	      		"damage_return_scepter"   	"50 60 70"
+	      		"damage_return"  			"50 60 70"
 	    	}
+	    	//"02"
+	    	//{
+	      	//	"var_type"      			"FIELD_INTEGER"
+	      	//	"damage_return_scepter"   	"50 60 70"
+	    	//}
 	  	} 
 	}
 	
