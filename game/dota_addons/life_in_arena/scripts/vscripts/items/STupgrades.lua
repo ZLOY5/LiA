@@ -55,7 +55,7 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		--
-		--[[
+		--
 		if name == "npc_dota_hero_pugna" then
 			par = {
 				unit = caster,
@@ -69,13 +69,52 @@ function OnEquip(event)
 				unit = caster,
 				oldAbi = "skeleton_mage_dark_magic",
 				newAbi = "skeleton_mage_dark_magic_scepter",
-				tPassiveModifiers_by_oldAbi = {"modifier_skeleton_mage_dark_magic"},
+				tPassiveModifiers_by_oldAbi = {},--{"modifier_skeleton_mage_dark_magic"},
 			}
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
 		end
-		]]
+		--
+		if name == "npc_dota_hero_warlock" then
+			par = {
+				unit = caster,
+				oldAbi = "earth_lord_earth_burn",
+				newAbi = "earth_lord_earth_burn_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "earth_lord_split_earth",
+				newAbi = "earth_lord_split_earth_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
+		--
+		if name == "npc_dota_hero_lich" then
+			par = {
+				unit = caster,
+				oldAbi = "frost_lord_frost_breath",
+				newAbi = "frost_lord_frost_breath_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "frost_lord_ice",
+				newAbi = "frost_lord_ice_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
 		-- next heroes
 	end
 	--end
@@ -145,7 +184,8 @@ function OnUnequip(event)
 			caster.STupgrades = false
 		end
 		--
-		--[[if name == "npc_dota_hero_pugna" then
+		--
+		if name == "npc_dota_hero_pugna" then
 			par = {
 				unit = caster,
 				oldAbi = "skeleton_mage_light_magic_scepter",
@@ -158,13 +198,52 @@ function OnUnequip(event)
 				unit = caster,
 				oldAbi = "skeleton_mage_dark_magic_scepter",
 				newAbi = "skeleton_mage_dark_magic",
-				tPassiveModifiers_by_oldAbi = {"modifier_skeleton_mage_dark_magic"},
+				tPassiveModifiers_by_oldAbi = {},--{"modifier_skeleton_mage_dark_magic"},
 			}
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = false
 		end
-		]]
+		--
+		if name == "npc_dota_hero_warlock" then
+			par = {
+				unit = caster,
+				oldAbi = "earth_lord_earth_burn_scepter",
+				newAbi = "earth_lord_earth_burn",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "earth_lord_split_earth_scepter",
+				newAbi = "earth_lord_split_earth",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		--
+		if name == "npc_dota_hero_lich" then
+			par = {
+				unit = caster,
+				oldAbi = "frost_lord_frost_breath_scepter",
+				newAbi = "frost_lord_frost_breath",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "frost_lord_ice_scepter",
+				newAbi = "frost_lord_ice",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
 		
 	end
 	--end
@@ -194,10 +273,12 @@ function ReplaceAbi(params)
 	
 	-- also remove all passive modifiers
 	-- if this need
-	for i=1, #tPassiveModifiers_by_oldAbi do
-		--if not unit:FindModifierByName(tPassiveModifiers_by_oldAbi[i]):IsNull() then
-		if unit:FindModifierByName(tPassiveModifiers_by_oldAbi[i]) ~= nil then
-			unit:RemoveModifierByName(tPassiveModifiers_by_oldAbi[i])
+	if tPassiveModifiers_by_oldAbi ~= nil then
+		for i=1, #tPassiveModifiers_by_oldAbi do
+			--if not unit:FindModifierByName(tPassiveModifiers_by_oldAbi[i]):IsNull() then
+			if unit:FindModifierByName(tPassiveModifiers_by_oldAbi[i]) ~= nil then
+				unit:RemoveModifierByName(tPassiveModifiers_by_oldAbi[i])
+			end
 		end
 	end
 	-- autocast state
