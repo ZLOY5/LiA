@@ -103,6 +103,113 @@
 	}
 }
 
+"witch_doctor_negative_energy_scepter"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"AbilityTextureName"			"shadow_demon_shadow_poison"
+	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+		"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
+	}
+
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"650"
+	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"11 10 9"
+	
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 200 300"
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"			"300 400 500"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"start_radius"			"80"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"end_radius"			"200"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"range"					"650"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"speed"					"1100"
+		}
+				
+	}
+	
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"Target" "POINT"
+			"EffectName" "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
+			"MoveSpeed" "%speed"
+			"StartRadius" "%start_radius"
+			"StartPosition" "attach_origin"
+			"EndRadius" "%end_radius"
+			"FixedDistance" "%range"
+			"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
+			"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
+			"HasFrontalCone" "1"
+			"ProvidesVision" "0"
+		}
+		"FireSound"
+		{
+			"EffectName" "Hero_ShadowDemon.ShadowPoison"
+			"Target" "CASTER"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit" "0"
+		"Damage"
+		{
+			"Target" "TARGET"
+			"Type" "DAMAGE_TYPE_MAGICAL"
+			"Damage" "%damage"
+		}
+	}
+}
+
+
+
 "witch_doctor_frost_armor"
 {
 	"BaseClass"             		"ability_datadriven"
@@ -134,6 +241,178 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"duration"				"10 15 20"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"slow_duration"			"5.0"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_movement_speed"	"-40"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_attack_speed"		"-25"
+		}
+
+		// Extra values to control the Autocast AI
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"autocast_radius"		"900"
+		}
+	}
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
+		"particle"	"particles/status_fx/status_effect_frost_armor.vpcf"
+		"particle"	"particles/status_fx/status_effect_frost.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Lich.FrostArmor"
+			"Target"		"TARGET"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_frost_armor"
+			"Target"		"TARGET"
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_frost_armor"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
+			        "Function"      "FrostArmorParticle"	
+			    }
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
+			        "Function"      "EndFrostArmorParticle"	
+			    }
+			}
+
+			"StatusEffectName"		"particles/status_fx/status_effect_frost_armor.vpcf"
+			"StatusEffectPriority"	"10"
+
+			//Frost Armor only slows units that attack the unit with a Melee attack.
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_frost_armor_slow"
+					"Target"
+					{
+						"Center"	"ATTACKER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+					}
+					"Duration"		"%slow_duration"
+				}
+
+				"FireSound"
+				{
+					"EffectName"	"Hero_Lich.FrostArmorDamage"
+					"Target"		"TARGET"
+				}
+			}
+		}
+
+		"modifier_frost_armor_slow"
+		{
+			"IsDebuff"	"1"
+
+			"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
+			"StatusEffectPriority"	"10"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+			}
+		}
+
+		"modifier_frost_armor_autocast_aura"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"Aura" 				"modifier_frost_armor_autocast_attacked"
+			"Aura_Radius" 		"%autocast_radius"
+			"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types" 		"DOTA_UNIT_TARGET_HERO"
+		}
+
+		"modifier_frost_armor_autocast_attacked"
+		{
+			"IsHidden"	"1"
+			"OnAttacked"
+			{
+				"RunScript"
+			    {
+			        "ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
+			        "Function"      "FrostArmorAutocast"
+			    }
+			}
+		}
+	}
+}
+
+"witch_doctor_frost_armor_scepter"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"lich_frost_armor"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+	"AbilityCastRange"				"800"
+	"AbilityCastPoint"				"0.4"
+	"AbilityCooldown"				"6.0"
+
+	"AbilityManaCost"				"150 175 200"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"20 25 30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30 30 30"
 		}
 		"03"
 		{

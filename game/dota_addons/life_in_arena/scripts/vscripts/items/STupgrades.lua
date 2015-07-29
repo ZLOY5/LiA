@@ -115,6 +115,88 @@ function OnEquip(event)
 			--
 			caster.STupgrades = true
 		end
+		--
+		if name == "npc_dota_hero_spirit_breaker" then
+			par = {
+				unit = caster,
+				oldAbi = "time_lord_death",
+				newAbi = "time_lord_death_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "time_lord_timelapse",
+				newAbi = "time_lord_timelapse_scepter",
+				tPassiveModifiers_by_oldAbi = {"modifier_time_lord_timelapse"},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
+		--
+		if name == "npc_dota_hero_nevermore" then
+			par = {
+				unit = caster,
+				oldAbi = "vowen_from_blood_steal_blood",
+				newAbi = "vowen_from_blood_steal_blood_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "vowen_from_blood_spiritual_flame",
+				newAbi = "vowen_from_blood_spiritual_flame_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
+		--
+		if name == "npc_dota_hero_lion" then
+			par = {
+				unit = caster,
+				oldAbi = "warlock_storm_datadriven",
+				newAbi = "warlock_storm_datadriven_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "warlock_firestorm_datadriven",
+				newAbi = "warlock_firestorm_datadriven_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
+		--
+		--[[if name == "npc_dota_hero_shadow_shaman" then
+			par = {
+				unit = caster,
+				oldAbi = "witch_doctor_negative_energy",
+				newAbi = "witch_doctor_negative_energy_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "witch_doctor_frost_armor",
+				newAbi = "witch_doctor_frost_armor_scepter",
+				tPassiveModifiers_by_oldAbi = {"modifier_frost_armor_autocast_aura"},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end
+		]]
+		
 		-- next heroes
 	end
 	--end
@@ -244,6 +326,87 @@ function OnUnequip(event)
 			--
 			caster.STupgrades = false
 		end
+		--
+		if name == "npc_dota_hero_spirit_breaker" then
+			par = {
+				unit = caster,
+				oldAbi = "time_lord_death_scepter",
+				newAbi = "time_lord_death",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "time_lord_timelapse_scepter",
+				newAbi = "time_lord_timelapse",
+				tPassiveModifiers_by_oldAbi = {"modifier_time_lord_timelapse"},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		--
+		if name == "npc_dota_hero_nevermore" then
+			par = {
+				unit = caster,
+				oldAbi = "vowen_from_blood_steal_blood_scepter",
+				newAbi = "vowen_from_blood_steal_blood",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "vowen_from_blood_spiritual_flame_scepter",
+				newAbi = "vowen_from_blood_spiritual_flame",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		--
+		if name == "npc_dota_hero_lion" then
+			par = {
+				unit = caster,
+				oldAbi = "warlock_storm_datadriven_scepter",
+				newAbi = "warlock_storm_datadriven",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "warlock_firestorm_datadriven_scepter",
+				newAbi = "warlock_firestorm_datadriven",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		--
+		--[[if name == "npc_dota_hero_shadow_shaman" then
+			par = {
+				unit = caster,
+				oldAbi = "witch_doctor_negative_energy_scepter",
+				newAbi = "witch_doctor_negative_energy",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "witch_doctor_frost_armor_scepter",
+				newAbi = "witch_doctor_frost_armor",
+				tPassiveModifiers_by_oldAbi = {"modifier_frost_armor_autocast_aura"},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		]]
 		
 	end
 	--end

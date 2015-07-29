@@ -163,6 +163,171 @@
 	
 	}
 
+	"warlock_storm_datadriven_scepter"
+	{
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+		"AbilityTextureName"     "razor_eye_of_the_storm"
+
+	
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		"AbilityChannelTime"      "2.5"
+	
+	
+	  	"precache"
+	  	{
+	    		"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+				//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_e.vpcf"
+				//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+	  	}
+	
+	
+	  	"AbilityCastPoint"        "0.3"
+	  	"AbilityCooldown"         "9.0 10.0 11.0"
+	  	"AbilityManaCost"         "260 260 260"
+	  	"AbilityCastRange"        "400"
+	
+	  	"AoERadius"               "200 225 250"
+	 
+	
+	 	"OnSpellStart"  
+	 	{
+				"RunScript"
+				{
+					"ScriptFile"    "heroes/Warlock/storm.lua"
+					"Function"  	"storm_castpoint"
+					"EventName" 	"OnSpellStart"
+					"Target" 		"POINT"
+				}
+	        	"ApplyModifier"
+	        	{
+	          		"ModifierName"  "modifier_warlock_storm_hero"
+	          		"Target"        "CASTER"
+	        	}
+	    		"ActOnTargets"
+	    		{
+	      			"Target"
+	      			{
+	        			"Center" "POINT"
+	                		"Radius" "%radius"
+	                		"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                		"Type"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      			}
+	
+	      			"Action"
+	      			{
+	        			"ApplyModifier"
+	        			{
+	          				"ModifierName"  "modifier_warlock_storm"
+	          				"Target"        "TARGET"
+	        			}
+	      			}
+	    		}
+	  	}  
+	
+		"OnChannelInterrupted"
+		{
+			"RemoveModifier"
+		       {
+		         "ModifierName"  "modifier_warlock_storm_hero"
+		         "Target"        "CASTER"
+		       }
+		}                               
+	
+		"Modifiers"
+		{
+	  		"modifier_warlock_storm_hero"
+	  		{
+				"Passive"       "0"
+				"IsHidden"      "1"
+				"IsDebuff"      "0"
+				"IsBuff"      	"0"
+				"IsPurgable"	"0"
+				
+				"ThinkInterval"  "%tick_interval"
+				"OnIntervalThink"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Zuus.GodsWrath"
+						"Target" 		"CASTER"
+					}
+					"RunScript"
+					{
+							"ScriptFile" "heroes/Warlock/storm.lua"
+							"Function"   "stormEffect"
+					}
+					
+				}
+				//
+	    		"Duration"  "%duration"
+	  		}
+	  		"modifier_warlock_storm"
+	  		{
+				"Passive"       "0"
+				"IsHidden"      "1"
+				"IsDebuff"      "1"
+
+				"Duration"  "%duration"
+	
+				"ThinkInterval"  "%tick_interval"
+		       
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+							"ScriptFile" "heroes/Warlock/storm.lua"
+							"Function"   "stormCauseDamage"
+					"damage" "%damage"
+
+					}
+					//"FireEffect"
+					//{
+					//	"Target" "TARGET"
+					//	"EffectName"			"particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+					//	"EffectAttachType"		"follow_overhead"	
+					//}
+	
+		       	}
+	
+	
+	  		}
+		}
+	
+	  	"AbilitySpecial"
+	  	{
+	   		"01"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"radius"                "200 225 250"
+	   		}
+	   		"02"
+	   		{
+	     			"var_type"              "FIELD_INTEGER"
+	     			"damage"         		"120 160 200"
+	   		}
+	   		"03"
+	   		{
+	     			"var_type"              "FIELD_FLOAT"
+	     			"tick_interval"         	"0.8"
+	   		}
+	   		"04"
+	   		{
+	     			"var_type"              "FIELD_FLOAT"
+	     			"duration"         	"2.5"
+	   		}
+	
+	
+	 	}
+	
+	}
+	
+	
 
 "warlock_sacrifice"
 {
@@ -527,4 +692,168 @@
 
 
 }
+
+"warlock_firestorm_datadriven_scepter"
+{
+  "BaseClass"       "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+  
+  "AbilityCastRange"        "700"
+  "AbilityCastPoint"        "0.4"
+  "AoERadius"                   "325"
+
+  "AbilityTextureName"      "warlock_firestorm"
+  
+      "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+      "MaxLevel"               "3"
+      "RequiredLevel"          "5"
+      "LevelsBetweenUpgrades"  "4"
+  
+  "AbilityCooldown"       "180.0"
+
+  "AbilityManaCost"       "350 400 450"
+  
+  "AbilityChannelTime"      "7"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "radius"          "325"
+    }   
+    "02"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "wave_count"          "6"
+    }
+    "03"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "wave_damage"         "180 210 240"
+    }
+    "04"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "wave_interval"         "1.0"
+    }
+    "05"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "burn_damage"         "40 60 80"
+    }
+    "06"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "burn_interval"         "1.0"
+    }
+    "07"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "burn_duration"         "10.0"
+    }
+    "08"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "wave_num_exp"          "6"
+    }
+    "09"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "exp_radius"          "100"
+    }
+  }
+
+  "precache"
+  {
+    "particle"        "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+    "particle"        "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_warlock_firestorm_datadriven"
+    }
+
+
+                "RunScript"
+                {
+                  "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                        "Function"  "firestormWave_castpoint"
+      "EventName" "OnSpellStart"
+      "Target" "POINT"
+    }
+  }
+  
+  "OnChannelFinish"
+  {
+    "RemoveModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_warlock_firestorm_datadriven"
+    }
+    
+  }
+
+
+  "Modifiers"
+  {
+    "modifier_warlock_firestorm_datadriven"
+    {
+      "IsPurgable"      "0"
+      "IsHidden"        "1"
+      "OverrideAnimation"   "ACT_DOTA_IDLE"
+
+      "Duration"        "%wave_count*%wave_interval"
+
+      "ThinkInterval"  "%wave_interval"
+
+      "OnIntervalThink"
+      {
+
+                          "RunScript"
+                                {
+                                  "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                                  "Function"  "firestormWave_order"
+          "wave_num_exp" "%wave_num_exp"
+        }
+      }
+    }
+
+    "modifier_warlock_firestorm_burn"
+    {
+      "IsDebuff"      "1"
+      "IsPurgable"      "1"
+      "IsHidden"        "0"
+
+      "Duration"        "%burn_duration"
+
+      "ThinkInterval"  "%burn_interval"
+         
+      "OnIntervalThink"
+      {
+
+        "Damage"
+        {
+          "Type" "DAMAGE_TYPE_MAGICAL"
+          "Target"  "TARGET"
+          "Damage" "%burn_damage"
+        }
+
+      } 
+          "EffectName"        "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
+          "EffectAttachType"  "follow_origin"   
+    }
+  }
+
+
+}
+
 
