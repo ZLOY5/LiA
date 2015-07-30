@@ -176,7 +176,14 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		--
-		--[[if name == "npc_dota_hero_shadow_shaman" then
+		if name == "npc_dota_hero_shadow_shaman" then
+			par = {
+				group = caster.groupArmor,
+				nameModifier = "modifier_frost_armor",
+			}
+			deleteModifierFromAllGlobalUnits(par)
+			caster.groupArmor = {}
+			--
 			par = {
 				unit = caster,
 				oldAbi = "witch_doctor_negative_energy",
@@ -195,7 +202,6 @@ function OnEquip(event)
 			--
 			caster.STupgrades = true
 		end
-		]]
 		
 		-- next heroes
 	end
@@ -387,7 +393,14 @@ function OnUnequip(event)
 			caster.STupgrades = false
 		end
 		--
-		--[[if name == "npc_dota_hero_shadow_shaman" then
+		if name == "npc_dota_hero_shadow_shaman" then
+			par = {
+				group = caster.groupArmor,
+				nameModifier = "modifier_frost_armor",
+			}
+			deleteModifierFromAllGlobalUnits(par)
+			caster.groupArmor = {}
+			--
 			par = {
 				unit = caster,
 				oldAbi = "witch_doctor_negative_energy_scepter",
@@ -406,13 +419,28 @@ function OnUnequip(event)
 			--
 			caster.STupgrades = false
 		end
-		]]
 		
 	end
 	--end
 	--if caster:HasItemInInventory("item_lia_spherical_staff") then
 	--
 	--end
+end
+
+function deleteModifierFromAllGlobalUnits(params)
+	local group = params.group
+	local nameModifier = params.nameModifier
+	--for k,unit in pairs(ability.tAlliesPal) do
+	if group~= nil then
+		for i = 1, #group do
+			if not group[i]:IsNull() then
+				group[i]:RemoveModifierByName(nameModifier)
+				--print("RemoveModifierByName ",group[i]:GetUnitName())
+			end
+			--table.remove(ability.tAlliesPal,i)
+		end
+	end
+	--ability.tAlliesPal = {}
 end
 
 function ReplaceAbi(params)
