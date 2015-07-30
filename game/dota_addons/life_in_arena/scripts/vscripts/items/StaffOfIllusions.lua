@@ -19,6 +19,10 @@ function MakeIllusion(event)
 
 	local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
 	illusion:SetControllableByPlayer(player, true)
+
+	if illusion:IsRealHero() then
+		illusion:SetPlayerID(player)
+	end
 	
 	if target:IsRealHero() then
 		illusion:SetPlayerID(caster:GetPlayerID())
@@ -42,7 +46,7 @@ function MakeIllusion(event)
 
 	if target:HasInventory() then
 		for itemSlot=0,5 do
-			local item = caster:GetItemInSlot(itemSlot)
+			local item = target:GetItemInSlot(itemSlot)
 			if item ~= nil then
 				local itemName = item:GetName()
 				local newItem = CreateItem(itemName, illusion, illusion)
