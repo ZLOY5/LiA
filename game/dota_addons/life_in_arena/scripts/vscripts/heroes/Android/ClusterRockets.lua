@@ -32,11 +32,7 @@ function FireClusterRocket( event )
 	}
 	ProjectileManager:CreateTrackingProjectile( projTable )
 
-<<<<<<< HEAD
-	Timers:CreateTimer(2,function() dummy:RemoveSelf() end)
-=======
 	Timers:CreateTimer(3,function() dummy:RemoveSelf() end)
->>>>>>> origin/master
 
 end
 

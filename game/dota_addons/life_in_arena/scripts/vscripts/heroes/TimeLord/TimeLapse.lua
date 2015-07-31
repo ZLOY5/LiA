@@ -40,9 +40,11 @@ function TimeLapse(keys)
 	
 	Timers:CreateTimer(0.1,
 		function()
-			FindClearSpaceForUnit(caster, ability.coordinatTable[1][1], true)
-			caster:SetHealth(ability.coordinatTable[1][2])
-			--caster:SetMana(ability.coordinatTable[1][3])
+			if ability.coordinatTable ~= nil then
+				FindClearSpaceForUnit(caster, ability.coordinatTable[1][1], true)
+				caster:SetHealth(ability.coordinatTable[1][2])
+				--caster:SetMana(ability.coordinatTable[1][3])
+			end
 
 			local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, damage_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL - DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 			for _,unit in pairs(targets) do 
@@ -52,6 +54,7 @@ function TimeLapse(keys)
 			ParticleManager:CreateParticle("particles/items_fx/blink_dagger_end.vpcf", PATTACH_ABSORIGIN, caster)
 	
 			caster:RemoveModifierByName("modifier_time_lord_timelapse_invul")
+			
 		end
 	)
 end 

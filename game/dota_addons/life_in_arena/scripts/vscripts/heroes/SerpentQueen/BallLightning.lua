@@ -18,11 +18,11 @@ function LocustSwarmStart( event )
 	print("Spawning "..locusts.." locusts")
 	for i=1,locusts do
 		Timers:CreateTimer(i * delay_between_locusts, function()
-			local unit = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
+			local unit = ability:ApplyDataDrivenThinker(caster,caster:GetAbsOrigin() , "modifier_locust", nil)
 			--unit:SetControllableByPlayer(playerID, true)
 
 			-- The modifier takes care of the logic and particles of each unit
-			ability:ApplyDataDrivenModifier(caster, unit, "modifier_locust", {})
+			--ability:ApplyDataDrivenModifier(caster, unit, "modifier_locust", {})
 			
 			-- Add the spawned unit to the table
 			table.insert(caster.swarm, unit)
@@ -154,7 +154,7 @@ function LocustSwarmPhysics( event )
 
 			-- If the unit doesn't have a target locked, find enemies near the caster
 			enemies = FindUnitsInRadius(caster:GetTeamNumber(), source, nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, 
-										  abilityTargetType, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+										  abilityTargetType, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 
 			-- Check the possible enemies, assigning a new one
 			local target_enemy = nil
@@ -290,7 +290,7 @@ function LocustSwarmPhysics( event )
 
 	        	-- Double check to reset all locusts_locked counters when the ability ends
 				enemies = FindUnitsInRadius(caster:GetTeamNumber(), source, nil, max_distance, DOTA_UNIT_TARGET_TEAM_ENEMY, 
-										  abilityTargetType, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+										  abilityTargetType, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 				
 				for _,v in pairs(enemies) do
 					v.locusts_locked = 0
