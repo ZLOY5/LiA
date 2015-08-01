@@ -9,15 +9,19 @@ function FrostArmorAutocast( event )
 	local caster = event.caster
 	local target = event.target -- victim of the attack
 	local ability = event.ability
-
+	if not caster.groupArmor then
+		caster.groupArmor = {}
+	end
 	-- Name of the modifier to avoid casting the spell on targets that were already buffed
 	local modifier = "modifier_frost_armor"
 
 	-- Get if the ability is on autocast mode and cast the ability on the attacked target if it doesn't have the modifier
-	if ability:GetAutoCastState() then
+	if ability~=nil and ability:GetAutoCastState() then
 		if not IsChanneling( caster ) then
 			if not target:HasModifier(modifier) then
 				caster:CastAbilityOnTarget(target, ability, caster:GetPlayerOwnerID())
+				table.insert(caster.groupArmor,target)
+				--print()
 			end
 		end	
 	end	
@@ -50,9 +54,18 @@ end
 ]]
 function FrostArmorParticle( event )
 	local target = event.target
+	local caster = event.caster
 	local location = target:GetAbsOrigin()
 	local particleName = "particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
-
+	if not caster.groupArmor then
+		caster.groupArmor = {}
+	end
+	local modifier = "modifier_frost_armor"
+	--if not target:HasModifier(modifier) then
+		table.insert(caster.groupArmor,target)
+		print("table.insert ",target:GetUnitName())
+	--end
+	
 	-- Particle. Need to wait one frame for the older particle to be destroyed
 	Timers:CreateTimer(0.01, function()
 		target.FrostArmorParticle = ParticleManager:CreateParticle(particleName, PATTACH_OVERHEAD_FOLLOW, target)
@@ -66,5 +79,13 @@ end
 -- Destroys the particle when the modifier is destroyed
 function EndFrostArmorParticle( event )
 	local target = event.target
+	local caster = event.caster
 	ParticleManager:DestroyParticle(target.FrostArmorParticle,false)
+	--
+    for k,v in pairs(caster.groupArmor) do 
+        if target == v then
+            table.remove(caster.groupArmor,k)
+			print("table.remove ",target:GetUnitName())
+        end
+    end
 end
