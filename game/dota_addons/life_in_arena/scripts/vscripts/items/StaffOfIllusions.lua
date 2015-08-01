@@ -8,7 +8,7 @@ function MakeIllusion(event)
 	local outgoingDamage = ability:GetLevelSpecialValueFor( "illusion_outgoing_damage", ability:GetLevel() - 1 )
 	local incomingDamage = ability:GetLevelSpecialValueFor( "illusion_incoming_damage", ability:GetLevel() - 1 )
 
-	if string.find(unit_name,"megaboss") or unit_name == "orn" then
+	if string.find(unit_name,"megaboss") then
 		ability:RefundManaCost()
 		ability:EndCooldown()
 		FireGameEvent( 'custom_error_show', { player_ID = event.caster:GetPlayerOwnerID(), _error = "#lia_hud_error_item_lia_staff_of_illusions_megaboss" } )
@@ -19,10 +19,6 @@ function MakeIllusion(event)
 
 	local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
 	illusion:SetControllableByPlayer(player, true)
-
-	if illusion:IsRealHero() then
-		illusion:SetPlayerID(player)
-	end
 	
 	if target:IsRealHero() then
 		illusion:SetPlayerID(caster:GetPlayerID())
@@ -40,7 +36,9 @@ function MakeIllusion(event)
 			local abilityLevel = ability:GetLevel()
 			local abilityName = ability:GetAbilityName()
 			local illusionAbility = illusion:FindAbilityByName(abilityName)
-			illusionAbility:SetLevel(abilityLevel)
+			if illusionAbility then
+				illusionAbility:SetLevel(abilityLevel)
+			end
 		end
 	end
 
