@@ -4664,6 +4664,82 @@
 	//End of file npc_lia_hero_araman.txt
 
 
+	//Start of file npc_lia_hero_beastmaster.txt
+	"beastmaster_dominate"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"           "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityTextureName"     "beastmaster_dominate"
+	  
+	    // Stats    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCastRange"        "750"
+	    "AbilityCastPoint"        "0.0"
+	    "AbilityCooldown"         "26 25 24"
+	    "AbilityManaCost"         "50 75 100"
+	    "AoERadius"               "%radius"
+	  
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    "precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_lone_druid/lone_druid_bear_blink_end.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+	    }
+	  
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "radius"          "100 125 150"
+	        }
+	    }
+	  
+	    "OnSpellStart"
+	    {
+	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_LoneDruid.SpiritBear.Cast"
+	            "Target"         "CASTER"
+	        }  
+	
+	        "FireEffect"
+	        {   
+	            "EffectName"    "particles/units/heroes/hero_lone_druid/lone_druid_bear_blink_end.vpcf"
+	            "EffectAttachType"  "start_at_customorigin"
+	            "TargetPoint"   "POINT" 
+	            "ControlPoints"
+	            {
+	                "01"    "%radius 0 0"
+	                "03"    "255 0 0"
+	            }
+	        }
+	
+	        "RunScript"
+	        {
+	            "ScriptFile"  "heroes/Beastmaster/Dominate.lua" 
+	            "Function"    "Dominate"
+	            "Target"
+	            {
+	                "Center"  "POINT"
+	                "Radius"  "%radius"
+	                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"   "DOTA_UNIT_TARGET_BASIC"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	            }
+	        }   
+	    }  
+	}
+	//End of file npc_lia_hero_beastmaster.txt
+
+
 	//Start of file npc_lia_hero_berserker.txt
 	"berserker_fire_spear"
 	{
@@ -18958,6 +19034,7 @@
 					"Radius" 	"%radius"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				}
 				"Center" 	        "CASTER"
 				"Distance"	        "%distance"
