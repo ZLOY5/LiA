@@ -23,7 +23,7 @@ function Survival:OnPlayerPickHero(keys)
         print(PlayerResource:GetPlayerName(playerID),"randomed hero")
         hero:SetGold(hero:GetGold()+50, false)
     end 
-    hero:AddNewModifier(hero, nil, "modifier_stats_bonus_fix", nil)
+    --hero:AddNewModifier(hero, nil, "modifier_stats_bonus_fix", nil)
 
 end
 

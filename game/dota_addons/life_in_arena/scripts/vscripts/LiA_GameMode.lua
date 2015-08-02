@@ -81,6 +81,7 @@ function LiA:InitGameMode()
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
+    ListenToGameEvent('npc_spawned', Dynamic_Wrap(LiA, 'OnNPCSpawned'), self)
 
     trigger_shop = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
     
@@ -141,6 +142,13 @@ function LiA:OnDisconnect(event)
 
     if self.GameMode == LIA_MODE_SURVIVAL then
         Survival:OnDisconnect(event)
+    end
+end
+
+function LiA:OnNPCSpawned( event )
+    local spawnedUnit = EntIndexToHScript( event.entindex )
+    if spawnedUnit:IsHero() and not spawnedUnit:HasModifier("modifier_stats_bonus_fix") then
+        spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_stats_bonus_fix", nil) --исправляет бонусы за характеристики героя
     end
 end
 
