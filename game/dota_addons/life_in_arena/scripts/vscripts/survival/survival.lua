@@ -76,6 +76,8 @@ function Survival:InitSurvival()
     GameRules:SetTreeRegrowTime(60)
     GameRules:SetHeroRespawnEnabled(false)
 
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 ) 
+
     local GameMode = GameRules:GetGameModeEntity()
     GameMode:SetThink("onThink", self)
     GameMode:SetFogOfWarDisabled(true)
