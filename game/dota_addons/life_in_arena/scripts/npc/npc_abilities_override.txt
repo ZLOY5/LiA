@@ -4874,16 +4874,6 @@
 	            "var_type"          "FIELD_INTEGER"
 	            "unit_count"  "2 3 4"
 	        }
-	        "02"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "goblin_hp" "125 400 700"
-	        }
-	        "03"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "goblin_damage" "10 43 76"
-	        }
 	    }
 	
 	    "OnSpellStart"
@@ -4899,6 +4889,97 @@
 	            "Function"      "SummonBeasts"
 	            "Target"        "POINT"
 	            "unit_count"    "%unit_count"
+	        }
+	    }
+	}
+	
+	"white_wolf_bm_howl"
+	{
+	
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    "AbilityTextureName"    "white_wolf_bm_howl"
+	    
+	    
+	    "precache"
+	    {
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	        "particle"          "particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
+	        "particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+	    }
+	
+	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	
+	    "AbilityCooldown"               "100"
+	    "AbilityDuration"               "20 25 30"
+	
+	    "AbilityManaCost"               "100 125 150"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "bonus_damage"      "75 150 225"        
+	        }
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "radius"    "1000"
+	        }
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "duration"  "20 25 30"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "ActOnTargets"
+	        {
+	            "Target"
+	            {
+	                "Center" "CASTER"
+	                "Radius" "%radius"
+	                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+	                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	            }
+	
+	            "Action"
+	            {
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_serpent_queen_anger"
+	                    "Target"        "TARGET"
+	                }
+	            }
+	        }
+	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Magnataur.Empower.Cast"
+	            "Target"        "CASTER"
+	        }
+	
+	
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_serpent_queen_anger"
+	        {
+	            "IsBuff"    "1"
+	            "Duration"  "%AbilityDuration"
+	            "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	            "EffectName"    "particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"  "%bonus_damage"
+	            }
 	        }
 	    }
 	}
