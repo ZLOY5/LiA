@@ -4737,6 +4737,171 @@
 	        }   
 	    }  
 	}
+	
+	"beastmaster_brutality"
+	{
+	
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    "AbilityTextureName"    "beastmaster_primal_roar"
+	    
+	 
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	    
+	    "precache"
+	    {
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	        "particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
+	        "particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+	    }
+	
+	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	
+	    "AbilityCooldown"               "24 20 16"
+	
+	    "AbilityManaCost"               "80 90 100"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "bonus_attack_speed"      "30 50 70"        
+	        }
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "bonus_movement_speed"      "5 10 15"        
+	        }
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "radius"    "400"
+	        }
+	        "04"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "duration"  "8"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "ActOnTargets"
+	        {
+	            "Target"
+	            {
+	                "Center" "CASTER"
+	                "Radius" "%radius"
+	                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+	                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	            }
+	
+	            "Action"
+	            {
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_beastmaster_brutality"
+	                    "Target"        "TARGET"
+	                }
+	            }
+	        }
+	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_LoneDruid.BattleCry"
+	            "Target"        "CASTER"
+	        }
+	
+	
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_beastmaster_brutality"
+	        {
+	            "IsBuff"    "1"
+	            "Duration"  "%duration"
+	            "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	            "EffectName"    "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
+	            "EffectAttachType"  "follow_overhead"
+	
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%bonus_movement_speed"
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+	            }
+	        }
+	    }
+	}
+	
+	"beastmaster_beasts"
+	{
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "beastmaster_beasts"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
+	
+	    "AbilityCastRange"              "400"
+	    "AbilityCastPoint"              "0.3"
+	    "AbilityCooldown"               "40 60 80"
+	
+	    "AbilityManaCost"               "120"
+	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+	
+	        "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
+	        
+	        //Goblin Ability
+	        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	    }
+	    
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "unit_count"  "2 3 4"
+	        }
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "goblin_hp" "125 400 700"
+	        }
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "goblin_damage" "10 43 76"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Tinker.Rearm"
+	            "Target"        "CASTER"
+	        }
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/Beastmaster/Beasts.lua"
+	            "Function"      "SummonBeasts"
+	            "Target"        "POINT"
+	            "unit_count"    "%unit_count"
+	        }
+	    }
+	}
 	//End of file npc_lia_hero_beastmaster.txt
 
 

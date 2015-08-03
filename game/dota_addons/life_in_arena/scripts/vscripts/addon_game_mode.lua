@@ -62,6 +62,12 @@ function Precache( context )
 		PrecacheUnitByNameAsync("orn_mutant_boss", function(...) end)
 		PrecacheUnitByNameAsync("npc_lia_boar", function(...) end)
 		PrecacheUnitByNameAsync("item_lia_healing_ward_unit", function(...) end)
+
+		PrecacheUnitByNameAsync("white_wolf_bm", function(...) end)
+		PrecacheUnitByNameAsync("jungle_stalker_bm", function(...) end)
+		PrecacheUnitByNameAsync("phoenix_bm", function(...) end)
+		PrecacheUnitByNameAsync("bear_bm", function(...) end)
+		PrecacheUnitByNameAsync("phoenix_egg_bm", function(...) end)
 		--[[
 		--1 волна
 		PrecacheModel("models/heroes/sand_king/sand_king.mdl", context)
