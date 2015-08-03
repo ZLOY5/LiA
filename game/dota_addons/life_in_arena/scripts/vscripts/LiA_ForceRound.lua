@@ -2,7 +2,6 @@
 nPlayersReady = 0
 
 function onPlayerReadyToWave(player)
-	print("ready")
 	if Survival.State == SURVIVAL_STATE_PRE_ROUND_TIME then
 		if not player.readyToWave then
 			player.readyToWave = true

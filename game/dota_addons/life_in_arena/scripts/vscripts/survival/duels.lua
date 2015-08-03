@@ -135,9 +135,6 @@ function Survival:EndDuel(winner,loser)
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
 
-    FindClearSpaceForUnit(hero1, hero1.abs, false) 
-    FindClearSpaceForUnit(hero2, hero2.abs, false) 
-
     if hero1:IsAlive() then
         hero1:Purge(false, true, false, true, false)
         hero1:AddNewModifier(hero1, nil, "modifier_stun_lua", {duration = -1})
@@ -151,8 +148,15 @@ function Survival:EndDuel(winner,loser)
         hero2:Heal(9999,hero2)
         hero2:GiveMana(9999) 
     end
-        
-    Survival:CheckDuel()
+    Timers:CreateTimer(2,function()
+        CleanUnitsOnMap()
+    
+        FindClearSpaceForUnit(hero1, hero1.abs, false) 
+        FindClearSpaceForUnit(hero2, hero2.abs, false) 
+
+        Survival:CheckDuel()
+    end)  
+    
 end
 
 function Survival:EndDuels()
@@ -161,6 +165,8 @@ function Survival:EndDuels()
     for i = 1, #self.tHeroes do
         self.tHeroes[i].IsDueled = false
     end
+
+    RespawnAllHeroes()
 
     DoWithAllHeroes(function(hero)
         ResetAllAbilitiesCooldown(hero)

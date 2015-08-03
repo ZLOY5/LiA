@@ -150,8 +150,10 @@ function Survival:_GiveRoundBounty()
     end
 
     DoWithAllHeroes(function(hero)
+        local oldGold = hero:GetGold()
         hero:ModifyGold(goldBounty, false, DOTA_ModifyGold_Unspecified)
         hero.lumber = hero.lumber + lumberBounty
+        print(hero:GetUnitName(),"gold",oldGold," --> ",tostring(hero:GetGold()))
     end)
 end
 

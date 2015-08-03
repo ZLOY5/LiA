@@ -11,7 +11,7 @@ end
 
 function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
-	for i = 1, abilities do
+	for i = 1, abilities-1 do
 		local ability = unit:GetAbilityByIndex(i)
 		if ability and not ability:IsPassive() then
 			ability:EndCooldown()
@@ -19,7 +19,7 @@ function ResetAllAbilitiesCooldown(unit)
 	end
 end
 
-function ShowCenterMessage(msg, dur,wave)
+function ShowCenterMessage(msg, dur, wave)
 	FireGameEvent("show_center_message",{message = msg,duration = dur}) 
 	if wave then
 		Timers:CreateTimer(0.01, function() FireGameEvent("show_center_message_fix",{wave = wave}) return nil end)
@@ -89,7 +89,6 @@ function SetCameraToPosForPlayer(playerID,vector)
 	if playerID == -1 then --для всех игроков
 		DoWithAllHeroes(function(hero)
 			PlayerResource:SetCameraTarget(hero:GetPlayerID(),camera_guy)
-			PlayerResource:SetCameraTarget(playerID,nil)
 		end)
 		Timers:CreateTimer(0.1,function()
 			DoWithAllHeroes(function(hero)

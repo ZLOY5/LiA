@@ -148,7 +148,7 @@ end
 function LiA:OnNPCSpawned( event )
     local spawnedUnit = EntIndexToHScript( event.entindex )
     if spawnedUnit:IsHero() and not spawnedUnit:HasModifier("modifier_stats_bonus_fix") then
-        spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_stats_bonus_fix", nil) --исправляет бонусы за характеристики героя
+        spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_stats_bonus_fix", nil) --исправляет бонусы за характеристики для героев
     end
 end
 
