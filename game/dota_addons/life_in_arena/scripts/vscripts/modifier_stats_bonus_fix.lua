@@ -25,7 +25,7 @@ end
 
 function modifier_stats_bonus_fix:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		--MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
 		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
 		MODIFIER_PROPERTY_HEALTH_BONUS,
@@ -38,9 +38,9 @@ function modifier_stats_bonus_fix:DeclareFunctions()
 	return funcs
 end
 
-function modifier_stats_bonus_fix:GetModifierMoveSpeedBonus_Percentage(params)
-	return self.moveSpeedBonus
-end
+--function modifier_stats_bonus_fix:GetModifierMoveSpeedBonus_Percentage(params)
+--	return self.moveSpeedBonus
+--end
 
 function modifier_stats_bonus_fix:GetModifierPhysicalArmorBonus(params)
 	return self.armorBonus

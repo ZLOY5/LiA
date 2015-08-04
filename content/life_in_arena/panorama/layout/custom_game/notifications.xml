@@ -1,0 +1,15 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/notifications.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/notifications.js" />
+	</scripts>
+	<Panel hittest="false" class="LiANotification">
+		<Panel hittest="false" id="LiaRound" text="">
+				<Label hittest="false" id="LiaRound_Number" class="TitleFont" text="#LiaRoundNumber" />
+				<Label hittest="false" id="LiaRound_Name" class="TitleFont" text="#LiaRoundName" />	
+		</Panel>	
+	</Panel>
+</root>

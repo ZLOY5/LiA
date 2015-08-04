@@ -1,0 +1,43 @@
+.LiANotification
+{
+    width: 100%;
+    height: 100%;
+}
+
+#LiaRound
+{
+    flow-children: down;
+    horizontal-align: center;
+    opacity: 0;
+    transform: scaleX(2) scaleY(2);
+    margin-top: 96px;
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+    visibility: collapse;
+    border: 0px solid blue;
+}
+
+#LiaRound_Number
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+#LiaRound_Name
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.round_start #LiaRound
+{
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+    visibility: visible;
+}

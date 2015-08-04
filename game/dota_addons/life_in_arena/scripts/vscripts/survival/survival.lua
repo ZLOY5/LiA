@@ -335,7 +335,7 @@ function Survival:StartRound()
         return   
     end
     
-    if self.nRoundNum % 5 == 0 then
+    --[[if self.nRoundNum % 5 == 0 then
         Survival.State = SURVIVAL_STATE_ROUND_MEGABOSS 
 
         local message      
@@ -348,7 +348,8 @@ function Survival:StartRound()
     else
         Survival.State = SURVIVAL_STATE_ROUND_WAVE        
         ShowCenterMessage("#lia_wave_num",5,self.nRoundNum)
-    end
+    end]]
+    CustomGameEventManager:Send_ServerToAllClients( "round_start", {round_number = self.nRoundNum} )
 
     Timers:CreateTimer(3,function()
             DisableShop()
