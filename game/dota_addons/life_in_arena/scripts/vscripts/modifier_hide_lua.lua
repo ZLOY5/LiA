@@ -4,6 +4,14 @@ function modifier_hide_lua:IsHidden()
 	return true
 end
 
+function modifier_hide_lua:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_DISABLE_HEALING,
+	}
+ 
+	return funcs
+end
+
 function modifier_hide_lua:CheckState()
 	local state = {
 	[MODIFIER_STATE_STUNNED] = true,
@@ -22,3 +30,10 @@ function modifier_hide_lua:CheckState()
  
 	return state
 end
+
+function modifier_hide_lua:GetDisableHealing(params)
+	return 1
+end
+
+
+
