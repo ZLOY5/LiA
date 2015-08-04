@@ -4838,6 +4838,28 @@
 	    }
 	}
 	
+	"beastmaster_help"
+	{
+	
+	    "BaseClass"             "ability_lua"
+	    "ScriptFile"            "heroes\Beastmaster\beastmaster_help.lua"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"    "beastmaster_primal_roar"
+	    
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "heal_percent"      "15 30 45"        
+	        }
+	    }
+	}
+	
 	"beastmaster_beasts"
 	{
 	    "BaseClass"                     "ability_datadriven"
@@ -4908,19 +4930,19 @@
 	        "particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
 	    }
 	
-	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	    "AbilityCastPoint"              "0.0"
 	
 	    "AbilityCooldown"               "100"
-	    "AbilityDuration"               "20 25 30"
+	    "AbilityDuration"               "20"
 	
-	    "AbilityManaCost"               "100 125 150"
+	    "AbilityManaCost"               "100"
 	
 	    "AbilitySpecial"
 	    {
 	        "01"
 	        {
 	            "var_type"          "FIELD_INTEGER"
-	            "bonus_damage"      "75 150 225"        
+	            "bonus_damage"      "50"        
 	        }
 	        "02"
 	        {
@@ -4930,7 +4952,7 @@
 	        "03"
 	        {
 	            "var_type"          "FIELD_INTEGER"
-	            "duration"  "20 25 30"
+	            "duration"  "20"
 	        }
 	    }
 	
@@ -4982,6 +5004,70 @@
 	            }
 	        }
 	    }
+	}
+	
+	"jungle_stalker_bm_rejuvenation"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "AbilityTextureName"      "enchantress_natures_attendants"
+	  
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCooldown"       "5.0"
+	  "AbilityManaCost"       "125"
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "heal"              "100"
+	    }
+	    "02"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "duration"            "6"
+	    }
+	  }
+	
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	     {
+	        "ModifierName"  "jungle_stalker_bm_rejuvenation"
+	        "Target"        "CASTER"
+	        "Duration"      "%duration"
+	     } 
+	  }
+	
+	  "Modifiers"
+	  {
+	    "jungle_stalker_bm_rejuvenation"
+	    {
+	      "IsBuff"  "1"
+	      "Duration"  "%duration"
+	      
+	      "EffectName"  "particles/items_fx/healing_flask.vpcf"
+	      "EffectAttachType"    "follow_origin"
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "Heal"
+	        {
+	            "Target"        "CASTER"
+	            "HealAmount"    "%heal"
+	        }
+	      }
+	    }
+	  }
 	}
 	//End of file npc_lia_hero_beastmaster.txt
 

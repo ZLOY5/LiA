@@ -171,6 +171,28 @@
     }
 }
 
+"beastmaster_help"
+{
+
+    "BaseClass"             "ability_lua"
+    "ScriptFile"            "heroes\Beastmaster\beastmaster_help.lua"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"    "beastmaster_primal_roar"
+    
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "heal_percent"      "15 30 45"        
+        }
+    }
+}
+
 "beastmaster_beasts"
 {
     "BaseClass"                     "ability_datadriven"
