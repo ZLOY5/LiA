@@ -177,7 +177,7 @@
     "BaseClass"             "ability_lua"
     "ScriptFile"            "heroes\Beastmaster\beastmaster_help.lua"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"    "beastmaster_primal_roar"
+    "AbilityTextureName"    "beastmaster_inner_beast"
     
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
@@ -562,6 +562,50 @@
                 {
                     "ModifierName"  "modifier_jungle_stalker_bm_crit_crit"
                     "Target"        "CASTER"    
+                }
+            }
+        }
+    }
+}
+
+"phoenix_bm_spawn_egg"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "phoenix_supernova"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "precache"
+    {
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+        "particle"  "particles/units/heroes/hero_phoenix/phoenix_death.vpcf"
+        "particle"  "particles/generic_gameplay/generic_stunned.vpcf"
+    }
+
+    "OnOwnerDied"   
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/Beastmaster/Phoenix.lua"
+            "Function"        "SpawnEgg"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_phoenix_damage"
+        {
+            "Passive"            "1"
+            "IsHidden"            "1"
+    
+            "ThinkInterval"  "0.1"
+            "OnIntervalThink"
+            {
+                "Damage"
+                {
+                    "Target"        "CASTER"
+                    "Type"            "DAMAGE_TYPE_PURE"
+                    "Damage"        "2.5"
                 }
             }
         }
