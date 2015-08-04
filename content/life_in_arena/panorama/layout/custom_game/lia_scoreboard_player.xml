@@ -1,0 +1,40 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/lia_scoreboard_styles.css" />
+        <include src="file://{resources}/styles/custom_game/lia_scoreboard.css" />
+    </styles>
+
+	<Panel class="PlayerRow">
+		<Panel id="PlayerRowContainer">
+			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+				<Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect" />
+				<Image hittest="false" id="DisconnectionIndicator" src="file://{images}/custom_game/icon_disconnect.png" />
+				
+			</Panel>
+			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
+				<Panel id="PlayerAndHeroName">
+					<Label id="PlayerName" text="Unknown" />
+				</Panel>
+			</Panel>
+			<Panel id="TeamScoreContainer" class="ScoreCol_TeamScore ScoreboardPanel" />
+			<Panel id="KillsBossesContainer" class="ScoreCol_KillsBosses ScoreboardPanel">
+				<Label id="KillsBosses" text="0" />
+			</Panel>
+			<Panel id="KillsCreepsContainer" class="ScoreCol_KillsCreeps ScoreboardPanel">
+				<Label id="KillsCreeps" text="0" />
+			</Panel>
+			<Panel id="LevelContainer" class="ScoreCol_Level ScoreboardPanel">
+				<Label id="Level" text="0" />
+			</Panel>
+			<Panel id="DeathsContainer" class="ScoreCol_Deaths ScoreboardPanel">
+				<Label id="Deaths" text="0" />
+			</Panel>
+			<Panel id="RatingContainer" class="ScoreCol_Rating ScoreboardPanel">
+				<Label id="Rating" text="0" />
+			</Panel>
+			
+			
+		</Panel>
+	</Panel>
+</root>

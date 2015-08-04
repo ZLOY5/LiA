@@ -175,13 +175,41 @@ end
 
 
 function LiA:onThink()
+	--score_board
+	-- set data
+	local tPlayersId = {}
+	local tKillsCreeps = {}
+	local tKillsBosses = {}
+	local tDeaths = {}
+	local tRating = {}
+	--
     for i = 1, #tHeroes do
         local hero = tHeroes[i]
         hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
-        --print(hero.rating,PlayerResource:GetPlayerName(hero:GetPlayerID()))       
+		--
+		table.insert(tPlayersId,hero:GetPlayerID())
+		table.insert(tKillsCreeps,hero.creeps)
+		table.insert(tKillsBosses,hero.bosses)
+		table.insert(tDeaths,hero.deaths)
+		table.insert(tRating,hero.rating)
+  
     end 
     table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
+	--
 
+	local data =
+		{
+			PlayersId = tPlayersId,
+			KillsCreeps = tKillsCreeps,
+			KillsBosses = tKillsBosses,
+			Deaths = tDeaths,
+			Rating = tRating,
+			--da = 1,
+			--teamId = localPlayerTeamId,
+			--hero_id = hero:GetClassname()
+		}
+	CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
+	
     --DoWithAllHeroes(function(hero)
     --    CheckItemModifies(hero)
     --end)

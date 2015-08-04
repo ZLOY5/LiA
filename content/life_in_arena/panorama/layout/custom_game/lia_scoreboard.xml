@@ -1,0 +1,26 @@
+<root>
+    <styles>
+  		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/lia_scoreboard.css" />
+    </styles>
+
+    <scripts>
+		<include src="file://{resources}/scripts/custom_game/lia_scoreboard_upd.js" />
+        <include src="file://{resources}/scripts/custom_game/lia_scoreboard.js" />
+    </scripts>
+
+    <Panel hittest="false" class="FlyoutScoreboardRoot">
+		<Panel class="Legend">
+			<Panel class="LegendPanel ScoreCol_TeamInfo" />
+			<Panel class="LegendPanel ScoreCol_Hero" />
+			<Panel class="LegendPanel ScoreCol_PlayerDetails" />
+			<Label class="LegendPanel ScoreCol_TeamScore" text="#Kills:" />
+			<Label class="LegendPanel ScoreCol_KillsBosses" text="#Bosses" />
+			<Label class="LegendPanel ScoreCol_KillsCreeps" text="#Creeps" />
+			<Label class="LegendPanel ScoreCol_Level" text="#LvL" />
+			<Label class="LegendPanel ScoreCol_Deaths" text="#Deaths" />
+			<Label class="LegendPanel ScoreCol_Rating" text="#Rating" />
+		</Panel>
+		<Panel id="TeamsContainer" />
+    </Panel>
+</root>
