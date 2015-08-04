@@ -654,3 +654,118 @@
         }
     }
 }
+
+  "phoenix_bm_phoenix_fire"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"       "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "ancient_apparition_ice_vortex"
+
+  // Precache
+  //-------------------------------------------------------------------------------------------------------------
+  "precache"
+  {
+    "particle"   "particles/units/heroes/hero_lina/lina_base_attack.vpcf"  
+    "particle"  "particles/units/heroes/hero_phoenix/phoenix_sunray_debuff.vpcf" 
+    "particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack_impact_glow.vpcf"
+  }
+
+
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "damage"    "20"
+    }
+    "02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "damage_per_second"    "2"
+    }
+    "03"
+    {
+      "var_type"      "FIELD_FLOAT"
+      "duration_creep"    "10"
+    }
+    "04"
+    {
+      "var_type"      "FIELD_FLOAT"
+      "duration_hero"  "7"
+    }
+    "05"
+    {
+      "var_type"      "FIELD_FLOAT"
+      "radius"      "600"
+    }
+  }
+
+
+
+  "Modifiers"
+  {
+
+    "modifier_phoenix_bm_phoenix_fire_start"
+  {
+        "Passive"   "1"
+
+        "ThinkInterval" "0.5"
+        "OnIntervalThink"
+      {
+        "ActOnTargets"
+        {
+         "Target"
+         {
+          "Center" "CASTER" 
+          "Radius" "%radius"
+          "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+          "Random" "1"
+          "MaxTargets" "1"
+         }
+         "Action"
+         {
+            "Damage"
+            {
+                "Target"        "TARGET"
+                "Type"            "DAMAGE_TYPE_MAGICAL"
+                "Damage"        "%damage"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName"    "modifier_phoenix_bm_phoenix_fire"
+                "Target"         "TARGET"
+                "Duration"        "%duration_creep"
+            }
+            "FireEffect"
+            {
+                "EffectName"        "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack_impact_glow.vpcf"
+                "EffectAttachType"  "follow_origin"
+                "Target"            "TARGET"
+            }
+         }
+        }
+      }
+  } 
+    "modifier_phoenix_bm_phoenix_fire"
+    {   
+        "IsDebuff"  "1"
+        "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_sunray_debuff.vpcf"
+        "EffectAttachType"  "follow_origin"
+        "ThinkInterval"  "1.0"
+        "OnIntervalThink"
+        {
+            "Damage"
+            {
+                "Target"        "TARGET"
+                "Type"            "DAMAGE_TYPE_MAGICAL"
+                "Damage"        "%damage_per_second"
+            }
+        }
+    }
+  }
+}
