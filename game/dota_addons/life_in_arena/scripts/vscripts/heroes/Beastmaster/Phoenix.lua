@@ -7,3 +7,4 @@ function SpawnEgg(event)
 	
 	dummy:RemoveSelf()
 end
+
