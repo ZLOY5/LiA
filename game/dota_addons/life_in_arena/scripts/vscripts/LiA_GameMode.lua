@@ -208,7 +208,9 @@ function LiA:onThink()
 			--teamId = localPlayerTeamId,
 			--hero_id = hero:GetClassname()
 		}
-	CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
+	if not IsDuel then
+		CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
+	end
 	
     --DoWithAllHeroes(function(hero)
     --    CheckItemModifies(hero)

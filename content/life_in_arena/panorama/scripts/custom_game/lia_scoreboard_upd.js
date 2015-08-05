@@ -534,7 +534,7 @@ function ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, scoreboardPan
 
 //=============================================================================
 //=============================================================================
-function ScoreboardUpdater_SetScoreboardActive( scoreboardHandle, isActive )
+/*function ScoreboardUpdater_SetScoreboardActive( scoreboardHandle, isActive )
 {
 	if ( scoreboardHandle.scoreboardConfig === null )
 	{
@@ -545,7 +545,7 @@ function ScoreboardUpdater_SetScoreboardActive( scoreboardHandle, isActive )
 	{
 		//_ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardHandle.scoreboardConfig );
 	}
-}
+}*/
 
 //=============================================================================
 //=============================================================================

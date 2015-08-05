@@ -3,14 +3,14 @@
 var g_ScoreboardHandle = null;
 var visible;
 
-function AutoUpdateScoreboard()
+/*function AutoUpdateScoreboard()
 {
 	if (!visible)
 		return;
 
 	ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, false );
     $.Schedule( 1, AutoUpdateScoreboard );
-}
+}*/
 
 /*function UpdatePlayers()
 {
@@ -22,14 +22,14 @@ function SetFlyoutScoreboardVisible( bVisible )
 {
 	visible = bVisible;
 	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", visible );
-	if ( visible )
+	/*if ( visible )
 	{
-		AutoUpdateScoreboard( bVisible );
+		//AutoUpdateScoreboard( bVisible );
 	}
 	else
 	{
 		ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, false );
-	}
+	}*/
 }
 
 function GetScore_FromPlayerId(data, playerId)
