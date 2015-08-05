@@ -57,8 +57,10 @@ function LiA:InitGameMode()
 
 	GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
-	GameRules:SetPreGameTime(0)
-    GameRules:SetPostGameTime(30)
+	-- BUG valve: SetPreGameTime work as SetPostGameTime
+	GameRules:SetPreGameTime(8)
+    GameRules:SetPostGameTime(2)
+	--
 	GameRules:SetHeroRespawnEnabled(false)
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
@@ -69,7 +71,9 @@ function LiA:InitGameMode()
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
     GameRules:SetCustomVictoryMessage("#victory_message")
-    GameRules:SetCustomGameEndDelay(1)
+    --GameRules:SetCustomGameEndDelay(1)
+	GameRules:SetCustomGameEndDelay( 0 )
+	GameRules:SetCustomVictoryMessageDuration( 5 )
     
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetFogOfWarDisabled(true)
@@ -172,31 +176,22 @@ function LiA:OnDisconnect(event)
     player.IsDisconnect = true
 end
 
-
-
-function LiA:onThink()
-	--score_board
-	-- set data
+function LiA:GetDataForSend()
 	local tPlayersId = {}
 	local tKillsCreeps = {}
 	local tKillsBosses = {}
 	local tDeaths = {}
 	local tRating = {}
+	-- tHeroes need to be sorted
 	--
-    for i = 1, #tHeroes do
-        local hero = tHeroes[i]
-        hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
-		--
+	for i = 1, #tHeroes do
+		local hero = tHeroes[i]
 		table.insert(tPlayersId,hero:GetPlayerID())
 		table.insert(tKillsCreeps,hero.creeps)
 		table.insert(tKillsBosses,hero.bosses)
 		table.insert(tDeaths,hero.deaths)
 		table.insert(tRating,hero.rating)
-  
-    end 
-    table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
-	--
-
+	end
 	local data =
 		{
 			PlayersId = tPlayersId,
@@ -208,9 +203,31 @@ function LiA:onThink()
 			--teamId = localPlayerTeamId,
 			--hero_id = hero:GetClassname()
 		}
+	return data
+end
+
+function LiA:onThink()
+	--score_board
+	-- set data
+	--
+    for i = 1, #tHeroes do
+        local hero = tHeroes[i]
+        hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
+		--
+    end 
+    table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
+	--
+	local data = LiA:GetDataForSend()
+
 	if not IsDuel then
 		CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
 	end
+	
+	--if tHeroes[1] ~= nil and tHeroes[1]:GetLevel() > 1 then
+	--	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	--	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+	--	
+	--end
 	
     --DoWithAllHeroes(function(hero)
     --    CheckItemModifies(hero)
@@ -218,7 +235,18 @@ function LiA:onThink()
     return LiA.DeltaTime
 end
 
-    
+
+function LiA:EndGame()
+	local data = LiA:GetDataForSend()
+	local dataHide = 
+	{
+		visible = false,
+	}
+	CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
+	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+
+end
 
 
 
@@ -445,7 +473,8 @@ function OnSecondStageDeath(event)
 end
 
 function LiA:OnOrnDeath(event)
-    GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+	LiA:EndGame()
+    --GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
 end
 
 function LiA:OnOrnDamaged(event) 

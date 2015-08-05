@@ -508,6 +508,44 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 		playerPanel.SetHasClass( "player_connection_abandoned", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_ABANDONED );
 		playerPanel.SetHasClass( "player_connection_failed", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_FAILED );
 		playerPanel.SetHasClass( "player_connection_disconnected", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_DISCONNECTED );
+	
+		
+		
+	}
+	
+	var playerItemsContainer = playerPanel.FindChildInLayoutFile( "PlayerItemsContainer" );
+	if ( playerItemsContainer )
+	{
+		var playerItems = Game.GetPlayerItems( playerId );
+		if ( playerItems )
+		{
+			$.Msg( "		playerItems = ", playerItems );
+			for ( var i = playerItems.inventory_slot_min; i < playerItems.inventory_slot_max; ++i )
+			{
+				var itemPanelName = "_dynamic_item_" + i;
+				var itemPanel = playerItemsContainer.FindChild( itemPanelName );
+				if ( itemPanel === null )
+				{
+					itemPanel = $.CreatePanel( "Image", playerItemsContainer, itemPanelName );
+					itemPanel.AddClass( "PlayerItem" );
+				}
+
+				var itemInfo = playerItems.inventory[i];
+				if ( itemInfo )
+				{
+					var item_image_name = "file://{images}/items/" + itemInfo.item_name.replace( "item_", "" ) + ".png"
+					if ( itemInfo.item_name.indexOf( "recipe" ) >= 0 )
+					{
+						item_image_name = "file://{images}/items/recipe.png"
+					}
+					itemPanel.SetImage( item_image_name );
+				}
+				else
+				{
+					itemPanel.SetImage( "" );
+				}
+			}
+		}
 	}
 
 }
@@ -549,7 +587,7 @@ function ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, scoreboardPan
 
 //=============================================================================
 //=============================================================================
-/*function ScoreboardUpdater_GetTeamPanel( scoreboardHandle, teamId )
+function ScoreboardUpdater_GetTeamPanel( scoreboardHandle, teamId )
 {
 	if ( scoreboardHandle.scoreboardPanel === null )
 	{
@@ -562,7 +600,7 @@ function ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, scoreboardPan
 
 //=============================================================================
 //=============================================================================
-function ScoreboardUpdater_GetSortedTeamInfoList( scoreboardHandle )
+/*function ScoreboardUpdater_GetSortedTeamInfoList( scoreboardHandle )
 {
 	var teamsList = [];
 	for ( var teamId of Game.GetAllTeamIDs() )
