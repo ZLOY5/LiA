@@ -75,7 +75,7 @@ function GetScore_FromPlayerId(data, playerId)
 }
 
 
-/*function OnUpdAction_compareFunc( a, b ) 
+function OnUpdAction_compareFunc( a, b ) 
 {
 	if ( a.scoreRating < b.scoreRating )
 	{
@@ -89,9 +89,9 @@ function GetScore_FromPlayerId(data, playerId)
 	{
 		return 0;
 	}
-};*/
+};
 
-/*function OnUpdAction_GetSortedPlayersList(teamPlayers, data )
+function OnUpdAction_GetSortedPlayersList(teamPlayers, data )
 {
 	var playersAndParamsList = [];
 
@@ -113,7 +113,7 @@ function GetScore_FromPlayerId(data, playerId)
 	}
 	
 	return playersAndParamsList;
-}*/
+}
 
 
 function OnUpdActionHide( dataHide )
@@ -160,22 +160,22 @@ function OnUpdAction( data )
 	$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
 	if ( playersContainer )
 	{
-		var plList = [];
+		/*var plList = [];
 		for ( var id of teamPlayers )
 		{
 			plList.push( id );
-		}
-		//var plAndParList = OnUpdAction_GetSortedPlayersList(teamPlayers, data);
+		}*/
+		var plAndParList = OnUpdAction_GetSortedPlayersList(teamPlayers, data);
 		//_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, 3, localPlayerTeamId, score );
-		//for ( var i = 0; i < plAndParList.length; ++i )
-		for ( var i = 0; i < plList.length; ++i )
+		for ( var i = 0; i < plAndParList.length; ++i )
+		//for ( var i = 0; i < plList.length; ++i )
 		//for ( var playerId of teamPlayers )
 		{
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 
-			var score = GetScore_FromPlayerId(data,plList[i]); //.playerId
+			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
 			$.Msg( "                  OnUpdAction:score ", score );
-			_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, plList[i], localPlayerTeamId, score, i ); //.playerId
+			_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
 		
 	}
