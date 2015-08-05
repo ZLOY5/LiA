@@ -4699,6 +4699,11 @@
 	            "var_type"        "FIELD_INTEGER"
 	            "radius"          "100 125 150"
 	        }
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "damage"          "90 180 270"
+	        }
 	    }
 	  
 	    "OnSpellStart"
@@ -4731,7 +4736,7 @@
 	                "Center"  "POINT"
 	                "Radius"  "%radius"
 	                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                "Types"   "DOTA_UNIT_TARGET_BASIC"
+	                "Types"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 	                "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	            }
 	        }   
