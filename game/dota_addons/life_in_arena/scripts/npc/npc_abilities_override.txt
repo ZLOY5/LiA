@@ -4907,7 +4907,7 @@
 	    {
 	        "FireSound"
 	        {
-	            "EffectName"    "Hero_Tinker.Rearm"
+	            "EffectName"    "Hero_Lycan.SummonWolves"
 	            "Target"        "CASTER"
 	        }
 	        "RunScript"
@@ -5312,17 +5312,6 @@
 	                    "Damage" "%attack_damage / 4"
 	                }
 	            }
-	
-	            "ThinkInterval"  "0.1"
-	            "OnIntervalThink"
-	            {
-	                "Damage"
-	                {
-	                    "Target"        "CASTER"
-	                    "Type"            "DAMAGE_TYPE_PURE"
-	                    "Damage"        "2.5"
-	                }
-	            }
 	        }
 	    }
 	}
@@ -5333,7 +5322,7 @@
 	  //-------------------------------------------------------------------------------------------------------------
 	  "BaseClass"       "ability_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName"      "ancient_apparition_ice_vortex"
+	  "AbilityTextureName"      "phoenix_sun_ray"
 	
 	  // Precache
 	  //-------------------------------------------------------------------------------------------------------------
@@ -5440,6 +5429,52 @@
 	        }
 	    }
 	  }
+	}
+	
+	"phoenix_egg_bm_spawn_phoenix"
+	{
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "phoenix_fire_spirits"
+	
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+	        "particle"  "particles/units/heroes/hero_phoenix/phoenix_supernova_reborn.vpcf"
+	        "particle"  "particles/generic_gameplay/generic_stunned.vpcf"
+	    }
+	
+	
+	    "Modifiers"
+	    {
+	        "modifier_phoenix_egg_bm_spawn_phoenix"
+	        {
+	            "Passive"            "1"
+	
+	    
+	            "ThinkInterval"  "10.0"
+	            "OnIntervalThink"
+	            {
+	                    "RunScript"
+	                    {
+	                        "ScriptFile"    "heroes/Beastmaster/Phoenix.lua"
+	                        "Function"        "SpawnPhoenix"
+	                    }
+	                    "FireEffect"
+	                    {
+	                        "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_reborn.vpcf"
+	                        "EffectAttachType"  "follow_origin"
+	                        "Target"            "CASTER"
+	                    }
+	                    "FireSound"
+	                    {
+	                        "EffectName"    "Hero_Phoenix.Supernova.Explode"
+	                        "Target"         "CASTER"
+	                    }
+	            }
+	         }
+	    }
 	}
 	//End of file npc_lia_hero_beastmaster.txt
 
