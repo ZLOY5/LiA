@@ -69,6 +69,13 @@ function Survival:Duel(hero1,hero2)
             hero2:SetGold(gold, false)
 
     		SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD)
+
+            local msg = { 
+                            duel_number = self.DuelNumber,
+                            hero1 = hero1:GetClassname(),
+                            hero2 = hero2:GetClassname() 
+                        }
+            CustomGameEventManager:Send_ServerToAllClients( "duel_start", msg )
     	end
     )
 

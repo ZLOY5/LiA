@@ -41,3 +41,64 @@
     transform: scaleX(1) scaleY(1);
     visibility: visible;
 }
+
+#LiaDuel
+{
+    flow-children: down;
+    horizontal-align: center;
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+    margin-top: 80px;
+    transition-property: transform, opacity;
+    transition-duration: 0.6s;
+    visibility:  visible;
+    border: 0px solid blue;
+}
+
+#LiaDuel_Number
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+#LiaDuel_Text
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+.duel_start #LiaDuel
+{
+    opacity: 0.9;
+    transform: scaleX(1) scaleY(1);
+    visibility: visible;
+}
+
+#LiaDuel_Images
+{
+    flow-children: right;
+    horizontal-align: center;
+    border: 3px solid #5e686966;
+    background-color: #292e2e;
+    margin: 0px;
+}
+
+#LiaDuel_Hero1
+{
+    height: 64px;
+    width: 124px;
+    margin: 4px;
+}
+
+#LiaDuel_Hero2
+{
+    height: 64px;
+    width: 124px;
+    margin: 4px;
+}

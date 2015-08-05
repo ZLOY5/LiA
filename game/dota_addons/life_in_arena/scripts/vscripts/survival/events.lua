@@ -21,7 +21,7 @@ function Survival:OnPlayerPickHero(keys)
     
     if PlayerResource:HasRandomed(playerID) then
         print(PlayerResource:GetPlayerName(playerID),"randomed hero")
-        hero:SetGold(hero:GetGold()+50, false)
+        hero:SetGold(hero:GetGold()-150, false) -- в доте за рандом дают 200 золота
     end 
     --hero:AddNewModifier(hero, nil, "modifier_stats_bonus_fix", nil)
 

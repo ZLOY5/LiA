@@ -207,7 +207,7 @@ end
 function Survival:PrepareNextRound()
     self.nRoundNum = self.nRoundNum + 1
     
-    if self.nRoundNum % 3 == 1 and not self.IsDuelOccured and self.nHeroCount > 1 then
+    if self.nRoundNum % 2 == 1 and not self.IsDuelOccured and self.nHeroCount > 1 then
         print("Next round - duels")
         self.IsDuelOccured = true
         Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
