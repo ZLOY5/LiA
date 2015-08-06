@@ -108,11 +108,11 @@ function OnUpdActionEnd( data )
 	var teamPanel = containerPanel.FindChild( teamPanelName );
 	if ( teamPanel === null )
 	{
-		$.Msg( "                  OnUpdActionEnd:  teamPanel === null ");
+		//$.Msg( "                  OnUpdActionEnd:  teamPanel === null ");
 		teamPanel = $.CreatePanel( "Panel",  containerPanel, teamPanelName );
 		teamPanel.BLoadLayout( _endScoreboardHandle.scoreboardConfig.teamXmlName, false, false);
 	}
-	$.Msg( "                  OnUpdActionEnd:  teamPanel ", teamPanel );
+	//$.Msg( "                  OnUpdActionEnd:  teamPanel ", teamPanel );
 	//var playerId = data.playerId
 	//var PlayerTeamId = data.PlayerTeamId
 	/*var scoreboardConfig =
@@ -140,7 +140,7 @@ function OnUpdActionEnd( data )
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 
 			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
-			$.Msg( "                  OnUpdActionEnd: 	score ", score );
+			//$.Msg( "                  OnUpdActionEnd: 	score ", score );
 			_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
 		
@@ -213,7 +213,7 @@ function OnUpdActionEnd( data )
 (function()
 {
 	//if ( ScoreboardUpdater_InitializeScoreboard === null ) { $.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." ); }
-	$.Msg( "                  function():  lia_end_screen ");
+	//$.Msg( "                  function():  lia_end_screen ");
 	var scoreboardConfig =
 	{
 		"teamXmlName" : "file://{resources}/layout/custom_game/lia_end_screen_team.xml",

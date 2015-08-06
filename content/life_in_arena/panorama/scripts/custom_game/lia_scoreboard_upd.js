@@ -519,7 +519,7 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 		var playerItems = Game.GetPlayerItems( playerId );
 		if ( playerItems )
 		{
-			$.Msg( "		playerItems = ", playerItems );
+			//$.Msg( "		playerItems = ", playerItems );
 			for ( var i = playerItems.inventory_slot_min; i < playerItems.inventory_slot_max; ++i )
 			{
 				var itemPanelName = "_dynamic_item_" + i;
@@ -563,7 +563,7 @@ function ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, scoreboardPan
 		// default to true
 		scoreboardConfig.shouldSort = true;
 	}
-	$.Msg( "                  ScoreboardUpdater_InitializeScoreboard: ", scoreboardConfig );
+	//$.Msg( "                  ScoreboardUpdater_InitializeScoreboard: ", scoreboardConfig );
 	//_ScoreboardUpdater_UpdateAllPlayers( scoreboardConfig, scoreboardPanel );
 	
 	return { "scoreboardConfig": scoreboardConfig, "scoreboardPanel" : scoreboardPanel }
