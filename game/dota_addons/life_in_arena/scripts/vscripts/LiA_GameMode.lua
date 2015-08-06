@@ -220,9 +220,7 @@ function LiA:onThink()
 	local data = LiA:GetDataForSend()
 
 	if not IsDuel then
-		if #tHeroes ~= 0 then
-			CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
-		end
+		CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
 	end
 	
 	--if tHeroes[1] ~= nil and tHeroes[1]:GetLevel() > 1 then
@@ -238,7 +236,7 @@ function LiA:onThink()
 end
 
 
-function LiA:EndGame(teamWin)
+function LiA:EndGame()
 	local GameMode = GameRules:GetGameModeEntity()
 	--local data = LiA:GetDataForSend()
 	local dataHide = 
@@ -248,7 +246,7 @@ function LiA:EndGame(teamWin)
 	--print("		data", data)
 	CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
 	GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
-	GameRules:SetGameWinner(teamWin)  
+	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 	--CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
 	--GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 	--Timers:CreateTimer(0.5,function() 
@@ -268,7 +266,7 @@ end
 function EndGameCon()
 	local data = LiA:GetDataForSend()
 	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
-	--GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 	print("						SetGameWinner ")
 	--
     return nil --0.5
@@ -330,8 +328,7 @@ function OnHeroDeath(keys)
         nDeathHeroes = nDeathHeroes + 1
         if nDeathHeroes == nHeroCount then
             GameRules:SetCustomVictoryMessage("#lose_message")
-            --GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
-			LiA:EndGame(DOTA_TEAM_BADGUYS)
+            GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
             --GameRules:ResetToHeroSelection()
         end
     end
@@ -390,8 +387,7 @@ function LiA:SpawnWave()
     
     if nHeroCount == 0 then
         GameRules:SetCustomVictoryMessage("#lose_message")
-        --GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
-		LiA:EndGame(DOTA_TEAM_BADGUYS)
+        GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
         return   
     end
 	--LiA_AIcreeps
@@ -501,8 +497,7 @@ function OnSecondStageDeath(event)
 end
 
 function LiA:OnOrnDeath(event)
-	GameRules:SetCustomVictoryMessage("#victory_message")
-	LiA:EndGame(DOTA_TEAM_GOODGUYS)
+	LiA:EndGame()
     --GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
 end
 

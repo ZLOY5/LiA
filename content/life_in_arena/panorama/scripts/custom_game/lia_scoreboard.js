@@ -174,7 +174,7 @@ function OnUpdAction( data )
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 
 			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
-			//$.Msg( "                  OnUpdAction:score ", score );
+			$.Msg( "                  OnUpdAction:score ", score );
 			_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
 		
