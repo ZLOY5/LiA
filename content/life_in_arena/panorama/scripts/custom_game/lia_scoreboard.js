@@ -119,7 +119,7 @@ function OnUpdAction_GetSortedPlayersList(teamPlayers, data )
 function OnUpdActionHide( dataHide )
 {
 	SetFlyoutScoreboardVisible( dataHide.visible );
-	$.Msg( "                  				OnUpdActionHide    " );
+	//$.Msg( "                  				OnUpdActionHide    " );
 }
 
 
@@ -146,7 +146,7 @@ function OnUpdAction( data )
 		teamPanel = $.CreatePanel( "Panel",  containerPanel, teamPanelName );
 		teamPanel.BLoadLayout( g_ScoreboardHandle.scoreboardConfig.teamXmlName, false, false);
 	}
-	$.Msg( "                  OnUpdAction:teamPanel ", teamPanel );
+	//$.Msg( "                  OnUpdAction:teamPanel ", teamPanel );
 	//var playerId = data.playerId
 	//var PlayerTeamId = data.PlayerTeamId
 	/*var scoreboardConfig =
@@ -157,7 +157,7 @@ function OnUpdAction( data )
 	
 	var teamPlayers = Game.GetPlayerIDsOnTeam( localPlayerTeamId );
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
-	$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
+	//$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
 	if ( playersContainer )
 	{
 		/*var plList = [];
@@ -174,7 +174,7 @@ function OnUpdAction( data )
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 
 			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
-			$.Msg( "                  OnUpdAction:score ", score );
+			//$.Msg( "                  OnUpdAction:score ", score );
 			_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
 		
