@@ -4810,7 +4810,12 @@
 	                "ApplyModifier"
 	                {
 	                    "ModifierName"  "modifier_beastmaster_brutality"
-	                    "Target"        "TARGET"
+	                    "Target"
+	                    {
+	                        "Center" "TARGET"
+	                        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	                    }
+	
 	                }
 	            }
 	        }
@@ -4979,7 +4984,11 @@
 	                "ApplyModifier"
 	                {
 	                    "ModifierName"  "modifier_white_wolf_bm_howl"
-	                    "Target"        "TARGET"
+	                    "Target"
+	                    {
+	                        "Center" "TARGET"
+	                        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	                    }
 	                }
 	            }
 	        }
@@ -5131,7 +5140,11 @@
 	    "ApplyModifier"
 	     {
 	        "ModifierName"  "jungle_stalker_bm_rejuvenation"
-	        "Target"        "CASTER"
+	        "Target"
+	        {
+	            "Center"    "CASTER"
+	            "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	        }
 	        "Duration"      "%duration"
 	     } 
 	  }
@@ -5142,7 +5155,7 @@
 	    {
 	      "IsBuff"  "1"
 	      "Duration"  "%duration"
-	      
+	      "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"     
 	      "EffectName"  "particles/items_fx/healing_flask.vpcf"
 	      "EffectAttachType"    "follow_origin"
 	
@@ -5261,6 +5274,15 @@
 	            "ScriptFile"    "heroes/Beastmaster/Phoenix.lua"
 	            "Function"        "SpawnEgg"
 	        }
+	        "FireEffect"
+	        {
+	            "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_reborn.vpcf"
+	            "EffectAttachType"  "start_at_customorigin"
+	            "Target" 
+	            {
+	                "Center"    "CASTER"
+	            }
+	        }
 	    }
 	
 	    "Modifiers"
@@ -5272,44 +5294,10 @@
 	                
 	            "OnAttackLanded"
 	            {
-	                "Damage"
+	                "RunScript"
 	                {
-	                        "Target"
-	                        {
-	                            "Center"    "TARGET"
-	                            "Radius"    "50"
-	                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                            "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-	                            "Flags"         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	                        }
-	                    "Type" "DAMAGE_TYPE_PHYSICAL"
-	                    "Damage" "%attack_damage / 2"
-	                }
-	                "Damage"
-	                {
-	                        "Target"
-	                        {
-	                            "Center"    "TARGET"
-	                            "Radius"    "150"
-	                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                            "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-	                            "Flags"         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	                        }
-	                    "Type" "DAMAGE_TYPE_PHYSICAL"
-	                    "Damage" "%attack_damage / 4"
-	                }
-	                "Damage"
-	                {
-	                        "Target"
-	                        {
-	                            "Center"    "TARGET"
-	                            "Radius"    "250"
-	                            "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                            "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-	                            "Flags"         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	                        }
-	                    "Type" "DAMAGE_TYPE_PHYSICAL"
-	                    "Damage" "%attack_damage / 4"
+	                    "ScriptFile"    "heroes/Beastmaster/PhoenixSplash.lua"
+	                    "Function"        "PhoenixSplash"
 	                }
 	            }
 	        }
@@ -5331,6 +5319,7 @@
 	    "particle"   "particles/units/heroes/hero_lina/lina_base_attack.vpcf"  
 	    "particle"  "particles/units/heroes/hero_phoenix/phoenix_sunray_debuff.vpcf" 
 	    "particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack_impact_glow.vpcf"
+	    "particle"  "particles/units/heroes/hero_lion/lion_spell_finger_of_death.vpcf"
 	  }
 	
 	
@@ -5390,11 +5379,11 @@
 	         }
 	         "Action"
 	         {
-	            "Damage"
+	            "RunScript"
 	            {
+	                "ScriptFile"    "heroes/Beastmaster/PhoenixBurn.lua"
+	                "Function"        "PhoenixBurn"
 	                "Target"        "TARGET"
-	                "Type"            "DAMAGE_TYPE_MAGICAL"
-	                "Damage"        "%damage"
 	            }
 	            "ApplyModifier"
 	            {
@@ -5436,7 +5425,7 @@
 	    "BaseClass"                     "ability_datadriven"
 	    "AbilityTextureName"            "phoenix_fire_spirits"
 	
-	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	
 	    "precache"
 	    {
@@ -5451,7 +5440,7 @@
 	        "modifier_phoenix_egg_bm_spawn_phoenix"
 	        {
 	            "Passive"            "1"
-	
+	            "IsHidden"          "1"
 	    
 	            "ThinkInterval"  "10.0"
 	            "OnIntervalThink"
@@ -5464,8 +5453,11 @@
 	                    "FireEffect"
 	                    {
 	                        "EffectName"        "particles/units/heroes/hero_phoenix/phoenix_supernova_reborn.vpcf"
-	                        "EffectAttachType"  "follow_origin"
-	                        "Target"            "CASTER"
+	                        "EffectAttachType"  "start_at_customorigin"
+	                        "Target" 
+	                        {
+	                            "Center"    "CASTER"
+	                        }
 	                    }
 	                    "FireSound"
 	                    {

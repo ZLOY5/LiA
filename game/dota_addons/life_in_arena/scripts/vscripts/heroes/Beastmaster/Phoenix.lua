@@ -18,3 +18,4 @@ function SpawnPhoenix(event)
 		event.caster:Kill(event.ability, event.caster)
 	end
 end
+
