@@ -132,7 +132,7 @@ function OnUpdActionEnd( data )
 			plList.push( id );
 		}*/
 		var plAndParList = OnUpdAction_GetSortedPlayersList(teamPlayers, data);
-		//_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, 3, localPlayerTeamId, score );
+		//_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, 3, localPlayerTeamId, score );
 		for ( var i = 0; i < plAndParList.length; ++i )
 		//for ( var i = 0; i < plList.length; ++i )
 		//for ( var playerId of teamPlayers )
@@ -141,7 +141,7 @@ function OnUpdActionEnd( data )
 
 			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
 			$.Msg( "                  OnUpdAction:score ", score );
-			_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
+			_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
 		
 	}
