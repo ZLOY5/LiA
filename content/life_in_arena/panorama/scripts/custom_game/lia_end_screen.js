@@ -100,7 +100,7 @@ function OnUpdActionEnd( data )
 		localPlayerTeamId = localPlayer.player_team_id;
 	}
 	//
-	$.Msg( "                  OnUpdActionEnd: _endScoreboardHandle ", _endScoreboardHandle );
+	//$.Msg( "                  OnUpdActionEnd: _endScoreboardHandle ", _endScoreboardHandle );
 	//var teamPanel = ScoreboardUpdater_GetTeamPanel( _endScoreboardHandle, localPlayerTeamId );
 	//var teamPanel = $.GetContextPanel();
 	var containerPanel = _containerPanel
@@ -123,7 +123,7 @@ function OnUpdActionEnd( data )
 	
 	var teamPlayers = Game.GetPlayerIDsOnTeam( localPlayerTeamId );
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
-	$.Msg( "                  OnUpdActionEnd:	playersContainer ", playersContainer );
+	//$.Msg( "                  OnUpdActionEnd:	playersContainer ", playersContainer );
 	if ( playersContainer )
 	{
 		/*var plList = [];
@@ -140,7 +140,7 @@ function OnUpdActionEnd( data )
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 
 			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
-			$.Msg( "                  OnUpdAction:score ", score );
+			$.Msg( "                  OnUpdActionEnd: 	score ", score );
 			_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
 		

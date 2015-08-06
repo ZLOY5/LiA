@@ -237,15 +237,39 @@ end
 
 
 function LiA:EndGame()
-	local data = LiA:GetDataForSend()
+	local GameMode = GameRules:GetGameModeEntity()
+	--local data = LiA:GetDataForSend()
 	local dataHide = 
 	{
 		visible = false,
 	}
+	--print("		data", data)
 	CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
+	GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
+	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	--CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+	--GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	--Timers:CreateTimer(0.5,function() 
+		
+	--	data = LiA:GetDataForSend()
+		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
+	--	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+		--print("		Send_ServerToAllClients ", data.Rating)
+		--GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+		
+		--return 0.5
+	--end)
+	
+
+end
+
+function EndGameCon()
+	local data = LiA:GetDataForSend()
 	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
-
+	print("						SetGameWinner ")
+	--
+    return nil --0.5
 end
 
 

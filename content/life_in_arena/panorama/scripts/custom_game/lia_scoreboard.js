@@ -119,7 +119,7 @@ function OnUpdAction_GetSortedPlayersList(teamPlayers, data )
 function OnUpdActionHide( dataHide )
 {
 	SetFlyoutScoreboardVisible( dataHide.visible );
-	$.Msg( "                  				OnUpdActionHide    " );
+	//$.Msg( "                  				OnUpdActionHide    " );
 }
 
 
@@ -146,7 +146,7 @@ function OnUpdAction( data )
 		teamPanel = $.CreatePanel( "Panel",  containerPanel, teamPanelName );
 		teamPanel.BLoadLayout( g_ScoreboardHandle.scoreboardConfig.teamXmlName, false, false);
 	}
-	$.Msg( "                  OnUpdAction:teamPanel ", teamPanel );
+	//$.Msg( "                  OnUpdAction:teamPanel ", teamPanel );
 	//var playerId = data.playerId
 	//var PlayerTeamId = data.PlayerTeamId
 	/*var scoreboardConfig =
@@ -157,7 +157,7 @@ function OnUpdAction( data )
 	
 	var teamPlayers = Game.GetPlayerIDsOnTeam( localPlayerTeamId );
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
-	$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
+	//$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
 	if ( playersContainer )
 	{
 		/*var plList = [];
