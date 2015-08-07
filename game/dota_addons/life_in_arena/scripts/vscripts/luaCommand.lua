@@ -1,4 +1,4 @@
-Convars:RegisterCommand('player_say', function(...)
+﻿Convars:RegisterCommand('player_say', function(...)
     local arg = {...}
     table.remove(arg,1)
     local sayType = arg[1]
@@ -36,6 +36,11 @@ Convars:RegisterCommand('player_say', function(...)
       if keys.text == "-pos" then
         print(cmdPlayer:GetAssignedHero():GetAbsOrigin())
       end
+      --if keys.text == "-end" then
+      --  LiA:EndGame()
+      --end
+	  
+	  
       --if keys.text == "-test" then
       --  local playerSteamID = PlayerResource:GetSteamAccountID(cmdPlayer:GetPlayerID())
       --  for _,SteamID in pairs(TEST_MODE_STEAM_ID) do 
