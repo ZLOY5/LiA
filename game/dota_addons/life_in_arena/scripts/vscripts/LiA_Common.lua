@@ -9,21 +9,9 @@ function CalcPlayers()
 	return playercounter
 end
 
-function RespawnAllHeroes() 
-	--print("RespawnAllHeroes")
-	DoWithAllHeroes(function(hero)
-		--print("hero",hero:GetUnitName())
-		if not hero:IsAlive() then
-			--print("respawn",hero:GetUnitName())
-			hero:RespawnHero(false,false,false)
-			FindClearSpaceForUnit(hero, hero:GetAbsOrigin(), false)
-		end
-	end)
-end
-
 function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
-	for i = 1, abilities do
+	for i = 1, abilities-1 do
 		local ability = unit:GetAbilityByIndex(i)
 		if ability and not ability:IsPassive() then
 			ability:EndCooldown()
@@ -31,25 +19,10 @@ function ResetAllAbilitiesCooldown(unit)
 	end
 end
 
-function DoWithAllHeroes(whatDo)
-	if type(whatDo) ~= "function" then
-		print("DoWithAllHeroes:not func")
-		return
-	end
-	--[[print("ALL HEROES")
-	for k,v in pairs(heroes) do
-		print(k,v:GetUnitName(),v:IsIllusion())
-	end
-	print("END")]]
-	for i = 1, #tHeroes do
-		whatDo(tHeroes[i])
-	end
-end
-
-function ShowCenterMessage(msg, dur,wave)
+function ShowCenterMessage(msg, dur, wave)
 	FireGameEvent("show_center_message",{message = msg,duration = dur}) 
 	if wave then
-		Timers:CreateTimer(0.01, function() FireGameEvent("show_center_message_fix",{wave = WAVE_NUM}) return nil end)
+		Timers:CreateTimer(0.01, function() FireGameEvent("show_center_message_fix",{wave = wave}) return nil end)
 	end
 end
 
@@ -116,7 +89,6 @@ function SetCameraToPosForPlayer(playerID,vector)
 	if playerID == -1 then --для всех игроков
 		DoWithAllHeroes(function(hero)
 			PlayerResource:SetCameraTarget(hero:GetPlayerID(),camera_guy)
-			PlayerResource:SetCameraTarget(playerID,nil)
 		end)
 		Timers:CreateTimer(0.1,function()
 			DoWithAllHeroes(function(hero)

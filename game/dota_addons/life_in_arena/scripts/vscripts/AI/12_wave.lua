@@ -1,13 +1,11 @@
-require('LiA_AIcreeps')
-
 function Spawn(entityKeyValues)
 	--print("Spawn")
-	ABILITY_12_wave_stomp = thisEntity:FindAbilityByName("12_wave_stomp")
+	ABILILTY_12_wave_stomp = thisEntity:FindAbilityByName("12_wave_stomp")
 
-	thisEntity:SetContextThink( "12_wave_think_creeps", Think12WaveCreeps , 0.1)
+	thisEntity:SetContextThink( "12_wave_think", Think12Wave , 1)
 end
 
-function Think12WaveCreeps()
+function Think12Wave()
 	if not thisEntity:IsAlive() then
 		return nil 
 	end
@@ -16,10 +14,9 @@ function Think12WaveCreeps()
 		return 1
 	end
 
-	--AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
 		
-	if ABILITY_12_wave_stomp:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
+	if ABILILTY_12_wave_stomp:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
@@ -31,7 +28,7 @@ function Think12WaveCreeps()
 						  false)
 		--print(#targets)
 		if #targets ~= 0 then
-			thisEntity:CastAbilityNoTarget(ABILITY_12_wave_stomp, -1)
+			thisEntity:CastAbilityNoTarget(ABILILTY_12_wave_stomp, -1)
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end

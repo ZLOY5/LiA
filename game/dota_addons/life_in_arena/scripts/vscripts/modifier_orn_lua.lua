@@ -15,7 +15,7 @@ end
 function modifier_orn_lua:OnTakeDamage(params)
 	if IsServer() then
 		if params.unit == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
-			LiA:OnOrnDamaged(params)
+			Survival:OnOrnDamaged(params)
 		end
 	end
 end
@@ -23,7 +23,7 @@ end
 function modifier_orn_lua:OnDeath(params)
 	if IsServer() then
 		if params.unit == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
-			LiA:OnOrnDeath(params)
+			Survival:OnOrnDeath(params)
 		end
 	end
 end

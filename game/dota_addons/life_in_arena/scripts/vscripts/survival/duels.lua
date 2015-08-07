@@ -1,0 +1,191 @@
+function Survival:GetHeroToDuel()
+    for i = 1, #self.tHeroes do
+        if not self.tHeroes[i].IsDueled and IsValidEntity(self.tHeroes[i]) and not self.tHeroes[i].hidden then
+            self.tHeroes[i].IsDueled = true
+            return self.tHeroes[i]
+        end
+    end
+    return nil 
+end
+
+function Survival:StartDuels()
+	timerPopup:Start(self.nPreDuelTime,"#lia_duel",0)
+	Timers:CreateTimer(self.nPreDuelTime,
+		function()
+			self.DuelNumber = 0
+			self.State = SURVIVAL_STATE_DUEL_TIME
+			DisableShop()
+
+			DoWithAllHeroes(function(hero)
+            	hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
+        	end)
+
+        	Survival:CheckDuel()
+		end
+	)
+end
+
+function Survival:CheckDuel()
+	hero1 = Survival:GetHeroToDuel()
+	hero2 = Survival:GetHeroToDuel()
+
+	if hero1 and hero2 then
+		self.DuelFirstHero = hero1
+		self.DuelSecondHero = hero2
+		self.DuelNumber = self.DuelNumber + 1
+		Survival:Duel(hero1,hero2)
+	else 
+		Survival:EndDuels()
+	end
+end
+
+function Survival:Duel(hero1,hero2)
+    --тут будет эффект затемнения
+	 Timers:CreateTimer(0.5,
+    	function()
+            hero1.abs = hero1:GetAbsOrigin()
+            hero2.abs = hero2:GetAbsOrigin()
+            hero1:Interrupt()
+            hero2:Interrupt()
+            hero1:SetForwardVector(Vector(0,1,0))
+            hero2:SetForwardVector(Vector(0,-1,0))
+
+            FindClearSpaceForUnit(hero1, ARENA_TELEPORT_COORD_BOT, false) 
+            FindClearSpaceForUnit(hero2, ARENA_TELEPORT_COORD_TOP, false)
+
+            hero1:Heal(9999,hero1)
+            hero2:Heal(9999,hero2)
+            hero1:GiveMana(9999)
+            hero2:GiveMana(9999)
+            ResetAllAbilitiesCooldown(hero1)
+            ResetAllAbilitiesCooldown(hero2)
+
+            local gold = hero2:GetGold()
+            hero2:SetTeam(DOTA_TEAM_BADGUYS)
+            if hero2:GetPlayerOwner() then
+                hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
+            end
+            PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_BADGUYS,true)
+            hero2:SetGold(gold, false)
+
+    		SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD)
+
+            local msg = { 
+                            duel_number = self.DuelNumber,
+                            hero1 = hero1:GetClassname(),
+                            hero2 = hero2:GetClassname() 
+                        }
+            CustomGameEventManager:Send_ServerToAllClients( "duel_start", msg )
+    	end
+    )
+
+    local counter = 6
+    Timers:CreateTimer(1,
+        function()
+            CleanUnitsOnMap()
+            
+            if counter == 0 then
+                hero1:RemoveModifierByName("modifier_stun_lua")
+                hero2:RemoveModifierByName("modifier_stun_lua")
+                timerPopup:Start(120,"#lia_expire_duel",0)
+                Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
+                    useGameTime = true,
+                    endTime = 120,
+                    callback = function()
+                        Survival:EndDuel(nil,nil)
+                        return nil
+                    end})
+                return nil
+            else
+                counter = counter - 1
+                ShowCenterMessage(tostring(counter),1)
+                return 1
+            end
+        end
+    )
+
+end
+
+function Survival:EndDuel(winner,loser)
+    local hero1 = self.DuelFirstHero
+    local hero2 = self.DuelSecondHero
+
+    self.DuelFirstHero = nil
+    self.DuelSecondHero = nil
+
+    CleanUnitsOnMap()
+    
+    if winner and loser then --проверка на отсутствие ничьей
+        if winner == loser then -- проверяем самоубился ли герой
+            if loser == hero2 then -- устанавливаем другого героя победителем
+                winner = hero1
+            else
+                winner = hero2
+            end
+        end
+        print("Winner",winner:GetUnitName(),winner)
+        print("Loser",loser:GetUnitName(),loser)
+    end
+
+    hero2:SetTeam(DOTA_TEAM_GOODGUYS)
+    if hero2:GetPlayerOwner() then
+        hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
+    end
+    PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_GOODGUYS,true) 
+
+    if winner ~= nil then 
+        timerPopup:Stop()
+        Timers:RemoveTimer("duelExpireTime")
+        winner:ModifyGold(300-50*self.DuelNumber, false, DOTA_ModifyGold_Unspecified)
+        winner.lumber = winner.lumber + 9 - self.DuelNumber 
+    else --ничья
+        --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
+    end
+
+    if hero1:IsAlive() then
+        hero1:Purge(false, true, false, true, false)
+        hero1:AddNewModifier(hero1, nil, "modifier_stun_lua", {duration = -1})
+        hero1:Heal(9999,hero1)
+        hero1:GiveMana(9999)    
+    end
+
+    if hero2:IsAlive() then
+        hero2:Purge(false, true, false, true, false)
+        hero2:AddNewModifier(hero2, nil, "modifier_stun_lua", {duration = -1})
+        hero2:Heal(9999,hero2)
+        hero2:GiveMana(9999) 
+    end
+    Timers:CreateTimer(2,function()
+        CleanUnitsOnMap()
+    
+        FindClearSpaceForUnit(hero1, hero1.abs, false) 
+        FindClearSpaceForUnit(hero2, hero2.abs, false) 
+
+        Survival:CheckDuel()
+    end)  
+    
+end
+
+function Survival:EndDuels()
+    GameRules:SetGoldPerTick(1)
+
+    for i = 1, #self.tHeroes do
+        self.tHeroes[i].IsDueled = false
+    end
+
+    RespawnAllHeroes()
+
+    DoWithAllHeroes(function(hero)
+        ResetAllAbilitiesCooldown(hero)
+        if hero:IsAlive() then
+            hero:RemoveModifierByName("modifier_stun_lua")
+            SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
+        end
+    end)
+
+    self.nRoundNum = self.nRoundNum - 1
+    Survival:PrepareNextRound()
+end
+
+
+

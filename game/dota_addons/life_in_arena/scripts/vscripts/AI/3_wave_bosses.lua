@@ -17,12 +17,12 @@ function Think3Wave()
 	end
 
 	AICreepsAttackOneUnit({unit = thisEntity})
-	--print(LiA.AICreepCasts)
+	--print(Survival.AICreepCasts)
 		
-	if ABILITY_3_wave_rejuvenation:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
+	if ABILITY_3_wave_rejuvenation:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		if thisEntity:GetHealthPercent() <= 50 then
 			thisEntity:CastAbilityOnTarget(thisEntity, ABILITY_3_wave_rejuvenation, -1)
-			LiA.AICreepCasts = LiA.AICreepCasts + 1
+			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end	
 	

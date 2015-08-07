@@ -5,7 +5,6 @@ require('LiA_AIcreeps')
 require('timers')
 require('timerPopup')
 require('luaCommand')
-require('checkitemmodifies')
 require('physics')
 
 function Activate()
