@@ -59,8 +59,8 @@ function LiA:InitGameMode()
     GameMode:SetCustomXPRequiredToReachNextLevel(XP_TABLE)
     GameMode:SetUseCustomHeroLevels(true)
     
-    GameMode:SetRecommendedItemsDisabled(true)
-    GameMode:SetHUDVisible(12, false)
+    --GameMode:SetRecommendedItemsDisabled(true)
+    --GameMode:SetHUDVisible(12, false)
     GameMode:SetHUDVisible(1, false) 
     GameMode:SetTopBarTeamValuesVisible(false)
     
