@@ -58,7 +58,7 @@ function Survival:_OnFinalBossDeath(event)
     local killed = EntIndexToHScript(event.entindex_killed)
 
     if killed == self.hFinalBoss then
-        GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+        Survival:EndGame(DOTA_TEAM_GOODGUYS)
     elseif killed.FinalBoss_firstStage then
         self.nDeathCounter_FirstStage = self.nDeathCounter_FirstStage + 1
         

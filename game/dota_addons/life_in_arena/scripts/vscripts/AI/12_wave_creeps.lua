@@ -17,9 +17,9 @@ function Think12WaveCreeps()
 	end
 
 	--AICreepsAttackOneUnit({unit = thisEntity})
-	--print(LiA.AICreepCasts)
+	--print(Survival.AICreepCasts)
 		
-	if ABILITY_12_wave_stomp:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
+	if ABILITY_12_wave_stomp:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
@@ -32,7 +32,7 @@ function Think12WaveCreeps()
 		--print(#targets)
 		if #targets ~= 0 then
 			thisEntity:CastAbilityNoTarget(ABILITY_12_wave_stomp, -1)
-			LiA.AICreepCasts = LiA.AICreepCasts + 1
+			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end
 	return 1

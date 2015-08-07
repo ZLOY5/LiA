@@ -17,9 +17,9 @@ function Think7Wave()
 	end
 
 	AICreepsAttackOneUnit({unit = thisEntity})
-	--print(LiA.AICreepCasts)
+	--print(Survival.AICreepCasts)
 		
-	if ABILITY_7_wave_howl_of_terror:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
+	if ABILITY_7_wave_howl_of_terror:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
@@ -32,7 +32,7 @@ function Think7Wave()
 		--print(#targets)
 		if #targets ~= 0 then
 			thisEntity:CastAbilityNoTarget(ABILITY_7_wave_howl_of_terror, -1)
-			LiA.AICreepCasts = LiA.AICreepCasts + 1
+			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end
 	return 1

@@ -17,9 +17,9 @@ function Think6Wave()
 	end
 
 	AICreepsAttackOneUnit({unit = thisEntity})
-	--print(LiA.AICreepCasts)
+	--print(Survival.AICreepCasts)
 		
-	if ABILITY_6_wave_cripple:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
+	if ABILITY_6_wave_cripple:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
@@ -38,7 +38,7 @@ function Think6Wave()
 			end
 			if targetTo ~= nil then
 				thisEntity:CastAbilityOnTarget(targetTo, ABILITY_6_wave_cripple, -1)
-				LiA.AICreepCasts = LiA.AICreepCasts + 1
+				Survival.AICreepCasts = Survival.AICreepCasts + 1
 			end
 		end
 	end	

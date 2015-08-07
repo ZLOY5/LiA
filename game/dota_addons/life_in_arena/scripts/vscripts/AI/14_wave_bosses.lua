@@ -17,9 +17,9 @@ function Think14Wave()
 	end
 
 	AICreepsAttackOneUnit({unit = thisEntity})
-	--print(LiA.AICreepCasts)
+	--print(Survival.AICreepCasts)
 		
-	if ABILITY_14_wave_storm_bolt:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
+	if ABILITY_14_wave_storm_bolt:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
@@ -31,7 +31,7 @@ function Think14Wave()
 						  false)
 		if #targets ~= 0 then
 			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_14_wave_storm_bolt, -1)
-			LiA.AICreepCasts = LiA.AICreepCasts + 1
+			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end	
 	

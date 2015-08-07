@@ -29,6 +29,7 @@ FinalBossStageDeath2 = 0
 IsDuelOccured = false
 IsDuel        = false
 IsPreWaveTime = false
+IsWave = false 			--LiA_AIcreeps
 
 uFinalBoss    = nil
 
@@ -38,7 +39,7 @@ TEST_MODE_STEAM_ID = {}
 
 if LiA == nil then
 	_G.LiA = class({})
-	LiA.DeltaTime = 0.25
+	LiA.DeltaTime = 0.5
 end
 
 
@@ -56,8 +57,10 @@ function LiA:InitGameMode()
 
 	GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
-	GameRules:SetPreGameTime(0)
-    GameRules:SetPostGameTime(30)
+	-- BUG valve: SetPreGameTime work as SetPostGameTime
+	GameRules:SetPreGameTime(8)
+    GameRules:SetPostGameTime(2)
+	--
 	GameRules:SetHeroRespawnEnabled(false)
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
@@ -68,19 +71,23 @@ function LiA:InitGameMode()
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
     GameRules:SetCustomVictoryMessage("#victory_message")
-    GameRules:SetCustomGameEndDelay(1)
+    --GameRules:SetCustomGameEndDelay(1)
+	GameRules:SetCustomGameEndDelay( 0 )
+	GameRules:SetCustomVictoryMessageDuration( 5 )
     
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetFogOfWarDisabled(true)
     GameMode:SetCustomHeroMaxLevel(MAX_LEVEL)    
     GameMode:SetCustomXPRequiredToReachNextLevel(XP_TABLE)
     GameMode:SetUseCustomHeroLevels(true)
-    GameMode:SetRecommendedItemsDisabled(true)
-    GameMode:SetHUDVisible(12, false)
+    --GameMode:SetRecommendedItemsDisabled(true)
+    --GameMode:SetHUDVisible(12, false)
     GameMode:SetHUDVisible(1, false) 
     GameMode:SetTopBarTeamValuesVisible(false)
     GameMode:SetBuybackEnabled(false)
     GameMode:SetThink("onThink", self)
+	--LiA_AIcreeps
+	--GameMode:SetThink("onThinkAIcreepsUpdate", self)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
     GameMode:SetStashPurchasingDisabled(true)
     GameMode:SetLoseGoldOnDeath(false)
@@ -169,23 +176,103 @@ function LiA:OnDisconnect(event)
     player.IsDisconnect = true
 end
 
-
+function LiA:GetDataForSend()
+	local tPlayersId = {}
+	local tKillsCreeps = {}
+	local tKillsBosses = {}
+	local tDeaths = {}
+	local tRating = {}
+	-- tHeroes need to be sorted
+	--
+	for i = 1, #tHeroes do
+		local hero = tHeroes[i]
+		table.insert(tPlayersId,hero:GetPlayerID())
+		table.insert(tKillsCreeps,hero.creeps)
+		table.insert(tKillsBosses,hero.bosses)
+		table.insert(tDeaths,hero.deaths)
+		table.insert(tRating,hero.rating)
+	end
+	local data =
+		{
+			PlayersId = tPlayersId,
+			KillsCreeps = tKillsCreeps,
+			KillsBosses = tKillsBosses,
+			Deaths = tDeaths,
+			Rating = tRating,
+			--da = 1,
+			--teamId = localPlayerTeamId,
+			--hero_id = hero:GetClassname()
+		}
+	return data
+end
 
 function LiA:onThink()
+	--score_board
+	-- set data
+	--
     for i = 1, #tHeroes do
         local hero = tHeroes[i]
         hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
-        --print(hero.rating,PlayerResource:GetPlayerName(hero:GetPlayerID()))       
+		--
     end 
     table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
+	--
+	local data = LiA:GetDataForSend()
 
+	if not IsDuel then
+		if #tHeroes ~= 0 then
+			CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
+		end
+	end
+	
+	--if tHeroes[1] ~= nil and tHeroes[1]:GetLevel() > 1 then
+	--	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	--	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+	--	
+	--end
+	
     --DoWithAllHeroes(function(hero)
     --    CheckItemModifies(hero)
     --end)
     return LiA.DeltaTime
 end
 
-    
+
+function LiA:EndGame(teamWin)
+	local GameMode = GameRules:GetGameModeEntity()
+	--local data = LiA:GetDataForSend()
+	local dataHide = 
+	{
+		visible = false,
+	}
+	--print("		data", data)
+	CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
+	GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
+	GameRules:SetGameWinner(teamWin)  
+	--CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+	--GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	--Timers:CreateTimer(0.5,function() 
+		
+	--	data = LiA:GetDataForSend()
+		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
+	--	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+		--print("		Send_ServerToAllClients ", data.Rating)
+		--GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+		
+		--return 0.5
+	--end)
+	
+
+end
+
+function EndGameCon()
+	local data = LiA:GetDataForSend()
+	CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+	--GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+	print("						SetGameWinner ")
+	--
+    return nil --0.5
+end
 
 
 
@@ -243,7 +330,8 @@ function OnHeroDeath(keys)
         nDeathHeroes = nDeathHeroes + 1
         if nDeathHeroes == nHeroCount then
             GameRules:SetCustomVictoryMessage("#lose_message")
-            GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+            --GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+			LiA:EndGame(DOTA_TEAM_BADGUYS)
             --GameRules:ResetToHeroSelection()
         end
     end
@@ -265,11 +353,15 @@ function LiA:OnEntityKilled(keys)
     end
     if ent:GetUnitName() == tostring(WAVE_NUM).."_wave_creep"  then    
         nDeathCreeps = nDeathCreeps + 1
+		--LiA_AIcreeps
+		LiA:AICreepsRemoveFromTable({removeUnit = ent})
         if ownedHeroAtt then
             ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
         end
     elseif ent:GetUnitName() == tostring(WAVE_NUM).."_wave_boss" then
         nDeathCreeps = nDeathCreeps + 1
+		--LiA_AIcreeps
+		LiA:AICreepsRemoveFromTable({removeUnit = ent})
         if ownedHeroAtt then
             ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
             ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
@@ -298,10 +390,14 @@ function LiA:SpawnWave()
     
     if nHeroCount == 0 then
         GameRules:SetCustomVictoryMessage("#lose_message")
-        GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+        --GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+		LiA:EndGame(DOTA_TEAM_BADGUYS)
         return   
     end
-    
+	--LiA_AIcreeps
+    LiA:AICreepsDefault()
+	IsWave = true
+	
     LiA.nHeroCountCreepsSpawned = nHeroCount --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)
     IsPreWaveTime = false
     TRIGGER_SHOP:Disable()  
@@ -313,6 +409,10 @@ function LiA:SpawnWave()
     
     boss1 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
     boss2 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+	--
+	--LiA_AIcreeps
+	LiA:AICreepsInsertToTable({addUnit1 = boss1, addUnit2 = boss2})
+	--
 	ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss1)
 	ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss2)
 	boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
@@ -327,6 +427,9 @@ function LiA:SpawnWave()
 		function()
 			unit1 = CreateUnitByName(creepName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
 			unit2 = CreateUnitByName(creepName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+			--
+			--LiA_AIcreeps
+			LiA:AICreepsInsertToTable({addUnit1 = unit1, addUnit2 = unit2})
 			--
 			ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, unit1)
 			ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, unit2)
@@ -398,7 +501,9 @@ function OnSecondStageDeath(event)
 end
 
 function LiA:OnOrnDeath(event)
-    GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+	GameRules:SetCustomVictoryMessage("#victory_message")
+	LiA:EndGame(DOTA_TEAM_GOODGUYS)
+    --GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
 end
 
 function LiA:OnOrnDamaged(event) 
@@ -457,6 +562,7 @@ function LiA:_EndWave()
     for _,player in pairs(tPlayers) do
         player.readyToWave = false
     end
+	IsWave = false
     WAVE_NUM = WAVE_NUM + 1
     nDeathCreeps = 0
     nDeathHeroes = 0
@@ -732,7 +838,7 @@ function EndDuel(winner,loser)
     HeroOnDuel1 = nil
     HeroOnDuel2 = nil
 
-    if DuelNumber < math.floor(nPlayers / 2) then
+    if DuelNumber < math.floor(nHeroCount / 2) then
         DuelNumber = DuelNumber + 1
         local firstHero = GetHeroToDuel()
         local secondHero = GetHeroToDuel()

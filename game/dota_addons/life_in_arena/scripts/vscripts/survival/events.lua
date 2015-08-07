@@ -47,7 +47,7 @@ function Survival:_OnHeroDeath(keys)
         self.nDeathHeroes = self.nDeathHeroes + 1
         if self.nDeathHeroes == self.nHeroCount then
             GameRules:SetCustomVictoryMessage("#lose_message")
-            GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+            Survival:EndGame(DOTA_TEAM_BADGUYS)
             --GameRules:ResetToHeroSelection()
         end
     end

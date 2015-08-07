@@ -92,6 +92,15 @@ function Survival:InitSurvival()
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
     
+    GameMode:SetContextThink( "AIThink", AIThink , 3)
+    self.AICreepCasts = 0
+    self.AIMaxCreepCasts = 2
+end
+
+function AIThink()
+    --print("CleanAICasts")
+    Survival.AICreepCasts = 0
+    return 3
 end
 
 function Survival:ExperienceFilter(filterTable)
@@ -119,6 +128,15 @@ function Survival:onThink()
         hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
     end 
     table.sort(self.tHeroes,function(a,b) return a.rating > b.rating end)
+
+    local data = self:GetDataForSend()
+
+    if not IsDuel then
+        if #self.tHeroes ~= 0 then
+            CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
+        end
+    end
+
     return 0.25
 end
 
@@ -331,24 +349,10 @@ end
 function Survival:StartRound()
     if self.nHeroCount == 0 then 
         GameRules:SetCustomVictoryMessage("#lose_message")
-        GameRules:MakeTeamLose(DOTA_TEAM_GOODGUYS)
+        Survival:EndGame(DOTA_TEAM_BADGUYS)
         return   
     end
     
-    --[[if self.nRoundNum % 5 == 0 then
-        Survival.State = SURVIVAL_STATE_ROUND_MEGABOSS 
-
-        local message      
-        if self.nRoundNum == 20 then
-            message = "#lia_finalboss"
-        else
-            message = "#lia_megaboss"
-        end
-        ShowCenterMessage(message,5)
-    else
-        Survival.State = SURVIVAL_STATE_ROUND_WAVE        
-        ShowCenterMessage("#lia_wave_num",5,self.nRoundNum)
-    end]]
     CustomGameEventManager:Send_ServerToAllClients( "round_start", {round_number = self.nRoundNum} )
 
     Timers:CreateTimer(3,function()
@@ -379,3 +383,52 @@ function Survival:StartRound()
 end
 
 --------------------------------------------------------------------------------------------------
+
+function Survival:GetDataForSend()
+    local tPlayersId = {}
+    local tKillsCreeps = {}
+    local tKillsBosses = {}
+    local tDeaths = {}
+    local tRating = {}
+    -- tHeroes need to be sorted
+    --
+    for i = 1, #self.tHeroes do
+        local hero = self.tHeroes[i]
+        table.insert(tPlayersId,hero:GetPlayerID())
+        table.insert(tKillsCreeps,hero.creeps or 0)
+        table.insert(tKillsBosses,hero.bosses or 0)
+        table.insert(tDeaths,hero.deaths or 0)
+        table.insert(tRating,hero.rating or 0)
+    end
+    local data =
+        {
+            PlayersId = tPlayersId,
+            KillsCreeps = tKillsCreeps,
+            KillsBosses = tKillsBosses,
+            Deaths = tDeaths,
+            Rating = tRating,
+            --da = 1,
+            --teamId = localPlayerTeamId,
+            --hero_id = hero:GetClassname()
+        }
+    return data
+end
+
+function Survival:EndGame(teamWin)
+    local GameMode = GameRules:GetGameModeEntity()
+    --local data = LiA:GetDataForSend()
+    local dataHide = 
+    {
+        visible = false,
+    }
+    --print("       data", data)
+    CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
+    GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
+    GameRules:SetGameWinner(teamWin)  
+end
+
+function EndGameCon()
+    local data = Survival:GetDataForSend()
+    CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
+    return nil --0.5
+end

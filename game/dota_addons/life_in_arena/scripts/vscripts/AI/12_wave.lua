@@ -14,9 +14,9 @@ function Think12Wave()
 		return 1
 	end
 
-	--print(LiA.AICreepCasts)
+	--print(Survival.AICreepCasts)
 		
-	if ABILILTY_12_wave_stomp:IsFullyCastable() and LiA.AICreepCasts < LiA.AIMaxCreepCasts then
+	if ABILILTY_12_wave_stomp:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
@@ -29,7 +29,7 @@ function Think12Wave()
 		--print(#targets)
 		if #targets ~= 0 then
 			thisEntity:CastAbilityNoTarget(ABILILTY_12_wave_stomp, -1)
-			LiA.AICreepCasts = LiA.AICreepCasts + 1
+			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end
 	return 1
