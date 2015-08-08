@@ -200,6 +200,7 @@ function Survival:EndRound()
         RespawnAllHeroes() 
 
         if Survival.State == SURVIVAL_STATE_ROUND_MEGABOSS then
+            print("TeleportHeroesWithoutBossArena")
             Survival:_TeleportHeroesWithoutBossArena()
         end
 
@@ -275,6 +276,9 @@ end
 
 function Survival:_SpawnMegaboss()
     print("Spawn megaboss")
+
+    Survival.State = SURVIVAL_STATE_ROUND_MEGABOSS
+
     local boss
     if self.nRoundNum == 20 then
         boss = CreateUnitByName("orn_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
@@ -289,6 +293,8 @@ end
 
 function Survival:_SpawnWave()  
     print("Spawn wave", self.nRoundNum, "for", self.nHeroCount, "heroes")
+
+    Survival.State = SURVIVAL_STATE_ROUND_WAVE
     
     self.nHeroCountCreepsSpawned = self.nHeroCount --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)
     

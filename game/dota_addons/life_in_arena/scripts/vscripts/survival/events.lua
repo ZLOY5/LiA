@@ -53,14 +53,21 @@ function Survival:_OnHeroDeath(keys)
     end
 end
 
-function Survival:_OnCreepDeath()   
+function Survival:_OnCreepDeath(keys)   
+    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+    
     self.nDeathCreeps = self.nDeathCreeps + 1
     if hero then
         hero.creeps = hero.creeps + 1
     end
 end
 
-function Survival:_OnBossDeath()  
+function Survival:_OnBossDeath(keys)  
+    local killed = EntIndexToHScript(keys.entindex_killed)
+    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+    
     self.nDeathCreeps = self.nDeathCreeps + 1
     if hero then
         hero.bosses = hero.bosses + 1
@@ -76,7 +83,6 @@ function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
     local attacker = EntIndexToHScript(keys.entindex_attacker)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
-    
     if killed:IsRealHero() then
         Survival:_OnHeroDeath(keys)
         return
@@ -84,9 +90,9 @@ function Survival:OnEntityKilled(keys)
         Survival:_OnFinalBossDeath(keys)
         return
     elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_creep"  then 
-        Survival:_OnCreepDeath()   
+        Survival:_OnCreepDeath(keys)   
     elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_boss" then
-        Survival:_OnBossDeath()
+        Survival:_OnBossDeath(keys)
     end 
         
     if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] or killed:GetUnitName() == tostring(self.nRoundNum).."_wave_megaboss" then
