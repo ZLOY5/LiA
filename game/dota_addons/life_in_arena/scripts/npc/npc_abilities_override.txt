@@ -9464,7 +9464,7 @@
 		//"BaseClass"             		"ability_datadriven"
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
-		"AbilityTextureName"			"morphling_morph_replicate"
+		"AbilityTextureName"			"hermit_summon_water_elemental"
 		"MaxLevel" 						"3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
@@ -9537,7 +9537,7 @@
 		"BaseClass"             		"ability_datadriven"
 		//"BaseClass"						"ability_lua"
 		//"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
-		"AbilityTextureName"			"morphling_morph_replicate"
+		"AbilityTextureName"			"hermit_summon_water_elemental"
 		"MaxLevel" 						"3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
@@ -9599,7 +9599,7 @@
 		"BaseClass"             		"ability_datadriven"
 		//"BaseClass"						"ability_lua"
 		//"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
-		"AbilityTextureName"			"morphling_morph_replicate"
+		"AbilityTextureName"			"hermit_summon_water_elemental"
 		"MaxLevel" 						"3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
@@ -9667,7 +9667,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"pugna_decrepify"
+		"AbilityTextureName"			"hermit_astral"
 	
 		// Casting
 		"MaxLevel"              "3"
@@ -9836,7 +9836,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"drow_ranger_frost_arrows"
+		"AbilityTextureName"			"hermit_frost_arrows"
 	
 		// Casting
 		"MaxLevel" 						"3"
@@ -9965,7 +9965,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"drow_ranger_frost_arrows"
+		"AbilityTextureName"			"hermit_frost_arrows"
 	
 		// Casting
 		"MaxLevel" 						"3"
@@ -10094,7 +10094,7 @@
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT" //| DOTA_ABILITY_BEHAVIOR_AOE
 			"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-			"AbilityTextureName"			"morphling_adaptive_strike"
+			"AbilityTextureName"			"hermit_storm"
 			
 			"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"
 			
@@ -14412,7 +14412,7 @@
 	"serpent_queen_ball_lightning"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"storm_spirit_ball_lightning"
+		"AbilityTextureName"			"serpent_queen_ball_lightning"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
@@ -15266,10 +15266,6 @@
 			}
 		}
 	
-		"OnOwnerSpawned"
-		{
-			"ApplyModifier"		"modifier_ancient_forces"
-		}
 	
 		"Modifiers"
 		{
@@ -18941,7 +18937,7 @@
 		{
 			//-------------------------------------------------------------------------------------------------------------
 			"BaseClass"				"ability_datadriven"
-			"AbilityTextureName" 			"omniknight_degen_aura"
+			"AbilityTextureName" 			"warrior_of_light_fetters"
 			"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
@@ -19059,7 +19055,7 @@
 		  	"ScriptFile"			  "heroes\WarriorOfLight\warrior_of_light_will_light.lua"
 	
 		  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		  	"AbilityTextureName"      "omniknight_purification"
+		  	"AbilityTextureName"      "warrior_of_light_will_light"
 		
 		  	"MaxLevel"               "3"
 		  	"RequiredLevel"          "2" 
@@ -19094,7 +19090,7 @@
 			//-------------------------------------------------------------------------------------------------------------
 			"BaseClass"				"ability_datadriven"
 			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"AbilityTextureName"			"omniknight_repel"
+			"AbilityTextureName"			"warrior_of_light_holy_power"
 			//"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
 			
 			"MaxLevel"               "3"
@@ -19284,7 +19280,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityTextureName"			"shadow_demon_shadow_poison"
+		"AbilityTextureName"			"witch_doctor_negative_energy"
 		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
@@ -19389,7 +19385,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityTextureName"			"shadow_demon_shadow_poison"
+		"AbilityTextureName"			"witch_doctor_negative_energy"
 		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
@@ -19490,7 +19486,7 @@
 	"witch_doctor_frost_armor"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"lich_frost_armor"
+		"AbilityTextureName"			"witch_doctor_frost_armor"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
@@ -19662,7 +19658,7 @@
 	"witch_doctor_frost_armor_scepter"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"lich_frost_armor"
+		"AbilityTextureName"			"witch_doctor_frost_armor"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
@@ -19840,7 +19836,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityTextureName"			"invoker_emp"
+		"AbilityTextureName"			"witch_doctor_discharge"
 		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
