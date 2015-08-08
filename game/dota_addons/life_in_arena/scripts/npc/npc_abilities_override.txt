@@ -5144,7 +5144,7 @@
 	        "ModifierName"  "jungle_stalker_bm_rejuvenation"
 	        "Target"
 	        {
-	            "Center"    "CASTER"
+	            "Center"    "TARGET"
 	            "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 	        }
 	        "Duration"      "%duration"
@@ -5166,7 +5166,7 @@
 	      {
 	        "Heal"
 	        {
-	            "Target"        "CASTER"
+	            "Target"        "TARGET"
 	            "HealAmount"    "%heal / %duration"
 	        }
 	      }
@@ -17343,6 +17343,91 @@
 		}
 	}
 	//End of file npc_lia_hero_valkyrie.txt
+
+
+	//Start of file npc_lia_hero_vampire.txt
+	"vampire_lifesteal"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"bloodseeker_thirst"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	   "MaxLevel"               "3"
+	   "RequiredLevel"          "2"
+	   "LevelsBetweenUpgrades"  "2"
+	
+	  	"OnUpgrade"
+	  	{
+			"RunScript"
+			{
+				"ScriptFile"			"heroes/Vampire/Lifesteal.lua"
+				"Function"				"thirst_points"
+			}
+	  	}
+	
+		"Modifiers"
+		{
+			"modifier_vampire_lifesteal"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "0"
+			    "Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/Vampire/Lifesteal.lua"
+						"Function"				"modifier_vampire_lifesteal_lifesteal"
+					}
+				} 
+			}
+			"modifier_vampire_lifesteal_lifesteal"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+				
+				"OnDealDamage"
+				{
+					"Lifesteal"
+					{
+						"Target"			"ATTACKER"
+						"LifestealPercent"	"%lifesteal_percentage"
+					}
+				}
+			}
+			"modifier_vampire_thirst_points_gain"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+				"OnKill"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/Vampire/Lifesteal.lua"
+						"Function"				"ThirstPointsGain"
+					}
+				} 
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"     "FIELD_INTEGER"
+				"lifesteal_percentage" "20 25 30"
+			}
+			"02"
+			{
+				"var_type"  "FIELD_INTEGER"
+				"thirst_points_max" "10 15 20"
+			}
+		}
+	}
+	
+	//End of file npc_lia_hero_vampire.txt
 
 
 	//Start of file npc_lia_hero_vowen_from_blood.txt
