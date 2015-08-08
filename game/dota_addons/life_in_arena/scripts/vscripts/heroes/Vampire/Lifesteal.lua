@@ -7,8 +7,8 @@ end
 function thirst_points(event)
 	if event.ability:GetLevel() == 1 then
 		thirst_points = 0
+		event.caster:SetModifierStackCount("modifier_vampire_lifesteal", event.caster, thirst_points)
 	end
-	event.caster:SetModifierStackCount("modifier_vampire_lifesteal", event.caster, thirst_points)
 end
 
 function ThirstPointsGain(event)
