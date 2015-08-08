@@ -3,14 +3,19 @@ Based on Noya's Immolation for DotaCraft
 https://github.com/MNoya/DotaCraft/blob/master/scripts/npc/abilities/demon_hunter_immolation.txt
 ]]
 function Immolation( event )
-	-- Variables
 	local caster = event.caster
 	local ability = event.ability
+	local targets = event.target_entities
+
+	if not ability or not caster:HasItemInInventory(ability:GetName()) then 
+		caster:FindModifierByName("modifier_immolation"):Destroy()
+		return
+	end
+
 	local abilityDamageType = ability:GetAbilityDamageType()
 	local damage_per_second = ability:GetLevelSpecialValueFor("damage_per_second", ability:GetLevel() - 1 )
 	local manacost_per_second = ability:GetLevelSpecialValueFor("mana_cost_per_second", ability:GetLevel() - 1 )
-	local targets = event.target_entities
-
+	
 	-- Check if the spell mana cost can be maintained
 	if caster:GetMana() >= manacost_per_second then
 		caster:SpendMana( manacost_per_second, ability)
