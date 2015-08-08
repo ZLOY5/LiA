@@ -126,70 +126,15 @@
 
 "vampire_lifesteal"
 {
-	"BaseClass" 					"ability_datadriven"
+	"BaseClass" 					"ability_lua"
+	"ScriptFile"					"heroes\Vampire\vampire_lifesteal.lua"
 	"AbilityTextureName"			"bloodseeker_thirst"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-   "MaxLevel"               "3"
-   "RequiredLevel"          "2"
-   "LevelsBetweenUpgrades"  "2"
+   	"MaxLevel"               "3"
+   	"RequiredLevel"          "2"
+   	"LevelsBetweenUpgrades"  "2"
 
-  	"OnUpgrade"
-  	{
-		"RunScript"
-		{
-			"ScriptFile"			"heroes/Vampire/Lifesteal.lua"
-			"Function"				"thirst_points"
-		}
-  	}
-
-	"Modifiers"
-	{
-		"modifier_vampire_lifesteal"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "0"
-		    "Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-
-			"OnAttackLanded"
-			{
-				"RunScript"
-				{
-					"ScriptFile"			"heroes/Vampire/Lifesteal.lua"
-					"Function"				"modifier_vampire_lifesteal_lifesteal"
-				}
-			} 
-		}
-		"modifier_vampire_lifesteal_lifesteal"
-		{
-			"Passive"			"0"
-			"IsHidden"			"1"
-			
-			"OnDealDamage"
-			{
-				"Lifesteal"
-				{
-					"Target"			"ATTACKER"
-					"LifestealPercent"	"%lifesteal_percentage"
-				}
-			}
-		}
-		"modifier_vampire_thirst_points_gain"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-
-			"OnKill"
-			{
-				"RunScript"
-				{
-					"ScriptFile"			"heroes/Vampire/Lifesteal.lua"
-					"Function"				"ThirstPointsGain"
-				}
-			} 
-		}
-	}
 	"AbilitySpecial"
 	{
 		"01"
