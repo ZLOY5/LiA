@@ -1,4 +1,4 @@
-
+﻿
 _G.SURVIVAL_STATE_PRE_GAME = 0
 _G.SURVIVAL_STATE_PRE_ROUND_TIME = 1
 _G.SURVIVAL_STATE_PRE_DUEL_TIME = 2
@@ -80,6 +80,8 @@ function Survival:InitSurvival()
 
     local GameMode = GameRules:GetGameModeEntity()
     GameMode:SetThink("onThink", self)
+	--LiA_AIcreeps
+	GameMode:SetThink("onThinkAIcreepsUpdate", self)
     GameMode:SetFogOfWarDisabled(true)
 
     for playerID = 0, DOTA_MAX_PLAYERS-1 do
