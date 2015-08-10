@@ -1,4 +1,4 @@
-require('LiA_AIcreeps')
+require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	thisEntity:SetContextThink( "attack_wave_only", ThinkAllWave , 0.1)

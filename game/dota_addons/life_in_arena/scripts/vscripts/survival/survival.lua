@@ -1,4 +1,4 @@
-
+﻿
 _G.SURVIVAL_STATE_PRE_GAME = 0
 _G.SURVIVAL_STATE_PRE_ROUND_TIME = 1
 _G.SURVIVAL_STATE_PRE_DUEL_TIME = 2
@@ -47,7 +47,7 @@ function Survival:InitSurvival()
 	self.nWaveSpawnCount = {20,26,32,38,44,50,56,62,68,74}   --крипов на спавн
 	self.nWaveMaxCount = {42,54,66,78,90,102,114,126,138,150}
 
-	self.nGoldPerWave = {0,12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30,30}
+	self.nGoldPerWave = {12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30,30}
 
     self.flExpFix = {0.8, 0.9, 1., 1.1, 1.2, 1.3, 1.4, 1.5}
     
@@ -80,6 +80,8 @@ function Survival:InitSurvival()
 
     local GameMode = GameRules:GetGameModeEntity()
     GameMode:SetThink("onThink", self)
+	--LiA_AIcreeps
+	GameMode:SetThink("onThinkAIcreepsUpdate", self)
     GameMode:SetFogOfWarDisabled(true)
 
     for playerID = 0, DOTA_MAX_PLAYERS-1 do
@@ -137,7 +139,7 @@ function Survival:onThink()
         end
     end
 
-    return 0.25
+    return 0.5
 end
 
 function Survival:_TeleportHeroesWithoutBossArena()
@@ -149,8 +151,8 @@ function Survival:_TeleportHeroesWithoutBossArena()
 end
 
 function Survival:_GiveRoundBounty()
-    local goldBounty = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
-    local lumberBounty = 3 + self.nRoundNum
+    goldBounty = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
+    lumberBounty = 3 + self.nRoundNum
 
     if self.IsExtreme then
         goldBounty = goldBounty * (1 + self.flExtremeGoldMultiplier)

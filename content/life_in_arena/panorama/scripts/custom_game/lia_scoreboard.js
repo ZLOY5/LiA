@@ -136,6 +136,11 @@ function OnUpdAction( data )
 	{
 		localPlayerTeamId = localPlayer.player_team_id;
 	}
+	if (localPlayerTeamId !== 2) // DOTA_TEAM_GOODGUYS = 2
+	{
+		return;
+	}
+	//$.Msg( "                  OnUpdAction: localPlayerTeamId ", localPlayerTeamId );
 	//
 	//var teamPanel = $.GetContextPanel();
 	var containerPanel = $( "#TeamsContainer")

@@ -1,4 +1,4 @@
-require('LiA_AIcreeps')
+require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")

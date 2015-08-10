@@ -1,4 +1,4 @@
-require('LiA_AIcreeps')
+require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
@@ -16,8 +16,8 @@ function Think12Wave()
 		return 1
 	end
 
-	--AICreepsAttackOneUnit({unit = thisEntity})
-	--print(Survival.AICreepCasts)
+	AICreepsAttackOneUnit({unit = thisEntity})
+	--print(LiA.AICreepCasts)
 		
 	if ABILITY_12_wave_bloodlust:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		if thisEntity:GetHealthPercent() >= 25 then
