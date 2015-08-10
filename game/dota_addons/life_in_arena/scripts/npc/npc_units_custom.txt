@@ -2196,7 +2196,7 @@
 	"AttackDamageMax" "30" 
 	"AttackRate" "1.55" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -2236,34 +2236,34 @@
 	
 	"HasInventory" "0" 
 	
-	"PathfindingSearchDepthScale" "0.22" //0.3
-	//"vscripts"	"AI\1_wave_bosses.lua"
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\1_wave_bosses.lua"
 	
-	"Creature"
-	{
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			"Ability1"
-			{
-				"Name"				"1_wave_stomp"
-				"AOE"                "1"
-				"Radius"             "245"
-				"MinimumTargets"     "1"
-			}
-		}
-	}
+	//"Creature"
+	//{
+	//	"DefaultState"			"Invade"
+	//	"States"	
+	//	{
+	//		"Invade"
+	//		{
+	//			"Name"				"Invade"
+	//			"Aggression"		"90.0" //cast offensive spells whenever
+	//			"Avoidance"			"0.0" //dont flee
+	//			"Support"			"0.0" //start buffing
+	//		}
+	//	}
+	//	
+	//	"OffensiveAbilities"
+	//	{
+	//		"Ability1"
+	//		{
+	//			"Name"				"1_wave_stomp"
+	//			"AOE"                "1"
+	//			"Radius"             "245"
+	//			"MinimumTargets"     "1"
+	//		}
+	//	}
+	//}
 	}
 	
 	"2_wave_boss" 
@@ -2300,7 +2300,7 @@
 	"AttackDamageMax" "60" 
 	"AttackRate" "1.25" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -2340,8 +2340,8 @@
 	
 	"HasInventory" "0" 
 	
-	"PathfindingSearchDepthScale" "0.22" //0.3
-	//"vscripts"	"AI\attack_wave_only.lua" //
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	}
 	
@@ -2374,7 +2374,7 @@
 	"AttackDamageMax"		"100" 
 	"AttackRate" 			"1.3" 
 	"AttackAnimationPoint" 	"0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" 			"100" 
 	"ProjectileModel"	 	"" 
 	"ProjectileSpeed" 		"" 
@@ -2402,34 +2402,34 @@
 	
 	"HasInventory" "0" 
 	
-	"PathfindingSearchDepthScale" "0.22" //0.3
-	//"vscripts"	"AI\3_wave_bosses.lua"
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\3_wave_bosses.lua"
 	
-	"Creature"
-		{
-			"DefaultState"			"Invade"
-			"States"	
-				{
-					"Invade"
-					{
-						"Name"				"Invade"
-						"Aggression"		"0.0" //cast offensive spells whenever
-						"Avoidance"			"0.0" //dont flee
-						"Support"			"50.0" //start buffing
-					}
-				}
-			
-			"DefensiveAbilities"
-				{
-				    "Ability1"              
-				    {
-				        "Name"                "3_wave_rejuvenation"
-				        "UseSelfishly"        "1"
-				        "Buff"                "1"
-				        "UseAtHealthPercent"  "50"
-				    }
-				}
-		}
+	//"Creature"
+	//	{
+	//		"DefaultState"			"Invade"
+	//		"States"	
+	//			{
+	//				"Invade"
+	//				{
+	//					"Name"				"Invade"
+	//					"Aggression"		"0.0" //cast offensive spells whenever
+	//					"Avoidance"			"0.0" //dont flee
+	//					"Support"			"50.0" //start buffing
+	//				}
+	//			}
+	//		
+	//		"DefensiveAbilities"
+	//			{
+	//			    "Ability1"              
+	//			    {
+	//			        "Name"                "3_wave_rejuvenation"
+	//			        "UseSelfishly"        "1"
+	//			        "Buff"                "1"
+	//			        "UseAtHealthPercent"  "50"
+	//			    }
+	//			}
+	//	}
 	}
 	
 	"4_wave_boss" 
@@ -2464,7 +2464,7 @@
 	"AttackDamageMax" "80" 
 	"AttackRate" "0.9" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "800" 
 	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" 
 	"ProjectileSpeed" "1200" 
@@ -2505,33 +2505,32 @@
 	
 	"HasInventory" "0" 
 	
-	"PathfindingSearchDepthScale" "0.22" //0.3
-	//"vscripts"	"AI\4_wave_bosses.lua"
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\4_wave_bosses.lua"
 	
-	"Creature"
-	{
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			"Ability1"
-			{
-				"Name"				"4_wave_death_coil"
-				"Damage"            "1"
-			}
-		}	
-		
-	}
+	//"Creature"
+	//{
+	//	"DefaultState"			"Invade"
+	//	"States"	
+	//	{
+	//		"Invade"
+	//		{
+	//			"Name"				"Invade"
+	//			"Aggression"		"90.0" //cast offensive spells whenever
+	//			"Avoidance"			"0.0" //dont flee
+	//			"Support"			"0.0" //start buffing
+	//		}
+	//	}
+	//	
+	//	"OffensiveAbilities"
+	//	{
+	//		"Ability1"
+	//		{
+	//			"Name"				"4_wave_death_coil"
+	//			"Damage"            "1"
+	//		}
+	//	}	
+	//}
 	}
 	
 	"6_wave_boss" 
@@ -2566,7 +2565,7 @@
 	"AttackDamageMax" "150" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -2599,37 +2598,37 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\6_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	
-	"Creature"
-	{
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			"Ability1"
-			{
-				"Name"				"6_wave_cripple"
-				"IsDebuff"              "1"
-			}
-		}	
-		
-	}
+	//"Creature"
+	//{
+	//	"DefaultState"			"Invade"
+	//	"States"	
+	//	{
+	//		"Invade"
+	//		{
+	//			"Name"				"Invade"
+	//			"Aggression"		"90.0" //cast offensive spells whenever
+	//			"Avoidance"			"0.0" //dont flee
+	//			"Support"			"0.0" //start buffing
+	//		}
+	//	}
+	//	
+	//	"OffensiveAbilities"
+	//	{
+	//		"Ability1"
+	//		{
+	//			"Name"				"6_wave_cripple"
+	//			"IsDebuff"              "1"
+	//		}
+	//	}	
+	//}
 	
 	}
 	
@@ -2672,7 +2671,7 @@
 	"AttackDamageMax" "220" 
 	"AttackRate" "0.55" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -2705,38 +2704,39 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\7_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	
-	"Creature"
-	{
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			"Ability1"
-			{
-				"Name"		 		 "7_wave_howl_of_terror"
-				"AOE"                "1"
-				"Radius"             "700"
-				"MinimumTargets"     "1"
-			}
-		}
-	}
+	//"Creature"
+	//{
+	//	"DefaultState"			"Invade"
+	//	"States"	
+	//	{
+	//		"Invade"
+	//		{
+	//			"Name"				"Invade"
+	//			"Aggression"		"90.0" //cast offensive spells whenever
+	//			"Avoidance"			"0.0" //dont flee
+	//			"Support"			"0.0" //start buffing
+	//		}
+	//	}
+	//	
+	//	"OffensiveAbilities"
+	//	{
+	//		"Ability1"
+	//		{
+	//			"Name"		 		 "7_wave_howl_of_terror"
+	//			"AOE"                "1"
+	//			"Radius"             "700"
+	//			"MinimumTargets"     "1"
+	//		}
+	//	}
+	//}
 	}
 	
 	"8_wave_boss" 
@@ -2750,31 +2750,31 @@
 	"Level" "1" 
 					
 	
-	"Creature"
-	{
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			"Ability1"
-			{
-				"Name"				"8_wave_storm_bolt"
-				"Damage"            "1"
-				"Stun"              "1"
-			}
-		}	
-		
-	}
+	//"Creature"
+	//{
+	//	"DefaultState"			"Invade"
+	//	"States"	
+	//	{
+	//		"Invade"
+	//		{
+	//			"Name"				"Invade"
+	//			"Aggression"		"90.0" //cast offensive spells whenever
+	//			"Avoidance"			"0.0" //dont flee
+	//			"Support"			"0.0" //start buffing
+	//		}
+	//	}
+	//	
+	//	"OffensiveAbilities"
+	//	{
+	//		"Ability1"
+	//		{
+	//			"Name"				"8_wave_storm_bolt"
+	//			"Damage"            "1"
+	//			"Stun"              "1"
+	//		}
+	//	}	
+	//	
+	//}
 	
 	
 	
@@ -2800,7 +2800,7 @@
 	"AttackDamageMax" "250" 
 	"AttackRate" "1.25" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -2833,10 +2833,11 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\8_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -2898,7 +2899,7 @@
 	"AttackDamageMax" "280" 
 	"AttackRate" "0.7" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "600" 
 	
 	
@@ -2930,10 +2931,11 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\attack_wave_only.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -2975,7 +2977,7 @@
 	"AttackDamageMax" "150" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -3008,10 +3010,11 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\attack_wave_only.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -3050,7 +3053,7 @@
 	"AttackDamageMax" "480" 
 	"AttackRate" "0.85" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -3083,38 +3086,39 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\12_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	
-	"Creature"
-		{
-			"DefaultState"			"Invade"
-			"States"	
-				{
-					"Invade"
-					{
-						"Name"				"Invade"
-						"Aggression"		"0.0" //cast offensive spells whenever
-						"Avoidance"			"0.0" //dont flee
-						"Support"			"90.0" //start buffing
-					}
-				}
-			
-			"DefensiveAbilities"
-				{
-				    "Ability1"              
-				    {
-				        "Name"                "12_wave_bloodlust"
-				        "UseSelfishly"        "1"
-				        "Buff"                "1"
-				        "UseAtHealthPercent"  "90"
-				    }
-				}
-		}
+	//"Creature"
+	//	{
+	//		"DefaultState"			"Invade"
+	//		"States"	
+	//			{
+	//				"Invade"
+	//				{
+	//					"Name"				"Invade"
+	//					"Aggression"		"0.0" //cast offensive spells whenever
+	//					"Avoidance"			"0.0" //dont flee
+	//					"Support"			"90.0" //start buffing
+	//				}
+	//			}
+	//		
+	//		"DefensiveAbilities"
+	//			{
+	//			    "Ability1"              
+	//			    {
+	//			        "Name"                "12_wave_bloodlust"
+	//			        "UseSelfishly"        "1"
+	//			        "Buff"                "1"
+	//			        "UseAtHealthPercent"  "90"
+	//			    }
+	//			}
+	//	}
 	}
 	
 	"13_wave_boss" 
@@ -3151,7 +3155,7 @@
 	"AttackDamageMax" "500" 
 	"AttackRate" "1" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -3184,39 +3188,39 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\13_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	
-	"Creature"
-	{
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			"Ability1"
-			{
-				"Name"				"13_wave_hurl_boulder"
-				"Damage"            "1"
-				"Stun"              "1"
-				"IsDebuff"			"1"
-			}
-		}	
-		
-	}
+	//"Creature"
+	//{
+	//	"DefaultState"			"Invade"
+	//	"States"	
+	//	{
+	//		"Invade"
+	//		{
+	//			"Name"				"Invade"
+	//			"Aggression"		"90.0" //cast offensive spells whenever
+	//			"Avoidance"			"0.0" //dont flee
+	//			"Support"			"0.0" //start buffing
+	//		}
+	//	}
+	//	
+	//	"OffensiveAbilities"
+	//	{
+	//		"Ability1"
+	//		{
+	//			"Name"				"13_wave_hurl_boulder"
+	//			"Damage"            "1"
+	//			"Stun"              "1"
+	//			"IsDebuff"			"1"
+	//		}
+	//	}	
+	//}
 	}
 	
 	"14_wave_boss" 
@@ -3254,7 +3258,7 @@
 	"AttackDamageMax" "500" 
 	"AttackRate" "1" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "500" 
 	
 	
@@ -3285,38 +3289,38 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\14_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	
-	"Creature"
-	{
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			"Ability1"
-			{
-				"Name"				"14_wave_storm_bolt"
-				"Damage"            "1"
-				"Stun"              "1"
-			}
-		}	
-		
-	}
+	//"Creature"
+	//{
+	//	"DefaultState"			"Invade"
+	//	"States"	
+	//	{
+	//		"Invade"
+	//		{
+	//			"Name"				"Invade"
+	//			"Aggression"		"90.0" //cast offensive spells whenever
+	//			"Avoidance"			"0.0" //dont flee
+	//			"Support"			"0.0" //start buffing
+	//		}
+	//	}
+	//	
+	//	"OffensiveAbilities"
+	//	{
+	//		"Ability1"
+	//		{
+	//			"Name"				"14_wave_storm_bolt"
+	//			"Damage"            "1"
+	//			"Stun"              "1"
+	//		}
+	//	}	
+	//}
 	}
 	
 	"16_wave_boss" 
@@ -3354,7 +3358,7 @@
 	"AttackDamageMax" "750" 
 	"AttackRate" "1" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "400" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "1200" 
@@ -3387,10 +3391,11 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\attack_wave_only.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -3427,7 +3432,7 @@
 	"AttackDamageMax" "900" 
 	"AttackRate" "0.85" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -3460,10 +3465,11 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\attack_wave_only.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -3508,7 +3514,7 @@
 	"AttackDamageMax" "1400" 
 	"AttackRate" "1.5" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "250" 
 	
 	
@@ -3540,10 +3546,11 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\attack_wave_only.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -3582,7 +3589,7 @@
 	"AttackDamageMax" "998" 
 	"AttackRate" "2.05" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "500" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -3615,10 +3622,11 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
-	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	"vscripts"	"AI\attack_wave_only.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -3652,7 +3660,7 @@
 		"AttackDamageMax" "15" 
 		"AttackRate" "1.55" 
 		"AttackAnimationPoint" "0.3" 
-		"AttackAcquisitionRange" "10000" //"10000"
+		"AttackAcquisitionRange" "0" //"10000"
 		"AttackRange" "100" 
 		"ProjectileModel" "" 
 		"ProjectileSpeed" "" 
@@ -3680,9 +3688,9 @@
 		 
 		"HasInventory" "0" 
 	
-		"PathfindingSearchDepthScale" "0.22" //0.3
+		"PathfindingSearchDepthScale" "0.3" //0.3
 		
-		//"vscripts"	"AI\attack_wave_only.lua" //
+		"vscripts"	"AI\attack_wave_only.lua" //
 		
 	
 	}
@@ -3712,7 +3720,7 @@
 		"AttackDamageMax" "30" 
 		"AttackRate" "1.55" 
 		"AttackAnimationPoint" "0.3" 
-		"AttackAcquisitionRange" "10000" 
+		"AttackAcquisitionRange" "0" 
 		"AttackRange" "100" 
 		"ProjectileModel" "" 
 		"ProjectileSpeed" "" 
@@ -3740,9 +3748,9 @@
 	
 		"HasInventory" "0" 
 	
-		"PathfindingSearchDepthScale" "0.22" //0.3
+		"PathfindingSearchDepthScale" "0.3" //0.3
 		
-		//"vscripts"	"AI\attack_wave_only.lua" //
+		"vscripts"	"AI\attack_wave_only.lua" //
 	}
 	
 	"3_wave_creep" 
@@ -3774,7 +3782,7 @@
 		"AttackDamageMax" "50" 
 		"AttackRate" "1.5" 
 		"AttackAnimationPoint" "0.3" 
-		"AttackAcquisitionRange" "10000" 
+		"AttackAcquisitionRange" "0" 
 		"AttackRange" "100" 
 		"ProjectileModel" "" 
 		"ProjectileSpeed" "" 
@@ -3802,9 +3810,9 @@
 	
 		"HasInventory" "0" 
 	
-		"PathfindingSearchDepthScale" "0.22" //0.3
+		"PathfindingSearchDepthScale" "0.3" //0.3
 		
-		//"vscripts"	"AI\attack_wave_only.lua" //
+		"vscripts"	"AI\attack_wave_only.lua" //
 	}
 	
 	"4_wave_creep" 
@@ -3838,7 +3846,7 @@
 		"AttackDamageMax" "40" 
 		"AttackRate" "1.3" 
 		"AttackAnimationPoint" "0.3" 
-		"AttackAcquisitionRange" "10000" 
+		"AttackAcquisitionRange" "0" 
 		"AttackRange" "450" 
 		"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" 
 		"ProjectileSpeed" "1200" 
@@ -3866,9 +3874,9 @@
 	
 		"HasInventory" "0" 
 		
-		"PathfindingSearchDepthScale" "0.22" //0.3
+		"PathfindingSearchDepthScale" "0.3" //0.3
 		
-		//"vscripts"	"AI\attack_wave_only.lua" //
+		"vscripts"	"AI\attack_wave_only.lua" //
 	}
 	
 	"6_wave_creep" 
@@ -3903,7 +3911,7 @@
 	"AttackDamageMax" "75" 
 	"AttackRate" "0.85" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -3936,10 +3944,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
 	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	"HasInventory" "0" 
 	}
@@ -3978,7 +3988,7 @@
 	"AttackDamageMax" "110" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -4011,10 +4021,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
 	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	"HasInventory" "0" 
 	}
@@ -4053,7 +4065,7 @@
 	"AttackDamageMax" "125" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -4086,10 +4098,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
 	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	"HasInventory" "0" 
 	}
@@ -4134,7 +4148,7 @@
 	"AttackDamageMax" "140" 
 	"AttackRate" "1.0" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "450" 
 	
 	
@@ -4165,9 +4179,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4207,7 +4224,7 @@
 	"AttackDamageMax" "180" 
 	"AttackRate" "0.65" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -4240,9 +4257,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4282,7 +4302,7 @@
 	"AttackDamageMax" "240" 
 	"AttackRate" "0.65" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -4315,8 +4335,8 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
 	
 	
@@ -4359,7 +4379,7 @@
 	"AttackDamageMax" "280" 
 	"AttackRate" "0.75" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -4392,9 +4412,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4438,7 +4461,7 @@
 	"AttackDamageMax" "190" 
 	"AttackRate" "0.8" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "450" 
 	
 	
@@ -4470,9 +4493,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4513,7 +4539,7 @@
 	"AttackDamageMax" "375" 
 	"AttackRate" "0.8" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "400" 
 	
 	
@@ -4545,9 +4571,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4586,7 +4615,7 @@
 	"AttackDamageMax" "450" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -4619,9 +4648,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4661,7 +4693,7 @@
 	"AttackDamageMax" "450" 
 	"AttackRate" "1.1" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "250" 
 	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
 	"ProjectileSpeed" "1500" 
@@ -4694,9 +4726,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4736,7 +4771,7 @@
 	"AttackDamageMax" "666" 
 	"AttackRate" "1.75" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -4769,9 +4804,12 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 	
+	"PathfindingSearchDepthScale" "0.3" //0.3
+	
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 	
 	"HasInventory" "0" 

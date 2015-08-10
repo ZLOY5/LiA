@@ -12,7 +12,7 @@
 	write FOR AIcreeps
 	
 +		in addon game mod
-	require('LiA_AIcreeps')
+	require('AIcreeps')
 	
 	- GameMode:SetThink("onThinkAIcreepsUpdate", self)
 +	(delete) GameMode:SetThink("onThinkAIcreepsAttack", self)
@@ -85,7 +85,7 @@ tHeroTarget = {} -- targets for tCreeps1 and tCreeps2
 --tTargetParams = {{}} -- for find hero
 
 
-function LiA:AICreepsDefault()
+function Survival:AICreepsDefault()
 	tCreeps1 = {}
 	tCreeps2 = {}
 	tHeroTarget = {}
@@ -93,7 +93,7 @@ end
 
 
 
-function LiA:AICreepsRemoveFromTable(params)
+function Survival:AICreepsRemoveFromTable(params)
 	local removeUnit = params.removeUnit
 	--
 	for k,v in pairs(tCreeps1) do 
@@ -109,7 +109,7 @@ function LiA:AICreepsRemoveFromTable(params)
 end
 
 
-function LiA:AICreepsInsertToTable(params)
+function Survival:AICreepsInsertToTable(params)
 	local addUnit1 = params.addUnit1
 	local addUnit2 = params.addUnit2
 	--
@@ -122,7 +122,7 @@ end
 --	tBoss2 = params.boss2
 --end
 
-function LiA:onThinkAIcreepsUpdate()
+function Survival:onThinkAIcreepsUpdate()
 	--IsWave = false
 	if not GameRules:IsGamePaused() then
 		if IsWave then
@@ -152,7 +152,7 @@ function LiA:onThinkAIcreepsUpdate()
 end
 
 
-function LiA:onThinkAIcreepsAttack()
+function Survival:onThinkAIcreepsAttack()
 	--IsWave = false
 	if not GameRules:IsGamePaused() then
 		if IsWave then

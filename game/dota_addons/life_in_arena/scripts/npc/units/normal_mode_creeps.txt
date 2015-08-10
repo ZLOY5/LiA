@@ -24,7 +24,7 @@
 	"AttackDamageMax" "15" 
 	"AttackRate" "1.55" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" //"10000"
+	"AttackAcquisitionRange" "0" //"10000"
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -52,9 +52,9 @@
 	 
 	"HasInventory" "0" 
 
-	"PathfindingSearchDepthScale" "0.22" //0.3
+	"PathfindingSearchDepthScale" "0.3" //0.3
 	
-	//"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\attack_wave_only.lua" //
 	
 
 }
@@ -84,7 +84,7 @@
 	"AttackDamageMax" "30" 
 	"AttackRate" "1.55" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -112,9 +112,9 @@
 
 	"HasInventory" "0" 
 
-	"PathfindingSearchDepthScale" "0.22" //0.3
+	"PathfindingSearchDepthScale" "0.3" //0.3
 	
-	//"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\attack_wave_only.lua" //
 }
 
 "3_wave_creep" 
@@ -146,7 +146,7 @@
 	"AttackDamageMax" "50" 
 	"AttackRate" "1.5" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
@@ -174,9 +174,9 @@
 
 	"HasInventory" "0" 
 
-	"PathfindingSearchDepthScale" "0.22" //0.3
+	"PathfindingSearchDepthScale" "0.3" //0.3
 	
-	//"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\attack_wave_only.lua" //
 }
 
 "4_wave_creep" 
@@ -210,7 +210,7 @@
 	"AttackDamageMax" "40" 
 	"AttackRate" "1.3" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "10000" 
+	"AttackAcquisitionRange" "0" 
 	"AttackRange" "450" 
 	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" 
 	"ProjectileSpeed" "1200" 
@@ -238,9 +238,9 @@
 
 	"HasInventory" "0" 
 	
-	"PathfindingSearchDepthScale" "0.22" //0.3
+	"PathfindingSearchDepthScale" "0.3" //0.3
 	
-	//"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\attack_wave_only.lua" //
 }
 
 "6_wave_creep" 
@@ -275,7 +275,7 @@
 "AttackDamageMax" "75" 
 "AttackRate" "0.85" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -308,10 +308,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
 
+"vscripts"	"AI\attack_wave_only.lua" //
 
 "HasInventory" "0" 
 }
@@ -350,7 +352,7 @@
 "AttackDamageMax" "110" 
 "AttackRate" "1.05" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -383,10 +385,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
 
+"vscripts"	"AI\attack_wave_only.lua" //
 
 "HasInventory" "0" 
 }
@@ -425,7 +429,7 @@
 "AttackDamageMax" "125" 
 "AttackRate" "1.05" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -458,10 +462,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
 
+"vscripts"	"AI\attack_wave_only.lua" //
 
 "HasInventory" "0" 
 }
@@ -506,7 +512,7 @@
 "AttackDamageMax" "140" 
 "AttackRate" "1.0" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "450" 
 
 
@@ -537,9 +543,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
@@ -579,7 +588,7 @@
 "AttackDamageMax" "180" 
 "AttackRate" "0.65" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -612,9 +621,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
@@ -654,7 +666,7 @@
 "AttackDamageMax" "240" 
 "AttackRate" "0.65" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -687,8 +699,8 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
 
 
@@ -731,7 +743,7 @@
 "AttackDamageMax" "280" 
 "AttackRate" "0.75" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -764,9 +776,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
@@ -810,7 +825,7 @@
 "AttackDamageMax" "190" 
 "AttackRate" "0.8" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "450" 
 
 
@@ -842,9 +857,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
@@ -885,7 +903,7 @@
 "AttackDamageMax" "375" 
 "AttackRate" "0.8" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "400" 
 
 
@@ -917,9 +935,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
@@ -958,7 +979,7 @@
 "AttackDamageMax" "450" 
 "AttackRate" "1.05" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -991,9 +1012,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
@@ -1033,7 +1057,7 @@
 "AttackDamageMax" "450" 
 "AttackRate" "1.1" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "250" 
 "ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
 "ProjectileSpeed" "1500" 
@@ -1066,9 +1090,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
@@ -1108,7 +1135,7 @@
 "AttackDamageMax" "666" 
 "AttackRate" "1.75" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "10000" 
+"AttackAcquisitionRange" "0" 
 "AttackRange" "100" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
@@ -1141,9 +1168,12 @@
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "800" 
+"VisionNighttimeRange" "800" 
 
+"PathfindingSearchDepthScale" "0.3" //0.3
+
+"vscripts"	"AI\attack_wave_only.lua" //
 
 
 "HasInventory" "0" 
