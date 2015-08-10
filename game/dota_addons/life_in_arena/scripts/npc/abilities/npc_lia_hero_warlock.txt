@@ -4,7 +4,7 @@
 		"BaseClass"              "ability_datadriven"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-		"AbilityTextureName"     "razor_eye_of_the_storm"
+		"AbilityTextureName"     "warlock_storm_datadriven"
 
 	
 
@@ -43,7 +43,11 @@
 	        	"ApplyModifier"
 	        	{
 	          		"ModifierName"  "modifier_warlock_storm_hero"
-	          		"Target"        "CASTER"
+	          		"Target"
+	          		{
+	          			"Center"  	"CASTER"
+	          			"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	          		}
 	        	}
 	    		"ActOnTargets"
 	    		{
@@ -84,7 +88,7 @@
 				"IsDebuff"      "0"
 				"IsBuff"      	"0"
 				"IsPurgable"	"0"
-				
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"ThinkInterval"  "%tick_interval"
 				"OnIntervalThink"
 				{
@@ -168,7 +172,7 @@
 		"BaseClass"              "ability_datadriven"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-		"AbilityTextureName"     "razor_eye_of_the_storm"
+		"AbilityTextureName"     "warlock_storm_datadriven"
 
 	
 
@@ -207,7 +211,11 @@
 	        	"ApplyModifier"
 	        	{
 	          		"ModifierName"  "modifier_warlock_storm_hero"
-	          		"Target"        "CASTER"
+	          		"Target"
+	          		{
+	          			"Center"  	"CASTER"
+	          			"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	          		}
 	        	}
 	    		"ActOnTargets"
 	    		{
@@ -248,7 +256,7 @@
 				"IsDebuff"      "0"
 				"IsBuff"      	"0"
 				"IsPurgable"	"0"
-				
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"				
 				"ThinkInterval"  "%tick_interval"
 				"OnIntervalThink"
 				{
@@ -334,7 +342,7 @@
 
 "BaseClass"              "ability_datadriven"
 "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-"AbilityTextureName"     "lion_mana_drain"
+"AbilityTextureName"     "warlock_sacrifice"
 
 
 "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
@@ -459,7 +467,7 @@
 {
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityTextureName"     "skywrath_mage_concussive_shot"
+    "AbilityTextureName"     "warlock_magic_splash"
 
     "AbilityCastRange"              "375"
 
@@ -543,7 +551,7 @@
   "AbilityCastPoint"        "0.4"
   "AoERadius"                   "280 290 300"
 
-  "AbilityTextureName"      "warlock_firestorm"
+  "AbilityTextureName"      "warlock_firestorm_datadriven"
   
       "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
       "MaxLevel"               "3"
@@ -615,7 +623,11 @@
   {
     "ApplyModifier"
     {
-      "Target"      "CASTER"
+  		"Target"
+		{
+			"Center"  	"CASTER"
+			"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		}
       "ModifierName"    "modifier_warlock_firestorm_datadriven"
     }
 
@@ -649,7 +661,7 @@
       "OverrideAnimation"   "ACT_DOTA_IDLE"
 
       "Duration"        "%wave_count*%wave_interval"
-
+      "Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
       "ThinkInterval"  "%wave_interval"
 
       "OnIntervalThink"
@@ -796,7 +808,11 @@
   {
     "RemoveModifier"
     {
-      "Target"      "CASTER"
+		"Target"
+		{
+			"Center"  	"CASTER"
+			"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		}
       "ModifierName"    "modifier_warlock_firestorm_datadriven"
     }
     
@@ -812,7 +828,7 @@
       "OverrideAnimation"   "ACT_DOTA_IDLE"
 
       "Duration"        "%wave_count*%wave_interval"
-
+      "Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
       "ThinkInterval"  "%wave_interval"
 
       "OnIntervalThink"

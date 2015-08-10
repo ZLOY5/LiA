@@ -7,7 +7,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"AbilityTextureName"			"bloodseeker_rupture"
+	"AbilityTextureName"			"vampire_life_drain"
 	
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
@@ -150,3 +150,212 @@
 	}
 }
 
+"vampire_transformation"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"			"terrorblade_metamorphosis"
+	
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"60 70 80"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 120 140"
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"transformation_time"	"0.35"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"base_attack_time"		"1.67"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_range"			"450"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_attack_range"			"550"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tp_regen_mult"			"3 4 5"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tp_aoe_dmg_mult"		"10 20 30"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tp_transformation_dmg_mult"	"16 32 48"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tp_attack_heal_mult"			"6 8 10"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"aoe_dmg_radius"			"150"
+		}
+		"09"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_health"			"100 200 300"
+		}
+		"10"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"20"
+		}
+		"11"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"init_dmg_aoe"			"350"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+		"particle"  "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+		"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+		"particle"	"particles/units/heroes/hero_visage/visage_familiar_base_attack.vpcf"
+		"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+		"model"		"models/heroes/visage/visage_familiar.vmdl"
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"		"Hero_Terrorblade.Metamorphosis"
+			"Target"			"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"		"modifier_vampire_transformation"
+			"Target"			"CASTER"
+		}
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/Vampire/Transformation.lua"
+			"Function"		"InitialDamage"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Radius" 	"%init_dmg_aoe"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_vampire_transformation"
+		{
+			"Duration"	"%duration"
+			
+			"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+			"EffectAttachType"  "follow_origin"
+
+			"AllowsIllusionDuplicate"	"1"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"heroes/Vampire/Transformation.lua"
+					"model"					"models/heroes/visage/visage_familiar.vmdl"
+					"projectile_model"		"particles/units/heroes/hero_visage/visage_familiar_base_attack.vpcf"
+					"Function"				"ModelSwapStart"
+					"Function"				"HideWearables"
+				}
+
+				"AttachEffect"
+				{
+					"EffectName" 		"particles/units/heroes/hero_visage/visage_ambient.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"TARGET"
+				}
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
+				"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"
+				"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT" 	"%base_attack_time"				
+			}
+			
+			"OnAttackLanded"
+			{
+
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Vampire/Transformation.lua"
+					"Function"		"DamageAndHeal"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Radius"	"%aoe_dmg_radius"
+						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+						"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					}
+				}
+			}
+			
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Vampire/Transformation.lua"
+					"Function"		"ModelSwapEnd"
+					"Function"		"ShowWearables"
+				}
+			}
+		}
+		"modifier_vampire_transformation_regen"
+		{
+			"IsHidden"	"1"
+			"Duration"	"%duration"
+			"ThinkInterval"  "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Vampire/Transformation.lua"
+					"Function"		"VampireRegen"
+				}
+			}
+
+		}
+	}
+}
