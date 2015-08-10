@@ -139,7 +139,7 @@ function Survival:onThink()
         end
     end
 
-    return 0.25
+    return 0.5
 end
 
 function Survival:_TeleportHeroesWithoutBossArena()

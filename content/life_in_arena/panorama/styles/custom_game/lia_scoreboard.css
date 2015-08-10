@@ -179,7 +179,9 @@
 
 .is_local_player .ScoreboardPanel
 {
-    background-color: BACKGROUND_COLOR_WHITE;
+    /*background-color: BACKGROUND_COLOR_WHITE;*/
+    background-color: BACKGROUND_COLOR; /*#55534c;*/
+	box-shadow: fill #ffffff70 -3px -3px 3px 6px; /*#ffffff40*/
 }
 
 .ScoreboardPanel Label
@@ -299,11 +301,12 @@
 .is_local_player #KillsBosses,
 .is_local_player #KillsCreeps,
 .is_local_player #Deaths,
+.is_local_player #Rating,
 .is_local_player #Assists,
 .is_local_player #Level,
 .is_local_player #HeroName
 {
-	color: white;
+	/* color: white; */
 }
 
 .ScoreCol_TeamInfo
