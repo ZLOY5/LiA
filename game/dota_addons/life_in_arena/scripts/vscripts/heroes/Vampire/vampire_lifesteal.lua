@@ -5,3 +5,6 @@ function vampire_lifesteal:GetIntrinsicModifierName()
 	return "modifier_vampire_lifesteal"
 end 
 
+function vampire_lifesteal:OnUpgrade() 
+	self:GetCaster().thirst_points_max = self:GetSpecialValueFor("thirst_points_max")
+end

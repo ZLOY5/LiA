@@ -5,8 +5,13 @@ function LifeDrainFirstInstance(event)
 	local targets = event.target_entities
 	local damage = ability:GetLevelSpecialValueFor("damage_per_second", ability:GetLevel() - 1)
 
+
+	--print(caster.thirst_points or 0)
 	life_drain_damage = damage + (caster.thirst_points or 0)*2
-	caster.thirst_points = 0
+
+	if caster.thirst_points then
+		caster.thirst_points = 0
+	end
 	local modifier = caster:FindModifierByName("modifier_vampire_lifesteal")
 	if modifier then
 		modifier:SetStackCount(0)

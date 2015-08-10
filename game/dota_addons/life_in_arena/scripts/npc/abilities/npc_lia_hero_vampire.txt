@@ -139,13 +139,90 @@
 	{
 		"01"
 		{
-			"var_type"     "FIELD_INTEGER"
-			"lifesteal_percentage" "20 25 30"
+			"var_type"     			"FIELD_INTEGER"
+			"lifesteal_percentage" 	"20 25 30"
 		}
 		"02"
 		{
-			"var_type"  "FIELD_INTEGER"
-			"thirst_points_max" "10 15 20"
+			"var_type"  			"FIELD_INTEGER"
+			"thirst_points_max" 	"10 15 20"
+		}
+	}
+}
+
+"vampire_thirst"
+{
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName"			"bloodseeker_thirst"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+   	"MaxLevel"               "3"
+   	"RequiredLevel"          "2"
+   	"LevelsBetweenUpgrades"  "2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"     				"FIELD_INTEGER"
+			"thirst_points_bonus" 		"3 5 7"
+		}
+		"02"
+		{
+			"var_type"  				"FIELD_INTEGER"
+			"attack_speed_bonus" 		"20 50 80"
+		}
+		"03"
+		{
+			"var_type"     				"FIELD_INTEGER"
+			"radius" 					"500"
+		}
+		"04"
+		{
+			"var_type"     				"FIELD_INTEGER"
+			"activation_health_percent" "30"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_vampire_thirst"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+
+			"ThinkInterval"		"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes\Vampire\Thirst.lua"
+					"Function"		"Thirst"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Radius" 	"%radius"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				}
+			}
+		}
+
+		"modifier_vampire_thirst_bonus"
+		{
+			"IsBuff"			"1"
+			"IsPurgable"		"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
+			}
+
+			"EffectName"		""
+			"EffectAttachType"	"follow_origin"
 		}
 	}
 }

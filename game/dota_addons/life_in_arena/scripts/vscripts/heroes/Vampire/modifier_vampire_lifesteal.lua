@@ -28,8 +28,7 @@ function modifier_vampire_lifesteal:OnDeath(params)
 		if params.attacker == self:GetParent() 
 		and not params.unit:IsBuilding() 
 		and params.unit:GetTeam() ~= self:GetParent():GetTeam() then 
-			local thirst_points_max = self:GetAbility():GetSpecialValueFor("thirst_points_max")
-			if parent.thirst_points < thirst_points_max then
+			if parent.thirst_points < parent.thirst_points_max then
 				parent.thirst_points = parent.thirst_points + 1
 			end
 			self:SetStackCount(parent.thirst_points)
