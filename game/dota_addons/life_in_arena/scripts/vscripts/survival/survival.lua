@@ -295,7 +295,8 @@ end
 
 function Survival:_SpawnWave()  
     print("Spawn wave", self.nRoundNum, "for", self.nHeroCount, "heroes")
-
+	--AIcreeps
+    Survival:AICreepsDefault()
     Survival.State = SURVIVAL_STATE_ROUND_WAVE
     
     self.nHeroCountCreepsSpawned = self.nHeroCount --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)
