@@ -445,21 +445,5 @@
 				}
 			}
 		}
-		"modifier_vampire_transformation_regen"
-		{
-			"IsHidden"	"1"
-			"Duration"	"%duration"
-			"ThinkInterval"  "0.1"
-			"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/Vampire/Transformation.lua"
-					"Function"		"VampireRegen"
-				}
-			}
-
-		}
 	}
 }

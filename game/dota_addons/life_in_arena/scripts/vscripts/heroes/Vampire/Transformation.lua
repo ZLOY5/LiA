@@ -1,3 +1,5 @@
+LinkLuaModifier("modifier_vampire_transformation_regen", "heroes/Vampire/modifier_vampire_transformation_regen.lua", LUA_MODIFIER_MOTION_NONE)
+
 --[[Author: Pizzalol/Noya
 	Date: 10.01.2015.
 	Swaps the ranged attack, projectile and caster model
@@ -113,24 +115,17 @@ function InitialDamage(event)
 	local targets = event.target_entities
 	local tp_mult_init_dmg = ability:GetLevelSpecialValueFor("tp_transformation_dmg_mult", ability:GetLevel() - 1)
 	local init_dmg = tp_mult_init_dmg*(caster.thirst_points or 0)
-	local tp_regen_mult = ability:GetLevelSpecialValueFor("tp_regen_mult", ability:GetLevel() - 1)
-	ultimate_regen = tp_regen_mult*(caster.thirst_points or 0)/10
 	local modifier = caster:FindModifierByName("modifier_vampire_lifesteal")
+	local duration = ability:GetSpecialValueFor("duration")
 
-	caster.thirst_points = 0
-	modifier:SetStackCount(0)
+	if caster.thirst_points then
+		caster.thirst_points = 0
+		modifier:SetStackCount(0)
+	end
 	
 	for _,v in pairs(targets) do
 		ApplyDamage({ victim = v, attacker = caster, damage = init_dmg, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
 	end
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_vampire_transformation_regen", nil)
-
-
-end
-
-function VampireRegen(event)
-	local ability = event.ability
-	local caster = event.caster
-
-	caster:Heal(ultimate_regen, caster)
+	
+	caster:AddNewModifier(caster, ability, "modifier_vampire_transformation_regen", {duration = duration})
 end
