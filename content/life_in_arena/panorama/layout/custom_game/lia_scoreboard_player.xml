@@ -4,6 +4,25 @@
 		<include src="file://{resources}/styles/custom_game/lia_scoreboard_styles.css" />
         <include src="file://{resources}/styles/custom_game/lia_scoreboard.css" />
     </styles>
+	
+	<script>
+		function ToggleMute()
+		{
+			var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );
+			if ( playerId !== -1 )
+			{
+				var newIsMuted = !Game.IsPlayerMuted( playerId );
+				Game.SetPlayerMuted( playerId, newIsMuted );
+				$.GetContextPanel().SetHasClass( "player_muted", newIsMuted );
+			}
+		}
+
+		(function()
+		{
+			var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );
+			$.GetContextPanel().SetHasClass( "player_muted", Game.IsPlayerMuted( playerId ) );
+		})();
+	</script>
 
 	<Panel class="PlayerRow">
 		<Panel id="PlayerRowContainer">
@@ -16,6 +35,7 @@
 				<Panel id="PlayerAndHeroName">
 					<Label id="PlayerName" text="Unknown" />
 				</Panel>
+				<Button id="MuteButton" onactivate="ToggleMute();" />
 			</Panel>
 			<Panel id="TeamScoreContainer" class="ScoreCol_TeamScore ScoreboardPanel" />
 			<Panel id="KillsBossesContainer" class="ScoreCol_KillsBosses ScoreboardPanel">

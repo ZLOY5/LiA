@@ -461,7 +461,7 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 	if ( playerPanel === null )
 	{
 		playerPanel = $.CreatePanel( "Panel", playersContainer, playerPanelName );
-		//playerPanel.SetAttributeInt( "player_id", playerId );
+		playerPanel.SetAttributeInt( "player_id", playerId );
 		playerPanel.BLoadLayout( scoreboardConfig.playerXmlName, false, false );
 	}
 	playerPanel.SetAttributeInt( "player_id", playerId );
