@@ -6,20 +6,40 @@
 
 	<Panel class="GameInfo" >
 		<Panel id="Title">
-			<Label id="TitleName" text="#addon_game_name" />
+			<Label id="TitleName" text="#addonname" />
+		</Panel> 
+		<Label id="GameDescription" text="#welcome" />		
+		 <Label id="Cel" class="Header" html="true" text="#target" /> 
+		<Label id="cel1" class="InfoRowTarget" html="true" text="#targetInfo" /> 
+		<Panel id="Image1Row" class="InfoRow" >
+			<Label id="Image1Text" text="#targetInfo1" />
+			<Image id="Image1" src="file://{images}/custom_game/Koboldcreepsssss.png" />
+		</Panel> 
+		<Label id="Sov" class="Header" html="true" text="#Sovets" />
+		<Panel id="Image2Row" class="InfoRow" >
+			<Image id="Image2" src="file://{images}/custom_game/mine.png" />
+			<Label id="Image2Text" text="#SovInfo1" />
 		</Panel>
-		<Label id="GameDescription" text="#Добро пожаловать в Жизнь на Арене" />		
-		<Label id="Cel" class="Header" html="true" text="#Цель:" />
-		<Label id="cel1" class="InfoRow" html="true" text="#   * пройти все 20 волн монстров и мегабоссов и выжить;" />
-		<Label id="cel2" class="InfoRow" html="true" text="#   * если во время раунда погибнут все герои, то вы проиграете;" />
-		<Label id="Sov" class="Header" html="true" text="#Советы:" />
-		<Label id="sov1" class="InfoRow" html="true" text="#   * если вы новичок и не знаете какие предметы покупать вашему герою, то воспользуйтесь вкладкой рекомендуемых предметов;" />
-		<Label id="sov2" class="InfoRow" html="true" text="#   * обязательно ищите укрепленное (узкое) место, чтобы монстры не могли вас окружить, например вставайте в бочках, предварительно пробив себе там проход;" />	
-		<Label id="sov3" class="InfoRow" html="true" text="#   * старайтесь помогать друг другу, так вам будет легче выжить;" />	
-		<Label id="sov3" class="InfoRow" html="true" text="#   * в критических ситуациях взрывайте бочонки со взрывчаткой, чтобы убить всех монстров в области воздействия;" />	
-		<Label id="Due" class="Header" html="true" text="#Дуэли:" />	
-		<Label id="due1" class="InfoRow" html="true" text="#   * не воспринимайте их всерьез, Жизнь на Арене командная игра, дуэли здесь это бонусные раунды, чтобы заработать еще немного монет;" />	
-		<Label id="due2" class="InfoRow" html="true" text="#   * пользуйтесь на дуэлях отварами, зельями и всем другим, но только не тратьте больше, чем вы можете получить за победу на них;" />	
-	
+		
+		<Label id="sov1" class="InfoRow" html="true" text="#SovInfo2" />
+		<Label id="sov2" class="InfoRow" html="true" text="#SovInfo3" />	
+		<Label id="sov3" class="InfoRow" html="true" text="#SovInfo4" />	
+		 
+		<Label id="Due" class="Header" html="true" text="#DueInfo" />	
+		<Label id="due1" class="InfoRow" html="true" text="#DueInfo1" />	
+		<Label id="due2" class="InfoRow" html="true" text="#DueInfo2" />	
+		
+		<Label id="Re" class="Header" html="true" text="#ReInfo" />
+		<Panel id="ImageSmallRow" class="InfoRow" >
+			<Label id="ImageSmallText" text="#ReInfo1" />
+			<Image id="ImageSmall" src="file://{images}/custom_game/sl.png" />
+			<Image id="ImageSmall2" src="file://{images}/custom_game/but3.png" />
+			<Label id="ImageSmallText2" text="#ReInfo2" />
+		</Panel>
+		
+		<Label id="Run" class="Header" html="true" text="#RunInfo" />
+		<Label id="run1" class="InfoRow" html="true" text="#RunInfo1" />	
+		<Label id="Ulu" class="Header" html="true" text="#UluInfo" />
+		<Label id="ulu1" class="InfoRow" html="true" text="#UluInfo1" />	 
 	</Panel>		
 </root>
