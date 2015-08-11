@@ -61,6 +61,7 @@ function Survival:_OnCreepDeath(keys)
     if hero then
         hero.creeps = hero.creeps + 1
     end
+
 end
 
 function Survival:_OnBossDeath(keys)  
@@ -94,7 +95,9 @@ function Survival:OnEntityKilled(keys)
     elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_boss" then
         Survival:_OnBossDeath(keys)
     end 
-        
+
+    Survival:AICreepsRemoveFromTable(killed)
+
     if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] or killed:GetUnitName() == tostring(self.nRoundNum).."_wave_megaboss" then
         Survival:EndRound()
     end

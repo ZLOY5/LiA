@@ -93,9 +93,7 @@ end
 
 
 
-function Survival:AICreepsRemoveFromTable(params)
-	local removeUnit = params.removeUnit
-	--
+function Survival:AICreepsRemoveFromTable(removeUnit)
 	for k,v in pairs(tCreeps1) do 
 		if removeUnit == v then
 			table.remove(tCreeps1,k)
@@ -109,12 +107,9 @@ function Survival:AICreepsRemoveFromTable(params)
 end
 
 
-function Survival:AICreepsInsertToTable(params)
-	local addUnit1 = params.addUnit1
-	local addUnit2 = params.addUnit2
-	--
-	table.insert(tCreeps1,addUnit1)
-	table.insert(tCreeps2,addUnit2)
+function Survival:AICreepsInsertToTable(unit1,unit2)
+	table.insert(tCreeps1,unit1)
+	table.insert(tCreeps2,unit1)
 end
 
 --function LiA:AICreepsInsertBosses(params)
@@ -125,7 +120,7 @@ end
 function Survival:onThinkAIcreepsUpdate()
 	--IsWave = false
 	if not GameRules:IsGamePaused() then
-		if IsWave then
+		if self.State == SURVIVAL_STATE_ROUND_WAVE then
 			--local resFromFind = 
 			--local tTargetBuf = resFromFind.tTargetBuf
 			--local tTargetBufAbs = resFromFind.tTargetBufAbs
@@ -155,7 +150,7 @@ end
 function Survival:onThinkAIcreepsAttack()
 	--IsWave = false
 	if not GameRules:IsGamePaused() then
-		if IsWave then
+		if self.State == SURVIVAL_STATE_ROUND_WAVE then
 			--tTargetParams = AICreepsAttackFindHeroes()
 			--local tTargetBuf = tTargetParams.tTargetBuf
 			--local tTargetBufAbs = tTargetParams.tTargetBufAbs
@@ -263,8 +258,8 @@ function AICreepsCheck_tHeroTarget_isNotHave(params)
 	if tHeroTarget[index] ~= nil then
 		local player = tHeroTarget[index]:GetPlayerOwner()
 		local flagP = false
-		for p=1, #tPlayers do
-			if player == tPlayers[p] then
+		for p=1, #LiA.tPlayers do
+			if player == LiA.tPlayers[p] then
 				flagP = true
 				break
 			end
@@ -319,18 +314,18 @@ function AICreepsAttackFindHeroes()
 	--local tTargetBufAbs = {}
 	
 	-- run on all heroes and memory who need us
-	for i=1, #tHeroes do
-		player = tHeroes[i]:GetPlayerOwner()
+	for i=1, #Survival.tHeroes do
+		player = Survival.tHeroes[i]:GetPlayerOwner()
 		flag = false
-		for p=1, #tPlayers do
-			if player == tPlayers[p] then
+		for p=1, #LiA.tPlayers do
+			if player == LiA.tPlayers[p] then
 				flag = true
 				break
 			end
 		end
 		--
-		if tHeroes[i] ~= nil and tHeroes[i]:IsAlive() and flag then
-			table.insert(tTargetBuf,tHeroes[i])
+		if Survival.tHeroes[i] ~= nil and Survival.tHeroes[i]:IsAlive() and flag then
+			table.insert(tTargetBuf,Survival.tHeroes[i])
 			--table.insert(tTargetBufAbs,tHeroes[i]:GetAbsOrigin())
 		end
 		--

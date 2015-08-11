@@ -311,7 +311,9 @@ function Survival:_SpawnWave()
     ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss2)
     boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
     boss2:EmitSound("DOTA_Item.BlinkDagger.Activate")
-     
+    
+    Survival:AICreepsInsertToTable(boss1,boss2)
+    
     if self.IsEqualGold then
         self.nEqualGoldPool = self.nEqualGoldPool + boss1:GetGoldBounty()*2
         boss1:SetMinimumGoldBounty(0)
@@ -335,6 +337,8 @@ function Survival:_SpawnWave()
             unit1:EmitSound("DOTA_Item.BlinkDagger.Activate")
             unit2:EmitSound("DOTA_Item.BlinkDagger.Activate")
             --particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf
+            
+            Survival:AICreepsInsertToTable(unit1,unit2)
             
             if self.IsEqualGold then
                 self.nEqualGoldPool = unit1:GetGoldBounty()*2
