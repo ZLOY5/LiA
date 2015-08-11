@@ -17361,8 +17361,9 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"precache"
 		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
-			"particle"		"particles/units/heroes/hero_invoker/invoker_emp.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+			"particle"		"particles/units/heroes/hero_undying/undying_soul_rip_damage.vpcf"
 		}
 	
 	
@@ -17410,7 +17411,7 @@
 		{
 			"FireSound"
 			{
-				"EffectName"	"Hero_Invoker.EMP.Discharge"
+				"EffectName"	"Hero_Bloodseeker.Rupture"
 				"Target" 		"CASTER"
 			}
 	
@@ -17431,7 +17432,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_vampire_life_drain"
-				"Target" 		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 		}
 	
@@ -17443,9 +17448,6 @@
 				"IsHidden"			"0"
 				"Duration"			"%duration"
 				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-	
-				"EffectName"		"particle_name"
-				"EffectAttachType"	"follow_origin"
 		
 				"ThinkInterval"  "1.0"
 				"OnIntervalThink"
@@ -17462,6 +17464,11 @@
 							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 						}
+					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_Bloodseeker.Rupture"
+						"Target" 		"CASTER"
 					}
 				}
 			}
@@ -17497,13 +17504,17 @@
 	"vampire_thirst"
 	{
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"			"bloodseeker_thirst"
+		"AbilityTextureName"			"vampire_lifesteal"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
 	   	"MaxLevel"               "3"
 	   	"RequiredLevel"          "2"
 	   	"LevelsBetweenUpgrades"  "2"
 	
+	   	"precache"
+	   	{
+	   		"particle"	"particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf"
+	   	}
 		"AbilitySpecial"
 		{
 			"01"
@@ -17547,7 +17558,7 @@
 							"Center"  	"CASTER"
 							"Radius" 	"%radius"
 							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 						}
 					}
@@ -17565,7 +17576,7 @@
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_bonus"
 				}
 	
-				"EffectName"		""
+				"EffectName"	"particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf"
 				"EffectAttachType"	"follow_origin"
 			}
 		}
@@ -17608,57 +17619,62 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"base_attack_time"		"1.67"
+				"base_attack_time"		"1.6"
 			}
 			"03"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_range"			"450"
+				"var_type"				"FIELD_FLOAT"
+				"bonus_movement_speed"		"50"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"tooltip_attack_range"			"550"
+				"bonus_range"			"250"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"tp_regen_mult"			"3 4 5"
+				"tooltip_attack_range"			"350"
 			}
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"tp_aoe_dmg_mult"		"10 20 30"
+				"tp_regen_mult"			"3 4 5"
 			}
 			"07"
 			{
 				"var_type"				"FIELD_INTEGER"
+				"tp_aoe_dmg_mult"		"10 20 30"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
 				"tp_transformation_dmg_mult"	"16 32 48"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tp_attack_heal_mult"			"6 8 10"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"aoe_dmg_radius"			"150"
 			}
 			"09"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"100 200 300"
+				"tp_attack_heal_mult"			"6 8 10"
 			}
 			"10"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"20"
+				"var_type"				"FIELD_INTEGER"
+				"aoe_dmg_radius"			"150"
 			}
 			"11"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"init_dmg_aoe"			"350"
+				"bonus_health"			"100 200 300"
+			}
+			"12"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"20"
+			}
+			"13"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"init_dmg_aoe"			"300"
 			}
 		}
 	
@@ -17682,7 +17698,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"		"modifier_vampire_transformation"
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 			"RunScript"
 			{
@@ -17694,6 +17714,7 @@
 					"Radius" 	"%init_dmg_aoe"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			}
 		}
@@ -17703,7 +17724,7 @@
 			"modifier_vampire_transformation"
 			{
 				"Duration"	"%duration"
-				
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"		
 				"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
 				"EffectAttachType"  "follow_origin"
 	
@@ -17732,12 +17753,17 @@
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
 					"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"
-					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT" 	"%base_attack_time"				
+					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT" 	"%base_attack_time"		
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%bonus_movement_speed"
 				}
 				
-				"OnAttackLanded"
+				"Orb"
 				{
-	
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}
+				
+				"OnOrbImpact"
+				{
 					"RunScript"
 					{
 						"ScriptFile"	"heroes/Vampire/Transformation.lua"
@@ -17768,6 +17794,7 @@
 				"IsHidden"	"1"
 				"Duration"	"%duration"
 				"ThinkInterval"  "0.1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"OnIntervalThink"
 				{
 					"RunScript"
