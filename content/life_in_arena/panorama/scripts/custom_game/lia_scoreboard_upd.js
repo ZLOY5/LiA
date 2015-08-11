@@ -471,12 +471,14 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 	//
 	//var KillsCreeps = data.KillsCreeps
 	var playerInfo = Game.GetPlayerInfo( playerId );
+	var isTeammate = false;
 	//$.Msg( "                  _ScoreboardUpdater_UpdatePlayerPanelMy: playerId ", playerId );
 	//$.Msg( "                  _ScoreboardUpdater_UpdatePlayerPanelMy:  playerInfo ", playerInfo );
 	if ( playerInfo )
 	{
+		isTeammate = ( playerInfo.player_team_id == localPlayerTeamId );
 		playerPanel.SetHasClass( "player_dead", ( playerInfo.player_respawn_seconds >= 0 ) );
-		//playerPanel.SetHasClass( "local_player_teammate", isTeammate && ( playerId != Game.GetLocalPlayerID() ) );
+		playerPanel.SetHasClass( "local_player_teammate", isTeammate && ( playerId != Game.GetLocalPlayerID() ) );
 		playerPanel.SetHasClass("is_local_player", localPlayerId == playerId );
 		//_ScoreboardUpdater_SetTextSafe( playerPanel, "RespawnTimer", ( playerInfo.player_respawn_seconds + 1 ) ); // value is rounded down so just add one for rounded-up
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "PlayerName", playerInfo.player_name );
