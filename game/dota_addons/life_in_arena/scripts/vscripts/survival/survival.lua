@@ -47,7 +47,7 @@ function Survival:InitSurvival()
 	self.nWaveSpawnCount = {20,26,32,38,44,50,56,62,68,74}   --крипов на спавн
 	self.nWaveMaxCount = {42,54,66,78,90,102,114,126,138,150}
 
-	self.nGoldPerWave = {12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30,30}
+	self.nGoldPerWave = {0,12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30,30}
 
     self.flExpFix = {0.8, 0.9, 1., 1.1, 1.2, 1.3, 1.4, 1.5}
     
@@ -189,8 +189,6 @@ function Survival:EndRound()
             player.readyToWave = false
         end
 
-        Survival:_GiveRoundBounty()
-        
         DoWithAllHeroes(function(hero)
             if hero:IsAlive() then
                 hero:Purge(false, true, false, true, false)
@@ -228,12 +226,13 @@ end
 function Survival:PrepareNextRound()
     self.nRoundNum = self.nRoundNum + 1
     
-    if self.nRoundNum % 2 == 1 and not self.IsDuelOccured and self.nHeroCount > 1 then
+    if self.nRoundNum ~= 1 and self.nRoundNum % 3 == 1 and not self.IsDuelOccured and self.nHeroCount > 1 then
         print("Next round - duels")
         self.IsDuelOccured = true
         Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
         Survival:StartDuels()
     else
+        Survival:_GiveRoundBounty()
         print("Next round - ", self.nRoundNum)
         self.IsDuelOccured = false
         Survival.State = SURVIVAL_STATE_PRE_ROUND_TIME

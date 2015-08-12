@@ -6,8 +6,9 @@ function Dominate(keys)
 			local location = v:GetAbsOrigin()
 			local predeath_hp = v:GetHealth()
 			if string.find(v:GetUnitName(),"wave_creep") then
-					bmcreep = CreateUnitByName(tostring(WAVE_NUM).."_bm", location, false, keys.caster, keys.caster, keys.caster:GetTeamNumber())
-					else bmcreep = CreateUnitByName(name, location, false, keys.caster, keys.caster, keys.caster:GetTeamNumber())
+				bmcreep = CreateUnitByName(tostring(Survival.nRoundNum).."_bm", location, false, keys.caster, keys.caster, keys.caster:GetTeamNumber())
+			else 
+				bmcreep = CreateUnitByName(name, location, false, keys.caster, keys.caster, keys.caster:GetTeamNumber())
 			end
 			v:AddNoDraw()
 			bmcreep:SetHealth(predeath_hp)
