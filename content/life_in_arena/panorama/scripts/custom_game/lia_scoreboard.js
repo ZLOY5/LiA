@@ -1,7 +1,7 @@
 "use strict";
 
 var g_ScoreboardHandle = null;
-var visible = false;
+var visible;
 
 /*function AutoUpdateScoreboard()
 {
@@ -20,11 +20,7 @@ var visible = false;
 
 function SetFlyoutScoreboardVisible( bVisible )
 {
-	if (visible == true)
-		visible = false;
-	else
-		visible = true;
-	//visible = bVisible;
+	visible = bVisible;
 	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", visible );
 	/*if ( visible )
 	{
@@ -144,7 +140,7 @@ function OnUpdAction( data )
 	{
 		return;
 	}
-	//$.Msg( "                  OnUpdAction: localPlayerId ", localPlayerId );
+	//$.Msg( "                  OnUpdAction: localPlayerTeamId ", localPlayerTeamId );
 	//
 	//var teamPanel = $.GetContextPanel();
 	var containerPanel = $( "#TeamsContainer")
@@ -203,13 +199,14 @@ function OnUpdAction( data )
 		"teamXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_team.xml",
 		"playerXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_player.xml",
 	};
-	SetFlyoutScoreboardVisible( true );
+
 	g_ScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, $( "#TeamsContainer" )); // 
+	
+	SetFlyoutScoreboardVisible( true );
 
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 	GameEvents.Subscribe( "upd_action",  OnUpdAction);
 	GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
-	
 	
 	
 })();
