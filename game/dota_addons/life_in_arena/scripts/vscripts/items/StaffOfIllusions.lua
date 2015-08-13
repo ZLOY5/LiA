@@ -37,6 +37,7 @@ function MakeIllusion(event)
 		if ability ~= nil then 
 			local abilityLevel = ability:GetLevel()
 			local abilityName = ability:GetAbilityName()
+			--print(abilityName,abilityLevel)
 			local illusionAbility = illusion:FindAbilityByName(abilityName)
 			if illusionAbility then
 				illusionAbility:SetLevel(abilityLevel)
