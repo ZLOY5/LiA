@@ -7,10 +7,10 @@ function Roots(event)
 
 	for _,target in pairs(targets) do
 		if v:IsHero() then 
-			caster:AddNewModifier(caster, ability, "modifier_vampire_transformation_regen", {duration = duration_hero})
-			caster:AddNewModifier(caster, ability, "modifier_keeper_of_the_grove_roots_damage", {duration = duration_hero - 1})
-		else caster:AddNewModifier(caster, ability, "modifier_vampire_transformation_regen", {duration = duration})
-			 caster:AddNewModifier(caster, ability, "modifier_keeper_of_the_grove_roots_damage", {duration = duration - 1})
+			ability:ApplyDataDrivenModifier(caster, v, "modifier_keeper_of_the_grove_roots", {duration = duration_hero})
+			ability:ApplyDataDrivenModifier(caster, v, "modifier_keeper_of_the_grove_roots_damage", {duration = duration_hero - 1})
+		else ability:ApplyDataDrivenModifier(caster, v, "modifier_keeper_of_the_grove_roots", {duration = duration})
+			 ability:ApplyDataDrivenModifier(caster, v, "modifier_keeper_of_the_grove_roots_damage", {duration = duration - 1})
 		end
 	end
 end

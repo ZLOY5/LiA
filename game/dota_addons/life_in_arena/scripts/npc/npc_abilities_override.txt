@@ -11302,6 +11302,200 @@
 			}
 		}
 	}
+	
+	"keeper_of_the_grove_treants"
+	{
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "furion_force_of_nature"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
+	
+	    "AbilityCastRange"              "400"
+	    "AbilityCastPoint"              "0.5"
+	    "AbilityCooldown"               "20 25 30"
+	
+	    "AbilityManaCost"               "100 150 200"
+	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+	        "model"		"models/heroes/furion/treant.vmdl"
+	        "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
+	        
+	        //Goblin Ability
+	        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	    }
+	    
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "unit_count"  "2 3 4"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Lycan.SummonWolves"
+	            "Target"        "CASTER"
+	        }
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/KeeperOfTheGrove/Treants.lua"
+	            "Function"      "SummonTreants"
+	            "Target"        "POINT"
+	        }
+	    }
+	}
+	
+	"keeper_of_the_grove_natures_curse"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"furion_sprout"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		"AbilityCastRange"				"650"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"220"
+	
+		"AbilityManaCost"				"200 250 300"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"60 90 120"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hero_duration"			"5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"350"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"			"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+			"particle"			"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+			"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_Sven.StormBoltImpact"
+				"Target"			"TARGET"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"			"TARGET"
+				"ControlPointEntities"
+				{
+					"TARGET"	"attach_origin"
+					"TARGET"	"attach_origin"
+					"TARGET"	"attach_origin"
+					"TARGET"	"attach_origin"	//CP3 has a child explosion origin
+				}
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/KeeperOfTheGrove/NaturesCurse.lua"
+				"Function"		"NaturesCurse"
+				"Target"
+				{
+					"Center"  	"TARGET"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}	
+		}
+		"Modifiers"
+		{
+			"modifier_keeper_of_the_grove_natures_curse"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+		
+				"EffectName"		"particle_name"
+				"EffectAttachType"	"follow_origin"
+	
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/KeeperOfTheGrove/NaturesCurse.lua"
+					"Function"		"Disarm"
+					"Target"
+					{
+						"Center"  	"TARGET"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+					}
+				}
+	
+				"ThinkInterval"  "1.0"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage_per_second"
+					}
+				}
+			}
+	
+			"modifier_keeper_of_the_grove_natures_curse_disarm"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+		
+				"EffectName"		"particle_name"
+				"EffectAttachType"	"follow_origin"
+	
+		
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	
+	}
 	//End of file npc_lia_hero_keeper_of_the_grove.txt
 
 
@@ -13243,7 +13437,7 @@
 			
 		
 			"AbilityCastPoint"				"0.5"
-			"AbilityTextureName"			"keeper_of_the_light_chakra_magic"
+			"AbilityTextureName"			"paladin_impregnability"
 			
 			"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 		    "MaxLevel"               "3"
