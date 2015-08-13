@@ -68,9 +68,9 @@ function moon_glaive_dummy_created( keys )
 	-- if it's first bounce then we need to initialize the ability variables since we're dealing with a dummy unit
 	-- else we apply damage to the target since it'll be the second bounce
 	local first = false
+	--print(caster:GetOwner():GetName())
 	if caster:GetOwner():GetClassname() == "player" then
 		local unit_ability = caster:FindAbilityByName("huntress_moon_glaive")
-
 		ability.damage = caster:GetAverageTrueAttackDamage()
 		ability.bounceTable = {}
 		ability.bounceCount = 1

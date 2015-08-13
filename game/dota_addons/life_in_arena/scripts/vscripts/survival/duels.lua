@@ -183,6 +183,8 @@ function Survival:EndDuels()
         end
     end)
 
+    EnableShop()
+
     self.nRoundNum = self.nRoundNum - 1
     Survival:PrepareNextRound()
 end
