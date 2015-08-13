@@ -7,6 +7,7 @@ function MakeIllusion(event)
 	local duration = ability:GetLevelSpecialValueFor( "illusion_duration", ability:GetLevel() - 1 )
 	local outgoingDamage = ability:GetLevelSpecialValueFor( "illusion_outgoing_damage", ability:GetLevel() - 1 )
 	local incomingDamage = ability:GetLevelSpecialValueFor( "illusion_incoming_damage", ability:GetLevel() - 1 )
+	local hPlayer = caster:GetPlayerOwner()
 
 	if string.find(unit_name,"megaboss") then
 		ability:RefundManaCost()
@@ -19,9 +20,10 @@ function MakeIllusion(event)
 
 	local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
 	illusion:SetControllableByPlayer(player, true)
-	
+	illusion:SetOwner(caster)
 	if target:IsRealHero() then
 		illusion:SetPlayerID(caster:GetPlayerID())
+		illusion:SetOwner(hPlayer)
 		local targetLevel = target:GetLevel()
 		for i=1,targetLevel-1 do
 			illusion:HeroLevelUp(false)
