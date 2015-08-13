@@ -177,14 +177,14 @@ function LocustSwarmPhysics( event )
 				unit.state = "target_acquired"
 				unit.current_target = target_enemy
 				point = unit.current_target:GetAbsOrigin()
-				print("Acquiring -> Enemy Target acquired: "..unit.current_target:GetUnitName())
+				--print("Acquiring -> Enemy Target acquired: "..unit.current_target:GetUnitName())
 			
 			-- If no enemies, set the unit to collide with a random point.
 			else
 				unit.state = "target_acquired"
 				unit.current_target = nil
 				point = source + RandomVector(RandomInt(radius/2, radius))
-				print("Acquiring -> Random Point Target acquired")
+				--print("Acquiring -> Random Point Target acquired")
 				if Debug then DebugDrawCircle(point, idleColor, 100, 25, true, draw_duration) end
 			end
 
@@ -192,7 +192,7 @@ function LocustSwarmPhysics( event )
 		elseif unit.state == "target_acquired" then
 
 			-- Update the point of the target's current position
-			if unit.current_target then
+			if unit.current_target and IsValidEntity(unit.current_target) then
 				point = unit.current_target:GetAbsOrigin()
 				if Debug then DebugDrawCircle(point, targetColor, 100, 25, true, draw_duration) end
 			end
@@ -200,7 +200,7 @@ function LocustSwarmPhysics( event )
 			-- Give up on the target if the distance goes over the give_up_distance
 			if distance_to_caster > give_up_distance then
 				unit.state = "acquiring"
-				print("Gave up on the target, acquiring a new target.")
+				--print("Gave up on the target, acquiring a new target.")
 
 				-- Decrease the locusts_locked counter
 				unit.current_target.locusts_locked = unit.current_target.locusts_locked - 1				
@@ -248,16 +248,16 @@ function LocustSwarmPhysics( event )
 					if unit.damage_done >= locust_heal_threshold then
 						unit.state = "returning"
 						point = source
-						print("Returning to caster after dealing ",unit.damage_done)
+						--print("Returning to caster after dealing ",unit.damage_done)
 					else
 						unit.state = "acquiring"
-						print("Attacked but still needs more damage to return: ",unit.damage_done)
+						--print("Attacked but still needs more damage to return: ",unit.damage_done)
 					end
 
 				-- In other case, its a point, reacquire target
 				else
 					unit.state = "acquiring"
-					print("Attempting to acquire a new target")
+					--print("Attempting to acquire a new target")
 				end
 			end
 
@@ -334,4 +334,10 @@ function LocustSwarmDeath( event )
 	        unit:ForceKill(false)
     	end
 	end
+end
+
+function LocustDeath(event) 
+	local unit = event.target
+	unit:SetPhysicsVelocity(Vector(0,0,0))
+	unit:OnPhysicsFrame(nil)
 end
