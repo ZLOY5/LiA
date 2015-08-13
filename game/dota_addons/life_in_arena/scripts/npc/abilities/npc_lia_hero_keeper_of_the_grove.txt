@@ -75,23 +75,34 @@
 
 		"FireSound"
 		{
-			"EffectName"	"Hero_Treant.Overgrowth.Cast"
+			"EffectName"	"Hero_Furion.WrathOfNature_Cast"
 			"Target"		"CASTER"
 		}	
 
 		"RunScript"
+		{
+			"ScriptFile"	"heroes/KeeperOfTheGrove/Roots.lua"
+			"Function"		"Roots"
+			"Target"
 			{
-				"ScriptFile"	"heroes/KeeperOfTheGrove/Roots.lua"
-				"Function"		"Roots"
-				"Target"
-				{
-					"Center"  	"POINT"
-					"Radius" 	"%radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-			}	
-
+				"Center"  	"POINT"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+		}	
+		"Damage"
+		{
+			"Target"
+			{
+				"Center"  	"POINT"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+			"Type" "DAMAGE_TYPE_MAGICAL"
+			"Damage" "%damage_per_second"
+		}
 	}
 
 	"Modifiers"
@@ -106,29 +117,12 @@
 			{
 				"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
 			}
-			
-			"ThinkInterval"	"1"
-			"OnIntervalThink"
-			{
-				"Damage"
-					{
-						"Target"	"TARGET"
-						"Type" "DAMAGE_TYPE_MAGICAL"
-						"Damage" "%damage_per_second"
-					}
-			}
 
 		}
 		"modifier_keeper_of_the_grove_roots_damage"
 		{	
 			"IsHidden"	"1"
 			"IsPurgable"	"1"
-			"Damage"
-			{
-				"Target"	"TARGET"
-				"Type" "DAMAGE_TYPE_MAGICAL"
-				"Damage" "%damage_per_second"
-			}
 
 			"ThinkInterval"	"1"
 			"OnIntervalThink"
@@ -169,7 +163,7 @@
         "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
         
         //Goblin Ability
-        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+        "particle"  "particles/units/heroes/hero_furion/furion_force_of_nature_cast.vpcf"
         "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
     }
     
@@ -186,7 +180,7 @@
     {
         "FireSound"
         {
-            "EffectName"    "Hero_Lycan.SummonWolves"
+            "EffectName"    "Hero_Furion.ForceOfNature"
             "Target"        "CASTER"
         }
         "RunScript"
@@ -246,9 +240,9 @@
 
 	"precache"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-		"particle"			"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-		"particle"			"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+		"particle"			"particles/units/heroes/hero_furion/furion_wrath_of_nature.vpcf"
+		"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
 		"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
 	}
 
@@ -256,23 +250,10 @@
 	{
 		"FireSound"
 		{
-			"EffectName"		"Hero_Sven.StormBoltImpact"
-			"Target"			"TARGET"
+			"EffectName"		"Hero_Treant.Overgrowth.Cast"
+			"Target"			"CASTER"
 		}
 
-		"FireEffect"
-		{
-			"EffectName"		"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
-			"EffectAttachType"	"attach_origin"
-			"Target"			"TARGET"
-			"ControlPointEntities"
-			{
-				"TARGET"	"attach_origin"
-				"TARGET"	"attach_origin"
-				"TARGET"	"attach_origin"
-				"TARGET"	"attach_origin"	//CP3 has a child explosion origin
-			}
-		}
 		"RunScript"
 		{
 			"ScriptFile"	"heroes/KeeperOfTheGrove/NaturesCurse.lua"
@@ -294,19 +275,8 @@
 			"IsHidden"			"0"
 			"IsDebuff"			"1"
 	
-			"EffectName"		"particle_name"
-			"EffectAttachType"	"follow_origin"
-
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/KeeperOfTheGrove/NaturesCurse.lua"
-				"Function"		"Disarm"
-				"Target"
-				{
-					"Center"  	"TARGET"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-				}
-			}
+			"EffectName"		"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
+			"EffectAttachType"	"follow_overhead"
 
 			"ThinkInterval"  "1.0"
 			"OnIntervalThink"
@@ -325,10 +295,6 @@
 			"Passive"			"0"
 			"IsHidden"			"0"
 			"IsDebuff"			"1"
-	
-			"EffectName"		"particle_name"
-			"EffectAttachType"	"follow_origin"
-
 	
 			"States"
 			{
