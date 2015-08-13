@@ -190,7 +190,7 @@ function Survival:EndDuels()
 
     EnableShop()
 
-    self.nRoundNum = self.nRoundNum - 1
+    --self.nRoundNum = self.nRoundNum - 1
     Survival:PrepareNextRound()
 end
 
