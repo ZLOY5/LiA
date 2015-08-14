@@ -11350,6 +11350,21 @@
 	    }
 	}
 	
+	"keeper_of_the_grove_guardian_spirit"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"     "keeper_of_the_grove_guardian_spirit"
+	
+		
+	    "OnSpellStart"
+	    {
+	
+	    }
+	}
+	
 	"keeper_of_the_grove_natures_curse"
 	{
 		"BaseClass"             		"ability_datadriven"
@@ -11461,6 +11476,170 @@
 			}
 		}
 	
+	}
+	
+	"keeper_of_the_grove_treants_unity"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityTextureName"     "furion_teleportation"
+	
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"	
+	
+	    "OnSpellStart"
+	    {
+	    	"RunScript"
+	    	{
+				"ScriptFile"	"heroes/KeeperOfTheGrove/Unity.lua"
+				"Function"		"Unity"
+	    	}
+	    }
+	}
+	
+	"keeper_of_the_grove_treants_reborn"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"     "furion_force_of_nature"
+	
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+		}
+		
+	    "OnOwnerDied"
+	    {
+	    	"RunScript"
+	    	{
+				"ScriptFile"	"heroes/KeeperOfTheGrove/Reborn.lua"
+				"Function"		"Reborn"
+	    	}
+			
+	    }
+	}
+	
+	"keeper_of_the_grove_treants_cyclone"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"invoker_tornado"
+		"MaxLevel"						"1"
+	
+		"AbilityCastRange"				"400"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"40.0"		
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"				"2.0"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"200"
+			}
+			// Extra
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cyclone_height"			"550"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cyclone_min_height"		"500"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cyclone_max_height"		"650"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Brewmaster_Storm.Cyclone"
+				"Target" 		"TARGET"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_keeper_of_the_grove_treants_cyclone" //modifier_cyclone is built-in
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				"Duration"		"%duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_keeper_of_the_grove_treants_cyclone"
+			{
+				"IsDebuff"			"1"
+				"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"States"
+		        {   
+		        	"MODIFIER_STATE_FLYING"				"MODIFIER_STATE_VALUE_ENABLED"
+		        	"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+		        }
+		
+				"OnCreated"
+				{
+					"RunScript"
+		        	{
+		        		"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
+		        		"Function"		"TornadoHeight"
+		        	}
+				}	
+	
+		        "ThinkInterval"		"0.03"
+				"OnIntervalThink"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"    "heroes/KeeperOfTheGrove/Cyclone.lua"
+	                    "Function"      "Spin"
+	                    "Angle"         "20"
+	                }
+				}
+	
+				"OverrideAnimation"     "ACT_DOTA_FLAIL"
+			}
+		}
 	}
 	//End of file npc_lia_hero_keeper_of_the_grove.txt
 
