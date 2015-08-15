@@ -1,9 +1,21 @@
 function SummonTreants(event)
 	local point = event.target_points[1]
+	local caster = event.caster
 	local ability = event.ability
 	local ability_level = ability:GetLevel()
 	local unit_name = "keeper_of_the_grove_treant_"..ability_level
-	local count = 2
+	local count = ability:GetSpecialValueFor("unit_count")
+
+	caster.treants = caster.treants or {}
+
+	for _,unit in pairs(caster.treants) do 
+		if IsValidEntity(unit) then
+			--тут удалить модификатор, который будет создавать мини-энтов при смерти больших
+			unit:ForceKill(false)
+		end
+	end
+
+	caster.treants = {}
 
 	local particleName = "particles/units/heroes/hero_furion/furion_force_of_nature_cast.vpcf"
 	local particle1 = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
@@ -14,5 +26,6 @@ function SummonTreants(event)
 	for i=1,count do
 		kotg_treant = CreateUnitByName(unit_name, point, true, event.caster, event.caster, event.caster:GetTeam())
 		kotg_treant:SetControllableByPlayer(event.caster:GetPlayerID(), true)
+		table.insert(caster.treants,kotg_treant)
 	end
 end
