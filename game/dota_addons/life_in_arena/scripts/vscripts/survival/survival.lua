@@ -401,16 +401,29 @@ function Survival:GetDataForSend()
     local tKillsBosses = {}
     local tDeaths = {}
     local tRating = {}
+    --[[
     -- tHeroes need to be sorted
     --
-    for i = 1, #self.tHeroes do
+    for i = 1, #self.tPlayers do
         local hero = self.tHeroes[i]
         table.insert(tPlayersId,hero:GetPlayerID())
         table.insert(tKillsCreeps,hero.creeps or 0)
         table.insert(tKillsBosses,hero.bosses or 0)
         table.insert(tDeaths,hero.deaths or 0)
         table.insert(tRating,hero.rating or 0)
+    end]]
+
+    local playersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+    for i = 1, playersCount do 
+        local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
+        local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+        table.insert(tPlayersId,playerID)
+        table.insert(tKillsCreeps,hero.creeps or 0)
+        table.insert(tKillsBosses,hero.bosses or 0)
+        table.insert(tDeaths,hero.deaths or 0)
+        table.insert(tRating,hero.rating or 0)
     end
+    
     local data =
         {
             PlayersId = tPlayersId,

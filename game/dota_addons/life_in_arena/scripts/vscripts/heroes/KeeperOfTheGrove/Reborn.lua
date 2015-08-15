@@ -14,7 +14,7 @@ function Reborn(event)
 	ParticleManager:SetParticleControl( particle1, 2, Vector(100,0,0) )
 	caster:EmitSound("Hero_Furion.ForceOfNature")
 	for i=1,count do
-		local kotg_reborn_treant = CreateUnitByName(unit_name, point, true, caster, caster, caster:GetTeam())
+		local kotg_reborn_treant = CreateUnitByName(unit_name, point, true, caster, caster:GetOwner(), caster:GetTeam())
 		kotg_reborn_treant:SetControllableByPlayer(owner:GetPlayerID(), true)
 	end
 end
