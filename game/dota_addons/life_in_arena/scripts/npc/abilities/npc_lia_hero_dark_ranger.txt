@@ -1,0 +1,169 @@
+"dark_ranger_magic_arrow"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityTextureName"			"enchantress_impetus"
+	"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+
+	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.0"
+
+	"AbilityCooldown"				"13 12 11"
+
+	"AbilityManaCost"				"50 60 70"	
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+		"particle" 	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"reduce_armor"				"-4 -8 -12"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"main_damage"				"120 200 280"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"other_damage"				"80 160 240"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"reduce_ms"				"-25"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"8.0"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"tick"					"0.5"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"acid_speed"				"1250.0"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"acid_vision"				"300.0"
+		}
+		"09"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"250"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Huskar.Burning_Spear"
+			"Target" 		"CASTER"
+		}
+		
+    	"TrackingProjectile"
+    	{
+        		"Target" 			"TARGET"
+        		"EffectName" 		"particles/units/heroes/hero_enchantress/enchantress_impetus.vpcf"
+        		"Dodgeable" 		"1"
+        		"ProvidesVision" 	"1"
+        		"VisionRadius" 		"%acid_vision"
+        		"MoveSpeed" 		"%acid_speed"
+        		"SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+    	}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit" "1"
+		"ApplyModifier"
+		{
+			"ModifierName" 	"modifier_dark_ranger_magic_arrow_main_target"
+			"Target"		"TARGET"	
+		}
+		
+		"RunScript"
+		{
+			"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+			"Function"		"MagicArrow"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Radius"	"%radius"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+		}				
+	}
+
+	"Modifiers"
+	{
+		"modifier_dark_ranger_magic_arrow_all_target"
+		{
+			"IsDebuff"				"1"
+			"IsPurgable"			"1"
+			"Duration"				"%duration"
+			
+			"ThinkInterval" 		"%tick"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Type" 		"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+					"Damage" 	"%other_damage * %tick / %duration"
+				}
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%reduce_ms"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+			}
+			
+			"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+			"EffectAttachType"  "follow_origin"
+		}
+		
+		"modifier_dark_ranger_magic_arrow_main_target"
+		{
+			"IsHidden"			"1"
+			"IsDebuff"			"1"
+			"IsPurgable"			"1"
+			"Duration"	"%duration"
+			
+			"ThinkInterval" "%tick"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Type" 		"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+					"Damage" 	"(%main_damage-%other_damage) * %tick / %duration"
+				}
+			}
+		}
+	}
+}
