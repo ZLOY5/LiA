@@ -11330,7 +11330,12 @@
 	        "01"
 	        {
 	            "var_type"          "FIELD_INTEGER"
-	            "unit_count"  		"2"
+	            "treant_health"  "350 700 1400"
+	        }
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "treant_damage"  "60 125 250"
 	        }
 	    }
 	
@@ -11596,6 +11601,19 @@
 					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				}
 				"Duration"		"%duration"
+			}
+			"DelayedAction"
+			{
+				"Delay"     "2.01"
+				"Action"    
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage"
+					}
+				}
 			}
 		}
 	
