@@ -418,10 +418,17 @@ function Survival:GetDataForSend()
         local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
         local hero = PlayerResource:GetSelectedHeroEntity(playerID)
         table.insert(tPlayersId,playerID)
-        table.insert(tKillsCreeps,hero.creeps or 0)
-        table.insert(tKillsBosses,hero.bosses or 0)
-        table.insert(tDeaths,hero.deaths or 0)
-        table.insert(tRating,hero.rating or 0)
+        if hero then
+            table.insert(tKillsCreeps,hero.creeps or 0)
+            table.insert(tKillsBosses,hero.bosses or 0)
+            table.insert(tDeaths,hero.deaths or 0)
+            table.insert(tRating,hero.rating or 0)
+        else 
+            table.insert(tKillsCreeps,0)
+            table.insert(tKillsBosses,0)
+            table.insert(tDeaths,0)
+            table.insert(tRating,0)
+        end
     end
     
     local data =
