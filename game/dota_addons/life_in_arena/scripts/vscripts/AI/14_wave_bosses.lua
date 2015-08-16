@@ -35,5 +35,5 @@ function Think14Wave()
 		end
 	end	
 	
-	return 1
+	return 2
 end

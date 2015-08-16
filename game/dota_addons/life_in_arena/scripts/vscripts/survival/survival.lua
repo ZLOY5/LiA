@@ -70,6 +70,7 @@ function Survival:InitSurvival()
     self.State = SURVIVAL_STATE_PRE_GAME
 
     self.IsDuelOccured = false
+	--self.IsDuel = false
 
 	GameRules:SetCustomVictoryMessage("#victory_message")
     GameRules:SetHideKillMessageHeaders(true)
@@ -133,7 +134,7 @@ function Survival:onThink()
 
     local data = self:GetDataForSend()
 
-    if not IsDuel then
+    if not (Survival.State == SURVIVAL_STATE_DUEL_TIME) then
         if #self.tHeroes ~= 0 then
             CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
         end

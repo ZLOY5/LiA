@@ -35,5 +35,5 @@ function Think12WaveCreeps()
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end
-	return 1
+	return 2
 end

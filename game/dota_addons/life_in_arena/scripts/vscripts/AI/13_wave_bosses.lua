@@ -35,5 +35,5 @@ function Think13Wave()
 		end
 	end	
 	
-	return 1
+	return 2
 end

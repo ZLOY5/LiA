@@ -12,5 +12,5 @@ function ThinkAllWave()
 		return 1
 	end
 	AICreepsAttackOneUnit({unit = thisEntity})
-	return 1
+	return 2
 end

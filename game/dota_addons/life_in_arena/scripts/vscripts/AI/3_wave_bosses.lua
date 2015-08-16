@@ -26,5 +26,5 @@ function Think3Wave()
 		end
 	end	
 	
-	return 1
+	return 2
 end
