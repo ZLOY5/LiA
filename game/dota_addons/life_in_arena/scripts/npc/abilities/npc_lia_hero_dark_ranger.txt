@@ -89,7 +89,16 @@
 			"Duration"	"%duration"
 			"OnDeath"
 			{
-
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
+					"Function"		"BlackArrow"
+					"Target"
+					{
+						"Center"  	"TARGET"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+					}
+				}
 			}
 		}
 	}
