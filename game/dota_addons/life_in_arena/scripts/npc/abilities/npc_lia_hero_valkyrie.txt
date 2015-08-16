@@ -210,11 +210,12 @@
 			"Aura_Radius"   	"%radius"
 			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-			"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES" 
+			"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
 		}
 
 		"modifier_valkyrie_agility_buff"
 		{
+	  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"

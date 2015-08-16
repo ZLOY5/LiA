@@ -6407,6 +6407,281 @@
 	//End of file npc_lia_hero_butcher.txt
 
 
+	//Start of file npc_lia_hero_dark_ranger.txt
+	"dark_ranger_black_arrow"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"dark_ranger_black_arrow"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"AbilityCastRange"				"550"
+	
+		"AbilityManaCost"				"6 12 18"
+		"AbilityDamage"					"25 50 75"
+	
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"2"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"lifetime"					"4 5 6"		
+			}	
+		}
+	
+		"Modifiers"
+		{ 
+			"modifier_dark_ranger_black_arrow"
+			{
+				"Passive"		"1"
+				"IsHidden"	 	"1"
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName"    "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+					"CastAttack"		"1"
+				}
+	
+				"OnOrbFire"
+				{
+					"SpendMana"
+					{
+						"Mana"    "%AbilityManaCost"
+					}
+				}
+				
+				"OnOrbImpact"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"		"modifier_dark_ranger_black_arrow_spawn"
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Types" 	"DOTA_UNIT_TARGET_BASIC"
+						}
+					}
+					"FireSound"
+					{
+						"EffectName"		"Hero_Medusa.MysticSnake.Target"
+						"Target"			"CASTER"
+					}
+					"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_PHYSICAL"
+						"Damage"        "%AbilityDamage"
+						"Target"		"TARGET"
+					}
+				}
+			}
+	
+			"modifier_dark_ranger_black_arrow_spawn"
+			{
+				"IsHidden"	"1"
+				"Duration"	"%duration"
+				"OnDeath"
+				{
+	
+				}
+			}
+		}
+	}
+	
+	"dark_ranger_magic_arrow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			"templar_assassin_psi_blades"
+		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+	
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		"AbilityCooldown"				"13 12 11"
+	
+		"AbilityManaCost"				"50 60 70"	
+	
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
+			"particle" 	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"		
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_armor"				"-4 -8 -12"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"main_damage"				"120 200 280"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"other_damage"				"80 160 240"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dps_main"				"15 25 35"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dps_secondary"			"10 20 30"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"8.0"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick"					"0.5"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_speed"				"1250.0"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_vision"				"300.0"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"250"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_TemplarAssassin.Meld.Attack"
+				"Target" 		"CASTER"
+			}
+			
+	    	"TrackingProjectile"
+	    	{
+	        		"Target" 			"TARGET"
+	        		"EffectName" 		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
+	        		"Dodgeable" 		"1"
+	        		"ProvidesVision" 	"1"
+	        		"VisionRadius" 		"%acid_vision"
+	        		"MoveSpeed" 		"%acid_speed"
+	        		"SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	    	}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "1"
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_dark_ranger_magic_arrow_main_target"
+				"Target"		"TARGET"	
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+				"Function"		"MagicArrow"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}				
+		}
+	
+		"Modifiers"
+		{
+			"modifier_dark_ranger_magic_arrow_all_target"
+			{
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				"Duration"				"%duration"
+						
+				"ThinkInterval" 		"%tick"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type" 		"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" 	"%other_damage * %tick / %duration"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+				}
+				
+				"EffectName"        "particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+			
+			"modifier_dark_ranger_magic_arrow_main_target"
+			{
+				"IsHidden"			"1"
+				"IsDebuff"			"1"
+				"IsPurgable"			"1"
+				"Duration"	"%duration"
+				
+				"ThinkInterval" "%tick"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type" 		"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage" 	"(%main_damage-%other_damage) * %tick / %duration"
+					}
+				}
+			}
+		}
+	}
+	//End of file npc_lia_hero_dark_ranger.txt
+
+
 	//Start of file npc_lia_hero_dice.txt
 	"dice_rage"
 	{
@@ -14388,16 +14663,16 @@
 					"EffectName"	"Hero_Broodmother.SpawnSpiderlingsImpact"
 					"Target"		"TARGET"
 				}
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_infection"
+					"Target"		"TARGET"
+				}
 				"Damage"
 				{
 					"Target"		"TARGET"
 					"Type"			"DAMAGE_TYPE_MAGICAL"
 					"Damage"		"%damage"
-				}
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_infection"
-					"Target"		"TARGET"
 				}
 			}
 		
@@ -16615,7 +16890,6 @@
 	      {
 	        "Passive"       "0"
 	        "IsHidden"      "0"
-	        "IsBuff"        "1"
 			
 			"EffectName"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
 			"EffectAttachType"	"follow_origin"
