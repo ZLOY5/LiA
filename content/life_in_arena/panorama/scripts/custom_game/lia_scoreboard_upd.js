@@ -542,11 +542,13 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 				var itemInfo = playerItems.inventory[i];
 				if ( itemInfo )
 				{
-					var item_image_name = "file://{images}/items/" + itemInfo.item_name.replace( "item_", "" ) + ".png"
+					//game\dota_addons\life_in_arena\resource\flash3\images\items
+					var item_image_name = "file://{images}/custom_game/items/" + itemInfo.item_name.replace( "item_", "" ) + ".png";
 					if ( itemInfo.item_name.indexOf( "recipe" ) >= 0 )
 					{
-						item_image_name = "file://{images}/items/recipe.png"
+						item_image_name = "file://{images}/custom_game/items/recipe.png";
 					}
+					$.Msg( "		item_image_name = ", item_image_name );
 					itemPanel.SetImage( item_image_name );
 				}
 				else
