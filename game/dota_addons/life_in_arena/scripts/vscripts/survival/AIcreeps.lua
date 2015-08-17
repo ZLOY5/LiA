@@ -109,7 +109,7 @@ end
 
 function Survival:AICreepsInsertToTable(unit1,unit2)
 	table.insert(tCreeps1,unit1)
-	table.insert(tCreeps2,unit1)
+	table.insert(tCreeps2,unit2)
 end
 
 --function LiA:AICreepsInsertBosses(params)
