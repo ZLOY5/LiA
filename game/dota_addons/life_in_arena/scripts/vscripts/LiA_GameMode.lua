@@ -53,7 +53,7 @@ function LiA:InitGameMode()
     GameRules:SetCreepMinimapIconScale(0.8)
     GameRules:SetFirstBloodActive(false)
 	-- BUG valve: true work as false or not?
-    GameRules:SetUseBaseGoldBountyOnHeroes(false)
+    GameRules:SetUseBaseGoldBountyOnHeroes(true)
 
     GameRules:SetCustomGameEndDelay(1)
     
