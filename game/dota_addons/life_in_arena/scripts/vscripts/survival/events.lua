@@ -115,31 +115,35 @@ end
 ---------------------------------------------------------------------------------------------------------------------------
 
 function Survival:OnConnectFull(event)
-    for playerID = 0,DOTA_MAX_PLAYERS-1 do
-        if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
-            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            
-            if hero then
-                if hero.hidden then
-                    Survival:UnhideHero(hero) --in utils.lua
+    Timers:CreateTimer(0.5,function()
+        for playerID = 0,DOTA_MAX_PLAYERS-1 do
+            if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
+                local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+                
+                if hero then
+                    if hero.hidden then
+                        Survival:UnhideHero(hero) --in utils.lua
+                    end
                 end
             end
         end
-    end
+    end)
 end
 
 function Survival:OnDisconnect(event)
     print("OnDisconnect")
-    for playerID = 0,DOTA_MAX_PLAYERS-1 do
-        if PlayerResource:GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_CONNECTED then
-            print("playerID =",playerID,PlayerResource:GetConnectionState(playerID))
-            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            
-            if hero then
-                if not hero.hidden then
-                    Survival:HideHero(hero) --in utils.lua
+    Timers:CreateTimer(0.5,function()
+        for playerID = 0,DOTA_MAX_PLAYERS-1 do
+            if PlayerResource:GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_CONNECTED then
+                print("playerID =",playerID,PlayerResource:GetConnectionState(playerID))
+                local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+                
+                if hero then
+                    if not hero.hidden then
+                        Survival:HideHero(hero) --in utils.lua
+                    end
                 end
             end
         end
-    end
+    end)
 end
