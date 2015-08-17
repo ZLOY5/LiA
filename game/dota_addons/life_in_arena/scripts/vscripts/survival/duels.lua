@@ -28,6 +28,14 @@ function Survival:StartDuels()
         	Survival:CheckDuel()
 		end
 	)
+
+    for k,v in pairs(self.tProrogueHide) do --прячем героев ливеров
+        self:HideHero(v)
+    end
+
+    for k,v in pairs(self.tProrogueUnhide) do
+        self:UnhideHero(v)
+    end
 end
 
 function Survival:CheckDuel()

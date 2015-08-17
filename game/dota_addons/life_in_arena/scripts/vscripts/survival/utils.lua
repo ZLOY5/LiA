@@ -1,5 +1,6 @@
 function Survival:HideHero(hero)
 	local prorogueHide = false
+	print("hide hero", hero:GetName())
 
 	for k,v in pairs(self.tProrogueUnhide) do --отменяем отложенный анхайд
 		if v == hero then
@@ -10,12 +11,14 @@ function Survival:HideHero(hero)
 	if self.State >= SURVIVAL_STATE_ROUND_WAVE then
 		if hero:IsAlive() then --отложим хайд героя, если сейчас идет раунд и герой жив
 			prorogueHide = true
+			print("prorogueHide")
 		end
 	end
 
 	if prorogueHide then
 		table.insert(self.tProrogueHide,hero)
 	else
+		print("hero hidden")
 		hero:Interrupt()
 		hero:AddNoDraw()
 		hero:AddNewModifier(hero, nil, "modifier_hide_lua", nil)
@@ -32,6 +35,7 @@ end
 
 function Survival:UnhideHero(hero)
 	local prorogueUnhide = false
+	print("unhide hero", hero:GetName())
 
 	for k,v in pairs(self.tProrogueHide) do --если герой должен был быть спрятан позже, то отменяем это
 		if v == hero then
@@ -41,11 +45,13 @@ function Survival:UnhideHero(hero)
 	
 	if self.State >= SURVIVAL_STATE_ROUND_WAVE then --во время раунда не возвращаем героя
 		prorogueUnhide = true
+		print("prorogueUnhide")
 	end
 
 	if prorogueUnhide then
 		table.insert(self.tProrogueUnhide,hero)
 	else
+		print("hero unhidden")
 		hero:RemoveModifierByName("modifier_hide_lua")
 		hero:SetAbsOrigin(hero.abs)
 		hero:RemoveNoDraw()

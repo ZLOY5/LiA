@@ -134,7 +134,7 @@ function Survival:OnDisconnect(event)
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             
             if hero then
-                if hero.hidden then
+                if not hero.hidden then
                     Survival:HideHero(hero) --in utils.lua
                 end
             end
