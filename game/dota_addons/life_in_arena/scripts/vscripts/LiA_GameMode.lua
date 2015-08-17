@@ -43,7 +43,7 @@ function LiA:InitGameMode()
     
     GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
-	-- BUG valve: SetPreGameTime work as SetPostGameTime
+	-- BUG valve: SetPreGameTime work as SetPostGameTime?
 	GameRules:SetPreGameTime(8)
     GameRules:SetPostGameTime(16)
 	--
@@ -52,9 +52,8 @@ function LiA:InitGameMode()
 	GameRules:SetHeroMinimapIconScale(0.8)
     GameRules:SetCreepMinimapIconScale(0.8)
     GameRules:SetFirstBloodActive(false)
+	-- BUG valve: true work as false or not?
     GameRules:SetUseBaseGoldBountyOnHeroes(false)
-	GameRules:SetHideKillMessageHeaders(true)
-	GameRules:SetTreeRegrowTime( 60 )
 
     GameRules:SetCustomGameEndDelay(1)
     
