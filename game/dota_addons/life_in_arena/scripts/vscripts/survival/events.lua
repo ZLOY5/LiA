@@ -129,8 +129,10 @@ function Survival:OnConnectFull(event)
 end
 
 function Survival:OnDisconnect(event)
+    print("OnDisconnect")
     for playerID = 0,DOTA_MAX_PLAYERS-1 do
         if PlayerResource:GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_CONNECTED then
+            print("playerID =",playerID,PlayerResource:GetConnectionState(playerID))
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             
             if hero then
