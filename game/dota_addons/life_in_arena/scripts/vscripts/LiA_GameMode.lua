@@ -45,14 +45,16 @@ function LiA:InitGameMode()
 	GameRules:SetHeroSelectionTime(30)
 	-- BUG valve: SetPreGameTime work as SetPostGameTime
 	GameRules:SetPreGameTime(8)
-    GameRules:SetPostGameTime(2)
+    GameRules:SetPostGameTime(16)
 	--
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
 	GameRules:SetHeroMinimapIconScale(0.8)
     GameRules:SetCreepMinimapIconScale(0.8)
     GameRules:SetFirstBloodActive(false)
-    GameRules:SetUseBaseGoldBountyOnHeroes(true)
+    GameRules:SetUseBaseGoldBountyOnHeroes(false)
+	GameRules:SetHideKillMessageHeaders(true)
+	GameRules:SetTreeRegrowTime( 60 )
 
     GameRules:SetCustomGameEndDelay(1)
     
