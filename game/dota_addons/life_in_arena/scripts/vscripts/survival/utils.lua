@@ -44,8 +44,19 @@ function Survival:UnhideHero(hero)
 	end
 	
 	if self.State >= SURVIVAL_STATE_ROUND_WAVE then --во время раунда не возвращаем героя
+		print("prorogue unhide")
 		prorogueUnhide = true
-		print("prorogueUnhide")
+
+		if self.State == SURVIVAL_STATE_ROUND_WAVE then 
+			for _,unit in pairs(self.tHeroes) do 
+				if unit:IsAlive() and not unit.hidden then 
+					SetCameraToPosForPlayer(hero:GetPlayerID(),unit:GetAbsOrigin())
+					break 
+				end 
+			end 
+		else 
+			SetCameraToPosForPlayer(hero:GetPlayerID(),ARENA_CENTER_COORD)
+		end
 	end
 
 	if prorogueUnhide then
@@ -56,6 +67,8 @@ function Survival:UnhideHero(hero)
 		hero:SetAbsOrigin(hero.abs)
 		hero:RemoveNoDraw()
 		hero.hidden = nil
+
+		SetCameraToPosForPlayer(hero:GetPlayerID(),hero.abs)
 
 		self.nHeroCount = self.nHeroCount + 1
 	end
