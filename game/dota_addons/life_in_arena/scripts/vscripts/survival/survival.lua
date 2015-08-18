@@ -152,6 +152,7 @@ function Survival:_TeleportHeroesWithoutBossArena()
 end
 
 function Survival:_GiveRoundBounty()
+    print(self.nHeroCount)
     goldBounty = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
     lumberBounty = 3 + self.nRoundNum
 
