@@ -203,7 +203,7 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		
-		if name == "npc_lia_hero_keeper_of_the_grove" then
+		if name == "npc_dota_hero_leshrac" then
 			par = {
 				unit = caster,
 				oldAbi = "keeper_of_the_grove_guardian_spirit",
@@ -220,7 +220,7 @@ function OnEquip(event)
 			}
 			ReplaceAbi(par)
 			--
-			caster.STupgrades = false
+			caster.STupgrades = true
 		end			
 		-- next heroes
 	end
@@ -439,7 +439,7 @@ function OnUnequip(event)
 			caster.STupgrades = false
 		end
 
-		if name == "npc_lia_hero_keeper_of_the_grove" then
+		if name == "npc_dota_hero_leshrac" then
 			par = {
 				unit = caster,
 				oldAbi = "keeper_of_the_grove_guardian_spirit_scepter",

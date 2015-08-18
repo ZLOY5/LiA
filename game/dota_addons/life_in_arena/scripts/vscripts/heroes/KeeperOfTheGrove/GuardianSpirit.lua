@@ -25,6 +25,7 @@ function SummonSpirit(event)
     local healthBonus = strength * 8
     local armorBonus = agility * 0.2
     unit:SetMaxHealth(unit:GetMaxHealth()+healthBonus)
+    unit:SetHealth(unit:GetMaxHealth()+healthBonus)
     unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue()+armorBonus)
     unit:AddNewModifier(caster, ability, "modifier_guardian_spirit", {agility = agility, strength = strength, intellect = intellect})
     unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})    
