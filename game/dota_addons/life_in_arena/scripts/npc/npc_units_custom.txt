@@ -2407,6 +2407,76 @@
 		"CombatClassDefend"		"DOTA_COMBAT_CLASS_DEFEND_STRONG"
 		"UnitRelationShipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	}
+	
+	"keeper_of_the_grove_guardian_spirit"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"			"npc_dota_creature"
+		"Model"				"models/heroes/leshrac/leshrac.vmdl"
+		"ModelScale"		"1"
+		"Level"				"0"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"			"" //tinker_clockwerk_goblin_kaboom, learned in lua	 //Reference: Asd3
+		"Ability2"			""
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"			"0"
+		"MagicalResistance"		"0"
+		
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"		"15"
+		"AttackDamageMax"		"21"
+		"AttackDamageType"		"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate" "1.75" 
+		"AttackAnimationPoint" "0.4" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "610" 
+		
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyGoldMin"			"0.0"
+		"BountyGoldMax"			"0.0"
+		
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed" "265" 
+		"MovementTurnRate" "0.4" 
+	
+		"StatusHealth" "525"
+		"StatusHealthRegen" "1.15" 
+		"StatusMana" "75" 
+		"StatusManaRegen" "0.05" 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"900"
+		"VisionNighttimeRange"		"800"
+		
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"				"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+		"ConsideredHero"        "1"
+	
+		"Creature"
+		{
+		"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"345"		} 
+				"Wearable2" 	{	"ItemDef"		"346"		} 
+				"Wearable3"		{	"ItemDef"		"347"		} 
+			}
+		}
+	}
 	//End of file keeper_of_the_grove_units.txt
 
 
