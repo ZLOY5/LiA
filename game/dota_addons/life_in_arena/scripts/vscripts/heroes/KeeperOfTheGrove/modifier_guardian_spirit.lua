@@ -11,12 +11,12 @@ end
 function modifier_guardian_spirit:DeclareFunctions()
 	local funcs = {
 		--MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+		--MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
 		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
-		MODIFIER_PROPERTY_HEALTH_BONUS,
+		--MODIFIER_PROPERTY_HEALTH_BONUS,
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-		MODIFIER_PROPERTY_MANA_BONUS,
+		--MODIFIER_PROPERTY_MANA_BONUS,
 		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
 	}
  
@@ -28,7 +28,7 @@ end
 --end
 
 function modifier_guardian_spirit:GetModifierPhysicalArmorBonus(params)
-	return 100
+	return self.armorBonus
 end
 
 function modifier_guardian_spirit:GetModifierBaseAttack_BonusDamage(params)
@@ -36,7 +36,7 @@ function modifier_guardian_spirit:GetModifierBaseAttack_BonusDamage(params)
 end
 
 function modifier_guardian_spirit:GetModifierHealthBonus(params)
-	return 11111 --self.healthBonus
+	return self.healthBonus
 end
 
 function modifier_guardian_spirit:GetModifierConstantHealthRegen(params)

@@ -24,7 +24,5 @@ function SummonSpirit(event)
     unit:SetMaxHealth(unit:GetMaxHealth()+healthBonus)
     unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue()+armorBonus)
     unit:AddNewModifier(caster, ability, "modifier_guardian_spirit", {agility = agility, strength = strength, intellect = intellect})
-    unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})
-    Timers:CreateTimer(0.2,function() print(unit:GetMaxHealth()) print(unit:GetPhysicalArmorValue()) end)
-    
+    unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})    
 end
