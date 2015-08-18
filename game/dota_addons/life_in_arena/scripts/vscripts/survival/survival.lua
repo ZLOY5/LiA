@@ -152,6 +152,7 @@ function Survival:_TeleportHeroesWithoutBossArena()
 end
 
 function Survival:_GiveRoundBounty()
+    print(self.nHeroCount)
     goldBounty = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
     lumberBounty = 3 + self.nRoundNum
 
@@ -247,8 +248,14 @@ function Survival:PrepareNextRound()
         }
     )
 
-    PrecacheUnitByNameAsync(tostring(self.nRoundNum).."_wave_creep", function(...) end)
-    PrecacheUnitByNameAsync(tostring(self.nRoundNum).."_wave_boss", function(...) end)
+    local creepName = tostring(self.nRoundNum).."_wave_creep"
+    local bossName = tostring(self.nRoundNum).."_wave_boss"
+    if self.IsExtreme then 
+        creepName = creepName.."_extreme"
+        bossName = bossName.."_extreme"
+    end
+    PrecacheUnitByNameAsync(creepName, function(...) end)
+    PrecacheUnitByNameAsync(bossName, function(...) end)
 
     for k,v in pairs(self.tProrogueHide) do --прячем героев ливеров
         self:HideHero(v)

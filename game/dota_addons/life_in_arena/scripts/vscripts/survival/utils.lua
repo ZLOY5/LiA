@@ -27,6 +27,7 @@ function Survival:HideHero(hero)
 		hero.hidden = 1
 
 		self.nHeroCount = self.nHeroCount - 1
+		print(self.nHeroCount)
 		if not hero:IsAlive() and self.State >= SURVIVAL_STATE_ROUND_WAVE then
 			self.nDeathHeroes = self.nDeathHeroes - 1
 		end
@@ -71,6 +72,7 @@ function Survival:UnhideHero(hero)
 		SetCameraToPosForPlayer(hero:GetPlayerID(),hero.abs)
 
 		self.nHeroCount = self.nHeroCount + 1
+		print(self.nHeroCount)
 	end
 end
 

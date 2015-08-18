@@ -115,7 +115,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------
 
 function Survival:OnConnectFull(event)
-    Timers:CreateTimer(0.5,function()
+    --[[Timers:CreateTimer(0.5,function()
         for playerID = 0,DOTA_MAX_PLAYERS-1 do
             if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
@@ -127,15 +127,13 @@ function Survival:OnConnectFull(event)
                 end
             end
         end
-    end)
+    end)]]
 end
 
 function Survival:OnDisconnect(event)
-    print("OnDisconnect")
-    Timers:CreateTimer(0.5,function()
+    --[[Timers:CreateTimer(0.5,function()
         for playerID = 0,DOTA_MAX_PLAYERS-1 do
             if PlayerResource:GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_CONNECTED then
-                print("playerID =",playerID,PlayerResource:GetConnectionState(playerID))
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
                 
                 if hero then
@@ -145,5 +143,5 @@ function Survival:OnDisconnect(event)
                 end
             end
         end
-    end)
+    end)]]
 end
