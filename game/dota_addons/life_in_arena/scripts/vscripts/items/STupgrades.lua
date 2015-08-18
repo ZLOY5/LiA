@@ -203,6 +203,25 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		
+		if name == "npc_lia_hero_keeper_of_the_grove" then
+			par = {
+				unit = caster,
+				oldAbi = "keeper_of_the_grove_guardian_spirit",
+				newAbi = "keeper_of_the_grove_guardian_spirit_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "keeper_of_the_grove_natures_curse",
+				newAbi = "keeper_of_the_grove_natures_curse_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end			
 		-- next heroes
 	end
 	--end
@@ -419,7 +438,26 @@ function OnUnequip(event)
 			--
 			caster.STupgrades = false
 		end
-		
+
+		if name == "npc_lia_hero_keeper_of_the_grove" then
+			par = {
+				unit = caster,
+				oldAbi = "keeper_of_the_grove_guardian_spirit_scepter",
+				newAbi = "keeper_of_the_grove_guardian_spirit",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "keeper_of_the_grove_natures_curse_scepter",
+				newAbi = "keeper_of_the_grove_natures_curse",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end	
 	end
 	--end
 	--if caster:HasItemInInventory("item_lia_spherical_staff") then
