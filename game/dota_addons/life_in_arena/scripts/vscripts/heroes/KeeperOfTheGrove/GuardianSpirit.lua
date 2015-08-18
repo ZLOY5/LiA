@@ -14,6 +14,9 @@ function SummonSpirit(event)
 
     local unit = CreateUnitByName("keeper_of_the_grove_guardian_spirit", front_position, true, caster, caster, caster:GetTeam())
     unit:SetControllableByPlayer(playerID, true)
+
+    unit:AddAbility("keeper_of_the_grove_guardian_spirit_narure_forces")
+    unit:FindAbilityByName("keeper_of_the_grove_guardian_spirit_narure_forces"):SetLevel(ability:GetLevel())
     
     local agility = caster:GetAgility() + bonusStats
     local strength = caster:GetStrength() + bonusStats
