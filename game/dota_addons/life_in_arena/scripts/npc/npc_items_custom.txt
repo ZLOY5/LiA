@@ -3232,7 +3232,12 @@
 						{
 							"Damage"
 							{
-								"Target"		"TARGET"
+								"Target"
+								{
+									"Center"  	"TARGET"
+									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								}
 								"Type"			"DAMAGE_TYPE_MAGICAL"
 								"Damage"		"%bash_damage"
 							}

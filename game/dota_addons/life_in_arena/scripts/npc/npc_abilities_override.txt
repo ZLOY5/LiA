@@ -6689,6 +6689,148 @@
 		}
 	}
 	
+	"dark_ranger_fury"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"terrorblade_metamorphosis"
+		
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"90.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 125 150"
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"transformation_time"	"0.35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_damage"			"1.9"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_range"			"300"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_attack_range"			"850"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"100 200 300"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"20 25 30"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"  "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+			"model"		"models/heroes/terrorblade/demon.vmdl"
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_Terrorblade.Metamorphosis"
+				"Target"			"CASTER"
+			}
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"CASTER"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_metamorphosis"
+				"Target"			"CASTER"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_metamorphosis"
+			{
+				"Duration"	"%duration"
+				
+				"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+				"EffectAttachType"  "follow_origin"
+	
+				"AllowsIllusionDuplicate"	"1"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/Pirate/Metamorphosis.lua"
+						"model"					"models/heroes/terrorblade/demon.vmdl"
+						"projectile_model"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+						"Function"				"ModelSwapStart"
+						//
+						"Function"				"HideWearables"
+					}
+	
+	
+					"AttachEffect"
+					{
+						"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}
+				}
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"	
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"		
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
+						"Function"		"ModelSwapEnd"
+						"Function"		"ShowWearables"
+					}
+				}
+			}
+		}
+	}
 	//End of file npc_lia_hero_dark_ranger.txt
 
 
@@ -11982,6 +12124,161 @@
 				"OverrideAnimation"     "ACT_DOTA_FLAIL"
 			}
 		}
+	}
+	
+	"beastmaster_beasts"
+	{
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "beastmaster_beasts"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
+	
+	    "AbilityCastRange"              "400"
+	    "AbilityCastPoint"              "0.3"
+	    "AbilityCooldown"               "40 60 80"
+	
+	    "AbilityManaCost"               "120"
+	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+	
+	        "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
+	        
+	        //Goblin Ability
+	        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	    }
+	    
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "unit_count"  "2 3 4"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Lycan.SummonWolves"
+	            "Target"        "CASTER"
+	        }
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/Beastmaster/Beasts.lua"
+	            "Function"      "SummonBeasts"
+	            "Target"        "POINT"
+	            "unit_count"    "%unit_count"
+	        }
+	    }
+	}
+	
+	"keeper_of_the_grove_guardian_spirit_narure_forces"
+	{
+	
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    "AbilityTextureName"    "treant_living_armor"
+	
+		"MaxLevel" "3"    
+	    
+	    "precache"
+	    {
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
+	        "particle"          "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+	    }
+	
+	    "AbilityCastPoint"              "0.0"
+	
+	    "AbilityCooldown"               "7 14 21"
+	
+	    "AbilityManaCost"               "100"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "bonus_armor"      "10 20 30"        
+	        }
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "bonus_regen"      "75 100 125"        
+	        }
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "radius"    		"500"
+	        }
+	        "04"
+	        {
+	            "var_type"          "FIELD_FLOAT"
+	            "duration"  "3 4 5"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "ActOnTargets"
+	        {
+	            "Target"
+	            {
+	                "Center" "CASTER"
+	                "Radius" "%radius"
+	                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+	                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	            }
+	
+	            "Action"
+	            {
+	                "ApplyModifier"
+	                {
+	                    "ModifierName"  "modifier_guardian_spirit_narure_forces"
+	                    "Target"
+	                    {
+	                        "Center" "TARGET"
+	                        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	                    }
+	                }
+	            }
+	        }
+	
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Treant.LivingArmor.Cast"
+	            "Target"        "CASTER"
+	        }
+	
+	
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_guardian_spirit_narure_forces"
+	        {
+	            "IsBuff"    "1"
+	            "Duration"  "%duration"
+	            "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	            "EffectName"    "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"  "%bonus_armor"
+	                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%bonus_regen"
+	            }
+	        }
+	    }
 	}
 	//End of file npc_lia_hero_keeper_of_the_grove.txt
 
