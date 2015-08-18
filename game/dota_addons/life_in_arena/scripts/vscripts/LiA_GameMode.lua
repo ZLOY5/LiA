@@ -2,6 +2,21 @@
 _G.LIA_MODE_SURVIVAL = 1
 _G.LIA_MODE_BATTLE_OF_CLANS = 2
 
+_G.HERO_STATS_ATTACK_BONUS = 1.5
+
+--Strenght
+_G.HERO_STATS_HEALTH_BONUS = 8
+_G.HERO_STATS_HEALTH_REGEN_BONUS = 0.05
+
+--Agility
+_G.HERO_STATS_ARMOR_BONUS = 0.2
+_G.HERO_STATS_ATTACK_SPEED_BONUS = 1
+_G.HERO_STATS_MOVE_SPEED_BONUS = 1
+
+--Intellect
+_G.HERO_STATS_MANA_BONUS = 12
+_G.HERO_STATS_MANA_REGEN_BONUS = 0.05
+
 ------------------------------------------------------------------------------
 
 require('survival/survival')
