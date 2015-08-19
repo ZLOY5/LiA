@@ -29,4 +29,5 @@ function SummonSpirit(event)
     unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue()+armorBonus)
     unit:AddNewModifier(caster, ability, "modifier_guardian_spirit", {agility = agility, strength = strength, intellect = intellect})
     unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})    
+    ability:ApplyDataDrivenModifier(caster, unit, "modifier_status_effect_spirit", nil)
 end

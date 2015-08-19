@@ -249,6 +249,19 @@
     		"Function"		"SummonSpirit"
     	}
     }
+
+    "Modifiers"
+    {
+    	"modifier_status_effect_spirit"
+    	{
+    		"Passive"			"0"
+    		"IsHidden"			"1"
+    		"IsDebuff"			"0"
+    
+			"StatusEffectName" 		"particles/status_fx/status_effect_ancestral_spirit.vpcf" 	   
+			"StatusEffectPriority"  "10"
+    	}
+    }
 }
 
 "keeper_of_the_grove_guardian_spirit_scepter"
@@ -271,7 +284,7 @@
     	"model"		"models/heroes/leshrac/leshrac_armor.mdl"
     	"model"		"models/heroes/leshrac/leshrac_head.mdl"
     	"model"		"models/heroes/leshrac/leshrac_tail.mdl"
-    	"particle"  "particle_name"
+    	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
     	"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
     }
 
@@ -296,6 +309,19 @@
     	{
     		"ScriptFile"	"heroes/KeeperOfTheGrove/GuardianSpirit.lua"
     		"Function"		"SummonSpirit"
+    	}
+    }
+
+    "Modifiers"
+    {
+    	"modifier_status_effect_spirit"
+    	{
+    		"Passive"			"0"
+    		"IsHidden"			"1"
+    		"IsDebuff"			"0"
+    
+			"StatusEffectName" 		"particles/status_fx/status_effect_ancestral_spirit.vpcf" 	   
+			"StatusEffectPriority"  "10"
     	}
     }
 }
