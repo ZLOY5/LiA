@@ -1,0 +1,37 @@
+"dark_knight_speed"
+{
+    "BaseClass"						"ability_lua"
+    "ScriptFile"					"heroes\DarkKnight\dark_knight_speed.lua"
+	"AbilityTextureName" 			"highlander_improved_armor"
+	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"bonus_attack_speed"			"40 90 140"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"additional_attack_speed"	"9"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"limit"			"45"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"			"3 4 5"
+		}
+	}
+}
