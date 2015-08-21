@@ -289,6 +289,7 @@ function Survival:_SpawnMegaboss()
 
     local boss
     if self.nRoundNum == 20 then
+    	Survival.State = SURVIVAL_STATE_ROUND_FINALBOSS
         boss = CreateUnitByName("orn_megaboss", ARENA_TELEPORT_COORD_TOP, true, nil, nil, DOTA_TEAM_NEUTRALS)
         boss:AddNewModifier(boss, nil, "modifier_orn_lua", {duration = -1})
         self.hFinalBoss = boss
