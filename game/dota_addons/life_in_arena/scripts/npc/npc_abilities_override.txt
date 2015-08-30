@@ -6408,6 +6408,342 @@
 	//End of file npc_lia_hero_butcher.txt
 
 
+	//Start of file npc_lia_hero_dark_knight.txt
+	"dark_knight_dark_forces"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"               "ability_datadriven"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	
+		"AbilityTextureName"     "centaur_hoof_stomp"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"      "0.0"
+		"AbilityCooldown"       "12 13 14"
+		"AbilityManaCost"       "60 100 140"
+		"AbilityCastRange"		"150"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"            "FIELD_INTEGER"
+				"radius"              "150"
+			}
+			"02"
+			{
+				"var_type"            "FIELD_INTEGER"
+				"mana_percentage"     "10 20 30"
+			}
+			"03"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"coil_radius"          "240"
+			}
+			"04"
+			{
+				"var_type"             "FIELD_FLOAT"
+				"duration"       	   "5"
+			}
+		}
+	
+		"precache"
+		{
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+		"particle"  "particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+		}
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_dark_knight_dark_forces"
+				"Target" 		"CASTER"
+				"Duration"		"%duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_dark_knight_dark_forces"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+		
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
+					"Function"		"DarkForcesThinker"
+				}
+		
+				"ThinkInterval"  "0.5"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
+						"Function"		"DarkForcesThinker"
+					}
+				}
+			}
+	
+			"modifier_dark_knight_dark_forces_thinker"
+		    {
+				"Aura"            "modifier_dark_knight_dark_forces_damage"
+				"Aura_Radius"     "%coil_radius"
+				"Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+				"Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	
+				"OnCreated"
+				{
+	
+					"AttachEffect"
+					{
+						"EffectName"    "particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"      "TARGET"
+					}
+				}
+		    }
+	
+			"modifier_dark_knight_dark_forces_damage"
+			{
+	
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
+					"Function"		"DarkForces"
+					"Target"
+					{
+						"Center"  	"TARGET"
+						"Radius" 	"%coil_radius"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				}
+			}
+		}
+	
+	}
+	
+	"dark_knight_strike_of_darkness"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			"life_stealer_open_wounds"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"mult"					    "1.3 2.6 3.9"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"chance"					"30"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_dark_knight_strike_of_darkness"
+			{
+			    "Passive"   "1"
+			    "IsHidden"  "1"
+			    "OnAttackLanded"
+			    {
+			        "Random"
+			        {
+			            "Chance" "%chance"
+			            "OnSuccess"
+			            {
+			            	"RunScript"
+			            	{
+			            		"ScriptFile"	"heroes/DarkKnight/StrikeOfDarkness.lua"
+			            		"Function"		"StrikeOfDarkness"
+			            	}
+	      
+			            }
+			        }
+			    }
+			}
+		}
+	}
+	
+	
+	"dark_knight_incinerate"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"ursa_fury_swipes"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"bonus_reset_time"				"6"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_per_stack"				"6 12 24"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"incineration_damage"			"50 100 200"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"incineration_radius"			"100"
+			}
+		}
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
+			"particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+		}
+		
+		"Modifiers"
+		{
+			"modifier_dark_knight_incinerate"
+			{
+				"Passive"						"1"
+				"IsHidden"						"1"
+				"IsPurgable"					"0"
+				
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}
+	
+				"OnOrbImpact"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/DarkKnight/Incinerate.lua"
+						"Function"				"Incinerate"
+					}
+				}
+			}
+			
+			"modifier_dark_knight_incinerate_target"
+			{
+				"IsHidden"					"0"
+				"IsPurgable"				"0"
+				"IsDebuff"					"1"
+				
+				"EffectName"				"particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
+				"EffectAttachType"			"follow_overhead"
+	
+				"OnDeath"
+				{
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"
+					    {
+					       "Center" "UNIT"
+					       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
+					   	}
+					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_OgreMagi.Fireblast"
+						"Target" 		"UNIT"
+					}
+	
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"  	"UNIT"
+							"Radius" 	"%incineration_radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%incineration_damage"
+					}
+				}
+			}
+		}
+	}
+	
+	"dark_knight_speed"
+	{
+	    "BaseClass"						"ability_lua"
+	    "ScriptFile"					"heroes\DarkKnight\dark_knight_speed.lua"
+		"AbilityTextureName" 			"highlander_improved_armor"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attack_speed"			"40 90 140"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"attack_speed_per_attack"	"9"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"max_attack_speed"			"45"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"3 4 5"
+			}
+		}
+	}
+	//End of file npc_lia_hero_dark_knight.txt
+
+
 	//Start of file npc_lia_hero_dark_ranger.txt
 	"dark_ranger_black_arrow"
 	{
