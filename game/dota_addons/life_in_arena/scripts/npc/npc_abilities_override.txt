@@ -6480,12 +6480,6 @@
 				"IsHidden"			"0"
 				"IsDebuff"			"0"
 		
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
-					"Function"		"DarkForcesThinker"
-				}
-		
 				"ThinkInterval"  "0.5"
 				"OnIntervalThink"
 				{
@@ -6499,15 +6493,20 @@
 	
 			"modifier_dark_knight_dark_forces_thinker"
 		    {
-				"Aura"            "modifier_dark_knight_dark_forces_damage"
-				"Aura_Radius"     "%coil_radius"
-				"Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
-				"Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	
 				"OnCreated"
 				{
-	
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
+						"Function"		"DarkForces"
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Radius" 	"%coil_radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					}
 					"AttachEffect"
 					{
 						"EffectName"    "particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
@@ -6516,23 +6515,6 @@
 					}
 				}
 		    }
-	
-			"modifier_dark_knight_dark_forces_damage"
-			{
-	
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
-					"Function"		"DarkForces"
-					"Target"
-					{
-						"Center"  	"TARGET"
-						"Radius" 	"%coil_radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-				}
-			}
 		}
 	
 	}
