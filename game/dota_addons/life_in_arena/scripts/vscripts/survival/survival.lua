@@ -180,6 +180,7 @@ function Survival:_GiveRoundBounty()
 end
 
 function Survival:EndRound()
+    print("Survival:EndRound",self.nRoundNum)
     self.nDeathCreeps = 0
     self.nDeathHeroes = 0
     
