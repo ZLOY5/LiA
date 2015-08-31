@@ -57,11 +57,14 @@ function Survival:_OnCreepDeath(keys)
     local attacker = EntIndexToHScript(keys.entindex_attacker)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
-    self.nDeathCreeps = self.nDeathCreeps + 1
     if hero then
         hero.creeps = hero.creeps + 1
     end
 
+    self.nDeathCreeps = self.nDeathCreeps + 1
+    if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] then
+        Survival:EndRound()
+    end
 end
 
 function Survival:_OnBossDeath(keys)  
@@ -69,7 +72,6 @@ function Survival:_OnBossDeath(keys)
     local attacker = EntIndexToHScript(keys.entindex_attacker)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
-    self.nDeathCreeps = self.nDeathCreeps + 1
     if hero then
         hero.bosses = hero.bosses + 1
         hero.lumber = hero.lumber + 3
@@ -77,6 +79,11 @@ function Survival:_OnBossDeath(keys)
         if attacker:GetPlayerOwner() then
             PopupNumbers(attacker:GetPlayerOwner() ,killed, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
         end
+    end
+
+    self.nDeathCreeps = self.nDeathCreeps + 1
+    if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] then
+        Survival:EndRound()
     end
 end
 
@@ -90,17 +97,15 @@ function Survival:OnEntityKilled(keys)
     elseif self.State == SURVIVAL_STATE_ROUND_FINALBOSS then
         Survival:_OnFinalBossDeath(keys)
         return
-    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_creep"  then 
+    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_creep" and not killed:IsOwnedByAnyPlayer() then 
         Survival:_OnCreepDeath(keys)   
-    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_boss" then
+    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_boss" and not killed:IsOwnedByAnyPlayer() then
         Survival:_OnBossDeath(keys)
+    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_megaboss" then
+        Survival:EndRound()
     end 
 
     Survival:AICreepsRemoveFromTable(killed)
-
-    if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] or killed:GetUnitName() == tostring(self.nRoundNum).."_wave_megaboss" then
-        Survival:EndRound()
-    end
 end
 
 ---------------------------------------------------------------------------------------------------------------------------

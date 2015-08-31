@@ -69,7 +69,7 @@ function StartGoblinSpawn( event )
 	Timers:CreateTimer(spawn_ratio, function()
 
 		if caster and IsValidEntity(caster) and caster:IsAlive() then
-			print("Create Goblin")
+			--print("Create Goblin")
 			-- Start another cooldown
 			ability:StartCooldown(spawn_ratio)
 			-- Create the unit, making it controllable by the building owner, and time out after a duration.
