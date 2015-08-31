@@ -6418,7 +6418,7 @@
 		"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	
-		"AbilityTextureName"     "centaur_hoof_stomp"
+		"AbilityTextureName"     "dark_knight_dark_forces"
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
@@ -6467,7 +6467,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_dark_knight_dark_forces"
-				"Target" 		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"		"%duration"
 			}
 		}
@@ -6478,7 +6482,7 @@
 			{
 				"Passive"			"0"
 				"IsHidden"			"0"
-				"IsDebuff"			"0"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 		
 				"ThinkInterval"  "0.5"
 				"OnIntervalThink"
@@ -6626,7 +6630,7 @@
 				"Passive"						"1"
 				"IsHidden"						"1"
 				"IsPurgable"					"0"
-				
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
 				"Orb"
 				{
 					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
