@@ -6442,7 +6442,7 @@
 			"02"
 			{
 				"var_type"            "FIELD_INTEGER"
-				"mana_percentage"     "10 20 30"
+				"mana_percentage"     "10 15 20"
 			}
 			"03"
 			{
@@ -6528,7 +6528,7 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityTextureName"			"life_stealer_open_wounds"
+		"AbilityTextureName"			"abaddon_frostmourne"
 	
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
@@ -6583,7 +6583,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityTextureName"			"ursa_fury_swipes"
+		"AbilityTextureName"			"ogre_magi_ignite"
 	
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
@@ -6618,7 +6618,7 @@
 		"precache"
 		{
 			"particle" 	"particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
-			"particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack.vpcf"
+			"particle"  "particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff_d.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
@@ -6651,10 +6651,9 @@
 				"IsHidden"					"0"
 				"IsPurgable"				"0"
 				"IsDebuff"					"1"
-				
-				"EffectName"				"particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
-				"EffectAttachType"			"follow_overhead"
 	
+				"EffectName"	"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff_d.vpcf"
+				"EffectAttachType"	"follow_origin"
 				"OnDeath"
 				{
 					"FireEffect"
@@ -6669,8 +6668,12 @@
 					}
 					"FireSound"
 					{
-						"EffectName"	"Hero_OgreMagi.Fireblast"
-						"Target" 		"UNIT"
+						"EffectName"	"Hero_OgreMagi.Fireblast.Cast"
+						"Target"
+					    {
+					       "Center" "UNIT"
+					       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
+					   	}
 					}
 	
 					"Damage"
@@ -6694,7 +6697,7 @@
 	{
 	    "BaseClass"						"ability_lua"
 	    "ScriptFile"					"heroes\DarkKnight\dark_knight_speed.lua"
-		"AbilityTextureName" 			"highlander_improved_armor"
+		"AbilityTextureName" 			"abaddon_borrowed_time"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
