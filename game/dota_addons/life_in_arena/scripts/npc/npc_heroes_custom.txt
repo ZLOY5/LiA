@@ -619,6 +619,71 @@
 	//End of file npc_lia_hero_earth_lord.txt
 
 
+	//Start of file npc_lia_hero_firelord.txt
+	"npc_lia_hero_firelord"
+	{
+	"override_hero"				"npc_dota_hero_invoker"
+			
+	"precache"
+		{
+			"particle" "particles/units/heroes/hero_nevermore/nevermore_base_attack.vpcf"
+		}
+	
+	"AbilityLayout"               "4"	
+	"Ability1" "firelord_flame_strike"	
+	"Ability2" "vowen_from_blood_spiritual_flame" 		
+	"Ability3" "vowen_from_blood_soul_burn" 	
+	"Ability4" "vowen_from_blood_chaos" 					
+	"Ability5" "attribute_bonuses" 					
+	"Ability6" "" 	
+	"Ability7" "" 					
+	"Ability8" "" 					
+	
+	"ArmorPhysical" "0" 		
+	"MagicalResistance" "25"	
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "16" 
+	"AttackDamageMax" "36" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.55" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "600" 
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength"		"6"										
+	"AttributeStrengthGain"		"2.2"										
+	"AttributeBaseIntelligence"	"21"										
+	"AttributeIntelligenceGain"	"3"										
+	"AttributeBaseAgility"		"8"										
+	"AttributeAgilityGain"		"2.1"	
+	
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "250" 
+	"MovementTurnRate" "0.6" 
+	
+	"StatusHealth" "525"
+	"StatusHealthRegen" "1.15" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+	
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800" 
+	
+	"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_firelord.txt
+
+
 	//Start of file npc_lia_hero_frost_lord.txt
 	"npc_lia_hero_frost_lord"
 	{
