@@ -9,6 +9,8 @@ function Survival:OnPlayerPickHero(keys)
     hero.deaths = 0
     hero.rating = 0
     hero.lumber = 3
+	hero.percUlu = 0
+	hero.lumberSpent = 0
     --FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
     
     table.insert(self.tHeroes, hero)

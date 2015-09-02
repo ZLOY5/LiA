@@ -1,0 +1,483 @@
+.UluOverlayRoot
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+	margin-bottom: 310px;
+	flow-children: down;
+	padding: 10px;
+	
+	//opacity:0.9;
+	//background-color: rgba(206, 171, 107, 0.1);
+	//background-image: url( "file://{images}/custom_game/opacity.png" );
+	
+    transform: translatex( -375px );
+    transition-property: transform;
+    transition-duration: 0.5s;
+	
+}
+
+
+
+.UluOverlayRoot.could_vis
+{
+    transform: translatey( 0px );
+}
+
+.UluProcAndLumber
+{
+	flow-children: down;
+}
+
+
+#closedButton
+{
+	border: 1px solid black;
+    background-color: #303030;
+	width: 64px;
+	height: 64px;
+	margin-bottom: 6px;
+	background-image: url( "file://{images}/custom_game/vlevo_vpravo7.png" ); //  Ikonka-treya7
+	//visibility: collapse;
+	
+}
+
+.miganie
+{
+	//transform: translatey( 200px );
+	border: 1px solid white;
+	//padding-top: 22px;
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #404040 ), color-stop( 0.1, #404040 ), color-stop( 0.8, #404040 ), to( #ffffff ) );
+	opacity:0.5;
+}
+
+#closedButtonInset
+{
+	width: 100%;
+	height: 100%;
+	//border: 2px solid black;
+    //background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+	margin: 1px;
+}
+
+#closedButton:hover #closedButtonInset
+{
+	opacity:0.1;
+	//background-color: #9e8b2c;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.8, #c4a529 ), to( #ffffff ) );
+}
+
+#closedButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #404040 ), color-stop( 0.1, #404040 ), color-stop( 0.8, #404040 ), to( #ffffff ) );
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	//padding-top: 22px;
+	//opacity:0.3;
+}
+
+
+#ulu_list
+{
+	flow-children: right;
+	//border: 2px solid black;
+	//background-color: #272823;
+}
+
+#mLumber
+{
+	width: 86px;
+	height: 64px;
+	//border: 2px solid black;
+    //background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+	//margin: 1px;
+	margin-left: 6px;
+}
+
+#valueLumber
+{
+	//margin: -1px;
+	//margin-left: 0px;
+	//vertical-align: center;
+	//horizontal-align: center;
+	background-image: url( "file://{images}/custom_game/lumber3.png" );
+	border: 1px solid black;
+	width: 100%;
+	height: 50%;
+	//background-color: #c4a529;
+    font-size: 20px;
+    font-weight: bold;
+	text-align: right;
+	color: white;
+}
+
+#valueLumberInset
+{
+	width: 100%;
+	height: 100%;
+	//border: 2px solid black;
+    //background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+	margin: 1px;
+}
+
+#valueProc
+{ 
+	//margin: -1px;
+	//margin-left: 0px;
+	//vertical-align: center;
+	//horizontal-align: center;
+	background-image: url( "file://{images}/custom_game/proc3.png" );
+	border: 1px solid black;
+	width: 100%;
+	height: 50%;
+	background-color: #c4a529;
+    font-size: 20px;
+    font-weight: bold;
+	text-align: right;
+	color: white;
+}
+
+#menuUp
+{
+	flow-children: right;
+	//border: 1px solid black;
+	//background-color: #333333;
+}
+
+#menuDown
+{
+	flow-children: right;
+	//border: 1px solid black;
+	//background-color: #333333;
+	//margin-top: 2px;
+}
+
+
+
+#defButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 86px;
+	height: 64px;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	background-image: url( "file://{images}/custom_game/upgrades/armor3.png" ); 
+}
+
+#defButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	padding-top: 22px;
+	opacity:0.9;
+}
+
+#attButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 86px;
+	height: 64px;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	background-image: url( "file://{images}/custom_game/upgrades/uron.png" ); 
+}
+
+#attButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	padding-top: 22px;
+	opacity:0.9;
+}
+
+#attSpeedButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 86px;
+	height: 64px;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	background-image: url( "file://{images}/custom_game/upgrades/skorost.png" ); 
+}
+
+#attSpeedButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	padding-top: 22px;
+	opacity:0.9;
+}
+
+
+#hpPointsButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 86px;
+	height: 64px;
+	margin-bottom: 6px;
+	margin-left: 6px; 
+	background-image: url( "file://{images}/custom_game/upgrades/hphp.png" ); 
+}
+
+#hpPointsButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	padding-top: 22px;
+	opacity:0.9;
+}
+
+#mpPointsButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 86px;
+	height: 64px;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	background-image: url( "file://{images}/custom_game/upgrades/mp.png" ); 
+}
+
+#mpPointsButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	padding-top: 22px;
+	opacity:0.9;
+}
+
+#hpRegenButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 86px;
+	height: 64px;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	background-image: url( "file://{images}/custom_game/upgrades/hpregen.png" ); 
+}
+
+#hpRegenButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	padding-top: 22px;
+	opacity:0.9;
+}
+
+#mpRegenButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 86px;
+	height: 64px;
+	margin-bottom: 6px;
+	margin-left: 6px;
+	background-image: url( "file://{images}/custom_game/upgrades/mpregen.png" ); 
+}
+
+#mpRegenButton:active 
+{
+	//background: linear-gradient(top, #057cc0, #249ee4);
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
+	padding-top: 22px;
+	opacity:0.9;
+}
+
+
+#defButton:hover,
+#attButton:hover,
+#attSpeedButton:hover,
+#hpPointsButton:hover,
+#mpPointsButton:hover,
+#hpRegenButton:hover,
+#mpRegenButton:hover
+{
+    background-color: #9e8b2c;
+}
+
+#defButtonInset,
+#attButtonInset,
+#attSpeedButtonInset,
+#hpPointsButtonInset,
+#mpPointsButtonInset,
+#hpRegenButtonInset,
+#mpRegenButtonInset
+{
+	width: 100%;
+	height: 100%;
+	//border: 2px solid black;
+    //background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+	margin: 1px;
+}
+
+#defButton:hover #defButtonInset,
+#attButton:hover #attButtonInset,
+#attSpeedButton:hover #attSpeedButtonInset,
+#hpPointsButton:hover #hpPointsButtonInset,
+#mpPointsButton:hover #mpPointsButtonInset,
+#hpRegenButton:hover #hpRegenButtonInset,
+#mpRegenButton:hover #mpRegenButtonInset
+{
+	//opacity: 0.9;
+    //background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.8, #c4a529 ), to( #ffffff ) );
+}
+
+#defButton Label,
+#attButton Label,
+#attSpeedButton Label,
+#hpPointsButton Label,
+#mpPointsButton Label,
+#hpRegenButton Label,
+#mpRegenButton Label
+{
+	text-transform: uppercase;
+	text-shadow: 0px 1px 3px 2.5 #000000;
+	color: white;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+#StatusUlu
+{
+    flow-children: down;
+    horizontal-align: left;
+    //opacity: 1;
+    //transform: scaleX(2) scaleY(2);
+    //margin-top: 80px;
+    //transition-property: transform, opacity;
+	//transform: translatex( -525px );
+    //transition-duration: 0.6s;
+    //visibility:  visible; // collapse
+    border: 0px solid blue;
+}
+
+.unshow #StatusUlu
+{ 
+    //opacity: 0;
+    //transform: scaleX(1) scaleY(1);
+    //visibility: visible; 
+	transform: translatex( -525px );
+	transition-property: transform, opacity;
+	transition-duration: 0.6s;
+}
+
+#StatusUlu_Text
+{
+    color: white;
+    horizontal-align: left;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 20px;
+    font-weight: bold;
+	//visibility:  collapse;
+}
+
+
+
+
+
+
+
+
+
+
+
+#ButtonAndLevel
+{
+	flow-children: down;
+}
+
+#AbilityButton
+{
+	width: 80px;
+	height: 80px;
+	border: 2px solid transparent;
+}
+
+.is_passive #AbilityButton
+{
+	border: 2px solid #00000000;
+}
+
+#UpgradeBorder
+{
+	background-color: transparent;
+}
+
+.learnable_ability #UpgradeBorder
+{
+   background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+}
+
+#AbilityButton:hover
+{
+	border: 2px solid white;
+}
+
+#AbilityButton:active
+{
+	border: 4px solid white;
+}
+
+.no_level DOTAAbilityImage
+{
+	saturation: 0;
+	wash-color: #303030;
+}
+
+.insufficient_mana DOTAAbilityImage
+{
+	saturation: 0;
+	wash-color: #1569be;
+}
+
+.potential_upgrade.no_level DOTAAbilityImage
+{
+	saturation: 1;
+	wash-color: white;
+}
+
+#AbilityStatusBorder
+{
+	border: 2px solid transparent;
+}
+
+.auto_cast_enabled #AbilityStatusBorder
+{
+	border: 4px solid orange;
+}
+
+.toggle_enabled #AbilityStatusBorder
+{
+	border: 4px solid green;
+}
+
+#AbilityLevelContainer
+{
+	horizontal-align: center;
+	flow-children: right;
+}
+
+.LevelPanel
+{
+	width: 12px;
+	height: 12px;
+	margin-left: 1px;
+	margin-right: 1px;
+
+	border-radius: 3px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #2e2716 ), to( #020302 ) );
+	border: 2px solid #ffffff05;
+}
+
+.active_level.LevelPanel
+{
+	background-color: #ceaa31;
+	border: 2px solid #734918;
+}
+
+

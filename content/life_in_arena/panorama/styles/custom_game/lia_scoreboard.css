@@ -9,7 +9,7 @@
     flow-children: down;
     padding: 10px;
 	
-    transform: translatex( -670px );
+    transform: translatex( -700px );
     transition-property: transform;
     transition-duration: 0.2s;
 }
@@ -164,6 +164,12 @@
 	width: 60px;
 }
 
+#UpdContainer
+{
+	height: 100%;
+	width: 85px;
+}
+
 .ScoreboardPanel
 {
     background-color: BACKGROUND_COLOR;
@@ -217,7 +223,7 @@
 #KillsBosses,
 #Deaths,
 #Rating,
-#Assists
+#Upd
 {
 	vertical-align: center;
 	font-size: 18px;
@@ -306,6 +312,7 @@
 .is_local_player #KillsCreeps,
 .is_local_player #Level,
 .is_local_player #Deaths,
+.is_local_player #Upd,
 .is_local_player #Rating
 {
 	color: #ffffff98;
@@ -330,16 +337,22 @@
 {
 	width: 60px;
 	text-align: center;
+	margin-left: -60px;
 }
 
 .ScoreCol_KillsBosses,
 .ScoreCol_KillsCreeps,
 .ScoreCol_Deaths,
 .ScoreCol_Rating,
-.ScoreCol_Level,
-.ScoreCol_Assists
+.ScoreCol_Level
 {
 	width: 60px;
+	text-align: center;
+}
+
+.ScoreCol_Upd
+{
+	width: 85px;
 	text-align: center;
 }
 

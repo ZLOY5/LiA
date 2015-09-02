@@ -65,6 +65,8 @@ function GetScore_FromPlayerId(data, playerId)
 					"KillsBosses" : data.KillsBosses[i],
 					"Deaths" : data.Deaths[i],
 					"Rating" : data.Rating[i],
+					"PercUlu" : data.PercUlu[i],
+					
 					
 				};
 				return score;

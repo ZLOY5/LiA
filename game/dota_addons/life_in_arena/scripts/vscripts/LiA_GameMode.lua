@@ -101,10 +101,144 @@ function LiA:InitGameMode()
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
     ListenToGameEvent('npc_spawned', Dynamic_Wrap(LiA, 'OnNPCSpawned'), self)
+	
+	--upgrades
+	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
+	CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
 
     trigger_shop = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
     
     --InitLogFile("log/LiA.txt","Init LiA")
+end
+
+function LiA:RegisterGetLumber( args )
+	local pID = args['idPlayer']
+	local name = args['nameUlu']  
+	local player = PlayerResource:GetPlayer(pID)
+	local hero = player:GetAssignedHero()
+	local ability
+	local lvl
+	local need_lumber
+	if name == "armor" then
+		ability = hero:GetAbilityByIndex(5)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl+1
+		--print("   ",need_lumber)
+	end
+	if name == "attack" then
+		ability = hero:GetAbilityByIndex(6)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl+1
+	end
+	if name == "attackSpeed" then
+		ability = hero:GetAbilityByIndex(7)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "hpPoints" then
+		ability = hero:GetAbilityByIndex(8)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "mpPoints" then
+		ability = hero:GetAbilityByIndex(9)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "hpRegen" then
+		ability = hero:GetAbilityByIndex(10)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "mpRegen" then
+		ability = hero:GetAbilityByIndex(11)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	local dataGL =
+	{
+		NeedLumber = need_lumber+1,
+		CurrLumber = hero.lumber,
+		CurrProc = hero.percUlu,
+		
+	}
+	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_getlumber", dataGL )
+end
+
+function LiA:RegisterClick( args )
+	local pID = args['idPlayer']
+	local name = args['nameUlu']  
+	local player = PlayerResource:GetPlayer(pID)
+	local hero = player:GetAssignedHero()
+	local doneU = false
+	local need_lumber
+	local ability
+	local lvl
+	--[[
+		"Ability6" "ulu_hero_armor" 	
+		"Ability7" "ulu_hero_attack" 					
+		"Ability8" "ulu_hero_attack_speed" 		
+		"Ability9" "ulu_hero_hp_points" 
+		"Ability10" "ulu_hero_mana_points" 
+		"Ability11" "ulu_hero_hp_regen" 		
+		"Ability12" "ulu_hero_mana_regen" 
+	]]
+	--print(name)
+	local maxLumber = 333 -- 45*5=225 + 54*2=108 = 333
+	if name == "armor" then
+		ability = hero:GetAbilityByIndex(5)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl+1
+		--print("   ",need_lumber)
+	end
+	if name == "attack" then
+		ability = hero:GetAbilityByIndex(6)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl+1
+	end
+	if name == "attackSpeed" then
+		ability = hero:GetAbilityByIndex(7)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "hpPoints" then
+		ability = hero:GetAbilityByIndex(8)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "mpPoints" then
+		ability = hero:GetAbilityByIndex(9)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "hpRegen" then
+		ability = hero:GetAbilityByIndex(10)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	if name == "mpRegen" then
+		ability = hero:GetAbilityByIndex(11)
+		lvl =  ability:GetLevel()
+		need_lumber = lvl
+	end
+	--
+	if hero.lumber >= 1+need_lumber then -- + Abilities.GetLevel(ability) )
+		--SetLevel
+		ability:SetLevel(ability:GetLevel()+1)
+		hero.lumber = hero.lumber - (1+need_lumber)
+		hero.lumberSpent = hero.lumberSpent + (1+need_lumber)
+		hero.percUlu = hero.percUlu + 100*hero.lumberSpent/maxLumber
+		--Abilities.SetLevel(ability,Abilities.GetLevel(ability)+1);
+		--print("ability GetLevel ",ability:GetLevel())
+		doneU = true
+	end
+	
+	-- update lumber in hud
+	local dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber)
+	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_lumber", dataL )
+	--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
+	
+
 end
 
 function LiA:OnGameStateChange()  
