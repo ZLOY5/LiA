@@ -160,9 +160,9 @@ function ShowTooltipLumber()
 		localPlayerId = localPlayer.player_id;
 	}
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
-	$.Schedule( 0.0, StaticText2);
-	//StaticText2;
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
+	//$.Schedule( 0.05, StaticText2);
+	StaticText2;
 }
 
 function ShowTooltipProc()
@@ -176,9 +176,9 @@ function ShowTooltipProc()
 		localPlayerId = localPlayer.player_id;
 	}
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
-	$.Schedule( 0.0, StaticText3);
-	//StaticText3;
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
+	//$.Schedule( 0.05, StaticText3);
+	StaticText3;
 }
 
 function AbilityShowTooltipArmor()
@@ -550,7 +550,7 @@ function ShowH()
 	$.GetContextPanel().SetHasClass("could_vis", false);
 	//
 	//
-	for (var i = 0; i < 8; ++i)
+	for (var i = 0; i < 16; ++i)
 	{
 		$.Schedule( 0.5*i, function()
 						{

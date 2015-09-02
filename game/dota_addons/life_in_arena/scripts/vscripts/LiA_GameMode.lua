@@ -227,7 +227,7 @@ function LiA:RegisterClick( args )
 		ability:SetLevel(ability:GetLevel()+1)
 		hero.lumber = hero.lumber - (1+need_lumber)
 		hero.lumberSpent = hero.lumberSpent + (1+need_lumber)
-		hero.percUlu = hero.percUlu + 100*hero.lumberSpent/maxLumber
+		hero.percUlu = 100*hero.lumberSpent/maxLumber
 		--Abilities.SetLevel(ability,Abilities.GetLevel(ability)+1);
 		--print("ability GetLevel ",ability:GetLevel())
 		doneU = true
