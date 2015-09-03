@@ -11,7 +11,6 @@ end
 function modifier_stats_bonus_fix:DeclareFunctions()
 	local funcs = {
 		--MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
 		MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE,
 		MODIFIER_PROPERTY_HEALTH_BONUS,
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
@@ -27,9 +26,6 @@ end
 --	return self.moveSpeedBonus
 --end
 
-function modifier_stats_bonus_fix:GetModifierPhysicalArmorBonus(params)
-	return self.armorBonus
-end
 
 function modifier_stats_bonus_fix:GetModifierBaseAttack_BonusDamage(params)
 	return self.attackBonus
@@ -57,7 +53,7 @@ end
 
 function modifier_stats_bonus_fix:OnCreated(kv)
 	if IsServer() then
-		self:StartIntervalThink( 0.1 )
+		self:StartIntervalThink( 0.03 )
 	end
 end
 
@@ -67,7 +63,10 @@ function modifier_stats_bonus_fix:OnIntervalThink()
 	if not hero:IsHero() then
 		return
 	end
-	
+
+	hero:SetMaxHealth(hero:GetMaxHealth()+9999)
+	hero:SetHealth(hero:GetMaxHealth())
+
 	local primaryStat = hero:GetPrimaryStatValue()
 	local strength = hero:GetStrength()
 	local agility = hero:GetAgility()
@@ -78,7 +77,11 @@ function modifier_stats_bonus_fix:OnIntervalThink()
 	self.healthBonus = strength * (HERO_STATS_HEALTH_BONUS - 19)
 	self.healtRegenBonus = strength * (HERO_STATS_HEALTH_REGEN_BONUS - 0.03)
 	
+
+	hero.baseArmorValue = hero.baseArmorValue or hero:GetPhysicalArmorBaseValue()
 	self.armorBonus = agility * (HERO_STATS_ARMOR_BONUS - 1/7) --в доте за 7 ловкости дают 1 ед. защиты
+	hero:SetPhysicalArmorBaseValue(self.armorBonus+hero.baseArmorValue) 
+
 	self.attackSpeedBonus = agility * (HERO_STATS_ATTACK_SPEED_BONUS - 1)
 	self.moveSpeedBonus = agility * HERO_STATS_MOVE_SPEED_BONUS -- в доте нет его?
 
