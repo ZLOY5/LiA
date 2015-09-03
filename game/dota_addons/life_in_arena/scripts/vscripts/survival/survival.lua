@@ -145,7 +145,7 @@ function Survival:onThink()
     for i = 1, playersCount do 
         local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
         --local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-		local dataL = self:GetDataForSendUlu(true, nil,playerID,nil)
+		local dataL = self:GetDataForSendUlu(true, nil,playerID,nil,nil,nil)
 		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(playerID), "upd_action_lumber", dataL )
 		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
 	end
@@ -416,7 +416,7 @@ end
 
 --------------------------------------------------------------------------------------------------
 
-function Survival:GetDataForSendUlu(only_upd, done, pid, need)
+function Survival:GetDataForSendUlu(only_upd, done, pid, need, finish, name)
 	--local tPlayersId = {}
 	--local tlumber = {}
 	--local tpercUlu = {}
@@ -427,12 +427,14 @@ function Survival:GetDataForSendUlu(only_upd, done, pid, need)
 		data =
 			{
 				--PlayersId = tPlayersId,
-				Lumber = hero.lumber,
-				PercUlu = hero.percUlu,
+				Lumber = hero.lumber or 0,
+				PercUlu = hero.percUlu or 0,
 				UluPlayerId = pid,
 				UluDone = done,
 				UluNeed = need,
 				OnlyUpd = only_upd,
+				Finish = finish,
+				Name = name,
 			}
 	else
 		data =
@@ -444,6 +446,8 @@ function Survival:GetDataForSendUlu(only_upd, done, pid, need)
 				UluDone = done,
 				UluNeed = need,
 				OnlyUpd = only_upd,
+				Finish = finish,
+				Name = name,
 			}
 	
 	end

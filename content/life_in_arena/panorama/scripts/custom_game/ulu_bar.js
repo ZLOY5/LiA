@@ -3,6 +3,7 @@
 var curr_lumber_need =-1;
 var curr_lumber =-1;
 var curr_proc =-1;
+var curr_finish = false;
 var statePanelUlu = false;
 //var hideInProcess = false;
 var idHideInProcess = -1;
@@ -128,7 +129,10 @@ function ClickHide()
 function StaticText()
 {
 	var childPanel1 = $.GetContextPanel().FindChildInLayoutFile( "StatusUlu_Text" );
-	childPanel1.text = $.Localize( "#LiaUluPrice" ) + curr_lumber_need + $.Localize( "#LiaUluPrice2" );
+	if (curr_finish)
+		childPanel1.text = $.Localize( "#LiaUluFinish" );
+	else
+		childPanel1.text = $.Localize( "#LiaUluPrice" ) + curr_lumber_need + $.Localize( "#LiaUluPrice2" );
 	staticStatusText = true;
 	//$.Msg( "		StaticText name = ", name);
 }
@@ -161,8 +165,8 @@ function ShowTooltipLumber()
 	}
 	//
 	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
-	//$.Schedule( 0.05, StaticText2);
-	StaticText2;
+	$.Schedule( 0.0, StaticText2);
+	//StaticText2;
 }
 
 function ShowTooltipProc()
@@ -177,8 +181,8 @@ function ShowTooltipProc()
 	}
 	//
 	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
-	//$.Schedule( 0.05, StaticText3);
-	StaticText3;
+	$.Schedule( 0.0, StaticText3);
+	//StaticText3;
 }
 
 function AbilityShowTooltipArmor()
@@ -291,7 +295,7 @@ function AbilityShowTooltipmpPoints()
 	var abilityName = "ulu_hero_mana_points";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
-	$.Msg( "		AbilityShowTooltipmpPoints name = mpPoints");
+	//$.Msg( "		AbilityShowTooltipmpPoints name = mpPoints");
 	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "mpPoints" } );
 	$.Schedule( 0.05, StaticText);
 }
@@ -416,6 +420,8 @@ function OnUpdAction( dataL )
 	localDone = dataL.UluDone;
 	localNeed = dataL.UluNeed;
 	var localUpd = dataL.OnlyUpd;
+	var localFinish = dataL.Finish;
+	var localName = dataL.Name;
 	//	}
 	//}
 	if (localUpd)
@@ -427,15 +433,86 @@ function OnUpdAction( dataL )
 		childPanel4.text = localpercUlu.toFixed(1)+"%"; //
 		return;
 	}
-		
+	//
 	//	$( "#LiaNoUlu" ).SetDialogVariable( "xm", $.Localize( "вцв" ));
 	//var childPanelMain = $.GetContextPanel().FindChildInLayoutFile( "StatusUlu" );
 	staticStatusText = false;
 	var childPanel1 = $.GetContextPanel().FindChildInLayoutFile( "StatusUlu_Text" );
-	if (!localDone)
-		childPanel1.text = $.Localize( "#LiaUluNoName" ) + localNeed;
+	//
+	//localName
+	var aButton
+	if (localName === "armor")
+		aButton = $( "#defButton" );
+	if (localName === "attack")
+		aButton = $( "#attButton" );
+	if (localName === "attackSpeed")
+		aButton = $( "#attSpeedButton" );
+	if (localName === "hpPoints")
+		aButton = $( "#hpPointsButton" );
+	if (localName === "mpPoints")
+		aButton = $( "#mpPointsButton" );
+	if (localName === "hpRegen")
+		aButton = $( "#hpRegenButton" );
+	if (localName === "mpRegen")
+		aButton = $( "#mpRegenButton" );
+	//
+	var abilityName
+	if (localFinish)
+	{
+		childPanel1.text = $.Localize( "#LiaUluFinish" );
+		//
+		//aButton.disabled = true;
+		aButton.enabled = false;
+		aButton.SetHasClass( "enabledButton", true );
+		//$.Msg( "	aButton= ", aButton);
+		//
+	}
 	else
-		childPanel1.text = $.Localize( "#LiaUluUpd" );
+	{
+		if (!localDone)
+			childPanel1.text = $.Localize( "#LiaUluNoName" ) + localNeed;
+		else
+		{
+			childPanel1.text = $.Localize( "#LiaUluUpd" );
+			//
+		}
+			
+		//var childPanel1 = $.GetContextPanel().FindChildInLayoutFile( "menu" );
+		//var childPanel2 = childPanel1.FindChildInLayoutFile( "mLumber" );
+		var childPanel3 = $.GetContextPanel().FindChildInLayoutFile( "valueLumber" );
+		//$.Msg( "		childPanel3= ", childPanel3);
+		childPanel3.text = locallumber; //"\n"
+		var childPanel4 = $.GetContextPanel().FindChildInLayoutFile( "valueProc" );
+		childPanel4.text = localpercUlu.toFixed(1)+"%"; //
+		//_SetTextSafe($.GetContextPanel(),"value",dataL.Lumber);
+		//$.Msg( "		OnUpdAction= ", dataL);
+		//aButton.SetHasClass( "defButtonO", true );
+	}
+	if (localDone)
+	{
+		if (localName === "armor")
+			abilityName = "ulu_hero_armor";
+		if (localName === "attack")
+			abilityName = "ulu_hero_attack";
+		if (localName === "attackSpeed")
+			abilityName = "ulu_hero_attack_speed";
+		if (localName === "hpPoints")
+			abilityName = "ulu_hero_hp_points";
+		if (localName === "mpPoints")
+			abilityName = "ulu_hero_mana_points";
+		if (localName === "hpRegen")
+			abilityName = "ulu_hero_hp_regen";
+		if (localName === "mpRegen")
+			abilityName = "ulu_hero_mana_regen";
+		
+		//
+		var heroEntId = Players.GetPlayerHeroEntityIndex(localPlayerId);
+		$.DispatchEvent( "DOTAHideAbilityTooltip", aButton );
+		$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", aButton, abilityName, heroEntId );
+	}
+		
+
+
 //else
 //	childPanel1.text = $.Localize( "#LiaUluNoName" );
 	//$.Msg( "		childPanel1= ", childPanel1);
@@ -457,15 +534,7 @@ function OnUpdAction( dataL )
 	 //$.Msg( "	send	locIn= ", locIn);
 //}
 	
-	//var childPanel1 = $.GetContextPanel().FindChildInLayoutFile( "menu" );
-	//var childPanel2 = childPanel1.FindChildInLayoutFile( "mLumber" );
-	var childPanel3 = $.GetContextPanel().FindChildInLayoutFile( "valueLumber" );
-	//$.Msg( "		childPanel3= ", childPanel3);
-	childPanel3.text = locallumber; //"\n"
-	var childPanel4 = $.GetContextPanel().FindChildInLayoutFile( "valueProc" );
-	childPanel4.text = localpercUlu.toFixed(1)+"%"; //
-	//_SetTextSafe($.GetContextPanel(),"value",dataL.Lumber);
-	//$.Msg( "		OnUpdAction= ", dataL);
+
 }
 
 /*function ClearMessage(hideInProces)
@@ -477,8 +546,8 @@ function OnUpdAction( dataL )
 }*/
 function ClearMessage(idHideInProc)
 {
-	$.Msg( "		idHideInProc= ", idHideInProc);
-	$.Msg( "		idHideInProcess= ", idHideInProcess);
+	//$.Msg( "		idHideInProc= ", idHideInProc);
+	//$.Msg( "		idHideInProcess= ", idHideInProcess);
 	if ((idHideInProc !== idHideInProcess) || (staticStatusText))
 		return;
 	var childPanelMain = $.GetContextPanel().FindChildInLayoutFile( "StatusUlu" );
@@ -507,6 +576,8 @@ function OnUpdActionGetLumber( dataGL )
 	curr_lumber_need = dataGL.NeedLumber;
 	curr_lumber = dataGL.CurrLumber;
 	curr_proc = dataGL.CurrProc;
+	curr_finish = dataGL.Finish;
+	
 	//$.Msg( "		childPanelStatusUlu= ", childPanel1);
 }
 
@@ -521,7 +592,7 @@ function ShowH()
 		else
 			mig = false;
 		childPanel.SetHasClass( "miganie", mig );
-		$.Msg( "		ShowH= ", mig);
+		//$.Msg( "		ShowH= ", mig);
 			
 		//else
 		//	childPanel.SetHasClass( "miganie", true );
