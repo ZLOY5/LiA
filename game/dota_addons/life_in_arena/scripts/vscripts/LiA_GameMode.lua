@@ -184,6 +184,9 @@ function LiA:RegisterClick( args )
 		"Ability11" "ulu_hero_hp_regen" 		
 		"Ability12" "ulu_hero_mana_regen" 
 	]]
+    if Survival.State == SURVIVAL_STATE_DUEL_TIME then
+        return
+    end
 	--print(name)
 	local maxLumber = 333 -- 45*5=225 + 54*2=108 = 333
 	if name == "armor" then
