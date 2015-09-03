@@ -6742,7 +6742,7 @@
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	
 		"AbilityCastRange"				"550"
@@ -6793,14 +6793,11 @@
 				
 				"OnOrbImpact"
 				{
-					"ApplyModifier"
+					"RunScript"
 					{
-						"ModifierName"		"modifier_dark_ranger_black_arrow_spawn"
-						"Target"
-						{
-							"Center"  	"TARGET"
-							"Types" 	"DOTA_UNIT_TARGET_BASIC"
-						}
+						"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
+						"Function"		"AddModifier"
+						"Target" 		"TARGET"
 					}
 					"FireSound"
 					{
@@ -6818,7 +6815,6 @@
 	
 			"modifier_dark_ranger_black_arrow_spawn"
 			{
-				"IsHidden"	"1"
 				"Duration"	"%duration"
 				"OnDeath"
 				{
@@ -7010,6 +7006,44 @@
 				}
 			}
 		}
+	}
+	
+	"dark_ranger_spiked_charm"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\DarkRanger\dark_ranger_spiked_charm.lua"
+		"AbilityTextureName"			"dark_ranger_spiked_charm"
+	
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"1"
+		"LevelsBetweenUpgrades"  		"2"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+	
+		"AbilityCastRange"				"600"
+	
+		"precache"
+		{
+	
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"600"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"10 15 20"		
+			}	
+		}
+	
 	}
 	
 	"dark_ranger_fury"
