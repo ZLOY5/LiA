@@ -9,7 +9,7 @@ _G.HERO_STATS_HEALTH_BONUS = 8
 _G.HERO_STATS_HEALTH_REGEN_BONUS = 0.05
 
 --Agility
-_G.HERO_STATS_ARMOR_BONUS = 0.2
+_G.HERO_STATS_ARMOR_BONUS = 1/6
 _G.HERO_STATS_ATTACK_SPEED_BONUS = 1
 _G.HERO_STATS_MOVE_SPEED_BONUS = 1
 
@@ -23,7 +23,7 @@ require('survival/survival')
 
 ------------------------------------------------------------------------------
 
-LinkLuaModifier( "modifier_stats_bonus_fix", LUA_MODIFIER_MOTION_NONE)
+--LinkLuaModifier( "modifier_stats_bonus_fix", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_hide_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_orn_lua", LUA_MODIFIER_MOTION_NONE )
@@ -302,8 +302,8 @@ end
 function LiA:OnNPCSpawned( event )
     local spawnedUnit = EntIndexToHScript( event.entindex )
     if spawnedUnit:IsHero() and not spawnedUnit:HasModifier("modifier_stats_bonus_fix") then
-        spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_stats_bonus_fix", nil) --исправляет бонусы за характеристики для героев
-    end
+        spawnedUnit:AddAbility("stats_bonus_fix") --исправляет бонусы за характеристики для героев
+   end
 end
 
 function DisableShop()

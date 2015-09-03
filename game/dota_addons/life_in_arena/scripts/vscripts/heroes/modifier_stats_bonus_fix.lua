@@ -51,24 +51,15 @@ function modifier_stats_bonus_fix:GetModifierConstantManaRegen(params)
 	return self.manaRegenBonus
 end
 
-function modifier_stats_bonus_fix:OnCreated(kv)
-	if IsServer() then
-		self:StartIntervalThink( 0.03 )
-	end
-end
-
-function modifier_stats_bonus_fix:OnIntervalThink()
+function modifier_stats_bonus_fix:CalculateStatsBonus(kv) 
 	local hero = self:GetParent()
 
 	if not hero:IsHero() then
 		return
 	end
 
-	hero:SetMaxHealth(hero:GetMaxHealth()+9999)
-	hero:SetHealth(hero:GetMaxHealth())
-
 	local primaryStat = hero:GetPrimaryStatValue()
-	local strength = hero:GetStrength()
+	local strength = hero:GetStrength() - (kv.strFix or 0)
 	local agility = hero:GetAgility()
 	local intellect = hero:GetIntellect()
 
@@ -79,16 +70,31 @@ function modifier_stats_bonus_fix:OnIntervalThink()
 	
 
 	hero.baseArmorValue = hero.baseArmorValue or hero:GetPhysicalArmorBaseValue()
-	print(hero.baseArmorValue)
+	
 	self.armorBonus = agility * (HERO_STATS_ARMOR_BONUS - 1/7) --в доте за 7 ловкости дают 1 ед. защиты
-	print(self.armorBonus)
 	hero:SetPhysicalArmorBaseValue(self.armorBonus+hero.baseArmorValue) 
-	print(hero:GetPhysicalArmorBaseValue())
+	
 	self.attackSpeedBonus = agility * (HERO_STATS_ATTACK_SPEED_BONUS - 1)
 	self.moveSpeedBonus = agility * HERO_STATS_MOVE_SPEED_BONUS -- в доте нет его?
 
 	self.manaBonus = intellect * (HERO_STATS_MANA_BONUS - 13)
 	self.manaRegenBonus = intellect * (HERO_STATS_MANA_REGEN_BONUS - 0.04)
 
+	self:GetAbility().CalcStat = 1
 	hero:CalculateStatBonus()
+	self:GetAbility().CalcStat = nil
+
+end
+
+function modifier_stats_bonus_fix:OnCreated(kv)
+	if IsServer() then
+		self:CalculateStatsBonus(kv) 
+	end
+end
+
+
+function modifier_stats_bonus_fix:OnRefresh(kv)
+	if IsServer() then
+		self:CalculateStatsBonus(kv) 
+	end
 end
