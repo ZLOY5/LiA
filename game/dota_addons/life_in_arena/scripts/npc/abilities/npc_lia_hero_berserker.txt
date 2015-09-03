@@ -294,16 +294,27 @@
   {
     "modifier_berserker_madness"
     {
-	"Duration"		"%duration"
-	"IsBuff"		"1"
-      "Properties"
-      {
-		"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_all_stats"
-		"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_all_stats"
-		"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_all_stats"
-      } 
-			"EffectName"			"particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
-			"EffectAttachType"		"follow_origin"	  
+		"Duration"		"%duration"
+		"IsBuff"		"1"
+      	"Properties"
+      	{
+			"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_all_stats"
+			"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_all_stats"
+			"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_all_stats"
+      	} 
+		
+		"EffectName"			"particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+		"EffectAttachType"		"follow_origin"	  
+
+		"ThinkInterval"	"%duration - 0.03"
+		"OnIntervalThink"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes\Berserker\MadnessFix.lua"
+				"Function"		"MadnessFix"
+			}
+		}
     }
   } 
 }

@@ -1,11 +1,11 @@
-"firelord_flame_strike"
+"blood_mage_flame_strike"
 {
 	"BaseClass"             		"ability_datadriven"
 	"AbilityTextureName"			"blood_mage_flame_strike"
 
-	"MaxLevel" 						"3"
-	"RequiredLevel"         		 "1"
-	"LevelsBetweenUpgrades" 		 "2"
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -46,7 +46,7 @@
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"first_strike_duration"	"2"
+			"first_strike_duration"	"3"
 		}
 		"04"
 		{
@@ -56,7 +56,7 @@
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"burn_duration"			"3"
+			"burn_duration"			"6"
 		}
 		"06"
 		{
@@ -171,7 +171,51 @@
     		}
 		}
 
+		"modifier_flame_strike_thinker2"
+		{
+			"IsHidden"		"1"
+			"Duration"		"%burn_duration + 0.1"
 
+			"Aura" 				"modifier_flame_strike_second_burn"
+    		"Aura_Radius" 		"%radius"
+    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_BOTH"
+    		"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+    		"OnCreated"
+    		{
+    			"Damage"
+				{
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%burn_duration"
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Radius"	"%radius"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+				}
+
+    			"AttachEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+    		}
+
+    		"ThinkInterval"		"1"
+    		"OnIntervalThink"
+    		{
+				"AttachEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"EffectRadius"		"%radius"
+				}
+    		}
+		}
 
 		"modifier_flame_strike_first_burn"
 		{
@@ -189,6 +233,20 @@
 			}
 		}
 
+		"modifier_flame_strike_second_burn"
+		{
+			"IsDebuff"	"1"
 
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%burn_dps"
+					"Target"	"TARGET"
+				}
+			}
+		}
 	}
 }
