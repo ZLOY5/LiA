@@ -160,6 +160,7 @@ function LiA:RegisterGetLumber( args )
 		NeedLumber = need_lumber+1,
 		CurrLumber = hero.lumber,
 		CurrProc = hero.percUlu,
+		Finish = ( lvl == ability:GetMaxLevel() ),
 		
 	}
 	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_getlumber", dataGL )
@@ -183,6 +184,9 @@ function LiA:RegisterClick( args )
 		"Ability11" "ulu_hero_hp_regen" 		
 		"Ability12" "ulu_hero_mana_regen" 
 	]]
+    if Survival.State == SURVIVAL_STATE_DUEL_TIME then
+        return
+    end
 	--print(name)
 	local maxLumber = 333 -- 45*5=225 + 54*2=108 = 333
 	if name == "armor" then
@@ -222,21 +226,35 @@ function LiA:RegisterClick( args )
 		need_lumber = lvl
 	end
 	--
-	if hero.lumber >= 1+need_lumber then -- + Abilities.GetLevel(ability) )
-		--SetLevel
-		ability:SetLevel(ability:GetLevel()+1)
-		hero.lumber = hero.lumber - (1+need_lumber)
-		hero.lumberSpent = hero.lumberSpent + (1+need_lumber)
-		hero.percUlu = 100*hero.lumberSpent/maxLumber
-		--Abilities.SetLevel(ability,Abilities.GetLevel(ability)+1);
-		--print("ability GetLevel ",ability:GetLevel())
-		doneU = true
+	local dataL
+	if ability:GetLevel()+1 <= ability:GetMaxLevel() then
+		--print("ability:GetLevel()",ability:GetLevel())
+		--print("ability:GetMaxLevel() ",ability:GetMaxLevel())
+		if hero.lumber >= 1+need_lumber then -- + Abilities.GetLevel(ability) )
+			--SetLevel
+			ability:SetLevel(ability:GetLevel()+1)
+			hero.lumber = hero.lumber - (1+need_lumber)
+			hero.lumberSpent = hero.lumberSpent + (1+need_lumber)
+			hero.percUlu = 100*hero.lumberSpent/maxLumber
+			--Abilities.SetLevel(ability,Abilities.GetLevel(ability)+1);
+			--print("ability GetLevel ",ability:GetLevel())
+			doneU = true
+		end
+		--
+		if ability:GetLevel() == ability:GetMaxLevel() then
+			dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber,true,name)
+		else
+			dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber,false,name)
+		end
+		--
+		
+		-- update lumber in hud
+		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_lumber", dataL )
+		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
+	--else
+	--	dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber,true,name)
 	end
-	
-	-- update lumber in hud
-	local dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber)
-	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_lumber", dataL )
-	--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
+
 	
 
 end
