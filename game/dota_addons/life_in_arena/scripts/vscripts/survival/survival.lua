@@ -128,7 +128,7 @@ end
 function Survival:onThink()
     for i = 1, #self.tHeroes do
         local hero = self.tHeroes[i]
-        hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
+        hero.rating = math.floor(hero.percUlu * 7 + .5) + hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30 - 30
     end 
     table.sort(self.tHeroes,function(a,b) return a.rating > b.rating end)
 
@@ -139,6 +139,16 @@ function Survival:onThink()
             CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
         end
     end
+	
+	-- update lumber in hud
+    local playersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+    for i = 1, playersCount do 
+        local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
+        --local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+		local dataL = self:GetDataForSendUlu(true, nil,playerID,nil)
+		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(playerID), "upd_action_lumber", dataL )
+		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
+	end
 
     return 0.5
 end
@@ -406,10 +416,63 @@ end
 
 --------------------------------------------------------------------------------------------------
 
+function Survival:GetDataForSendUlu(only_upd, done, pid, need)
+	--local tPlayersId = {}
+	--local tlumber = {}
+	--local tpercUlu = {}
+	local hero = PlayerResource:GetSelectedHeroEntity(pid)
+	--
+    local data
+	if hero then
+		data =
+			{
+				--PlayersId = tPlayersId,
+				Lumber = hero.lumber,
+				PercUlu = hero.percUlu,
+				UluPlayerId = pid,
+				UluDone = done,
+				UluNeed = need,
+				OnlyUpd = only_upd,
+			}
+	else
+		data =
+			{
+				--PlayersId = tPlayersId,
+				Lumber = 0,
+				PercUlu = 0,
+				UluPlayerId = pid,
+				UluDone = done,
+				UluNeed = need,
+				OnlyUpd = only_upd,
+			}
+	
+	end
+	
+	
+    --[[local playersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+    for i = 1, playersCount do 
+        local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
+		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+		table.insert(tPlayersId,playerID)
+        if hero then
+            table.insert(tlumber,hero.lumber or 0)
+			table.insert(tpercUlu,hero.percUlu or 0)
+        else 
+            table.insert(tlumber,0)
+			table.insert(tpercUlu,0)
+        end
+		--hero.percUlu
+	end
+	]]
+
+    return data
+end
+
 function Survival:GetDataForSend()
     local tPlayersId = {}
     local tKillsCreeps = {}
     local tKillsBosses = {}
+	local tPercUlu = {}
     local tDeaths = {}
     local tRating = {}
     --[[
@@ -432,11 +495,13 @@ function Survival:GetDataForSend()
         if hero then
             table.insert(tKillsCreeps,hero.creeps or 0)
             table.insert(tKillsBosses,hero.bosses or 0)
+			table.insert(tPercUlu,hero.percUlu or 0)
             table.insert(tDeaths,hero.deaths or 0)
             table.insert(tRating,hero.rating or 0)
         else 
             table.insert(tKillsCreeps,0)
             table.insert(tKillsBosses,0)
+			table.insert(tPercUlu,0)
             table.insert(tDeaths,0)
             table.insert(tRating,0)
         end
@@ -449,6 +514,7 @@ function Survival:GetDataForSend()
             KillsBosses = tKillsBosses,
             Deaths = tDeaths,
             Rating = tRating,
+			PercUlu = tPercUlu,
             --da = 1,
             --teamId = localPlayerTeamId,
             --hero_id = hero:GetClassname()

@@ -6442,7 +6442,7 @@
 			"02"
 			{
 				"var_type"            "FIELD_INTEGER"
-				"mana_percentage"     "10 20 30"
+				"mana_percentage"     "10 15 20"
 			}
 			"03"
 			{
@@ -6528,7 +6528,7 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityTextureName"			"life_stealer_open_wounds"
+		"AbilityTextureName"			"abaddon_frostmourne"
 	
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
@@ -6583,7 +6583,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityTextureName"			"ursa_fury_swipes"
+		"AbilityTextureName"			"ogre_magi_ignite"
 	
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
@@ -6618,7 +6618,7 @@
 		"precache"
 		{
 			"particle" 	"particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
-			"particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_base_attack.vpcf"
+			"particle"  "particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff_d.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
@@ -6651,10 +6651,9 @@
 				"IsHidden"					"0"
 				"IsPurgable"				"0"
 				"IsDebuff"					"1"
-				
-				"EffectName"				"particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
-				"EffectAttachType"			"follow_overhead"
 	
+				"EffectName"	"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff_d.vpcf"
+				"EffectAttachType"	"follow_origin"
 				"OnDeath"
 				{
 					"FireEffect"
@@ -6669,8 +6668,12 @@
 					}
 					"FireSound"
 					{
-						"EffectName"	"Hero_OgreMagi.Fireblast"
-						"Target" 		"UNIT"
+						"EffectName"	"Hero_OgreMagi.Fireblast.Cast"
+						"Target"
+					    {
+					       "Center" "UNIT"
+					       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
+					   	}
 					}
 	
 					"Damage"
@@ -6694,7 +6697,7 @@
 	{
 	    "BaseClass"						"ability_lua"
 	    "ScriptFile"					"heroes\DarkKnight\dark_knight_speed.lua"
-		"AbilityTextureName" 			"highlander_improved_armor"
+		"AbilityTextureName" 			"abaddon_borrowed_time"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
@@ -8244,6 +8247,204 @@
 	
 	}
 	//End of file npc_lia_hero_earth_lord.txt
+
+
+	//Start of file npc_lia_hero_firelord.txt
+	"firelord_flame_strike"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"blood_mage_flame_strike"
+	
+		"MaxLevel" 						"3"
+		"RequiredLevel"         		 "1"
+		"LevelsBetweenUpgrades" 		 "2"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_CHAOS_METEOR"
+	
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"11 12 13"
+	
+		"AbilityManaCost"				"150 170 190"
+	
+		"AoERadius"						"175 200 225"
+	
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+			"particle"	"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+			"particle" 	"particles/custom/phoenix_fire_spirit_ground.vpcf"
+			"particle" 	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_requiemofsouls_line_ground.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"175 200 225"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"first_strike_dps"		"50 100 150"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"first_strike_duration"	"2"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"burn_dps"				"5 10 15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"burn_duration"			"3"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"delay"					"1.33"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Invoker.SunStrike.Charge"
+				"Target" 		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_requiemofsouls_line_ground.vpcf"
+				"EffectAttachType"  "world_origin"
+				"TargetPoint"       "POINT"
+			}
+	
+			"DelayedAction"
+			{
+				"Delay"     "%delay"
+				"Action"    
+				{
+					"CreateThinker"
+					{
+						"ModifierName"	"modifier_flame_strike_thinker1"
+						"Target"		"POINT"
+					}
+				}
+			}
+			
+			"DestroyTrees"
+			{
+				"Target"		"POINT"
+				"Radius"		"%radius"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_flame_strike_thinker1"
+			{
+				"IsHidden"		"1"
+				"Duration"		"%first_strike_duration + 0.1"
+	
+				"Aura" 				"modifier_flame_strike_first_burn"
+	    		"Aura_Radius" 		"%radius"
+	    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_BOTH"
+	    		"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+	    		"OnCreated"
+	    		{
+	    			"Damage"
+					{
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%first_strike_dps"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"%radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					}
+	
+					"FireSound"
+					{
+						"EffectName"	"Ability.LightStrikeArray"
+						"Target" 		"TARGET"
+					}
+	
+	    			"AttachEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"EffectRadius"		"%radius"
+					}
+					"AttachEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"EffectRadius"		"%radius"
+					}
+	    		}
+	
+	    		"ThinkInterval"		"1"
+	    		"OnIntervalThink"
+	    		{
+					"AttachEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"EffectRadius"		"%radius"
+					}
+	    		}
+	
+	    		"OnDestroy"
+	    		{
+	    			"CreateThinker"
+					{
+						"ModifierName"	"modifier_flame_strike_thinker2"
+						"Target"		"TARGET"
+					}
+	    		}
+			}
+	
+	
+	
+			"modifier_flame_strike_first_burn"
+			{
+				"IsDebuff"	"1"
+	
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%first_strike_dps"
+						"Target"	"TARGET"
+					}
+				}
+			}
+	
+	
+		}
+	}
+	//End of file npc_lia_hero_firelord.txt
 
 
 	//Start of file npc_lia_hero_frost_lord.txt
@@ -22537,6 +22738,265 @@
 		}
 	}
 	//End of file spherical_staff_fire_golem_immolation.txt
+
+
+	//Start of file upgrades_abilities.txt
+	"ulu_hero_attack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		//"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"               "9"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack"				"10 20 30 40 50 60 70 80 90"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"need_lumber"				"2 3 4 5 6 7 8 9 10"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ulu_hero_attack"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%attack"
+				}
+			}
+		}
+	}
+	
+	
+	"ulu_hero_armor"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN" // DOTA_ABILITY_BEHAVIOR_PASSIVE
+		//"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"               "9"
+		"RequiredLevel"          "1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"				"2 4 6 8 10 12 14 16 18"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"need_lumber"				"2 3 4 5 6 7 8 9 10"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ulu_hero_armor"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+				}
+				
+			}
+			//
+		}
+	}
+	
+	"ulu_hero_attack_speed"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		//"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"               "9"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed"				"5 15 25 35 45 55 65 75 85"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"need_lumber"				"1 2 3 4 5 6 7 8 9"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ulu_attack_speed"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+				}
+			}
+		}
+	}
+	
+	"ulu_hero_mana_regen"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		//"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"               "9"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"				"10 25 40 55 70 85 100 115 130"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"need_lumber"				"1 2 3 4 5 6 7 8 9"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ulu_mana_regen"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"%mana_regen"
+				}
+			}
+		}
+	}
+	
+	"ulu_hero_hp_regen"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		//"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"               "9"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hp_regen"				"0.5 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"need_lumber"				"1 2 3 4 5 6 7 8 9"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ulu_hp_regen"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+				}
+			}
+		}
+	}
+	
+	"ulu_hero_mana_points"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		//"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"               "9"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_points"				"25 75 125 175 225 275 325 375 425"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"need_lumber"				"1 2 3 4 5 6 7 8 9"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ulu_mana_points"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS"	"%mana_points"
+				}
+			}
+		}
+	}
+	
+	"ulu_hero_hp_points"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		//"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"               "9"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_points"				"50 125 200 275 350 425 500 575 650"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"need_lumber"				"1 2 3 4 5 6 7 8 9"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ulu_hp_points"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%hp_points"
+				}
+			}
+		}
+	}
+	//End of file upgrades_abilities.txt
 
 
 	//Start of file water_elemental.txt

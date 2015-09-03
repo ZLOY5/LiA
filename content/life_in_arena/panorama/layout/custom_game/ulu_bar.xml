@@ -1,0 +1,94 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/ulu_bar.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/ulu_bar.js" />
+	</scripts>
+	<Panel class="UluOverlayRoot">
+		<Label hittest="false" id="StatusUlu_Text" class="TitleFont" text=" " />	
+		<Panel id="menuUp">
+			<Button id="defButton"
+					onactivate="ClickArmor()"
+					onmouseover="AbilityShowTooltipArmor()"
+					onmouseout="AbilityHideTooltipArmor()" >
+				<Panel id="defButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+			<Button id="attButton" 
+					onactivate="ClickAttack()"
+					onmouseover="AbilityShowTooltipAttack()"
+					onmouseout="AbilityHideTooltipAttack()" >
+				<Panel id="attButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+			<Button id="attSpeedButton"
+					onactivate="ClickAttackSpeed()"
+					onmouseover="AbilityShowTooltipAttackSpeed()"
+					onmouseout="AbilityHideTooltipAttackSpeed()" >
+				<Panel id="attSpeedButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+			
+			<Panel id="mLumber" class = "UluProcAndLumber">
+				<Label id="valueLumber"
+					onmouseover="ShowTooltipLumber()"
+				text="0" />
+				<Label id="valueProc"
+					onmouseover="ShowTooltipProc()"
+				text="0" />
+			</Panel>
+			
+			<Button id="closedButton"
+				onactivate="ClickHide()"
+				>
+				<Panel id="closedButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+		</Panel>
+		<Panel id="menuDown">
+			<Button id="hpPointsButton"
+					onactivate="ClickhpPoints()"
+					onmouseover="AbilityShowTooltiphpPoints()"
+					onmouseout="AbilityHideTooltiphpPoints()" >
+				<Panel id="hpPointsButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+			<Button id="mpPointsButton"
+					onactivate="ClickmpPoints()"
+					onmouseover="AbilityShowTooltipmpPoints()"
+					onmouseout="AbilityHideTooltipmpPoints()" >
+				<Panel id="mpPointsButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+			<Button id="hpRegenButton"
+					onactivate="ClickhpRegen()"
+					onmouseover="AbilityShowTooltiphpRegen()"
+					onmouseout="AbilityHideTooltiphpRegen()" >
+				<Panel id="hpRegenButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+			<Button id="mpRegenButton"
+					onactivate="ClickmpRegen()"
+					onmouseover="AbilityShowTooltipmpRegen()"
+					onmouseout="AbilityHideTooltipmpRegen()" >
+				<Panel id="mpRegenButtonInset">
+					<Label text="" />
+				</Panel>
+			</Button>
+		</Panel>
+		
+
+		
+
+		
+	</Panel>
+</root>

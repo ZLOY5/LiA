@@ -79,9 +79,11 @@ function modifier_stats_bonus_fix:OnIntervalThink()
 	
 
 	hero.baseArmorValue = hero.baseArmorValue or hero:GetPhysicalArmorBaseValue()
+	print(hero.baseArmorValue)
 	self.armorBonus = agility * (HERO_STATS_ARMOR_BONUS - 1/7) --в доте за 7 ловкости дают 1 ед. защиты
+	print(self.armorBonus)
 	hero:SetPhysicalArmorBaseValue(self.armorBonus+hero.baseArmorValue) 
-
+	print(hero:GetPhysicalArmorBaseValue())
 	self.attackSpeedBonus = agility * (HERO_STATS_ATTACK_SPEED_BONUS - 1)
 	self.moveSpeedBonus = agility * HERO_STATS_MOVE_SPEED_BONUS -- в доте нет его?
 

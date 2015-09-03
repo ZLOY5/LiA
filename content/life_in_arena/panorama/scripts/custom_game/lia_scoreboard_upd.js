@@ -14,6 +14,19 @@ function _ScoreboardUpdater_SetTextSafe( panel, childName, textValue )
 	childPanel.text = textValue;
 }
 
+function _ScoreboardUpdater_SetTextSafeToFixed( panel, childName, textValue )
+{
+	if ( panel === null )
+		return;
+	var childPanel = panel.FindChildInLayoutFile( childName )
+	if ( childPanel === null )
+		return;
+	
+	childPanel.text = textValue.toFixed(1);
+}
+
+
+
 
 //=============================================================================
 //=============================================================================
@@ -485,6 +498,7 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Level", playerInfo.player_level );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "KillsCreeps", score.KillsCreeps );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "KillsBosses", score.KillsBosses );
+		_ScoreboardUpdater_SetTextSafeToFixed( playerPanel, "Upd", score.PercUlu );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Deaths", score.Deaths );
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Rating", score.Rating );
 		var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );
