@@ -152,3 +152,14 @@ function Survival:OnDisconnect(event)
         end
     end)]]
 end
+
+---------------------------------------------------------------------------------------------------------------------------
+
+function Survival:OnPlayerChat(event)
+    --PrintTable("Survival:OnPlayerChat",event)
+    local player = LiA.vUserIds[event.userid]
+
+    if event.text == "+" then
+        onPlayerReadyToWave(player)
+    end
+end
