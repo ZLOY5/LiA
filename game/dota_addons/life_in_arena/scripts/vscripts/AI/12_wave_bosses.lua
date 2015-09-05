@@ -19,7 +19,7 @@ function Think12Wave()
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(LiA.AICreepCasts)
 		
-	if ABILITY_12_wave_bloodlust:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
+	if ABILITY_12_wave_bloodlust:IsFullyCastable() and not thisEntity:IsStunned() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		if thisEntity:GetHealthPercent() >= 25 then
 			thisEntity:CastAbilityNoTarget(ABILITY_12_wave_bloodlust, -1)
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
