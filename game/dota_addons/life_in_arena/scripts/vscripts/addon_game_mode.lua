@@ -4,7 +4,6 @@ require('LiA_ForceRound')
 require('survival/AIcreeps')
 require('timers')
 require('timerPopup')
-require('luaCommand')
 require('physics')
 
 function Activate()

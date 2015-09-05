@@ -114,7 +114,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        --self.nRoundNum = 19
+        --self.nRoundNum = 10
         Survival:PrepareNextRound()
     end
 end
@@ -151,4 +151,15 @@ function Survival:OnDisconnect(event)
             end
         end
     end)]]
+end
+
+---------------------------------------------------------------------------------------------------------------------------
+
+function Survival:OnPlayerChat(event)
+    --PrintTable("Survival:OnPlayerChat",event)
+    local player = LiA.vUserIds[event.userid]
+
+    if event.text == "+" then
+        onPlayerReadyToWave(player) --LiA_ForceRound.lua
+    end
 end

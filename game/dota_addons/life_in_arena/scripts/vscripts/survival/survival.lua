@@ -94,6 +94,7 @@ function Survival:InitSurvival()
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
+    ListenToGameEvent('player_chat', Dynamic_Wrap(Survival, 'OnPlayerChat'), self)
     
     GameMode:SetContextThink( "AIThink", AIThink , 3)
     self.AICreepCasts = 0
