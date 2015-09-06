@@ -307,7 +307,7 @@ function AICreepsAttackFindHeroes()
 	
 	-- run on all heroes and memory who need us
 
-	for _,hero in pairs(#Survival.tHeroes) 
+	for _,hero in pairs(Survival.tHeroes) do
 		if hero and hero:IsAlive() and not hero.hidden then
 			table.insert(tTargetBuf,hero)
 			--table.insert(tTargetBufAbs,tHeroes[i]:GetAbsOrigin())

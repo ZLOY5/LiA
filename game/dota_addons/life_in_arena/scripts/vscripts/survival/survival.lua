@@ -103,6 +103,14 @@ end
 
 function AIThink()
     --print("CleanAICasts")
+    local nHeroesAlive = Survival.nHeroCount - Survival.nDeathHeroes
+
+    if nHeroesAlive <= 2 then 
+        Survival.AIMaxCreepCasts = 1
+    else 
+        Survival.AIMaxCreepCasts = 2
+    end
+    
     Survival.AICreepCasts = 0
     return 3
 end

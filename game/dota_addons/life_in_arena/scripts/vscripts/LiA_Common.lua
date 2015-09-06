@@ -1,14 +1,4 @@
 
-function CalcPlayers()
-	local playercounter = 0
-	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
-		if PlayerResource:IsValidPlayer(nPlayerID)  then 
-			playercounter=playercounter+1
-		end
-	end	
-	return playercounter
-end
-
 function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
 	for i = 1, abilities-1 do
@@ -16,13 +6,6 @@ function ResetAllAbilitiesCooldown(unit)
 		if ability and not ability:IsPassive() then
 			ability:EndCooldown()
 		end
-	end
-end
-
-function ShowCenterMessage(msg, dur, wave)
-	FireGameEvent("show_center_message",{message = msg,duration = dur}) 
-	if wave then
-		Timers:CreateTimer(0.01, function() FireGameEvent("show_center_message_fix",{wave = wave}) return nil end)
 	end
 end
 
