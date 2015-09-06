@@ -4,7 +4,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"               "ability_datadriven"
 	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+	"AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
 	"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 
 	"AbilityTextureName"     "dark_knight_dark_forces"
@@ -76,6 +76,11 @@
 			"ThinkInterval"  "0.5"
 			"OnIntervalThink"
 			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Nevermore.Shadowraze"
+					"Target" 		"CASTER"
+				}
 				"RunScript"
 				{
 					"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
@@ -98,6 +103,7 @@
 						"Radius" 	"%coil_radius"
 						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 					}
 				}
 				"AttachEffect"
@@ -169,7 +175,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"ogre_magi_ignite"
@@ -212,11 +218,36 @@
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 	}
 	
+	"OnToggleOn"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_dark_knight_incinerate"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+		}
+	}
+
+	"OnToggleOff"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_dark_knight_incinerate"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}	
+		}
+	}
 	"Modifiers"
 	{
 		"modifier_dark_knight_incinerate"
 		{
-			"Passive"						"1"
+			"Passive"						"0"
 			"IsHidden"						"1"
 			"IsPurgable"					"0"
 			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			

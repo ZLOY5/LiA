@@ -5496,7 +5496,7 @@
 		"precache"
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
-			"particle"			"particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
+			"particle"			"particles/berserker_fire_spear.vpcf"
 			"particle"  		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
 			"particle"          "particles/units/heroes/hero_huskar/huskar_burning_spear.vpcf"		
 		}
@@ -5565,7 +5565,7 @@
 			"LinearProjectile"
 			{
 			    "Target"      	 "POINT"
-				"EffectName"	 "particles/units/heroes/hero_mirana/mirana_spell_arrow.vpcf"
+				"EffectName"	 "particles/berserker_fire_spear.vpcf"
 				"MoveSpeed"		 "%spear_speed"
 				"StartRadius"	 "%spear_width"
 				"StartPosition"  "attach_attack1"
@@ -6426,7 +6426,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"               "ability_datadriven"
 		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	
 		"AbilityTextureName"     "dark_knight_dark_forces"
@@ -6498,6 +6498,11 @@
 				"ThinkInterval"  "0.5"
 				"OnIntervalThink"
 				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Nevermore.Shadowraze"
+						"Target" 		"CASTER"
+					}
 					"RunScript"
 					{
 						"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
@@ -6520,6 +6525,7 @@
 							"Radius" 	"%coil_radius"
 							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 					}
 					"AttachEffect"
@@ -6591,7 +6597,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"ogre_magi_ignite"
@@ -6634,11 +6640,36 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
 		
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_dark_knight_incinerate"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+		}
+	
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_dark_knight_incinerate"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}	
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_dark_knight_incinerate"
 			{
-				"Passive"						"1"
+				"Passive"						"0"
 				"IsHidden"						"1"
 				"IsPurgable"					"0"
 				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
@@ -6782,6 +6813,11 @@
 				"var_type"					"FIELD_FLOAT"
 				"lifetime"					"4 5 6"		
 			}	
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"mana"						"6 12 18"		
+			}			
 		}
 	
 		"Modifiers"
@@ -6799,9 +6835,10 @@
 	
 				"OnOrbFire"
 				{
-					"SpendMana"
+					"RunScript"
 					{
-						"Mana"    "%AbilityManaCost"
+						"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
+						"Function"		"SpendMana"
 					}
 				}
 				
@@ -6855,7 +6892,7 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityTextureName"			"templar_assassin_psi_blades"
+		"AbilityTextureName"			"dark_ranger_magic_arrow"
 		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 	
 		
@@ -7029,10 +7066,10 @@
 		"AbilityTextureName"			"dark_ranger_spiked_charm"
 	
 		"MaxLevel"               		"3"
-		"RequiredLevel"          		"1"
+		"RequiredLevel"          		"2"
 		"LevelsBetweenUpgrades"  		"2"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	
@@ -7066,7 +7103,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"terrorblade_metamorphosis"
+		"AbilityTextureName"			"dark_ranger_fury"
 		
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 		"MaxLevel"               "3"
@@ -7097,7 +7134,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"bonus_damage"			"1.9"
+				"bonus_damage"			"30"
 			}
 			"03"
 			{
@@ -7123,10 +7160,10 @@
 	
 		"precache"
 		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-			"particle"  "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
-			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
-			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
+			"particle"  "particles/units/heroes/hero_templar_assassin/templar_assassin_meld_armor.vpcf"
+			"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_explode.vpcf"
+			"particle"	"particles/templar_assassin_trap_explode_custom.vpcf"
 			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
 			"model"		"models/heroes/terrorblade/demon.vmdl"
 		}
@@ -7135,69 +7172,38 @@
 		{
 			"FireSound"
 			{
-				"EffectName"		"Hero_Terrorblade.Metamorphosis"
+				"EffectName"		"Hero_TemplarAssassin.Trap.Explode"
 				"Target"			"CASTER"
 			}
 			"FireEffect"
 			{
-				"EffectName"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+				"EffectName"		"particles/templar_assassin_trap_explode_custom.vpcf"
 				"EffectAttachType"	"follow_origin"
 				"Target"			"CASTER"
 			}
 			"ApplyModifier"
 			{
-				"ModifierName"		"modifier_metamorphosis"
+				"ModifierName"		"dark_ranger_fury"
 				"Target"			"CASTER"
 			}
 		}
 	
 		"Modifiers"
 		{
-			"modifier_metamorphosis"
+			"dark_ranger_fury"
 			{
 				"Duration"	"%duration"
 				
-				"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+				"EffectName" 		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_armor.vpcf"
 				"EffectAttachType"  "follow_origin"
 	
 				"AllowsIllusionDuplicate"	"1"
-	
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"heroes/Pirate/Metamorphosis.lua"
-						"model"					"models/heroes/terrorblade/demon.vmdl"
-						"projectile_model"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
-						"Function"				"ModelSwapStart"
-						//
-						"Function"				"HideWearables"
-					}
-	
-	
-					"AttachEffect"
-					{
-						"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
-						"EffectAttachType"	"follow_origin"
-						"Target"			"TARGET"
-					}
-				}
 	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
 					"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"	
 					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"		
-				}
-				
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
-						"Function"		"ModelSwapEnd"
-						"Function"		"ShowWearables"
-					}
 				}
 			}
 		}

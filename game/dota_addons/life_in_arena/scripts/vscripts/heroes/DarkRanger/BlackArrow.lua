@@ -21,3 +21,12 @@ function BlackArrow(event)
 	creep:AddNewModifier(caster, event.ability, "modifier_kill", {duration = lifetime})
 	creep:MakeIllusion()
 end
+
+function SpendMana(event)
+	local caster = event.caster
+	local ability = event.ability
+	local mana = ability:GetSpecialValueFor("mana")
+	if not caster:HasModifier("dark_ranger_fury") then
+		caster:SpendMana(mana, ability)
+	end
+end
