@@ -256,15 +256,7 @@ end
 function AICreepsCheck_tHeroTarget_isNotHave(params)
 	local index = params.index
 	if tHeroTarget[index] ~= nil then
-		local player = tHeroTarget[index]:GetPlayerOwner()
-		local flagP = false
-		for p=1, #LiA.tPlayers do
-			if player == LiA.tPlayers[p] then
-				flagP = true
-				break
-			end
-		end
-		if not tHeroTarget[index]:IsAlive() or not flagP then
+		if not tHeroTarget[index]:IsAlive() or tHeroTarget[index].hidden then
 			return true
 		end
 	else
@@ -314,21 +306,12 @@ function AICreepsAttackFindHeroes()
 	--local tTargetBufAbs = {}
 	
 	-- run on all heroes and memory who need us
-	for i=1, #Survival.tHeroes do
-		player = Survival.tHeroes[i]:GetPlayerOwner()
-		flag = false
-		for p=1, #LiA.tPlayers do
-			if player == LiA.tPlayers[p] then
-				flag = true
-				break
-			end
-		end
-		--
-		if Survival.tHeroes[i] ~= nil and Survival.tHeroes[i]:IsAlive() and flag then
-			table.insert(tTargetBuf,Survival.tHeroes[i])
+
+	for _,hero in pairs(#Survival.tHeroes) 
+		if hero and hero:IsAlive() and not hero.hidden then
+			table.insert(tTargetBuf,hero)
 			--table.insert(tTargetBufAbs,tHeroes[i]:GetAbsOrigin())
 		end
-		--
 	end
 	--local res = {
 	--	tTargetBuf = tTargetBuf,
