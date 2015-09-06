@@ -2,6 +2,10 @@ require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
+	if thisEntity:GetPlayerOwnerID() ~= -1 then
+		return
+	end
+	
 	ABILITY_4_wave_death_coil = thisEntity:FindAbilityByName("4_wave_death_coil")
 
 	thisEntity:SetContextThink( "4_wave_think", Think4Wave , 0.1)

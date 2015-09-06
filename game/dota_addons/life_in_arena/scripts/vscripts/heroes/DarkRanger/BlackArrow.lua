@@ -19,14 +19,7 @@ function BlackArrow(event)
 	local creep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
 	creep:SetControllableByPlayer(caster:GetPlayerID(), true)
 	creep:AddNewModifier(caster, event.ability, "modifier_kill", {duration = lifetime})
+	--creep:AddNewModifier(caster, event.ability, "modifier_illusion", nil)
+	event.ability:ApplyDataDrivenModifier(caster, target, "modifier_dark_ranger_black_arrow_unit", nil)
 	creep:MakeIllusion()
-end
-
-function SpendMana(event)
-	local caster = event.caster
-	local ability = event.ability
-	local mana = ability:GetSpecialValueFor("mana")
-	if not caster:HasModifier("dark_ranger_fury") then
-		caster:SpendMana(mana, ability)
-	end
 end

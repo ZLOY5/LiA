@@ -6874,10 +6874,20 @@
 						"Function"		"BlackArrow"
 						"Target"
 						{
-							"Center"  	"TARGET"
+							"Center"  	"UNIT"
 							"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
 						}
 					}
+				}
+			}
+	
+			"modifier_dark_ranger_black_arrow_unit"
+			{
+				"IsHidden"	"1"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_IS_ILLUSION" 		"1"
 				}
 			}
 		}
@@ -6919,17 +6929,12 @@
 			{
 				"var_type"					"FIELD_FLOAT"
 				"lifetime"					"4 5 6"		
-			}	
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"mana"						"0"		
-			}			
+			}				
 		}
 	
 		"Modifiers"
 		{ 
-			"modifier_dark_ranger_black_arrow"
+			"modifier_dark_ranger_black_arrow_ultimate"
 			{
 				"Passive"		"1"
 				"IsHidden"	 	"1"
@@ -6981,11 +6986,22 @@
 						"Function"		"BlackArrow"
 						"Target"
 						{
-							"Center"  	"TARGET"
+							"Center"  	"UNIT"
 							"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
 						}
 					}
 				}
+			}
+	
+			"modifier_dark_ranger_black_arrow_unit"
+			{
+				"IsHidden"	"1"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_IS_ILLUSION" 		"1"
+				}
+	
 			}
 		}
 	}
@@ -7304,6 +7320,24 @@
 				"EffectAttachType"  "follow_origin"
 	
 				"AllowsIllusionDuplicate"	"1"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\DarkRanger\Fury.lua"
+						"Function"		"OnCreated"
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\DarkRanger\Fury.lua"
+						"Function"		"OnDestroy"
+					}
+				}
 	
 				"Properties"
 				{

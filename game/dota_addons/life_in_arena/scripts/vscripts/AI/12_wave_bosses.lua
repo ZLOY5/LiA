@@ -2,6 +2,10 @@ require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
+	if thisEntity:GetPlayerOwnerID() ~= -1 then
+		return
+	end
+	
 	ABILITY_12_wave_bloodlust = thisEntity:FindAbilityByName("12_wave_bloodlust")
 
 	thisEntity:SetContextThink( "12_wave_think", Think12Wave , 0.1)

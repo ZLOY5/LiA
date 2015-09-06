@@ -2,6 +2,10 @@ require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
+	if thisEntity:GetPlayerOwnerID() ~= -1 then
+		return
+	end
+	
 	ABILITY_8_wave_storm_bolt = thisEntity:FindAbilityByName("8_wave_storm_bolt")
 
 	thisEntity:SetContextThink( "8_wave_think", Think8Wave , 0.1)
