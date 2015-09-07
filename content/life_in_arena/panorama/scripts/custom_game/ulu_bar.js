@@ -602,6 +602,16 @@ function ShowH()
 	
 }
  
+function OnUpdActionHide( dataHide )
+{
+	//$.GetContextPanel().SetHasClass("could_vis", dataHide.visible);
+	//aButton = $( "#closedButton" );
+	//aButton.enabled = false;
+	
+	//SetFlyoutScoreboardVisible( dataHide.visible );
+	//$.Msg( "                  				OnUpdActionHide    " );
+}
+ 
 (function()
 {
     //$.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", OnAbilityLearnModeToggled);
@@ -614,6 +624,7 @@ function ShowH()
 	//
 	GameEvents.Subscribe( "upd_action_lumber", OnUpdAction ); 
 	GameEvents.Subscribe( "upd_action_getlumber", OnUpdActionGetLumber ); 
+	//GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
 	
 	//var queryUnit = Players.GetLocalPlayerPortraitUnit();
 	//$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", $.GetContextPanel(), "dw", queryUnit );
