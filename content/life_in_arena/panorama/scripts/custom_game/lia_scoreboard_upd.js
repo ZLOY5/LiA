@@ -543,7 +543,7 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 		if ( playerItems )
 		{
 			//$.Msg( "		playerItems = ", playerItems );
-			var heroEntId = Players.GetPlayerHeroEntityIndex(localPlayerId);
+			//var heroEntId = Players.GetPlayerHeroEntityIndex(localPlayerId);
 			for ( var i = playerItems.inventory_slot_min; i < playerItems.inventory_slot_max; ++i )
 			{
 				var itemPanelName = "_dynamic_item_" + i;
@@ -595,6 +595,25 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 
 }
 
+
+//ItemShowTooltip0
+/*function ItemShowTooltip0()
+{
+	var playerItems = Game.GetPlayerItems( playerId );
+	if ( playerItems )
+	{
+		
+		
+	}
+
+	var itemName = Abilities.GetAbilityName( m_Item );
+	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", $.GetContextPanel(), itemName, m_QueryUnit );
+}
+
+function ItemHideTooltip()
+{
+	$.DispatchEvent( "DOTAHideAbilityTooltip", $.GetContextPanel() );
+}*/
 
 //=============================================================================
 //=============================================================================

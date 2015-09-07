@@ -6,12 +6,20 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/notifications.js" />
 	</scripts>
+	<!-- <Panel hittest="false" class="LiAHints">
+
+	</Panel> -->
 	<Panel hittest="false" class="LiANotification">
+		<Panel hittest="false" id="LiaScoreboard" text="asdas">
+			<Image id="Image" src="file://{images}/custom_game/hint_strelka.png" />
+			<Label hittest="false" id="LiaScoreboard_Text" class="TitleFont" text="#LiaScoreBoardHint" />	
+		</Panel>
+		
 		<Panel hittest="false" id="LiaRound" text="">
 				<Label hittest="false" id="LiaRound_Number" class="TitleFont" text="#LiaRoundNumber" />
 				<Label hittest="false" id="LiaRound_Name" class="TitleFont" text="#LiaRoundName" />	
 		</Panel>	
-		<!--<Panel hittest="false" id="LiaDuel" text="">
+		<!--<Panel hittest="false" id="LiaDuel" text=""> 
 				<Label hittest="false" id="LiaDuel_Number" class="TitleFont" text="#LiaDuelNumber" />
 				 <Label hittest="false" id="LiaDuel_Text" class="TitleFont" text="#LiaDuelText" />	
 				<Panel hittest="false" id="LiaDuel_Images" text="">

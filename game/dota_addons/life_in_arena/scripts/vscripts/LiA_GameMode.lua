@@ -105,10 +105,23 @@ function LiA:InitGameMode()
 	--upgrades
 	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
 	CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
+	--for hint
+	CustomGameEventManager:RegisterListener( "apply_command_hint_hide", Dynamic_Wrap(LiA, "RegisterHintHide"))
 
     trigger_shop = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
     
     --InitLogFile("log/LiA.txt","Init LiA")
+end
+
+function LiA:RegisterHintHide( args )
+	local pID = args['idPlayer']
+	local dat = 
+	{
+		hide = true,
+	}
+	--print("				dat",dat)
+	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "CustomUI_Set_forHint_Scoreboard", dat )
+
 end
 
 function LiA:RegisterGetLumber( args )

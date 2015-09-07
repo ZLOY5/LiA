@@ -2,6 +2,7 @@
 
 var g_ScoreboardHandle = null;
 var visible;
+var firstH = false;
 
 /*function AutoUpdateScoreboard()
 {
@@ -22,6 +23,14 @@ function SetFlyoutScoreboardVisible( bVisible )
 {
 	visible = bVisible;
 	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", visible );
+	if (!firstH)
+	{
+		firstH = true;
+		GameEvents.SendCustomGameEventToServer( "apply_command_hint_hide", { "idPlayer" : Game.GetLocalPlayerID() } );
+		//$.Msg( "                  firstH ", firstH );
+	}
+		
+	
 	/*if ( visible )
 	{
 		//AutoUpdateScoreboard( bVisible );
@@ -204,7 +213,7 @@ function OnUpdAction( data )
 
 	g_ScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, $( "#TeamsContainer" )); // 
 	
-	SetFlyoutScoreboardVisible( true );
+	//SetFlyoutScoreboardVisible( false );
 
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 	GameEvents.Subscribe( "upd_action",  OnUpdAction);

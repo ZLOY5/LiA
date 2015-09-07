@@ -1,5 +1,8 @@
 "use strict";
 
+var hint_scoreboard = false;
+var show_hint = true;
+
 function OnRoundStart( msg )
 {
 
@@ -18,7 +21,7 @@ function ClearRoundStartMessage()
 
 function OnDuelStart( msg )
 {
-
+ 
 	$.GetContextPanel().SetHasClass( "duel_start", true );
 	
 	$( "#LiaDuel_Number" ).SetDialogVariable( "duel_num", $.Localize( "#Duel"+msg.duel_number ) );
@@ -31,17 +34,61 @@ function OnDuelStart( msg )
 
 	//$( "#LiaDuel_Text" ).SetDialogVariable( "hero1", $.Localize( "#"+msg.hero1 ) );
 	//$( "#LiaDuel_Text" ).SetDialogVariable( "hero2", $.Localize( "#"+msg.hero2 ) );
-
-	$.Schedule( 5, ClearDuelStartMessage );
-}
-		
+ 
+	$.Schedule( 5, ClearDuelStartMessage ); 
+}  
+		  
 function ClearDuelStartMessage()
+{  
+	$.GetContextPanel().SetHasClass( "duel_start", false ); 
+} 
+
+/*function SetFlyoutScoreboardVisible( bVisible )
 {
-	$.GetContextPanel().SetHasClass( "duel_start", false );
+	visible = bVisible;
+	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", visible );
+	show_hint = false;
+}*/
+ 
+function OnHintGet(dat)
+{
+	show_hint = !dat.hide;
+	//$.Msg( "		show_hint = ", show_hint);
 }
 
-(function () {
+        
+(function () { 
 	GameEvents.Subscribe( "round_start", OnRoundStart );
-	GameEvents.Subscribe( "duel_start", OnDuelStart );
+	GameEvents.Subscribe( "duel_start", OnDuelStart ); 
+	//
+	//var childPanel = $.GetContextPanel().FindChildInLayoutFile( "LiANotification" );
+	//var childPanel2 = childPanel.FindChildInLayoutFile( "LiaScoreboard" ) 
+	//$.GetContextPanel().SetHasClass( "hint_active", false );
+	//$.GetContextPanel().SetHasClass( "round_start", false );
+	var delay;
+	for (var i = 0; i < 10; ++i)
+	{
+		$.Schedule( 1.*i, function() 
+						{
+							if (show_hint)
+							{
+								if (hint_scoreboard)
+									hint_scoreboard = false
+								else
+									hint_scoreboard = true;
+								//childPanel.SetHasClass( "hint_active", hint_scoreboard );
+								$.GetContextPanel().SetHasClass( "hint_active", hint_scoreboard );
+								//$.GetContextPanel().SetHasClass( "hint_active", false );
+								//$.GetContextPanel().SetHasClass( "hint_active", true );
+								//$( "#LiaScoreboard_Text" ).SetDialogVariable( "nam", "dwqewqeq" );
+							}
+							else
+								$.GetContextPanel().SetHasClass( "hint_active", false );
+
+						}
+		 );
+	}
+	//$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
+	GameEvents.Subscribe( "CustomUI_Set_forHint_Scoreboard", OnHintGet ); 
 })();
 

@@ -634,7 +634,7 @@ function OnUpdActionHide( dataHide )
 	//
 	for (var i = 0; i < 16; ++i)
 	{
-		$.Schedule( 0.5*i, function()
+		$.Schedule( 0.7*i, function()
 						{
 							ShowH();
 						}
