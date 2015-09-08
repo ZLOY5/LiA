@@ -1,3 +1,68 @@
+"fire_golem_10_wave_megaboss" 
+{
+	"BaseClass" 				"npc_dota_creature" 
+						//
+	"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 						//"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
+	"SoundSet"				"Hero_WarlockGolem"
+	"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
+	"ModelScale" "1.2" 
+	"Level" "1" 
+
+	"precache"
+	{
+		"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
+	}
+
+	"Ability1" "spell_immunity" // 
+	"Ability2" "fire_golem_10_wave_megaboss_immolation" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+
+	"ArmorPhysical" 		"25" 
+	"MagicalResistance" 		"100" 
+
+	"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" 			"251" 
+	"AttackDamageMax" 			"262" 
+	"AttackRate" 				"0.6" 
+	"AttackAnimationPoint" 		"0.26" 
+	"AttackAcquisitionRange" 	"1000" 
+	"AttackRange" 				"100" 
+
+	//"ProjectileModel"			""			
+	//"ProjectileSpeed"			"0"
+
+	"HealthBarOffset"			"260"
+
+	"BountyXP" 				"0" 
+	"BountyGoldMin" 			"0" 
+	"BountyGoldMax" 			"0" 
+
+	"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" 			"320" 
+	"MovementTurnRate" 			"0.5" 
+
+	"StatusHealth" 				"3000" 
+	"StatusHealthRegen" 			"1" 
+	"StatusMana" 				"0" 
+	"StatusManaRegen" 			"0" 
+
+	"TeamName" 			"DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" 		"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
+	"CombatClassDefend" 		"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+	"VisionDaytimeRange" 		"1400" 
+	"VisionNighttimeRange" 		"800" 
+
+	"HasInventory" 				"0" 		
+	"vscripts"                    "units\Megaboss10Spawn.lua"
+}
+
 "10_wave_megaboss" 
 {
 
@@ -5,65 +70,87 @@
 "BaseClass" "npc_dota_creature" 
 "Model" "models/heroes/faceless_void/faceless_void.vmdl" 
 "SoundSet" "Hero_FacelessVoid" 
-"ModelScale" "1.4" 
+"ModelScale" "1.8" 
 "Level" "1" 
-	"precache"
-			{	
-				"model"	"models/heroes/faceless_void/faceless_void.vmdl"
-				"model"	"models/items/faceless_void/timelord_bracers/timelord_bracers.mdl"
-				"model"	"models/items/faceless_void/timelord_head/timelord_head.mdl"
-				"model"	"models/items/faceless_void/timelord_shoulders/timelord_shoulders.mdl"
-				"model"	"models/items/faceless_void/timelord_skirt/timelord_skirt.mdl"
-				"model"	"models/items/faceless_void/timelord_weapon/timelord_weapon.mdl"
+"precache"
+		{	
+			"model"	"models/heroes/faceless_void/faceless_void.vmdl"
+			"model"	"models/items/faceless_void/timelord_bracers/timelord_bracers.mdl"
+			"model"	"models/items/faceless_void/timelord_head/timelord_head.mdl"
+			"model"	"models/items/faceless_void/timelord_shoulders/timelord_shoulders.mdl"
+			"model"	"models/items/faceless_void/timelord_skirt/timelord_skirt.mdl"
+			"model"	"models/items/faceless_void/timelord_weapon/timelord_weapon.mdl"
+
+		}
+		
+"Creature"
+{
+	"AttachWearables"
+	{
+		"Wearable1"		{	"ItemDef"		"5861"		} 
+		"Wearable2" 	{	"ItemDef"		"5868"		} 
+		"Wearable3"		{	"ItemDef"		"5896"		} 
+		"Wearable4"		{	"ItemDef"		"5897"		} 
+		"Wearable5"		{	"ItemDef"		"5898"		} 
+	}
+		
+	"DisableResistance"            "60.0"
+	"DefaultState"			"Invade"
+	"States"	
+	{
+		"Invade"
+		{
+			"Name"				"Invade"
+			"Aggression"		"100.0" //cast offensive spells whenever
+			"Avoidance"			"0.0" //dont flee
+			"Support"			"80.0" //start buffing
+		}
+	}
+
+	"DefensiveAbilities"
+	{
+		"Ability1"              
+		{
+			"Name"                "10_wave_rejuvenation"
+			"UseSelfishly"        "1"
+			"Buff"                "1"
+			"UseAtHealthPercent"  "80"
+		}
+		"Ability2"              
+		{
+			"Name"                "10_wave_antimagic"
+			//"UseSelfishly"        "1"
+			"Buff"                "1"
+			"UseAtHealthPercent"  "60"
+		}
+	}
 	
-			}
-			
-	"Creature"
-			{
-			"AttachWearables"
-				{
-					"Wearable1"		{	"ItemDef"		"5861"		} 
-					"Wearable2" 	{	"ItemDef"		"5868"		} 
-					"Wearable3"		{	"ItemDef"		"5896"		} 
-					"Wearable4"		{	"ItemDef"		"5897"		} 
-					"Wearable5"		{	"ItemDef"		"5898"		} 
-				}
-				
-			"DisableResistance"            "60.0"
-			"DefaultState"			"Invade"
-			"States"	
-				{
-					"Invade"
-					{
-						"Name"				"Invade"
-						"Aggression"		"0.0" //cast offensive spells whenever
-						"Avoidance"			"0.0" //dont flee
-						"Support"			"80.0" //start buffing
-					}
-				}
-			
-			"DefensiveAbilities"
-				{
-				    "Ability1"              
-				    {
-				        "Name"                "10_wave_rejuvenation"
-				        "UseSelfishly"        "1"
-				        "Buff"                "1"
-				        "UseAtHealthPercent"  "80"
-				    }
-				}
-			}
+	"OffensiveAbilities"
+	{
+		"Ability1"                
+		{
+			"Name"                "10_wave_fire_golem"
+			"AOE"                "1"
+			"Radius"             "700"
+			"MinimumTargets"     "1"
+		
+		}
+		"Ability2"                
+		{
+			"Name"        "10_wave_slow"
+		}
+	}
+}
 
 
 
-"Ability1" "true_sight" 
-"Ability2" "10_megaboss_return" 
-"Ability3" "10_wave_rejuvenation" 
-"Ability4" "" 
-"Ability5" "" 
-"Ability6" "" 
+"Ability1" "10_megaboss_return" 
+"Ability2" "10_wave_rejuvenation" 
+"Ability3" "10_wave_fire_golem" 
+"Ability4" "10_wave_slow" 
+"Ability5" "10_wave_antimagic" 
+"Ability6" "true_sight" 
 "Ability7" "" 
-"Ability8" "" 
 
 
 
@@ -73,12 +160,12 @@
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "999" 
-"AttackDamageMax" "999" 
-"AttackRate" "0.4" 
+"AttackDamageMin" "1000" 
+"AttackDamageMax" "1000" 
+"AttackRate" "0.2" 
 "AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "5000" 
-"AttackRange" "128" 
+"AttackAcquisitionRange" "2000" 
+"AttackRange" "130" 
 "ProjectileModel" "" 
 "ProjectileSpeed" "" 
 
@@ -97,21 +184,22 @@
 
 
 "StatusHealth" "25000" 
-"StatusHealthRegen" "0" 
+"StatusHealthRegen" "1" 
 "StatusMana" "2000" 
 "StatusManaRegen" "1" 
+"StatusStartingMana" "1500"
 
 
 
 "TeamName" "DOTA_TEAM_BADGUYS" 
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_LIGHT"
 "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 
 
-"VisionDaytimeRange" "10000" 
-"VisionNighttimeRange" "10000" 
+"VisionDaytimeRange" "1800" 
+"VisionNighttimeRange" "1800" 
 
 
 
