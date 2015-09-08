@@ -145,10 +145,10 @@ function OnUpdActionEnd( data )
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 			
 			score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
-			if (i<3)
+			if (i<4)
 			{
-				allscore = allscore + score.Rating;
-				numS = numS+1;
+				allscore = allscore + score.Rating*(0.6+0.1*i);
+				//numS = numS+1;
 			}
 				
 			//$.Msg( "                  OnUpdActionEnd: 	score ", score );

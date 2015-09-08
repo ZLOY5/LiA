@@ -1,10 +1,10 @@
 "use strict";
 
 var hint_scoreboard = false;
-var show_hint = true;
+var show_hint = true;     
 
 function OnRoundStart( msg )
-{
+{        
 
 	$.GetContextPanel().SetHasClass( "round_start", true );
 	
@@ -13,12 +13,12 @@ function OnRoundStart( msg )
 
 	$.Schedule( 5, ClearRoundStartMessage );
 }
-		
-function ClearRoundStartMessage()
+		       
+function ClearRoundStartMessage() 
 {
 	$.GetContextPanel().SetHasClass( "round_start", false );
 }
-
+  
 function OnDuelStart( msg )
 {
  
