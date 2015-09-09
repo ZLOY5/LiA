@@ -162,4 +162,13 @@ function Survival:OnPlayerChat(event)
     if event.text == "+" then
         onPlayerReadyToWave(player) --LiA_ForceRound.lua
     end
+	
+    --[[if event.text == "lumber" then
+		player:GetAssignedHero().lumber = 1000
+        --onPlayerReadyToWave(player) --LiA_ForceRound.lua
+    end
+	]]
+	
+	
+	
 end

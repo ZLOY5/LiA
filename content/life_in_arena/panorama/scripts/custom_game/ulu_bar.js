@@ -1,9 +1,9 @@
 "use strict";
 
-var curr_lumber_need =-1;
-var curr_lumber =-1;
-var curr_proc =-1;
-var curr_finish = false;
+//var curr_lumber_need =-1;
+//var curr_lumber =-1;
+//var curr_proc =-1;
+//var curr_finish = false;
 var statePanelUlu = false;
 //var hideInProcess = false;
 var idHideInProcess = -1;
@@ -126,13 +126,17 @@ function ClickHide()
 	showHint = false;
 }
 
-function StaticText()
+function StaticText(lvl, need)
 {
 	var childPanel1 = $.GetContextPanel().FindChildInLayoutFile( "StatusUlu_Text" );
-	if (curr_finish)
+	//if (curr_finish)
+	if (lvl === 9)
 		childPanel1.text = $.Localize( "#LiaUluFinish" );
 	else
-		childPanel1.text = $.Localize( "#LiaUluPrice" ) + curr_lumber_need + $.Localize( "#LiaUluPrice2" );
+	{
+		childPanel1.text = $.Localize( "#LiaUluPrice" ) + need + $.Localize( "#LiaUluPrice2" );
+	}
+	//
 	staticStatusText = true;
 	//$.Msg( "		StaticText name = ", name);
 }
@@ -200,8 +204,13 @@ function AbilityShowTooltipArmor()
 	var abilityName = "ulu_hero_armor";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
-	$.Schedule( 0.05, StaticText);
+	//
+	var abilInd = Entities.GetAbilityByName( heroEntId, "ulu_hero_armor" );
+	var abilLvl = Abilities.GetLevel( abilInd );
+	var needL = 1+abilLvl+1;
+	
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "armor" } );
+	$.Schedule( 0.0, function() {StaticText(abilLvl, needL)} );
 	
 }
 
@@ -225,8 +234,12 @@ function AbilityShowTooltipAttack()
 	var abilityName = "ulu_hero_attack";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "attack" } );
-	$.Schedule( 0.05, StaticText);
+	var abilInd = Entities.GetAbilityByName( heroEntId, "ulu_hero_attack" );
+	var abilLvl = Abilities.GetLevel( abilInd );
+	var needL = 1+abilLvl+1;
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "attack" } );
+	//$.Schedule( 0.05, StaticText);
+	$.Schedule( 0.0, function() {StaticText(abilLvl, needL)} );
 }
 
 function AbilityHideTooltipAttack()
@@ -248,8 +261,12 @@ function AbilityShowTooltipAttackSpeed()
 	var abilityName = "ulu_hero_attack_speed";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "attackSpeed" } );
-	$.Schedule( 0.05, StaticText);
+	var abilInd = Entities.GetAbilityByName( heroEntId, "ulu_hero_attack_speed" );
+	var abilLvl = Abilities.GetLevel( abilInd );
+	var needL = 1+abilLvl;
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "attackSpeed" } );
+	//$.Schedule( 0.05, StaticText);
+	$.Schedule( 0.0, function() {StaticText(abilLvl, needL)} );
 }
 
 function AbilityHideTooltipAttackSpeed()
@@ -271,8 +288,12 @@ function AbilityShowTooltiphpPoints()
 	var abilityName = "ulu_hero_hp_points";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "hpPoints" } );
-	$.Schedule( 0.05, StaticText);
+	var abilInd = Entities.GetAbilityByName( heroEntId, "ulu_hero_hp_points" );
+	var abilLvl = Abilities.GetLevel( abilInd );
+	var needL = 1+abilLvl;
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "hpPoints" } );
+	//$.Schedule( 0.05, StaticText);
+	$.Schedule( 0.0, function() {StaticText(abilLvl, needL)} );
 }
 
 function AbilityHideTooltiphpPoints()
@@ -295,9 +316,13 @@ function AbilityShowTooltipmpPoints()
 	var abilityName = "ulu_hero_mana_points";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
+	var abilInd = Entities.GetAbilityByName( heroEntId, "ulu_hero_mana_points" );
+	var abilLvl = Abilities.GetLevel( abilInd );
+	var needL = 1+abilLvl;
 	//$.Msg( "		AbilityShowTooltipmpPoints name = mpPoints");
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "mpPoints" } );
-	$.Schedule( 0.05, StaticText);
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "mpPoints" } );
+	//$.Schedule( 0.05, StaticText);
+	$.Schedule( 0.0, function() {StaticText(abilLvl, needL)} );
 }
 
 function AbilityHideTooltipmpPoints()
@@ -320,8 +345,12 @@ function AbilityShowTooltiphpRegen()
 	var abilityName = "ulu_hero_hp_regen";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "hpRegen" } );
-	$.Schedule( 0.05, StaticText);
+	var abilInd = Entities.GetAbilityByName( heroEntId, "ulu_hero_hp_regen" );
+	var abilLvl = Abilities.GetLevel( abilInd );
+	var needL = 1+abilLvl;
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "hpRegen" } );
+	//$.Schedule( 0.05, StaticText);
+	$.Schedule( 0.0, function() {StaticText(abilLvl, needL)} );
 }
 
 function AbilityHideTooltiphpRegen()
@@ -344,8 +373,12 @@ function AbilityShowTooltipmpRegen()
 	var abilityName = "ulu_hero_mana_regen";//Abilities.GetAbilityName( m_Ability );
 	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, heroEntId );
 	//
-	GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "mpRegen" } );
-	$.Schedule( 0.05, StaticText);
+	var abilInd = Entities.GetAbilityByName( heroEntId, "ulu_hero_mana_regen" );
+	var abilLvl = Abilities.GetLevel( abilInd );
+	var needL = 1+abilLvl;
+	//GameEvents.SendCustomGameEventToServer( "apply_ulu_command_getlumber", { "idPlayer" : localPlayerId, "nameUlu" : "mpRegen" } );
+	//$.Schedule( 0.05, StaticText);
+	$.Schedule( 0.0, function() {StaticText(abilLvl, needL)} );
 }
 
 function AbilityHideTooltipmpRegen()
@@ -560,7 +593,7 @@ function ClearMessage(idHideInProc)
 
  
 //
-function OnUpdActionGetLumber( dataGL )
+/*function OnUpdActionGetLumber( dataGL )
 {
 	var localPlayer = Game.GetLocalPlayerInfo();
 	var localPlayerId = -1;
@@ -569,17 +602,13 @@ function OnUpdActionGetLumber( dataGL )
 		localPlayerId = localPlayer.player_id;
 	}
 	//
-	/*if (localPlayerId !== dataL.UluPlayerId)
-	{
-		return;
-	}*/
 	curr_lumber_need = dataGL.NeedLumber;
 	curr_lumber = dataGL.CurrLumber;
 	curr_proc = dataGL.CurrProc;
 	curr_finish = dataGL.Finish;
 	
 	//$.Msg( "		childPanelStatusUlu= ", childPanel1);
-}
+}*/
 
 function ShowH()
 {
@@ -623,7 +652,7 @@ function OnUpdActionHide( dataHide )
 	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilityList );*/
 	//
 	GameEvents.Subscribe( "upd_action_lumber", OnUpdAction ); 
-	GameEvents.Subscribe( "upd_action_getlumber", OnUpdActionGetLumber ); 
+	//GameEvents.Subscribe( "upd_action_getlumber", OnUpdActionGetLumber ); 
 	//GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
 	
 	//var queryUnit = Players.GetLocalPlayerPortraitUnit();
