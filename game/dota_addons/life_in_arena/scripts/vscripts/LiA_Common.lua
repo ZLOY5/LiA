@@ -1,3 +1,9 @@
+function ShowCenterMessage(msg, dur, wave)
+	FireGameEvent("show_center_message",{message = msg,duration = dur}) 
+	if wave then
+		Timers:CreateTimer(0.01, function() FireGameEvent("show_center_message_fix",{wave = wave}) return nil end)
+	end
+end
 
 function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()

@@ -18,7 +18,7 @@ function Survival:OnPlayerPickHero(keys)
     self.nHeroCount = self.nHeroCount + 1
     
     player:SetTeam(DOTA_TEAM_GOODGUYS)
-    PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS,true)
+    PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
     
     if PlayerResource:HasRandomed(playerID) then
