@@ -78,6 +78,7 @@ function GetScore_FromPlayerId(data, playerId)
 					"KillsBosses" : data.KillsBosses[i],
 					"Deaths" : data.Deaths[i],
 					"Rating" : data.Rating[i],
+					"PercUlu" : data.PercUlu[i],
 					
 				};
 				return score;
@@ -87,12 +88,15 @@ function GetScore_FromPlayerId(data, playerId)
 	}
 }
 
+
+
 function OnUpdActionEnd( data )
 {
 	// data.KillsCreeps[i], i = number tHeroes
 	//$.Msg( "                  OnUpdAction:data ", data.KillsCreeps[1] );
 	//$.Msg( "                  OnUpdAction:data.da ", data.da );
 	//
+	var allscore = 0;
 	var localPlayerTeamId = -1;
 	var localPlayer = Game.GetLocalPlayerInfo();
 	if ( localPlayer )
@@ -120,7 +124,7 @@ function OnUpdActionEnd( data )
 		"teamXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_team.xml",
 		"playerXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_player.xml",
 	};*/
-	
+	var numS =0;
 	var teamPlayers = Game.GetPlayerIDsOnTeam( localPlayerTeamId );
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
 	//$.Msg( "                  OnUpdActionEnd:	playersContainer ", playersContainer );
@@ -133,16 +137,24 @@ function OnUpdActionEnd( data )
 		}*/
 		var plAndParList = OnUpdAction_GetSortedPlayersList(teamPlayers, data);
 		//_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, 3, localPlayerTeamId, score );
+		var score
 		for ( var i = 0; i < plAndParList.length; ++i )
 		//for ( var i = 0; i < plList.length; ++i )
 		//for ( var playerId of teamPlayers )
 		{
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
-
-			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
+			
+			score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
+			if (i<4)
+			{
+				allscore = allscore + score.Rating*(0.6+0.1*i);
+				//numS = numS+1;
+			}
+				
 			//$.Msg( "                  OnUpdActionEnd: 	score ", score );
 			_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
+		//allscore = allscore/numS;
 		
 	}
 	
@@ -166,7 +178,7 @@ function OnUpdActionEnd( data )
 	
 	
 	//var teamInfoList = ScoreboardUpdater_GetSortedTeamInfoList( endScoreboardHandle );
-	var delay = 0.2;
+	var delay = 0.5;
 	//var delay_per_panel = 1; // / teamInfoList.length;
 	//for ( var teamInfo of teamInfoList )
 	{
@@ -195,7 +207,11 @@ function OnUpdActionEnd( data )
 			endScreenVictory.style.color = teamColor + ";";*/
 		}
 	}
-
+	//
+	//#LiaAllScore
+	var endScreenAllScore = $( "#StatusScore" );
+	//endScreenVictory.SetDialogVariable( "winning_team_score", $.Localize( "#LiaAllScore" + allscore ) );
+	endScreenAllScore.text = $.Localize( "#LiaAllScore" ) + allscore.toFixed(0) ; 
 	/*var winningTeamLogo = $( "#WinningTeamLogo" );
 	if ( winningTeamLogo )
 	{

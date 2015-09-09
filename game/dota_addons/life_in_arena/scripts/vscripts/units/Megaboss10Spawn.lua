@@ -1,0 +1,9 @@
+require('timers')
+
+function Spawn(entityKeyValues)	
+	Timers:CreateTimer(0.01,function()
+		thisEntity:SetRenderColor(0,0,0)
+
+	end)
+	
+end

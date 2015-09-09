@@ -26,6 +26,30 @@
 	transform: scaleX(1) scaleY(1);
 }
 
+#StatusScore
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 20px;
+    font-weight: bold;
+	margin-bottom: 10px;
+	//visibility:  collapse;
+}
+
+#AllScoreRow
+{
+	flow-children: right;
+    horizontal-align: right;
+	margin-right: 8px;
+	margin-bottom: 16px;
+
+	//transition-property: opacity, transform;
+    //transition-duration: 1s;
+	//opacity: 0;
+	//transform: scaleX(0) scaleY(0) translatey(-50px);
+}
+
 #WinningTeamLogo
 {
 	vertical-align: center;
@@ -250,6 +274,12 @@
 	height: 100%;
 }
 
+#UpdContainer
+{
+	height: 100%;
+	width: 85px;
+}
+
 .ScoreboardPanel
 {
     background-color: BACKGROUND_COLOR;
@@ -295,6 +325,7 @@
 #KillsBosses,
 #Deaths,
 #Rating,
+#Upd,
 #Assists,
 #PlayerGoldAmount
 {
@@ -395,6 +426,12 @@
 .ScoreCol_Assists
 {
 	width: 50px;
+	text-align: center;
+}
+
+.ScoreCol_Upd
+{
+	width: 85px;
 	text-align: center;
 }
 

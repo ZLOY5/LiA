@@ -4,6 +4,47 @@
     height: 100%;
 }
 
+
+#LiaScoreboard
+{
+    flow-children: down;
+    horizontal-align: left;
+    opacity: 0.;
+    //transform: scaleX(2) scaleY(2);
+    margin-top: 30px;
+	margin-left: 72px;
+	//margin-left: 5.65%; // 1.25
+	//margin-left: -27.5%;//-615px;
+    transition-property: transform, opacity;
+    transition-duration: 1.s;
+    //visibility:  collapse;
+    border: 0px solid blue;
+	//position:relative;
+	//position:absolute;
+}
+
+#Image
+{
+    width: 50px;
+    height: 50px;
+}
+
+.hint_active #LiaScoreboard
+{
+    opacity: 1.;
+    transform: scaleX(1) scaleY(1);
+    //visibility: visible;
+}
+
+#LiaScoreboard_Text
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 #LiaRound
 {
     flow-children: down;
