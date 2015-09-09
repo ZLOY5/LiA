@@ -7,7 +7,8 @@ function OnCreated(event)
 		ability2:ToggleAutoCast()
 	end
 	event.caster:SwapAbilities("dark_ranger_black_arrow", "dark_ranger_black_arrow_ultimate", false, true)
-
+	ability1:SetHidden(true)
+	ability2:SetHidden(false)
 end
 
 function OnDestroy(event)
@@ -19,4 +20,6 @@ function OnDestroy(event)
 		ability2:ToggleAutoCast()
 	end
 	event.caster:SwapAbilities("dark_ranger_black_arrow", "dark_ranger_black_arrow_ultimate", true, false)
+	ability1:SetHidden(true)
+	ability2:SetHidden(false)
 end
