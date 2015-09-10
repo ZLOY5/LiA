@@ -17008,25 +17008,36 @@
 		{
 			"ApplyModifier"
 			{
-			"ModifierName" "modifier_serpent_queen_heavenly_power"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"Duration"	"%duration"
-			}
-	
-			
+				"ModifierName" "modifier_serpent_queen_heavenly_power"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"	"%duration"
+			}	
 		}
+		
 		"Modifiers"
 		{
 			"modifier_serpent_queen_heavenly_power"
 			{
 				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"Properties"
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\SerpentQueen\HeavenlyPower.lua"
+						"Function"		"AddAgility"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\SerpentQueen\HeavenlyPower.lua"
+						"Function"		"RemoveAgility"
+					}
 				}
 			}
 	
