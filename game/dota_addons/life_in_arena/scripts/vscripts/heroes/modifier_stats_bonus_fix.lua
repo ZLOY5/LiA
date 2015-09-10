@@ -89,6 +89,7 @@ end
 function modifier_stats_bonus_fix:OnCreated(kv)
 	if IsServer() then
 		self:CalculateStatsBonus(kv) 
+		self:StartIntervalThink(0.1)
 	end
 end
 
@@ -97,4 +98,8 @@ function modifier_stats_bonus_fix:OnRefresh(kv)
 	if IsServer() then
 		self:CalculateStatsBonus(kv) 
 	end
+end
+
+function modifier_stats_bonus_fix:OnIntervalThink()
+	self:CalculateStatsBonus({})
 end
