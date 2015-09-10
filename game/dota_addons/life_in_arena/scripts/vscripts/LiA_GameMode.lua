@@ -94,7 +94,14 @@ function LiA:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
-    --PlayerResource:SetCustomPlayerColor(0, r, g, b )
+    PlayerResource:SetCustomPlayerColor(0, 52, 85, 255 )
+    PlayerResource:SetCustomPlayerColor(1, 61, 210, 150 )
+    PlayerResource:SetCustomPlayerColor(2, 140, 42, 244 )
+    PlayerResource:SetCustomPlayerColor(3, 243, 201, 9 )
+    PlayerResource:SetCustomPlayerColor(4, 255, 108, 0 )
+    PlayerResource:SetCustomPlayerColor(5, 197, 77, 168 )
+    PlayerResource:SetCustomPlayerColor(6, 199, 228, 13 )
+    PlayerResource:SetCustomPlayerColor(7, 27, 192, 216 )
 
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
