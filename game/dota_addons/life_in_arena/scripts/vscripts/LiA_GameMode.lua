@@ -104,7 +104,7 @@ function LiA:InitGameMode()
 	
 	--upgrades
 	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
-	CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
+	--CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
 	--for hint
 	CustomGameEventManager:RegisterListener( "apply_command_hint_hide", Dynamic_Wrap(LiA, "RegisterHintHide"))
 
@@ -124,7 +124,7 @@ function LiA:RegisterHintHide( args )
 
 end
 
-function LiA:RegisterGetLumber( args )
+--[[function LiA:RegisterGetLumber( args )
 	local pID = args['idPlayer']
 	local name = args['nameUlu']  
 	local player = PlayerResource:GetPlayer(pID)
@@ -178,6 +178,7 @@ function LiA:RegisterGetLumber( args )
 	}
 	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_getlumber", dataGL )
 end
+]]
 
 function LiA:RegisterClick( args )
 	local pID = args['idPlayer']
