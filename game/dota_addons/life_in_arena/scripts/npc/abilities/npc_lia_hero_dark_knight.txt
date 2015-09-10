@@ -48,7 +48,7 @@
 	"precache"
 	{
 	"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
-	"particle"	"particles/nevermore_shadowraze_blue.vpcf"
+	"particle"	"particles/nevermore_shadowraze_editfirst.vpcf"
 	"particle"  "particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
 	}
 
@@ -109,7 +109,7 @@
 				}
 				"AttachEffect"
 				{
-					"EffectName"    "particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+					"EffectName"    "particles/nevermore_shadowraze_editfirst.vpcf"
 					"EffectAttachType"  "follow_origin"
 					"Target"      "TARGET"
 				}
@@ -179,7 +179,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"ogre_magi_ignite"
+	"AbilityTextureName"			"dark_knight_incinerate"
 
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
@@ -213,8 +213,8 @@
 	
 	"precache"
 	{
-		"particle" 	"particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
-		"particle"  "particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff_d.vpcf"
+		"particle" 	"particles/ogre_magi_unr_fireblast_blue.vpcf"
+		"particle"  "particles/ogre_magi_ignite_debuff_d_blue.vpcf"
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 	}
@@ -273,13 +273,13 @@
 			"IsPurgable"				"0"
 			"IsDebuff"					"1"
 
-			"EffectName"	"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff_d.vpcf"
+			"EffectName"	"particles/ogre_magi_ignite_debuff_d_blue.vpcf"
 			"EffectAttachType"	"follow_origin"
 			"OnDeath"
 			{
 				"FireEffect"
 				{
-					"EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
+					"EffectName"        "particles/ogre_magi_unr_fireblast_blue.vpcf"
 					"EffectAttachType"  "follow_origin"
 					"Target"
 				    {

@@ -8,7 +8,7 @@ function PhoenixBurn( keys )
 	-- Ability variables
 	local radius = ability:GetLevelSpecialValueFor("radius", ability_level) 
 	local damage = 20
-	local ion_particle = "particles/units/heroes/hero_lion/lion_spell_finger_of_death.vpcf"
+	local ion_particle = "particles/lion_spell_finger_of_death_top1.vpcfs"
 
 	-- Targeting variables
 	local target_teams = DOTA_UNIT_TARGET_TEAM_BOTH
