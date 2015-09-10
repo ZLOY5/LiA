@@ -94,7 +94,14 @@ function LiA:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
-    --PlayerResource:SetCustomPlayerColor(0, r, g, b )
+    PlayerResource:SetCustomPlayerColor(0, 52, 85, 255 )
+    PlayerResource:SetCustomPlayerColor(1, 61, 210, 150 )
+    PlayerResource:SetCustomPlayerColor(2, 140, 42, 244 )
+    PlayerResource:SetCustomPlayerColor(3, 243, 201, 9 )
+    PlayerResource:SetCustomPlayerColor(4, 255, 108, 0 )
+    PlayerResource:SetCustomPlayerColor(5, 197, 77, 168 )
+    PlayerResource:SetCustomPlayerColor(6, 199, 228, 13 )
+    PlayerResource:SetCustomPlayerColor(7, 27, 192, 216 )
 
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
@@ -104,7 +111,7 @@ function LiA:InitGameMode()
 	
 	--upgrades
 	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
-	CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
+	--CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
 	--for hint
 	CustomGameEventManager:RegisterListener( "apply_command_hint_hide", Dynamic_Wrap(LiA, "RegisterHintHide"))
 
@@ -124,7 +131,7 @@ function LiA:RegisterHintHide( args )
 
 end
 
-function LiA:RegisterGetLumber( args )
+--[[function LiA:RegisterGetLumber( args )
 	local pID = args['idPlayer']
 	local name = args['nameUlu']  
 	local player = PlayerResource:GetPlayer(pID)
@@ -178,6 +185,7 @@ function LiA:RegisterGetLumber( args )
 	}
 	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_getlumber", dataGL )
 end
+]]
 
 function LiA:RegisterClick( args )
 	local pID = args['idPlayer']
