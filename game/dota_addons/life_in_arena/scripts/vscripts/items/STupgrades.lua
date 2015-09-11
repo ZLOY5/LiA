@@ -35,7 +35,7 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		--
-		if name == "npc_dota_hero_skywrath_mage" then
+		if name == "npc_dota_hero_chen" then
 			par = {
 				unit = caster,
 				oldAbi = "paladin_blizzard",
@@ -271,7 +271,7 @@ function OnUnequip(event)
 		end
 		-- next heroes
 		--
-		if name == "npc_dota_hero_skywrath_mage" then
+		if name == "npc_dota_hero_chen" then
 			par = {
 				unit = caster,
 				oldAbi = "paladin_blizzard_scepter",
