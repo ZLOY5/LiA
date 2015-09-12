@@ -115,3 +115,56 @@ function PrintTable(title,table)
 	end
 	print("--------------------End of table--------------------------")
 end
+
+
+function StartTimer(text, number, time)
+	LiA.nCOUNTDOWNTIMER = time
+
+	local minutes = math.floor(time / 60)
+    local seconds = time - (minutes * 60)
+    local m10 = math.floor(minutes / 10)
+    local m01 = minutes - (m10 * 10)
+    local s10 = math.floor(seconds / 10)
+    local s01 = seconds - (s10 * 10)
+    local broadcast_gametimer = 
+        {
+            timer_minute_10 = m10,
+            timer_minute_01 = m01,
+            timer_second_10 = s10,
+            timer_second_01 = s01,
+            text = text;
+            number = number;
+        }
+    CustomGameEventManager:Send_ServerToAllClients( "set_timer", broadcast_gametimer )
+    Timers:CreateTimer("lia_timer_countdown",
+        {
+            endTime = 1, 
+            callback = CountdownTimer
+        }
+    )
+end
+
+function CountdownTimer()
+	LiA.nCOUNTDOWNTIMER = LiA.nCOUNTDOWNTIMER - 1
+	local t = LiA.nCOUNTDOWNTIMER
+	if t > 0 then 
+		local minutes = math.floor(t / 60)
+	    local seconds = t - (minutes * 60)
+	    local m10 = math.floor(minutes / 10)
+	    local m01 = minutes - (m10 * 10)
+	    local s10 = math.floor(seconds / 10)
+	    local s01 = seconds - (s10 * 10)
+	    local broadcast_gametimer = 
+	        {
+	            timer_minute_10 = m10,
+	            timer_minute_01 = m01,
+	            timer_second_10 = s10,
+	            timer_second_01 = s01,
+	        }
+	    CustomGameEventManager:Send_ServerToAllClients( "countdown", broadcast_gametimer )
+	else 
+		CustomGameEventManager:Send_ServerToAllClients( "hide_timer", nil )
+		return 0
+	end 
+	return 1
+end

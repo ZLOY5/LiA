@@ -22,4 +22,5 @@ function BlackArrow(event)
 	--creep:AddNewModifier(caster, event.ability, "modifier_illusion", nil)
 	event.ability:ApplyDataDrivenModifier(caster, target, "modifier_dark_ranger_black_arrow_unit", nil)
 	creep:MakeIllusion()
+	creep:SetAcquisitionRange(800)
 end
