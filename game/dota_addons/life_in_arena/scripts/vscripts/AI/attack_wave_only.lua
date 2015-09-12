@@ -4,7 +4,7 @@ function Spawn(entityKeyValues)
 	if thisEntity:GetPlayerOwnerID() ~= -1 then
 		return
 	end
-	
+	thisEntity:SetHullRadius(32)	
 	thisEntity:SetContextThink( "attack_wave_only", ThinkAllWave , 0.1)
 end
 
