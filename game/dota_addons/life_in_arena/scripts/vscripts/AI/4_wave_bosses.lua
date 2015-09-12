@@ -7,7 +7,7 @@ function Spawn(entityKeyValues)
 	end
 	
 	ABILITY_4_wave_death_coil = thisEntity:FindAbilityByName("4_wave_death_coil")
-
+	thisEntity:SetHullRadius(32)
 	thisEntity:SetContextThink( "4_wave_think", Think4Wave , 0.1)
 end
 

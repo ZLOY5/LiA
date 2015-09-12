@@ -7,7 +7,7 @@ function Spawn(entityKeyValues)
 	end
 	
 	ABILITY_12_wave_bloodlust = thisEntity:FindAbilityByName("12_wave_bloodlust")
-
+	thisEntity:SetHullRadius(32)
 	thisEntity:SetContextThink( "12_wave_think", Think12Wave , 0.1)
 end
 

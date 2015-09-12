@@ -7,7 +7,7 @@ function Spawn(entityKeyValues)
 	end
 	
 	ABILITY_8_wave_storm_bolt = thisEntity:FindAbilityByName("8_wave_storm_bolt")
-
+	thisEntity:SetHullRadius(32)
 	thisEntity:SetContextThink( "8_wave_think", Think8Wave , 0.1)
 end
 
