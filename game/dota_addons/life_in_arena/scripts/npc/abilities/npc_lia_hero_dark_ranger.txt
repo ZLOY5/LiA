@@ -20,6 +20,7 @@
 	"precache"
 	{
 		"particle"				"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+		"particle"				"particles/status_fx/status_effect_gods_strength.vpcf"
 		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
 	}
 	
@@ -236,6 +237,7 @@
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	"AbilityTextureName"			"dark_ranger_magic_arrow"
 	"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 
@@ -322,7 +324,12 @@
 		
     	"TrackingProjectile"
     	{
-        		"Target" 			"TARGET"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
         		"EffectName" 		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
         		"Dodgeable" 		"1"
         		"ProvidesVision" 	"1"
@@ -351,6 +358,7 @@
 				"Radius"	"%radius"
 				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
 		}				
 	}
