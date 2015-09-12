@@ -51,7 +51,8 @@ function AncestralSpirits( event )
 		local origin = casterOrigin + table.remove( vRandomSpawnPos, 1 )
 
 		-- handle_UnitOwner needs to be nil, else it will crash the game.
-		local illusion = CreateUnitByName("npc_dota_hero_elder_titan", origin, true, caster, nil, caster:GetTeamNumber())
+		local illusion = CreateHeroForPlayer("npc_dota_hero_elder_titan", caster:GetPlayerOwner())
+		FindClearSpaceForUnit(illusion, origin, false)
 		illusion:SetPlayerID(caster:GetPlayerID())
 		illusion:SetControllableByPlayer(player, true)
 		
