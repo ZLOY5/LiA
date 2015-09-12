@@ -1,23 +1,7 @@
 "use strict";
 
-function UpdateTimer( data )
+function SetTimer( data ) 
 {
-	//$.Msg( "UpdateTimer: ", data );
-	//var timerValue = Game.GetDOTATime( false, false );
-
-	//var sec = Math.floor( timerValue % 60 );
-	//var min = Math.floor( timerValue / 60 );
-
-	//var timerText = "";
-	//timerText += min;
-	//timerText += ":";
-
-	//if ( sec < 10 )
-	//{
-	//	timerText += "0";
-	//}
-	//timerText += sec;
-
 	var timerText = "";
 	timerText += data.timer_minute_10;
 	timerText += data.timer_minute_01;
@@ -25,31 +9,46 @@ function UpdateTimer( data )
 	timerText += data.timer_second_10;
 	timerText += data.timer_second_01;
 
-	$( "#Timer" ).text = timerText;
+	$( "#TimerPanel_Timer" ).text = timerText;
+	$( "#TimerPanel_Text" ).text = $.Localize( data.text ).toUpperCase();
+	$( "#TimerPanel_Number" ).text = data.number;
 
-	//$.Schedule( 0.1, UpdateTimer );
+	$( "#TimerPanel_Timer" ).RemoveClass( "timer_hidden" );
+}
+
+function UpdateTimer( data )
+{
+	var timerText = "";
+	timerText += data.timer_minute_10;
+	timerText += data.timer_minute_01;
+	timerText += ":";
+	timerText += data.timer_second_10;
+	timerText += data.timer_second_01;
+
+	$( "#TimerPanel_Timer" ).text = timerText;
 }
 
 function ShowTimer( data )
 {
-	$( "#Timer" ).AddClass( "timer_visible" );
+	$( "#TimerPanel_Timer" ).RemoveClass( "timer_hidden" );
 }
 
 function AlertTimer( data )
 {
-	$( "#Timer" ).AddClass( "timer_alert" );
+	$( "#TimerPanel_Timer" ).AddClass( "timer_alert" );
 }
 
 function HideTimer( data )
 {
-	$( "#Timer" ).AddClass( "timer_hidden" );
+	$( "#TimerPanel_Timer" ).AddClass( "timer_hidden" );
 }
 
 (function()
 {
+	GameEvents.Subscribe( "set_timer", SetTimer );
     GameEvents.Subscribe( "countdown", UpdateTimer );
     GameEvents.Subscribe( "show_timer", ShowTimer );
     GameEvents.Subscribe( "timer_alert", AlertTimer );
-    GameEvents.Subscribe( "overtime_alert", HideTimer );
+    GameEvents.Subscribe( "hide_timer", HideTimer );
 })();
 
