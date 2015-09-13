@@ -81,6 +81,44 @@
 	//End of file 11_wave_invisibility.txt
 
 
+	//Start of file 2_wave_aura_of_vengeance.txt
+	"wave_2_aura_of_vengeance"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities\wave_2_aura_of_vengeance.lua"
+		"AbilityTextureName"			"dark_ranger_spiked_charm"
+	
+		"MaxLevel"               		"1"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	
+		"AbilityCastRange"				"1000"
+	
+		"precache"
+		{
+	
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"1000"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"20"		
+			}	
+		}
+	
+	}
+	//End of file 2_wave_aura_of_vengeance.txt
+
+
 	//Start of file 7_wave_plague.txt
 	"7_wave_plague"
 	{
@@ -293,7 +331,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass" 		"ability_datadriven"
-		"AbilityBehavior" 	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior" 	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	
 		"OnOwnerDied"
 	    {
@@ -356,7 +394,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass" "ability_datadriven"
-		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"precache"
 		{
 			"particle"  "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
