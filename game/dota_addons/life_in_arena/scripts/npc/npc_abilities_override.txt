@@ -3052,6 +3052,136 @@
 		}
 	}
 	
+	"9_wave_frost_nova"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"lich_frost_nova"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"12.0"
+	
+		"AbilityManaCost"				"125"
+	
+		"AoERadius"						"200"
+	
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{			
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_movement_speed"	"-30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_attack_speed"		"-20"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aoe_damage"			"400"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_hero_duration"	"6"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"TARGET"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Ability.FrostNova"
+				"Target"		"TARGET"
+			}
+	
+			"Damage"
+			{
+				"Type"		"DAMAGE_TYPE_MAGICAL"
+				"Target"	"TARGET"
+				"Damage"	"%aoe_damage"
+			}
+	
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  				"TARGET"
+					"Radius" 				"%radius"
+					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 				"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+	
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"    "modifier_9_wave_frost_nova_slow"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						"Duration"		"%slow_hero_duration"
+					}
+	
+					"Damage"
+					{
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage"	"%aoe_damage"
+					}
+	
+				}
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_9_wave_frost_nova_slow"
+			{
+				"IsDebuff"		"1"
+	
+				"StatusEffectName"		"particles/status_fx/status_effect_frost_lich.vpcf"
+				"StatusEffectPriority"	"10"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
+				}
+			}
+		}
+	}
+	
 	"10_wave_antimagic" 
 	{
 		// General
@@ -3957,6 +4087,77 @@
 			}	
 		
 		}	
+	}
+	
+	"16_wave_mana_burn"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"nyx_assassin_mana_burn"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+	
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"7.0"
+	
+		"AbilityManaCost"				"90"
+	
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"mana_burn"			"250"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_per_mana"	"1"
+			}
+		}
+	
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "abilities/ManaBurn.lua"
+				"Function"      "ManaBurnCheck"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_NyxAssassin.ManaBurn.Target"
+				"Target" 		"TARGET"
+			}
+			
+			"FireEffect"
+			{
+				"Target"			"TARGET"
+				"EffectName"		"particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"    "abilities/ManaBurn.lua"
+				"Function"      "ManaBurn"
+			}
+		}
+	
 	}
 	//End of file normal_mode_creep_actives.txt
 
