@@ -4277,6 +4277,94 @@
 		}
 	}
 	
+	"18_wave_silence"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"               "ability_datadriven"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "AbilityTextureName"      "sandking_epicenter"
+	  
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"      "0.2"
+	  "AbilityCooldown"       "20"
+	  "AbilityManaCost"       "150"
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "radius"              "700"
+	    }
+	    "02"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "duration"            "4"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+	    "particle"  "particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"         "particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
+	      "EffectAttachType"   "follow_origin"
+	      "EffectRadius"       "%radius"
+	      "Target"             "CASTER"
+	      "ControlPoints"
+	      {
+	        "01"  "%radius 0 %radius"
+	      }
+	    }
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"        "CASTER"
+	        "Radius"        "%radius"
+	        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	      }
+	
+	      "Action"
+	      {
+	        "ApplyModifier"
+	        {
+	          "Target"        "TARGET"
+	          "ModifierName"  "18_wave_silence"
+	        }
+	      }
+	    }   
+	  }
+	
+	  "Modifiers"
+	  {
+	    "18_wave_silence"
+	    {
+	      "IsDebuff"  "1"
+	      "Duration"  "%duration"
+	    
+	      "EffectName"  "particles/generic_gameplay/generic_silenced.vpcf"
+	      "EffectAttachType"	"follow_overhead"
+	      "States"
+	      {
+	      	"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	
 	"19_wave_polymorph"
 	{
 		"BaseClass"             		"ability_datadriven"
