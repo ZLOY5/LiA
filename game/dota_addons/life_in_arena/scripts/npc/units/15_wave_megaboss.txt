@@ -16,7 +16,7 @@
 
 "Ability1" "true_sight" 
 "Ability2" "15_megaboss_mana_break" 
-"Ability3" "" 
+"Ability3" "15_megaboss_illusions" 
 "Ability4" "" 
 "Ability5" "" 
 "Ability6" "" 
@@ -52,7 +52,7 @@
 "MovementSpeed" "250" 
 "MovementTurnRate" "0.5" 
 
-
+"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
 
 "StatusHealth" "30000" 
 "StatusHealthRegen" "0" 
@@ -77,7 +77,8 @@
 
 "Creature"
 	{
-		"DisableResistance"            "60.0"
+		"DisableResistance"            "40.0"
+	}
 
-	} 
+"vscripts"	"AI\15_megaboss.lua"
 }

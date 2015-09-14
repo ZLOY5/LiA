@@ -234,7 +234,7 @@
 	
 	"Ability1" "true_sight" 
 	"Ability2" "15_megaboss_mana_break" 
-	"Ability3" "" 
+	"Ability3" "15_megaboss_illusions" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -270,7 +270,7 @@
 	"MovementSpeed" "250" 
 	"MovementTurnRate" "0.5" 
 	
-	
+	"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
 	
 	"StatusHealth" "30000" 
 	"StatusHealthRegen" "0" 
@@ -295,9 +295,10 @@
 	
 	"Creature"
 		{
-			"DisableResistance"            "60.0"
+			"DisableResistance"            "40.0"
+		}
 	
-		} 
+	"vscripts"	"AI\15_megaboss.lua"
 	}
 	//End of file 15_wave_megaboss.txt
 
@@ -310,7 +311,7 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/ursa/ursa.vmdl" 
 	"SoundSet" "Hero_Ursa" 
-	"ModelScale" "1.2" 
+	"ModelScale" "1.3" 
 	"Level" "1" 
 	
 	"precache"
@@ -325,7 +326,7 @@
 	"Ability2" "5_megaboss_crit" 
 	"Ability3" "5_megaboss_bash" 
 	"Ability4" "5_megaboss_stomp" 
-	"Ability5" "" 
+	"Ability5" "5_megaboss_firestorm" 
 	"Ability6" "" 
 	"Ability7" "" 
 	"Ability8" "" 
@@ -338,12 +339,12 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "260" 
-	"AttackDamageMax" "260" 
-	"AttackRate" "0.4" 
+	"AttackDamageMin" "261" 
+	"AttackDamageMax" "267" 
+	"AttackRate" "0.07" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "5000" 
-	"AttackRange" "128" 
+	"AttackAcquisitionRange" "2000" 
+	"AttackRange" "130" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
 	
@@ -362,7 +363,7 @@
 	
 	
 	"StatusHealth" "5000" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "1" 
 	"StatusMana" "1000" 
 	"StatusManaRegen" "1" 
 	
@@ -375,8 +376,8 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "1800" 
+	"VisionNighttimeRange" "1800" 
 	
 	
 	
@@ -391,7 +392,7 @@
 			"Invade"
 			{
 				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
+				"Aggression"		"100.0" //cast offensive spells whenever
 				"Avoidance"			"0.0" //dont flee
 				"Support"			"0.0" //start buffing
 			}
@@ -404,6 +405,13 @@
 				"Name"				"5_megaboss_stomp"
 				"AOE"                "1"
 				"Radius"             "190"
+				"MinimumTargets"     "1"
+			}
+			"Ability2"
+			{
+				"Name"				"5_megaboss_firestorm"
+				"AOE"                "1"
+				"Radius"             "800"
 				"MinimumTargets"     "1"
 			}
 		}
@@ -2900,7 +2908,7 @@
 	
 	
 	
-	"Ability1" "2_wave_return_aura" 
+	"Ability1" "wave_2_aura_of_vengeance" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -3556,7 +3564,7 @@
 	"VisionNighttimeRange" "800" 
 	
 	"PathfindingSearchDepthScale" "0.3" //0.3
-	"vscripts"	"AI\attack_wave_only.lua"
+	"vscripts"	"AI\9_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -4016,7 +4024,7 @@
 	"VisionNighttimeRange" "800" 
 	
 	"PathfindingSearchDepthScale" "0.3" //0.3
-	"vscripts"	"AI\attack_wave_only.lua"
+	"vscripts"	"AI\16_wave_bosses.lua"
 	
 	"HasInventory" "0" 
 	}
@@ -4277,8 +4285,8 @@
 		"MagicalResistance" "0" 
 		 
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" "15" 
-		"AttackDamageMax" "15" 
+		"AttackDamageMin" "16" 
+		"AttackDamageMax" "17" 
 		"AttackRate" "1.55" 
 		"AttackAnimationPoint" "0.3" 
 		"AttackAcquisitionRange" "0" //"10000"
@@ -4292,10 +4300,10 @@
 		 
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "300" 
-		"MovementTurnRate" "0.8" 
+		"MovementTurnRate" "0.5" 
 		 
 		"StatusHealth" "130" 
-		"StatusHealthRegen" "0" 
+		"StatusHealthRegen" "0.5" 
 		"StatusMana" "0" 
 		"StatusManaRegen" "0" 
 		 
@@ -4337,8 +4345,8 @@
 		"MagicalResistance" "0" 
 	
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" "30" 
-		"AttackDamageMax" "30" 
+		"AttackDamageMin" "31" 
+		"AttackDamageMax" "32" 
 		"AttackRate" "1.55" 
 		"AttackAnimationPoint" "0.3" 
 		"AttackAcquisitionRange" "0" 
@@ -4352,10 +4360,10 @@
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "350" 
-		"MovementTurnRate" "0.8" 
+		"MovementTurnRate" "0.5" 
 	
 		"StatusHealth" "220" 
-		"StatusHealthRegen" "0" 
+		"StatusHealthRegen" "0.5" 
 		"StatusMana" "0" 
 		"StatusManaRegen" "0" 
 	
@@ -4400,8 +4408,8 @@
 		"MagicalResistance" "0" 
 	
 		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" "50" 
-		"AttackDamageMax" "50" 
+		"AttackDamageMin" "51" 
+		"AttackDamageMax" "57" 
 		"AttackRate" "1.5" 
 		"AttackAnimationPoint" "0.3" 
 		"AttackAcquisitionRange" "0" 
@@ -4415,11 +4423,11 @@
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "270" 
-		"MovementTurnRate" "0.8" 
+		"MovementTurnRate" "0.6" 
 	
 		"StatusHealth" "375" 
-		"StatusHealthRegen" "0" 
-		"StatusMana" "250" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "200" 
 		"StatusManaRegen" "1" 
 	
 		"TeamName" "DOTA_TEAM_BADGUYS" 
@@ -4464,8 +4472,8 @@
 		"MagicalResistance" "0" 
 	
 		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin" "40" 
-		"AttackDamageMax" "40" 
+		"AttackDamageMin" "41" 
+		"AttackDamageMax" "44" 
 		"AttackRate" "1.3" 
 		"AttackAnimationPoint" "0.3" 
 		"AttackAcquisitionRange" "0" 
@@ -4479,10 +4487,10 @@
 	
 		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 		"MovementSpeed" "270" 
-		"MovementTurnRate" "0.8" 
+		"MovementTurnRate" "0.5" 
 	
 		"StatusHealth" "400" 
-		"StatusHealthRegen" "0" 
+		"StatusHealthRegen" "0.5" 
 		"StatusMana" "0" 
 		"StatusManaRegen" "0" 
 	
@@ -4529,8 +4537,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "75" 
-	"AttackDamageMax" "75" 
+	"AttackDamageMin" "76" 
+	"AttackDamageMax" "78" 
 	"AttackRate" "0.85" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -4553,9 +4561,9 @@
 	
 	
 	"StatusHealth" "750" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "300" 
-	"StatusManaRegen" "1" 
+	"StatusManaRegen" "0.75" 
 	
 	
 	
@@ -4606,8 +4614,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "110" 
-	"AttackDamageMax" "110" 
+	"AttackDamageMin" "111" 
+	"AttackDamageMax" "115" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -4625,12 +4633,12 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "400" 
-	"MovementTurnRate" "0.6" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "800" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "250" 
 	"StatusManaRegen" "1" 
 	
@@ -4683,8 +4691,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "125" 
-	"AttackDamageMax" "125" 
+	"AttackDamageMin" "126" 
+	"AttackDamageMax" "129" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -4707,9 +4715,9 @@
 	
 	
 	"StatusHealth" "950" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.25" 
 	"StatusMana" "300" 
-	"StatusManaRegen" "1" 
+	"StatusManaRegen" "0.75" 
 	
 	
 	
@@ -4740,7 +4748,7 @@
 	"ModelScale" "0.7" 
 	"Level" "1" 
 	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" 
-	"ProjectileSpeed"           "1200" 	
+	"ProjectileSpeed"           "1300" 	
 			"precache"
 				{
 					"model"	"models/heroes/morphling/morphling.vmdl" 
@@ -4766,8 +4774,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "140" 
-	"AttackDamageMax" "140" 
+	"AttackDamageMin" "141" 
+	"AttackDamageMax" "150" 
 	"AttackRate" "1.0" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -4783,12 +4791,12 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "220" 
-	"MovementTurnRate" "0.8" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "975" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "0" 
 	"StatusManaRegen" "0" 
 	
@@ -4842,8 +4850,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "180" 
-	"AttackDamageMax" "180" 
+	"AttackDamageMin" "181" 
+	"AttackDamageMax" "186" 
 	"AttackRate" "0.65" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -4861,14 +4869,14 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "420" 
-	"MovementTurnRate" "0.6" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "1100" 
-	"StatusHealthRegen" "0" 
-	"StatusMana" "100" 
-	"StatusManaRegen" "1" 
+	"StatusHealthRegen" "0.5" 
+	"StatusMana" "0" 
+	"StatusManaRegen" "0.75" 
 	
 	
 	
@@ -4920,8 +4928,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "240" 
-	"AttackDamageMax" "240" 
+	"AttackDamageMin" "241" 
+	"AttackDamageMax" "244" 
 	"AttackRate" "0.65" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -4939,14 +4947,14 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "300" 
-	"MovementTurnRate" "0.6" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "1400" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "400" 
-	"StatusManaRegen" "1" 
+	"StatusManaRegen" "0" 
 	
 	
 	
@@ -4997,8 +5005,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "280" 
-	"AttackDamageMax" "280" 
+	"AttackDamageMin" "281" 
+	"AttackDamageMax" "285" 
 	"AttackRate" "0.75" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -5016,12 +5024,12 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.6" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "1600" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "100" 
 	"StatusManaRegen" "1" 
 	
@@ -5058,7 +5066,7 @@
 	"ModelScale" "0.7" 
 	"Level" "1" 
 	"ProjectileModel"           "particles/base_attacks/ranged_badguy.vpcf" 
-	"ProjectileSpeed"           "1800" 
+	"ProjectileSpeed"           "1500" 
 	
 	
 	
@@ -5079,12 +5087,12 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "190" 
-	"AttackDamageMax" "190" 
+	"AttackDamageMin" "191" 
+	"AttackDamageMax" "200" 
 	"AttackRate" "0.8" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
-	"AttackRange" "450" 
+	"AttackRange" "500" 
 	
 	
 	
@@ -5097,14 +5105,14 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.8" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "1500" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "1.50" 
 	"StatusMana" "500" 
-	"StatusManaRegen" "0" 
+	"StatusManaRegen" "1.50" 
 	
 	
 	
@@ -5136,7 +5144,7 @@
 	"ModelScale" "1" 
 	"Level" "1" 
 	"ProjectileModel"           "particles/neutral_fx/ghost_base_attack.vpcf" 
-	"ProjectileSpeed"           "1500" 
+	"ProjectileSpeed"           "900" 
 	
 	
 	
@@ -5157,8 +5165,8 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "375" 
-	"AttackDamageMax" "375" 
+	"AttackDamageMin" "376" 
+	"AttackDamageMax" "386" 
 	"AttackRate" "0.8" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
@@ -5175,14 +5183,14 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.8" 
+	"MovementTurnRate" "0.6" 
 	
 	
 	
 	"StatusHealth" "1700" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "400" 
-	"StatusManaRegen" "0" 
+	"StatusManaRegen" "1" 
 	
 	
 	
@@ -5198,7 +5206,7 @@
 	
 	"PathfindingSearchDepthScale" "0.3" //0.3
 	
-	"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\16_wave_creeps.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -5233,12 +5241,12 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "450" 
-	"AttackDamageMax" "450" 
+	"AttackDamageMin" "451" 
+	"AttackDamageMax" "455" 
 	"AttackRate" "1.05" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
+	"AttackRange" "110" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
 	
@@ -5252,12 +5260,12 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "350" 
-	"MovementTurnRate" "0.6" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "2200" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "300" 
 	"StatusManaRegen" "1" 
 	
@@ -5311,14 +5319,14 @@
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "450" 
-	"AttackDamageMax" "450" 
+	"AttackDamageMin" "451" 
+	"AttackDamageMax" "455" 
 	"AttackRate" "1.1" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
 	"AttackRange" "250" 
 	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
-	"ProjectileSpeed" "1500" 
+	"ProjectileSpeed" "1900" 
 	
 	
 	
@@ -5330,14 +5338,14 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "350" 
-	"MovementTurnRate" "0.8" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "2200" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "1" 
 	"StatusMana" "150" 
-	"StatusManaRegen" "0" 
+	"StatusManaRegen" "1" 
 	
 	
 	
@@ -5408,14 +5416,14 @@
 	
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "320" 
-	"MovementTurnRate" "0.6" 
+	"MovementTurnRate" "0.5" 
 	
 	
 	
 	"StatusHealth" "2500" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "1" 
 	"StatusMana" "500" 
-	"StatusManaRegen" "1" 
+	"StatusManaRegen" "1.25" 
 	
 	
 	

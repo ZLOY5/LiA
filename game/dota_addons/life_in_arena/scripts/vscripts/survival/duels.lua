@@ -159,7 +159,11 @@ function Survival:EndDuel(winner,loser)
         hero1:Purge(false, true, false, true, false)
         hero1:AddNewModifier(hero1, nil, "modifier_stun_lua", {duration = -1})
         hero1:Heal(9999,hero1)
-        hero1:GiveMana(9999)    
+        hero1:GiveMana(9999) 
+        local fire_gloves = GetItemInInventory(hero1,"item_lia_fire_gloves") 
+        if fire_gloves and fire_gloves:GetToggleState() then 
+            fire_gloves:ToggleAbility()
+        end  
     end
 
     if hero2:IsAlive() then
@@ -167,6 +171,10 @@ function Survival:EndDuel(winner,loser)
         hero2:AddNewModifier(hero2, nil, "modifier_stun_lua", {duration = -1})
         hero2:Heal(9999,hero2)
         hero2:GiveMana(9999) 
+        local fire_gloves = GetItemInInventory(hero2,"item_lia_fire_gloves") 
+        if fire_gloves and fire_gloves:GetToggleState() then 
+            fire_gloves:ToggleAbility()
+        end 
     end
     Timers:CreateTimer(2,function()
         CleanUnitsOnMap()

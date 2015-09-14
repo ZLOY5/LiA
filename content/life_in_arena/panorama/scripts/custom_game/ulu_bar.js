@@ -661,7 +661,7 @@ function OnUpdActionHide( dataHide )
 	$.GetContextPanel().SetHasClass("could_vis", false);
 	//
 	//
-	for (var i = 0; i < 16; ++i)
+	for (var i = 0; i < 26; ++i)
 	{
 		$.Schedule( 0.7*i, function()
 						{

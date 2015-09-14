@@ -66,7 +66,7 @@ function OnHintGet(dat)
 	//$.GetContextPanel().SetHasClass( "hint_active", false );
 	//$.GetContextPanel().SetHasClass( "round_start", false );
 	var delay;
-	for (var i = 0; i < 10; ++i)
+	for (var i = 0; i < 18; ++i)
 	{
 		$.Schedule( 1.*i, function() 
 						{
