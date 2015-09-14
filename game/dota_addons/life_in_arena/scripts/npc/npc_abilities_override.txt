@@ -4482,6 +4482,91 @@
 	
 	}
 	
+	"16_wave_slow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+		"AbilityManaCost"				"100"
+		
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_phantom_lancer/phantomlancer_spiritlance_target.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+		}
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"attack_slow"					"-25"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movespeed_slow_pct"	"-50"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"hero_duration"						"10"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"20"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_Visage.GraveChill.Cast"
+				"Target"			"TARGET"
+			}
+				
+			"ApplyModifier"
+			{
+				"Target"			"TARGET"
+				"ModifierName"		"modifier_16_wave_slow"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_16_wave_slow"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"EffectName"			"particles/units/heroes/hero_phantom_lancer/phantomlancer_spiritlance_target.vpcf"
+				"EffectAttachType"		"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
+				}
+			}
+		}
+	}
+	
+	
 	"17_wave_purge"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -4701,6 +4786,12 @@
 		"AbilityCooldown"				"15"
 		"AbilityManaCost"				"200"
 	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
+			"model"			"models/props_gameplay/frog.vmdl"
+		}
 		"AbilitySpecial"
 		{
 			"01"
