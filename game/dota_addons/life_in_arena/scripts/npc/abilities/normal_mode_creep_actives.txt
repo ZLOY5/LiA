@@ -1679,3 +1679,204 @@
 		}
 	}
 }
+
+"19_wave_polymorph"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"human_polymorph"
+	"MaxLevel" 						"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC" //Level 5 or below
+	"AbilityCastPoint"				"0.1"
+	"AbilityCastRange"				"500"
+	"AbilityCooldown"				"15"
+	"AbilityManaCost"				"200"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"6"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movespeed"				"100"
+		}
+	}
+
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"abilities/Polymorph.lua"
+			"Function"		"PolymorphLevelCheck"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		// Replace for sheep sounds
+		"FireSound"
+		{
+			"EffectName"	"Hero_Lion.Voodoo"
+			"Target"		"TARGET"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Lion.Hex.Target"
+			"Target"		"TARGET"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"		"particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Target"			"TARGET"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_hex"
+			"Target"		"TARGET"
+			"Duration"		"%duration"
+		}
+	}	
+
+	"Modifiers"
+	{
+		"modifier_hex"
+		{
+			"IsDebuff"	"1"
+			"Duration"	"%duration"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"abilities/Polymorph.lua"
+					"Function"		"voodoo_start"
+					"Function"			"HideWearables"
+					"model"			"models/props_gameplay/frog.vmdl"	//sheep
+				}
+
+				//"RunScript"
+				//{
+				//	"ScriptFile"		"abilities/Polymorph.lua"
+				//	"Function"			"HideWearables"
+				//}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"abilities/Polymorph.lua"
+					"Function"		"voodoo_end"
+					"Function"		"ShowWearables"
+				}
+
+			//	"RunScript"
+			//	{
+			//		"ScriptFile"	"abilities/Polymorph.lua"
+			//		"Function"		"ShowWearables"
+			//	}
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"		"%movespeed"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_HEXED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_EVADE_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_BLOCK_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}
+
+"19_wave_faerie_fire"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"nightelf_faerie_fire"
+	"MaxLevel"					"1"
+		
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+		
+	"AbilityCastRange"			"700"
+	"AbilityCastPoint"			"0"
+	"AbilityCooldown"			"1"
+	"AbilityManaCost"			"100"
+		
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"duration"			"90"
+		}
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"hero_duration"		"45"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"armor_reduction"	"-4"
+		}
+	}
+
+	"precache"
+	{
+		"particle"  "particles/faerie_fire.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"abilities/FaerieFire.lua"
+			"Function"		"ApplyFaerieFire"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_faerie_fire"
+		{
+			"IsDebuff"			"1"
+			"IsPurgable"		"1"
+	
+			"EffectName"		"particles/faerie_fire.vpcf"
+			"EffectAttachType"	"follow_overhead"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor_reduction"
+			}
+
+			"ThinkInterval"  "0.5"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"abilities/FaerieFire.lua"
+					"Function"		"FaerieFireVision"
+				}
+			}
+		}
+	}
+}
