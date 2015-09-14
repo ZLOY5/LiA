@@ -175,7 +175,18 @@ function OnUpdActionEnd( data )
 	}
 	$.Msg( "                  OnUpdAction:teamPanel ", teamPanel );
 	*/
-	
+	var winningTeamId = Game.GetGameWinner();
+	//$.Msg( "                  winningTeamId ", winningTeamId );
+	var endScreenVictory = $( "#EndScreenVictory" );
+	if (winningTeamId === 3)
+	{
+		endScreenVictory.text = $.Localize( "#end_screen_lose" ) ;	
+	}
+	else
+	{
+		endScreenVictory.text = $.Localize( "#end_screen_victory" ) ;	
+		
+	}
 	
 	//var teamInfoList = ScoreboardUpdater_GetSortedTeamInfoList( endScoreboardHandle );
 	var delay = 0.5;
@@ -193,7 +204,7 @@ function OnUpdActionEnd( data )
 		//delay += delay_per_panel;
 	}
 	
-	var winningTeamId = Game.GetGameWinner();
+	/*var winningTeamId = Game.GetGameWinner();
 	var winningTeamDetails = Game.GetTeamDetails( winningTeamId );
 	var endScreenVictory = $( "#EndScreenVictory" );
 	if ( endScreenVictory )
@@ -204,9 +215,9 @@ function OnUpdActionEnd( data )
 		{
 			/*var teamColor = GameUI.CustomUIConfig().team_colors[ winningTeamId ];
 			teamColor = teamColor.replace( ";", "" );
-			endScreenVictory.style.color = teamColor + ";";*/
+			endScreenVictory.style.color = teamColor + ";";
 		}
-	}
+	}*/
 	//
 	//#LiaAllScore
 	var endScreenAllScore = $( "#StatusScore" );

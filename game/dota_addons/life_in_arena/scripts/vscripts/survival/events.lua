@@ -168,7 +168,10 @@ function Survival:OnPlayerChat(event)
         --onPlayerReadyToWave(player) --LiA_ForceRound.lua
     end
 	]]
-	
+	--[[if event.text == "win" then
+		Survival:EndGame(DOTA_TEAM_GOODGUYS)
+		--Survival:EndGame(DOTA_TEAM_BADGUYS)
+	end]]
 	
 	
 end

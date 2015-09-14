@@ -2914,7 +2914,7 @@
 	  "AbilityCastRange"        "800"
 	  "AbilityCastPoint"        "0.1"
 	  "AoERadius"               "300"
-	  "AbilityCastAnimation" 	"ACT_DOTA_ATTACK"
+	  "AbilityCastAnimation" 	"ACT_DOTA_CAST_ABILITY_1"
 	  //"AbilityCastAnimation"   		"ACT_DOTA_CHANNEL_ABILITY_1"
 	  "AnimationPlaybackRate"  "0.05"  
 	
@@ -4538,10 +4538,10 @@
 				"Target"			"TARGET"
 			}
 				
-			"ApplyModifier"
+			"RunScript"
 			{
-				"Target"			"TARGET"
-				"ModifierName"		"modifier_16_wave_slow"
+				"ScriptFile"	"abilities/GhostSlow.lua"
+				"Function"		"Slow"
 			}
 		}
 		
