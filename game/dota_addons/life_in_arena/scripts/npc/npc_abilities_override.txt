@@ -2900,6 +2900,178 @@
 		}	
 	}
 	
+	
+	
+	"5_megaboss_firestorm"
+	{
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" // 
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	  
+	  "AbilityCastRange"        "800"
+	  "AbilityCastPoint"        "0.1"
+	  "AoERadius"               "300"
+	  "AbilityCastAnimation" 	"ACT_DOTA_ATTACK"
+	  //"AbilityCastAnimation"   		"ACT_DOTA_CHANNEL_ABILITY_1"
+	  "AnimationPlaybackRate"  "0.05"  
+	
+	  "AbilityTextureName"      "warlock_firestorm_datadriven"
+	  
+	  
+	  "AbilityCooldown"       "16"
+	
+	  "AbilityManaCost"       "200"
+	  
+	  "AbilityChannelTime"      "3"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "radius"          "300"
+	    }   
+	    "02"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "wave_count"          "2"
+	    }
+	    "03"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "wave_damage"         "200"
+	    }
+	    "04"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "wave_interval"         "1.0"
+	    }
+	    "05"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "burn_damage"         "100"
+	    }
+	    "06"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "burn_interval"         "1.0"
+	    }
+	    "07"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "burn_duration"         "3.0"
+	    }
+	    "08"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "wave_num_exp"          "6"
+	    }
+	    "09"
+	    {
+	      "var_type"            "FIELD_INTEGER"
+	      "exp_radius"          "150"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "particle"        "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+	    "particle"        "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
+		"particle"			"particles/dark_smoke_test.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	  		"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+	      "ModifierName"    "modifier_warlock_firestorm_datadriven"
+	    }
+	
+	
+	                "RunScript"
+	                {
+	                  "ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                        "Function"  "firestormWave_castpoint"
+	      "EventName" "OnSpellStart"
+	      "Target" "POINT"
+	    }
+	  }
+	  
+	  "OnChannelFinish"
+	  {
+	    "RemoveModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_warlock_firestorm_datadriven"
+	    }
+	    
+	  }
+	
+	
+	  "Modifiers"
+	  {
+	    "modifier_warlock_firestorm_datadriven"
+	    {
+	      "IsPurgable"      "0"
+	      "IsHidden"        "1"
+	      //"OverrideAnimation"   "ACT_DOTA_IDLE"
+			//"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
+			//"EffectAttachType"	"follow_origin"
+	
+	      "Duration"        "%wave_count*%wave_interval"
+	      "Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	      "ThinkInterval"  "%wave_interval"
+	
+	      "OnIntervalThink"
+	      {
+	
+	                          "RunScript"
+	                                {
+	                                  "ScriptFile"    "units/Megaboss5Firestorm.lua"
+	                                  "Function"  "firestormWave_order"
+	          "wave_num_exp" "%wave_num_exp"
+	        }
+	      }
+	    }
+	
+	    "modifier_warlock_firestorm_burn"
+	    {
+	      "IsDebuff"      "1"
+	      "IsPurgable"      "1"
+	      "IsHidden"        "0"
+	
+	      "Duration"        "%burn_duration"
+	
+	      "ThinkInterval"  "%burn_interval"
+	         
+	      "OnIntervalThink"
+	      {
+	
+	        "Damage"
+	        {
+	          "Type" "DAMAGE_TYPE_MAGICAL"
+	          "Target"  "TARGET"
+	          "Damage" "%burn_damage"
+	        }
+	
+	      } 
+	          "EffectName"        "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
+	          "EffectAttachType"  "follow_origin"   
+	    }
+	  }
+	
+	
+	}
+	
+	
 	"5_megaboss_stomp"
 	{
 		// General
