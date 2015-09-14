@@ -16,13 +16,17 @@ function LifeDrainFirstInstance(event)
 	if modifier then
 		modifier:SetStackCount(0)
 	end
-
+	local sound_count = 0
 	for _,v in pairs(targets) do
 		local particle = ParticleManager:CreateParticle(blood_particle, PATTACH_POINT_FOLLOW, target) 
 		ParticleManager:SetParticleControlEnt(particle, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true) 
 		ParticleManager:SetParticleControlEnt(particle, 1, v, PATTACH_POINT_FOLLOW, "attach_hitloc", v:GetAbsOrigin(), true)
 		ApplyDamage({ victim = v, attacker = caster, damage = life_drain_damage, damage_type = DAMAGE_TYPE_PURE, ability = ability })
 		caster:Heal(life_drain_damage, caster)	
+		sound_count = sound_count + 1
+	end
+	if sound_count > 0 then
+		caster:EmitSound("Hero_Bloodseeker.Rupture")
 	end
 end
 
@@ -32,12 +36,16 @@ function LifeDrain(event)
 	local target = event.target
 	local targets = event.target_entities
 	local blood_particle = "particles/units/heroes/hero_undying/undying_soul_rip_damage.vpcf"
-
+	local sound_count = 0
 	for _,v in pairs(targets) do
 		local particle = ParticleManager:CreateParticle(blood_particle, PATTACH_POINT_FOLLOW, target) 
 		ParticleManager:SetParticleControlEnt(particle, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true) 
 		ParticleManager:SetParticleControlEnt(particle, 1, v, PATTACH_POINT_FOLLOW, "attach_hitloc", v:GetAbsOrigin(), true)
 		ApplyDamage({ victim = v, attacker = caster, damage = life_drain_damage, damage_type = DAMAGE_TYPE_PURE, ability = ability })
 		caster:Heal(life_drain_damage, caster)	
+		sound_count = sound_count + 1
+	end
+	if sound_count > 0 then
+		caster:EmitSound("Hero_Bloodseeker.Rupture")
 	end
 end

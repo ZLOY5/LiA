@@ -1495,7 +1495,7 @@
 "16_wave_mana_burn"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"nyx_assassin_mana_burn"
+	"AbilityTextureName"			"satyr_soulstealer_mana_burn"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -1566,8 +1566,7 @@
 "17_wave_purge"
 {
 	"BaseClass"					"ability_datadriven"
-	"AbilityTextureName"		"orc_purge"
-	"MaxLevel"					"1"
+	"AbilityTextureName"		"satyr_trickster_purge"
 		
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -1578,7 +1577,7 @@
 
 	"AbilityCastRange"			"700"
 	"AbilityCastPoint"			"0"
-	"AbilityCooldown"			"1"
+	"AbilityCooldown"			"12"
 	"AbilityManaCost"			"75"
 		
 	"AbilitySpecial"
@@ -1586,7 +1585,7 @@
 		"01"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"duration"		"15"
+			"duration"		"5"
 		}
 		"02"
 		{
@@ -1596,7 +1595,7 @@
 		"03"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"summoned_unit_damage"			"400"
+			"summoned_unit_damage"			"1000"
 		}
 		"04"
 		{
@@ -1625,7 +1624,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"units/orc/shaman.lua"
+			"ScriptFile"	"abilities/Purge.lua"
 			"Function"		"PurgeStart"
 		}
 	}
@@ -1642,7 +1641,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"units/orc/shaman.lua"
+					"ScriptFile"	"abilities/Purge.lua"
 					"Function"		"ApplyPurge"	
 				}
 			}
@@ -1673,7 +1672,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"units/orc/shaman.lua"
+					"ScriptFile"	"abilities/Purge.lua"
 					"Function"		"PurgeThink"
 				}
 			}
