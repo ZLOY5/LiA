@@ -2,10 +2,20 @@ function OnCreatedModifier(event)
 	local target = event.target
 	local modifier = target:FindModifierByNameAndCaster("modifier_item_lunar_necklace",event.caster)
 	
-	local agiAdd = target:GetAgility()*event.stat_percent*0.01
-	local strAdd = target:GetStrength()*event.stat_percent*0.01
-	local intAdd = target:GetIntellect()*event.stat_percent*0.01
-	
+	local agiAdd = target:GetBaseAgility()*event.stat_percent*0.01
+	local strAdd = target:GetBaseStrength()*event.stat_percent*0.01
+	local intAdd = target:GetBaseIntellect()*event.stat_percent*0.01
+
+	if agiAdd > event.stat_bonus_max then 
+		agiAdd = event.stat_bonus_max
+	end
+	if strAdd > event.stat_bonus_max then 
+		strAdd = event.stat_bonus_max
+	end
+	if intAdd > event.stat_bonus_max then 
+		intAdd = event.stat_bonus_max
+	end
+
 	target:ModifyAgility(agiAdd)
 	target:ModifyStrength(strAdd)
 	target:ModifyIntellect(intAdd)	

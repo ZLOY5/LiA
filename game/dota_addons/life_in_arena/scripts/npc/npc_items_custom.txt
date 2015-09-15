@@ -4758,9 +4758,10 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"items\LunarNecklace.lua"
-						"Function"		"OnCreatedModifier"
-						"stat_percent"	"%stat_percent"
+						"ScriptFile"		"items\LunarNecklace.lua"
+						"Function"			"OnCreatedModifier"
+						"stat_percent"		"%stat_percent"
+						"stat_bonus_max" 	"%stat_bonus_max"
 					}
 				}   
 			}
@@ -4796,6 +4797,11 @@
 			{
 				"var_type" "FIELD_INTEGER"
 				"bonus_magic_resist_percentage_active" "20"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"stat_bonus_max" "75"
 			}
 		}
 	}
