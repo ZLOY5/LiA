@@ -117,6 +117,7 @@ function Survival:GoldFilter(filterTable)
     if filterTable.reason_const == DOTA_ModifyGold_HeroKill or filterTable.reason_const == DOTA_ModifyGold_SharedGold then 
         return false 
     end
+    return true
 end
 
 function Survival:ExperienceFilter(filterTable)
