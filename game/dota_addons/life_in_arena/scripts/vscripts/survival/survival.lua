@@ -91,6 +91,7 @@ function Survival:InitSurvival()
     end
 
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
+    GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
@@ -105,14 +106,18 @@ function AIThink()
     --print("CleanAICasts")
     local nHeroesAlive = Survival.nHeroCount - Survival.nDeathHeroes
 
-    if nHeroesAlive <= 2 then 
-        Survival.AIMaxCreepCasts = 1
-    else 
-        Survival.AIMaxCreepCasts = 2
-    end
-    
+    Survival.AIMaxCreepCasts = math.ceil(nHeroesAlive/2)
+
     Survival.AICreepCasts = 0
     return 3
+end
+
+function Survival:GoldFilter(filterTable)
+    --PrintTable("GoldFilter",filterTable)
+    if filterTable.reason_const == DOTA_ModifyGold_HeroKill or filterTable.reason_const == DOTA_ModifyGold_SharedGold then 
+        return false 
+    end
+    return true
 end
 
 function Survival:ExperienceFilter(filterTable)
