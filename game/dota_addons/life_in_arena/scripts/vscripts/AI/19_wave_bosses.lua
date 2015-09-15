@@ -7,11 +7,11 @@ function Spawn(entityKeyValues)
 		return
 	end
 	
-	ABILITY_16_wave_mana_burn = thisEntity:FindAbilityByName("16_wave_mana_burn")
-	thisEntity:SetContextThink( "16_wave_think", Think16Wave , 0.1)
+	ABILITY_19_wave_polymorph = thisEntity:FindAbilityByName("19_wave_polymorph")
+	thisEntity:SetContextThink( "AIThink", AIThink , 0.1)
 end
 
-function Think16Wave()
+function AIThink()
 	if not thisEntity:IsAlive() then
 		return nil 
 	end
@@ -23,18 +23,24 @@ function Think16Wave()
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
 		
-	if ABILITY_16_wave_mana_burn:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
+	if ABILITY_19_wave_polymorph:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
 						  500, 
 						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
-						  DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-						  DOTA_UNIT_TARGET_FLAG_MANA_ONLY, 
+						  DOTA_UNIT_TARGET_HERO, 
+						  DOTA_UNIT_TARGET_FLAG_NONE, 
 						  FIND_ANY_ORDER, 
 						  false)
+		for k,target in pairs(targets) do 
+			if target:HasModifier("modifier_hex") then 
+				table.remove(targets,k)
+			end
+		end
 		if #targets ~= 0 then
-			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_16_wave_mana_burn, -1)
+			--print("cast")
+			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_19_wave_polymorph, -1)
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end	

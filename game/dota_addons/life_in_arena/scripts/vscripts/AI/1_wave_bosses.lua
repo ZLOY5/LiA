@@ -2,12 +2,12 @@ require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
+    thisEntity:SetHullRadius(32) 
 	if thisEntity:GetPlayerOwnerID() ~= -1 then
 		return
 	end
 	
 	ABILITY_1_wave_stomp = thisEntity:FindAbilityByName("1_wave_stomp")
-	thisEntity:SetHullRadius(32)
 	thisEntity:SetContextThink( "1_wave_think", Think1Wave , 0.1)
 
 end

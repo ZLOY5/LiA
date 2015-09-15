@@ -2,12 +2,12 @@ require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
+    thisEntity:SetHullRadius(32) 
 	if thisEntity:GetPlayerOwnerID() ~= -1 then
 		return
 	end
 	
 	ABILITY_13_wave_hurl_boulder = thisEntity:FindAbilityByName("13_wave_hurl_boulder")
-	thisEntity:SetHullRadius(32)
 	thisEntity:SetContextThink( "13_wave_think", Think13Wave , 0.1)
 end
 

@@ -12,7 +12,7 @@ function ApplyFaerieFire(event)
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_faerie_fire", {duration=duration})
 	target.faerie_fire_team = caster:GetTeamNumber() --If the druid dies, keep giving the vision
 
-	print("Apply faerie fire for "..duration)
+	--print("Apply faerie fire for "..duration)
 end
 
 -- Make vision every second (this is to prevent the vision staying if the modifier is purged)

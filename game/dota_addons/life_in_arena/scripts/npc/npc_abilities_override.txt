@@ -4780,7 +4780,7 @@
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC" //Level 5 or below
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO" //Level 5 or below
 		"AbilityCastPoint"				"0.1"
 		"AbilityCastRange"				"500"
 		"AbilityCooldown"				"15"
@@ -4803,15 +4803,6 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"movespeed"				"100"
-			}
-		}
-	
-		"OnAbilityPhaseStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"abilities/Polymorph.lua"
-				"Function"		"PolymorphLevelCheck"
 			}
 		}
 	
@@ -4858,15 +4849,15 @@
 					{
 						"ScriptFile"	"abilities/Polymorph.lua"
 						"Function"		"voodoo_start"
-						"Function"			"HideWearables"
+						//"Function"			"HideWearables"
 						"model"			"models/props_gameplay/frog.vmdl"	//sheep
 					}
 	
-					//"RunScript"
-					//{
-					//	"ScriptFile"		"abilities/Polymorph.lua"
-					//	"Function"			"HideWearables"
-					//}
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/Polymorph.lua"
+						"Function"			"HideWearables"
+					}
 				}
 	
 				"OnDestroy"
@@ -4875,14 +4866,14 @@
 					{
 						"ScriptFile"	"abilities/Polymorph.lua"
 						"Function"		"voodoo_end"
-						"Function"		"ShowWearables"
+						//"Function"		"ShowWearables"
 					}
 	
-				//	"RunScript"
-				//	{
-				//		"ScriptFile"	"abilities/Polymorph.lua"
-				//		"Function"		"ShowWearables"
-				//	}
+					"RunScript"
+					{
+						"ScriptFile"	"abilities/Polymorph.lua"
+						"Function"		"ShowWearables"
+					}
 				}
 	
 				"Properties"
@@ -4925,7 +4916,7 @@
 				"var_type"			"FIELD_INTEGER"
 				"duration"			"10"
 			}
-			"01"
+			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
 				"hero_duration"		"10"

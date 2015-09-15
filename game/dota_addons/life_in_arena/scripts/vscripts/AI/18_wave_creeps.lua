@@ -7,11 +7,11 @@ function Spawn(entityKeyValues)
 		return
 	end
 	
-	ABILITY_16_wave_mana_burn = thisEntity:FindAbilityByName("16_wave_mana_burn")
-	thisEntity:SetContextThink( "16_wave_think", Think16Wave , 0.1)
+	ABILITY_18_wave_silence = thisEntity:FindAbilityByName("18_wave_silence")
+	thisEntity:SetContextThink( "AIThink", AIThink , 0.1)
 end
 
-function Think16Wave()
+function AIThink()
 	if not thisEntity:IsAlive() then
 		return nil 
 	end
@@ -21,9 +21,9 @@ function Think16Wave()
 	end
 
 	AICreepsAttackOneUnit({unit = thisEntity})
-	--print(Survival.AICreepCasts)
+	--print(LiA.AICreepCasts)
 		
-	if ABILITY_16_wave_mana_burn:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
+	if ABILITY_18_wave_silence:IsFullyCastable() and not thisEntity:IsStunned() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
@@ -33,11 +33,11 @@ function Think16Wave()
 						  DOTA_UNIT_TARGET_FLAG_MANA_ONLY, 
 						  FIND_ANY_ORDER, 
 						  false)
+		--print(#targets)
 		if #targets ~= 0 then
-			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_16_wave_mana_burn, -1)
+			thisEntity:CastAbilityNoTarget(ABILITY_18_wave_silence, -1)
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
-	end	
-	
+	end
 	return 2
 end
