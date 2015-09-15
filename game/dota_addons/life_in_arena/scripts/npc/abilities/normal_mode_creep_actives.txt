@@ -2313,7 +2313,10 @@
   // General
   //-------------------------------------------------------------------------------------------------------------
   "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  //"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
   "AbilityTextureName"      "sandking_epicenter"
   
 
@@ -2322,6 +2325,7 @@
   "AbilityCastPoint"      "0.2"
   "AbilityCooldown"       "20"
   "AbilityManaCost"       "150"
+  "AbilityCastRange"				"700"
 
   // Special
   //-------------------------------------------------------------------------------------------------------------
@@ -2330,7 +2334,7 @@
     "01"
     {
       "var_type"            "FIELD_INTEGER"
-      "radius"              "700"
+      "radius"              "300"
     }
     "02"
     {
@@ -2352,7 +2356,7 @@
       "EffectName"         "particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
       "EffectAttachType"   "follow_origin"
       "EffectRadius"       "%radius"
-      "Target"             "CASTER"
+      "Target"             "TARGET"
       "ControlPoints"
       {
         "01"  "%radius 0 %radius"
@@ -2362,7 +2366,7 @@
     {
       "Target"
       {
-        "Center"        "CASTER"
+        "Center"        "TARGET"
         "Radius"        "%radius"
         "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

@@ -27,7 +27,7 @@ function AIThink()
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
-						  500, 
+						  700, 
 						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
 						  DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
 						  DOTA_UNIT_TARGET_FLAG_MANA_ONLY, 
@@ -35,9 +35,22 @@ function AIThink()
 						  false)
 		--print(#targets)
 		if #targets ~= 0 then
-			thisEntity:CastAbilityNoTarget(ABILITY_18_wave_silence, -1)
-			Survival.AICreepCasts = Survival.AICreepCasts + 1
+			local targetTo = nil
+			for i=1,#targets do
+				if not targets[i]:HasModifier("18_wave_silence") then
+					targetTo = targets[i]
+				end
+			end
+			if targetTo ~= nil then
+				thisEntity:CastAbilityOnTarget(targetTo, ABILITY_18_wave_silence, -1)
+				Survival.AICreepCasts = Survival.AICreepCasts + 1
+			end
 		end
+		
+		--if #targets ~= 0 then
+		--	thisEntity:CastAbilityNoTarget(ABILITY_18_wave_silence, -1)
+		--	Survival.AICreepCasts = Survival.AICreepCasts + 1
+		--end
 	end
 	return 2
 end
