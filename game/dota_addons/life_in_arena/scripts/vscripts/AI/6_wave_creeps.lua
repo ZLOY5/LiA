@@ -7,7 +7,7 @@ function Spawn(entityKeyValues)
 		return
 	end
 	
-	ABILITY_18_wave_silence = thisEntity:FindAbilityByName("18_wave_silence")
+	ABILITY_6_wave_immolation = thisEntity:FindAbilityByName("6_wave_immolation")
 	thisEntity:SetContextThink( "AIThink", AIThink , 0.1)
 end
 
@@ -21,29 +21,27 @@ function AIThink()
 	end
 
 	AICreepsAttackOneUnit({unit = thisEntity})
-	--print(LiA.AICreepCasts)
-		
-	if ABILITY_18_wave_silence:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
-		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
+	--print(Survival.AICreepCasts)
+	local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
-						  700, 
+						  200, 
 						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
 						  DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-						  DOTA_UNIT_TARGET_FLAG_MANA_ONLY, 
+						  DOTA_UNIT_TARGET_FLAG_NONE, 
 						  FIND_ANY_ORDER, 
 						  false)
-		--print(#targets)
-		for k,unit in pairs(targets) do 
-			if unit:HasModifier("modifier_18_wave_silence") then 
-				table.remove(targets,k)
-			end 
-		end 
-		
-		if #targets ~= 0 then
-			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_18_wave_silence, -1)
+
+	local abilityToggleState = ABILITY_6_wave_immolation:GetToggleState()
+
+	if #targets > 0 then
+		if ABILITY_6_wave_immolation:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts and not abilityToggleState then
+			thisEntity:CastAbilityToggle(ABILITY_6_wave_immolation, -1)
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
-	end
+	elseif abilityToggleState then
+		thisEntity:CastAbilityToggle(ABILITY_6_wave_immolation, -1)
+	end	
+	
 	return 2
 end

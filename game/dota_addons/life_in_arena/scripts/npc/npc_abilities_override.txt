@@ -3180,6 +3180,98 @@
 		}
 	}
 	
+	"6_wave_immolation"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"AbilityTextureName"			"item_lia_fire_gloves"
+		"AoERadius"						"220"
+		"AbilityCastRange"				"220"
+		"AbilityManaCost"				"25"
+	
+		"precache"
+		{
+			"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+			"particle" "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_cost_per_second"	"25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"220"
+			}
+		}
+	
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_immolation"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_EmberSpirit.FlameGuard.Cast"
+				"Target"			"CASTER"
+			}
+		}
+	
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_immolation"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_immolation"
+			{		
+				"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+				"EffectAttachType"		"follow_origin"
+	
+				"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+	    			{
+				        "ScriptFile"    "abilities/6_wave_immolation.lua"
+				        "Function"      "Immolation"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	"6_wave_cripple"
 	{
 		// General
@@ -5012,7 +5104,7 @@
 	        "ApplyModifier"
 	        {
 	          "Target"        "TARGET"
-	          "ModifierName"  "18_wave_silence"
+	          "ModifierName"  "modifier_18_wave_silence"
 	        }
 	      }
 	    }   
@@ -5020,7 +5112,7 @@
 	
 	  "Modifiers"
 	  {
-	    "18_wave_silence"
+	    "modifier_18_wave_silence"
 	    {
 	      "IsDebuff"  "1"
 	      "Duration"  "%duration"
