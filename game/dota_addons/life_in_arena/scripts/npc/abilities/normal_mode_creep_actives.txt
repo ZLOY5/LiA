@@ -1673,9 +1673,9 @@
   "AbilityTextureName"    "elder_titan_ancestral_spirit"
   
    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-  	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
+  	//"MaxLevel"               "3"
+	//"RequiredLevel"          "5"
+	//"LevelsBetweenUpgrades"  "4"
 	
   // Casting
   //-------------------------------------------------------------------------------------------------------------
@@ -1683,7 +1683,7 @@
 
   // Time   
   //-------------------------------------------------------------------------------------------------------------
-  "AbilityCooldown"       "20"
+  "AbilityCooldown"       "10"
 
   // Cost
   //-------------------------------------------------------------------------------------------------------------
@@ -1726,7 +1726,7 @@
     "07"
     {
       "var_type"          "FIELD_FLOAT"
-      "invuln_duration"     "0.3"
+      "invuln_duration"     "0.5"
     }     
   }
   
@@ -1775,6 +1775,265 @@
     }
   }
 }
+
+"15_megaboss_astral"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"hermit_astral"
+
+	// Casting
+	//"MaxLevel"              "3"
+	//"RequiredLevel"          "2"
+	//"LevelsBetweenUpgrades"  "2"
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"800"
+	"AbilityCastPoint"				"0.0"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"20"
+	//"AbilityDuration"				"0.0 0.0 0.0"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"200"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"reduce_spell_damage_pct"	"-40"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"reduce_movement_speed"		"-100"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration_on_hero"			"8.0"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration_on_other"			"8.0"
+		}
+	}
+
+	"precache"
+	{
+		"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Pugna.Decrepify"
+			"Target" 		"TARGET"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_decrepify_hero"
+			"Target"		"TARGET"
+			"Duration"		"%duration_on_hero"
+		}
+		
+		//"RunScript"
+		//{
+		//	"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
+		//	"Function"      "addMod"
+		//}
+		
+		//"ApplyModifier"
+		//{
+		//	"ModifierName"	"modifier_decrepify_ally"
+		//	"Target"
+		//	{
+		//		"Center"	"TARGET"
+		//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		//	}
+		//	"Duration"		"%AbilityDuration"
+		//}
+	}
+
+	"Modifiers"
+	{
+		"modifier_decrepify_units_by_hero"
+		{
+			"Duration"		"%duration_on_other"
+			//
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
+					"Function"      "attackLanded"
+				}
+			}
+			//
+			//"OnDestroy"
+			//{
+			//	"RunScript"
+			//	{
+			//		"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
+			//		"Function"      "destr"
+			//	}
+			//}
+		}
+		
+		"modifier_decrepify_other"
+		{
+			"IsDebuff"			"1"
+			"Duration"			"%duration_on_other"
+	
+			"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
+				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+				//"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}			
+		}
+
+		"modifier_decrepify_hero"
+		{
+			"IsDebuff"			"1"
+			"Duration"			"%duration_on_hero"
+	
+			"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
+				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+				//"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}			
+		}
+	}
+	
+	
+}
+
+"15_megaboss_silence"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"               "ability_datadriven"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+  "AbilityTextureName"      "sandking_epicenter"
+  
+
+  // Stats
+  //-------------------------------------------------------------------------------------------------------------
+  
+  "AbilityCastPoint"      "0.2"
+  "AbilityCooldown"       "14"
+  "AbilityManaCost"       "200"
+	"AbilityCastRange"				"1000"
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "radius"              "800"
+    }
+    "02"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "duration"            "7"
+    }
+  }
+
+  "precache"
+  {
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+    "particle"  "particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+    "FireEffect"
+    {
+      "EffectName"         "particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
+      "EffectAttachType"   "follow_origin"
+      "EffectRadius"       "%radius"
+      "Target"             "TARGET"
+      "ControlPoints"
+      {
+        "01"  "%radius 0 %radius"
+      }
+    }
+    "ActOnTargets"
+    {
+      "Target"
+      {
+        "Center"        "TARGET"
+        "Radius"        "%radius"
+        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+      }
+
+      "Action"
+      {
+        "ApplyModifier"
+        {
+          "Target"        "TARGET"
+          "ModifierName"  "mod_15_megaboss_silence"
+        }
+      }
+    }   
+  }
+
+  "Modifiers"
+  {
+    "mod_15_megaboss_silence"
+    {
+      "IsDebuff"  "1"
+      "Duration"  "%duration"
+    
+      "EffectName"  "particles/generic_gameplay/generic_silenced.vpcf"
+      "EffectAttachType"	"follow_overhead"
+      "States"
+      {
+      	"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+		"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}
+
 
 "16_wave_mana_burn"
 {
@@ -2054,7 +2313,10 @@
   // General
   //-------------------------------------------------------------------------------------------------------------
   "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  //"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
   "AbilityTextureName"      "sandking_epicenter"
   
 
@@ -2063,6 +2325,7 @@
   "AbilityCastPoint"      "0.2"
   "AbilityCooldown"       "20"
   "AbilityManaCost"       "150"
+  "AbilityCastRange"				"700"
 
   // Special
   //-------------------------------------------------------------------------------------------------------------
@@ -2071,7 +2334,7 @@
     "01"
     {
       "var_type"            "FIELD_INTEGER"
-      "radius"              "700"
+      "radius"              "300"
     }
     "02"
     {
@@ -2093,7 +2356,7 @@
       "EffectName"         "particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
       "EffectAttachType"   "follow_origin"
       "EffectRadius"       "%radius"
-      "Target"             "CASTER"
+      "Target"             "TARGET"
       "ControlPoints"
       {
         "01"  "%radius 0 %radius"
@@ -2103,7 +2366,7 @@
     {
       "Target"
       {
-        "Center"        "CASTER"
+        "Center"        "TARGET"
         "Radius"        "%radius"
         "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"

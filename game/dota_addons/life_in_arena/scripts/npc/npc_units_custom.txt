@@ -13,6 +13,7 @@
 		"SoundSet"				"Hero_WarlockGolem"
 		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
 		"ModelScale" "1.2" 
+		"RingRadius"         "80"
 		"Level" "1" 
 	
 		"precache"
@@ -42,6 +43,7 @@
 	
 		//"ProjectileModel"			""			
 		//"ProjectileSpeed"			"0"
+		"BoundsHullName"        "DOTA_HULL_SIZE_HERO"
 	
 		"HealthBarOffset"			"260"
 	
@@ -78,6 +80,7 @@
 	"Model" "models/heroes/faceless_void/faceless_void.vmdl" 
 	"SoundSet" "Hero_FacelessVoid" 
 	"ModelScale" "1.8" 
+	"RingRadius"         "90"
 	"Level" "1" 
 	"precache"
 			{	
@@ -175,6 +178,7 @@
 	"AttackRange" "130" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
+	"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
 	
 	
 	
@@ -223,7 +227,8 @@
 	"BaseClass" "npc_dota_creature" 
 	"Model" "models/heroes/life_stealer/life_stealer.vmdl" 
 	"SoundSet" "Hero_Lifestealer" 
-	"ModelScale" "1.5" 
+	"ModelScale" "1.6" 
+	"RingRadius"         "105"
 	"Level" "1" 
 		"precache"
 			{
@@ -235,8 +240,8 @@
 	"Ability1" "true_sight" 
 	"Ability2" "15_megaboss_mana_break" 
 	"Ability3" "15_megaboss_illusions" 
-	"Ability4" "" 
-	"Ability5" "" 
+	"Ability4" "15_megaboss_astral" 
+	"Ability5" "15_megaboss_silence" 
 	"Ability6" "" 
 	"Ability7" "" 
 	"Ability8" "" 
@@ -250,13 +255,14 @@
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin" "2850" 
-	"AttackDamageMax" "2850" 
+	"AttackDamageMax" "2900" 
 	"AttackRate" "1.5" 
 	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "5000" 
-	"AttackRange" "128" 
+	"AttackAcquisitionRange" "2000" 
+	"AttackRange" "130" 
 	"ProjectileModel" "" 
 	"ProjectileSpeed" "" 
+	
 	
 	
 	
@@ -273,9 +279,9 @@
 	"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
 	
 	"StatusHealth" "30000" 
-	"StatusHealthRegen" "0" 
+	"StatusHealthRegen" "0.5" 
 	"StatusMana" "2500" 
-	"StatusManaRegen" "1" 
+	"StatusManaRegen" "1.25" 
 	
 	
 	
@@ -286,8 +292,8 @@
 	
 	
 	
-	"VisionDaytimeRange" "10000" 
-	"VisionNighttimeRange" "10000" 
+	"VisionDaytimeRange" "2000" 
+	"VisionNighttimeRange" "2000" 
 	
 	
 	
@@ -296,6 +302,35 @@
 	"Creature"
 		{
 			"DisableResistance"            "40.0"
+			"DefaultState"			"Invade"
+			"States"	
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"90.0" //cast offensive spells whenever
+					"Avoidance"			"0.0" //dont flee
+					"Support"			"0.0" //start buffing
+				}
+			}
+			
+			"OffensiveAbilities"
+			{
+				
+				"Ability1"
+				{
+					"Name"				"15_megaboss_silence"
+					"AOE"                "1"
+					"Radius"             "400"
+					"MinimumTargets"     "1"
+				}
+				
+				//"Ability2"
+				//{
+				//	"Name"				"15_megaboss_astral"
+				//}
+	
+			}
 		}
 	
 	"vscripts"	"AI\15_megaboss.lua"
@@ -312,6 +347,7 @@
 	"Model" "models/heroes/ursa/ursa.vmdl" 
 	"SoundSet" "Hero_Ursa" 
 	"ModelScale" "1.3" 
+	"RingRadius"         "90"
 	"Level" "1" 
 	
 	"precache"
@@ -359,7 +395,7 @@
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	"MovementSpeed" "350" 
 	"MovementTurnRate" "0.5" 
-	
+	"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
 	
 	
 	"StatusHealth" "5000" 
