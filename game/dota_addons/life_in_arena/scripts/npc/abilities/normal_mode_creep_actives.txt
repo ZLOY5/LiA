@@ -719,6 +719,81 @@
 	}
 }
 
+"6_wave_curse"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"			"necronomicon_warrior_sight"
+	
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"6"
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.0"
+	"AbilityManaCost"				"80"
+	
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_bane/bane_enfeeble.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_bane.vsndevts"
+	}
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"miss"			"40"
+		}
+		"03"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"10"
+		}
+	}
+	
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"		"Hero_Bane.Enfeeble"
+			"Target"			"TARGET"
+		}
+			
+		"ApplyModifier"
+		{
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_6_wave_curse"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_6_wave_curse"
+		{
+			"Duration"			"%duration"
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsBuff"			"0"
+			"IsDebuff"			"1"
+			"IsPurgable"		"1"
+			
+			"EffectName"			"particles/units/heroes/hero_bane/bane_enfeeble.vpcf"
+			"EffectAttachType"		"follow_overhead"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%miss"
+			}
+		}
+	}
+}
+
 "9_wave_frost_nova"
 {
 	"BaseClass"             		"ability_datadriven"
