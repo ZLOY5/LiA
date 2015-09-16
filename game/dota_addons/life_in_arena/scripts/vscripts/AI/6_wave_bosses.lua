@@ -29,21 +29,19 @@ function Think6Wave()
 						  nil, 
 						  700, 
 						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
-						  DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
+						  DOTA_UNIT_TARGET_HERO, 
 						  DOTA_UNIT_TARGET_FLAG_NONE, 
 						  FIND_ANY_ORDER, 
 						  false)
-		if #targets ~= 0 then
-			local targetTo = nil
-			for i=1,#targets do
-				if not targets[i]:HasModifier("modifier_6_wave_cripple") then
-					targetTo = targets[i]
-				end
-			end
-			if targetTo ~= nil then
-				thisEntity:CastAbilityOnTarget(targetTo, ABILITY_6_wave_cripple, -1)
-				Survival.AICreepCasts = Survival.AICreepCasts + 1
-			end
+
+		for k,unit in pairs(targets) do 
+			if unit:HasModifier("modifier_6_wave_cripple") then 
+				table.remove(targets,k) 
+			end 
+		end 
+		if #targets ~= 0 then 
+			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_6_wave_cripple, -1)
+			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end	
 	

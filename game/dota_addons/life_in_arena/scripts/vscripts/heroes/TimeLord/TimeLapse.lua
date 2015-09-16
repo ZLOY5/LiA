@@ -2,8 +2,7 @@ function TickLapse(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 
-	if not ability.coordinatTable or _G.TimeLapse_NeedClean then
-		_G.TimeLapse_NeedClean = false
+	if not ability.coordinatTable or ability.lastGameState ~= Survival.State then
 		ability.coordinatTable = {} 
 	end
 
@@ -15,6 +14,8 @@ function TickLapse(keys)
 	if #ability.coordinatTable == count_tick then
 		table.remove(ability.coordinatTable,1) -- удаляем первый элемент так, как он самый старый
 	end 
+
+	ability.lastGameState = Survival.State
 
 	table.insert(ability.coordinatTable,{caster:GetAbsOrigin(),caster:GetHealth(),caster:GetMana()}) -- в конец добавляем новый элемент 
 end
