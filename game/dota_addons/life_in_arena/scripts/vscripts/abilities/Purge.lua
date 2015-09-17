@@ -7,7 +7,7 @@ function PurgeStart( event )
 	local bRemoveDebuffs = false
 	
 	-- Note: I really need to make a filter for buildings...
-	if IsCustomBuilding(target) then
+	if target:IsBuilding() then
 		ability:RefundManaCost()
 		ability:EndCooldown()
 		return

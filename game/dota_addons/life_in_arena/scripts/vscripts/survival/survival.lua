@@ -31,6 +31,12 @@ require('survival/utils')
 
 ------------------------------------------------------------------------------------------------
 
+LinkLuaModifier( "modifier_16_wave_debuff", "survival/modifier_16_wave_debuff.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_17_wave_debuff", "survival/modifier_17_wave_debuff.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_18_wave_debuff", "survival/modifier_18_wave_debuff.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_19_wave_debuff", "survival/modifier_19_wave_debuff.lua", LUA_MODIFIER_MOTION_NONE)
+
+------------------------------------------------------------------------------------------------
 
 function Survival:InitSurvival()
     Survival = self
@@ -207,6 +213,11 @@ function Survival:EndRound()
     print("Survival:EndRound",self.nRoundNum)
     self.nDeathCreeps = 0
     self.nDeathHeroes = 0
+
+    Timers:RemoveTimer("lateWaveDebuffs")
+    DoWithAllHeroes(function(hero)
+        hero:RemoveModifierByName("modifier_"..self.nRoundNum.."_wave_debuff")
+    end)
     
     Timers:CreateTimer(1,function()
         CleanUnitsOnMap()
@@ -294,7 +305,7 @@ end
 --------------------------------------------------------------------------------------------------
 
 function Survival:_TeleportHeroesToBossArena()
-    local length = 50 * self.nHeroCount
+    local length = 70 * self.nHeroCount
     DoWithAllHeroes(function(hero)
         hero.abs = hero:GetAbsOrigin() 
         hero:Stop()
@@ -305,7 +316,7 @@ function Survival:_TeleportHeroesToBossArena()
         hero:GiveMana(9999)
         hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = 5})
     end) 
-    SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD) 
+    SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD+Vector(0,-100,0)) 
 end
 
 function Survival:_SpawnMegaboss()
@@ -390,6 +401,29 @@ function Survival:_SpawnWave()
             end
         end
     ) 
+
+    if self.nRoundNum >= 16 then 
+        Timers:CreateTimer("lateWaveDebuffs",
+            {
+                endTime = 1, 
+                callback = LateWaveDebuffs
+            }
+        )
+    end
+end
+
+function LateWaveDebuffs() 
+    local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 9999, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL-DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+    for _,unit in pairs(units) do 
+        if Survival.nRoundNum < 18 then 
+            if unit:IsRealHero() then 
+                unit:AddNewModifier(unit, nil, "modifier_"..Survival.nRoundNum.."_wave_debuff", nil)
+            end
+        else
+            unit:AddNewModifier(unit, nil, "modifier_"..Survival.nRoundNum.."_wave_debuff", nil)
+        end
+    end
+    return 1
 end
 
 function Survival:StartRound()

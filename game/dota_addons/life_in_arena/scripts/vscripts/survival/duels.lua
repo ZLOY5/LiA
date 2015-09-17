@@ -81,7 +81,7 @@ function Survival:Duel(hero1,hero2)
             PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_BADGUYS, 1)
             hero2:SetGold(gold, false)
 
-    		SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD)
+    		SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD+Vector(0,-100,0))
 
             local msg = { 
                             duel_number = self.DuelNumber,
