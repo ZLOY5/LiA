@@ -78,7 +78,7 @@ function Survival:Duel(hero1,hero2)
             if hero2:GetPlayerOwner() then
                 hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
             end
-            PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_BADGUYS)
+            PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_BADGUYS, 1)
             hero2:SetGold(gold, false)
 
     		SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD)
@@ -144,7 +144,7 @@ function Survival:EndDuel(winner,loser)
     if hero2:GetPlayerOwner() then
         hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_GOODGUYS)
     end
-    PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_GOODGUYS) 
+    PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_GOODGUYS, 1) 
 
     if winner ~= nil then 
         timerPopup:Stop()
