@@ -18,7 +18,7 @@ function Survival:OnPlayerPickHero(keys)
     self.nHeroCount = self.nHeroCount + 1
     
     player:SetTeam(DOTA_TEAM_GOODGUYS)
-    PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS)
+    PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS, 1)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
     
     if PlayerResource:HasRandomed(playerID) then
@@ -91,8 +91,10 @@ end
 
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
-    local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+    if keys.entindex_attacker then 
+        local attacker = EntIndexToHScript(keys.entindex_attacker)
+        local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+    end
     if killed:IsRealHero() then
         Survival:_OnHeroDeath(keys)
         return
@@ -114,7 +116,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        --self.nRoundNum = 18
+        self.nRoundNum = 15
         GameRules:SetPreGameTime(60)
         Survival:PrepareNextRound()
     end
@@ -123,35 +125,31 @@ end
 ---------------------------------------------------------------------------------------------------------------------------
 
 function Survival:OnConnectFull(event)
-    --[[Timers:CreateTimer(0.5,function()
+    Timers:CreateTimer(0.5,function()
         for playerID = 0,DOTA_MAX_PLAYERS-1 do
             if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
                 
-                if hero then
-                    if hero.hidden then
-                        Survival:UnhideHero(hero) --in utils.lua
-                    end
+                if hero and hero.hidden then
+                    Survival:UnhideHero(hero) --in utils.lua
                 end
             end
         end
-    end)]]
+    end)
 end
 
 function Survival:OnDisconnect(event)
-    --[[Timers:CreateTimer(0.5,function()
+    Timers:CreateTimer(0.5,function()
         for playerID = 0,DOTA_MAX_PLAYERS-1 do
             if PlayerResource:GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_CONNECTED then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
                 
-                if hero then
-                    if not hero.hidden then
-                        Survival:HideHero(hero) --in utils.lua
-                    end
+                if hero and not hero.hidden then
+                    Survival:HideHero(hero) --in utils.lua
                 end
             end
         end
-    end)]]
+    end)
 end
 
 ---------------------------------------------------------------------------------------------------------------------------

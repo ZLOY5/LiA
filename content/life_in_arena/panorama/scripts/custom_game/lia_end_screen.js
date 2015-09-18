@@ -223,6 +223,32 @@ function OnUpdActionEnd( data )
 	var endScreenAllScore = $( "#StatusScore" );
 	//endScreenVictory.SetDialogVariable( "winning_team_score", $.Localize( "#LiaAllScore" + allscore ) );
 	endScreenAllScore.text = $.Localize( "#LiaAllScore" ) + allscore.toFixed(0) ; 
+	//
+	var endScreenTime = $( "#StatusTime" );
+	var sec = Math.floor(Game.GetGameTime());
+	var min = Math.floor(sec/60);	sec = sec - min*60;
+	var hour = Math.floor(min/60);  min = min - hour*60;
+	var strokaSec = "";
+	var strokaMin = "";
+	var strokaHour = "";
+	if (hour<10)
+		strokaHour = "0" + hour
+	else
+		strokaHour = hour;
+	if (min<10)
+		strokaMin = "0" + min
+	else
+		strokaMin = min;
+	if (sec<10)
+		strokaSec = "0" + sec
+	else
+		strokaSec = sec;
+	//
+	if (hour !== 0)
+		endScreenTime.text = $.Localize( "#LiaTime" ) + strokaHour + ":" + strokaMin + ":" + strokaSec
+	else
+		endScreenTime.text = $.Localize( "#LiaTime" ) + strokaMin + ":" + strokaSec;
+	
 	/*var winningTeamLogo = $( "#WinningTeamLogo" );
 	if ( winningTeamLogo )
 	{
