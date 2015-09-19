@@ -38,15 +38,16 @@
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
-			m_flStartScale = 0.500000
+			m_flStartScale = 0.300000
+			m_flEndScale = 0.400000
 		},
 	]
 	m_Initializers =
 	[
 		{
 			_class = "C_INIT_RandomRadius"
-			m_flRadiusMax = 250.000000
-			m_flRadiusMin = 250.000000
+			m_flRadiusMax = 136.764000
+			m_flRadiusMin = 105.800000
 		},
 		{
 			_class = "C_INIT_RandomLifeTime"
@@ -72,10 +73,6 @@
 	]
 	m_Children =
 	[
-		{
-			m_flDelay = 0.150000
-			m_ChildRef = resource:"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_disk_ring.vpcf"
-		},
 		{
 			m_ChildRef = resource:"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_phantom_strike_disk_lines_end.vpcf"
 		},

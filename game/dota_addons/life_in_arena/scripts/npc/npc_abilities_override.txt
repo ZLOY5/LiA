@@ -8258,7 +8258,7 @@
 							"Radius" 	"%radius"
 							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
 						}
 					
 						"Action"    
@@ -8267,7 +8267,11 @@
 							{
 								"EffectName"        "particles/units/heroes/hero_pudge/pudge_dismember.vpcf"
 								"EffectAttachType"  "follow_origin"
-								"Target"            "TARGET"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+								}
 							}
 						}
 					}
@@ -16445,7 +16449,7 @@
 		"precache"
 		{
 			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
-			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact_drops_b_lv.vpcf"
+			"particle"			"particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf"
 			"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
 		}
 		
@@ -16508,6 +16512,31 @@
 							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 						"Damage"	"%bonus_damage"
+					}
+					"ActOnTargets"
+					{
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Radius" 	"%radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					
+						"Action"    
+						{
+							"FireEffect"
+							{
+								"EffectName"        "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf"
+								"EffectAttachType"  "follow_origin"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+								}
+							}
+						}
 					}
 				}
 			}
@@ -16731,7 +16760,7 @@
 				
 				"Properties"
 				{
-				"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"100"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"100"
 				}
 				
 				"EffectName" 		"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf" 	   
@@ -21588,13 +21617,17 @@
 							"Radius"	"%radius"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
 						}
 						"Action"
 						{
 							"Damage"
 							{
-								"Target"	"TARGET"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+								}
 								"Type" 		"DAMAGE_TYPE_PHYSICAL"
 								"Damage" 	"%bonus_damage"
 							}
@@ -21602,7 +21635,11 @@
 							{
 								"EffectName"		"particles/pa_arcana_phantom_strike_end_custom.vpcf"
 								"EffectAttachType"	"follow_origin"
-								"Target"			"TARGET"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+								}
 							}
 						}
 					}

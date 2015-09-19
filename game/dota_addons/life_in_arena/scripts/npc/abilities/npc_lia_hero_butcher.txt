@@ -86,7 +86,7 @@
 						"Radius" 	"%radius"
 						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
 					}
 				
 					"Action"    
@@ -95,7 +95,11 @@
 						{
 							"EffectName"        "particles/units/heroes/hero_pudge/pudge_dismember.vpcf"
 							"EffectAttachType"  "follow_origin"
-							"Target"            "TARGET"
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+							}
 						}
 					}
 				}
