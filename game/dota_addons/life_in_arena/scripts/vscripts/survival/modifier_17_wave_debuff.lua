@@ -1,5 +1,9 @@
 modifier_17_wave_debuff = class({})
 
+function modifier_17_wave_debuff:GetTexture() 
+	return "orns_presence"
+end
+
 function modifier_17_wave_debuff:IsDebuff()
 	return true 
 end
