@@ -24,6 +24,10 @@ function AIThink()
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
 
+	if thisEntity:IsStunned() then 
+		return 2 
+	end
+
 	if ABILITY_16_wave_slow:IsFullyCastable() then --в первую очередь босс кастует замедление
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 

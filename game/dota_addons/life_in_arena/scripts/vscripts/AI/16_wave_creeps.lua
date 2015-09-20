@@ -22,6 +22,10 @@ function Think16Wave()
 
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
+
+	if thisEntity:IsStunned() then 
+		return 2 
+	end
 		
 	if ABILITY_16_wave_mana_burn:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 

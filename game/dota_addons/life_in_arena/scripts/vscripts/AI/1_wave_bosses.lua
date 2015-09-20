@@ -23,6 +23,10 @@ function Think1Wave()
 
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
+
+	if thisEntity:IsStunned() then 
+		return 2 
+	end
 		
 	if ABILITY_1_wave_stomp:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 

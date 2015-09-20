@@ -20,6 +20,10 @@ function Think8Wave()
 		return 1
 	end
 
+	if thisEntity:IsStunned() then 
+		return 2 
+	end
+
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
 		

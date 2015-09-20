@@ -56,5 +56,6 @@ function modifier_19_wave_debuff:OnAbilityFullyCast(params)
 		--PrintTable("OnAbilityFullyCast",params)
 		if params.unit == self:GetCaster() then 
 			params.unit:ModifyHealth(self:GetParent():GetHealth()-300, nil, true, 0)
+		end
 	end 
 end

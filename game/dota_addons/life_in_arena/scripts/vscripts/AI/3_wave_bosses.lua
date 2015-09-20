@@ -22,6 +22,10 @@ function Think3Wave()
 
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
+
+	if thisEntity:IsStunned() then 
+		return 2 
+	end
 		
 	if ABILITY_3_wave_rejuvenation:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 		if thisEntity:GetHealthPercent() <= 50 then

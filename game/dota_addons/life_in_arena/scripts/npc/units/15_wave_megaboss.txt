@@ -80,35 +80,6 @@
 "Creature"
 	{
 		"DisableResistance"            "40.0"
-		"DefaultState"			"Invade"
-		"States"	
-		{
-			"Invade"
-			{
-				"Name"				"Invade"
-				"Aggression"		"90.0" //cast offensive spells whenever
-				"Avoidance"			"0.0" //dont flee
-				"Support"			"0.0" //start buffing
-			}
-		}
-		
-		"OffensiveAbilities"
-		{
-			
-			"Ability1"
-			{
-				"Name"				"15_megaboss_silence"
-				"AOE"                "1"
-				"Radius"             "400"
-				"MinimumTargets"     "1"
-			}
-			
-			//"Ability2"
-			//{
-			//	"Name"				"15_megaboss_astral"
-			//}
-
-		}
 	}
 
 "vscripts"	"AI\15_megaboss.lua"

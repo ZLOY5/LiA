@@ -13,9 +13,12 @@ function ThinkAllWave()
 	if not thisEntity:IsAlive() then
 		return nil 
 	end
+
 	if GameRules:IsGamePaused() then
 		return 1
 	end
+
 	AICreepsAttackOneUnit({unit = thisEntity})
+	
 	return 2
 end
