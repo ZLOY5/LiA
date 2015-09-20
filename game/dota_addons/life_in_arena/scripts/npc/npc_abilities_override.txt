@@ -8258,7 +8258,7 @@
 							"Radius" 	"%radius"
 							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 					
 						"Action"    
@@ -8270,7 +8270,7 @@
 								"Target"
 								{
 									"Center"	"TARGET"
-									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 								}
 							}
 						}
@@ -21457,6 +21457,7 @@
 	                "Radius"        "9999"
 	                "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	                "Types"         "DOTA_UNIT_TARGET_ALL"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	                "ExcludeTypes"  "DOTA_UNIT_TARGET_BUILDING"
 	            }
 	        }
@@ -21580,7 +21581,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName" 		"modifier_valkyrie_rage"
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"			"%AbilityDuration"
 			}
 			"FireEffect"
@@ -21598,6 +21603,8 @@
 				"Passive"               "0"
 				"IsHidden"				"0"
 	
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
@@ -21617,7 +21624,7 @@
 							"Radius"	"%radius"
 							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
 						"Action"
 						{
@@ -21638,7 +21645,7 @@
 								"Target"
 								{
 									"Center"	"TARGET"
-									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 								}
 							}
 						}
