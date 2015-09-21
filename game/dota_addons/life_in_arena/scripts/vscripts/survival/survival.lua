@@ -294,12 +294,12 @@ function Survival:PrepareNextRound()
     PrecacheUnitByNameAsync(bossName, function(...) end)
 
     for k,v in pairs(self.tProrogueHide) do --прячем героев ливеров
-        table.remove(k,self.tProrogueHide)
+        table.remove(self.tProrogueHide,k)
         self:HideHero(v)
     end
 
     for k,v in pairs(self.tProrogueUnhide) do
-        table.remove(k,self.tProrogueUnhide)
+        table.remove(self.tProrogueUnhide,k)
         self:UnhideHero(v)
     end
 end

@@ -53,7 +53,7 @@ function Think15Wave()
 						  false)
 		for k,target in pairs(targets) do 
 			if target:HasModifier("modifier_decrepify_hero") or target:HasModifier("mod_15_megaboss_silence") then
-				table.remove(k,targets)
+				table.remove(targets,k)
 			end
 		end
 		
