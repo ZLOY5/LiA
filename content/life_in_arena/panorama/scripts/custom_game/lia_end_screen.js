@@ -158,6 +158,10 @@ function OnUpdActionEnd( data )
 		
 	}
 	
+	//
+	allscore = allscore - data.barrelExplosions*75;
+	//
+	
 	/*var localPlayerTeamId = -1;
 	var localPlayer = Game.GetLocalPlayerInfo();
 	if ( localPlayer )
@@ -175,6 +179,9 @@ function OnUpdActionEnd( data )
 	}
 	$.Msg( "                  OnUpdAction:teamPanel ", teamPanel );
 	*/
+	var sec = Math.floor(Game.GetGameTime());
+	var extraForTime = 0;
+	//
 	var winningTeamId = Game.GetGameWinner();
 	//$.Msg( "                  winningTeamId ", winningTeamId );
 	var endScreenVictory = $( "#EndScreenVictory" );
@@ -185,9 +192,14 @@ function OnUpdActionEnd( data )
 	else
 	{
 		endScreenVictory.text = $.Localize( "#end_screen_victory" ) ;	
-		
+		if (3000-sec > 0)
+			extraForTime  = (3000 - sec) * 1;
+		if (extraForTime > 1500)
+			extraForTime = 1500;
 	}
-	
+	//
+	allscore = allscore + extraForTime;
+	//
 	//var teamInfoList = ScoreboardUpdater_GetSortedTeamInfoList( endScoreboardHandle );
 	var delay = 0.5;
 	//var delay_per_panel = 1; // / teamInfoList.length;
@@ -225,7 +237,7 @@ function OnUpdActionEnd( data )
 	endScreenAllScore.text = $.Localize( "#LiaAllScore" ) + allscore.toFixed(0) ; 
 	//
 	var endScreenTime = $( "#StatusTime" );
-	var sec = Math.floor(Game.GetGameTime());
+	//
 	var min = Math.floor(sec/60);	sec = sec - min*60;
 	var hour = Math.floor(min/60);  min = min - hour*60;
 	var strokaSec = "";

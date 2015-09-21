@@ -68,6 +68,7 @@ function Survival:InitSurvival()
     self.flLightGoldMultiplier = 0.8
 
     self.nEqualGoldPool = 0
+	self.barrelExplosions = 0
     
 	self.nPreRoundTime = 60
 	self.nPreDuelTime = 30
@@ -569,9 +570,7 @@ function Survival:GetDataForSend()
             Deaths = tDeaths,
             Rating = tRating,
 			PercUlu = tPercUlu,
-            --da = 1,
-            --teamId = localPlayerTeamId,
-            --hero_id = hero:GetClassname()
+            barrelExplosions = self.barrelExplosions,
         }
     return data
 end
