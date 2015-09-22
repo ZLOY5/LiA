@@ -81,6 +81,12 @@ function Survival:_OnBossDeath(keys)
         if attacker:GetPlayerOwner() then
             PopupNumbers(attacker:GetPlayerOwner() ,killed, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
         end
+		--send to all players info about kill boss
+		local data = 
+		{
+			Pid = attacker:GetPlayerOwnerID(),
+		}
+		CustomGameEventManager:Send_ServerToAllClients( "upd_action_killboss", data )
     end
 
     self.nDeathCreeps = self.nDeathCreeps + 1
@@ -170,6 +176,14 @@ function Survival:OnPlayerChat(event)
 	--[[if event.text == "win" then
 		Survival:EndGame(DOTA_TEAM_GOODGUYS)
 		--Survival:EndGame(DOTA_TEAM_BADGUYS)
+	end]]
+	
+	--[[if event.text == "kill" then
+		local data = 
+		{
+			Pid = player:GetAssignedHero():GetPlayerOwnerID(),
+		}
+		CustomGameEventManager:Send_ServerToAllClients( "upd_action_killboss", data )
 	end]]
 	
 	

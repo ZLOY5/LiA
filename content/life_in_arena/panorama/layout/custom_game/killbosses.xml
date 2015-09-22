@@ -1,0 +1,23 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	<!-- <include src="file://{resources}/styles/dotastyles.css" />	class="TitleFont"				 -->
+    <include src="file://{resources}/styles/custom_game/killbosses.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/killbosses.js" /> 
+  </scripts>
+  <Panel hittest="false" class="KillsHud">
+	<Panel hittest="false" id="LiaKillBoss2" text="dwqwewq">
+		<Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect" />
+		<Label hittest="false" id="LiaKillBoss_Text"  text=" " />	 	
+		<Label hittest="false" id="LiaKillBoss_Text2" text=" " />		
+	</Panel>
+	
+	<Panel hittest="false" id="LiaKillBoss1" text="dwqwewq">
+		<Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect" />
+		<Label hittest="false" id="LiaKillBoss_Text" text=" " />		
+		<Label hittest="false" id="LiaKillBoss_Text2"  text=" " />		
+	</Panel>
+  </Panel>
+</root>
