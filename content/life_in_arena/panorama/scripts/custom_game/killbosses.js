@@ -8,13 +8,11 @@ var curr_time_tick;
 var idHideInProcess1 = -1;
 var idHideInProcess2 = -1;
 
-
+var playerColor = [ "#3455FF","#3DD296","#8C2AF4","#F3C909","#FF6C00","#C54DA8","#C7E40D","#1BC0D8"]
 
 function OnHintKillBoss(data)
 {
-var arrayR = [ 52, 61, 140, 243, 255, 197, 199, 27 ];
-var arrayG = [ 85, 210, 42, 201, 108, 77, 228, 192 ];
-var arrayB = [ 255, 150, 244, 9, 0, 168, 13, 216 ];
+
 
 	var del = 12;
 	var del2 = 0;
@@ -22,22 +20,23 @@ var arrayB = [ 255, 150, 244, 9, 0, 168, 13, 216 ];
 	var playerPortrait;
 	var textCont;
 	var textCont2;
-	var colorStr;
 	// replace curr note in up
 	if (curr_data)
 	{
-		//
 		$.GetContextPanel().SetHasClass( "kill_start2", true );
-		playerInfo = Game.GetPlayerInfo( curr_data.Pid );
+		
+		playerInfo = Game.GetPlayerInfo( curr_data.pID );
+		
 		playerPortrait = $( "#LiaKillBoss2" ).FindChildInLayoutFile( "HeroIcon" );
-		playerPortrait.SetImage( "file://{images}/heroes/" + playerInfo.player_selected_hero + ".png" );
+		playerPortrait.heroname = playerInfo.player_selected_hero;
+
 		textCont = $( "#LiaKillBoss2" ).FindChildInLayoutFile( "LiaKillBoss_Text" );
 		textCont.text = playerInfo.player_name; 
-		colorStr = "#" + arrayR[data.Pid].toString(16) + arrayG[data.Pid].toString(16) + arrayB[data.Pid].toString(16) + "ff";
-		textCont.style.color = colorStr;//color;
-		textCont2 = $( "#LiaKillBoss2" ).FindChildInLayoutFile( "LiaKillBoss_Text2" );
-		textCont2.text = $.Localize( "#LiaKillBoss" ); 
-		//
+		textCont.style.color = playerColor[curr_data.pID];
+
+		//textCont2 = $( "#LiaKillBoss2" ).FindChildInLayoutFile( "LiaKillBoss_Text2" );
+		//textCont2.text = $.Localize( "#LiaKillBoss" ); 
+		
 		del2 = del -(Game.Time()-curr_time_tick);
 		if (del2 < 0)
 			del2 = 0;
@@ -51,22 +50,18 @@ var arrayB = [ 255, 150, 244, 9, 0, 168, 13, 216 ];
 	//
 	//
 	$.GetContextPanel().SetHasClass( "kill_start1", true );
-	//
-	playerInfo = Game.GetPlayerInfo( data.Pid );
+	
+	playerInfo = Game.GetPlayerInfo( data.pID );
+	
 	playerPortrait = $( "#LiaKillBoss1" ).FindChildInLayoutFile( "HeroIcon" );
-	playerPortrait.SetImage( "file://{images}/heroes/" + playerInfo.player_selected_hero + ".png" );
+	playerPortrait.heroname = playerInfo.player_selected_hero;
+	
 	textCont = $( "#LiaKillBoss1" ).FindChildInLayoutFile( "LiaKillBoss_Text" );
-	//$.Msg( "		textCont = ", textCont);
-	/*var color = Players.GetPlayerColor( data.Pid ); 
-	var r = Math.floor(color % 0x100);
-	var g = Math.floor((color % 0x10000) / 0x100);
-	var b = Math.floor((color % 0x1000000) / 0x10000);*/
-	colorStr = "#" + arrayR[data.Pid].toString(16) + arrayG[data.Pid].toString(16) + arrayB[data.Pid].toString(16) + "ff";
-	textCont.style.color = colorStr;//color;
-	//$.Msg( "		colorStr = ", colorStr);
 	textCont.text = playerInfo.player_name;
-	textCont2 = $( "#LiaKillBoss1" ).FindChildInLayoutFile( "LiaKillBoss_Text2" );
-	textCont2.text = $.Localize( "#LiaKillBoss" ); 
+	textCont.style.color = playerColor[curr_data.pID];
+	
+	//textCont2 = $( "#LiaKillBoss1" ).FindChildInLayoutFile( "LiaKillBoss_Text2" );
+	//textCont2.text = $.Localize( "#LiaKillBoss" ); 
 	
 	//
 	idHideInProcess1 = idHideInProcess1 +1;
