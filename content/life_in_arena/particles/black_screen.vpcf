@@ -126,6 +126,16 @@
 			_class = "C_OP_AlphaDecay"
 			m_flMinAlpha = 0.050000
 			m_nOpEndCapState = 1
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flStartAlpha = 0.000000
+			m_flEndAlpha = 1.000000
+			m_nOpEndCapState = 0
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
 		},
 	]
 	m_Initializers =
@@ -148,4 +158,5 @@
 			m_nParticlesToEmit = 48
 		},
 	]
+	m_flConstantLifespan = 2.000000
 }

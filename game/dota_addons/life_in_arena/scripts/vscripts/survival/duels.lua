@@ -53,7 +53,7 @@ function Survival:CheckDuel()
 end
 
 function Survival:Duel(hero1,hero2)
-    --тут будет эффект затемнения
+    ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, hero1)
 	 Timers:CreateTimer(0.5,
     	function()
             hero1.abs = hero1:GetAbsOrigin()

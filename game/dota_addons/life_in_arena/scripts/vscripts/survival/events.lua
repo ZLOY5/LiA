@@ -176,23 +176,9 @@ function Survival:OnPlayerChat(event)
         onPlayerReadyToWave(player) --LiA_ForceRound.lua
     end
 	
-    --[[if event.text == "lumber" then
-		player:GetAssignedHero().lumber = 1000
-        --onPlayerReadyToWave(player) --LiA_ForceRound.lua
+    if event.text == "fade" then
+        ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
     end
-	]]
-	--[[if event.text == "win" then
-		Survival:EndGame(DOTA_TEAM_GOODGUYS)
-		--Survival:EndGame(DOTA_TEAM_BADGUYS)
-	end]]
-	
-	--[[if event.text == "kill" then
-		local data = 
-		{
-			Pid = player:GetAssignedHero():GetPlayerOwnerID(),
-		}
-		CustomGameEventManager:Send_ServerToAllClients( "upd_action_killboss", data )
-	end]]
 	
 	
 end
