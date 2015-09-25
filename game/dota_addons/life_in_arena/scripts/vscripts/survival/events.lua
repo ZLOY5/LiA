@@ -131,6 +131,12 @@ function Survival:OnConnectFull(event)
         for playerID = 0,DOTA_MAX_PLAYERS-1 do
             if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+                for k,v in pairs(self.tProrogueHide) do --если герой должен был быть спрятан позже, то отменяем это
+                    if v == hero then
+                        table.remove(self.tProrogueHide,k)
+                    end
+                end
                 
                 if hero and hero.hidden then
                     Survival:UnhideHero(hero) --in utils.lua
@@ -145,6 +151,12 @@ function Survival:OnDisconnect(event)
         for playerID = 0,DOTA_MAX_PLAYERS-1 do
             if PlayerResource:GetConnectionState(playerID) ~= DOTA_CONNECTION_STATE_CONNECTED then
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+                for k,v in pairs(self.tProrogueUnhide) do --если герой должен был быть спрятан позже, то отменяем это
+                    if v == hero then
+                        table.remove(self.tProrogueUnhide,k)
+                    end
+                end
                 
                 if hero and not hero.hidden then
                     Survival:HideHero(hero) --in utils.lua
