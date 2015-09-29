@@ -53,7 +53,7 @@ function Survival:InitSurvival()
 	self.nWaveSpawnCount = {20,26,32,38,44,50,56,62,68,74}   --крипов на спавн
 	self.nWaveMaxCount = {42,54,66,78,90,102,114,126,138,150}
 
-	self.nGoldPerWave = {12,12,12,12,12,15,15,18,18,18,18,21,24,24,27,27,30,30,30}
+	self.nGoldPerWave = {12,12,12,12,12,15,15,18,18,18,18,18,21,24,24,27,27,30,30}
 
     self.flExpFix = {0.8, 0.9, 1., 1.1, 1.2, 1.3, 1.4, 1.5}
     
@@ -99,6 +99,7 @@ function Survival:InitSurvival()
 
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
     GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
+    --GameMode:SetDamageFilter(Dynamic_Wrap(Survival, "DamageFilter"), self)
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
@@ -117,6 +118,11 @@ function AIThink()
 
     Survival.AICreepCasts = 0
     return 3
+end
+
+function Survival:DamageFilter(filterTable)
+    --PrintTable("DamageFilter",filterTable)
+    return true
 end
 
 function Survival:GoldFilter(filterTable)
