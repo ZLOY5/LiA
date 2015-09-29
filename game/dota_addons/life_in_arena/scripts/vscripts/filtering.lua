@@ -1,6 +1,5 @@
 
 -- cr. MNoya
-require('LiA')
 
 ATTACK_TYPES = {
 	["DOTA_COMBAT_CLASS_ATTACK_BASIC"] = "normal",
