@@ -49,6 +49,8 @@ end
 
 ------------------------------------------------------------------------------
 
+require('filtering')
+
 function LiA:InitGameMode()
     LiA = self
 
@@ -66,6 +68,7 @@ function LiA:InitGameMode()
 	GameRules:SetGoldPerTick(1)
 	GameRules:SetHeroMinimapIconScale(0.8)
     GameRules:SetCreepMinimapIconScale(0.8)
+	GameRules:SetRuneMinimapIconScale( 0.6 )
     GameRules:SetFirstBloodActive(false)
 	-- BUG valve: true work as false or not?
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
@@ -109,6 +112,7 @@ function LiA:InitGameMode()
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
     ListenToGameEvent('npc_spawned', Dynamic_Wrap(LiA, 'OnNPCSpawned'), self)
+	GameMode:SetDamageFilter( Dynamic_Wrap( LiA, "FilterDamage" ), self )
 	
 	--upgrades
 	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
@@ -118,6 +122,7 @@ function LiA:InitGameMode()
 
     trigger_shop = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
     
+	GameRules.UnitKV = LoadKeyValues("scripts/npc/npc_units_custom.txt")
     --InitLogFile("log/LiA.txt","Init LiA")
 end
 

@@ -50,8 +50,8 @@ function Survival:InitSurvival()
     self.nHeroCount = 0
 	self.nDeathHeroes = 0
 	self.nDeathCreeps = 0
-	self.nWaveSpawnCount = {20,26,32,38,44,50,56,62,68,74}   --крипов на спавн
-	self.nWaveMaxCount = {42,54,66,78,90,102,114,126,138,150}
+	self.nWaveSpawnCount = {20,26,32,38,44,50,56,62}   --крипов на спавн
+	self.nWaveMaxCount = {42,54,66,78,90,102,114,126}
 
 	self.nGoldPerWave = {12,12,12,12,12,15,15,18,18,18,18,18,21,24,24,27,27,30,30}
 
