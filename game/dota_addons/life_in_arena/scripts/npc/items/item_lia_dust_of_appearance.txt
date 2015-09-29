@@ -1,0 +1,47 @@
+"item_lia_dust_of_appearance"
+{
+    "BaseClass"                     "item_dust"
+    "ID"                            "1551"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"            "item_dust"
+    "AbilityCooldown"               "14"
+    "AbilitySharedCooldown"         "dust"
+    "AbilityManaCost"               "0"
+        
+    "Model"                         "models/props_gameplay/dust.vmdl"
+    "Effect"                        "particles/generic_gameplay/dropped_dust.vpcf"
+    
+    "ItemShareability"              "ITEM_FULLY_SHAREABLE"      
+    "ItemShopTags"                  "invis"
+    "ItemQuality"                   "common"
+    "ItemPermanent"                 "0"
+    "ItemStackable"                 "1"
+    "ItemKillable"                  "0"
+    "ItemSellable"                  "1"
+    "ItemDroppable"                 "1"
+    "ItemInitialCharges"            "3"
+    "ItemAlertable"                 "1" 
+
+    // Shops
+    "ItemCost"                      "45"
+
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "duration"              "8"
+        }
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "radius"                "1000"
+        }
+        "03"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "movespeed"             "0"
+        }
+    }
+}
