@@ -1,86 +1,73 @@
 "15_wave_megaboss" 
 {
+	"BaseClass" 		"npc_dota_creature" 
+	"Model" 			"models/heroes/life_stealer/life_stealer.vmdl" 
+	"SoundSet" 			"Hero_Lifestealer" 
+	"ModelScale" 		"1.6" 
+	"RingRadius"        "105"
+	"Level" "1" 
 
-
-"BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/life_stealer/life_stealer.vmdl" 
-"SoundSet" "Hero_Lifestealer" 
-"ModelScale" "1.6" 
-"RingRadius"         "105"
-"Level" "1" 
 	"precache"
-		{
-			"models/heroes/life_stealer/life_stealer.vmdl"
-		}
-
-
-
-"Ability1" "true_sight" 
-"Ability2" "15_megaboss_mana_break" 
-"Ability3" "15_megaboss_illusions" 
-"Ability4" "15_megaboss_astral" 
-"Ability5" "15_megaboss_silence" 
-"Ability6" "" 
-"Ability7" "" 
-"Ability8" "" 
-
-
-
-"ArmorPhysical" "120" 
-"MagicalResistance" "0" 
-
-
-
-"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "2850" 
-"AttackDamageMax" "2900" 
-"AttackRate" "1.5" 
-"AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "2000" 
-"AttackRange" "130" 
-"ProjectileModel" "" 
-"ProjectileSpeed" "" 
-
-
-
-
-"BountyXP" "500" 
-"BountyGoldMin" "0" 
-"BountyGoldMax" "0" 
-
-
-
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-"MovementSpeed" "250" 
-"MovementTurnRate" "0.5" 
-
-"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
-
-"StatusHealth" "30000" 
-"StatusHealthRegen" "0.5" 
-"StatusMana" "2500" 
-"StatusManaRegen" "1.25" 
-
-
-
-"TeamName" "DOTA_TEAM_BADGUYS" 
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-
-
-"VisionDaytimeRange" "2000" 
-"VisionNighttimeRange" "2000" 
-
-
-
-"HasInventory" "0"
-
-"Creature"
 	{
-		"DisableResistance"            "40.0"
+		//"models/heroes/life_stealer/life_stealer.vmdl" //вызывает ошибку KeyValues Error: RecursiveLoadFromBuffer:  got } in key in file scripts/npc/npc_units_custom.txt
 	}
 
-"vscripts"	"AI\15_megaboss.lua"
+	"Ability1" "true_sight" 
+	"Ability2" "15_megaboss_mana_break" 
+	"Ability3" "15_megaboss_illusions" 
+	"Ability4" "15_megaboss_astral" 
+	"Ability5" "15_megaboss_silence" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+
+	"ArmorPhysical" 		"120" 
+	"MagicalResistance" 	"0" 
+
+	"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" 			"2850" 
+	"AttackDamageMax" 			"2900" 
+	"AttackRate" 				"1.5" 
+	"AttackAnimationPoint" 		"0.3" 
+	"AttackAcquisitionRange" 	"2000" 
+	"AttackRange" 				"130" 
+
+
+	"BountyXP" 					"500" 
+	"BountyGoldMin" 			"0" 
+	"BountyGoldMax" 			"0" 
+
+
+
+	"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" 			"250" 
+	"MovementTurnRate" 			"0.5" 
+
+	"BoundsHullName"        	"DOTA_HULL_SIZE_HUGE"
+
+	"StatusHealth" 				"30000" 
+	"StatusHealthRegen" 		"0.5" 
+	"StatusMana" 				"2500" 
+	"StatusManaRegen" 			"1.25" 
+
+
+
+	"TeamName" 					"DOTA_TEAM_BADGUYS" 
+	"CombatClassAttack" 		"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend" 		"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+
+
+	"VisionDaytimeRange" 		"2000" 
+	"VisionNighttimeRange" 		"2000" 
+
+	"HasInventory" "0"
+
+	"Creature"
+	{
+		"DisableResistance"     "40.0"
+	}
+
+	"vscripts"	"AI\15_megaboss.lua"
 }

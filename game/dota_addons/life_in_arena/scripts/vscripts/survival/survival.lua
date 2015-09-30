@@ -99,7 +99,6 @@ function Survival:InitSurvival()
 
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
     GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
-    --GameMode:SetDamageFilter(Dynamic_Wrap(Survival, "DamageFilter"), self)
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
@@ -118,11 +117,6 @@ function AIThink()
 
     Survival.AICreepCasts = 0
     return 3
-end
-
-function Survival:DamageFilter(filterTable)
-    --PrintTable("DamageFilter",filterTable)
-    return true
 end
 
 function Survival:GoldFilter(filterTable)
