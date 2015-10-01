@@ -399,7 +399,8 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"heroes\Android\android_armor.lua"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"android_armor"
 	
@@ -413,21 +414,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage_blocked"			"20 40 80"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_item_lia_mithril_armor"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
-			}			
+			"damage_block"			"20 40 80"
 		}
 	}
 }

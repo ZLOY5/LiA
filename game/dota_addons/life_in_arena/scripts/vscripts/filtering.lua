@@ -239,14 +239,14 @@ function LiA:FilterDamage( filterTable )
 		local damage_reduction = ((armor)*0.06) / (1+0.06*(armor))
 
 		-- If there is an inflictor, the damage came from an ability
-		local attack_damage
-		if inflictor then
+		local attack_damage = original_damage / ( 1 - damage_reduction ) 
+		--[[if inflictor then
 			--Remake the full damage to apply our custom handling
 			attack_damage = original_damage / ( 1 - damage_reduction )
 			--print(original_damage,"=",attack_damage,"*",1-damage_reduction)
 		else
-			attack_damage = attacker:GetAttackDamage()
-		end
+			attack_damage = attacker:GetAttackDamage() -- баг с модификаторами блокирующими часть урона
+		end]]
 	
 		-- Adjust if the damage comes from splash
 		if victim.damage_from_splash then
