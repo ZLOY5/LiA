@@ -15,10 +15,10 @@ function StormBolt(event)
 	
 	for _,unit in pairs(targets) do 
 		if unit == target then
-			ApplyDamage({victim = unit, attacker = caster, damage = damage_main_target, damage_type = DAMAGE_TYPE_MAGICAL})
+			ApplyDamage({victim = unit, attacker = caster, damage = damage_main_target, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 			ability:ApplyDataDrivenModifier(caster, unit, "modifier_stunned", {duration = stun_main_target_duration})
 		else
-			ApplyDamage({victim = unit, attacker = caster, damage = damage_radius, damage_type = DAMAGE_TYPE_MAGICAL})
+			ApplyDamage({victim = unit, attacker = caster, damage = damage_radius, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 			ability:ApplyDataDrivenModifier(caster, unit, "modifier_stunned", {duration = stun_radius_duration})
 		end
 	end

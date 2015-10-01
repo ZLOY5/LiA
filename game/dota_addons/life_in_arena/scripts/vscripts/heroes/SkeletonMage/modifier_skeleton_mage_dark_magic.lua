@@ -34,7 +34,8 @@ function modifier_skeleton_mage_dark_magic:OnTakeDamage(params)
 				attacker = params.unit, 
 				damage = damage_return, 
 				damage_type = DAMAGE_TYPE_MAGICAL,
-				damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+				damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
+				ability = params.ability
 			})
 		end
 	end

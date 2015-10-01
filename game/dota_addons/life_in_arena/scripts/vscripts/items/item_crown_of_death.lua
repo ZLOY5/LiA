@@ -12,5 +12,5 @@ function item_crown_of_death_datadriven_on_spell_start(keys)
 	keys.caster:EmitSound("DOTA_Item.Dagon.Activate")
 	keys.target:EmitSound("DOTA_Item.Dagon5.Target")
 		
-	ApplyDamage({victim = keys.target, attacker = keys.caster, damage = keys.Damage, damage_type = DAMAGE_TYPE_MAGICAL,})
+	ApplyDamage({victim = keys.target, attacker = keys.caster, damage = keys.Damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = keys.ability })
 end

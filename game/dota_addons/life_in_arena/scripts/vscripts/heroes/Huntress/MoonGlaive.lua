@@ -83,11 +83,14 @@ function moon_glaive_dummy_created( keys )
 		--ability.particle_name, ability.projectile_speed = findProjectileInfo(caster:GetClassname())
 		first = true
 	else
+		local dmgval = ability.damage * (1 - ability.dmgMultiplier)
 		local damageTable = {
 						victim = ability.projectileTo,
 						attacker = caster:GetOwner(),
-						damage = ability.damage * (1 - ability.dmgMultiplier),
-						damage_type = DAMAGE_TYPE_PHYSICAL} -- change to physical
+						damage = dmgval,
+						damage_type = DAMAGE_TYPE_PHYSICAL,
+						ability = ability} -- change to physical
+		--print("		dmgval - ", dmgval)
 		ApplyDamage(damageTable)
 
 		ability.damage = ability.damage * (1 - ability.dmgMultiplier)

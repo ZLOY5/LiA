@@ -129,7 +129,8 @@ function ApplyModifiersV2(keys)
 			victim = table_target_enemy[i],
 			attacker = caster,
 			damage = damage,
-			damage_type = DAMAGE_TYPE_MAGICAL
+			damage_type = DAMAGE_TYPE_MAGICAL,
+			ability = ability
 		}
 		ApplyDamage( damageTable )
 		-- Fire effect

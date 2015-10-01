@@ -34,7 +34,8 @@ function modifier_knight_shield_damage_return_lua:OnAttackLanded(params)
 				attacker = target, 
 				damage = return_damage, 
 				damage_type = DAMAGE_TYPE_MAGICAL,
-				damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+				damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
+				ability = params.ability
 			})
 		end
 	end

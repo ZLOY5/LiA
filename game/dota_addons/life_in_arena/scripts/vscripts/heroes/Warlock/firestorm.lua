@@ -57,7 +57,8 @@ function firestormWave(keys)
 			victim = v,
 			attacker = caster,
 			damage = abilityDamage,
-			damage_type = damageType
+			damage_type = damageType,
+			ability = ability
 		}
 		ApplyDamage( damageTable )
 

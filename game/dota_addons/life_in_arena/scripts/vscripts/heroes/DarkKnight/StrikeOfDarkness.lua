@@ -7,6 +7,6 @@ function StrikeOfDarkness(event)
 	local num = RandomInt(1, agi)
 	local damage = mult*num
 
-	ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ablility})
+	ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
 	SendOverheadEventMessage(target:GetPlayerOwner(), OVERHEAD_ALERT_CRITICAL, target, damage, nil)
 end

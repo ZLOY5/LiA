@@ -30,7 +30,8 @@ function modifier_skeleton_thief_shield_of_death:OnAttackLanded(params)
 				attacker = target, 
 				damage = damage_return, 
 				damage_type = DAMAGE_TYPE_PHYSICAL,
-				damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+				damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
+				ability = params.ability
 			})
 
 			if RollPercentage(chance_additional_damage) then
@@ -40,7 +41,8 @@ function modifier_skeleton_thief_shield_of_death:OnAttackLanded(params)
 					attacker = target, 
 					damage = additional_damage, 
 					damage_type = DAMAGE_TYPE_PHYSICAL,
-					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION
+					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
+					ability = params.ability
 				})
 			end
 		end

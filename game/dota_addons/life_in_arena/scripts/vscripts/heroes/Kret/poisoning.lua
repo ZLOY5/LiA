@@ -14,7 +14,8 @@ function SetAdsorbFromKret( keys )
 		victim = attacker_loc,
 		attacker = caster,
 		damage = adsorbVal,
-		damage_type = DAMAGE_TYPE_PHYSICAL
+		damage_type = DAMAGE_TYPE_PHYSICAL,
+		ability = keys.ability
 	})
 	--
 	attacker_loc:ReduceMana(adsorbVal)

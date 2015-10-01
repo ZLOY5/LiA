@@ -10,6 +10,7 @@ function OnSpellStart(event)
 		attacker = event.caster,
 		damage = 0,
 		damage_type = DAMAGE_TYPE_PURE,
+		ability = event.ability
 	}
 	local heal_amount = 0
     local units = FindUnitsInRadius(event.caster:GetTeam(),

@@ -15,7 +15,7 @@ function Obsession(event)
 	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
 		if ability.attacks == number_of_attacks then
 			ability.attacks = 0
-			ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL})
+			ApplyDamage({victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
 		end
 	end
 	

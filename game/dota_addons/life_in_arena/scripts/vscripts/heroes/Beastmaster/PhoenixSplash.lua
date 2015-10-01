@@ -21,6 +21,7 @@ function PhoenixSplash(keys)
 	damage_table.attacker = caster
 	damage_table.damage_type = DAMAGE_TYPE_PHYSICAL
 	damage_table.damage = caster:GetAttackDamage() * splash_damage_small
+	damage_table.ability = ability
 
 
 	--loop for doing the splash damage while ignoring the original target

@@ -21,7 +21,8 @@ function SetDamageFromHuntress( keys )
 		victim = target,
 		attacker = keys.caster,
 		damage = calc_damage,
-		damage_type = DAMAGE_TYPE_MAGICAL
+		damage_type = DAMAGE_TYPE_MAGICAL,
+		ability = keys.ability
 	})
 end
 

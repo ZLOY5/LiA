@@ -24,7 +24,7 @@ function HeavenWrath(event)
 	ability.lastTarget = target
 
 	if target then
-		ApplyDamage({victim = target, attacker = caster, damage = event.heaven_wrath_damage, damage_type = DAMAGE_TYPE_MAGICAL}) 		
+		ApplyDamage({victim = target, attacker = caster, damage = event.heaven_wrath_damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability}) 		
 		local lightning = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf", PATTACH_CUSTOMORIGIN, target)
     	local loc = target:GetAbsOrigin()
     	ParticleManager:SetParticleControl(lightning, 0, loc + Vector(0, 0, 1000))

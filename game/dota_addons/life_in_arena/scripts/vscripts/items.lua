@@ -195,7 +195,8 @@ function FrostmourneAttack(event)
                     victim = event.target,
                     attacker = event.caster,
                     damage = event.target:GetHealth() * 0.05,
-                    damage_type = DAMAGE_TYPE_PHYSICAL
+                    damage_type = DAMAGE_TYPE_PHYSICAL,
+					ability = event.ability
                     })
 end
 
@@ -206,7 +207,8 @@ function FrostmourneRuin(event)
                     victim = event.target,
                     attacker = event.caster,
                     damage = event.target:GetMaxHealth() * 0.15,
-                    damage_type = DAMAGE_TYPE_PHYSICAL
+                    damage_type = DAMAGE_TYPE_PHYSICAL,
+					ability = event.ability
                     })
     event.caster:Heal(targetHP, event.caster)
     local coil = ParticleManager:CreateParticle("particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_explosion.vpcf", PATTACH_ABSORIGIN_FOLLOW, event.target)

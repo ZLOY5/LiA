@@ -5,7 +5,8 @@ function Return(event)
 			victim = event.attacker,
 			attacker = event.caster,
 			damage = event.damage_return,
-			damage_type = DAMAGE_TYPE_PHYSICAL
+			damage_type = DAMAGE_TYPE_PHYSICAL,
+			ability = event.ability
 		})
 	end
 end
@@ -17,7 +18,8 @@ function ReturnChance(event)
 			victim = event.attacker,
 			attacker = event.caster,
 			damage = event.damage_return,
-			damage_type = DAMAGE_TYPE_PHYSICAL
+			damage_type = DAMAGE_TYPE_PHYSICAL,
+			ability = event.ability
 		})
 	end
 end

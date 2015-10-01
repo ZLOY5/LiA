@@ -5,16 +5,16 @@ function addMod(keys)
 	local caster = keys.caster --hero
 	local target = keys.target
 	--
-	if not caster.tUnits then
-		caster.tUnits = {}
-	end
+	--if not caster.tUnits then
+	--	caster.tUnits = {}
+	--end
 	--
-	ability:ApplyDataDrivenModifier( caster, caster, 'modifier_decrepify_units_by_hero', {} )
-	for i=1, #caster.tUnits do
-		if not caster.tUnits[i]:IsNull() then
-			ability:ApplyDataDrivenModifier( caster, caster.tUnits[i], 'modifier_decrepify_units_by_hero', {} )
-		end
-	end
+	--ability:ApplyDataDrivenModifier( caster, caster, 'modifier_decrepify_units_by_hero', {} )
+	--for i=1, #caster.tUnits do
+	--	if not caster.tUnits[i]:IsNull() then
+	--		ability:ApplyDataDrivenModifier( caster, caster.tUnits[i], 'modifier_decrepify_units_by_hero', {} )
+	--	end
+	--end
 	--
 	if target:IsHero() then
 		ability:ApplyDataDrivenModifier( caster, target, 'modifier_decrepify_hero', {} )
@@ -24,7 +24,7 @@ function addMod(keys)
 	--
 end
 
-function attackLanded(keys)
+--[[function attackLanded(keys)
 	--
 	local ability = keys.ability
 	--local caster = keys.caster --hero
@@ -38,10 +38,12 @@ function attackLanded(keys)
 						victim = target,
 						attacker = attacker,
 						damage = dmg,
-						damage_type = DAMAGE_TYPE_MAGICAL
+						damage_type = DAMAGE_TYPE_MAGICAL,
+						ability = keys.ability
 							}
 		ApplyDamage(damageTable)
 	end
 	--
 end
+]]
 

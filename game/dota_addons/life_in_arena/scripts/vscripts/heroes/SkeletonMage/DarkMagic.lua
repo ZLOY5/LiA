@@ -5,7 +5,8 @@ function Return(event)
 			victim = event.attacker,
 			attacker = event.caster,
 			damage = event.damage_return,
-			damage_type = DAMAGE_TYPE_MAGICAL
+			damage_type = DAMAGE_TYPE_MAGICAL,
+			ability = event.ability
 		})
 	end
 end

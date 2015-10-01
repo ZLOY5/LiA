@@ -5,7 +5,7 @@ function OnOrbImpact( event )
 	local damage = event.Damage
 	for _,v in pairs(targets) do
 		if v ~= target then
-			ApplyDamage({ victim = v, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PURE })
+			ApplyDamage({ victim = v, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PURE, ability = event.ability })
 		end
 	end
 end

@@ -29,7 +29,8 @@ function Incinerate( keys )
 			victim = target,
 			attacker = caster,
 			damage = damage_per_stack * current_stack,
-			damage_type = damageType
+			damage_type = damageType,
+			ability = ability
 		}
 		ApplyDamage( damage_table )
 		

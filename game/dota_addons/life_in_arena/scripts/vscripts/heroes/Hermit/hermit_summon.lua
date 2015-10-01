@@ -53,9 +53,9 @@ function summonCreate(keys)
 		--
 		cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
 		
-		if caster:HasModifier("modifier_decrepify_units_by_hero") then
-			caster:FindAbilityByName("hermit_astral"):ApplyDataDrivenModifier( caster, cre, 'modifier_decrepify_units_by_hero', {} )
-		end
+		--if caster:HasModifier("modifier_decrepify_units_by_hero") then
+		--	caster:FindAbilityByName("hermit_astral"):ApplyDataDrivenModifier( caster, cre, 'modifier_decrepify_units_by_hero', {} )
+		--end
 
 		if flag then
 			cre:SetRenderColor(255,0,0)

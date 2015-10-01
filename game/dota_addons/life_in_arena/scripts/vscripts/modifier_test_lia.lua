@@ -11,7 +11,7 @@ end
 
 function modifier_test_lia:OnCreated(params)
 	if IsServer() then
-		ApplyDamage({victim = self:GetParent(), attacker = self:GetParent(), damage = 100, damage_type = DAMAGE_TYPE_PURE})
+		ApplyDamage({victim = self:GetParent(), attacker = self:GetParent(), damage = 100, damage_type = DAMAGE_TYPE_PURE, ability = params.ability})
 	end
 end
 

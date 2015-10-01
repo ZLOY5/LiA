@@ -292,18 +292,18 @@
 
 	"Modifiers"
 	{
-		"modifier_decrepify_units_by_hero"
-		{
-			"Duration"		"%duration_on_other"
+		//"modifier_decrepify_units_by_hero"
+		//{
+		//	"Duration"		"%duration_on_other"
 			//
-			"OnAttackLanded"
-			{
-				"RunScript"
-				{
-					"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
-					"Function"      "attackLanded"
-				}
-			}
+		//	"OnAttackLanded"
+		//	{
+		//		"RunScript"
+		//		{
+		//			"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
+		//			"Function"      "attackLanded"
+		//		}
+		//	}
 			//
 			//"OnDestroy"
 			//{
@@ -313,7 +313,7 @@
 			//		"Function"      "destr"
 			//	}
 			//}
-		}
+		//}
 		
 		"modifier_decrepify_other"
 		{
@@ -327,7 +327,7 @@
 			{
 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
 			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
-				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+				//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
 			}
 
 			"States"
@@ -349,7 +349,7 @@
 			{
 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
 			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
-				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+				//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
 			}
 
 			"States"

@@ -22,7 +22,7 @@ function Immolation( event )
 
 		-- Deal damage to all targets passed
 		for _,v in pairs(targets) do
-			ApplyDamage({ victim = v, attacker = caster, damage = damage_per_second, damage_type = abilityDamageType })
+			ApplyDamage({ victim = v, attacker = caster, damage = damage_per_second, damage_type = abilityDamageType, ability = ability })
 		end
 	else
 		ability:ToggleAbility()

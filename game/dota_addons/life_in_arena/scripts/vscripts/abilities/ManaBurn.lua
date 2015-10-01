@@ -25,7 +25,7 @@ function ManaBurn( event )
 	end
 
 	-- Do the damage
-	ApplyDamage({ victim = target, attacker = caster, damage = mana_burn, damage_type = abilityDamageType })
+	ApplyDamage({ victim = target, attacker = caster, damage = mana_burn, damage_type = abilityDamageType, ability = ability })
 
 end
 

@@ -43,7 +43,6 @@ Spells  100%    100%    100%    100%    100%   70%
 	обычный:		100		150		100		70			100		100		5				100
 	заклинания		100		100		100		100			100		80		5				100
 
-
 ]]
 	if attack_type == "normal" then
 		if armor_type == "unarmored" then
@@ -146,7 +145,13 @@ function GetAttackType( unit )
 			local attack_string = GameRules.UnitKV[unitName]["CombatClassAttack"]
 			return ATTACK_TYPES[attack_string]
 		elseif unit:IsHero() then
-			return "hero"
+			local unitName = unit:GetUnitName()
+			if unitName == "npc_dota_hero_bane" then
+				local attack_string = GameRules.HeroKV["npc_lia_hero_hermit"]["CombatClassAttack"]
+				return ATTACK_TYPES[attack_string]
+			else
+				return "hero"
+			end
 		end
 	end
 	return 0
@@ -160,7 +165,13 @@ function GetArmorType( unit )
 			local armor_string = GameRules.UnitKV[unitName]["CombatClassDefend"]
 			return ARMOR_TYPES[armor_string]
 		elseif unit:IsHero() then
-			return "hero"
+			local unitName = unit:GetUnitName()
+			if unitName == "npc_dota_hero_bane" then
+				local armor_string = GameRules.HeroKV["npc_lia_hero_hermit"]["CombatClassDefend"]
+				return ARMOR_TYPES[armor_string]
+			else
+				return "hero"
+			end
 		end
 	end
 	return 0
@@ -246,6 +257,11 @@ function LiA:FilterDamage( filterTable )
 			--print(original_damage,"=",attack_damage,"*",1-damage_reduction)
 		else
 			attack_damage = attacker:GetAttackDamage()
+			-- for huntress moonglaive
+			--if attacker:GetUnitName() == "npc_lia_hero_huntress" then
+			--if attacker:GetUnitName() == "npc_dota_hero_luna" then
+			--	attack_damage = original_damage / ( 1 - damage_reduction )
+			--end
 		end
 	
 		-- Adjust if the damage comes from splash
@@ -259,17 +275,37 @@ function LiA:FilterDamage( filterTable )
 		local attack_type  = GetAttackType( attacker )
 		local armor_type = GetArmorType( victim )
 		local multiplier = GetDamageForAttackAndArmor(attack_type, armor_type)
+		--print("		attack_type = ", attack_type)
+		--print("		armor_type = ", armor_type)
+		--print("		multiplier = ", multiplier)
 
 		local damage = ( attack_damage * (1 - damage_reduction)) * multiplier
+		
+		--if attacker:GetUnitName() == "npc_dummy_blank" then
+		--	print("			original_damage = ",original_damage)
+		--	print("			attack_damage = ",attack_damage)
+		--	print("			damage_reduction = ",damage_reduction)
+		--	print("			damage = ",damage)
+			
+		--end
 
 		-- Extra rules for certain ability modifiers
-		-- modifier_defend (50% less damage from Piercing attacks)
+		--print("		other", victim:HasModifier("modifier_decrepify_other"))
+		--print("		hero", victim:HasModifier("modifier_decrepify_hero"))
+		if ( victim:HasModifier("modifier_decrepify_other") or victim:HasModifier("modifier_decrepify_hero") ) then
+			if attack_type ~= "magic" then
+				damage = 0
+			else
+				damage = damage * 1.5
+			end
+		end
 		--if victim:HasModifier("modifier_defend") and attack_type == "pierce" then
 		--	print("Defend reduces this piercing attack to 50%")
 		--	damage = damage * 0.5
 
 		-- modifier_elunes_grace (Piercing attacks to 65%)
-		--elseif victim:HasModifier("modifier_elunes_grace") and attack_type == "pierce" then
+		--else
+		--if victim:HasModifier("modifier_elunes_grace") and attack_type == "pierce" then
 		--	print("Elunes Grace reduces this piercing attack to 65%")
 		--	damage = damage * 0.65
 		
