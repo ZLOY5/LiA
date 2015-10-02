@@ -223,11 +223,6 @@ function Survival:EndRound()
     Timers:CreateTimer(1,function()
         CleanUnitsOnMap()
 
-        nPlayersReady = 0
-        for _,player in pairs(LiA.tPlayers) do
-            player.readyToWave = false
-        end
-
         DoWithAllHeroes(function(hero)
             if hero:IsAlive() then
                 hero:Purge(false, true, false, true, false)
@@ -248,6 +243,7 @@ function Survival:EndRound()
         if self.nRoundNum % 3 == 0 and not self.IsDuelOccured and self.nHeroCount > 1 then
             Survival:StartDuels()
         else
+
             Survival:_GiveRoundBounty()
             Survival:PrepareNextRound()
         end
@@ -272,6 +268,12 @@ function Survival:PrepareNextRound()
     self.nRoundNum = self.nRoundNum + 1
     
     print("Next round - ", self.nRoundNum)
+
+    nPlayersReady = 0
+    for _,player in pairs(LiA.tPlayers) do
+        player.readyToWave = false
+    end
+    LiA.bForceRoundEnabled = true
 
     self.IsDuelOccured = false
     Survival.State = SURVIVAL_STATE_PRE_ROUND_TIME
@@ -435,6 +437,8 @@ function Survival:StartRound()
         Survival:EndGame(DOTA_TEAM_BADGUYS)
         return   
     end
+
+    LiA.bForceRoundEnabled = false
     
     CustomGameEventManager:Send_ServerToAllClients( "round_start", {round_number = self.nRoundNum} )
 

@@ -1,8 +1,9 @@
 
 nPlayersReady = 0
+LiA.bForceRoundEnabled = false
 
 function onPlayerReadyToWave(player)
-	if Survival.State == SURVIVAL_STATE_PRE_ROUND_TIME then
+	if Survival.State == SURVIVAL_STATE_PRE_ROUND_TIME and LiA.bForceRoundEnabled then
 		if not player.readyToWave then
 			player.readyToWave = true
 			nPlayersReady = nPlayersReady + 1
