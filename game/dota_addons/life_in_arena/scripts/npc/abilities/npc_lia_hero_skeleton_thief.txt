@@ -86,7 +86,11 @@
 				"ApplyModifier"
 				{
 					"ModifierName" 	"modifier_invisible"
-					"Target"		"CASTER"
+					"Target"		
+					{
+						"Center"	"CASTER"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 					"Duration"		"%duration"
 				}
 			}
@@ -200,7 +204,11 @@
 	 "ApplyModifier"
 		{
 		 "ModifierName"   "modifier_skeleton_thief_fury"
-		 "Target"         "CASTER"
+		"Target"		
+		{
+			"Center"	"CASTER"
+			"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		}
 		 "Duration"       "%duration"
 		}
 	}
@@ -213,7 +221,7 @@
       {
         "Passive"       "0"
         "IsHidden"      "0"
-		
+		"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"		
 		"EffectName"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
 		"EffectAttachType"	"follow_origin"
 		
