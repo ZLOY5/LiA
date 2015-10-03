@@ -5096,6 +5096,13 @@
 	"AttackAcquisitionRange" "0" 
 	"AttackRange" "500" 
 	
+	"SplashAttack"				"1"
+	"SplashFullDamageRadius"	"75" 		// FArea, full damage radius
+	"SplashMediumRadius"		"150" 		// HArea
+	"SplashMediumDamage"		"0.5" 		// HFact
+	"SplashSmallRadius"			"225"		// QArea
+	"SplashSmallDamage"			"0.25"		// QFact
+	
 	
 	
 	
@@ -5119,9 +5126,11 @@
 	
 	
 	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_LIGHT" //chaos
 	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
 	
 	
 	

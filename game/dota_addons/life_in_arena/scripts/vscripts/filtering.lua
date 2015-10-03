@@ -191,7 +191,16 @@ function HasSplashAttack( unit )
 	return false
 end
 
-function GetMediumSplashRadius( unit )
+function GetFullDamageSplashRadius( unit ) --FArea in war3
+	local unitName = unit:GetUnitName()
+	local unit_table = GameRules.UnitKV[unitName]
+	if unit_table["SplashFullDamageRadius"] then
+		return unit_table["SplashFullDamageRadius"]
+	end
+	return 0
+end
+
+function GetMediumSplashRadius( unit ) --HArea in war3
 	local unitName = unit:GetUnitName()
 	local unit_table = GameRules.UnitKV[unitName]
 	if unit_table["SplashMediumRadius"] then
@@ -200,7 +209,7 @@ function GetMediumSplashRadius( unit )
 	return 0
 end
 
-function GetSmallSplashRadius( unit )
+function GetSmallSplashRadius( unit ) --QArea in war3
 	local unitName = unit:GetUnitName()
 	local unit_table = GameRules.UnitKV[unitName]
 	if unit_table["SplashSmallRadius"] then
@@ -209,7 +218,7 @@ function GetSmallSplashRadius( unit )
 	return 0
 end
 
-function GetMediumSplashDamage( unit )
+function GetMediumSplashDamage( unit ) --HFact in war3
 	local unitName = unit:GetUnitName()
 	local unit_table = GameRules.UnitKV[unitName]
 	if unit_table["SplashMediumDamage"] then
@@ -218,7 +227,7 @@ function GetMediumSplashDamage( unit )
 	return 0
 end
 
-function GetSmallSplashDamage( unit )
+function GetSmallSplashDamage( unit ) --QFact in war3
 	local unitName = unit:GetUnitName()
 	local unit_table = GameRules.UnitKV[unitName]
 	if unit_table["SplashSmallDamage"] then
@@ -226,6 +235,7 @@ function GetSmallSplashDamage( unit )
 	end
 	return 0
 end
+
 
 function LiA:FilterDamage( filterTable )
 	--for k, v in pairs( filterTable ) do
@@ -365,29 +375,78 @@ end
 
 function SplashAttack( attack_damage, attacker, victim )
 	local target = victim
-	local medium_radius = GetMediumSplashRadius(attacker)
-    local medium_damage = attack_damage * GetMediumSplashDamage(attacker)
 
-    local small_radius = GetSmallSplashRadius(attacker)
-    local small_damage = attack_damage * GetSmallSplashDamage(attacker)
+	local small_radius = GetSmallSplashRadius(attacker)  --QArea in war3
+    local small_damage = attack_damage * GetSmallSplashDamage(attacker) --QFact in war3
 
-    --print("Attacked for "..attack_damage.." - Splashing "..medium_damage.." damage in "..medium_radius.." (medium radius) and "..small_damage.." in "..small_radius.." (small radius)")
+	local medium_radius = GetMediumSplashRadius(attacker) --HArea
+    local medium_damage = attack_damage * GetMediumSplashDamage(attacker) --HFact
 
-    local targets_medium_radius = FindAllUnitsInRadius(target, medium_radius)
-    --DebugDrawCircle(target:GetAbsOrigin(), Vector(255,0,0), 100, medium_radius, true, 3)
-    for _,v in pairs(targets_medium_radius) do
+	local full_radius = GetFullDamageSplashRadius(attacker) --FArea, full damage radius
+
+	local targets_full_damage_radius = FindUnitsInRadius(attacker:GetTeamNumber(), 
+														target:GetAbsOrigin(), 
+														nil, 
+														full_radius ,
+														DOTA_UNIT_TARGET_TEAM_ENEMY, 
+														DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
+														DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 
+														FIND_ANY_ORDER, 
+														false)
+	
+    --DebugDrawCircle(target:GetAbsOrigin(), Vector(255,0,0), 100, full_radius, true, 3)
+    for _,v in pairs(targets_full_damage_radius) do
         if v ~= attacker and v ~= target then
+        	v.damage_from_splash = attack_damage
+        	v.splash_full_damaged = true
+            ApplyDamage({ victim = v, attacker = attacker, damage = attack_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
+        end
+    end
+
+    local targets_medium_radius = FindUnitsInRadius(attacker:GetTeamNumber(), 
+														target:GetAbsOrigin(), 
+														nil, 
+														medium_radius ,
+														DOTA_UNIT_TARGET_TEAM_ENEMY, 
+														DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
+														DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 
+														FIND_ANY_ORDER, 
+														false)
+
+    --DebugDrawCircle(target:GetAbsOrigin(), Vector(255,65,0), 100, medium_radius, true, 3)
+    for _,v in pairs(targets_medium_radius) do
+        if v ~= attacker and v ~= target and not v.splash_full_damaged then
         	v.damage_from_splash = medium_damage
+        	v.splash_medium_damaged = true
             ApplyDamage({ victim = v, attacker = attacker, damage = medium_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
         end
     end
 
-    local targets_small_radius = FindAllUnitsInRadius(target, small_radius)
-    --DebugDrawCircle(target:GetAbsOrigin(), Vector(255,0,0), 100, small_radius, true, 3)
+    
+    local targets_small_radius = FindUnitsInRadius(attacker:GetTeamNumber(), 
+														target:GetAbsOrigin(), 
+														nil, 
+														small_radius ,
+														DOTA_UNIT_TARGET_TEAM_ENEMY, 
+														DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
+														DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 
+														FIND_ANY_ORDER, 
+														false)
+
+    --DebugDrawCircle(target:GetAbsOrigin(), Vector(255,127,0), 100, small_radius, true, 3)
     for _,v in pairs(targets_small_radius) do
-        if v ~= attacker and v ~= target then
-        	v.damage_from_splash = medium_damage
+        if v ~= attacker and v ~= target and not v.splash_medium_damaged and not v.splash_full_damaged then
+        	v.damage_from_splash = small_damage
             ApplyDamage({ victim = v, attacker = attacker, damage = small_damage, damage_type = DAMAGE_TYPE_PHYSICAL})
         end
     end
+
+    for _,v in pairs(targets_full_damage_radius) do
+    	v.splash_full_damaged = nil
+    end
+
+    for _,v in pairs(targets_medium_radius) do
+    	v.splash_medium_damaged = nil
+    end
+
 end
