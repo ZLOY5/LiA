@@ -1866,6 +1866,119 @@
 	//End of file item_lia_enchanted_shield.txt
 
 
+	//Start of file item_lia_ferus_shield.txt
+	"item_recipe_lia_ferus_shield"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1456"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"555"	
+		"ItemShopTags"					"damage; armor;lifesteal"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_ferus_shield"
+		"ItemRequirements"
+		{
+			"01"						"item_recipe_lia_shield_of_endurance; item_lia_banner_of_victory"
+		}
+	}
+	
+	"item_lia_ferus_shield"
+	{
+		"ID"							"1457"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"2115"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_banner_of_victory"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"Modifiers"
+		{
+			"modifier_item_lia_ferus_shield"
+			{
+				"Passive"          	"1"    
+			    "IsHidden"         	"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Aura" 				"modifier_item_ferus_shield_aura_datadriven"
+	            "Aura_Radius" 		"%aura_radius"
+	            "Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	            "Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+			    }  
+			}
+			"modifier_item_ferus_shield_aura_datadriven"
+			{
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"items\BannerOfVictory.lua"
+						"Function"				"modifier_item_banner_of_victory_datadriven_on_attack_landed"
+					}
+				}
+				"Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%aura_armor"
+			    }
+			}
+			"modifier_item_ferus_shield_datadriven_lifesteal"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+				
+				"OnDealDamage"
+				{
+					"Lifesteal"
+					{
+						"Target"
+						{
+							"Center"	"ATTACKER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
+						}
+						"LifestealPercent"	"%aura_lifesteal_percent"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "45"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_radius" "800"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_lifesteal_percent" "15"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_armor" "13"
+			}
+		}
+	}
+	//End of file item_lia_ferus_shield.txt
+
+
 	//Start of file item_lia_fire_gloves.txt
 	"item_recipe_lia_fire_gloves"
 	{
