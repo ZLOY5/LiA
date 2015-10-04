@@ -46,7 +46,7 @@
             "Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
 		    "Properties"
 		    {
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
 		    }  
 		}
 		"modifier_item_ferus_shield_aura_datadriven"
@@ -62,6 +62,7 @@
 			"Properties"
 		    {
 		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%aura_armor"
+		    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%aura_regen"	    	
 		    }
 		}
 		"modifier_item_ferus_shield_datadriven_lifesteal"
@@ -88,7 +89,7 @@
 		"01"
 		{
 			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "45"
+			"bonus_health" "550"
 		}
 		"02"
 		{
@@ -101,6 +102,11 @@
 			"aura_lifesteal_percent" "15"
 		}
 		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"aura_regen" "24"
+		}
+		"05"
 		{
 			"var_type" "FIELD_INTEGER"
 			"aura_armor" "13"
