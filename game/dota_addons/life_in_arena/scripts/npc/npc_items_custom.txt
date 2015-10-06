@@ -4,8 +4,8 @@
 	
 
 
-	//Start of file 1362
-	//End of file 1362
+	//Start of file 1366
+	//End of file 1366
 
 
 	//Start of file item_lia_alanith_spear.txt
@@ -1871,14 +1871,14 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"1456"						
+		"ID"							"1365"						
 		"Model"							"models/props_gameplay/recipe.mdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"555"	
-		"ItemShopTags"					"damage; armor;lifesteal"
+		"ItemShopTags"					"damage;armor;lifesteal"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -1886,13 +1886,13 @@
 		"ItemResult"					"item_lia_ferus_shield"
 		"ItemRequirements"
 		{
-			"01"						"item_recipe_lia_shield_of_endurance; item_lia_banner_of_victory"
+			"01"						"item_lia_shield_of_endurance;item_lia_banner_of_victory"
 		}
 	}
 	
 	"item_lia_ferus_shield"
 	{
-		"ID"							"1457"
+		"ID"							"1366"
 		"BaseClass" 					"item_datadriven"
 		"ItemCost"						"2115"
 		"ItemKillable" 					"0" 
@@ -1901,7 +1901,26 @@
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"item_lia_banner_of_victory"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AoERadius"						"350"
+		"AbilityCooldown"				"25"
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%panic_radius"
+					"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    			"Types"  "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+				"ModifierName"	"modifier_ferus_shield_panic"
+				"Duration"		"%panic_duration"
+			}
+		}
+	
 		"Modifiers"
 		{
 			"modifier_item_lia_ferus_shield"
@@ -1918,14 +1937,15 @@
 			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
 			    }  
 			}
+	
 			"modifier_item_ferus_shield_aura_datadriven"
 			{
 				"OnAttackLanded"
 				{
 					"RunScript"
 					{
-						"ScriptFile"			"items\BannerOfVictory.lua"
-						"Function"				"modifier_item_banner_of_victory_datadriven_on_attack_landed"
+						"ScriptFile"			"items\FerusShield.lua"
+						"Function"				"modifier_item_ferus_shield_datadriven_on_attack_landed"
 					}
 				}
 				"Properties"
@@ -1934,9 +1954,9 @@
 			    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%aura_regen"	    	
 			    }
 			}
+	
 			"modifier_item_ferus_shield_datadriven_lifesteal"
 			{
-				"Passive"			"0"
 				"IsHidden"			"1"
 				
 				"OnDealDamage"
@@ -1951,6 +1971,27 @@
 						"LifestealPercent"	"%aura_lifesteal_percent"
 					}
 				}
+			}
+	
+			"modifier_ferus_shield_panic"
+			{
+				"IsDebuff"		"1"
+				"IsPurgable"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MUTED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+	
+				//"OnAttacked"
+				//{
+				//	"RunScript"
+				//	{
+				//		"ScriptFile"			"items\FerusShield.lua"
+				//		"Function"				"PanicAttacked"
+				//	}
+				//}
 			}
 		}
 		"AbilitySpecial"
@@ -1979,6 +2020,16 @@
 			{
 				"var_type" "FIELD_INTEGER"
 				"aura_armor" "13"
+			}
+			"06"
+			{
+				"var_type" "FIELD_INTEGER"
+				"panic_duration" "4"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"panic_radius" "350"
 			}
 		}
 	}
