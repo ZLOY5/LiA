@@ -31,11 +31,16 @@
 	"ItemSellable"                  "1"
 	"ItemPurchasable"		 		"1"
 	"ItemQuality"					"common"
-	"AbilityTextureName"			"item_lia_banner_of_victory"
+	"AbilityTextureName"			"item_lia_ferus_shield"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 	"AoERadius"						"350"
 	"AbilityCooldown"				"25"
 
+	"precache"
+	{
+		"particle"  "particles/sven_cyclopean_warcry_custom.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+	}
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -49,6 +54,17 @@
 			}
 			"ModifierName"	"modifier_ferus_shield_panic"
 			"Duration"		"%panic_duration"
+		}
+		"FireEffect"
+		{
+			"EffectName"        "particles/sven_cyclopean_warcry_custom.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "CASTER"
+		}
+		"FireSound"
+		{
+			"EffectName"	"Hero_Sven.GodsStrength"
+			"Target" 		"CASTER"
 		}
 	}
 
@@ -108,13 +124,15 @@
 		{
 			"IsDebuff"		"1"
 			"IsPurgable"	"1"
+			"EffectName"	"particles/generic_gameplay/generic_silenced.vpcf"
+			"EffectAttachType"	"follow_overhead"
 			"States"
 			{
 				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_MUTED"			"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
 			}
-
+			
 			//"OnAttacked"
 			//{
 			//	"RunScript"
