@@ -3,6 +3,9 @@
  		<include src="file://{resources}/styles/dotastyles.css" />
         <include src="file://{resources}/styles/custom_game/lia_end_screen.css" />
     </styles>
+    <!-- --> <scripts>
+		<include src="file://{resources}/scripts/custom_game/lia_tooltips_items.js" />
+    </scripts> 
 	<Panel class="PlayerRow">
 		<Panel id="PlayerRowContainer">
 			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
@@ -37,15 +40,26 @@
 			</Panel>
 			
 			<Panel id="PlayerItemsContainer" class="ScoreCol_Items ScoreboardPanel" >
-			<!--	<Panel id="_dynamic_item_0" class="PlayerItem"
+				<DOTAItemImage id="_dynamic_item_0" class="PlayerItem"
 					onmouseover="ItemShowTooltip0()"
-					onmouseout="ItemHideTooltip()" />
-					
-				<Panel id="_dynamic_item_1" class="PlayerItem" />
-				<Panel id="_dynamic_item_2" class="PlayerItem" />
-				<Panel id="_dynamic_item_3" class="PlayerItem" />
-				<Panel id="_dynamic_item_4" class="PlayerItem" />
-				<Panel id="_dynamic_item_5" class="PlayerItem" /> -->
+					onmouseout="ItemHideTooltip0()"				/> 
+				<DOTAItemImage id="_dynamic_item_1" class="PlayerItem"
+					onmouseover="ItemShowTooltip1()"
+					onmouseout="ItemHideTooltip1()"				/> 
+				<DOTAItemImage id="_dynamic_item_2" class="PlayerItem"
+					onmouseover="ItemShowTooltip2()"
+					onmouseout="ItemHideTooltip2()"				/> 
+				<DOTAItemImage id="_dynamic_item_3" class="PlayerItem"
+					onmouseover="ItemShowTooltip3()"
+					onmouseout="ItemHideTooltip3()"				/> 
+				<DOTAItemImage id="_dynamic_item_4" class="PlayerItem"
+					onmouseover="ItemShowTooltip4()"
+					onmouseout="ItemHideTooltip4()"				/> 
+				<DOTAItemImage id="_dynamic_item_5" class="PlayerItem"
+					onmouseover="ItemShowTooltip5()"
+					onmouseout="ItemHideTooltip5()"				/> 
+					 					
+
 			</Panel>
 
 		</Panel>

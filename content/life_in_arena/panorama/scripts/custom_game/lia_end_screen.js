@@ -1,7 +1,7 @@
 "use strict";
 
-var _endScoreboardHandle
-var _containerPanel
+var _endScoreboardHandle;
+var _containerPanel;
 
 
 function OnUpdAction_compareFunc( a, b ) 
@@ -79,6 +79,7 @@ function GetScore_FromPlayerId(data, playerId)
 					"Deaths" : data.Deaths[i],
 					"Rating" : data.Rating[i],
 					"PercUlu" : data.PercUlu[i],
+					//"SID"	: data.SteamId[i],
 					
 				};
 				return score;
@@ -87,7 +88,6 @@ function GetScore_FromPlayerId(data, playerId)
 
 	}
 }
-
 
 
 function OnUpdActionEnd( data )
@@ -136,6 +136,7 @@ function OnUpdActionEnd( data )
 			plList.push( id );
 		}*/
 		var plAndParList = OnUpdAction_GetSortedPlayersList(teamPlayers, data);
+		//$.Msg( "                  plAndParList =", plAndParList );
 		//_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, 3, localPlayerTeamId, score );
 		var score
 		for ( var i = 0; i < plAndParList.length; ++i )
@@ -153,6 +154,13 @@ function OnUpdActionEnd( data )
 				
 			//$.Msg( "                  OnUpdActionEnd: 	score ", score );
 			_ScoreboardUpdater_UpdatePlayerPanelMy( _endScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
+			
+			/*var playersC = playersContainer.FindChildInLayoutFile( "PlayerAndHeroName" );
+			$.Msg( "                  playersC ", playersC);
+			playersC.html = true;
+			playersC.href = "http://steamcommunity.com/profiles/" + score.SID +"/"; 
+			$.Msg( "                  PROFILE ", "http://steamcommunity.com/profiles/" + score.SID +"/");*/
+			//PlayerResource:GetSteamAccountID(pID)
 		}
 		//allscore = allscore/numS;
 		
@@ -284,7 +292,7 @@ function OnUpdActionEnd( data )
 		"teamXmlName" : "file://{resources}/layout/custom_game/lia_end_screen_team.xml",
 		"playerXmlName" : "file://{resources}/layout/custom_game/lia_end_screen_player.xml",
 	};
-	_containerPanel = $( "#TeamsContainer" )
+	_containerPanel = $( "#TeamsContainer" );
 
 	/*var teamPanelName = "_dynamic_team_2"; // _dynamic_team_2   why is exists?
 	var teamPanel = _containerPanel.FindChild( teamPanelName );
@@ -309,7 +317,10 @@ function OnUpdActionEnd( data )
 	//
 	playerPanel.text = "asdeqwe";*/
 	
+	//$.Msg( "                  scoreboardConfig  ", scoreboardConfig);
+	//$.Msg( "                  _containerPanel  ", _containerPanel);
 	_endScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, _containerPanel );
+	//$.Msg( "                  _endScoreboardHandle  ", _endScoreboardHandle);
 	//$.GetContextPanel().SetHasClass( "endgame", 1 );
 	
 	GameEvents.Subscribe( "upd_action_end",  OnUpdActionEnd);
