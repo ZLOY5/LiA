@@ -29,12 +29,12 @@ function Survival:StartDuels()
 		end
 	)
 
-    for k,v in pairs(self.tProrogueHide) do --прячем героев ливеров
-        self:HideHero(v)
-    end
-
-    for k,v in pairs(self.tProrogueUnhide) do
-        self:UnhideHero(v)
+    for _,hero in pairs(self.tHeroes) do
+        if hero.prorogueHide then 
+            self:HideHero(hero)
+        elseif hero.prorogueUnhide then
+            self:UnhideHero(hero)
+        end
     end
 end
 

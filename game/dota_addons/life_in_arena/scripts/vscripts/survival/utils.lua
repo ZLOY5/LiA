@@ -1,23 +1,22 @@
 function Survival:HideHero(hero)
-	local prorogueHide = false
-	print("hide hero", hero:GetName())
+	print("Hide hero", hero:GetName())
 
-	--[[for k,v in pairs(self.tProrogueUnhide) do --отменяем отложенный анхайд
-		if v == hero then
-			table.remove(self.tProrogueUnhide,k)
-		end
-	end]]
+	hero.prorogueUnhide = false
+	hero.prorogueHide = false
+
+	if hero.hidden then 
+		print("Already hidden")
+		return 
+	end
 	
 	if self.State >= SURVIVAL_STATE_ROUND_WAVE then
 		if hero:IsAlive() then --отложим хайд героя, если сейчас идет раунд и герой жив
-			prorogueHide = true
+			hero.prorogueHide = true
 			print("prorogueHide")
 		end
 	end
 
-	if prorogueHide then
-		table.insert(self.tProrogueHide,hero)
-	else
+	if not hero.prorogueHide then
 		print("hero hidden")
 		hero:Interrupt()
 		hero:AddNoDraw()
@@ -35,18 +34,19 @@ function Survival:HideHero(hero)
 end
 
 function Survival:UnhideHero(hero)
-	local prorogueUnhide = false
-	print("unhide hero", hero:GetName())
+	print("Unhide hero", hero:GetName())
 
-	--[[for k,v in pairs(self.tProrogueHide) do --если герой должен был быть спрятан позже, то отменяем это
-		if v == hero then
-			table.remove(self.tProrogueHide,k)
-		end
-	end]]
-	
+	hero.prorogueUnhide = false
+	hero.prorogueHide = false
+
+	if not hero.hidden then 
+		print("Not hidden")
+		return 
+	end
+
 	if self.State >= SURVIVAL_STATE_ROUND_WAVE then --во время раунда не возвращаем героя
 		print("prorogue unhide")
-		prorogueUnhide = true
+		hero.prorogueUnhide = true
 
 		if self.State == SURVIVAL_STATE_ROUND_WAVE then 
 			for _,unit in pairs(self.tHeroes) do 
@@ -60,9 +60,7 @@ function Survival:UnhideHero(hero)
 		end
 	end
 
-	if prorogueUnhide then
-		table.insert(self.tProrogueUnhide,hero)
-	else
+	if not hero.prorogueUnhide then
 		print("hero unhidden")
 		hero:RemoveModifierByName("modifier_hide_lua")
 		hero:SetAbsOrigin(hero.abs)

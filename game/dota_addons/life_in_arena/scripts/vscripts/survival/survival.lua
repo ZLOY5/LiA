@@ -44,9 +44,6 @@ function Survival:InitSurvival()
     self.tHeroes = {}
 	self.nRoundNum = 0
 
-    self.tProrogueHide = {}
-    self.tProrogueUnhide = {}
-
     self.nHeroCount = 0
 	self.nDeathHeroes = 0
 	self.nDeathCreeps = 0
@@ -296,14 +293,12 @@ function Survival:PrepareNextRound()
     PrecacheUnitByNameAsync(creepName, function(...) end)
     PrecacheUnitByNameAsync(bossName, function(...) end)
 
-    for k,v in pairs(self.tProrogueHide) do --прячем героев ливеров
-        table.remove(self.tProrogueHide,k)
-        self:HideHero(v)
-    end
-
-    for k,v in pairs(self.tProrogueUnhide) do
-        table.remove(self.tProrogueUnhide,k)
-        self:UnhideHero(v)
+    for _,hero in pairs(self.tHeroes) do
+        if hero.prorogueHide then 
+            self:HideHero(hero)
+        elseif hero.prorogueUnhide then
+            self:UnhideHero(hero)
+        end
     end
 end
 
