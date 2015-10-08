@@ -119,7 +119,7 @@ end
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
         --self.nRoundNum = 13
-        GameRules:SetPreGameTime(60)
+        GameRules:SetPreGameTime(120)
         Survival:PrepareNextRound()
     end
 end
@@ -154,9 +154,13 @@ function Survival:OnPlayerChat(event)
         onPlayerReadyToWave(player) --LiA_ForceRound.lua
     end
 	
-    if event.text == "fade" then
+    --[[if event.text == "fade" then
         ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
     end
+	
+    if event.text == "lose" then
+        Survival:EndGame(DOTA_TEAM_BADGUYS)
+    end]]
 	
 	
 end

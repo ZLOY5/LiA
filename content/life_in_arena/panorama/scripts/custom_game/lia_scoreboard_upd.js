@@ -566,9 +566,16 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 				var itemInfo = playerItems.inventory[i];
 				if ( itemInfo )
 				{
+					var heroEntId = Players.GetPlayerHeroEntityIndex(playerId);
+					var itemEntId = Entities.GetItemInSlot(heroEntId,i);
+					var TextureName = Abilities.GetAbilityTextureName( itemEntId )
+					//$.Msg( "		TextureName = ", TextureName );
 					//game\dota_addons\life_in_arena\resource\flash3\images\items
-					var bufName = itemInfo.item_name;
-					if ( bufName.indexOf( "recipe" ) >= 0 )
+					//var bufName = itemInfo.item_name;
+					var bufName = TextureName;
+					//
+					//[   PanoramaScript       ]: 		TextureName = item_datadriven
+					if ( bufName.indexOf( "recipe" ) >= 0 || bufName.indexOf( "item_datadriven" ) >= 0 )
 					{
 						item_image_name = "file://{images}/custom_game/items/recipe.png";
 					}
