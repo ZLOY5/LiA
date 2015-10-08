@@ -39,10 +39,11 @@ function ItemShowTooltip0()
 	{
 		var heroEntId = Players.GetPlayerHeroEntityIndex(PID);
 		var itemEntId = Entities.GetItemInSlot(heroEntId,c);
-		var itemName = Abilities.GetAbilityName( itemEntId );
-		
-		//$.Msg( "                  panel =", panel );
-		$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		if (itemEntId !== -1)
+		{
+			var itemName = Abilities.GetAbilityName( itemEntId );
+			$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		}
 	}
 }
 
@@ -64,8 +65,11 @@ function ItemShowTooltip1()
 	{
 		var heroEntId = Players.GetPlayerHeroEntityIndex(PID);
 		var itemEntId = Entities.GetItemInSlot(heroEntId,c);
-		var itemName = Abilities.GetAbilityName( itemEntId );
-		$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		if (itemEntId !== -1)
+		{
+			var itemName = Abilities.GetAbilityName( itemEntId );
+			$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		}
 	}
 }
 
@@ -87,8 +91,11 @@ function ItemShowTooltip2()
 	{
 		var heroEntId = Players.GetPlayerHeroEntityIndex(PID);
 		var itemEntId = Entities.GetItemInSlot(heroEntId,c);
-		var itemName = Abilities.GetAbilityName( itemEntId );
-		$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		if (itemEntId !== -1)
+		{
+			var itemName = Abilities.GetAbilityName( itemEntId );
+			$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		}
 	}
 }
 
@@ -110,8 +117,12 @@ function ItemShowTooltip3()
 	{
 		var heroEntId = Players.GetPlayerHeroEntityIndex(PID);
 		var itemEntId = Entities.GetItemInSlot(heroEntId,c);
-		var itemName = Abilities.GetAbilityName( itemEntId );
-		$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		//$.Msg( "                  itemEntId =", itemEntId );
+		if (itemEntId !== -1)
+		{
+			var itemName = Abilities.GetAbilityName( itemEntId );
+			$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		}
 	}
 }
 
@@ -133,8 +144,11 @@ function ItemShowTooltip4()
 	{
 		var heroEntId = Players.GetPlayerHeroEntityIndex(PID);
 		var itemEntId = Entities.GetItemInSlot(heroEntId,c);
-		var itemName = Abilities.GetAbilityName( itemEntId );
-		$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		if (itemEntId !== -1)
+		{
+			var itemName = Abilities.GetAbilityName( itemEntId );
+			$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		}
 	}
 }
 
@@ -156,8 +170,11 @@ function ItemShowTooltip5()
 	{
 		var heroEntId = Players.GetPlayerHeroEntityIndex(PID);
 		var itemEntId = Entities.GetItemInSlot(heroEntId,c);
-		var itemName = Abilities.GetAbilityName( itemEntId );
-		$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		if (itemEntId !== -1)
+		{
+			var itemName = Abilities.GetAbilityName( itemEntId );
+			$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", panel, itemName, heroEntId );
+		}
 	}
 }
 
