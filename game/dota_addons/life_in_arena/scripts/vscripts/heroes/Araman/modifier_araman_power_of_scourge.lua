@@ -49,7 +49,7 @@ end
 
 function modifier_araman_power_of_scourge:OnAttackLanded(params)
 	if IsServer() then
-		if params.attacker == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
+		if params.attacker == self:GetParent() and not self:GetParent():IsIllusion() and params.target:IsOpposingTeam(params.attacker:GetTeamNumber()) then
 			if self.power_of_scourge_stacks < self.power_of_scourge_max_stacks then
 				self.bonus_damage = self.bonus_damage + self.damage_per_stack
 				self.power_of_scourge_stacks = self.power_of_scourge_stacks + 1
