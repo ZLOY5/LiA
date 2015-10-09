@@ -1,9 +1,4 @@
 ﻿
-function storm_castpoint(keys)
-	keys.ability.castPoint = keys.target_points[1]
-
-end
-
 function stormCauseDamage(keys)
 
 	--local heroCaster = keys.heroCaster

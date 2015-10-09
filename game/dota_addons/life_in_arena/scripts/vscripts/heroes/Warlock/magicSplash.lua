@@ -1,24 +1,32 @@
-function overload_check_order( keys )
-	local caster = keys.caster
-	local ability = keys.ability
-	ListenToGameEvent( "dota_player_used_ability", function( event )
-			local ply = EntIndexToHScript( event.PlayerID )
-			-- Check if player existed
-			if ply then
-				local hero = ply:GetAssignedHero()
-				-- Check if it is corrent hero
-				if hero == caster then
-					-- Check if ability on cast bar is casted
-					local ability_count = caster:GetAbilityCount()
-					for i = 0, (ability_count - 1) do
-						local ability_at_slot = caster:GetAbilityByIndex( i )
-						if ability_at_slot and ability_at_slot:GetAbilityName() == event.abilityname then
-							ability:ApplyDataDrivenModifier( caster, caster, "modifier_overload_damage_datadriven", {} )
-							break
-						end
-					end
-				end
-			end
-		end, nil
-	)
+function MagicSplash(event)
+	--[[for k,v in pairs(event) do
+		print(k,v)
+	end]]
+
+	local eventAbility = event.event_ability
+
+	if eventAbility:IsItem() then 
+		return 
+	end
+
+	local caster = event.caster
+	local ability = event.ability
+
+	local damage = ability:GetSpecialValueFor("damage")
+	local radius = ability:GetSpecialValueFor("radius")
+
+	local targets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+	
+	for _,unit in pairs(targets) do 
+		ApplyDamage({victim = unit, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
+		ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf",PATTACH_ABSORIGIN,unit)
+	end
 end
+
+--[[[   VScript ]: unit	table: 0x00231508
+[   VScript ]: caster	table: 0x00231508
+[   VScript ]: caster_entindex	808
+[   VScript ]: ScriptFile	heroes\Warlock\MagicSplash.lua
+[   VScript ]: event_ability	table: 0x0021be10
+[   VScript ]: Function	MagicSplash
+[   VScript ]: ability	table: 0x00271b80]]
