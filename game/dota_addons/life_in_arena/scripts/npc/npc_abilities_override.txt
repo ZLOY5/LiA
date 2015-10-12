@@ -8910,7 +8910,7 @@
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityCastRange"				"550"
 	
 		"AbilityManaCost"				"6 12 18"
@@ -8980,7 +8980,11 @@
 					{
 						"Type"          "DAMAGE_TYPE_PHYSICAL"
 						"Damage"        "%AbilityDamage"
-						"Target"		"TARGET"
+						"Target"						
+						{
+							"Center"  	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
 					}
 				}
 			}
@@ -9028,7 +9032,7 @@
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityCastRange"				"850"
 	
 		"AbilityManaCost"				"0"
@@ -9092,7 +9096,11 @@
 					{
 						"Type"          "DAMAGE_TYPE_PHYSICAL"
 						"Damage"        "%AbilityDamage"
-						"Target"		"TARGET"
+						"Target"						
+						{
+							"Center"  	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
 					}
 				}
 			}
@@ -25257,6 +25265,111 @@
 				}
 			}
 		}
+	}
+	
+	"troll_healer_heal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"forest_troll_high_priest_heal"
+	
+	
+	
+		"MaxLevel"               "1"
+	
+	
+		"AoERadius"               "400"	
+	
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.3"
+	
+		"AbilityCooldown"				"1.5"
+	
+		"AbilityManaCost"				"5"	
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+			//"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+	
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"value_heal"				"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"value_heal_percent"	"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"n_creep_ForestTrollHighPriest.Heal"
+				"Target"		"CASTER"
+			}
+	
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" "TARGET"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+					"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+	
+				"Action"
+				{
+					"FireEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/neutral_fx/troll_heal.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
+			}
+				"RunScript"
+				{
+					"ScriptFile"	"abilities/TrollHealer.lua"
+					"Function"		"Heal"
+					"Target"
+					{
+						"Center" "TARGET"
+						"Radius" "%radius"
+						"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+						"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
+				}
+			"Heal"
+			{
+				"Target"        "TARGET"
+				"HealAmount"	"%value_heal"
+			}
+		}
+	
+	
+	
 	}
 	//End of file purchasable_units_skills.txt
 

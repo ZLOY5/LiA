@@ -5936,6 +5936,76 @@
 		}
 	}
 	
+	"npc_lia_troll_healer" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_high_priest.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "0.9" 
+		"Level" "1" 
+	
+	
+	
+	
+		"Ability1" "spell_immunity" 
+		"Ability2" "troll_healer_heal"
+	
+	
+	
+	
+		"ArmorPhysical" "15" 
+		"MagicalResistance" "0" 
+	
+	
+	
+		"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin" "0" 
+		"AttackDamageMax" "0" 
+		"AttackRate" "1.8" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "500" 
+		"AttackRange" "600" 
+		"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf"
+		"ProjectileSpeed" "1200" 
+	
+	
+	
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+	
+	
+	
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "290" 
+		"MovementTurnRate" "0.5" 
+	
+	
+	
+		"StatusHealth" "700" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "100" 
+		"StatusManaRegen" "0.5" 
+	
+	
+	
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
+	
+		"VisionDaytimeRange" "1000" 
+		"VisionNighttimeRange" "1000" 
+	
+	
+	
+		"HasInventory" "0" 
+	}
+	
+	
 	"npc_doom_guard_spawn"
 	{
 	

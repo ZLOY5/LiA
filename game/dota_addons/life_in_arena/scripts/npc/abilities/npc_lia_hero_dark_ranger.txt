@@ -11,7 +11,7 @@
 	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	"AbilityCastRange"				"550"
 
 	"AbilityManaCost"				"6 12 18"
@@ -81,7 +81,11 @@
 				{
 					"Type"          "DAMAGE_TYPE_PHYSICAL"
 					"Damage"        "%AbilityDamage"
-					"Target"		"TARGET"
+					"Target"						
+					{
+						"Center"  	"TARGET"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					}
 				}
 			}
 		}
@@ -129,7 +133,7 @@
 	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	"AbilityCastRange"				"850"
 
 	"AbilityManaCost"				"0"
@@ -193,7 +197,11 @@
 				{
 					"Type"          "DAMAGE_TYPE_PHYSICAL"
 					"Damage"        "%AbilityDamage"
-					"Target"		"TARGET"
+					"Target"						
+					{
+						"Center"  	"TARGET"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					}
 				}
 			}
 		}

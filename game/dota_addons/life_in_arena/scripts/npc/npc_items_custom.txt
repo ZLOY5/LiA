@@ -1908,7 +1908,7 @@
 	
 		"precache"
 		{
-			"particle"  "particles/sven_cyclopean_warcry_custom.vpcf"
+			"particle"  "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
 		}
 		"OnSpellStart"
@@ -1927,7 +1927,7 @@
 			}
 			"FireEffect"
 			{
-				"EffectName"        "particles/sven_cyclopean_warcry_custom.vpcf"
+				"EffectName"        "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
 				"EffectAttachType"  "follow_origin"
 				"Target"            "CASTER"
 			}
@@ -9268,4 +9268,51 @@
 		}
 	}
 	//End of file item_lia_troll_defender.txt
+
+
+	//Start of file item_lia_troll_healer.txt
+	    "item_lia_troll_healer"
+	{
+		"ID"                            "1593"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"            "item_lia_troll_healer"
+		
+		"ItemStockInitial" "1" 
+		"ItemStockMax" "1"
+		"ItemStockTime" "20"
+	
+		"ItemCost"                      "100" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "20"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"	"items\TrollHealer.lua"
+				"Function"		"SpawnTroll"
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"45"
+			}
+		}
+	}
+	//End of file item_lia_troll_healer.txt
 }
