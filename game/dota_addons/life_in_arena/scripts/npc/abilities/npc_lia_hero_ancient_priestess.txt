@@ -1,0 +1,204 @@
+"ancient_priestess_surge_of_intelligence" 
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    //"AbilityTextureName"     "brewmaster_drunken_haze"
+  
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+	
+   "AbilityCooldown"        "10 14 18"
+   "AbilityManaCost"        "90 180 360"
+
+  // Stats
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCastPoint"  "0.5"
+
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"              "FIELD_INTEGER"
+      "radius_damage"              "500"
+    }
+    "02"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "koef_damage"    "3 6 9"
+    }
+  }
+    
+  // Casting
+  //-------------------------------------------------------------------------------------------------------------
+  "OnSpellStart"
+  {
+  
+   "ApplyModifier"
+    {
+		"ModifierName"   "modifier_surge_of_intelligence"
+		"Target"
+		{
+			"Center"	"CASTER"
+			"Radius"	"%radius_damage"
+			"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		}
+		"Duration"       "0.1"
+    }
+  }
+  
+  "precache"
+  {
+  "particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+  }
+    
+    // Modifiers
+    //-------------------------------------------------------------------------------------------------------------
+    "Modifiers"
+    {
+      "modifier_surge_of_intelligence"
+      {
+        "Passive"       "0"
+        "IsHidden"      "0"
+        "IsBuff"        "1"
+    
+		"OnCreated"
+		{
+			  "RunScript"
+			  {
+				  "ScriptFile"    "heroes/AncientPriestess/surge_of_intelligence.lua"
+				  "Function"      "SDamage"
+			  }
+		}
+	
+		//"EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+		//"EffectAttachType"  "follow_origin"
+      }
+    }
+  }
+
+
+"ancient_priestess_spirit_link"
+{
+	"BaseClass"					"ability_datadriven"
+	//"AbilityTextureName"		"orc_spirit_link"
+  	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+		
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		
+	"AbilityCastRange"			"800"
+	"AbilityCastPoint"			"0"
+	"AbilityCooldown"			"20"
+	"AbilityManaCost"			"60 70 80"
+		
+	"AOERadius"					"800"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"duration"		"25"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"800"
+		}
+		"03"
+		{
+			"var_type"		"FIELD_FLOAT"
+			"distribution_factor"			"0.3 0.6 0.9"
+		}
+		"04"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"max_unit"		"3 6 9"
+		}
+		"05"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"heal_value"		"12 24 36"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/AncientPriestess/Link.lua"
+			"Function"		"LinkStart"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_spirit_link"
+		{
+			"IsPurgable"		"1"
+			"IsBuff"			"1"
+			"Duration"			"%duration"
+			//"EffectName"		"particle_name"
+			//"EffectAttachType"	"follow_origin"
+
+			  "ThinkInterval" "1"
+		
+			  "OnIntervalThink"
+			  {
+				"Heal"
+				{          
+					"Target" "TARGET"
+					"HealAmount" "%heal_value"
+				}
+			  }
+			
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/AncientPriestess/Link.lua"
+					"Function"		"AddLinkedUnit"
+				}
+			}
+
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/AncientPriestess/Link.lua"
+					"Function"		"RemoveLinkedUnit"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/AncientPriestess/Link.lua"
+					"Function"		"RemoveLinkedUnit"
+				}
+			}
+
+			"OnTakeDamage"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/AncientPriestess/Link.lua"
+					"Function"		"LinkDamage"
+					"Damage"		"%attack_damage"
+				}
+			}
+		}
+	}
+}
