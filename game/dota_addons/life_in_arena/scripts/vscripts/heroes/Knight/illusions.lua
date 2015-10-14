@@ -1,4 +1,4 @@
-function AncestralSpirits( event )
+function illusions( event )
 	local caster = event.caster
 	local player = caster:GetPlayerID()
 	local ability = event.ability
@@ -7,6 +7,7 @@ function AncestralSpirits( event )
 	local duration = ability:GetLevelSpecialValueFor( "illusion_duration", ability:GetLevel() - 1 )
 	local outgoingDamage = ability:GetLevelSpecialValueFor( "outgoing_damage", ability:GetLevel() - 1 )
 	local incomingDamage = ability:GetLevelSpecialValueFor( "incoming_damage", ability:GetLevel() - 1 )
+	local radius = ability:GetLevelSpecialValueFor( "radius_hide", ability:GetLevel() - 1 )
 
 	local casterOrigin = caster:GetAbsOrigin()
 	local casterAngles = caster:GetAngles()
@@ -28,10 +29,10 @@ function AncestralSpirits( event )
 
 	-- Setup a table of potential spawn positions
 	local vRandomSpawnPos = {
-		Vector( 72, 0, 0 ),		-- North
-		Vector( 0, 72, 0 ),		-- East
-		Vector( -72, 0, 0 ),	-- South
-		Vector( 0, -72, 0 ),	-- West
+		Vector( radius, 0, 0 ),		-- North
+		Vector( 0, radius, 0 ),		-- East
+		Vector( -radius, 0, 0 ),	-- South
+		Vector( 0, -radius, 0 ),	-- West
 	}
 
 	for i=#vRandomSpawnPos, 2, -1 do	-- Simply shuffle them
@@ -51,7 +52,7 @@ function AncestralSpirits( event )
 		local origin = casterOrigin + table.remove( vRandomSpawnPos, 1 )
 
 		-- handle_UnitOwner needs to be nil, else it will crash the game.
-		local illusion = CreateHeroForPlayer("npc_dota_hero_elder_titan", caster:GetPlayerOwner())
+		local illusion = CreateHeroForPlayer("npc_dota_hero_dragon_knight", caster:GetPlayerOwner())
 		FindClearSpaceForUnit(illusion, origin, false)
 		illusion:SetPlayerID(caster:GetPlayerID())
 		illusion:SetControllableByPlayer(player, true)
@@ -99,6 +100,36 @@ function AncestralSpirits( event )
 
 		-- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
 		table.insert(caster.mirror_image_illusions, illusion)
-
+		--
+		--caster:Purge(false, true, false, true, false)
+		--caster:Purge(true, true, true, true, true)
+	end
+	--
+	local abilityM = caster:FindAbilityByName("knight_dark_gifts")
+	local durationM = abilityM:GetLevelSpecialValueFor( "duration", abilityM:GetLevel() - 1 )
+	local modif = caster:FindModifierByName("modifier_knight_dark_gifts")
+	if modif then
+		local timeSet = durationM-modif:GetElapsedTime()
+		local modifIll
+		-- приделаем эффект ульты на существующие в данный момент иллюзии
+		for i=1, #caster.mirror_image_illusions do
+			if not caster.mirror_image_illusions[i]:IsNull() then
+				abilityM:ApplyDataDrivenModifier( caster, caster.mirror_image_illusions[i], 'modifier_knight_dark_gifts', {} ) --Duration = timeSet
+				modifIll = caster.mirror_image_illusions[i]:FindModifierByName("modifier_knight_dark_gifts")
+				modifIll:SetDuration(timeSet, false)
+			end
+		end
+		--print("			modif:GetElapsedTime =", modif:GetElapsedTime())
 	end
 end
+
+function debuff( event )
+	local caster = event.caster
+	--local ability = event.ability
+	--
+	--print(" --------------		Purge ")
+	caster:Purge(false, true, false, true, false)
+	--
+end
+
+

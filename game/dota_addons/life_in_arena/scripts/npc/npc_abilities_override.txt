@@ -2739,6 +2739,7 @@
 	    "1_wave_stomp"
 	    {
 	      "IsDebuff"  "1"
+		  "IsPurgable"	"1"
 	      "Duration"  "%duration"
 	      
 	      "Properties"
@@ -15595,6 +15596,388 @@
 	    }
 	}
 	//End of file npc_lia_hero_keeper_of_the_grove.txt
+
+
+	//Start of file npc_lia_hero_knight.txt
+	"knight_illusions"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"             "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  //"AbilityTextureName"    "elder_titan_ancestral_spirit"
+	  
+	   //"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	  	"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"        "0.5"
+	
+	  // Time   
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCooldown"       "10.0 11.0 12.0"
+	
+	  // Cost
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityManaCost"       "60 80 100"
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_FLOAT"
+	      "illusion_duration"     "60.0 60.0 60.0"
+	    }
+	    "02"
+	    {
+	      "var_type"               "FIELD_INTEGER"
+	      "outgoing_damage"        "-85 -70 -55"
+	    }
+	    "03"
+	    {
+	      "var_type"                   "FIELD_INTEGER"
+	      "outgoing_damage_tooltip"    "15 30 45"
+	    }
+	    "04"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "incoming_damage"     "145 135 125"
+	    }
+	    "05"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "radius_hide"     	"128"
+	    }
+	    //"05"
+	    //{
+	    //  "var_type"          "FIELD_INTEGER"
+	    //  "tooltip_incoming_damage_total_pct"     "45 35 25"
+	    //}
+	    "06"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "images_count"        "1 2 3"
+	    }
+	    "07"
+	    {
+	      "var_type"          "FIELD_FLOAT"
+	      "invuln_duration"     "0.5"
+	    }     
+	    "08"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "radius_damage"     	"350"
+	    }
+	    "09"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_damage"     	"60 120 180"
+	    }
+	  }
+	  
+	  // Data driven
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "soundfile"         "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+	    "particle"          "particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_knight_illusions"
+	      "Target"        "CASTER"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_knight_illusions"
+	    { 
+	      "Duration"      "%invuln_duration"
+	      "IsHidden"      "1"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVULNERABLE"       "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_HEALTH_BAR"      "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_UNSELECTABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	
+		"OnCreated"
+		{
+			"Damage"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius_damage"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+				"Type" 		"DAMAGE_TYPE_PHYSICAL"
+				"Damage" 	"%bonus_damage"
+			}
+			
+			  "RunScript"
+			  {
+				  "ScriptFile"    "heroes/Knight/illusions.lua"
+				  "Function"      "debuff"
+			  }
+			
+		}
+	
+		"OnDestroy"
+		{
+		  "RunScript"
+		  {
+			  "ScriptFile"    "heroes/Knight/illusions.lua"
+			  "Function"      "illusions"
+		  }
+		}
+	    }
+	  }
+	}
+	
+	
+	"knight_dark_shield"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes/Knight/knight_dark_shield.lua"
+		//"AbilityTextureName"			"dark_ranger_spiked_charm"
+	
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"2"
+		"LevelsBetweenUpgrades"  		"2"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"10 20 30"		
+			}	
+		}
+	
+	}
+	
+	
+	"knight_ancient_shield"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"human_research_defend"
+		"MaxLevel" 						"3"
+		"RequiredLevel"          		"2"
+		"LevelsBetweenUpgrades"  		"2"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"piercing_damage_reduction"	"50 30 10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_speed_reduction"	"-30 -25 -20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reflect_chance"			"30"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"immun_magic"			"20 40 60"
+			}
+		}
+	
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_ancient_shield_defend"
+				"Target"		"CASTER"
+			}
+		}
+	
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_ancient_shield_defend"
+				"Target"		"CASTER"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_ancient_shield_defend"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+	
+				"Properties"
+				{
+				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed_reduction" 
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 	"%immun_magic"
+				}
+				"OnAttacked"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"Random"
+					{
+						"Chance"			"%reflect_chance"
+						"OnSuccess"
+						{
+							"Damage"
+							{
+								"Target"
+								{
+									"Center"  	"ATTACKER"
+									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								}
+								"Type"			"DAMAGE_TYPE_MAGICAL"
+								"Damage"		"%attack_damage"
+							}
+							
+							//"Heal"
+							//{          
+							//	"Target" "CASTER"
+							//	"HealAmount" "%attack_damage"
+							//}
+							
+						}
+					}
+	
+					//Check the type of the attack, if its piercing, reduce it by piercing_damage_reduction
+				}
+			}
+		}
+	}
+	
+	
+	"knight_dark_gifts" 
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    //"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    //"AbilityTextureName"     "brewmaster_drunken_haze"
+	
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	  	"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+	   "AbilityCooldown"        "80.0"
+	   "AbilityManaCost"        "100 145 190"
+	
+	  // Stats
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastPoint"  "0.5"
+	
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"              "FIELD_FLOAT"
+	      "duration"              "15 17.5 20"
+	    }
+	    "02"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "bonus_movespeed_percentage"    "5 10 15"
+	    }
+	    "03"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_attackspeed"           "30 40 50"
+	    }
+	    "04"
+	    {
+	      "var_type"              "FIELD_INTEGER"
+	      "bonus_armor"           "40 80 120"
+	    }
+		"05"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"immun_magic"			"40"
+		}
+	  }
+	    
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+	   "ApplyModifier"
+	    {
+	     "ModifierName"   "modifier_knight_dark_gifts"
+	     "Target"         "CASTER"
+	    }
+	  }
+	  
+	  "precache"
+	  {
+	  "particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+	  }
+	    
+	    // Modifiers
+	    //-------------------------------------------------------------------------------------------------------------
+	    "Modifiers"
+	    {
+	      "modifier_knight_dark_gifts"
+	      {
+			"Duration"       "%duration"
+			
+	        "Passive"       "0"
+	        "IsHidden"      "0"
+	        "IsBuff"        "1"
+	    
+	        "Properties"
+	        {
+				 "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
+				 "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
+				 "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
+				 "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 	"%immun_magic"
+	        }
+			
+			"OnCreated"
+			{
+				  "RunScript"
+				  {
+					  "ScriptFile"    "heroes/Knight/dark_gifts.lua"
+					  "Function"      "makeEffect"
+				  }
+			}
+			
+			//"EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+			//"EffectAttachType"  "follow_origin"
+	      }
+	    }
+	  }
+	
+	//End of file npc_lia_hero_knight.txt
 
 
 	//Start of file npc_lia_hero_kret.txt

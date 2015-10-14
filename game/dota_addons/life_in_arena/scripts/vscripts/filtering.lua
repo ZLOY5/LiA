@@ -261,6 +261,7 @@ function LiA:FilterDamage( filterTable )
 
 		-- If there is an inflictor, the damage came from an ability
 		local attack_damage = original_damage / ( 1 - damage_reduction ) 
+	--print("		inflictor = ", inflictor)
 		--[[if inflictor then
 			--Remake the full damage to apply our custom handling
 			attack_damage = original_damage / ( 1 - damage_reduction )
@@ -304,10 +305,13 @@ function LiA:FilterDamage( filterTable )
 				damage = damage * 1.5
 			end
 		end
-		--if victim:HasModifier("modifier_defend") and attack_type == "pierce" then
-		--	print("Defend reduces this piercing attack to 50%")
-		--	damage = damage * 0.5
-
+		if victim:HasModifier("modifier_ancient_shield_defend") and attack_type == "pierce" then
+			-- Снижение урона от дальних атак у Рыцаря
+			local b_abil = victim:FindAbilityByName("knight_ancient_shield")
+			local koef = b_abil:GetLevelSpecialValueFor( "piercing_damage_reduction", b_abil:GetLevel() - 1 )
+			damage = damage * koef/100
+		end
+		
 		-- modifier_elunes_grace (Piercing attacks to 65%)
 		--else
 		--if victim:HasModifier("modifier_elunes_grace") and attack_type == "pierce" then
