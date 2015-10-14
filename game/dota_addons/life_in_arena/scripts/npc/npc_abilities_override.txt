@@ -25271,24 +25271,18 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityTextureName"			"forest_troll_high_priest_heal"
 	
-	
-	
 		"MaxLevel"               "1"
 	
-	
 		"AoERadius"               "400"	
-	
 		"AbilityCastRange"				"500"
 		"AbilityCastPoint"				"0.3"
-	
 		"AbilityCooldown"				"1.5"
-	
 		"AbilityManaCost"				"5"	
 	
 		"precache"
@@ -25305,7 +25299,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"value_heal"				"50"
+				"value_heal"			"50"
 			}
 			"02"
 			{
@@ -25348,19 +25342,19 @@
 					}
 				}
 			}
-				"RunScript"
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/TrollHealer.lua"
+				"Function"		"Heal"
+				"Target"
 				{
-					"ScriptFile"	"abilities/TrollHealer.lua"
-					"Function"		"Heal"
-					"Target"
-					{
-						"Center" "TARGET"
-						"Radius" "%radius"
-						"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-						"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
+					"Center" "TARGET"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+					"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
+			}
 			"Heal"
 			{
 				"Target"        "TARGET"
