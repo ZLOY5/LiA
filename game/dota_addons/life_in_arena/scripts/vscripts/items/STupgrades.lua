@@ -222,6 +222,25 @@ function OnEquip(event)
 			--
 			caster.STupgrades = true
 		end			
+		if name == "npc_dota_hero_mirana" then
+			par = {
+				unit = caster,
+				oldAbi = "ancient_priestess_mana_shield",
+				newAbi = "ancient_priestess_mana_shield_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "ancient_priestess_ritual_protection",
+				newAbi = "ancient_priestess_ritual_protection_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end			
 		-- next heroes
 	end
 	--end
@@ -457,7 +476,28 @@ function OnUnequip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = false
-		end	
+		end
+		
+		if name == "npc_dota_hero_mirana" then
+			par = {
+				unit = caster,
+				oldAbi = "ancient_priestess_mana_shield_scepter",
+				newAbi = "ancient_priestess_mana_shield",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "ancient_priestess_ritual_protection_scepter",
+				newAbi = "ancient_priestess_ritual_protection",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		
 	end
 	--end
 	--if caster:HasItemInInventory("item_lia_spherical_staff") then
