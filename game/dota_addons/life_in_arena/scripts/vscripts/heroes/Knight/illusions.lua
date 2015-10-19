@@ -11,6 +11,7 @@ function illusions( event )
 
 	local casterOrigin = caster:GetAbsOrigin()
 	local casterAngles = caster:GetAngles()
+	local casterForward = caster:GetForwardVector()
 
 	-- Initialize the illusion table to keep track of the units created by the spell
 	if not caster.mirror_image_illusions then
@@ -27,29 +28,25 @@ function illusions( event )
 	-- Start a clean illusion table
 	caster.mirror_image_illusions = {}
 
-	-- Setup a table of potential spawn positions
-	local vRandomSpawnPos = {
-		Vector( radius, 0, 0 ),		-- North
-		Vector( 0, radius, 0 ),		-- East
-		Vector( -radius, 0, 0 ),	-- South
-		Vector( 0, -radius, 0 ),	-- West
-	}
+	----------------------------------------------------------------------------------
 
-	for i=#vRandomSpawnPos, 2, -1 do	-- Simply shuffle them
-		local j = RandomInt( 1, i )
-		vRandomSpawnPos[i], vRandomSpawnPos[j] = vRandomSpawnPos[j], vRandomSpawnPos[i]
+	local angle = 360/(images_count+1)
+	local vRandomSpawnPos = {}
+	vRandomSpawnPos[1] = casterOrigin + RotatePosition(Vector(0,0,0), QAngle(0,-90,0),casterForward)*radius
+	--print(vRandomSpawnPos[1],casterOrigin)
+	for i=1,images_count do 
+		vRandomSpawnPos[i+1] = RotatePosition(casterOrigin, QAngle(0,angle,0), vRandomSpawnPos[i])
+		--print(vRandomSpawnPos[i+1])
 	end
 
-	-- Insert the center position and make sure that at least one of the units will be spawned on there.
-	table.insert( vRandomSpawnPos, RandomInt( 1, images_count+1 ), Vector( 0, 0, 0 ) )
 
 	-- At first, move the main hero to one of the random spawn positions.
-	FindClearSpaceForUnit( caster, casterOrigin + table.remove( vRandomSpawnPos, 1 ), true )
+	FindClearSpaceForUnit( caster, table.remove( vRandomSpawnPos,RandomInt(1, #vRandomSpawnPos)), true )
 
 	-- Spawn illusions
 	for i=1, images_count do
 
-		local origin = casterOrigin + table.remove( vRandomSpawnPos, 1 )
+		local origin = table.remove( vRandomSpawnPos,RandomInt(1, #vRandomSpawnPos))
 
 		-- handle_UnitOwner needs to be nil, else it will crash the game.
 		local illusion = CreateHeroForPlayer("npc_dota_hero_dragon_knight", caster:GetPlayerOwner())
@@ -58,6 +55,7 @@ function illusions( event )
 		illusion:SetControllableByPlayer(player, true)
 		
 		illusion:SetAngles( casterAngles.x, casterAngles.y, casterAngles.z )
+		illusion:SetForwardVector(casterForward)
 		
 		-- Level Up the unit to the casters level
 		local casterLevel = caster:GetLevel()
