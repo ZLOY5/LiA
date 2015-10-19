@@ -227,7 +227,7 @@ function OnEquip(event)
 				unit = caster,
 				oldAbi = "ancient_priestess_mana_shield",
 				newAbi = "ancient_priestess_mana_shield_scepter",
-				tPassiveModifiers_by_oldAbi = {},
+				tPassiveModifiers_by_oldAbi = {"modifier_ancient_priestess_mana_shield"},
 			}
 			ReplaceAbi(par)
 			--
@@ -483,7 +483,7 @@ function OnUnequip(event)
 				unit = caster,
 				oldAbi = "ancient_priestess_mana_shield_scepter",
 				newAbi = "ancient_priestess_mana_shield",
-				tPassiveModifiers_by_oldAbi = {},
+				tPassiveModifiers_by_oldAbi = {"modifier_ancient_priestess_mana_shield"},
 			}
 			ReplaceAbi(par)
 			--
@@ -550,12 +550,9 @@ function ReplaceAbi(params)
 			end
 		end
 	end
-	-- autocast state
-	if ability:GetAutoCastState() ~= nil then
-		autocast = ability:GetAutoCastState()
-	else
-		autocast = false
-	end
+
+	autocast = ability:GetAutoCastState()
+
 	--
 	unit:RemoveAbility(oldAbi)
 	--
@@ -567,6 +564,7 @@ function ReplaceAbi(params)
 	if autocast then
 		abilityNew:ToggleAutoCast()
 	end
+
 	--
 end
 

@@ -204,12 +204,10 @@
 }
 
 
-// Author: Noya
-// Date: 24.1.2015.
-// Notes: Post mitigation.
 "ancient_priestess_mana_shield"
 {
-	"BaseClass"             		"ability_datadriven"
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"heroes\AncientPriestess\ancient_priestess_mana_shield.lua"
 	//"AbilityTextureName"			"naga_sea_witch_mana_shield"
   	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
@@ -239,80 +237,13 @@
 		"particle" 	"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
 		"particle"	"particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
-	}
-
-	"OnToggleOn"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_mana_shield"
-			"Target" 		"CASTER"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Medusa.ManaShield.On"
-			"Target" 		"CASTER"
-		}		
-	}
-
-	"OnToggleOff"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"	"modifier_mana_shield"
-			"Target" 		"CASTER"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Medusa.ManaShield.Off"
-			"Target" 		"CASTER"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_mana_shield"
-		{
-			"IsHidden"			"0"
-	
-			"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
-			"EffectAttachType"	"follow_origin"
-	
-			"OnTakeDamage"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/AncientPriestess/mana_shield.lua"
-					"Function"		"ManaShield"
-					"Damage"		"%attack_damage"
-				}		
-
-				"FireSound"
-				{
-					"EffectName"	"Hero_Medusa.ManaShield.Proc"
-					"Target" 		"CASTER"
-				}									
-			}
-
-			"ThinkInterval"  "0.03"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/AncientPriestess/mana_shield.lua"
-					"Function"		"ManaShieldHealth"
-				}
-			}					
-		}
 	}	
 }
 
 "ancient_priestess_mana_shield_scepter"
 {
-	"BaseClass"             		"ability_datadriven"
-	//"AbilityTextureName"			"naga_sea_witch_mana_shield"
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"heroes\AncientPriestess\ancient_priestess_mana_shield_scepter.lua"
   	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
@@ -343,85 +274,20 @@
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
 	}
 
-	"OnToggleOn"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_mana_shield"
-			"Target" 		"CASTER"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Medusa.ManaShield.On"
-			"Target" 		"CASTER"
-		}		
-	}
-
-	"OnToggleOff"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"	"modifier_mana_shield"
-			"Target" 		"CASTER"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Medusa.ManaShield.Off"
-			"Target" 		"CASTER"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_mana_shield"
-		{
-			"IsHidden"			"0"
-	
-			"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
-			"EffectAttachType"	"follow_origin"
-	
-			"OnTakeDamage"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/AncientPriestess/mana_shield.lua"
-					"Function"		"ManaShield"
-					"Damage"		"%attack_damage"
-				}		
-
-				"FireSound"
-				{
-					"EffectName"	"Hero_Medusa.ManaShield.Proc"
-					"Target" 		"CASTER"
-				}									
-			}
-
-			"ThinkInterval"  "0.03"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/AncientPriestess/mana_shield.lua"
-					"Function"		"ManaShieldHealth"
-				}
-			}					
-		}
-	}	
 }
 
 
 "ancient_priestess_ritual_protection"
 {
-    "BaseClass"             "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    //"AbilityTextureName"    "beastmaster_primal_roar"
+    "BaseClass"             	"ability_lua"
+    "ScriptFile"				"heroes\AncientPriestess\ancient_priestess_ritual_protection.lua"
+    "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    //"AbilityTextureName"  	"beastmaster_primal_roar"
     
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "5"
-    "LevelsBetweenUpgrades"  "4"
+	"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
+    "MaxLevel"               	"3"
+    "RequiredLevel"          	"5"
+    "LevelsBetweenUpgrades"  	"4"
     
     //"precache"
     //{
@@ -440,93 +306,27 @@
         "01"
         {
             "var_type"          "FIELD_INTEGER"
-            "damage_abso"      "400 600 800"        
+            "damage_absorb"     "400 600 800"        
         }
         "02"
         {
             "var_type"          "FIELD_INTEGER"
-            "radius"    "600"
+            "radius"    		"600"
         }
         "03"
         {
             "var_type"          "FIELD_INTEGER"
-            "duration"  "15"
-        }
-    }
-
-    "OnSpellStart"
-    {
-        "ActOnTargets"
-        {
-            "Target"
-            {
-                "Center" "CASTER"
-                "Radius" "%radius"
-                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-            }
-
-            "Action"
-            {
-                "ApplyModifier"
-                {
-                    "ModifierName"  "modifier_ancient_priestess_ritual_protection"
-                    "Target"
-                    {
-                        "Center" "TARGET"
-                        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-                    }
-
-                }
-            }
-        }
-
-        //"FireSound"
-        //{
-         //   "EffectName"    "Hero_LoneDruid.BattleCry"
-          //  "Target"        "CASTER"
-        //}
-
-
-    }
-
-    "Modifiers"
-    {
-        "modifier_ancient_priestess_ritual_protection"
-        {
-            "IsBuff"    "1"
-            "Duration"  "%duration"
-            "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-            //"EffectName"    "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-            //"EffectAttachType"  "follow_overhead"
-
-			"OnTakeDamage"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/AncientPriestess/ritual_protection.lua"
-					"Function"		"Adsorb"
-					"Damage"		"%attack_damage"
-				}		
-
-				//"FireSound"
-				//{
-				//	"EffectName"	"Hero_Medusa.ManaShield.Proc"
-				//	"Target" 		"CASTER"
-				//}									
-			}
-			
-			
+            "duration"  		"15"
         }
     }
 }
 
 "ancient_priestess_ritual_protection_scepter"
 {
-    "BaseClass"             "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    //"AbilityTextureName"    "beastmaster_primal_roar"
+    "BaseClass"             	"ability_lua"
+    "ScriptFile"				"heroes\AncientPriestess\ancient_priestess_ritual_protection_scepter.lua"
+    "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    //"AbilityTextureName"    	"beastmaster_primal_roar"
     
 	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
     "MaxLevel"               "3"
@@ -561,73 +361,6 @@
         {
             "var_type"          "FIELD_INTEGER"
             "duration"  "15"
-        }
-    }
-
-    "OnSpellStart"
-    {
-        "ActOnTargets"
-        {
-            "Target"
-            {
-                "Center" "CASTER"
-                "Radius" "%radius"
-                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-            }
-
-            "Action"
-            {
-                "ApplyModifier"
-                {
-                    "ModifierName"  "modifier_ancient_priestess_ritual_protection"
-                    "Target"
-                    {
-                        "Center" "TARGET"
-                        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-                    }
-
-                }
-            }
-        }
-
-        //"FireSound"
-        //{
-         //   "EffectName"    "Hero_LoneDruid.BattleCry"
-          //  "Target"        "CASTER"
-        //}
-
-
-    }
-
-    "Modifiers"
-    {
-        "modifier_ancient_priestess_ritual_protection"
-        {
-            "IsBuff"    "1"
-            "Duration"  "%duration"
-            "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-            //"EffectName"    "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-            //"EffectAttachType"  "follow_overhead"
-
-			"OnTakeDamage"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/AncientPriestess/ritual_protection.lua"
-					"Function"		"Adsorb"
-					"Damage"		"%attack_damage"
-				}		
-
-				//"FireSound"
-				//{
-				//	"EffectName"	"Hero_Medusa.ManaShield.Proc"
-				//	"Target" 		"CASTER"
-				//}									
-			}
-			
-			
         }
     }
 }

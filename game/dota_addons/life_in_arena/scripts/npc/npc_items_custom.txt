@@ -3840,6 +3840,139 @@
 	//End of file item_lia_huge_axe.txt
 
 
+	//Start of file item_lia_hyper_boots.txt
+	"item_recipe_lia_hyper_boots"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1788"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"400"	
+		"ItemShopTags"					"movement_speed"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_hyper_boots"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_boots"
+		}
+	}
+	
+	"item_lia_hyper_boots"
+	{
+		"ID"							"1789"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"490"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"AbilityTextureName"			"item_lia_hyper_boots"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"18.0"
+	
+		"AbilityCastRange"				"500"
+	
+		"AbilityManaCost"				"50"
+	
+		"precache"
+		{
+		  	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+		  	"particle"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"Target"		"CASTER"
+				"EffectName"	"Hero_BountyHunter.WindWalk"
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"	"items/HyperBoots.lua"
+				"Function"		"LifeBreak"
+				"ModifierName"			"modifier_huskar_life_break_datadriven"
+			    "ModifierName_Debuff"	"modifier_huskar_life_break_datadriven_debuff"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_boots_of_invisibility"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			    "Properties"
+			    {
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"		"%bonus_movement_speed"
+			    }  
+			}
+			"modifier_item_boots_of_invisibility_active"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+				"Duration"			"1"
+	
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}	
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_movement_speed" "60"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"max_distance"			"750"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"250"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"stun_duration"		"1"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"100"
+			}
+			"06"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"charge_speed"						"1000"
+			}
+		}
+	}
+	//End of file item_lia_hyper_boots.txt
+
+
 	//Start of file item_lia_ice_sword.txt
 	"item_recipe_lia_ice_sword"
 	{
