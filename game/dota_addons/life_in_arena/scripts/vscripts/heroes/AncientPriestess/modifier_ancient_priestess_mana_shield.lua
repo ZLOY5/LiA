@@ -19,11 +19,11 @@ end
 
 function modifier_ancient_priestess_mana_shield:GetModifierPhysical_ConstantBlockUnavoidablePreArmor(params)
 	if IsServer() and self.record ~= params.record then 
-		print("MANA SHIELD: MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR")
+		--[[print("MANA SHIELD: MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR")
 		print("record",params.record)
 		print("original_damage",params.original_damage)
 		print("target",params.target)
-		print("-------------------------------------------------------\n")
+		print("-------------------------------------------------------\n")]]
 
 		self.record = params.record --без этого модификатор срабатывает несколько раз
 		local parent = self:GetParent()
