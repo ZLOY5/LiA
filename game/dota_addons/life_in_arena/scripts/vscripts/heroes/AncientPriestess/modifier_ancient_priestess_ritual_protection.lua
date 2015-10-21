@@ -6,7 +6,6 @@ end
 
 function modifier_ancient_priestess_ritual_protection:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR,
 		MODIFIER_PROPERTY_TOOLTIP,
 	}
  
@@ -18,34 +17,22 @@ function modifier_ancient_priestess_ritual_protection:OnTooltip(params)
 	return netTable.ritual_protection_damage_absorb
 end
 
-function modifier_ancient_priestess_ritual_protection:GetModifierPhysical_ConstantBlockUnavoidablePreArmor(params)
-	if IsServer() and self.record ~= params.record then 
-		--[[print("RITUAL PROTECTION: MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR")
-		print("record",params.record)
-		print("original_damage",params.original_damage)
-		print("damage_absorb",self.damage_absorb)
-		print("target",params.target)
-		print("-------------------------------------------------------\n")]]
+function modifier_ancient_priestess_ritual_protection:GetBlockDamage(attack_damage)
+	local parent = self:GetParent()
 
-		self.record = params.record --без этого модификатор срабатывает несколько раз
-		local parent = self:GetParent()
+	local damage_block
 
-		local damage_block
-
-		if self.damage_absorb > params.original_damage then 
-			damage_block = params.original_damage
-			self.damage_absorb = self.damage_absorb - damage_block
-		else 
-			damage_block = self.damage_absorb 
-			self:Destroy()
-		end
-
-		self.damage_blocked = damage_block 
+	if self.damage_absorb > attack_damage then 
+		damage_block = attack_damage
+		self.damage_absorb = self.damage_absorb - damage_block
 
 		CustomNetTables:SetTableValue( "custom_modifier_state", string.format( "%d", self:GetParent():GetEntityIndex() ), { ritual_protection_damage_absorb = self.damage_absorb } )
-
-		return damage_block
+	else 
+		damage_block = self.damage_absorb 
+		self:Destroy()
 	end
+	
+	return damage_block
 end
 
 function modifier_ancient_priestess_ritual_protection:OnCreated(kv)

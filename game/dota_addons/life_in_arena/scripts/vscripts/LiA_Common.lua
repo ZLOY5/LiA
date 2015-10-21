@@ -168,3 +168,39 @@ function CountdownTimer()
 	end 
 	return 1
 end
+
+function IsValidAlive( unit )
+	return (IsValidEntity(unit) and unit:IsAlive())
+end
+
+function TableFindKey( table, val )
+    if table == nil then
+        print( "nil" )
+        return nil
+    end
+
+    for k, v in pairs( table ) do
+        if v == val then
+            return k
+        end
+    end
+    return nil
+end
+
+function TableCount( t )
+    local n = 0
+    for _ in pairs( t ) do
+        n = n + 1
+    end
+    return n
+end
+
+function getIndex(list, element)
+    if list == nil then return false end
+    for i=1,#list do
+        if list[i] == element then
+            return i
+        end
+    end
+    return -1
+end

@@ -5770,7 +5770,8 @@
 	
 	"ancient_priestess_spirit_link"
 	{
-		"BaseClass"					"ability_datadriven"
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\AncientPriestess\ancient_priestess_spirit_link.lua"
 		//"AbilityTextureName"		"orc_spirit_link"
 	  	"MaxLevel"               "3"
 		"RequiredLevel"          "2"
@@ -5788,6 +5789,12 @@
 		"AbilityManaCost"			"60 70 80"
 			
 		"AOERadius"					"800"
+	
+		"preload"
+		{
+			"particle"	"particles/dazzle_shadow_wave_custom.vpcf"
+		}
+		
 		"AbilitySpecial"
 		{
 			"01"
@@ -5814,75 +5821,6 @@
 			{
 				"var_type"		"FIELD_INTEGER"
 				"heal_value"		"12 24 36"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/AncientPriestess/Link.lua"
-				"Function"		"LinkStart"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_spirit_link"
-			{
-				"IsPurgable"		"1"
-				"IsBuff"			"1"
-				"Duration"			"%duration"
-				//"EffectName"		"particle_name"
-				//"EffectAttachType"	"follow_origin"
-	
-				  "ThinkInterval" "1"
-			
-				  "OnIntervalThink"
-				  {
-					"Heal"
-					{          
-						"Target" "TARGET"
-						"HealAmount" "%heal_value"
-					}
-				  }
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/AncientPriestess/Link.lua"
-						"Function"		"AddLinkedUnit"
-					}
-				}
-	
-				"OnDeath"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/AncientPriestess/Link.lua"
-						"Function"		"RemoveLinkedUnit"
-					}
-				}
-	
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/AncientPriestess/Link.lua"
-						"Function"		"RemoveLinkedUnit"
-					}
-				}
-	
-				"OnTakeDamage"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/AncientPriestess/Link.lua"
-						"Function"		"LinkDamage"
-						"Damage"		"%attack_damage"
-					}
-				}
 			}
 		}
 	}

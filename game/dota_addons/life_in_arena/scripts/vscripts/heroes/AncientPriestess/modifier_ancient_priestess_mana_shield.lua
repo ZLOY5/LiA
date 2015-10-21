@@ -8,60 +8,33 @@ function modifier_ancient_priestess_mana_shield:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 
-function modifier_ancient_priestess_mana_shield:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR,
-	}
- 
-	return funcs
-end
+function modifier_ancient_priestess_mana_shield:GetBlockDamage(attack_damage)
+	local parent = self:GetParent()
 
+	local absorb_percent = self:GetAbility():GetSpecialValueFor("absorption_percent")
+	local damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana")
 
-function modifier_ancient_priestess_mana_shield:GetModifierPhysical_ConstantBlockUnavoidablePreArmor(params)
-	if IsServer() and self.record ~= params.record then 
-		--[[print("MANA SHIELD: MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR")
-		print("record",params.record)
-		print("original_damage",params.original_damage)
-		print("target",params.target)
-		print("-------------------------------------------------------\n")]]
+	local damage_abs = attack_damage * absorb_percent * 0.01
 
-		self.record = params.record --без этого модификатор срабатывает несколько раз
-		local parent = self:GetParent()
+	local parent_mana = parent:GetMana()
+	local mana_needed = damage_abs / damage_per_mana
 
-		local ritualModificator = parent:FindModifierByName("modifier_ancient_priestess_ritual_protection") --ритуал в первую очередь работает
-		if ritualModificator then 
-			if ritualModificator.record == self.record then 
-				return ritualModificator.damage_blocked
-			else 
-				return 0 
-			end 
-		end
+	local damage_block = 0
 
-		local absorb_percent = self:GetAbility():GetSpecialValueFor("absorption_percent")
-		local damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana")
-
-		local damage_abs = params.original_damage * absorb_percent * 0.01
-
-		local parent_mana = parent:GetMana()
-		local mana_needed = damage_abs / damage_per_mana
-
-		local damage_block = 0
-
-		if mana_needed <= parent_mana then --если требуется маны меньше чем есть, то блокируем урон полностью
-			damage_block = damage_abs
-		else --если маны требуется больше чем есть, то блокируем часть урона и отключаем скилл
-			damage_block = parent_mana * damage_per_mana
-			mana_needed = parent_mana
-			self:GetAbility():ToggleAbility()
-		end
-
-		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
-		ParticleManager:SetParticleControl(particle, 0, parent:GetAbsOrigin())
-		ParticleManager:SetParticleControl(particle, 1, Vector(mana_needed,0,0))
-
-		EmitSoundOn("Hero_Medusa.ManaShield.Proc",parent)
-
-		parent:SpendMana(mana_needed, self:GetAbility())
-		return damage_block
+	if mana_needed <= parent_mana then --если требуется маны меньше чем есть, то блокируем урон полностью
+		damage_block = damage_abs
+	else --если маны требуется больше чем есть, то блокируем часть урона и отключаем скилл
+		damage_block = parent_mana * damage_per_mana
+		mana_needed = parent_mana
+		self:GetAbility():ToggleAbility()
 	end
+
+	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
+	ParticleManager:SetParticleControl(particle, 0, parent:GetAbsOrigin())
+	ParticleManager:SetParticleControl(particle, 1, Vector(mana_needed,0,0))
+
+	EmitSoundOn("Hero_Medusa.ManaShield.Proc",parent)
+
+	parent:SpendMana(mana_needed, self:GetAbility())
+	return damage_block
 end
