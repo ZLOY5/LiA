@@ -30,7 +30,7 @@ function ManaShield( event )
 			caster:SetHealth(oldHealth-(main_damage-damage_abs))
 			
 			-- Impact particle based on damage absorbed
-			local particleName = "particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+			local particleName = "particles/medusa_mana_shield_impact.vpcf"
 			local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster)
 			ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
 			ParticleManager:SetParticleControl(particle, 1, Vector(mana_needed,0,0))

@@ -5,7 +5,7 @@
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    //"AbilityTextureName"     "brewmaster_drunken_haze"
+    "AbilityTextureName"     "ancient_priestess_surge_of_intelligence"
   
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
@@ -18,6 +18,11 @@
   //-------------------------------------------------------------------------------------------------------------
   "AbilityCastPoint"  "0.5"
 
+  "precache"
+  {
+  	"particle"  "particles/leshrac_diabolic_edict_custom.vpcf"
+  	"soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+  }
 
   "AbilitySpecial"
   {
@@ -51,11 +56,12 @@
 		}
 		"Duration"       "0.1"
     }
-  }
-  
-  "precache"
-  {
-  "particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+
+    "FireSound"
+    {
+    	"EffectName"	"Hero_Leshrac.Diabolic_Edict"
+    	"Target" 		"CASTER"
+    }
   }
     
     // Modifiers
@@ -75,6 +81,19 @@
 				  "ScriptFile"    "heroes/AncientPriestess/surge_of_intelligence.lua"
 				  "Function"      "SDamage"
 			  }
+			  "FireEffect"
+			  {
+			  	"EffectName"        "particles/leshrac_diabolic_edict_custom.vpcf"
+			  	"EffectAttachType"  "follow_origin"
+			  	"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius_damage"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			  }
 		}
 	
 		//"EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
@@ -87,7 +106,7 @@
 "ancient_priestess_spirit_link"
 {
 	"BaseClass"					"ability_datadriven"
-	//"AbilityTextureName"		"orc_spirit_link"
+	"AbilityTextureName"		"ancient_priestess_spirit_link"
   	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
@@ -210,7 +229,7 @@
 "ancient_priestess_mana_shield"
 {
 	"BaseClass"             		"ability_datadriven"
-	//"AbilityTextureName"			"naga_sea_witch_mana_shield"
+	"AbilityTextureName"			"ancient_priestess_mana_shield"
   	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
@@ -236,8 +255,8 @@
 
 	"precache"
 	{
-		"particle" 	"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
-		"particle"	"particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+		"particle" 	"particles/medusa_mana_shield_custom.vpcf"
+		"particle"	"particles/medusa_mana_shield_impact.vpcf"
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
 	}
 
@@ -277,7 +296,7 @@
 		{
 			"IsHidden"			"0"
 	
-			"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+			"EffectName"		"particles/medusa_mana_shield_custom.vpcf"
 			"EffectAttachType"	"follow_origin"
 	
 			"OnTakeDamage"
@@ -312,7 +331,7 @@
 "ancient_priestess_mana_shield_scepter"
 {
 	"BaseClass"             		"ability_datadriven"
-	//"AbilityTextureName"			"naga_sea_witch_mana_shield"
+	"AbilityTextureName"			"ancient_priestess_mana_shield"
   	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
@@ -338,8 +357,8 @@
 
 	"precache"
 	{
-		"particle" 	"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
-		"particle"	"particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+		"particle" 	"particles/medusa_mana_shield_custom.vpcf"
+		"particle"	"particles/medusa_mana_shield_impact.vpcf"
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
 	}
 
@@ -379,7 +398,7 @@
 		{
 			"IsHidden"			"0"
 	
-			"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+			"EffectName"		"particles/medusa_mana_shield_custom.vpcf"
 			"EffectAttachType"	"follow_origin"
 	
 			"OnTakeDamage"
@@ -416,7 +435,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    //"AbilityTextureName"    "beastmaster_primal_roar"
+    "AbilityTextureName"    "ancient_priestess_ritual_protection"
     
 	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
     "MaxLevel"               "3"
@@ -434,6 +453,13 @@
     "AbilityCooldown"               "40 35 30"
 
     "AbilityManaCost"               "150 200 250"
+
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+		"particle"  "particles/units/heroes/hero_mirana/mirana_moonlight_recipient.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+	}
 
     "AbilitySpecial"
     {
@@ -479,6 +505,12 @@
                     }
 
                 }
+                "FireEffect"
+                {
+                	"EffectName"        "particles/units/heroes/hero_mirana/mirana_moonlight_recipient.vpcf"
+                	"EffectAttachType"  "follow_origin"
+                	"Target"            "TARGET"
+                }
             }
         }
 
@@ -498,8 +530,8 @@
             "IsBuff"    "1"
             "Duration"  "%duration"
             "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-            //"EffectName"    "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-            //"EffectAttachType"  "follow_overhead"
+            "EffectName"    "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+            "EffectAttachType"  "follow_overhead"
 
 			"OnTakeDamage"
 			{
@@ -526,7 +558,7 @@
 {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    //"AbilityTextureName"    "beastmaster_primal_roar"
+    "AbilityTextureName"    "ancient_priestess_ritual_protection"
     
 	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
     "MaxLevel"               "3"
@@ -589,6 +621,12 @@
                     }
 
                 }
+                "FireEffect"
+                {
+                	"EffectName"        "particles/units/heroes/hero_mirana/mirana_moonlight_recipient.vpcf"
+                	"EffectAttachType"  "follow_origin"
+                	"Target"            "TARGET"
+                }
             }
         }
 
@@ -608,8 +646,8 @@
             "IsBuff"    "1"
             "Duration"  "%duration"
             "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-            //"EffectName"    "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-            //"EffectAttachType"  "follow_overhead"
+            "EffectName"    "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+            "EffectAttachType"  "follow_overhead"
 
 			"OnTakeDamage"
 			{
