@@ -1,5 +1,13 @@
 modifier_ancient_priestess_ritual_protection = class({})
 
+function modifier_ancient_priestess_ritual_protection:GetEffectName()
+	return "particles/lotus_orb_shell_custom.vpcf"
+end
+
+function modifier_ancient_priestess_ritual_protection:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+
 function modifier_ancient_priestess_ritual_protection:IsBuff()
 	return true 
 end

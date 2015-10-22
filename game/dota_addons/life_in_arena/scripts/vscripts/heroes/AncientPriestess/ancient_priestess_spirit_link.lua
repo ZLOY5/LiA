@@ -27,12 +27,16 @@ function ancient_priestess_spirit_link:OnSpellStart()
 		function()
 			local prevTarget = target
 			local targets = FindUnitsInRadius(caster:GetTeamNumber(), prevTarget:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_BASIC+DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
-
-			for k,unit in pairs(targets) do 
-				if TableFindKey(tTargets,unit) then  
-					table.remove(targets,k)
-				end 
+			
+			for _,unit in pairs(tTargets) do 
+				for k2,unit2 in pairs(targets) do 
+ 					if unit == unit2 then 
+ 						table.remove(targets,k2)
+ 						break
+ 					end 
+ 				end 
 			end
+
 			target = targets[1]
 
 			if target then 
@@ -48,11 +52,11 @@ function ancient_priestess_spirit_link:OnSpellStart()
 				table.insert(tTargets,target)
 				nUnits = nUnits + 1
 			else 
-				return
+				return nil
 			end
 
 			if nUnits >= maxUnits then 
-				return
+				return nil 
 			end
 			return 0.1
 		end)

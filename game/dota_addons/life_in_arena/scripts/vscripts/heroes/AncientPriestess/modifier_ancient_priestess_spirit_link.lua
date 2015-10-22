@@ -10,8 +10,6 @@ function modifier_ancient_priestess_spirit_link:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 
-end
-
 function modifier_ancient_priestess_spirit_link:IsBuff() 
 	return true 
 end
@@ -46,7 +44,7 @@ end
 function modifier_ancient_priestess_spirit_link:LinkDamage(attack_damage,damage_type,attacker,ability) --эта функция вызывается из фильтра урона и возращает кол-во заблокированного(переданого остальным юнитам) урона
 	local nLinkedUnits = #self.tTargets
 	local damage = attack_damage*self.distr_factor
-	local linked_damage = attack_damage/nLinkedUnits
+	local linked_damage = damage/nLinkedUnits
 
 	if nLinkedUnits == 1 then
 		return 0

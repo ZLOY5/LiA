@@ -1,5 +1,5 @@
 "ancient_priestess_surge_of_intelligence" 
-  {
+{
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
@@ -14,92 +14,53 @@
    "AbilityCooldown"        "10 14 18"
    "AbilityManaCost"        "90 180 360"
 
-  // Stats
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastPoint"  "0.5"
+  	// Stats
+  	//-------------------------------------------------------------------------------------------------------------
+  	"AbilityCastPoint"  "0.5"
 
-  "precache"
-  {
-  	"particle"  "particles/leshrac_diabolic_edict_custom.vpcf"
-  	"soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
-  }
+  	"precache"
+  	{
+  		"particle"  "particles/leshrac_diabolic_edict_custom.vpcf"
+  		"soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+  	}	
 
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"              "FIELD_INTEGER"
-      "radius_damage"              "500"
-    }
-    "02"
-    {
-      "var_type"                      "FIELD_INTEGER"
-      "koef_damage"    "3 6 9"
-    }
-  }
+  	"AbilitySpecial"
+  	{
+    	"01"
+    	{
+      		"var_type"              "FIELD_INTEGER"
+      		"radius_damage"         "500"
+    	}
+    	"02"
+    	{
+      		"var_type"              "FIELD_INTEGER"
+      		"koef_damage"    		"3 6 9"
+    	}
+  	}
     
-  // Casting
-  //-------------------------------------------------------------------------------------------------------------
-  "OnSpellStart"
-  {
-  
-   "ApplyModifier"
-    {
-		"ModifierName"   "modifier_surge_of_intelligence"
-		"Target"
-		{
-			"Center"	"CASTER"
-			"Radius"	"%radius_damage"
-			"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		}
-		"Duration"       "0.1"
-    }
+  	// Casting
+  	//-------------------------------------------------------------------------------------------------------------
+  	"OnSpellStart"
+  	{
+  		"RunScript"
+  		{
+  			"ScriptFile"	"heroes/AncientPriestess/surge_of_intelligence.lua"
+  			"Function"		"Damage"
+  			"Target"
+  			{
+				"Center"	"CASTER"
+				"Radius"	"%radius_damage"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+  		}
 
-    "FireSound"
-    {
-    	"EffectName"	"Hero_Leshrac.Diabolic_Edict"
-    	"Target" 		"CASTER"
-    }
-  }
-    
-    // Modifiers
-    //-------------------------------------------------------------------------------------------------------------
-    "Modifiers"
-    {
-      "modifier_surge_of_intelligence"
-      {
-        "Passive"       "0"
-        "IsHidden"      "0"
-        "IsBuff"        "1"
-    
-		"OnCreated"
-		{
-			  "RunScript"
-			  {
-				  "ScriptFile"    "heroes/AncientPriestess/surge_of_intelligence.lua"
-				  "Function"      "SDamage"
-			  }
-			  "FireEffect"
-			  {
-			  	"EffectName"        "particles/leshrac_diabolic_edict_custom.vpcf"
-			  	"EffectAttachType"  "follow_origin"
-			  	"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius_damage"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			  }
-		}
-	
-		//"EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-		//"EffectAttachType"  "follow_origin"
-      }
-    }
+    	"FireSound"
+    	{
+    		"EffectName"	"Hero_Leshrac.Diabolic_Edict"
+    		"Target" 		"CASTER"
+    	}
+  	}
   }
 
 
