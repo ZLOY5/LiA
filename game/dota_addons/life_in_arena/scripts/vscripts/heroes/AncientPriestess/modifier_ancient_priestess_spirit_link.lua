@@ -3,14 +3,14 @@ modifier_ancient_priestess_spirit_link = class({})
 require('LiA_Common')
 
 function modifier_ancient_priestess_spirit_link:GetEffectName()
-	return "любой.vpcf"
+	return "particles/wisp_overcharge_custom.vpcf"
 end
 
 function modifier_ancient_priestess_spirit_link:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
 
-end
+--end
 
 function modifier_ancient_priestess_spirit_link:IsBuff() 
 	return true 

@@ -5746,6 +5746,7 @@
 	    	"EffectName"	"Hero_Leshrac.Diabolic_Edict"
 	    	"Target" 		"CASTER"
 	    }
+	
 	  }
 	    
 	    // Modifiers
@@ -5757,7 +5758,10 @@
 	        "Passive"       "0"
 	        "IsHidden"      "0"
 	        "IsBuff"        "1"
-	    
+	 
+	 		"EffectName"        "particles/leshrac_diabolic_edict_custom.vpcf"
+			"EffectAttachType"  "follow_origin"
+	
 			"OnCreated"
 			{
 				  "RunScript"
@@ -5765,23 +5769,8 @@
 					  "ScriptFile"    "heroes/AncientPriestess/surge_of_intelligence.lua"
 					  "Function"      "SDamage"
 				  }
-				  "FireEffect"
-				  {
-				  	"EffectName"        "particles/leshrac_diabolic_edict_custom.vpcf"
-				  	"EffectAttachType"  "follow_origin"
-				  	"Target"
-					{
-						"Center"	"CASTER"
-						"Radius"	"%radius_damage"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-				  }
+	
 			}
-		
-			//"EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-			//"EffectAttachType"  "follow_origin"
 	      }
 	    }
 	  }
@@ -5810,9 +5799,10 @@
 			
 		//"AOERadius"					"800"
 	
-		"preload"
+		"precache"
 		{
 			"particle"	"particles/dazzle_shadow_wave_custom.vpcf"
+			"particle"  "particles/wisp_overcharge_custom.vpcf"
 		}
 		
 		"AbilitySpecial"
