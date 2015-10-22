@@ -10,6 +10,7 @@ function Damage( event )
 	
 	for _,v in pairs(targets) do
 		ApplyDamage({ victim = v, attacker = caster, damage = dmg, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
-		ParticleManager:CreateParticle("particles/leshrac_diabolic_edict_custom.vpcf", PATTACH_ABSORIGIN_FOLLOW, v)
+		local particle = ParticleManager:CreateParticle("particles/leshrac_diabolic_edict_custom.vpcf", PATTACH_WORLDORIGIN, caster)
+		ParticleManager:SetParticleControl(particle, 1, v:GetAbsOrigin())
 	end
 end
