@@ -50,6 +50,7 @@ function Precache( context )
 		PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", context)		
 
 		PrecacheUnitByNameAsync("npc_dota_hero_terrorblade", function(...) end)
+		PrecacheUnitByNameAsync("npc_dota_hero_mirana", function(...) end)
 	
 		PrecacheUnitByNameAsync("1_wave_creep", function(...) end)
 		PrecacheUnitByNameAsync("1_wave_boss", function(...) end)
