@@ -236,6 +236,46 @@ function GetSmallSplashDamage( unit ) --QFact in war3
 	return 0
 end
 
+function BlockDamage_PhysicalPreArmor(attack_damage,damage_type,victim,attacker,inflictor) 
+	local blocked_damage = 0 
+	local newDamage = attack_damage
+
+	if victim:HasModifier("modifier_ancient_priestess_ritual_protection") then 
+		local blocked = victim:FindModifierByName("modifier_ancient_priestess_ritual_protection"):GetBlockDamage(newDamage)
+		blocked_damage = blocked_damage + blocked
+		newDamage = newDamage - blocked
+	end
+
+	if newDamage <= 0 then 
+		return attack_damage
+	end
+
+	if victim:HasModifier("modifier_ancient_priestess_mana_shield") then 
+		local blocked = victim:FindModifierByName("modifier_ancient_priestess_mana_shield"):GetBlockDamage(newDamage)
+		blocked_damage = blocked_damage + blocked
+		newDamage = newDamage - blocked
+	end
+
+	if newDamage <= 0 then 
+		return attack_damage
+	end
+
+	if victim:HasModifier("modifier_ancient_priestess_spirit_link") then 
+		if victim.spiritLink_damage then 
+			victim.spiritLink_damage = nil
+		else
+			local link_blocked = victim:FindModifierByName("modifier_ancient_priestess_spirit_link"):LinkDamage(newDamage,damage_type,attacker,inflictor)
+			blocked_damage = blocked_damage + link_blocked
+			newDamage = newDamage - link_blocked
+		end
+	end
+
+	if newDamage <= 0 then 
+		return attack_damage
+	end
+	return blocked_damage
+end
+
 
 function LiA:FilterDamage( filterTable )
 	--for k, v in pairs( filterTable ) do
@@ -243,19 +283,20 @@ function LiA:FilterDamage( filterTable )
 	--end
 	local victim_index = filterTable["entindex_victim_const"]
 	local attacker_index = filterTable["entindex_attacker_const"]
+	local inflictor_index = filterTable["entindex_inflictor_const"] or -1
 	if not victim_index or not attacker_index then
 		return true
 	end
 
 	local victim = EntIndexToHScript( victim_index )
 	local attacker = EntIndexToHScript( attacker_index )
+	local inflictor = EntIndexToHScript( inflictor_index )
 	local damagetype = filterTable["damagetype_const"]
 
 	-- Physical attack damage filtering
 	if damagetype == DAMAGE_TYPE_PHYSICAL then
 		local original_damage = filterTable["damage"] --Post reduction
-		local inflictor = filterTable["entindex_inflictor_const"]
-
+		
 		local armor = victim:GetPhysicalArmorValue()
 		local damage_reduction = ((armor)*0.06) / (1+0.06*(armor))
 
@@ -284,8 +325,9 @@ function LiA:FilterDamage( filterTable )
 		--print("		attack_type = ", attack_type)
 		--print("		armor_type = ", armor_type)
 		--print("		multiplier = ", multiplier)
+		local damage = attack_damage - BlockDamage_PhysicalPreArmor(attack_damage,damagetype,victim,attacker,inflictor)
 
-		local damage = ( attack_damage * (1 - damage_reduction)) * multiplier
+		damage = ( damage * (1 - damage_reduction)) * multiplier
 		
 		--if attacker:GetUnitName() == "npc_dummy_blank" then
 		--	print("			original_damage = ",original_damage)
@@ -330,7 +372,6 @@ function LiA:FilterDamage( filterTable )
 	
 	-- Magic damage filtering
 	elseif damagetype == DAMAGE_TYPE_MAGICAL then
-		local inflictor = filterTable["entindex_inflictor_const"]
 		local damage = filterTable["damage"] --Pre reduction
 
 		-- Extra rules for certain ability modifiers
@@ -360,10 +401,14 @@ function LiA:FilterDamage( filterTable )
 		if damage ~= filterTable["damage"] then
 			print("Magic Damage reduced: was ".. filterTable["damage"].." - dealt "..damage )
 		end]]
-		
+		damage = damage - BlockDamage_PhysicalPreArmor(damage,damagetype,victim,attacker,inflictor)
 		-- Reassign the new damage
 		filterTable["damage"] = damage
-
+	elseif damagetype == DAMAGE_TYPE_PURE then
+		local damage = filterTable["damage"]
+		damage = damage - BlockDamage_PhysicalPreArmor(damage,damagetype,victim,attacker,inflictor)
+		-- Reassign the new damage
+		filterTable["damage"] = damage
 	end
 
 	-- Cheat code host only
