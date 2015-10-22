@@ -1,7 +1,7 @@
 modifier_ancient_priestess_mana_shield = class({})
 
 function modifier_ancient_priestess_mana_shield:GetEffectName()
-	return "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+	return "particles/medusa_mana_shield_custom.vpcf"
 end
 
 function modifier_ancient_priestess_mana_shield:GetEffectAttachType()
@@ -29,7 +29,7 @@ function modifier_ancient_priestess_mana_shield:GetBlockDamage(attack_damage)
 		self:GetAbility():ToggleAbility()
 	end
 
-	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
+	local particle = ParticleManager:CreateParticle("particles/medusa_mana_shield_impact.vpcf", PATTACH_ABSORIGIN_FOLLOW, parent)
 	ParticleManager:SetParticleControl(particle, 0, parent:GetAbsOrigin())
 	ParticleManager:SetParticleControl(particle, 1, Vector(mana_needed,0,0))
 
