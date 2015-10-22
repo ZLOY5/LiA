@@ -364,11 +364,18 @@
      "ModifierName"   "modifier_knight_dark_gifts"
      "Target"         "CASTER"
     }
+
+    "FireSound"
+    {
+      "EffectName"  "Hero_Omniknight.Repel"
+      "Target"     "CASTER"
+    }
   }
   
   "precache"
   {
-  "particle"	"particles/items2_fx/vanguard_active.vpcf"
+    "particle"  "particles/omniknight_repel_buff_custom.vpcf"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
   }
     
     // Modifiers
@@ -383,7 +390,7 @@
         "IsHidden"      "0"
         "IsBuff"        "1"
     
-        "EffectName"  "particles/items2_fx/vanguard_active.vpcf"
+        "EffectName"  "particles/omniknight_repel_buff_custom.vpcf"
         "EffectAttachType" "follow_origin"
 
         "Properties"

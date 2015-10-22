@@ -5771,9 +5771,10 @@
 			
 		//"AOERadius"					"800"
 	
-		"preload"
+		"precache"
 		{
 			"particle"	"particles/dazzle_shadow_wave_custom.vpcf"
+			"particle"  "particles/wisp_overcharge_custom.vpcf"
 		}
 		
 		"AbilitySpecial"
@@ -5913,7 +5914,7 @@
 	
 		"precache"
 		{
-			"particle"  "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+			"particle"  "particles/mirana_moonlight_recipient_custom.vpcf"
 			"particle"  "particles/units/heroes/hero_mirana/mirana_moonlight_recipient.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
 		}
@@ -16268,11 +16269,18 @@
 	     "ModifierName"   "modifier_knight_dark_gifts"
 	     "Target"         "CASTER"
 	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Omniknight.Repel"
+	      "Target"     "CASTER"
+	    }
 	  }
 	  
 	  "precache"
 	  {
-	  "particle"	"particles/items2_fx/vanguard_active.vpcf"
+	    "particle"  "particles/omniknight_repel_buff_custom.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 	  }
 	    
 	    // Modifiers
@@ -16287,7 +16295,7 @@
 	        "IsHidden"      "0"
 	        "IsBuff"        "1"
 	    
-	        "EffectName"  "particles/items2_fx/vanguard_active.vpcf"
+	        "EffectName"  "particles/omniknight_repel_buff_custom.vpcf"
 	        "EffectAttachType" "follow_origin"
 	
 	        "Properties"
