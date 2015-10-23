@@ -264,6 +264,7 @@ function BlockDamage_PhysicalPreArmor(attack_damage,damage_type,victim,attacker,
 		if victim.spiritLink_damage then 
 			victim.spiritLink_damage = nil
 		else
+			print("Link Damage")
 			local link_blocked = victim:FindModifierByName("modifier_ancient_priestess_spirit_link"):LinkDamage(newDamage,damage_type,attacker,inflictor)
 			blocked_damage = blocked_damage + link_blocked
 			newDamage = newDamage - link_blocked
@@ -284,6 +285,7 @@ function LiA:FilterDamage( filterTable )
 	local victim_index = filterTable["entindex_victim_const"]
 	local attacker_index = filterTable["entindex_attacker_const"]
 	local inflictor_index = filterTable["entindex_inflictor_const"] or -1
+	--print(inflictor_index)
 	if not victim_index or not attacker_index then
 		return true
 	end
@@ -291,6 +293,7 @@ function LiA:FilterDamage( filterTable )
 	local victim = EntIndexToHScript( victim_index )
 	local attacker = EntIndexToHScript( attacker_index )
 	local inflictor = EntIndexToHScript( inflictor_index )
+	--print(inflictor)
 	local damagetype = filterTable["damagetype_const"]
 
 	-- Physical attack damage filtering
@@ -310,13 +313,18 @@ function LiA:FilterDamage( filterTable )
 		else
 			attack_damage = attacker:GetAttackDamage() -- баг с модификаторами блокирующими часть урона
 		end]]
-	
+		--print("phys")
 		-- Adjust if the damage comes from splash
-		if victim.damage_from_splash then
-			attack_damage = victim.damage_from_splash
-			victim.damage_from_splash = nil
-		elseif HasSplashAttack(attacker) then
-			SplashAttack(attack_damage, attacker, victim)
+		if not inflictor then
+			if victim.damage_from_splash then
+				--print("DAMAGE FROM SPLASH",victim:GetName(),attacker:GetName(),victim.damage_from_splash)
+				attack_damage = victim.damage_from_splash
+				victim.damage_from_splash = nil
+			elseif HasSplashAttack(attacker) then
+				--print("SPLASH",victim:GetName(),attacker:GetName(),attack_damage)
+				SplashAttack(attack_damage, attacker, victim)
+				--print("SPLASH END")
+			end
 		end
 
 		local attack_type  = GetAttackType( attacker )

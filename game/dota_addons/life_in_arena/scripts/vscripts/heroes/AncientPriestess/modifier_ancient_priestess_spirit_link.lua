@@ -42,18 +42,30 @@ function modifier_ancient_priestess_spirit_link:OnDestroy()
 end
 
 function modifier_ancient_priestess_spirit_link:LinkDamage(attack_damage,damage_type,attacker,ability) --эта функция вызывается из фильтра урона и возращает кол-во заблокированного(переданого остальным юнитам) урона
+	local parent = self:GetParent()
 	local nLinkedUnits = #self.tTargets
 	local damage = attack_damage*self.distr_factor
 	local linked_damage = damage/nLinkedUnits
+	local inflictor
+	if ability then
+		inflictor = ability 
+	else 
+		inflictor = self:GetAbility()
+	end
+
 
 	if nLinkedUnits == 1 then
 		return 0
 	end
 
 	for _,unit in pairs(self.tTargets) do
-		unit.spiritLink_damage = true
-		ApplyDamage({victim = unit, attacker = attacker, damage = linked_damage, damage_type = damage_type, ability = ability or self:GetAbility(), damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL})
+		if unit ~= parent then 
+			unit.spiritLink_damage = true
+			--print("Link Damage",unit:GetUnitName(),attacker:GetUnitName(),attack_damage)
+			ApplyDamage({victim = unit, attacker = attacker, damage = linked_damage, damage_type = damage_type, ability = inflictor, damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL})
+			--print("Link Damage end")
+		end
 	end
 
-	return damage
+	return damage-linked_damage
 end
