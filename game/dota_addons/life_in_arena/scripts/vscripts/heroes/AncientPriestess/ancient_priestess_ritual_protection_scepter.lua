@@ -14,5 +14,5 @@ function ancient_priestess_ritual_protection_scepter:OnSpellStart()
 		ParticleManager:CreateParticle("particles/mirana_moonlight_ray_custom.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 	end
 
-	--сюда звук и эффект еще нужно
+	EmitSoundOn("Ability.MoonlightShadow", caster)
 end

@@ -264,7 +264,7 @@ function BlockDamage_PhysicalPreArmor(attack_damage,damage_type,victim,attacker,
 		if victim.spiritLink_damage then 
 			victim.spiritLink_damage = nil
 		else
-			print("Link Damage")
+			--print("Link Damage")
 			local link_blocked = victim:FindModifierByName("modifier_ancient_priestess_spirit_link"):LinkDamage(newDamage,damage_type,attacker,inflictor)
 			blocked_damage = blocked_damage + link_blocked
 			newDamage = newDamage - link_blocked

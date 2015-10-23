@@ -61,7 +61,5 @@ function ancient_priestess_spirit_link:OnSpellStart()
 			return 0.1
 		end)
 
-
-
-
+	EmitSoundOn("Hero_Dazzle.Shadow_Wave", caster)
 end
