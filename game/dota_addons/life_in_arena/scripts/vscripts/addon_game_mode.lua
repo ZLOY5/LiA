@@ -79,7 +79,7 @@ function Precache( context )
 		PrecacheUnitByNameAsync("spherical_staff_fire_golem", function(...) end)	
 
 		
-		
+		PrecacheResource("particle", "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf", context)			
 		--Щит Смерти
 		PrecacheResource("particle", "particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts", context)		

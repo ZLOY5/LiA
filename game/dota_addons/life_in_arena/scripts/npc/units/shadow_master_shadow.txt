@@ -1,0 +1,79 @@
+"shadow_master_shadow"
+{
+	// General
+	//----------------------------------------------------------------
+	"BaseClass"			"npc_dota_creature"
+	"Model"				"models/heroes/terrorblade/terrorblade.vmdl"
+	"ModelScale"		"1"
+	//"Level"				"1"
+	
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"			"" 
+	"Ability2"			""
+
+	"ArmorPhysical" "0"   
+	"MagicalResistance" "25" 
+
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "2" 
+	"AttackDamageMax" "24" 
+	"AttackRate" "1.75" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "800" 
+	"AttackRange" "100" 
+
+
+	"AttributePrimary"   "DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"  "8"          
+	"AttributeStrengthGain"  "2.3"          
+	"AttributeBaseIntelligence" "5"          
+	"AttributeIntelligenceGain" "2.1"          
+	"AttributeBaseAgility"  "22"          
+	"AttributeAgilityGain"  "3.3" 
+
+	"BountyXP" "0"
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "275" 
+	"MovementTurnRate" "0.5" 
+
+	"StatusHealth" "530"
+	"StatusHealthRegen" "1.0" 
+	"StatusMana" "75" 
+	"StatusManaRegen" "0.05" 
+
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+
+	"VisionDaytimeRange" "900"
+	"VisionNighttimeRange" "800"
+
+	"vscripts"	"heroes/ShadowMaster/PaintBlack.lua"
+
+	"precache"
+	{
+		"model"	"models/heroes/terrorblade/terrorblade.vmdl"
+		"model"	"models/heroes/terrorblade/wings.mdl"
+		"model"	"models/heroes/terrorblade/weapon.mdl"
+		"model"	"models/heroes/terrorblade/armor.mdl"
+		"model"	"models/heroes/terrorblade/horns.mdl"
+		"particle"	"particles/units/heroes/hero_terrorblade.pcf"	
+	}
+
+	"Creature"
+	{
+		"AttachWearables"
+		{
+			"Wearable1"	{ "ItemDef" "306" } 
+			"Wearable2"	{ "ItemDef"	"307" } 
+			"Wearable3" { "ItemDef"	"476" } 
+			"Wearable4" { "ItemDef"	"478" } 
+			"Wearable5" { "ItemDef"	"540" }  
+		}
+	}
+}
