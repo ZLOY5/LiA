@@ -12,6 +12,11 @@ function Incinerate( keys )
 	-- Variables
 	local caster = keys.caster
 	local target = keys.target
+
+	if caster:GetTeamNumber() == target:GetTeamNumber() then 
+		return 
+	end
+
 	local ability = keys.ability
 	local modifierName = "modifier_dark_knight_incinerate_target"
 	local damageType = ability:GetAbilityDamageType()

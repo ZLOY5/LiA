@@ -1,8 +1,13 @@
 function StrikeOfDarkness(event)
-	local ability = event.ability
-	local caster = event.caster
 	local target = event.target
-	local mult = ability:GetLevelSpecialValueFor("mult", ability:GetLevel() - 1 )
+	local caster = event.caster
+
+	if target:GetTeamNumber() == caster:GetTeamNumber() then 
+		return 
+	end
+
+	local ability = event.ability
+	local mult = ability:GetSpecialValueFor("mult")
 	local agi = caster:GetAgility()
 	local num = RandomInt(1, agi)
 	local damage = mult*num

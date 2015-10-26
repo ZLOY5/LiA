@@ -37,7 +37,7 @@ end
 
 function modifier_dark_knight_speed:OnAttackLanded(params)
 	if IsServer() then
-		if params.attacker == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
+		if params.attacker == self:GetParent() and not self:GetParent():IsIllusion() and params.attacker:GetTeamNumber() ~= params.target:GetTeamNumber() then
 			if self:GetParent():PassivesDisabled() then
 				return 0
 			end
