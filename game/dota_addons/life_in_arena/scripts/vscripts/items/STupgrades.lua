@@ -240,7 +240,27 @@ function OnEquip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
+		end		
+		if name == "npc_dota_hero_disruptor" then
+			par = {
+				unit = caster,
+				oldAbi = "lord_of_lightning_lightning_shield",
+				newAbi = "lord_of_lightning_lightning_shield_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "lord_of_lightning_chain_lightning",
+				newAbi = "lord_of_lightning_chain_lightning_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
 		end			
+		
 		-- next heroes
 	end
 	--end
@@ -491,6 +511,26 @@ function OnUnequip(event)
 				unit = caster,
 				oldAbi = "ancient_priestess_ritual_protection_scepter",
 				newAbi = "ancient_priestess_ritual_protection",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end
+		--
+		if name == "npc_dota_hero_disruptor" then
+			par = {
+				unit = caster,
+				oldAbi = "lord_of_lightning_lightning_shield_scepter",
+				newAbi = "lord_of_lightning_lightning_shield",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "lord_of_lightning_chain_lightning_scepter",
+				newAbi = "lord_of_lightning_chain_lightning",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)

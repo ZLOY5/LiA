@@ -348,7 +348,9 @@ function LiA:FilterDamage( filterTable )
 		-- Extra rules for certain ability modifiers
 		--print("		other", victim:HasModifier("modifier_decrepify_other"))
 		--print("		hero", victim:HasModifier("modifier_decrepify_hero"))
-		if ( victim:HasModifier("modifier_decrepify_other") or victim:HasModifier("modifier_decrepify_hero") ) then
+		if ( victim:HasModifier("modifier_decrepify_other") or victim:HasModifier("modifier_decrepify_hero") )
+		--or ( victim:HasModifier("modifier_lol_decrepify_other") or victim:HasModifier("modifier_lol_decrepify_hero") )
+		then
 			if attack_type ~= "magic" then
 				damage = 0
 			else

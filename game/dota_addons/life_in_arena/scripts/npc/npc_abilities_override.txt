@@ -16813,6 +16813,566 @@
 	//End of file npc_lia_hero_kret.txt
 
 
+	//Start of file npc_lia_hero_lord_of_lightning.txt
+	"lord_of_lightning_brain_storm"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		//
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		//"AbilityTextureName"			"hermit_astral"
+	
+		"AoERadius"		"500"
+		
+		// Casting
+		"MaxLevel"              "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"80 70 60"
+		//"AbilityDuration"				"0.0 0.0 0.0"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"150 200 250"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reduce_spell_damage_pct"	"-40"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reduce_movement_speed"		"-20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_on_hero"			"6.0 8.0 10.0"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_on_other"			"6.0 8.0 10.0"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"			"500"
+			}
+		}
+	
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Pugna.Decrepify"
+				//"Target" 		"TARGET"
+				"Target"
+				{
+					"Center"  	"POINT"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  	"POINT"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes\LightningLord\brain_storm.lua"    
+						"Function"      "addMod"
+						//"Target" 		"TARGET"
+					}
+				}
+			}
+			
+	
+		}
+	
+		"Modifiers"
+		{
+			
+			"modifier_lol_decrepify_other"
+			{
+				"IsDebuff"			"1"
+				"Duration"			"%duration_on_other"
+		
+				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
+				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
+					//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}			
+			}
+	
+			"modifier_lol_decrepify_hero"
+			{
+				"IsDebuff"			"1"
+				"Duration"			"%duration_on_hero"
+		
+				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
+				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
+					//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}			
+			}
+		}
+		
+		
+	}
+	
+	
+	
+	"lord_of_lightning_chain_lightning"
+	{
+	
+		"BaseClass" 					"ability_datadriven"
+	
+		//"AbilityTextureName"			"vowen_from_blood_steal_blood"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"AbilityCastRange"				"700"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"10.0 9.0 8.0"
+		"AbilityManaCost"				"100 175 200"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage"		"85 135 200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces"		"8 9 10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"500"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"-10 -10 -10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/LightningLord/chain_lightning.lua"
+				"Function"		"chainLightning"
+			}
+		}
+	
+	}
+	
+	"lord_of_lightning_chain_lightning_scepter"
+	{
+	
+		"BaseClass" 					"ability_datadriven"
+	
+		//"AbilityTextureName"			"vowen_from_blood_steal_blood"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+		"AbilityCastRange"				"700"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"9.0 8.0 7.0"
+		"AbilityManaCost"				"150 225 300"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage"		"85 135 200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces"		"12 13 14"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"500"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"-15 -15 -15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/LightningLord/chain_lightning.lua"
+				"Function"		"chainLightning"
+			}
+		}
+	
+	}
+	
+	
+	
+	//=================================================================================
+	// Ability: Lightning Shield
+	// Description: "Forms a shield of electricity around a target unit, dealing <Alsh,DataA1> damage per second to units around it. |nLasts <Alsh,Dur1> seconds."
+	// Code Reference: Alsh
+	//=================================================================================
+	"lord_of_lightning_lightning_shield"
+	{
+		"BaseClass"					"ability_datadriven"
+		//"AbilityTextureName"		"orc_lightning_shield"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+			
+		"AbilityCastRange"			"600"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"16 14 12"
+		"AbilityManaCost"			"120 180 240"
+			
+		"AOERadius"					"160"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"8"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"160"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage_per_second"			"20 40 80"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"think_interval"		"0.3"
+			}
+			// It ticks every second Kappa (actually is 0.1 now Keepo)
+			// Edit: 0.3 looks nicer with a particle hit :D
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
+				"Function"				"LightningShieldOnSpellStart"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_lord_of_lightning_lightning_shield"
+			{
+				"IsPurgable"		"1"
+				"Duration"			"%duration"
+				
+				"EffectName"            "particles/custom/orc/lightning_shield.vpcf"
+				"EffectAttachType"      "follow_origin"
+				
+				"ThinkInterval" 		"%think_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
+						"Function"				"ModifierLightningShieldOnIntervalThink"
+					}
+				}
+			}
+		}
+	}
+	
+	"lord_of_lightning_lightning_shield_scepter"
+	{
+		"BaseClass"					"ability_datadriven"
+		//"AbilityTextureName"		"orc_lightning_shield"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+			
+		"AbilityCastRange"			"600"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"16 14 12"
+		"AbilityManaCost"			"200 240 280"
+			
+		"AOERadius"					"160"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"8"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"160"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage_per_second"			"40 70 100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"think_interval"		"0.3"
+			}
+			// It ticks every second Kappa (actually is 0.1 now Keepo)
+			// Edit: 0.3 looks nicer with a particle hit :D
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
+				"Function"				"LightningShieldOnSpellStart"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_lord_of_lightning_lightning_shield"
+			{
+				"IsPurgable"		"1"
+				"Duration"			"%duration"
+				
+				"EffectName"            "particles/custom/orc/lightning_shield.vpcf"
+				"EffectAttachType"      "follow_origin"
+				
+				"ThinkInterval" 		"%think_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
+						"Function"				"ModifierLightningShieldOnIntervalThink"
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+	"lord_of_lightning_holy_wrath"
+	{
+		"BaseClass"					"ability_datadriven"
+		//"AbilityTextureName"		""
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		//"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		//"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+			
+		"AbilityCastRange"			"800"
+		//"AbilityCastPoint"			"0"
+		//"AbilityCooldown"			"16 14 12"
+		//"AbilityManaCost"			"200 240 280"
+			
+		//"AOERadius"					"800"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"chance_dmg"		"11 12 13"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"800"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage_per_int"			"3 4 5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius_dop_dmg"		"200"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_lord_of_lightning_holy_wrath"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_lord_of_lightning_holy_wrath_aura"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+	
+			"modifier_lord_of_lightning_holy_wrath_aura"
+			{
+				//"Passive"	"1"
+				"IsHidden"			"0"
+				"OnAttacked"
+				{
+					"Random"
+					{
+						"Chance"		"%chance_dmg"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+	
+						"OnSuccess"
+						{
+							//"FireSound"
+							//{
+							//	"EffectName"	"Roshan.Bash"
+							//	"Target"		"ATTACKER"
+							//}
+							
+							//"AttachEffect"
+							//{
+							//	"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+							//	"EffectAttachType"	"follow_origin"	
+							//	"Target" 			"ATTACKER"
+							//}
+	
+							"RunScript"
+							{
+								"ScriptFile"   "heroes/LightningLord/holy_wrath.lua"
+								"Function"     "damageTo"
+							}
+	
+						}
+					}
+				}
+				
+			}
+			
+		}
+	}
+	
+	
+	//End of file npc_lia_hero_lord_of_lightning.txt
+
+
 	//Start of file npc_lia_hero_naga_royal_guard.txt
 	"royal_naga_guard_sea_wave"
 	{
