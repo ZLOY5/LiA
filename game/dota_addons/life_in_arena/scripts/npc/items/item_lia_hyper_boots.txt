@@ -52,24 +52,27 @@
 	
 	"OnSpellStart"
 	{
-		"FireSound"
-		{
-			"Target"		"CASTER"
-			"EffectName"	"Hero_BountyHunter.WindWalk"
-		}
+
 
 		"RunScript"
 		{
 			"ScriptFile"	"items/HyperBoots.lua"
 			"Function"		"LifeBreak"
-			"ModifierName"			"modifier_huskar_life_break_datadriven"
-		    "ModifierName_Debuff"	"modifier_huskar_life_break_datadriven_debuff"
+			"ModifierName"			"modifier_item_hyper_boots_active"
+		    "ModifierName_Debuff"	"modifier_stunned"
+		}
+		"ApplyMotionController"
+		{
+			"Target"		"CASTER"
+		    "ScriptFile"    "items/HyperBoots.lua"
+		    "HorizontalControlFunction" "JumpHorizonal"
+		 //   "VerticalControlFunction" 	"JumpVertical"
 		}
 	}
 	
 	"Modifiers"
 	{
-		"modifier_item_boots_of_invisibility"
+		"modifier_item_hyper_boots"
 		{
 			"Passive"          "1"    
 		    "IsHidden"         "1"
@@ -79,12 +82,14 @@
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"		"%bonus_movement_speed"
 		    }  
 		}
-		"modifier_item_boots_of_invisibility_active"
+		"modifier_item_hyper_boots_active"
 		{
 			"Passive"			"0"
-			"IsHidden"			"0"
+			"IsHidden"			"1"
 			"IsDebuff"			"0"
 			"Duration"			"1"
+
+
 
 			"States"
 			{
@@ -122,8 +127,10 @@
 		}
 		"06"
 		{
-			"var_type"							"FIELD_INTEGER"
-			"charge_speed"						"1000"
+			"var_type"			"FIELD_INTEGER"
+			"charge_speed"		"2500"
 		}
 	}
+
+
 }
