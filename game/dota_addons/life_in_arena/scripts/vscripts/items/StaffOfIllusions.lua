@@ -17,14 +17,8 @@ function MakeIllusion(event)
 	end
 
 	local origin = target:GetAbsOrigin() + ( target:GetForwardVector() * 150 )
-	local illusion
-	if target:IsRealHero() then
-		illusion = CreateHeroForPlayer(unit_name, hPlayer)
-		illusion:SetForwardVector(target:GetForwardVector())
-		FindClearSpaceForUnit(illusion, origin, false)
-	else
-		illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
-	end
+	local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
+	illusion:SetForwardVector(target:GetForwardVector())
 	illusion:SetControllableByPlayer(player, true)
 	illusion:SetOwner(caster)
 	if target:IsRealHero() then

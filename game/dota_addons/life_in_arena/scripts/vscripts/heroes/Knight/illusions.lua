@@ -49,8 +49,9 @@ function illusions( event )
 		local origin = table.remove( vRandomSpawnPos,RandomInt(1, #vRandomSpawnPos))
 
 		-- handle_UnitOwner needs to be nil, else it will crash the game.
-		local illusion = CreateHeroForPlayer("npc_dota_hero_dragon_knight", caster:GetPlayerOwner())
-		FindClearSpaceForUnit(illusion, origin, false)
+		local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
+		illusion:SetOwner(caster)
+	
 		illusion:SetPlayerID(caster:GetPlayerID())
 		illusion:SetControllableByPlayer(player, true)
 		
@@ -88,6 +89,11 @@ function illusions( event )
 		-- set life and mana illusion
 		illusion:SetMana(caster:GetMana())
 		illusion:SetHealth(caster:GetHealth())
+
+		illusion:SetBaseAgility(caster:GetBaseAgility())
+		illusion:SetBaseIntellect(caster:GetBaseIntellect())
+		illusion:SetBaseStrength(caster:GetBaseStrength())
+		illusion:CalculateStatBonus()
 
 		-- Set the unit as an illusion
 		-- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle

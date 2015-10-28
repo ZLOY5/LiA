@@ -51,8 +51,9 @@ function AncestralSpirits( event )
 		local origin = casterOrigin + table.remove( vRandomSpawnPos, 1 )
 
 		-- handle_UnitOwner needs to be nil, else it will crash the game.
-		local illusion = CreateHeroForPlayer("npc_dota_hero_elder_titan", caster:GetPlayerOwner())
-		FindClearSpaceForUnit(illusion, origin, false)
+		local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
+		illusion:SetOwner(caster)
+		
 		illusion:SetPlayerID(caster:GetPlayerID())
 		illusion:SetControllableByPlayer(player, true)
 		
@@ -89,6 +90,11 @@ function AncestralSpirits( event )
 		-- set life and mana illusion
 		illusion:SetMana(caster:GetMana())
 		illusion:SetHealth(caster:GetHealth())
+
+		illusion:SetBaseAgility(caster:GetBaseAgility())
+		illusion:SetBaseIntellect(caster:GetBaseIntellect())
+		illusion:SetBaseStrength(caster:GetBaseStrength())
+		illusion:CalculateStatBonus()
 
 		-- Set the unit as an illusion
 		-- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
