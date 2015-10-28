@@ -97,7 +97,7 @@ function chainLightning( event )
 			--print("Bounce "..bounces.." Hit Unit "..target:GetEntityIndex().. " for "..damage.." damage")
 
 			-- play the sound
-			EmitSoundOn("Hero_Dazzle.Shadow_Wave",target)
+			EmitSoundOn("Hero_Zuus.ArcLightning.Target",target)
 
 			-- make the particle shoot to the target
 			ParticleManager:SetParticleControl(lightningChain,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z + target:GetBoundingMaxs().z ))

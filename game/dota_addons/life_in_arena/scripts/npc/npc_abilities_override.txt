@@ -16825,7 +16825,7 @@
 	
 		"BaseClass" 					"ability_datadriven"
 	
-		//"AbilityTextureName"			"vowen_from_blood_steal_blood"
+		"AbilityTextureName"			"zuus_arc_lightning"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -16882,6 +16882,11 @@
 				"ScriptFile"	"heroes/LightningLord/chain_lightning.lua"
 				"Function"		"chainLightning"
 			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.ArcLightning.Cast"
+				"Target" 		"CASTER"
+			}
 		}
 	
 	}
@@ -16891,7 +16896,7 @@
 	
 		"BaseClass" 					"ability_datadriven"
 	
-		//"AbilityTextureName"			"vowen_from_blood_steal_blood"
+		"AbilityTextureName"			"zuus_arc_lightning"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -16948,6 +16953,11 @@
 				"ScriptFile"	"heroes/LightningLord/chain_lightning.lua"
 				"Function"		"chainLightning"
 			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.ArcLightning.Cast"
+				"Target" 		"CASTER"
+			}
 		}
 	
 	}
@@ -16962,7 +16972,7 @@
 	"lord_of_lightning_lightning_shield"
 	{
 		"BaseClass"					"ability_datadriven"
-		//"AbilityTextureName"		"orc_lightning_shield"
+		"AbilityTextureName"		"lightning_lord_lightning_shield"
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
@@ -16979,27 +16989,34 @@
 		"AbilityManaCost"			"120 180 240"
 			
 		"AOERadius"					"160"
+	
+		"precache"
+		{
+			"particle"  "particles/lightning_shield.vpcf"
+			"particle"  "particles/lightning_shield_hit.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"duration"		"8"
+				"radius"		"160"
 			}
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"radius"		"160"
+				"damage_per_second"			"20 40 80"
 			}
 			"03"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"damage_per_second"			"20 40 80"
+				"var_type"				"FIELD_FLOAT"
+				"think_interval"		"0.3"
 			}
 			"04"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"think_interval"		"0.3"
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"8"
 			}
 			// It ticks every second Kappa (actually is 0.1 now Keepo)
 			// Edit: 0.3 looks nicer with a particle hit :D
@@ -17021,7 +17038,7 @@
 				"IsPurgable"		"1"
 				"Duration"			"%duration"
 				
-				"EffectName"            "particles/custom/orc/lightning_shield.vpcf"
+				"EffectName"            "particles/lightning_shield.vpcf"
 				"EffectAttachType"      "follow_origin"
 				
 				"ThinkInterval" 		"%think_interval"
@@ -17040,7 +17057,7 @@
 	"lord_of_lightning_lightning_shield_scepter"
 	{
 		"BaseClass"					"ability_datadriven"
-		//"AbilityTextureName"		"orc_lightning_shield"
+		"AbilityTextureName"		"lightning_lord_lightning_shield"
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
@@ -17062,22 +17079,22 @@
 			"01"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"duration"		"8"
+				"radius"		"160"
 			}
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"radius"		"160"
+				"damage_per_second"			"40 70 100"
 			}
 			"03"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"damage_per_second"			"40 70 100"
+				"var_type"				"FIELD_FLOAT"
+				"think_interval"		"0.3"
 			}
 			"04"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"think_interval"		"0.3"
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"8"
 			}
 			// It ticks every second Kappa (actually is 0.1 now Keepo)
 			// Edit: 0.3 looks nicer with a particle hit :D
@@ -17099,7 +17116,7 @@
 				"IsPurgable"		"1"
 				"Duration"			"%duration"
 				
-				"EffectName"            "particles/custom/orc/lightning_shield.vpcf"
+				"EffectName"            "particles/lightning_shield.vpcf"
 				"EffectAttachType"      "follow_origin"
 				
 				"ThinkInterval" 		"%think_interval"
@@ -17120,7 +17137,7 @@
 	"lord_of_lightning_holy_wrath"
 	{
 		"BaseClass"					"ability_datadriven"
-		//"AbilityTextureName"		""
+		"AbilityTextureName"		"zuus_lightning_bolt_immortal"
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
 	    "LevelsBetweenUpgrades"  "2"
@@ -17162,6 +17179,11 @@
 			}
 		}
 		
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
+		}
 		"Modifiers"
 		{
 			"modifier_lord_of_lightning_holy_wrath"
@@ -17227,7 +17249,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		//"AbilityTextureName"			"hermit_astral"
+		"AbilityTextureName"			"disruptor_glimpse"
 	
 		"AoERadius"		"500"
 		

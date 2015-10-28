@@ -27,7 +27,7 @@ local damage_table = {
 
 ApplyDamage(damage_table)
 
-
+attacker:EmitSound("Hero_Disruptor.ThunderStrike.Target")
 
 	local targets = FindUnitsInRadius(caster:GetTeam() ,attacker:GetAbsOrigin(), nil, radius_dop_dmg, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 	for _,unit in pairs(targets) do 
