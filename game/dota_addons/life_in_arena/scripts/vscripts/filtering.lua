@@ -19,6 +19,12 @@ ARMOR_TYPES = {
 	["DOTA_COMBAT_CLASS_DEFEND_HERO"] = "hero",
 }
 
+HERO_NAMES = {
+	["npc_dota_hero_bane"] = "npc_lia_hero_hermit",
+	["npc_dota_hero_disruptor"] = "npc_lia_hero_lord_of_lightning",
+	["npc_dota_hero_abaddon"] = "npc_lia_hero_dark_knight",
+}
+
 function GetDamageForAttackAndArmor( attack_type, armor_type )
 --[[
 http://classic.battle.net/war3/basics/armorandweapontypes.shtml
@@ -137,6 +143,8 @@ Spells  100%    100%    100%    100%    100%   70%
 	return 1
 end
 
+
+
 -- Returns a string with the wc3 damage name
 function GetAttackType( unit )
 	if unit and IsValidEntity(unit) then
@@ -146,8 +154,8 @@ function GetAttackType( unit )
 			return ATTACK_TYPES[attack_string]
 		elseif unit:IsHero() then
 			local unitName = unit:GetUnitName()
-			if unitName == "npc_dota_hero_bane" then
-				local attack_string = GameRules.HeroKV["npc_lia_hero_hermit"]["CombatClassAttack"]
+			if HERO_NAMES[unitName] then
+				local attack_string = GameRules.HeroKV[HERO_NAMES[unitName]]["CombatClassAttack"]
 				return ATTACK_TYPES[attack_string]
 			else
 				return "hero"
