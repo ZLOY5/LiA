@@ -11,6 +11,11 @@ function LifeBreak( keys )
     local ability = keys.ability
     local charge_speed = ability:GetLevelSpecialValueFor("charge_speed", (ability:GetLevel() - 1)) * 1/30
 
+    particle_boots = ParticleManager:CreateParticle("particles/items_fx/force_staff.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+    --ParticleManager:SetParticleControlEnt(particle_boots, 0, caster, PATTACH_ABSORIGIN_FOLLOW, "follow_origin", caster:GetAbsOrigin(), true)
+  --  ParticleManager:SetParticleControlEnt(particle_boots, 1, caster, PATTACH_ABSORIGIN_FOLLOW, "follow_origin", caster:GetAbsOrigin(), true)
+    --ParticleManager:ReleaseParticleIndex(particle_boots)
+
     -- Save modifiernames in ability
     ability.modifiername = keys.ModifierName
     ability.modifiername_debuff = keys.ModifierName_Debuff
@@ -21,6 +26,14 @@ function LifeBreak( keys )
     ability.life_break_z = 0
     ability.initial_distance = (GetGroundPosition(target:GetAbsOrigin(), target)-GetGroundPosition(caster:GetAbsOrigin(), caster)):Length2D()
     ability.traveled = 0
+
+    Timers:CreateTimer( 0.2, function()
+            ParticleManager:DestroyParticle(particle_boots, false)
+            return nil
+        end
+    )
+
+
 end
 
 
@@ -40,7 +53,8 @@ function DoDamage(caster, target, ability)
                                 damage_type = DAMAGE_TYPE_MAGICAL
                             })
            ability:ApplyDataDrivenModifier(caster, v, ability.modifiername_debuff, {duration = ability:GetSpecialValueFor("stun_duration")})
-    end    
+    end   
+     
 end
 
 function AutoAttack(caster, target)
@@ -66,13 +80,10 @@ function OnMotionDone(caster, target, ability)
     end
 
     -- FireSound
-    EmitSoundOn("Hero_Huskar.Life_Break.Impact", target)
+    --EmitSoundOn("Hero_Huskar.Life_Break.Impact", target)
 
     --Particles and effects
-    local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_huskar/huskar_life_break.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-    ParticleManager:SetParticleControlEnt(particle, 0, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
-    ParticleManager:SetParticleControlEnt(particle, 1, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
-    ParticleManager:ReleaseParticleIndex(particle)
+
 
 
     
@@ -94,6 +105,7 @@ function JumpHorizonal( keys )
     local direction = (target_loc - caster_loc):Normalized()
 
     local max_distance = ability:GetLevelSpecialValueFor("max_distance", ability:GetLevel()-1)
+
 
 
     -- Max distance break condition
@@ -123,6 +135,7 @@ function JumpVertical( keys )
     local target = ability.target
     local caster_loc = caster:GetAbsOrigin()
     local caster_loc_ground = GetGroundPosition(caster_loc, caster)
+
 
     -- If we happen to be under the ground just pop the caster up
     if caster_loc.z < caster_loc_ground.z then

@@ -47,11 +47,16 @@
 	"precache"
 	{
 	  	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
-	  	"particle"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf" 
+	  	"particle"	"particles/status_fx/status_effect_forcestaff.vpcf" 
 	}
 	
 	"OnSpellStart"
 	{
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.ForceStaff.Activate"
+			"Target" 		"CASTER"
+		}
 
 
 		"RunScript"
@@ -89,7 +94,8 @@
 			"IsDebuff"			"0"
 			"Duration"			"1"
 
-
+			"StatusEffectName" 		"particles/status_fx/status_effect_forcestaff.vpcf" 	   
+			"StatusEffectPriority"  "10"
 
 			"States"
 			{
@@ -130,6 +136,12 @@
 			"var_type"			"FIELD_INTEGER"
 			"charge_speed"		"2500"
 		}
+		"07"
+		{
+			"var_type" "FIELD_INTEGER"
+			"cast_range" "500"
+		}
+
 	}
 
 
