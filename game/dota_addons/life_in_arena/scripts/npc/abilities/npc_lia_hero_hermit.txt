@@ -242,12 +242,12 @@
 		"03"
 		{
 			"var_type"					"FIELD_FLOAT"
-			"duration_on_hero"			"3.0 4.0 5.0"
+			"duration_hero"				"3.0 4.0 5.0"
 		}
 		"04"
 		{
 			"var_type"					"FIELD_FLOAT"
-			"duration_on_other"			"4.0 5.0 6.0"
+			"duration_other"			"4.0 5.0 6.0"
 		}
 	}
 
@@ -265,102 +265,35 @@
 			"Target" 		"TARGET"
 		}
 		
-		//"ApplyModifier"
-		//{
-		//	"ModifierName"	"modifier_decrepify_all"
-		//	"Target"		"TARGET"
-		//	"Duration"		"%AbilityDuration"
-		//}
-		
 		"RunScript"
 		{
 			"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
-			"Function"      "addMod"
+			"Function"      "AddModifier"
 		}
-		
-		//"ApplyModifier"
-		//{
-		//	"ModifierName"	"modifier_decrepify_ally"
-		//	"Target"
-		//	{
-		//		"Center"	"TARGET"
-		//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		//	}
-		//	"Duration"		"%AbilityDuration"
-		//}
 	}
 
 	"Modifiers"
 	{
-		//"modifier_decrepify_units_by_hero"
-		//{
-		//	"Duration"		"%duration_on_other"
-			//
-		//	"OnAttackLanded"
-		//	{
-		//		"RunScript"
-		//		{
-		//			"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
-		//			"Function"      "attackLanded"
-		//		}
-		//	}
-			//
-			//"OnDestroy"
-			//{
-			//	"RunScript"
-			//	{
-			//		"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
-			//		"Function"      "destr"
-			//	}
-			//}
-		//}
-		
-		"modifier_decrepify_other"
+		"modifier_hermit_decrepify"
 		{
 			"IsDebuff"			"1"
-			"Duration"			"%duration_on_other"
-	
+			
 			"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
 			"EffectAttachType"	"follow_origin"
 	
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
-			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
-				//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%reduce_movement_speed" 
 			}
 
 			"States"
 			{
 				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-				//"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
 			}			
 		}
-
-		"modifier_decrepify_hero"
-		{
-			"IsDebuff"			"1"
-			"Duration"			"%duration_on_hero"
-	
-			"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-			"EffectAttachType"	"follow_origin"
-	
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
-			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_movement_speed" 
-				//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL" "1"
-			}
-
-			"States"
-			{
-				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-				//"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-			}			
-		}
-	}
-	
-	
+	}	
 }
 
 

@@ -354,11 +354,7 @@ function LiA:FilterDamage( filterTable )
 		--end
 
 		-- Extra rules for certain ability modifiers
-		--print("		other", victim:HasModifier("modifier_decrepify_other"))
-		--print("		hero", victim:HasModifier("modifier_decrepify_hero"))
-		if ( victim:HasModifier("modifier_decrepify_other") or victim:HasModifier("modifier_decrepify_hero") )
-		--or ( victim:HasModifier("modifier_lol_decrepify_other") or victim:HasModifier("modifier_lol_decrepify_hero") )
-		then
+		if victim:HasModifier("modifier_brain_storm_decrepify") or victim:HasModifier("modifier_hermit_decrepify") then
 			if attack_type ~= "magic" then
 				damage = 0
 			else
@@ -368,22 +364,9 @@ function LiA:FilterDamage( filterTable )
 		if victim:HasModifier("modifier_ancient_shield_defend") and attack_type == "pierce" then
 			-- Снижение урона от дальних атак у Рыцаря
 			local b_abil = victim:FindAbilityByName("knight_ancient_shield")
-			local koef = b_abil:GetLevelSpecialValueFor( "piercing_damage_reduction", b_abil:GetLevel() - 1 )
+			local koef = b_abil:GetSpecialValueFor("piercing_damage_reduction")
 			damage = damage * koef/100
 		end
-		
-		-- modifier_elunes_grace (Piercing attacks to 65%)
-		--else
-		--if victim:HasModifier("modifier_elunes_grace") and attack_type == "pierce" then
-		--	print("Elunes Grace reduces this piercing attack to 65%")
-		--	damage = damage * 0.65
-		
-		-- modifier_possession_caster (All attacks to 166%)
-		--elseif victim:HasModifier("modifier_possession_caster") then
-		--	damage = damage * 1.66
-		--end
-
-		--print("Damage ("..attack_type.." vs "..armor_type.." armor ["..math.floor(armor).."]): ("  .. attack_damage .. " * "..1-damage_reduction..") * ".. multiplier.. " = " .. damage )
 		
 		-- Reassign the new damage
 		filterTable["damage"] = damage
