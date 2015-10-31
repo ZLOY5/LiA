@@ -80,6 +80,7 @@
             "Aura_Radius" 		"%aura_radius"
             "Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
             "Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
+            "AllowIllusionDuplicate"    "1"
 		    "Properties"
 		    {
 		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
@@ -88,6 +89,7 @@
 
 		"modifier_item_ferus_shield_aura_datadriven"
 		{
+			"AllowIllusionDuplicate"    "1"
 			"OnAttackLanded"
 			{
 				"RunScript"
@@ -106,7 +108,7 @@
 		"modifier_item_ferus_shield_datadriven_lifesteal"
 		{
 			"IsHidden"			"1"
-			
+			"AllowIllusionDuplicate"    "1"
 			"OnDealDamage"
 			{
 				"Lifesteal"
