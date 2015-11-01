@@ -1,16 +1,10 @@
-modifier_knight_shield_damage_return_lua = class ({})
+modifier_megaboss_10_return = class({})
 
---чтобы способность могла использовать модификатор в ней должен быть special value "damage_return"
-
-function modifier_knight_shield_damage_return_lua:GetAttributes()
-	return MODIFIER_ATTRIBUTE_MULTIPLE
+function modifier_megaboss_10_return:IsHidden() 
+	return true 
 end
 
-function modifier_knight_shield_damage_return_lua:IsHidden()
-	return true
-end
-
-function modifier_knight_shield_damage_return_lua:DeclareFunctions()
+function modifier_megaboss_10_return:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
@@ -19,7 +13,7 @@ function modifier_knight_shield_damage_return_lua:DeclareFunctions()
 	return funcs
 end
 
-function modifier_knight_shield_damage_return_lua:OnAttackLanded(params) 
+function modifier_megaboss_10_return:OnAttackLanded(params) 
 	if IsServer() then
 		if params.target == self:GetParent() and not self:GetParent():HasModifier("modifier_illusion") then 
 			self.attack_record = params.record 
@@ -29,7 +23,7 @@ function modifier_knight_shield_damage_return_lua:OnAttackLanded(params)
 end
 
 
-function modifier_knight_shield_damage_return_lua:OnTakeDamage(params)
+function modifier_megaboss_10_return:OnTakeDamage(params)
 	if IsServer() then
 		if params.unit == self:GetParent() and not self:GetParent():HasModifier("modifier_illusion") and not IsFlagSet(params.damage_flags,DOTA_DAMAGE_FLAG_REFLECTION) then
 			
@@ -56,4 +50,3 @@ function modifier_knight_shield_damage_return_lua:OnTakeDamage(params)
 		end
 	end
 end
-

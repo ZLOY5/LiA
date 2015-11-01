@@ -204,3 +204,7 @@ function getIndex(list, element)
     end
     return -1
 end
+
+function IsFlagSet(number,flag)
+	return (number % (2*flag) >= flag)
+end

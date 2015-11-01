@@ -1,5 +1,10 @@
 function OnOrbImpact( event )
 	local caster = event.caster
+
+	if caster:HasModifier("modifier_illusion") then 
+		return 
+	end
+
 	local target = event.target
 	local targets = event.target_entities
 	local damage = event.Damage

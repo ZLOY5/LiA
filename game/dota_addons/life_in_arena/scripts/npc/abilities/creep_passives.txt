@@ -338,7 +338,7 @@
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"cleave_damage"	"50"
+			"cleave_percent"	"50"
 		}
 	}
 
@@ -352,10 +352,10 @@
 			"OnAttackLanded"
 			{
 				"CleaveAttack"
-				{
+          		{
 					"CleavePercent"		"%cleave_damage"
 					"CleaveRadius"		"%cleave_radius"
-				}
+          		}
 			}
 		}
 	}
@@ -430,9 +430,10 @@
 	}
 }
 
-"10_megaboss_return"
+"megaboss_10_return"
 {
-	"BaseClass"				"ability_datadriven"
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"abilities\megaboss_10_return.lua"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"nyx_assassin_spiked_carapace"
@@ -443,78 +444,6 @@
 		{
 			"var_type" "FIELD_INTEGER"
 			"damage_return" "15" //10
-		}
-	}
-
-	"Modifiers"
-	{
-		"empty_modifier_return"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		}
-		"megaboss_return_aura"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-        	"Aura"        "megaboss_return"
-        	"Aura_Radius" "500"
-        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-        	"Aura_ApplyToCaster" "0"  
-		}
-		"megaboss_return"
-		{
-			"IsHidden"          "1"
-			"IsPurgable"		"0"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"OnAttackLanded"
-			{
-				"RunScript"
-				{
-					"ScriptFile"		"units/DamageReturn.lua"
-					"Function"			"MegabossReturn"
-					"damage_return" 	"%damage_return"
-					"attack_damage" 	"%attack_damage"
-				}
-				"RemoveModifier"
-		    	{
-		    		"Target" 			"ATTACKER"
-		    		"ModifierName"		"megaboss_return"
-		    	}
-			}
-		} 
-	}
-}
-
-"11_wave_invis"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"beastmaster_call_of_the_wild_boar"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"resist"		"25"
-		}
-	}
-
-	"Modifiers"
-	{
-		"6_wave_resist"
-		{
-			"Passive"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resist"
-			}
 		}
 	}
 }
