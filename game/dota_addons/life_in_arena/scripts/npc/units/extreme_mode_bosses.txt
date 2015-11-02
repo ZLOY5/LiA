@@ -774,14 +774,14 @@
 "HasInventory" "0" 
 }
 
-"11_wave_boss" 
+"11_wave_boss_extreme" 
 {
 
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/items/beastmaster/boar/beast_deming/beast_deming.vmdl" 
 "SoundSet" "n_creep_Melee" 
-"ModelScale" "1.2" 
+"ModelScale" "1.3" 
 "Level" "1" 
 	"precache"
 		{
@@ -791,7 +791,7 @@
 
 
 "Ability1" "11_wave_invisibility" 
-"Ability2" "" 
+"Ability2" "11_wave_mana_break_extreme" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -801,14 +801,14 @@
 
 
 
-"ArmorPhysical" "16" 
+"ArmorPhysical" "30" 
 "MagicalResistance" "0" 
 
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "361" 
-"AttackDamageMax" "366" 
+"AttackDamageMin" "451" 
+"AttackDamageMax" "456" 
 "AttackRate" "0.25" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
@@ -830,7 +830,7 @@
 
 
 
-"StatusHealth" "4000" 
+"StatusHealth" "7000" 
 "StatusHealthRegen" "0.5" 
 "StatusMana" "0" 
 "StatusManaRegen" "0.75" 
@@ -853,22 +853,22 @@
 "HasInventory" "0" 
 }
 
-"12_wave_boss" 
+"12_wave_boss_extreme" 
 {
 
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl" 
 "SoundSet" "n_creep_Melee" 
-"ModelScale" "1" 
+"ModelScale" "1.2" 
 "Level" "1" 
 
 
 
 
 "Ability1" "12_wave_bash" 
-"Ability2" "12_wave_bloodlust" 
-"Ability3" "12_wave_roots" 
+"Ability2" "12_wave_bloodlust_extreme" 
+"Ability3" "12_wave_roots_extreme" 
 "Ability4" "" 
 "Ability5" "" 
 "Ability6" "" 
@@ -877,15 +877,15 @@
 
 
 
-"ArmorPhysical" "15" 
+"ArmorPhysical" "30" 
 "MagicalResistance" "0" 
 
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "481" 
-"AttackDamageMax" "484" 
-"AttackRate" "0.85" 
+"AttackDamageMin" "701" 
+"AttackDamageMax" "704" 
+"AttackRate" "0.75" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
 "AttackRange" "100" 
@@ -906,7 +906,7 @@
 
 
 
-"StatusHealth" "4200" 
+"StatusHealth" "7000" 
 "StatusHealthRegen" "0.5" 
 "StatusMana" "600" 
 "StatusManaRegen" "0" 
@@ -924,7 +924,7 @@
 "VisionNighttimeRange" "800" 
 
 "PathfindingSearchDepthScale" "0.5" //0.3
-"vscripts"	"AI\12_wave_bosses.lua"
+"vscripts"	"AI\12_wave_bosses_extreme.lua"
 
 "HasInventory" "0" 
 
@@ -955,21 +955,21 @@
 //	}
 }
 
-"13_wave_boss" 
+"13_wave_boss_extreme" 
 {
 
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl" 
 "SoundSet" "n_creep_Melee" 
-"ModelScale" "1" 
+"ModelScale" "1.2" 
 "Level" "1" 
 
 
 
 
 "Ability1" "spell_immunity" 
-"Ability2" "13_wave_aura" 
+"Ability2" "13_wave_aura_extreme" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -979,14 +979,14 @@
 
 
 
-"ArmorPhysical" "20" 
+"ArmorPhysical" "40" 
 "MagicalResistance" "0" 
 
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "601" 
-"AttackDamageMax" "605" 
+"AttackDamageMin" "801" 
+"AttackDamageMax" "805" 
 "AttackRate" "0.65" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
@@ -1008,7 +1008,7 @@
 
 
 
-"StatusHealth" "4500" 
+"StatusHealth" "8000" 
 "StatusHealthRegen" "0.5" 
 "StatusMana" "450" 
 "StatusManaRegen" "1" 
@@ -1057,13 +1057,13 @@
 //}
 }
 
-"14_wave_boss" 
+"14_wave_boss_extreme" 
 {
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl" 
 "SoundSet" "n_creep_Ranged" 
-"ModelScale" "1" 
+"ModelScale" "1.2" 
 "Level" "1" 
 "ProjectileModel"           "particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf" 
 "ProjectileSpeed"           "1500" 
@@ -1084,15 +1084,15 @@
 
 
 
-"ArmorPhysical" "20" 
+"ArmorPhysical" "50" 
 "MagicalResistance" "0" 
 
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-"AttackDamageMin" "501" 
-"AttackDamageMax" "510" 
-"AttackRate" "1" 
+"AttackDamageMin" "751" 
+"AttackDamageMax" "760" 
+"AttackRate" "0.8" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
 "AttackRange" "500" 
@@ -1116,7 +1116,7 @@
 
 
 
-"StatusHealth" "3500" 
+"StatusHealth" "7000" 
 "StatusHealthRegen" "1.5" 
 "StatusMana" "800" 
 "StatusManaRegen" "1.5" 
@@ -1140,22 +1140,22 @@
 
 }
 
-"16_wave_boss" 
+"16_wave_boss_extreme" 
 {
 
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl" 
 "SoundSet" "n_creep_Ranged" 
-"ModelScale" "1.5" 
+"ModelScale" "1.7" 
 "Level" "1" 
 "ProjectileModel"           "particles/base_attacks/ranged_badguy_launch_b.vpcf" 
 "ProjectileSpeed"           "900" 
 
 
 
-"Ability1" "16_wave_mana_burn" 
-"Ability2" "16_wave_slow" 
+"Ability1" "16_wave_mana_burn_extreme" 
+"Ability2" "16_wave_slow_extreme" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -1171,8 +1171,8 @@
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-"AttackDamageMin" "751" 
-"AttackDamageMax" "761" 
+"AttackDamageMin" "1001" 
+"AttackDamageMax" "1011" 
 "AttackRate" "1" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
@@ -1193,7 +1193,7 @@
 
 
 
-"StatusHealth" "4500" 
+"StatusHealth" "8500" 
 "StatusHealthRegen" "0.5" 
 "StatusMana" "800" 
 "StatusManaRegen" "1" 
@@ -1211,23 +1211,23 @@
 "VisionNighttimeRange" "800" 
 
 "PathfindingSearchDepthScale" "0.5" //0.3
-"vscripts"	"AI\16_wave_bosses.lua"
+"vscripts"	"AI\16_wave_bosses_extreme.lua"
 
 "HasInventory" "0" 
 }
 
-"17_wave_boss" 
+"17_wave_boss_extreme" 
 {
 
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl" 
 "SoundSet" "n_creep_Melee" 
-"ModelScale" "1.5" 
+"ModelScale" "1.7" 
 "Level" "1" 
 
 
-"Ability1" "17_wave_evasion" 
+"Ability1" "17_wave_evasion_extreme" 
 "Ability2" "" 
 "Ability3" "" 
 "Ability4" "" 
@@ -1244,9 +1244,9 @@
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "901" 
-"AttackDamageMax" "905" 
-"AttackRate" "0.85" 
+"AttackDamageMin" "1101" 
+"AttackDamageMax" "1105" 
+"AttackRate" "0.75" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
 "AttackRange" "110" 
@@ -1267,11 +1267,11 @@
 
 
 
-"StatusHealth" "5200" 
+"StatusHealth" "9000" 
 "StatusHealthRegen" "0.5" 
-"StatusMana" "400" 
+"StatusMana" "0" 
 "StatusManaRegen" "1" 
-"StatusStartingMana" "300"
+"StatusStartingMana" "0"
 
 
 
@@ -1291,14 +1291,14 @@
 "HasInventory" "0" 
 }
 
-"18_wave_boss" 
+"18_wave_boss_extreme" 
 {
 
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/heroes/viper/viper.vmdl" 
 "SoundSet" "n_creep_Ranged" 
-"ModelScale" "1.4" 
+"ModelScale" "1.6" 
 "Level" "1" 
 "ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
 "ProjectileSpeed" "1900" 
@@ -1310,7 +1310,7 @@
 
 
 
-"Ability1" "18_megaboss_bash" 
+"Ability1" "18_megaboss_bash_extreme" 
 "Ability2" "" 
 "Ability3" "" 
 "Ability4" "" 
@@ -1321,15 +1321,15 @@
 
 
 
-"ArmorPhysical" "30" 
+"ArmorPhysical" "60" 
 "MagicalResistance" "0" 
 
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-"AttackDamageMin" "1401" 
-"AttackDamageMax" "1405" 
-"AttackRate" "1.5" 
+"AttackDamageMin" "1801" 
+"AttackDamageMax" "1805" 
+"AttackRate" "1.3" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
 "AttackRange" "250" 
@@ -1349,7 +1349,7 @@
 
 
 
-"StatusHealth" "5500" 
+"StatusHealth" "10000" 
 "StatusHealthRegen" "1" 
 "StatusMana" "0" 
 "StatusManaRegen" "0" 
@@ -1372,20 +1372,20 @@
 "HasInventory" "0" 
 }
 
-"19_wave_boss" 
+"19_wave_boss_extreme" 
 {
 
 
 "BaseClass" "npc_dota_creature" 
 "Model" "models/creeps/neutral_creeps/n_creep_satyr_a/n_creep_satyr_a.vmdl" 
 "SoundSet" "n_creep_Melee" 
-"ModelScale" "1" 
+"ModelScale" "1.3" 
 "Level" "1" 
 
 
 
 
-"Ability1" "19_wave_polymorph" 
+"Ability1" "19_wave_polymorph_extreme" 
 "Ability2" "" 
 "Ability3" "" 
 "Ability4" "" 
@@ -1396,7 +1396,7 @@
 
 
 
-"ArmorPhysical" "35" 
+"ArmorPhysical" "66" 
 "MagicalResistance" "0" 
 
 
@@ -1425,7 +1425,7 @@
 
 
 
-"StatusHealth" "7000" 
+"StatusHealth" "12000" 
 "StatusHealthRegen" "1" 
 "StatusMana" "1000" 
 "StatusManaRegen" "1.25" 
@@ -1445,7 +1445,7 @@
 
 "PathfindingSearchDepthScale" "0.5" //0.3
 
-"vscripts"	"AI\19_wave_bosses.lua"
+"vscripts"	"AI\19_wave_bosses_extreme.lua"
 
 
 "HasInventory" "0" 

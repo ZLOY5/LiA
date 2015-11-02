@@ -1,0 +1,238 @@
+"11_wave_mana_break_extreme"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"		
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"nyx_assassin_mana_burn"
+
+	// Precache	
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+	}
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"damage_per_burn"		"1.0"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_per_hit"			"50"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_mana_break_orb_datadriven"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"Orb"
+			{
+				"Priority"	"DOTA_ORB_PRIORITY_ABILITY"
+			}
+
+			"OnOrbImpact"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"units/ManaBreak.lua"
+					"Function"		"ManaBreak"
+					"Target"		"TARGET"
+				}
+
+				"FireSound"
+				{
+					"EffectName"	"Hero_Antimage.ManaBreak"
+					"Target"		"TARGET"
+				}
+
+				"AttachEffect"
+				{
+					"EffectName"	"particles/generic_gameplay/generic_manaburn.vpcf"
+					"EffectAttachType"	"attach_hitloc"
+					"Target"		"TARGET"
+				}
+			}
+		}
+	}
+}
+
+
+
+"13_wave_aura_extreme"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityTextureName"			"golem_aura"
+
+
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"1000"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"bonus_damage_pct"	"60"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"aura_radius"		"1000"
+		}	
+	}
+
+	"Modifiers"
+	{
+		"modifier_golem_aura_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsDebuff"			"0"
+	
+			"Aura"					"modifier_golem_aura_friendly_datadriven"
+			"Aura_Radius"			"%aura_radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_ALL"			
+		}
+
+		"modifier_golem_aura_friendly_datadriven"
+		{
+			"IsBuff"	"1"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage_pct" 
+			}			
+		}
+	}	
+}
+
+"17_wave_evasion_extreme"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"nyx_assassin_vendetta"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"evasion"		"100"
+		}
+	}
+
+	"Modifiers"
+	{
+		"17_evasion"
+		{
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+			}
+		}
+	}
+}
+
+
+
+"18_megaboss_bash_extreme"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"faceless_void_time_lock"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+	"AbilityDamage"					"200"
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+		"particle"	"particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+		"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_hero_duration"	"1.0"
+		}
+	}
+
+	"Modifiers"
+	{
+		"18_modifier_bash"	
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"OnAttackLanded"
+			{
+						"FireSound"
+						{
+							"EffectName"	"Roshan.Bash"
+							"Target"		"TARGET"
+						}
+
+						"ApplyModifier"
+						{
+							"ModifierName"	"18_modifier_bash_stun"
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							}
+							"Duration"		"%stun_hero_duration"	
+						}
+
+						"Damage"
+						{
+							"Target"	"TARGET"
+							"Type"		"DAMAGE_TYPE_MAGICAL"
+							"Damage"	"%AbilityDamage"
+						}
+			}
+		}
+
+		"18_modifier_bash_stun"
+		{
+			"IsDebuff"			"1"
+			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType"	"follow_overhead"
+
+			"OverrideAnimation"     "ACT_DOTA_DISABLED"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+}
