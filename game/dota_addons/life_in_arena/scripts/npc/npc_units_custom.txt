@@ -1889,7 +1889,7 @@
 	"HasInventory" "0" 
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
-	"vscripts"	"AI\1_wave_bosses.lua"
+	"vscripts"	"AI\1_wave_bosses_extreme.lua"
 	
 	//"Creature"
 	//{
@@ -1993,7 +1993,7 @@
 	"HasInventory" "0" 
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
-	"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\2_wave_bosses_extreme.lua" //
 	
 	}
 	
@@ -2055,7 +2055,7 @@
 	"HasInventory" "0" 
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
-	"vscripts"	"AI\3_wave_bosses.lua"
+	"vscripts"	"AI\3_wave_bosses_extreme.lua"
 	
 	//"Creature"
 	//	{
@@ -2096,7 +2096,7 @@
 	
 	
 	"Ability1" "4_wave_death_coil" 
-	"Ability2" "" 
+	"Ability2" "4_wave_ensnare_extreme" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -2158,7 +2158,7 @@
 	"HasInventory" "0" 
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
-	"vscripts"	"AI\4_wave_bosses.lua"
+	"vscripts"	"AI\4_wave_bosses_extreme.lua"
 	
 	//"Creature"
 	//{
@@ -2362,7 +2362,7 @@
 	"VisionNighttimeRange" "800" 
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
-	"vscripts"	"AI\7_wave_bosses.lua"
+	"vscripts"	"AI\7_wave_bosses_extreme.lua"
 	
 	"HasInventory" "0" 
 	
@@ -3274,7 +3274,7 @@
 
 
 	//Start of file extreme_mode_creeps.txt
-	"1_wave_creep" 
+	"1_wave_creep_extreme" 
 	{
 		"BaseClass" "npc_dota_creature" 
 		"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
@@ -3335,7 +3335,7 @@
 	
 	}
 			
-	"2_wave_creep" 
+	"2_wave_creep_extreme" 
 	{
 		"BaseClass" "npc_dota_creature" 
 		"Model" "models/creeps/neutral_creeps/n_creep_centaur_med/n_creep_centaur_med.vmdl" 
@@ -3394,7 +3394,7 @@
 		"vscripts"	"AI\attack_wave_only.lua" //
 	}
 	
-	"3_wave_creep" 
+	"3_wave_creep_extreme" 
 	{
 		"BaseClass" "npc_dota_creature" 
 		"Model" "models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl" 
@@ -3456,7 +3456,7 @@
 		"vscripts"	"AI\attack_wave_only.lua" //
 	}
 	
-	"4_wave_creep" 
+	"4_wave_creep_extreme" 
 	{
 		"BaseClass" "npc_dota_creature" 
 		"Model" "models/creeps/neutral_creeps/n_creep_troll_dark_a/n_creep_troll_dark_a.vmdl" 
@@ -3520,7 +3520,7 @@
 		"vscripts"	"AI\attack_wave_only.lua" //
 	}
 	
-	"6_wave_creep" 
+	"6_wave_creep_extreme" 
 	{
 	
 	
@@ -3595,7 +3595,7 @@
 	"HasInventory" "0" 
 	}
 	
-	"7_wave_creep" 
+	"7_wave_creep_extreme" 
 	{
 	
 	
@@ -3672,7 +3672,7 @@
 	"HasInventory" "0" 
 	}
 	
-	"8_wave_creep" 
+	"8_wave_creep_extreme" 
 	{
 	
 	
@@ -3749,7 +3749,7 @@
 	"HasInventory" "0" 
 	}
 	
-	"9_wave_creep" 
+	"9_wave_creep_extreme" 
 	{
 	
 	
@@ -3831,7 +3831,7 @@
 	"HasInventory" "0" 
 	}
 	
-	"11_wave_creep" 
+	"11_wave_creep_extreme" 
 	{
 	
 	
@@ -3845,7 +3845,7 @@
 	
 	
 	"Ability1" "11_wave_invisibility" 
-	"Ability2" "" 
+	"Ability2" "11_wave_mana_break_extreme" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -3855,15 +3855,15 @@
 	
 	
 	
-	"ArmorPhysical" "8" 
+	"ArmorPhysical" "15" 
 	"MagicalResistance" "0" 
 	
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "181" 
-	"AttackDamageMax" "186" 
-	"AttackRate" "0.65" 
+	"AttackDamageMin" "221" 
+	"AttackDamageMax" "226" 
+	"AttackRate" "0.55" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
 	"AttackRange" "100" 
@@ -3884,10 +3884,10 @@
 	
 	
 	
-	"StatusHealth" "1100" 
+	"StatusHealth" "1250" 
 	"StatusHealthRegen" "0.5" 
 	"StatusMana" "0" 
-	"StatusManaRegen" "0.75" 
+	"StatusManaRegen" "0" 
 	
 	
 	
@@ -3909,7 +3909,7 @@
 	"HasInventory" "0" 
 	}
 	
-	"12_wave_creep" 
+	"12_wave_creep_extreme" 
 	{
 	
 	
@@ -3986,7 +3986,7 @@
 	"vscripts"	"AI\12_wave_creeps.lua"
 	}
 	
-	"13_wave_creep" 
+	"13_wave_creep_extreme" 
 	{
 	
 	
@@ -4067,7 +4067,7 @@
 	
 	}
 	
-	"14_wave_creep" 
+	"14_wave_creep_extreme" 
 	{
 	
 	
@@ -4154,7 +4154,7 @@
 	"HasInventory" "0" 
 	}
 	
-	"16_wave_creep" 
+	"16_wave_creep_extreme" 
 	{
 	
 	
@@ -4168,7 +4168,7 @@
 	
 	
 	
-	"Ability1" "16_wave_mana_burn" 
+	"Ability1" "16_wave_mana_burn_extreme" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -4207,7 +4207,7 @@
 	
 	
 	
-	"StatusHealth" "1700" 
+	"StatusHealth" "2000" 
 	"StatusHealthRegen" "0.5" 
 	"StatusMana" "400" 
 	"StatusManaRegen" "1" 
@@ -4226,13 +4226,13 @@
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
 	
-	"vscripts"	"AI\16_wave_creeps.lua" //
+	"vscripts"	"AI\16_wave_creeps_extreme.lua" //
 	
 	
 	"HasInventory" "0" 
 	}
 	
-	"17_wave_creep" 
+	"17_wave_creep_extreme" 
 	{
 	
 	
@@ -4244,7 +4244,7 @@
 	
 	
 	
-	"Ability1" "17_wave_purge" 
+	"Ability1" "17_wave_purge_extreme" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -4284,7 +4284,7 @@
 	
 	
 	
-	"StatusHealth" "2200" 
+	"StatusHealth" "2500" 
 	"StatusHealthRegen" "0.5" 
 	"StatusMana" "300" 
 	"StatusManaRegen" "1" 
@@ -4303,13 +4303,13 @@
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
 	
-	"vscripts"	"AI\17_wave_creeps.lua" //
+	"vscripts"	"AI\17_wave_creeps_extreme.lua" //
 	
 	
 	"HasInventory" "0" 
 	}
 	
-	"18_wave_creep" 
+	"18_wave_creep_extreme" 
 	{
 	
 	
@@ -4322,7 +4322,7 @@
 	
 	
 	
-	"Ability1" "18_wave_silence" 
+	"Ability1" "18_wave_silence_extreme" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -4362,7 +4362,7 @@
 	
 	
 	
-	"StatusHealth" "2200" 
+	"StatusHealth" "2600" 
 	"StatusHealthRegen" "1" 
 	"StatusMana" "150" 
 	"StatusManaRegen" "1" 
@@ -4381,13 +4381,13 @@
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
 	
-	"vscripts"	"AI\18_wave_creeps.lua" //
+	"vscripts"	"AI\18_wave_creeps_extreme.lua" //
 	
 	
 	"HasInventory" "0" 
 	}
 	
-	"19_wave_creep" 
+	"19_wave_creep_extreme" 
 	{
 	
 	
@@ -4400,7 +4400,7 @@
 	
 	
 	
-	"Ability1" "19_wave_faerie_fire" 
+	"Ability1" "19_wave_faerie_fire_extreme" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -4440,7 +4440,7 @@
 	
 	
 	
-	"StatusHealth" "2500" 
+	"StatusHealth" "3000" 
 	"StatusHealthRegen" "1" 
 	"StatusMana" "500" 
 	"StatusManaRegen" "1.25" 
@@ -4459,7 +4459,7 @@
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
 	
-	"vscripts"	"AI\19_wave_creeps.lua" //
+	"vscripts"	"AI\19_wave_creeps_extreme.lua" //
 	
 	
 	"HasInventory" "0" 
