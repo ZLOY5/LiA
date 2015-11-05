@@ -6627,6 +6627,12 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityCooldown"				"16"
 		"AbilityManacost"				"90"
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_morphling/morphling_morph_agi.vpcf"
+		}
+	
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -6655,6 +6661,10 @@
 				"Duration"		"%duration"
 				"Attributes" 	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"IsBuff"		"1"
+	
+				"EffectName"	"particles/units/heroes/hero_morphling/morphling_morph_agi.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
 				"OnCreated"
 				{
 					"RunScript"
@@ -6746,6 +6756,12 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityCooldown"				"16"
 		"AbilityManacost"				"90"
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
+		}
+	
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -6774,6 +6790,10 @@
 				"Duration"		"%duration"
 				"Attributes" 	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"IsBuff"		"1"
+	
+				"EffectName"	"particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
 				"OnCreated"
 				{	
 					"RunScript"
