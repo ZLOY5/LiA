@@ -348,6 +348,11 @@ function Survival:_SpawnWave()
     local unit1, unit2, boss1, boss2
     local creepName = tostring(self.nRoundNum).."_wave_creep"
     local bossName = tostring(self.nRoundNum).."_wave_boss"
+    if self.IsExtreme then 
+        creepName = creepName.."_extreme"
+        bossName = bossName.."_extreme"
+    end
+    
     local pathEffect = "particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf"
     
     boss1 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)

@@ -9,6 +9,10 @@ function SetAdsorbFromKret( keys )
 	local caster = keys.caster
 	local adsorbVal = keys.adsorbVal
 	--
+	if attacker_loc:IsInvulnerable() then 
+		return 
+	end
+
 	ApplyDamage(
 	{
 		victim = attacker_loc,
