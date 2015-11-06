@@ -51,7 +51,7 @@ function createWave(keys)
 		bHasFrontalCone = true,
 		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
 		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-		--iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
+		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
 		bProvidesVision = true,
 		fVisionRadius = vision_aoe,
 		--iVisionTeamNumber = caster:GetTeamNumber(),
@@ -65,14 +65,14 @@ end
 function CauseDamageDecor(event)
 	local ability = event.ability
 	local caster = event.caster
-	print("caster = ", caster:GetUnitName())
+	--print("caster = ", caster:GetUnitName())
 	--local target = event.target
 	local targets = event.target_entities
 	local damage = event.damage
 	for _,v in pairs(targets) do
 		if v.destructable == 1 then
-			print("try")
-			ApplyDamage({victim = v, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
+			--print("try")
+			ApplyDamage({victim = v, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_PURE, ability = ability})
 		end
 	end
 end

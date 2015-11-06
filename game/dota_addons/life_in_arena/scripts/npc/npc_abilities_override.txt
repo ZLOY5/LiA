@@ -15525,11 +15525,6 @@
 			"OnProjectileHitUnit"
 			{
 				"DeleteOnHit"	"1"
-				//"ApplyModifier"
-				//{
-				//	"ModifierName"	"modifier_fire_spear_slow"
-				//	"Target" 		"TARGET"
-				//}
 				
 				"DelayedAction"
 				{
@@ -15545,6 +15540,7 @@
 								"Radius" 	"%radius_cause"
 								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 								"Types" 	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+								"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							}
 							"Type"			"DAMAGE_TYPE_PHYSICAL"
 							"Damage"		"%AbilityDamage"

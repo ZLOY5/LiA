@@ -103,11 +103,11 @@ function Survival:OnEntityKilled(keys)
     elseif self.State == SURVIVAL_STATE_ROUND_FINALBOSS then
         Survival:_OnFinalBossDeath(keys)
         return
-    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_creep" and not killed:IsOwnedByAnyPlayer() then 
+    elseif string.find(killed:GetUnitName(),"_wave_creep") and not killed:IsOwnedByAnyPlayer() then 
         Survival:_OnCreepDeath(keys)   
-    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_boss" and not killed:IsOwnedByAnyPlayer() then
+    elseif string.find(killed:GetUnitName(),"_wave_boss") and not killed:IsOwnedByAnyPlayer() then
         Survival:_OnBossDeath(keys)
-    elseif killed:GetUnitName() == tostring(self.nRoundNum).."_wave_megaboss" then
+    elseif string.find(killed:GetUnitName(),"_wave_megaboss") then
         Survival:EndRound()
     end 
 
