@@ -261,6 +261,27 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end			
 		
+		--[[if name == "npc_dota_hero_silencer" then
+			par = {
+				unit = caster,
+				oldAbi = "lord_of_lightning_lightning_shield",
+				newAbi = "lord_of_lightning_lightning_shield_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "lord_of_lightning_chain_lightning",
+				newAbi = "lord_of_lightning_chain_lightning_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end		]]
+		
+		
 		-- next heroes
 	end
 	--end

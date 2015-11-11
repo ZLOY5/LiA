@@ -25531,6 +25531,561 @@
 	//End of file npc_lia_hero_vowen_from_blood.txt
 
 
+	//Start of file npc_lia_hero_wanderer.txt
+	
+	
+	"wanderer_cancel_standard_aura"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	
+		"Modifiers"
+		{
+			"modifier_wanderer_cancel_standard_aura"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"OnCreated"
+				//"OnOwnerSpawned"
+				{
+				
+				
+				
+					"RemoveModifier"
+					   {
+						 "ModifierName"  "modifier_silencer_int_steal"
+						 "Target"        "CASTER"
+					   }
+				}
+			}
+	
+		}	
+	}
+	
+	
+	
+	"wanderer_spirit_of_the_plains"
+	{
+	
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    //"AbilityTextureName"    "beastmaster_primal_roar"
+	    
+	 
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+	    
+	    "precache"
+	    {
+	        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
+	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+	    }
+	
+	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	
+	    "AbilityCooldown"               "25 30 35"
+	
+	    "AbilityManaCost"               "100 150 200"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "duration"  "20 25 30"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+		
+			"RunScript"
+			{
+				"ScriptFile"    "heroes\Wanderer\spirit.lua"    
+				"Function"      "spiritCreate"
+				"durat" 	"%duration"
+			}
+		
+	
+	        //"FireSound"
+	        //{
+	         //   "EffectName"    "Hero_LoneDruid.BattleCry"
+	         //   "Target"        "CASTER"
+	        //}
+	
+	
+	    }
+	
+	}
+	
+	"wanderer_the_flow_of_life"
+	{
+		"BaseClass"					"ability_datadriven"
+		//"AbilityTextureName"		"nightelf_rejuvenation"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+			
+		"AbilityCastRange"			"700"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"10"
+		"AbilityManaCost"			"100 150 200"
+			
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"5"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"total_heal"	"100 200 400"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"total_mana"	"100 150 200"
+			}
+		}
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Treant.LivingArmor.Cast"
+				"Target" 		"TARGET"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_the_flow_of_life"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_the_flow_of_life"
+			{
+				"IsPurgable"		"1"
+		
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+						"ControlPointEntities"
+			            {
+			                "TARGET"        "attach_origin"
+			                "TARGET"        "attach_origin"
+						}
+					}
+				}
+		
+			  "ThinkInterval"  "1.0"
+			  "OnIntervalThink"
+			  {
+				"Heal"
+				{
+					"Target"        "TARGET"
+					"HealAmount"	"%total_heal / %duration"
+				}
+				
+				"RunScript"
+				{
+					"ScriptFile"    "heroes\Wanderer\the_flow_of_life.lua"    
+					"Function"      "HealMana"
+					"amount" 		"%total_mana / %duration"
+				}
+				
+			  }
+		
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%total_heal / %duration"
+				//	"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%total_mana / %duration"
+				//}
+			}
+		}
+	}
+	
+	"wanderer_the_flow_of_life_scepter"
+	{
+		"BaseClass"					"ability_datadriven"
+		//"AbilityTextureName"		"nightelf_rejuvenation"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+			
+		"AbilityCastRange"			"700"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"7"
+		"AbilityManaCost"			"100 200 300"
+			
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"5"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"total_heal"	"200 400 800"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"total_mana"	"100 200 400"
+			}
+		}
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Treant.LivingArmor.Cast"
+				"Target" 		"TARGET"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_the_flow_of_life"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_the_flow_of_life"
+			{
+				"IsPurgable"		"1"
+		
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+						"ControlPointEntities"
+			            {
+			                "TARGET"        "attach_origin"
+			                "TARGET"        "attach_origin"
+						}
+					}
+				}
+		
+			  "ThinkInterval"  "1.0"
+			  "OnIntervalThink"
+			  {
+				"Heal"
+				{
+					"Target"        "TARGET"
+					"HealAmount"	"%total_heal / %duration"
+				}
+				
+				"RunScript"
+				{
+					"ScriptFile"    "heroes\Wanderer\the_flow_of_life.lua"    
+					"Function"      "HealMana"
+					"amount" 		"%total_mana / %duration"
+				}
+				
+			  }
+		
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%total_heal / %duration"
+				//	"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%total_mana / %duration"
+				//}
+			}
+		}
+	}
+	
+	
+	"wanderer_arcane_aura"
+	{
+		"BaseClass"					"ability_datadriven"
+		//"AbilityTextureName"		"zuus_lightning_bolt_immortal"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+		
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		//"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		//"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+			
+		"AbilityCastRange"			"800"
+		//"AbilityCastPoint"			"0"
+		//"AbilityCooldown"			"2.0 1.5 1.0"
+		//"AbilityManaCost"			"200 240 280"
+			
+		//"AOERadius"					"800"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius_aura_dmg"		"550"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"800"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage_val"			"100 200 300"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_val"		"-50"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_sec"		"4"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_mana_const"		"2 4 0"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"regen_mana_prc"		"0 0 1"
+			}
+		}
+		
+		"precache"
+		{
+			"particle" "particles/units/heroes/hero_zuus/zuus_arc_lightning_impact_b.vpcf"
+			"particle"  "particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
+		}
+		"Modifiers"
+		{
+		
+			"modifier_wanderer_arcane_aura"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_wanderer_arcane_aura_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+			
+			"modifier_wanderer_arcane_aura_mod"
+			{
+				"IsHidden"		"0"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"%regen_mana_prc"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%regen_mana_const"
+				}
+			}
+		
+			"modifier_wanderer_arcane_aura_2"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_wanderer_arcane_aura_2_mod"
+				"Aura_Radius" 		"%radius_aura_dmg"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+	
+			"modifier_wanderer_arcane_aura_2_mod"
+			{
+				//"Passive"	"1"
+				"IsHidden"			"1"
+				"OnAbilityExecuted"
+				{
+					//"FireSound"
+					//{
+					//	"EffectName"	"Roshan.Bash"
+					//	"Target"		"TARGET"
+					//}
+					
+			    	"RunScript"
+			    	{
+			    		"ScriptFile"	"heroes\Wanderer\arcane_aura.lua"   
+			    		"Function"		"OnCast"
+			    	}
+					
+					"AttachEffect"
+					{
+						"EffectName"	"particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"	
+									//"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+						"EffectAttachType"	"follow_origin"	
+						"Target" 			"UNIT" //TARGET
+					}
+					
+					//"Damage"
+					//{
+					//	"Type" 		"DAMAGE_TYPE_MAGICAL"
+					//	"Target"	"CASTER"
+					//	"Damage" 	"%damage_val"
+					//}
+				
+					//"ApplyModifier"
+					//{
+					//	"ModifierName"	"modifier_wanderer_arcane_aura_2_mod_slow"
+					//	"Target" 		"CASTER"
+					//	"Duration"				"%slow_sec"
+					//}
+			
+					//"RunScript"
+					//{
+					//	"ScriptFile"   "heroes/LightningLord/holy_wrath.lua"
+					//	"Function"     "damageTo"
+					//}
+			
+				}
+				
+			}
+			
+			"modifier_wanderer_arcane_aura_2_mod_slow"
+			{
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				"Duration"				"%slow_sec"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%slow_val"
+				}
+				
+				"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+			
+			
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	"beastmaster_beasts"
+	{
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityTextureName"            "beastmaster_beasts"
+	
+	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
+	
+	    "AbilityCastRange"              "400"
+	    "AbilityCastPoint"              "0.3"
+	    "AbilityCooldown"               "40 60 80"
+	
+	    "AbilityManaCost"               "120"
+	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+	
+	        "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
+	        
+	        //Goblin Ability
+	        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	    }
+	    
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "unit_count"  "2 3 4"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Lycan.SummonWolves"
+	            "Target"        "CASTER"
+	        }
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/Beastmaster/Beasts.lua"
+	            "Function"      "SummonBeasts"
+	            "Target"        "POINT"
+	            "unit_count"    "%unit_count"
+	        }
+	    }
+	}
+	
+	//End of file npc_lia_hero_wanderer.txt
+
+
 	//Start of file npc_lia_hero_warlock.txt
 	
 		"warlock_storm_datadriven"
@@ -28412,6 +28967,197 @@
 		}
 	}
 	//End of file upgrades_abilities.txt
+
+
+	//Start of file wanderer_abilities.txt
+	
+	"spirit_of_the_plains_fog"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		//"AbilityTextureName"			"alchemist_acid_spray"
+		"AOERadius"						"%radius"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"1000"
+		"AbilityCooldown"				"15.0"
+		"AbilityManaCost"				"50"
+		//"AbilityChannelTime"			"30.0"
+	
+		"precache"
+		{
+			"particle"	 "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_clouds_aaa.vpcf"
+			//"particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning_trail_cloud.vpcf"
+				"soundfile"	"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"cloud_duration"	"9"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"400"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"miss"			"100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_speed_movement"				"-45"
+			}
+		}
+	
+	
+		"OnSpellStart"
+		{
+		 	"CreateThinker"
+		 	{
+		 		"ModifierName"	"modifier_cloud_thinker"
+		 		"Target" 		"POINT"
+		 	}
+		} 
+	
+		"Modifiers"
+		{
+			"modifier_cloud_thinker"
+			{
+				"Aura"					"modifier_cloud_miss"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY" // 
+				"Aura_Types"			"DOTA_UNIT_TARGET_ALL"//"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC " //DOTA_UNIT_TARGET_MECHANICAL
+				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Duration"				"%cloud_duration"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\Wanderer\fog.lua"
+						"Function"		"CloudSound"
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_clouds_aaa.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius 1 1"
+							"15" "25 150 25"
+							"16" "0 0 0"
+						}
+					}
+				}
+			}
+	
+			"modifier_cloud_miss"
+			{
+				"IsDebuff"		"1"
+				//"ThinkInterval"	"%tick_rate"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%miss"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_movement"
+				}
+			}
+		}
+	}
+	
+	
+	"spirit_of_the_plains_slow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		//"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"6"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0"
+		"AbilityManaCost"				"40"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cripple_attack_slow"					"-45"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cripple_movespeed_slow_pct"	"-70"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"7"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"DOTA_Item.RodOfAtos.Activate"
+				"Target"			"TARGET"
+			}
+				
+			"ApplyModifier"
+			{
+				"Target"			"TARGET"
+				"ModifierName"		"modifier_spirit_of_the_plains_slow"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_spirit_of_the_plains_slow"
+			{
+				"Duration"			"%duration"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
+				"EffectAttachType"		"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
+				}
+			}
+		}
+	}
+	
+	
+	//End of file wanderer_abilities.txt
 
 
 	//Start of file water_elemental.txt
