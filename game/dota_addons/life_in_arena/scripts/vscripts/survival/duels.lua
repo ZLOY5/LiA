@@ -72,6 +72,8 @@ function Survival:Duel(hero1,hero2)
             hero2:GiveMana(9999)
             ResetAllAbilitiesCooldown(hero1)
             ResetAllAbilitiesCooldown(hero2)
+            hero1:Purge(true, true, false, true, false)
+            hero2:Purge(true, true, false, true, false)
 
             local gold = hero2:GetGold()
             hero2:SetTeam(DOTA_TEAM_BADGUYS)
@@ -156,7 +158,7 @@ function Survival:EndDuel(winner,loser)
     end
 
     if hero1:IsAlive() then
-        hero1:Purge(false, true, false, true, false)
+        hero1:Purge(true, true, false, true, false)
         hero1:AddNewModifier(hero1, nil, "modifier_stun_lua", {duration = -1})
         hero1:Heal(9999,hero1)
         hero1:GiveMana(9999) 
@@ -167,7 +169,7 @@ function Survival:EndDuel(winner,loser)
     end
 
     if hero2:IsAlive() then
-        hero2:Purge(false, true, false, true, false)
+        hero2:Purge(true, true, false, true, false)
         hero2:AddNewModifier(hero2, nil, "modifier_stun_lua", {duration = -1})
         hero2:Heal(9999,hero2)
         hero2:GiveMana(9999) 

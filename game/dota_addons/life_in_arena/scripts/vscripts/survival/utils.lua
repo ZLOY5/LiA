@@ -62,8 +62,12 @@ function Survival:UnhideHero(hero)
 
 	if not hero.prorogueUnhide then
 		print("hero unhidden")
+		if not hero.IsAlive() then
+			hero:RespawnHero(false, false, false)
+		end
 		hero:RemoveModifierByName("modifier_hide_lua")
-		hero:SetAbsOrigin(hero.abs)
+		FindClearSpaceForUnit(hero, hero.abs, false)
+		ResolveNPCPositions(hero.abs, 64)
 		hero:RemoveNoDraw()
 		hero.hidden = nil
 
