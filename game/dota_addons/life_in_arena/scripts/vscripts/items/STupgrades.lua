@@ -261,25 +261,25 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end			
 		
-		--[[if name == "npc_dota_hero_silencer" then
+		if name == "npc_dota_hero_silencer" then
 			par = {
 				unit = caster,
-				oldAbi = "lord_of_lightning_lightning_shield",
-				newAbi = "lord_of_lightning_lightning_shield_scepter",
+				oldAbi = "wanderer_the_flow_of_life",
+				newAbi = "wanderer_the_flow_of_life_scepter",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "lord_of_lightning_chain_lightning",
-				newAbi = "lord_of_lightning_chain_lightning_scepter",
+				oldAbi = "wanderer_ghosts",
+				newAbi = "wanderer_ghosts_scepter",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
-		end		]]
+		end		
 		
 		
 		-- next heroes
@@ -558,6 +558,27 @@ function OnUnequip(event)
 			--
 			caster.STupgrades = false
 		end
+		
+		if name == "npc_dota_hero_silencer" then
+			par = {
+				unit = caster,
+				oldAbi = "wanderer_the_flow_of_life_scepter",
+				newAbi = "wanderer_the_flow_of_life",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "wanderer_ghosts_scepter",
+				newAbi = "wanderer_ghosts",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end		
+		
 		
 	end
 	--end

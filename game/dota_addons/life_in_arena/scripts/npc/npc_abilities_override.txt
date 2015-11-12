@@ -25541,6 +25541,7 @@
 		"AbilityType"     "DOTA_ABILITY_TYPE_ATTRIBUTES"
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"MaxLevel"               "1"
 	
 		"Modifiers"
 		{
@@ -25549,17 +25550,22 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 		
-				"OnCreated"
+				//"OnAttack"
 				//"OnOwnerSpawned"
+				"OnCreated"
 				{
 				
+					"RunScript"
+					{
+						"ScriptFile"    "heroes\Wanderer\cancel_standard_aura.lua"    
+						"Function"      "cancel"
+					}			
 				
-				
-					"RemoveModifier"
-					   {
-						 "ModifierName"  "modifier_silencer_int_steal"
-						 "Target"        "CASTER"
-					   }
+					//"RemoveModifier"
+					 //  {
+					//	 "ModifierName"  "modifier_silencer_int_steal"
+					//	 "Target"        "CASTER"
+					 //  }
 				}
 			}
 	
@@ -26012,76 +26018,129 @@
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	"beastmaster_beasts"
+	"wanderer_ghosts"
 	{
-	    "BaseClass"                     "ability_datadriven"
-	    "AbilityTextureName"            "beastmaster_beasts"
 	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    //"AbilityTextureName"    "beastmaster_primal_roar"
+	    
+	 
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "5"
 	    "LevelsBetweenUpgrades"  "4"
-	
-	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
-	
-	    "AbilityCastRange"              "400"
-	    "AbilityCastPoint"              "0.3"
-	    "AbilityCooldown"               "40 60 80"
-	
-	    "AbilityManaCost"               "120"
-	
+	    
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		
 	    "precache"
 	    {
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
-	
-	        "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
-	        
-	        //Goblin Ability
-	        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
+	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
 	    }
-	    
+	
+	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	
+	    "AbilityCooldown"               "140 150 160"
+	
+	    "AbilityManaCost"               "350 450 550"
+	
 	    "AbilitySpecial"
 	    {
 	        "01"
 	        {
 	            "var_type"          "FIELD_INTEGER"
-	            "unit_count"  "2 3 4"
+	            "duration"  "120"
 	        }
 	    }
 	
 	    "OnSpellStart"
 	    {
-	        "FireSound"
+		
+			"RunScript"
+			{
+				"ScriptFile"    "heroes\Wanderer\ghosts.lua"    
+				"Function"      "ghostsCreate"
+				"durat" 	"%duration"
+			}
+		
+	
+	        //"FireSound"
+	        //{
+	         //   "EffectName"    "Hero_LoneDruid.BattleCry"
+	         //   "Target"        "CASTER"
+	        //}
+	
+	
+	    }
+	
+	}
+	
+	
+	"wanderer_ghosts_scepter"
+	{
+	
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    //"AbilityTextureName"    "beastmaster_primal_roar"
+	    
+	 
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	    
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		
+	    "precache"
+	    {
+	        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
+	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+	    }
+	
+	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+	
+	    "AbilityCooldown"               "140 150 160"
+	
+	    "AbilityManaCost"               "600 700 800"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
 	        {
-	            "EffectName"    "Hero_Lycan.SummonWolves"
-	            "Target"        "CASTER"
-	        }
-	        "RunScript"
-	        {
-	            "ScriptFile"    "heroes/Beastmaster/Beasts.lua"
-	            "Function"      "SummonBeasts"
-	            "Target"        "POINT"
-	            "unit_count"    "%unit_count"
+	            "var_type"          "FIELD_INTEGER"
+	            "duration"  "120"
 	        }
 	    }
+	
+	    "OnSpellStart"
+	    {
+		
+			"RunScript"
+			{
+				"ScriptFile"    "heroes\Wanderer\ghosts.lua"    
+				"Function"      "ghostsCreate"
+				"durat" 	"%duration"
+			}
+		
+	
+	        //"FireSound"
+	        //{
+	         //   "EffectName"    "Hero_LoneDruid.BattleCry"
+	         //   "Target"        "CASTER"
+	        //}
+	
+	
+	    }
+	
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	//End of file npc_lia_hero_wanderer.txt
 
@@ -29157,6 +29216,238 @@
 	}
 	
 	
+	"essence_of_the_ghost_aura1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityTextureName"			"sven_gods_strength"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"1.2"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"5"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_essence_of_the_ghost_aura1"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+	
+			"modifier_essence_of_the_ghost_aura1_mod"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
+	
+			}
+		}
+	}
+	
+	"essence_of_the_ghost_aura2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityTextureName"			"sven_gods_strength"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"2.4"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"10"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_essence_of_the_ghost_aura1"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+	
+			"modifier_essence_of_the_ghost_aura1_mod"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
+	
+			}
+		}
+	}
+	
+	
+	"essence_of_the_ghost_aura3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityTextureName"			"sven_gods_strength"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"3.6"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"15"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_essence_of_the_ghost_aura1"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+	
+			"modifier_essence_of_the_ghost_aura1_mod"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
+	
+			}
+		}
+	}
+	
+	"essence_of_the_ghost_aura4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityTextureName"			"sven_gods_strength"
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"6"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"20"
+			}
+	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_essence_of_the_ghost_aura1"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+	
+			"modifier_essence_of_the_ghost_aura1_mod"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
+	
+			}
+		}
+	}
 	//End of file wanderer_abilities.txt
 
 

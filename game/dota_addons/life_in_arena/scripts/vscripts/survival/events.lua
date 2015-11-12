@@ -154,7 +154,17 @@ function Survival:OnPlayerChat(event)
         onPlayerReadyToWave(player) --LiA_ForceRound.lua
     end
 	
-    --[[if event.text == "fade" then
+	--[[if event.text == "kill" then
+		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+        hero:ForceKill(false)
+    end
+	
+	if event.text == "res" then
+		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+        hero:RespawnHero(false,false,false)
+    end
+	
+    if event.text == "fade" then
         ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
     end
 	
