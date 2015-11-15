@@ -34,8 +34,12 @@ end
 function Survival:_OnHeroDeath(keys)
     PrintTable("OnHeroDeath",keys)
     local hero = EntIndexToHScript(keys.entindex_killed)
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
-    local attackerHero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
+    local attacker
+    local attackerHero
+    if keys.entindex_attacker then 
+        attacker = EntIndexToHScript(keys.entindex_attacker)
+        attackerHero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
+    end 
     
     local ownerHero = hero:GetPlayerOwner()
     if ownerHero then
@@ -118,7 +122,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        --self.nRoundNum = 13
+        --self.nRoundNum = 15
         GameRules:SetPreGameTime(120)
         Survival:PrepareNextRound()
     end
