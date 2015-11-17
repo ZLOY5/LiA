@@ -346,13 +346,13 @@
 	{
 		"01"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"radius_aura_dmg"		"550"
+			"var_type"				"FIELD_FLOAT"
+			"regen_mana_const"		"2 4 0"
 		}
 		"02"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"800"
+			"var_type"				"FIELD_INTEGER"
+			"regen_mana_prc"		"0 0 1"
 		}
 		"03"
 		{
@@ -371,13 +371,13 @@
 		}
 		"06"
 		{
-			"var_type"				"FIELD_FLOAT"
-			"regen_mana_const"		"2 4 0"
+			"var_type"		"FIELD_INTEGER"
+			"radius_aura_dmg"		"550"
 		}
 		"07"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"regen_mana_prc"		"0 0 1"
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"800"
 		}
 	}
 	
@@ -526,6 +526,16 @@
         "01"
         {
             "var_type"          "FIELD_INTEGER"
+            "ghost_health"  "1000 1500 2000"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghost_damage"  "135 185 255"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
             "duration"  "120"
         }
     }
@@ -583,6 +593,16 @@
     "AbilitySpecial"
     {
         "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghost_health"  "1500 2000 2500"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghost_damage"  "185 255 325"
+        }
+        "03"
         {
             "var_type"          "FIELD_INTEGER"
             "duration"  "120"
