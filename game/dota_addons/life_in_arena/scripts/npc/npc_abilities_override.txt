@@ -25585,12 +25585,18 @@
 	    "RequiredLevel"          "1"
 	    "LevelsBetweenUpgrades"  "2"
 	    
-	    "precache"
-	    {
-	        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
-	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
-	    }
+		"precache"
+		{
+		    "soundfile" "soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+		    "model"   "models/heroes/vengeful/vengeful.vmdl"
+		    "model"   "models/items/vengeful/vengeful_immortal_weapon/vengeful_immortal_weapon.vmdl"
+		    "model"   "models/items/vengefulspirit/fallenprincess_shoulders/fallenprincess_shoulders.vmdl"
+		    "model"   "models/items/vengefulspirit/fallenprincess_legs/fallenprincess_legs.vmdl"
+		    "model"   "models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl"
+		    "particle"  "particles/units/heroes/hero_vengeful/vengeful_ambient.vpcf"
+		    "particle"  "particles/econ/items/vengeful/vengeful_wing_fallenprincess/venge_wingsoffallenprincess_ambient.vpcf"
+		    "particle"  "particles/units/heroes/hero_vengeful/vengeful_base_attack.vpcf"
+		}
 	
 	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
 	
@@ -29251,7 +29257,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		//"AbilityTextureName"			"neutral_spell_immunity"
+		"AbilityTextureName"			"razor_unstable_current"
 	
 	
 		// Special	
@@ -29309,7 +29315,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		//"AbilityTextureName"			"sven_gods_strength"
+		"AbilityTextureName"			"razor_unstable_current"
 	
 	
 		// Special	
@@ -29368,7 +29374,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		//"AbilityTextureName"			"sven_gods_strength"
+		"AbilityTextureName"			"razor_unstable_current"
 	
 	
 		// Special	
@@ -29426,7 +29432,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		//"AbilityTextureName"			"sven_gods_strength"
+		"AbilityTextureName"			"razor_unstable_current"
 	
 	
 		// Special	
