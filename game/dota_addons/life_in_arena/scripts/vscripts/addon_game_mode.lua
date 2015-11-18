@@ -17,6 +17,16 @@ function Precache( context )
 		PrecacheUnitByNameAsync("npc_water_elemental_2", function(...) end)
 		PrecacheUnitByNameAsync("npc_water_elemental_3", function(...) end)
 		PrecacheUnitByNameAsync("npc_water_elemental_4", function(...) end)
+
+		PrecacheUnitByNameAsync("spirit_of_the_plains1", function(...) end)
+		PrecacheUnitByNameAsync("spirit_of_the_plains2", function(...) end)
+		PrecacheUnitByNameAsync("spirit_of_the_plains3", function(...) end)
+
+		PrecacheUnitByNameAsync("ghost_1", function(...) end)
+		PrecacheUnitByNameAsync("ghost_2", function(...) end)
+		PrecacheUnitByNameAsync("ghost_3", function(...) end)
+		PrecacheUnitByNameAsync("ghost_4", function(...) end)
+
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf" , context)
 		--Берсеркер
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf" , context)
