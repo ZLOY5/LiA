@@ -62,7 +62,7 @@ function Survival:UnhideHero(hero)
 
 	if not hero.prorogueUnhide then
 		print("hero unhidden")
-		if not hero.IsAlive() then
+		if not hero:IsAlive() then
 			hero:RespawnHero(false, false, false)
 		end
 		hero:RemoveModifierByName("modifier_hide_lua")
