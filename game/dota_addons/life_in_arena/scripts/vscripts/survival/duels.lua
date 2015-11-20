@@ -172,7 +172,7 @@ function Survival:EndDuel(winner,loser)
         hero2:AddNewModifier(hero2, nil, "modifier_stun_lua", {duration = -1})
         hero2:Heal(9999,hero2)
         hero2:GiveMana(9999) 
-        local fire_gloves = GetItemInInventory(hero2,"item_lia_fire_gloves") or GetItemInInventory(hero1,"item_lia_fire_gloves_2")
+        local fire_gloves = GetItemInInventory(hero2,"item_lia_fire_gloves") or GetItemInInventory(hero2,"item_lia_fire_gloves_2")
         if fire_gloves and fire_gloves:GetToggleState() then 
             fire_gloves:ToggleAbility()
         end 
