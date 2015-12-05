@@ -1345,27 +1345,12 @@
 				"ApplyModifier"
 				{
 					"Target" 		"TARGET"
-					"ModifierName"	"modifier_12_wave_stomp"
+					"ModifierName"	"modifier_stunned"
 				}
 			}
 		}		
 	}
 
-	"Modifiers"
-	{
-		"modifier_12_wave_stomp"
-		{
-			"IsDebuff"	"1"
-			"Duration"	"%stun_duration"
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
-			}
-			"OverrideAnimation"	"ACT_DOTA_DISABLED"
-			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-			"EffectAttachType"	"follow_overhead"
-		}
-	}
 }
 
 "7_wave_howl_of_terror"
@@ -2317,6 +2302,7 @@
 	{
 		"modifier_decrepify_units_by_hero"
 		{
+			"IsHidden"		"1"
 			"Duration"		"%duration_on_other"
 			//
 			"OnAttackLanded"
