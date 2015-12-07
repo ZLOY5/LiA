@@ -86,7 +86,7 @@
 	{
 		"BaseClass"             		"ability_lua"
 		"ScriptFile"					"abilities\wave_2_aura_of_vengeance.lua"
-		"AbilityTextureName"			"dark_ranger_spiked_charm"
+		"AbilityTextureName"			"2_wave_thorns_aura"
 	
 		"MaxLevel"               		"1"
 	
@@ -121,7 +121,7 @@
 	{
 		"BaseClass"             		"ability_lua"
 		"ScriptFile"					"abilities\wave_2_aura_of_vengeance.lua"
-		"AbilityTextureName"			"dark_ranger_spiked_charm"
+		"AbilityTextureName"			"2_wave_thorns_aura"
 	
 		"MaxLevel"               		"1"
 	
@@ -161,7 +161,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"pudge_rot"
+		"AbilityTextureName"			"7_wave_disease_cloud"
 	
 	
 		// Special	
@@ -873,7 +873,7 @@
 	"fire_golem_10_wave_megaboss_immolation"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"akron_immolation"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -925,6 +925,7 @@
 			
 			"modifier_inferno_immolation_burn"
 	   		{
+	   			"IsHidden"			"1"
 	   			"ThinkInterval"		"1"
 	   			"OnIntervalThink"    	
 	   			{
@@ -1012,7 +1013,7 @@
 	
 							"ApplyModifier"
 							{
-								"ModifierName"	"12_modifier_bash_stun"
+								"ModifierName"	"modifier_stunned"
 								"Target"
 								{
 									"Center"	"TARGET"
@@ -1180,7 +1181,7 @@
 	"17_wave_evasion"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"nyx_assassin_vendetta"
+		"AbilityTextureName"			"enraged_wildkin_toughness_aura"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
@@ -1249,7 +1250,7 @@
 	
 							"ApplyModifier"
 							{
-								"ModifierName"	"18_modifier_bash_stun"
+								"ModifierName"	"modifier_stunned"
 								"Target"
 								{
 									"Center"	"TARGET"
@@ -4659,7 +4660,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	
-		"AbilityTextureName"			"item_lia_fire_gloves"
+		"AbilityTextureName"			"akron_immolation"
 		"AoERadius"						"220"
 		"AbilityCastRange"				"220"
 		"AbilityManaCost"				"25"
@@ -4749,7 +4750,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+		"AbilityTextureName"			"6_wave_cripple"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -4831,7 +4832,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"			"necronomicon_warrior_sight"
+		"AbilityTextureName"			"6_wave_curse"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -5034,7 +5035,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"              "ability_datadriven"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"     "life_stealer_rage"
+		"AbilityTextureName"     "10_wave_antimagic"
 	
 	
 		"AbilityCooldown"        "25"
@@ -5105,7 +5106,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+		"AbilityTextureName"			"16_wave_slow"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -5179,7 +5180,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType" 		"DAMAGE_TYPE_MAGICAL"
-		"AbilityTextureName"			""
+		"AbilityTextureName"			"10_wave_inferno"
 		//
 		"AbilityCastRange" 				"1000"
 		"AbilityCooldown"				"15.0"
@@ -5448,27 +5449,13 @@
 					"ApplyModifier"
 					{
 						"Target" 		"TARGET"
-						"ModifierName"	"modifier_12_wave_stomp"
+						"ModifierName"	"modifier_stunned"
+						"Duration"		"%stun_duration"
 					}
 				}
 			}		
 		}
 	
-		"Modifiers"
-		{
-			"modifier_12_wave_stomp"
-			{
-				"IsDebuff"	"1"
-				"Duration"	"%stun_duration"
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
-				}
-				"OverrideAnimation"	"ACT_DOTA_DISABLED"
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-			}
-		}
 	}
 	
 	"7_wave_howl_of_terror"
@@ -5477,7 +5464,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"     "butcher_howl_of_terror"
+	    "AbilityTextureName"     "7_wave_howl_of_terror"
 	    
 	    "AbilityCooldown" "12.0"
 	
@@ -5664,7 +5651,7 @@
 	"12_wave_roots"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"keeper_entangling_roots"
+		"AbilityTextureName"			"12_wave_entangling_roots"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -5968,7 +5955,7 @@
 	{
 		"BaseClass"             		"ability_datadriven"
 		//"AbilityTextureName"			"warden_shadow_strike"
-		"AbilityTextureName"     "butcher_howl_of_terror"
+		"AbilityTextureName"     "14_wave_shadow_strike"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -6420,6 +6407,7 @@
 		{
 			"modifier_decrepify_units_by_hero"
 			{
+				"IsHidden"		"1"
 				"Duration"		"%duration_on_other"
 				//
 				"OnAttackLanded"
@@ -6497,7 +6485,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	  "AbilityTextureName"      "sandking_epicenter"
+	  "AbilityTextureName"      "18_wave_silence"
 	  
 	
 	  // Stats
@@ -6661,7 +6649,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+		"AbilityTextureName"			"16_wave_slow"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -6864,7 +6852,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	  "AbilityTextureName"      "sandking_epicenter"
+	  "AbilityTextureName"      "18_wave_silence"
 	  
 	
 	  // Stats
@@ -6950,7 +6938,7 @@
 	"19_wave_polymorph"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"human_polymorph"
+		"AbilityTextureName"			"19_wave_polymorph"
 		"MaxLevel" 						"1"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -7071,7 +7059,7 @@
 	"19_wave_faerie_fire"
 	{
 		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"nightelf_faerie_fire"
+		"AbilityTextureName"		"19_wave_faerie_fire"
 		"MaxLevel"					"1"
 			
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
