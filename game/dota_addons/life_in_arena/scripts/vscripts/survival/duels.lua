@@ -21,6 +21,8 @@ function Survival:StartDuels()
 			self.State = SURVIVAL_STATE_DUEL_TIME
 			DisableShop()
 
+            GameRules:SetGoldPerTick(0)
+            
 			DoWithAllHeroes(function(hero)
                 hero:Purge(true, true, false, true, false)
             	hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})

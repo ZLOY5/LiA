@@ -255,15 +255,17 @@
 {
 	"BaseClass"             		"ability_datadriven"
 	"AbilityTextureName"			"firelord_summon_lava_spawn"
-	"MaxLevel" 						"3"
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCastAnimation"			"ACT_DOTA_RAZE_2"
 
 	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"32.0"
+	"AbilityCooldown"				"10 15 20"
 
-	"AbilityManaCost"				"150"
+	"AbilityManaCost"				"120 180 240"
 
 	"precache"
 	{
@@ -279,12 +281,12 @@
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_duration"		"70"
+			"lava_spawn_duration"		"60"
 		}
 		"02"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"attacks_to_split"			"15"
+			"attacks_to_split"			"7 8 9"
 		}
 		"03"
 		{
@@ -314,7 +316,7 @@
 		"08"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"spawn_distance"			"250"
+			"spawn_distance"			"200"
 		}
 	}
 
