@@ -25624,11 +25624,11 @@
 			}
 		
 	
-	        //"FireSound"
-	        //{
-	         //   "EffectName"    "Hero_LoneDruid.BattleCry"
-	         //   "Target"        "CASTER"
-	        //}
+	        "FireSound"
+			{
+				"EffectName" "Hero_Spectre.Haunt"
+				"Target"	 "CASTER"
+			}
 	
 	
 	    }
@@ -25674,7 +25674,7 @@
 	
 		"precache"
 		{
-			"particle"  "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
+			"particle"  "particles/wanderer_heal.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
 		}
 	
@@ -25704,7 +25704,7 @@
 				{
 					"AttachEffect"
 					{
-						"EffectName"        "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
+						"EffectName"        "particles/wanderer_heal.vpcf"
 						"EffectAttachType"  "follow_origin"
 						"Target"            "TARGET"
 						"ControlPointEntities"
@@ -25811,7 +25811,7 @@
 				{
 					"AttachEffect"
 					{
-						"EffectName"        "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
+						"EffectName"        "particles/wanderer_heal.vpcf"
 						"EffectAttachType"  "follow_origin"
 						"Target"            "TARGET"
 						"ControlPointEntities"
@@ -25853,7 +25853,7 @@
 	"wanderer_arcane_aura"
 	{
 		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"silencer_curse_of_the_silent"
+		"AbilityTextureName"		"wanderer_arcane_aura"
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
 	    "LevelsBetweenUpgrades"  "2"
@@ -25912,8 +25912,8 @@
 		
 		"precache"
 		{
-			"particle" "particles/units/heroes/hero_zuus/zuus_arc_lightning_impact_b.vpcf"
-			"particle"  "particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+			"particle" "particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_slow_dazzle.vpcf"
+			"particle"  "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
 		}
 		"Modifiers"
@@ -25957,24 +25957,26 @@
 				"IsHidden"			"1"
 				"OnAbilityExecuted"
 				{
-					//"FireSound"
-					//{
-					//	"EffectName"	"Roshan.Bash"
-					//	"Target"		"TARGET"
-					//}
+	
 					
 			    	"RunScript"
 			    	{
 			    		"ScriptFile"	"heroes\Wanderer\arcane_aura.lua"   
 			    		"Function"		"OnCast"
 			    	}
-					
+	
+					"FireSound"
+					{
+						"EffectName"	"Hero_Abaddon.DeathCoil.Target"
+						"Target"	"CASTER"
+					}
+	
 					"AttachEffect"
 					{
-						"EffectName"	"particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"	
+						"EffectName"	"particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf"	
 									//"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
 						"EffectAttachType"	"follow_origin"	
-						"Target" 			"UNIT" //TARGET
+						"Target"	"UNIT"
 					}
 					
 					//"Damage"
@@ -26012,7 +26014,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%slow_val"
 				}
 				
-				"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectName"        "particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_slow_dazzle.vpcf"
 				"EffectAttachType"  "follow_origin"
 			}
 			
@@ -26028,7 +26030,7 @@
 	
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityTextureName"    "razor_unstable_current"
+	    "AbilityTextureName"    "wanderer_ghosts"
 	    
 	 
 	    "MaxLevel"               "3"
@@ -26039,7 +26041,7 @@
 		
 	    "precache"
 	    {
-	        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
 	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
 	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
 	    }
@@ -26080,11 +26082,11 @@
 			}
 		
 	
-	        //"FireSound"
-	        //{
-	         //   "EffectName"    "Hero_LoneDruid.BattleCry"
-	         //   "Target"        "CASTER"
-	        //}
+	        "FireSound"
+	        {
+	            "EffectName"    "Ability.static.end"
+	            "Target"        "CASTER"
+	        }
 	
 	
 	    }
@@ -26097,7 +26099,7 @@
 	
 	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityTextureName"    "razor_unstable_current"
+	    "AbilityTextureName"    "wanderer_ghosts"
 	    
 	 
 	    "MaxLevel"               "3"
@@ -26149,11 +26151,11 @@
 			}
 		
 	
-	        //"FireSound"
-	        //{
-	         //   "EffectName"    "Hero_LoneDruid.BattleCry"
-	         //   "Target"        "CASTER"
-	        //}
+	        "FireSound"
+	        {
+	            "EffectName"    "Ability.static.end"
+	            "Target"        "CASTER"
+	        }
 	
 	
 	    }
