@@ -441,7 +441,7 @@ function Survival:StartRound()
     LiA.bForceRoundEnabled = false
     
     CustomGameEventManager:Send_ServerToAllClients( "round_start", {round_number = self.nRoundNum} )
-
+    
     Timers:CreateTimer(3,function()
             DisableShop()
             
