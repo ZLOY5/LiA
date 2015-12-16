@@ -58,6 +58,36 @@
     border: 0px solid blue;
 }
 
+#LiaFallenChampion
+{
+//    flow-children: down;
+//    horizontal-align: center;
+    opacity: 0;
+    transform: scaleX(2) scaleY(2);
+    margin-top: 875px;
+	margin-left: 677px;
+    transition-property: transform, opacity;
+    transition-duration: 0.6s;
+    visibility:  collapse;
+    border: 0px solid blue;
+}
+
+#LiaFallenChampion_Count
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.fstart #LiaFallenChampion
+{
+    opacity: 0.9;
+    transform: scaleX(1) scaleY(1);
+    visibility: visible;
+}
+
 #LiaRound_Number
 {
     color: white;

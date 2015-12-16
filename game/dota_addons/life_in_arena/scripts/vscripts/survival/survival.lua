@@ -144,8 +144,9 @@ function Survival:ExperienceFilter(filterTable)
 end
 
 function Survival:onThink()
+	local hero
     for i = 1, #self.tHeroes do
-        local hero = self.tHeroes[i]
+        hero = self.tHeroes[i]
         hero.rating = math.floor(hero.percUlu * 7 + .5) + hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30 - 30
     end 
     table.sort(self.tHeroes,function(a,b) return a.rating > b.rating end)
@@ -159,15 +160,29 @@ function Survival:onThink()
     end
 	
 	-- update lumber in hud
+	local playerID
     local playersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
     for i = 1, playersCount do 
-        local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
+        playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
         --local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 		local dataL = self:GetDataForSendUlu(true, nil,playerID,nil,nil,nil)
 		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(playerID), "upd_action_lumber", dataL )
 		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
 	end
-
+	--
+	-- update for fallen count get damage
+	local ndata
+    for i = 1, #self.tHeroes do
+        hero = self.tHeroes[i]
+		if hero:GetUnitName() == "npc_dota_hero_nyx_assassin" then
+			if hero.alldmgActive then
+				ndata = {count = hero.alldmg}
+				CustomGameEventManager:Send_ServerToPlayer( hero:GetPlayerOwner(), "upd_action_fallen", ndata )
+			end
+		end
+	end
+	--
+	--
     return 0.5
 end
 

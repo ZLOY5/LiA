@@ -1,0 +1,305 @@
+"fallen_champion_shell"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	//"AbilityTextureName"			"android_war_stomp"
+
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"12 11 10"
+	"AbilityManaCost"				"90 130 170"
+	"AbilityCastPoint"      "0.2"
+  
+	//"AbilityCastRange"				"500"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"  
+  
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"pr_damage"						"15 20 25"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"radius"					"600"
+		}
+	}
+
+	"precache"
+	{
+		//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
+		//"particle"	"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp_physical.vpcf"
+		//"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		//"FireEffect"
+		//{
+		//	"EffectName"		"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp_physical.vpcf"
+		//	"EffectAttachType" 	"follow_origin"
+		//	"EffectRadius"		"%radius"
+		//	"Target" 			"CASTER"
+		//	"ControlPoints"
+		//	{
+		//		"01"	"%radius 0 %radius"
+		//	}
+		//}
+
+		//"FireSound"
+		//{
+		//	"EffectName"		"Hero_ElderTitan.EchoStomp"
+		//	"Target" 			"CASTER"
+		//}
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+			"Function"		"shell_cast"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_fallen_champion_shell"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+	
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+					"Function"		"shell_create"
+				}
+			}
+	
+			"OnTakeDamage"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+					"Function"		"shell"
+					"Dmg"		"%attack_damage"
+				}
+			} 
+	
+		}
+	}
+	
+}
+
+
+"fallen_champion_return"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"heroes\FallenChampion\fallen_champion_return.lua"
+	//"AbilityTextureName"			"dark_ranger_spiked_charm"
+
+	"MaxLevel"               		"3"
+	"RequiredLevel"          		"2"
+	"LevelsBetweenUpgrades"  		"2"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+
+	"AbilityCastRange"				"600"
+
+	"precache"
+	{
+
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"					"10"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_return"				"6 12 18"		
+		}	
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_return_one_prt"				"10 13 16"		
+		}	
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_return_one"				"100"		
+		}	
+	}
+
+}
+
+
+
+"fallen_champion_absorption"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"					"ability_lua"
+	"ScriptFile"				"heroes\FallenChampion\fallen_champion_absorption.lua"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	//"AbilityTextureName"    	"shaman_madness"
+
+	"MaxLevel"               	"3"
+	"RequiredLevel"          	"2"
+	"LevelsBetweenUpgrades"  	"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"str_for_kill_boss_hero"				"1 2 3"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"kills_for_bonus_str"	"6 5 4"
+		}
+	}
+}
+
+
+"fallen_champion_roar"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	//"AbilityTextureName"			"naga_siren_song"
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+	
+	"precache"
+	{
+	//	"soundfile"			"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+	//	"particle"			"particles/units/heroes/hero_siren/naga_siren_siren_song_cast.vpcf"
+		"particle"			"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf"
+	}
+
+	"AbilityCooldown"				"50 60 65"
+
+	"AbilityManaCost"				"80 100 120"	
+
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600 900 1200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"5 7 9"
+		}
+	}
+	"OnSpellStart"
+	{
+		//"FireSound"
+		//{
+		//	"EffectName"	"Hero_NagaSiren.SongOfTheSiren"
+		//	"Target" 		"CASTER"
+		//}
+
+		//"FireEffect"
+		//{
+		//	"EffectName"        "particles/units/heroes/hero_siren/naga_siren_siren_song_cast.vpcf"
+		//	"EffectAttachType"  "start_at_customorigin"
+		//
+		//	"ControlPointEntities"
+		//	{
+		//		"CASTER"	"follow_origin"
+		//		"CASTER"	"follow_origin"
+		//		"CASTER"	"follow_origin"
+		//	}
+		//}
+
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_fallen_champion_roar"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_fallen_champion_roar"
+		{
+			"IsPurgable"		"0"
+			"IsDebuff"			"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MUTED" 			"MODIFIER_STATE_VALUE_ENABLED"
+
+			}	
+			
+			"EffectName" 		"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf" 	   
+			"EffectAttachType"  "follow_origin"
+
+			"ThinkInterval"  "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/FallenChampion/roar.lua"
+					"Function"		"Taunt"
+				}
+			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/FallenChampion/roar.lua"
+					"Function"		"TauntCreate"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/FallenChampion/roar.lua"
+					"Function"		"TauntEnd"
+				}
+			}
+		}
+	}
+}

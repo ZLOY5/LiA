@@ -56,10 +56,24 @@ function OnHintGet(dat)
 	//$.Msg( "		show_hint = ", show_hint);
 }
 
+function OnHintFallen(ndata)
+{
+	$.GetContextPanel().SetHasClass( "fstart", true );
+	if (ndata.count > 0)
+		$( "#LiaFallenChampion_Count" ).text = ndata.count.toFixed(0)
+	else
+		$( "#LiaFallenChampion_Count" ).text = '0';
+	//$( "#LiaFallenChampion_Count" ).SetDialogVariableInt( "count_fallen", ndata.count );
+	//$.Msg( "		$( #LiaFallenChampion_Count ) = ", $( "#LiaFallenChampion_Count" ));
+	//$.Msg( "		ndata.count = ", ndata.count);
+}
+
         
 (function () { 
 	GameEvents.Subscribe( "round_start", OnRoundStart );
 	GameEvents.Subscribe( "duel_start", OnDuelStart ); 
+	//
+	GameEvents.Subscribe( "upd_action_fallen", OnHintFallen ); 
 	//
 	//var childPanel = $.GetContextPanel().FindChildInLayoutFile( "LiANotification" );
 	//var childPanel2 = childPanel.FindChildInLayoutFile( "LiaScoreboard" ) 
