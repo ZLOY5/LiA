@@ -43,9 +43,11 @@ function DoDamage(caster, target, ability)
     local target_location = target:GetAbsOrigin()
     local stun_radius = ability:GetSpecialValueFor("radius")
 
-    local targets = FindUnitsInRadius(target:GetTeam(), target_location, nil, stun_radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
+    local targets = FindUnitsInRadius(target:GetTeam(), target_location, nil, stun_radius, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0, 0, false)
+
 
     for _,v in pairs(targets) do
+        if v:GetTeamNumber() ~= caster:GetTeamNumber() then
            ApplyDamage({
                                 victim = v,
                                 attacker = caster,
@@ -53,6 +55,7 @@ function DoDamage(caster, target, ability)
                                 damage_type = DAMAGE_TYPE_MAGICAL
                             })
            ability:ApplyDataDrivenModifier(caster, v, ability.modifiername_debuff, {duration = ability:GetSpecialValueFor("stun_duration")})
+        end
     end   
      
 end
