@@ -28,16 +28,20 @@ end
 
 -- Clears the force attack target upon expiration
 function TauntEnd( keys )
-	local caster = keys.caster
-	caster.Barrier = true -- ставим барьер вновь 
 	local target = keys.target
 
 	target:SetForceAttackTarget(nil)
 	target:MoveToPositionAggressive(target:GetAbsOrigin()+target:GetForwardVector()*50)
 end
 
-function TauntCreate(keys)
+function TCreate(keys)
 	local caster = keys.caster
 	caster.Barrier = false -- снимаем барьер 
+
+end
+
+function TEnd(keys)
+	local caster = keys.caster
+	caster.Barrier = true -- ставим барьер вновь 
 
 end
