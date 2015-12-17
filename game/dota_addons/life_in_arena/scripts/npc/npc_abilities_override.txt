@@ -12363,6 +12363,14 @@
 			{
 				"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
 				"Function"		"shell_cast"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
 			}
 		}
 		
@@ -12535,7 +12543,14 @@
 			//		"CASTER"	"follow_origin"
 			//	}
 			//}
-	
+			
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_fallen_champion_roar_hero"
+				"Target" 		"CASTER"
+				"Duration"		"%duration"
+			}
+			
 			"ActOnTargets"
 			{
 				"Target"
@@ -12558,6 +12573,29 @@
 		}
 		"Modifiers"
 		{
+			"modifier_fallen_champion_roar_hero"
+			{
+				"IsHidden"	 	"1"
+				"IsPurgable"		"0"
+				//"Duration"		"%duration"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/roar.lua"
+						"Function"		"TCreate"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/roar.lua"
+						"Function"		"TEnd"
+					}
+				}
+			}
+		
 			"modifier_fallen_champion_roar"
 			{
 				"IsPurgable"		"0"
@@ -12582,14 +12620,7 @@
 						"Function"		"Taunt"
 					}
 				}
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/FallenChampion/roar.lua"
-						"Function"		"TauntCreate"
-					}
-				}
+	
 				"OnDestroy"
 				{
 					"RunScript"
@@ -16986,6 +17017,167 @@
 			}
 	}
 	//End of file npc_lia_hero_huntress.txt
+
+
+	//Start of file npc_lia_hero_illusionist.txt
+	"illusionist_whiff_of_deception"
+	 {
+	   // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"              "ability_datadriven"
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+	    //"AbilityTextureName"     "golem_explosion"
+	
+	    "AbilityCooldown" "6 7 8"
+		"AbilityCastRange"	"300"
+	    "AbilityManaCost" "50"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+		
+	    "AbilityCastPoint"  "0.2"
+	
+		"precache"
+		{
+			//"particle"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
+			//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+		}
+		
+	    "OnSpellStart"
+	    {
+		    "RunScript"
+	        {
+	            "ScriptFile"    "heroes\Acron\Explosion.lua"
+	            "Function"      "Explosion"
+	        }
+		  	"FireSound"
+			{
+				"EffectName"	"Hero_EarthShaker.EchoSlam"
+				"Target"		"CASTER"
+			}
+			"AttachEffect"
+			{
+			  "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+			  "EffectAttachType"	"attach_origin"
+			  "Target"		        "CASTER"
+			}
+	    }
+	    
+	  
+	   
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "radius"                  "300"
+	        }
+	       "02"
+	        {
+	            "var_type"                "FIELD_FLOAT"
+	            "value_p"                   "0.8 0.9 1.0"
+	        }
+	    }
+	  }
+	  
+	  
+	"illusionist_mastery_of_deception"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+		//"AbilityTextureName"     "brewmaster_punisment"
+		//"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	   
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"Modifiers"
+		{
+		  "Modifier_illusionist_mastery_of_deception"
+		  {
+			"Passive"       "1"
+			"IsHidden"      "1"
+			"IsBuff"        "1"
+	
+		   "OnAttacked"
+		   {
+				"Random"
+				{
+					"Chance"		"%bchance"
+					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+	
+					"OnSuccess"
+					{
+	
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_stunned"
+							"Target"
+							{
+								"Center"	"TARGET"
+								"Types"		"DOTA_UNIT_TARGET_ALL"
+							}
+							"Duration"		"%stun_duration"	
+						}
+	
+	
+						"Damage"
+						{
+							"Target"	"TARGET"
+							"Type"		"DAMAGE_TYPE_MAGICAL"
+							"Damage"	"%AbilityDamage"
+						}
+					}
+				}
+		   
+			 "RunScript"
+			  {
+				"ScriptFile"   "heroes/Brewer/drunken_punches.lua"
+				"Function"     "Return"
+				"Coefficient"  "%strength_percentage_return"
+			  }
+		   }
+		  }
+	
+	  
+		}
+	
+	  // Special  
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+		"01"
+		{ 
+		  "var_type"                          "FIELD_FLOAT"
+		  "time"        "4 6 7"
+		}
+		"02"
+		{ 
+		  "var_type"                          "FIELD_INTEGER"
+		  "bchance"        "20"
+		}
+	    "03"
+	    {
+	      "var_type"               "FIELD_INTEGER"
+	      "outgoing_damage"        "-80 -70 -60"
+	    }
+	    "04"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "incoming_damage"     "400 300 200"
+	    }
+	  }
+	}
+	  
+	//End of file npc_lia_hero_illusionist.txt
 
 
 	//Start of file npc_lia_hero_keeper_of_the_grove.txt

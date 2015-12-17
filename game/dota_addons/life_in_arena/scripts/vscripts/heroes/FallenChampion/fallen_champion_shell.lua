@@ -4,10 +4,11 @@ function shell(keys)
 	if not target.alldmg then
 		target.alldmg = 0
 	end
-	--if target.Barrier:IsNull() then
-	if target.Barrier == nil then
-		target.Barrier = true
-	end
+--if target.Barrier:IsNull() then
+	--if target.Barrier == nil then
+	--	target.Barrier = true
+	--end
+	--print(target.Barrier)
 	--
 	target.alldmg = target.alldmg + damagr
 	if target.alldmg > target:GetMaxHealth() then
@@ -27,7 +28,8 @@ function shell_cast(keys)
 	local radius = ability:GetSpecialValueFor("radius")
 	local damage = 0.01*pr_damage*caster.alldmg
 	--
-	local targets = FindUnitsInRadius(caster:GetTeam(),caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
+	local targets = keys.target_entities
+	--local targets = FindUnitsInRadius(caster:GetTeam(),caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, FIND_ANY_ORDER, false)
 	for _,unit in pairs(targets) do 
 		ApplyDamage({victim = unit, attacker = caster, damage = damage/2, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 		ApplyDamage({victim = unit, attacker = caster, damage = damage/2, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability})
@@ -41,6 +43,7 @@ function shell_create(keys)
 	local caster = keys.caster
 	caster.alldmg = 0
 	caster.alldmgActive = true
+	caster.Barrier = true
 	--ApplyDamage({victim = caster, attacker = caster, damage = 100, damage_type = DAMAGE_TYPE_MAGICAL, ability = keys.ability})
 
 end

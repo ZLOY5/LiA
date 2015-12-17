@@ -65,6 +65,14 @@
 		{
 			"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
 			"Function"		"shell_cast"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%radius"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
 		}
 	}
 	
@@ -237,7 +245,14 @@
 		//		"CASTER"	"follow_origin"
 		//	}
 		//}
-
+		
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_fallen_champion_roar_hero"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		
 		"ActOnTargets"
 		{
 			"Target"
@@ -260,6 +275,29 @@
 	}
 	"Modifiers"
 	{
+		"modifier_fallen_champion_roar_hero"
+		{
+			"IsHidden"	 	"1"
+			"IsPurgable"		"0"
+			//"Duration"		"%duration"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/FallenChampion/roar.lua"
+					"Function"		"TCreate"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/FallenChampion/roar.lua"
+					"Function"		"TEnd"
+				}
+			}
+		}
+	
 		"modifier_fallen_champion_roar"
 		{
 			"IsPurgable"		"0"
@@ -284,14 +322,7 @@
 					"Function"		"Taunt"
 				}
 			}
-			"OnCreated"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/FallenChampion/roar.lua"
-					"Function"		"TauntCreate"
-				}
-			}
+
 			"OnDestroy"
 			{
 				"RunScript"
