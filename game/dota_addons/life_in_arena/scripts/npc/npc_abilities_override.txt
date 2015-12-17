@@ -10132,7 +10132,7 @@
 		
 			"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
 			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
 			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
 		}
@@ -10160,7 +10160,7 @@
 	    {
 				"FireSound"
 			{
-				"EffectName"	"Hero_Beastmaster.Primal_Roar"
+				"EffectName"	"Hero_VengefulSpirit.WaveOfTerror"
 				"Target" 		"CASTER"
 			}
 			"AttachEffect"
@@ -12302,7 +12302,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		//"AbilityTextureName"			"android_war_stomp"
+		"AbilityTextureName"			"nyx_assassin_impale"
 	
 	
 		// Stats
@@ -12311,7 +12311,7 @@
 		"AbilityManaCost"				"90 130 170"
 		"AbilityCastPoint"      "0.2"
 	  
-		//"AbilityCastRange"				"500"
+		"AbilityCastRange"				"600"
 	
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "1"
@@ -12335,30 +12335,31 @@
 	
 		"precache"
 		{
-			//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
-			//"particle"	"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp_physical.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts"
+			"particle"	"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray.vpcf"
 			//"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
 		}
 	
 		"OnSpellStart"
 		{
-			//"FireEffect"
-			//{
-			//	"EffectName"		"particles/units/heroes/hero_elder_titan/elder_titan_echo_stomp_physical.vpcf"
-			//	"EffectAttachType" 	"follow_origin"
-			//	"EffectRadius"		"%radius"
-			//	"Target" 			"CASTER"
-			//	"ControlPoints"
-			//	{
-			//		"01"	"%radius 0 %radius"
-			//	}
-			//}
+			"FireEffect"
+			{
+				"EffectName"		"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"EffectRadius"		"%radius"
+				"Target" 			"CASTER"
+				"ControlPoints"
+				{
+					"01"	"%radius 0 %radius"
+				}
+			}
 	
-			//"FireSound"
-			//{
-			//	"EffectName"		"Hero_ElderTitan.EchoStomp"
-			//	"Target" 			"CASTER"
-			//}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Bristleback.PistonProngs.QuillSpray.Cast"
+				"Target" 			"CASTER"
+			}
+	
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
@@ -12402,7 +12403,7 @@
 	{
 		"BaseClass"             		"ability_lua"
 		"ScriptFile"					"heroes\FallenChampion\fallen_champion_return.lua"
-		//"AbilityTextureName"			"dark_ranger_spiked_charm"
+		"AbilityTextureName"			"nyx_assassin_spiked_carapace"
 	
 		"MaxLevel"               		"3"
 		"RequiredLevel"          		"2"
@@ -12455,7 +12456,7 @@
 		"BaseClass"					"ability_lua"
 		"ScriptFile"				"heroes\FallenChampion\fallen_champion_absorption.lua"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		//"AbilityTextureName"    	"shaman_madness"
+		"AbilityTextureName"    	"fallen_champion_absorption"
 	
 		"MaxLevel"               	"3"
 		"RequiredLevel"          	"2"
@@ -12466,12 +12467,12 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"str_for_kill_boss_hero"				"1 2 3"
+				"kills_for_bonus_str"	"6 5 4"
 			}
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"kills_for_bonus_str"	"6 5 4"
+				"str_for_kill_boss_hero"				"1 2 3"
 			}
 		}
 	}
@@ -12483,18 +12484,20 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		//"AbilityTextureName"			"naga_siren_song"
+		"AbilityTextureName"			"nyx_assassin_vendetta"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
 		
+		"AbilityCastAnimation" "ACT_DOTA_ATTACK"
+	
 		"precache"
 		{
-		//	"soundfile"			"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
-		//	"particle"			"particles/units/heroes/hero_siren/naga_siren_siren_song_cast.vpcf"
-			"particle"			"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+			"particle"			"particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+			"particle"			"particles/status_fx/status_effect_beserkers_call.vpcf"
 		}
 	
 		"AbilityCooldown"				"50 60 65"
@@ -12517,24 +12520,25 @@
 		}
 		"OnSpellStart"
 		{
-			//"FireSound"
-			//{
-			//	"EffectName"	"Hero_NagaSiren.SongOfTheSiren"
-			//	"Target" 		"CASTER"
-			//}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Beastmaster.Primal_Roar"
+				"Target" 		"CASTER"
+			}
 	
-			//"FireEffect"
-			//{
-			//	"EffectName"        "particles/units/heroes/hero_siren/naga_siren_siren_song_cast.vpcf"
-			//	"EffectAttachType"  "start_at_customorigin"
-			//
-			//	"ControlPointEntities"
-			//	{
-			//		"CASTER"	"follow_origin"
-			//		"CASTER"	"follow_origin"
-			//		"CASTER"	"follow_origin"
-			//	}
-			//}
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"EffectRadius"		"%radius"
+				"Target" 			"CASTER"
+				"ControlPoints"
+				{
+					"01"	"%radius 0 %radius"
+				}
+			}
+	
+	
 	
 			"ActOnTargets"
 			{
@@ -12570,8 +12574,8 @@
 	
 				}	
 				
-				"EffectName" 		"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf" 	   
-				"EffectAttachType"  "follow_origin"
+				"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+				"StatusEffectPriority"  "10"
 	
 				"ThinkInterval"  "0.1"
 				"OnIntervalThink"
