@@ -1,14 +1,14 @@
 "firelord_flame_strike"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"blood_mage_flame_strike"
+	"AbilityTextureName"			"firelord_flame_strike"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
 	"LevelsBetweenUpgrades"  "2"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	"AbilityCastAnimation"			"ACT_DOTA_CAST_CHAOS_METEOR"
@@ -56,7 +56,7 @@
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"burn_duration"			"6"
+			"burn_duration"			"9"
 		}
 		"06"
 		{
@@ -109,7 +109,7 @@
 
 			"Aura" 				"modifier_flame_strike_first_burn"
     		"Aura_Radius" 		"%radius"
-    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_BOTH"
+    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
     		"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     		"OnCreated"
@@ -122,7 +122,7 @@
 					{
 						"Center"	"TARGET"
 						"Radius"	"%radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 					}
 				}
@@ -178,7 +178,7 @@
 
 			"Aura" 				"modifier_flame_strike_second_burn"
     		"Aura_Radius" 		"%radius"
-    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_BOTH"
+    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
     		"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
     		"OnCreated"
@@ -191,7 +191,7 @@
 					{
 						"Center"	"TARGET"
 						"Radius"	"%radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 					}
 				}
@@ -527,6 +527,111 @@
 	}
 }
 
+"firelord_fire_trap"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"orc_stasis_trap"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+		
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		
+	"AbilityCastRange"			"500"
+	"AbilityCastPoint"			"0"
+	"AbilityCooldown"			"0"
+	"AbilityManaCost"			"100"
+		
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"duration"		"150"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"detonation_radius"			"400"
+		}
+		"03"
+		{
+			"var_type"		"FIELD_FLOAT"
+			"stun_duration"				"6"
+		}
+		// Phew, I'm glad they balanced Techies.
+		"04"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"activation_delay"			"10"
+		}
+		// Wew, I'm sad they imbalanced Techies.
+		"05"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"detection_radius"			"250"
+		}
+		"06"
+		{
+			"var_type"		  		"FIELD_FLOAT"
+			"stun_duration_hero"	"2.5"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+			"Function"		"StasisStart"
+			"Target"		"POINT"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_stasis_ward"
+		{
+			"IsHidden"			"1"
+
+			"Duration"			"%activation_delay"
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+					"Function"		"StasisSetup"
+				}
+			}
+		}
+
+		"modifier_stasis_ward_trigger"
+		{
+			"IsHidden"			"1"
+
+			"ThinkInterval"  "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+					"Function"		"StasisThink"
+				}
+			}
+		}
+	}
+}
+
+
 "firelord_fire_serpent"
 {
 	// General
@@ -536,7 +641,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"FightRecapLevel"				"2"
+
 	"AbilityTextureName"			"shadow_shaman_mass_serpent_ward"
 
 	"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
@@ -546,16 +651,16 @@
     
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"550"
+	"AbilityCastRange"				"700"
 	"AbilityCastPoint"				"0.3"
 	
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"120"
+	"AbilityCooldown"				"20"
 
 	// Cost
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"200 350 600"
+	"AbilityManaCost"				"150 175 200"
 
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
@@ -564,81 +669,39 @@
 		"01"
 		{
 			"var_type"			"FIELD_INTEGER"
-			"ward_count"		"10"
+			"ward_count"		"4"
 		}
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"full_splash_radius"	"50 75 85"
+			"damage"				"20 40 60"
 		}
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"mid_splash_radius"		"75 100 110"
+			"health"				"250 500 750"
 		}
 		"04"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"min_splash_radius"		"150 200 220"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_min"			"40 55 70"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_max"			"45 60 75"
-		}
-		"07"
-		{
 			"var_type"				"FIELD_FLOAT"
-			"duration"				"45.0 45.0 45.0"
+			"duration"				"60"
 		}
-		"08"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_min_scepter"	"85 105 125"
-		}
-		"09"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_max_scepter"	"90 110 130"
-		}
-
 		// Extra
-		"10"
+		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"ward_1_count"			"4 0 0"
 		}
-		"11"
+		"06"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"ward_2_count"			"0 4 0"
 		}
-		"12"
+		"07"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"ward_3_count"			"0 0 4"
 		}
-		"13"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"splash_full"			"100"
-		}
-		"14"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"splash_medium"			"40"
-		}
-		"15"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"splash_small"			"20"
-		}
-
 	}
 
 	"precache"
@@ -673,12 +736,6 @@
 					"Target"		"TARGET"
 					"Duration"		"0.03"
 				}
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_serpent_ward"
-					"Target" 		"TARGET"
-					"Duration"		"%duration"
-				}
 			}
 		}	
 
@@ -699,12 +756,6 @@
 					"ModifierName"	"modifier_phased"
 					"Target"		"TARGET"
 					"Duration"		"0.03"
-				}
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_serpent_ward"
-					"Target" 		"TARGET"
-					"Duration"		"%duration"
 				}
 			}
 		}	
@@ -727,32 +778,160 @@
 					"Target"		"TARGET"
 					"Duration"		"0.03"
 				}
+			}
+		}
+	}
 
+}
+
+"firelord_fire_serpent_scepter"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+	"AbilityTextureName"			"shadow_shaman_mass_serpent_ward"
+
+	"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
+    "MaxLevel"               	"3"
+    "RequiredLevel"          	"5"
+    "LevelsBetweenUpgrades"  	"4"
+    
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.3"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"20"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"400"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"ward_count"		"4"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"40 60 160"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health"				"500 750 1200"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"60"
+		}
+		// Extra
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"ward_1_count"			"4 0 0"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"ward_2_count"			"0 4 0"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"ward_3_count"			"0 0 4"
+		}
+	}
+
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_shadowshaman/shadow_shaman_ward_base_attack.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"		"Hero_ShadowShaman.SerpentWard"
+			"Target"			"CASTER"
+		}
+
+		"SpawnUnit"
+		{
+			"UnitName"			"npc_serpent_ward_1"
+			"Target"			"POINT"
+			"UnitCount"			"%ward_1_count"
+			"Duration"			"%duration"
+			"SpawnRadius"		"?10 100"
+			"GrantsGold"		"1"
+			"GrantsXP"			"1"
+
+			"OnSpawn"
+			{
 				"ApplyModifier"
 				{
-					"ModifierName"	"modifier_serpent_ward"
-					"Target" 		"TARGET"
-					"Duration"		"%duration"
+					"ModifierName"	"modifier_phased"
+					"Target"		"TARGET"
+					"Duration"		"0.03"
 				}
 			}
-		}
-	}
+		}	
 
-	"Modifiers"
-	{
-		// modifier_shadow_shaman_serpent_ward is the Built-In, to give green damage to the wards
-		"modifier_serpent_ward"
+		"SpawnUnit"
 		{
-			"IsHidden"			"1"
+			"UnitName"			"npc_serpent_ward_2"
+			"Target"			"POINT"
+			"UnitCount"			"%ward_2_count"
+			"Duration"			"%duration"
+			"SpawnRadius"		"?10 100"
+			"GrantsGold"		"1"
+			"GrantsXP"			"1"
 
-			"OnAttackLanded"
+			"OnSpawn"
 			{
-				"RunScript"
+				"ApplyModifier"
 				{
-					"ScriptFile"	"heroes/Firelord/FireSerpent.lua"
-					"Function"		"DealSplashDamage"
+					"ModifierName"	"modifier_phased"
+					"Target"		"TARGET"
+					"Duration"		"0.03"
+				}
+			}
+		}	
+
+		"SpawnUnit"
+		{
+			"UnitName"			"npc_serpent_ward_3"
+			"Target"			"POINT"
+			"UnitCount"			"%ward_3_count"
+			"Duration"			"%duration"
+			"SpawnRadius"		"?10 100"
+			"GrantsGold"		"1"
+			"GrantsXP"			"1"
+
+			"OnSpawn"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_phased"
+					"Target"		"TARGET"
+					"Duration"		"0.03"
 				}
 			}
 		}
 	}
+
 }
