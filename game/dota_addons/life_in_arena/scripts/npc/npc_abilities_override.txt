@@ -12646,14 +12646,14 @@
 	"firelord_flame_strike"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"blood_mage_flame_strike"
+		"AbilityTextureName"			"firelord_flame_strike"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_CHAOS_METEOR"
@@ -12701,7 +12701,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"burn_duration"			"6"
+				"burn_duration"			"9"
 			}
 			"06"
 			{
@@ -12754,7 +12754,7 @@
 	
 				"Aura" 				"modifier_flame_strike_first_burn"
 	    		"Aura_Radius" 		"%radius"
-	    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_BOTH"
+	    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    		"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	
 	    		"OnCreated"
@@ -12767,7 +12767,7 @@
 						{
 							"Center"	"TARGET"
 							"Radius"	"%radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 						}
 					}
@@ -12823,7 +12823,7 @@
 	
 				"Aura" 				"modifier_flame_strike_second_burn"
 	    		"Aura_Radius" 		"%radius"
-	    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_BOTH"
+	    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    		"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	
 	    		"OnCreated"
@@ -12836,7 +12836,7 @@
 						{
 							"Center"	"TARGET"
 							"Radius"	"%radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 						}
 					}
@@ -12936,12 +12936,12 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_damage"			"11 16 21"
+				"lava_spawn_damage"			"15 27 45"
 			}
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_hp"				"425 550 700"
+				"lava_spawn_hp"				"450 600 750"
 			}
 			"05"
 			{
@@ -12956,7 +12956,7 @@
 			"07"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_3_count"		"0 0 1"
+				"lava_spawn_3_count"		"0 0 2"
 			}
 			"08"
 			{
@@ -12991,8 +12991,8 @@
 				
 				"Duration"		"%lava_spawn_duration"
 				"UnitCount"		"%lava_spawn_1_count"
-				"GrantsGold"	"1"
-				"GrantsXP"		"1"
+				//"GrantsGold"	"1"
+				//"GrantsXP"		"1"
 				"SpawnRadius"	"10"
 				"OnSpawn"
 				{
@@ -13041,8 +13041,8 @@
 				
 				"Duration"		"%lava_spawn_duration"
 				"UnitCount"		"%lava_spawn_2_count"
-				"GrantsGold"	"1"
-				"GrantsXP"		"1"
+				//"GrantsGold"	"1"
+				//"GrantsXP"		"1"
 				"SpawnRadius"	"10"
 				"OnSpawn"
 				{
@@ -13091,8 +13091,8 @@
 				
 				"Duration"		"%lava_spawn_duration"
 				"UnitCount"		"%lava_spawn_3_count"
-				"GrantsGold"	"1"
-				"GrantsXP"		"1"
+				//"GrantsGold"	"1"
+				//"GrantsXP"		"1"
 				"SpawnRadius"	"10"
 				"OnSpawn"
 				{
@@ -13172,6 +13172,116 @@
 		}
 	}
 	
+	"firelord_fire_trap"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"firelord_fire_trap"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+			
+		"AbilityCastRange"			"500"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"25"
+		"AbilityManaCost"			"150 200 250"
+			
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"60"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"detonation_radius"			"300 350 400"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"stun_duration"				"3 5 7"
+			}
+			"04"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"stun_hero_duration"		"2 3 4"
+			}
+			// Phew, I'm glad they balanced Techies.
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"activation_delay"			"3"
+			}
+			// Wew, I'm sad they imbalanced Techies.
+			"06"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"detection_radius"			"250 275 300"
+			}
+			"07"
+			{
+				"var_type"		  		"FIELD_FLOAT"
+				"stun_duration_hero"	"2.5"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+				"Function"		"StasisStart"
+				"Target"		"POINT"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_stasis_ward"
+			{
+				"IsHidden"			"1"
+	
+				"Duration"			"%activation_delay"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+						"Function"		"StasisSetup"
+					}
+				}
+			}
+	
+			"modifier_stasis_ward_trigger"
+			{
+				"IsHidden"			"1"
+	
+				"ThinkInterval"  "0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+						"Function"		"StasisThink"
+					}
+				}
+			}
+		}
+	}
+	
+	
 	"firelord_fire_serpent"
 	{
 		// General
@@ -13182,7 +13292,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	
-		"AbilityTextureName"			"shadow_shaman_mass_serpent_ward"
+		"AbilityTextureName"			"firelord_fire_serpent"
 	
 		"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
 	    "MaxLevel"               	"3"
@@ -13334,7 +13444,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	
-		"AbilityTextureName"			"shadow_shaman_mass_serpent_ward"
+		"AbilityTextureName"			"firelord_fire_serpent"
 	
 		"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
 	    "MaxLevel"               	"3"

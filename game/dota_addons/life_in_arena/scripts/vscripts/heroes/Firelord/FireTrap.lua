@@ -4,7 +4,7 @@ function StasisStart( event )
 	local ability = event.ability
 	local target_point = event.target_points[1]
 	local duration = ability:GetSpecialValueFor('duration') 
-	local stasis = CreateUnitByName('orc_stasis_ward_unit', target_point, true, caster, caster, caster:GetTeamNumber())
+	local stasis = CreateUnitByName('fire_trap_unit', target_point, true, caster, caster, caster:GetTeamNumber())
 	stasis:AddNewModifier(stasis, nil, "modifier_kill", {duration = duration})
 	ability:ApplyDataDrivenModifier(stasis, stasis, 'modifier_stasis_ward', nil)	
 	stasis:EmitSound('Hero_Techies.StasisTrap.Plant')
@@ -25,7 +25,7 @@ function StasisThink( event )
 		local radius = ability:GetSpecialValueFor('detection_radius') 
 		local enemies = FindUnitsInRadius(stasis:GetTeamNumber(), stasis:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 0, FIND_ANY_ORDER, false)
 		for _,enemy in pairs(enemies) do
-			if GetMovementCapability(enemy) == 'ground' then
+			if enemy:HasGroundMovementCapability() then
 				stasis:RemoveModifierByName('modifier_invisible')
 				stasis:RemoveModifierByName('modifier_stasis_ward_trigger')
 				Timers:CreateTimer(1, function ()
@@ -43,7 +43,7 @@ function StasisThink( event )
 							enemy:AddNewModifier(stasis, ability, 'modifier_stunned', {duration = duration})
 						end
 						for _,ally in pairs(allies) do
-							if ally:GetUnitName() == 'orc_stasis_ward_unit' then
+							if ally:GetUnitName() == 'fire_trap_unit' then
 								ally:ForceKill(true)
 							end
 						end
