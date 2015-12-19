@@ -8,6 +8,7 @@ function StasisStart( event )
 	stasis:AddNewModifier(stasis, nil, "modifier_kill", {duration = duration})
 	ability:ApplyDataDrivenModifier(stasis, stasis, 'modifier_stasis_ward', nil)	
 	stasis:EmitSound('Hero_Techies.StasisTrap.Plant')
+	ParticleManager:CreateParticle("particles/firelord_fire_trap.vpcf", 1, stasis)
 end
 
 function StasisSetup( event )
