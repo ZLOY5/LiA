@@ -123,6 +123,7 @@ function ClickHide()
 	else
 		statePanelUlu = true;
 	$.GetContextPanel().SetHasClass("could_vis", statePanelUlu);
+	$.GetContextPanel().SetHasClass("closed", statePanelUlu);
 	showHint = false;
 }
 
