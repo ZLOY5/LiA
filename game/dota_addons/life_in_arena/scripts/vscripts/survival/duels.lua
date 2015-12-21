@@ -12,8 +12,8 @@ function Survival:StartDuels()
 	print("Next round - duels")
     
     self.IsDuelOccured = true
-    Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME         
-
+    Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
+     
     timerPopup:Start(self.nPreDuelTime,"#lia_duel",0)
 	Timers:CreateTimer(self.nPreDuelTime,
 		function()

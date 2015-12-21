@@ -104,6 +104,11 @@ function Survival:InitSurvival()
     GameMode:SetContextThink( "AIThink", AIThink , 3)
     self.AICreepCasts = 0
     self.AIMaxCreepCasts = 2
+
+    self.hHealer = Entities:FindByName(nil,"lia_trigger_healer")
+    if not self.hHealer then 
+        print("Survival: Cant find lia_trigger_healer")
+    end
 end
 
 function AIThink()
@@ -299,6 +304,8 @@ function Survival:PrepareNextRound()
         }
     )
 
+    self.hHealer:Enable()
+
     local creepName = tostring(self.nRoundNum).."_wave_creep"
     local bossName = tostring(self.nRoundNum).."_wave_boss"
     if self.IsExtreme then 
@@ -452,6 +459,8 @@ function Survival:StartRound()
         Survival:EndGame(DOTA_TEAM_BADGUYS)
         return   
     end
+
+    self.hHealer:Disable()
 
     LiA.bForceRoundEnabled = false
     
