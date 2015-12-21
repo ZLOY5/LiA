@@ -71,6 +71,8 @@ function Survival:InitSurvival()
 	self.nPreDuelTime = 30
     self.nDuelTime = 120
 
+    self.nRoundDisableGoldTime = 120
+
     self.State = SURVIVAL_STATE_PRE_GAME
 
     self.IsDuelOccured = false
@@ -231,6 +233,9 @@ function Survival:EndRound()
     print("Survival:EndRound",self.nRoundNum)
     self.nDeathCreeps = 0
     self.nDeathHeroes = 0
+
+    Timers:RemoveTimer("DisableGoldTimer")
+    GameRules:SetGoldPerTick(1)
 
     Timers:RemoveTimer("lateWaveDebuffs")
     DoWithAllHeroes(function(hero)
@@ -461,6 +466,13 @@ function Survival:StartRound()
     end
 
     self.hHealer:Disable()
+
+    Timers:CreateTimer("DisableGoldTimer",
+        {
+            endTime = self.nRoundDisableGoldTime, 
+            callback = function() GameRules:SetGoldPerTick(0) print("Survival: Gold tick disabled after "..self.nRoundDisableGoldTime.." seconds of round") end
+        }
+    )
 
     LiA.bForceRoundEnabled = false
     
