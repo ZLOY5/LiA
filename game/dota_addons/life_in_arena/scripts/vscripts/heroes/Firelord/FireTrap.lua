@@ -37,7 +37,7 @@ function StasisThink( event )
 						for _,enemy in pairs(enemies) do
 							local duration = 0
 							if enemy:IsHero() then
-								duration = ability:GetSpecialValueFor('stun_duration_hero') 	
+								duration = ability:GetSpecialValueFor('stun_hero_duration') 	
 							else
 								duration = ability:GetSpecialValueFor('stun_duration') 	
 							end
@@ -49,6 +49,7 @@ function StasisThink( event )
 							end
 						end
 						stasis:EmitSound('Hero_Techies.StasisTrap.Stun')
+						ParticleManager:CreateParticle("particles/firelord_fire_trap_explode_custom.vpcf", 1, stasis)
 						stasis:ForceKill(true)
 					end
 				end

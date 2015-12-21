@@ -280,7 +280,26 @@ function OnEquip(event)
 			--
 			caster.STupgrades = true
 		end		
-		
+
+		if name == "npc_dota_hero_invoker" then
+			par = {
+				unit = caster,
+				oldAbi = "firelord_flame_strike",
+				newAbi = "firelord_flame_strike_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "firelord_fire_serpent",
+				newAbi = "firelord_fire_serpent_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end			
 		
 		-- next heroes
 	end
@@ -578,7 +597,26 @@ function OnUnequip(event)
 			--
 			caster.STupgrades = false
 		end		
-		
+
+		if name == "npc_dota_hero_invoker" then
+			par = {
+				unit = caster,
+				oldAbi = "firelord_flame_strike_scepter",
+				newAbi = "firelord_flame_strike",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "firelord_fire_serpent_scepter",
+				newAbi = "firelord_fire_serpent",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end			
 		
 	end
 	--end
