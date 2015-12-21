@@ -18,7 +18,7 @@
 	"AbilityCooldown"				"11 12 13"
 
 	"AbilityManaCost"				"150 170 190"
-
+	"AbilityChannelTime"			"1.33"
 	"AoERadius"						"175 200 225"
 
 	"precache"
@@ -80,19 +80,16 @@
 			"TargetPoint"       "POINT"
 		}
 
-		"DelayedAction"
+	}
+
+	"OnChannelSucceeded"
+	{
+		"CreateThinker"
 		{
-			"Delay"     "%delay"
-			"Action"    
-			{
-				"CreateThinker"
-				{
-					"ModifierName"	"modifier_flame_strike_thinker1"
-					"Target"		"POINT"
-				}
-			}
+			"ModifierName"	"modifier_flame_strike_thinker1"
+			"Target"		"POINT"
 		}
-		
+
 		"DestroyTrees"
 		{
 			"Target"		"POINT"
@@ -271,7 +268,7 @@
 	"AbilityCooldown"				"13"
 
 	"AbilityManaCost"				"250 275 300"
-
+	"AbilityChannelTime"			"1.33"
 	"AoERadius"						"175 200 225"
 
 	"precache"
@@ -332,20 +329,16 @@
 			"EffectAttachType"  "world_origin"
 			"TargetPoint"       "POINT"
 		}
+	}
 
-		"DelayedAction"
+	"OnChannelSucceeded"
+	{
+		"CreateThinker"
 		{
-			"Delay"     "%delay"
-			"Action"    
-			{
-				"CreateThinker"
-				{
-					"ModifierName"	"modifier_flame_strike_thinker1"
-					"Target"		"POINT"
-				}
-			}
+			"ModifierName"	"modifier_flame_strike_thinker1"
+			"Target"		"POINT"
 		}
-		
+
 		"DestroyTrees"
 		{
 			"Target"		"POINT"
