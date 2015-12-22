@@ -27,20 +27,28 @@
     {
 	    "RunScript"
         {
-            "ScriptFile"    "heroes\Acron\Explosion.lua"
-            "Function"      "Explosion"
+            "ScriptFile"    "heroes\Illusionist\illusionist_whiff_of_deception.lua"
+            "Function"      "startd"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Radius"	"%radius"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
         }
-	  	"FireSound"
-		{
-			"EffectName"	"Hero_EarthShaker.EchoSlam"
-			"Target"		"CASTER"
-		}
-		"AttachEffect"
-		{
-		  "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-		  "EffectAttachType"	"attach_origin"
-		  "Target"		        "CASTER"
-		}
+	  	//"FireSound"
+		//{
+		//	"EffectName"	"Hero_EarthShaker.EchoSlam"
+		//	"Target"		"CASTER"
+		//}
+		//"AttachEffect"
+		//{
+		// "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+		//  "EffectAttachType"	"attach_origin"
+		//  "Target"		        "CASTER"
+		//}
     }
     
   
@@ -79,12 +87,22 @@
 	
 	"Modifiers"
 	{
+	
 	  "Modifier_illusionist_mastery_of_deception"
 	  {
 		"Passive"       "1"
 		"IsHidden"      "1"
 		"IsBuff"        "1"
 
+		"OnCreated"
+		{
+			 "RunScript"
+			  {
+				"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
+				"Function"     "init"
+			  }
+		}
+		
 	   "OnAttacked"
 	   {
 			"Random"
@@ -95,33 +113,16 @@
 				"OnSuccess"
 				{
 
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_stunned"
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Types"		"DOTA_UNIT_TARGET_ALL"
-						}
-						"Duration"		"%stun_duration"	
-					}
+					 "RunScript"
+					  {
+						"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
+						"Function"     "illusions"
+					  }
 
-
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type"		"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"%AbilityDamage"
-					}
 				}
 			}
 	   
-		 "RunScript"
-		  {
-			"ScriptFile"   "heroes/Brewer/drunken_punches.lua"
-			"Function"     "Return"
-			"Coefficient"  "%strength_percentage_return"
-		  }
+
 	   }
 	  }
 
@@ -153,5 +154,202 @@
       "incoming_damage"     "400 300 200"
     }
   }
+}
+
+
+"illusionist_agility_paws"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	//"AbilityTextureName"			                "chaos_knight_reality_rift"
+	//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	//"AbilityCastRange"				"150"
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agility"		"1 2 3"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"prt_bonus"		"10"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"max_bonus"		"200"
+		}
+	}
+
+	//"OnRespawn"
+	//{
+	//	"ApplyModifier"	"modifier_furious_strike"
+	//}	
+
+	"Modifiers"
+	{
+	
+		"modifier_illusionist_agility_paws"
+		{
+			//"Passive"       "1"
+			"IsHidden"				"1"
+			"IsPurgable"		"0"
+			
+			"OnDestroy"
+			{
+			
+				"Random"
+				{
+					"Chance"		"100-%prt_bonus"
+					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+					"OnSuccess"
+					{
+			
+						 "RunScript"
+						  {
+							"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+							"Function"     "remove_agi"
+						  }
+					}
+				}
+			}
+			
+		}
+	
+	}
+}
+
+
+"illusionist_mastery_of_illusions"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	//"AbilityTextureName"			"hermit_astral"
+
+	// Casting
+	"MaxLevel"              "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"700 700 700"
+	"AbilityCastPoint"				"0.0 0.0 0.0"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"30.0"
+	//"AbilityDuration"				"0.0 0.0 0.0"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 120 140"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"reduce_spell_damage_pct"	"-40"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"reduce_movement_speed"		"0 0 0"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration_hero"				"3.0"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration_other"			"3.0"
+		}
+		"05"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"count_illusion"			"3"
+		}
+		"06"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"life_illusion"			"8 9 10"
+		}
+		"07"
+		{
+		  "var_type"               "FIELD_INTEGER"
+		  "outgoing_damage"        "-20 -10 -0"
+		}
+		"08"
+		{
+		  "var_type"          "FIELD_INTEGER"
+		  "incoming_damage"     "200 150 100"
+		}
+	}
+
+	"precache"
+	{
+		"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Pugna.Decrepify"
+			"Target" 		"TARGET"
+		}
+		
+		"RunScript"
+		{
+			"ScriptFile"    "heroes\Illusionist\illusionist_mastery_of_illusions.lua"    
+			"Function"      "AddModifier"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_illusionist_mastery_of_illusions"
+		{
+			"IsDebuff"			"1"
+			
+			"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%reduce_movement_speed" 
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
+			}			
+		}
+	}	
 }
   
