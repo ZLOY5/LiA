@@ -94,14 +94,14 @@
 		"IsHidden"      "1"
 		"IsBuff"        "1"
 
-		"OnCreated"
-		{
-			 "RunScript"
-			  {
-				"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
-				"Function"     "init"
-			  }
-		}
+		//"OnCreated"
+		//{
+		//	 "RunScript"
+		//	  {
+		//		"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
+		//		"Function"     "init"
+		//	  }
+		//}
 		
 	   "OnAttacked"
 	   {
@@ -154,6 +154,7 @@
       "incoming_damage"     "400 300 200"
     }
   }
+  
 }
 
 
@@ -162,7 +163,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" // DOTA_ABILITY_BEHAVIOR_NO_TARGET | 
 	//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 	//"AbilityTextureName"			                "chaos_knight_reality_rift"
 	//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
@@ -196,12 +197,56 @@
 
 	//"OnRespawn"
 	//{
-	//	"ApplyModifier"	"modifier_furious_strike"
+	//	"ApplyModifier"	"modifier_illusionist_agility_paws"
 	//}	
 
 	"Modifiers"
 	{
 	
+		"modifier_illusionist_agility_paws_i"
+		{
+			"Passive"       "1"
+			"IsHidden"				"0" //"1"
+			"IsPurgable"		"0"
+			
+			//"OnCreated"
+			//{
+			//	 "RunScript"
+			//	  {
+			//		"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+			//		"Function"     "init"
+			//	  }
+			//}
+			
+			//"OnCreated"
+			//{
+			//		"ApplyModifier"
+			//		{
+			//			"ModifierName" 	"modifier_illusionist_agility_paws2"
+			//			"Target"		"CASTER"
+			//		}
+			//}
+		
+
+		}	
+		
+//		"modifier_illusionist_agility_paws2"
+//		{
+//			"IsHidden"				"0"
+//			"IsPurgable"		"0"
+//			"OnCreated"
+//			{
+//			
+//			
+//				 "RunScript"
+//				  {
+//					"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+//					"Function"     "init"
+//				  }
+//			}
+//		}
+		
+		
 		"modifier_illusionist_agility_paws"
 		{
 			//"Passive"       "1"
@@ -211,12 +256,23 @@
 			"OnDestroy"
 			{
 			
+
+				  
 				"Random"
 				{
-					"Chance"		"100-%prt_bonus"
+					"Chance"		"%prt_bonus"
 					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
 
 					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+							"Function"     "stay_agi"
+						}
+					}
+					
+					"OnFailure"
 					{
 			
 						 "RunScript"
@@ -245,6 +301,7 @@
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	//"AbilityTextureName"			"hermit_astral"
 
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
 	// Casting
 	"MaxLevel"              "3"
 	"RequiredLevel"          "5"
@@ -271,11 +328,11 @@
 			"var_type"					"FIELD_INTEGER"
 			"reduce_spell_damage_pct"	"-40"
 		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"reduce_movement_speed"		"0 0 0"
-		}
+		//"02"
+		//{
+		//	"var_type"					"FIELD_INTEGER"
+		//	"reduce_movement_speed"		"0 0 0"
+		//}
 		"03"
 		{
 			"var_type"					"FIELD_FLOAT"
@@ -341,7 +398,7 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
-			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%reduce_movement_speed" 
+			    //"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%reduce_movement_speed" 
 			}
 
 			"States"
