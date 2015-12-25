@@ -5,7 +5,7 @@
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
-    //"AbilityTextureName"     "golem_explosion"
+    "AbilityTextureName"     "arc_warden_flux"
 
     "AbilityCooldown" "6 7 8"
 	"AbilityCastRange"	"300"
@@ -19,8 +19,8 @@
 
 	"precache"
 	{
-		//"particle"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
-		//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+		"particle"	"particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_arc_warden.vsndevts"
 	}
 	
     "OnSpellStart"
@@ -38,17 +38,18 @@
 				"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
         }
-	  	//"FireSound"
-		//{
-		//	"EffectName"	"Hero_EarthShaker.EchoSlam"
-		//	"Target"		"CASTER"
-		//}
-		//"AttachEffect"
-		//{
-		// "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-		//  "EffectAttachType"	"attach_origin"
-		//  "Target"		        "CASTER"
-		//}
+	  	"FireSound"
+		{
+			"EffectName"	"Hero_ArcWarden.Flux.Cast"
+			"Target"		"CASTER"
+		}
+		
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "CASTER"
+		}
     }
     
   
@@ -299,7 +300,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	//"AbilityTextureName"			"hermit_astral"
+	"AbilityTextureName"			"arc_warden_tempest_double"
 
 	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
 	// Casting
