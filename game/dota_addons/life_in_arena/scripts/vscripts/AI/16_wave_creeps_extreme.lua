@@ -12,7 +12,7 @@ function Spawn(entityKeyValues)
 end
 
 function Think16Wave()
-	if not thisEntity:IsAlive() then
+	if not thisEntity:IsAlive() or thisEntity:IsIllusion() then
 		return nil 
 	end
 

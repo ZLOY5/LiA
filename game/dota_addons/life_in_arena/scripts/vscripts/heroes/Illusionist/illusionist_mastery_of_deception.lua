@@ -22,14 +22,22 @@ function illusions( event )
 	end
 	local creep = MakeIllusion(event)
 	--
-	--if caster.count_ill then
-	caster.count_ill = caster.count_ill +1
-	--end
-	
+	local ability3 = caster:FindAbilityByName('illusionist_whiff_of_deception')
+	if ability3:GetLevel() > 0 then
+		--
+		--if caster.count_ill then
+		caster.count_ill = caster.count_ill +1
+		--end
+		--
+		-- отнимание коунтера по смерти иллюзии
+		ability3:ApplyDataDrivenModifier(caster, creep, "modifier_illusionist_whiff_of_deception", {})
+		
+	end
+	--
 	if not caster.curr_agi then
 		caster.curr_agi = 0
 	end
-	
+	--
 	-- дадим ловкость Антаро за каждую вызванную иллюзию: повесим модификатор, где будем все делать
 	local ability2 = caster:FindAbilityByName('illusionist_agility_paws')
 	if ability2:GetLevel() > 0 then
@@ -44,6 +52,8 @@ function illusions( event )
 			ability2:ApplyDataDrivenModifier(caster, creep, "modifier_illusionist_agility_paws", {})
 		end
 	end
+	
+	
 	
 	
 	

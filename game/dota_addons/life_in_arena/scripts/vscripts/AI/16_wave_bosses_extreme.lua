@@ -1,4 +1,4 @@
-require('survival/AIcreeps')
+﻿require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
@@ -13,7 +13,7 @@ function Spawn(entityKeyValues)
 end
 
 function AIThink()
-	if not thisEntity:IsAlive() then
+	if not thisEntity:IsAlive() or thisEntity:IsIllusion() then
 		return nil 
 	end
 

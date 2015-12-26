@@ -44,14 +44,25 @@ function AddModifier(keys)
 	if not caster.curr_agi then
 		caster.curr_agi = 0
 	end
-	
+	local ability3
 	for i=1,count_illusion do
 		illus = MakeIllusion(keys)	-- CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
 		--illus:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
 		--if not caster == target  then
 		--illus:SetControllableByPlayer(caster:GetPlayerID(), true)
+		ability3 = caster:FindAbilityByName('illusionist_whiff_of_deception')
+		if ability3:GetLevel() > 0 then
+			--
+			--if caster.count_ill then
+			caster.count_ill = caster.count_ill +1
+			--end
+			--
+			-- отнимание коунтера по смерти иллюзии
+			ability3:ApplyDataDrivenModifier(caster, illus, "modifier_illusionist_whiff_of_deception", {})
+			
+		end
 		--if caster.count_ill then
-		caster.count_ill = caster.count_ill +1
+--		caster.count_ill = caster.count_ill +1
 		--end
 		--local modifier = FindModifierByName()
 		if ability2:GetLevel() > 0 then

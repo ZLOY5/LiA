@@ -13,7 +13,7 @@ function remove_agi(event)
 	caster:CalculateStatBonus()
 	--
 	--if caster.count_ill then
-	caster.count_ill = caster.count_ill -1
+--	caster.count_ill = caster.count_ill -1
 	--end
 	
 	
@@ -36,7 +36,7 @@ function stay_agi(event)
 	end
 	--
 	--if caster.count_ill then
-	caster.count_ill = caster.count_ill -1
+--	caster.count_ill = caster.count_ill -1
 	--end
 end
 

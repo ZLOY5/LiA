@@ -6,7 +6,7 @@ function Spawn(entityKeyValues)
 end
 
 function AutocastAIThink()
-	if not thisEntity:IsAlive() then
+	if not thisEntity:IsAlive() or thisEntity:IsIllusion()  then
 		return nil 
 	end
 
