@@ -1,0 +1,453 @@
+"necromancer_stabbing_death"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"FightRecapLevel"				"1"
+	"AbilityTextureName"			"nyx_assassin_impale"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"550"
+	"AbilityCastPoint"				"0.4"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"15 14 13"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 175 200"
+	
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"100 200 300"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"width"				"125 125 125"
+		}
+		"02"
+		{	
+			"var_type"			"FIELD_FLOAT"
+			"duration"			"1.5 2.5 3.5" //"1.27 1.77 2.27 2.77"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"length"			"550"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"speed"				"1833" //"1600 1600 1600 1600"
+		}
+		// Extra variables
+		"05"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"air_time"			"0.50" //"0.52" 
+		}
+	}
+	
+	// Data driven
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
+		"particle"				"particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
+	}
+	
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"Hero_NyxAssassin.Impale"
+		}
+	
+		"LinearProjectile"
+		{
+			"Target"			"POINT"
+			"EffectName"		"particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
+			"StartRadius"		"%width"
+			"EndRadius"			"%width"
+			"MoveSpeed"			"%speed"
+			"TargetTeams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			"FixedDistance"		"%length"
+			"ProvidesVision"	"0"
+			"HasFrontalCone"	"0"
+		}
+	}
+	
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"			"0"
+	
+		"FireSound"
+		{
+			"Target"			"TARGET"
+			"EffectName"		"Hero_NyxAssassin.Impale.Target" 
+		}
+	
+		"RemoveModifier"
+		{
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_knockback"
+		}
+		
+		"Knockback"
+		{
+			"Target"			"TARGET"
+			"Center"			"CASTER"
+			"Distance"			"0"
+			"Duration"			"%air_time"
+			"Height"			"200"
+			"IsFixedDistance"	"1"
+		}
+		
+		"Stun"
+		{
+			"Target"			"TARGET"
+			"Duration"			"%duration"
+		}
+		
+		"DelayedAction"
+		{
+			"Delay"				"%air_time"
+			"Action"
+			{
+				"FireSound"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"Hero_NyxAssassin.Impale.TargetLand" 
+				}
+			
+				"Damage"
+				{
+					"Target"			"TARGET"
+					"Damage"			"%AbilityDamage"
+					"Type"				"DAMAGE_TYPE_MAGICAL"
+				}
+			}
+		}
+	}
+}
+
+
+// Rewrite of Skeleton Wraith King Reincarnation
+// Author: Noya
+// Date: 12.1.2015.
+// Notes: "MODIFIER_PROPERTY_REINCARNATION" is Unhandled, this uses lua Kill and gives the gold back when the caster dies
+// 	      It still counts the death count for the player, because there's currently no way to decrease deaths (only lua IncrementDeaths)
+//
+// Author this modification: CeZaRRR
+//
+"necromancer_reincarnation"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	//"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	//"FightRecapLevel"				"2"
+	//"AbilityTextureName"			"skeleton_king_reincarnation"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"120 100 80"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityModifierSupportValue"	"0.2"	// Slow isn't the main function of this ability.
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"reincarnate_time"		"3.0 3.0 3.0"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+		"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+		"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_death.vpcf"
+		//"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_slow_debuff.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_reincarnation"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"OnTakeDamage"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"heroes/Necromancer/reincarnation.lua"
+					"Function"			"Reincarnation"
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+"necromancer_deads"
+{
+
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    //"AbilityTextureName"    "spectre_reality"
+    
+ 
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+    
+	"precache"
+	{
+		"model" "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"
+	    //"soundfile" "soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+	    //"model"   "models/heroes/vengeful/vengeful.vmdl"
+	    //"model"   "models/items/vengeful/vengeful_immortal_weapon/vengeful_immortal_weapon.vmdl"
+	    //"model"   "models/items/vengefulspirit/fallenprincess_shoulders/fallenprincess_shoulders.vmdl"
+	    //"model"   "models/items/vengefulspirit/fallenprincess_legs/fallenprincess_legs.vmdl"
+	    //"model"   "models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl"
+	    //"particle"  "particles/units/heroes/hero_vengeful/vengeful_ambient.vpcf"
+	    //"particle"  "particles/econ/items/vengeful/vengeful_wing_fallenprincess/venge_wingsoffallenprincess_ambient.vpcf"
+	    //"particle"  "particles/units/heroes/hero_vengeful/vengeful_base_attack.vpcf"
+	}
+
+    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+
+    "AbilityCooldown"               "20 21 22"
+
+    "AbilityManaCost"               "100 200 300"
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "spirit_health"  "275 650 1250"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "spirit_damage"  "13 25 49"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "duration"  "60"
+        }
+        "04"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "count_sum"  "2 3 4"
+        }
+    }
+
+    "OnSpellStart"
+    {
+	
+		"RunScript"
+		{
+			"ScriptFile"    "heroes/Necromancer/reincarnation.lua"
+			"Function"      "Create"
+			"durat" 	"%duration"
+			"count" 	"%count_sum"
+		}
+	
+
+        //"FireSound"
+		//{
+		//	"EffectName" "Hero_Spectre.Haunt"
+		//	"Target"	 "CASTER"
+		//}
+
+
+    }
+
+}
+
+
+
+"necromancer_skel_return"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"heroes\Necromancer\necromancer_skel_return.lua"
+	//"AbilityTextureName"			"nyx_assassin_spiked_carapace"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" // | DOTA_ABILITY_BEHAVIOR_AURA
+	//"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+
+	//"AbilityCastRange"				"600"
+
+	"precache"
+	{
+	}
+	
+	"AbilitySpecial"
+	{
+
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_return"				"50"		
+		}	
+
+
+	}
+
+}
+
+
+
+
+
+// https://github.com/MNoya/DotaCraft/blob/master/game/dota_addons/dotacraft/scripts/vscripts/units/undead/necromancer.lua
+
+"necromancer_galvanization"
+{
+	"BaseClass"					"ability_datadriven"
+	//"AbilityTextureName"		"undead_raise_dead"
+	"MaxLevel"					"1"
+		
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		
+	"AbilityCastRange"			"900 900"
+	"AbilityCastPoint"			"0 0"
+	"AbilityCooldown"			"8 8"
+	"AbilityManaCost"			"75 75"
+		
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"duration"		"40 40"
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"900 900"
+		}
+		// It raises 2 melee skeletons at level one then 1 melee skeleton, 1 ranged skeleton at level two.
+		// Can be autocasted to automatically raise corpses in the 600 radius.
+	}
+	
+	"precache"
+	{
+		"model" "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"
+		"model"	"models/items/wraith_king/regalia_of_the_bonelord_cape.vmdl"
+		"model"	"models/items/pugna/ashborn_horns/ashborn_horns.vmdl"
+		"model_folder" "models/heroes/pugna"	
+		
+		// particle precaches
+		"particle" "particles/neutral_fx/skeleton_spawn.vpcf"
+		"particle" "particles/units/heroes/hero_pugna/pugna_base_attack.vpcf"
+	}
+	
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+			"Target" "CASTER"
+			"ScriptFile" "units/undead/necromancer.lua"
+			"Function" "AnimateDeadPrecast"
+		}
+	}
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"Target"		"CASTER"
+			"ScriptFile" 	"units/undead/necromancer.lua"
+			"Function"		"undead_raise_dead"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_raise_dead_autocast"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+			
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"Target"		"CASTER"
+					"ScriptFile" 	"units/undead/necromancer.lua"
+					"Function"		"undead_raise_dead_autocast"
+				}
+			}
+		}	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
