@@ -45,6 +45,11 @@ function Survival:_OnHeroDeath(keys)
     if ownerHero then
         Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
     end
+
+    if hero:IsReincarnating() then 
+        print("Will reincarnate")
+        return
+    end
     
     if (self.State == SURVIVAL_STATE_DUEL_TIME) and (hero == self.DuelFirstHero or hero == self.DuelSecondHero) then
         Survival:EndDuel(attackerHero,hero)
@@ -157,10 +162,10 @@ function Survival:OnPlayerChat(event)
     if event.text == "+" then
         onPlayerReadyToWave(player) --LiA_ForceRound.lua
     end
-	
-	--[[if event.text == "kill" then
+	--[[
+	if event.text == "kill" then
 		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
-        hero:ForceKill(false)
+        hero:ForceKill(true)
     end
 	
 	if event.text == "res" then
@@ -174,7 +179,7 @@ function Survival:OnPlayerChat(event)
 	
     if event.text == "lose" then
         Survival:EndGame(DOTA_TEAM_BADGUYS)
-    end]]
-	
+    end
+	]]
 	
 end
