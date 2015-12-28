@@ -8,11 +8,11 @@ _G.SURVIVAL_STATE_ROUND_FINALBOSS = 5
 _G.SURVIVAL_STATE_DUEL_TIME = 6
 _G.SURVIVAL_STATE_POST_GAME = 7
 
-_G.WAVE_SPAWN_COORD_LEFT    = Vector(-5700,  1850, 0)
-_G.WAVE_SPAWN_COORD_TOP     = Vector(-3670,  3970, 0) 
-_G.ARENA_TELEPORT_COORD_TOP = Vector(-5024, -1360, 0)
-_G.ARENA_TELEPORT_COORD_BOT = Vector(-5024, -2360, 0)
-_G.ARENA_CENTER_COORD       = Vector(-5024, -1860, 0)
+_G.WAVE_SPAWN_COORD_LEFT    = Vector(-5525.54,  2010.5, 0)
+_G.WAVE_SPAWN_COORD_TOP     = Vector(-3455.78,  3888, 0) 
+_G.ARENA_TELEPORT_COORD_TOP = Vector(-3317, -1495.29, 0)
+_G.ARENA_TELEPORT_COORD_BOT = Vector(-3317, -2542, 0)
+_G.ARENA_CENTER_COORD       = Vector(-3448.34, 2252.26, 0)
 
 ------------------------------------------------------------------------------------------------
 
