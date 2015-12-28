@@ -7052,6 +7052,48 @@
 	//End of file item_lia_runed_gloves.txt
 
 
+	//Start of file item_lia_rune_of_agility.txt
+	    "item_lia_rune_of_agility"
+	{
+		"ID"                            "1606"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/rune_doubledamage01.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfAgility"
+			}
+			
+		}
+	
+	
+	
+	}
+	//End of file item_lia_rune_of_agility.txt
+
+
 	//Start of file item_lia_rune_of_healing.txt
 	    "item_lia_rune_of_healing"
 	{
@@ -7126,6 +7168,48 @@
 		}
 	}
 	//End of file item_lia_rune_of_healing.txt
+
+
+	//Start of file item_lia_rune_of_intellect.txt
+	    "item_lia_rune_of_intellect"
+	{
+		"ID"                            "1607"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/rune_doubledamage01.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfIntellect"
+			}
+			
+		}
+	
+	
+	
+	}
+	//End of file item_lia_rune_of_intellect.txt
 
 
 	//Start of file item_lia_rune_of_mana.txt
@@ -7285,6 +7369,128 @@
 		}
 	}
 	//End of file item_lia_rune_of_restoration.txt
+
+
+	//Start of file item_lia_rune_of_speed.txt
+	    "item_lia_rune_of_speed"
+	{
+		"ID"                            "1604"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/rune_doubledamage01.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+		"AbilitySpecial"
+		{
+	
+			"1"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"2000"
+			}
+			"2"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"15"
+			}
+			"3"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed_bonus"			"200"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_rune_of_speed"
+	
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				}
+			}
+			
+		}
+	
+		"Modifiers"
+		{
+			"modifier_rune_of_speed"
+			{
+				"IsBuff"		"1"
+				"IsPurgable"	"1"
+				"Duration"		"%duration"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%speed_bonus"
+				}
+			}
+		}
+	
+	}
+	//End of file item_lia_rune_of_speed.txt
+
+
+	//Start of file item_lia_rune_of_strength.txt
+	    "item_lia_rune_of_strength"
+	{
+		"ID"                            "1605"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/rune_doubledamage01.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfStrength"
+			}
+			
+		}
+	
+	
+	
+	}
+	//End of file item_lia_rune_of_strength.txt
 
 
 	//Start of file item_lia_scepter_of_power.txt

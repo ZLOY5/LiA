@@ -111,6 +111,8 @@ function Survival:InitSurvival()
     if not self.hHealer then 
         print("Survival: Cant find lia_trigger_healer")
     end
+    --hBounds = SpawnEntityFromTableSynchronous("world_bounds", {Min = Vector(0,0,0),Max = Vector(1000,1000,0)})
+    --DeepPrintTable(hBounds)
 end
 
 function AIThink()

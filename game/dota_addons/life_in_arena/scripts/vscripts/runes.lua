@@ -1,0 +1,67 @@
+runeTypes = {
+	item_lia_rune_of_healing = 1,
+	item_lia_rune_of_mana = 1,
+	item_lia_rune_of_restoration = 1, 
+	item_lia_rune_of_speed = 1,
+	item_lia_rune_of_strength = 1,
+	item_lia_rune_of_agility = 1,
+	item_lia_rune_of_intellect = 1,
+
+	--эта руна будет появляться в два раза реже руны с значением 1
+
+}
+
+runeSpawnTime = 60 --период появления рун
+
+runesSpawnChanceSumm = 0
+for k,v in pairs(runeTypes) do
+	runesSpawnChanceSumm = runesSpawnChanceSumm + v
+	runeTypes[k] = runesSpawnChanceSumm
+end
+
+
+function GetRandomRuneType()
+	local f = RandomFloat(0,runesSpawnChanceSumm)
+	for k,v in pairs(runeTypes) do
+		if v>=f then
+			return k
+		end
+	end
+end
+
+function GetRuneSpawnPos()
+	return Vector(-3000,2000,0)
+end
+
+function SpawnRune()
+	local rune = CreateItem(GetRandomRuneType(), nil, nil)
+	CreateItemOnPositionSync(GetRuneSpawnPos(), rune)
+end
+
+function StartRunesSpawn()
+	Timers:CreateTimer("LiAruneSpawner",
+		{
+            endTime = runeSpawnTime, 
+            callback = function() SpawnRune() return runeSpawnTime end
+        }
+    )
+end
+
+function StopRunesSpawn()
+	Timers:RemoveTimer("LiAruneSpawner")
+end
+
+--[[
+test = {}
+for i=1,10000 do
+	q = GetRandomRuneType()
+	if test[q] then 
+		test[q] = test[q] + 1
+	else
+		test[q] = 1
+	end
+	--print(q)
+	
+end
+DeepPrintTable(test)
+]]
