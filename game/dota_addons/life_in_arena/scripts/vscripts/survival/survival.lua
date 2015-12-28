@@ -85,6 +85,8 @@ function Survival:InitSurvival()
 
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 ) 
 
+    --Tutorial:SetTimeFrozen(true)
+
     local GameMode = GameRules:GetGameModeEntity()
     GameMode:SetThink("onThink", self)
 	--LiA_AIcreeps
@@ -153,6 +155,7 @@ function Survival:ExperienceFilter(filterTable)
 end
 
 function Survival:onThink()
+    GameRules:SetTimeOfDay( 0.5 )
 	local hero
     for i = 1, #self.tHeroes do
         hero = self.tHeroes[i]
