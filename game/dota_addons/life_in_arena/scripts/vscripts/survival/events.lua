@@ -164,13 +164,11 @@ function Survival:OnPlayerChat(event)
     end
     
     if event.text == "lol" then
-        --top = Entities:FindByClassname(nil,"dota_minimap_boundary")
-        --top:SetAbsOrigin(Vector(-1000,2000,0))
-        --SendToServerConsole("dota_minimap_create")
-        fade = Entities:FindByName(nil, "duel_fade")
-        print(fade:GetClassname())
-        DoEntFire( "duel_fade", "Fade", "0", 0, nil, nil  )
+        self.newWorldBounds = SpawnEntityFromTableSynchronous("world_bounds", {Max = WORLD_BOUNDS_BOSS_MAX, Min = WORLD_BOUNDS_BOSS_MIN})
+    end
 
+    if event.text == "unlol" then
+        self.newWorldBounds:RemoveSelf()
     end
 	--[[
 	if event.text == "kill" then

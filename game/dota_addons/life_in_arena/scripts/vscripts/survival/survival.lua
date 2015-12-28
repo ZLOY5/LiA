@@ -14,6 +14,7 @@ _G.ARENA_TELEPORT_COORD_TOP = Vector(-3317, -1495.29, 0)
 _G.ARENA_TELEPORT_COORD_BOT = Vector(-3317, -2542, 0)
 _G.ARENA_CENTER_COORD       = Vector(-3448.34, 2252.26, 0)
 
+
 ------------------------------------------------------------------------------------------------
 
 if Survival == nil then
@@ -40,6 +41,11 @@ LinkLuaModifier( "modifier_19_wave_debuff", "survival/modifier_19_wave_debuff.lu
 
 function Survival:InitSurvival()
     Survival = self
+
+    _G.WORLD_BOUNDS_BOSS_MIN = Entities:FindByName(nil, "world_bounds_boss_min"):GetAbsOrigin()
+    _G.WORLD_BOUNDS_BOSS_MAX = Entities:FindByName(nil, "world_bounds_boss_max"):GetAbsOrigin()
+    _G.WORLD_BOUNDS_MIN = Entities:FindByName(nil, "world_bounds_min"):GetAbsOrigin()
+    _G.WORLD_BOUNDS_MAX = Entities:FindByName(nil, "world_bounds_max"):GetAbsOrigin()
 
     self.tHeroes = {}
 	self.nRoundNum = 0
@@ -262,6 +268,7 @@ function Survival:EndRound()
 
         if Survival.State == SURVIVAL_STATE_ROUND_MEGABOSS then
             print("TeleportHeroesWithoutBossArena")
+            ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
             Survival:_TeleportHeroesWithoutBossArena()
         end
 
@@ -488,6 +495,7 @@ function Survival:StartRound()
             
             if self.nRoundNum % 5 == 0 then -- мегабоосс
                 CleanUnitsOnMap()
+                ChangeWorldBounds(WORLD_BOUNDS_BOSS_MAX,WORLD_BOUNDS_BOSS_MIN)
                 Survival:_TeleportHeroesToBossArena()
                 Survival:_SpawnMegaboss()
                 

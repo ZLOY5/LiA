@@ -28,6 +28,8 @@ function Survival:StartDuels()
             	hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
         	end)
 
+            ChangeWorldBounds(WORLD_BOUNDS_BOSS_MAX,WORLD_BOUNDS_BOSS_MIN)
+
         	Survival:CheckDuel()
 		end
 	)
@@ -198,6 +200,8 @@ function Survival:EndDuels()
     end
 
     RespawnAllHeroes()
+
+    ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
 
     DoWithAllHeroes(function(hero)
         ResetAllAbilitiesCooldown(hero)

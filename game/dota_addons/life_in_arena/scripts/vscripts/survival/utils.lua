@@ -98,3 +98,12 @@ function DoWithAllHeroes(whatDo)
 		end
 	end
 end
+
+function ChangeWorldBounds(vMax,vMin)
+	local oldBounds = Entities:FindByClassname(nil, "world_bounds")
+	if oldBounds then 
+		oldBounds:RemoveSelf()
+	end
+
+	SpawnEntityFromTableSynchronous("world_bounds", {Max = vMax, Min = vMin})
+end
