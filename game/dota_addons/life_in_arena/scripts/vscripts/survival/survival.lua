@@ -46,6 +46,9 @@ function Survival:InitSurvival()
     _G.WORLD_BOUNDS_BOSS_MAX = Entities:FindByName(nil, "world_bounds_boss_max"):GetAbsOrigin()
     _G.WORLD_BOUNDS_MIN = Entities:FindByName(nil, "world_bounds_min"):GetAbsOrigin()
     _G.WORLD_BOUNDS_MAX = Entities:FindByName(nil, "world_bounds_max"):GetAbsOrigin()
+    _G.ARENA_TOP_RIGHT_CORNER = Entities:FindByName(nil, "arena_top_right_corner"):GetAbsOrigin()
+    _G.ARENA_LEFT_BOTTOM_CORNER = Entities:FindByName(nil, "arena_left_bottom_corner"):GetAbsOrigin()
+    _G.BOSS_ARENA_CENTER = Entities:FindByName(nil, "boss_arena_center"):GetAbsOrigin()
 
     self.tHeroes = {}
 	self.nRoundNum = 0
@@ -119,6 +122,9 @@ function Survival:InitSurvival()
     if not self.hHealer then 
         print("Survival: Cant find lia_trigger_healer")
     end
+
+    SetRuneSpawnRegion("rectangle",ARENA_LEFT_BOTTOM_CORNER,ARENA_TOP_RIGHT_CORNER)
+    StartRunesSpawn()
     --hBounds = SpawnEntityFromTableSynchronous("world_bounds", {Min = Vector(0,0,0),Max = Vector(1000,1000,0)})
     --DeepPrintTable(hBounds)
 end
@@ -268,6 +274,7 @@ function Survival:EndRound()
 
         if Survival.State == SURVIVAL_STATE_ROUND_MEGABOSS then
             print("TeleportHeroesWithoutBossArena")
+            SetRuneSpawnRegion("rectangle",ARENA_LEFT_BOTTOM_CORNER,ARENA_TOP_RIGHT_CORNER)
             ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
             Survival:_TeleportHeroesWithoutBossArena()
         end
@@ -495,6 +502,7 @@ function Survival:StartRound()
             
             if self.nRoundNum % 5 == 0 then -- мегабоосс
                 CleanUnitsOnMap()
+                SetRuneSpawnRegion("circle",ARENA_CENTER_COORD,nil)
                 ChangeWorldBounds(WORLD_BOUNDS_BOSS_MAX,WORLD_BOUNDS_BOSS_MIN)
                 Survival:_TeleportHeroesToBossArena()
                 Survival:_SpawnMegaboss()

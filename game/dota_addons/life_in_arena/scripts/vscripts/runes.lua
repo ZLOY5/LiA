@@ -13,6 +13,7 @@ runeTypes = {
 
 runeSpawnTime = 60 --период появления рун
 
+
 runesSpawnChanceSumm = 0
 for k,v in pairs(runeTypes) do
 	runesSpawnChanceSumm = runesSpawnChanceSumm + v
@@ -30,7 +31,11 @@ function GetRandomRuneType()
 end
 
 function GetRuneSpawnPos()
-	return Vector(-3000,2000,0)
+	if runeSpawnRegionType == "rectangle" then
+		return Vector(RandomFloat(vRuneSpawnMin.x,vRuneSpawnMax.x), RandomFloat(vRuneSpawnMin.y,vRuneSpawnMax.y), 0)
+	elseif runeSpawnRegionType == "circle" then
+		return vRuneSpawnMin+RandomVector(RandomInt(0,700))
+	end
 end
 
 function SpawnRune()
@@ -49,6 +54,17 @@ end
 
 function StopRunesSpawn()
 	Timers:RemoveTimer("LiAruneSpawner")
+end
+
+function SetRuneSpawnRegion(regionType,vMin,vMax)
+	if regionType == "circle" then
+		runeSpawnRegionType = regionType
+		vRuneSpawnMin = vMin
+	elseif regionType == "rectangle" then
+		runeSpawnRegionType = regionType
+		vRuneSpawnMin = vMin
+		vRuneSpawnMax = vMax
+	end
 end
 
 --[[
