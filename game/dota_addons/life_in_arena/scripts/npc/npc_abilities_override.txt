@@ -7963,7 +7963,11 @@
 			"RemoveModifier"
 			{
 				"ModifierName"	"modifier_cluster_rockets"
-				"Target" 		"CASTER"
+				"Target" 		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 		}
 	
@@ -8038,12 +8042,12 @@
 				"ThinkInterval"  "%projectile_interval"
 				"OnIntervalThink"
 				{
-					"FireEffect"
-					{
-						"EffectName"        "Hero_Gyrocopter.Rocket_Barrage.Launch"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "CASTER"
-					}
+					//"FireEffect" //тут должен быть звук или партикл?
+					//{
+					//	"EffectName"        "Hero_Gyrocopter.Rocket_Barrage.Launch"
+					//	"EffectAttachType"  "follow_origin"
+					//	"Target"            "CASTER"
+					//}
 	
 					"RunScript"
 					{
