@@ -14,7 +14,7 @@ function illusions( event )
 
 	local attacker = event.attacker
 	--if not string.find(attacker:GetName(),"megaboss") then 
-	if string.find(attacker:GetName(),"megaboss") then
+	if string.find(attacker:GetUnitName(),"megaboss") then
 		ability:RefundManaCost()
 		ability:EndCooldown()
 		--FireGameEvent( 'custom_error_show', { player_ID = event.caster:GetPlayerOwnerID(), _error = "#lia_hud_error_item_lia_staff_of_illusions_megaboss" } )

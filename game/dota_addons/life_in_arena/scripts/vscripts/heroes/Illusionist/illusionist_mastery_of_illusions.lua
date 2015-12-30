@@ -8,7 +8,7 @@ function AddModifier(keys)
 		caster.count_ill=0
 	end
 	--if not string.find(target:GetName(),"megaboss") then 
-	if string.find(target:GetName(),"megaboss") then
+	if string.find(target:GetUnitName(),"megaboss") then
 		ability:RefundManaCost()
 		ability:EndCooldown()
 		--FireGameEvent( 'custom_error_show', { player_ID = event.caster:GetPlayerOwnerID(), _error = "#lia_hud_error_item_lia_staff_of_illusions_megaboss" } )

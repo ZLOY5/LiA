@@ -163,13 +163,6 @@ function Survival:OnPlayerChat(event)
         onPlayerReadyToWave(player) --LiA_ForceRound.lua
     end
     
-    if event.text == "lol" then
-        self.newWorldBounds = SpawnEntityFromTableSynchronous("world_bounds", {Max = WORLD_BOUNDS_BOSS_MAX, Min = WORLD_BOUNDS_BOSS_MIN})
-    end
-
-    if event.text == "unlol" then
-        self.newWorldBounds:RemoveSelf()
-    end
 	--[[
 	if event.text == "kill" then
 		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())

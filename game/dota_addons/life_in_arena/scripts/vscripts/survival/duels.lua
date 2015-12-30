@@ -28,8 +28,7 @@ function Survival:StartDuels()
             	hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
         	end)
 
-            ChangeWorldBounds(WORLD_BOUNDS_BOSS_MAX,WORLD_BOUNDS_BOSS_MIN)
-
+            
         	Survival:CheckDuel()
 		end
 	)
@@ -85,6 +84,8 @@ function Survival:Duel(hero1,hero2)
             end
             PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_BADGUYS, 1)
             hero2:SetGold(gold, false)
+
+            ChangeWorldBounds(WORLD_BOUNDS_BOSS_MAX,WORLD_BOUNDS_BOSS_MIN)
 
     		SetCameraToPosForPlayer(-1,ARENA_CENTER_COORD+Vector(0,-100,0))
 
