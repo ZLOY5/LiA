@@ -464,8 +464,54 @@
 "small_barrel"
 {
 	"BaseClass" "npc_dota_building" 
-	"Model" "models/props_debris/barrel002.vmdl" 
+	"Model" "models/new_barrel/barrel002_reference.vmdl" 
 	"ModelScale" "0.85" 
+	"Level" "1" 
+	"AttackAcquisitionRange" "0"
+	"BoundsHullName" "DOTA_HULL_SIZE_HERO"
+
+	"Ability1" "barrel_no_health_bar" 
+	"Ability2" "" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+
+	"ArmorPhysical" "0" 
+	"MagicalResistance" "100" 
+
+	"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+
+	"BountyXP" "0" 
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE" 
+
+	"StatusHealth" "1" 
+	"StatusHealthRegen" "0" 
+	"StatusMana" "0" 
+	"StatusManaRegen" "0" 
+
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+	"VisionDaytimeRange" "0" 
+	"VisionNighttimeRange" "0" 
+
+	"HasInventory" "0" 
+	"vscripts"                    "destrSpawn.lua"
+}
+
+"big_barrel"
+{
+	"BaseClass" "npc_dota_building" 
+	"Model" "models/new_barrel/barrel002_reference.vmdl" 
+	"ModelScale" "0.99" 
 	"Level" "1" 
 	"AttackAcquisitionRange" "0"
 	"BoundsHullName" "DOTA_HULL_SIZE_HERO"
