@@ -6,13 +6,14 @@ runeTypes = {
 	item_lia_rune_of_strength = 1,
 	item_lia_rune_of_agility = 1,
 	item_lia_rune_of_intellect = 1,
-
+	item_lia_rune_gold = 0.5,
+	item_lia_rune_lumber = 0.5,
 	--эта руна будет появляться в два раза реже руны с значением 1
 
 }
 
 runeSpawnTime = 60 --период появления рун
-
+Q = 1
 
 runesSpawnChanceSumm = 0
 for k,v in pairs(runeTypes) do
@@ -47,7 +48,14 @@ function StartRunesSpawn()
 	Timers:CreateTimer("LiAruneSpawner",
 		{
             endTime = runeSpawnTime, 
-            callback = function() SpawnRune() return runeSpawnTime end
+            callback = function() 
+            	SpawnRune() 
+            	Q = Q + 1
+            	if Q == 100 then 
+            		return nil 
+            	end
+            	return runeSpawnTime 
+            end
         }
     )
 end

@@ -1,0 +1,37 @@
+    "item_lia_rune_lumber"
+{
+	"ID"                            "1609"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	
+	"Model"							"models/props_gameplay/branch.vmdl"
+	
+	"ItemCost"                      "0" 
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemPermanent"					"0"
+	"AbilityCooldown"               "0"
+	"ItemKillable"                  "0"
+	"ItemSellable"                  "0"
+	"ItemDroppable"                 "1"
+	"ItemInitialCharges"            "1"
+	"ItemStackable"					"0"
+	"ItemCastOnPickup" 				"1"	
+
+
+
+	"OnSpellStart"
+	{
+		"SpendCharge" 
+		{}
+		"RunScript"
+		{
+			"ScriptFile" 	"items\runes.lua"
+			"Function"		"RuneLumber"
+		}
+	}
+
+
+
+}

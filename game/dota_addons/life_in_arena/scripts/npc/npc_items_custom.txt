@@ -7052,6 +7052,88 @@
 	//End of file item_lia_runed_gloves.txt
 
 
+	//Start of file item_lia_rune_gold.txt
+	    "item_lia_rune_gold"
+	{
+		"ID"                            "1608"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge" 
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneGold"
+			}	
+		}
+	
+	
+	
+	}
+	//End of file item_lia_rune_gold.txt
+
+
+	//Start of file item_lia_rune_lumber.txt
+	    "item_lia_rune_lumber"
+	{
+		"ID"                            "1609"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"Model"							"models/props_gameplay/branch.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+	
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge" 
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneLumber"
+			}
+		}
+	
+	
+	
+	}
+	//End of file item_lia_rune_lumber.txt
+
+
 	//Start of file item_lia_rune_of_agility.txt
 	    "item_lia_rune_of_agility"
 	{
