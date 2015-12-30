@@ -4525,7 +4525,6 @@
 	}
 	
 	"item_lia_lightning_bow"
-	
 	{
 		"ID"							"1357"
 		"BaseClass" 					"item_datadriven"
@@ -7185,6 +7184,7 @@
 	
 		
 		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
+		"Effect"						"particles/generic_gameplay/rune_regeneration.vpcf"
 		
 		"ItemCost"                      "0" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
@@ -7302,7 +7302,7 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		
 		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
-		
+		"Effect"						"particles/rune_mana.vpcf"
 		"ItemCost"                      "0" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemShopTags"					"consumable"
@@ -7316,6 +7316,10 @@
 		"ItemStackable"					"0"
 		"ItemCastOnPickup" 				"1"	
 	
+		"precache"
+		{
+			"particle"  "particles/rune_mana.vpcf"
+		}
 	
 		"OnSpellStart"
 		{
@@ -7374,7 +7378,7 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		
 		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
-		
+		"Effect"						"particles/rune_restoretion.vpcf"
 		"ItemCost"                      "0" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemShopTags"					"consumable"
@@ -7391,6 +7395,7 @@
 		"precache"
 		{
 			"particle"  "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf"
+			"particle"	"particles/rune_restoretion.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
 		}
 	
