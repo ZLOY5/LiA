@@ -7083,6 +7083,12 @@
 			{
 				"ScriptFile" 	"items\runes.lua"
 				"Function"		"RuneGold"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Rune.Bounty"
+				"Target" 		"CASTER"
 			}	
 		}
 	
@@ -7125,6 +7131,12 @@
 				"ScriptFile" 	"items\runes.lua"
 				"Function"		"RuneLumber"
 			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Rune.Bounty"
+				"Target" 		"CASTER"
+			}
 		}
 	
 	
@@ -7141,6 +7153,12 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		
 		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
+		"Effect"						"particles/rune_lifeinarena_green.vpcf"
+	
+		"precache"
+		{
+			"particle"  "particles/rune_lifeinarena_green.vpcf"
+		}
 		
 		"ItemCost"                      "0" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
@@ -7167,6 +7185,11 @@
 				"Function"		"RuneOfAgility"
 			}
 			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Illusion"
+				"Target" 		"CASTER"
+			}
 		}
 	
 	
@@ -7233,7 +7256,11 @@
 					}
 				}
 			}
-			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Regen"
+				"Target" 		"CASTER"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -7260,6 +7287,12 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		
 		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
+		"Effect"						"particles/rune_lifeinarena_blue.vpcf"
+	
+		"precache"
+		{
+			"particle"  "particles/rune_lifeinarena_blue.vpcf"
+		}
 		
 		"ItemCost"                      "0" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
@@ -7286,6 +7319,11 @@
 				"Function"		"RuneOfIntellect"
 			}
 			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Illusion"
+				"Target" 		"CASTER"
+			}
 		}
 	
 	
@@ -7352,6 +7390,11 @@
 				}
 			}
 			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Regen"
+				"Target" 		"CASTER"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -7434,7 +7477,12 @@
 					}
 				}
 			}
-			
+		
+			"FireSound"
+			{
+				"EffectName"	"Rune.Regen"
+				"Target" 		"CASTER"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -7464,9 +7512,16 @@
 		"ID"                            "1604"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		
+		"AbilityTextureName"			"item_lia_rune_of_speed"
 		"Model"							"models/props_gameplay/rune_doubledamage01.vmdl"
-		
+		"Effect"						"particles/generic_gameplay/rune_doubledamage.vpcf"
+	
+		"precache"
+		{
+			"particle"  "particles/rune_mana.vpcf"
+			"particle"  "particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
+		}
+	
 		"ItemCost"                      "0" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemShopTags"					"consumable"
@@ -7517,6 +7572,11 @@
 				}
 			}
 			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Haste"
+				"Target" 		"CASTER"
+			}
 		}
 	
 		"Modifiers"
@@ -7526,6 +7586,9 @@
 				"IsBuff"		"1"
 				"IsPurgable"	"1"
 				"Duration"		"%duration"
+	
+				"EffectName"		"particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
+				"EffectAttachType"	"follow_hitloc"
 	
 				"Properties"
 				{
@@ -7546,7 +7609,13 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		
 		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
-		
+		"Effect"						"particles/rune_lifeinarena_red.vpcf"
+	
+		"precache"
+		{
+			"particle"  "particles/rune_lifeinarena_red.vpcf"
+		}
+			
 		"ItemCost"                      "0" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemShopTags"					"consumable"
@@ -7572,6 +7641,11 @@
 				"Function"		"RuneOfStrength"
 			}
 			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Illusion"
+				"Target" 		"CASTER"
+			}
 		}
 	
 	
