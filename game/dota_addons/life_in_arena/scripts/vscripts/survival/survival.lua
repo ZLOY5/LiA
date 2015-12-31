@@ -276,6 +276,7 @@ function Survival:EndRound()
             print("TeleportHeroesWithoutBossArena")
             SetRuneSpawnRegion("rectangle",ARENA_LEFT_BOTTOM_CORNER,ARENA_TOP_RIGHT_CORNER)
             ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
+            ClearBossArenaByItems()
             Survival:_TeleportHeroesWithoutBossArena()
         end
 

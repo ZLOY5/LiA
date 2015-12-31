@@ -28,7 +28,7 @@ function Survival:StartDuels()
             	hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
         	end)
 
-            
+            ClearBossArenaByItems()
         	Survival:CheckDuel()
 		end
 	)
@@ -183,6 +183,7 @@ function Survival:EndDuel(winner,loser)
         end 
     end
     Timers:CreateTimer(2,function()
+        ClearBossArenaByItems()
         CleanUnitsOnMap()
     
         FindClearSpaceForUnit(hero1, hero1.abs, false) 
@@ -201,6 +202,7 @@ function Survival:EndDuels()
     end
 
     RespawnAllHeroes()
+
 
     ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
 

@@ -107,3 +107,19 @@ function ChangeWorldBounds(vMax,vMin)
 
 	SpawnEntityFromTableSynchronous("world_bounds", {Max = vMax, Min = vMin})
 end
+
+function ClearBossArenaByItems()
+	local runes = {}
+    local containers = Entities:FindAllByClassnameWithin("dota_item_drop", ARENA_CENTER_COORD, 1000)
+    for _,container in pairs(containers) do
+        item = container:GetContainedItem()
+        if item then
+            if item:GetPurchaser() == nil then --руны
+                container:RemoveSelf()
+                item:RemoveSelf()
+            else --остальные предметы
+                container:SetAbsOrigin(Vector(-3500,2300,168)+RandomVector(RandomFloat(0, 200)))
+            end
+        end
+    end
+end
