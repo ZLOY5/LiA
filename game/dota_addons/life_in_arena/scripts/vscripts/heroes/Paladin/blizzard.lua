@@ -43,7 +43,7 @@ function BlizzardWave( event )
 	local particle5 = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
 	 ParticleManager:SetParticleControl( particle5, 0, target_position-RandomVector(RandomInt(50,100)) ) end)
 
-    print(target_position)
+    --print(target_position)
 end
 
 function BlizzardEnd( event )
