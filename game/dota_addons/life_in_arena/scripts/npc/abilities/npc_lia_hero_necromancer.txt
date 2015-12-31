@@ -44,7 +44,7 @@
 		"02"
 		{	
 			"var_type"			"FIELD_FLOAT"
-			"duration"			"1.5 2.5 3.5" //"1.27 1.77 2.27 2.77"
+			"duration"			"2.0 3.0 4.0" //"1.27 1.77 2.27 2.77"
 		}
 		"03"
 		{
@@ -60,7 +60,7 @@
 		"05"
 		{
 			"var_type"			"FIELD_FLOAT"
-			"air_time"			"0.50" //"0.52" 
+			"air_time"			"1.00" //"0.52" 
 		}
 	}
 	
@@ -150,6 +150,159 @@
 }
 
 
+"necromancer_stabbing_death_scepter"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"FightRecapLevel"				"1"
+	"AbilityTextureName"			"nyx_assassin_impale"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"550"
+	"AbilityCastPoint"				"0.4"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"15 14 13"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"200 300 400"
+	
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"300 400 500"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"width"				"125 125 125"
+		}
+		"02"
+		{	
+			"var_type"			"FIELD_FLOAT"
+			"duration"			"2.0 3.0 4.0" //"1.27 1.77 2.27 2.77"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"length"			"550"
+		}
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"speed"				"1833" //"1600 1600 1600 1600"
+		}
+		// Extra variables
+		"05"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"air_time"			"1.00" //"0.52" 
+		}
+	}
+	
+	// Data driven
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
+		"particle"				"particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
+	}
+	
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"Hero_NyxAssassin.Impale"
+		}
+	
+		"LinearProjectile"
+		{
+			"Target"			"POINT"
+			"EffectName"		"particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
+			"StartRadius"		"%width"
+			"EndRadius"			"%width"
+			"MoveSpeed"			"%speed"
+			"TargetTeams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			"FixedDistance"		"%length"
+			"ProvidesVision"	"0"
+			"HasFrontalCone"	"0"
+		}
+	}
+	
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"			"0"
+	
+		"FireSound"
+		{
+			"Target"			"TARGET"
+			"EffectName"		"Hero_NyxAssassin.Impale.Target" 
+		}
+	
+		"RemoveModifier"
+		{
+			"Target"			"TARGET"
+			"ModifierName"		"modifier_knockback"
+		}
+		
+		"Knockback"
+		{
+			"Target"			"TARGET"
+			"Center"			"CASTER"
+			"Distance"			"0"
+			"Duration"			"%air_time"
+			"Height"			"200"
+			"IsFixedDistance"	"1"
+		}
+		
+		"Stun"
+		{
+			"Target"			"TARGET"
+			"Duration"			"%duration"
+		}
+		
+		"DelayedAction"
+		{
+			"Delay"				"%air_time"
+			"Action"
+			{
+				"FireSound"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"Hero_NyxAssassin.Impale.TargetLand" 
+				}
+			
+				"Damage"
+				{
+					"Target"			"TARGET"
+					"Damage"			"%AbilityDamage"
+					"Type"				"DAMAGE_TYPE_MAGICAL"
+				}
+			}
+		}
+	}
+}
+
+
+
 "necromancer_reincarnation"
 {
 	// General
@@ -235,12 +388,12 @@
         "01"
         {
             "var_type"          "FIELD_INTEGER"
-            "spirit_health"  "275 650 1250"
+            "skeleton_health"  "275 650 1250"
         }
         "02"
         {
             "var_type"          "FIELD_INTEGER"
-            "spirit_damage"  "13 25 49"
+            "skeleton_damage"  "13 25 49"
         }
         "03"
         {
@@ -259,7 +412,88 @@
 	
 		"RunScript"
 		{
-			"ScriptFile"    "heroes/Necromancer/reincarnation.lua"
+			"ScriptFile"    "heroes/Necromancer/deads.lua"
+			"Function"      "Create"
+			"durat" 	"%duration"
+			"count" 	"%count_sum"
+		}
+	
+
+        //"FireSound"
+		//{
+		//	"EffectName" "Hero_Spectre.Haunt"
+		//	"Target"	 "CASTER"
+		//}
+
+
+    }
+
+}
+
+
+
+"necromancer_deads_scepter"
+{
+
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    //"AbilityTextureName"    "spectre_reality"
+    
+ 
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+    
+	"precache"
+	{
+		"model" "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"
+	    //"soundfile" "soundevents/game_sounds_heroes/game_sounds_spectre.vsndevts"
+	    //"model"   "models/heroes/vengeful/vengeful.vmdl"
+	    //"model"   "models/items/vengeful/vengeful_immortal_weapon/vengeful_immortal_weapon.vmdl"
+	    //"model"   "models/items/vengefulspirit/fallenprincess_shoulders/fallenprincess_shoulders.vmdl"
+	    //"model"   "models/items/vengefulspirit/fallenprincess_legs/fallenprincess_legs.vmdl"
+	    //"model"   "models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl"
+	    //"particle"  "particles/units/heroes/hero_vengeful/vengeful_ambient.vpcf"
+	    //"particle"  "particles/econ/items/vengeful/vengeful_wing_fallenprincess/venge_wingsoffallenprincess_ambient.vpcf"
+	    //"particle"  "particles/units/heroes/hero_vengeful/vengeful_base_attack.vpcf"
+	}
+
+    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
+
+    "AbilityCooldown"               "25"
+
+    "AbilityManaCost"               "150 300 450"
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "skeleton_health"  "650 1250 1500"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "skeleton_damage"  "25 49 101"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "duration"  "60"
+        }
+        "04"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "count_sum"  "2 3 4"
+        }
+    }
+
+    "OnSpellStart"
+    {
+	
+		"RunScript"
+		{
+			"ScriptFile"    "heroes/Necromancer/deads.lua"
 			"Function"      "Create"
 			"durat" 	"%duration"
 			"count" 	"%count_sum"
@@ -312,91 +546,122 @@
 
 
 
-
-
-// https://github.com/MNoya/DotaCraft/blob/master/game/dota_addons/dotacraft/scripts/vscripts/units/undead/necromancer.lua
+// Death Knight Animate Dead
+// Author: Noya
+// Date: 21.1.2015.
 
 "necromancer_galvanization"
 {
-	"BaseClass"					"ability_datadriven"
-	//"AbilityTextureName"		"undead_raise_dead"
-	"MaxLevel"					"1"
-		
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
-	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
-		
-	"AbilityCastRange"			"900 900"
-	"AbilityCastPoint"			"0 0"
-	"AbilityCooldown"			"8 8"
-	"AbilityManaCost"			"75 75"
-		
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"death_knight_animate_dead"
+	"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
+	
+	"MaxLevel"              "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+
+	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+
+	"AbilityCastRange"				"1000"
+	"AbilityCastPoint"				"0.453"
+
+	"AbilityCooldown"			"200 170 140"
+	"AbilityManacost"			"250 300 350"
+
+	"precache"
+	{
+		"particle"	"particles/custom/abaddon_death_coil_explosion.vpcf"
+		"particle"	"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
+		"particle"  "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+	}
+	
 	"AbilitySpecial"
 	{
 		"01"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"duration"		"40 40"
+			"var_type"					"FIELD_INTEGER"
+			"duration"					"25 30 35"
 		}
 		"02"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"900 900"
+			"var_type"					"FIELD_INTEGER"
+			"radius"					"1000"
 		}
-		// It raises 2 melee skeletons at level one then 1 melee skeleton, 1 ranged skeleton at level two.
-		// Can be autocasted to automatically raise corpses in the 600 radius.
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"max_units_resurrected"		"7 10 13"
+		}		
 	}
-	
-	"precache"
-	{
-		"model" "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"
-		"model"	"models/items/wraith_king/regalia_of_the_bonelord_cape.vmdl"
-		"model"	"models/items/pugna/ashborn_horns/ashborn_horns.vmdl"
-		"model_folder" "models/heroes/pugna"	
-		
-		// particle precaches
-		"particle" "particles/neutral_fx/skeleton_spawn.vpcf"
-		"particle" "particles/units/heroes/hero_pugna/pugna_base_attack.vpcf"
-	}
-	
+
 	"OnAbilityPhaseStart"
 	{
 		"RunScript"
 		{
-			"Target" "CASTER"
-			"ScriptFile" "units/undead/necromancer.lua"
-			"Function" "AnimateDeadPrecast"
+			"ScriptFile"	"heroes/Necromancer/galvanization.lua"
+			"Function"		"AnimateDeadPrecast"
 		}
 	}
 	
+
 	"OnSpellStart"
 	{
+		"FireSound"
+		{
+			"EffectName"		"Hero_Abaddon.AphoticShield.Cast"
+			"Target"			"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "CASTER"
+		}
+
 		"RunScript"
 		{
-			"Target"		"CASTER"
-			"ScriptFile" 	"units/undead/necromancer.lua"
-			"Function"		"undead_raise_dead"
-		}
+			"ScriptFile"	"heroes/Necromancer/galvanization.lua"
+			"Function"		"AnimateDead"
+		}		
 	}
-	
+
 	"Modifiers"
 	{
-		"modifier_raise_dead_autocast"
+		"modifier_animate_dead"
 		{
-			"Passive" "1"
-			"IsHidden" "1"
-			
 			"OnCreated"
-			{
-				"RunScript"
+			{	
+				"AttachEffect"
 				{
-					"Target"		"CASTER"
-					"ScriptFile" 	"units/undead/necromancer.lua"
-					"Function"		"undead_raise_dead_autocast"
+				 	"EffectName"		"particles/custom/abaddon_death_coil_explosion.vpcf"
+				 	"EffectAttachType"	"follow_origin"
+				 	"Target"			"TARGET"
+
+				 	"ControlPointEntities"
+		            {
+		                "TARGET"    "attach_origin" // Control Point 0
+		                "TARGET"    "attach_origin" // Control Point 1
+		            }
 				}
 			}
-		}	
+
+			"StatusEffectName" 			"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
+			"StatusEffectPriority" 		"15"
+
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
 	}
 }
+
 
 
 

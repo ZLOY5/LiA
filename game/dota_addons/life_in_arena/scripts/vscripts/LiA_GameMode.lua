@@ -1,4 +1,8 @@
 
+CORPSE_MODEL = "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_troll_skeleton_fx.vmdl"
+CORPSE_DURATION = 88
+
+
 _G.LIA_MODE_SURVIVAL = 1
 _G.LIA_MODE_BATTLE_OF_CLANS = 2
 

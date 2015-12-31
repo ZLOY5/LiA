@@ -299,7 +299,27 @@ function OnEquip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
-		end			
+		end		
+
+		if name == "npc_dota_hero_undying" then
+			par = {
+				unit = caster,
+				oldAbi = "necromancer_stabbing_death",
+				newAbi = "necromancer_stabbing_death_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "necromancer_deads",
+				newAbi = "necromancer_deads_scepter",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
+		end				
 		
 		-- next heroes
 	end
@@ -617,6 +637,26 @@ function OnUnequip(event)
 			--
 			caster.STupgrades = false
 		end			
+		
+		if name == "npc_dota_hero_undying" then
+			par = {
+				unit = caster,
+				oldAbi = "necromancer_stabbing_death_scepter",
+				newAbi = "necromancer_stabbing_death",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "necromancer_deads_scepter",
+				newAbi = "necromancer_deads",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end	
 		
 	end
 	--end

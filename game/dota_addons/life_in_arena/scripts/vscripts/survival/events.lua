@@ -100,6 +100,58 @@ function Survival:_OnBossDeath(keys)
     end
 end
 
+
+
+
+function SetNoCorpse( event )
+    event.target.no_corpse = true
+end
+
+function FindCorpseInRadius( origin, radius )
+    return Entities:FindByModelWithin(nil, CORPSE_MODEL, origin, radius) 
+end
+
+-- Custom Corpse Mechanic
+function LeavesCorpse( unit )
+    
+    if not unit or not IsValidEntity(unit) then
+        return false
+
+    -- Heroes don't leave corpses (includes illusions)
+    elseif unit:IsHero() then
+        return false
+
+    -- Ignore buildings 
+    --elseif unit.GetInvulnCount ~= nil then
+    --    return false
+
+    -- Ignore custom buildings
+    --elseif IsCustomBuilding(unit) then
+    --    return false
+
+    -- Ignore units that start with dummy keyword   
+    elseif string.find(unit:GetUnitName(), "dummy") or  string.find(unit:GetUnitName(), "megaboss") then
+        return false
+
+    -- Ignore units that were specifically set to leave no corpse
+    elseif unit.no_corpse then
+        return false
+
+    -- Read the LeavesCorpse KV
+    else
+        local unit_info = GameRules.UnitKV[unit:GetUnitName()]
+        if unit_info["LeavesCorpse"] and unit_info["LeavesCorpse"] == 0 then
+            return false
+        else
+            -- Leave corpse     
+            return true
+        end
+    end
+end
+
+
+
+
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
     if keys.entindex_attacker then 
@@ -119,6 +171,35 @@ function Survival:OnEntityKilled(keys)
     elseif string.find(killed:GetUnitName(),"_wave_megaboss") then
         Survival:EndRound()
     end 
+	--
+	if not string.find(killed:GetUnitName(),"_wave_megaboss") then
+		-- If the unit is supposed to leave a corpse, create a dummy_unit to use abilities on it.
+		Timers:CreateTimer(1, function() 
+		if LeavesCorpse( killed ) then
+				-- Create and set model
+				local corpse = CreateUnitByName("dummy_unit", killed:GetAbsOrigin(), true, nil, nil, killed:GetTeamNumber())
+				corpse:SetModel(CORPSE_MODEL)
+
+				-- Set the corpse invisible until the dota corpse disappears
+				corpse:AddNoDraw()
+				
+				-- Keep a reference to its name and expire time
+				corpse.corpse_expiration = GameRules:GetGameTime() + CORPSE_DURATION
+				corpse.unit_name = killed:GetUnitName()
+
+				-- Set custom corpse visible
+				Timers:CreateTimer(3, function() if IsValidEntity(corpse) then corpse:RemoveNoDraw() end end)
+
+				-- Remove itself after the corpse duration
+				Timers:CreateTimer(CORPSE_DURATION, function()
+					if corpse and IsValidEntity(corpse) then
+						corpse:RemoveSelf()
+					end
+				end)
+			end
+		end)
+	end
+	--
 
     Survival:AICreepsRemoveFromTable(killed)
 end
