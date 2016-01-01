@@ -1,5 +1,8 @@
-
-CORPSE_MODEL = "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_troll_skeleton_fx.vmdl"
+--
+CORPSE_MODEL = "models/development/invisiblebox.vmdl" --"models/items/pudge/pudge_skeleton_hook.vmdl"
+--"particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_eztzhok_ambient_blade_rope_lv.vpcf"
+--"models/props_nature/grass_clump_00f.vmdl"
+--"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_troll_skeleton_fx.vmdl"
 CORPSE_DURATION = 88
 
 

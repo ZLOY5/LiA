@@ -49,7 +49,7 @@ end
 function AnimateDeadPrecast( event )
 	local ability = event.ability
 	local corpse = Entities:FindByModelWithin(nil, CORPSE_MODEL, event.caster:GetAbsOrigin(), ability:GetCastRange()) 
-	local pID = event.caster:GetPlayerID()
+	local pID = event.caster:GetPlayerOwnerID() --event.caster:GetPlayerID()
 	if corpse == nil then
 		event.caster:Interrupt()
 		--SendErrorMessage(pID, "#error_no_usable_corpses")

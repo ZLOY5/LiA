@@ -67,6 +67,9 @@ function AddModifier(keys)
 		--local modifier = FindModifierByName()
 		if ability2:GetLevel() > 0 then
 			if max_bonus > caster.curr_agi then
+				if max_bonus < caster.curr_agi + bonus_agi then
+					bonus_agi = max_bonus - caster.curr_agi
+				end
 				caster.curr_agi = caster.curr_agi + bonus_agi
 				caster:ModifyAgility(bonus_agi)
 				caster:CalculateStatBonus()
