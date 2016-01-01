@@ -1,9 +1,13 @@
 
 
-#image_bg
+#image_bg 
 {
   margin-left: 0%;
+
 }
+
+
+
 .Root
 {
   width: 100%;
@@ -14,4 +18,22 @@
 {
   min-width: 100%;
   min-height: 100%;
+  visibility: visible;
+}
+
+.AspectRatio4x3 .ImageBg 
+{
+  visibility: collapse;
+}
+
+.ImageBg4x3
+{
+  visibility: collapse;
+}
+
+.AspectRatio4x3 .ImageBg4x3
+{
+  min-width: 100%;
+  min-height: 100%;
+  visibility: visible;
 }
