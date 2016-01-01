@@ -27,6 +27,11 @@ function Precache( context )
 		PrecacheUnitByNameAsync("ghost_3", function(...) end)
 		PrecacheUnitByNameAsync("ghost_4", function(...) end)
 
+		PrecacheUnitByNameAsync("necromancer_skeleton1", function(...) end)
+		PrecacheUnitByNameAsync("necromancer_skeleton2", function(...) end)
+		PrecacheUnitByNameAsync("necromancer_skeleton3", function(...) end)
+		PrecacheUnitByNameAsync("necromancer_skeleton4", function(...) end)
+		
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf" , context)
 		--Берсеркер
 		PrecacheResource("particle", "particles/units/heroes/hero_huskar/huskar_base_attack.vpcf" , context)
