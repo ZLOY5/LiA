@@ -9,7 +9,7 @@ function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
 	for i = 1, abilities-1 do
 		local ability = unit:GetAbilityByIndex(i)
-		if ability and ability:GetCooldownTimeRemaining() ~= 0 then
+		if ability and not ability:IsCooldownReady() then
 			ability:EndCooldown()
 		end
 	end
