@@ -94,289 +94,13 @@ function Survival:_OnBossDeath(keys)
 		CustomGameEventManager:Send_ServerToAllClients( "upd_action_killboss", {pID = hero:GetPlayerID() } )
     end
 
-    self.nDeathCreeps = self.nDeathCreeps + 1
-    if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] then
-        Survival:EndRound()
-    end
-end
-
-
-
-
-function SetNoCorpse( event )
-    event.target.no_corpse = true
-end
-
-function FindCorpseInRadius( origin, radius )
-    return Entities:FindByModelWithin(nil, CORPSE_MODEL, origin, radius) 
-end
-
--- who cant res
-function UnitIsSummonNoCorpse(u)
-	if u:GetUnitName() == "android_clockwerk_goblin1" then
-		return true
-	elseif u:GetUnitName() == "android_clockwerk_goblin2" then
-		return true
-	elseif u:GetUnitName() == "android_clockwerk_goblin3" then
-		return true
-	--
-	elseif u:GetUnitName() == "phoenix_bm"    then
-		return true
-	elseif u:GetUnitName() == "phoenix_egg_bm"    then
-		return true
-	--
-	elseif u:GetUnitName() == "firelord_lava_spawn1"  then
-		return true
-	elseif u:GetUnitName() == "firelord_lava_spawn2"  then
-		return true
-	elseif u:GetUnitName() == "firelord_lava_spawn3"  then
-		return true
-	--
-	elseif u:GetUnitName() == "npc_serpent_ward_1" then
-		return true
-	elseif u:GetUnitName() == "npc_serpent_ward_2" then
-		return true
-	elseif u:GetUnitName() == "npc_serpent_ward_3" then
-		return true
-	elseif u:GetUnitName() == "npc_serpent_ward_4" then
-		return true
-	--
-	elseif u:GetUnitName() == "npc_water_elemental_1" then
-		return true
-	elseif u:GetUnitName() == "npc_water_elemental_2" then
-		return true
-	elseif u:GetUnitName() == "npc_water_elemental_3" then
-		return true
-	elseif u:GetUnitName() == "npc_water_elemental_4" then
-		return true
-	--
-	elseif u:GetUnitName() == "item_lia_healing_ward_unit" then
-		return true
-	--
-	elseif u:GetUnitName() == "keeper_of_the_grove_treant_1" then
-		return true
-	elseif u:GetUnitName() == "keeper_of_the_grove_treant_2" then
-		return true
-	elseif u:GetUnitName() == "keeper_of_the_grove_treant_3" then
-		return true
-	elseif u:GetUnitName() == "keeper_of_the_grove_young_treant" then
-		return true
-	--
-	elseif u:GetUnitName() == "necromancer_skeleton1" then
-		return true
-	elseif u:GetUnitName() == "necromancer_skeleton2" then
-		return true
-	elseif u:GetUnitName() == "necromancer_skeleton3" then
-		return true
-	elseif u:GetUnitName() == "necromancer_skeleton4" then
-		return true
-	--
-	elseif u:GetUnitName() == "book_of_the_dead_skeleton_melee" then
-		return true
-	elseif u:GetUnitName() == "book_of_the_dead_skeleton_melee_ranged" then
-		return true
-	--
-	elseif u:GetUnitName() == "npc_lia_boar" then
-		return true
-	--
-	elseif u:GetUnitName() == "spherical_staff_fire_golem" then
-		return true
-	--
-	elseif u:GetUnitName() == "spirit_of_the_plains1" then
-		return true
-	elseif u:GetUnitName() == "spirit_of_the_plains2" then
-		return true
-	elseif u:GetUnitName() == "spirit_of_the_plains3" then
-		return true
-	--
-	elseif u:GetUnitName() == "ghost_1" then
-		return true
-	elseif u:GetUnitName() == "ghost_2" then
-		return true
-	elseif u:GetUnitName() == "ghost_3" then
-		return true
-	elseif u:GetUnitName() == "ghost_4" then
-		return true
-	--
-	elseif u:GetUnitName() == "fire_golem_10_wave" then
-		return true
-		
-	else
-		--print("false")
-		return false
-	end
-		
-end
-
-
-function UnitIsSummon(u)
-	--print(u:GetUnitName())
-	if u:GetUnitName() == "android_clockwerk_goblin1" then
-		return true
-	elseif u:GetUnitName() == "android_clockwerk_goblin2" then
-		return true
-	elseif u:GetUnitName() == "android_clockwerk_goblin3" then
-		return true
-	--
-	elseif u:GetUnitName() == "white_wolf_bm"  then
-		return true
-	elseif u:GetUnitName() == "jungle_stalker_bm"   then
-		return true
-	elseif u:GetUnitName() == "phoenix_bm"    then
-		return true
-	elseif u:GetUnitName() == "phoenix_egg_bm"    then
-		return true
-	elseif u:GetUnitName() == "bear_bm"    then
-		return true
-	--
-	elseif u:GetUnitName() == "butcher_zombie_1"  then
-		return true
-	elseif u:GetUnitName() == "butcher_zombie_2"  then
-		return true
-	elseif u:GetUnitName() == "butcher_zombie_3"  then
-		return true
-	--
-	elseif u:GetUnitName() == "firelord_lava_spawn1"  then
-		return true
-	elseif u:GetUnitName() == "firelord_lava_spawn2"  then
-		return true
-	elseif u:GetUnitName() == "firelord_lava_spawn3"  then
-		return true
-	--
-	elseif u:GetUnitName() == "npc_serpent_ward_1" then
-		return true
-	elseif u:GetUnitName() == "npc_serpent_ward_2" then
-		return true
-	elseif u:GetUnitName() == "npc_serpent_ward_3" then
-		return true
-	elseif u:GetUnitName() == "npc_serpent_ward_4" then
-		return true
-	--
-	elseif u:GetUnitName() == "npc_water_elemental_1" then
-		return true
-	elseif u:GetUnitName() == "npc_water_elemental_2" then
-		return true
-	elseif u:GetUnitName() == "npc_water_elemental_3" then
-		return true
-	elseif u:GetUnitName() == "npc_water_elemental_4" then
-		return true
-	--
-	elseif u:GetUnitName() == "item_lia_healing_ward_unit" then
-		return true
-	--
-	elseif u:GetUnitName() == "keeper_of_the_grove_treant_1" then
-		return true
-	elseif u:GetUnitName() == "keeper_of_the_grove_treant_2" then
-		return true
-	elseif u:GetUnitName() == "keeper_of_the_grove_treant_3" then
-		return true
-	elseif u:GetUnitName() == "keeper_of_the_grove_young_treant" then
-		return true
-	--
-	elseif u:GetUnitName() == "necromancer_skeleton1" then
-		return true
-	elseif u:GetUnitName() == "necromancer_skeleton2" then
-		return true
-	elseif u:GetUnitName() == "necromancer_skeleton3" then
-		return true
-	elseif u:GetUnitName() == "necromancer_skeleton4" then
-		return true
-	--
-	elseif u:GetUnitName() == "book_of_the_dead_skeleton_melee" then
-		return true
-	elseif u:GetUnitName() == "book_of_the_dead_skeleton_melee_ranged" then
-		return true
-	elseif u:GetUnitName() == "npc_lia_troll_defender" then
-		return true
-	elseif u:GetUnitName() == "npc_lia_troll_healer" then
-		return true
-	elseif u:GetUnitName() == "npc_doom_guard_spawn" then
-		return true
-	elseif u:GetUnitName() == "npc_lia_boar" then
-		return true
-	--
-	elseif u:GetUnitName() == "hell_beast" then
-		return true
-	--
-	elseif u:GetUnitName() == "queen_of_spiders_spider_1" then
-		return true
-	elseif u:GetUnitName() == "queen_of_spiders_spider_2" then
-		return true
-	elseif u:GetUnitName() == "queen_of_spiders_spider_3" then
-		return true
-	--
-	elseif u:GetUnitName() == "spherical_staff_fire_golem" then
-		return true
-	--
-	elseif u:GetUnitName() == "spirit_of_the_plains1" then
-		return true
-	elseif u:GetUnitName() == "spirit_of_the_plains2" then
-		return true
-	elseif u:GetUnitName() == "spirit_of_the_plains3" then
-		return true
-	elseif u:GetUnitName() == "ghost_1" then
-		return true
-	elseif u:GetUnitName() == "ghost_2" then
-		return true
-	elseif u:GetUnitName() == "ghost_3" then
-		return true
-	elseif u:GetUnitName() == "ghost_4" then
-		return true
-	--
-	elseif u:GetUnitName() == "fire_golem_10_wave" then
-		return true
-	--
-	else
-		--print("false")
-		return false
+    if self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
+	    self.nDeathCreeps = self.nDeathCreeps + 1
+	    if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] then
+	        Survival:EndRound()
+	    end
 	end
 end
-
--- Custom Corpse Mechanic
-function LeavesCorpse( unit )
-    
-    if not unit or not IsValidEntity(unit) then
-        return false
-
-    -- Heroes don't leave corpses (includes illusions)
-    elseif unit:IsHero() then
-        return false
-
-    -- Ignore buildings 
-    elseif string.find(unit:GetName(), "building") then
-        return false
-
-		
-    -- Ignore summons
-	--FindModifierByName
-    --elseif unit:FindModifierByName('modifier_kill')  then -- ~= nil
-	--elseif unit:IsSummoned() then
-	--elseif UnitIsSummon(unit) then
-	elseif UnitIsSummonNoCorpse(unit) then
-		return false
-
-    -- Ignore units that start with dummy keyword   
-    elseif string.find(unit:GetUnitName(), "dummy") or string.find(unit:GetUnitName(), "megaboss") then
-        return false
-
-    -- Ignore units that were specifically set to leave no corpse
-    elseif unit.no_corpse then
-        return false
-
-    -- Read the LeavesCorpse KV
-    else
-        local unit_info = GameRules.UnitKV[unit:GetUnitName()]
-        if unit_info["LeavesCorpse"] and unit_info["LeavesCorpse"] == 0 then
-            return false
-        else
-            -- Leave corpse     
-            return true
-        end
-    end
-end
-
-
-
 
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
@@ -384,17 +108,21 @@ function Survival:OnEntityKilled(keys)
         local attacker = EntIndexToHScript(keys.entindex_attacker)
         local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     end
+    
     if killed:IsRealHero() then
         Survival:_OnHeroDeath(keys)
         return
-    elseif self.State == SURVIVAL_STATE_ROUND_FINALBOSS then
+    end
+
+    if self.State == SURVIVAL_STATE_ROUND_FINALBOSS then
         Survival:_OnFinalBossDeath(keys)
-        return
-    elseif string.find(killed:GetUnitName(),"_wave_creep") and not killed:IsOwnedByAnyPlayer() then 
+    end
+
+    if string.find(killed:GetUnitName(),"_wave_creep") and not killed:IsOwnedByAnyPlayer() then 
         Survival:_OnCreepDeath(keys)   
-    elseif string.find(killed:GetUnitName(),"_wave_boss") and not killed:IsOwnedByAnyPlayer() then
+    elseif string.find(killed:GetUnitName(),"boss") and not killed:IsOwnedByAnyPlayer() then
         Survival:_OnBossDeath(keys)
-    elseif string.find(killed:GetUnitName(),"_wave_megaboss") then
+    elseif string.find(killed:GetUnitName(),"_wave_megaboss") and self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
         Survival:EndRound()
     end 
 	--
