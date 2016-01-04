@@ -20,13 +20,16 @@ function Think15Wave()
 		return 1
 	end
 
+	if ABILITY_15_megaboss_illusions:IsFullyCastable() and thisEntity:GetHealthPercent() < 80 then
+		thisEntity:CastAbilityNoTarget(ABILITY_15_megaboss_illusions, -1)
+		return 2
+	end
+
 	if thisEntity:IsStunned() then 
 		return 2 
 	end
 
-	if ABILITY_15_megaboss_illusions:IsFullyCastable() and thisEntity:GetHealthPercent() < 80 then
-		thisEntity:CastAbilityNoTarget(ABILITY_15_megaboss_illusions, -1)
-	elseif ABILITY_15_megaboss_silence:IsFullyCastable() then
+	if ABILITY_15_megaboss_silence:IsFullyCastable() then
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 

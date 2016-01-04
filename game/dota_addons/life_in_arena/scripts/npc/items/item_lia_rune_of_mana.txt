@@ -17,7 +17,7 @@
 	"ItemDroppable"                 "1"
 	"ItemInitialCharges"            "1"
 	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
+	"ItemCastOnPickup" 				"0"	
 	"ItemPurchasable"				"0"
 	
 	"precache"
@@ -25,7 +25,7 @@
 		"particle"  "particles/rune_mana.vpcf"
 	}
 
-	"OnSpellStart"
+	"OnEquip"
 	{
 		"SpendCharge"
 		{}
