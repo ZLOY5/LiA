@@ -1,7 +1,7 @@
 require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
-    thisEntity:SetHullRadius(32) 
+    thisEntity:SetHullRadius(30) 
 	if thisEntity:GetPlayerOwnerID() ~= -1 then
 		return
 	end
