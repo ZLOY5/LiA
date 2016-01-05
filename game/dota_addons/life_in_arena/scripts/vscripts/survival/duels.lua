@@ -210,6 +210,7 @@ function Survival:EndDuels()
         ResetAllAbilitiesCooldown(hero)
         if hero:IsAlive() then
             hero:RemoveModifierByName("modifier_stun_lua")
+            FindClearSpaceForUnit(hero, hero.abs, false)
             SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
         end
     end)

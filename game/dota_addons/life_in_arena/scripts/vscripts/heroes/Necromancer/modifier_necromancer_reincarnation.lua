@@ -50,7 +50,9 @@ function modifier_necromancer_reincarnation:ReincarnateTime(params)
 				ParticleManager:DestroyParticle(parent.ReincarnateParticle, false)
 				parent:EmitSound("Hero_SkeletonKing.Reincarnate.Stinger")
 				
-				self:GetParent():RespawnHero(false, false, false)
+				if not self:GetParent():IsAlive() then
+					self:GetParent():RespawnHero(false, false, false)
+				end
 			end
 		)
 		return self.reincarnateTime
