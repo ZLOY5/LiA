@@ -7056,7 +7056,7 @@
 	{
 		"ID"                            "1608"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		
@@ -7071,11 +7071,11 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 	
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge" 
 			{}
@@ -7103,7 +7103,7 @@
 	{
 		"ID"                            "1609"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 		"Model"							"models/props_gameplay/branch.vmdl"
 		
@@ -7118,11 +7118,11 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 	
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge" 
 			{}
@@ -7150,7 +7150,7 @@
 	{
 		"ID"                            "1606"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
 		"Effect"						"particles/rune_lifeinarena_green.vpcf"
@@ -7171,11 +7171,11 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 	
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge"
 			{}
@@ -7203,7 +7203,7 @@
 	{
 		"ID"                            "1601"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	
 		
 		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
@@ -7220,7 +7220,7 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 		
 		"precache"
@@ -7228,7 +7228,7 @@
 			"particle"  "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal.vpcf"
 		}
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge"
 			{}
@@ -7285,7 +7285,7 @@
 	{
 		"ID"                            "1607"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
 		"Effect"						"particles/rune_lifeinarena_blue.vpcf"
@@ -7306,11 +7306,11 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 	
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge"
 			{}
@@ -7338,7 +7338,7 @@
 	{
 		"ID"                            "1602"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
 		"Effect"						"particles/rune_mana.vpcf"
@@ -7353,7 +7353,7 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 		
 		"precache"
@@ -7361,7 +7361,7 @@
 			"particle"  "particles/rune_mana.vpcf"
 		}
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge"
 			{}
@@ -7420,7 +7420,7 @@
 	{
 		"ID"                            "1603"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
 		"Effect"						"particles/rune_restoretion.vpcf"
@@ -7435,7 +7435,7 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 		
 		"precache"
@@ -7445,7 +7445,7 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
 		}
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge"
 			{}
@@ -7514,7 +7514,7 @@
 	{
 		"ID"                            "1604"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_lia_rune_of_speed"
 		"Model"							"models/props_gameplay/rune_doubledamage01.vmdl"
 		"Effect"						"particles/generic_gameplay/rune_doubledamage.vpcf"
@@ -7536,7 +7536,7 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 		
 		"AbilitySpecial"
@@ -7559,7 +7559,7 @@
 			}
 		}
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge"
 			{}
@@ -7611,7 +7611,7 @@
 	{
 		"ID"                            "1605"
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
 		"Effect"						"particles/rune_lifeinarena_red.vpcf"
@@ -7632,11 +7632,11 @@
 		"ItemDroppable"                 "1"
 		"ItemInitialCharges"            "1"
 		"ItemStackable"					"0"
-		"ItemCastOnPickup" 				"0"	
+		"ItemCastOnPickup" 				"1"	
 		"ItemPurchasable"				"0"
 	
 	
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"SpendCharge"
 			{}

@@ -1,16 +1,19 @@
 function RuneOfStrength(event)
-	event.caster:ModifyStrength(1)
-	event.caster:CalculateStatBonus()
+	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
+	hero:ModifyStrength(1)
+	hero:CalculateStatBonus()
 end
 
 function RuneOfAgility(event)
-	event.caster:ModifyAgility(1)
-	event.caster:CalculateStatBonus()
+	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
+	hero:ModifyAgility(1)
+	hero:CalculateStatBonus()
 end
 
 function RuneOfIntellect(event)
-	event.caster:ModifyIntellect(1)
-	event.caster:CalculateStatBonus()
+	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
+	hero:ModifyIntellect(1)
+	hero:CalculateStatBonus()
 end
 
 function RuneGold(event)
