@@ -51,7 +51,7 @@ function modifier_knight_cuirass_damage_return_lua:OnTakeDamage(params)
 
 				local return_damage = reflect_percent*0.01*params.original_damage
 				
-				ApplyDamage(
+				local damageApplied = ApplyDamage(
 				{
 					victim = params.attacker, 
 					attacker = target, 
@@ -60,6 +60,8 @@ function modifier_knight_cuirass_damage_return_lua:OnTakeDamage(params)
 					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
 					ability = params.ability
 				})
+				print("Original damage = ",params.original_damage," Damage to return = ",return_damage," Applied damdge = ",damageApplied)
+
 			end
 		end
 	end

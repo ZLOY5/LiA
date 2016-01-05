@@ -16,7 +16,7 @@ end
 function RuneGold(event)
 	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
 	hero:ModifyGold(100, false, DOTA_ModifyGold_Unspecified)
-	SendOverheadEventMessage(hero:GetPlayerOwner(), OVERHEAD_ALERT_GOLD, hero, 100, nil )
+	SendOverheadEventMessage(hero:GetPlayerOwner(), OVERHEAD_ALERT_GOLD, event.caster, 100, nil )
 end
 
 function RuneLumber(event)
