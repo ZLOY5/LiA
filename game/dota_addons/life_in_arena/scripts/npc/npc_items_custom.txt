@@ -7333,6 +7333,107 @@
 	//End of file item_lia_rune_of_intellect.txt
 
 
+	//Start of file item_lia_rune_of_lifesteal.txt
+	    "item_lia_rune_of_lifesteal"
+	{
+		"ID"                            "1610"
+		"BaseClass"                     "item_lua"
+		"ScriptFIle"					"items\runes.lua"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		
+		"Model"							"models/props_gameplay/rune_haste01.vmdl"
+		"Effect"						"particles/generic_gameplay/rune_haste.vpcf"
+	
+		"precache"
+		{
+			"particle" "particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_bloodrage_ground_eztzhok.vpcf"
+		}
+		
+		"ItemCost"                      "99999" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"15"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"50"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"100"
+			}
+		}
+	}
+	//End of file item_lia_rune_of_lifesteal.txt
+
+
+	//Start of file item_lia_rune_of_luck.txt
+	    "item_lia_rune_of_luck"
+	{
+		"ID"                            "1611"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		
+		"Model"							"models/props_gameplay/rune_goldxp.vmdl"
+		"Effect"						"particles/generic_gameplay/rune_bounty.vpcf"
+	
+		
+		"ItemCost"                      "99999" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfLuck"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Bounty"
+				"Target" 		"CASTER"
+			}
+		}
+	
+	
+	
+	}
+	//End of file item_lia_rune_of_luck.txt
+
+
 	//Start of file item_lia_rune_of_mana.txt
 	    "item_lia_rune_of_mana"
 	{
