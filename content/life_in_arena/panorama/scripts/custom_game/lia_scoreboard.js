@@ -147,10 +147,10 @@ function OnUpdAction( data )
 	{
 		localPlayerTeamId = localPlayer.player_team_id;
 	}
-	if (localPlayerTeamId !== 2) // DOTA_TEAM_GOODGUYS = 2
-	{
-		return;
-	}
+	//if (localPlayerTeamId !== 2) // DOTA_TEAM_GOODGUYS = 2
+	//{
+	//	return;
+	//}
 	//$.Msg( "                  OnUpdAction: localPlayerTeamId ", localPlayerTeamId );
 	//
 	//var teamPanel = $.GetContextPanel();
@@ -171,7 +171,7 @@ function OnUpdAction( data )
 		"playerXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_player.xml",
 	};*/
 	
-	var teamPlayers = Game.GetPlayerIDsOnTeam( localPlayerTeamId );
+	var teamPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_GOODGUYS );
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
 	//$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
 	if ( playersContainer )
