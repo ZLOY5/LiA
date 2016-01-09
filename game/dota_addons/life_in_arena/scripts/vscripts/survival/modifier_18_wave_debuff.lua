@@ -12,10 +12,6 @@ function modifier_18_wave_debuff:IsPurgeException()
 	return true 
 end
 
-function modifier_18_wave_debuff:StatusEffectPriority()
-	return 999
-end
-
 function modifier_18_wave_debuff:IsHidden()
 	return false
 end

@@ -54,7 +54,7 @@ function createWave(keys)
 		iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
 		bProvidesVision = true,
 		fVisionRadius = vision_aoe,
-		--iVisionTeamNumber = caster:GetTeamNumber(),
+		iVisionTeamNumber = caster:GetTeamNumber(),
 		--bReplaceExisting = false,
 		--bDeleteOnHit = true,
     }
