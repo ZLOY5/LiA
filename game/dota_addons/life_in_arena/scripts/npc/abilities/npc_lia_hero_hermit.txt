@@ -664,13 +664,6 @@
 	
 		"OnSpellStart"
 		{
-			
-			//"FireSound"
-			//{
-			//	"EffectName"	"Hero_Bane.Nightmare"
-			//	"Target"		"CASTER"
-			//}
-			
 			"FireSound"
 			{
 				"EffectName" "Hero_Morphling.Waveform"
@@ -680,10 +673,13 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_storm_hero"
-				"Target"		"CASTER"
+				"Target"
+						{
+							"Center" 	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 				"Duration"		"%AbilityDuration"
 			}	
-
 		}
 	
 		"OnProjectileHitUnit"
@@ -726,11 +722,9 @@
 					}
 				}
 			}
-	
-
 		}
 		
-		"OnChannelInterrupted"
+		"OnChannelFinnish"
 		{
 			"RemoveModifier"
 		       {
@@ -738,7 +732,7 @@
 		         "Target"        "CASTER"
 		       }
 		}     
-	
+
 		"Modifiers"
 		{
 			"modifier_storm_hero"
@@ -753,25 +747,12 @@
 				"ThinkInterval"		"%for_tick / %num_in_sec"
 				"OnIntervalThink"
 				{
-					
-					//"Damage"
-					//{
-					//	"Target"		"CASTER"
-					//	"Type"			"DAMAGE_TYPE_PHYSICAL"
-					//	"Damage"		"%AbilityDamage"
-					//}
-					
 					"RunScript"
 					{
 						"ScriptFile"    "heroes\Hermit\hermit_storm.lua"    
 						"Function"      "createWave"
-					}
-
-
-					
-				}
-				
-				
+					}	
+				}	
 			}
 		}
 	}
