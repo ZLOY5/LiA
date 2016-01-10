@@ -1,5 +1,5 @@
 require('LiA_GameMode')
-require('LiA_Common')
+require('utils')
 require('LiA_ForceRound')
 require('survival/AIcreeps')
 require('timers')
