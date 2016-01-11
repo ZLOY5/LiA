@@ -1076,10 +1076,18 @@
 		"modifier_orn_crit_crit"
 		{
 		    "IsHidden"  "1"
+
+		     "States"
+		    {
+		    	"MODIFIER_STATE_CANNOT_MISS"			"MODIFIER_STATE_VALUE_ENABLED"
+		    }
+
+
 		    "Properties"
 		    {
 		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
 		    }
+
 
 		    "OnAttackLanded"
 		    {
