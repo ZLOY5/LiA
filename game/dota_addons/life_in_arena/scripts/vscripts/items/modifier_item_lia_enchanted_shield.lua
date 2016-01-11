@@ -1,7 +1,7 @@
 modifier_item_lia_enchanted_shield = class({})
 
 function modifier_item_lia_enchanted_shield:GetAttributes() 
-	return MODIFIER_ATTRIBUTE_MULTIPLE+MODIFIER_ATTRIBUTE_PERMANENT 
+	return MODIFIER_ATTRIBUTE_MULTIPLE + MODIFIER_ATTRIBUTE_PERMANENT 
 end
 
 function modifier_item_lia_enchanted_shield:IsHidden()

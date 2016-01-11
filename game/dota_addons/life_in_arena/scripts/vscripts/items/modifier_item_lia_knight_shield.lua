@@ -1,25 +1,40 @@
-modifier_knight_cuirass_damage_return_lua = class ({})
+modifier_item_lia_knight_shield = class ({})
 
---чтобы способность могла использовать этот модификатор в ней должен быть special value "damage_return"
+--чтобы способность могла использовать модификатор в ней должен быть special value "damage_return"
 
-function modifier_knight_cuirass_damage_return_lua:GetAttributes()
+function modifier_item_lia_knight_shield:GetAttributes()
 	return MODIFIER_ATTRIBUTE_MULTIPLE + MODIFIER_ATTRIBUTE_PERMANENT 
 end
 
-function modifier_knight_cuirass_damage_return_lua:IsHidden()
+function modifier_item_lia_knight_shield:IsHidden()
 	return true
 end
 
-function modifier_knight_cuirass_damage_return_lua:DeclareFunctions()
+function modifier_item_lia_knight_shield:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
+		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
+		MODIFIER_PROPERTY_HEALTH_BONUS,
 	}
  
 	return funcs
 end
 
-function modifier_knight_cuirass_damage_return_lua:OnAttackLanded(params) 
+function modifier_item_lia_knight_shield:GetModifierHealthBonus(params) 
+	return self.healthBonus
+end
+
+function modifier_item_lia_knight_shield:GetModifierPhysicalArmorBonus(params) 
+	return self.armorBonus
+end
+
+function modifier_item_lia_knight_shield:OnCreated(kv)
+	self.healthBonus = self:GetAbility():GetSpecialValueFor("bonus_health")
+	self.armorBonus = self:GetAbility():GetSpecialValueFor("bonus_armor")
+end
+
+function modifier_item_lia_knight_shield:OnAttackLanded(params) 
 	if IsServer() then
 		if params.target == self:GetParent() and not self:GetParent():HasModifier("modifier_illusion") then 
 			self.attack_record = params.record 
@@ -28,8 +43,7 @@ function modifier_knight_cuirass_damage_return_lua:OnAttackLanded(params)
 	end
 end
 
-
-function modifier_knight_cuirass_damage_return_lua:OnTakeDamage(params)
+function modifier_item_lia_knight_shield:OnTakeDamage(params)
 	if IsServer() then
 		if params.unit == self:GetParent() and not self:GetParent():HasModifier("modifier_illusion") and not IsFlagSet(params.damage_flags,DOTA_DAMAGE_FLAG_REFLECTION) then
 			
@@ -41,17 +55,9 @@ function modifier_knight_cuirass_damage_return_lua:OnTakeDamage(params)
 			local bRangedAttack = self.attack_record == params.record and self.ranged_attack
 			if bPhys and not bRangedAttack then 
 				local target = params.unit
+				local return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage
 				
-				local reflect_percent
-				if target:HasModifier("modifier_item_lia_knight_cuirass_ability") then 
-					reflect_percent = self:GetAbility():GetSpecialValueFor("damage_return_abi")
-				else 
-					reflect_percent = self:GetAbility():GetSpecialValueFor("damage_return")
-				end 
-
-				local return_damage = reflect_percent*0.01*params.original_damage
-				
-				local damageApplied = ApplyDamage(
+				ApplyDamage(
 				{
 					victim = params.attacker, 
 					attacker = target, 
@@ -60,8 +66,6 @@ function modifier_knight_cuirass_damage_return_lua:OnTakeDamage(params)
 					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
 					ability = params.ability
 				})
-				print("Original damage = ",params.original_damage," Damage to return = ",return_damage," Applied damdge = ",damageApplied)
-
 			end
 		end
 	end
