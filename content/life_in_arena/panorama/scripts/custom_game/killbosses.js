@@ -9,7 +9,7 @@ var idHideInProcess1 = -1;
 var idHideInProcess2 = -1;
 var del = 8;
 
-var playerColor = [ "#3455FF","#3DD296","#8C2AF4","#F3C909","#FF6C00","#C54DA8","#C7E40D","#1BC0D8"]
+//var playerColor = [ "#3455FF","#3DD296","#8C2AF4","#F3C909","#FF6C00","#C54DA8","#C7E40D","#1BC0D8"]
 
 function UpdateLiaKillBoss1(data)
 {		
@@ -25,7 +25,7 @@ function UpdateLiaKillBoss1(data)
 
 		var textCont = $( "#LiaKillBoss1" ).FindChildInLayoutFile( "LiaKillBoss_Text" );
 		textCont.text = playerInfo.player_name; 
-		textCont.style.color = playerColor[curr_data[1].pID];
+		textCont.style.color = GameUI.CustomUIConfig().players_color[curr_data[1].pID];
 
 		//textCont2 = $( "#LiaKillBoss2" ).FindChildInLayoutFile( "LiaKillBoss_Text2" );
 		//textCont2.text = $.Localize( "#LiaKillBoss" ); 
@@ -48,7 +48,7 @@ function UpdateLiaKillBoss2(data)
 
 		var textCont = $( "#LiaKillBoss2" ).FindChildInLayoutFile( "LiaKillBoss_Text" );
 		textCont.text = playerInfo.player_name; 
-		textCont.style.color = playerColor[curr_data[2].pID];
+		textCont.style.color = GameUI.CustomUIConfig().players_color[curr_data[2].pID];
 
 		//textCont2 = $( "#LiaKillBoss2" ).FindChildInLayoutFile( "LiaKillBoss_Text2" );
 		//textCont2.text = $.Localize( "#LiaKillBoss" ); 

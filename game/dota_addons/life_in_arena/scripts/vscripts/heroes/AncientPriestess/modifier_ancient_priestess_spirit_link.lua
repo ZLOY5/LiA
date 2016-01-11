@@ -1,6 +1,6 @@
 modifier_ancient_priestess_spirit_link = class({})
 
-require('LiA_Common')
+require('utils')
 
 function modifier_ancient_priestess_spirit_link:GetEffectName()
 	return "particles/wisp_overcharge_custom.vpcf"
@@ -61,8 +61,8 @@ function modifier_ancient_priestess_spirit_link:LinkDamage(attack_damage,damage_
 	for _,unit in pairs(self.tTargets) do
 		if unit ~= parent then 
 			unit.spiritLink_damage = true
-			--print("Link Damage",unit:GetUnitName(),attacker:GetUnitName(),attack_damage)
-			ApplyDamage({victim = unit, attacker = attacker, damage = linked_damage, damage_type = damage_type, ability = inflictor, damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL})
+			--print("Link Damage by",parent:GetUnitName(),"to",unit:GetUnitName(),attacker:GetUnitName(),attack_damage,linked_damage)
+			ApplyDamage({victim = unit, attacker = attacker, damage = linked_damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = inflictor, damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL})
 			--print("Link Damage end")
 		end
 	end
