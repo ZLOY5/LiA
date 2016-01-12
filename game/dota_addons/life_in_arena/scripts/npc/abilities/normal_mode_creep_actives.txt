@@ -690,10 +690,10 @@
 			"Target"			"TARGET"
 		}
 			
-		"ApplyModifier"
+		"RunScript"
 		{
-			"Target"			"TARGET"
-			"ModifierName"		"modifier_6_wave_cripple"
+			"ScriptFile"	"abilities/6_wave_cripple.lua"
+			"Function"		"Cripple"
 		}
 	}
 	
@@ -1041,10 +1041,10 @@
 			"Target"			"TARGET"
 		}
 			
-		"ApplyModifier"
+		"RunScript"
 		{
-			"Target"			"TARGET"
-			"ModifierName"		"modifier_10_wave_slow"
+			"ScriptFile"	"abilities/10_wave_slow.lua"
+			"Function"		"Slow"
 		}
 	}
 	
@@ -1486,7 +1486,12 @@
 		"02"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"projectile_stun"	"3.0"
+			"duration"	"3.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"damage"	"400"
 		}
 	}
 	
@@ -1521,24 +1526,11 @@
 			"Target" 		"TARGET"
 		}
 		
-		"Stun"
-		{	
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"Duration"   "%projectile_stun"
-		}
-
-		"Damage"
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"Type"			"DAMAGE_TYPE_MAGICAL"
-			"Damage"		"%AbilityDamage"
-		}	
+			"ScriptFile"	"abilities/8_wave_storm_bolt.lua"
+			"Function"		"StormBolt"
+		}
 	
 	}	
 }
@@ -1597,27 +1589,11 @@
 			"Target" 			"TARGET"
 		}	
 
-		"ApplyModifier"
+		"RunScript"
 		{
-			"ModifierName"	"modifier_entangling_roots"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"		"%hero_duration"
+			"ScriptFile"	"abilities/12_wave_roots.lua"
+			"Function"		"Roots"
 		}
-
-		//"ApplyModifier"
-		//{
-		//	"ModifierName"	"modifier_entangling_roots"
-		//	"Target"
-		//	{
-		//		"Center"	"TARGET"
-		//		"Types"		"DOTA_UNIT_TARGET_BASIC"
-		//	}
-		//	"Duration"		"%creep_duration"
-		//}
 	}
 
 	"Modifiers"
@@ -1789,7 +1765,12 @@
 		"02"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"projectile_stun"	"2.0"
+			"duration"	"2.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"damage"	"100"
 		}
 	}
 	
@@ -1824,24 +1805,11 @@
 			"Target" 		"TARGET"
 		}
 		
-		"Stun"
-		{	
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"Duration"   "%projectile_stun"
-		}
-
-		"Damage"
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"Type"			"DAMAGE_TYPE_MAGICAL"
-			"Damage"		"%AbilityDamage"
-		}	
+			"ScriptFile"	"abilities/8_wave_storm_bolt.lua"
+			"Function"		"StormBolt"
+		}
 	
 	}	
 }
@@ -1941,17 +1909,12 @@
     "OnProjectileHitUnit"
 	{
 		"DeleteOnHit"		"0"
-		"Damage"
-		{
-			"Type"          "DAMAGE_TYPE_MAGICAL"
-			"Damage"        "%initial_damage"
-			"Target"		"TARGET"
-		}
 
-		"ApplyModifier"
+
+		"RunScript"
 		{
-			"ModifierName"	"modifier_shadow_strike"		
-			"Target"		"TARGET"
+			"ScriptFile"	"abilities/14_wave_shadow_strike.lua"
+			"Function"		"ShadowStrike"
 		}
 
 		"FireSound"
@@ -1982,6 +1945,13 @@
 					"EffectName"		"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
 					"EffectAttachType"	"attach_hitloc"
 					"Target"			"TARGET"
+				}
+
+				"Damage"
+				{
+					"Type"          "DAMAGE_TYPE_MAGICAL"
+					"Damage"        "%initial_damage"
+					"Target"		"TARGET"
 				}
 			}
 			"ThinkInterval"	"3"
@@ -2038,7 +2008,12 @@
 		"02"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"projectile_stun"	"4.0"
+			"duration"	"4.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"damage"	"750"
 		}
 	}
 	
@@ -2073,24 +2048,12 @@
 			"Target" 		"TARGET"
 		}
 		
-		"Stun"
-		{	
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"Duration"   "%projectile_stun"
-		}
-
-		"Damage"
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"Type"			"DAMAGE_TYPE_MAGICAL"
-			"Damage"		"%AbilityDamage"
-		}	
+			"ScriptFile"	"abilities/8_wave_storm_bolt.lua"
+			"Function"		"StormBolt"
+		}
+		
 	
 	}	
 }

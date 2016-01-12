@@ -1,4 +1,4 @@
-function DeathCoil(event)
+function StromBolt(event)
 	local target = event.target
 	local ability = event.ability
 	local caster = event.caster
@@ -6,4 +6,5 @@ function DeathCoil(event)
 		return 
 	end
 	ApplyDamage({victim = target, attacker = caster, damage = ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_stunned", {duration = ability:GetSpecialValueFor("duration")})
 end
