@@ -224,6 +224,11 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"projectile_speed"	"1100"
+		}	
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"	"500"
 		}
 	}
 	
@@ -253,15 +258,11 @@
 	{
 		"DeleteOnHit"	"1"
 
-		"Damage"
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"Type"			"DAMAGE_TYPE_MAGICAL"
-			"Damage"		"%AbilityDamage"
-		}	
+			"ScriptFile"	"abilities/4_wave_death_coil.lua"
+			"Function"		"DeathCoil"
+		}
 	
 	}	
 }
