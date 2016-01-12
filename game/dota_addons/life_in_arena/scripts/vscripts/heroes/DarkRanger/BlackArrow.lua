@@ -5,7 +5,7 @@ function AddModifier(event)
 	and not target:IsHero() 
 	and not target:IsIllusion() 
 	and not target:HasModifier("modifier_kill")
-	and not string.find(target:GetName(),"megaboss") then 
+	and not string.find(target:GetUnitName(),"megaboss") then 
 		event.ability:ApplyDataDrivenModifier(event.caster, target, "modifier_dark_ranger_black_arrow_spawn", nil)
 	end
 
