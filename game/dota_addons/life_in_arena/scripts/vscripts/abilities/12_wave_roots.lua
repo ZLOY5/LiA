@@ -5,5 +5,6 @@ function Roots(event)
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
+	target:EmitSound("Hero_Treant.Overgrowth.Cast")
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_entangling_roots", nil)
 end

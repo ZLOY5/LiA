@@ -5,6 +5,8 @@ function Polymorph(event)
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
+	target:EmitSound("Hero_Lion.Hex.Target")
+	ParticleManager:CreateParticle("particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_hex", {duration = ability:GetSpecialValueFor("duration")})
 end
 

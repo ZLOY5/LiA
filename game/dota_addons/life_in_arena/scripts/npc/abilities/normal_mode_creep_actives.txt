@@ -363,10 +363,10 @@
     }
 
 
-                "RunScript"
-                {
-                  "ScriptFile"    "heroes/Warlock/firestorm.lua"
-                        "Function"  "firestormWave_castpoint"
+    "RunScript"
+    {
+      "ScriptFile"    "heroes/Warlock/firestorm.lua"
+    	"Function"  "firestormWave_castpoint"
       "EventName" "OnSpellStart"
       "Target" "POINT"
     }
@@ -684,12 +684,6 @@
 	
 	"OnSpellStart"
 	{
-		"FireSound"
-		{
-			"EffectName"		"DOTA_Item.RodOfAtos.Activate"
-			"Target"			"TARGET"
-		}
-			
 		"RunScript"
 		{
 			"ScriptFile"	"abilities/6_wave_cripple.lua"
@@ -761,12 +755,6 @@
 	
 	"OnSpellStart"
 	{
-		"FireSound"
-		{
-			"EffectName"		"Hero_Bane.Enfeeble"
-			"Target"			"TARGET"
-		}
-			
 		"RunScript"
 		{
 			"ScriptFile"	"abilities/6_wave_curse.lua"
@@ -853,19 +841,6 @@
 
 	"OnSpellStart"
 	{
-		"FireEffect"
-		{
-			"EffectName"		"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"Target"			"TARGET"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Ability.FrostNova"
-			"Target"		"TARGET"
-		}
-
 		"RunScript"
 		{
 			"ScriptFile"	"abilities/9_wave_frost_nova.lua"
@@ -1006,13 +981,7 @@
 	}
 	
 	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"		"DOTA_Item.RodOfAtos.Activate"
-			"Target"			"TARGET"
-		}
-			
+	{		
 		"RunScript"
 		{
 			"ScriptFile"	"abilities/10_wave_slow.lua"
@@ -1492,11 +1461,6 @@
 	"OnProjectileHitUnit"
 	{
 		"DeleteOnHit"	"1"
-		"FireSound"
-		{
-			"EffectName"	"Hero_ChaosKnight.ChaosBolt.Impact"
-			"Target" 		"TARGET"
-		}
 		
 		"RunScript"
 		{
@@ -1555,12 +1519,6 @@
 
 	"OnSpellStart"
 	{
-		"FireSound"
-		{
-			"EffectName"		"Hero_Treant.Overgrowth.Cast"
-			"Target" 			"TARGET"
-		}	
-
 		"RunScript"
 		{
 			"ScriptFile"	"abilities/12_wave_roots.lua"
@@ -1572,6 +1530,8 @@
 	{
 		"modifier_entangling_roots"
 		{
+			"Duration"	"%hero_duration"
+
 			"IsDebuff"		"1"
 			"States"
 			{
@@ -1750,7 +1710,7 @@
 	{
 		"FireSound"
 		{
-			"EffectName"	"n_creep_golemRock.Death"
+			"EffectName"	"n_mud_golem.Boulder.Cast"
 			"Target" 		"CASTER"
 		}
 		
@@ -1771,15 +1731,10 @@
 	"OnProjectileHitUnit"
 	{
 		"DeleteOnHit"	"1"
-		"FireSound"
-		{
-			"EffectName"	"Hero_EarthSpirit.GeomagneticGrip.Stun"
-			"Target" 		"TARGET"
-		}
-		
+
 		"RunScript"
 		{
-			"ScriptFile"	"abilities/8_wave_storm_bolt.lua"
+			"ScriptFile"	"abilities/13_wave_hurl_boulder.lua"
 			"Function"		"StormBolt"
 		}
 	
@@ -1887,12 +1842,6 @@
 		{
 			"ScriptFile"	"abilities/14_wave_shadow_strike.lua"
 			"Function"		"ShadowStrike"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Viper.viperStrikeImpact"
-			"Target"		"TARGET"
 		}
 	}
 
@@ -2204,17 +2153,10 @@
 
 	"OnSpellStart"
 	{
-		"FireSound"
+		"RunScript"
 		{
-			"EffectName"	"Hero_Pugna.Decrepify"
-			"Target" 		"TARGET"
-		}
-		
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_decrepify_hero"
-			"Target"		"TARGET"
-			"Duration"		"%duration_on_hero"
+			"ScriptFile"    "abilities/15_wave_astral.lua"
+			"Function"      "Banish"
 		}
 		
 		//"RunScript"
@@ -2451,19 +2393,6 @@
 
 	"OnSpellStart"
 	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_NyxAssassin.ManaBurn.Target"
-			"Target" 		"TARGET"
-		}
-		
-		"FireEffect"
-		{
-			"Target"			"TARGET"
-			"EffectName"		"particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf"
-			"EffectAttachType"	"follow_origin"
-		}
-
 		"RunScript"
 		{
 			"ScriptFile"    "abilities/ManaBurn.lua"
@@ -2522,13 +2451,7 @@
 	}
 	
 	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"		"Hero_Visage.GraveChill.Cast"
-			"Target"			"TARGET"
-		}
-			
+	{	
 		"RunScript"
 		{
 			"ScriptFile"	"abilities/GhostSlow.lua"
@@ -2808,19 +2731,6 @@
 		{
 			"EffectName"	"Hero_Lion.Voodoo"
 			"Target"		"TARGET"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Lion.Hex.Target"
-			"Target"		"TARGET"
-		}
-
-		"FireEffect"
-		{
-			"EffectName"		"particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"Target"			"TARGET"
 		}
 		
 		"RunScript"

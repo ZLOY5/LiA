@@ -5,7 +5,7 @@ function StromBolt(event)
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
-	target:EmitSound("Hero_ChaosKnight.ChaosBolt.Impact")
+	target:EmitSound("n_mud_golem.Boulder.Target")
 	ApplyDamage({victim = target, attacker = caster, damage = ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_stunned", {duration = ability:GetSpecialValueFor("duration")})
 end

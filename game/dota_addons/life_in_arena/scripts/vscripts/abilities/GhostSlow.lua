@@ -6,7 +6,7 @@ function Slow(event)
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
-	
+	target:EmitSound("Hero_Visage.GraveChill.Cast")
 	if target:IsHero() then 
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_16_wave_slow", {duration = hero_duration})	
 	else

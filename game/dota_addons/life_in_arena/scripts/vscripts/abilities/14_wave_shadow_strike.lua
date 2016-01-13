@@ -5,5 +5,6 @@ function ShadowStrike(event)
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
+	target:EmitSound("Hero_Viper.viperStrikeImpact")
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_shadow_strike", nil)
 end

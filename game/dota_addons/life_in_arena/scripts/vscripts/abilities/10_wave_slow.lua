@@ -5,5 +5,6 @@ function Slow(event)
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
+	target:EmitSound("DOTA_Item.RodOfAtos.Activate")
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_10_wave_slow", nil)
 end

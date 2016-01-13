@@ -6,6 +6,8 @@ function FrostNova(event)
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
+	target:EmitSound("Ability.FrostNova")
+	ParticleManager:CreateParticle("particles/units/heroes/hero_lich/lich_frost_nova.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 	ApplyDamage({victim = target, attacker = caster, damage = ability:GetSpecialValueFor("aoe_damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 	for _,v in pairs(targets) do
 		ApplyDamage({victim = v, attacker = caster, damage = ability:GetSpecialValueFor("aoe_damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})

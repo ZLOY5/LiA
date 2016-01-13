@@ -17,7 +17,8 @@ function ManaBurn( event )
 	if target:TriggerSpellAbsorb(ability) then
 		return 
 	end
-	
+	target:EmitSound("Hero_NyxAssassin.ManaBurn.Target")
+	ParticleManager:CreateParticle("particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 	-- Set the new target mana
 	local newMana = targetMana - mana_burn
 	target:SetMana( newMana )
