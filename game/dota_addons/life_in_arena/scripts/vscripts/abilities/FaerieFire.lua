@@ -5,6 +5,10 @@ function ApplyFaerieFire(event)
 	local ability = event.ability
 	local duration = ability:GetSpecialValueFor("duration")
 
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	
 	if target:IsHero() or target:IsConsideredHero() then
 		duration = ability:GetSpecialValueFor("hero_duration")
 	end

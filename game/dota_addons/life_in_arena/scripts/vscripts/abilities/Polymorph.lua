@@ -1,3 +1,13 @@
+function Polymorph(event)
+	local target = event.target
+	local ability = event.ability
+	local caster = event.caster
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_hex", {duration = ability:GetSpecialValueFor("duration")})
+end
+
 --[[Author: Pizzalol
 	Date: 18.01.2015.
 	Checks if the target is an illusion, if true then it kills it

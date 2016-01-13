@@ -866,44 +866,16 @@
 			"Target"		"TARGET"
 		}
 
-		"Damage"
+		"RunScript"
 		{
-			"Type"		"DAMAGE_TYPE_MAGICAL"
-			"Target"	"TARGET"
-			"Damage"	"%aoe_damage"
-		}
-
-		"ActOnTargets"
-		{
+			"ScriptFile"	"abilities/9_wave_frost_nova.lua"
+			"Function"		"FrostNova"
 			"Target"
 			{
-				"Center"  				"TARGET"
-				"Radius" 				"%radius"
-				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types" 				"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-			}
-
-			"Action"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"    "modifier_9_wave_frost_nova_slow"
-					"Target"
-					{
-						"Center"	"TARGET"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-					"Duration"		"%slow_hero_duration"
-				}
-
-				"Damage"
-				{
-					"Type"		"DAMAGE_TYPE_MAGICAL"
-					"Target"	"TARGET"
-					"Damage"	"%aoe_damage"
-				}
-
+				"Center" "TARGET" 
+				"Radius" "%radius"
+				"Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 			}
 		}
 	}
@@ -2851,11 +2823,10 @@
 			"Target"			"TARGET"
 		}
 		
-		"ApplyModifier"
+		"RunScript"
 		{
-			"ModifierName"	"modifier_hex"
-			"Target"		"TARGET"
-			"Duration"		"%duration"
+			"ScriptFile"	"abilities/Polymorph.lua"
+			"Function"		"Polymorph"
 		}
 	}	
 

@@ -14,6 +14,10 @@ function ManaBurn( event )
 	local damage_per_mana = ability:GetLevelSpecialValueFor("damage_per_mana", ability:GetLevel() - 1 )
 	local targetMana = target:GetMana()
 
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	
 	-- Set the new target mana
 	local newMana = targetMana - mana_burn
 	target:SetMana( newMana )

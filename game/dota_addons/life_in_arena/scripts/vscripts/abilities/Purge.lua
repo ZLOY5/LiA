@@ -6,6 +6,10 @@ function PurgeStart( event )
 	local bRemovePositiveBuffs = false
 	local bRemoveDebuffs = false
 	
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	
 	-- Note: I really need to make a filter for buildings...
 	if target:IsBuilding() then
 		ability:RefundManaCost()
