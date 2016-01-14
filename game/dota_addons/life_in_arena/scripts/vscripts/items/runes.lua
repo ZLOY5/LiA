@@ -52,7 +52,7 @@ runeOfLuck_itemList = {
 function RuneOfLuck(event)
 	local itemName = runeOfLuck_itemList[RandomInt(1,#runeOfLuck_itemList)]
 	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
-	hero:AddItemByName(itemName)
+	hero:AddItemByName(itemName):SetPurchaseTime(0)
 end
 
 ----------------------------------------------------------------------------------------------------------
