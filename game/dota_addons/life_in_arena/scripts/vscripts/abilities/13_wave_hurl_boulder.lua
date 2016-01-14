@@ -1,4 +1,4 @@
-function StromBolt(event)
+function StormBolt(event)
 	local target = event.target
 	local ability = event.ability
 	local caster = event.caster
