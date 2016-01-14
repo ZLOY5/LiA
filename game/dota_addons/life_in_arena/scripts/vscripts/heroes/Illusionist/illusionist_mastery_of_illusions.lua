@@ -2,7 +2,11 @@ function AddModifier(keys)
 	local ability = keys.ability
 	local target = keys.target
 	local caster = keys.caster
-	
+
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+		
 	if not caster.count_ill then
 		caster.count_ill=0
 	end
@@ -20,7 +24,7 @@ function AddModifier(keys)
 	else
 		durationTarget = ability:GetSpecialValueFor("duration_other")
 	end
-
+	target:EmitSound("Hero_Pugna.Decrepify")
 	ability:ApplyDataDrivenModifier(caster, target, 'modifier_illusionist_mastery_of_illusions', {duration = durationTarget} )
 	
 	-- дадим ловкость Антаро за каждую вызванную иллюзию: повесим модификатор, где будем все делать

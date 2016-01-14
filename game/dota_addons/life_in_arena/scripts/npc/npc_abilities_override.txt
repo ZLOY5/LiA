@@ -10883,11 +10883,6 @@
 		"OnProjectileHitUnit"
 		{
 			"DeleteOnHit" "1"
-			"ApplyModifier"
-			{
-				"ModifierName" 	"modifier_dark_ranger_magic_arrow_main_target"
-				"Target"		"TARGET"	
-			}
 			
 			"RunScript"
 			{
@@ -14734,6 +14729,11 @@
 				"var_type"				"FIELD_FLOAT"
 				"duration"	"7.0"
 			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"	"100 200 300"
+			}		
 		}
 		
 		"OnSpellStart"
@@ -14768,33 +14768,11 @@
 		"OnProjectileHitUnit"
 		{
 			"DeleteOnHit"	"1"
-			"FireSound"
+			"RunScript"
 			{
-				"EffectName"	"Hero_ChaosKnight.ChaosBolt.Impact"
-				"Target" 		"TARGET"
+				"ScriptFile"			"heroes/General/DarkMagicFlow.lua"
+				"Function"				"DarkMagicFlow"
 			}
-			
-			"Stun"
-			{	
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-				"Duration"   "%projectile_stun"
-			}
-	
-			"Damage"
-			{
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-				"Type"			"DAMAGE_TYPE_MAGICAL"
-				"Damage"		"%AbilityDamage"
-			}	
-		
 		}	
 		"Modifiers"
 		{
@@ -15978,12 +15956,6 @@
 	
 		"OnSpellStart"
 		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Pugna.Decrepify"
-				"Target" 		"TARGET"
-			}
-			
 			"RunScript"
 			{
 				"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
@@ -16564,25 +16536,6 @@
 	
 		"OnProjectileHitUnit"
 		{
-			"FireSound"
-			{
-				"EffectName"		"Hero_Sven.StormBoltImpact"
-				"Target"			"TARGET"
-			}
-	
-			"FireEffect"
-			{
-				"EffectName"		"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
-				"EffectAttachType"	"attach_origin"
-				"Target"			"TARGET"
-				"ControlPointEntities"
-				{
-					"TARGET"	"attach_origin"
-					"TARGET"	"attach_origin"
-					"TARGET"	"attach_origin"
-					"TARGET"	"attach_origin"	//CP3 has a child explosion origin
-				}
-			}
 			"RunScript"
 			{
 				"ScriptFile"	"heroes\Highlander\StormBolt.lua"
@@ -17734,12 +17687,6 @@
 	
 		"OnSpellStart"
 		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Pugna.Decrepify"
-				"Target" 		"TARGET"
-			}
-			
 			"RunScript"
 			{
 				"ScriptFile"    "heroes\Illusionist\illusionist_mastery_of_illusions.lua"    
@@ -19130,16 +19077,10 @@
 	    	{
 	        	"DeleteOnHit" "1"
 				
-				"ApplyModifier"
+				"RunScript"
 				{
-					"ModifierName" 	"modifier_kret_virus_main_target"
-					"Target"		"TARGET"	
-				}
-	
-				"Damage"
-				{
-					"Type" 			"DAMAGE_TYPE_MAGICAL"
-					"Damage" 		"%other_damage"
+					"ScriptFile"	"heroes\Kret\Virus.lua"
+					"Function"		"Virus"
 					"Target"
 					{
 						"Center"	"TARGET"
@@ -19457,12 +19398,6 @@
 		"OnProjectileHitUnit"
 		{
 			"DeleteOnHit" "1"
-			"ApplyModifier"
-			{
-				"ModifierName" 	"modifier_kret_acid_main_target"
-				"Target"		"TARGET"	
-			}
-			
 			"RunScript"
 			{
 				"ScriptFile"	"heroes\Kret\Acid.lua"
@@ -22997,21 +22932,10 @@
 		
 			"OnProjectileHitUnit"
 			{
-				"FireSound"
+				"RunScript"
 				{
-					"EffectName"	"Hero_Broodmother.SpawnSpiderlingsImpact"
-					"Target"		"TARGET"
-				}
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_infection"
-					"Target"		"TARGET"
-				}
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%damage"
+					"ScriptFile"	"heroes\QueenOfSpiders\spiders.lua"
+					"Function"		"Infection"
 				}
 			}
 		

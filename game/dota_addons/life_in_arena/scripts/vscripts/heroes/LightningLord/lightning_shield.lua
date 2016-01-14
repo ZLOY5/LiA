@@ -3,6 +3,11 @@ function LightningShieldOnSpellStart(event)
 	local ability = event.ability
 	local target = event.target
 	local duration = ability:GetSpecialValueFor("duration")
+
+	if target:GetTeamNumber() ~= caster:GetTeamNumber() and target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+
 	target:EmitSound("Hero_Zuus.StaticField")
 
 	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)

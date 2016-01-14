@@ -53,6 +53,17 @@ function IsChanneling ( hero )
 	return false
 end
 
+function Infection(event)
+	local target = event.target
+	local ability = event.ability
+	local caster = event.caster
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	target:EmitSound("Hero_Broodmother.SpawnSpiderlingsImpact")
+	ApplyDamage({victim = target, attacker = caster, damage = ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_infection", nil)
+end
 
 function spiderCreate(keys)
 	--

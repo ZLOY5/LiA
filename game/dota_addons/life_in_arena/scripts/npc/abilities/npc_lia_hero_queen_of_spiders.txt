@@ -90,21 +90,10 @@
 	
 		"OnProjectileHitUnit"
 		{
-			"FireSound"
+			"RunScript"
 			{
-				"EffectName"	"Hero_Broodmother.SpawnSpiderlingsImpact"
-				"Target"		"TARGET"
-			}
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_infection"
-				"Target"		"TARGET"
-			}
-			"Damage"
-			{
-				"Target"		"TARGET"
-				"Type"			"DAMAGE_TYPE_MAGICAL"
-				"Damage"		"%damage"
+				"ScriptFile"	"heroes\QueenOfSpiders\spiders.lua"
+				"Function"		"Infection"
 			}
 		}
 	

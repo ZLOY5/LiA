@@ -95,16 +95,10 @@
     	{
         	"DeleteOnHit" "1"
 			
-			"ApplyModifier"
+			"RunScript"
 			{
-				"ModifierName" 	"modifier_kret_virus_main_target"
-				"Target"		"TARGET"	
-			}
-
-			"Damage"
-			{
-				"Type" 			"DAMAGE_TYPE_MAGICAL"
-				"Damage" 		"%other_damage"
+				"ScriptFile"	"heroes\Kret\Virus.lua"
+				"Function"		"Virus"
 				"Target"
 				{
 					"Center"	"TARGET"
@@ -422,12 +416,6 @@
 	"OnProjectileHitUnit"
 	{
 		"DeleteOnHit" "1"
-		"ApplyModifier"
-		{
-			"ModifierName" 	"modifier_kret_acid_main_target"
-			"Target"		"TARGET"	
-		}
-		
 		"RunScript"
 		{
 			"ScriptFile"	"heroes\Kret\Acid.lua"

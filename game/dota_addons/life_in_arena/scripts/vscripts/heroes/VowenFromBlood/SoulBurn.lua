@@ -3,6 +3,10 @@ function SoulBurn(event)
 	local target = event.target
 	local ability = event.ability
 
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	
 	local duration_hero = ability:GetSpecialValueFor("duration_hero")
 	local duration_creep = ability:GetSpecialValueFor("duration_creep")
 	local buff_duration = ability:GetSpecialValueFor("buff_duration")

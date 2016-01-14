@@ -1,7 +1,16 @@
 
 function AddModifier(keys)
+	local target = keys.target
+	local ability = keys.ability
+	local caster = keys.caster
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+
 	local duration 
 
+	target:EmitSound("Hero_Pugna.Decrepify")
+	
 	if keys.target:IsHero() then
 		duration = keys.ability:GetSpecialValueFor("duration_hero")
 	else

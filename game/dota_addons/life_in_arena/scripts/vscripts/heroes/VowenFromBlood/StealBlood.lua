@@ -9,6 +9,7 @@ function StealBlood( event )
 	local target = event.target
 	local ability = event.ability
 
+	
 	local damage = ability:GetLevelSpecialValueFor( "lightning_damage", ability:GetLevel() - 1 )
 	local bounces = ability:GetLevelSpecialValueFor( "lightning_bounces", ability:GetLevel() - 1 )
 	local bounce_range = ability:GetLevelSpecialValueFor( "bounce_range", ability:GetLevel() - 1 )
@@ -21,6 +22,11 @@ function StealBlood( event )
 	--ParticleManager:SetParticleControlEnt(lightningBolt, 1, target, 1, "attach_hitloc", target:GetAbsOrigin(), true)
 
 	EmitSoundOn("Hero_Dazzle.Shadow_Wave", target)	
+
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+
 	ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
 	--PopupDamage(target,math.floor(damage))
 

@@ -181,6 +181,11 @@
 			"var_type"				"FIELD_FLOAT"
 			"duration"	"7.0"
 		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"	"100 200 300"
+		}		
 	}
 	
 	"OnSpellStart"
@@ -215,33 +220,11 @@
 	"OnProjectileHitUnit"
 	{
 		"DeleteOnHit"	"1"
-		"FireSound"
+		"RunScript"
 		{
-			"EffectName"	"Hero_ChaosKnight.ChaosBolt.Impact"
-			"Target" 		"TARGET"
+			"ScriptFile"			"heroes/General/DarkMagicFlow.lua"
+			"Function"				"DarkMagicFlow"
 		}
-		
-		"Stun"
-		{	
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			}
-			"Duration"   "%projectile_stun"
-		}
-
-		"Damage"
-		{
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			}
-			"Type"			"DAMAGE_TYPE_MAGICAL"
-			"Damage"		"%AbilityDamage"
-		}	
-	
 	}	
 	"Modifiers"
 	{

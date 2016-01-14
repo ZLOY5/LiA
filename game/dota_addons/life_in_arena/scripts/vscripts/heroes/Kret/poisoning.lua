@@ -1,8 +1,3 @@
---[[
-
-]]
-
-
 
 function SetAdsorbFromKret( keys )
 	local attacker_loc = keys.attacker
