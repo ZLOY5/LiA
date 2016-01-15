@@ -111,16 +111,10 @@
 	
 	"OnSpellStart"
 	{
-		"FireSound"
+		"RunScript"
 		{
-			"EffectName"		"DOTA_Item.RodOfAtos.Activate"
-			"Target"			"TARGET"
-		}
-			
-		"ApplyModifier"
-		{
-			"Target"			"TARGET"
-			"ModifierName"		"modifier_item_rod_of_atos_datadriven_cripple"
+			"ScriptFile"	"abilities/Cripple.lua"
+			"Function"		"Cripple"
 		}
 	}
 	
