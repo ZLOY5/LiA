@@ -305,7 +305,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "necromancer_stabbing_death",
-				newAbi = "necromancer_stabbing_death_scepter",
+				newAbi = "necromancer_stabbing_death_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -641,7 +641,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_undying" then
 			par = {
 				unit = caster,
-				oldAbi = "necromancer_stabbing_death_scepter",
+				oldAbi = "necromancer_stabbing_death_staff",
 				newAbi = "necromancer_stabbing_death",
 				tPassiveModifiers_by_oldAbi = {},
 			}
