@@ -28,6 +28,29 @@ function RuneLumber(event)
 	PopupNumbers(hero:GetPlayerOwner() ,hero, "gold", Vector(0,180,0), 3, 2, POPUP_SYMBOL_PRE_PLUS, nil)
 end
 
+function RuneOfProtection(event)
+	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
+	if hero:HasModifier("modifier_item_sphere_target") then
+		return 
+	end
+	
+	local dummyItem = CreateItem("item_lia_rune_of_protection",nil,nil) 
+	
+	hero:AddNewModifier(hero, dummyItem, "modifier_item_sphere_target", {duration = -1})
+	hero.current_spellblock_is_passive = nil
+	hero:EmitSound("DOTA_Item.LinkensSphere.Target")
+
+	Timers:CreateTimer(1,
+		function() 
+			local modifier = hero:FindModifierByName("modifier_item_sphere_target")
+			if modifier and modifier:GetAbility() == dummyItem then 
+				return 1 
+			else
+				dummyItem:RemoveSelf()
+			end
+		end)
+end
+
 -----------------------------------------------------------------------------------------------------------
 
 runeOfLuck_itemList = {

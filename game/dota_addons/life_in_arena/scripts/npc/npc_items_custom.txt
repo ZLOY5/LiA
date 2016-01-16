@@ -7425,16 +7425,7 @@
 				"ScriptFile" 	"items\runes.lua"
 				"Function"		"RuneOfLuck"
 			}
-			
-			"FireSound"
-			{
-				"EffectName"	"Rune.Bounty"
-				"Target" 		"CASTER"
-			}
 		}
-	
-	
-	
 	}
 	//End of file item_lia_rune_of_luck.txt
 
@@ -7519,6 +7510,47 @@
 		}
 	}
 	//End of file item_lia_rune_of_mana.txt
+
+
+	//Start of file item_lia_rune_of_protection.txt
+	    "item_lia_rune_of_protection"
+	{
+		"ID"                            "1612"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"rune_arcane"
+		
+		"Model"							"models/props_gameplay/rune_arcane.vmdl"
+		"Effect"						"particles/generic_gameplay/rune_arcane.vpcf"
+	
+		
+		"ItemCost"                      "99999" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+	
+	
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfProtection"
+			}
+		}
+	}
+	//End of file item_lia_rune_of_protection.txt
 
 
 	//Start of file item_lia_rune_of_restoration.txt
