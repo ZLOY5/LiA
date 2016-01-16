@@ -1,3 +1,5 @@
+LinkLuaModifier("modifier_lia_shadow", "heroes/ShadowMaster/modifier_lia_shadow.lua",LUA_MODIFIER_MOTION_NONE)
+
 function ShadowCast( event )
 
 	local caster = event.caster
@@ -31,8 +33,9 @@ function SpawnShadow(event)
 	local shadow = CreateUnitByName("npc_dota_hero_terrorblade", spawnPos, true, caster, nil, caster:GetTeamNumber())
 	shadow:SetControllableByPlayer(caster:GetPlayerID(), true)
 	shadow:SetPlayerID(caster:GetPlayerID())
+	shadow:SetOwner(caster:GetPlayerOwner())
 
-	shadow:SetRenderColor(20, 20, 20)
+	--shadow:SetRenderColor(20, 20, 20)
 	
 	shadow:SetForwardVector(caster:GetForwardVector()) 
 
@@ -44,7 +47,7 @@ function SpawnShadow(event)
 	shadow:RemoveAbility("shadow_master_sleight_of_shadows")
 	shadow:RemoveAbility("attribute_bonuses")
 
-	for i=1, abiLevel, 1 do 
+	for i=1, abiLevel do 
 		shadow:AddAbility(shadow_abilities[i])
 		shadow:FindAbilityByName(shadow_abilities[i]):SetLevel(1)
 	end
@@ -62,7 +65,10 @@ function SpawnShadow(event)
 
 	shadow:EmitSound("Hero_Terrorblade.Reflection")
 
-	ability:ApplyDataDrivenModifier(caster, shadow, "modifier_shadow", nil)
+	shadow:AddNewModifier(caster, ability, "modifier_lia_shadow", nil)
+	--ability:ApplyDataDrivenModifier(caster, shadow, "modifier_shadow", nil)
+
+	shadow:MakeIllusion()
 
 	shadow.owner = caster
 	ability.shadow = shadow
