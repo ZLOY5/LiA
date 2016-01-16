@@ -654,35 +654,12 @@
 
 	"OnSpellStart"
 	{
-		"FireSound"
+		"RunScript"
 		{
-			"EffectName"	"Brewmaster_Storm.Cyclone"
-			"Target" 		"TARGET"
-		}
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_keeper_of_the_grove_treants_cyclone" //modifier_cyclone is built-in
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"		"%duration"
-		}
-		"DelayedAction"
-		{
-			"Delay"     "2.05"
-			"Action"    
-			{
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%damage"
-				}
-			}
-		}
+			"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
+			"Function"		"Cyclone"
+		}	
+
 	}
 
 	"Modifiers"
@@ -710,6 +687,19 @@
 	        		"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
 	        		"Function"		"TornadoHeight"
 	        	}
+    			"DelayedAction"
+				{
+					"Delay"     "2.05"
+					"Action"    
+					{
+						"Damage"
+						{
+							"Target"		"TARGET"
+							"Type"			"DAMAGE_TYPE_MAGICAL"
+							"Damage"		"%damage"
+						}
+					}
+				}
 			}	
 
 	        "ThinkInterval"		"0.03"

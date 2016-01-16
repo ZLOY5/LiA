@@ -99,3 +99,14 @@ function Spin(keys)
     local total_degrees = keys.Angle
     target:SetForwardVector(RotatePosition(Vector(0,0,0), QAngle(0,total_degrees,0), target:GetForwardVector()))
 end
+
+function Cyclone(event)
+	local target = event.target
+	local ability = event.ability
+	local caster = event.caster
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	target:EmitSound("Brewmaster_Storm.Cyclone")
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_keeper_of_the_grove_treants_cyclone", {duration = ability:GetSpecialValueFor("duration")})
+end
