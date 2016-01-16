@@ -99,7 +99,7 @@ function DistanceBetweenPoints(v1,v2)
 end
 
 function CleanUnitsOnMap()
-	local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 9999, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES+DOTA_UNIT_TARGET_FLAG_INVULNERABLE+DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, FIND_ANY_ORDER, true)
+	local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, Vector(0,0,0), nil, 9999, DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES+DOTA_UNIT_TARGET_FLAG_INVULNERABLE--[[+DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD]], FIND_ANY_ORDER, true)
     for _,unit in pairs(units) do
         if not unit:IsRealHero() and not unit.destructable then
         	--print(unit:GetUnitName())
