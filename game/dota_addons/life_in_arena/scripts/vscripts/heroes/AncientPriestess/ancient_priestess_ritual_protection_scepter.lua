@@ -1,4 +1,4 @@
-ancient_priestess_ritual_protection_scepter = class({})
+ancient_priestess_ritual_protection_staff = class({})
 LinkLuaModifier("modifier_ancient_priestess_ritual_protection", "heroes/AncientPriestess/modifier_ancient_priestess_ritual_protection.lua",LUA_MODIFIER_MOTION_NONE)
 
 function ancient_priestess_ritual_protection_scepter:OnSpellStart() 
