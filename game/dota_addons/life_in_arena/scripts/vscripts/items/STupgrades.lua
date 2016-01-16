@@ -19,7 +19,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "hermit_frost_arrows",
-				newAbi = "hermit_frost_arrows_scepter",
+				newAbi = "hermit_frost_arrows_staff",
 				tPassiveModifiers_by_oldAbi = {"modifier_frost_arrows_caster_datadriven"},
 			}
 			ReplaceAbi(par)
@@ -27,7 +27,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "hermit_summon_water_elemental_new",
-				newAbi = "hermit_summon_water_elemental_new_scepter",
+				newAbi = "hermit_summon_water_elemental_new_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -39,7 +39,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "paladin_blizzard",
-				newAbi = "paladin_blizzard_scepter",
+				newAbi = "paladin_blizzard_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -47,7 +47,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "paladin_grace",
-				newAbi = "paladin_grace_scepter",
+				newAbi = "paladin_grace_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -60,7 +60,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "skeleton_mage_light_magic",
-				newAbi = "skeleton_mage_light_magic_scepter",
+				newAbi = "skeleton_mage_light_magic_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -68,7 +68,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "skeleton_mage_dark_magic",
-				newAbi = "skeleton_mage_dark_magic_scepter",
+				newAbi = "skeleton_mage_dark_magic_staff",
 				tPassiveModifiers_by_oldAbi = {},--{"modifier_skeleton_mage_dark_magic"},
 			}
 			ReplaceAbi(par)
@@ -80,7 +80,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "earth_lord_earth_burn",
-				newAbi = "earth_lord_earth_burn_scepter",
+				newAbi = "earth_lord_earth_burn_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -88,7 +88,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "earth_lord_split_earth",
-				newAbi = "earth_lord_split_earth_scepter",
+				newAbi = "earth_lord_split_earth_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -100,7 +100,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "frost_lord_frost_breath",
-				newAbi = "frost_lord_frost_breath_scepter",
+				newAbi = "frost_lord_frost_breath_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -108,7 +108,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "frost_lord_ice",
-				newAbi = "frost_lord_ice_scepter",
+				newAbi = "frost_lord_ice_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -120,7 +120,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "time_lord_death",
-				newAbi = "time_lord_death_scepter",
+				newAbi = "time_lord_death_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -128,7 +128,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "time_lord_timelapse",
-				newAbi = "time_lord_timelapse_scepter",
+				newAbi = "time_lord_timelapse_staff",
 				tPassiveModifiers_by_oldAbi = {"modifier_time_lord_timelapse"},
 			}
 			ReplaceAbi(par)
@@ -140,7 +140,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "vowen_from_blood_steal_blood",
-				newAbi = "vowen_from_blood_steal_blood_scepter",
+				newAbi = "vowen_from_blood_steal_blood_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -148,7 +148,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "vowen_from_blood_spiritual_flame",
-				newAbi = "vowen_from_blood_spiritual_flame_scepter",
+				newAbi = "vowen_from_blood_spiritual_flame_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -160,7 +160,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "warlock_storm_datadriven",
-				newAbi = "warlock_storm_datadriven_scepter",
+				newAbi = "warlock_storm_datadriven_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -168,7 +168,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "warlock_firestorm_datadriven",
-				newAbi = "warlock_firestorm_datadriven_scepter",
+				newAbi = "warlock_firestorm_datadriven_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -187,7 +187,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "witch_doctor_negative_energy",
-				newAbi = "witch_doctor_negative_energy_scepter",
+				newAbi = "witch_doctor_negative_energy_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -195,7 +195,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "witch_doctor_frost_armor",
-				newAbi = "witch_doctor_frost_armor_scepter",
+				newAbi = "witch_doctor_frost_armor_staff",
 				tPassiveModifiers_by_oldAbi = {"modifier_frost_armor_autocast_aura"},
 			}
 			ReplaceAbi(par)
@@ -207,7 +207,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "keeper_of_the_grove_guardian_spirit",
-				newAbi = "keeper_of_the_grove_guardian_spirit_scepter",
+				newAbi = "keeper_of_the_grove_guardian_spirit_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -215,7 +215,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "keeper_of_the_grove_natures_curse",
-				newAbi = "keeper_of_the_grove_natures_curse_scepter",
+				newAbi = "keeper_of_the_grove_natures_curse_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -226,7 +226,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "ancient_priestess_mana_shield",
-				newAbi = "ancient_priestess_mana_shield_scepter",
+				newAbi = "ancient_priestess_mana_shield_staff",
 				tPassiveModifiers_by_oldAbi = {"modifier_ancient_priestess_mana_shield"},
 			}
 			ReplaceAbi(par)
@@ -234,7 +234,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "ancient_priestess_ritual_protection",
-				newAbi = "ancient_priestess_ritual_protection_scepter",
+				newAbi = "ancient_priestess_ritual_protection_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -245,7 +245,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "lord_of_lightning_lightning_shield",
-				newAbi = "lord_of_lightning_lightning_shield_scepter",
+				newAbi = "lord_of_lightning_lightning_shield_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -253,7 +253,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "lord_of_lightning_chain_lightning",
-				newAbi = "lord_of_lightning_chain_lightning_scepter",
+				newAbi = "lord_of_lightning_chain_lightning_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -265,7 +265,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "wanderer_the_flow_of_life",
-				newAbi = "wanderer_the_flow_of_life_scepter",
+				newAbi = "wanderer_the_flow_of_life_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -273,7 +273,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "wanderer_ghosts",
-				newAbi = "wanderer_ghosts_scepter",
+				newAbi = "wanderer_ghosts_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -285,7 +285,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "firelord_flame_strike",
-				newAbi = "firelord_flame_strike_scepter",
+				newAbi = "firelord_flame_strike_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -293,7 +293,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "firelord_fire_serpent",
-				newAbi = "firelord_fire_serpent_scepter",
+				newAbi = "firelord_fire_serpent_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -313,7 +313,7 @@ function OnEquip(event)
 			par = {
 				unit = caster,
 				oldAbi = "necromancer_deads",
-				newAbi = "necromancer_deads_scepter",
+				newAbi = "necromancer_deads_staff",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
@@ -352,7 +352,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_bane" then
 			par = {
 				unit = caster,
-				oldAbi = "hermit_frost_arrows_scepter",
+				oldAbi = "hermit_frost_arrows_staff",
 				newAbi = "hermit_frost_arrows",
 				tPassiveModifiers_by_oldAbi = {"modifier_frost_arrows_caster_datadriven"},
 			}
@@ -360,7 +360,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "hermit_summon_water_elemental_new_scepter",
+				oldAbi = "hermit_summon_water_elemental_new_staff",
 				newAbi = "hermit_summon_water_elemental_new",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -373,7 +373,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_chen" then
 			par = {
 				unit = caster,
-				oldAbi = "paladin_blizzard_scepter",
+				oldAbi = "paladin_blizzard_staff",
 				newAbi = "paladin_blizzard",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -381,7 +381,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "paladin_grace_scepter",
+				oldAbi = "paladin_grace_staff",
 				newAbi = "paladin_grace",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -394,7 +394,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_pugna" then
 			par = {
 				unit = caster,
-				oldAbi = "skeleton_mage_light_magic_scepter",
+				oldAbi = "skeleton_mage_light_magic_staff",
 				newAbi = "skeleton_mage_light_magic",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -402,7 +402,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "skeleton_mage_dark_magic_scepter",
+				oldAbi = "skeleton_mage_dark_magic_staff",
 				newAbi = "skeleton_mage_dark_magic",
 				tPassiveModifiers_by_oldAbi = {},--{"modifier_skeleton_mage_dark_magic"},
 			}
@@ -414,7 +414,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_warlock" then
 			par = {
 				unit = caster,
-				oldAbi = "earth_lord_earth_burn_scepter",
+				oldAbi = "earth_lord_earth_burn_staff",
 				newAbi = "earth_lord_earth_burn",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -422,7 +422,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "earth_lord_split_earth_scepter",
+				oldAbi = "earth_lord_split_earth_staff",
 				newAbi = "earth_lord_split_earth",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -434,7 +434,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_lich" then
 			par = {
 				unit = caster,
-				oldAbi = "frost_lord_frost_breath_scepter",
+				oldAbi = "frost_lord_frost_breath_staff",
 				newAbi = "frost_lord_frost_breath",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -442,7 +442,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "frost_lord_ice_scepter",
+				oldAbi = "frost_lord_ice_staff",
 				newAbi = "frost_lord_ice",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -454,7 +454,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_spirit_breaker" then
 			par = {
 				unit = caster,
-				oldAbi = "time_lord_death_scepter",
+				oldAbi = "time_lord_death_staff",
 				newAbi = "time_lord_death",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -462,7 +462,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "time_lord_timelapse_scepter",
+				oldAbi = "time_lord_timelapse_staff",
 				newAbi = "time_lord_timelapse",
 				tPassiveModifiers_by_oldAbi = {"modifier_time_lord_timelapse"},
 			}
@@ -474,7 +474,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_nevermore" then
 			par = {
 				unit = caster,
-				oldAbi = "vowen_from_blood_steal_blood_scepter",
+				oldAbi = "vowen_from_blood_steal_blood_staff",
 				newAbi = "vowen_from_blood_steal_blood",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -482,7 +482,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "vowen_from_blood_spiritual_flame_scepter",
+				oldAbi = "vowen_from_blood_spiritual_flame_staff",
 				newAbi = "vowen_from_blood_spiritual_flame",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -494,7 +494,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_lion" then
 			par = {
 				unit = caster,
-				oldAbi = "warlock_storm_datadriven_scepter",
+				oldAbi = "warlock_storm_datadriven_staff",
 				newAbi = "warlock_storm_datadriven",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -502,7 +502,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "warlock_firestorm_datadriven_scepter",
+				oldAbi = "warlock_firestorm_datadriven_staff",
 				newAbi = "warlock_firestorm_datadriven",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -521,7 +521,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "witch_doctor_negative_energy_scepter",
+				oldAbi = "witch_doctor_negative_energy_staff",
 				newAbi = "witch_doctor_negative_energy",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -529,7 +529,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "witch_doctor_frost_armor_scepter",
+				oldAbi = "witch_doctor_frost_armor_staff",
 				newAbi = "witch_doctor_frost_armor",
 				tPassiveModifiers_by_oldAbi = {"modifier_frost_armor_autocast_aura"},
 			}
@@ -541,7 +541,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_leshrac" then
 			par = {
 				unit = caster,
-				oldAbi = "keeper_of_the_grove_guardian_spirit_scepter",
+				oldAbi = "keeper_of_the_grove_guardian_spirit_staff",
 				newAbi = "keeper_of_the_grove_guardian_spirit",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -549,7 +549,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "keeper_of_the_grove_natures_curse_scepter",
+				oldAbi = "keeper_of_the_grove_natures_curse_staff",
 				newAbi = "keeper_of_the_grove_natures_curse",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -561,7 +561,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_mirana" then
 			par = {
 				unit = caster,
-				oldAbi = "ancient_priestess_mana_shield_scepter",
+				oldAbi = "ancient_priestess_mana_shield_staff",
 				newAbi = "ancient_priestess_mana_shield",
 				tPassiveModifiers_by_oldAbi = {"modifier_ancient_priestess_mana_shield"},
 			}
@@ -569,7 +569,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "ancient_priestess_ritual_protection_scepter",
+				oldAbi = "ancient_priestess_ritual_protection_staff",
 				newAbi = "ancient_priestess_ritual_protection",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -581,7 +581,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_disruptor" then
 			par = {
 				unit = caster,
-				oldAbi = "lord_of_lightning_lightning_shield_scepter",
+				oldAbi = "lord_of_lightning_lightning_shield_staff",
 				newAbi = "lord_of_lightning_lightning_shield",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -589,7 +589,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "lord_of_lightning_chain_lightning_scepter",
+				oldAbi = "lord_of_lightning_chain_lightning_staff",
 				newAbi = "lord_of_lightning_chain_lightning",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -601,7 +601,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_silencer" then
 			par = {
 				unit = caster,
-				oldAbi = "wanderer_the_flow_of_life_scepter",
+				oldAbi = "wanderer_the_flow_of_life_staff",
 				newAbi = "wanderer_the_flow_of_life",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -609,7 +609,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "wanderer_ghosts_scepter",
+				oldAbi = "wanderer_ghosts_staff",
 				newAbi = "wanderer_ghosts",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -621,7 +621,7 @@ function OnUnequip(event)
 		if name == "npc_dota_hero_invoker" then
 			par = {
 				unit = caster,
-				oldAbi = "firelord_flame_strike_scepter",
+				oldAbi = "firelord_flame_strike_staff",
 				newAbi = "firelord_flame_strike",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -629,7 +629,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "firelord_fire_serpent_scepter",
+				oldAbi = "firelord_fire_serpent_staff",
 				newAbi = "firelord_fire_serpent",
 				tPassiveModifiers_by_oldAbi = {},
 			}
@@ -649,7 +649,7 @@ function OnUnequip(event)
 			--
 			par = {
 				unit = caster,
-				oldAbi = "necromancer_deads_scepter",
+				oldAbi = "necromancer_deads_staff",
 				newAbi = "necromancer_deads",
 				tPassiveModifiers_by_oldAbi = {},
 			}
