@@ -20588,7 +20588,7 @@
 			"particle"			"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf"
 		}
 	
-		"AbilityCooldown"				"40 30 25"
+		"AbilityCooldown"				"40 40 40"
 	
 		"AbilityManaCost"				"80 100 120"	
 	
@@ -20658,6 +20658,7 @@
 				{
 					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_MUTED" 			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
 	
 				}	
 				
@@ -20669,24 +20670,24 @@
 				"EffectName" 		"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf" 	   
 				"EffectAttachType"  "follow_origin"
 	
-				"ThinkInterval"  "0.1"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/NagaSiren/Song.lua"
-						"Function"		"Taunt"
-					}
-				}
+			//	"ThinkInterval"  "0.1"
+			//	"OnIntervalThink"
+			//	{
+			//		"RunScript"
+			//		{
+			//			"ScriptFile"	"heroes/NagaSiren/Song.lua"
+			//			"Function"		"Taunt"
+			//		}
+			//	}
 	
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/NagaSiren/Song.lua"
-						"Function"		"TauntEnd"
-					}
-				}
+			//	"OnDestroy"
+			//	{
+			//		"RunScript"
+			//		{
+			//			"ScriptFile"	"heroes/NagaSiren/Song.lua"
+			//			"Function"		"TauntEnd"
+			//		}
+			//	}
 			}
 		}
 	}
