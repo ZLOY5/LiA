@@ -10,6 +10,8 @@ function illusions( event )
 	local casterOrigin = caster:GetAbsOrigin()
 	local casterForward = caster:GetForwardVector()
 
+	local casterHealthPercent = caster:GetHealthPercent()*0.01
+	
 	-- Initialize the illusion table to keep track of the units created by the spell
 	if not caster.mirror_image_illusions then
 		caster.mirror_image_illusions = {}
@@ -37,6 +39,7 @@ function illusions( event )
 	end
 
 
+
 	-- At first, move the main hero to one of the random spawn positions.
 	FindClearSpaceForUnit( caster, table.remove( vRandomSpawnPos,RandomInt(1, #vRandomSpawnPos)), true )
 
@@ -45,7 +48,7 @@ function illusions( event )
 		local origin = table.remove( vRandomSpawnPos,RandomInt(1, #vRandomSpawnPos))
 
 		local illusion = CreateIllusion(caster,caster,origin,duration,outgoingDamage,incomingDamage)
-
+		illusion:SetHealth(casterHealthPercent*illusion:GetMaxHealth())
 		-- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
 		table.insert(caster.mirror_image_illusions, illusion)
 

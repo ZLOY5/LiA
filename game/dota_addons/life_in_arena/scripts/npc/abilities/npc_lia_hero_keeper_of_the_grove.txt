@@ -687,20 +687,17 @@
 	        		"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
 	        		"Function"		"TornadoHeight"
 	        	}
-    			"DelayedAction"
-				{
-					"Delay"     "2.05"
-					"Action"    
-					{
-						"Damage"
-						{
-							"Target"		"TARGET"
-							"Type"			"DAMAGE_TYPE_MAGICAL"
-							"Damage"		"%damage"
-						}
-					}
-				}
 			}	
+			
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+					"Damage"		"%damage"
+				}
+			}
 
 	        "ThinkInterval"		"0.03"
 			"OnIntervalThink"
