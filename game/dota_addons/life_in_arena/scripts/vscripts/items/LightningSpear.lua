@@ -9,6 +9,10 @@ function ChainLightning( event )
 	local target = event.target
 	local ability = event.ability
 
+	if target:TriggerSpellAbsorb(ability) then
+		return 
+	end
+	
 	local damage = ability:GetLevelSpecialValueFor( "lightning_damage", ability:GetLevel() - 1 )
 	local bounces = ability:GetLevelSpecialValueFor( "lightning_bounces", ability:GetLevel() - 1 )
 	local bounce_range = ability:GetLevelSpecialValueFor( "bounce_range", ability:GetLevel() - 1 )
