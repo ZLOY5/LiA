@@ -50,7 +50,7 @@
 	
 	"OnSpellStart"
 	{
-			"FireSound"
+		"FireSound"
 		{
 			"EffectName"	"Hero_Luna.Eclipse.Cast"
 			"Target" 		"TARGET"
@@ -69,9 +69,14 @@
 				"TARGET"	"attach_origin"
 			}
 		}
+		
 		"ApplyModifier"
 		{
-			"Target"		"TARGET"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"ModifierName"	"modifier_item_lunar_necklace"	
 		}
 	}
@@ -82,7 +87,6 @@
 			"Passive"          "1"    
 		    "IsHidden"         "1"
 		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
 		    "Properties"
 		    {
 		    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		    "%bonus_all_stats"

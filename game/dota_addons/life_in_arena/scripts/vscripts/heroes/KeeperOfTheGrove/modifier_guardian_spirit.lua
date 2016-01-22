@@ -56,9 +56,6 @@ function modifier_guardian_spirit:GetModifierConstantManaRegen(params)
 end
 
 function modifier_guardian_spirit:OnCreated(kv)
-	for k,v in pairs(kv) do 
-		print(k,v) 
-	end  
 	if IsServer() then 
 		self.attackBonus = kv.intellect * 1.5
 
