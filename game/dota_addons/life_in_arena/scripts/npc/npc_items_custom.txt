@@ -207,7 +207,7 @@
 					{
 						"ScriptFile"		"items/SpellShield.lua"
 						"Function"			"modifier_item_lia_amulet_of_spell_shield_on_created"
-				"Duration"			"%block_cooldown"
+						"Duration"			"%block_cooldown"
 					}
 				}
 				
@@ -217,7 +217,7 @@
 					{
 						"ScriptFile"		"items/SpellShield.lua"
 						"Function"			"modifier_item_lia_amulet_of_spell_shield_on_destroy"
-				"Duration"			"%block_cooldown"
+						"Duration"			"%block_cooldown"
 					}
 				}
 				
@@ -398,7 +398,11 @@
 		{
 			"ApplyModifier"
 			{
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"	"modifier_item_lia_anti_magic_potion"
 				"Duration"		"%duration"
 			}
@@ -1174,7 +1178,11 @@
 		{
 			"FireEffect"
 			{
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
 				"EffectAttachType"	"attach_origin"
 			}
@@ -1188,14 +1196,22 @@
 			"ApplyModifier"
 			{
 				"ModifierName" 	"modifier_invisible"
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"		"%duration"
 			}
 	
 			"ApplyModifier"
 			{
 				"ModifierName" 	"modifier_windwalk"
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"		"%duration"
 			}
 		}
@@ -2199,7 +2215,11 @@
 				{
 					"ApplyModifier"
 					{
-						"Target"			"CASTER"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 						"ModifierName"		"modifier_immolation"
 					}
 					"FireSound"
@@ -2213,7 +2233,11 @@
 				{
 					"RemoveModifier"
 					{
-						"Target"			"CASTER"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 						"ModifierName"		"modifier_immolation"
 					}
 				}	
@@ -2343,7 +2367,11 @@
 				{
 					"ApplyModifier"
 					{
-						"Target"			"CASTER"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 						"ModifierName"		"modifier_immolation"
 					}
 					"FireSound"
@@ -2357,7 +2385,11 @@
 				{
 					"RemoveModifier"
 					{
-						"Target"			"CASTER"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 						"ModifierName"		"modifier_immolation"
 					}
 				}	
@@ -3933,7 +3965,11 @@
 			}
 			"ApplyMotionController"
 			{
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			    "ScriptFile"    "items/HyperBoots.lua"
 			    "HorizontalControlFunction" "JumpHorizonal"
 			 //   "VerticalControlFunction" 	"JumpVertical"
@@ -4347,7 +4383,11 @@
 			    	"ApplyModifier"
 			    	{
 			    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
-			    		"Target"		"CASTER"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 			    	}
 			    }
 			    "OnDestroy"
@@ -4355,7 +4395,11 @@
 			    	"RemoveModifier"
 			    	{
 			    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
-			    		"Target"		"CASTER"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 			    	}
 			    }
 			  
@@ -4609,7 +4653,11 @@
 		{
 			"ApplyModifier"
 			{
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"		"item_lighting_bow_heaven_wrath_modifier"
 				"Duration"			"%heaven_wrath_duration"
 			}
@@ -4642,8 +4690,12 @@
 						{
 							"ApplyModifier"
 							{
+								"Target"
+								{
+									"Center"	"CASTER"
+									"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+								}
 								"ModifierName" 	"modifier_item_lia_lightning_bow_crit"
-								"Target"    	"CASTER"
 								"Duration"		"%heaven_wrath_duration"    
 							}        
 						}
@@ -4664,7 +4716,11 @@
 					"RemoveModifier"
 					{
 						"ModifierName"  "modifier_item_lia_lightning_bow_crit"
-						"Target"    "CASTER"    
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}  
 					}
 	
 					// Basic blood particle effect
@@ -4926,7 +4982,7 @@
 		
 		"OnSpellStart"
 		{
-				"FireSound"
+			"FireSound"
 			{
 				"EffectName"	"Hero_Luna.Eclipse.Cast"
 				"Target" 		"TARGET"
@@ -4945,9 +5001,14 @@
 					"TARGET"	"attach_origin"
 				}
 			}
+			
 			"ApplyModifier"
 			{
-				"Target"		"TARGET"
+				"Target"
+				{
+					"Center"	"TARGET"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"	"modifier_item_lunar_necklace"	
 			}
 		}
@@ -4958,7 +5019,6 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "AllowIllusionDuplicate"    "1"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		    "%bonus_all_stats"
@@ -7244,6 +7304,7 @@
 					"Radius" 	"%radius"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			
 				"Action"    
@@ -7478,6 +7539,7 @@
 					"Radius" 	"%radius"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			
 				"Action"    
@@ -7603,6 +7665,7 @@
 					"Radius" 	"%radius"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			
 				"Action"    
@@ -7719,6 +7782,7 @@
 					"Radius" 	"%radius"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			}
 			
@@ -7993,6 +8057,7 @@
 					"Radius" 	"%radius"
 					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			
 				"Action"    
@@ -8076,6 +8141,7 @@
 	                "Radius" "%radius"
 	                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
 	                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 	
 				"Action"

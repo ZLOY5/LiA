@@ -76,7 +76,11 @@
 		    	"ApplyModifier"
 		    	{
 		    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
-		    		"Target"		"CASTER"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 		    	}
 		    }
 		    "OnDestroy"
@@ -84,7 +88,11 @@
 		    	"RemoveModifier"
 		    	{
 		    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
-		    		"Target"		"CASTER"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 		    	}
 		    }
 		  

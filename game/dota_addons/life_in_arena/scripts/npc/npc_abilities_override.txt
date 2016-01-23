@@ -27466,25 +27466,25 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 		
-				//"OnAttack"
-				//"OnOwnerSpawned"
 				"OnCreated"
 				{
-				
 					"RunScript"
 					{
 						"ScriptFile"    "heroes\Wanderer\cancel_standard_aura.lua"    
 						"Function"      "cancel"
 					}			
-				
-					//"RemoveModifier"
-					 //  {
-					//	 "ModifierName"  "modifier_silencer_int_steal"
-					//	 "Target"        "CASTER"
-					 //  }
+				}
+	
+				"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes\Wanderer\cancel_standard_aura.lua"    
+						"Function"      "cancel"
+					}
 				}
 			}
-	
 		}	
 	}
 	
