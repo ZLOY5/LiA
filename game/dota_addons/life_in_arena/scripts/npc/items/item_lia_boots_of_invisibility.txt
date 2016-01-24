@@ -50,7 +50,11 @@
 	{
 		"FireEffect"
 		{
-			"Target"			"CASTER"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
 			"EffectAttachType"	"attach_origin"
 		}
@@ -64,14 +68,22 @@
 		"ApplyModifier"
 		{
 			"ModifierName" 	"modifier_invisible"
-			"Target"		"CASTER"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"		"%duration"
 		}
 
 		"ApplyModifier"
 		{
 			"ModifierName" 	"modifier_windwalk"
-			"Target"		"CASTER"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"		"%duration"
 		}
 	}
