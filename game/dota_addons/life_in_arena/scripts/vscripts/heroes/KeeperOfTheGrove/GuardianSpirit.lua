@@ -15,15 +15,15 @@ function SummonSpirit(event)
     local unit = CreateUnitByName("keeper_of_the_grove_guardian_spirit", front_position, true, caster, caster, caster:GetTeam())
     unit:SetControllableByPlayer(playerID, true)
 
-    unit:AddAbility("keeper_of_the_grove_guardian_spirit_narure_forces")
+    --unit:AddAbility("keeper_of_the_grove_guardian_spirit_narure_forces")
     unit:FindAbilityByName("keeper_of_the_grove_guardian_spirit_narure_forces"):SetLevel(ability:GetLevel())
     
     local agility = caster:GetAgility() + bonusStats
     local strength = caster:GetStrength() + bonusStats
     local intellect = caster:GetIntellect() + bonusStats
 
-    local healthBonus = strength * 8
-    local armorBonus = agility * 0.2
+    local healthBonus = strength * HERO_STATS_HEALTH_BONUS
+    local armorBonus = agility * HERO_STATS_ARMOR_BONUS
     unit:SetMaxHealth(unit:GetMaxHealth()+healthBonus)
     unit:SetHealth(unit:GetMaxHealth()+healthBonus)
     unit:SetPhysicalArmorBaseValue(unit:GetPhysicalArmorBaseValue()+armorBonus)

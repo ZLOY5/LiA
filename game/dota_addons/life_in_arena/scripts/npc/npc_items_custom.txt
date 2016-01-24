@@ -4609,7 +4609,11 @@
 		{
 			"ApplyModifier"
 			{
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"		"item_lighting_bow_heaven_wrath_modifier"
 				"Duration"			"%heaven_wrath_duration"
 			}
@@ -4642,8 +4646,12 @@
 						{
 							"ApplyModifier"
 							{
+								"Target"
+								{
+									"Center"	"CASTER"
+									"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+								}
 								"ModifierName" 	"modifier_item_lia_lightning_bow_crit"
-								"Target"    	"CASTER"
 								"Duration"		"%heaven_wrath_duration"    
 							}        
 						}
@@ -4664,7 +4672,11 @@
 					"RemoveModifier"
 					{
 						"ModifierName"  "modifier_item_lia_lightning_bow_crit"
-						"Target"    "CASTER"    
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}  
 					}
 	
 					// Basic blood particle effect
@@ -4926,7 +4938,7 @@
 		
 		"OnSpellStart"
 		{
-				"FireSound"
+			"FireSound"
 			{
 				"EffectName"	"Hero_Luna.Eclipse.Cast"
 				"Target" 		"TARGET"
@@ -4945,9 +4957,14 @@
 					"TARGET"	"attach_origin"
 				}
 			}
+			
 			"ApplyModifier"
 			{
-				"Target"		"TARGET"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"	"modifier_item_lunar_necklace"	
 			}
 		}
@@ -4958,7 +4975,6 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "AllowIllusionDuplicate"    "1"
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		    "%bonus_all_stats"

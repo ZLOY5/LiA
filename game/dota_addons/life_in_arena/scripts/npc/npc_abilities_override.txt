@@ -23899,7 +23899,7 @@
 	  	"AbilityTextureName"      	""
 	
 	  	"AbilityCooldown"			"12"
-		"AbilityManacost"			"30 40 50"
+		"AbilityManaCost"			"30 40 50"
 	    "AbilityCastPoint"          "0.5"
 		
 	    "MaxLevel"               	"3"
@@ -23954,34 +23954,79 @@
 	    		"Function"		"SpawnShadow"
 	    	}
 	    }
+	}
+	
+	"shadow_master_steal_shadow"
+	{
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityTextureName"        ""
+	
+	    "AbilityCooldown"           "13 12 11"
+	    "AbilityManaCost"           "60 70 80"
+	    "AbilityCastPoint"          "0.5"
+	
+	    "AoERadius"                 "250"
+	    
+	    "MaxLevel"                  "3"
+	    "RequiredLevel"             "2"
+	    "LevelsBetweenUpgrades"     "2"
+	
+	    "precache"
+	    {
+	
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "duration"                  "10"
+	        }
+	        "02"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "radius"                    "250"
+	        }
+	        "03"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "damage_per_sec"            "12 24 36"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"    "heroes/ShadowMaster/StealShadow.lua"
+	            "Function"      "StealShadow"
+	            "Target"
+	            {
+	                "Center"     "POINT"
+	                "Radius"     "%radius"
+	                "Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            }
+	        }
+	    }
 	
 	    "Modifiers"
 	    {
-	        "modifier_shadow"
+	        "modifier_steal_shadow"
 	        {
-	            "IsHidden"  "1"
+	            "IsDebuff"          "1"
+	            "IsPurgable"        "1"
 	
-	            "StatusEffectName"      "particles/status_fx/status_effect_terrorblade_reflection.vpcf"
-	            "StatusEffectPriority"  "100"
-	
-	            "Properties"
+	            "ThinkInterval"     "1"
+	            "OnIntervalThink"
 	            {
-	                "MODIFIER_PROPERTY_IS_ILLUSION"                   "1"
-	                //"MODIFIER_PROPERTY_SUPER_ILLUSION_WITH_ULTIMATE"  "1"
-	            }
-	
-	            "OnDeath"
-	            {
-	                "FireEffect"
+	                "Damage"
 	                {
-	                    "EffectName"        "particles/generic_gameplay/illusion_killed.vpcf"
-	                    "EffectAttachType"  "follow_worldorigin"
-	                    "Target"            "UNIT"
-	                }
-	                "RunScript"
-	                {
-	                    "ScriptFile"    "heroes\ShadowMaster\Shadow.lua"    
-	                    "Function"      "RemoveShadow"
+	                    "Target"        "TARGET"
+	                    "Type"          "DAMAGE_TYPE_MAGICAL"
+	                    "Damage"        "%damage_per_sec"
 	                }
 	            }
 	        }
@@ -27466,25 +27511,25 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 		
-				//"OnAttack"
-				//"OnOwnerSpawned"
 				"OnCreated"
 				{
-				
 					"RunScript"
 					{
 						"ScriptFile"    "heroes\Wanderer\cancel_standard_aura.lua"    
 						"Function"      "cancel"
 					}			
-				
-					//"RemoveModifier"
-					 //  {
-					//	 "ModifierName"  "modifier_silencer_int_steal"
-					//	 "Target"        "CASTER"
-					 //  }
+				}
+	
+				"ThinkInterval"		"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes\Wanderer\cancel_standard_aura.lua"    
+						"Function"      "cancel"
+					}
 				}
 			}
-	
 		}	
 	}
 	

@@ -5,12 +5,13 @@
 	"BaseClass"			"npc_dota_creature"
 	"Model"				"models/heroes/terrorblade/terrorblade.vmdl"
 	"ModelScale"		"1"
-	//"Level"				"1"
+	"Level"				"0"
 	
 	// Abilities
 	//----------------------------------------------------------------
-	"Ability1"			"" 
+	"Ability1"			"shadow_return_to_owner" 
 	"Ability2"			""
+	"Ability3"			""
 
 	"ArmorPhysical" "0"   
 	"MagicalResistance" "25" 
@@ -22,15 +23,6 @@
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "800" 
 	"AttackRange" "100" 
-
-
-	"AttributePrimary"   "DOTA_ATTRIBUTE_AGILITY"
-	"AttributeBaseStrength"  "8"          
-	"AttributeStrengthGain"  "2.3"          
-	"AttributeBaseIntelligence" "5"          
-	"AttributeIntelligenceGain" "2.1"          
-	"AttributeBaseAgility"  "22"          
-	"AttributeAgilityGain"  "3.3" 
 
 	"BountyXP" "0"
 	"BountyGoldMin" "0" 
@@ -53,16 +45,18 @@
 	"VisionDaytimeRange" "900"
 	"VisionNighttimeRange" "800"
 
+	"ConsideredHero"        "1"
+
 	"vscripts"	"heroes/ShadowMaster/PaintBlack.lua"
 
 	"precache"
 	{
 		"model"	"models/heroes/terrorblade/terrorblade.vmdl"
-		"model"	"models/heroes/terrorblade/wings.mdl"
-		"model"	"models/heroes/terrorblade/weapon.mdl"
-		"model"	"models/heroes/terrorblade/armor.mdl"
-		"model"	"models/heroes/terrorblade/horns.mdl"
-		"particle"	"particles/units/heroes/hero_terrorblade.pcf"	
+		"model"	"models/heroes/terrorblade/wings.vmdl"
+		"model"	"models/heroes/terrorblade/weapon.vmdl"
+		"model"	"models/heroes/terrorblade/armor.vmdl"
+		"model"	"models/heroes/terrorblade/horns.vmdl"
+		"particle"	"particles/units/heroes/hero_terrorblade.vpcf"	
 	}
 
 	"Creature"
