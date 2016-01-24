@@ -23,7 +23,7 @@ function SpawnShadow(event)
 	local attrPerc = ability:GetSpecialValueFor("shadow_attributes_perc")*0.01
 
 	if ability.shadow and IsValidEntity(ability.shadow) then
-		ability.shadow:ForceKill(true)
+		ability.shadow:ForceKill(false)
 	end
 
 	local casterForwardVec = caster:GetForwardVector()
@@ -41,10 +41,12 @@ function SpawnShadow(event)
 end
 
 function KillShadow(event)
-	event.ability.shadow:ForceKill(true)
+	if event.ability.shadow and IsValidEntity(event.ability.shadow) then
+		event.ability.shadow:ForceKill(false)
+	end
 end
 
-function CreateShadow(caster,originVec,forwardVec,lifetime,strength,agility,intellect,lvl)
+function _G.CreateShadow(caster,originVec,forwardVec,lifetime,strength,agility,intellect,lvl)
 	local shadow = CreateUnitByName("shadow_master_shadow", originVec, true, caster, caster, caster:GetTeamNumber())
 	shadow:SetControllableByPlayer(caster:GetPlayerID(), true)
 
