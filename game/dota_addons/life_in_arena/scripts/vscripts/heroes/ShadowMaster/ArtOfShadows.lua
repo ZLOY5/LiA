@@ -24,6 +24,12 @@ function ArtOfShadows(event)
 
 	local shadow = CreateShadow(caster,spawnPos,casterForwardVec,lifetime,strength,agility,intellect,2)
 	ability:ApplyDataDrivenModifier(caster, shadow, "modifier_art_of_shadows_shadow", nil)
+
+	local modifierAgi = caster:FindModifierByName("modifier_art_of_shadows_buff") --бафф ульты
+	if modifierAgi then
+		local abiAgi = modifierAgi:GetAbility()
+		abiAgi:ApplyDataDrivenModifier(caster, shadow, "modifier_art_of_shadows_buff", {duration = modifierAgi:GetRemainingTime()})
+	end
 	
 	table.insert(ability.shadows, shadow)
 	ability.shadowsNumber = ability.shadowsNumber + 1

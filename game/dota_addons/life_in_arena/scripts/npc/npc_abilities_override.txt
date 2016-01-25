@@ -23933,7 +23933,7 @@
 	    	"RunScript"
 	    	{
 	    		"ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
-	    		"Function"		"KillShadow"
+	    		"Function"		"HeroDied"
 	    	}
 	    }
 	
@@ -24123,6 +24123,78 @@
 	                }
 	            }
 	 
+	        }
+	    }
+	}
+	
+	"shadow_master_agility_of_shadows"
+	{
+	    "BaseClass"                 "ability_datadriven"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"        ""
+	    
+	    "MaxLevel"                  "3"
+	    "RequiredLevel"             "5"
+	    "LevelsBetweenUpgrades"     "4"
+	
+	    "precache"
+	    {
+	
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "duration"                  "5 7 9"
+	        }
+	        "02"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "bonus_attack_speed"        "60 120 180"
+	        }
+	        "03"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "chance"                    "20"
+	        }
+	    }
+	
+	
+	    "Modifiers"
+	    {
+	        "modifier_agility_of_shadows"
+	        {
+	            "Passive"           "1"
+	            "IsHidden"          "1"
+	
+	             "OnAttacked"
+	             {
+	                "Random"
+	                {
+	                    "Chance"            "%chance"
+	                    "OnSuccess"
+	                    {
+	                        "RunScript"
+	                        {
+	                            "ScriptFile"        "heroes/ShadowMaster/AgilityOfShadows.lua"
+	                            "Function"          "ApplyBuffs"
+	                        }
+	                    }
+	                }
+	             }
+	        }
+	
+	        "modifier_art_of_shadows_buff"
+	        {
+	            "IsBuff"            "1"
+	            "IsPurgable"        "1"
+	            
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+	            }
 	        }
 	    }
 	}

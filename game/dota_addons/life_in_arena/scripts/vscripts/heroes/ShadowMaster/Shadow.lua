@@ -35,12 +35,18 @@ function SpawnShadow(event)
 
 	ability.shadow = CreateShadow(caster,spawnPos,casterForwardVec,lifetime,strength,agility,intellect,abiLevel)
 
+	local modifierAgi = caster:FindModifierByName("modifier_art_of_shadows_buff") --бафф ульты
+	if modifierAgi then
+		local abiAgi = modifierAgi:GetAbility()
+		abiAgi:ApplyDataDrivenModifier(caster, ability.shadow, "modifier_art_of_shadows_buff", {duration = modifierAgi:GetRemainingTime()})
+	end
+
 	ability.shadow:EmitSound("Hero_Terrorblade.Reflection")
 
 	
 end
 
-function KillShadow(event)
+function HeroDied(event)
 	if event.ability.shadow and IsValidEntity(event.ability.shadow) then
 		event.ability.shadow:ForceKill(false)
 	end
