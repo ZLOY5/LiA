@@ -2,7 +2,7 @@
 {
 	"BaseClass"               	"ability_datadriven"
   	"AbilityBehavior"         	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  	"AbilityTextureName"      	""
+  	"AbilityTextureName"      	"shadow_master_shadow"
 
   	"AbilityCooldown"			"12"
 	"AbilityManaCost"			"30 40 50"
@@ -66,7 +66,7 @@
 {
     "BaseClass"                 "ability_datadriven"
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityTextureName"        ""
+    "AbilityTextureName"        "shadow_master_steal_shadow"
 
     "AbilityCooldown"           "13 12 11"
     "AbilityManaCost"           "60 70 80"
@@ -89,17 +89,22 @@
         "01"
         {
             "var_type"                  "FIELD_INTEGER"
-            "duration"                  "10"
+            "damage_per_sec"            "12 24 36"
         }
         "02"
         {
             "var_type"                  "FIELD_INTEGER"
-            "radius"                    "250"
+            "damage_shadow"            "30 60 90"
         }
         "03"
         {
             "var_type"                  "FIELD_INTEGER"
-            "damage_per_sec"            "12 24 36"
+            "duration"                  "10"
+        }
+        "04"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "radius"                    "250"
         }
     }
 
@@ -144,7 +149,7 @@
 {
     "BaseClass"                 "ability_datadriven"
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"        ""
+    "AbilityTextureName"        "shadow_master_art_of_shadows"
     
     "MaxLevel"                  "3"
     "RequiredLevel"             "2"
