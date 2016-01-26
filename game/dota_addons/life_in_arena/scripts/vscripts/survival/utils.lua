@@ -188,7 +188,7 @@ summon_units_nocorpse = { -- who cant res
 function UnitIsSummonNoCorpse(u)
 	local unitName = u:GetUnitName()
 	for _,v in pairs(summon_units_nocorpse) do
-		if unitName == u then
+		if unitName == v then
 			return true
 		end
 	end
@@ -265,7 +265,7 @@ summon_units = {
 function UnitIsSummon(u)
 	local unitName = u:GetUnitName()
 	for _,v in pairs(summon_units) do
-		if unitName == u then
+		if unitName == v then
 			return true
 		end
 	end
