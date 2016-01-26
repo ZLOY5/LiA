@@ -1,3 +1,5 @@
+require("heroes/ShadowMaster/Shadow")
+
 function ArtOfShadows(event)
 	local caster = event.caster
 	local ability = event.ability

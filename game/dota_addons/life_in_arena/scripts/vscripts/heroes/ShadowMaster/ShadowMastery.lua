@@ -4,7 +4,6 @@ function OnAttackLanded(event)
 	local target = event.target
 
 	local target_damage = caster.agility*ability:GetSpecialValueFor("damage_agility_percent")*0.01
-	local damage = ability:GetSpecialValueFor("damage")
 
 	local modStealShadow = target:FindModifierByName("modifier_steal_shadow")
 	if modStealShadow then 
@@ -18,9 +17,9 @@ function OnAttackLanded(event)
 
 		ApplyDamage(damageTable)
 
-		damageTable.damage = damage
-
 		local abiStealShadow = modStealShadow:GetAbility()
+		damageTable.damage = abiStealShadow:GetSpecialValueFor("damage_shadow")
+
 		for _,unit in pairs(abiStealShadow.targets) do
 			if IsValidEntity(unit) and unit:HasModifier("modifier_steal_shadow") then 
 				damageTable.victim = unit
