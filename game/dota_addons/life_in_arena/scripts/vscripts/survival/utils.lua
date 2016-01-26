@@ -183,6 +183,8 @@ summon_units_nocorpse = { -- who cant res
 	"ghost_4",
 	--
 	"fire_golem_10_wave",
+
+	"shadow_master_shadow",
 }
 
 function UnitIsSummonNoCorpse(u)
@@ -260,6 +262,8 @@ summon_units = {
 	"ghost_4",
 	--
 	"fire_golem_10_wave",
+
+	"shadow_master_shadow",
 }
 
 function UnitIsSummon(u)
