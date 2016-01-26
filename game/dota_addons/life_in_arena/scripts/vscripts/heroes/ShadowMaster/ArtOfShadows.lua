@@ -10,7 +10,7 @@ function ArtOfShadows(event)
 		ability.shadows = {}
 	end 
 
-	if ability.shadowsNumber >= shadowsMax then 
+	if (ability.shadowsNumber >= shadowsMax) or (event.target:GetTeamNumber() == caster:GetTeamNumber()) then 
 		return 
 	end
 
