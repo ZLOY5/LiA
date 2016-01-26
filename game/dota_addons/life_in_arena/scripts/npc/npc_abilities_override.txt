@@ -23975,7 +23975,8 @@
 	
 	    "precache"
 	    {
-	
+	        "particle"  "particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
 	    }
 	
 	    "AbilitySpecial"
@@ -24004,6 +24005,11 @@
 	
 	    "OnSpellStart"
 	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Terrorblade.Reflection"
+	            "Target"         "CASTER"
+	        }
 	        "RunScript"
 	        {
 	            "ScriptFile"    "heroes/ShadowMaster/StealShadow.lua"
@@ -24024,6 +24030,9 @@
 	        {
 	            "IsDebuff"          "1"
 	            "IsPurgable"        "1"
+	
+	            "EffectName"    "particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
+	            "EffectAttachType"  "follow_origin"
 	
 	            "ThinkInterval"     "1"
 	            "OnIntervalThink"
@@ -24144,7 +24153,7 @@
 	
 	    "precache"
 	    {
-	
+	        "particle"  "particles/abaddon_frost_slow.vpcf"
 	    }
 	
 	    "AbilitySpecial"
@@ -24196,6 +24205,9 @@
 	            "IsBuff"            "1"
 	            "IsPurgable"        "1"
 	            
+	            "EffectName"    "particles/abaddon_frost_slow.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
@@ -30868,7 +30880,7 @@
 	        "modifier_shadow_mastery"
 	        {
 	            "Passive"   "1"
-	
+	            "IsHidden"  "1"
 	            "OnAttackLanded"
 	            {
 	               "RunScript"
