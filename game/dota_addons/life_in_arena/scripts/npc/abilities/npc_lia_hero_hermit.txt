@@ -718,13 +718,17 @@
 			}
 		}
 		
-		"OnChannelFinnish"
+		"OnChannelFinish"
 		{
 			"RemoveModifier"
-		       {
-		         "ModifierName"  "modifier_storm_hero"
-		         "Target"        "CASTER"
-		       }
+		    {
+	         	"ModifierName"  "modifier_storm_hero"
+	         	"Target"
+				{
+					"Center" 	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+		    }
 		}     
 
 		"Modifiers"
