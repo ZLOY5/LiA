@@ -106,6 +106,9 @@ function LiA:InitGameMode()
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
+    GameRules:SetTimeOfDay(0.5)
+    GameMode:SetDaynightCycleDisabled(true)
+
     PlayerResource:SetCustomPlayerColor(0, 255, 3, 3)
     PlayerResource:SetCustomPlayerColor(1, 0, 66, 255)
     PlayerResource:SetCustomPlayerColor(2, 28, 230, 185)
@@ -119,6 +122,8 @@ function LiA:InitGameMode()
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
     ListenToGameEvent('player_connect_full', Dynamic_Wrap(LiA, 'OnConnectFull'), self)
+    ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(LiA, 'OnPlayerLevelUp'), self)
+    ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(LiA, 'OnPlayerLearnedAbility'), self)
     ListenToGameEvent('npc_spawned', Dynamic_Wrap(LiA, 'OnNPCSpawned'), self)
 	GameMode:SetDamageFilter( Dynamic_Wrap( LiA, "FilterDamage" ), self )
 	
@@ -146,62 +151,6 @@ function LiA:RegisterHintHide( args )
 	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "CustomUI_Set_forHint_Scoreboard", dat )
 
 end
-
---[[function LiA:RegisterGetLumber( args )
-	local pID = args['idPlayer']
-	local name = args['nameUlu']  
-	local player = PlayerResource:GetPlayer(pID)
-	local hero = player:GetAssignedHero()
-	local ability
-	local lvl
-	local need_lumber
-	if name == "armor" then
-		ability = hero:GetAbilityByIndex(5)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl+1
-		--print("   ",need_lumber)
-	end
-	if name == "attack" then
-		ability = hero:GetAbilityByIndex(6)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl+1
-	end
-	if name == "attackSpeed" then
-		ability = hero:GetAbilityByIndex(7)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "hpPoints" then
-		ability = hero:GetAbilityByIndex(8)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "mpPoints" then
-		ability = hero:GetAbilityByIndex(9)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "hpRegen" then
-		ability = hero:GetAbilityByIndex(10)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "mpRegen" then
-		ability = hero:GetAbilityByIndex(11)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	local dataGL =
-	{
-		NeedLumber = need_lumber+1,
-		CurrLumber = hero.lumber,
-		CurrProc = hero.percUlu,
-		Finish = ( lvl == ability:GetMaxLevel() ),
-		
-	}
-	CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_getlumber", dataGL )
-end
-]]
 
 function LiA:RegisterClick( args )
 	local pID = args['idPlayer']
@@ -360,6 +309,35 @@ function LiA:OnNPCSpawned( event )
         spawnedUnit:AddAbility("stats_bonus_fix") --исправляет бонусы за характеристики для героев
    end
 end
+
+function LiA:OnPlayerLevelUp(event)
+    local hero = PlayerResource:GetSelectedHeroEntity(event.player - 1) 
+
+    if not hero.abilityPointsUsed then
+    	hero.abilityPointsUsed = 0 
+    end
+    
+    if hero:GetAbilityPoints() > 22-hero.abilityPointsUsed then
+    	hero:SetAbilityPoints(22-hero.abilityPointsUsed)
+    end
+
+    if hero.abilityPointsUsed >= 22 then 
+    	hero:SetAbilityPoints(0)
+    end
+end
+
+function LiA:OnPlayerLearnedAbility(event)
+	print("!")
+    local hero = PlayerResource:GetSelectedHeroEntity(event.player - 1) 
+    
+    if not hero.abilityPointsUsed then
+    	hero.abilityPointsUsed = 0 
+    end
+
+    hero.abilityPointsUsed = hero.abilityPointsUsed + 1 
+end
+
+
 
 function DisableShop()
     trigger_shop:Disable()
