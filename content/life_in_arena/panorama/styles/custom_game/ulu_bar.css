@@ -4,15 +4,11 @@
 	vertical-align: bottom;
 	margin-bottom: 310px;
 	flow-children: down;
-	padding: 10px;
-	
-	//opacity:0.9;
-	//background-color: rgba(206, 171, 107, 0.1);
-	//background-image: url( "file://{images}/custom_game/opacity.png" );
+	padding: 16px;
 	
     transform: translatex( -381px ); //381
     transition-property: transform;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
 	
 }
 
@@ -31,14 +27,10 @@
 
 #closedButton
 {
-	//border: 0px solid black;
-    //background-color: #303030;
 	width: 32px;
 	height: 64px;
-	margin-bottom: 6px;
 	background-image: url( "file://{images}/custom_game/open2.png" ); //  Ikonka-treya7
-	//visibility: collapse;
-	
+	border-radius: 0px 8px 8px 0px;
 }
 
 .closed #closedButton
@@ -48,11 +40,8 @@
 
 .miganie
 {
-	//transform: translatey( 200px );
 	border: 1px solid white;
-	//padding-top: 22px;
-	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #404040 ), color-stop( 0.1, #404040 ), color-stop( 0.8, #404040 ), to( #ffffff ) );
-	opacity:0.5;
+	opacity:0.7;
 }
 
 #closedButtonInset
@@ -73,11 +62,7 @@
 
 #closedButton:active 
 {
-	//background: linear-gradient(top, #057cc0, #249ee4);
-	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #404040 ), color-stop( 0.1, #404040 ), color-stop( 0.8, #404040 ), to( #ffffff ) );
-	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
-	//padding-top: 22px;
-	//opacity:0.3;
+	opacity:0.9;
 }
 
 
