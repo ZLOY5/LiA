@@ -10,10 +10,6 @@
 	flow-children: down;
 	padding: 10px;
 	
-	//opacity:0.9;
-	//background-color: rgba(206, 171, 107, 0.1);
-	//background-image: url( "file://{images}/custom_game/opacity.png" );
-	
     transform: translatex( -10px ); //381
     transition-property: transform;
     transition-duration: 0.5s;
@@ -26,15 +22,26 @@
 }
 
 
+.MainBar
+{
+	//horizontal-align: left;
+	//vertical-align: bottom;
+	//margin-bottom: 610px;
+	flow-children: down;
+	padding: 10px;
+	background-image: url( "file://{images}/custom_game/trade_bar/background.png" );
+
+  //  transform: translatex( -10px ); //381
+    transition-property: transform;
+    transition-duration: 0.5s;
+}
+
 #closedButton
 {
-	//border: 0px solid black;
-    //background-color: #303030;
 	width: 32px;
 	height: 64px;
 	margin-bottom: 6px;
 	background-image: url( "file://{images}/custom_game/tradegold_open.png" ); 
-	//visibility: collapse;
 	
 }
 

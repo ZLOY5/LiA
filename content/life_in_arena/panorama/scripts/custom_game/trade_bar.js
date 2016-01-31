@@ -17,8 +17,8 @@ function ClickHide()
 		statePanelTrade = false;
 	else
 		statePanelTrade = true;
-	$.GetContextPanel().SetHasClass("could_vis", statePanelUlu);
-	$.GetContextPanel().SetHasClass("closed", statePanelUlu);
+	$.GetContextPanel().SetHasClass("could_vis", statePanelTrade);
+	$.GetContextPanel().SetHasClass("closed", statePanelTrade);
 	showHint = false;
 }
 
