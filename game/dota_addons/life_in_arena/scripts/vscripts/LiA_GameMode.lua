@@ -78,7 +78,7 @@ function LiA:InitGameMode()
     GameRules:SetCreepMinimapIconScale(0.8)
 	GameRules:SetRuneMinimapIconScale( 0.6 )
     GameRules:SetFirstBloodActive(false)
-	-- BUG valve: true work as false or not?
+
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
 
     GameRules:SetCustomGameEndDelay(1)
@@ -327,7 +327,6 @@ function LiA:OnPlayerLevelUp(event)
 end
 
 function LiA:OnPlayerLearnedAbility(event)
-	print("!")
     local hero = PlayerResource:GetSelectedHeroEntity(event.player - 1) 
     
     if not hero.abilityPointsUsed then
