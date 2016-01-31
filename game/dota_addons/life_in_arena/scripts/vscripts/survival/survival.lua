@@ -92,9 +92,9 @@ function Survival:InitSurvival()
     GameRules:SetTreeRegrowTime(60)
     GameRules:SetHeroRespawnEnabled(false)
 
-    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 ) 
+    GameRules:SetStartingGold(100)
 
-    --Tutorial:SetTimeFrozen(true)
+    GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 ) 
 
     local GameMode = GameRules:GetGameModeEntity()
     GameMode:SetThink("onThink", self)
@@ -102,10 +102,10 @@ function Survival:InitSurvival()
 	GameMode:SetThink("onThinkAIcreepsUpdate", self)
     GameMode:SetFogOfWarDisabled(true)
 
-    for playerID = 0, DOTA_MAX_PLAYERS-1 do
-        PlayerResource:SetGold(playerID, 0, true)
-        PlayerResource:SetGold(playerID, 100, false)
-    end
+    --for playerID = 0, DOTA_MAX_PLAYERS-1 do
+    --    PlayerResource:SetGold(playerID, 0, true)
+    --    PlayerResource:SetGold(playerID, 100, false)
+    --end
 
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
     GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
@@ -167,7 +167,6 @@ function Survival:ExperienceFilter(filterTable)
 end
 
 function Survival:onThink()
-    GameRules:SetTimeOfDay( 0.5 )
 	local hero
     for i = 1, #self.tHeroes do
         hero = self.tHeroes[i]
