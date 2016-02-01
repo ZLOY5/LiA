@@ -6,11 +6,14 @@
 {
 	horizontal-align: left;
 	vertical-align: bottom;
-	margin-bottom: 610px;
+	margin-bottom: 570px;
 	flow-children: down;
-	padding: 10px;
+	padding: 0px;
 	
-    transform: translatex( -10px ); //381
+	width: 412px;
+	height: 300px;
+
+    transform: translatex( -372px ); //381
     transition-property: transform;
     transition-duration: 0.5s;
 	
@@ -21,26 +24,31 @@
     transform: translatey( 1px );
 }
 
+#menu
+{
 
+
+}
 .MainBar
 {
-	horizontal-align: left;
-	vertical-align: bottom;
-	//margin-bottom: 610px;
-	flow-children: down;
-	padding: 10px;
-	background-image: url( "file://{images}/custom_game/trade_bar/background.png" );
 
-  //  transform: translatex( -10px ); //381
+
+	flow-children: down;
+	padding: 0px;
+
+    transform: translatex( -10px ); //381
     transition-property: transform;
     transition-duration: 0.5s;
 }
 
 #closedButton
 {
+	horizontal-align: right;
+	vertical-align: top;
 	width: 32px;
 	height: 64px;
-	margin-bottom: 6px;
+	margin-top: -265px;
+	margin-right: 10px;
 	background-image: url( "file://{images}/custom_game/tradegold_open.png" ); 
 	
 }
