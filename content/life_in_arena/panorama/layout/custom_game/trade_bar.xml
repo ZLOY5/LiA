@@ -9,10 +9,35 @@
 
 	<Panel class="TradeOverlayRoot">
 
-				<Image src="file://{images}/custom_game/trade_bar/background.png" id="bar" class="MainBar" />
-			<Panel class="top">
+		<Panel class="TradeMain">	
+			<DropDown id="HeroPick">
 
-			</Panel>	
+			</DropDown>
+	
+			<Button id="MinusGold">
+
+			</Button>	
+
+			<TextEntry id="GoldEntry" maxchars="4" placeholder="10"/>
+
+			<Button id="PlusGold">
+
+			</Button>	
+
+			<Button id="MinusLumber">
+
+			</Button>
+
+			<TextEntry id="LumberEntry" maxchars="4" placeholder="1"/>
+
+			<Button id="PlusLumber">
+
+			</Button>	
+
+			<Button id="accept">
+
+			</Button>
+		</Panel>
 			<Button id="closedButton"
 				onactivate="ClickHide()"
 				>

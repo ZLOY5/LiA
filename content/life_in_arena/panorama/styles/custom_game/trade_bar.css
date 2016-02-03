@@ -13,10 +13,27 @@
 	width: 412px;
 	height: 300px;
 
-    transform: translatex( -372px ); //381
+    transform: translatex( -380px ); //381
     transition-property: transform;
     transition-duration: 0.5s;
 	
+}
+
+.TradeMain
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	flow-children: down;
+	padding: 0px;
+	
+	width: 380px;
+	height: 300px;
+
+
+    transition-property: transform;
+    transition-duration: 0.5s;
+	background-image: url( "file://{images}/custom_game/trade_bar/background.png" ); 	
 }
 
 .TradeOverlayRoot.could_vis
@@ -48,7 +65,7 @@
 	width: 32px;
 	height: 64px;
 	margin-top: -265px;
-	margin-right: 10px;
+	margin-right: 0px;
 	background-image: url( "file://{images}/custom_game/tradegold_open.png" ); 
 	
 }
@@ -95,12 +112,95 @@
 
 
 
+#HeroPick
+{
+	horizontal-align: left;
+	vertical-align: top;
+	width: 280px;
+	height: 30px;
+	margin-top: 50px;
+	margin-left: 50px;
+	
+}
 
+#accept
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+	width: 122px;
+	height: 30px;
+	margin-bottom: 50px;
+	margin-left: 129px;
+	background-image: url( "file://{images}/custom_game/trade_bar/buttonaccept.png" ); 
+}
 
+#MinusGold 
+{ 
+horizontal-align: left; 
+vertical-align: top; 
+width: 46px; 
+height: 47px; 
+margin-top: 50px; 
+margin-left: 20px; 
+background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
+}
 
+#GoldEntry
+{ 
+horizontal-align: left; 
+vertical-align: top; 
+width: 55px; 
+height: 39px; 
+margin-top: -43px; 
+margin-left: 70px; 
 
+}
+#PlusGold 
+{ 
+horizontal-align: left; 
+vertical-align: top; 
+width: 46px; 
+height: 47px; 
 
+margin-left: 130px; 
+margin-top: -41px;
+background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
+}
 
+#MinusLumber 
+{ 
+horizontal-align: right; 
+vertical-align: top; 
+width: 46px; 
+height: 47px; 
+
+margin-right: 130px; 
+margin-top: -47px;
+background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
+}
+
+#LumberEntry
+{ 
+horizontal-align: left; 
+vertical-align: top; 
+width: 55px; 
+height: 39px; 
+margin-top: -43px; 
+margin-left: 255px; 
+
+}
+
+#PlusLumber
+{ 
+horizontal-align: right; 
+vertical-align: top; 
+width: 46px; 
+height: 47px; 
+
+margin-right: 20px; 
+margin-top: -41px;
+background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
+}
 
 
 #StatusTrade
