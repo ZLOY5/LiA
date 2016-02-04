@@ -206,6 +206,12 @@ function getIndex(list, element)
     return -1
 end
 
+function MergeTables( t1, t2 )
+    for name,info in pairs(t2) do
+        t1[name] = info
+    end
+end
+
 function IsFlagSet(number,flag)
 	return (number % (2*flag) >= flag)
 end

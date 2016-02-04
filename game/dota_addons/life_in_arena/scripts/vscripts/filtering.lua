@@ -1,249 +1,3 @@
-
--- cr. MNoya
-
-ATTACK_TYPES = {
-	["DOTA_COMBAT_CLASS_ATTACK_BASIC"] = "normal",
-	["DOTA_COMBAT_CLASS_ATTACK_PIERCE"] = "pierce",
-	["DOTA_COMBAT_CLASS_ATTACK_SIEGE"] = "siege",
-	["DOTA_COMBAT_CLASS_ATTACK_LIGHT"] = "chaos",
-	["DOTA_COMBAT_CLASS_ATTACK_HERO"] = "hero",
-	["DOTA_COMBAT_CLASS_ATTACK_MAGIC"] = "magic",
-}
-
-ARMOR_TYPES = {
-	["DOTA_COMBAT_CLASS_DEFEND_SOFT"] = "unarmored",
-	["DOTA_COMBAT_CLASS_DEFEND_WEAK"] = "light",
-	["DOTA_COMBAT_CLASS_DEFEND_BASIC"] = "medium",
-	["DOTA_COMBAT_CLASS_DEFEND_STRONG"] = "heavy",
-	["DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"] = "fortified",
-	["DOTA_COMBAT_CLASS_DEFEND_HERO"] = "hero",
-}
-
-HERO_NAMES = {
-	["npc_dota_hero_bane"] = "npc_lia_hero_hermit",
-	["npc_dota_hero_disruptor"] = "npc_lia_hero_lord_of_lightning",
-	["npc_dota_hero_abaddon"] = "npc_lia_hero_dark_knight",
-}
-
-function GetDamageForAttackAndArmor( attack_type, armor_type )
---[[
-http://classic.battle.net/war3/basics/armorandweapontypes.shtml
-        Unarm   Light   Medium  Heavy   Fort   Hero   
-Normal  100%    100%    150%    100%    70%    100%   
-Pierce  150%    200%    75%     100%    35%    50%    
-Siege   150%    100%    50%     100%    150%   50%      
-Chaos   100%    100%    100%    100%    100%   100%     
-Hero    100%    100%    100%    100%    50%    100%
--- Custom Attack Types
-Magic   100%    125%    75%     200%    35%    50%
-Spells  100%    100%    100%    100%    100%   70%  
-
-	НЕСТАНДАРТНАЯ ТАБЛИЦА УРОНА В ЖНА В ВАРЕ3
-		броня		легкая	средняя	тяжелая	укрепленная	обычная герой	божественная	без
-	атака
-	сила тьмы:  	100		100		100		100			100		130		100				100
-	артилерия:		100		50		100		150			100		50		5				150
-	герой:			100		100		100		50			100		110		5				100
-	дальний бой:	200		75		100		35			100		70		5				150
-	магия:			125		75		200		35			100		90		5				100
-	обычный:		100		150		100		70			100		100		5				100
-	заклинания		100		100		100		100			100		80		5				100
-
-]]
-	if attack_type == "normal" then
-		if armor_type == "unarmored" then
-			return 1
-		elseif armor_type == "light" then
-			return 1
-		elseif armor_type == "medium" then
-			return 1.5
-		elseif armor_type == "heavy" then
-			return 1 --1.25 in dota
-		elseif armor_type == "fortified" then
-			return 0.7
-		elseif armor_type == "hero" then
-			return 1 --0.75 in dota
-		end
-
-	elseif attack_type == "pierce" then
-		if armor_type == "unarmored" then
-			return 1.5
-		elseif armor_type == "light" then
-			return 2
-		elseif armor_type == "medium" then
-			return 0.75
-		elseif armor_type == "heavy" then
-			return 1 --0.75 in dota
-		elseif armor_type == "fortified" then
-			return 0.35
-		elseif armor_type == "hero" then
-			return 0.7 --0.5
-		end
-
-	elseif attack_type == "siege" then
-		if armor_type == "unarmored" then
-			return 1.5 --1 in dota
-		elseif armor_type == "light" then
-			return 1
-		elseif armor_type == "medium" then
-			return 0.5
-		elseif armor_type == "heavy" then
-			return 1 --1.25 in dota
-		elseif armor_type == "fortified" then
-			return 1.5
-		elseif armor_type == "hero" then
-			return 0.5 --0.75 in dota
-		end
-
-	elseif attack_type == "chaos" then
-		if armor_type == "unarmored" then
-			return 1
-		elseif armor_type == "light" then
-			return 1
-		elseif armor_type == "medium" then
-			return 1
-		elseif armor_type == "heavy" then
-			return 1
-		elseif armor_type == "fortified" then
-			return 1 --0.4 in Dota
-		elseif armor_type == "hero" then
-			return 1.3 --1
-		end
-
-	elseif attack_type == "hero" then
-		if armor_type == "unarmored" then
-			return 1
-		elseif armor_type == "light" then
-			return 1
-		elseif armor_type == "medium" then
-			return 1
-		elseif armor_type == "heavy" then
-			return 1
-		elseif armor_type == "fortified" then
-			return 0.5
-		elseif armor_type == "hero" then
-			return 1.1 --1
-		end
-
-	elseif attack_type == "magic" then
-		if armor_type == "unarmored" then
-			return 1
-		elseif armor_type == "light" then
-			return 1.25
-		elseif armor_type == "medium" then
-			return 0.75
-		elseif armor_type == "heavy" then
-			return 2
-		elseif armor_type == "fortified" then
-			return 0.35
-		elseif armor_type == "hero" then
-			return 0.9 --0.5
-		end
-	end
-	return 1
-end
-
-
-
--- Returns a string with the wc3 damage name
-function GetAttackType( unit )
-	if unit and IsValidEntity(unit) then
-		local unitName = unit:GetUnitName()
-		if GameRules.UnitKV[unitName] and GameRules.UnitKV[unitName]["CombatClassAttack"] then
-			local attack_string = GameRules.UnitKV[unitName]["CombatClassAttack"]
-			return ATTACK_TYPES[attack_string]
-		elseif unit:IsHero() then
-			local unitName = unit:GetUnitName()
-			if HERO_NAMES[unitName] then
-				local attack_string = GameRules.HeroKV[HERO_NAMES[unitName]]["CombatClassAttack"]
-				return ATTACK_TYPES[attack_string]
-			else
-				return "hero"
-			end
-		end
-	end
-	return 0
-end
-
--- Returns a string with the wc3 armor name
-function GetArmorType( unit )
-	if unit and IsValidEntity(unit) then
-		local unitName = unit:GetUnitName()
-		if GameRules.UnitKV[unitName] and GameRules.UnitKV[unitName]["CombatClassDefend"] then
-			local armor_string = GameRules.UnitKV[unitName]["CombatClassDefend"]
-			return ARMOR_TYPES[armor_string]
-		elseif unit:IsHero() then
-			local unitName = unit:GetUnitName()
-			if unitName == "npc_dota_hero_bane" then
-				local armor_string = GameRules.HeroKV["npc_lia_hero_hermit"]["CombatClassDefend"]
-				return ARMOR_TYPES[armor_string]
-			else
-				return "hero"
-			end
-		end
-	end
-	return 0
-end
-
--- Searches for "AttacksEnabled", false by omission
-function HasSplashAttack( unit )
-	local unitName = unit:GetUnitName()
-	local unit_table = GameRules.UnitKV[unitName]
-	
-	if unit_table then
-		if unit_table["SplashAttack"] and unit_table["SplashAttack"] == 1 then
-			return true
-		end
-	end
-
-	return false
-end
-
-function GetFullDamageSplashRadius( unit ) --FArea in war3
-	local unitName = unit:GetUnitName()
-	local unit_table = GameRules.UnitKV[unitName]
-	if unit_table["SplashFullDamageRadius"] then
-		return unit_table["SplashFullDamageRadius"]
-	end
-	return 0
-end
-
-function GetMediumSplashRadius( unit ) --HArea in war3
-	local unitName = unit:GetUnitName()
-	local unit_table = GameRules.UnitKV[unitName]
-	if unit_table["SplashMediumRadius"] then
-		return unit_table["SplashMediumRadius"]
-	end
-	return 0
-end
-
-function GetSmallSplashRadius( unit ) --QArea in war3
-	local unitName = unit:GetUnitName()
-	local unit_table = GameRules.UnitKV[unitName]
-	if unit_table["SplashSmallRadius"] then
-		return unit_table["SplashSmallRadius"]
-	end
-	return 0
-end
-
-function GetMediumSplashDamage( unit ) --HFact in war3
-	local unitName = unit:GetUnitName()
-	local unit_table = GameRules.UnitKV[unitName]
-	if unit_table["SplashMediumDamage"] then
-		return unit_table["SplashMediumDamage"]
-	end
-	return 0
-end
-
-function GetSmallSplashDamage( unit ) --QFact in war3
-	local unitName = unit:GetUnitName()
-	local unit_table = GameRules.UnitKV[unitName]
-	if unit_table["SplashSmallDamage"] then
-		return unit_table["SplashSmallDamage"]
-	end
-	return 0
-end
-
 function BlockDamage_PhysicalPreArmor(attack_damage,damage_type,victim,attacker,inflictor) 
 	local blocked_damage = 0 
 	local newDamage = attack_damage
@@ -335,12 +89,13 @@ function LiA:FilterDamage( filterTable )
 			end
 		end
 
-		local attack_type  = GetAttackType( attacker )
-		local armor_type = GetArmorType( victim )
-		local multiplier = GetDamageForAttackAndArmor(attack_type, armor_type)
+		local attack_type  = attacker:GetAttackType()
+		local armor_type = victim:GetArmorType()
+		local multiplier = attacker:GetAttackFactorAgainstTarget(victim)
 		--print("		attack_type = ", attack_type)
 		--print("		armor_type = ", armor_type)
 		--print("		multiplier = ", multiplier)
+		--print(original_damage,"=",attack_damage,"*",1-damage_reduction)
 		local damage = attack_damage - BlockDamage_PhysicalPreArmor(attack_damage,damagetype,victim,attacker,inflictor)
 
 		damage = ( damage * (1 - damage_reduction)) * multiplier
@@ -377,33 +132,6 @@ function LiA:FilterDamage( filterTable )
 	elseif damagetype == DAMAGE_TYPE_MAGICAL then
 		local damage = filterTable["damage"] --Pre reduction
 
-		-- Extra rules for certain ability modifiers
-		-- modifier-anti_magic_shell (Absorbs 300 magic damage)
-		--[[if victim:HasModifier("modifier_anti_magic_shell") then
-			local absorbed = 0
-			local absorbed_already = victim.anti_magic_shell_absorbed
-
-			if damage+absorbed_already < 300 then
-				absorbed = damage
-				victim.anti_magic_shell_absorbed = absorbed_already + damage
-			else
-				-- Absorb up to the limit and end
-				absorbed = 300 - absorbed_already
-				victim:RemoveModifierByName("modifier_anti_magic_shell")
-				victim.anti_magic_shell_absorbed = nil
-			end
-
-			if victim.anti_magic_shell_absorbed then
-				print("Anti-Magic Shell Absorbed "..absorbed.." damage from an instace of "..damage.." ("..victim.anti_magic_shell_absorbed.." so far)")
-			else
-				print("Anti-Magic Shell Absorbed "..absorbed.." damage from an instace of "..damage.." and ended")
-			end
-			damage = damage - absorbed
-		end	
-
-		if damage ~= filterTable["damage"] then
-			print("Magic Damage reduced: was ".. filterTable["damage"].." - dealt "..damage )
-		end]]
 		damage = damage - BlockDamage_PhysicalPreArmor(damage,damagetype,victim,attacker,inflictor)
 		-- Reassign the new damage
 		filterTable["damage"] = damage
@@ -413,14 +141,6 @@ function LiA:FilterDamage( filterTable )
 		-- Reassign the new damage
 		filterTable["damage"] = damage
 	end
-
-	-- Cheat code host only
-  	--[[if GameRules.WhosYourDaddy then
-  		local victimID = EntIndexToHScript(victim_index):GetPlayerOwnerID()
-  		if victimID == 0 then
-  			filterTable["damage"] = 0
-  		end
-  	end]]
 
 	return true
 end
@@ -501,4 +221,79 @@ function SplashAttack( attack_damage, attacker, victim )
     	v.splash_medium_damaged = nil
     end
 
+end
+
+function CDOTA_BaseNPC:GetAttackType()
+    return GameRules.UnitKV[self:GetUnitName()]["AttackType"] or "normal"
+end
+
+-- Returns a string with the wc3 armor name
+function CDOTA_BaseNPC:GetArmorType()
+    return GameRules.UnitKV[self:GetUnitName()]["ArmorType"] or "normal"
+end
+
+function CDOTA_BaseNPC:GetAttackFactorAgainstTarget( unit )
+    local attack_type = self:GetAttackType()
+    local armor_type = unit:GetArmorType()
+    local damageTable = GameRules.Damage
+    return damageTable[attack_type] and damageTable[attack_type][armor_type] or 1
+end
+
+-- Searches for "AttacksEnabled", false by omission
+function HasSplashAttack( unit )
+	local unitName = unit:GetUnitName()
+	local unit_table = GameRules.UnitKV[unitName]
+	
+	if unit_table then
+		if unit_table["SplashAttack"] and unit_table["SplashAttack"] == 1 then
+			return true
+		end
+	end
+
+	return false
+end
+
+function GetFullDamageSplashRadius( unit ) --FArea in war3
+	local unitName = unit:GetUnitName()
+	local unit_table = GameRules.UnitKV[unitName]
+	if unit_table["SplashFullDamageRadius"] then
+		return unit_table["SplashFullDamageRadius"]
+	end
+	return 0
+end
+
+function GetMediumSplashRadius( unit ) --HArea in war3
+	local unitName = unit:GetUnitName()
+	local unit_table = GameRules.UnitKV[unitName]
+	if unit_table["SplashMediumRadius"] then
+		return unit_table["SplashMediumRadius"]
+	end
+	return 0
+end
+
+function GetSmallSplashRadius( unit ) --QArea in war3
+	local unitName = unit:GetUnitName()
+	local unit_table = GameRules.UnitKV[unitName]
+	if unit_table["SplashSmallRadius"] then
+		return unit_table["SplashSmallRadius"]
+	end
+	return 0
+end
+
+function GetMediumSplashDamage( unit ) --HFact in war3
+	local unitName = unit:GetUnitName()
+	local unit_table = GameRules.UnitKV[unitName]
+	if unit_table["SplashMediumDamage"] then
+		return unit_table["SplashMediumDamage"]
+	end
+	return 0
+end
+
+function GetSmallSplashDamage( unit ) --QFact in war3
+	local unitName = unit:GetUnitName()
+	local unit_table = GameRules.UnitKV[unitName]
+	if unit_table["SplashSmallDamage"] then
+		return unit_table["SplashSmallDamage"]
+	end
+	return 0
 end
