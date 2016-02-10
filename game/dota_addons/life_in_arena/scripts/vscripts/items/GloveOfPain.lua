@@ -15,7 +15,7 @@ function HeavenlyPunishment( keys )
 	local ion_particle = keys.ion_particle
 
 	-- Targeting variables
-	local target_teams = DOTA_UNIT_TARGET_TEAM_BOTH
+	local target_teams = DOTA_UNIT_TARGET_TEAM_ENEMY
 	local target_types = ability:GetAbilityTargetType() 
 	local target_flags = DOTA_UNIT_TARGET_FLAG_NONE
 
