@@ -13,6 +13,12 @@ function ResetAllAbilitiesCooldown(unit)
 			ability:EndCooldown()
 		end
 	end
+	for i = 0, 5 do
+		local item = unit:GetItemInSlot(i)
+		if item and not item:IsCooldownReady() then
+			item:EndCooldown()
+		end
+	end
 end
 
 function GetItemInInventory(unit,itemName)

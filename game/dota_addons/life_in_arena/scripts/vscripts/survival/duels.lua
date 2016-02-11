@@ -27,6 +27,12 @@ function Survival:StartDuels()
                 hero:Purge(true, true, false, true, false)
             	hero:AddNewModifier(hero, nil, "modifier_stun_lua", {duration = -1})
                 hero.abs = hero:GetAbsOrigin()
+
+                local modifierSpellBlock = hero:FindModifierByName("modifier_item_sphere_target")
+                if modifierSpellBlock and modifierSpellBlock:GetAbility():GetAbilityName() == "item_lia_rune_of_protection" then
+                    modifierSpellBlock:Destroy()
+                    hero.duelRemovedRuneSpellBlock = true
+                end
         	end)
 
             ClearBossArenaByItems()
@@ -184,6 +190,16 @@ function Survival:EndDuel(winner,loser)
     Timers:CreateTimer(2,function()
         ClearBossArenaByItems()
         CleanUnitsOnMap()
+
+        if not hero1:IsAlive() then
+            hero1:RespawnHero(false, false, false)
+            hero1:AddNewModifier(hero1, nil, "modifier_stun_lua", nil)
+        end
+
+        if not hero2:IsAlive() then
+            hero2:RespawnHero(false, false, false)
+            hero2:AddNewModifier(hero2, nil, "modifier_stun_lua", nil)
+        end
     
         FindClearSpaceForUnit(hero1, hero1.abs, false) 
         FindClearSpaceForUnit(hero2, hero2.abs, false) 
@@ -207,10 +223,13 @@ function Survival:EndDuels()
 
     DoWithAllHeroes(function(hero)
         ResetAllAbilitiesCooldown(hero)
-        if hero:IsAlive() then
-            hero:RemoveModifierByName("modifier_stun_lua")
-            FindClearSpaceForUnit(hero, hero.abs, false)
-            SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
+        hero:RemoveModifierByName("modifier_stun_lua")
+        FindClearSpaceForUnit(hero, hero.abs, false)
+        SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
+        
+        if hero.duelRemovedRuneSpellBlock then 
+            hero.duelRemovedRuneSpellBlock = nil
+            RuneOfProtection({caster = hero})
         end
     end)
 

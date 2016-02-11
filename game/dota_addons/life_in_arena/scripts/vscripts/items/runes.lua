@@ -28,7 +28,7 @@ function RuneLumber(event)
 	PopupNumbers(hero:GetPlayerOwner() ,hero, "gold", Vector(0,180,0), 3, 2, POPUP_SYMBOL_PRE_PLUS, nil)
 end
 
-function RuneOfProtection(event)
+function _G.RuneOfProtection(event)
 	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
 	if hero:HasModifier("modifier_item_sphere_target") then
 		return 

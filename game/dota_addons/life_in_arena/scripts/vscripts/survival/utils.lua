@@ -185,6 +185,7 @@ summon_units_nocorpse = { -- who cant res
 	"fire_golem_10_wave",
 
 	"shadow_master_shadow",
+	"hell_beast",
 }
 
 function UnitIsSummonNoCorpse(u)

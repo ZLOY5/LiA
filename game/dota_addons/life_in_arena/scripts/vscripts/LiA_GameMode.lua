@@ -92,7 +92,7 @@ function LiA:InitGameMode()
     
     --GameMode:SetRecommendedItemsDisabled(true)
     --GameMode:SetHUDVisible(12, false)
-    GameMode:SetHUDVisible(1, false) 
+    --GameMode:SetHUDVisible(1, false) 
     GameMode:SetTopBarTeamValuesVisible(false)
     
     GameMode:SetBuybackEnabled(false)

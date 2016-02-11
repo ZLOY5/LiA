@@ -40,8 +40,6 @@ LinkLuaModifier( "modifier_19_wave_debuff", "survival/modifier_19_wave_debuff.lu
 ------------------------------------------------------------------------------------------------
 
 function Survival:InitSurvival()
-    Survival = self
-
     _G.WORLD_BOUNDS_BOSS_MIN = Entities:FindByName(nil, "world_bounds_boss_min"):GetAbsOrigin()
     _G.WORLD_BOUNDS_BOSS_MAX = Entities:FindByName(nil, "world_bounds_boss_max"):GetAbsOrigin()
     _G.WORLD_BOUNDS_MIN = Entities:FindByName(nil, "world_bounds_min"):GetAbsOrigin()
