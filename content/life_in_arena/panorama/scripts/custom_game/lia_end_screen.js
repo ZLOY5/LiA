@@ -125,7 +125,7 @@ function OnUpdActionEnd( data )
 		"playerXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_player.xml",
 	};*/
 	var numS =0;
-	var teamPlayers = Game.GetPlayerIDsOnTeam( localPlayerTeamId );
+	var teamPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_GOODGUYS );
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
 	//$.Msg( "                  OnUpdActionEnd:	playersContainer ", playersContainer );
 	if ( playersContainer )

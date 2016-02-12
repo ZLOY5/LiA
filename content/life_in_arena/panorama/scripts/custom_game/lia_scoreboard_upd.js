@@ -569,7 +569,7 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 				{
 					var heroEntId = Players.GetPlayerHeroEntityIndex(playerId);
 					var itemEntId = Entities.GetItemInSlot(heroEntId,i);
-					var TextureName = Abilities.GetAbilityTextureName( itemEntId )
+					var TextureName = Items.GetAbilityTextureSF( itemEntId )
 					//$.Msg( "		TextureName = ", TextureName );
 					//game\dota_addons\life_in_arena\resource\flash3\images\items
 					//var bufName = itemInfo.item_name;
@@ -586,7 +586,7 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 						{
 							bufName = bufName.replace( "_2", "" );
 						}
-						var item_image_name = "file://{images}/custom_game/items/" + bufName.replace( "item_", "" ) + ".png";
+						var item_image_name = "file://panorama/images/items/" + bufName.replace( "item_", "" ) + ".png";
 
 						//$.Msg( "		item_image_name = ", item_image_name );
 					}

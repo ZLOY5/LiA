@@ -43,6 +43,7 @@ function ShowH()
 	
 }
 
+
 (function()
 {
     //$.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", OnAbilityLearnModeToggled);
@@ -71,6 +72,7 @@ function ShowH()
 						}
 		 );
 	}
+
 	
 	
 	//

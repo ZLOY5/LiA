@@ -4,6 +4,10 @@ function modifier_orn_lua:IsHidden()
 	return true
 end
 
+function modifier_orn_lua:IsPurgable()
+	return false 
+end
+
 function modifier_orn_lua:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,
