@@ -569,8 +569,8 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 				{
 					var heroEntId = Players.GetPlayerHeroEntityIndex(playerId);
 					var itemEntId = Entities.GetItemInSlot(heroEntId,i);
-					var TextureName = Items.GetAbilityTextureSF( itemEntId )
-					//$.Msg( "		TextureName = ", TextureName );
+					var TextureName = Abilities.GetAbilityTextureName( itemEntId )
+					$.Msg( "		TextureName = ", TextureName );
 					//game\dota_addons\life_in_arena\resource\flash3\images\items
 					//var bufName = itemInfo.item_name;
 					var bufName = TextureName;
