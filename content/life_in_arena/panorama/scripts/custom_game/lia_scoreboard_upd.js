@@ -534,80 +534,48 @@ function _ScoreboardUpdater_UpdatePlayerPanelMy( scoreboardConfig, playersContai
 		playerPanel.SetHasClass( "player_connection_disconnected", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_DISCONNECTED );
 			
 	}
-	
 	var playerItemsContainer = playerPanel.FindChildInLayoutFile( "PlayerItemsContainer" );
 	if ( playerItemsContainer )
 	{
-		/*var playersC = playerPanel.FindChildInLayoutFile( "PlayerName" );
-		$.Msg( "                  playersC ", playersC);
-		$.Msg( "                  score ", score);
-		playersC.html = true;
-		playersC.href = "http://steamcommunity.com/profiles/" + score.SID +"/"; 
-		$.Msg( "                  PROFILE ", "http://steamcommunity.com/profiles/" + score.SID +"/");*/
-		//PlayerResource:GetSteamAccountID(pID)
-		
-		var playerItems = Game.GetPlayerItems( playerId );
-		if ( playerItems )
+
+		for ( var i = 0; i < 6; ++i )
 		{
-			//$.Msg( "		playerItems = ", playerItems );
-			//var heroEntId = Players.GetPlayerHeroEntityIndex(localPlayerId);
-			for ( var i = playerItems.inventory_slot_min; i < playerItems.inventory_slot_max; ++i )
-			{
-				var itemPanel = playerItemsContainer.FindChildInLayoutFile( "_dynamic_item_" + i );
-				itemPanel.SetAttributeInt( "playerId", playerId );
-				//var itemPanelName = "_dynamic_item_" + i;
-				//var itemPanel = playerItemsContainer.FindChild( itemPanelName );
-				/*if ( itemPanel === null )
-				{
-					itemPanel = $.CreatePanel( "Image", playerItemsContainer, itemPanelName );
-					itemPanel.AddClass( "PlayerItem" );
-				}*/
-				//
+			var itemPanel = playerItemsContainer.FindChildInLayoutFile( "_dynamic_item_" + i );
+			itemPanel.SetAttributeInt( "playerId", playerId );
 
-				var itemInfo = playerItems.inventory[i];
-				if ( itemInfo )
-				{
-					var heroEntId = Players.GetPlayerHeroEntityIndex(playerId);
-					var itemEntId = Entities.GetItemInSlot(heroEntId,i);
-					var TextureName = Abilities.GetAbilityTextureName( itemEntId )
-					$.Msg( "		TextureName = ", TextureName );
-					//game\dota_addons\life_in_arena\resource\flash3\images\items
-					//var bufName = itemInfo.item_name;
-					var bufName = TextureName;
-					//
-					//[   PanoramaScript       ]: 		TextureName = item_datadriven
-					if ( bufName.indexOf( "recipe" ) >= 0 || bufName.indexOf( "item_datadriven" ) >= 0 )
-					{
-						item_image_name = "file://{images}/custom_game/items/recipe.png";
-					}
-					else
-					{
-						if ( bufName.indexOf( "_2" ) >= 0 )
-						{
-							bufName = bufName.replace( "_2", "" );
-						}
-						var item_image_name = "file://panorama/images/items/" + bufName.replace( "item_", "" ) + ".png";
+			var heroEntId = Players.GetPlayerHeroEntityIndex(playerId);
+			var itemEntId = Entities.GetItemInSlot(heroEntId,i);
+			if (itemEntId != -1) {
+				var TextureName = Abilities.GetAbilityTextureName( itemEntId )
+				//$.Msg( "		TextureName = ", TextureName );
+				var bufName = TextureName;
 
-						//$.Msg( "		item_image_name = ", item_image_name );
-					}
-					//
-					itemPanel.SetImage( item_image_name );
-					//
-					/*itemPanel.Hover(
-					function () {
-						$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", $.GetContextPanel(), itemInfo.item_name, heroEntId );
-					},
-					function () {
-						$.DispatchEvent( "DOTAHideAbilityTooltip", $.GetContextPanel() );
-					});*/
+				if ( bufName.indexOf( "recipe" ) >= 0 || bufName.indexOf( "item_datadriven" ) >= 0 )
+				{
+					item_image_name = "file://{images}/items/recipe.png";
 				}
 				else
 				{
-					itemPanel.SetImage( "" );
+					if ( bufName.indexOf( "_2" ) >= 0 )
+					{
+						bufName = bufName.replace( "_2", "" );
+					}
+					var item_image_name = "file://{images}/items/" + bufName.replace( "item_", "" ) + ".png";
+
+					//$.Msg( "		item_image_name = ", item_image_name );
 				}
+				
+				itemPanel.SetImage( item_image_name );
+				itemPanel.itemName = Abilities.GetAbilityName(itemEntId);
+
+			}	
+			else
+			{
+				itemPanel.SetImage( "" );
 			}
 		}
 	}
+
 
 }
 
