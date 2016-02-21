@@ -168,23 +168,8 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percentage"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
 			}			
-			
-			"OnAttackLanded"
-			{
-				"Damage"
-				{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					"Type" "DAMAGE_TYPE_PHYSICAL"
-					"Damage" "%bonus_damage"
-				}
-			}
 		}
 	}
 }

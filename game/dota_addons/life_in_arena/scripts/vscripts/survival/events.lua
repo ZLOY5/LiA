@@ -1,4 +1,4 @@
-function Survival:OnPlayerPickHero(keys)
+    function Survival:OnPlayerPickHero(keys)
     PrintTable("OnPlayerPickHero",keys)
     local player = EntIndexToHScript(keys.player)
     local playerID = player:GetPlayerID()
@@ -11,7 +11,6 @@ function Survival:OnPlayerPickHero(keys)
     hero.lumber = 3
 	hero.percUlu = 0
 	hero.lumberSpent = 0
-    --FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
     
     table.insert(self.tHeroes, hero)
     
@@ -25,8 +24,6 @@ function Survival:OnPlayerPickHero(keys)
         print(PlayerResource:GetPlayerName(playerID),"randomed hero")
         hero:SetGold(hero:GetGold()-150, false) -- в доте за рандом дают 200 золота
     end 
-    --hero:AddNewModifier(hero, nil, "modifier_stats_bonus_fix", nil)
-
 end
 
 ---------------------------------------------------------------------------------------------------------------------------

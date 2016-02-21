@@ -68,9 +68,9 @@ function LiA:InitGameMode()
     
     GameRules:SetSafeToLeave(true)
 	GameRules:SetHeroSelectionTime(30)
-	-- BUG valve: SetPreGameTime work as SetPostGameTime?
+
 	GameRules:SetPreGameTime(0)
-    GameRules:SetPostGameTime(60)
+    GameRules:SetPostGameTime(120)
 	--
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
