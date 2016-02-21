@@ -230,7 +230,8 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 
 	"AbilityCastRange"				"300"
 	"AbilityCastPoint"				"0.0"
@@ -327,7 +328,7 @@
 								"Center"	"TARGET"
 								"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							}
-							"Type"			"DAMAGE_TYPE_PHYSICAL"
+							"Type"			"DAMAGE_TYPE_PURE"
 							"Damage"		"%AbilityDamage * %steelstorm_damage_tick"
 						}
 						"FireSound"

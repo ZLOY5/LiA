@@ -9092,7 +9092,7 @@
 	    "modifier_phoenix_bm_phoenix_fire_start"
 	  {
 	        "Passive"   "1"
-	
+	        "IsHidden"  "1"
 	        "ThinkInterval" "0.5"
 	        "OnIntervalThink"
 	      {
@@ -11350,7 +11350,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	
 		"AbilityCastRange"				"300"
 		"AbilityCastPoint"				"0.0"
@@ -11447,7 +11448,7 @@
 									"Center"	"TARGET"
 									"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 								}
-								"Type"			"DAMAGE_TYPE_PHYSICAL"
+								"Type"			"DAMAGE_TYPE_PURE"
 								"Damage"		"%AbilityDamage * %steelstorm_damage_tick"
 							}
 							"FireSound"
@@ -18410,6 +18411,12 @@
 						"Type"			"DAMAGE_TYPE_MAGICAL"
 						"Damage"		"%damage"
 					}
+	
+					"RunScript"
+		        	{
+		        		"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
+		        		"Function"		"CycloneEnd"
+		        	}
 				}
 	
 		        "ThinkInterval"		"0.03"
@@ -18535,6 +18542,7 @@
 	  //-------------------------------------------------------------------------------------------------------------
 	  "BaseClass"             "ability_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
 	  "AbilityTextureName"    "knight_illusions"
 	
 	  //"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"

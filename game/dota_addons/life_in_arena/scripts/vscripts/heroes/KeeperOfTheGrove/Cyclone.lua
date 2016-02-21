@@ -110,3 +110,10 @@ function Cyclone(event)
 	target:EmitSound("Brewmaster_Storm.Cyclone")
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_keeper_of_the_grove_treants_cyclone", {duration = ability:GetSpecialValueFor("duration")})
 end
+
+function CycloneEnd(event)
+	local target = event.target
+
+	target:StopSound("Brewmaster_Storm.Cyclone")
+
+end
