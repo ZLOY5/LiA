@@ -4,8 +4,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
 	"AbilityTextureName"			"huskar_burning_spear"
 
 	"AbilityCastAnimation" "ACT_DOTA_ATTACK"
@@ -123,7 +122,7 @@
 				"Center"	"TARGET"
 				"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
-			"Type"			"DAMAGE_TYPE_PURE"
+			"Type"			"DAMAGE_TYPE_PHYSICAL"
 			"Damage"		"%AbilityDamage"
 		}
 	}

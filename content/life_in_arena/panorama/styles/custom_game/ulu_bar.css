@@ -4,8 +4,10 @@
 	vertical-align: bottom;
 	margin-bottom: 310px;
 	flow-children: down;
-	padding: 10px;
+	padding: 0px;
 
+	width: 412px;
+	height: 230px;
 	
     transform: translatex( -381px ); //381
     transition-property: transform;
@@ -13,7 +15,22 @@
 	
 }
 
+.MainBar
+{
+	horizontal-align: left;
+	vertical-align: bottom;
 
+	flow-children: down;
+	padding: 0px;
+	
+	width: 380px;
+	height: 230px;
+
+
+    transition-property: transform;
+    transition-duration: 0.5s;
+	background-image: url( "file://{images}/custom_game/upgrades/upgrade_panel.png" ); 	
+}
 
 .UluOverlayRoot.could_vis
 {
@@ -28,15 +45,18 @@
 
 #closedButton
 {
+	horizontal-align: right;
+	vertical-align: top;
+	margin-top: -195px;
 	width: 32px;
 	height: 64px;
-	background-image: url( "file://{images}/custom_game/open2.png" ); //  Ikonka-treya7
+	background-image: url( "file://{images}/custom_game/upgrade_openkek.png" ); //  Ikonka-treya7
 	border-radius: 0px 8px 8px 0px;
 }
 
 .closed #closedButton
 {
-	background-image: url( "file://{images}/custom_game/close2.png" ); //  Ikonka-treya7	
+	background-image: url( "file://{images}/custom_game/upgrade_closekek.png" ); //  Ikonka-treya7	
 }
 
 .miganie
@@ -151,7 +171,7 @@
 	width: 86px;
 	height: 64px;
 	margin-bottom: 6px;
-	margin-left: 6px;
+	margin-left: 8px;
 	background-image: url( "file://{images}/custom_game/upgrades/aaabron.png" ); 
 }
 
@@ -221,7 +241,7 @@
 	width: 86px;
 	height: 64px;
 	margin-bottom: 6px;
-	margin-left: 6px; 
+	margin-left: 8px; 
 	background-image: url( "file://{images}/custom_game/upgrades/regen3.png" ); 
 }
 
@@ -379,7 +399,9 @@
 #StatusUlu_Text
 {
     color: white;
-    horizontal-align: left;
+    horizontal-align: center;
+    margin-top: 7px;
+    margin-left: 0px;
     text-shadow: 4px 4px 4px #121212;
     font-size: 20px;
     font-weight: bold;
@@ -388,7 +410,17 @@
 
 
 
-
+#BarName
+{
+    color: white;
+    horizontal-align: center;
+    margin-top: 5px;
+    margin-left: 0px;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 18px;
+    font-weight: bold;
+	//visibility:  collapse;
+}
 
 
 
