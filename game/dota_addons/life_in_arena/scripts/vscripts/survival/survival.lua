@@ -83,14 +83,11 @@ function Survival:InitSurvival()
     self.State = SURVIVAL_STATE_PRE_GAME
 
     self.IsDuelOccured = false
-	--self.IsDuel = false
 
 	GameRules:SetCustomVictoryMessage("#victory_message")
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetTreeRegrowTime(60)
     GameRules:SetHeroRespawnEnabled(false)
-
-    GameRules:SetStartingGold(100)
 
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 ) 
 
@@ -102,7 +99,7 @@ function Survival:InitSurvival()
 
     --for playerID = 0, DOTA_MAX_PLAYERS-1 do
     --    PlayerResource:SetGold(playerID, 0, true)
-    --    PlayerResource:SetGold(playerID, 100, false)
+    --    PlayerResource:SetGold(playerID, 500, false)
     --end
 
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
@@ -123,8 +120,7 @@ function Survival:InitSurvival()
 
     SetRuneSpawnRegion("rectangle",ARENA_LEFT_BOTTOM_CORNER,ARENA_TOP_RIGHT_CORNER)
     StartRunesSpawn()
-    --hBounds = SpawnEntityFromTableSynchronous("world_bounds", {Min = Vector(0,0,0),Max = Vector(1000,1000,0)})
-    --DeepPrintTable(hBounds)
+
 end
 
 function AIThink()

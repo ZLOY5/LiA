@@ -81,6 +81,8 @@ function LiA:InitGameMode()
 
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
 
+    GameRules:SetStartingGold(200)
+
     GameRules:SetCustomGameEndDelay(1)
     
 	local GameMode = GameRules:GetGameModeEntity()
