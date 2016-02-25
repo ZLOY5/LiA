@@ -15,32 +15,28 @@
     "MaxLevel"               "3"
     "RequiredLevel"          "1"
     "LevelsBetweenUpgrades"  "2"
-	
-    "AbilityCastPoint"  "0.2"
-    "AbilityCastRange"  "0"
+
 
 	"precache"
 	{
-	"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
-	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+		"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
 	}
 	
     "OnSpellStart"
     {
-      "Damage"
-      {
-        "Target"
-        {
-          "Center"    "CASTER"
-          "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-          "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-          "Radius"    "%radius"
-		  "MaxTargets" "%max_targets"
-        }
-        "Type"   "DAMAGE_TYPE_MAGICAL"
-        "Damage" "%damage"    
-		
-      }
+      	"RunScript"
+      	{
+      		"ScriptFile"	"heroes/Araman/Curse.lua"
+      		"Function"		"Curse"
+	        "Target"
+	        {
+	          	"Center"    "CASTER"
+	          	"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	          	"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	          	"Radius"    "%radius"
+	        }
+      	}
 	  	"FireSound"
 		{
 			"EffectName"	"Hero_Nightstalker.Void"
@@ -48,9 +44,9 @@
 		}
 		"AttachEffect"
 		{
-		"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
-		"EffectAttachType"	"attach_origin"
-		"Target"		"CASTER"
+			"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+			"EffectAttachType"	"attach_origin"
+			"Target"		"CASTER"
 		}
 		"Random"
 		{
@@ -65,7 +61,7 @@
 					"Target"
 					{
 						"Center"	"CASTER"
-			            "Radius"  "%radius"
+			            "Radius"  	"%radius"
 					    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 					}
@@ -82,77 +78,72 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
     {
-      "01"
+      	"01"
         {
             "var_type"                "FIELD_INTEGER"
             "radius"                  "400 500 600"
         }
-       "02"
+        "02"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "full_damage_radius"      "150"
+        }	
+       	"03"
         {
             "var_type"                "FIELD_INTEGER"
             "damage"                   "100 200 400"
         }
-       "03"
+       	"04"
         {
             "var_type"                "FIELD_INTEGER"
             "stun_chance"             "50"
         }
-       "04"
+       	"05"
         {
             "var_type"                "FIELD_FLOAT"
             "stun_duration"            "2"
         }
-		"05"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "max_targets"             "10 10 8"
-        }
-		"06"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "sum_damage"             "1000 2000 3200"
-        }
     }
-  }
+}
 
 "araman_armor_of_darkness"
 {
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"      "araman_armor_of_darkness"
+  	"BaseClass"               "ability_datadriven"
+  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  	"AbilityTextureName"      "araman_armor_of_darkness"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
   
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "incoming_damage_percentage"  "-10 -15 -20"
-    }
-	"02"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "bonus_armor"  "4 8 12"
-    }
-  }
+	"AbilitySpecial"
+	{
+	    "01"
+	    {
+	      	"var_type"      "FIELD_INTEGER"
+	      	"incoming_damage_percentage"  "-10 -15 -20"
+	    }
+		"02"
+	    {
+	      	"var_type"      "FIELD_INTEGER"
+	      	"bonus_armor"  "4 8 12"
+	    }
+	}
 
-  "Modifiers"
-  {   
-    "modifier_araman_armor_of_darkness"
-    {
-    	"IsHidden"	"1"
-      "Passive"  "1"
+  	"Modifiers"
+  	{   
+    	"modifier_araman_armor_of_darkness"
+    	{
+    		"IsHidden"	"1"
+      		"Passive"  "1"
 
-      "Properties"
-      {
-	  	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-        "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
-      }     
-    }
-  } 
+      		"Properties"
+      		{
+	  			"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+        		"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
+      		}     
+    	}
+  	} 
 }
 
 "araman_morale"
@@ -185,10 +176,6 @@
 		}
 	}
 	
-	  "OnRespawn"
-	  {
-	  "ApplyModifier"	"modifier_araman_morale"
-	  }
   
 	"Modifiers"
 	{
