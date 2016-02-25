@@ -35,11 +35,13 @@ function modifier_fallen_champion_return:OnTakeDamage(params)
 			local bRangedAttack = self.attack_record == params.record and self.ranged_attack
 			if bPhys and not bRangedAttack then 
 				local target = params.unit
-				local return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage
-				--
-				local prt = self:GetAbility():GetSpecialValueFor("damage_return_one_prt")
-				if RandomInt( 0, 99 ) < prt then
-					return_damage = return_damage + self:GetAbility():GetSpecialValueFor("damage_return_one")*0.01*params.original_damage
+				
+				local return_damage 
+				if RollPercentage(self:GetAbility():GetSpecialValueFor("full_damage_chance")) then
+					return_damage = params.original_damage
+					SendOverheadEventMessage(nil, OVERHEAD_ALERT_DAMAGE, target, return_damage, nil)
+				else
+					return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage
 				end
 				
 				ApplyDamage(
@@ -49,7 +51,7 @@ function modifier_fallen_champion_return:OnTakeDamage(params)
 					damage = return_damage, 
 					damage_type = DAMAGE_TYPE_MAGICAL,
 					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
-					ability = params.ability
+					ability = self:GetAbility()
 				})
 			end
 		end
