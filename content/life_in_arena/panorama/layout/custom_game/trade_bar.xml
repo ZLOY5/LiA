@@ -13,34 +13,50 @@
 			<DropDown id="HeroPick">
 
 			</DropDown>
-	
-			<Button id="MinusGold">
 
-			</Button>	
+			<Panel class="images">
 
-			<Label hittest="false" id="GoldEntry" class="TitleFont" text="10" />	
+				<Image src="file://{images}/custom_game/trade_bar/gold.png" class="gold" />
+				<Image src="file://{images}/custom_game/trade_bar/lumber.png" class="lumber" />			
 
-			<Button id="PlusGold">
+			</Panel>	
+						
+			<Panel class="buttons">	
 
-			</Button>	
+				<Button id="MinusGold">
 
-			<Button id="MinusLumber">
+				</Button>	
 
-			</Button>
+				<Label hittest="false" id="GoldEntry" class="TitleFont" text="9999" />	
 
-			<Label hittest="false" id="LumberEntry" class="TitleFont" text="10" />	
+				<Button id="PlusGold">
 
-			<Button id="PlusLumber">
+				</Button>	
 
-			</Button>	
+				<Button id="MinusLumber">
 
-			<Button id="accept">
+				</Button>
 
-			</Button>
+				<Label hittest="false" id="LumberEntry" class="TitleFont" text="9999" />	
 
-			<Button id="decline">
+				<Button id="PlusLumber">
 
-			</Button>
+				</Button>	
+			
+			</Panel>	
+
+			<Panel class="acceptdecline">	
+
+				<Button id="accept">
+
+				</Button>
+
+				<Button id="decline">
+
+				</Button>
+
+			</Panel>	
+
 		</Panel>
 			<Button id="closedButton"
 				onactivate="ClickHide()"

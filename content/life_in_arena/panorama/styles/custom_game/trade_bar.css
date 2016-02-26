@@ -36,6 +36,7 @@
 	background-image: url( "file://{images}/custom_game/trade_bar/background.png" ); 	
 }
 
+
 .TradeOverlayRoot.could_vis
 {
     transform: translatey( 1px );
@@ -114,14 +115,55 @@
 
 #HeroPick
 {
-	horizontal-align: left;
+	horizontal-align: center;
 	vertical-align: top;
 	width: 280px;
 	height: 30px;
 	margin-top: 50px;
-	margin-left: 50px;
-	
 }
+
+.images
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	flow-children: right;
+	margin-top: 20px;
+	
+	width: 380px;
+	height: 25px;
+}
+
+.gold
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	margin-left: 100px;
+}
+
+.lumber
+{
+	horizontal-align: right;
+	vertical-align: bottom;
+
+	margin-right: 100px;
+}
+
+
+.acceptdecline
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+
+	flow-children: right;
+	padding: 0px;
+	
+	margin-bottom: 50px;
+	width: 270px;
+	height: 37px;
+}
+
 
 #accept
 {
@@ -129,8 +171,8 @@
 	vertical-align: top;
 	width: 128px;
 	height: 37px;
-	margin-top: 20px;
-	margin-left: 50px;
+
+	margin-left: 0px;
 	background-image: url( "file://{images}/custom_game/trade_bar/greenbut.png" ); 
 }
 
@@ -140,10 +182,22 @@
 	vertical-align: top;
 	width: 128px;
 	height: 37px;
-	margin-top: -37px;
-	margin-right: 44px;
+
+	margin-right: -6px;
 	background-image: url( "file://{images}/custom_game/trade_bar/redbut.png" ); 
 }
+
+.buttons
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+
+	flow-children: right;
+	margin-top: 10px;
+	width: 285px;
+	height:47px;
+}
+
 
 #MinusGold 
 { 
@@ -151,8 +205,8 @@ horizontal-align: left;
 vertical-align: top; 
 width: 46px; 
 height: 47px; 
-margin-top: 50px; 
-margin-left: 20px; 
+margin-top: 0px; 
+margin-left: 0px; 
 background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
 }
 
@@ -160,10 +214,14 @@ background-image: url( "file://{images}/custom_game/trade_bar/left.png" );
 { 
 horizontal-align: left; 
 vertical-align: top; 
-width: 55px; 
-height: 39px; 
-margin-top: -36px; 
-margin-left: 70px; 
+width: 40px; 
+height: 47px; 
+margin-top: 10px; 
+//margin-left: 70px; 
+
+
+font-size: 18px;
+font-weight: bold;
 
 }
 #PlusGold 
@@ -173,8 +231,8 @@ vertical-align: top;
 width: 46px; 
 height: 47px; 
 
-margin-left: 130px; 
-margin-top: -50px;
+//margin-left: 130px; 
+margin-top: 0px;
 background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
 }
 
@@ -185,19 +243,22 @@ vertical-align: top;
 width: 46px; 
 height: 47px; 
 
-margin-right: 130px; 
-margin-top: -47px;
+//margin-right: 130px; 
+margin-left: 20px;
 background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
 }
 
 #LumberEntry
 { 
-horizontal-align: left; 
+horizontal-align: right; 
 vertical-align: top; 
-width: 55px; 
-height: 39px; 
-margin-top: -36px; 
-margin-left: 255px; 
+width: 40px; 
+height: 47px; 
+margin-top: 10px; 
+margin-right: 0px; 
+
+font-size: 18px;
+font-weight: bold;
 
 }
 
@@ -208,8 +269,8 @@ vertical-align: top;
 width: 46px; 
 height: 47px; 
 
-margin-right: 20px; 
-margin-top: -49px;
+margin-right: -1px; 
+margin-top: 0px;
 background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
 }
 
