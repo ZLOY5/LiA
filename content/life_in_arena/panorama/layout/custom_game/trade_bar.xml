@@ -7,9 +7,11 @@
 		<include src="file://{resources}/scripts/custom_game/trade_bar.js" />
 	</scripts>
 
+
 	<Panel class="TradeOverlayRoot">
 
 		<Panel class="TradeMain">	
+			<Label hittest="false" id="Tradename" class="TitleFont" text="#trade" />	
 			<DropDown id="HeroPick">
 
 			</DropDown>
@@ -48,11 +50,11 @@
 			<Panel class="acceptdecline">	
 
 				<Button id="accept">
-
+					<Label hittest="false" id="accept_text" class="TitleFont" text="#accept" />	
 				</Button>
 
 				<Button id="decline">
-
+					<Label hittest="false" id="decline_text" class="TitleFont" text="#decline" />	
 				</Button>
 
 			</Panel>	
@@ -61,6 +63,7 @@
 			<Button id="closedButton"
 				onactivate="ClickHide()"
 				>
+				<Image src="file://{images}/custom_game/trade_bar/tradebuttt.png" id="TradeSign" />
 				<Panel id="closedButtonInset">
 					<Label text="" />
 				</Panel>
@@ -68,6 +71,6 @@
 
 
 		
-	</Panel>
+		</Panel>
 	
 </root>

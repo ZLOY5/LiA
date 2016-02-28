@@ -10,8 +10,8 @@
 	flow-children: down;
 	padding: 0px;
 	
-	width: 412px;
-	height: 300px;
+	width: 712px;
+	height: 1080px;
 
     transform: translatex( -380px ); //381
     transition-property: transform;
@@ -22,10 +22,10 @@
 .TradeMain
 {
 	horizontal-align: left;
-	vertical-align: bottom;
+	vertical-align: top;
 
 	flow-children: down;
-	padding: 0px;
+	margin-top: 222px;
 	
 	width: 380px;
 	height: 300px;
@@ -63,12 +63,12 @@
 {
 	horizontal-align: right;
 	vertical-align: top;
-	width: 32px;
-	height: 64px;
-	margin-top: -265px;
-	margin-right: 0px;
-	background-image: url( "file://{images}/custom_game/tradegold_open.png" ); 
-	
+	width: 28px;
+	height: 28px;
+	margin-top: -504px;
+	margin-right: 103px;
+	background-image: url( "file://{images}/custom_game/trade_bar/prodoljil.png" ); 
+	border-radius: 0px 2px 2px 0px;
 }
 
 .closed #closedButton
@@ -119,10 +119,10 @@
 	vertical-align: top;
 	width: 280px;
 	height: 35px;
-	margin-top: 50px;
+	margin-top: 25px;
 }
 
-DropDownMenu
+.DropDownMenu
 {
 	width: 280px;
 }
@@ -181,6 +181,18 @@ DropDownMenu
 	background-image: url( "file://{images}/custom_game/trade_bar/greenbut.png" ); 
 }
 
+#accept_text
+{
+	horizontal-align: center;
+	vertical-align: center;
+	margin-bottom: 6px;
+}
+
+#accept:active
+{
+	background-image: url( "file://{images}/custom_game/trade_bar/greennajata.png" ); 
+}
+
 #decline
 {
 	horizontal-align: right;
@@ -190,6 +202,18 @@ DropDownMenu
 
 	margin-right: -6px;
 	background-image: url( "file://{images}/custom_game/trade_bar/redbut.png" ); 
+}
+
+#decline_text
+{
+	horizontal-align: center;
+	vertical-align: center;
+	margin-bottom: 6px;
+}
+
+#decline:active
+{
+	background-image: url( "file://{images}/custom_game/trade_bar/rednajata.png" ); 
 }
 
 .buttons
@@ -215,9 +239,14 @@ margin-left: 0px;
 background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
 }
 
+#MinusGold:active
+{ 
+background-image: url( "file://{images}/custom_game/trade_bar/leftnajata.png" ); 
+}
+
 #GoldEntry
 { 
-horizontal-align: left; 
+horizontal-align: center; 
 vertical-align: top; 
 width: 40px; 
 height: 47px; 
@@ -227,7 +256,6 @@ margin-top: 10px;
 
 font-size: 18px;
 font-weight: bold;
-
 }
 #PlusGold 
 { 
@@ -239,6 +267,11 @@ height: 47px;
 //margin-left: 130px; 
 margin-top: 0px;
 background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
+}
+
+#PlusGold:active 
+{ 
+background-image: url( "file://{images}/custom_game/trade_bar/rightnajata.png" ); 
 }
 
 #MinusLumber 
@@ -253,9 +286,14 @@ margin-left: 20px;
 background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
 }
 
+#MinusLumber:active  
+{ 
+background-image: url( "file://{images}/custom_game/trade_bar/leftnajata.png" ); 
+}
+
 #LumberEntry
 { 
-horizontal-align: right; 
+horizontal-align: center; 
 vertical-align: top; 
 width: 40px; 
 height: 47px; 
@@ -279,6 +317,11 @@ margin-top: 0px;
 background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
 }
 
+#PlusLumber:active  
+{ 
+
+background-image: url( "file://{images}/custom_game/trade_bar/rightnajata.png" ); 
+}
 
 #StatusTrade
 {
@@ -315,3 +358,14 @@ background-image: url( "file://{images}/custom_game/trade_bar/right.png" );
 }
 
 
+#Tradename
+{
+    color: white;
+    horizontal-align: center;
+    margin-top: 5px;
+    margin-left: 0px;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 18px;
+    font-weight: bold;
+	//visibility:  collapse;
+}
