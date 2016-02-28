@@ -27,7 +27,7 @@ function Survival:HideHero(hero)
 
 		self.nHeroCount = self.nHeroCount - 1
 		print(self.nHeroCount)
-		if not hero:IsAlive() and self.State >= SURVIVAL_STATE_ROUND_WAVE then
+		if not hero:IsAlive() and self.State >= SURVIVAL_STATE_ROUND_WAVE and self.State ~= SURVIVAL_STATE_DUEL_TIME then
 			self.nDeathHeroes = self.nDeathHeroes - 1
 		end
 	end
