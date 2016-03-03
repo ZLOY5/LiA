@@ -1,15 +1,8 @@
 "use strict";
 
-//var curr_lumber_need =-1;
-//var curr_lumber =-1;
-//var curr_proc =-1;
-//var curr_finish = false;
+
 var statePanelTrade = false;
-//var hideInProcess = false;
-var idHideInProcess = -1;
-var staticStatusText = false;
-var showHint = true;
-var mig = false;
+
 
 function ClickHide()
 {
@@ -19,67 +12,45 @@ function ClickHide()
 		statePanelTrade = true;
 	$.GetContextPanel().SetHasClass("could_vis", statePanelTrade);
 	$.GetContextPanel().SetHasClass("closed", statePanelTrade);
-	showHint = false;
 }
 
-function ShowH()
+function ColorChange()
 {
-	var childPanel = $.GetContextPanel().FindChildInLayoutFile( "closedButton" );
-	
-	if (showHint)
-	{
-		if (!mig)
-			mig = true;
-		else
-			mig = false;
-		childPanel.SetHasClass( "miganie", mig );
-		//$.Msg( "		ShowH= ", mig);
-			
-		//else
-		//	childPanel.SetHasClass( "miganie", true );
-	}
-	else
-		childPanel.SetHasClass( "miganie", false );
-	
+	var dropDown = $.FindChildInContext("#HeroPick");
+	var PlayerID = dropDown.GetSelected().GetAttributeInt("player_id", -1)
+	var playerColor = GameUI.CustomUIConfig().players_color[PlayerID];
+	var backgroundColor = 'gradient( linear, 100% 0%, 0% 0%, from( ' + playerColor + '00 ), to( ' + playerColor + '50 ) );'
+	dropDown.style.backgroundColor = backgroundColor;
 }
+
+
 
 
 (function()
 {
-    //$.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", OnAbilityLearnModeToggled);
+	var dropDown = $.FindChildInContext("#HeroPick");
+	//dropDown.RemoveAllOptions();
+	var isFirstPlayer = true
+	for (var PlayerID of Game.GetAllPlayerIDs()) {
+		
+		if (Players.IsValidPlayerID(PlayerID) && Game.GetLocalPlayerID() != PlayerID) {
+			var PlayerPanel = $.CreatePanel("Label", dropDown, "player"+PlayerID);
+			var playerColor = GameUI.CustomUIConfig().players_color[PlayerID];
+			var backgroundColor = 'gradient( linear, 100% 0%, 0% 0%, from( ' + playerColor + '00 ), to( ' + playerColor + '50 ) );'
+			var heroName = $.Localize("#"+Entities.GetUnitName(Players.GetPlayerHeroEntityIndex(PlayerID)));
+			dropDown.AddOption(PlayerPanel);
+			PlayerPanel.SetAttributeInt("player_id", PlayerID);
+			PlayerPanel.text = Players.GetPlayerName(PlayerID)+' | '+ heroName +'';
+			PlayerPanel.style.backgroundColor = backgroundColor;
+			if (isFirstPlayer) {
+				dropDown.SetSelected(PlayerPanel);
+				dropDown.style.backgroundColor = backgroundColor;
+				isFirstPlayer = false;
+			}
 
-	/*GameEvents.Subscribe( "dota_portrait_ability_layout_changed", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_player_update_selected_unit", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilityList );*/
-	//
-	//GameEvents.Subscribe( "upd_action_lumber", OnUpdAction ); 
-	//GameEvents.Subscribe( "upd_action_getlumber", OnUpdActionGetLumber ); 
-	//GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
-	
-	//var queryUnit = Players.GetLocalPlayerPortraitUnit();
-	//$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", $.GetContextPanel(), "dw", queryUnit );
-	//$.DispatchEvent( "DOTAHideAbilityTooltip", $( "#attButton" ) );
-	$.GetContextPanel().SetHasClass("could_vis", false);
-	//
-	//
-	for (var i = 0; i < 26; ++i)
-	{
-		$.Schedule( 0.7*i, function()
-						{
-							ShowH();
-						}
-		 );
+		}
 	}
 
-	
-	
-	//
-	//var childPanel1 = $.GetContextPanel().FindChildInLayoutFile( "StatusUlu" );
-	
-	//childPanel1.SetHasClass( "show", true );
-	//$.Msg( "		childPanelStatusUlu= ", childPanel1);
-	//UpdateAbilityList(); // initial update
-	
+
+
 })();

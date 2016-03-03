@@ -12,7 +12,7 @@
 
 		<Panel class="TradeMain">	
 			<Label hittest="false" id="Tradename" class="TitleFont" text="#trade" />	
-			<DropDown id="HeroPick">
+			<DropDown id="HeroPick" oninputsubmit="ColorChange()">
 
 			</DropDown>
 
@@ -29,7 +29,7 @@
 
 				</Button>	
 
-				<Label hittest="false" id="GoldEntry" class="TitleFont" text="9999" />	
+				<Label hittest="false" id="GoldEntry" class="TitleFont" text="0" />	
 
 				<Button id="PlusGold">
 
@@ -39,7 +39,7 @@
 
 				</Button>
 
-				<Label hittest="false" id="LumberEntry" class="TitleFont" text="9999" />	
+				<Label hittest="false" id="LumberEntry" class="TitleFont" text="0" />	
 
 				<Button id="PlusLumber">
 
