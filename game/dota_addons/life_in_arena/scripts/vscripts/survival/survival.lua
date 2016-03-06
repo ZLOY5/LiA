@@ -234,7 +234,7 @@ function Survival:_GiveRoundBounty()
     DoWithAllHeroes(function(hero)
         local oldGold = hero:GetGold()
         hero:ModifyGold(goldBounty, false, DOTA_ModifyGold_Unspecified)
-        hero.lumber = hero.lumber + lumberBounty
+        PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),lumberBounty)
         print(hero:GetUnitName(),"gold",oldGold," --> ",tostring(hero:GetGold()))
     end)
 end
@@ -533,7 +533,7 @@ function Survival:GetDataForSendUlu(only_upd, done, pid, need, finish, name)
 		data =
 			{
 				--PlayersId = tPlayersId,
-				Lumber = hero.lumber or 0,
+				Lumber = PlayerResource:GetLumber(pid) or 0,
 				PercUlu = hero.percUlu or 0,
 				UluPlayerId = pid,
 				UluDone = done,

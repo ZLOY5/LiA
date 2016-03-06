@@ -120,6 +120,42 @@ function LiA:InitGameMode()
     PlayerResource:SetCustomPlayerColor(6, 32, 192, 0)
     PlayerResource:SetCustomPlayerColor(7, 229, 91, 176)
 
+    PlayerResource.lumber = {}
+
+    function PlayerResource:ModifyLumber(playerID, lumber)
+		if not PlayerResource:IsValidPlayerID(playerID) then 
+			return
+		end
+		
+		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+		if not PlayerResource.lumber[playerID] then
+			PlayerResource.lumber[playerID] = 0
+		end
+
+
+		PlayerResource.lumber[playerID] = PlayerResource.lumber[playerID] + lumber
+
+		if PlayerResource.lumber[playerID] < 0 then
+			PlayerResource.lumber[playerID] = 0
+		end
+
+		CustomNetTables:SetTableValue("lia_player_table", tostring(playerID), {lumber = PlayerResource.lumber[playerID]})
+		DeepPrintTable(PlayerResource.lumber)
+	end
+
+	function PlayerResource:GetLumber(playerID)
+		if not PlayerResource:IsValidPlayerID(playerID) then 
+			return 
+		end
+
+		if not PlayerResource.lumber[playerID] then
+			PlayerResource.lumber[playerID] = 0
+		end
+
+		return PlayerResource.lumber[playerID]
+	end
+
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
@@ -129,6 +165,8 @@ function LiA:InitGameMode()
     ListenToGameEvent('npc_spawned', Dynamic_Wrap(LiA, 'OnNPCSpawned'), self)
 	GameMode:SetDamageFilter( Dynamic_Wrap( LiA, "FilterDamage" ), self )
 	
+
+	CustomGameEventManager:RegisterListener("lia_trade_request", Dynamic_Wrap(LiA, "TradeRequest"))
 	--upgrades
 	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
 	--CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
@@ -218,10 +256,10 @@ function LiA:RegisterClick( args )
 	if ability:GetLevel()+1 <= ability:GetMaxLevel() then
 		--print("ability:GetLevel()",ability:GetLevel())
 		--print("ability:GetMaxLevel() ",ability:GetMaxLevel())
-		if hero.lumber >= 1+need_lumber then -- + Abilities.GetLevel(ability) )
+		if PlayerResource:GetLumber(pID) >= 1+need_lumber then -- + Abilities.GetLevel(ability) )
 			--SetLevel
 			ability:SetLevel(ability:GetLevel()+1)
-			hero.lumber = hero.lumber - (1+need_lumber)
+			PlayerResource:ModifyLumber(pID,-(1+need_lumber))
 			hero.lumberSpent = hero.lumberSpent + (1+need_lumber)
 			hero.percUlu = 100*hero.lumberSpent/maxLumber
 			--Abilities.SetLevel(ability,Abilities.GetLevel(ability)+1);
@@ -338,6 +376,32 @@ function LiA:OnPlayerLearnedAbility(event)
     hero.abilityPointsUsed = hero.abilityPointsUsed + 1 
 end
 
+function LiA:TradeRequest(event)
+	print("TradeRequest")
+	for k,v in pairs(event) do
+		print(k,v)
+	end
+	local tradeGold = event.gold 
+	local tradeLumber = event.lumber
+
+	if tradeGold > 0 then
+		local playerGold = PlayerResource:GetGold(event.PlayerID)
+		if tradeGold > playerGold then
+			tradeGold = playerGold
+		end
+		PlayerResource:ModifyGold(event.PlayerID, -tradeGold, false, DOTA_ModifyGold_Unspecified)
+		PlayerResource:ModifyGold(event.tradePlayerID, tradeGold, false, DOTA_ModifyGold_Unspecified)
+	end
+
+	if tradeLumber > 0 then
+		local playerLumber = PlayerResource:GetLumber(event.PlayerID)
+		if tradeLumber > playerLumber then
+			tradeLumber = playerLumber
+		end
+		PlayerResource:ModifyLumber(event.PlayerID, -tradeLumber, false, DOTA_ModifyGold_Unspecified)
+		PlayerResource:ModifyLumber(event.tradePlayerID, tradeLumber, false, DOTA_ModifyGold_Unspecified)
+	end
+end
 
 
 function DisableShop()

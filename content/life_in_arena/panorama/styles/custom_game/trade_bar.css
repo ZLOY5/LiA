@@ -1,117 +1,46 @@
 
-
-
-
 .TradeOverlayRoot
-{
-	horizontal-align: left;
-	vertical-align: bottom;
-	margin-bottom: 570px;
-	flow-children: down;
-	padding: 0px;
-	
-	width: 712px;
-	height: 1080px;
-
-    transform: translatex( -380px ); //381
-    transition-property: transform;
-    transition-duration: 0.5s;
-	
-}
-
-.TradeMain
-{
-	horizontal-align: left;
-	vertical-align: top;
-
-	flow-children: down;
-	margin-top: 222px;
-	
-	width: 380px;
-	height: 300px;
-
-
-    transition-property: transform;
-    transition-duration: 0.5s;
-	background-image: url( "file://{images}/custom_game/trade_bar/background.png" ); 	
-}
-
-
-.TradeOverlayRoot.could_vis
-{
-    transform: translatey( 1px );
-}
-
-#menu
-{
-
-
-}
-.MainBar
-{
-
-
-	flow-children: down;
-	padding: 0px;
-
-    transform: translatex( -10px ); //381
-    transition-property: transform;
-    transition-duration: 0.5s;
-}
-
-#closedButton
-{
-	horizontal-align: right;
-	vertical-align: top;
-	width: 28px;
-	height: 28px;
-	margin-top: -504px;
-	margin-right: 103px;
-	background-image: url( "file://{images}/custom_game/trade_bar/prodoljil.png" ); 
-	border-radius: 0px 2px 2px 0px;
-}
-
-.closed #closedButton
-{
-	background-image: url( "file://{images}/custom_game/trade_bar/prodoljil.png" ); 	
-}
-
-.miganie
-{
-	//transform: translatey( 200px );
-	border: 1px solid white;
-	//padding-top: 22px;
-	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #404040 ), color-stop( 0.1, #404040 ), color-stop( 0.8, #404040 ), to( #ffffff ) );
-	opacity:0.5;
-}
-
-#closedButtonInset
 {
 	width: 100%;
 	height: 100%;
-	//border: 2px solid black;
-    //background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
-	margin: 1px;
 }
 
-#closedButton:hover #closedButtonInset
+#TradeMain
 {
-	opacity:0.1;
-	//background-color: #9e8b2c;
-    //background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.8, #c4a529 ), to( #ffffff ) );
+	flow-children: down;
+	margin-top: 120px;
+	margin-left: 50px;
+	width: 380px;
+	height: 300px;
+
+	visibility: collapse;
+
+	transition-property: transform;
+    transition-duration: 0.2s;
+
+	background-image: url( "file://{images}/custom_game/trade_bar/background.png" ); 
 }
 
-#closedButton:active 
+#TradeMain.Open
 {
-	//background: linear-gradient(top, #057cc0, #249ee4);
-	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #404040 ), color-stop( 0.1, #404040 ), color-stop( 0.8, #404040 ), to( #ffffff ) );
-	//background-color: gradient(linear, 0% 0%, 0% 100%, from(#057cc0), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c), color-stop( 0.8, #c4a529 ) , to(#249ee4));
-	//padding-top: 22px;
-	//opacity:0.3;
+	visibility: visible;
 }
 
+#OpenButton
+{
+	width: 32px;
+	height: 32px;
+	//background-image: url( "file://{images}/custom_game/trade_bar/prodoljil.png" ); 
+	background-color: #222222;
+	border-radius: 2px 2px 2px 2px;
+	margin-left: 200px;
+	margin-top: 5px;
+}
 
-
+#TradeSign:hover
+{
+	brightness:1.7;
+}
 
 #HeroPick
 {
@@ -119,12 +48,23 @@
 	vertical-align: top;
 	width: 280px;
 	height: 35px;
-	margin-top: 25px;
+	margin-top: 40px;
 }
 
 DropDownMenu
 {
 	width: 280px;
+	background-color: #111111FF;
+}
+
+DropDown Label
+{
+	color: white;
+}
+
+DropDownMenu Label:hover
+{
+	brightness: 1.7;
 }
 
 .images
@@ -152,7 +92,7 @@ DropDownMenu
 	horizontal-align: right;
 	vertical-align: bottom;
 
-	margin-right: 100px;
+	margin-right: 95px;
 }
 
 
@@ -222,105 +162,93 @@ DropDownMenu
 	vertical-align: bottom;
 
 	flow-children: right;
-	margin-top: 10px;
-	width: 285px;
+	margin-top: 5px;
+
 	height:47px;
 }
 
 
 #MinusGold 
 { 
-horizontal-align: left; 
-vertical-align: top; 
-width: 46px; 
-height: 47px; 
-margin-top: 0px; 
-margin-left: 0px; 
-background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
-}
+
+	vertical-align: center; 
+	width: 46px; 
+	height: 47px; 
+	margin-top: 0px; 
+	margin-left: 0px; 
+	background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
+	}
 
 #MinusGold:active
 { 
-background-image: url( "file://{images}/custom_game/trade_bar/leftnajata.png" ); 
+	background-image: url( "file://{images}/custom_game/trade_bar/leftnajata.png" ); 
 }
 
 #GoldEntry
 { 
-horizontal-align: center; 
-vertical-align: top; 
-width: 40px; 
-height: 47px; 
-margin-top: 10px; 
-//margin-left: 70px; 
+	vertical-align: center; 
+	width: 60px; 
+	height: 40px; 
 
+	//margin-left: 70px; 
 
-font-size: 18px;
-font-weight: bold;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
 }
 #PlusGold 
 { 
-horizontal-align: left; 
-vertical-align: top; 
-width: 46px; 
-height: 47px; 
+	vertical-align: center; 
+	width: 46px; 
+	height: 47px; 
 
-//margin-left: 130px; 
-margin-top: 0px;
-background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
+	margin-left: 1px; 
+	background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
 }
 
 #PlusGold:active 
 { 
-background-image: url( "file://{images}/custom_game/trade_bar/rightnajata.png" ); 
+	background-image: url( "file://{images}/custom_game/trade_bar/rightnajata.png" ); 
 }
 
 #MinusLumber 
 { 
-horizontal-align: right; 
-vertical-align: top; 
-width: 46px; 
-height: 47px; 
+	vertical-align: center; 
+	width: 46px; 
+	height: 47px; 
 
-//margin-right: 130px; 
-margin-left: 20px;
-background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
+	//margin-right: 130px; 
+	background-image: url( "file://{images}/custom_game/trade_bar/left.png" ); 
 }
 
 #MinusLumber:active  
 { 
-background-image: url( "file://{images}/custom_game/trade_bar/leftnajata.png" ); 
+	background-image: url( "file://{images}/custom_game/trade_bar/leftnajata.png" ); 
 }
 
 #LumberEntry
 { 
-horizontal-align: center; 
-vertical-align: top; 
-width: 40px; 
-height: 47px; 
-margin-top: 10px; 
-margin-right: 0px; 
+	vertical-align: center; 
+	width: 60px; 
+	height: 40px; 
 
-font-size: 18px;
-font-weight: bold;
-
+	font-size: 18px;
+	font-weight: bold;
 }
 
 #PlusLumber
-{ 
-horizontal-align: right; 
-vertical-align: top; 
-width: 46px; 
-height: 47px; 
+{  
+	vertical-align: center; 
+	width: 46px; 
+	height: 47px; 
 
-margin-right: 0px; 
-margin-top: 0px;
-background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
+	margin-left: 1px; 
+	background-image: url( "file://{images}/custom_game/trade_bar/right.png" ); 
 }
 
 #PlusLumber:active  
 { 
-
-background-image: url( "file://{images}/custom_game/trade_bar/rightnajata.png" ); 
+	background-image: url( "file://{images}/custom_game/trade_bar/rightnajata.png" ); 
 }
 
 #StatusTrade

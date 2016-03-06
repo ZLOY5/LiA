@@ -8,13 +8,15 @@
 	</scripts>
 
 
-	<Panel class="TradeOverlayRoot">
+	<Panel class="TradeOverlayRoot" hittest="false">
 
-		<Panel class="TradeMain">	
+		<Button id="OpenButton" onactivate="OpenButtonClick()">
+			<Image src="file://{images}/custom_game/trade_bar/tradebuttt.png" id="TradeSign" />
+		</Button>
+
+		<Panel id="TradeMain" class="TradeMain">	
 			<Label hittest="false" id="Tradename" class="TitleFont" text="#trade" />	
-			<DropDown id="HeroPick" oninputsubmit="ColorChange()">
-
-			</DropDown>
+			<DropDown id="HeroPick" oninputsubmit="ColorChange()"/>
 
 			<Panel class="images">
 
@@ -24,50 +26,29 @@
 			</Panel>	
 						
 			<Panel class="buttons">	
+				<Button id="MinusGold" onactivate="Increment(1,true)"/>
+				<TextEntry id="GoldEntry" class="TitleFont" text="0" textmode="numeric" maxchars="4"/>	
+				<Button id="PlusGold" onactivate="Increment(1,false)"/>
 
-				<Button id="MinusGold">
-
-				</Button>	
-
-				<Label hittest="false" id="GoldEntry" class="TitleFont" text="0" />	
-
-				<Button id="PlusGold">
-
-				</Button>	
-
-				<Button id="MinusLumber">
-
-				</Button>
-
-				<Label hittest="false" id="LumberEntry" class="TitleFont" text="0" />	
-
-				<Button id="PlusLumber">
-
-				</Button>	
-			
+				<Button id="MinusLumber" onactivate="Increment(2,true)"/>
+				<TextEntry id="LumberEntry" class="TitleFont" text="0" textmode="numeric" maxchars="4" />	
+				<Button id="PlusLumber" onactivate="Increment(2,false)"/>
 			</Panel>	
 
 			<Panel class="acceptdecline">	
 
-				<Button id="accept">
+				<Button id="accept" onactivate="TradeRequest()">
 					<Label hittest="false" id="accept_text" class="TitleFont" text="#accept" />	
 				</Button>
 
-				<Button id="decline">
+				<Button id="decline" onactivate="OpenButtonClick()">
 					<Label hittest="false" id="decline_text" class="TitleFont" text="#decline" />	
 				</Button>
 
 			</Panel>	
 
 		</Panel>
-			<Button id="closedButton"
-				onactivate="ClickHide()"
-				>
-				<Image src="file://{images}/custom_game/trade_bar/tradebuttt.png" id="TradeSign" />
-				<Panel id="closedButtonInset">
-					<Label text="" />
-				</Panel>
-			</Button>
+
 
 
 		

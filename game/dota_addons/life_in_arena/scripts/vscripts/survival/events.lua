@@ -4,14 +4,15 @@
 
     local playerID = player:GetPlayerID()
     local hero = EntIndexToHScript(keys.heroindex)
-
     hero.creeps = 0
     hero.bosses = 0
     hero.deaths = 0
     hero.rating = 0
-    hero.lumber = 3
+    PlayerResource:ModifyLumber(playerID,3)
 	hero.percUlu = 0
 	hero.lumberSpent = 0
+
+    
     
     table.insert(self.tHeroes, hero)
     
@@ -90,7 +91,7 @@ function Survival:_OnBossDeath(keys)
     
     if hero then
         hero.bosses = hero.bosses + 1
-        hero.lumber = hero.lumber + 3
+        PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),3)
         --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = hero.lumber })
         if attacker:GetPlayerOwner() then
             PopupNumbers(attacker:GetPlayerOwner() ,killed, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
