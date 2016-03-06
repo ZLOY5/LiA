@@ -160,9 +160,11 @@ function OpenButtonClick() {
 				dropDown.style.backgroundColor = 'gradient( linear, 100% 0%, 0% 0%, from( ' + playerColor + '00 ), to( ' + playerColor + '60 ) );';
 				isFirstPlayer = false;
 			}
-
 		}
 	}
+
+	if (isFirstPlayer)
+		$.FindChildInContext("#OpenButton").visible = false;
 
 	$.Schedule(0.03,RecalculateTradeResource)
 

@@ -141,7 +141,6 @@ function LiA:InitGameMode()
 		end
 
 		CustomNetTables:SetTableValue("lia_player_table", tostring(playerID), {lumber = PlayerResource.lumber[playerID]})
-		DeepPrintTable(PlayerResource.lumber)
 	end
 
 	function PlayerResource:GetLumber(playerID)

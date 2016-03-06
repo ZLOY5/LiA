@@ -8,12 +8,12 @@
 #TradeMain
 {
 	flow-children: down;
-	margin-top: 120px;
-	margin-left: 50px;
+	margin-top: 140px;
+	margin-left: -380px;
 	width: 380px;
 	height: 300px;
 
-	visibility: collapse;
+
 
 	transition-property: transform;
     transition-duration: 0.2s;
@@ -23,7 +23,7 @@
 
 #TradeMain.Open
 {
-	visibility: visible;
+	transform: translateX(380px);
 }
 
 #OpenButton
@@ -32,7 +32,7 @@
 	height: 32px;
 	//background-image: url( "file://{images}/custom_game/trade_bar/prodoljil.png" ); 
 	background-color: #222222;
-	border-radius: 2px 2px 2px 2px;
+	border-radius: 5px 5px 5px 5px;
 	margin-left: 200px;
 	margin-top: 5px;
 }
@@ -121,16 +121,21 @@ DropDownMenu Label:hover
 	background-image: url( "file://{images}/custom_game/trade_bar/greennn.png" ); 
 }
 
+#accept:active
+{
+	background-image: url( "file://{images}/custom_game/trade_bar/greenn.png" ); 
+}
+
+#accept:hover Label 
+{
+	color:white;
+}
+
 #accept_text
 {
 	horizontal-align: center;
 	vertical-align: center;
 	margin-bottom: 4px;
-}
-
-#accept:active
-{
-	background-image: url( "file://{images}/custom_game/trade_bar/greenn.png" ); 
 }
 
 #decline
@@ -144,6 +149,16 @@ DropDownMenu Label:hover
 	background-image: url( "file://{images}/custom_game/trade_bar/rednn.png" ); 
 }
 
+#decline:active
+{
+	background-image: url( "file://{images}/custom_game/trade_bar/redn.png" ); 
+}
+
+#decline:hover Label 
+{
+	color:white;
+}
+
 #decline_text
 {
 	horizontal-align: center;
@@ -151,10 +166,7 @@ DropDownMenu Label:hover
 	margin-bottom: 4px;
 }
 
-#decline:active
-{
-	background-image: url( "file://{images}/custom_game/trade_bar/redn.png" ); 
-}
+
 
 .buttons
 {
