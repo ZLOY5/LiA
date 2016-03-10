@@ -390,6 +390,7 @@ function LiA:TradeRequest(event)
 		end
 		PlayerResource:ModifyGold(event.PlayerID, -tradeGold, false, DOTA_ModifyGold_Unspecified)
 		PlayerResource:ModifyGold(event.tradePlayerID, tradeGold, false, DOTA_ModifyGold_Unspecified)
+		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_gold_received", {userid = LiA.vUserIds[event.PlayerID],gold = tradeGold})
 	end
 
 	if tradeLumber > 0 then
@@ -399,6 +400,7 @@ function LiA:TradeRequest(event)
 		end
 		PlayerResource:ModifyLumber(event.PlayerID, -tradeLumber, false, DOTA_ModifyGold_Unspecified)
 		PlayerResource:ModifyLumber(event.tradePlayerID, tradeLumber, false, DOTA_ModifyGold_Unspecified)
+		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_lumber_received", {userid = LiA.vUserIds[event.PlayerID],lumber = tradeLumber})
 	end
 end
 
