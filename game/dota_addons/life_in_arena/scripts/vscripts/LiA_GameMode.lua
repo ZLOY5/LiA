@@ -303,6 +303,7 @@ function LiA:OnConnectFull(event)
     local playerID = player:GetPlayerID()
 
     self.vUserIds[event.userid] = player
+    player.userid = event.userid
     
     --local playerSteamID = PlayerResource:GetSteamAccountID(playerID)
     --print("SteamID = ",playerSteamID)
@@ -383,6 +384,8 @@ function LiA:TradeRequest(event)
 	local tradeGold = event.gold 
 	local tradeLumber = event.lumber
 
+	local Player = PlayerResource:GetPlayer(event.PlayerID)
+
 	if tradeGold > 0 then
 		local playerGold = PlayerResource:GetGold(event.PlayerID)
 		if tradeGold > playerGold then
@@ -390,7 +393,9 @@ function LiA:TradeRequest(event)
 		end
 		PlayerResource:ModifyGold(event.PlayerID, -tradeGold, false, DOTA_ModifyGold_Unspecified)
 		PlayerResource:ModifyGold(event.tradePlayerID, tradeGold, false, DOTA_ModifyGold_Unspecified)
-		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_gold_received", {userid = LiA.vUserIds[event.PlayerID],gold = tradeGold})
+		if Player then
+			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_gold_received", {userid = Player.userid,gold = tradeGold})
+		end
 	end
 
 	if tradeLumber > 0 then
@@ -400,7 +405,9 @@ function LiA:TradeRequest(event)
 		end
 		PlayerResource:ModifyLumber(event.PlayerID, -tradeLumber, false, DOTA_ModifyGold_Unspecified)
 		PlayerResource:ModifyLumber(event.tradePlayerID, tradeLumber, false, DOTA_ModifyGold_Unspecified)
-		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_lumber_received", {userid = LiA.vUserIds[event.PlayerID],lumber = tradeLumber})
+		if Player then
+			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_lumber_received", {userid = Player.userid,lumber = tradeLumber})
+		end
 	end
 end
 
