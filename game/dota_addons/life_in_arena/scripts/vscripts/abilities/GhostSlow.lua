@@ -2,6 +2,9 @@ function Slow(event)
 	local ability = event.ability
 	local caster = event.caster
 	local target = event.target
+	local hero_duration = ability:GetSpecialValueFor("hero_duration")
+	local duration = ability:GetSpecialValueFor("duration")
+
 
 	if target:TriggerSpellAbsorb(ability) then
 		return 
