@@ -28,6 +28,7 @@ _G.HERO_STATS_MANA_REGEN_BONUS = 0.05
 
 require('survival/survival')
 require('runes')
+require('player')
 
 ------------------------------------------------------------------------------
 
@@ -103,8 +104,8 @@ function LiA:InitGameMode()
     GameMode:SetLoseGoldOnDeath(false)
 
     GameRules:LockCustomGameSetupTeamAssignment(true)
-    GameRules:SetCustomGameSetupRemainingTime(0)
-    GameRules:SetCustomGameSetupAutoLaunchDelay(0)
+    GameRules:SetCustomGameSetupRemainingTime(999)
+    GameRules:SetCustomGameSetupAutoLaunchDelay(999)
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
@@ -120,41 +121,6 @@ function LiA:InitGameMode()
     PlayerResource:SetCustomPlayerColor(6, 32, 192, 0)
     PlayerResource:SetCustomPlayerColor(7, 229, 91, 176)
 
-    PlayerResource.lumber = {}
-
-    function PlayerResource:ModifyLumber(playerID, lumber)
-		if not PlayerResource:IsValidPlayerID(playerID) then 
-			return
-		end
-		
-		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-
-		if not PlayerResource.lumber[playerID] then
-			PlayerResource.lumber[playerID] = 0
-		end
-
-
-		PlayerResource.lumber[playerID] = PlayerResource.lumber[playerID] + lumber
-
-		if PlayerResource.lumber[playerID] < 0 then
-			PlayerResource.lumber[playerID] = 0
-		end
-
-		CustomNetTables:SetTableValue("lia_player_table", tostring(playerID), {lumber = PlayerResource.lumber[playerID]})
-	end
-
-	function PlayerResource:GetLumber(playerID)
-		if not PlayerResource:IsValidPlayerID(playerID) then 
-			return 
-		end
-
-		if not PlayerResource.lumber[playerID] then
-			PlayerResource.lumber[playerID] = 0
-		end
-
-		return PlayerResource.lumber[playerID]
-	end
-
     --listeners
     ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(LiA, 'OnGameStateChange'), self)
     ListenToGameEvent('player_disconnect', Dynamic_Wrap(LiA, 'OnDisconnect'), self)
@@ -164,7 +130,7 @@ function LiA:InitGameMode()
     ListenToGameEvent('npc_spawned', Dynamic_Wrap(LiA, 'OnNPCSpawned'), self)
 	GameMode:SetDamageFilter( Dynamic_Wrap( LiA, "FilterDamage" ), self )
 	
-
+	CustomGameEventManager:RegisterListener("glyph_clicked", Dynamic_Wrap(LiA, "GlyphClick"))
 	CustomGameEventManager:RegisterListener("lia_trade_request", Dynamic_Wrap(LiA, "TradeRequest"))
 	--upgrades
 	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
@@ -324,11 +290,9 @@ function LiA:OnDisconnect(event)
         return 
     end
     
+    local playerID = player:GetPlayerID()
 
-    if player.readyToWave then
-        player.readyToWave = false
-        nPlayersReady = nPlayersReady - 1
-    end
+    PlayerResource:SetReadyToRound(playerID,false)
     
     for k,v in pairs(self.tPlayers) do 
         if player == v then
@@ -409,6 +373,11 @@ function LiA:TradeRequest(event)
 			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_lumber_received", {userid = Player.userid,lumber = tradeLumber})
 		end
 	end
+end
+
+function LiA:GlyphClick(event)
+	print(event.PlayerID)
+	onPlayerReadyToWave(event.PlayerID)
 end
 
 

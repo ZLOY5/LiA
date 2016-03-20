@@ -1,0 +1,15 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/glyph.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/glyph.js" />
+	</scripts>
+
+
+	<Panel class="GlyphRoot" hittest="false">
+		<Button id="GlyphButton" group="Glyph" onactivate="GlyphClick();" onmouseover="GlyphTooltip()" onmouseout="DOTAHideTitleTextTooltip()"/>
+	</Panel>
+	
+</root>

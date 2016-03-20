@@ -305,10 +305,8 @@ function Survival:PrepareNextRound()
     print("Next round - ", self.nRoundNum)
 
     nPlayersReady = 0
-    for _,player in pairs(LiA.tPlayers) do
-        player.readyToWave = false
-    end
     LiA.bForceRoundEnabled = true
+    CustomGameEventManager:Send_ServerToAllClients("round_force_enabled", {enabled = true})
 
     self.IsDuelOccured = false
     Survival.State = SURVIVAL_STATE_PRE_ROUND_TIME
@@ -487,7 +485,9 @@ function Survival:StartRound()
         }
     )
 
+    PlayerResource:ClearReadyToRound()
     LiA.bForceRoundEnabled = false
+    CustomGameEventManager:Send_ServerToAllClients("round_force_enabled", {enabled = false})
     
     CustomGameEventManager:Send_ServerToAllClients( "round_start", {round_number = self.nRoundNum} )
     

@@ -201,7 +201,7 @@ function Survival:OnPlayerChat(event)
     local player = LiA.vUserIds[event.userid]
 
     if event.text == "+" then
-        onPlayerReadyToWave(player) --LiA_ForceRound.lua
+        onPlayerReadyToWave(player:GetPlayerID()) --LiA_ForceRound.lua
     end
     
 	--[[
