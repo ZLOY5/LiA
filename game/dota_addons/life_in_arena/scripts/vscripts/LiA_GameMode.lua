@@ -104,8 +104,8 @@ function LiA:InitGameMode()
     GameMode:SetLoseGoldOnDeath(false)
 
     GameRules:LockCustomGameSetupTeamAssignment(true)
-    GameRules:SetCustomGameSetupRemainingTime(999)
-    GameRules:SetCustomGameSetupAutoLaunchDelay(999)
+    GameRules:SetCustomGameSetupRemainingTime(0)
+    GameRules:SetCustomGameSetupAutoLaunchDelay(0)
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 8 )
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
 
