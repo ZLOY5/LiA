@@ -29,6 +29,8 @@ function OnCast(event)
 	--	ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf",PATTACH_ABSORIGIN,unit)
 	--end
 	
+	caster:EmitSound("Hero_Abaddon.DeathCoil.Target")
+	ParticleManager:CreateParticle("particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf", 1, unit)
 	ability:ApplyDataDrivenModifier( caster, unit, 'modifier_wanderer_arcane_aura_2_mod_slow', {} )
 	
 end
