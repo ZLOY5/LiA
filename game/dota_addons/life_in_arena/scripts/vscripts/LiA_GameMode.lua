@@ -71,7 +71,7 @@ function LiA:InitGameMode()
 	GameRules:SetHeroSelectionTime(30)
 
 	GameRules:SetPreGameTime(0)
-    GameRules:SetPostGameTime(120)
+    GameRules:SetPostGameTime(999)
 	--
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)

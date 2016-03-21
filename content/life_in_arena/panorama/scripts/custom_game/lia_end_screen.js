@@ -204,6 +204,12 @@ function OnUpdActionEnd( data )
 			extraForTime  = (3000 - sec) * 1;
 		if (extraForTime > 1500)
 			extraForTime = 1500;
+
+
+		GameUI.SetCameraPitchMin(25)
+		GameUI.SetCameraPitchMax(25)
+		GameUI.SetCameraLookAtPositionHeightOffset(500)
+		GameUI.SetCameraYaw(45)
 	}
 	//
 	allscore = allscore + extraForTime;

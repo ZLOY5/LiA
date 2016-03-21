@@ -643,6 +643,28 @@ function Survival:EndGame(teamWin)
     GameRules:SetGameWinner(teamWin)  
 
     if teamWin == DOTA_TEAM_GOODGUYS then
+        local vecFirstPlace = Entities:FindByName(nil, "1_place"):GetAbsOrigin()
+        local vecSecondPlace = Entities:FindByName(nil, "2_place"):GetAbsOrigin()
+        local vecThirdPlace = Entities:FindByName(nil, "3_place"):GetAbsOrigin()
+
+        ChangeWorldBounds(vecFirstPlace-Vector(-400,400,0),vecFirstPlace-Vector(-400,400,0))
+
+        self.tHeroes[1]:SetAbsOrigin(vecFirstPlace)
+        self.tHeroes[1]:Interrupt()
+        self.tHeroes[1]:SetForwardVector(Vector(1,-1,0))
+        
+        if self.tHeroes[2] then
+            self.tHeroes[2]:SetAbsOrigin(vecSecondPlace)
+            self.tHeroes[2]:SetForwardVector(Vector(1,-1,0))
+        end
+
+        if self.tHeroes[3] then
+            self.tHeroes[3]:SetAbsOrigin(vecThirdPlace)
+            self.tHeroes[3]:SetForwardVector(Vector(0.9,-1,0))
+        end
+
+
+
 
     end
 end

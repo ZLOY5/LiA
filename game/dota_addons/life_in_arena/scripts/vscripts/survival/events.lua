@@ -169,7 +169,7 @@ end
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
       --  self.nRoundNum = 3
-        GameRules:SetPreGameTime(120)
+        GameRules:SetPreGameTime(999)
         Survival:PrepareNextRound()
     end
 end
@@ -219,8 +219,8 @@ function Survival:OnPlayerChat(event)
         ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
     end
 	]]
-    if event.text == "lose" then
-        Survival:EndGame(DOTA_TEAM_BADGUYS)
+    if event.text == "win" then
+        Survival:EndGame(DOTA_TEAM_GOODGUYS)
     end
 	
 	
