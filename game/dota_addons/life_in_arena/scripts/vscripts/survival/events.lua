@@ -218,10 +218,10 @@ function Survival:OnPlayerChat(event)
     if event.text == "fade" then
         ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
     end
-	
+	]]
     if event.text == "lose" then
         Survival:EndGame(DOTA_TEAM_BADGUYS)
     end
-	]]
+	
 	
 end

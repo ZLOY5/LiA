@@ -641,6 +641,10 @@ function Survival:EndGame(teamWin)
     CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
     GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
     GameRules:SetGameWinner(teamWin)  
+
+    if teamWin == DOTA_TEAM_GOODGUYS then
+
+    end
 end
 
 function EndGameCon()
