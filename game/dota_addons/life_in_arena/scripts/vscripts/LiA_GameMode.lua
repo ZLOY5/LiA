@@ -71,7 +71,7 @@ function LiA:InitGameMode()
 	GameRules:SetHeroSelectionTime(30)
 
 	GameRules:SetPreGameTime(0)
-    GameRules:SetPostGameTime(999)
+    GameRules:SetPostGameTime(120)
 	--
 	GameRules:SetGoldTickTime(2)
 	GameRules:SetGoldPerTick(1)
@@ -267,7 +267,7 @@ function LiA:OnConnectFull(event)
     local entIndex = event.index+1
     local player = EntIndexToHScript(entIndex)
     local playerID = player:GetPlayerID()
-
+    print("playerID ",playerID)
     self.vUserIds[event.userid] = player
     player.userid = event.userid
     
@@ -349,6 +349,7 @@ function LiA:TradeRequest(event)
 	local tradeLumber = event.lumber
 
 	local Player = PlayerResource:GetPlayer(event.PlayerID)
+	local tradePlayer = PlayerResource:GetPlayer(event.tradePlayerID)
 
 	if tradeGold > 0 then
 		local playerGold = PlayerResource:GetGold(event.PlayerID)
@@ -357,8 +358,8 @@ function LiA:TradeRequest(event)
 		end
 		PlayerResource:ModifyGold(event.PlayerID, -tradeGold, false, DOTA_ModifyGold_Unspecified)
 		PlayerResource:ModifyGold(event.tradePlayerID, tradeGold, false, DOTA_ModifyGold_Unspecified)
-		if Player then
-			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_gold_received", {userid = Player.userid,gold = tradeGold})
+		if tradePlayer then
+			CustomGameEventManager:Send_ServerToPlayer(tradePlayer, "lia_gold_received", {userid = Player.userid,gold = tradeGold})
 		end
 	end
 
@@ -369,11 +370,19 @@ function LiA:TradeRequest(event)
 		end
 		PlayerResource:ModifyLumber(event.PlayerID, -tradeLumber, false, DOTA_ModifyGold_Unspecified)
 		PlayerResource:ModifyLumber(event.tradePlayerID, tradeLumber, false, DOTA_ModifyGold_Unspecified)
-		if Player then
-			CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(event.tradePlayerID), "lia_lumber_received", {userid = Player.userid,lumber = tradeLumber})
+		if tradePlayer then
+			CustomGameEventManager:Send_ServerToPlayer(tradePlayer, "lia_lumber_received", {userid = Player.userid,lumber = tradeLumber})
 		end
 	end
 end
+
+--[[
+TradeRequest
+lumber	0
+PlayerID	2
+tradePlayerID	0
+gold	50
+]]
 
 function LiA:GlyphClick(event)
 	--print(event.PlayerID)

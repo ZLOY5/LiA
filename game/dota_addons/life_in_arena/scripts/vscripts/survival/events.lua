@@ -169,7 +169,7 @@ end
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
       --  self.nRoundNum = 3
-        GameRules:SetPreGameTime(999)
+        GameRules:SetPreGameTime(120)
         Survival:PrepareNextRound()
     end
 end
@@ -218,7 +218,7 @@ function Survival:OnPlayerChat(event)
     if event.text == "fade" then
         ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
     end
-	]]
+	
     if event.text == "win" then
         Survival:EndGame(DOTA_TEAM_GOODGUYS)
     end
@@ -226,6 +226,6 @@ function Survival:OnPlayerChat(event)
     if event.text == "zoom" then
         self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
     end
-	
+	]]
 	
 end
