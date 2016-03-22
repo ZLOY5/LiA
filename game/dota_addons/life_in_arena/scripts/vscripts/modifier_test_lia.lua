@@ -1,34 +1,27 @@
 modifier_test_lia = class({})
-   
 
-function modifier_test_lia:DeclareFunctions()
-	local funcs = {
-		MODIFIER_EVENT_ON_TAKEDAMAGE,
-	}
- 
-	return funcs
+
+   
+function modifier_test_lia:IsHidden()
+	return true 
 end
+
 
 function modifier_test_lia:OnCreated(params)
-	if IsServer() then
-		ApplyDamage({victim = self:GetParent(), attacker = self:GetParent(), damage = 100, damage_type = DAMAGE_TYPE_PURE, ability = params.ability})
+	if IsClient() then
+		SendToConsole("dota_camera_disable_zoom 1")
+		self:StartIntervalThink(0.1)
 	end
 end
 
-
-function modifier_test_lia:OnTakeDamage(params)
-	if IsServer() then
-		if params.unit == self:GetParent() then
-			print("OnTakeDamage")
-					
-			for k,v in pairs(params) do 
-					print(k,v)
-					
-				end
-			print("------------------------")
-			params.unit:RemoveModifierByName("modifier_test_lia")
-		end
+function modifier_test_lia:OnIntervalThink()
+	if IsClient() then
+		SendToConsole("dota_camera_disable_zoom 0")
 	end
+	self:Destroy()
+	return nil
 end
+
+
 
 

@@ -22,7 +22,7 @@ function spiderAutocast( keys )
 		local randUnitI = RandomInt( 1, #table_target )
 		local randUnit = table_target[randUnitI]
 		--
-		print(randUnit)
+		--print(randUnit)
 		if randUnit ~= nil and not randUnit:HasModifier(modifier) then
 			if ability:IsCooldownReady() and not caster:IsChanneling() then
 				caster:CastAbilityOnTarget(randUnit, ability, playerID)

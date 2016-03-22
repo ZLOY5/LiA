@@ -38,7 +38,7 @@ LinkLuaModifier( "modifier_hide_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_orn_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_knight_shield_damage_return_lua", "items/modifier_knight_shield_damage_return_lua.lua", LUA_MODIFIER_MOTION_NONE) --модификатор для возвратки Рыцарского Щита
 LinkLuaModifier( "modifier_knight_cuirass_damage_return_lua", "items/modifier_knight_cuirass_damage_return_lua.lua", LUA_MODIFIER_MOTION_NONE)
---LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
+LinkLuaModifier( "modifier_test_lia", LUA_MODIFIER_MOTION_NONE )
 
 ------------------------------------------------------------------------------
 
@@ -376,7 +376,7 @@ function LiA:TradeRequest(event)
 end
 
 function LiA:GlyphClick(event)
-	print(event.PlayerID)
+	--print(event.PlayerID)
 	onPlayerReadyToWave(event.PlayerID)
 end
 

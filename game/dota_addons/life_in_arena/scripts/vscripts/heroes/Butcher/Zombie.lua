@@ -8,7 +8,7 @@ function SpawnZombie(event)
 		ability.zombieCount = 0
 	end
 
-	if not caster:HasModifier("modifier_hide_lua") then --если герой спрятан, то зомби не спавним
+	if not caster:HasModifier("modifier_hide_lua") and GameRules:State_Get() ~= DOTA_GAMERULES_STATE_POST_GAME then --если герой спрятан, то зомби не спавним
 		--точку спавна устанавливаем позади героя
 		local spawnLoc = caster:GetAbsOrigin()-caster:GetForwardVector()*75 
 
@@ -23,7 +23,6 @@ function SpawnZombie(event)
 	end
 
 	ability:StartCooldown(ability:GetCooldown(level))
-	
 end
 
 function ZombieDeath(event)

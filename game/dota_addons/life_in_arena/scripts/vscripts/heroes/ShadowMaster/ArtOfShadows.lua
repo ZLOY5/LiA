@@ -58,6 +58,11 @@ end
 function HeroDied(event)
 	local caster = event.caster
 	local ability = event.ability
+
+	if not ability.shadowsNumber then 
+		ability.shadowsNumber = 0
+		ability.shadows = {}
+	end 
 	
 	ability.shadowsNumber = 0
 

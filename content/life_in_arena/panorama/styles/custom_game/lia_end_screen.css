@@ -4,7 +4,7 @@
 {
 	width: 100%;
     height: 100%;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000FF ), color-stop( 0.12, #000000ff ), color-stop( 0.5, #00000022 ), to( #00000000 ) );
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000FF ), color-stop( 0.12, #000000ff ), color-stop( 0.5, #00000000 ), to( #00000000 ) );
 }
 
 #VictoryRow
@@ -44,7 +44,7 @@
     text-shadow: 4px 4px 4px #121212;
     font-size: 16px;
     font-weight: bold;
-	margin-left: 300px;
+	margin-left: 310px;
 	margin-top: 10px;
 	//margin-bottom: 10px;
 	//visibility:  collapse;
@@ -79,12 +79,13 @@
 	text-transform: uppercase;
 	margin-bottom: 30px;
 	margin-top: -40px;
+	margin-right: 140px;
 }
 
 .EndScreenWindow
 {
     margin-top: 100px;
-    margin-right: 200px;
+    margin-right: 50px;
     flow-children: down;
     horizontal-align: right;
 	flow-children: down;
@@ -104,10 +105,11 @@
 {
 	background-color: #121618;
 	border: 3px solid #4d5051;
-    margin-top: 50px;
+    margin-top: 20px;
     horizontal-align: right;
 	vertical-align: bottom;
 	width: 200px;
+	margin-right: 7px;
 }
 
 #CloseButton:hover
@@ -259,12 +261,15 @@
 {
 	text-transform: uppercase;
 	font-size: 12px;
-	color: #90999b;
+	color: #E0E9Eb;
 }
 
 .PlayerRow
 {
 	height: 32px;
+	opacity: 0.95;
+	background-color: BACKGROUND_COLOR;
+	border-bottom: 1px solid #00000066;
 }
 
 #PlayerRowContainer
@@ -292,14 +297,17 @@
 	border: 1px solid black;
 }
 
+#PlayerDetailsContainer,
 #LevelContainer,
 #KillsBossesContainer,
 #KillsCreepsContainer,
 #DeathsContainer,
 #RatingContainer,
-#AssistsContainer
+#AssistsContainer,
+#UpdContainer
 {
 	height: 100%;
+	border-right: 1px solid #00000066;
 }
 
 #UpdContainer

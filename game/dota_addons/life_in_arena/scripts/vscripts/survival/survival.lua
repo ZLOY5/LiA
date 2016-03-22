@@ -630,43 +630,61 @@ function Survival:GetDataForSend()
     return data
 end
 
+function HeroToPedestal(hero,place)
+    if not hero then
+        return 
+    end
+
+    local vecOrigin = Entities:FindByName(nil, tostring(place).."_place"):GetAbsOrigin()
+    local forward = { 
+        Vector(2,-1,0), 
+        Vector(5,-1,0), 
+        Vector(1,-1,0) 
+    }
+
+    if not hero:IsAlive() then
+        hero:RespawnHero(false, false, false)
+    end
+
+    hero:Purge(true, true, false, true, true)
+    
+    local fire_gloves = GetItemInInventory(hero,"item_lia_fire_gloves") or GetItemInInventory(hero,"item_lia_fire_gloves_2")
+    if fire_gloves and fire_gloves:GetToggleState() then 
+        fire_gloves:ToggleAbility()
+    end 
+
+    hero:SetAbsOrigin(vecOrigin)
+    hero:SetForwardVector(forward[place])
+    hero:Interrupt()
+    hero:StartGesture(ACT_DOTA_IDLE)
+    hero:StartGesture(ACT_DOTA_VICTORY)
+    --DebugDrawLine(self.tHeroes[2]:GetAbsOrigin(), self.tHeroes[2]:GetAbsOrigin()+self.tHeroes[2]:GetForwardVector()*100, 100, 100, 100, true, 100)
+end
+
 function Survival:EndGame(teamWin)
     local GameMode = GameRules:GetGameModeEntity()
     --local data = LiA:GetDataForSend()
-    local dataHide = 
-    {
-        visible = false,
-    }
-    --print("       data", data)
-    CustomGameEventManager:Send_ServerToAllClients( "upd_action_hide", dataHide )
-    GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
-    GameRules:SetGameWinner(teamWin)  
+    self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
+    Timers:CreateTimer(1.4,function()
+        if teamWin == DOTA_TEAM_GOODGUYS then
+            local vecFirstPlace = Entities:FindByName(nil, "1_place"):GetAbsOrigin()
+            local vecCamera = vecFirstPlace-Vector(-470,370,0)
 
-    if teamWin == DOTA_TEAM_GOODGUYS then
-        local vecFirstPlace = Entities:FindByName(nil, "1_place"):GetAbsOrigin()
-        local vecSecondPlace = Entities:FindByName(nil, "2_place"):GetAbsOrigin()
-        local vecThirdPlace = Entities:FindByName(nil, "3_place"):GetAbsOrigin()
+            ChangeWorldBounds(vecCamera,vecCamera)
+            SetCameraToPosForPlayer(-1,vecCamera)
 
-        ChangeWorldBounds(vecFirstPlace-Vector(-400,400,0),vecFirstPlace-Vector(-400,400,0))
-
-        self.tHeroes[1]:SetAbsOrigin(vecFirstPlace)
-        self.tHeroes[1]:Interrupt()
-        self.tHeroes[1]:SetForwardVector(Vector(1,-1,0))
-        
-        if self.tHeroes[2] then
-            self.tHeroes[2]:SetAbsOrigin(vecSecondPlace)
-            self.tHeroes[2]:SetForwardVector(Vector(1,-1,0))
+            self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil)
+            
+            HeroToPedestal(self.tHeroes[1],1)
+            HeroToPedestal(self.tHeroes[2],2)
+            HeroToPedestal(self.tHeroes[3],3)
         end
-
-        if self.tHeroes[3] then
-            self.tHeroes[3]:SetAbsOrigin(vecThirdPlace)
-            self.tHeroes[3]:SetForwardVector(Vector(0.9,-1,0))
-        end
-
+        GameRules:SetGameWinner(teamWin)
+        GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.1)
+    end) 
+    
 
 
-
-    end
 end
 
 function EndGameCon()

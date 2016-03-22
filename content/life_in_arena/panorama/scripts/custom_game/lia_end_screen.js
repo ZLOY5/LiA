@@ -205,9 +205,9 @@ function OnUpdActionEnd( data )
 		if (extraForTime > 1500)
 			extraForTime = 1500;
 
-
-		GameUI.SetCameraPitchMin(25)
-		GameUI.SetCameraPitchMax(25)
+		GameUI.SetCameraDistance(0)
+		GameUI.SetCameraPitchMin(10)
+		GameUI.SetCameraPitchMax(10)
 		GameUI.SetCameraLookAtPositionHeightOffset(500)
 		GameUI.SetCameraYaw(45)
 	}
