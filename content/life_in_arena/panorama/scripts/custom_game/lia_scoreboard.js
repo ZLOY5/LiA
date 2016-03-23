@@ -4,20 +4,6 @@ var g_ScoreboardHandle = null;
 var visible;
 var firstH = false;
 
-/*function AutoUpdateScoreboard()
-{
-	if (!visible)
-		return;
-
-	ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, false );
-    $.Schedule( 1, AutoUpdateScoreboard );
-}*/
-
-/*function UpdatePlayers()
-{
-	g_ScoreboardHandle.scoreboardConfig["updatePlayersCount"] = false;
-	ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, visible );
-}*/
 
 function SetFlyoutScoreboardVisible( bVisible )
 {
@@ -29,39 +15,12 @@ function SetFlyoutScoreboardVisible( bVisible )
 		GameEvents.SendCustomGameEventToServer( "apply_command_hint_hide", { "idPlayer" : Game.GetLocalPlayerID() } );
 		//$.Msg( "                  firstH ", firstH );
 	}
-		
-	
-	/*if ( visible )
-	{
-		//AutoUpdateScoreboard( bVisible );
-	}
-	else
-	{
-		ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, false );
-	}*/
 }
 
 function GetScore_FromPlayerId(data, playerId)
 {
-	//var data = params.data;
-	//var PlayersId = data.PlayersId;
-	//$.Msg( "                  GetScore_FromPlayerId:data ", data );
-	
-	/*if (playerId == 3)
-	{
-		var score =
-		{
-			"KillsCreeps" : 0,
-			"KillsBosses" : 0,
-			"Deaths" : 0,
-			"Rating" : 100,
-			
-		};
-		return score;
-	}*/
 	
 	for ( var i = 1; i <= 8; ++i )
-	//for ( var plId of PlayersId )
 	{
 		if (data.PlayersId[i] !== null)
 		{
@@ -147,13 +106,7 @@ function OnUpdAction( data )
 	{
 		localPlayerTeamId = localPlayer.player_team_id;
 	}
-	//if (localPlayerTeamId !== 2) // DOTA_TEAM_GOODGUYS = 2
-	//{
-	//	return;
-	//}
-	//$.Msg( "                  OnUpdAction: localPlayerTeamId ", localPlayerTeamId );
-	//
-	//var teamPanel = $.GetContextPanel();
+
 	var containerPanel = $( "#TeamsContainer")
 	var teamPanelName = "_dynamic_team_" + localPlayerTeamId;
 	var teamPanel = containerPanel.FindChild( teamPanelName );
@@ -162,45 +115,28 @@ function OnUpdAction( data )
 		teamPanel = $.CreatePanel( "Panel",  containerPanel, teamPanelName );
 		teamPanel.BLoadLayout( g_ScoreboardHandle.scoreboardConfig.teamXmlName, false, false);
 	}
-	//$.Msg( "                  OnUpdAction:teamPanel ", teamPanel );
-	//var playerId = data.playerId
-	//var PlayerTeamId = data.PlayerTeamId
-	/*var scoreboardConfig =
-	{
-		"teamXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_team.xml",
-		"playerXmlName" : "file://{resources}/layout/custom_game/lia_scoreboard_player.xml",
-	};*/
+
 	
 	var teamPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_GOODGUYS );
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
 	//$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
 	if ( playersContainer )
 	{
-		/*var plList = [];
-		for ( var id of teamPlayers )
-		{
-			plList.push( id );
-		}*/
+
 		var plAndParList = OnUpdAction_GetSortedPlayersList(teamPlayers, data);
 		//_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, 3, localPlayerTeamId, score );
 		for ( var i = 0; i < plAndParList.length; ++i )
-		//for ( var i = 0; i < plList.length; ++i )
-		//for ( var playerId of teamPlayers )
+
 		{
 			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 
 			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
-			//$.Msg( "                  OnUpdAction:score ", score );
+
 			_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
 		}
 		
 	}
-	/*var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
-	if ( playersContainer )
-	{
-		_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
-	}*/
-	//_ScoreboardUpdater_UpdateAllPlayers( g_ScoreboardHandle.scoreboardConfig, teamPanel );
+
 }
 
 (function()

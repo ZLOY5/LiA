@@ -665,7 +665,7 @@ function Survival:EndGame(teamWin)
     local GameMode = GameRules:GetGameModeEntity()
     --local data = LiA:GetDataForSend()
     self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
-    Timers:CreateTimer(1.4,function()
+    Timers:CreateTimer(1,function()
         if teamWin == DOTA_TEAM_GOODGUYS then
             local vecFirstPlace = Entities:FindByName(nil, "1_place"):GetAbsOrigin()
             local vecCamera = vecFirstPlace-Vector(-470,370,0)
@@ -680,7 +680,7 @@ function Survival:EndGame(teamWin)
             HeroToPedestal(self.tHeroes[3],3)
         end
         GameRules:SetGameWinner(teamWin)
-        GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.1)
+        GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
     end) 
     
 

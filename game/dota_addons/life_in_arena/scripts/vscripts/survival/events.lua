@@ -218,14 +218,14 @@ function Survival:OnPlayerChat(event)
     if event.text == "fade" then
         ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
     end
-	
+	]]
     if event.text == "win" then
         Survival:EndGame(DOTA_TEAM_GOODGUYS)
     end
-
+    
     if event.text == "zoom" then
         self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
     end
-	]]
+	
 	
 end
