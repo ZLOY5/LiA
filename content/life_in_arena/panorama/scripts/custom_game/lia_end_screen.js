@@ -205,11 +205,7 @@ function OnUpdActionEnd( data )
 		if (extraForTime > 1500)
 			extraForTime = 1500;
 
-		GameUI.SetCameraDistance(0)
-		GameUI.SetCameraPitchMin(10)
-		GameUI.SetCameraPitchMax(10)
-		GameUI.SetCameraLookAtPositionHeightOffset(500)
-		GameUI.SetCameraYaw(45)
+
 	}
 	//
 	allscore = allscore + extraForTime;
@@ -291,43 +287,21 @@ function OnUpdActionEnd( data )
 
 (function()
 {
-	//if ( ScoreboardUpdater_InitializeScoreboard === null ) { $.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." ); }
-	//$.Msg( "                  function():  lia_end_screen ");
+	if ( ScoreboardUpdater_InitializeScoreboard === null ) { $.Msg( "WARNING: This file requires shared_scoreboard_updater.js to be included." ); }
+
 	var scoreboardConfig =
 	{
 		"teamXmlName" : "file://{resources}/layout/custom_game/lia_end_screen_team.xml",
 		"playerXmlName" : "file://{resources}/layout/custom_game/lia_end_screen_player.xml",
 	};
 	_containerPanel = $( "#TeamsContainer" );
-
-	/*var teamPanelName = "_dynamic_team_2"; // _dynamic_team_2   why is exists?
-	var teamPanel = _containerPanel.FindChild( teamPanelName );
-	if ( teamPanel === null )
-	{
-		$.Msg( "                  function():  teamPanel === null ");
-		teamPanel = $.CreatePanel( "Panel",  _containerPanel, teamPanelName );
-		teamPanel.BLoadLayout( scoreboardConfig.teamXmlName, false, false);
-	}
-	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
-	
-	var playerPanelName = "_dynamic_player_3";//playerId;
-	var playerPanel = playersContainer.FindChild( playerPanelName );
-
-	if ( playerPanel === null )
-	{
-		playerPanel = $.CreatePanel( "Panel", playersContainer, playerPanelName );
-		//playerPanel.SetAttributeInt( "player_id", playerId );
-		playerPanel.BLoadLayout( scoreboardConfig.playerXmlName, false, false );
-	}
-	playerPanel.SetAttributeInt( "player_id", 3 );
-	//
-	playerPanel.text = "asdeqwe";*/
-	
-	//$.Msg( "                  scoreboardConfig  ", scoreboardConfig);
-	//$.Msg( "                  _containerPanel  ", _containerPanel);
 	_endScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, _containerPanel );
-	//$.Msg( "                  _endScoreboardHandle  ", _endScoreboardHandle);
-	//$.GetContextPanel().SetHasClass( "endgame", 1 );
+
 	
 	GameEvents.Subscribe( "upd_action_end",  OnUpdActionEnd);
+	GameUI.SetCameraDistance(0)
+	GameUI.SetCameraPitchMin(10)
+	GameUI.SetCameraPitchMax(10)
+	GameUI.SetCameraLookAtPositionHeightOffset(500)
+	GameUI.SetCameraYaw(45)
 })();
