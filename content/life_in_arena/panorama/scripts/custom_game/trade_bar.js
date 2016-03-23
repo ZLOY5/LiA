@@ -143,8 +143,14 @@ function ResetResourceEntry() {
 
 
 function OpenButtonClick() {
-	$.FindChildInContext("#TradeMain").ToggleClass("Open");
-	ResetResourceEntry()
+	var TradeMain = $.FindChildInContext("#TradeMain")
+	TradeMain.ToggleClass("Open");
+	ResetResourceEntry();
+	
+
+	if (~TradeMain.BHasClass("Open"))
+		$.GetContextPanel().GetParent().SetFocus()
+
 }
 
 function CheckHeroNames() {
@@ -175,7 +181,6 @@ function CheckHeroNames() {
 	var dropDown = $.FindChildInContext("#HeroPick");
 	var isFirstPlayer = true
 	var withoutHero = false
-
 
 	for (var PlayerID of Game.GetAllPlayerIDs()) {
 		
