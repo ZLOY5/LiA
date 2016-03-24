@@ -8,7 +8,7 @@ function modifier_ghoul_persistence_effect:DeclareFunctions()
 end
 
 function modifier_ghoul_persistence_effect:GetModifierConstantHealthRegen(params)
-	return self.regen_mult * self:GetCaster():GetStrength()
+	return self.regen_mult * self:GetCaster():GetBaseStrength()
 end
 
 function modifier_ghoul_persistence_effect:OnCreated( kv )
