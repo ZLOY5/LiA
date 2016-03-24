@@ -259,6 +259,11 @@ function Survival:EndRound()
     Timers:RemoveTimer("lateWaveDebuffs")
     DoWithAllHeroes(function(hero)
         hero:RemoveModifierByName("modifier_"..self.nRoundNum.."_wave_debuff")
+        
+        local modifierSpellBlock = hero:FindModifierByName("modifier_item_sphere_target")
+        if modifierSpellBlock and modifierSpellBlock:GetAbility():GetAbilityName() == "item_lia_rune_of_protection" then
+            modifierSpellBlock:Destroy()
+        end
     end)
     
     Timers:CreateTimer(1,function()

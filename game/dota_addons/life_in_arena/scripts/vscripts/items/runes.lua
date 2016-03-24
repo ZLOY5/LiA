@@ -29,25 +29,34 @@ function RuneLumber(event)
 end
 
 function _G.RuneOfProtection(event)
-	local hero = PlayerResource:GetSelectedHeroEntity(event.caster:GetPlayerOwnerID())
-	if hero:HasModifier("modifier_item_sphere_target") then
-		return 
-	end
-	
+	local caster = event.caster
+
+	local radius = event.ability:GetSpecialValueFor("radius")
+
+	local targets = FindUnitsInRadius(caster:GetTeam(),caster:GetAbsOrigin(),nil,radius,DOTA_UNIT_TARGET_TEAM_FRIENDLY,DOTA_UNIT_TARGET_HERO,DOTA_UNIT_TARGET_FLAG_NONE,FIND_ANY_ORDER,false)
+
+	--для работы модификатора обязательно нужна абилка
 	local dummyItem = CreateItem("item_lia_rune_of_protection",nil,nil) 
-	
-	hero:AddNewModifier(hero, dummyItem, "modifier_item_sphere_target", {duration = -1})
-	hero.current_spellblock_is_passive = nil
-	hero:EmitSound("DOTA_Item.LinkensSphere.Target")
+
+	for _,unit in pairs(targets) do
+		if not unit:HasModifier("modifier_item_sphere_target") then
+			unit:AddNewModifier(unit, dummyItem, "modifier_item_sphere_target", {duration = -1})
+			unit.current_spellblock_is_passive = nil
+			unit:EmitSound("DOTA_Item.LinkensSphere.Target")
+		end
+	end
 
 	Timers:CreateTimer(1,
 		function() 
-			local modifier = hero:FindModifierByName("modifier_item_sphere_target")
-			if modifier and modifier:GetAbility() == dummyItem then 
-				return 1 
-			else
-				dummyItem:RemoveSelf()
+			for _,unit in pairs(targets) do
+				local modifier = unit:FindModifierByName("modifier_item_sphere_target")
+				if modifier and modifier:GetAbility() == dummyItem then 
+					--print("Continue")
+					return 1 
+				end
 			end
+			--print("Destroy")
+			dummyItem:RemoveSelf() --если модификатора больше нет ни на ком из героев, то уничтожаем абилку
 		end)
 end
 
