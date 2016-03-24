@@ -104,6 +104,8 @@ function Survival:InitSurvival()
 
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
     GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
+    GameMode:SetExecuteOrderFilter(Dynamic_Wrap(Survival, "OrderFilter"), self)
+
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
@@ -131,6 +133,13 @@ function AIThink()
 
     Survival.AICreepCasts = 0
     return 3
+end
+
+function Survival:OrderFilter(filterTable)
+    if filterTable.order_type == DOTA_UNIT_ORDER_GLYPH then
+        return false
+    end
+    return true
 end
 
 function Survival:GoldFilter(filterTable)
