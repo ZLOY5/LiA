@@ -299,9 +299,12 @@ function OnUpdActionEnd( data )
 
 	
 	GameEvents.Subscribe( "upd_action_end",  OnUpdActionEnd);
-	GameUI.SetCameraDistance(0)
-	GameUI.SetCameraPitchMin(10)
-	GameUI.SetCameraPitchMax(10)
-	GameUI.SetCameraLookAtPositionHeightOffset(500)
-	GameUI.SetCameraYaw(45)
+
+	if (Game.GetGameWinner() == DOTATeam_t.DOTA_TEAM_GOODGUYS) {
+		GameUI.SetCameraDistance(0)
+		GameUI.SetCameraPitchMin(10)
+		GameUI.SetCameraPitchMax(10)
+		GameUI.SetCameraLookAtPositionHeightOffset(500)
+		GameUI.SetCameraYaw(45)
+	}
 })();

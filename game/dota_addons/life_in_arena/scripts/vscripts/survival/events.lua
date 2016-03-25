@@ -128,7 +128,7 @@ function Survival:OnEntityKilled(keys)
         Survival:_OnCreepDeath(keys)   
     elseif string.find(killed:GetUnitName(),"_boss") and not killed:IsOwnedByAnyPlayer() then
         Survival:_OnBossDeath(keys)
-    elseif string.find(killed:GetUnitName(),"_wave_megaboss") and self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
+    elseif string.find(killed:GetUnitName(),"_wave_megaboss") and not killed:IsIllusion() and self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
         Survival:EndRound()
     end 
 	--
@@ -168,7 +168,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-      --  self.nRoundNum = 3
+        --self.nRoundNum = 14
         GameRules:SetPreGameTime(120)
         Survival:PrepareNextRound()
     end
