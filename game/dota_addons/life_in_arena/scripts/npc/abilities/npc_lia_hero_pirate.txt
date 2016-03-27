@@ -77,7 +77,11 @@
 		"FireSound"
 		{
 			"EffectName"	"Hero_Brewmaster.DrunkenHaze.Cast"
-			"Target"		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}	
 
 		"ApplyModifier"
@@ -104,7 +108,7 @@
 			
 			"Properties"
 			{
-			"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss_percentage"
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE"	"%miss_percentage"
 			}
 			
 			"ThinkInterval"	"1"
@@ -176,14 +180,6 @@
 		}
 	}
 
-	"OnOwnerSpawned"
-	{
-		"ApplyModifier"	
-		{
-			"ModifierName"	"modifier_poisoned_weapon"
-			"Target"	"CASTER"
-		}
-	}
 
 	"Modifiers"
 	{
@@ -199,10 +195,10 @@
 					"ModifierName"	"modifier_poisoned_weapon_debuff"
 					"Target"	
 					{
-					"Center"	"TARGET"
-					"Radius"	"%radius"
-					"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
+						"Center"	"TARGET"
+						"Radius"	"%radius"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
 					}
 				}
 			}
@@ -210,8 +206,6 @@
 		
 		"modifier_poisoned_weapon_debuff"
 		{
-			"Passive"               "0"
-			"IsHidden"				"0"
 			"Duration"				"%duration"
 			
 			"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
@@ -248,21 +242,12 @@
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
 	
-	"OnOwnerSpawned"
-	{
-		"ApplyModifier"	
-		{
-			"ModifierName"	"modifier_pirate_evasion"
-			"Target"	"CASTER"
-		}
-	}
-	
 	"AbilitySpecial"
 	{
 		"01"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"evasion"		"15 25 35"
+			"evasion"		"15 20 25"
 		}
 	}
 
@@ -285,7 +270,7 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityTextureName"			"terrorblade_metamorphosis"
 	
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -356,18 +341,30 @@
 		"FireSound"
 		{
 			"EffectName"		"Hero_Terrorblade.Metamorphosis"
-			"Target"			"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		"FireEffect"
 		{
 			"EffectName"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
 			"EffectAttachType"	"follow_origin"
-			"Target"			"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		"ApplyModifier"
 		{
 			"ModifierName"		"modifier_metamorphosis"
-			"Target"			"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 	}
 
@@ -398,7 +395,11 @@
 				{
 					"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
 					"EffectAttachType"	"follow_origin"
-					"Target"			"TARGET"
+					"Target"
+					{
+						"Center"  	"TARGET"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}
 			}
 
