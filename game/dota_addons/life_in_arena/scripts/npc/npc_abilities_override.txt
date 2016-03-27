@@ -8165,13 +8165,21 @@
 		  	"FireSound"
 			{
 				"EffectName"	"Hero_Nightstalker.Void"
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 			"AttachEffect"
 			{
 				"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
 				"EffectAttachType"	"attach_origin"
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 			"Random"
 			{
@@ -9477,7 +9485,11 @@
 		{
 			"ApplyModifier"
 			{
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"	"modifier_berserker_madness"	
 			}
 		}
@@ -11185,9 +11197,9 @@
 			}
 			"ApplyModifier"
 			{
-			"ModifierName" "modifier_dice_rage"
-			"Target"	"TARGET"
-			"Duration"	"%duration"
+				"ModifierName" "modifier_dice_rage"
+				"Target"	"TARGET"
+				"Duration"	"%duration"
 			}
 	
 			
@@ -11402,7 +11414,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_steelstorm"
-				"Target" 		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"		"%duration"
 			}	
 		}
@@ -11424,7 +11440,11 @@
 					{
 						"EffectName"        "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
 						"EffectAttachType"  "follow_origin"
-						"Target"            "CASTER"
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 						"ControlPoints"
 						{
 							"05"	"%steelstorm_radius 0 0"
@@ -11433,7 +11453,11 @@
 					"FireSound"
 					{
 						"EffectName"	"Hero_Juggernaut.BladeFuryStart"
-						"Target" 		"CASTER"
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 					}			
 				}
 				
@@ -12441,7 +12465,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_fallen_champion_roar_hero"
-				"Target" 		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"		"%duration"
 			}
 			
@@ -14769,7 +14797,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName" "modifier_dark_magic_flow"
-				"Target"	"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"	"%duration"
 			}			
 		}
@@ -16387,10 +16419,10 @@
 				{
 					"ModifierName"	"modifier_storm_hero"
 					"Target"
-							{
-								"Center" 	"CASTER"
-								"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-							}
+					{
+						"Center" 	"CASTER"
+						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 					"Duration"		"%AbilityDuration"
 				}	
 			}
@@ -16618,7 +16650,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_highlander_heavy_axe"
-				"Target"	"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 		}
 	
@@ -17132,63 +17168,56 @@
 	//power of the moon
 	//
 	"huntress_power_of_the_moon"
-		{
-		  "BaseClass"               "ability_datadriven"
-		  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		  "AbilityTextureName"      "luna_lunar_blessing"
-		
+	{
+		"BaseClass"               "ability_datadriven"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "luna_lunar_blessing"
+	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
-		  
-		  "AbilitySpecial"
-		  {
-		    "01"
-		    {
-		      "var_type"      "FIELD_INTEGER"
-		      "immun_magic"  	"10 20 30"
-		    }
-		    "02"
-		    {
-		      "var_type"      "FIELD_INTEGER"
-		      "attackSpeed"  	"8 16 24"
-		    }
-		    "03"
-		    {
-		      "var_type"      "FIELD_INTEGER"
-		      "moveSpeed"  	"5 10 15"
-		    }
-		    "04"
-		    {
-		      "var_type"      "FIELD_INTEGER"
-		      "agility"  	"5 10 15"
-		    }
-		  }
-		
-		  "OnRespawn"
-			{
-				"ApplyModifier"	"power_of_the_moon"
-			}
 	
-		  "Modifiers"
-		  {   
-		    "power_of_the_moon"
-		    {
-		      "Passive"  "1"
-				"IsHidden"	"1"
-		      "Properties"
-		      {
-			"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%immun_magic"
-			//
-			"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
-			//
-			"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%moveSpeed"
-			//
-			"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%agility"
-		      }     
-		    }
-		  } 
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"immun_magic"  	"10 20 30"
+			}
+			"02"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"attackSpeed"  	"8 16 24"
+			}
+			"03"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"moveSpeed"  	"5 10 15"
+			}
+			"04"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"agility"  	"5 10 15"
+			}
 		}
+	
+	
+		"Modifiers"
+		{   
+			"power_of_the_moon"
+			{
+				"Passive"  "1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%immun_magic"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%moveSpeed"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%agility"
+				}     
+			}
+		} 
+	}
 	
 	
 	
@@ -17245,24 +17274,12 @@
 				"ApplyModifier"
 				{
 					"ModifierName" "modifier_huntress_ritual"
-					"Target" "CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}	
-			  	//"FireSound"
-				//{
-				//	"EffectName"	"Hero_ObsidianDestroyer.SanityEclipse"
-				//	"Target"		"CASTER"
-				//}
-				//"AttachEffect"
-				//{
-				//	"EffectName"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
-				//	"EffectAttachType"	"start_at_customorigin"
-				//	"Target"	"CASTER"	
-				//	"ControlPoints"
-				//	{
-				//		"01"	"%radius 0 0"
-				//		"15"	"0 200 100"
-				//	}
-				//}
 		    }
 			
 			"Modifiers"
@@ -20315,14 +20332,22 @@
 			{	
 				"FireEffect"
 				{
-					"Target" "CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 					"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
 					"EffectAttachType"		"follow_origin"	
 				}
 				"FireSound"
 				{
 					"EffectName" "Hero_NagaSiren.Riptide.Cast"
-					"Target" "CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}
 					"RunScript"
 	    			{
@@ -20688,25 +20713,6 @@
 				
 				"EffectName" 		"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf" 	   
 				"EffectAttachType"  "follow_origin"
-	
-			//	"ThinkInterval"  "0.1"
-			//	"OnIntervalThink"
-			//	{
-			//		"RunScript"
-			//		{
-			//			"ScriptFile"	"heroes/NagaSiren/Song.lua"
-			//			"Function"		"Taunt"
-			//		}
-			//	}
-	
-			//	"OnDestroy"
-			//	{
-			//		"RunScript"
-			//		{
-			//			"ScriptFile"	"heroes/NagaSiren/Song.lua"
-			//			"Function"		"TauntEnd"
-			//		}
-			//	}
 			}
 		}
 	}
@@ -22236,7 +22242,11 @@
 				"FireSound"
 				{
 					"EffectName"		"Hero_Omniknight.Repel"
-					"Target"			"CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}
 		
 				//"FireEffect"
@@ -22254,7 +22264,11 @@
 				
 				"ApplyModifier"
 				{
-					"Target"			"CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 					"ModifierName"		"modifier_impregnability_new"
 				}
 				
@@ -22278,7 +22292,11 @@
 			{
 				"RemoveModifier"
 				{
-					"Target"			"CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 					"ModifierName"	"modifier_impregnability_new"
 				}
 				
@@ -24337,21 +24355,33 @@
 				"FireSound"
 				{
 					"EffectName"	"Ability.Starfall"
-					"Target"		"CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}
 		
 				"FireEffect"
 				{
 					"EffectName"		"particles/units/heroes/hero_mirana/mirana_starfall_circle.vpcf"
 					"EffectAttachType"	"attach_origin"
-					"Target"			"CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}
 	
-		    		"ApplyModifier"
-		    		{
-		      			"ModifierName"  "starfall_regen"
-		      			"Target"        "CASTER"
-		    		}
+	    		"ApplyModifier"
+	    		{
+	      			"ModifierName"  "starfall_regen"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
+	    		}
 		
 				"ActOnTargets"
 				{
@@ -25087,13 +25117,13 @@
 	    {
 			"Damage"
 			{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
 				"Type" "DAMAGE_TYPE_MAGICAL"
 				"Damage" "%damage_initial"
 			}
@@ -25872,7 +25902,11 @@
 	    "ApplyModifier"
 	    {
 	      "ModifierName"  "modifier_minotaur_guardian_spirits"
-	      "Target"        "CASTER"
+	      "Target"
+	      {
+	        "Center"    "CASTER"
+	        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	      }
 	    }
 	  }
 	
@@ -26022,7 +26056,11 @@
 	        "FireSound"
 	        {
 	            "EffectName"    "Hero_Magnataur.ReversePolarity.Cast"
-	            "Target"         "CASTER"
+	            "Target"
+	            {
+	                "Center"    "CASTER"
+	                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	            }
 	        }  
 	
 	        "FireEffect"
@@ -26448,7 +26486,11 @@
 			{
 				"EffectName"        "particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
 				"EffectAttachType"  "follow_origin"
-				"Target"            "CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 		}
 	
@@ -29489,17 +29531,21 @@
 				"FireSound"
 				{
 					"EffectName"	"Hero_Omniknight.GuardianAngel.Cast"
-					"Target"		"CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}
 				
 		    	"ActOnTargets"
 		        {
 		          	"Target"
 		          	{
-		            		"Center"  "CASTER"
-		            		"Radius"  "%radius"
-		            		"Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		            		"Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	            		"Center"  "CASTER"
+	            		"Radius"  "%radius"
+	            		"Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	            		"Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		          	}
 		          
 		          	"Action"
