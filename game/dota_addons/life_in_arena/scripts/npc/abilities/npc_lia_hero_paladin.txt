@@ -825,7 +825,11 @@
 			"FireSound"
 			{
 				"EffectName"		"Hero_Omniknight.Repel"
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 	
 			//"FireEffect"
@@ -843,7 +847,11 @@
 			
 			"ApplyModifier"
 			{
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"		"modifier_impregnability_new"
 			}
 			
@@ -867,7 +875,11 @@
 		{
 			"RemoveModifier"
 			{
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"	"modifier_impregnability_new"
 			}
 			

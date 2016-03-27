@@ -57,7 +57,11 @@
 		{
 			"EffectName"        "particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
 			"EffectAttachType"  "follow_origin"
-			"Target"            "CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 	}
 

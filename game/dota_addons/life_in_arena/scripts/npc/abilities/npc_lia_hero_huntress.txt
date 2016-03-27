@@ -300,63 +300,56 @@
 //power of the moon
 //
 "huntress_power_of_the_moon"
-	{
-	  "BaseClass"               "ability_datadriven"
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName"      "luna_lunar_blessing"
-	
+{
+	"BaseClass"               "ability_datadriven"
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"      "luna_lunar_blessing"
+
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
-	  
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "immun_magic"  	"10 20 30"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "attackSpeed"  	"8 16 24"
-	    }
-	    "03"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "moveSpeed"  	"5 10 15"
-	    }
-	    "04"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "agility"  	"5 10 15"
-	    }
-	  }
-	
-	  "OnRespawn"
-		{
-			"ApplyModifier"	"power_of_the_moon"
-		}
 
-	  "Modifiers"
-	  {   
-	    "power_of_the_moon"
-	    {
-	      "Passive"  "1"
-			"IsHidden"	"1"
-	      "Properties"
-	      {
-		"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%immun_magic"
-		//
-		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
-		//
-		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%moveSpeed"
-		//
-		"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%agility"
-	      }     
-	    }
-	  } 
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"      "FIELD_INTEGER"
+			"immun_magic"  	"10 20 30"
+		}
+		"02"
+		{
+			"var_type"      "FIELD_INTEGER"
+			"attackSpeed"  	"8 16 24"
+		}
+		"03"
+		{
+			"var_type"      "FIELD_INTEGER"
+			"moveSpeed"  	"5 10 15"
+		}
+		"04"
+		{
+			"var_type"      "FIELD_INTEGER"
+			"agility"  	"5 10 15"
+		}
 	}
+
+
+	"Modifiers"
+	{   
+		"power_of_the_moon"
+		{
+			"Passive"  "1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%immun_magic"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%moveSpeed"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%agility"
+			}     
+		}
+	} 
+}
 
 
 
@@ -413,24 +406,12 @@
 			"ApplyModifier"
 			{
 				"ModifierName" "modifier_huntress_ritual"
-				"Target" "CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}	
-		  	//"FireSound"
-			//{
-			//	"EffectName"	"Hero_ObsidianDestroyer.SanityEclipse"
-			//	"Target"		"CASTER"
-			//}
-			//"AttachEffect"
-			//{
-			//	"EffectName"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
-			//	"EffectAttachType"	"start_at_customorigin"
-			//	"Target"	"CASTER"	
-			//	"ControlPoints"
-			//	{
-			//		"01"	"%radius 0 0"
-			//		"15"	"0 200 100"
-			//	}
-			//}
 	    }
 		
 		"Modifiers"

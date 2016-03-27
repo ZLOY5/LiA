@@ -284,17 +284,21 @@
 			"FireSound"
 			{
 				"EffectName"	"Hero_Omniknight.GuardianAngel.Cast"
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 			
 	    	"ActOnTargets"
 	        {
 	          	"Target"
 	          	{
-	            		"Center"  "CASTER"
-	            		"Radius"  "%radius"
-	            		"Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	            		"Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            		"Center"  "CASTER"
+            		"Radius"  "%radius"
+            		"Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+            		"Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	          	}
 	          
 	          	"Action"

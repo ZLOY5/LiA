@@ -305,14 +305,22 @@
 		{	
 			"FireEffect"
 			{
-				"Target" "CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
 				"EffectAttachType"		"follow_origin"	
 			}
 			"FireSound"
 			{
 				"EffectName" "Hero_NagaSiren.Riptide.Cast"
-				"Target" "CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 				"RunScript"
     			{

@@ -91,21 +91,33 @@
 			"FireSound"
 			{
 				"EffectName"	"Ability.Starfall"
-				"Target"		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 	
 			"FireEffect"
 			{
 				"EffectName"		"particles/units/heroes/hero_mirana/mirana_starfall_circle.vpcf"
 				"EffectAttachType"	"attach_origin"
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 
-	    		"ApplyModifier"
-	    		{
-	      			"ModifierName"  "starfall_regen"
-	      			"Target"        "CASTER"
-	    		}
+    		"ApplyModifier"
+    		{
+      			"ModifierName"  "starfall_regen"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+    		}
 	
 			"ActOnTargets"
 			{

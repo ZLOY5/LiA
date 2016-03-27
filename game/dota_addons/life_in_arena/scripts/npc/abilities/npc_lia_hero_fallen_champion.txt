@@ -253,7 +253,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_fallen_champion_roar_hero"
-			"Target" 		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"		"%duration"
 		}
 		

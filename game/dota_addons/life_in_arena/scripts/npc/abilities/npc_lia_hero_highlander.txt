@@ -139,7 +139,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_highlander_heavy_axe"
-			"Target"	"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 	}
 

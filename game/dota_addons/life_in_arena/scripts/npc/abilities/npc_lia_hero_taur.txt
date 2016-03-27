@@ -325,7 +325,11 @@
     "ApplyModifier"
     {
       "ModifierName"  "modifier_minotaur_guardian_spirits"
-      "Target"        "CASTER"
+      "Target"
+      {
+        "Center"    "CASTER"
+        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+      }
     }
   }
 

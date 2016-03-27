@@ -40,13 +40,21 @@
 	  	"FireSound"
 		{
 			"EffectName"	"Hero_Nightstalker.Void"
-			"Target"		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		"AttachEffect"
 		{
 			"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
 			"EffectAttachType"	"attach_origin"
-			"Target"		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		"Random"
 		{

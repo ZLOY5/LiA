@@ -53,9 +53,9 @@
 		}
 		"ApplyModifier"
 		{
-		"ModifierName" "modifier_dice_rage"
-		"Target"	"TARGET"
-		"Duration"	"%duration"
+			"ModifierName" "modifier_dice_rage"
+			"Target"	"TARGET"
+			"Duration"	"%duration"
 		}
 
 		
@@ -270,7 +270,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_steelstorm"
-			"Target" 		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"		"%duration"
 		}	
 	}
@@ -292,7 +296,11 @@
 				{
 					"EffectName"        "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
 					"EffectAttachType"  "follow_origin"
-					"Target"            "CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 					"ControlPoints"
 					{
 						"05"	"%steelstorm_radius 0 0"
@@ -301,7 +309,11 @@
 				"FireSound"
 				{
 					"EffectName"	"Hero_Juggernaut.BladeFuryStart"
-					"Target" 		"CASTER"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
 				}			
 			}
 			

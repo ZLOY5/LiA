@@ -212,7 +212,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName" "modifier_dark_magic_flow"
-			"Target"	"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"	"%duration"
 		}			
 	}
