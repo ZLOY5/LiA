@@ -406,6 +406,11 @@
 				"ModifierName"	"modifier_item_lia_anti_magic_potion"
 				"Duration"		"%duration"
 			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\AntimagicPotion.lua"
+				"Function"		"Purge"
+			}	
 			"SpendCharge"
 			{}	
 		}
@@ -6632,6 +6637,11 @@
 				"ModifierName"	"modifier_potion_of_invulnerability"
 				"Duration"		"%duration"
 			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\PotionOfInvulnerability.lua"
+				"Function"		"Purge"
+			}	
 			"SpendCharge"
 			{}	
 		}
@@ -9966,6 +9976,11 @@
 					"Center"	"CASTER"
 					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\TotemOfPersistence.lua"
+				"Function"		"Purge"
 			}	
 		}
 		
@@ -9984,48 +9999,18 @@
 				    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
 			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
 			    }
-				"ThinkInterval" 		".03"
-				"OnIntervalThink"
-				{
-					"ApplyModifier"
-					{
-						"Target" "CASTER"
-						"ModifierName" "modifier_item_totem_of_persistence_spell_block"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target" "CASTER"
-						"ModifierName" "modifier_item_totem_of_persistence_spell_block"
-					}
-				}
 			}
+	
 			"modifier_item_totem_of_persistence_active"
 			{
 				"Duration"              	"%duration"
-				"Passive"					"0"
-				"IsHidden"					"0"
-				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"Attributes"				"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"EffectName"            	"particles/items_fx/black_king_bar_avatar.vpcf"
-				"EffectAttachType"      	"PATTACH_ABSORIGIN"
+				"EffectAttachType"      	"follow_origin"
 				
 				"States"
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE" 			"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			"modifier_item_totem_of_persistence_spell_block"
-			{
-				"IsHidden"			"1"
-				"OnCreated"
-				{			
-					"RunScript"
-					{
-						"ScriptFile"		"items/TotemOfPersistence.lua"
-						"Function"			"modifier_item_lia_totem_of_persistence_block"
-					}
 				}
 			}
 		}

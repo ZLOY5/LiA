@@ -50,7 +50,11 @@
    "ApplyModifier"
     {
      "ModifierName"   "modifier_brewmaster_might"
-     "Target"         "CASTER"
+      "Target"
+      {
+        "Center"    "CASTER"
+        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+      }
      "Duration"       "%duration"
     }
   }
@@ -229,10 +233,20 @@
   {
    "ApplyModifier"
     {
-     "ModifierName"   "modifier_power_of_the_mountains"
-     "Target"         "CASTER"
-     "Duration"       "%duration"
-    }
+      "ModifierName"   "modifier_power_of_the_mountains"
+        "Target"
+        {
+          "Center"    "CASTER"
+          "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+        }
+        "Duration"       "%duration"
+
+      }
+      "RunScript"
+      {
+        "ScriptFile"  "heroes\Brewer\Avatar.lua"
+        "Function"    "Purge"
+      } 
   }
     
     // Modifiers

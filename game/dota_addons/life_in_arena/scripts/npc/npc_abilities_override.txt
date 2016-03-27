@@ -9567,7 +9567,11 @@
 	   "ApplyModifier"
 	    {
 	     "ModifierName"   "modifier_brewmaster_might"
-	     "Target"         "CASTER"
+	      "Target"
+	      {
+	        "Center"    "CASTER"
+	        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	      }
 	     "Duration"       "%duration"
 	    }
 	  }
@@ -9746,10 +9750,20 @@
 	  {
 	   "ApplyModifier"
 	    {
-	     "ModifierName"   "modifier_power_of_the_mountains"
-	     "Target"         "CASTER"
-	     "Duration"       "%duration"
-	    }
+	      "ModifierName"   "modifier_power_of_the_mountains"
+	        "Target"
+	        {
+	          "Center"    "CASTER"
+	          "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	        }
+	        "Duration"       "%duration"
+	
+	      }
+	      "RunScript"
+	      {
+	        "ScriptFile"  "heroes\Brewer\Avatar.lua"
+	        "Function"    "Purge"
+	      } 
 	  }
 	    
 	    // Modifiers
@@ -14950,14 +14964,27 @@
 			"FireSound"
 			{
 				"EffectName"	"Hero_LifeStealer.Rage"
-				"Target" 		"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
 			"ApplyModifier"
 			{
 				"ModifierName"   "modifier_ghoul_blood_thirst"
-				"Target"         "CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"       "%duration"
 			}
+			"RunScript"
+			{
+				"ScriptFile"	"heroes\Ghoul\BloodThirst.lua"
+				"Function"		"Purge"
+			}	
 		}
 	
 		// Modifiers
@@ -25206,27 +25233,24 @@
 		{
 			"FireEffect"
 			{
-				"Target"			"CASTER"
+				"Target"		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
 				"EffectAttachType"	"attach_origin"
 			}
 	
 			"FireSound"
 			{
-				"Target"		"CASTER"
+				"Target"		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"EffectName"	"Hero_BountyHunter.WindWalk"
 			}
-	
-			//"ApplyModifier"
-			//{
-			//	"ModifierName" 	"modifier_invisible"
-			//	"Target"		
-			//	{
-			//		"Center"	"CASTER"
-			//		"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			//	}
-			//	"Duration"		"%duration"
-			//}
 	
 			"ApplyModifier"
 			{
@@ -25281,13 +25305,21 @@
 					"RemoveModifier"
 					{
 						"ModifierName" 	"modifier_invisible"
-						"Target"		"CASTER"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 					}
 	
 					"RemoveModifier"
 					{
 						"ModifierName" 	"modifier_skeleton_thief_wind_walk"
-						"Target"		"CASTER"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 					}
 	
 					"Damage"
@@ -25316,13 +25348,21 @@
 					"RemoveModifier"
 					{
 						"ModifierName" 	"modifier_invisible"
-						"Target"		"CASTER"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 					}
 	
 					"RemoveModifier"
 					{
 						"ModifierName" 	"modifier_skeleton_thief_wind_walk"
-						"Target"		"CASTER"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 					}
 				}
 			}
@@ -25371,16 +25411,21 @@
 		  //-------------------------------------------------------------------------------------------------------------
 		"OnSpellStart"
 		{
-		 "ApplyModifier"
+		 	"ApplyModifier"
 			{
-			 "ModifierName"   "modifier_skeleton_thief_fury"
-			"Target"		
+			 	"ModifierName"   "modifier_skeleton_thief_fury"
+				"Target"		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"       "%duration"
+			}
+			"RunScript"
 			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			 "Duration"       "%duration"
-			}
+				"ScriptFile"	"heroes\SkeletonThief\Fury.lua"
+				"Function"		"Purge"
+			}	
 		}
 	    
 	    // Modifiers
@@ -25397,12 +25442,12 @@
 			
 	        "Properties"
 	        {
-	         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
+	         	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
 	        }
 	
 	        "States"
 	        {
-	         "MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+	         	"MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
 	        }
 	      }
 	    }

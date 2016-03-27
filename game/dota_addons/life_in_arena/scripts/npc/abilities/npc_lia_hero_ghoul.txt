@@ -54,14 +54,27 @@
 		"FireSound"
 		{
 			"EffectName"	"Hero_LifeStealer.Rage"
-			"Target" 		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		"ApplyModifier"
 		{
 			"ModifierName"   "modifier_ghoul_blood_thirst"
-			"Target"         "CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"       "%duration"
 		}
+		"RunScript"
+		{
+			"ScriptFile"	"heroes\Ghoul\BloodThirst.lua"
+			"Function"		"Purge"
+		}	
 	}
 
 	// Modifiers
