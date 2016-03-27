@@ -406,6 +406,11 @@
 				"ModifierName"	"modifier_item_lia_anti_magic_potion"
 				"Duration"		"%duration"
 			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\AntimagicPotion.lua"
+				"Function"		"Purge"
+			}	
 			"SpendCharge"
 			{}	
 		}
@@ -1563,7 +1568,7 @@
 	{
 		"ID"							"1321"
 		"BaseClass" 					"item_datadriven"
-		"ItemCost"						"2540"
+		"ItemCost"						"2415"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
 		"ItemSellable"                  "1"
@@ -1616,7 +1621,7 @@
 			"04"
 			{
 				"var_type" "FIELD_INTEGER"
-				"evasion_percent" "30"
+				"evasion_percent" "20"
 			}
 		}
 	}
@@ -2510,7 +2515,7 @@
 				"EndRadius" "%start_radius"
 				"FixedDistance" "%range"
 				"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
+				"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_MECHANICAL"
 				"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
 				"HasFrontalCone" "1"
 				"ProvidesVision" "0"
@@ -5196,7 +5201,7 @@
 	{
 		"ID"							"1315"
 		"BaseClass" 					"item_datadriven"
-		"ItemCost"						"600"
+		"ItemCost"						"475"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
 		"ItemSellable"                  "1"
@@ -5229,7 +5234,7 @@
 			"02"
 			{
 				"var_type" "FIELD_INTEGER"
-				"evasion_percent" "25"
+				"evasion_percent" "15"
 			}
 		}
 	}
@@ -6632,6 +6637,11 @@
 				"ModifierName"	"modifier_potion_of_invulnerability"
 				"Duration"		"%duration"
 			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\PotionOfInvulnerability.lua"
+				"Function"		"Purge"
+			}	
 			"SpendCharge"
 			{}	
 		}
@@ -9966,6 +9976,11 @@
 					"Center"	"CASTER"
 					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\TotemOfPersistence.lua"
+				"Function"		"Purge"
 			}	
 		}
 		
@@ -9984,48 +9999,18 @@
 				    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
 			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
 			    }
-				"ThinkInterval" 		".03"
-				"OnIntervalThink"
-				{
-					"ApplyModifier"
-					{
-						"Target" "CASTER"
-						"ModifierName" "modifier_item_totem_of_persistence_spell_block"
-					}
-				}
-				"OnDestroy"
-				{
-					"RemoveModifier"
-					{
-						"Target" "CASTER"
-						"ModifierName" "modifier_item_totem_of_persistence_spell_block"
-					}
-				}
 			}
+	
 			"modifier_item_totem_of_persistence_active"
 			{
 				"Duration"              	"%duration"
-				"Passive"					"0"
-				"IsHidden"					"0"
-				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"Attributes"				"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 				"EffectName"            	"particles/items_fx/black_king_bar_avatar.vpcf"
-				"EffectAttachType"      	"PATTACH_ABSORIGIN"
+				"EffectAttachType"      	"follow_origin"
 				
 				"States"
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE" 			"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-			"modifier_item_totem_of_persistence_spell_block"
-			{
-				"IsHidden"			"1"
-				"OnCreated"
-				{			
-					"RunScript"
-					{
-						"ScriptFile"		"items/TotemOfPersistence.lua"
-						"Function"			"modifier_item_lia_totem_of_persistence_block"
-					}
 				}
 			}
 		}

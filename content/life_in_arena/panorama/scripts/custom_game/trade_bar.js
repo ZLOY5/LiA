@@ -122,14 +122,6 @@ function TradeRequest() {
 
 }
 
-function MessageGoldReceived(event) {
-	GameEvents.SendEventClientSide("dota_chat_event", {userid:event.userid,gold:event.gold,message:1})
-}
-
-function MessageLumberReceived(event) {
-	GameEvents.SendEventClientSide("dota_chat_event", {userid:event.userid,gold:event.lumber,message:3})
-}
-
 
 /*dota_chat_event
 userid ( short )
@@ -218,7 +210,4 @@ function CheckHeroNames() {
 		$.Schedule(0.5,CheckHeroNames);
 
 	$.Schedule(0.03,RecalculateTradeResource);
-
-	GameEvents.Subscribe("lia_gold_received", MessageGoldReceived);
-	GameEvents.Subscribe("lia_lumber_received", MessageLumberReceived);
 })();

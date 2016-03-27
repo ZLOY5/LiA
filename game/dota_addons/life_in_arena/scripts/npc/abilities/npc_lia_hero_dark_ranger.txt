@@ -528,18 +528,30 @@
 		"FireSound"
 		{
 			"EffectName"		"Hero_TemplarAssassin.Trap.Explode"
-			"Target"			"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		"FireEffect"
 		{
 			"EffectName"		"particles/templar_assassin_trap_explode_custom.vpcf"
 			"EffectAttachType"	"follow_origin"
-			"Target"			"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		"ApplyModifier"
 		{
 			"ModifierName"		"dark_ranger_fury"
-			"Target"			"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 	}
 

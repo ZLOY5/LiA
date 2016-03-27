@@ -47,10 +47,10 @@
 		{
 			"ModifierName" "modifier_naga_siren_fury"
 			"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 			"Duration"	"%AbilityDuration"
 		}
 	}
@@ -280,7 +280,11 @@
 		"FireSound"
 		{
 			"EffectName"	"Hero_NagaSiren.SongOfTheSiren"
-			"Target" 		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 
 		"FireEffect"
