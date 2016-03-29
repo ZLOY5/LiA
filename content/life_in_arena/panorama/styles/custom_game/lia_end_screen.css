@@ -1,4 +1,4 @@
-@define BACKGROUND_COLOR: #303030;
+@define BACKGROUND_COLOR: #303030DE;
 
 .EndScreenRoot
 {
@@ -226,7 +226,7 @@
 	margin-left: 306px;
 	width: 79px;
 	height: 100%;
-    background-color: BACKGROUND_COLOR;
+    //background-color: BACKGROUND_COLOR;
 }
 
 #TeamScore
@@ -267,7 +267,6 @@
 .PlayerRow
 {
 	height: 32px;
-	opacity: 0.95;
 	background-color: BACKGROUND_COLOR;
 	border-bottom: 1px solid #00000066;
 }
@@ -288,7 +287,7 @@
 	margin: 1px;
 	width: 43px;
 	height: 32px;
-	background-color: BACKGROUND_COLOR;
+	//background-color: BACKGROUND_COLOR;
 }
 
 #HeroIcon
@@ -318,16 +317,16 @@
 
 .ScoreboardPanel
 {
-    background-color: BACKGROUND_COLOR;
-	margin-top: 1px;
-	margin-left: 1px;
+    //background-color: BACKGROUND_COLOR;
+	//margin-top: 1px;
+	//margin-left: 1px;
 	height: 100%;
 }
 
 .LegendPanel
 {
-	margin-top: 1px;
-	margin-left: 1px;
+	//margin-top: 1px;
+	//margin-left: 1px;
 }
 
 .ScoreboardPanel Label
@@ -349,13 +348,6 @@
     background-position: 50% 50%;
 }
 
-#Level
-{
-	vertical-align: middle;
-	horizontal-align: center;
-	color: #898b8c;
-}
-
 #Level,
 #KillsCreeps,
 #KillsBosses,
@@ -369,11 +361,8 @@
 	vertical-align: center;
 	text-align: center;
 	font-size: 20px;
-	margin-top: 3px;
-}
-
-#PlayerGoldAmount
-{
+	//margin-top: 3px;
+	height: 20px;
 }
 
 #PlayerName
@@ -410,14 +399,15 @@
 #PlayerItemsContainer
 {
 	flow-children: right;
+	margin-left: 1px;
 }
 
 #PlayerItemsContainer Image
 {
-	margin: 1px;
+	margin-left: 1px;
 	width: 43px;
 	height: 32px;
-	background-color: BACKGROUND_COLOR;
+	//background-color: BACKGROUND_COLOR;
 }
 
 
