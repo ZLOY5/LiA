@@ -1,0 +1,125 @@
+"item_recipe_lia_blade_of_rage_int"
+
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1530"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"600"	
+	"ItemShopTags"					"int;damage;attack_speed"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_lia_blade_of_rage_int"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_steel_sword;item_lia_runed_gloves;item_lia_staff"
+	}
+}
+
+"item_lia_blade_of_rage_int"
+{
+	"ID"							"1531"
+	"BaseClass" 					"item_datadriven"
+	"ItemCost"						"1085"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"rare"
+	"AbilityTextureName"			"item_lia_blade_of_rage_int"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityCooldown"				"16"
+	"AbilityManacost"				"90"
+
+	"precache"
+	{
+		"particle"  "particles/morphling_morph_int.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"		"CASTER"
+			"ModifierName"	"modifier_item_blade_of_rage_int"	
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_item_lia_blade_of_rage_int"
+		{
+			"Passive"          "1"    
+		    "IsHidden"         "1"
+		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+		    "AllowIllusionDuplicate"    "1"
+		    "Properties"
+		    {
+		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		    "%bonus_intellect"
+		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
+		    }  
+		}
+		"modifier_item_blade_of_rage_int"
+		{
+			"Duration"		"%duration"
+			"Attributes" 	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			"IsBuff"		"1"
+
+			"EffectName"	"particles/morphling_morph_int.vpcf"
+			"EffectAttachType"	"follow_origin"
+			
+			"OnCreated"
+			{	
+				"RunScript"
+				{
+					"ScriptFile"	"items\BladeOfRageInt.lua"
+					"Function"		"OnCreatedModifier"
+					"int_percent"	"%int_percent"
+				}
+			}  
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items\BladeOfRageInt.lua"
+					"Function"		"OnDestroyModifier"
+				}
+			}  
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_attack_speed" "55"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage" "50"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_intellect" "25"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"duration" "5"
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"int_percent" "75"
+		}
+	}
+}
+

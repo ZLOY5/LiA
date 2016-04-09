@@ -99,7 +99,12 @@
 		"02"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"stun_hero_duration"	"1.0"
+			"bash_stun"	"1.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_damage"	"70 140 210"
 		}
 	}
 
@@ -130,23 +135,12 @@
 							"Target"		"TARGET"
 						}
 
-						"ApplyModifier"
+						"RunScript"
 						{
-							"ModifierName"	"modifier_stunned"
-							"Target"
-							{
-								"Center"	"TARGET"
-								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							}
-							"Duration"		"%stun_hero_duration"	
+							"ScriptFile"	"items\BattleAxe.lua"
+							"Function"		"Bash"
 						}
 
-						"Damage"
-						{
-							"Target"	"TARGET"
-							"Type"		"DAMAGE_TYPE_MAGICAL"
-							"Damage"	"%AbilityDamage"
-						}
 					}
 				}
 			}

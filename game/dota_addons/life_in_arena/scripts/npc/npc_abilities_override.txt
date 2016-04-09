@@ -11243,7 +11243,12 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"stun_hero_duration"	"1.0"
+				"bash_stun"	"1.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"	"70 140 210"
 			}
 		}
 	
@@ -11274,23 +11279,12 @@
 								"Target"		"TARGET"
 							}
 	
-							"ApplyModifier"
+							"RunScript"
 							{
-								"ModifierName"	"modifier_stunned"
-								"Target"
-								{
-									"Center"	"TARGET"
-									"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								}
-								"Duration"		"%stun_hero_duration"	
+								"ScriptFile"	"items\BattleAxe.lua"
+								"Function"		"Bash"
 							}
 	
-							"Damage"
-							{
-								"Target"	"TARGET"
-								"Type"		"DAMAGE_TYPE_MAGICAL"
-								"Damage"	"%AbilityDamage"
-							}
 						}
 					}
 				}
@@ -20201,7 +20195,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"stun_hero_duration"	"1.0 1.5 2.0"
+				"bash_stun"	"1.0 1.5 2.0"
 			}
 		}
 		
@@ -20228,23 +20222,12 @@
 								"Target"		"TARGET"
 							}
 	
-							"ApplyModifier"
+							"RunScript"
 							{
-								"ModifierName"	"modifier_stunned"
-								"Target"
-								{
-									"Center"	"TARGET"
-									"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								}
-								"Duration"		"%stun_hero_duration"	
+								"ScriptFile"	"items\BattleAxe.lua"
+								"Function"		"Bash"
 							}
 	
-							"Damage"
-							{
-								"Target"	"TARGET"
-								"Type"		"DAMAGE_TYPE_MAGICAL"
-								"Damage"	"%AbilityDamage"
-							}
 						}
 					}
 				}
@@ -23775,12 +23758,12 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"stun_duration"	"0.15 0.20 0.25"
+				"bash_stun"	"0.15 0.20 0.25"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"	"30 45 60"
+				"bash_damage"	"30 45 60"
 			}
 		}
 	
@@ -23810,23 +23793,12 @@
 						"OnSuccess"
 						{
 	
-							"ApplyModifier"
+							"RunScript"
 							{
-								"ModifierName"	"modifier_stunned"
-								"Target"
-								{
-									"Center"	"TARGET"
-									"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								}
-								"Duration"		"%stun_duration"	
+								"ScriptFile"	"items\BattleAxe.lua"
+								"Function"		"Bash"
 							}
 	
-							"Damage"
-							{
-								"Target"	"TARGET"
-								"Type"		"DAMAGE_TYPE_MAGICAL"
-								"Damage"	"%damage"
-							}
 						}
 					}
 				}
