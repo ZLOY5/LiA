@@ -11624,7 +11624,7 @@
 	        "Damage"
 	        {
 	          "Target"     "TARGET"
-	          "Type"       "DAMAGE_TYPE_PHYSICAL"
+	          "Type"       "DAMAGE_TYPE_MAGICAL"
 	          "Damage"     "%damage"
 	        }
 	      }
@@ -15419,11 +15419,6 @@
 	        }
 	    }
 	
-		"OnRespawn"
-		{
-			"ApplyModifier"	"modifiers_hellish_heat_datadriven"
-		}	
-		
 	    "Modifiers"
 	    {
 	      "modifiers_hellish_heat_datadriven"
@@ -23743,13 +23738,15 @@
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityDamage"					"30 45 60"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
-		
+	
+		"AbilityCooldown"		 "1"
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -23769,14 +23766,6 @@
 			}
 		}
 	
-		"OnOwnerSpawned"
-		{
-			"ApplyModifier"	
-			{
-				"ModifierName"	"serpent_queen_accuracy"
-				"Target"	"CASTER"
-			}
-		}
 		
 		"Modifiers"
 		{
@@ -23787,21 +23776,11 @@
 	
 				"OnAttackLanded"
 				{
-					"Random"
+	
+					"RunScript"
 					{
-						"Chance"		"%bash_chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-	
-						"OnSuccess"
-						{
-	
-							"RunScript"
-							{
-								"ScriptFile"	"items\BattleAxe.lua"
-								"Function"		"Bash"
-							}
-	
-						}
+						"ScriptFile"	"heroes\SerpentQueen\Accuracy.lua"
+						"Function"		"Bash"
 					}
 				}
 			}
@@ -31471,8 +31450,6 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"riki_smoke_screen"
 		"AOERadius"						"%radius"
 	
@@ -31533,7 +31510,6 @@
 				"Aura_Radius"			"%radius"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY" // 
 				"Aura_Types"			"DOTA_UNIT_TARGET_ALL"//"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC " //DOTA_UNIT_TARGET_MECHANICAL
-				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				"Duration"				"%cloud_duration"
 	
 				"OnCreated"

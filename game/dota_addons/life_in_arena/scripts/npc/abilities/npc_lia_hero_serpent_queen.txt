@@ -269,13 +269,15 @@
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityDamage"					"30 45 60"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
-	
+
+	"AbilityCooldown"		 "1"
+
 	"AbilitySpecial"
 	{
 		"01"
@@ -295,14 +297,6 @@
 		}
 	}
 
-	"OnOwnerSpawned"
-	{
-		"ApplyModifier"	
-		{
-			"ModifierName"	"serpent_queen_accuracy"
-			"Target"	"CASTER"
-		}
-	}
 	
 	"Modifiers"
 	{
@@ -313,21 +307,11 @@
 
 			"OnAttackLanded"
 			{
-				"Random"
+
+				"RunScript"
 				{
-					"Chance"		"%bash_chance"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-
-					"OnSuccess"
-					{
-
-						"RunScript"
-						{
-							"ScriptFile"	"items\BattleAxe.lua"
-							"Function"		"Bash"
-						}
-
-					}
+					"ScriptFile"	"heroes\SerpentQueen\Accuracy.lua"
+					"Function"		"Bash"
 				}
 			}
 		}

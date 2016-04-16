@@ -5,8 +5,6 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"riki_smoke_screen"
 	"AOERadius"						"%radius"
 
@@ -67,7 +65,6 @@
 			"Aura_Radius"			"%radius"
 			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY" // 
 			"Aura_Types"			"DOTA_UNIT_TARGET_ALL"//"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC " //DOTA_UNIT_TARGET_MECHANICAL
-			"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			"Duration"				"%cloud_duration"
 
 			"OnCreated"
