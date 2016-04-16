@@ -71,20 +71,21 @@ end
 	they should still have a modifier_item_sphere_target.
 ================================================================================================================= ]]
 function modifier_item_lia_amulet_of_spell_shield_on_destroy(keys)
-	local num_off_cooldown_linkens_spheres_in_inventory = 0
-	for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
-		local current_item = keys.caster:GetItemInSlot(i)
-		if current_item ~= nil then
-			if current_item:GetName() == "item_sphere_datadriven" and current_item:IsCooldownReady() then
-				num_off_cooldown_linkens_spheres_in_inventory = num_off_cooldown_linkens_spheres_in_inventory + 1
+	local ability = keys.ability
+	local sphereModifier = keys.caster:FindModifierByName("modifier_item_sphere_target")
+	if sphereModifier and sphereModifier:GetAbility() == ability then
+		sphereModifier:Destroy()
+
+		for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
+			local current_item = keys.caster:GetItemInSlot(i)
+			if current_item ~= nil then
+				if (current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
+					keys.caster:AddNewModifier(keys.caster, current_item, "modifier_item_sphere_target", {duration = -1})
+					current_item:ApplyDataDrivenModifier(keys.caster, keys.caster, "modifier_item_lia_amulet_of_spell_shield_icon", {duration = -1})
+					return
+				end
 			end
 		end
-	end
-	
-	--If the player just got rid of their last Linken's Sphere, which was providing the passive spellblock.
-	if num_off_cooldown_linkens_spheres_in_inventory == 0 and keys.caster.current_spellblock_is_passive == true then
-		keys.caster:RemoveModifierByName("modifier_item_sphere_target")
-		keys.caster.current_spellblock_is_passive = nil
 	end
 end
 
@@ -101,7 +102,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 	for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
 		local current_item = keys.caster:GetItemInSlot(i)
 		if current_item ~= nil then
-			if current_item:GetName() == "item_lia_amulet_of_spell_shield" and current_item:IsCooldownReady() then
+			if (current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
 				num_off_cooldown_linkens_spheres_in_inventory = num_off_cooldown_linkens_spheres_in_inventory + 1
 			end
 		end
@@ -118,7 +119,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 			for i=0, 5, 1 do --Put all Linken's Spheres in the player's inventory on cooldown.
 				local current_item = keys.caster:GetItemInSlot(i)
 				if current_item ~= nil then
-					if current_item:GetName() == "item_lia_amulet_of_spell_shield" then
+					if current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield" then
 						current_item:StartCooldown(current_item:GetCooldown(current_item:GetLevel()))
 					end
 				end
