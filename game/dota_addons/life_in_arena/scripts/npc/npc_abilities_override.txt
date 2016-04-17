@@ -4835,7 +4835,6 @@
 				"Duration"			"%duration"
 				"Passive"			"0"
 				"IsHidden"			"0"
-				"IsBuff"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				
@@ -4906,7 +4905,6 @@
 				"Duration"			"%duration"
 				"Passive"			"0"
 				"IsHidden"			"0"
-				"IsBuff"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				
@@ -4997,7 +4995,7 @@
 			"modifier_9_wave_frost_nova_slow"
 			{
 				"IsDebuff"		"1"
-	
+	     		"IsPurgable"		"1"
 				"StatusEffectName"		"particles/status_fx/status_effect_frost_lich.vpcf"
 				"StatusEffectPriority"	"10"
 	
@@ -5133,7 +5131,6 @@
 				"Duration"			"%duration"
 				"Passive"			"0"
 				"IsHidden"			"0"
-				"IsBuff"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				
@@ -5505,6 +5502,8 @@
 	        "Passive"       "0"
 	        "IsHidden"      "0"
 	        "IsDebuff"      "1"
+	        "IsPurgable"		"1"
+	
 			
 	
 			"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
@@ -5668,7 +5667,7 @@
 			"modifier_entangling_roots"
 			{
 				"Duration"	"%hero_duration"
-	
+		        "IsPurgable"		"1"
 				"IsDebuff"		"1"
 				"States"
 				{
@@ -5988,6 +5987,7 @@
 			{	
 				"Duration"	"%duration"
 				"IsDebuff"	"1"
+				"IsPurgable"		"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%all_slow"
@@ -6319,6 +6319,7 @@
 			"modifier_decrepify_units_by_hero"
 			{
 				"IsHidden"		"1"
+				"IsPurgable"		"1"
 				"Duration"		"%duration_on_other"
 				//
 				"OnAttackLanded"
@@ -6343,6 +6344,7 @@
 			"modifier_decrepify_other"
 			{
 				"IsDebuff"			"1"
+				"IsPurgable"		"1"
 				"Duration"			"%duration_on_other"
 		
 				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
@@ -6365,6 +6367,7 @@
 			"modifier_decrepify_hero"
 			{
 				"IsDebuff"			"1"
+				"IsPurgable"		"1"
 				"Duration"			"%duration_on_hero"
 		
 				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
@@ -6467,6 +6470,7 @@
 	    "mod_15_megaboss_silence"
 	    {
 	      "IsDebuff"  "1"
+	      "IsPurgable"		"1"
 	      "Duration"  "%duration"
 	    
 	      "EffectName"  "particles/generic_gameplay/generic_silenced.vpcf"
@@ -6815,6 +6819,7 @@
 	    "modifier_18_wave_silence"
 	    {
 	      "IsDebuff"  "1"
+	      "IsPurgable"		"1"
 	      "Duration"  "%duration"
 	    
 	      "EffectName"  "particles/generic_gameplay/generic_silenced.vpcf"
@@ -25425,11 +25430,17 @@
 	        "Properties"
 	        {
 	         	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
+	         	"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"     "1"
+	         	"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"     "1"
+	         	"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"100"
+				"MODIFIER_PROPERTY_AVOID_SPELL"	"100"
 	        }
 	
 	        "States"
 	        {
-	         	"MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+	         	//"MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
 	        }
 	      }
 	    }
