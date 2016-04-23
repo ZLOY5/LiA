@@ -89,7 +89,6 @@ function LiA:InitGameMode()
 	local GameMode = GameRules:GetGameModeEntity()
 	GameMode:SetMaximumAttackSpeed(500)
 	
-    GameMode:SetCustomHeroMaxLevel(MAX_LEVEL)    
     GameMode:SetCustomXPRequiredToReachNextLevel(XP_TABLE)
     GameMode:SetUseCustomHeroLevels(true)
     

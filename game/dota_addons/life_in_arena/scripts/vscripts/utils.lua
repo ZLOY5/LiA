@@ -293,3 +293,18 @@ function CreateIllusion(target,caster,origin,duration,outgoing_damage,incoming_d
 	--
 	return illusion
 end
+
+function CDOTA_Item:GetItemSlot()
+	local caster = self:GetCaster()
+	if not caster then 
+		return nil 
+	end
+
+
+	for i=0,5 do
+		if caster:GetItemInSlot(i) == self then
+			return i
+		end
+	end
+	return nil
+end

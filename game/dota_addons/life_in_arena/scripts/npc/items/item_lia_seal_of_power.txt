@@ -1,4 +1,4 @@
-"item_recipe_seal_of_power_armor"
+"item_recipe_seal_of_power_shop"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
@@ -14,17 +14,75 @@
 	// Recipe
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemRecipe"					"1"
-	"ItemResult"					"item_lia_seal_of_power_armor"
+	"ItemResult"					"item_lia_seal_of_power_shop"
 	"ItemRequirements"
 	{
 		"01"						"item_lia_claws;item_lia_claws;item_lia_ring_of_protection;item_lia_helm"
 	}
 }
 
-"item_lia_seal_of_power_armor"
+"item_lia_seal_of_power_shop"
 {
 	"ID"							"1481"
-	"BaseClass" 					"item_datadriven"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\SealOfPower.lua"
+	"ItemCost"						"875"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemCastOnPickup" 				"1"	
+	"ItemQuality"					"rare"
+	"AbilityTextureName"			"item_lia_seal_of_power_shop"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
+
+
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"     "FIELD_INTEGER"
+			"bonus_damage" "50"
+		}
+		"02"
+		{
+			"var_type"  "FIELD_INTEGER"
+			"bonus_armor" "15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_needed_for_one_armor"	"20"				
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"armor_needed_for_one_damage"	"0.5"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_limit"	"200"				
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_limit"	"30"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stats_lose_percent"	"25"
+		}
+	}
+}
+
+"item_lia_seal_of_power_armor"
+{
+	"ID"							"1482"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\SealOfPower.lua"
 	"ItemCost"						"875"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
@@ -51,12 +109,12 @@
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage_needed_for_one_armor"	"25"				
+			"damage_needed_for_one_armor"	"20"				
 		}
 		"04"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_given_for_one_armor"	"2"
+			"var_type"				"FIELD_FLOAT"
+			"armor_needed_for_one_damage"	"0.5"
 		}
 		"05"
 		{
@@ -68,27 +126,66 @@
 			"var_type"				"FIELD_INTEGER"
 			"armor_limit"	"30"
 		}
-	}
-
-
-
-
-	"Modifiers"
-	{
-		"modifier_item_seal_of_power"
+		"07"
 		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%bonus_armor"
-			}
+			"var_type"				"FIELD_INTEGER"
+			"stats_lose_percent"	"25"
 		}
-
 	}
+}
+
+"item_lia_seal_of_power_damage"
+{
+	"ID"							"1483"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\SealOfPower.lua"
+	"ItemCost"						"875"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"rare"
+	"AbilityTextureName"			"item_lia_seal_of_power_damage"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
 
 
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"     "FIELD_INTEGER"
+			"bonus_damage" "50"
+		}
+		"02"
+		{
+			"var_type"  "FIELD_INTEGER"
+			"bonus_armor" "15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_needed_for_one_armor"	"20"				
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"armor_needed_for_one_damage"	"0.5"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_limit"	"200"				
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_limit"	"30"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stats_lose_percent"	"25"
+		}
+	}
 }
