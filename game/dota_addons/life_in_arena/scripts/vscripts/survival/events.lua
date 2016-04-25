@@ -168,7 +168,6 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        --self.nRoundNum = 7
         GameRules:SetPreGameTime(120)
         Survival:PrepareNextRound()
     end

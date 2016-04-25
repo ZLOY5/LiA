@@ -12,14 +12,16 @@
 		//"models/heroes/life_stealer/life_stealer.vmdl" //вызывает ошибку KeyValues Error: RecursiveLoadFromBuffer:  got } in key in file scripts/npc/npc_units_custom.txt
 	}
 
-	"Ability1" "true_sight" 
-	"Ability2" "15_megaboss_mana_break" 
-	"Ability3" "15_megaboss_illusions" 
-	"Ability4" "15_megaboss_astral" 
-	"Ability5" "15_megaboss_silence" 
+	"Ability1" "15_megaboss_illusions" 
+	"Ability2" "15_megaboss_silence"
+	"Ability3" "15_megaboss_astral"
+	"Ability4" "15_megaboss_mana_break" 
+	"Ability5" "true_sight" 
 	"Ability6" "" 
 	"Ability7" "" 
 	"Ability8" "" 
+
+	"AbilityLayout"     "5"	
 
 	"ArmorPhysical" 		"120" 
 	"MagicalResistance" 	"0" 
@@ -67,7 +69,15 @@
 
 	"Creature"
 	{
-		"DisableResistance"     "40.0"
+		"DisableResistance"     "50.0"
+
+		"AttachWearables"
+		{
+			"Wearable1"		{	"ItemDef"		"7392"		} 
+			"Wearable2" 	{	"ItemDef"		"7393"		} 
+			"Wearable3"		{	"ItemDef"		"7394"		} 
+			"Wearable4"		{	"ItemDef"		"7395"		} 
+		}
 	}
 
 	"vscripts"	"AI\15_megaboss.lua"

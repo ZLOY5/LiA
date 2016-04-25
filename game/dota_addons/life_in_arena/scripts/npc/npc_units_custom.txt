@@ -106,7 +106,7 @@
 			"Wearable5"		{	"ItemDef"		"5898"		} 
 		}
 			
-		"DisableResistance"            "60.0"
+		"DisableResistance"            "50.0"
 		"DefaultState"			"Invade"
 		"States"	
 		{
@@ -156,15 +156,15 @@
 	
 	
 	
-	"Ability1" "megaboss_10_return" 
+	"Ability1" "10_wave_fire_golem"
 	"Ability2" "10_wave_rejuvenation" 
-	"Ability3" "10_wave_fire_golem" 
+	"Ability3" "10_wave_antimagic" 
 	"Ability4" "10_wave_slow" 
-	"Ability5" "10_wave_antimagic" 
+	"Ability5" "megaboss_10_return"
 	"Ability6" "true_sight" 
 	"Ability7" "" 
 	
-	
+	"AbilityLayout"     "6"	
 	
 	"ArmorPhysical" "90" 
 	"MagicalResistance" "0" 
@@ -237,14 +237,16 @@
 			//"models/heroes/life_stealer/life_stealer.vmdl" //вызывает ошибку KeyValues Error: RecursiveLoadFromBuffer:  got } in key in file scripts/npc/npc_units_custom.txt
 		}
 	
-		"Ability1" "true_sight" 
-		"Ability2" "15_megaboss_mana_break" 
-		"Ability3" "15_megaboss_illusions" 
-		"Ability4" "15_megaboss_astral" 
-		"Ability5" "15_megaboss_silence" 
+		"Ability1" "15_megaboss_illusions" 
+		"Ability2" "15_megaboss_silence"
+		"Ability3" "15_megaboss_astral"
+		"Ability4" "15_megaboss_mana_break" 
+		"Ability5" "true_sight" 
 		"Ability6" "" 
 		"Ability7" "" 
 		"Ability8" "" 
+	
+		"AbilityLayout"     "5"	
 	
 		"ArmorPhysical" 		"120" 
 		"MagicalResistance" 	"0" 
@@ -292,7 +294,15 @@
 	
 		"Creature"
 		{
-			"DisableResistance"     "40.0"
+			"DisableResistance"     "50.0"
+	
+			"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"7392"		} 
+				"Wearable2" 	{	"ItemDef"		"7393"		} 
+				"Wearable3"		{	"ItemDef"		"7394"		} 
+				"Wearable4"		{	"ItemDef"		"7395"		} 
+			}
 		}
 	
 		"vscripts"	"AI\15_megaboss.lua"
@@ -320,16 +330,16 @@
 	
 	
 	
-	"Ability1" "true_sight" 
-	"Ability2" "5_megaboss_crit" 
+	"Ability1" "5_megaboss_firestorm" 
+	"Ability2" "5_megaboss_stomp" 
 	"Ability3" "5_megaboss_bash" 
-	"Ability4" "5_megaboss_stomp" 
-	"Ability5" "5_megaboss_firestorm" 
+	"Ability4" "5_megaboss_crit" 
+	"Ability5" "true_sight" 
 	"Ability6" "" 
 	"Ability7" "" 
 	"Ability8" "" 
 	
-	
+	"AbilityLayout"     "5"	
 	
 	"ArmorPhysical" "30" 
 	"MagicalResistance" "0" 
@@ -385,8 +395,18 @@
 	
 	"Creature"
 	{
-		"DisableResistance"            "60.0"
+		"DisableResistance"            "50.0"
 		"DefaultState"			"Invade"
+	
+		"AttachWearables"
+		{
+			"Wearable1"		{	"ItemDef"		"7650"		} 
+			"Wearable2" 	{	"ItemDef"		"7651"		} 
+			"Wearable3"		{	"ItemDef"		"7652"		} 
+			"Wearable4"		{	"ItemDef"		"7653"		} 
+			"Wearable5"		{	"ItemDef"		"7654"		} 
+		}
+	
 		"States"	
 		{
 			"Invade"
