@@ -1287,7 +1287,7 @@
 	"orn_all_bonuses"
 	{
 		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"juggernaut_omni_slash"
+		"AbilityTextureName"			"orn_evasion"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILTY_BEHAVIOR_HIDDEN"
 		
@@ -1325,12 +1325,12 @@
 			}
 		}
 	}
-	"orn_cleave"
+	"orn_cleave_manabreak_lifesteal"
 	{
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityTextureName"			"juggernaut_blade_fury"
+		"AbilityTextureName"			"juggernaut_omni_slash"
 	
 		"AbilitySpecial"
 		{
@@ -1344,6 +1344,21 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"cleave_damage"	"100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_burn"		"1.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_hit"			"150"
+			}
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"lifesteal_percent"		"30"
 			}
 		}
 	
@@ -1363,37 +1378,7 @@
 					}
 				}
 			}
-		}
-	}
 	
-	"orn_mana_break"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"		
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"nyx_assassin_mana_burn"
-	
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"damage_per_burn"		"1.0"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"mana_per_hit"			"150"
-			}
-		}
-	
-		"Modifiers"
-		{
 			"modifier_mana_break_orb_orn"
 			{
 				"Passive"	"1"
@@ -1427,8 +1412,24 @@
 					}
 				}
 			}
+	
+			"modifier_orn_lifesteal"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				
+				"OnDealDamage"
+				{
+					"Lifesteal"
+					{
+						"Target"			"ATTACKER"
+						"LifestealPercent"	"%lifesteal_percent"
+					}
+				}
+			}
 		}
 	}
+	
 	
 	"orn_bash"
 	{
@@ -1669,40 +1670,6 @@
 		}
 	}
 	
-	"orn_lifesteal"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"juggernaut_omni_slash"
-	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"lifesteal_percent"		"30"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_orn_lifesteal"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				
-				"OnDealDamage"
-				{
-					"Lifesteal"
-					{
-						"Target"			"ATTACKER"
-						"LifestealPercent"	"%lifesteal_percent"
-					}
-				}
-			}
-		}
-	}
 	//End of file creep_passives.txt
 
 
@@ -2511,6 +2478,46 @@
 			"ItemDroppable"					"0"
 		}
 		"item_iron_talon"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_bloodthorn"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_wind_lace"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_infused_raindrop"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_blight_stone"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_echo_sabre"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_tome_of_knowledge"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_hurricane_pike"
+		{
+			"ItemPurchasable"				"0"
+			"ItemDroppable"					"0"
+		}
+		"item_banana"
 		{
 			"ItemPurchasable"				"0"
 			"ItemDroppable"					"0"

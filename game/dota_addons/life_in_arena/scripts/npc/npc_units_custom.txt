@@ -166,14 +166,14 @@
 	
 	"AbilityLayout"     "6"	
 	
-	"ArmorPhysical" "90" 
+	"ArmorPhysical" "70" 
 	"MagicalResistance" "0" 
 	
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "1000" 
-	"AttackDamageMax" "1000" 
+	"AttackDamageMin" "800" 
+	"AttackDamageMax" "800" 
 	"AttackRate" "0.2" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "2000" 
@@ -196,7 +196,7 @@
 	
 	
 	
-	"StatusHealth" "25000" 
+	"StatusHealth" "23000" 
 	"StatusHealthRegen" "1" 
 	"StatusMana" "2000" 
 	"StatusManaRegen" "1" 
@@ -218,6 +218,8 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"vscripts"           "units\Megaboss10Stats.lua"
 	}
 	//End of file 10_wave_megaboss.txt
 
@@ -248,12 +250,12 @@
 	
 		"AbilityLayout"     "5"	
 	
-		"ArmorPhysical" 		"120" 
+		"ArmorPhysical" 		"80" 
 		"MagicalResistance" 	"0" 
 	
 		"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" 			"2850" 
-		"AttackDamageMax" 			"2900" 
+		"AttackDamageMin" 			"2450" 
+		"AttackDamageMax" 			"2500" 
 		"AttackRate" 				"1.5" 
 		"AttackAnimationPoint" 		"0.3" 
 		"AttackAcquisitionRange" 	"2000" 
@@ -272,7 +274,7 @@
 	
 		"BoundsHullName"        	"DOTA_HULL_SIZE_HUGE"
 	
-		"StatusHealth" 				"30000" 
+		"StatusHealth" 				"26000" 
 		"StatusHealthRegen" 		"0.5" 
 		"StatusMana" 				"2500" 
 		"StatusManaRegen" 			"1.25" 
@@ -341,14 +343,14 @@
 	
 	"AbilityLayout"     "5"	
 	
-	"ArmorPhysical" "30" 
+	"ArmorPhysical" "20" 
 	"MagicalResistance" "0" 
 	
 	
 	
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "261" 
-	"AttackDamageMax" "267" 
+	"AttackDamageMin" "181" 
+	"AttackDamageMax" "187" 
 	"AttackRate" "0.07" 
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "2000" 
@@ -370,7 +372,7 @@
 	"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
 	
 	
-	"StatusHealth" "5000" 
+	"StatusHealth" "4000" 
 	"StatusHealthRegen" "1" 
 	"StatusMana" "1000" 
 	"StatusManaRegen" "1" 
@@ -392,6 +394,8 @@
 	
 	
 	"HasInventory" "0" 
+	
+	"vscripts"           "units\Megaboss5Stats.lua"
 	
 	"Creature"
 	{
@@ -9494,13 +9498,14 @@
 	
 	"Ability1" "true_sight" 
 	"Ability2" "orn_all_bonuses" 
-	"Ability3" "orn_cleave" 
-	"Ability4" "orn_mana_break" 
+	"Ability3" "orn_cleave_manabreak_lifesteal" 
+	"Ability4" "orn_return" 
 	"Ability5" "orn_bash" 
 	"Ability6" "orn_crit" 
-	"Ability7" "orn_return" 
-	"Ability8" "orn_lifesteal" 
+	"Ability7" "" 
+	"Ability8" "" 
 	
+	"AbilityLayout"	"6"
 	
 	"ArmorPhysical" "128" 
 	"MagicalResistance" "25" 

@@ -1,4 +1,5 @@
 require('survival/AIcreeps')
+require('timers')
 
 function Spawn(entityKeyValues)
 	if thisEntity:GetPlayerOwnerID() ~= -1 then
@@ -9,6 +10,24 @@ function Spawn(entityKeyValues)
 	ABILITY_15_megaboss_astral = thisEntity:FindAbilityByName("15_megaboss_astral")
 	ABILITY_15_megaboss_silence = thisEntity:FindAbilityByName("15_megaboss_silence")
 	thisEntity:SetContextThink( "15_megaboss_think", Think15Wave , 2)
+
+	Timers:CreateTimer(0.01,function()
+		
+		local mult = Survival.nHeroCount
+		local hp = 26000 + 1000*mult
+		local armor = 80 + 10*mult
+		local dmg_min = 2450 + 100*mult
+		local dmg_max = dmg_min + 50
+
+		thisEntity:SetMaxHealth(hp)
+		thisEntity:SetBaseMaxHealth(hp)
+		thisEntity:SetHealth(hp)
+		thisEntity:SetPhysicalArmorBaseValue(armor)
+		thisEntity:SetBaseDamageMin(dmg_min)	
+		thisEntity:SetBaseDamageMax(dmg_max)
+	
+
+	end)
 end
 
 function Think15Wave()
