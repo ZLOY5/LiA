@@ -15,7 +15,7 @@ function StackCountIncrease(keys)
 end
 
 function StackCountDecrease(keys)
-    local currentStacks = caster:GetModifierStackCount("modifier_firerage_datadriven", caster)
+    local currentStacks =  keys.caster:GetModifierStackCount("modifier_firerage_datadriven",  keys.caster)
     if currentStacks ~= 0 then
         keys.caster:SetModifierStackCount("modifier_firerage_datadriven", keys.ability, currentStacks-1) 
     end

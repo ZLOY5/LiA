@@ -63,6 +63,114 @@
     }
   }
 
+"akron_battle_fevor"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"              "ability_datadriven"
+  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+  "AbilityTextureName"     "akron_immolation"
+
+  "AbilityCooldown" "30 27 25"
+  "AbilityCastRange"  "300"
+  "AbilityManaCost" "50 60 70"
+
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
+
+  "AbilityCastPoint"  "0.2"
+  "AbilityCastRange"  "0"
+
+  "precache"
+  {
+    "particle" "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+    "soundfile"  "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+  }
+
+  "OnSpellStart"
+  {
+    "ActOnTargets"
+    {
+      "Target"
+      {
+        "Center"  "CASTER"
+        "Radius"  "%radius"
+        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+      }
+
+      "Action"
+      {
+        "ApplyModifier"
+        {
+        "Target"        "TARGET"
+        "ModifierName"  "modifier_akron_battle_fevor"
+        }
+
+      }
+    }
+
+  }
+
+
+
+
+  // Special    
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"                "FIELD_INTEGER"
+      "bonus_attack_speed"      "40 60 80"
+    }
+    "02"
+    {
+      "var_type"                "FIELD_INTEGER"
+      "damage_reduction"        "-40 -60 -80"
+    }
+    "03"
+    {
+      "var_type"                "FIELD_FLOAT"
+      "duration"                "4 5 6"
+    }
+    "04"
+    {
+      "var_type"                "FIELD_INTEGER"
+      "radius"                  "300"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_akron_battle_fevor"
+    {
+      "Passive"      "0"
+      "IsHidden"      "0"
+      "IsDebuff"      "1"
+  
+      "EffectName"    "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+      "EffectAttachType"  "follow_origin"
+
+      "Duration"  "%duration"
+  
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+        "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%damage_reduction"
+      }
+
+      "States"
+      {
+        "MODIFIER_STATE_PASSIVES_DISABLED"    "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}
+
+
  "akron_immolation" 
   {
     // General  
