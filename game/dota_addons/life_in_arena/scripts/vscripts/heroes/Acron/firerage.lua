@@ -1,17 +1,20 @@
 function StackCountIncrease(keys)
     local caster = keys.caster
     local ability = keys.ability
-    local currentStacks = caster:GetModifierStackCount("modifier_firerage_datadriven", caster) + 1
     local maxStack = keys.Stack
     local stackTime = ability:GetSpecialValueFor("stackTime")
-    
     local attackGameTime = GameRules:GetGameTime()
-    
-    ability.lastExplosionTime = ability.lastExplosionTime or 0
 
+    ability.lastExplosionTime = ability.lastExplosionTime or 0
+    
+    local currentStacks = caster:GetModifierStackCount("modifier_firerage_datadriven", caster) + 1
+    local addStacks = 1
+    
     if keys.attacker:IsRealHero() or string.find(keys.attacker:GetUnitName(),"megaboss") then
-        currentStacks = currentStacks+1
+        addStacks = 2
     end
+
+    currentStacks = currentStacks + addStacks
 
     caster:SetModifierStackCount("modifier_firerage_datadriven", ability, currentStacks) 
 
@@ -27,7 +30,7 @@ function StackCountIncrease(keys)
             if attackGameTime > ability.lastExplosionTime then
                 local currentStacks = caster:GetModifierStackCount("modifier_firerage_datadriven", caster)
                 if currentStacks ~= 0 then
-                    caster:SetModifierStackCount("modifier_firerage_datadriven", ability, currentStacks-1)
+                    caster:SetModifierStackCount("modifier_firerage_datadriven", ability, currentStacks-addStacks)
                 end
             else
                 --print("expiredStack")
