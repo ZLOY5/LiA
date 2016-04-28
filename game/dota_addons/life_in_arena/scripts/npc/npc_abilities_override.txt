@@ -15334,7 +15334,7 @@
 	    "AbilityTextureName"     "golem_explosion"
 	
 	    "AbilityCooldown" "22 21 20"
-		"AbilityCastRange"	"200 225 250"
+		  "AbilityCastRange"	"225"
 	    "AbilityManaCost" "70 80 90"
 	
 	    "MaxLevel"               "3"
@@ -15379,7 +15379,7 @@
 	        "01"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "radius"                  "200 225 250"
+	            "radius"                  "225"
 	        }
 	        "02"
 	        {
@@ -15398,7 +15398,7 @@
 	  "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityTextureName"     "akron_immolation"
 	
-	  "AbilityCooldown" "30 27 25"
+	  "AbilityCooldown" "30 27 24"
 	  "AbilityCastRange"  "300"
 	  "AbilityManaCost" "50 60 70"
 	
@@ -15412,7 +15412,7 @@
 	  "precache"
 	  {
 	    "particle" "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
-	    "soundfile"  "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+	    "soundfile"  "soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
 	  }
 	
 	  "OnSpellStart"
@@ -15435,6 +15435,19 @@
 	        "ModifierName"  "modifier_akron_battle_fevor"
 	        }
 	
+	      }
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "heroes/Acron/BattleFevor.lua"
+	      "Function"    "Sound"
+	      "Target"
+	      {
+	        "Center"    "CASTER"
+	        "Radius"  "%radius"
+	        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	      }
 	    }
 	
@@ -15751,7 +15764,7 @@
 	    "RequiredLevel"          "5"
 	    "LevelsBetweenUpgrades"  "4"
 	
-	    "AbilityCooldown"         "150 140 130"
+	    "AbilityCooldown"         "80"
 	
 	    "AbilityCastPoint"        "0.2"
 	    "AbilityCastRange"        "1500"
@@ -15823,7 +15836,7 @@
 	        "Properties"
 	        {
 	          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_attack_and_movement"
-	          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
+	          //"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
 	        }
 	      }
 	    }
@@ -19918,7 +19931,7 @@
 	"lord_of_lightning_holy_wrath"
 	{
 		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"zuus_lightning_bolt_immortal"
+		"AbilityTextureName"		"lord_of_lightning_holy_wrath"
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
 	    "LevelsBetweenUpgrades"  "2"
