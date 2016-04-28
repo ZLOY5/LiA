@@ -15,7 +15,7 @@ function StackCountIncrease(keys)
 
     caster:SetModifierStackCount("modifier_firerage_datadriven", ability, currentStacks) 
 
-    if currentStacks == maxStack then 
+    if currentStacks >= maxStack then 
         --print("boom")
         ability.lastExplosionTime = GameRules:GetGameTime()
         caster:SetModifierStackCount("modifier_firerage_datadriven", ability, 0) 
