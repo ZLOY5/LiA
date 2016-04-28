@@ -224,7 +224,7 @@
         "02"
         {
             "var_type"                "FIELD_INTEGER"
-            "damage"                  "80 160 240"
+            "damage"                  "80 140 200"
         }
         "03"
         {
@@ -255,17 +255,6 @@
                     "Stack"       "%StackForExplosion"
                 }
             } 
-
-            "ThinkInterval"     "%stackTime"
-            "OnIntervalThink"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"  "heroes/Acron/firerage.lua"
-                    "Function"    "StackCountDecrease"
-                    "Stack"       "%StackForExplosion"
-                }   
-            }
         }
 
         "modifier_firerage_explosion"
