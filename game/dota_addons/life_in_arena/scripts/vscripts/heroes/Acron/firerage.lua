@@ -7,7 +7,7 @@ function StackCountIncrease(keys)
 
     ability.lastExplosionTime = ability.lastExplosionTime or 0
     
-    local currentStacks = caster:GetModifierStackCount("modifier_firerage_datadriven", caster) + 1
+    local currentStacks = caster:GetModifierStackCount("modifier_firerage_datadriven", caster)
     local addStacks = 1
     
     if keys.attacker:IsRealHero() or string.find(keys.attacker:GetUnitName(),"megaboss") then
