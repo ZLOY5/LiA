@@ -15348,31 +15348,10 @@
 		"precache"
 		{
 		   "particle"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	     "particle"  "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
 		   "soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
 		}
-		
-	    "OnSpellStart"
-	    {
-		    "RunScript"
-	        {
-	            "ScriptFile"    "heroes\Acron\Explosion.lua"
-	            "Function"      "Explosion"
-	        }
-		  	"FireSound"
-			{
-				"EffectName"	"Hero_EarthShaker.EchoSlam"
-				"Target"		"CASTER"
-			}
-			"AttachEffect"
-			{
-			  "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-			  "EffectAttachType"	"attach_origin"
-			  "Target"		        "CASTER"
-			}
-	    }
-	    
-	  
-	   
+	
 	    // Special    
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilitySpecial"
@@ -15384,10 +15363,70 @@
 	        }
 	        "02"
 	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "hp_prc_dmg"              "10"
+	        }
+	        "03"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "burn_damage"             "60 120 180"
+	        }
+	        "04"
+	        {
 	            "var_type"                "FIELD_FLOAT"
-	            "damage"                   "200 400 600"
+	            "duration"                "3"
 	        }
 	    }
+	
+	    "OnSpellStart"
+	    {
+		    "RunScript"
+	      {
+	          "ScriptFile"    "heroes\Acron\Explosion.lua"
+	          "Function"      "Explosion"
+	      }
+		  	"FireSound"
+	  		{
+	  			"EffectName"	"Hero_EarthShaker.EchoSlam"
+	  			"Target"		"CASTER"
+	  		}
+	  		"AttachEffect"
+	  		{
+	  		  "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	  		  "EffectAttachType"	"attach_origin"
+	  		  "Target"		        "CASTER"
+	  		}
+	    }
+	    
+	    "Modifiers"
+	    {
+	      "modifier_akron_explosion_burn"
+	      {
+	        "Passive"      "0"
+	        "IsHidden"      "0"
+	        "IsDebuff"      "1"
+	    
+	        "EffectName"    "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
+	        "EffectAttachType"  "follow_origin"
+	        
+	        "Duration"  "%duration"
+	
+	        "ThinkInterval"  "0.25"
+	        "OnIntervalThink"
+	        {
+	          "Damage"
+	          {
+	            "Target"    "TARGET"
+	            "Type"      "DAMAGE_TYPE_MAGICAL"
+	            "Damage"    "%burn_damage / 12"
+	          }
+	        }
+	
+	            
+	      }
+	    }
+	   
+	
 	  }
 	
 	"akron_battle_fevor"
@@ -15502,10 +15541,6 @@
 	        "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%damage_reduction"
 	      }
 	
-	      "States"
-	      {
-	        "MODIFIER_STATE_PASSIVES_DISABLED"    "MODIFIER_STATE_VALUE_ENABLED"
-	      }
 	    }
 	  }
 	}
@@ -15672,7 +15707,7 @@
 	        "02"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "damage"                  "80 140 200"
+	            "damage"                  "50 100 200"
 	        }
 	        "03"
 	        {

@@ -8,6 +8,107 @@
     "AbilityTextureName"     "golem_explosion"
 
     "AbilityCooldown" "22 21 20"
+    "AbilityCastRange"  "225"
+    "AbilityManaCost" "70 80 90"
+    "AoERadius"  "225"
+    
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+  
+    "AbilityCastPoint"  "0.2"
+    "AbilityCastRange"  "0"
+
+  "precache"
+  {
+     "particle" "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+     "particle"  "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
+     "soundfile"  "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+  }
+
+    // Special    
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "radius"                  "225"
+        }
+        "02"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "hp_prc_dmg"              "10"
+        }
+        "03"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "burn_damage"             "60 120 180"
+        }
+        "04"
+        {
+            "var_type"                "FIELD_FLOAT"
+            "duration"                "3"
+        }
+    }
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+          "ScriptFile"    "heroes\Acron\Explosion.lua"
+          "Function"      "Explosion"
+      }
+      "FireSound"
+      {
+        "EffectName"  "Hero_EarthShaker.EchoSlam"
+        "Target"    "CASTER"
+      }
+      "AttachEffect"
+      {
+        "EffectName"          "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+        "EffectAttachType"  "attach_origin"
+        "Target"            "CASTER"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_akron_explosion_burn"
+      {
+        "Passive"      "0"
+        "IsHidden"      "0"
+        "IsDebuff"      "1"
+    
+        "EffectName"    "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
+        "EffectAttachType"  "follow_origin"
+        
+        "Duration"  "%duration"
+
+        "ThinkInterval"  "0.25"
+        "OnIntervalThink"
+        {
+          "Damage"
+          {
+            "Target"    "TARGET"
+            "Type"      "DAMAGE_TYPE_MAGICAL"
+            "Damage"    "%burn_damage / 12"
+          }
+        }      
+      }
+    } 
+  }
+
+  "akron_explosion_old"
+ {
+   // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "AbilityTextureName"     "golem_explosion"
+
+    "AbilityCooldown" "22 21 20"
 	  "AbilityCastRange"	"225"
     "AbilityManaCost" "70 80 90"
     "AoERadius"  "225"
@@ -346,7 +447,7 @@
         "02"
         {
             "var_type"                "FIELD_INTEGER"
-            "damage"                  "80 140 200"
+            "damage"                  "50 100 200"
         }
         "03"
         {
