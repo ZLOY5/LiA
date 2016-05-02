@@ -23,6 +23,11 @@ function StackCountIncrease(keys)
         ability.lastExplosionTime = GameRules:GetGameTime()
         caster:SetModifierStackCount("modifier_firerage_datadriven", ability, 0) 
         ability:ApplyDataDrivenModifier( caster, caster, "modifier_firerage_explosion", {duration = 0.03})
+
+        local battleFevor = caster:FindAbilityByName("acron_battle_fevor")
+        if battleFevor then
+            battleFevor:OnExplosion()
+        end
     end
 
     Timers:CreateTimer(stackTime,

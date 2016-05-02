@@ -14,5 +14,10 @@ function Explosion(event)
 		ApplyDamage({victim = unit, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 		ability:ApplyDataDrivenModifier(caster,unit,"modifier_akron_explosion_burn", nil)
 	end
+
+	local battleFevor = caster:FindAbilityByName("acron_battle_fevor")
+	if battleFevor then
+		battleFevor:OnExplosion()
+	end
 end
 

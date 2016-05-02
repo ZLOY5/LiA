@@ -15334,23 +15334,23 @@
 	    "AbilityTextureName"     "golem_explosion"
 	
 	    "AbilityCooldown" "22 21 20"
-		  "AbilityCastRange"	"225"
+	    "AbilityCastRange"  "225"
 	    "AbilityManaCost" "70 80 90"
 	    "AoERadius"  "225"
 	    
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "1"
 	    "LevelsBetweenUpgrades"  "2"
-		
+	  
 	    "AbilityCastPoint"  "0.2"
 	    "AbilityCastRange"  "0"
 	
-		"precache"
-		{
-		   "particle"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	  "precache"
+	  {
+	     "particle" "particles/units/heroes/hero_techies/techies_suicide.vpcf"
 	     "particle"  "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
-		   "soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
-		}
+	     "soundfile"  "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+	  }
 	
 	    // Special    
 	    //-------------------------------------------------------------------------------------------------------------
@@ -15380,22 +15380,22 @@
 	
 	    "OnSpellStart"
 	    {
-		    "RunScript"
+	      "RunScript"
 	      {
 	          "ScriptFile"    "heroes\Acron\Explosion.lua"
 	          "Function"      "Explosion"
 	      }
-		  	"FireSound"
-	  		{
-	  			"EffectName"	"Hero_EarthShaker.EchoSlam"
-	  			"Target"		"CASTER"
-	  		}
-	  		"AttachEffect"
-	  		{
-	  		  "EffectName"	        "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-	  		  "EffectAttachType"	"attach_origin"
-	  		  "Target"		        "CASTER"
-	  		}
+	      "FireSound"
+	      {
+	        "EffectName"  "Hero_EarthShaker.EchoSlam"
+	        "Target"    "CASTER"
+	      }
+	      "AttachEffect"
+	      {
+	        "EffectName"          "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+	        "EffectAttachType"  "attach_origin"
+	        "Target"            "CASTER"
+	      }
 	    }
 	    
 	    "Modifiers"
@@ -15420,16 +15420,66 @@
 	            "Type"      "DAMAGE_TYPE_MAGICAL"
 	            "Damage"    "%burn_damage / 12"
 	          }
-	        }
-	
-	            
+	        }      
 	      }
-	    }
-	   
-	
+	    } 
 	  }
 	
-	"akron_battle_fevor"
+	
+	"acron_battle_fevor"
+	{
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"                 "ability_lua"
+	    "ScriptFile"                "heroes\Acron\acron_battle_fevor.lua"
+	
+	    "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"        "acron_battle_fevor"
+	
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	    
+	    "AoERadius"                 "300"
+	    
+	    "MaxLevel"                  "3"
+	    "RequiredLevel"             "2"
+	    "LevelsBetweenUpgrades"     "2"
+	
+	    "precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient.vpcf"
+	    }
+	  
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                          "FIELD_INTEGER"
+	            "stack_armor"                       "2 4 6"
+	        }
+	        "02"
+	        {
+	            "var_type"                          "FIELD_INTEGER"
+	            "stack_health_regen"                "3 6 9"
+	        }
+	        "03"
+	        { 
+	            "var_type"                          "FIELD_INTEGER"
+	            "stack_duration"                    "5"
+	        }
+	        "04"
+	        {
+	            "var_type"                          "FIELD_INTEGER"
+	            "radius"                            "300"
+	        }
+	    }
+	}  
+	
+	"akron_battle_fevor_old"
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
@@ -15541,136 +15591,14 @@
 	        "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%damage_reduction"
 	      }
 	
+	      "States"
+	      {
+	        "MODIFIER_STATE_PASSIVES_DISABLED"    "MODIFIER_STATE_VALUE_ENABLED"
+	      }
 	    }
 	  }
 	}
 	
-	
-	 "akron_immolation" 
-	  {
-	    // General  
-	    // ----------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AoERadius"              "%hellish_heat_radius"
-	    "AbilityTextureName"     "akron_immolation"
-	    
-	
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-	
-		"precache"
-		{
-		"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient.vpcf"
-		}
-		
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	          "var_type"                "FIELD_INTEGER"
-	          "hellish_heat_tick"                "1"
-	        }
-	       "02"
-	        {
-	          "var_type"                "FIELD_INTEGER"
-	           "hellish_heat_radius"              "290"
-	        }
-	       "03"
-	        { 
-	          "var_type"  "FIELD_INTEGER"
-	          "hellish_heat_tick_damage" "15 30 60"
-	        }
-	    }
-	
-	    "Modifiers"
-	    {
-	      "modifiers_hellish_heat_datadriven"
-	     {
-	       "Passive"         "1"
-	       "IsHidden"        "1"
-	       "IsPurgable"      "0"
-			
-			"OnCreated"
-			{
-					"AttachEffect"
-					{
-						"Target"				"TARGET"
-						"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient.vpcf"
-						"EffectAttachType"		"start_at_customorigin"
-						"ControlPointEntities"
-						{
-							"TARGET"			"attach_origin"
-							"TARGET"			"attach_origin"
-						}
-					}
-			}
-			
-	       "OnDeath"
-	       {
-	        "RemoveModifier"
-	         {
-	           "ModifierName"  "modifiers_hellish_heat_datadriven"
-	           
-	           "Target"
-	           {
-	             "Center"    "CASTER"
-	             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	             "Types"   "DOTA_UNIT_TARGET_HERO"
-	             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-	           }
-	         }
-	       }
-	
-	       "ThinkInterval" "%hellish_heat_tick"
-	
-	        "OnIntervalThink"
-	        {
-	          "ActOnTargets"
-	           {
-	                "Target"
-	                {
-	                    "Center" "CASTER"
-	                    "Radius" "%hellish_heat_radius"
-	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
-	                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	                }
-	
-	                "Action"
-	                {
-	                  "Damage"
-	                  {
-	                    "Target"  "TARGET"
-	                    "Type"    "DAMAGE_TYPE_MAGICAL"
-	                    "Damage"  "%hellish_heat_tick_damage"
-	                  }
-	                }
-	            }
-	        }
-	      
-	            "Aura"            "modifiers_hellish_heat_check_datadriven"
-	            "Aura_Radius"     "%hellish_heat_radius"
-	            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-	      }
-	  
-	
-	
-	      "modifiers_hellish_heat_check_datadriven"
-	      {
-	      "Passive"       "0"
-	      "IsHidden"      "0"
-	      "IsDebuff"      "1"
-	      "IsPurgable"    "0"
-	      }
-	    }
-	  }
 	   
 	"akron_firerage"
 	  {
