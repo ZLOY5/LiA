@@ -15508,25 +15508,10 @@
 	
 	  "OnSpellStart"
 	  {
-	    "ActOnTargets"
+	    "ApplyModifier"
 	    {
-	      "Target"
-	      {
-	        "Center"  "CASTER"
-	        "Radius"  "%radius"
-	        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	      }
-	
-	      "Action"
-	      {
-	        "ApplyModifier"
-	        {
-	        "Target"        "TARGET"
-	        "ModifierName"  "modifier_akron_battle_fevor"
-	        }
-	
-	      }
+	      "Target"        "CASTER"
+	      "ModifierName"  "modifier_akron_battle_fevor_aura"
 	    }
 	
 	    "RunScript"
@@ -15575,6 +15560,18 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_akron_battle_fevor_aura"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "0"
+	      "Duration"    "%duration"
+	
+	      "Aura"            "modifier_akron_battle_fevor"
+	      "Aura_Radius"     "%radius"
+	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+	    }
+	
 	    "modifier_akron_battle_fevor"
 	    {
 	      "Passive"      "0"
@@ -15584,7 +15581,6 @@
 	      "EffectName"    "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
 	      "EffectAttachType"  "follow_origin"
 	
-	      "Duration"  "%duration"
 	  
 	      "Properties"
 	      {
@@ -15636,12 +15632,12 @@
 	        "02"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "damage"                  "50 100 200"
+	            "damage"                  "40 80 150"
 	        }
 	        "03"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "StackForExplosion"       "16"
+	            "StackForExplosion"       "12"
 	        }
 	        "04"
 	        {
@@ -26473,6 +26469,218 @@
 	    }
 	}
 	//End of file npc_lia_hero_time_lord.txt
+
+
+	//Start of file npc_lia_hero_troll_cutthroat.txt
+	"troll_cuthroat_boomeang_axe"
+	{
+	
+		"BaseClass" 					"ability_datadriven"
+	
+		"AbilityTextureName"			"troll_warlord_berserkers_rage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	
+		"AbilityCastRange"				"600"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"20 17 15"
+		"AbilityManaCost"				"100 125 150"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"init_damage"		"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"str_prc_dmg"		"70 120 170"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"0.3 0.5 0.7"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_targets"			"8 10 12"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"axe_speed"				"600"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"				"600"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"           	"TARGET"
+				"EffectName"		"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+				"Dodgeable"			"1"
+				"ProvidesVision"	"0"
+				"MoveSpeed"        	"%axe_speed"
+				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+	
+			
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/TrollCutthroat/BoomerangAxe.lua"
+				"Function"		"BoomerangAxes"
+			}
+		}
+	
+	}
+	
+	
+	"troll_cutthroat_vulnerability"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			"troll_warlord_fervor"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"15 17 20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor_reductiion"			"4 6 8"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"5"
+			}
+		}
+	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+			"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+		}
+	
+		"Modifiers"
+		{
+			"modifier_troll_cutthroat_vulnerability"
+			{
+			    "Passive"   "1"
+			    "IsHidden"  "1"
+			    "OnAttackStart"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName" 	"modifier_troll_cutthroat_vulnerability_crit"
+			            "Target" 		"CASTER"
+			        }
+	
+			        "Random"
+			        {
+			            "Chance" "%crit_chance"
+			            "OnSuccess"
+			            {
+			            	"FireSound"
+					        {
+					        	"EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
+					        	"Target"		"CASTER"
+					        }
+	
+							"FireEffect"
+							{
+								"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+								"EffectAttachType"  "follow_origin"
+								"Target"    "TARGET"
+							}
+	
+			                "ApplyModifier"
+			                {
+			                    "ModifierName" 	"modifier_troll_cutthroat_vulnerability_crit"
+			                    "Target"    	"CASTER"    
+			                }        
+			            }
+			        }
+			    }
+			}
+	
+			"modifier_troll_cutthroat_vulnerability_crit"
+			{
+			    "IsHidden"  "1"
+			    "Properties"
+			    {
+			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			    }
+	
+			    "OnAttackLanded"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName"  "modifier_troll_cutthroat_vulnerability_crit"
+			            "Target"   		"CASTER"    
+			        }
+			    }
+			}
+	
+			"modifier_troll_cutthroat_vulnerability_debuff"
+			{
+				"Passive"               "0"
+				"IsHidden"				"0"
+				"IsPurgable"		"1"
+				"IsDebuff"			"1"
+	
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	    "%bonus_armor"
+				}
+			}
+		}
+	}
+	//End of file npc_lia_hero_troll_cutthroat.txt
 
 
 	//Start of file npc_lia_hero_valkyrie.txt
