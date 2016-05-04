@@ -36,6 +36,10 @@ function modifier_acron_battle_fevor:DeclareFunctions()
 	return funcs
 end
 
+function modifier_acron_battle_fevor:IsHidden()
+	return true
+end
+
 function modifier_acron_battle_fevor:GetAttributes()
 	return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE + MODIFIER_ATTRIBUTE_PERMANENT
 end
