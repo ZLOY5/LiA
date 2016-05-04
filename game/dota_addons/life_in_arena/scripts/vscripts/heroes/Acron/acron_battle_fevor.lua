@@ -1,5 +1,10 @@
 acron_battle_fevor = class({})
+LinkLuaModifier("modifier_acron_battle_fevor","heroes/Acron/acron_battle_fevor.lua",LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_acron_battle_fevor_buff","heroes/Acron/acron_battle_fevor.lua",LUA_MODIFIER_MOTION_NONE)
+
+function acron_battle_fevor:GetIntrinsicModifierName()
+	return "modifier_acron_battle_fevor"
+end
 
 function acron_battle_fevor:OnExplosion()
 	if self:GetCaster():PassivesDisabled() then
@@ -17,6 +22,35 @@ function acron_battle_fevor:OnExplosion()
 	for _,unit in pairs(targets) do
 		unit:AddNewModifier(caster,self,"modifier_acron_battle_fevor_buff",nil)
 	end
+end
+
+--------------------------------------------------------------------------------------
+
+modifier_acron_battle_fevor = class({})
+
+function modifier_acron_battle_fevor:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
+	}
+ 
+	return funcs
+end
+
+function modifier_acron_battle_fevor:GetAttributes()
+	return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE + MODIFIER_ATTRIBUTE_PERMANENT
+end
+
+function modifier_acron_battle_fevor:GetModifierMagicalResistanceBonus(params)
+	return self.magicalResistance
+end
+
+
+function modifier_acron_battle_fevor:OnCreated(kv)
+	self.magicalResistance = self:GetAbility():GetSpecialValueFor("magical_resistance_passive")
+end
+
+function modifier_acron_battle_fevor:OnRefresh(kv)
+	self.magicalResistance = self:GetAbility():GetSpecialValueFor("magical_resistance_passive")
 end
 
 --------------------------------------------------------------------------------------
