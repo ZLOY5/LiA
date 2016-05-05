@@ -153,7 +153,7 @@
         "05"
         {
             "var_type"                          "FIELD_INTEGER"
-            "magical_resistance_passive"        "20 30 40"
+            "magical_resistance_passive"        "10 20 30"
         }
     }
 }  
@@ -274,7 +274,7 @@
   "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
   "AbilityTextureName"     "akron_immolation"
 
-  "AbilityCooldown" "30 27 24"
+  "AbilityCooldown" "30"
   "AbilityCastRange"  "300"
   "AbilityManaCost" "50 60 70"
   "AoERadius"  "300"
@@ -351,6 +351,9 @@
       "Passive"     "0"
       "IsHidden"      "0"
       "Duration"    "%duration"
+
+      "EffectName"    "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+      "EffectAttachType"  "follow_origin"
 
       "Aura"            "modifier_akron_battle_fevor"
       "Aura_Radius"     "%radius"
