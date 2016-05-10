@@ -8282,7 +8282,7 @@
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"470"	
+		"ItemCost"						"610"	
 		"ItemShopTags"					"damage;armor"
 		
 		// Recipe
@@ -8291,14 +8291,14 @@
 		"ItemResult"					"item_lia_seal_of_power_shop"
 		"ItemRequirements"
 		{
-			"01"						"item_lia_claws;item_lia_claws;item_lia_ring_of_protection;item_lia_helm"
+			"01"						"item_lia_spear;item_lia_helm"
 		}
 	}
 	
 	"item_lia_seal_of_power_shop"
 	{
 		"ID"							"1481"
-		"BaseClass" 					"item_lua"
+		"BaseClass" 					"item_datadriven"
 		"ScriptFile"					"items\SealOfPower.lua"
 		"ItemCost"						"875"
 		"ItemKillable" 					"0" 
@@ -8348,6 +8348,15 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"stats_lose_percent"	"25"
+			}
+		}
+	
+		"OnEquip"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items\SealOfPower.lua"
+				"Function"		"OnEquip"
 			}
 		}
 	}

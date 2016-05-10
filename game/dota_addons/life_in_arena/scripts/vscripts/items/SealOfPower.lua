@@ -4,9 +4,22 @@ function item_lia_seal_of_power_shop:OnSpellStart()
 	local caster = self:GetCaster()
 
 	caster:RemoveItem(self) 
+	Timers:CreateTimer(0.01,function()
+		local item = caster:AddItemByName("item_lia_seal_of_power_damage")
+		item:SetPurchaseTime(GameRules:GetGameTime())
+	end)
+end
 
-	local item = caster:AddItemByName("item_lia_seal_of_power_damage")
-	item:SetPurchaseTime(GameRules:GetGameTime())
+function OnEquip(event)
+	local caster = event.caster
+
+	caster:RemoveItem(event.ability) 
+
+	Timers:CreateTimer(0.01, function()
+		local item = caster:AddItemByName("item_lia_seal_of_power_damage")
+		item:SetPurchaseTime(GameRules:GetGameTime())
+	end)
+
 end
 
 ---------------------------------------------------------------------------------------
@@ -64,6 +77,8 @@ function modifier_item_lia_seal_of_power_armor:OnCreated(kv)
 	
 	self.armorBonusFromDamage = 0
 	self.damageLose = 0
+
+	self.abilityID = self:GetAbility():entindex()
 	
 	self:StartIntervalThink(0.1)
 	self:OnIntervalThink()
@@ -87,16 +102,16 @@ function modifier_item_lia_seal_of_power_armor:OnIntervalThink()
 			self.armorBonusFromDamage = self.armorLimit
 		end
 
-		self.damageLose = -(self.armorBonusFromDamage*self.oneArmorDamage*self.damageLoseFactor)
+		self.damageLose = math.floor(-(self.armorBonusFromDamage*self.oneArmorDamage*self.damageLoseFactor) + 0.5)
 		
-		print(self.armorBonusFromDamage,self.damageLose)
+		--print(damage,self.armorBonusFromDamage,self.damageLose)
 		
 		self:SetStackCount(math.floor(self.armorBonusFromDamage+0.5))
-		CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetAbility():entindex()),{armorBonusFromDamage = self.armorBonusFromDamage, damageLose = self.damageLose})
+		CustomNetTables:SetTableValue("custom_modifier_state",tostring(self.abilityID),{armorBonusFromDamage = self.armorBonusFromDamage, damageLose = self.damageLose})
 	end
 
 	if IsClient() then
-		local netTable = CustomNetTables:GetTableValue("custom_modifier_state",tostring(self:GetAbility():entindex()))
+		local netTable = CustomNetTables:GetTableValue("custom_modifier_state",tostring(self.abilityID))
 		if netTable then
 			self.armorBonusFromDamage = netTable.armorBonusFromDamage
 			self.damageLose = netTable.damageLose
