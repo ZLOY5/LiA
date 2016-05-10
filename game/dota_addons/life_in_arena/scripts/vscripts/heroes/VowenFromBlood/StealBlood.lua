@@ -15,6 +15,7 @@ function StealBlood( event )
 	local bounce_range = ability:GetLevelSpecialValueFor( "bounce_range", ability:GetLevel() - 1 )
 	local decay = ability:GetLevelSpecialValueFor( "lightning_decay", ability:GetLevel() - 1 ) * 0.01
 	local time_between_bounces = ability:GetLevelSpecialValueFor( "time_between_bounces", ability:GetLevel() - 1 )
+	local heal = ability:GetSpecialValueFor("heal_per_target")
 
 	local lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf", PATTACH_WORLDORIGIN, hero)
 	ParticleManager:SetParticleControl(lightningBolt,0,Vector(hero:GetAbsOrigin().x,hero:GetAbsOrigin().y,hero:GetAbsOrigin().z + hero:GetBoundingMaxs().z ))	
@@ -98,6 +99,7 @@ function StealBlood( event )
 			-- damage and decay
 			damage = damage - (damage*decay)
 			ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
+			hero:Heal(heal, hero)
 			--PopupDamage(target,math.floor(damage))
 			print("Bounce "..bounces.." Hit Unit "..target:GetEntityIndex().. " for "..damage.." damage")
 

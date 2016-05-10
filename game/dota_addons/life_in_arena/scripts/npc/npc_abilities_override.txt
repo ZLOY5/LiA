@@ -15369,7 +15369,7 @@
 	        "03"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "burn_damage"             "60 120 180"
+	            "burn_damage"             "20 40 60"
 	        }
 	        "04"
 	        {
@@ -15418,7 +15418,7 @@
 	          {
 	            "Target"    "TARGET"
 	            "Type"      "DAMAGE_TYPE_MAGICAL"
-	            "Damage"    "%burn_damage / 12"
+	            "Damage"    "%burn_damage / 4"
 	          }
 	        }      
 	      }
@@ -15441,8 +15441,8 @@
 	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 	    
-	    "AoERadius"                 "300"
-	    
+	    "AoERadius"                 "%radius"
+	    "AbilityCastRange"          "%radius"
 	    "MaxLevel"                  "3"
 	    "RequiredLevel"             "2"
 	    "LevelsBetweenUpgrades"     "2"
@@ -15474,7 +15474,7 @@
 	        "04"
 	        {
 	            "var_type"                          "FIELD_INTEGER"
-	            "radius"                            "450"
+	            "radius"                            "500"
 	        }
 	        "05"
 	        {
@@ -15497,8 +15497,8 @@
 	    "AbilityTextureName"     "earthshaker_aftershock"
 	     "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"   
 	
-	    "AoERadius"                "280"
-		"AbilityCastRange"			"280"
+	    "AoERadius"                "%radius"
+		"AbilityCastRange"			"%radius"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 	    "MaxLevel"               "3"
@@ -15517,12 +15517,12 @@
 	        "01"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "radius"                  "300"
+	            "radius"                  "250"
 	        }
 	        "02"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "damage"                  "40 80 150"
+	            "damage"                  "40 80 160"
 	        }
 	        "03"
 	        {
@@ -15600,7 +15600,7 @@
 	  "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityTextureName"     "golem_ground_slam"
 	
-	  "AbilityCooldown" "35"
+	  "AbilityCooldown" "40"
 	  "AbilityCastRange"  "300"
 	  "AbilityManaCost" "100 150 200"
 	  "AoERadius"  "300"
@@ -27531,7 +27531,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lightning_damage"		"50 150 300"
+				"lightning_damage"		"75 150 300"
 			}
 			"02"
 			{
@@ -27546,12 +27546,12 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lightning_decay"		"15 10 5"
+				"lightning_decay"		"10"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"heal"		"150 300 450"
+				"heal_per_target"		"45"
 			}
 			"06"
 			{
@@ -27562,11 +27562,7 @@
 	
 		"OnSpellStart"
 		{
-			"Heal"
-			{
-				"HealAmount"	"%heal"
-				"Target"		"CASTER"
-			}
+	
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/VowenFromBlood/StealBlood.lua"
@@ -27608,7 +27604,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lightning_damage"		"100 300 600"
+				"lightning_damage"		"150 300 600"
 			}
 			"02"
 			{
@@ -27623,12 +27619,12 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lightning_decay"		"0 0 0"
+				"lightning_decay"		"10"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"heal"		"150 300 450"
+				"heal_per_target"		"45"
 			}
 			"06"
 			{
@@ -27639,11 +27635,7 @@
 	
 		"OnSpellStart"
 		{
-			"Heal"
-			{
-				"HealAmount"	"%heal"
-				"Target"		"CASTER"
-			}
+	
 			"RunScript"
 			{
 				"ScriptFile"	"heroes/VowenFromBlood/StealBlood.lua"

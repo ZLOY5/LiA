@@ -30,7 +30,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lightning_damage"		"50 150 300"
+			"lightning_damage"		"75 150 300"
 		}
 		"02"
 		{
@@ -45,12 +45,12 @@
 		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lightning_decay"		"15 10 5"
+			"lightning_decay"		"10"
 		}
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"heal"		"150 300 450"
+			"heal_per_target"		"45"
 		}
 		"06"
 		{
@@ -61,11 +61,7 @@
 
 	"OnSpellStart"
 	{
-		"Heal"
-		{
-			"HealAmount"	"%heal"
-			"Target"		"CASTER"
-		}
+
 		"RunScript"
 		{
 			"ScriptFile"	"heroes/VowenFromBlood/StealBlood.lua"
@@ -107,7 +103,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lightning_damage"		"100 300 600"
+			"lightning_damage"		"150 300 600"
 		}
 		"02"
 		{
@@ -122,12 +118,12 @@
 		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lightning_decay"		"0 0 0"
+			"lightning_decay"		"10"
 		}
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"heal"		"150 300 450"
+			"heal_per_target"		"45"
 		}
 		"06"
 		{
@@ -138,11 +134,7 @@
 
 	"OnSpellStart"
 	{
-		"Heal"
-		{
-			"HealAmount"	"%heal"
-			"Target"		"CASTER"
-		}
+
 		"RunScript"
 		{
 			"ScriptFile"	"heroes/VowenFromBlood/StealBlood.lua"

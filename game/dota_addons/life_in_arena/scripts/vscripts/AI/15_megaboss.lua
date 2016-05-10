@@ -13,6 +13,7 @@ function Spawn(entityKeyValues)
 
 	Timers:CreateTimer(0.01,function()
 		
+	if not thisEntity:IsIllusion() then
 		local mult = Survival.nHeroCount
 		local hp = 26000 + 1000*mult
 		local armor = 80 + 10*mult
@@ -25,7 +26,7 @@ function Spawn(entityKeyValues)
 		thisEntity:SetPhysicalArmorBaseValue(armor)
 		thisEntity:SetBaseDamageMin(dmg_min)	
 		thisEntity:SetBaseDamageMax(dmg_max)
-	
+	end
 
 	end)
 end
