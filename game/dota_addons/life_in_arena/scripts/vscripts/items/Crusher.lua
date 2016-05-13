@@ -7,7 +7,7 @@ function ChainLightning( event )
 	local ability = event.ability
 	local target = event.target
 
-	if target:IsMagicImmune() then
+	if not target:IsMagicImmune() then
 		local hero = event.caster
 		
 
