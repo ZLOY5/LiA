@@ -1444,6 +1444,212 @@
 	//End of file item_lia_crown_of_death.txt
 
 
+	//Start of file item_lia_crusher.txt
+	"item_recipe_lia_crusher"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1484"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"945"	
+		"ItemShopTags"					"crit;damage;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_crusher"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_pantilus_blade;item_lia_lightning_spear"
+		}
+	}
+	
+	"item_lia_crusher"
+	{
+		"ID"							"1485"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"2345"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		
+		"AbilityTextureName"			"item_lia_crusher"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
+	
+		"AbilityCooldown"				"7.0"
+	
+	
+		"precache"
+		{
+			"particle" 	"particles/items_fx/chain_lightning.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"bonus_damage" 			"75"
+			}
+		
+			"02"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"bonus_attack_speed" 	"35"
+			}
+			"03"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"bonus_agility" 		"20"
+			}
+			"04"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"lightning_chance" 		"17"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage"		"400"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces"		"8"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"700"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"0"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"lightning_cooldown"	"7"
+			}
+		}
+	
+	
+		"Modifiers"
+		{
+			"modifier_item_lia_lightning_spear"
+			{
+				"Passive"          "1"    
+			    "IsHidden"         "1"
+			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+			    "Properties"
+			    {
+			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+			    }  
+				
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/Crusher.lua"
+						"Function"		"ApplyModifier"
+					}
+				}
+			}
+			"modifier_item_lia_lightning_spear_lightning"
+			{
+				"Passive"          "0"    
+			    "IsHidden"         "1"
+	
+	
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance" "%lightning_chance"
+						"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MAELSTROM"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+						    {
+						    	"ModifierName"	"modifier_item_lia_lightning_spear_accuracy"
+						    	"Target"
+						    	{
+						    		"Center"  	"CASTER"
+						    		"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						    	}
+						    }    
+						}
+					}
+				}
+			}
+			"modifier_item_lia_lightning_spear_cooldown"
+			{
+				"Passive"          "0"    
+			    "IsHidden"         "1"
+			    "Duration"			"%lightning_cooldown"
+	
+			    "OnDestroy"
+			    {
+			    	"RunScript"
+					{
+						"ScriptFile"	"items/Crusher.lua"
+						"Function"		"ApplyModifier"
+					}
+			    }
+	
+			}
+	
+			"modifier_item_lia_lightning_spear_accuracy"
+			{
+				"Passive"          "0"    
+			    "IsHidden"         "1"
+			    "States"
+			    {
+			    	"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
+			    }
+	
+			    "OnAttackLanded"
+			    {
+			    	"RunScript"
+					{
+						"ScriptFile"	"items/Crusher.lua"
+						"Function"		"ChainLightning"
+					} 
+	
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_item_lia_lightning_spear_accuracy"
+						"Target" 		"CASTER"
+					}
+			    }
+	
+			}
+	
+		}
+	}
+	//End of file item_lia_crusher.txt
+
+
 	//Start of file item_lia_demonic_figure.txt
 	    "item_lia_demonic_figurine"
 	{
