@@ -59,12 +59,23 @@
 		"07"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bounce_range"				"600"
+			"radius"				"600"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"return_speed"				"1000"
 		}
 	}
 
 	"OnSpellStart"
 	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/TrollCutthroat/BoomerangAxe.lua"
+			"Function"		"Initialize"
+		}
+
 		"TrackingProjectile"
 		{
 			"Target"           	"TARGET"
@@ -74,7 +85,11 @@
 			"MoveSpeed"        	"%axe_speed"
 			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 		}
-
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_troll_cuthroat_boomeang_axe_disarm"
+			"Target" 		"CASTER"
+		}
 		
 	}
 
@@ -84,6 +99,25 @@
 		{
 			"ScriptFile"	"heroes/TrollCutthroat/BoomerangAxe.lua"
 			"Function"		"BoomerangAxes"
+			"sound_enemy"		"Hero_TrollWarlord.ProjectileImpact"
+			"boomerang_projectile"	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_troll_cuthroat_boomeang_axe_disarm"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			
+			"EffectName"	"particles/generic_gameplay/generic_disarm.vpcf"
+			"EffectAttachType"	"follow_overhead"
+
+			"States"
+			{
+				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
 		}
 	}
 
@@ -116,7 +150,7 @@
 		"03"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"armor_reductiion"			"4 6 8"
+			"armor_reductiion"			"-4 -6 -8"
 		}
 		"04"
 		{
@@ -167,7 +201,12 @@
 		                {
 		                    "ModifierName" 	"modifier_troll_cutthroat_vulnerability_crit"
 		                    "Target"    	"CASTER"    
-		                }        
+		                }    
+		                "ApplyModifier"
+		                {
+		                    "ModifierName" 	"modifier_troll_cutthroat_vulnerability_debuff"
+		                    "Target"    	"TARGET"    
+		                }      
 		            }
 		        }
 		    }
@@ -198,11 +237,270 @@
 			"IsPurgable"		"1"
 			"IsDebuff"			"1"
 
+			"Duration"	"%duration"
+
 			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	    "%bonus_armor"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	    "%armor_reductiion"
 			}
+		}
+	}
+}
+
+"troll_cutthroat_enchanted_axes"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"troll_warlord_whirling_axes_melee"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+		"particle"			"particles/units/heroes/hero_troll_warlord/troll_warlord_whirling_axe_melee.vpcf"
+	}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"15 11 7"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"					"60 150 240"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"hit_radius"				"100"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"max_range"					"450.0"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"axe_movement_speed"		"1250"
+		}
+		"05"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_movement_speed"		"30"
+		}
+		"06"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"blind_pct"					"60 60 60 60"
+		}
+		"07"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"whirl_duration"			"3.0"
+		}
+		// Extra
+		"08"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"axe_turn_rate"				"360"
+		}
+		"09"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"start_radius"				"1"
+		}
+		"10"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"think_interval"			"0.06"
+		}
+	}
+
+	"OnUpgrade"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+			"Function"		"LevelUpAbility"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_TrollWarlord.WhirlingAxes.Melee"
+			"Target" 		"CASTER"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+			"Function"		"WhirlingAxesMelee"
+			"axe_projectile"	"particles/units/heroes/hero_troll_warlord/troll_warlord_whirling_axe_melee.vpcf"
+			"axe_modifier"		"modifier_whirling_axes_melee_think_datadriven"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_whirling_axes_melee_phase"
+			"Target" 		"CASTER"
+			"Duration"		"%whirl_duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_whirling_axes_melee_think_datadriven"
+		{
+			"IsHidden"		"1"
+			"IsPurgable"	"0"
+
+			"Aura"          	"modifier_whirling_axes_melee_aura_datadriven"
+			"Aura_Radius"   	"%hit_radius"
+			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE"
+			"Aura_ApplyToCaster" "0"
+
+			"ThinkInterval"  "%think_interval"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+					"Function"		"WhirlingAxesMeleeThink"
+				}
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+
+		"modifier_whirling_axes_melee_aura_datadriven"
+		{
+			"IsHidden"	"1"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+					"Function"		"WhirlingAxesMeleeHit"
+					"sound"			"Hero_TrollWarlord.WhirlingAxes.Target"
+				}
+			}
+		}
+
+		"modifier_whirling_axes_melee_phase"
+		{
+			"IsBuff"		"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"Properties"
+			{
+			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed" 
+			}
+		}
+	}
+}
+
+"troll_cutthroat_battle_trance"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"			"troll_warlord_battle_trance"
+	
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+
+	"AbilityCastPoint"				"0.0"
+
+	"AbilityCooldown"				"60 70 80"
+
+	"AbilityManaCost"				"170 200 230"	
+
+	"precache"
+	{
+	"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_attack_speed"	"50 100 150"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_reduction"		"-25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"9 12 15"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_troll_cutthroat_battle_trance"
+			"Target"	"CASTER"
+			"Duration"	"%duration"
+		}
+
+		
+	}
+	"Modifiers"
+	{
+		"modifier_troll_cutthroat_battle_trance"
+		{
+			"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+			"EffectAttachType"  "follow_origin"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_reduction"
+			}
+			
 		}
 	}
 }

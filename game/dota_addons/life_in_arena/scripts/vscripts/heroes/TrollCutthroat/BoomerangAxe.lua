@@ -1,133 +1,218 @@
---[[
-	Author: Noya
-	Date: 17.01.2015.
-	Bounces a chain lightning
-]]
-function BoomerangAxes( event )
 
-	local hero = event.caster
-	local target = event.target
-	local ability = event.ability
+--[[Author: Pizzalol
+	Date: 07.03.2015.
+	Initializes all the needed starting values for the Mystic Snake]]
+function Initialize( keys )
+	local caster = keys.caster
+	local ability = keys.ability
 
-	
-	local damage = ability:GetSpecialValueFor("init_damage") + (hero:GetStrength()*ability:GetSpecialValueFor("str_prc_dmg")*0.01)
-	local bounces = ability:GetSpecialValueFor("max_targets")
-	local bounce_range = ability:GetSpecialValueFor("bounce_range")
+	caster.boomerang_jumps = 1
+	caster.boomerang_table = {}
+
+	local whirl = caster:FindAbilityByName("troll_cutthroat_enchanted_axes")
+
+	if whirl ~= nil then
+		whirl:SetActivated(true)
+	end
+end
+
+
+
+
+
+
+function BoomerangAxes( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local caster_location = caster:GetAbsOrigin()
+	local target_location = target:GetAbsOrigin()
+	local ability = keys.ability
+	local ability_level = ability:GetLevel() - 1
+
+	local whirl = caster:FindAbilityByName("troll_cutthroat_enchanted_axes")
+
+	local vulnerability = caster:FindAbilityByName("troll_cutthroat_vulnerability")
+	local vulnerability_level = vulnerability:GetLevel()
+
+	-- Ability variables
+
+	local vision_radius = 0
+	local damage_final = ability:GetSpecialValueFor("init_damage") + (caster:GetStrength()*ability:GetSpecialValueFor("str_prc_dmg")*0.01)
+	local max_jumps = ability:GetSpecialValueFor("max_targets")
 	local time_between_bounces = ability:GetSpecialValueFor("time_between_bounces")
-	local speed = ability:GetSpecialValueFor("axe_speed")
+	local initial_speed = ability:GetSpecialValueFor("axe_speed")
+	local return_speed = ability:GetLevelSpecialValueFor("return_speed", ability_level) 
+	local jump_radius = ability:GetLevelSpecialValueFor("radius", ability_level) 
+	local stun_duration = ability:GetSpecialValueFor("stun_duration")
 
+	-- Sounds
+	local sound_enemy = keys.sound_enemy
 
-	if ability.bounces_left == nil then
-		ability.bounces_left = bounces
-		local targetsStruck = {}
-		target.struckByChain = true
-		table.insert(targetsStruck,target)
-	else
-		ability.bounces_left = ability.bounces_left - 1
-	end
+	-- Particles
+	local boomerang_projectile = keys.boomerang_projectile
 
-	EmitSoundOn("Hero_TrollWarlord.ProjectileImpact", target)	
+	-- Check if the hit target is the caster or an enemy unit
+	if target ~= caster then
+		-- If its an enemy unit then insert it into the snake table
+		-- so that we can keep track that we hit it
+		table.insert(caster.boomerang_table, target)
 
-	if target:TriggerSpellAbsorb(ability) then
-		return 
-	end
+		-- Initialize the damage table
+		local damage_table = {}
 
-	ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability })
-	--PopupDamage(target,math.floor(damage))
+		damage_table.attacker = caster
+		damage_table.victim = target
+		damage_table.ability = ability
 
-	-- Every target struck by the chain is added to a list of targets struck, And set a boolean inside its index to be sure we don't hit it twice.
-	
+		if vulnerability_level <1 then
+			damage_table.damage = damage_final
+		else
+			local vulnerability_chance = vulnerability:GetSpecialValueFor("crit_chance")
+			local vulnerability_crit = vulnerability:GetSpecialValueFor("crit_mult") * 0.01
+			local random_int = RandomInt(1, 100)
 
-
-
-	
-
-	
-			-- unit selection and counting
-		local	units = FindUnitsInRadius(hero:GetTeamNumber(), target:GetOrigin(), target, bounce_range, DOTA_UNIT_TARGET_TEAM_ENEMY, 
-						DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, true)
-
-			
-
-			-- Track the possible targets to bounce from the units in radius
-			local possibleTargetsBounce = {}
-			for _,v in pairs(units) do
-				if not v.struckByChain then
-					table.insert(possibleTargetsBounce,v)
-				end
+			if random_int <= vulnerability_chance then
+				damage_table.damage = damage_final * vulnerability_crit
+				vulnerability:ApplyDataDrivenModifier(caster,target,"modifier_troll_cutthroat_vulnerability_debuff",nil)
+			else
+				damage_table.damage = damage_final
 			end
+		end
 
-			-- Select nearest unit
-			local newTarget 
-			local distance = 9999999
-			local newTargetVec
-			for _,v in pairs(possibleTargetsBounce) do
-				newTargetVec = v:GetAbsOrigin()
-				--print(v,DistanceBetweenVectors(targetVec,newTargetVec)) 
-				if v ~= target then
-					if DistanceBetweenPoints(targetVec,newTargetVec) < distance then
-						newTarget = v
-						distance = DistanceBetweenPoints(targetVec,newTargetVec)
+		
+		damage_table.damage_type = ability:GetAbilityDamageType()
+		
+
+
+		-- Play the sound and particle of the spell
+		EmitSoundOn(sound_enemy, target)
+
+
+		-- Deal the damage
+		ApplyDamage(damage_table)
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_stunned", {duration = stun_duration})
+
+		-- Check if we can do more jumps
+		if caster.boomerang_jumps < max_jumps then
+
+
+			-- Set up the targeting variables
+			local target_team = ability:GetAbilityTargetTeam()
+			local target_type = ability:GetAbilityTargetType() 
+			local target_flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
+
+			-- Find all the valid units to jump to
+			local jump_targets = FindUnitsInRadius(caster:GetTeam(), target_location, nil, jump_radius, target_team, target_type, target_flags, FIND_CLOSEST, false) 
+			local hit_helper -- This variable helps in the case we find only target units that we have already hit before
+
+			-- Check if we found more than 1 target because the original target is included in the search
+			if #jump_targets > 1 then
+				
+				-- Loop through the targets to see if we have a valid one
+				for _,v in ipairs(jump_targets) do
+					hit_helper = true
+					local hit_check = false -- Determines if the target has been hit before or not
+
+					-- Check if the current target has been hit
+					for _,k in ipairs(caster.boomerang_table) do
+						if v == k then
+							hit_check = true
+							break
+						end
+					end
+
+					-- If it wasnt then launch a new snake at it
+					if not hit_check then
+						local projectile_info = 
+						{
+							EffectName = boomerang_projectile,
+							Ability = ability,
+							vSpawnOrigin = target_location,
+							Target = v,
+							Source = target,
+							bHasFrontalCone = false,
+							iMoveSpeed = initial_speed,
+							bReplaceExisting = false,
+							bProvidesVision = true,
+							iVisionRadius = vision_radius,
+							iVisionTeamNumber = caster:GetTeamNumber()
+						}
+						ProjectileManager:CreateTrackingProjectile(projectile_info)
+
+						-- Increase the jump count and update the helper variable
+						caster.boomerang_jumps = caster.boomerang_jumps + 1
+						hit_helper = false
+						break
 					end
 				end
-			end
-
-			
-
-			target = newTarget
-
-			if target then
-				target.struckByChain = true
-				table.insert(targetsStruck,target)		
 			else
-				-- There's no more targets left to bounce, clear the struck table and end
-				for _,v in pairs(targetsStruck) do
-				    v.struckByChain = false
-				    v = nil
-				end
-			    --print("End Chain, no more targets")
-				return	
-			end
-
-			local info = {
-				Target = target,
-				Source = dummy,
-				Ability = ability,
-				EffectName = "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf",
-				bDodgeable = true,
-				bProvidesVision = false,
-				iMoveSpeed = speed,
-				iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_HITLOCATION
+				
+				-- Send the snake back to the caster if we havent found more targets
+				local projectile_info = 
+				{
+					EffectName = boomerang_projectile,
+					Ability = ability,
+					vSpawnOrigin = target_location,
+					Target = caster,
+					Source = target,
+					bHasFrontalCone = false,
+					iMoveSpeed = return_speed,
+					bReplaceExisting = false,
+					bProvidesVision = true,
+					iVisionRadius = vision_radius,
+					iVisionTeamNumber = caster:GetTeamNumber()
 				}
-			ProjectileManager:CreateTrackingProjectile( info )
-			
+				ProjectileManager:CreateTrackingProjectile(projectile_info)
 
-			
-
-			-- damage and decay
-			
-			ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability })
-			--PopupDamage(target,math.floor(damage))
-			--print("Bounce "..bounces.." Hit Unit "..target:GetEntityIndex().. " for "..damage.." damage")
-
-			-- play the sound
-			EmitSoundOn("Hero_TrollWarlord.ProjectileImpact",target)
-
-			-- make the particle shoot to the target
-
-	
-			-- decrement remaining spell bounces
-			
-
-			-- fire the timer again if spell bounces remain
-			if bounces_left > 0 then
-				return time_between_bounces
-			else
-				for _,v in pairs(targetsStruck) do
-				   	v.struckByChain = false
-				   	v = nil
-				end
-				--print("End Chain, no more bounces")
 			end
+			-- Check the helper variable to determine if we have to send the snake back to the caster
+			-- Happens only in the case where we find only targets that we hit before but havent reached
+			-- the jump limit
+			if hit_helper then
+				local projectile_info = 
+				{
+					EffectName = boomerang_projectile,
+					Ability = ability,
+					vSpawnOrigin = target_location,
+					Target = caster,
+					Source = target,
+					bHasFrontalCone = false,
+					iMoveSpeed = return_speed,
+					bReplaceExisting = false,
+					bProvidesVision = true,
+					iVisionRadius = vision_radius,
+					iVisionTeamNumber = caster:GetTeamNumber()
+				}
+				ProjectileManager:CreateTrackingProjectile(projectile_info)
+			end
+		else
+			-- Send the snake back to the caster because we hit the jump limit
+			local projectile_info = 
+			{
+				EffectName = boomerang_projectile,
+				Ability = ability,
+				vSpawnOrigin = target_location,
+				Target = caster,
+				Source = target,
+				bHasFrontalCone = false,
+				iMoveSpeed = return_speed,
+				bReplaceExisting = false,
+				bProvidesVision = true,
+				iVisionRadius = vision_radius,
+				iVisionTeamNumber = caster:GetTeamNumber()
+			}
+			ProjectileManager:CreateTrackingProjectile(projectile_info)
+		end
+	else
+		caster:RemoveModifierByName("modifier_troll_cuthroat_boomeang_axe_disarm")
 
+		
+		if whirl ~= nil and not caster:HasModifier("modifier_troll_cutthroat_battle_trance") and not caster:HasModifier("modifier_troll_cuthroat_boomeang_axe_disarm") then
+			whirl:SetActivated(false)
+		end	
+
+	end
 end
+
+
+
