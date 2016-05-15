@@ -6,6 +6,16 @@ function Initialize( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 
+	local ability1 = caster:FindAbilityByName("troll_cuthroat_boomeang_axe")
+	local ability2 = caster:FindAbilityByName("troll_cuthroat_boomeang_axe_return")
+
+	ability2:SetLevel(1)
+
+	caster:SwapAbilities("troll_cuthroat_boomeang_axe", "troll_cuthroat_boomeang_axe_return", true, true)
+
+	ability1:SetHidden(true)
+	ability2:SetHidden(false)
+
 	caster.boomerang_jumps = 1
 	caster.boomerang_table = {}
 
@@ -33,6 +43,9 @@ function BoomerangAxes( keys )
 
 	local vulnerability = caster:FindAbilityByName("troll_cutthroat_vulnerability")
 	local vulnerability_level = vulnerability:GetLevel()
+
+	local ability1 = caster:FindAbilityByName("troll_cuthroat_boomeang_axe")
+	local ability2 = caster:FindAbilityByName("troll_cuthroat_boomeang_axe_return")
 
 	-- Ability variables
 
@@ -74,6 +87,7 @@ function BoomerangAxes( keys )
 			if random_int <= vulnerability_chance then
 				damage_table.damage = damage_final * vulnerability_crit
 				vulnerability:ApplyDataDrivenModifier(caster,target,"modifier_troll_cutthroat_vulnerability_debuff",nil)
+				SendOverheadEventMessage(target:GetPlayerOwner(), 2, target, damage_table.damage, nil)
 			else
 				damage_table.damage = damage_final
 			end
@@ -93,7 +107,7 @@ function BoomerangAxes( keys )
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_stunned", {duration = stun_duration})
 
 		-- Check if we can do more jumps
-		if caster.boomerang_jumps < max_jumps then
+		if caster.boomerang_jumps < max_jumps and not caster:HasModifier("modifier_troll_cuthroat_boomeang_axe_return") then
 
 
 			-- Set up the targeting variables
@@ -205,8 +219,10 @@ function BoomerangAxes( keys )
 		end
 	else
 		caster:RemoveModifierByName("modifier_troll_cuthroat_boomeang_axe_disarm")
-
-		
+		caster:RemoveModifierByName("modifier_troll_cuthroat_boomeang_axe_return")
+		caster:SwapAbilities("troll_cuthroat_boomeang_axe_return", "troll_cuthroat_boomeang_axe", false, true)
+		ability2:SetHidden(true)
+		ability1:SetHidden(false)
 		if whirl ~= nil and not caster:HasModifier("modifier_troll_cutthroat_battle_trance") and not caster:HasModifier("modifier_troll_cuthroat_boomeang_axe_disarm") then
 			whirl:SetActivated(false)
 		end	

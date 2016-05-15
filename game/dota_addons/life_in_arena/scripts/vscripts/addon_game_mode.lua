@@ -6,6 +6,7 @@ require('timers')
 require('timerPopup')
 require('physics')
 
+
 function Activate()
 	GameRules.LiA = LiA()
 	GameRules.LiA:InitGameMode()

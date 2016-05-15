@@ -11,6 +11,8 @@ function LevelUpAbility( event )
 	if not caster:HasModifier("modifier_troll_cutthroat_battle_trance") and not caster:HasModifier("modifier_troll_cuthroat_boomeang_axe_disarm") then
 		this_ability:SetActivated(false)
 	end	
+
+
 	
 end
 
@@ -22,7 +24,7 @@ function WhirlingAxesMelee( keys )
 	local caster_location = caster:GetAbsOrigin()
 	local ability = keys.ability
 	local ability_level = ability:GetLevel() - 1
-
+	caster.enchanted_axes_tick_count = 0
 	local start_radius = ability:GetLevelSpecialValueFor("start_radius", ability_level)
 	caster.whirling_axes_melee_hit_table = {} 
 	
@@ -77,6 +79,8 @@ function WhirlingAxesMelee( keys )
 	caster.whirling_axes_west.axe_radius = start_radius
 	caster.whirling_axes_west.start_time = GameRules:GetGameTime()
 	caster.whirling_axes_west.side = 1
+
+	
 end
 
 --[[Author: Pizzalol, Ractidous
@@ -89,7 +93,8 @@ function WhirlingAxesMeleeThink( keys )
 	local ability = keys.ability
 	local ability_level = ability:GetLevel() - 1
 	local elapsed_time = GameRules:GetGameTime() - target.start_time
-
+	local enchanted_axes_tick_count
+	
 	-- If the caster is not alive then remove the axes
 	if not caster:IsAlive() then
 		target:RemoveSelf()
@@ -107,9 +112,21 @@ function WhirlingAxesMeleeThink( keys )
 	-- Calculate the radius and limit it to the max range
 	local currentRadius	= target.axe_radius 
 	local deltaRadius = axe_movement_speed / whirl_duration/2 * think_interval -- This is how fast the axe grows outwards
-	currentRadius = currentRadius + deltaRadius
+
+	if caster.enchanted_axes_tick_count<50 then
+		currentRadius = currentRadius + deltaRadius
+	else
+		currentRadius = currentRadius - deltaRadius
+	end
+
+
 	currentRadius = math.min( currentRadius, (max_range - hit_radius)) -- Limit it to the max range
 
+
+
+	caster.enchanted_axes_tick_count = caster.enchanted_axes_tick_count + 1
+	
+	
 	-- Save the radius for the next think interval
 	target.axe_radius = currentRadius
 

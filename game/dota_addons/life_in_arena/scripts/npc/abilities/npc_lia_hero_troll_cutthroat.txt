@@ -8,6 +8,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 
 	"AbilityCastRange"				"600"
 	//"AbilityCastPoint"				"0.2"
@@ -110,6 +111,7 @@
 		{
 			"Passive"			"0"
 			"IsHidden"			"0"
+			"IsDebuff"			"1"
 			
 			"EffectName"	"particles/generic_gameplay/generic_disarm.vpcf"
 			"EffectAttachType"	"follow_overhead"
@@ -123,6 +125,42 @@
 
 }
 
+"troll_cuthroat_boomeang_axe_return"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityTextureName"			"troll_cuthroat_boomeang_axe_return"
+	
+    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"	
+	"MaxLevel"               "1"
+
+
+	"AbilityCastPoint"				"0.0"
+
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_troll_cuthroat_boomeang_axe_return"
+			"Target"	"CASTER"
+		}
+
+		
+	}
+
+	"Modifiers"
+	{
+		"modifier_troll_cuthroat_boomeang_axe_return"
+		{
+			"Passive"			"0"
+			"IsHidden"			"1"
+			"IsDebuff"			"0"
+		}
+	}
+}
 
 "troll_cutthroat_vulnerability"
 {
@@ -140,12 +178,12 @@
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"crit_mult"					"200"
+			"crit_chance"				"15 17 20"
 		}
 		"02"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"15 17 20"
+			"crit_mult"					"200"
 		}
 		"03"
 		{
@@ -301,7 +339,7 @@
 		"04"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"axe_movement_speed"		"1250"
+			"axe_movement_speed"		"1400"
 		}
 		"05"
 		{
@@ -495,6 +533,23 @@
 			"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
 			"EffectAttachType"  "follow_origin"
 
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/TrollCutthroat/BattleTrance.lua"
+					"Function"		"EnableWhirl"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/TrollCutthroat/BattleTrance.lua"
+					"Function"		"DisableWhirl"
+				}
+			}
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
