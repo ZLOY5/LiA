@@ -8,7 +8,7 @@ function Immolation( event )
 	local targets = event.target_entities
 
 	if not ability or not caster:HasItemInInventory(ability:GetName()) then 
-		caster:FindModifierByName("modifier_immolation"):Destroy()
+		caster:FindModifierByName("modifier_immolation"):Destroy(false)
 		return
 	end
 

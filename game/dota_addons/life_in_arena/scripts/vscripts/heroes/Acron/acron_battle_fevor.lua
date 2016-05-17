@@ -95,7 +95,7 @@ function modifier_acron_battle_fevor_buff:OnCreated(kv)
 				if not self:IsNull() then 
 					self:SetStackCount(self:GetStackCount()-1)
 					if self:GetStackCount() == 0 then
-						self:Destroy()
+						self:Destroy(false)
 					end
 				end
 			end
@@ -116,7 +116,7 @@ function modifier_acron_battle_fevor_buff:OnRefresh(kv)
 				if not self:IsNull() then 
 					self:SetStackCount(self:GetStackCount()-1)
 					if self:GetStackCount() == 0 then
-						self:Destroy()
+						self:Destroy(false)
 					end
 				end
 			end
