@@ -26747,19 +26747,6 @@
 			            "Chance" "%crit_chance"
 			            "OnSuccess"
 			            {
-			            	"FireSound"
-					        {
-					        	"EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
-					        	"Target"		"CASTER"
-					        }
-	
-							"FireEffect"
-							{
-								"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-								"EffectAttachType"  "follow_origin"
-								"Target"    "TARGET"
-							}
-	
 			                "ApplyModifier"
 			                {
 			                    "ModifierName" 	"modifier_troll_cutthroat_vulnerability_crit"
@@ -26790,6 +26777,19 @@
 			            "ModifierName"  "modifier_troll_cutthroat_vulnerability_crit"
 			            "Target"   		"CASTER"    
 			        }
+	
+			        "FireSound"
+			        {
+			        	"EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
+			        	"Target"		"CASTER"
+			        }
+	
+					"FireEffect"
+					{
+						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
+					}
 			    }
 			}
 	
