@@ -37,7 +37,7 @@ function modifier_ancient_priestess_ritual_protection:GetBlockDamage(attack_dama
 		CustomNetTables:SetTableValue( "custom_modifier_state", string.format( "%d", self:GetParent():GetEntityIndex() ), { ritual_protection_damage_absorb = self.damage_absorb } )
 	else 
 		damage_block = self.damage_absorb 
-		self:Destroy(false)
+		self:Destroy()
 	end
 	
 	return damage_block

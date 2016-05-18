@@ -74,7 +74,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_destroy(keys)
 	local ability = keys.ability
 	local sphereModifier = keys.caster:FindModifierByName("modifier_item_sphere_target")
 	if sphereModifier and sphereModifier:GetAbility() == ability then
-		sphereModifier:Destroy(false)
+		sphereModifier:Destroy()
 
 		for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
 			local current_item = keys.caster:GetItemInSlot(i)

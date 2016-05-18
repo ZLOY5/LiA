@@ -32,6 +32,6 @@ end
 function modifier_lord_of_lightning_holy_wrath_slow:OnIntervalThink()
 	self.slow_move_speed = self.slow_move_speed + 20 
 	if self.slow_move_speed == 0 and IsServer() then 
-		self:Destroy(false)
+		self:Destroy()
 	end
 end
