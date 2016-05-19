@@ -4,6 +4,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"           "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     "AbilityTextureName"     "beastmaster_dominate"
   
     // Stats    
@@ -37,6 +38,11 @@
             "var_type"        "FIELD_INTEGER"
             "damage"          "90 180 270"
         }
+        "03"
+        {
+            "var_type"        "FIELD_FLOAT"
+            "duration"        "10"
+        }
     }
   
     "OnSpellStart"
@@ -69,11 +75,31 @@
                 "Center"  "POINT"
                 "Radius"  "%radius"
                 "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"   "DOTA_UNIT_TARGET_BASIC"
+                "Types"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
                 "Flags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
             }
         }   
     }  
+
+    "Modifiers"
+    {
+        "modifier_beastmaster_dominate_kill"
+        {
+            "Passive"            "0"
+            "IsHidden"            "1"
+
+            "Duration"  "%duration"
+
+            "OnDestroy"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"  "heroes/Beastmaster/Dominate.lua" 
+                    "Function"    "OnDestroy"
+                }
+            }
+        }
+    }
 }
 
 "beastmaster_brutality"
