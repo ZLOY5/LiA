@@ -124,7 +124,7 @@ function Survival:OnEntityKilled(keys)
         Survival:_OnFinalBossDeath(keys)
     end
 
-    if string.find(killed:GetUnitName(),"_wave_creep") and not killed:IsOwnedByAnyPlayer() then 
+    if string.find(killed:GetUnitName(),"_wave_creep")  and not killed.beastmasterDominated then
         Survival:_OnCreepDeath(keys)   
     elseif string.find(killed:GetUnitName(),"_boss") and not killed:IsOwnedByAnyPlayer() then
         Survival:_OnBossDeath(keys)
@@ -168,7 +168,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        --self.nRoundNum = 14
+        --self.nRoundNum = 2
         GameRules:SetPreGameTime(120)
         Survival:PrepareNextRound()
     end

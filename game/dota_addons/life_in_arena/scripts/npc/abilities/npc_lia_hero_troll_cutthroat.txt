@@ -89,7 +89,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName"	"modifier_troll_cuthroat_boomeang_axe_disarm"
-			"Target" 		"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 		
 	}
@@ -145,7 +149,11 @@
 		"ApplyModifier"
 		{
 			"ModifierName" "modifier_troll_cuthroat_boomeang_axe_return"
-			"Target"	"CASTER"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
 		}
 
 		
