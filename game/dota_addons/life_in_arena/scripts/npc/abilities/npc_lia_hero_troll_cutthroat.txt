@@ -30,12 +30,12 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"init_damage"		"50"
+			"damage_pct"			"50 65 80"
 		}
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"str_prc_dmg"		"70 120 170"
+			"str_prc_dmg"			"150"
 		}
 		"03"
 		{
@@ -81,7 +81,7 @@
 		{
 			"Target"           	"TARGET"
 			"EffectName"		"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
-			"Dodgeable"			"1"
+			"Dodgeable"			"0"
 			"ProvidesVision"	"0"
 			"MoveSpeed"        	"%axe_speed"
 			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
@@ -299,7 +299,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"troll_warlord_whirling_axes_melee"
 
@@ -317,7 +317,7 @@
 
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"15 11 7"
+	"AbilityCooldown"				"12 9 4"
 
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
@@ -331,54 +331,60 @@
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"damage"					"60 150 240"
+			"damage"					"60 120 180"
 		}
 		"02"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"hit_radius"				"100"
+			"str_prc_dmg"				"75"
 		}
 		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"hit_radius"				"100"
+		}
+		"04"
 		{
 			"var_type"					"FIELD_FLOAT"
 			"max_range"					"450.0"
 		}
-		"04"
+		"05"
 		{
 			"var_type"					"FIELD_INTEGER"
 			"axe_movement_speed"		"1400"
 		}
-		"05"
+		"06"
 		{
 			"var_type"					"FIELD_INTEGER"
 			"bonus_movement_speed"		"30"
 		}
-		"06"
+		"07"
 		{
 			"var_type"					"FIELD_INTEGER"
 			"blind_pct"					"60 60 60 60"
 		}
-		"07"
+		"08"
 		{
 			"var_type"					"FIELD_FLOAT"
 			"whirl_duration"			"3.0"
 		}
 		// Extra
-		"08"
+		"09"
 		{
 			"var_type"					"FIELD_FLOAT"
 			"axe_turn_rate"				"360"
 		}
-		"09"
+		"10"
 		{
 			"var_type"					"FIELD_FLOAT"
 			"start_radius"				"1"
 		}
-		"10"
+		"11"
 		{
 			"var_type"					"FIELD_FLOAT"
 			"think_interval"			"0.06"
 		}
+		
 	}
 
 	"OnUpgrade"
@@ -517,6 +523,11 @@
 		}
 		"03"
 		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"		"20 40 60"
+		}
+		"04"
+		{
 			"var_type"				"FIELD_FLOAT"
 			"duration"				"9 12 15"
 		}
@@ -560,7 +571,8 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_reduction"
+			//	"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_reduction"
+			//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_strength"
 			}
 			
 		}

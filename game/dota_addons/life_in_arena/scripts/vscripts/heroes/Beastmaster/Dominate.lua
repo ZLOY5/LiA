@@ -38,6 +38,7 @@ function Dominate(keys)
 			bmcreep.previousOwner = owner
 			bmcreep.previousOwnerID = owner_id
 			bmcreep.dominateStartTime = GameRules:GetGameTime()
+			bmcreep.beastmasterDominated = true
 			
 
 		else 
@@ -63,7 +64,6 @@ function OnDestroy(keys)
 			lifetime = modifierKill:GetRemainingTime()
 		end
 		target:AddNoDraw()
-		target.beastmasterDominated = true
 		target:ForceKill(false)
 		if target.previousOwner ~= nil then
 			local newcreep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, target.previousOwner, target.previousOwner, target.previousOwner:GetTeamNumber())
@@ -83,7 +83,7 @@ function OnDestroy(keys)
 		end
 	else
 		local creepForGold = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
-		creepForGold.beastmasterDominated = true
+		--creepForGold.beastmasterDominated = true
 		creepForGold:AddNoDraw()
 		creepForGold:Kill(ability, caster)
 	end

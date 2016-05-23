@@ -165,7 +165,7 @@ function WhirlingAxesMeleeHit( keys )
 
 	-- Ability variables
 
-	local damage = ability:GetLevelSpecialValueFor("damage", ability_level)
+	local damage = ability:GetLevelSpecialValueFor("damage", ability_level) + (caster:GetStrength()*ability:GetSpecialValueFor("str_prc_dmg")*0.01)
 
 	-- Check if the target has been hit before
 	local hit_check = false

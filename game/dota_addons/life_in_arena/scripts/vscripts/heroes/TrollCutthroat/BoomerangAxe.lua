@@ -50,13 +50,15 @@ function BoomerangAxes( keys )
 	-- Ability variables
 
 	local vision_radius = 0
-	local damage_final = ability:GetSpecialValueFor("init_damage") + (caster:GetStrength()*ability:GetSpecialValueFor("str_prc_dmg")*0.01)
+	local hero_damage = caster:GetAttackDamage() * ability:GetSpecialValueFor("damage_pct") * 0.01
+	local damage_final = hero_damage + (caster:GetStrength()*ability:GetSpecialValueFor("str_prc_dmg")*0.01)
 	local max_jumps = ability:GetSpecialValueFor("max_targets")
 	local time_between_bounces = ability:GetSpecialValueFor("time_between_bounces")
 	local initial_speed = ability:GetSpecialValueFor("axe_speed")
 	local return_speed = ability:GetLevelSpecialValueFor("return_speed", ability_level) 
 	local jump_radius = ability:GetLevelSpecialValueFor("radius", ability_level) 
 	local stun_duration = ability:GetSpecialValueFor("stun_duration")
+	local damage_pct = ability:GetSpecialValueFor("damage_pct")
 
 	-- Sounds
 	local sound_enemy = keys.sound_enemy
@@ -145,6 +147,7 @@ function BoomerangAxes( keys )
 							Target = v,
 							Source = target,
 							bHasFrontalCone = false,
+							bDodgeable = false,
 							iMoveSpeed = initial_speed,
 							bReplaceExisting = false,
 							bProvidesVision = true,
@@ -170,6 +173,7 @@ function BoomerangAxes( keys )
 					Target = caster,
 					Source = target,
 					bHasFrontalCone = false,
+					bDodgeable = false,
 					iMoveSpeed = return_speed,
 					bReplaceExisting = false,
 					bProvidesVision = true,
@@ -193,6 +197,7 @@ function BoomerangAxes( keys )
 					bHasFrontalCone = false,
 					iMoveSpeed = return_speed,
 					bReplaceExisting = false,
+					bDodgeable = false,
 					bProvidesVision = true,
 					iVisionRadius = vision_radius,
 					iVisionTeamNumber = caster:GetTeamNumber()
@@ -209,6 +214,7 @@ function BoomerangAxes( keys )
 				Target = caster,
 				Source = target,
 				bHasFrontalCone = false,
+				bDodgeable = false,
 				iMoveSpeed = return_speed,
 				bReplaceExisting = false,
 				bProvidesVision = true,

@@ -51,7 +51,7 @@ function modifier_19_wave_debuff:OnAbilityFullyCast(params)
 	if IsServer() then  
 		--PrintTable("OnAbilityFullyCast",params)
 		if params.unit == self:GetCaster() then 
-			if params.ability:IsItem() and not params.ability:IsPermanent() then
+			if params.ability:IsItem() and not params.ability:IsPermanent() and params.ability:GetAbilityName() == "troll_cuthroat_boomeang_axe_return" then
 				return 
 			end
 			params.unit:ModifyHealth(self:GetParent():GetHealth()-300, nil, true, 0)
