@@ -30,7 +30,7 @@ function Think13Wave()
 						  600, 
 						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
 						  DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-						  DOTA_UNIT_TARGET_FLAG_NONE, 
+						  DOTA_UNIT_TARGET_FLAG_NO_INVIS, 
 						  FIND_ANY_ORDER, 
 						  false)
 		if #targets ~= 0 then

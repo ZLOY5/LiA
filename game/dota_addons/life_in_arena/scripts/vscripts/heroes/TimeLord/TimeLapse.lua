@@ -38,9 +38,13 @@ function TimeLapse(keys)
 	ParticleManager:CreateParticle("particles/items_fx/blink_dagger_start.vpcf", PATTACH_ABSORIGIN, caster)
 
 	caster:EmitSound("DOTA_Item.BlinkDagger.Activate")
-	
+
 	Timers:CreateTimer(0.1,
 		function()
+			if not caster:IsAlive() then
+				return
+			end
+
 			if ability.coordinatTable ~= nil then
 				FindClearSpaceForUnit(caster, ability.coordinatTable[1][1], true)
 				caster:SetHealth(ability.coordinatTable[1][2])

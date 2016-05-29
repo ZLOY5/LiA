@@ -25537,7 +25537,7 @@
 	
 		"precache"
 		{
-		"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+			"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
 		}
 		
 		 "AbilitySpecial"
@@ -25584,7 +25584,7 @@
 	        "Passive"       "0"
 	        "IsHidden"      "0"
 			"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"		
-			"EffectName"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+			"EffectName"	"particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
 			"EffectAttachType"	"follow_origin"
 			
 	        "Properties"
@@ -25641,6 +25641,114 @@
 		}
 	 
 	  }
+	
+	"skeleton_thief_concentration"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			"skeleton_thief_shield_of_death"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"150 175 200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"7 10 13"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance_cap"			"50"
+			}
+		}
+	
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+				"Function"		"OnUpgrade"
+			}
+		}
+	
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_skeleton_thief_concentration_chance"
+				"Target" 		"CASTER"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_skeleton_thief_concentration_attack"	
+			{
+				"Passive"	"1"
+				"OnAttackStart"
+				// "%attack_damage" is set to the damage value before mitigation
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"OnAttackStart"
+					}
+				}
+			}
+	
+			"modifier_skeleton_thief_concentration_chance"	
+			{
+				"IsHidden"	"1"
+				"ThinkInterval"  "1.0"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"Recalculate"
+					}
+				}
+	
+				"OnTakeDamage"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"OnTakeDamage"
+					}
+				}
+			}
+	
+			"modifier_skeleton_thief_concentration_crit"
+			{
+			    "IsHidden"  "1"
+			    "Properties"
+			    {
+			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			    }
+	
+			    "OnAttackLanded"
+			    {
+			       "RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"OnAttackLanded"
+					}
+			    }
+			}
+		}
+	}
 	
 	  "skeleton_thief_obsession"
 	  {
