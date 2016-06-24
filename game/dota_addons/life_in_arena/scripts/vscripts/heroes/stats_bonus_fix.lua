@@ -8,6 +8,6 @@ end
 
 function stats_bonus_fix:OnHeroCalculateStatBonus(params) 
 	if not self.CalcStat then
-		self:GetCaster():AddNewModifier(caster, self, "modifier_stats_bonus_fix", nil)
+	--	self:GetCaster():AddNewModifier(caster, self, "modifier_stats_bonus_fix", nil)
 	end
 end
