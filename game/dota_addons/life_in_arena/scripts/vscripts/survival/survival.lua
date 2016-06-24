@@ -301,15 +301,17 @@ end
 
 function Survival:_TimerMessage()
     if self.nRoundNum % 5 == 0 then
-        local message
+        local title
         if self.nRoundNum == 20 then
-            message = "#lia_finalboss"
+            title = "#TimerFinal"--"#lia_finalboss"
         else
-            message = "#lia_megaboss"
+            title = "#TimerMegaboss"--"#lia_megaboss"
         end
-        timerPopup:Start(self.nPreRoundTime,message,0)
+        --timerPopup:Start(self.nPreRoundTime,message,0)
+        StartTimer(self.nPreRoundTime,title,0)
     else
-        timerPopup:Start(self.nPreRoundTime,"#lia_wave_num",self.nRoundNum)
+        --timerPopup:Start(self.nPreRoundTime,"#lia_wave_num",self.nRoundNum)
+        StartTimer(self.nPreRoundTime,"#TimerWave",self.nRoundNum)
     end
 end
 

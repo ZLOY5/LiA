@@ -6,7 +6,8 @@ function onPlayerReadyToWave(playerID)
 			PlayerResource:SetReadyToRound(playerID,true)
 			if PlayerResource:GetNumPlayersReadyToRound() == LiA.nPlayers then
 				Timers:RemoveTimer("StartRoundTimer")
-				timerPopup:SetTimeLeft(3)
+				--timerPopup:SetTimeLeft(3)
+				SetTimeLeft(3)
 				Survival:StartRound()
 			end
 		end

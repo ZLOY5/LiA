@@ -14,7 +14,8 @@ function Survival:StartDuels()
     self.IsDuelOccured = true
     Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
      
-    timerPopup:Start(self.nPreDuelTime,"#lia_duel",0)
+    --timerPopup:Start(self.nPreDuelTime,"#lia_duel",0)
+    StartTimer(self.nPreDuelTime,"#TimerPreDuel",0)
 	Timers:CreateTimer(self.nPreDuelTime,
 		function()
 			self.DuelNumber = 0
@@ -105,7 +106,8 @@ function Survival:Duel(hero1,hero2)
             if counter == 0 then
                 hero1:RemoveModifierByName("modifier_stun_lua")
                 hero2:RemoveModifierByName("modifier_stun_lua")
-                timerPopup:Start(120,"#lia_expire_duel",0)
+                --timerPopup:Start(120,"#lia_expire_duel",0)
+                StartTimer(120,"TimerDuel",0)
                 Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
                     useGameTime = true,
                     endTime = 120,
@@ -152,7 +154,7 @@ function Survival:EndDuel(winner,loser)
     PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_GOODGUYS, 1) 
 
     if winner ~= nil then 
-        timerPopup:Stop()
+        StopTimer()
         Timers:RemoveTimer("duelExpireTime")
         winner:ModifyGold(300-50*self.DuelNumber, false, DOTA_ModifyGold_Unspecified) 
         PlayerResource:ModifyLumber(winner:GetPlayerOwnerID(),10 - self.DuelNumber)
