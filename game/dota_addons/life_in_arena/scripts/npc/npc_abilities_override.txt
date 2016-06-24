@@ -8402,6 +8402,106 @@
 	//End of file npc_lia_hero_araman.txt
 
 
+	//Start of file npc_lia_hero_archmage.txt
+	"archmage_anomaly"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityType"         "DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityTextureName"      "earth_lord_earth_burn"
+	
+	  // Precache
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "particle"   "particles/econ/items/faceless_void/faceless_void_mace_of_aeons/fv_chronosphere_aeons.vpcf"  
+	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"        
+	  }
+	  
+	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "5"
+	  "LevelsBetweenUpgrades"  "4"
+	
+	  "AoERadius" "%radius"
+	  
+	  "AbilityCastRange"        "700"
+	  "AbilityCastPoint"        "0.3"
+	
+	  "AbilityCooldown"       "16"
+	
+	  "AbilityManaCost"       "100 150 200"  
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "duration"      "6 8 10"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "radius"        "450"
+	    }
+	  }
+	
+	    "OnSpellStart"
+	  {
+	    "CreateThinker"
+	    {
+	      "ModifierName"  "modifier_archmage_anomaly_thinker"
+	      "Target"    "POINT"
+	    }
+	  } 
+	
+	  "Modifiers"
+	  {
+	    "modifier_archmage_anomaly_thinker"
+	    {
+	      "Aura"          "modifier_archmage_anomaly"
+	      "Aura_Radius"     "%radius"
+	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	      "Duration"        "%duration"
+	
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "EffectName"    "particles/econ/items/faceless_void/faceless_void_mace_of_aeons/fv_chronosphere_aeons.vpcf"
+	          "EffectAttachType"  "follow_origin"
+	          "Target"      "TARGET"
+	          "ControlPoints"
+	          {
+	            "00" "0 0 0"
+	            "01" "%radius 1 1"
+	            "15" "25 150 25"
+	            "16" "1 0 0"
+	          }
+	        }
+	      }
+	    }
+	
+	    "modifier_archmage_anomaly"
+	    {
+	      "IsDebuff"    "1"
+	      "ThinkInterval" "1"
+	
+	      
+	    }
+	  }
+	}
+	//End of file npc_lia_hero_archmage.txt
+
+
 	//Start of file npc_lia_hero_beastmaster.txt
 	"beastmaster_dominate"
 	{
@@ -11178,6 +11278,129 @@
 			}
 		}
 	}
+	
+	"dark_ranger_blood_feud"
+	{
+		"BaseClass"               "ability_datadriven"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "dark_ranger_fury"
+	
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"precache"
+		{
+			"particle" "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"duration"  	"10"
+			}
+			"02"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"hero_kill_duration"  "20"
+			}
+			"03"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"megaboss_duration_percentage"  "50"
+			}
+			"04"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"bonus_attack_speed"  "30 45 60"
+			}
+			"04"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"bonus_attack_speed_duration"  "3 4 5"
+			}
+			"04"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"bonus_attack_speed_hero_kill_duration"  "6 8 10"
+			}
+			"05"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"return_percentage"  "200"
+			}
+			
+		}
+	
+		"Modifiers"
+		{
+			"modifier_dark_ranger_blood_feud_aura"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"Aura"          	"modifier_dark_ranger_blood_feud_aura_death_check"
+				"Aura_Radius"   	"GLOBAL"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+			}
+	
+			"modifier_dark_ranger_blood_feud_aura_death_check"
+			{
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkRanger/BloodFeud.lua"
+						"Function"		"OnDeath"
+					}
+				}
+					
+			}
+	
+			"modifier_dark_ranger_blood_feud_blood_enemy_creep_kill"
+			{
+				"OnAttacked"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkRanger/BloodFeud.lua"
+						"Function"		"CreepKillerAttacked"
+					}
+				}
+					
+			}
+	
+			"modifier_dark_ranger_blood_feud_blood_enemy_hero_kill"
+			{
+				"OnAttacked"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkRanger/BloodFeud.lua"
+						"Function"		"HeroKillerAttacked"
+					}
+				}
+					
+			}
+	
+			"modifier_dark_ranger_blood_feud_attack_speed"
+			{
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				}
+					
+			}
+	
+		} 
+	}
+	
 	//End of file npc_lia_hero_dark_ranger.txt
 
 
@@ -27283,6 +27506,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"260"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"14.0 18.0 22.0"
 			}
 		}
 		"OnSpellStart"
