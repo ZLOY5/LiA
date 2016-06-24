@@ -124,7 +124,7 @@ function Survival:OnEntityKilled(keys)
         Survival:_OnFinalBossDeath(keys)
     end
 
-    if string.find(killed:GetUnitName(),"_wave_creep")  and not killed.beastmasterDominated then
+    if string.find(killed:GetUnitName(),"_wave_creep")  and not killed.beastmasterDominated and not killed.necromancerCorpse then
         Survival:_OnCreepDeath(keys)   
     elseif string.find(killed:GetUnitName(),"_boss") and not killed:IsOwnedByAnyPlayer() then
         Survival:_OnBossDeath(keys)

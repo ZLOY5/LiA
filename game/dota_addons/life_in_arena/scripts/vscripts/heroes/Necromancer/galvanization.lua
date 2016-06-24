@@ -31,6 +31,8 @@ function AnimateDead( event )
 			local resurected = CreateUnitByName(unit.unit_name, unit:GetAbsOrigin(), true, caster, caster, team)
 			resurected:SetControllableByPlayer(player, true)
 
+			resurected.necromancerCorpse = true
+
 			-- Apply modifiers for the summon properties
 			resurected:AddNewModifier(caster, ability, "modifier_kill", {duration = duration})
 			ability:ApplyDataDrivenModifier(caster, resurected, "modifier_animate_dead", nil)
