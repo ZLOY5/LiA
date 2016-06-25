@@ -8,6 +8,10 @@ function modifier_necromancer_reincarnation:DeclareFunctions()
 	return funcs
 end
 
+function modifier_necromancer_reincarnation:GetAttributes()
+	return MODIFIER_ATTRIBUTE_PERMANENT
+end
+
 function modifier_necromancer_reincarnation:IsHidden()
 	return true 
 end
@@ -44,14 +48,14 @@ function modifier_necromancer_reincarnation:ReincarnateTime(params)
 
 		parent:EmitSound("Hero_SkeletonKing.Reincarnate")
 		parent:EmitSound("Hero_SkeletonKing.Death")
-		
+
 		Timers:CreateTimer(self.reincarnateTime,
 			function() 
 				ParticleManager:DestroyParticle(parent.ReincarnateParticle, false)
 				parent:EmitSound("Hero_SkeletonKing.Reincarnate.Stinger")
-				
-				if not self:GetParent():IsAlive() then
-					self:GetParent():RespawnHero(false, false, false)
+
+				if not parent:IsAlive() then
+					parent:RespawnHero(false, false, false)
 				end
 			end
 		)
