@@ -25,7 +25,7 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_wave_2_aura_of_vengeance:GetAuraSearchType()
-	return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_MECHANICAL
+	return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP
 end
 
 --------------------------------------------------------------------------------
