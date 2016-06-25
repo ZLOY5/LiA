@@ -4,6 +4,10 @@ function modifier_stats_bonus_fix:IsHidden()
 	return true 
 end
 
+function modifier_stats_bonus_fix:IsPurgable()
+	return false
+end
+
 function modifier_stats_bonus_fix:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
 end
