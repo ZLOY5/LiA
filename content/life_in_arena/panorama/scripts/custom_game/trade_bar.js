@@ -65,10 +65,9 @@ function Increment(resource, bDecrement) {
 }
 
 function RecalculateTradeResource() {
-	if ($.GetContextPanel().BHasClass("Open")) {
+	if ($.FindChildInContext("#TradeMain").BHasClass("Open")) {
 		var TextEntry = $.FindChildInContext("#GoldEntry");
 		var resourceAmount = Players.GetGold(Game.GetLocalPlayerID());
-
 		var currentSum = parseInt(TextEntry.text);
 
 		if (TextEntry.text == '') 
