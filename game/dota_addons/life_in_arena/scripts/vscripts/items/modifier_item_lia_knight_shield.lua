@@ -10,6 +10,10 @@ function modifier_item_lia_knight_shield:IsHidden()
 	return true
 end
 
+function modifier_item_lia_knight_shield:IsPurgable()
+	return false
+end
+
 function modifier_item_lia_knight_shield:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,

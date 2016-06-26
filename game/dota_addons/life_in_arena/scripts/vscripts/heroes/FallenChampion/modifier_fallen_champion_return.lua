@@ -4,6 +4,10 @@ function modifier_fallen_champion_return:IsHidden()
 	return true
 end
 
+function modifier_fallen_champion_return:IsPurgable()
+	return false
+end
+
 function modifier_fallen_champion_return:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,

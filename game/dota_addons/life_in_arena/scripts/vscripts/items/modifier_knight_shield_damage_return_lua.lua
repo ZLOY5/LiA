@@ -10,6 +10,10 @@ function modifier_knight_shield_damage_return_lua:IsHidden()
 	return true
 end
 
+function modifier_knight_shield_damage_return_lua:IsPurgable()
+	return false
+end
+
 function modifier_knight_shield_damage_return_lua:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,

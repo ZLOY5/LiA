@@ -8,6 +8,10 @@ function modifier_item_lia_enchanted_shield_2:IsHidden()
 	return true 
 end
 
+function modifier_item_lia_enchanted_shield_2:IsPurgable()
+	return false
+end
+
 function modifier_item_lia_enchanted_shield_2:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_HEALTH_BONUS,

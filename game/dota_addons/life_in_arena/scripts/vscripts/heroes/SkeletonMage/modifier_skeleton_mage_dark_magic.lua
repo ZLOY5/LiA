@@ -4,6 +4,10 @@ function modifier_skeleton_mage_dark_magic:IsHidden()
 	return true
 end
 
+function modifier_skeleton_mage_dark_magic:IsPurgable()
+	return false
+end
+
 function modifier_skeleton_mage_dark_magic:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,

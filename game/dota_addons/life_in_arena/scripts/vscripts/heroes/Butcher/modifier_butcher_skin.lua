@@ -4,6 +4,10 @@ function modifier_butcher_skin:IsHidden()
 	return true
 end
 
+function modifier_butcher_skin:IsPurgable()
+	return false
+end
+
 function modifier_butcher_skin:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
