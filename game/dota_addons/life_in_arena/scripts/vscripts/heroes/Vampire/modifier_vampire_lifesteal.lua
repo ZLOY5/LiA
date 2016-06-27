@@ -8,6 +8,10 @@ function modifier_vampire_lifesteal:IsHidden()
 	return false
 end
 
+function modifier_vampire_lifesteal:IsPurgable()
+	return false
+end
+
 function modifier_vampire_lifesteal:DeclareFunctions()
 	local funcs = {
 					MODIFIER_EVENT_ON_ATTACK_LANDED,
