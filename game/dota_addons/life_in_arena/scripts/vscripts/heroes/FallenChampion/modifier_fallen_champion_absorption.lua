@@ -24,6 +24,10 @@ function modifier_fallen_champion_absorption:OnCreated(params)
 	self:SetStackCount(ability.str_stack)
 end
 
+function modifier_fallen_champion_absorption:IsPurgable()
+	return false
+end
+
 function modifier_fallen_champion_absorption:DeclareFunctions()
 	local funcs = {
 		--MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,

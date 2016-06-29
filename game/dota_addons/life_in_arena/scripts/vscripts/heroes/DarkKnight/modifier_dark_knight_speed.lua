@@ -30,6 +30,10 @@ function modifier_dark_knight_speed:GetModifierAttackSpeedBonus_Constant(params)
 	return self:GetStackCount() + self.bonus_attack_speed
 end
 
+function modifier_dark_knight_speed:IsPurgable()
+	return true
+end
+
 function modifier_dark_knight_speed:OnRefresh( params )
 	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
 	self.duration = self:GetAbility():GetSpecialValueFor("duration")

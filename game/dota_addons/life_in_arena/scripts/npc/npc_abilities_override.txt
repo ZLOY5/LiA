@@ -1610,7 +1610,7 @@
 			}
 		}
 	}
-	"orn_return"
+	"orn_return_old"
 	{
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -1670,6 +1670,23 @@
 		}
 	}
 	
+	"orn_return"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities\orn_return.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"nyx_assassin_spiked_carapace"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"damage_return" "30" //10
+			}
+		}
+	}
 	//End of file creep_passives.txt
 
 
