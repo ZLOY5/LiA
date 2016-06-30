@@ -18,7 +18,7 @@ function modifier_brewmaster_ferocity_lua:OnCreated(event)
 end
 
 function modifier_brewmaster_ferocity_lua:IsPurgable()
-	return true
+	return false
 end
 
 function modifier_brewmaster_ferocity_lua:OnIntervalThink(event)

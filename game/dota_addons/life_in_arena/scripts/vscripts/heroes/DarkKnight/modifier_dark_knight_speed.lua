@@ -31,7 +31,7 @@ function modifier_dark_knight_speed:GetModifierAttackSpeedBonus_Constant(params)
 end
 
 function modifier_dark_knight_speed:IsPurgable()
-	return true
+	return false
 end
 
 function modifier_dark_knight_speed:OnRefresh( params )

@@ -41,7 +41,7 @@ function modifier_acron_battle_fevor:IsHidden()
 end
 
 function modifier_acron_battle_fevor:IsPurgable()
-	return true
+	return false
 end
 
 function modifier_acron_battle_fevor:GetAttributes()
