@@ -4,6 +4,10 @@ function modifier_dark_ranger_spiked_charm:IsHidden()
 	return true 
 end
 
+function modifier_dark_ranger_spiked_charm:IsPurgable()
+	return false
+end
+
 --------------------------------------------------------------------------------
 
 function modifier_dark_ranger_spiked_charm:IsAura()

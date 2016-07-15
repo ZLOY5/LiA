@@ -59,6 +59,10 @@ function modifier_item_lia_seal_of_power_armor:IsHidden()
 	return false
 end
 
+function modifier_item_lia_seal_of_power_armor:IsPurgable()
+	return false
+end
+
 function modifier_item_lia_seal_of_power_armor:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
@@ -154,6 +158,10 @@ function modifier_item_lia_seal_of_power_damage:GetAttributes()
 end
 
 function modifier_item_lia_seal_of_power_damage:IsHidden()
+	return false
+end
+
+function modifier_item_lia_seal_of_power_damage:IsPurgable()
 	return false
 end
 

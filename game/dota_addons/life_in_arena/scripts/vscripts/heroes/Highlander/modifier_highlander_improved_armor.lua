@@ -17,6 +17,10 @@ function modifier_highlander_improved_armor:IsHidden()
 	return false
 end
 
+function modifier_highlander_improved_armor:IsPurgable()
+	return false
+end
+
 function modifier_highlander_improved_armor:GetModifierPhysicalArmorBonus( params )
 	return self:GetStackCount() + self.bonus_armor
 end

@@ -4,6 +4,10 @@ function modifier_necromancer_skel_return:IsHidden()
 	return true
 end
 
+function modifier_necromancer_skel_return:IsPurgable()
+	return false
+end
+
 function modifier_necromancer_skel_return:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,

@@ -15,6 +15,10 @@ end
 
 --------------------------------------------------------------
 
+function modifier_shaman_resourcefulness:IsPurgable()
+	return false
+end
+
 function modifier_shaman_resourcefulness:OnCreated(params)
 	local ability = self:GetAbility()
 	if not ability.kill_stack then

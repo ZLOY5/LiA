@@ -4,6 +4,10 @@ function modifier_ghoul_persistence:IsHidden()
 	return true
 end
 
+function modifier_ghoul_persistence:IsPurgable()
+	return false
+end
+
 --------------------------------------------------------------------------------
 
 function modifier_ghoul_persistence:IsAura()

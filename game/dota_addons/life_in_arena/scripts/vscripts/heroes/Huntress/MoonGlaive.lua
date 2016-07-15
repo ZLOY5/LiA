@@ -106,7 +106,7 @@ function moon_glaive_dummy_created( keys )
                             nil,
                             ability.bounceRange,
                             DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-                            DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_MECHANICAL + DOTA_UNIT_TARGET_BUILDING,
+                            DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BUILDING,
                             DOTA_UNIT_TARGET_FLAG_NONE,
                             FIND_CLOSEST,
                             false)

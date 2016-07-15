@@ -272,7 +272,7 @@
 		"02"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"duration"				"5 6 7"
+			"duration"				"4 5 6"
 		}
 	}
 	"OnSpellStart"
@@ -300,28 +300,42 @@
 			}
 		}
 
-		"ActOnTargets"
+		"ApplyModifier"
 		{
+			"ModifierName"	"modifier_naga_siren_song_aura"
 			"Target"
 			{
 				"Center"  	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			}
-		
-			"Action"    
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_naga_siren_song"
-					"Target" 		"TARGET"
-					"Duration"		"%duration"
-				}
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 			}
 		}
 	}
 	"Modifiers"
 	{
+	    "modifier_naga_siren_song_aura"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "0"
+	      "Duration"    "%duration"
+
+	      "EffectName"			"particles/units/heroes/hero_siren/naga_siren_song_aura.vpcf"
+		  "EffectAttachType"		"attach_mouth"
+
+	      "Aura"            "modifier_naga_siren_song"
+	      "Aura_Radius"     "%radius"
+	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+
+	      "OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/NagaSiren/Song.lua"
+					"Function"		"StopSound"
+				}
+			}
+	    }
+    
 		"modifier_naga_siren_song"
 		{
 			"IsPurgable"		"0"
@@ -331,8 +345,7 @@
 			{
 				"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_MUTED" 			"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-
+				//"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
 			}	
 			
 			"Properties"
@@ -342,6 +355,8 @@
 			
 			"EffectName" 		"particles/units/heroes/hero_siren/naga_siren_song_debuff.vpcf" 	   
 			"EffectAttachType"  "follow_origin"
+
+			
 		}
 	}
 }

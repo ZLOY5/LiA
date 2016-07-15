@@ -4,6 +4,10 @@ function modifier_warrior_of_light_will_light:IsHidden()
 	return true
 end
 
+function modifier_warrior_of_light_will_light:IsPurgable()
+	return false
+end
+
 function modifier_warrior_of_light_will_light:DeclareFunctions()
 	local funcs = {
 		MODIFIER_EVENT_ON_TAKEDAMAGE,

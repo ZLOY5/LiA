@@ -4,6 +4,10 @@ function modifier_vampire_transformation_regen:IsHidden()
 	return true
 end 
 
+function modifier_vampire_transformation_regen:IsPurgable()
+	return true
+end 
+
 function modifier_vampire_transformation_regen:GetAttributes()
 	return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
 end

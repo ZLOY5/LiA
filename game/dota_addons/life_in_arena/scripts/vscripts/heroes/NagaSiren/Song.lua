@@ -33,3 +33,7 @@ function TauntEnd( keys )
 	target:SetForceAttackTarget(nil)
 	target:MoveToPositionAggressive(target:GetAbsOrigin()+target:GetForwardVector()*50)
 end
+
+function StopSound(keys)
+	keys.caster:StopSound("Hero_NagaSiren.SongOfTheSiren")
+end

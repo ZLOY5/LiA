@@ -16,6 +16,10 @@ function modifier_necromancer_reincarnation:IsHidden()
 	return true 
 end
 
+function modifier_necromancer_reincarnation:IsPurgable()
+	return false
+end
+
 function modifier_necromancer_reincarnation:OnCreated(kv)
 	self.reincarnateTime = self:GetAbility():GetSpecialValueFor("reincarnate_time")
 end

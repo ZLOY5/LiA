@@ -9,6 +9,10 @@ function modifier_dark_ranger_spiked_charm_aura:DeclareFunctions()
 	return funcs
 end
 
+function modifier_dark_ranger_spiked_charm_aura:IsPurgable()
+	return false
+end
+
 function modifier_dark_ranger_spiked_charm_aura:OnAttackLanded(params) 
 	if IsServer() then
 		if params.target == self:GetParent() and not self:GetParent():HasModifier("modifier_illusion") then 

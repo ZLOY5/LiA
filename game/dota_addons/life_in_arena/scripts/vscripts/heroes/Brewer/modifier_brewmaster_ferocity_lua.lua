@@ -17,6 +17,14 @@ function modifier_brewmaster_ferocity_lua:OnCreated(event)
 	end
 end
 
+function modifier_brewmaster_ferocity_lua:IsPurgable()
+	return false
+end
+
+function modifier_brewmaster_ferocity_lua:RemoveOnDeath()
+	return false
+end
+
 function modifier_brewmaster_ferocity_lua:OnIntervalThink(event)
 	if IsServer() and self:GetParent():IsAlive() then
 		local previous_bonus_strength = self.bonus_strength
