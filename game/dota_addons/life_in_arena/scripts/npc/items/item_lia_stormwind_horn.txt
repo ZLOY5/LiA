@@ -31,9 +31,9 @@
 	   	}
 		"02"
 	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "regen_percent" "50"
-	   	}
+			"var_type" "FIELD_INTEGER"
+			"bonus_attack_speed" "15"
+		}
 		"03"
 	   	{
 		    "var_type" "FIELD_INTEGER"
@@ -76,38 +76,14 @@
   	  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  	
 	    	"IsBuff" "1"
 	    	"IsPurgable" "0"
-	    	"OnCreated"
-	    	{
-	    		"RunScript"
-	    		{
-	    			"ScriptFile"	"items/StormwindHorn.lua"
-	    			"Function"		"CalcRegeneration"
-	    		}
-	    	}
-	    	"OnDestroy"
-	    	{
-				"RunScript"
-    			{
-			        "ScriptFile"    "items/StormwindHorn.lua"
-			        "Function"      "AuraNone"	
-				}
-	    	}
 
 	    	"Properties"
 	    	{
 	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+	     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 	    	}
 	    }
-	    "horn_regeneration"
-   		{
-   			"IsHidden"	"1"
-	  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-   			"Properties"
-	    	{
-	     		"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%regen"
-	    	}
 
-   		}
    	}
 
 }

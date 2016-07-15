@@ -142,28 +142,11 @@
 	    	"IsPurgable" "0"
 	  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 
-	    	"OnCreated"
-	    	{	
-
-	    		"RunScript"
-	    		{
-	    			"ScriptFile"	"items/StormwindHorn.lua"
-	    			"Function"		"CalcRegeneration"
-	    		}
-
-	    	}
-	    	"OnDestroy"
-	    	{
-				"RunScript"
-    			{
-			        "ScriptFile"    "items/StormwindHorn.lua"
-			        "Function"      "AuraNone"	
-				}
-	    	}
 
 	    	"Properties"
 	    	{
 	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+	     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 	    	}
 	    }
 		 "ice_sword_aura_Modifier"
@@ -209,9 +192,9 @@
 	   	}
 		"04"
 	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "regen_percent" "120"
-	   	}
+			"var_type" "FIELD_INTEGER"
+			"bonus_attack_speed" "25"
+		}
 		"05"
 	   	{
 		    "var_type" "FIELD_INTEGER"

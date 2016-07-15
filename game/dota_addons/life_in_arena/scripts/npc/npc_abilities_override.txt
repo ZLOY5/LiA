@@ -8420,6 +8420,229 @@
 
 
 	//Start of file npc_lia_hero_archmage.txt
+	"archmage_shooting_star"
+	  {
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	    "FightRecapLevel"       "1"
+	    "BaseClass"         "ability_lua"
+	    "AbilityTextureName"        "archmage_shooting_star"
+	    "ScriptFile"          "heroes/Archmage/archmage_shooting_star.lua"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCastRange"        "700"
+	    "AbilityCastPoint"        "0.0"
+	    
+	    // Time   
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"       "5"       
+	
+	    // Cost
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityManaCost"       "50 100 150"
+	
+	
+	    "precache"
+	    {
+	      "soundfile"   "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+	      "particle"    "particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
+	    }
+	
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	      "01"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "initial_damage"  "100 150 200"
+	      }
+	      "02"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "damage_per_charge" "20 30 40"
+	      }
+	      "03"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "manacost_per_charge" "10 20 30"
+	      }
+	      "04"
+	      {
+	        "var_type"        "FIELD_FLOAT"
+	        "charge_duration"  "35.0"
+	      }
+	      "05"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "charge_limit"  "5 6 7"
+	      }   
+	      "06"
+	      {
+	        "var_type"      "FIELD_FLOAT"
+	        "starfall_delay"  "0.57"
+	      }
+	      "07"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "initial_manacost"  "50 100 150"
+	      }
+	    }
+	  }
+	
+	"archmage_shooting_star_kek"
+	{
+	  // General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	
+	  "AbilityTextureName"      "archmage_shooting_star"
+	
+	  // Precache
+	  //-------------------------------------------------------------------------------------------------------------
+	  "precache"
+	  {
+	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+	    "particle"    "particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
+	  }
+	  
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "1"
+	  "LevelsBetweenUpgrades"  "2"
+	  
+	  // Casting
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCastRange"        "700"
+	  "AbilityCastPoint"        "0.0"
+	  
+	  // Time   
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityCooldown"       "5"
+	
+	  // Cost
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityManaCost"       "50 100 150"
+	
+	  // Special
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "initial_damage"  "100 150 200"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "damage_per_charge" "20 30 40"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "manacost_per_charge" "10 20 30"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "charge_duration"  "35.0"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "charge_limit"  "5 6 7"
+	    }   
+	    "06"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "starfall_delay"  "0.57"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Mirana.Starstorm.Cast"
+	      "Target"    "TARGET"
+	    }
+	    
+	
+	    "FireEffect"
+	    {
+	      "EffectName"  "particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	      "Target"    "TARGET"
+	    }
+	
+	    "DelayedAction"
+	    {
+	      "Delay"   "%starfall_delay"
+	
+	      "Action"
+	      {
+	
+	        "FireSound"
+	        {
+	          "EffectName"  "Hero_Mirana.Starstorm.Impact"
+	          "Target"    "TARGET"
+	        }
+	
+	        "RunScript"
+	        {
+	          "ScriptFile"  "heroes/Archmage/ShootingStar.lua"
+	          "Function"    "ShootingStar"
+	        }
+	      }
+	    }  
+	  }
+	
+	
+	  "Modifiers"
+	  {
+	    "modifier_archmage_shooting_star_stacks"
+	    {
+	      "Passive"               "0"
+	      "IsHidden"        "0"
+	      "Attributes"      "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "heroes/Archmage/ShootingStar.lua"
+	          "Function"    "OnCreated"
+	        }
+	      }
+	
+	      "OnDestroy"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "heroes/Archmage/ShootingStar.lua"
+	          "Function"    "OnDestroy"
+	        }
+	      }
+	      
+	    }
+	  }
+	}
+	
+	
+	
 	"archmage_anomaly"
 	{
 	  // General
@@ -8429,7 +8652,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "earth_lord_earth_burn"
+	  "AbilityTextureName"      "archmage_anomaly"
 	
 	  // Precache
 	  //-------------------------------------------------------------------------------------------------------------
@@ -8498,9 +8721,7 @@
 	          "Target"      "TARGET"
 	          "ControlPoints"
 	          {
-	            "00" "0 0 0"
-	            "01" "%radius 1 1"
-	            "16" "1 0 0"
+	            "01"  "%radius %radius 0"
 	          }
 	        }
 	      }
@@ -16940,12 +17161,12 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_main_target_tooltip"	"100 150 200"
+				"damage_main_target_tooltip"	"150 200 250"
 			}
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_radius"			"50 100 150"
+				"damage_radius"			"75 125 175"
 			}
 			"07"
 			{
@@ -17111,7 +17332,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"max_armor"			"21"
+				"max_armor"			"21 24 27"
 			}
 		}
 	}
@@ -20643,7 +20864,7 @@
 	  "AbilityTextureName"      "slardar_slithereen_crush"
 		
 		"AbilityCooldown"				"180 140 100"
-		"AbilityManacost"				"100 120 140"
+		"AbilityManaCost"				"100 120 140"
 		"AbilityCastRange"				"300"
 		
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	

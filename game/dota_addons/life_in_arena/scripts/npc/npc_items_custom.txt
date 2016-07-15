@@ -4338,28 +4338,11 @@
 		    	"IsPurgable" "0"
 		  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	
-		    	"OnCreated"
-		    	{	
-	
-		    		"RunScript"
-		    		{
-		    			"ScriptFile"	"items/StormwindHorn.lua"
-		    			"Function"		"CalcRegeneration"
-		    		}
-	
-		    	}
-		    	"OnDestroy"
-		    	{
-					"RunScript"
-	    			{
-				        "ScriptFile"    "items/StormwindHorn.lua"
-				        "Function"      "AuraNone"	
-					}
-		    	}
 	
 		    	"Properties"
 		    	{
 		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+		     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 		    	}
 		    }
 			 "ice_sword_aura_Modifier"
@@ -4405,9 +4388,9 @@
 		   	}
 			"04"
 		   	{
-			    "var_type" "FIELD_INTEGER"
-			    "regen_percent" "120"
-		   	}
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "25"
+			}
 			"05"
 		   	{
 			    "var_type" "FIELD_INTEGER"
@@ -6280,28 +6263,11 @@
 	    	
 		    	"IsBuff" "1"
 		    	"IsPurgable" "0"
-		    	"OnCreated"
-		    	{	
-	
-		    		"RunScript"
-		    		{
-		    			"ScriptFile"	"items/StormwindHorn.lua"
-		    			"Function"		"CalcRegeneration"
-		    		}
-	
-		    	}
-		    	"OnDestroy"
-		    	{
-					"RunScript"
-	    			{
-				        "ScriptFile"    "items/StormwindHorn.lua"
-				        "Function"      "AuraNone"	
-					}
-		    	}
 	
 		    	"Properties"
 		    	{
 		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+		     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 		    	}
 		    }
 			 "orb_of_frost_aura_Modifier"
@@ -6334,9 +6300,9 @@
 		   	}
 			"04"
 		   	{
-			    "var_type" "FIELD_INTEGER"
-			    "regen_percent" "80"
-		   	}
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "20"
+			}
 			"05"
 		   	{
 			    "var_type" "FIELD_INTEGER"
@@ -10027,9 +9993,9 @@
 		   	}
 			"02"
 		   	{
-			    "var_type" "FIELD_INTEGER"
-			    "regen_percent" "50"
-		   	}
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "15"
+			}
 			"03"
 		   	{
 			    "var_type" "FIELD_INTEGER"
@@ -10072,38 +10038,14 @@
 	  	  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  	
 		    	"IsBuff" "1"
 		    	"IsPurgable" "0"
-		    	"OnCreated"
-		    	{
-		    		"RunScript"
-		    		{
-		    			"ScriptFile"	"items/StormwindHorn.lua"
-		    			"Function"		"CalcRegeneration"
-		    		}
-		    	}
-		    	"OnDestroy"
-		    	{
-					"RunScript"
-	    			{
-				        "ScriptFile"    "items/StormwindHorn.lua"
-				        "Function"      "AuraNone"	
-					}
-		    	}
 	
 		    	"Properties"
 		    	{
 		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+		     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 		    	}
 		    }
-		    "horn_regeneration"
-	   		{
-	   			"IsHidden"	"1"
-		  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-	   			"Properties"
-		    	{
-		     		"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%regen"
-		    	}
 	
-	   		}
 	   	}
 	
 	}
