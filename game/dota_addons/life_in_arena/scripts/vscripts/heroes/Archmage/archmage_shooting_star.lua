@@ -67,10 +67,12 @@ function archmage_shooting_star:OnSpellStart()
 
 				caster.shootingStarStackCount = caster.shootingStarStackCount + 1
 				CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = caster.shootingStarStackCount })
+				self:MarkAbilityButtonDirty()
 				Timers:CreateTimer(charge_duration,
 					function()
 						caster.shootingStarStackCount = caster.shootingStarStackCount - 1
 						CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = caster.shootingStarStackCount })
+						self:MarkAbilityButtonDirty()
 					end
 				)
 
