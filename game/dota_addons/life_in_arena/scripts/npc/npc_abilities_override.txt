@@ -8570,6 +8570,11 @@
 	      "var_type"      "FIELD_FLOAT"
 	      "starfall_delay"  "0.57"
 	    }
+	    "07"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "anomaly_radius"  "450"
+	    } 
 	  }
 	  
 	  "OnSpellStart"
@@ -8698,6 +8703,14 @@
 	    {
 	      "ModifierName"  "modifier_archmage_anomaly_thinker"
 	      "Target"    "POINT"
+	    }
+	
+	    "SpawnUnit"
+	    {
+	      "UnitName"    "dummy_unit_anomaly"
+	      "Target"     "POINT"
+	      "Duration"    "%duration"
+	      "UnitCount"    "1"
 	    }
 	  } 
 	
