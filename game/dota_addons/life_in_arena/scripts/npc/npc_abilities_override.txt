@@ -12652,7 +12652,7 @@
 					"Radius"	"%radius"
 					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				}
 			}
 		}
@@ -12679,9 +12679,19 @@
 					{
 						"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
 						"Function"		"shell"
-						"Dmg"		"%attack_damage"
+						"Dmg"			"%attack_damage"
 					}
 				} 
+	
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+						"Function"		"OnIntervalThink"
+					}
+				}
 		
 			}
 		}
@@ -12827,9 +12837,6 @@
 				}
 			}
 	
-	
-	
-			
 			"ApplyModifier"
 			{
 				"ModifierName"	"modifier_fallen_champion_roar_hero"
@@ -12868,23 +12875,6 @@
 			{
 				"IsHidden"	 	"0"
 				"IsPurgable"		"0"
-				//"Duration"		"%duration"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/FallenChampion/roar.lua"
-						"Function"		"TCreate"
-					}
-				}
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/FallenChampion/roar.lua"
-						"Function"		"TEnd"
-					}
-				}
 			}
 		
 			"modifier_fallen_champion_roar"

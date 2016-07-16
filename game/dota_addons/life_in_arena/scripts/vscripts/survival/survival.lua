@@ -201,8 +201,8 @@ function Survival:onThink()
     for i = 1, #self.tHeroes do
         hero = self.tHeroes[i]
 		if hero:GetUnitName() == "npc_dota_hero_nyx_assassin" then
-			if hero.alldmgActive then
-				ndata = {count = hero.alldmg}
+			if hero.accumDamage then
+				ndata = {count = hero.accumDamage}
 				CustomGameEventManager:Send_ServerToPlayer( hero:GetPlayerOwner(), "upd_action_fallen", ndata )
 			end
 		end

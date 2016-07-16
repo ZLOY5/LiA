@@ -33,15 +33,3 @@ function TauntEnd( keys )
 	target:SetForceAttackTarget(nil)
 	target:MoveToPositionAggressive(target:GetAbsOrigin()+target:GetForwardVector()*50)
 end
-
-function TCreate(keys)
-	local caster = keys.caster
-	caster.Barrier = false -- снимаем барьер 
-
-end
-
-function TEnd(keys)
-	local caster = keys.caster
-	caster.Barrier = true -- ставим барьер вновь 
-
-end

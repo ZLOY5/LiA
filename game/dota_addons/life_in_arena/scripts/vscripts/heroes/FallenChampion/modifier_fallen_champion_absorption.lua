@@ -57,7 +57,7 @@ function modifier_fallen_champion_absorption:OnDeath(params)
 				self:GetParent():CalculateStatBonus()
 			else
 				ability.kill_stack = ability.kill_stack + 1
-				print("ability.kill_stack=",ability.kill_stack)
+				--print("ability.kill_stack=",ability.kill_stack)
 				if ability.kill_stack >= ability:GetSpecialValueFor("kills_for_bonus_str") then
 					ability.str_stack = ability.str_stack + 1
 					ability.kill_stack = 0
