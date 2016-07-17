@@ -57,24 +57,31 @@ function archmage_shooting_star:OnSpellStart()
 	if target:HasModifier("modifier_archmage_anomaly") then
 
 		EmitSoundOn( "Hero_Mirana.Starstorm.Cast", target )
+		--print("pizda")
 
-		local searchForDummies = FindUnitsInRadius(self:GetCaster():GetTeam(), 
-													self:GetCaster():GetAbsOrigin(), 
+	--	print(self:GetCaster():GetTeamNumber())
+	--	print(target:GetAbsOrigin())
+	--	print(target:GetTeamNumber())
+
+		local searchForDummies = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), 
+													target:GetAbsOrigin(), 
 													nil, anomaly_radius, 
-													DOTA_UNIT_TARGET_TEAM_FRIENDLY, 
-													DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_HERO, 
+													DOTA_UNIT_TARGET_TEAM_NONE + DOTA_UNIT_TARGET_TEAM_BOTH, 
+													DOTA_UNIT_TARGET_ALL, 
 													0, 
 													FIND_ANY_ORDER, 
 													false)
+		--print(searchForDummies)
 
 		for _,v in pairs(searchForDummies) do
-			if v:GetName() == "dummy_unit_anomaly" and v:GetOwner() == self:GetCaster() then
+			print(v:GetUnitName())
+		--[[	if v:GetUnitName() == "dummy_unit_anomaly" and v:GetOwner() == self:GetCaster() then
 				print("found")
 				local shootingStarsTargets = FindUnitsInRadius(self:GetCaster():GetTeam(), 
 																v:GetAbsOrigin(), 
 																nil, anomaly_radius, 
 																DOTA_UNIT_TARGET_TEAM_ENEMY, 
-																DOTA_UNIT_TARGET_CREEP + DOTA_UNIT_TARGET_HERO, 
+																DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 
 																0, 
 																FIND_ANY_ORDER, 
 																false)
@@ -90,7 +97,7 @@ function archmage_shooting_star:OnSpellStart()
 
 
 
-			end
+			end ]]--
 			
 		end
 
