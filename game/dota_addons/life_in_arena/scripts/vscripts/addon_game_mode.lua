@@ -32,6 +32,8 @@ function Precache( context )
 		PrecacheUnitByNameAsync("necromancer_skeleton2", function(...) end)
 		PrecacheUnitByNameAsync("necromancer_skeleton3", function(...) end)
 		PrecacheUnitByNameAsync("necromancer_skeleton4", function(...) end)
+
+		PrecacheUnitByNameAsync("pure_light_totem", function(...) end)
 		
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf" , context)
 		--Берсеркер

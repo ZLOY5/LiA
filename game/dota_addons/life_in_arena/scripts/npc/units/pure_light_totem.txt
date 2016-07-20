@@ -1,0 +1,69 @@
+"pure_light_totem"
+{
+	// General
+	//----------------------------------------------------------------
+	"BaseClass"			"npc_dota_building"
+	"Model"				"models/props/traps/barking_dog/barking_dog.vmdl"
+	"ModelScale"		"0.8"
+	"Level"				"1"
+	"SoundSet"			"Creep_Good_Melee"
+	"MinimapIcon"		"minimap_racks90"
+	"HealthBarOffset"	"250"
+	
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"			"" 
+	
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"			"5"
+	"MagicalResistance"		"0"
+	
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+	"AttackDamageMin"			"0"			// Damage range min.
+	"AttackDamageMax"			"0"			// Damage range max.
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	"AttackRate"				"0"			// Speed of attack.
+	"AttackAnimationPoint"		"0"			// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"0"			// Range within a target can be acquired.
+	"AttackRange"				"0"			// Range within a target can be attacked.
+	"ProjectileModel"			""			// Particle system model for projectile.
+	"ProjectileSpeed"			"0"			// Speed of projectile.
+	
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyGoldMin"			"0.0"
+	"BountyGoldMax"			"0.0"
+	
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+	"MovementSpeed"			"0"
+	"MovementTurnRate"		"0"
+	
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"			"500"
+	"StatusMana"			"0"
+	"StatsManaRegen"		"0"
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"800"
+	"VisionNighttimeRange"		"600"
+	
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"				"DOTA_TEAM_BADGUYS"
+	"CombatClassAttack"		"DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend"		"DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationShipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	"AttackType"    "siege"
+	"ArmorType"     "fortified"
+
+	"BoundsHullName"		"DOTA_HULL_SIZE_BARRACKS"
+	"RingRadius"			"180"
+
+}
