@@ -492,3 +492,57 @@
     }
   }
 }
+
+"archmage_magic_barrier"
+{
+    "BaseClass"         "ability_lua"
+    "ScriptFile"        "heroes/Archmage/archmage_magic_barrier.lua"
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
+
+    "AbilityTextureName"        "archmage_magic_barrier"
+
+    "CastFilterRejectCaster" "1"
+    
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.0"
+    
+    // Time   
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"       "5"       
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"       "0"
+
+
+    "precache"
+    {
+
+    }
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "lol"             "20 30 40"
+        }
+        "02"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "lol1"            "5"
+        }
+    }
+}

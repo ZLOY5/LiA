@@ -12,6 +12,16 @@ function BlockDamage_PhysicalPreArmor(attack_damage,damage_type,victim,attacker,
 		return attack_damage
 	end
 
+	if victim:HasModifier("modifier_archmage_magic_barrier") then 
+		local blocked = victim:FindModifierByName("modifier_archmage_magic_barrier"):GetBlockedDamage(newDamage)
+		blocked_damage = blocked_damage + blocked
+		newDamage = newDamage - blocked
+	end
+
+	if newDamage <= 0 then 
+		return attack_damage
+	end
+
 	if victim:HasModifier("modifier_ancient_priestess_mana_shield") then 
 		local blocked = victim:FindModifierByName("modifier_ancient_priestess_mana_shield"):GetBlockDamage(newDamage)
 		blocked_damage = blocked_damage + blocked
