@@ -78,6 +78,25 @@ function modifier_archmage_magic_barrier:OnIntervalThink()
 		else
 			ability.barrierMana = ability.barrierMana - self.barrierManaLoss
 		end
+
+		if ability.barrierMana > 0 then
+			local shield_size = 75
+
+			if self:GetParent().magicBarrerParticle == nil then
+				self:GetParent().magicBarrerParticle = ParticleManager:CreateParticle("particles/abaddon_aphotic_shield.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+				ParticleManager:SetParticleControl(self:GetParent().magicBarrerParticle, 1, Vector(shield_size,0,shield_size))
+				ParticleManager:SetParticleControl(self:GetParent().magicBarrerParticle, 2, Vector(shield_size,0,shield_size))
+				ParticleManager:SetParticleControl(self:GetParent().magicBarrerParticle, 4, Vector(shield_size,0,shield_size))
+				ParticleManager:SetParticleControl(self:GetParent().magicBarrerParticle, 5, Vector(shield_size,0,0))
+
+				ParticleManager:SetParticleControlEnt(self:GetParent().magicBarrerParticle, 0, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
+				--
+			end	
+		elseif ability.barrierMana == 0 and self:GetParent().magicBarrerParticle ~= nil then
+			ParticleManager:DestroyParticle(self:GetParent().magicBarrerParticle,true)
+			ParticleManager:ReleaseParticleIndex(self:GetParent().magicBarrerParticle)
+		end
+
 		CustomNetTables:SetTableValue("custom_modifier_state", tostring( ability:GetEntityIndex() ) ,{ barrierMana = ability.barrierMana })
 	else
 		local netTable = CustomNetTables:GetTableValue("custom_modifier_state", tostring( ability:GetEntityIndex() ) )
