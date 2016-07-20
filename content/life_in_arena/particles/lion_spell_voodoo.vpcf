@@ -1,0 +1,145 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 60
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_flMinSize = 0.0015
+			m_flMaxSize = 0.004
+			m_bBlendFramesSeq0 = false
+			m_hTexture = resource:"materials/particle/fly/fly.vtex"
+		},
+		{
+			_class = "C_OP_RenderScreenVelocityRotate"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_Gravity = [ 0.0, 0.0, 100.0 ]
+			m_fDrag = 0.4
+		},
+		{
+			_class = "C_OP_FadeAndKill"
+			m_flEndFadeInTime = 0.1
+			m_flStartFadeOutTime = 0.8
+		},
+		{
+			_class = "C_OP_OscillateScalar"
+			m_nField = 12
+			m_RateMin = -3.0
+			m_RateMax = 3.0
+			m_FrequencyMin = 0.5
+		},
+		{
+			_class = "C_OP_OscillateScalar"
+			m_FrequencyMin = 0.5
+			m_RateMax = 3.0
+			m_RateMin = -3.0
+			m_nField = 4
+		},
+		{
+			_class = "C_OP_OscillateVector"
+			m_RateMin = [ -30.0, -30.0, -10.0 ]
+			m_RateMax = [ 30.0, 30.0, 10.0 ]
+			m_FrequencyMin = [ 0.25, 0.25, 0.25 ]
+			m_FrequencyMax = [ 1.5, 1.5, 1.5 ]
+		},
+		{
+			_class = "C_OP_ControlpointLight"
+			m_bUseNormal = true
+			m_LightZeroDist1 = 2600.0
+			m_LightFiftyDist1 = 1200.0
+			m_LightColor1 = [ 177, 195, 195, 255 ]
+			m_vecCPOffset1 = [ 200.0, 100.0, 900.0 ]
+		},
+		{
+			_class = "C_OP_SetControlPointToCenter"
+		},
+		{
+			_class = "C_OP_VelocityMatchingForce"
+			m_flSpdScale = 0.01
+			m_flDirScale = 0.01
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMin = [ 221, 245, 255, 255 ]
+			m_ColorMax = [ 204, 250, 253, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMin = 4.0
+			m_fLifetimeMax = 6.0
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMax = 3.0
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_LocalCoordinateSystemSpeedMax = [ 550.0, 0.0, 0.0 ]
+			m_LocalCoordinateSystemSpeedMin = [ 350.0, 0.0, 0.0 ]
+			m_fSpeedMax = 555.0
+			m_fSpeedMin = 422.0
+			m_vecDistanceBiasAbs = [ 0.0, 0.0, 1.0 ]
+			m_fRadiusMax = 48.0
+		},
+		{
+			_class = "C_INIT_RandomYaw"
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_flNoiseScaleLoc = 1.0
+			m_vecOutputMin = [ -1200.0, -1200.0, 800.0 ]
+			m_vecOutputMax = [ 1200.0, 1200.0, 2500.0 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 40
+		},
+	]
+	m_ForceGenerators = 
+	[
+		{
+			_class = "C_OP_AttractToControlPoint"
+			m_nControlPointNumber = 1
+			m_fFalloffPower = 0.0
+			m_fForceAmount = 500.0
+		},
+		{
+			_class = "C_OP_TwistAroundAxis"
+			m_fForceAmount = 300.0
+		},
+		{
+			_class = "C_OP_AttractToControlPoint"
+			m_fFalloffPower = -0.1
+			m_fForceAmount = 200.0
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/lion_spell_voodoo_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_lion/lion_spell_voodoo_c.vpcf"
+		},
+	]
+}

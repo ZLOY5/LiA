@@ -1,7 +1,25 @@
 archmage_shooting_star = class({})
+LinkLuaModifier("modifier_archmage_shooting_star_stacks", "heroes/Archmage/modifier_archmage_shooting_star_stacks.lua",LUA_MODIFIER_MOTION_NONE)
+
+function archmage_shooting_star:GetIntrinsicModifierName() 
+	return "modifier_archmage_shooting_star_stacks"
+end
 
 function archmage_shooting_star:GetCastAnimation()
 	return ACT_DOTA_CAST_ABILITY_4
+end
+
+function archmage_shooting_star:OnUpgrade()
+	local modifier = self:GetCaster():FindModifierByName("modifier_archmage_shooting_star_stacks")
+	local stacks = modifier:GetStackCount()
+	local charge_limit = self:GetSpecialValueFor("charge_limit") 
+
+	if self:GetCaster().shootingStarStackCount ~= nil  then
+		if self:GetCaster().shootingStarStackCount >= charge_limit then
+			modifier:SetStackCount(charge_limit)	
+			ParticleManager:SetParticleControl(self:GetCaster().shootingStarOverhead, modifier:GetStackCount(), Vector(1,0,0))	
+		end	
+	end
 end
 
 function archmage_shooting_star:GetManaCost(level)
@@ -33,6 +51,7 @@ function archmage_shooting_star:OnSpellStart()
 	local anomaly_radius = self:GetSpecialValueFor("anomaly_radius")
 	local target = self:GetCursorTarget()
 	local caster = self:GetCaster()
+	local stack_modifier = caster:FindModifierByName("modifier_archmage_shooting_star_stacks")
 
 	if caster.shootingStarStackCount == nil then
 		caster.shootingStarStackCount = 0
@@ -44,12 +63,21 @@ function archmage_shooting_star:OnSpellStart()
 	 
 
 	caster.shootingStarStackCount = caster.shootingStarStackCount + 1
+	if caster.shootingStarStackCount <= charge_limit then
+		ParticleManager:SetParticleControl(caster.shootingStarOverhead, caster.shootingStarStackCount, Vector(1,0,0))
+		stack_modifier:SetStackCount(caster.shootingStarStackCount)
+	end
+
 	CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = caster.shootingStarStackCount })
 	self:MarkAbilityButtonDirty()
 	Timers:CreateTimer(charge_duration,
 		function()
 			caster.shootingStarStackCount = caster.shootingStarStackCount - 1
 			CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = caster.shootingStarStackCount })
+			if caster.shootingStarStackCount < charge_limit then
+				ParticleManager:SetParticleControl(caster.shootingStarOverhead, caster.shootingStarStackCount+1, Vector(0,0,0))
+				stack_modifier:SetStackCount(caster.shootingStarStackCount)
+			end
 			self:MarkAbilityButtonDirty()
 		end
 	)	
@@ -57,26 +85,19 @@ function archmage_shooting_star:OnSpellStart()
 	if target:HasModifier("modifier_archmage_anomaly") then
 
 		EmitSoundOn( "Hero_Mirana.Starstorm.Cast", target )
-		--print("pizda")
-
-	--	print(self:GetCaster():GetTeamNumber())
-	--	print(target:GetAbsOrigin())
-	--	print(target:GetTeamNumber())
 
 		local searchForDummies = FindUnitsInRadius(self:GetCaster():GetTeamNumber(), 
 													target:GetAbsOrigin(), 
 													nil, anomaly_radius, 
-													DOTA_UNIT_TARGET_TEAM_NONE + DOTA_UNIT_TARGET_TEAM_BOTH, 
+													DOTA_UNIT_TARGET_TEAM_FRIENDLY, 
 													DOTA_UNIT_TARGET_ALL, 
-													0, 
+													DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, 
 													FIND_ANY_ORDER, 
 													false)
-		--print(searchForDummies)
+
 
 		for _,v in pairs(searchForDummies) do
-			print(v:GetUnitName())
-		--[[	if v:GetUnitName() == "dummy_unit_anomaly" and v:GetOwner() == self:GetCaster() then
-				print("found")
+			if v:GetUnitName() == "dummy_unit_anomaly" and v:GetOwner() == self:GetCaster() then
 				local shootingStarsTargets = FindUnitsInRadius(self:GetCaster():GetTeam(), 
 																v:GetAbsOrigin(), 
 																nil, anomaly_radius, 
@@ -86,6 +107,11 @@ function archmage_shooting_star:OnSpellStart()
 																FIND_ANY_ORDER, 
 																false)
 
+				if caster.shootingStarStackCount -1 > charge_limit then
+					caster.shootingStarDamageToDeal = damageInit + damagePerCharge*charge_limit
+				else
+					caster.shootingStarDamageToDeal = damageInit + damagePerCharge*(self:GetCaster().shootingStarStackCount - 1)
+				end
 
 				for k,t in pairs(shootingStarsTargets) do
 
@@ -93,11 +119,30 @@ function archmage_shooting_star:OnSpellStart()
 					ParticleManager:SetParticleControlEnt( nFXIndex, 1, t, PATTACH_ABSORIGIN, nil, t:GetOrigin(), true )
 					ParticleManager:ReleaseParticleIndex( nFXIndex )
 
+					Timers:CreateTimer(starfall_delay,
+						function()
+							if t ~= nil and ( not t:IsInvulnerable() ) and ( not t:TriggerSpellAbsorb( self ) ) and ( not t:IsMagicImmune() ) then
+
+								local starDamage = {
+										victim = t,
+										attacker = caster,
+										damage = caster.shootingStarDamageToDeal,
+										damage_type = DAMAGE_TYPE_MAGICAL,
+									}
+
+								ApplyDamage(starDamage)
+								
+								EmitSoundOn( "Hero_Mirana.Starstorm.Impact", target )
+							end	
+						end
+					)
+
+
 				end
 
 
 
-			end ]]--
+			end 
 			
 		end
 
@@ -130,6 +175,7 @@ function archmage_shooting_star:OnSpellStart()
 
 					ApplyDamage(starDamage)
 					
+					EmitSoundOn( "Hero_Mirana.Starstorm.Impact", target )
 				end	
 			end
 		)
