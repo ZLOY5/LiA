@@ -319,7 +319,28 @@ function OnEquip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
+		end	
+
+		if name == "npc_dota_hero_keeper_of_the_light" then
+			par = {
+				unit = caster,
+				oldAbi = "archmage_shooting_star",
+				newAbi = "archmage_shooting_star_staff",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "archmage_anomaly",
+				newAbi = "archmage_anomaly_staff",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
 		end				
+					
 		
 		-- next heroes
 	end
@@ -651,6 +672,26 @@ function OnUnequip(event)
 				unit = caster,
 				oldAbi = "necromancer_deads_staff",
 				newAbi = "necromancer_deads",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end	
+
+		if name == "npc_dota_hero_keeper_of_the_light" then
+			par = {
+				unit = caster,
+				oldAbi = "archmage_shooting_star_staff",
+				newAbi = "archmage_shooting_star",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "archmage_anomaly_staff",
+				newAbi = "archmage_anomaly",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)

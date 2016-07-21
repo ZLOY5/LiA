@@ -1,11 +1,11 @@
 modifier_archmage_magic_barrier = class({})
 
 function modifier_archmage_magic_barrier:IsHidden()
-	if self:GetAbility().barrierMana <= 0 then
-		return true 
-	else 
+	--if self:GetAbility().barrierMana <= 0 then
+	--	return true 
+	--else 
 		return false 
-	end
+	--end
 end
 
 function modifier_archmage_magic_barrier:IsPurgable()
@@ -94,7 +94,7 @@ function modifier_archmage_magic_barrier:OnIntervalThink()
 			end	
 		elseif ability.barrierMana == 0 and self:GetParent().magicBarrerParticle ~= nil then
 			ParticleManager:DestroyParticle(self:GetParent().magicBarrerParticle,true)
-			ParticleManager:ReleaseParticleIndex(self:GetParent().magicBarrerParticle)
+			self:GetParent().magicBarrerParticle = nil
 		end
 
 		CustomNetTables:SetTableValue("custom_modifier_state", tostring( ability:GetEntityIndex() ) ,{ barrierMana = ability.barrierMana })

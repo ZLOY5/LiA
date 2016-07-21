@@ -34,7 +34,11 @@ function Polymorph(event)
 
 				for k,t in pairs(polymorphTargets) do
 					ParticleManager:CreateParticle("particles/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, t)
-					ability:ApplyDataDrivenModifier(caster, t, "modifier_hex", {duration = ability:GetSpecialValueFor("duration")})
+					if target:IsHero() or string.find(tt:GetUnitName(),"megaboss") then
+						ability:ApplyDataDrivenModifier(caster, t, "modifier_hex_archmage", {duration = ability:GetSpecialValueFor("duration")/2})
+					else
+						ability:ApplyDataDrivenModifier(caster, tt, "modifier_hex_archmage", {duration = ability:GetSpecialValueFor("duration")})
+					end
 				end
 
 
@@ -45,7 +49,11 @@ function Polymorph(event)
 
 	else
 		ParticleManager:CreateParticle("particles/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_hex", {duration = ability:GetSpecialValueFor("duration")})
+		if target:IsHero() or string.find(target:GetUnitName(),"megaboss") then
+			ability:ApplyDataDrivenModifier(caster, target, "modifier_hex_archmage", {duration = ability:GetSpecialValueFor("duration")/2})
+		else
+			ability:ApplyDataDrivenModifier(caster, target, "modifier_hex_archmage", {duration = ability:GetSpecialValueFor("duration")})
+		end
 	end
 	target:EmitSound("Hero_ShadowShaman.SheepHex.Target")
 end
