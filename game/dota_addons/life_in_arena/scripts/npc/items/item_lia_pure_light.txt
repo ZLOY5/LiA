@@ -8,7 +8,7 @@
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"725"	
+	"ItemCost"						"705"	
 	"ItemShopTags"					"regen"
 	
 	// Recipe
@@ -25,7 +25,7 @@
 {
 	"ID"							"1487"
 	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1520"
+	"ItemCost"						"1500"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
 	"ItemSellable"                  "1"
@@ -49,14 +49,11 @@
 
 	"OnSpellStart"
 	{
-		"SpawnUnit"
+		"RunScript"
 		{
-			"UnitName"		"pure_light_totem"
-			"Target" 		"POINT"
-			"Duration"		"%totem_duration"
-			"UnitCount"		"1"
-			"GrantsGold"	"0"
-			"GrantsXP"		"0"
+			"ScriptFile"	"items/PureLight.lua"
+			"Function"		"SpawnTotem"
+			"Target" "POINT"
 		}
 	}
 	
@@ -135,8 +132,8 @@
 		}
 		"08"
 		{
-			"var_type"				"FIELD_FLOAT"
-			"totem_duration"		"10"
+			"var_type"				"FIELD_INTEGER"
+			"totem_targets"		"3"
 		}
 		"09"
 		{

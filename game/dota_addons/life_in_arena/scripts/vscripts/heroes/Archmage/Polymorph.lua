@@ -34,10 +34,10 @@ function Polymorph(event)
 
 				for k,t in pairs(polymorphTargets) do
 					ParticleManager:CreateParticle("particles/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, t)
-					if target:IsHero() or string.find(tt:GetUnitName(),"megaboss") then
+					if target:IsHero() or string.find(t:GetUnitName(),"megaboss") then
 						ability:ApplyDataDrivenModifier(caster, t, "modifier_hex_archmage", {duration = ability:GetSpecialValueFor("duration")/2})
 					else
-						ability:ApplyDataDrivenModifier(caster, tt, "modifier_hex_archmage", {duration = ability:GetSpecialValueFor("duration")})
+						ability:ApplyDataDrivenModifier(caster, t, "modifier_hex_archmage", {duration = ability:GetSpecialValueFor("duration")})
 					end
 				end
 
