@@ -1,0 +1,20 @@
+<root>
+    <styles>
+  		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/lia_topbar.css" />
+    </styles>
+
+    <scripts>
+
+    </scripts>
+
+    <Panel class="TopBarRoot">
+		<Panel id="RoundPanel">
+			<Label id="RoundName" text="Мегабосс"/>
+			<DOTAHeroImage class="HeroIcon" heroname="npc_dota_hero_faceless_void" heroimagestyle="landscape" />
+		</Panel>
+		<Image id="VS" src="file://{images}/custom_game/topbar_vs.png"/>
+
+		<Panel id="PlayersContainer" />
+    </Panel>
+</root>

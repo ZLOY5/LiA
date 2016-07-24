@@ -58,15 +58,17 @@ function modifier_archmage_magic_barrier:GetBlockedDamage(attack_damage)
 end
 
 function modifier_archmage_magic_barrier:OnAbilityExecuted(params)
-	local eventAbility = params.ability 
+	if params.unit == self:GetCaster() then
+		local eventAbility = params.ability 
 
-	if eventAbility:IsItem() then
-		return 
+		if eventAbility:IsItem() then
+			return 
+		end
+
+		self:GetAbility().barrierMana = self:GetAbility().barrierMana + eventAbility:GetManaCost(-1)*self.barrierManaPercent
+		CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetAbility():GetEntityIndex()),{ barrierMana = self:GetAbility().barrierMana })
+		print("Archmage[Mana barrier]: Added "..eventAbility:GetManaCost(-1)*self.barrierManaPercent.." mana",self:GetAbility().barrierMana)
 	end
-
-	self:GetAbility().barrierMana = self:GetAbility().barrierMana + eventAbility:GetManaCost(-1)*self.barrierManaPercent
-	CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetAbility():GetEntityIndex()),{ barrierMana = self:GetAbility().barrierMana })
-	print("Archmage[Mana barrier]: Added "..eventAbility:GetManaCost(-1)*self.barrierManaPercent.." mana",self:GetAbility().barrierMana)
 end
 
 function modifier_archmage_magic_barrier:OnIntervalThink()
@@ -115,7 +117,7 @@ if IsServer() then
 	function modifier_archmage_magic_barrier:OnDeath(params)
 		if params.unit == self:GetParent() then
 			self:GetAbility().target = nil
-			CustomNetTables:SetTableValue("custom_modifier_state", tostring( self:GetAbility():GetEntityIndex() ), 
+			CustomNetTables:SetTableValue("custom_modifier_state", tostring( self:GetAbility():GetEntityIndex().."behavior" ), 
 				{ behavior = DOTA_ABILITY_BEHAVIOR_UNIT_TARGET } )
 			if self:GetCaster():IsAlive() then
 				self:GetCaster():AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_archmage_magic_barrier",nil)
