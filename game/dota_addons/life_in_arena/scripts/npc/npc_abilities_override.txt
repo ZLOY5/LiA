@@ -8626,10 +8626,15 @@
 	    }
 	    "02"
 	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "hero_duration"    "1 1.5 2"
+	    }
+	    "03"
+	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "movespeed"       "100"
 	    }
-	    "03"
+	    "04"
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "anomaly_radius"  "450"
@@ -8931,8 +8936,8 @@
 	    "CastFilterRejectCaster" "1"
 	    
 	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
 	    // Casting
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityCastRange"        "700"
@@ -32406,6 +32411,67 @@
 	
 	}
 	//End of file purchasable_units_skills.txt
+
+
+	//Start of file pure_light_ability.txt
+	"pure_light_ability"
+	{
+	  	// General
+	  	//-------------------------------------------------------------------------------------------------------------
+	  	"BaseClass"			     "ability_lua" 
+	    "ScriptFile"         "items/pure_light_ability.lua"
+	  	"AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityTextureName" "puck_dream_coil"
+	    "AbilityCastRange"   "600"
+	  	"AOERadius"			     "600"
+	    "MaxLevel"           "1"
+	
+	
+	  	"preload"
+	  	{
+	  		"particle"	"particles/puck_dreamcoil_tether_pure_light.vpcf"
+	      "particle"  "particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
+	  	}
+	
+	
+	  	// Special
+	  	//-------------------------------------------------------------------------------------------------------------
+	  	"AbilitySpecial"
+	  	{
+	   		"01"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "health_percent_threshold"    "40"
+	      }
+	      "02"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "totem_damage_reduction"    "-90"
+	      }
+	      "03"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "totem_targets"   "3"
+	      }
+	      "04"
+	      {
+	        "var_type"        "FIELD_FLOAT"
+	        "totem_duration"    "10"
+	      }
+	      "05"
+	      {
+	        "var_type"        "FIELD_FLOAT"
+	        "buff_duration"    "5"
+	      }
+	      "06"
+	      {
+	        "var_type"        "FIELD_INTEGER"
+	        "totem_radius"      "600"
+	      }
+	  	}
+		
+	 }
+	//End of file pure_light_ability.txt
 
 
 	//Start of file shadow_abilities.txt

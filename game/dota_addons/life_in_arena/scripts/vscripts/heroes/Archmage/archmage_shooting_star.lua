@@ -23,10 +23,11 @@ function archmage_shooting_star:OnUpgrade()
 end
 
 function archmage_shooting_star:GetManaCost(level)
+	local caster = self:GetCaster()
 	local defManaCost =  self.BaseClass.GetManaCost( self, level )
 	local charge_limit = self:GetSpecialValueFor("charge_limit") 
 	local manacost_per_charge = self:GetSpecialValueFor("manacost_per_charge") 
-	local netTable = CustomNetTables:GetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()))
+	local netTable = CustomNetTables:GetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar")
 
 	local charges = 0
 	if netTable then 
@@ -55,7 +56,7 @@ function archmage_shooting_star:OnSpellStart()
 
 	if caster.shootingStarStackCount == nil then
 		caster.shootingStarStackCount = 0
-		CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = 0 })
+		CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = 0 })
 	end
 
 	local starfall_delay = self:GetSpecialValueFor("starfall_delay")
@@ -68,7 +69,7 @@ function archmage_shooting_star:OnSpellStart()
 		stack_modifier:SetStackCount(caster.shootingStarStackCount)
 	end
 
-	CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = caster.shootingStarStackCount })
+	CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = caster.shootingStarStackCount })
 	self:MarkAbilityButtonDirty()
 	Timers:CreateTimer(charge_duration,
 		function()
@@ -181,4 +182,5 @@ function archmage_shooting_star:OnSpellStart()
 		)
 	end
 
+	print(self:GetCaster().shootingStarStackCount, " bez SP")
 end

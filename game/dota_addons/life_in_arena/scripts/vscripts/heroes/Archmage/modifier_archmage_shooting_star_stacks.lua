@@ -18,13 +18,18 @@ function modifier_archmage_shooting_star_stacks:IsHidden()
 end
 
 function modifier_archmage_shooting_star_stacks:RemoveOnDeath()
-	return true
+	return false
 end
 
 function modifier_archmage_shooting_star_stacks:OnCreated()
 
-	self:SetStackCount(0)
-	self:GetParent().shootingStarOverhead = ParticleManager:CreateParticle( "particles/visage_soul_overhead.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetParent())
+	if self:GetParent().shootingStarStackCount ~= nil then
+		self:SetStackCount(self:GetParent().shootingStarStackCount)
+	end
+
+	if not self:GetParent().shootingStarOverhead then
+		self:GetParent().shootingStarOverhead = ParticleManager:CreateParticle( "particles/visage_soul_overhead.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetParent())
+	end
 	--ParticleManager:SetParticleControl(self:GetParent().shootingStarOverhead, 1, Vector(1,0,0))
 	--ParticleManager:ReleaseParticleIndex(self:GetParent().shootingStarOverhead)
 	

@@ -125,6 +125,6 @@ if IsServer() then
 
 end
 
-function modifier_archmage_magic_barrier:OnTooptip(params)
+function modifier_archmage_magic_barrier:OnTooltip(params)
 	return ability.barrierMana
 end

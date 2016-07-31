@@ -23,10 +23,11 @@ function archmage_shooting_star_staff:OnUpgrade()
 end
 
 function archmage_shooting_star_staff:GetManaCost(level)
+	local caster = self:GetCaster()
 	local defManaCost =  self.BaseClass.GetManaCost( self, level )
 	local charge_limit = self:GetSpecialValueFor("charge_limit") 
 	local manacost_per_charge = self:GetSpecialValueFor("manacost_per_charge") 
-	local netTable = CustomNetTables:GetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()))
+	local netTable = CustomNetTables:GetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar")
 
 	local charges = 0
 	if netTable then 
@@ -53,9 +54,11 @@ function archmage_shooting_star_staff:OnSpellStart()
 	local caster = self:GetCaster()
 	local stack_modifier = caster:FindModifierByName("modifier_archmage_shooting_star_stacks")
 
+
+
 	if caster.shootingStarStackCount == nil then
 		caster.shootingStarStackCount = 0
-		CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = 0 })
+		CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = 0 })
 	end
 
 	local starfall_delay = self:GetSpecialValueFor("starfall_delay")
@@ -73,7 +76,7 @@ function archmage_shooting_star_staff:OnSpellStart()
 	Timers:CreateTimer(charge_duration,
 		function()
 			caster.shootingStarStackCount = caster.shootingStarStackCount - 1
-			CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = caster.shootingStarStackCount })
+			CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = caster.shootingStarStackCount })
 			if caster.shootingStarStackCount < charge_limit then
 				ParticleManager:SetParticleControl(caster.shootingStarOverhead, caster.shootingStarStackCount+1, Vector(0,0,0))
 				stack_modifier:SetStackCount(caster.shootingStarStackCount)
@@ -181,4 +184,5 @@ function archmage_shooting_star_staff:OnSpellStart()
 		)
 	end
 
+	print(self:GetCaster().shootingStarStackCount, " s SP")
 end
