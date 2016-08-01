@@ -54,8 +54,6 @@ function archmage_shooting_star_staff:OnSpellStart()
 	local caster = self:GetCaster()
 	local stack_modifier = caster:FindModifierByName("modifier_archmage_shooting_star_stacks")
 
-
-
 	if caster.shootingStarStackCount == nil then
 		caster.shootingStarStackCount = 0
 		CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = 0 })
@@ -71,17 +69,27 @@ function archmage_shooting_star_staff:OnSpellStart()
 		stack_modifier:SetStackCount(caster.shootingStarStackCount)
 	end
 
-	CustomNetTables:SetTableValue("custom_modifier_state",tostring(self:GetEntityIndex()),{ stackCount = caster.shootingStarStackCount })
+	CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = caster.shootingStarStackCount })
 	self:MarkAbilityButtonDirty()
 	Timers:CreateTimer(charge_duration,
 		function()
 			caster.shootingStarStackCount = caster.shootingStarStackCount - 1
+			
 			CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = caster.shootingStarStackCount })
+			
 			if caster.shootingStarStackCount < charge_limit then
 				ParticleManager:SetParticleControl(caster.shootingStarOverhead, caster.shootingStarStackCount+1, Vector(0,0,0))
-				stack_modifier:SetStackCount(caster.shootingStarStackCount)
+				
+				stack_modifier = caster:FindModifierByName("modifier_archmage_shooting_star_stacks")
+				if stack_modifier then
+					stack_modifier:SetStackCount(caster.shootingStarStackCount)
+				end
+			
 			end
-			self:MarkAbilityButtonDirty()
+			
+			local ability = caster:FindAbilityByName("archmage_shooting_star") or caster:FindAbilityByName("archmage_shooting_star_staff")
+			ability:MarkAbilityButtonDirty()
+		
 		end
 	)	
 
