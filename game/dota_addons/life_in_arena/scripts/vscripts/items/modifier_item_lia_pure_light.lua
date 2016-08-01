@@ -87,7 +87,8 @@ end
 
 function modifier_item_lia_pure_light_protection:OnIntervalThink()
 	if IsServer() then
-		if not self:GetParent():HasModifier("modifier_item_lia_pure_light_radius_check") then
+	--	if not self:GetParent():HasModifier("modifier_item_lia_pure_light_radius_check") then
+		if not self:GetParent():FindModifierByNameAndCaster("modifier_item_lia_pure_light_radius_check", self:GetParent()) then
 			self:GetParent():RemoveModifierByName("modifier_item_lia_pure_light_protection")
 		end
 		
