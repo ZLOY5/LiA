@@ -13,7 +13,7 @@ function onPlayerReadyToWave(playerID)
 				local curTimeLeft = Survival.flRoundStartTime - GameRules:GetGameTime()
 				local newTimeLeft = curTimeLeft * ( 1 - ( PlayerResource:GetNumPlayersReadyToRound() / LiA.nPlayers ) )
 				
-				if newTimeLeft > 15 then
+				if newTimeLeft < 15 then
 					newTimeLeft = 15
 				end
 				
