@@ -346,6 +346,8 @@ end
 
 function Survival:PrepareNextRound()
     self.nRoundNum = self.nRoundNum + 1
+
+    self.flRoundStartTime = GameRules:GetGameTime() + self.nPreRoundTime
     
     print("Next round - ", self.nRoundNum)
 
@@ -364,6 +366,7 @@ function Survival:PrepareNextRound()
             callback = function() Survival:StartRound() end
         }
     )
+
 
     self.hHealer:Enable()
 

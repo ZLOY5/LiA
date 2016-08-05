@@ -9,6 +9,21 @@ function onPlayerReadyToWave(playerID)
 				--timerPopup:SetTimeLeft(3)
 				SetTimeLeft(3)
 				Survival:StartRound()
+			else
+				local newTimeLeft = 40 - ( PlayerResource:GetNumPlayersReadyToRound() / LiA.nPlayers * 40 ) + 20
+				local curTimeLeft = Survival.flRoundStartTime - GameRules:GetGameTime()
+
+				if newTimeLeft > 20 or newTimeLeft < curTimeLeft then
+					Timers:RemoveTimer("StartRoundTimer")
+
+				    Timers:CreateTimer("StartRoundTimer", 
+				    	{ 
+				    		endTime = newTimeLeft-3, 
+				    		callback = function() Survival:StartRound() end
+				    	})
+				    
+				    SetTimeLeft(newTimeLeft)
+				end
 			end
 		end
 	else
