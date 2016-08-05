@@ -11,10 +11,10 @@ function onPlayerReadyToWave(playerID)
 				Survival:StartRound()
 			else
 				local curTimeLeft = Survival.flRoundStartTime - GameRules:GetGameTime()
-				local newTimeLeft = curTimeLeft - 60 * ( 1 / LiA.nPlayers ) --curTimeLeft * ( 1 - ( 1 / LiA.nPlayers ) )
+				local newTimeLeft = curTimeLeft * ( 1 - ( 1 / LiA.nPlayers ) )   --curTimeLeft - 60 * ( 1 / LiA.nPlayers )
 				
-				if newTimeLeft < 15 then
-					newTimeLeft = 15
+				if newTimeLeft < 20 then
+					newTimeLeft = 20
 				end
 				
 				print("Current time left: "..curTimeLeft,"New time left: "..newTimeLeft)
