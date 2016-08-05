@@ -109,7 +109,6 @@ function ChangeWorldBounds(vMax,vMin)
 end
 
 function ClearBossArenaByItems()
-	local runes = {}
     local containers = Entities:FindAllByClassnameWithin("dota_item_drop", ARENA_CENTER_COORD, 1000)
     for _,container in pairs(containers) do
         item = container:GetContainedItem()

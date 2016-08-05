@@ -22,7 +22,7 @@
     PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS, 1)
     hero:SetTeam(DOTA_TEAM_GOODGUYS)
 
-    hero:ModifyGold(-100, false, DOTA_ModifyGold_Unspecified)
+    hero:ModifyGold(-70, false, DOTA_ModifyGold_Unspecified)
 
     if PlayerResource:HasRepicked(playerID) then
         print("Has repicked")

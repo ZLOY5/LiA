@@ -13,6 +13,10 @@ function Survival:StartDuels()
     
     self.IsDuelOccured = true
     Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
+
+    DoWithAllHeroes(function(hero)
+        hero:ModifyGold(15, false, DOTA_ModifyGold_Unspecified) --компенсация за отключенные тики золота
+    end)
      
     --timerPopup:Start(self.nPreDuelTime,"#lia_duel",0)
     StartTimer(self.nPreDuelTime,"#TimerPreDuel",0)
@@ -21,8 +25,6 @@ function Survival:StartDuels()
 			self.DuelNumber = 0
 			self.State = SURVIVAL_STATE_DUEL_TIME
 			DisableShop()
-
-            GameRules:SetGoldPerTick(0)
             
 			DoWithAllHeroes(function(hero)
                 hero:Purge(true, true, false, true, false)
@@ -207,14 +209,12 @@ function Survival:EndDuel(winner,loser)
 end
 
 function Survival:EndDuels()
-    GameRules:SetGoldPerTick(1)
 
     for i = 1, #self.tHeroes do
         self.tHeroes[i].IsDueled = false
     end
 
     RespawnAllHeroes()
-
 
     ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
 

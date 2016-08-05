@@ -78,7 +78,11 @@ function Survival:InitSurvival()
 	self.nPreDuelTime = 30
     self.nDuelTime = 120
 
-    self.nRoundDisableGoldTime = 120
+    -- Золото за быстрое прохождение
+    self.nfastWaveTime = 15
+    self.nfastBossTime = 30
+    self.nfastRoundGold = 60
+
 
     self.State = SURVIVAL_STATE_PRE_GAME
 
@@ -240,6 +244,34 @@ function Survival:_GiveRoundBounty()
         goldBounty = goldBounty + (self.nEqualGoldPool / self.nHeroCount)
     end
 
+
+    goldBounty = goldBounty + 30 --компенсация за отключенные тики золота
+
+    -- Золото за быстрое прохождение
+    local roundDuration = GameRules:GetGameTime() - self.flRoundStartTime - 1
+
+    local roundDurationMessage = roundDuration --для дебага
+    
+    if self.nRoundNum % 5 == 0 then
+        roundDuration = roundDuration - self.nfastBossTime
+    else
+        roundDuration = roundDuration - self.nfastWaveTime
+    end
+
+    if roundDuration < 0 then
+        roundDuration = 0
+    end
+
+    local fastRoundGoldBonus = self.nfastRoundGold - roundDuration
+
+    if fastRoundGoldBonus < 0 then
+        fastRoundGoldBonus = 0
+    end
+
+    print("_GiveRoundBounty:","Round duration:  "..roundDurationMessage,"Gold bonus: "..fastRoundGoldBonus,".")
+    goldBounty = goldBounty + fastRoundGoldBonus
+    --
+
     DoWithAllHeroes(function(hero)
         local oldGold = hero:GetGold()
         hero:ModifyGold(goldBounty, false, DOTA_ModifyGold_Unspecified)
@@ -252,9 +284,6 @@ function Survival:EndRound()
     print("Survival:EndRound",self.nRoundNum)
     self.nDeathCreeps = 0
     self.nDeathHeroes = 0
-
-    Timers:RemoveTimer("DisableGoldTimer")
-    GameRules:SetGoldPerTick(1)
 
     Timers:RemoveTimer("lateWaveDebuffs")
     DoWithAllHeroes(function(hero)
@@ -494,13 +523,6 @@ function Survival:StartRound()
 
     self.hHealer:Disable()
 
-    Timers:CreateTimer("DisableGoldTimer",
-        {
-            endTime = self.nRoundDisableGoldTime, 
-            callback = function() GameRules:SetGoldPerTick(0) print("Survival: Gold tick disabled after "..self.nRoundDisableGoldTime.." seconds of round") end
-        }
-    )
-
     PlayerResource:ClearReadyToRound()
     LiA.bForceRoundEnabled = false
     CustomGameEventManager:Send_ServerToAllClients("round_force_enabled", {enabled = false})
@@ -509,6 +531,8 @@ function Survival:StartRound()
     
     Timers:CreateTimer(3,function()
             DisableShop()
+
+            self.flRoundStartTime = GameRules:GetGameTime()
             
             if self.nRoundNum % 5 == 0 then -- мегабоосс
                 CleanUnitsOnMap()

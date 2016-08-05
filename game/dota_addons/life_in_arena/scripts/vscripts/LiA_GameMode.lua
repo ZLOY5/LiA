@@ -74,7 +74,7 @@ function LiA:InitGameMode()
     GameRules:SetPostGameTime(120)
 	--
 	GameRules:SetGoldTickTime(2)
-	GameRules:SetGoldPerTick(1)
+	GameRules:SetGoldPerTick(0)
 	GameRules:SetHeroMinimapIconScale(0.8)
     GameRules:SetCreepMinimapIconScale(0.8)
 	GameRules:SetRuneMinimapIconScale( 0.6 )
