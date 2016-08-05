@@ -12,8 +12,8 @@ function onPlayerReadyToWave(playerID)
 			else
 				local newTimeLeft = 40 - ( PlayerResource:GetNumPlayersReadyToRound() / LiA.nPlayers * 40 ) + 20
 				local curTimeLeft = Survival.flRoundStartTime - GameRules:GetGameTime()
-
-				if newTimeLeft > 20 or newTimeLeft < curTimeLeft then
+				print("Current time left: "..curTimeLeft,"New time left: "..newTimeLeft)
+				if newTimeLeft > 20 and newTimeLeft < curTimeLeft then
 					Survival.flRoundStartTime = GameRules:GetGameTime() + newTimeLeft
 					Timers:RemoveTimer("StartRoundTimer")
 
