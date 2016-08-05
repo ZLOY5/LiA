@@ -10,21 +10,25 @@ function onPlayerReadyToWave(playerID)
 				SetTimeLeft(3)
 				Survival:StartRound()
 			else
-				local newTimeLeft = 40 - ( PlayerResource:GetNumPlayersReadyToRound() / LiA.nPlayers * 40 ) + 20
 				local curTimeLeft = Survival.flRoundStartTime - GameRules:GetGameTime()
-				print("Current time left: "..curTimeLeft,"New time left: "..newTimeLeft)
-				if newTimeLeft > 20 and newTimeLeft < curTimeLeft then
-					Survival.flRoundStartTime = GameRules:GetGameTime() + newTimeLeft
-					Timers:RemoveTimer("StartRoundTimer")
-
-				    Timers:CreateTimer("StartRoundTimer", 
-				    	{ 
-				    		endTime = newTimeLeft-3, 
-				    		callback = function() Survival:StartRound() end
-				    	})
-
-				    SetTimeLeft(newTimeLeft)
+				local newTimeLeft = curTimeLeft * ( 1 - ( PlayerResource:GetNumPlayersReadyToRound() / LiA.nPlayers ) )
+				
+				if newTimeLeft > 15 then
+					newTimeLeft = 15
 				end
+				
+				print("Current time left: "..curTimeLeft,"New time left: "..newTimeLeft)
+			
+				Survival.flRoundStartTime = GameRules:GetGameTime() + newTimeLeft
+				Timers:RemoveTimer("StartRoundTimer")
+
+			    Timers:CreateTimer("StartRoundTimer", 
+			    	{ 
+			    		endTime = newTimeLeft-3, 
+			    		callback = function() Survival:StartRound() end
+			    	})
+
+			    SetTimeLeft(newTimeLeft)
 			end
 		end
 	else
