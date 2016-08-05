@@ -46,7 +46,6 @@ function modifier_item_lia_pure_light:OnIntervalThink()
 																false)
 
 		for _,v in pairs(pureLightPossibleTargets) do
-			print(v:HasModifier("modifier_item_lia_pure_light_protection"))
 			if v:GetHealthPercent() <= health_percent_threshold and not v:HasModifier("modifier_item_lia_pure_light_protection") and self:GetAbility():GetOwner().pureLightTargetCount < totem_targets  then
 				print(v:GetUnitName())
 				v:AddNewModifier(caster,self:GetAbility(),"modifier_item_lia_pure_light_protection",{duration = buff_duration})
