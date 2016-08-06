@@ -59,7 +59,7 @@ function Survival:InitSurvival()
 
 	self.nGoldPerWave = {12,12,12,12,12,15,15,18,18,18,18,18,21,24,24,27,27,30,30}
 
-    self.flExpFix = {0.8, 0.9, 1., 1.1, 1.2, 1.3, 1.4, 1.5}
+    self.flExpFix = {0.75, 1, 1.15, 1.2, 1.25, 1.29, 1.32, 1.3}
     
     self.IsAllRandom = false
     self.IsExtreme = false
