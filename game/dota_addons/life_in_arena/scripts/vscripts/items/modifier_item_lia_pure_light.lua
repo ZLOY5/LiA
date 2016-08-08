@@ -2,7 +2,7 @@ modifier_item_lia_pure_light = class({})
 modifier_item_lia_pure_light_protection = class({})
 
 function modifier_item_lia_pure_light:IsHidden()
-	return true 
+	return false
 end
 
 function modifier_item_lia_pure_light:IsPurgable()
@@ -35,6 +35,8 @@ function modifier_item_lia_pure_light:OnIntervalThink()
 		local totem_radius = self:GetAbility():GetSpecialValueFor("totem_radius")
 		local buff_duration = self:GetAbility():GetSpecialValueFor("buff_duration")
 		local totem_targets = self:GetAbility():GetSpecialValueFor("totem_targets")
+		local caster = self:GetParent()
+
 
 		local pureLightPossibleTargets = FindUnitsInRadius(self:GetParent():GetTeamNumber(), 
 																self:GetParent():GetAbsOrigin(), 
@@ -45,14 +47,41 @@ function modifier_item_lia_pure_light:OnIntervalThink()
 																FIND_ANY_ORDER, 
 																false)
 
+		table.sort(pureLightPossibleTargets,function(a,b) return a:GetHealth() < b:GetHealth() end) 
+
+		self:GetAbility():GetOwner().pureLightTargetCount = 0
+
 		for _,v in pairs(pureLightPossibleTargets) do
+			if self:GetAbility():GetOwner().pureLightTargetCount < totem_targets then
+				local modifier = v:FindModifierByName("modifier_item_lia_pure_light_protection")
+				if modifier then
+				  if modifier:GetCaster() == caster then
+				    v:AddNewModifier(caster,self:GetAbility(),"modifier_item_lia_pure_light_protection",nil):SetDuration(0.15, false)
+				  end
+				else
+				  v:AddNewModifier(caster,self:GetAbility(),"modifier_item_lia_pure_light_protection",nil):SetDuration(0.15, false)
+				end
+				self:GetAbility():GetOwner().pureLightTargetCount = self:GetAbility():GetOwner().pureLightTargetCount + 1
+			end
+		end 
+
+--[[		for _,v in pairs(pureLightPossibleTargets) do
+			if not v:HasModifier("modifier_item_lia_pure_light_protection") and self:GetAbility():GetOwner().pureLightTargetCount < totem_targets  then
+				v:AddNewModifier(caster,self:GetAbility(),"modifier_item_lia_pure_light_protection",{duration = 0.15})
+				self:GetAbility():GetOwner().pureLightTargetCount = self:GetAbility():GetOwner().pureLightTargetCount + 1
+			end
+
+		end 
+
+
+--[[	for _,v in pairs(pureLightPossibleTargets) do
 			if v:GetHealthPercent() <= health_percent_threshold and not v:HasModifier("modifier_item_lia_pure_light_protection") and self:GetAbility():GetOwner().pureLightTargetCount < totem_targets  then
 				print(v:GetUnitName())
 				v:AddNewModifier(caster,self:GetAbility(),"modifier_item_lia_pure_light_protection",{duration = buff_duration})
 				self:GetAbility():GetOwner().pureLightTargetCount = self:GetAbility():GetOwner().pureLightTargetCount + 1
 			end
 
-		end
+		end ]]--	
 
 	end
 
@@ -72,6 +101,10 @@ function modifier_item_lia_pure_light_protection:DeclareFunctions()
 end
 
 function modifier_item_lia_pure_light_protection:IsPurgable()
+	return false
+end
+
+function modifier_item_lia_pure_light_protection:IsHidden()
 	return false
 end
 
