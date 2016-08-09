@@ -119,8 +119,10 @@ end
 
 
 function modifier_archmage_magic_barrier:OnDeath(params)
-	ParticleManager:DestroyParticle(self:GetParent().magicBarrerParticle,true)
-	self:GetParent().magicBarrerParticle = nil
+	if self:GetParent().magicBarrerParticle ~= nil then
+		ParticleManager:DestroyParticle(self:GetParent().magicBarrerParticle,true)
+		self:GetParent().magicBarrerParticle = nil
+	end
 	if params.unit == self:GetParent() then
 		self:GetAbility().target = nil
 		CustomNetTables:SetTableValue("custom_modifier_state", tostring( self:GetAbility():GetEntityIndex().."behavior" ), 
@@ -138,6 +140,8 @@ function modifier_archmage_magic_barrier:OnTooltip(params)
 end
 
 function modifier_archmage_magic_barrier:OnDestroy()
-	ParticleManager:DestroyParticle(self:GetParent().magicBarrerParticle,true)
-	self:GetParent().magicBarrerParticle = nil
+	if self:GetParent().magicBarrerParticle ~= nil then
+		ParticleManager:DestroyParticle(self:GetParent().magicBarrerParticle,true)
+		self:GetParent().magicBarrerParticle = nil
+	end
 end

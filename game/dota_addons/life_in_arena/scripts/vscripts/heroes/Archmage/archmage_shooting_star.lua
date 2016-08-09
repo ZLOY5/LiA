@@ -175,7 +175,7 @@ function archmage_shooting_star:OnSpellStart()
 						caster.shootingStarDamageToDeal = damageInit + damagePerCharge*(self:GetCaster().shootingStarStackCount - 1)
 					end
 
-					print(caster.shootingStarDamageToDeal)
+				--	print(caster.shootingStarDamageToDeal)
 
 					local starDamage = {
 							victim = target,
@@ -192,5 +192,5 @@ function archmage_shooting_star:OnSpellStart()
 		)
 	end
 
-	print(self:GetCaster().shootingStarStackCount, " bez SP")
+--	print(self:GetCaster().shootingStarStackCount, " bez SP")
 end
