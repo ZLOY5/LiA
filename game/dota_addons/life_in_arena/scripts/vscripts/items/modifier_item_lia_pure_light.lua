@@ -49,10 +49,10 @@ function modifier_item_lia_pure_light:OnIntervalThink()
 
 		table.sort(pureLightPossibleTargets,function(a,b) return a:GetHealth() < b:GetHealth() end) 
 
-		self:GetAbility():GetOwner().pureLightTargetCount = 0
+		self:GetCaster().pureLightTargetCount = 0
 
 		for _,v in pairs(pureLightPossibleTargets) do
-			if self:GetAbility():GetOwner().pureLightTargetCount < totem_targets then
+			if self:GetCaster().pureLightTargetCount < totem_targets then
 				local modifier = v:FindModifierByName("modifier_item_lia_pure_light_protection")
 				if modifier then
 				  if modifier:GetCaster() == caster then
@@ -61,7 +61,7 @@ function modifier_item_lia_pure_light:OnIntervalThink()
 				else
 				  v:AddNewModifier(caster,self:GetAbility(),"modifier_item_lia_pure_light_protection",nil):SetDuration(0.15, false)
 				end
-				self:GetAbility():GetOwner().pureLightTargetCount = self:GetAbility():GetOwner().pureLightTargetCount + 1
+				self:GetCaster().pureLightTargetCount = self:GetCaster().pureLightTargetCount + 1
 			end
 		end 
 
