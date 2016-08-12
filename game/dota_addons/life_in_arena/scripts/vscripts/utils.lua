@@ -308,3 +308,14 @@ function CDOTA_Item:GetItemSlot()
 	end
 	return nil
 end
+
+function CDOTABaseAbility:ReduceCooldown(reduction)
+	local cooldown = self:GetCooldownTimeRemaining()
+	if cooldown > 0 then
+		local newCooldown = cooldown - time
+		self:EndCooldown()
+		if newCooldown > 0 then
+			self:StartCooldown(newCooldown)
+		end
+	end
+end
