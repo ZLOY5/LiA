@@ -312,7 +312,7 @@ end
 function CDOTABaseAbility:ReduceCooldown(reduction)
 	local cooldown = self:GetCooldownTimeRemaining()
 	if cooldown > 0 then
-		local newCooldown = cooldown - time
+		local newCooldown = cooldown - reduction
 		self:EndCooldown()
 		if newCooldown > 0 then
 			self:StartCooldown(newCooldown)
