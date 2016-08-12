@@ -22,6 +22,25 @@ function onPlayerReadyToWave(playerID)
 				end
 				
 				print("Current time left: "..curTimeLeft,"New time left: "..newTimeLeft)
+
+				--уменьшаем перезарядку способностей 
+				local diff = curTimeLeft - newTimeLeft
+				DoWithAllHeroes(function(hero)
+					for i=1,4 do
+						local ability = hero:GetAbilityByIndex(i)
+						if ability then
+							local cooldown = ability:GetCooldownTimeRemaining()
+							if cooldown > 0 then
+								local newCooldown = cooldown - diff
+								if newCooldown > 0 then
+									ability:StartCooldown(newCooldown)
+								else
+									ability:EndCooldown()
+								end
+							end
+						end
+				end)
+				--
 			
 				Survival.flRoundStartTime = GameRules:GetGameTime() + newTimeLeft
 				Timers:RemoveTimer("StartRoundTimer")
