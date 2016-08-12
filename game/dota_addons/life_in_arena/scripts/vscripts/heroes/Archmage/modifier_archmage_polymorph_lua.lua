@@ -28,3 +28,12 @@ end
 function modifier_archmage_polymorph_lua:GetModifierMoveSpeedOverride()
     return 100
 end
+
+function modifier_archmage_polymorph_lua:OnCreated()
+	local target = self:GetParent()
+	local illusion_damage = self:GetAbility():GetSpecialValueFor("illusion_damage")
+
+	if target:IsIllusion() then
+    	ApplyDamage({ victim = target, attacker = self:GetCaster(), damage = illusion_damage, damage_type = DAMAGE_TYPE_PURE, ability = self:GetAbility() })
+    end
+end

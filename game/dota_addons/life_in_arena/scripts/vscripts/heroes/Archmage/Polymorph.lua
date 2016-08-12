@@ -34,7 +34,7 @@ function Polymorph(event)
 
 				for k,t in pairs(polymorphTargets) do
 					ParticleManager:CreateParticle("particles/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, t)
-					if target:IsHero() or string.find(t:GetUnitName(),"megaboss") then
+					if target:IsHero() then
 						t:AddNewModifier(caster,ability,"modifier_archmage_polymorph_lua",{duration = ability:GetSpecialValueFor("hero_duration")})
 					else
 						t:AddNewModifier(caster,ability,"modifier_archmage_polymorph_lua",{duration = ability:GetSpecialValueFor("duration")})
@@ -49,7 +49,7 @@ function Polymorph(event)
 
 	else
 		ParticleManager:CreateParticle("particles/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-		if target:IsHero() or string.find(target:GetUnitName(),"megaboss") then
+		if target:IsHero() then
 			target:AddNewModifier(caster,ability,"modifier_archmage_polymorph_lua",{duration = ability:GetSpecialValueFor("hero_duration")})
 		else
 			target:AddNewModifier(caster,ability,"modifier_archmage_polymorph_lua",{duration = ability:GetSpecialValueFor("duration")})

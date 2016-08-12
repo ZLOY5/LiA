@@ -53,6 +53,7 @@ function archmage_shooting_star_staff:OnSpellStart()
 	local target = self:GetCursorTarget()
 	local caster = self:GetCaster()
 	local stack_modifier = caster:FindModifierByName("modifier_archmage_shooting_star_stacks")
+	local half_damage_radius = self:GetSpecialValueFor("half_damage_radius")
 
 	if caster.shootingStarStackCount == nil then
 		caster.shootingStarStackCount = 0
@@ -185,6 +186,35 @@ function archmage_shooting_star_staff:OnSpellStart()
 						}
 
 					ApplyDamage(starDamage)
+
+					local halfDamageTargets = FindUnitsInRadius(self:GetCaster():GetTeam(), 
+																target:GetAbsOrigin(), 
+																nil, half_damage_radius, 
+																DOTA_UNIT_TARGET_TEAM_ENEMY, 
+																DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 
+																0, 
+																FIND_ANY_ORDER, 
+																false)
+
+					for a,b in pairs(halfDamageTargets) do
+
+						
+
+						if b ~= target then
+
+							local halfDamage = {
+									victim = b,
+									attacker = caster,
+									damage = caster.shootingStarDamageToDeal/2,
+									damage_type = DAMAGE_TYPE_MAGICAL,
+									}
+
+							ApplyDamage(halfDamage)
+							
+						end
+
+
+					end
 					
 					EmitSoundOn( "Hero_Mirana.Starstorm.Impact", target )
 				end	
