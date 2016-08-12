@@ -23,22 +23,33 @@ function onPlayerReadyToWave(playerID)
 				
 				print("Current time left: "..curTimeLeft,"New time left: "..newTimeLeft)
 
+				local ReduceCooldown = 
+					function(ability,time)
+						local cooldown = ability:GetCooldownTimeRemaining()
+						if cooldown > 0 then
+							local newCooldown = cooldown - diff
+							if newCooldown > 0 then
+								ability:StartCooldown(newCooldown)
+							else
+								ability:EndCooldown()
+							end
+						end
+					end
+
 				--уменьшаем перезарядку способностей 
 				local diff = curTimeLeft - newTimeLeft
 				DoWithAllHeroes(
 					function(hero)
-						for i=1,4 do
+						for i=0,3 do
 							local ability = hero:GetAbilityByIndex(i)
 							if ability then
-								local cooldown = ability:GetCooldownTimeRemaining()
-								if cooldown > 0 then
-									local newCooldown = cooldown - diff
-									if newCooldown > 0 then
-										ability:StartCooldown(newCooldown)
-									else
-										ability:EndCooldown()
-									end
-								end
+								ReduceCooldown(ability,diff)
+							end
+						end
+						for i=0,5 do
+							local item = hero:GetItemInSlot(i)
+							if item then
+								ReduceCooldown(ability,diff)
 							end
 						end
 					end)
