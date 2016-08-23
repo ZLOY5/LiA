@@ -301,7 +301,7 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end		
 
-		if name == "npc_dota_hero_undying" then
+		if name == "npc_dota_hero_abyssal_underlord" then
 			par = {
 				unit = caster,
 				oldAbi = "necromancer_stabbing_death",
@@ -659,7 +659,7 @@ function OnUnequip(event)
 			caster.STupgrades = false
 		end			
 		
-		if name == "npc_dota_hero_undying" then
+		if name == "npc_dota_hero_abyssal_underlord" then
 			par = {
 				unit = caster,
 				oldAbi = "necromancer_stabbing_death_staff",
