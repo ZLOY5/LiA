@@ -3,7 +3,7 @@ require('timers')
 function Spawn(entityKeyValues)	
 	Timers:CreateTimer(0.01,function()
 		
-		local mult = Survival.nHeroCount
+		local mult = Survival:GetHeroCount(false)
 		local hp = 4000 + 250*mult
 		local armor = 20 + 2*mult
 		local dmg_min = 181 + 20*mult

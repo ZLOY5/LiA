@@ -269,6 +269,7 @@ function GetFullDamageSplashRadius( unit ) --FArea in war3
 	if unit_table["SplashFullDamageRadius"] then
 		return unit_table["SplashFullDamageRadius"]
 	end
+
 	return 0
 end
 
@@ -278,6 +279,7 @@ function GetMediumSplashRadius( unit ) --HArea in war3
 	if unit_table["SplashMediumRadius"] then
 		return unit_table["SplashMediumRadius"]
 	end
+
 	return 0
 end
 
@@ -287,6 +289,7 @@ function GetSmallSplashRadius( unit ) --QArea in war3
 	if unit_table["SplashSmallRadius"] then
 		return unit_table["SplashSmallRadius"]
 	end
+
 	return 0
 end
 
@@ -296,6 +299,7 @@ function GetMediumSplashDamage( unit ) --HFact in war3
 	if unit_table["SplashMediumDamage"] then
 		return unit_table["SplashMediumDamage"]
 	end
+
 	return 0
 end
 
@@ -305,5 +309,6 @@ function GetSmallSplashDamage( unit ) --QFact in war3
 	if unit_table["SplashSmallDamage"] then
 		return unit_table["SplashSmallDamage"]
 	end
+	
 	return 0
 end

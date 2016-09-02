@@ -16,7 +16,6 @@
     
     table.insert(self.tHeroes, hero)
     
-    self.nHeroCount = self.nHeroCount + 1
     
     player:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS, 1)
@@ -61,8 +60,8 @@ function Survival:_OnHeroDeath(keys)
         Survival:EndDuel(attackerHero,hero)
     else
         hero.deaths = hero.deaths + 1
-        self.nDeathHeroes = self.nDeathHeroes + 1
-        if self.nDeathHeroes == self.nHeroCount then
+    
+        if self:GetHeroCount(true) == 0 then
             GameRules:SetCustomVictoryMessage("#lose_message")
             Survival:EndGame(DOTA_TEAM_BADGUYS)
             --GameRules:ResetToHeroSelection()

@@ -24,12 +24,6 @@ function Survival:HideHero(hero)
 		hero.abs = hero:GetAbsOrigin()
 		hero:SetAbsOrigin(Vector(0,0,0))
 		hero.hidden = 1
-
-		self.nHeroCount = self.nHeroCount - 1
-		print(self.nHeroCount)
-		if not hero:IsAlive() and self.State >= SURVIVAL_STATE_ROUND_WAVE and self.State ~= SURVIVAL_STATE_DUEL_TIME then
-			self.nDeathHeroes = self.nDeathHeroes - 1
-		end
 	end
 end
 
@@ -73,9 +67,17 @@ function Survival:UnhideHero(hero)
 
 		SetCameraToPosForPlayer(hero:GetPlayerID(),hero.abs)
 
-		self.nHeroCount = self.nHeroCount + 1
-		print(self.nHeroCount)
 	end
+end
+
+function Survival:GetHeroCount(bOnlyAlive)
+	local count = 0
+	for _,hero in pairs(self.tHeroes) do
+		if not hero.hidden and (not bOnlyAlive or hero:IsAlive()) then  
+			count = count + 1
+		end
+	end
+	return count
 end
 
 function RespawnAllHeroes() 

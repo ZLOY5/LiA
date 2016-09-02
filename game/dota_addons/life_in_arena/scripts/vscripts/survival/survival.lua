@@ -51,8 +51,7 @@ function Survival:InitSurvival()
     self.tHeroes = {}
 	self.nRoundNum = 0
 
-    self.nHeroCount = 0
-	self.nDeathHeroes = 0
+
 	self.nDeathCreeps = 0
 	self.nWaveSpawnCount = {20,26,32,38,44,50,56,62}   --крипов на спавн
 	self.nWaveMaxCount = {42,54,66,78,90,102,114,126}
@@ -131,7 +130,7 @@ end
 
 function AIThink()
     --print("CleanAICasts")
-    local nHeroesAlive = Survival.nHeroCount - Survival.nDeathHeroes
+    local nHeroesAlive = Survival:GetHeroCount(true)
 
     Survival.AIMaxCreepCasts = math.ceil(nHeroesAlive/2)
 
@@ -160,7 +159,7 @@ function Survival:ExperienceFilter(filterTable)
         return false
     end
 
-    local expMultiplier = self.flExpFix[self.nHeroCount] -- коррекция получаемого опыта в зависимости от кол-ва героев в игре
+    local expMultiplier = self.flExpFix[Survival:GetHeroCount(false)] -- коррекция получаемого опыта в зависимости от кол-ва героев в игре
     
     if self.IsExtreme then --множители опыта для экстрима или лайта
         expMultiplier = expMultiplier + self.flExtremeExpMultiplier
@@ -225,8 +224,8 @@ function Survival:_TeleportHeroesWithoutBossArena()
 end
 
 function Survival:_GiveRoundBounty()
-    print(self.nHeroCount)
-    goldBounty = self.nWaveSpawnCount[self.nHeroCount] / self.nHeroCount * self.nGoldPerWave[self.nRoundNum]
+    local heroCount = Survival:GetHeroCount(false)
+    goldBounty = self.nWaveSpawnCount[heroCount] / heroCount * self.nGoldPerWave[self.nRoundNum]
     lumberBounty = 3 + self.nRoundNum
 
     if self.IsExtreme then
@@ -241,7 +240,7 @@ function Survival:_GiveRoundBounty()
     end
 
     if self.IsEqualGold then
-        goldBounty = goldBounty + (self.nEqualGoldPool / self.nHeroCount)
+        goldBounty = goldBounty + (self.nEqualGoldPool / heroCount)
     end
 
 
@@ -283,7 +282,7 @@ end
 function Survival:EndRound()
     print("Survival:EndRound",self.nRoundNum)
     self.nDeathCreeps = 0
-    self.nDeathHeroes = 0
+
 
     Timers:RemoveTimer("lateWaveDebuffs")
     DoWithAllHeroes(function(hero)
@@ -318,7 +317,7 @@ function Survival:EndRound()
 
         EnableShop()
         
-        if self.nRoundNum % 3 == 0 and not self.IsDuelOccured and self.nHeroCount > 1 then
+        if self.nRoundNum % 3 == 0 and not self.IsDuelOccured and self:GetHeroCount(false) > 1 then
             Survival:StartDuels()
         else
 
@@ -391,7 +390,7 @@ end
 --------------------------------------------------------------------------------------------------
 
 function Survival:_TeleportHeroesToBossArena()
-    local length = 70 * self.nHeroCount
+    local length = 70 * Survival:GetHeroCount(false)
     DoWithAllHeroes(function(hero)
         hero.abs = hero:GetAbsOrigin() 
         hero:Stop()
@@ -424,12 +423,12 @@ function Survival:_SpawnMegaboss()
 end
 
 function Survival:_SpawnWave()  
-    print("Spawn wave", self.nRoundNum, "for", self.nHeroCount, "heroes")
+    print("Spawn wave", self.nRoundNum, "for", self:GetHeroCount(false), "heroes")
 	--AIcreeps
     Survival:AICreepsDefault()
     Survival.State = SURVIVAL_STATE_ROUND_WAVE
     
-    self.nHeroCountCreepsSpawned = self.nHeroCount --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)
+    self.nHeroCountCreepsSpawned = self:GetHeroCount(false) --чтобы уберечь от багов при изменении кол-ва героев во время волны(кто-то взял героя после старта волны например)
     
     local unit1, unit2, boss1, boss2
     local creepName = tostring(self.nRoundNum).."_wave_creep"
@@ -461,7 +460,7 @@ function Survival:_SpawnWave()
     local spawnCount = 0
     
     local all_time = 2.0
-    local tick = all_time/self.nWaveSpawnCount[self.nHeroCount]
+    local tick = all_time/self.nWaveSpawnCount[self.nHeroCountCreepsSpawned]
     --
     Timers:CreateTimer(tick,
         function()
@@ -518,7 +517,7 @@ function LateWaveDebuffs()
 end
 
 function Survival:StartRound()
-    if self.nHeroCount == 0 then 
+    if self:GetHeroCount(true) == 0 then 
         GameRules:SetCustomVictoryMessage("#lose_message")
         Survival:EndGame(DOTA_TEAM_BADGUYS)
         return   
