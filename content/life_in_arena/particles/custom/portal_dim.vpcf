@@ -1,0 +1,100 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 300
+	m_ConstantColor = [ 255, 148, 115, 35 ]
+	m_bShouldSort = false
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderSprites"
+			m_nSequenceCombineMode = "SEQUENCE_COMBINE_MODE_USE_SEQUENCE_0"
+			m_flStartFadeSize = 0.4
+			m_flEndFadeSize = 0.65
+			m_bBlendFramesSeq0 = false
+			m_hTexture = resource:"materials/particle/smoke3/smoke3.vtex"
+			m_flAnimationRate = 0.5
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.0245
+			m_Gravity = [ 0.0, 0.0, 40.0 ]
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 5.0
+			m_flBias = 0.37
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.8
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.2
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_RandomLifeTime"
+			m_fLifetimeMax = 5.0
+			m_fLifetimeMin = 3.0
+		},
+		{
+			_class = "C_INIT_CreateWithinSphere"
+			m_fSpeedMax = 5.0
+			m_fRadiusMin = 30.0
+			m_fRadiusMax = 60.0
+		},
+		{
+			_class = "C_INIT_RandomRadius"
+			m_flRadiusMin = 18.0
+			m_flRadiusMax = 42.0
+		},
+		{
+			_class = "C_INIT_RandomColor"
+			m_ColorMax = [ 55, 255, 0, 255 ]
+			m_ColorMin = [ 0, 36, 0, 255 ]
+		},
+		{
+			_class = "C_INIT_RandomRotation"
+		},
+		{
+			_class = "C_INIT_RandomYawFlip"
+		},
+		{
+			_class = "C_INIT_RandomSequence"
+			m_nSequenceMax = 5
+		},
+		{
+			_class = "C_INIT_InitialVelocityNoise"
+			m_vecOutputMax = [ 83.0, 83.0, 88.0 ]
+			m_vecOutputMin = [ -83.0, -83.0, 8.0 ]
+			m_flNoiseScale = 0.2
+		},
+		{
+			_class = "C_INIT_RandomAlpha"
+			m_nAlphaMin = 66
+			m_nAlphaMax = 155
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMin = [ -150.0, -150.0, 200.0 ]
+			m_OffsetMax = [ 150.0, 150.0, 200.0 ]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_ContinuousEmitter"
+		},
+	]
+}
