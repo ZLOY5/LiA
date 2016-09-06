@@ -17,7 +17,8 @@ function CDOTA_PlayerResource:ModifyLumber(playerID, lumber)
 		CustomPlayerResource.lumber[playerID] = 0
 	end
 
-	CustomNetTables:SetTableValue("lia_player_table", tostring(playerID), {lumber = CustomPlayerResource.lumber[playerID]})
+	CustomNetTables:SetTableValue("lia_player_table", "PlayersLumber", CustomPlayerResource.lumber)
+	--DeepPrintTable(CustomNetTables:GetTableValue("lia_player_table", "PlayersLumber"))
 end
 
 function CDOTA_PlayerResource:GetLumber(playerID)
@@ -41,7 +42,8 @@ function CDOTA_PlayerResource:SetReadyToRound(playerID,ready)
 
 	CustomPlayerResource.readyToRound[playerID] = ready
 
-	CustomNetTables:SetTableValue("lia_player_table", tostring(playerID), {readyToRound = ready})
+	CustomNetTables:SetTableValue("lia_player_table", "PlayersReadyToRound", CustomPlayerResource.readyToRound)
+	--DeepPrintTable(CustomNetTables:GetTableValue("lia_player_table", tostring(playerID)))
 end
 
 function CDOTA_PlayerResource:IsReadyToRound(playerID)
@@ -71,7 +73,8 @@ function CDOTA_PlayerResource:ClearReadyToRound()
 	local table = CustomPlayerResource.readyToRound
 	for playerID,ready in pairs(table) do
 		table[playerID] = false
-		CustomNetTables:SetTableValue("lia_player_table", tostring(playerID), {readyToRound = false})
+		CustomNetTables:SetTableValue("lia_player_table", "PlayersReadyToRound", table)
+		--DeepPrintTable(CustomNetTables:GetTableValue("lia_player_table", tostring(playerID)))
 	end
 end
 

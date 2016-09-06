@@ -1,11 +1,19 @@
 "use strict";
 
 Players.GetLumber = function(playerID) {
-	return CustomNetTables.GetTableValue("lia_player_table", playerID).lumber || 0
+	var netTable = CustomNetTables.GetTableValue("lia_player_table", "PlayersLumber")
+	if (typeof(netTable) == "object") {
+		return netTable[playerID] 
+	}
+	return 0
 }
 
 Players.IsReadyToRound = function(playerID) {
-	return CustomNetTables.GetTableValue("lia_player_table", playerID).readyToRound || false
+	var netTable = CustomNetTables.GetTableValue("lia_player_table", "PlayersReadyToRound");
+	if (typeof(netTable) == "object") {
+		return netTable[playerID] 
+	}
+	return false
 }
 
 Players.GetNumPlayersReadyToRound = function() {
@@ -22,7 +30,9 @@ Players.GetNumPlayers = function() {
 	var n = 0
 	var pIds = Game.GetPlayerIDsOnTeam(DOTATeam_t.DOTA_TEAM_GOODGUYS)
 	for (var playerID of pIds) {
-		n++;
+		var playerInfo = Game.GetPlayerInfo(playerID)
+		if (playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_CONNECTED)
+			n++;
 	}
 	return n
 }

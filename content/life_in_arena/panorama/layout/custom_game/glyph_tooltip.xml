@@ -1,0 +1,38 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/custom_game/glyph_tooltip.css" />
+	</styles>
+
+	<script>
+
+		function tooltipUpdate()
+		{
+
+			if (Players.GetNumPlayers() > 1) {
+				
+				$.GetContextPanel().SetHasClass("one_player", false)
+				$("#description").SetDialogVariableInt("readyPlayers", Players.GetNumPlayersReadyToRound());
+				$("#description").SetDialogVariableInt("numPlayers", Players.GetNumPlayers());
+				$("#description").SetDialogVariableInt("seconds", 40*(1/Players.GetNumPlayers()));
+			}
+			else {
+				$.GetContextPanel().SetHasClass("one_player", true)
+			}
+			$.Schedule(0.5,tooltipUpdate)
+		}
+
+		$.Schedule(0,tooltipUpdate)
+
+	</script>
+
+	<Panel class="GlyphTooltip" hittest="false"  >
+		<Label id="title" text="#Glyph_Tooltip_title" hittest="false" />
+		
+		<Panel id="descriptionContainer" hittest="false"  >
+			<Label id="description" html="true" text="#Glyph_Tooltip_description" hittest="false" />
+			<Label id="description_1_player" html="true" text="#Glyph_Tooltip_description_1_player" hittest="false" />
+		</Panel>
+	
+	</Panel>
+</root>

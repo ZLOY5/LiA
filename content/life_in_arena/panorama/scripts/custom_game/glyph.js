@@ -11,9 +11,8 @@ function GlyphClick()
 function GlyphTooltip() 
 {
 	if (glyphButton.enabled) {
-		glyphButton.SetDialogVariableInt("readyPlayers", Players.GetNumPlayersReadyToRound());
-		glyphButton.SetDialogVariableInt("numPlayers", Players.GetNumPlayers());
-		$.DispatchEvent( 'DOTAShowTitleTextTooltip', glyphButton, "#GlyphTooltipTitle", "#GlyphTooltip");
+		$.DispatchEvent("UIShowCustomLayoutTooltip", glyphButton, "GlyphTooltip", 
+			"file://{resources}/layout/custom_game/glyph_tooltip.xml"); 
 	}
 }
 
