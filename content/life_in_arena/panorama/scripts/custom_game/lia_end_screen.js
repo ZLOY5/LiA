@@ -304,8 +304,8 @@ function OnUpdActionEnd( data )
 		GameUI.SetCameraDistance(0)
 		GameUI.SetCameraPitchMin(10)
 		GameUI.SetCameraPitchMax(10)
-		GameUI.SetCameraLookAtPositionHeightOffset(350)
-		GameUI.SetCameraYaw(49)
+		GameUI.SetCameraLookAtPositionHeightOffset(300)
+		GameUI.SetCameraYaw(47)
 	}
 	GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
 	GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_MENU_BUTTONS, false );
