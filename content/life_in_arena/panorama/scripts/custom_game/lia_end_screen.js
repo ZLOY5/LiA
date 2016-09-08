@@ -304,7 +304,11 @@ function OnUpdActionEnd( data )
 		GameUI.SetCameraDistance(0)
 		GameUI.SetCameraPitchMin(10)
 		GameUI.SetCameraPitchMax(10)
-		GameUI.SetCameraLookAtPositionHeightOffset(500)
-		GameUI.SetCameraYaw(45)
+		GameUI.SetCameraLookAtPositionHeightOffset(350)
+		GameUI.SetCameraYaw(49)
 	}
+	GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
+	GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_MENU_BUTTONS, false );
+	GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_BAR_BACKGROUND, false);
+	GameUI.SetRenderTopInsetOverride(0)
 })();
