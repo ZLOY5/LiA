@@ -203,7 +203,7 @@ function Survival:OnPlayerChat(event)
         onPlayerReadyToWave(player:GetPlayerID()) --LiA_ForceRound.lua
     end
     
-	--[[]]
+	--[[
 	if event.text == "kill" then
 		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
         hero:ForceKill(true)
@@ -224,7 +224,7 @@ function Survival:OnPlayerChat(event)
     
     if event.text == "zoom" then
         self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
-    end
+    end ]]
 	
 	   
 end
