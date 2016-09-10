@@ -138,15 +138,16 @@
 
  "butcher_zombie"
 {
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"				"ability_lua"
+	"ScriptFile"			"heroes\Butcher\butcher_zombie.lua"
+	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityTextureName"	"butcher_zombie"
 		
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
 
-	"AbilityCooldown"		 "15"
+	"AbilityCooldown"		 "0"
 	
 	"AbilitySpecial"
 	{
@@ -160,37 +161,11 @@
 			"var_type"				"FIELD_INTEGER"
 			"zombie_damage_tooltip"	"14 39 69"
 		}
-	}
-
-	
-	"Modifiers"
-	{
-		"modifier_butcher_zombie"
+		"03"
 		{
-			"Passive"	"1"
-			//"IsHidden"	"1"
-			"ThinkInterval"	"15"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Butcher\Zombie.lua"
-					"Function"		"SpawnZombie"
-				}
-			}
+			"var_type"				"FIELD_INTEGER"
+			"zombie_cooldown"		"15"
 		}
-		"modifier_butcher_zombie_death"
-		{
-			"IsHidden"	"1"
-			"OnDeath"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Butcher\Zombie.lua"
-					"Function"		"ZombieDeath"
-				}
-			}
-		}	
 	}
 }
 

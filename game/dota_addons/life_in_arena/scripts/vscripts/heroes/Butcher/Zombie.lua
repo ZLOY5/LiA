@@ -22,7 +22,7 @@ function SpawnZombie(event)
 		caster:SetModifierStackCount("modifier_butcher_zombie", ability, ability.zombieCount) 
 	end
 
-	ability:StartCooldown(ability:GetCooldown(level))
+	--ability:StartCooldown(ability:GetCooldown(level))
 end
 
 function ZombieDeath(event)

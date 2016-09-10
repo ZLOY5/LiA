@@ -203,28 +203,30 @@ function Survival:OnPlayerChat(event)
         onPlayerReadyToWave(player:GetPlayerID()) --LiA_ForceRound.lua
     end
     
-	--[[
-	if event.text == "kill" then
-		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
-        hero:ForceKill(true)
-    end
-	
-	if event.text == "res" then
-		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
-        hero:RespawnHero(false,false,false)
-    end
-	
-    if event.text == "fade" then
-        ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
-    end
+	if IsInToolsMode() then
+    	
+        if event.text == "kill" then
+    		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+            hero:ForceKill(true)
+        end
+    	
+    	if event.text == "res" then
+    		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+            hero:RespawnHero(false,false,false)
+        end
+    	
+        if event.text == "fade" then
+            ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
+        end
 
-    if event.text == "win" then
-        Survival:EndGame(DOTA_TEAM_GOODGUYS)
-    end
+        if event.text == "win" then
+            Survival:EndGame(DOTA_TEAM_GOODGUYS)
+        end
+        
+        if event.text == "zoom" then
+            self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
+        end 
     
-    if event.text == "zoom" then
-        self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
-    end ]]
+    end
 	
-	   
 end

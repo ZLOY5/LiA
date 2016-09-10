@@ -22,7 +22,7 @@ function Survival:HideHero(hero)
 		hero:AddNoDraw()
 		hero:AddNewModifier(hero, nil, "modifier_hide_lua", nil)
 		hero.abs = hero:GetAbsOrigin()
-		hero:SetAbsOrigin(Vector(0,0,0))
+		hero:SetAbsOrigin(Vector(-3000,-3000,0))
 		hero.hidden = 1
 	end
 end
