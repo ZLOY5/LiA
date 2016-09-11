@@ -42,3 +42,39 @@ function butcher_zombie:CreateZombie()
 		modifier:SetStackCount(modifier:GetStackCount()+1)
 	end
 end
+
+function butcher_zombie:OnUpgrade()
+	if self:GetLevel() == 1 then
+		self:ToggleAbility()
+	end
+end
+
+function butcher_zombie:OnOwnerDied()
+	if self:GetLevel() >= 1 and self:GetToggleState() then
+		local modifier = self:GetCaster():FindModifierByName("modifier_butcher_zombie")
+		
+		self.zombieRemaining = modifier:GetRemainingTime()
+		self.toggleState = self:GetToggleState()
+		
+		--print(self.zombieRemaining)
+		modifier:SetDuration(-1,true)
+		Timers:RemoveTimer("ButcherZombie")
+	end
+end
+
+function butcher_zombie:OnOwnerSpawned()
+	if self.toggleState then
+		local modifier = self:GetCaster():FindModifierByName("modifier_butcher_zombie")
+		
+		self:ToggleAbility()
+
+		modifier:SetDuration(self.zombieRemaining or 15,true)
+		
+		Timers:CreateTimer("ButcherZombie",
+			{
+				endTime = self.zombieRemaining or 15,
+				callback = function() self:CreateZombie() modifier:SetDuration(15,true) return 15 end
+			}
+		)
+	end
+end	
