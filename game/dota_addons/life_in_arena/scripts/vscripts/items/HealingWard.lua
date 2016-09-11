@@ -5,6 +5,6 @@ function SpawnWard(event)
 	
 	local ward = CreateUnitByName("item_lia_healing_ward_unit", dummy:GetAbsOrigin(), false, event.caster, nil, event.caster:GetTeam())
 	ward:AddNewModifier(ward, nil, "modifier_kill", {duration = 30})
-	
+	ward:SetHullRadius(0)
 	dummy:RemoveSelf()
 end
