@@ -24,20 +24,22 @@
 "item_lia_totem_of_persistence"
 {
 
-		"ID"							"1464"
-		"ItemCost"						"1635"
-		"ItemKillable" "0" 
-		"ItemDroppable" "1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		"ItemSellable"                  "1"
-		"ItemPurchasable"		 "1"
-		"ItemQuality"					"rare"
+	"BaseClass" "item_datadriven"
+	"ID"							"1464"
+	"ItemCost"						"1635"
+	"ItemKillable" "0" 
+	"ItemDroppable" "1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 "1"
+	"ItemQuality"					"rare"
 
 	"AbilityCooldown"				"22.0"
-		
-		"AbilityTextureName"			"item_lia_totem_of_persistence"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass" "item_datadriven"
+	
+	"AbilityTextureName"			"item_lia_totem_of_persistence"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	
+
 	"AbilitySpecial"
 	{
 		"01"
@@ -92,7 +94,7 @@
 			"Passive"			"1"
 			"IsHidden"			"1"
 			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
+
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"

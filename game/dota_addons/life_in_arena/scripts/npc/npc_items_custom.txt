@@ -523,12 +523,11 @@
 				"Passive"          	"1"    
 			    "IsHidden"         	"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
 				"Aura" 				"modifier_item_banner_of_victory_aura_datadriven"
 	            "Aura_Radius" 		"%aura_radius"
 	            "Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	            "Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
-	
-	            "AllowIllusionDuplicate"    "1"
 	            
 			    "Properties"
 			    {
@@ -2154,11 +2153,12 @@
 				"Passive"          	"1"    
 			    "IsHidden"         	"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				
 				"Aura" 				"modifier_item_ferus_shield_aura_datadriven"
 	            "Aura_Radius" 		"%aura_radius"
 	            "Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	            "Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
-	            "AllowIllusionDuplicate"    "1"
+			    
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
@@ -2167,7 +2167,6 @@
 	
 			"modifier_item_ferus_shield_aura_datadriven"
 			{
-				"AllowIllusionDuplicate"    "1"
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -2186,7 +2185,7 @@
 			"modifier_item_ferus_shield_datadriven_lifesteal"
 			{
 				"IsHidden"			"1"
-				"AllowIllusionDuplicate"    "1"
+	
 				"OnDealDamage"
 				{
 					"Lifesteal"
@@ -2392,11 +2391,11 @@
 				{
 					"ApplyModifier"
 					{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 						"ModifierName"		"modifier_immolation"
 					}
 					"FireSound"
@@ -2425,7 +2424,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
@@ -3221,15 +3220,7 @@
 			"particle"			"particles/items2_fx/mjollnir_shield.vpcf"
 			"particle"			"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
 		}
-			"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "modifier_item_glove_of_pain_aura_emitter"
-			}
-		}
+	
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -3247,6 +3238,13 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+				"Aura" 					"modifier_item_glove_of_pain_aura"
+				"Aura_Radius" 			"%aura_radius"
+				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags" 			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster" 	"1"
 				
 				"Properties"
 				{
@@ -3254,24 +3252,12 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
 				}
 			}
-			"modifier_item_lia_glove_of_pain_aura_emitter"
-			{
-				"Passive"				"1"
-				"IsHidden"				"1"
-				
-				"Aura" 					"modifier_item_glove_of_pain_aura"
-				"Aura_Radius" 			"%aura_radius"
-				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Aura_Flags" 			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Aura_ApplyToCaster" 	"1"
-				"AllowIllusionDuplicate"    "1"
-			}
+	
 			"modifier_item_glove_of_pain_aura"
 			{
 				"Passive"			"1"
 				"IsHidden"			"0"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"						"8.0"  //This is hardcoded due to an obscure engine bug.
@@ -4253,15 +4239,6 @@
 			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"
 		}
-		"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "ice_sword_aura_Modifier"
-			}
-		}
 	
 		"OnSpellStart"
 		{
@@ -4270,6 +4247,7 @@
 				"EffectName"		"Hero_Ancient_Apparition.ColdFeetTick"
 				"Target" 			"CASTER"
 			}
+			
 			"ActOnTargets"
 			{
 				"Target"
@@ -4305,14 +4283,20 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "AllowIllusionDuplicate"    "1"
+	
+			    "Aura" 				"modifier_ice_sword_aura_effect"
+	    		"Aura_Radius" 		"900"
+	    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    		"Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
+				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
+	
 			    "Properties"
 			    {
 					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
 			    }  
 				
-				  "Orb"
+				"Orb"
 				{
 					"Priority"  "DOTA_ORB_PRIORITY_ITEM"
 					"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
@@ -4328,27 +4312,28 @@
 					}   
 				} 
 			}
+	
 			"modifier_ice_sword_slow" 
 			{
 				"IsDebuff" "1"
 				"Duration"  "3"
+	
+				"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
+				"EffectAttachType" "attach_hitloc"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
 				}
-				"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
-				"EffectAttachType" "attach_hitloc"
-				"Target" "TARGET"
-	
 			}
-			"ice_sword_aura_armor"
-	   		{
-	    	
-		    	"IsBuff" "1"
-		    	"IsPurgable" "0"
-		  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	
+			"modifier_ice_sword_aura_effect"
+	   		{
+		    	"IsBuff" 			"1"
+		    	"IsPurgable" 		"0"
+	
+		  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	
 		    	"Properties"
 		    	{
@@ -4356,18 +4341,7 @@
 		     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 		    	}
 		    }
-			 "ice_sword_aura_Modifier"
-	   		{
-	    		"Passive" "1"
-	    		"IsHidden" "1"
-	    		"Aura" "ice_sword_aura_armor"
-	    		"Aura_Radius" "900"
-	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
 	
-				"AllowIllusionDuplicate"    "1"
-	   		}
 			"modifier_ice_sword_stun"
 			{
 				"IsDebuff"	"1"
@@ -5608,15 +5582,6 @@
 		"AbilityTextureName"			"item_lia_mana_staff"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
-		"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "modifier_item_mana_staff_aura_emitter"
-			}
-		}
 		
 		"Modifiers"
 		{
@@ -5625,6 +5590,13 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+				"Aura" 					"modifier_item_mana_staff_aura"
+				"Aura_Radius" 			"%aura_radius"
+				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags" 			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster" 	"1"
 				
 				"Properties"
 				{
@@ -5637,18 +5609,13 @@
 				"Passive"				"1"
 				"IsHidden"				"1"
 				
-				"Aura" 					"modifier_item_mana_staff_aura"
-				"Aura_Radius" 			"%aura_radius"
-				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Aura_Flags" 			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				"Aura_ApplyToCaster" 	"1"
+	
 			}
 			"modifier_item_mana_staff_aura"
 			{
 				"Passive"			"1"
 				"IsHidden"			"0"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"						"4.0"  //This is hardcoded due to an obscure engine bug.
@@ -6326,16 +6293,7 @@
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"item_lia_orb_of_frost"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "orb_of_frost_aura_Modifier"
-			}
-		}
+	
 	
 		"Modifiers"
 		{
@@ -6344,6 +6302,12 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+			    "Aura" "orb_of_frost_aura_armor"
+	    		"Aura_Radius" "900"
+	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+	
 			    "Properties"
 			    {
 					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
@@ -6377,8 +6341,6 @@
 				}
 				"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
 				"EffectAttachType" "attach_hitloc"
-				"Target" "TARGET"
-	
 			}
 			"orb_of_frost_aura_armor"
 	   		{
@@ -6392,16 +6354,6 @@
 		     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 		    	}
 		    }
-			 "orb_of_frost_aura_Modifier"
-	   		{
-	    		"Passive" "1"
-	    		"IsHidden" "1"
-	    		"Aura" "orb_of_frost_aura_armor"
-	    		"Aura_Radius" "900"
-	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-	
-	   		}
 		}
 		"AbilitySpecial"
 		{
@@ -7588,7 +7540,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
@@ -7642,7 +7594,7 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "AllowIllusionDuplicate"    "1"
+	
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
@@ -8499,7 +8451,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
@@ -9062,7 +9014,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
@@ -9176,7 +9128,7 @@
 				"Passive"          "1"    
 			    "IsHidden"         "1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 			    "Properties"
 			    {
 			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
@@ -9248,7 +9200,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
@@ -9463,7 +9415,7 @@
 				    "Passive"          "1"    
 				    "IsHidden"         "1"
 				   	"Attributes" 	   "MODIFIER_ATTRIBUTE_MULTIPLE"
-					"AllowIllusionDuplicate"    "1"
+	
 				    "Properties"
 				    {
 						"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
@@ -9526,7 +9478,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
@@ -9666,15 +9618,7 @@
 			"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
 			"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 		}
-		"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "modifier_item_staff_of_help_aura"
-			}
-		}
+	
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -9695,22 +9639,18 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
+				"Aura" "modifier_item_staff_of_help_armor"
+	    		"Aura_Radius" "%radius_aura"
+	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+	
 				"Properties"
 				{
 			    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
 				}
 			}
-	   		"modifier_item_staff_of_help_aura"
-	   		{
-	    		"Passive" "1"
-	    		"IsHidden" "1"
-	    		"Aura" "modifier_item_staff_of_help_armor"
-	    		"Aura_Radius" "%radius_aura"
-	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-	   		}
 	 
 	   		"modifier_item_staff_of_help_armor"
 	   		{
@@ -9809,15 +9749,7 @@
 			"particle"	"particles/custom/dazzle_shadow_wave.vpcf"
 			"particle"	"particles/custom/dazzle_shadow_wave_copy.vpcf"
 		}
-		"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "modifier_item_staff_of_help_aura_2"
-			}
-		}
+	
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -9838,7 +9770,12 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
+	    		"Aura" "modifier_item_staff_of_help_armor_2"
+	    		"Aura_Radius" "%radius_aura"
+	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+	
 				"Properties"
 				{
 			    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
@@ -9847,16 +9784,6 @@
 				
 	
 			}
-	   		"modifier_item_staff_of_help_aura_2"
-	   		{
-	    		"Passive" "1"
-	    		"IsHidden" "1"
-	    		"Aura" "modifier_item_staff_of_help_armor_2"
-	    		"Aura_Radius" "%radius_aura"
-	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-	
-	   		}
 	 
 	   		"modifier_item_staff_of_help_armor_2"
 	   		{
@@ -10066,7 +9993,6 @@
 	        	"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	        	"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	
-	        	"AllowIllusionDuplicate"    "1"
 	        	
 	        	"Properties"
 			    {
@@ -10257,7 +10183,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
@@ -10318,16 +10244,6 @@
 	  	}
 	
 		
-			"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "horn_aura_Modifier"
-			}
-		}
-		
 	  	"Modifiers"
 	  	{
 	   		"modifier_item_lia_stormwind_horn"
@@ -10339,7 +10255,6 @@
 	    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
 				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
-				"AllowIllusionDuplicate"    "1"
 	   		}
 	 
 	   		"horn_aura_armor"
@@ -10449,7 +10364,7 @@
 				"Passive"               "1"
 				"IsHidden"				"1"
 				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
@@ -10658,7 +10573,7 @@
 					  "Passive"			"1"
 					  "IsHidden"			"1"
 					  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-					  "AllowIllusionDuplicate"    "1"
+	
 					  "Properties"
 					  {
 					   "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
@@ -10696,20 +10611,22 @@
 	"item_lia_totem_of_persistence"
 	{
 	
-			"ID"							"1464"
-			"ItemCost"						"1635"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
-			"ItemQuality"					"rare"
+		"BaseClass" "item_datadriven"
+		"ID"							"1464"
+		"ItemCost"						"1635"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"rare"
 	
 		"AbilityCooldown"				"22.0"
-			
-			"AbilityTextureName"			"item_lia_totem_of_persistence"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-			"BaseClass" "item_datadriven"
+		
+		"AbilityTextureName"			"item_lia_totem_of_persistence"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -10764,7 +10681,7 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"

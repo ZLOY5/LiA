@@ -33,16 +33,7 @@
 	"ItemQuality"					"common"
 	"AbilityTextureName"			"item_lia_orb_of_frost"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"OnUnequip" 
-	{
-		"RunScript"
-		{
-			"ScriptFile" "items\AuraFix.lua"
-			"Function"  "OnUnequip"
-			"ModifierName" "orb_of_frost_aura_Modifier"
-		}
-	}
+
 
 	"Modifiers"
 	{
@@ -51,6 +42,12 @@
 			"Passive"          "1"    
 		    "IsHidden"         "1"
 		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+		    "Aura" "orb_of_frost_aura_armor"
+    		"Aura_Radius" "900"
+    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+
 		    "Properties"
 		    {
 				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
@@ -84,8 +81,6 @@
 			}
 			"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
 			"EffectAttachType" "attach_hitloc"
-			"Target" "TARGET"
-
 		}
 		"orb_of_frost_aura_armor"
    		{
@@ -99,16 +94,6 @@
 	     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 	    	}
 	    }
-		 "orb_of_frost_aura_Modifier"
-   		{
-    		"Passive" "1"
-    		"IsHidden" "1"
-    		"Aura" "orb_of_frost_aura_armor"
-    		"Aura_Radius" "900"
-    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-
-   		}
 	}
 	"AbilitySpecial"
 	{

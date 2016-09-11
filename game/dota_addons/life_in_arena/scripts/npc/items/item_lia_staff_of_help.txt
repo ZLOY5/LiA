@@ -126,15 +126,7 @@
 		"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
 		"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
 	}
-	"OnUnequip" 
-	{
-		"RunScript"
-		{
-			"ScriptFile" "items\AuraFix.lua"
-			"Function"  "OnUnequip"
-			"ModifierName" "modifier_item_staff_of_help_aura"
-		}
-	}
+
 	"OnSpellStart"
 	{
 		"FireSound"
@@ -155,22 +147,18 @@
 			"Passive"			"1"
 			"IsHidden"			"1"
 			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
+
+			"Aura" "modifier_item_staff_of_help_armor"
+    		"Aura_Radius" "%radius_aura"
+    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+
 			"Properties"
 			{
 		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
 				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
 			}
 		}
-   		"modifier_item_staff_of_help_aura"
-   		{
-    		"Passive" "1"
-    		"IsHidden" "1"
-    		"Aura" "modifier_item_staff_of_help_armor"
-    		"Aura_Radius" "%radius_aura"
-    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-   		}
  
    		"modifier_item_staff_of_help_armor"
    		{
@@ -269,15 +257,7 @@
 		"particle"	"particles/custom/dazzle_shadow_wave.vpcf"
 		"particle"	"particles/custom/dazzle_shadow_wave_copy.vpcf"
 	}
-	"OnUnequip" 
-	{
-		"RunScript"
-		{
-			"ScriptFile" "items\AuraFix.lua"
-			"Function"  "OnUnequip"
-			"ModifierName" "modifier_item_staff_of_help_aura_2"
-		}
-	}
+
 	"OnSpellStart"
 	{
 		"FireSound"
@@ -298,7 +278,12 @@
 			"Passive"			"1"
 			"IsHidden"			"1"
 			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
+
+    		"Aura" "modifier_item_staff_of_help_armor_2"
+    		"Aura_Radius" "%radius_aura"
+    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+
 			"Properties"
 			{
 		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
@@ -307,16 +292,6 @@
 			
 
 		}
-   		"modifier_item_staff_of_help_aura_2"
-   		{
-    		"Passive" "1"
-    		"IsHidden" "1"
-    		"Aura" "modifier_item_staff_of_help_armor_2"
-    		"Aura_Radius" "%radius_aura"
-    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-
-   		}
  
    		"modifier_item_staff_of_help_armor_2"
    		{
