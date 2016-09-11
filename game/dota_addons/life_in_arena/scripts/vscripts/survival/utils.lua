@@ -119,7 +119,7 @@ function ClearBossArenaByItems()
                 container:RemoveSelf()
                 item:RemoveSelf()
             else --остальные предметы
-                container:SetAbsOrigin(Vector(-3500,2300,168)+RandomVector(RandomFloat(0, 200)))
+                container:SetAbsOrigin(Vector(0,1500,168)+RandomVector(RandomFloat(0, 200)))
             end
         end
     end
