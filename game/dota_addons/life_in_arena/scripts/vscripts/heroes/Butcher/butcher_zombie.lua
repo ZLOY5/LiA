@@ -28,6 +28,8 @@ function butcher_zombie:CreateZombie()
 	local caster = self:GetCaster()
 	local level = self:GetLevel()
 	local unit_name = {"butcher_zombie_1","butcher_zombie_2","butcher_zombie_3"}
+	local butcher_return_level = caster:FindAbilityByName("butcher_skin"):GetLevel()
+
 
 	if not caster:HasModifier("modifier_hide_lua") and GameRules:State_Get() ~= DOTA_GAMERULES_STATE_POST_GAME then --если герой спрятан, то зомби не спавним
 		--точку спавна устанавливаем позади героя
@@ -35,6 +37,7 @@ function butcher_zombie:CreateZombie()
 
 		local zombie = CreateUnitByName(unit_name[level], spawnLoc, true, caster, caster, caster:GetTeamNumber())
 		zombie:SetControllableByPlayer(caster:GetPlayerID(), true)
+		zombie:FindAbilityByName("butcher_skin"):SetLevel(butcher_return_level)
 
 		--Timers:CreateTimer(0.1,function() zombie:MoveToNPC(caster) end)
 		
@@ -43,6 +46,11 @@ function butcher_zombie:CreateZombie()
 	end
 end
 
+function butcher_zombie:OnUpgrade()
+	if self:GetLevel() == 1 then
+		self:ToggleAbility()
+	end
+end
 function butcher_zombie:OnUpgrade()
 	if self:GetLevel() == 1 then
 		self:ToggleAbility()
