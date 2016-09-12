@@ -24,8 +24,8 @@ function GlyphEnabled(event)
 function OnPlayerStateChanged(table, key, data)
 {
 	//$.Msg( "Table '", table, "' changed: '", key, "' = ", data );
-	if (key == Game.GetLocalPlayerID()) {
-		if (data.readyToRound)
+	if (key == "PlayersReadyToRound") { 
+		if (data[Game.GetLocalPlayerID()])
 			glyphButton.AddClass("ReadyToRound")
 		else
 			glyphButton.RemoveClass("ReadyToRound");

@@ -6,7 +6,7 @@
 
 	<script>
 
-		function tooltipUpdate()
+		function setupTooltip()
 		{
 
 			if (Players.GetNumPlayers() > 1) {
@@ -19,14 +19,13 @@
 			else {
 				$.GetContextPanel().SetHasClass("one_player", true)
 			}
-			$.Schedule(0.5,tooltipUpdate)
 		}
 
-		$.Schedule(0,tooltipUpdate)
+		
 
 	</script>
 
-	<Panel class="GlyphTooltip" hittest="false"  >
+	<Panel class="GlyphTooltip" hittest="false" ontooltiploaded="setupTooltip()"  >
 		<Label id="title" text="#Glyph_Tooltip_title" hittest="false" />
 		
 		<Panel id="descriptionContainer" hittest="false"  >
