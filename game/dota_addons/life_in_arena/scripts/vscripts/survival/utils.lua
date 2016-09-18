@@ -73,7 +73,7 @@ end
 function Survival:GetHeroCount(bOnlyAlive)
 	local count = 0
 	for _,hero in pairs(self.tHeroes) do
-		if not hero.hidden and (not bOnlyAlive or hero:IsAlive()) then  
+		if not hero.hidden and (not bOnlyAlive or hero:IsAlive() or hero:IsReincarnating()) then  
 			count = count + 1
 		end
 	end
