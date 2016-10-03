@@ -106,9 +106,12 @@ function LiA:FilterDamage( filterTable )
 		--print("		armor_type = ", armor_type)
 		--print("		multiplier = ", multiplier)
 		--print(original_damage,"=",attack_damage,"*",1-damage_reduction)
-		local damage = attack_damage - BlockDamage_PhysicalPreArmor(attack_damage,damagetype,victim,attacker,inflictor)
+		
+		local damage = attack_damage -- - BlockDamage_PhysicalPreArmor(attack_damage,damagetype,victim,attacker,inflictor)
 
 		damage = ( damage * (1 - damage_reduction)) * multiplier
+
+		local damage = damage - BlockDamage_PhysicalPreArmor(attack_damage,damagetype,victim,attacker,inflictor) --после брони теперь все говно
 		
 		--if attacker:GetUnitName() == "npc_dummy_blank" then
 		--	print("			original_damage = ",original_damage)

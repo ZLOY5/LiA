@@ -60,16 +60,21 @@ if IsServer() then
 			return 0
 		end
 
+		local blocked_damage = 0
+
 		for _,unit in pairs(self.tTargets) do
 			if unit ~= parent then 
-				unit.spiritLink_damage = true
-				--print("Link Damage by",parent:GetUnitName(),"to",unit:GetUnitName(),attacker:GetUnitName(),attack_damage,linked_damage)
-				ApplyDamage({victim = unit, attacker = attacker, damage = linked_damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = inflictor, damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL})
-				--print("Link Damage end")
+				if unit:GetHealthPercent() > 25 then
+					unit.spiritLink_damage = true
+					--print("Link Damage by",parent:GetUnitName(),"to",unit:GetUnitName(),attacker:GetUnitName(),attack_damage,linked_damage)
+					ApplyDamage({victim = unit, attacker = attacker, damage = linked_damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = inflictor, damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL})
+					--print("Link Damage end")
+					blocked_damage = blocked_damage + linked_damage
+				end
 			end
 		end
 
-		return damage-linked_damage
+		return blocked_damage
 	end
 	
 end
