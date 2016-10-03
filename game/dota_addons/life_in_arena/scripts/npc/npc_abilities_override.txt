@@ -16786,7 +16786,9 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes\Hermit\hermit_astral.lua"
+	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
@@ -16798,13 +16800,13 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"700 700 700"
-		"AbilityCastPoint"				"0.0 0.0 0.0"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0"
 		
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"16 14 12"
-		//"AbilityDuration"				"0.0 0.0 0.0"
+		//"AbilityDuration"				"0"
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -16827,12 +16829,12 @@
 			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"duration_hero"				"3.0 4.0 5.0"
+				"duration_hero"				"3 4 5"
 			}
 			"04"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"duration_other"			"4.0 5.0 6.0"
+				"duration_other"			"4 5 6"
 			}
 		}
 	
@@ -16840,38 +16842,6 @@
 		{
 			"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
-				"Function"      "AddModifier"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_hermit_decrepify"
-			{
-				"IsDebuff"			"1"
-				
-				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
-				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%reduce_movement_speed" 
-				}
-	
-				"States"
-				{
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
-				}			
-			}
 		}	
 	}
 	
@@ -32156,7 +32126,9 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"				"ability_lua"
+		"ScriptFile"			"abilities\hell_beast_sleep.lua"
+		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"

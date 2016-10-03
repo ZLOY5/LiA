@@ -1,6 +1,22 @@
 ancient_priestess_spirit_link = class({})
 LinkLuaModifier("modifier_ancient_priestess_spirit_link", "heroes/AncientPriestess/modifier_ancient_priestess_spirit_link.lua",LUA_MODIFIER_MOTION_NONE)
 
+function ancient_priestess_spirit_link:CastFilterResultTarget( hTarget )
+	local nCasterID = self:GetCaster():GetPlayerOwnerID()
+	local nTargetID = hTarget:GetPlayerOwnerID()
+	
+	--на клиенте невозможно проверить запрещена ли помощь союзникам 26.09.16
+	if IsServer() and not hTarget:IsOpposingTeam(self:GetCaster():GetTeamNumber()) and PlayerResource:IsDisableHelpSetForPlayerID(nTargetID,nCasterID) then 	
+		return UF_FAIL_DISABLE_HELP
+	end
+
+	return UnitFilter(hTarget,
+		DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP,
+		self:GetCaster():GetTeamNumber() )
+end
+
 function ancient_priestess_spirit_link:OnSpellStart() 
 	local caster = self:GetCaster()
 
@@ -39,7 +55,7 @@ function ancient_priestess_spirit_link:OnSpellStart()
 
 			target = targets[1]
 
-			if target then 
+			if target and not PlayerResource:IsDisableHelpSetForPlayerID(target:GetPlayerOwnerID(),caster:GetPlayerOwnerID()) then 
 				target:RemoveModifierByName("modifier_ancient_priestess_spirit_link")
 				target:AddNewModifier(caster, self, "modifier_ancient_priestess_spirit_link", {duration = duration})
 				local modifier = target:FindModifierByName("modifier_ancient_priestess_spirit_link")

@@ -1,0 +1,153 @@
+
+.TradeOverlayRoot
+{
+	width: 100%;
+	height: 100%;
+}
+
+#TradeMain
+{
+	opacity: 0;
+	pre-transform-scale2d:0.75;
+
+	horizontal-align:center;
+	vertical-align:center;
+	flow-children: down;
+
+	width: fit-children;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eee ), to( #131617ee ) );
+	
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border: 1px solid #5e6869;
+	box-shadow: black -4px -4px 8px 8px;
+	
+	//visibility: collapse;
+
+	transition-property: pre-transform-scale2d,opacity,visibility;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+
+
+}
+
+
+#TradeMain.Open
+{
+	pre-transform-scale2d:1;
+	opacity: 1;
+
+	visibility: visible;
+
+	transition-property: pre-transform-scale2d,opacity,visibility;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+
+#HelpIcon
+{
+	width: 18px;
+	height: 18px;
+	background-image:url("s2r://panorama/images/status_icons/information_psd.vtex");
+	background-size: contain;
+	vertical-align: right;
+	horizontal-align:right;
+	margin-top: 10px;
+	margin-right: 10px;
+
+	tooltip-position:right;
+	tooltip-body-position: 50% 10%;
+}
+
+#TradeHeader
+{
+	horizontal-align:center;
+	margin-bottom: 20px;
+	color: white;
+	font-size:22px;
+
+}
+
+#Legend
+{
+	flow-children: right;
+	margin-left: 85px;
+	margin-right: 80px;
+	padding: 10px;
+}
+
+.LegendPanel
+{
+	font-size: 20px;
+	margin-right: 30px;
+}
+
+#Legend_PlayerName
+{
+	margin-right: 215px;
+}
+
+#PlayersContainer
+{
+	margin-bottom: 30px;
+	flow-children: down;
+}
+
+
+
+#OpenButton
+{
+	width: 32px;
+	height: 32px;
+	background-image: url( "file://{images}/custom_game/trade_bar/trade-new.png" ); 
+ 
+	border-radius: 0px;
+	margin-left: 138px;
+	margin-top: 4px;
+	opacity: 1.2;
+}
+
+#OpenButton:active
+{
+	background-image: url( "file://{images}/custom_game/trade_bar/trade-new-active.png" ); 
+}
+
+#TradeSign:hover
+{
+	brightness:1.7;
+}
+
+
+
+
+
+.acceptdecline
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+
+	flow-children: right;
+
+	
+	margin-bottom: 30px;
+}
+
+
+#accept, #decline
+{
+	min-width: 72px;
+}
+
+#accept
+{
+	margin-right: 60px;
+	opacity: 0.8;
+}
+
+#decline
+{
+	//background-color:gradient( linear, 0% 0%, 0% 100%, from( #F73d45 ), to( #Bd5860 ) );
+}
+
+

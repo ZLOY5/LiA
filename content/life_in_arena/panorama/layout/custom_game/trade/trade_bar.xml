@@ -1,0 +1,53 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/trade/trade_bar.css" />
+		<include src="file://{resources}/styles/dotastyles.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/trade/trade_bar.js" />
+	</scripts>
+
+
+	<Panel class="TradeOverlayRoot"  hittest="false">
+
+		<Button id="OpenButton" onactivate="OpenButtonClick()">
+
+		</Button>
+
+
+
+		<Panel id="TradeMain" draggable="true" class="TradeMain">	
+			<Panel id="HelpIcon" onmouseover="DOTAShowTextTooltip(TradeTooltip)" onmouseout="DOTAHideTextTooltip()" />
+			<Label hittest="false" id="TradeHeader" class="TitleFont" text="#TradeHeader" />	
+			<Panel id="Legend">
+				<Label id="Legend_PlayerName" class="LegendPanel" text="#TradeLegeng_PlayerName" />
+				<Label id="Legend_SharedHero" class="LegendPanel" text="#TradeLegeng_SharedHero" />
+				<Label id="Legend_SharedUnits" class="LegendPanel" text="#TradeLegeng_SharedUnits" />
+				<Label id="Legend_DisableHelp" class="LegendPanel" text="#TradeLegeng_DisableHelp" />
+				<Label id="Legend_Gold" class="LegendPanel" text="#TradeLegeng_Gold" />
+				<Label id="Legend_Lumber" class="LegendPanel" text="#TradeLegeng_Lumber" />
+			</Panel>
+
+			<Panel id="PlayersContainer" >
+			</Panel> 
+
+			<Panel class="acceptdecline">	
+
+				<Button id="accept" class="ButtonBevel" onactivate="TradeRequest()">
+					<Label hittest="false" id="accept_text" class="TitleFont" text="#accept" />	
+				</Button>
+
+				<Button id="decline" class="ButtonBevel" onactivate="OpenButtonClick()">
+					<Label hittest="false" id="decline_text" class="TitleFont" text="#decline" />	
+				</Button>
+
+			</Panel>	
+
+		</Panel>
+
+
+
+		
+		</Panel>
+	
+</root>

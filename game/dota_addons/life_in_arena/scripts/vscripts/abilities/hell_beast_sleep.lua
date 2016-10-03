@@ -1,15 +1,27 @@
-function hell_beast_sleep_on_spell_start(event)
-	local target = event.target
-	local ability = event.ability
-	local caster = event.caster
-	if target:TriggerSpellAbsorb(ability) then
-		return 
-	end
+hell_beast_sleep = class({})
+
+LinkLuaModifier("modifier_hell_beast_sleep","abilities/modifier_hell_beast_sleep.lua",LUA_MODIFIER_MOTION_NONE)
+
+function hell_beast_sleep:CastFilterResultTarget( hTarget )
+	local nCasterID = self:GetCaster():GetPlayerOwnerID()
+	local nTargetID = hTarget:GetPlayerOwnerID()
 	
-	local duration = event.duration_creep
-	if event.target:IsRealHero() or string.find(event.target:GetUnitName(),"megaboss") then 
-		duration = event.duration_hero
+
+	--на клиенте невозможно проверить запрещена ли помощь союзникам 26.09.16
+	if IsServer() and not hTarget:IsOpposingTeam(self:GetCaster():GetTeamNumber()) and PlayerResource:IsDisableHelpSetForPlayerID(nTargetID,nCasterID) then 	
+		return UF_FAIL_DISABLE_HELP
 	end
-	event.ability:ApplyDataDrivenModifier(event.caster, event.target, "modifier_hellbeast_sleep", {duration = duration})
-	event.target:AddNewModifier(event.caster, event.ability, "modifier_invulnerable", {duration = event.duration_invul})
+
+	return UnitFilter(hTarget,DOTA_UNIT_TARGET_TEAM_BOTH,DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP,self:GetCaster():GetTeamNumber())
+
+end
+
+function hell_beast_sleep:OnSpellStart()
+	local target = self:GetCursorTarget()
+
+	local invulDuration = self:GetSpecialValueFor("duration_invul")
+	local duration = target:IsHero() and self:GetSpecialValueFor("duration_hero") or self:GetSpecialValueFor("duration_creep")
+
+	target:AddNewModifier(self:GetCaster(),self,"modifier_hell_beast_sleep",{duration = duration})
+	target:AddNewModifier(self:GetCaster(),self,"modifier_invulnerable",{duration = invulDuration})
 end

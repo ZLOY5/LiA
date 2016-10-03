@@ -73,9 +73,9 @@ function CDOTA_PlayerResource:ClearReadyToRound()
 	local table = CustomPlayerResource.readyToRound
 	for playerID,ready in pairs(table) do
 		table[playerID] = false
-		CustomNetTables:SetTableValue("lia_player_table", "PlayersReadyToRound", table)
 		--DeepPrintTable(CustomNetTables:GetTableValue("lia_player_table", tostring(playerID)))
 	end
+	CustomNetTables:SetTableValue("lia_player_table", "PlayersReadyToRound", table)
 end
 
 -------------------------------------------------------------------------------------------------

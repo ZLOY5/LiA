@@ -1,0 +1,94 @@
+
+
+
+#PlayerRowContainer
+{
+	flow-children:right;
+	margin-left: 10px;
+	width: 900px;
+	height: 42px;
+	margin-bottom: 5px;	
+
+
+	transition-property: brightness,pre-transform-scale2d;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+}
+
+#PlayerRowContainer:hover
+{
+	//brightness:1.8;
+	pre-transform-scale2d:1.005;
+	opacity: 1.5;
+}
+
+#HeroIcon
+{
+	width: 80px;
+	height: 42px;
+	opacity: 0.8;
+}
+
+#DisconnectionIndicator
+{
+	vertical-align: center;
+	visibility: collapse;
+}
+
+#PlayerName
+{
+	margin-left: 10px;
+	width: 260px;
+	height: 22px;
+	vertical-align: center;
+	text-overflow: ellipsis;
+	font-size: 19px;
+	color: #EEEEEE;
+}
+
+#Hero
+{
+	margin-left:13px;
+}
+
+#Units
+{
+	margin-left:55px;
+}
+
+#DisableHelp
+{
+	margin-left:77px;
+}
+
+#Hero, #Units, #DisableHelp, #Gold, #Lumber
+{
+	vertical-align: center;
+}
+
+#Gold
+{
+	margin-left:55px;
+	height: 42px;
+	width: 80px;
+	padding: 8px;
+
+	font-size: 20px;
+	text-align: center;
+	
+	color: gold;
+}
+
+#Lumber
+{
+	margin-left:10px;
+	height: 42px;
+	width: 80px;
+	padding: 8px;
+
+	font-size: 20px;
+	text-align: center;
+
+	color: #00AA00;
+}
+

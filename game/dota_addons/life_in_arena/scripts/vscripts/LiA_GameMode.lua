@@ -132,6 +132,9 @@ function LiA:InitGameMode()
 	
 	CustomGameEventManager:RegisterListener("glyph_clicked", Dynamic_Wrap(LiA, "GlyphClick"))
 	CustomGameEventManager:RegisterListener("lia_trade_request", Dynamic_Wrap(LiA, "TradeRequest"))
+	CustomGameEventManager:RegisterListener("shared_hero_toggle", Dynamic_Wrap(LiA, "SharedHeroToggle"))
+	CustomGameEventManager:RegisterListener("shared_units_toggle", Dynamic_Wrap(LiA, "SharedUnitsToggle"))
+	CustomGameEventManager:RegisterListener("disable_help_toggle", Dynamic_Wrap(LiA, "DisableHelpToggle"))
 	--upgrades
 	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
 	--CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
@@ -315,7 +318,15 @@ function LiA:OnNPCSpawned( event )
 end
 
 function LiA:OnPlayerLevelUp(event)
-    local hero = PlayerResource:GetSelectedHeroEntity(event.player - 1) 
+	--DeepPrintTable(event)
+	local player = EntIndexToHScript(event.player)
+	local hero
+	if player then
+    	hero = player:GetAssignedHero()
+    else
+    	return
+    end
+    --print(hero:GetUnitName(), "Lvl Up")
 
     if not hero.abilityPointsUsed then
     	hero.abilityPointsUsed = 0 
@@ -331,7 +342,13 @@ function LiA:OnPlayerLevelUp(event)
 end
 
 function LiA:OnPlayerLearnedAbility(event)
-    local hero = PlayerResource:GetSelectedHeroEntity(event.player - 1) 
+    local player = EntIndexToHScript(event.player)
+	local hero
+	if player then
+    	hero = player:GetAssignedHero()
+    else
+    	return
+    end
     
     if not hero.abilityPointsUsed then
     	hero.abilityPointsUsed = 0 
@@ -342,47 +359,51 @@ end
 
 function LiA:TradeRequest(event)
 	print("TradeRequest")
-	for k,v in pairs(event) do
-		print(k,v)
-	end
-	local tradeGold = event.gold 
-	local tradeLumber = event.lumber
+	DeepPrintTable(event)
 
-	local Player = PlayerResource:GetPlayer(event.PlayerID)
-	local tradePlayer = PlayerResource:GetPlayer(event.tradePlayerID)
+	local playerID = event.PlayerID
+	event.PlayerID = nil
+	
+	for sTradePlayerID,data in pairs(event) do
+		
+		local tradePlayerID = tonumber(sTradePlayerID)
+		
+		if data.gold > 0 then
+			local playerGold = PlayerResource:GetGold(playerID)
+			if data.gold > playerGold then
+				data.gold = playerGold
+			end
 
-	if tradeGold > 0 then
-		local playerGold = PlayerResource:GetGold(event.PlayerID)
-		if tradeGold > playerGold then
-			tradeGold = playerGold
-		end
-		PlayerResource:ModifyGold(event.PlayerID, -tradeGold, false, DOTA_ModifyGold_Unspecified)
-		PlayerResource:ModifyGold(event.tradePlayerID, tradeGold, false, DOTA_ModifyGold_Unspecified)
-		if tradePlayer then
-			CustomGameEventManager:Send_ServerToPlayer(tradePlayer, "lia_gold_received", {userid = Player.userid,gold = tradeGold})
-		end
-	end
+			PlayerResource:ModifyGold(playerID, -data.gold, false, DOTA_ModifyGold_Unspecified)
+			PlayerResource:ModifyGold(tradePlayerID, data.gold, false, DOTA_ModifyGold_Unspecified)
 
-	if tradeLumber > 0 then
-		local playerLumber = PlayerResource:GetLumber(event.PlayerID)
-		if tradeLumber > playerLumber then
-			tradeLumber = playerLumber
 		end
-		PlayerResource:ModifyLumber(event.PlayerID, -tradeLumber, false, DOTA_ModifyGold_Unspecified)
-		PlayerResource:ModifyLumber(event.tradePlayerID, tradeLumber, false, DOTA_ModifyGold_Unspecified)
-		if tradePlayer then
-			CustomGameEventManager:Send_ServerToPlayer(tradePlayer, "lia_lumber_received", {userid = Player.userid,lumber = tradeLumber})
+
+		if data.lumber > 0 then
+			local playerLumber = PlayerResource:GetLumber(playerID)
+			if data.lumber > playerLumber then
+				data.lumber = playerLumber
+			end
+
+			PlayerResource:ModifyLumber(playerID, -data.lumber)
+			PlayerResource:ModifyLumber(tradePlayerID, data.lumber)
+
 		end
 	end
 end
 
---[[
-TradeRequest
-lumber	0
-PlayerID	2
-tradePlayerID	0
-gold	50
-]]
+function LiA:SharedHeroToggle(event)
+	PlayerResource:SetUnitShareMaskForPlayer( event.PlayerID, event.togglePlayerID, 1, event.state == 1  )
+end
+
+function LiA:SharedUnitsToggle(event)
+	PlayerResource:SetUnitShareMaskForPlayer( event.PlayerID, event.togglePlayerID, 2, event.state == 1  )
+end
+
+function LiA:DisableHelpToggle(event)
+	PlayerResource:SetUnitShareMaskForPlayer( event.PlayerID, event.togglePlayerID, 4, event.state == 1  )
+end
+
 
 function LiA:GlyphClick(event)
 	--print(event.PlayerID)

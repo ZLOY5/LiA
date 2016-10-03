@@ -1,0 +1,32 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/trade/player_row.css" />
+
+    </styles>
+		
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/trade/player_row.js" />
+	</scripts>
+
+	<Panel class="PlayerRow">
+		<Panel id="PlayerRowContainer">
+
+
+			<Panel id="HeroIcon" class="">
+				<DOTAHeroImage id="HeroImage" heroname="none" heroimagestyle="landscape" />
+				<Image hittest="false" id="DisconnectionIndicator" src="file://{images}/custom_game/icon_disconnect.png" />
+			</Panel>
+
+			<Label id="PlayerName" text="OloloshaSuperMasterMamkyEbal(Мастер Теней)" multiline="false"/>
+			
+			<ToggleButton id="Hero" onactivate="SharedHeroToggle()"/>
+			<ToggleButton id="Units" onactivate="SharedUnitsToggle()"/>
+			<ToggleButton id="DisableHelp" onactivate="DisableHelpToggle()"/>
+
+			<Label id="Gold" text="0" onactivate="ChangeGold(true)" oncontextmenu="ChangeGold(false)"/>
+			<Label id="Lumber" text="0" onactivate="ChangeLumber(true)" oncontextmenu="ChangeLumber(false)"/>
+			
+		</Panel>
+	</Panel>
+</root>
