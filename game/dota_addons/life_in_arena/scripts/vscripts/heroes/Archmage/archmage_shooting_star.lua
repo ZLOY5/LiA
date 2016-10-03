@@ -68,6 +68,7 @@ function archmage_shooting_star:OnSpellStart()
 	if caster.shootingStarStackCount <= charge_limit then
 		ParticleManager:SetParticleControl(caster.shootingStarOverhead, caster.shootingStarStackCount, Vector(1,0,0))
 		stack_modifier:SetStackCount(caster.shootingStarStackCount)
+		SetParticleStackCount(caster.shootingStarOverhead,caster.shootingStarStackCount)
 	end
 
 	CustomNetTables:SetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar",{ stackCount = caster.shootingStarStackCount })
@@ -85,7 +86,7 @@ function archmage_shooting_star:OnSpellStart()
 				if stack_modifier then
 					stack_modifier:SetStackCount(caster.shootingStarStackCount)
 				end
-			
+				SetParticleStackCount(caster.shootingStarOverhead,caster.shootingStarStackCount)
 			end
 			
 			local ability = caster:FindAbilityByName("archmage_shooting_star") or caster:FindAbilityByName("archmage_shooting_star_staff")
@@ -223,4 +224,14 @@ function archmage_shooting_star:OnSpellStart()
 	end
 
 --	print(self:GetCaster().shootingStarStackCount, " bez SP")
+end
+
+function SetParticleStackCount(pIndex,nStackCount)
+	for i=1,7 do
+		if i <= nStackCount then
+			ParticleManager:SetParticleControl(pIndex, i, Vector(1,0,0))
+		else
+			ParticleManager:SetParticleControl(pIndex, i, Vector(0,0,0))
+		end
+	end
 end

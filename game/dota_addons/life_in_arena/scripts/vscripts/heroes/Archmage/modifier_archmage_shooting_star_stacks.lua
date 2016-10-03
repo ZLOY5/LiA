@@ -39,3 +39,4 @@ end
 function modifier_archmage_shooting_star_stacks:OnTooltip(params)
 	return self:GetStackCount() * self:GetAbility():GetSpecialValueFor("damage_per_charge") + self:GetAbility():GetSpecialValueFor("initial_damage")
 end
+
