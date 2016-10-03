@@ -29892,7 +29892,7 @@
 		"warlock_storm_datadriven"
 		{
 			"BaseClass"              "ability_datadriven"
-			"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+			"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
 			"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 			"AbilityTextureName"     "warlock_storm_datadriven"
 	
@@ -29902,125 +29902,40 @@
 			"MaxLevel"               "3"
 			"RequiredLevel"          "1"
 			"LevelsBetweenUpgrades"  "2"
-			"AbilityChannelTime"      "2.5"
 		
 		
 		  	"precache"
 		  	{
-		    		"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-					//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_e.vpcf"
-					//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+		    	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+		    	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
 		  	}
 		
 		
 		  	"AbilityCastPoint"        "0.3"
-		  	"AbilityCooldown"         "10"
-		  	"AbilityManaCost"         "130 160 190"
-		  	"AbilityCastRange"        "400"
+		  	"AbilityCooldown"         "6"
+		  	"AbilityManaCost"         "100 125 150"
+		  	"AbilityCastRange"        "700"
 		
-		  	"AoERadius"               "200 225 250"
+		  	"AoERadius"               "250"
 		 
 		
 		 	"OnSpellStart"  
 		 	{
-		        	"ApplyModifier"
-		        	{
-		          		"ModifierName"  "modifier_warlock_storm_hero"
-		          		"Target"
-		          		{
-		          			"Center"  	"CASTER"
-		          			"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-		          		}
-		        	}
-	
-		    		"ActOnTargets"
-		    		{
-		      			"Target"
-		      			{
-		        			"Center" "POINT"
-		                		"Radius" "%radius"
-		                		"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		                		"Type"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		      			}
-		
-		      			"Action"
-		      			{
-		        			"ApplyModifier"
-		        			{
-		          				"ModifierName"  "modifier_warlock_storm"
-		          				"Target"        "TARGET"
-		        			}
-		      			}
-		    		}
-		  	}  
-		
-			"OnChannelInterrupted"
-			{
-				"RemoveModifier"
-			       {
-			         "ModifierName"  "modifier_warlock_storm_hero"
-			         "Target"        "CASTER"
-			       }
-			}                               
+		 		"RunScript"
+		 		{
+		 			"ScriptFile"	"heroes\Warlock\storm.lua"
+		 			"Function"		"Storm"
+		 		}
+		 		"FireSound"
+				{
+					"EffectName"	"Hero_Zuus.LightningBolt"
+					"Target" 		"CASTER"
+				}
+		  	}                                
 		
 			"Modifiers"
 			{
-		  		"modifier_warlock_storm_hero"
-		  		{
-					"Passive"       "0"
-					"IsHidden"      "1"
-					"IsDebuff"      "0"
-					"IsBuff"      	"0"
-					"IsPurgable"	"0"
-					"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-					"ThinkInterval"  "%tick_interval"
-					"OnIntervalThink"
-					{
-						"FireSound"
-						{
-							"EffectName"	"Hero_Zuus.GodsWrath"
-							"Target" 		"CASTER"
-						}
-						"RunScript"
-						{
-								"ScriptFile" "heroes/Warlock/storm.lua"
-								"Function"   "stormEffect"
-						}
-						
-					}
-					//
-		    		"Duration"  "%duration"
-		  		}
-		  		"modifier_warlock_storm"
-		  		{
-					"Passive"       "0"
-					"IsHidden"      "1"
-					"IsDebuff"      "1"
 	
-					"Duration"  "%duration"
-		
-					"ThinkInterval"  "%tick_interval"
-			       
-					"OnIntervalThink"
-					{
-						"RunScript"
-						{
-								"ScriptFile" "heroes/Warlock/storm.lua"
-								"Function"   "stormCauseDamage"
-						"damage" "%damage"
-	
-						}
-						//"FireEffect"
-						//{
-						//	"Target" "TARGET"
-						//	"EffectName"			"particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-						//	"EffectAttachType"		"follow_overhead"	
-						//}
-		
-			       	}
-		
-		
-		  		}
 			}
 		
 		  	"AbilitySpecial"
@@ -30028,163 +29943,61 @@
 		   		"01"
 		   		{
 		     			"var_type"              "FIELD_INTEGER"
-		     			"radius"                "200 225 250"
+		     			"radius"                "250"
 		   		}
 		   		"02"
 		   		{
 		     			"var_type"              "FIELD_INTEGER"
-		     			"damage"         		"40 80 120"
-		   		}
-		   		"03"
-		   		{
-		     			"var_type"              "FIELD_FLOAT"
-		     			"tick_interval"         	"0.8"
-		   		}
-		   		"04"
-		   		{
-		     			"var_type"              "FIELD_FLOAT"
-		     			"duration"         	"2.5"
-		   		}
-		
-		
-		 	}
-		
+		     			"damage"         		"50 100 150"
+		   		}		
+		 	}	
 		}
 	
 		"warlock_storm_datadriven_staff"
 		{
 			"BaseClass"              "ability_datadriven"
-			"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+			"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
 			"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 			"AbilityTextureName"     "warlock_storm_datadriven"
-	
-		
 	
 			"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 			"MaxLevel"               "3"
 			"RequiredLevel"          "1"
 			"LevelsBetweenUpgrades"  "2"
-			"AbilityChannelTime"      "2.5"
-		
 		
 		  	"precache"
 		  	{
-		    		"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-					//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_e.vpcf"
-					//"particle"		"particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+		    	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+		    	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
 		  	}
 		
 		
 		  	"AbilityCastPoint"        "0.3"
-		  	"AbilityCooldown"         "10"
-		  	"AbilityManaCost"         "260 260 260"
-		  	"AbilityCastRange"        "400"
+		  	"AbilityCooldown"         "6"
+		  	"AbilityManaCost"         "200"
+		  	"AbilityCastRange"        "700"
 		
-		  	"AoERadius"               "200 225 250"
+		  	"AoERadius"               "250"
 		 
 		
 		 	"OnSpellStart"  
 		 	{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/Warlock/storm.lua"
-						"Function"  	"storm_castpoint"
-						"EventName" 	"OnSpellStart"
-						"Target" 		"POINT"
-					}
-		        	"ApplyModifier"
-		        	{
-		          		"ModifierName"  "modifier_warlock_storm_hero"
-		          		"Target"
-		          		{
-		          			"Center"  	"CASTER"
-		          			"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-		          		}
-		        	}
-		    		"ActOnTargets"
-		    		{
-		      			"Target"
-		      			{
-		        			"Center" 	"POINT"
-		                	"Radius" 	"%radius"
-		                	"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		                	"Type"     	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		      			}
-		
-		      			"Action"
-		      			{
-		        			"ApplyModifier"
-		        			{
-		          				"ModifierName"  "modifier_warlock_storm"
-		          				"Target"        "TARGET"
-		        			}
-		      			}
-		    		}
+		 		"RunScript"
+		 		{
+		 			"ScriptFile"	"heroes\Warlock\storm.lua"
+		 			"Function"		"Storm"
+		 		}
+		 		"FireSound"
+				{
+					"EffectName"	"Hero_Zuus.LightningBolt"
+					"Target" 		"CASTER"
+				}
 		  	}  
-		
-			"OnChannelInterrupted"
-			{
-				"RemoveModifier"
-			       {
-			         "ModifierName"  "modifier_warlock_storm_hero"
-			         "Target"        "CASTER"
-			       }
-			}                               
+	                           
 		
 			"Modifiers"
 			{
-		  		"modifier_warlock_storm_hero"
-		  		{
-					"IsHidden"      "1"
 	
-					"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"				
-					"ThinkInterval"  "%tick_interval"
-					"OnIntervalThink"
-					{
-						"FireSound"
-						{
-							"EffectName"	"Hero_Zuus.GodsWrath"
-							"Target" 		"CASTER"
-						}
-						"RunScript"
-						{
-								"ScriptFile" "heroes/Warlock/storm.lua"
-								"Function"   "stormEffect"
-						}
-						
-					}
-					//
-		    		"Duration"  "%duration"
-		  		}
-		  		"modifier_warlock_storm"
-		  		{
-					"IsHidden"      "1"
-					"IsDebuff"      "1"
-	
-					"Duration"  "%duration"
-		
-					"ThinkInterval"  "%tick_interval"
-			       
-					"OnIntervalThink"
-					{
-						"RunScript"
-						{
-								"ScriptFile" "heroes/Warlock/storm.lua"
-								"Function"   "stormCauseDamage"
-						"damage" "%damage"
-	
-						}
-						//"FireEffect"
-						//{
-						//	"Target" "TARGET"
-						//	"EffectName"			"particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-						//	"EffectAttachType"		"follow_overhead"	
-						//}
-		
-			       	}
-		
-		
-		  		}
 			}
 		
 		  	"AbilitySpecial"
@@ -30192,25 +30005,13 @@
 		   		"01"
 		   		{
 		     			"var_type"              "FIELD_INTEGER"
-		     			"radius"                "200 225 250"
+		     			"radius"                "250"
 		   		}
 		   		"02"
 		   		{
 		     			"var_type"              "FIELD_INTEGER"
-		     			"damage"         		"120 160 200"
+		     			"damage"         		"150 200 250"
 		   		}
-		   		"03"
-		   		{
-		     			"var_type"              "FIELD_FLOAT"
-		     			"tick_interval"         	"0.8"
-		   		}
-		   		"04"
-		   		{
-		     			"var_type"              "FIELD_FLOAT"
-		     			"duration"         	"2.5"
-		   		}
-		
-		
 		 	}
 		
 		}
