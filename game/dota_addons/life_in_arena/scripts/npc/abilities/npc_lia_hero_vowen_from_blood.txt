@@ -449,7 +449,7 @@
 	{
 		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
 		"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
-		"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher.vpcf"		
+		"particle"		"particles/obsidian_destroyer_sanity_eclipse_area_w.vpcf"		
 				
 	}
 	
@@ -499,12 +499,15 @@
 	{
 		"FireEffect"
 		{	
-			"EffectName"	"particles/items2_fx/veil_of_discord.vpcf"
+			"EffectName"	"particles/obsidian_destroyer_sanity_eclipse_area_w.vpcf"
 			"EffectAttachType"	"start_at_customorigin"
 			"TargetPoint"	"POINT"	
 			"ControlPoints"
 			{
-				"01"	"%radius 0 0"
+				"00" "POINT"
+				"01" "%radius 0 0"
+				"02" "%radius 0 0"
+				"03" "%radius 0 0"				
 			}
 		}
 
