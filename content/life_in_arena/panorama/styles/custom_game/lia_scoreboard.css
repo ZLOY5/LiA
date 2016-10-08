@@ -1,4 +1,4 @@
-@define BACKGROUND_COLOR: #303030;
+@define BACKGROUND_COLOR: #303030DE;
 @define BACKGROUND_COLOR_WHITE: #FFFFFF28;
 
 .FlyoutScoreboardRoot
@@ -9,9 +9,10 @@
     flow-children: down;
     padding: 10px;
 	
-    transform: translatex( -700px );
+    transform: translatex( -750px );
     transition-property: transform;
     transition-duration: 0.2s;
+
 }
 
 .FlyoutScoreboardRoot.flyout_scoreboard_visible
@@ -23,6 +24,9 @@
 {
     flow-children: down;
     horizontal-align: center;
+    box-shadow: #000000 0px 1px 10px 0px;
+    margin-left: 73px;
+
 }
 
 .FlyoutTeam
@@ -51,18 +55,6 @@
 	height: 100%;
 }
 
-#TeamColor_GradentFromTransparentLeft
-{
-	width: 100%;
-	height: 100%;
-}
-
-#TeamColorOverlay
-{
-	background-color: gradient( linear, 80% 0%, 100% 0%, from( #00000000 ), to( #000000FF ) );
-	width: 100%;
-	height: 100%;
-}
 
 .FlyoutPlayer
 { 
@@ -76,12 +68,9 @@
 #PlayersContainer
 {
     flow-children: down;
+    
 }
 
-.local_player_team #PlayersContainer
-{
-    box-shadow: fill #ffffff40 -3px -3px 3px 6px;
-}
 
 .TeamId
 {
@@ -138,13 +127,21 @@
 
 .PlayerRow
 {
-	height: 32px;
+	height: 35px;
+	flow-children: right;
+
+	transition-property: position;
+	transition-duration: 0.5s;
+
 }
 
 #PlayerRowContainer
 {
 	flow-children: right;
-	height: 32px;
+	height: 35px;
+	background-color: BACKGROUND_COLOR;
+	border-bottom: 1px solid #00000066;
+
 }
 
 #HeroIcon
@@ -157,8 +154,14 @@
 #KillsBossesContainer,
 #KillsCreepsContainer,
 #DeathsContainer,
-#RatingContainer,
 #TeamScoreContainer
+{
+	height: 100%;
+	width: 60px;
+	border-right: 1px solid #00000066;
+}
+
+#RatingContainer
 {
 	height: 100%;
 	width: 60px;
@@ -168,13 +171,14 @@
 {
 	height: 100%;
 	width: 85px;
+	border-right: 1px solid #00000066;
 }
 
 .ScoreboardPanel
 {
-    background-color: BACKGROUND_COLOR;
-	margin-top: 1px;
-	margin-left: 1px;
+    //background-color: BACKGROUND_COLOR;
+	//margin-top: 1px;
+	//margin-left: 1px;
 }
 
 .LegendPanel
@@ -185,13 +189,13 @@
 
 .is_local_player .ScoreboardPanel
 {
-	background-color: #444444;
-    //background-color: BACKGROUND_COLOR_WHITE;
+	//background-color: #444444;
+   // background-color: BACKGROUND_COLOR_WHITE;
 }
 
 .is_local_player #PlayerRowContainer
 {
-    box-shadow: fill #ffffff70 -2px -2px 2px 4px;
+    box-shadow: fill #222222aa 0px 0px 3px 0px;
 }
 .ScoreboardPanel Label
 {
@@ -201,7 +205,7 @@
 
 .UltimateIndicatorShared
 {
-	margin-left: 44px;
+	margin-left: 40px;
 	margin-top: 2px;
 	vertical-align: center;
 	width: 20px;
@@ -226,20 +230,22 @@
 #Upd
 {
 	vertical-align: center;
-	font-size: 18px;
+	font-size: 19px;
 	text-align: center;
-	margin-top: 3px;
+	margin-top: 5px;
 	width: 100%;
+	color: #ffffff98;
 }
 
 #PlayerName
 {
 	vertical-align: center;
-	color: white;
+	color: #ffffff98;
 	font-size: 20px;
 	//margin-bottom: -4px;
-	//margin-top: 0px;
+	margin-top: 5px;
 	white-space: nowrap;
+
 }
 
 #HeroNameAndDescription
@@ -249,13 +255,14 @@
 	text-shadow: 2px 2px 2px black;
 	margin-top: -1px;
 	vertical-align: center;
+
 }
 #MuteButton
 {
 	margin-right: 0px;
 	margin-top: 0px;
 	horizontal-align: right;
-	vertical-align: top;
+	vertical-align: center;
 	width: 18px;
 	height: 18px;
     background-size: 100%;
@@ -301,6 +308,7 @@
 #PlayerDetailsContainer
 {
 	height: 100%;
+	border-right: 1px solid #00000066;
 }
 
 #PlayerAndHeroName
@@ -315,9 +323,10 @@
 .is_local_player #Level,
 .is_local_player #Deaths,
 .is_local_player #Upd,
+.is_local_player #PlayerName,
 .is_local_player #Rating
 {
-	color: #ffffff98;
+	color: #ffffffff;
 }
 
 .ScoreCol_TeamInfo
@@ -327,12 +336,12 @@
 
 .ScoreCol_PlayerDetails
 {
-	width: 170px;
+	width: 200px;
 }
 
 .ScoreCol_Hero
 {
-	width: 53px;
+	width: 60px;
 }
 
 .ScoreCol_TeamScore
@@ -385,25 +394,4 @@
     width: 100%;
 }
 
-#RespawnTimer
-{
-	opacity: 0;
-    color: #e5460e;
-    width: 100%;
-	text-align: center;
-    vertical-align: bottom;
-	margin-bottom: 4px;
-    font-size: 18px;
-    text-shadow: 2px 2px 2px black;
-}
 
-.player_dead #RespawnTimer
-{
-	opacity: 1;
-}
-
-.ScoreboardPlayerWrapper.player_dead #RespawnIndicator
-{
-	opacity: 1;
-	transform: translateY(0px);
-}

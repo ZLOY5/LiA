@@ -110,6 +110,11 @@ function TradeRequest()
 	OpenButtonClick()
 }
 
+function OnPlayerStateChanged(table, key, data)
+{
+	$.Msg(table, key, data)
+}
+
 (function()
 {
 	var playersContainer = $("#PlayersContainer");
@@ -126,6 +131,8 @@ function TradeRequest()
 
 		
 	}
+
+	CustomNetTables.SubscribeNetTableListener("lia_player_table",OnPlayerStateChanged)
 
 	if (isOnePlayer) {
 		$.FindChildInContext("#OpenButton").visible = false;

@@ -1,9 +1,12 @@
-    function Survival:OnPlayerPickHero(keys)
+function Survival:OnPlayerPickHero(keys)
     PrintTable("OnPlayerPickHero",keys)
     local player = EntIndexToHScript(keys.player)
 
     local playerID = player:GetPlayerID()
     local hero = EntIndexToHScript(keys.heroindex)
+
+    CustomPlayerResource:InitPlayer(playerID)
+    
     hero.creeps = 0
     hero.bosses = 0
     hero.deaths = 0
@@ -59,7 +62,7 @@ function Survival:_OnHeroDeath(keys)
     if (self.State == SURVIVAL_STATE_DUEL_TIME) and (hero == self.DuelFirstHero or hero == self.DuelSecondHero) then
         Survival:EndDuel(attackerHero,hero)
     else
-        hero.deaths = hero.deaths + 1
+        PlayerResource:IncremetDeaths(hero:GetPlayerOwnerID())
     
         if self:GetHeroCount(true) == 0 then
             GameRules:SetCustomVictoryMessage("#lose_message")
@@ -74,7 +77,7 @@ function Survival:_OnCreepDeath(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
     if hero then
-        hero.creeps = hero.creeps + 1
+        PlayerResource:IncremetCreepKills(hero:GetPlayerOwnerID())
     end
 
     self.nDeathCreeps = self.nDeathCreeps + 1
@@ -89,7 +92,7 @@ function Survival:_OnBossDeath(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
     if hero then
-        hero.bosses = hero.bosses + 1
+        PlayerResource:IncremetBossKills(hero:GetPlayerOwnerID())
         PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),3)
         --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = hero.lumber })
         if attacker:GetPlayerOwner() then
@@ -176,12 +179,14 @@ end
 ---------------------------------------------------------------------------------------------------------------------------
 
 function Survival:OnConnectFull(event)
-    local player = EntIndexToHScript(event.index+1)
+    local playerID = event.PlayerID
+    --local player = PlayerResource:GetPlayer(playerID)
     
-    local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     if hero then
         Survival:UnhideHero(hero) --in utils.lua
     end
+
 end
 
 function Survival:OnDisconnect(event)

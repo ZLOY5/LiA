@@ -1,4 +1,4 @@
-function OnUpdatePlayerData( data )
+function OnUpdatePlayerData()
 {
 
 	var localPlayerTeamId = -1;
@@ -31,9 +31,23 @@ function OnUpdatePlayerData( data )
 		}
 		
 	}
+	
+	$.Schedule(0.5,OnUpdatePlayerData)
+}
 
-	return 0.5
 
+function ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, scoreboardPanel )
+{
+	GameUI.CustomUIConfig().teamsPrevPlace = [];
+	if ( typeof(scoreboardConfig.shouldSort) === 'undefined')
+	{
+		// default to true
+		scoreboardConfig.shouldSort = false;
+	}
+	//$.Msg( "                  ScoreboardUpdater_InitializeScoreboard: ", scoreboardConfig );
+	//_ScoreboardUpdater_UpdateAllPlayers( scoreboardConfig, scoreboardPanel );
+	
+	return { "scoreboardConfig": scoreboardConfig, "scoreboardPanel" : scoreboardPanel }
 }
 
 
@@ -52,8 +66,7 @@ function OnUpdatePlayerData( data )
 	CustomNetTables.SubscribeNetTableListener("lia_player_table",OnUpdatePlayerData)
 
 	$.Schedule(0.5,OnUpdatePlayerData)
-
-	GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
+//
 	OnUpdatePlayerData()
 	
 })();

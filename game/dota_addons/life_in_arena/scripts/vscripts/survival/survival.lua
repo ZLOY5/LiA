@@ -126,6 +126,12 @@ function Survival:InitSurvival()
     SetRuneSpawnRegion("rectangle",ARENA_LEFT_BOTTOM_CORNER,ARENA_TOP_RIGHT_CORNER)
     StartRunesSpawn()
 
+    for i = 0, DOTA_MAX_PLAYERS-1 do
+        if PlayerResource:IsValidTeamPlayerID(i) then
+            CustomPlayerResource:InitPlayer(i)
+        end
+    end
+
 end
 
 function AIThink()
@@ -179,14 +185,6 @@ function Survival:onThink()
         hero.rating = math.floor(hero.percUlu * 7 + .5) + hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30 - 30
     end 
     table.sort(self.tHeroes,function(a,b) return a.rating > b.rating end)
-
-    local data = self:GetDataForSend()
-
-    if not (Survival.State == SURVIVAL_STATE_DUEL_TIME) then
-        if #self.tHeroes ~= 0 then
-            CustomGameEventManager:Send_ServerToAllClients( "upd_action", data )
-        end
-    end
 	
 	-- update lumber in hud
 	local playerID
@@ -620,58 +618,6 @@ function Survival:GetDataForSendUlu(only_upd, done, pid, need, finish, name)
     return data
 end
 
-function Survival:GetDataForSend()
-    local tPlayersId = {}
-    local tKillsCreeps = {}
-    local tKillsBosses = {}
-	local tPercUlu = {}
-    local tDeaths = {}
-    local tRating = {}
-    --[[
-    -- tHeroes need to be sorted
-    --
-    for i = 1, #self.tPlayers do
-        local hero = self.tHeroes[i]
-        table.insert(tPlayersId,hero:GetPlayerID())
-        table.insert(tKillsCreeps,hero.creeps or 0)
-        table.insert(tKillsBosses,hero.bosses or 0)
-        table.insert(tDeaths,hero.deaths or 0)
-        table.insert(tRating,hero.rating or 0)
-    end]]
-
-    local playersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-    for i = 1, playersCount do 
-        local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
-        local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-        table.insert(tPlayersId,playerID)
-        if hero then
-            table.insert(tKillsCreeps,hero.creeps or 0)
-            table.insert(tKillsBosses,hero.bosses or 0)
-			table.insert(tPercUlu,hero.percUlu or 0)
-            table.insert(tDeaths,hero.deaths or 0)
-            table.insert(tRating,hero.rating or 0)
-        else 
-            table.insert(tKillsCreeps,0)
-            table.insert(tKillsBosses,0)
-			table.insert(tPercUlu,0)
-            table.insert(tDeaths,0)
-            table.insert(tRating,0)
-        end
-    end
-    
-    local data =
-        {
-            PlayersId = tPlayersId,
-            KillsCreeps = tKillsCreeps,
-            KillsBosses = tKillsBosses,
-            Deaths = tDeaths,
-            Rating = tRating,
-			PercUlu = tPercUlu,
-            barrelExplosions = self.barrelExplosions,
-        }
-    return data
-end
-
 function HeroToPedestal(hero,place)
     if not hero then
         return 
@@ -722,15 +668,10 @@ function Survival:EndGame(teamWin)
             HeroToPedestal(self.tHeroes[3],3)
         end
         GameRules:SetGameWinner(teamWin)
-        GameMode:SetContextThink( "EndGameCon", EndGameCon , 0.5)
     end) 
     
 
 
 end
 
-function EndGameCon()
-    local data = Survival:GetDataForSend()
-    CustomGameEventManager:Send_ServerToAllClients( "upd_action_end", data )
-    return nil --0.5
-end
+

@@ -1,0 +1,69 @@
+.TopScoreboardRoot
+{
+	width: 100%;
+	height: 100%;
+}
+
+.ScoreboardPlayer
+{
+
+}
+
+#PlayersContainer
+{
+	flow-children:right;
+}
+
+.ScoreboardPlayerWrapper
+{ 
+	transition-property: position;
+	transition-duration: 0.75s;
+}
+
+.ScoreboardPlayer
+{
+	width: 80px;
+	height: 45px;
+	margin-left: 10px;
+
+}
+
+.PlayerPortraitWrapper
+{
+	flow-children:down;
+
+}
+
+#PlayerColorBar
+{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	width: 80px;
+	height: 5px;
+}
+
+.is_local_player #ScoreboardPlayer
+{
+	box-shadow: -3px -3px 3px 6px #FFFFFF88;
+}
+
+#ReadyToRoundIndicator
+{
+	width: 78px;
+	height: 40px;
+	box-shadow: #00ff0080 0px 0px 6px 0px;
+	margin-left: 11px;
+	margin-top: 6px;
+	visibility: collapse;
+	z-index:2;
+}
+
+ .ready_to_round #ReadyToRoundIndicator
+{
+	visibility: visible;
+}
+
+#UltimateIndicatorContainer
+{
+	z-index: 3;
+}

@@ -17,74 +17,6 @@ function SetFlyoutScoreboardVisible( bVisible )
 	}
 }
 
-function GetScore_FromPlayerId(data, playerId)
-{
-	
-	for ( var i = 1; i <= 8; ++i )
-	{
-		if (data.PlayersId[i] !== null)
-		{
-			
-			if (data.PlayersId[i] === playerId)
-			{
-				var score =
-				{
-					"KillsCreeps" : data.KillsCreeps[i],
-					"KillsBosses" : data.KillsBosses[i],
-					"Deaths" : data.Deaths[i],
-					"Rating" : data.Rating[i],
-					"PercUlu" : data.PercUlu[i],
-					
-					
-				};
-				return score;
-			}
-		}
-
-	}
-}
-
-
-function OnUpdAction_compareFunc( a, b ) 
-{
-	if ( a.scoreRating < b.scoreRating )
-	{
-		return 1; // [ B, A ]
-	}
-	else if ( a.scoreRating > b.scoreRating )
-	{
-		return -1; // [ A, B ]
-	}
-	else
-	{
-		return 0;
-	}
-};
-
-function OnUpdAction_GetSortedPlayersList(teamPlayers, data )
-{
-	var playersAndParamsList = [];
-
-	for ( var playerId of teamPlayers )
-	{
-		var score = GetScore_FromPlayerId(data,playerId)
-		var dataIn = 
-		{
-			"scoreRating" : score.Rating,
-			"playerId" : playerId,
-		};
-		playersAndParamsList.push( dataIn );
-	}
-	//playersAndParamsList.push( {"scoreRating" : 100, "playerId" : 3,} );
-
-	if ( playersAndParamsList.length > 1 )
-	{
-		playersAndParamsList.sort( OnUpdAction_compareFunc );		
-	}
-	
-	return playersAndParamsList;
-}
-
 
 function OnUpdActionHide( dataHide )
 {
@@ -94,12 +26,9 @@ function OnUpdActionHide( dataHide )
 
 
 // for current player
-function OnUpdAction( data )
+function OnUpdatePlayerData( data )
 {
-	// data.KillsCreeps[i], i = number tHeroes
-	//$.Msg( "                  OnUpdAction:data ", data.KillsCreeps[1] );
-	//$.Msg( "                  OnUpdAction:data.da ", data.da );
-	//
+
 	var localPlayerTeamId = -1;
 	var localPlayer = Game.GetLocalPlayerInfo();
 	if ( localPlayer )
@@ -122,20 +51,16 @@ function OnUpdAction( data )
 	//$.Msg( "                  OnUpdAction:playersContainer ", playersContainer );
 	if ( playersContainer )
 	{
-
-		var plAndParList = OnUpdAction_GetSortedPlayersList(teamPlayers, data);
-		//_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, 3, localPlayerTeamId, score );
-		for ( var i = 0; i < plAndParList.length; ++i )
-
-		{
-			//_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
-
-			var score = GetScore_FromPlayerId(data,plAndParList[i].playerId); //.playerId  plList[i]
-
-			_ScoreboardUpdater_UpdatePlayerPanelMy( g_ScoreboardHandle.scoreboardConfig, playersContainer, plAndParList[i].playerId, localPlayerTeamId, score, i ); //.playerId   plList[i]
+		
+		for (var playerID of teamPlayers) {
+			
+			_ScoreboardUpdater_UpdatePlayerPanel( g_ScoreboardHandle.scoreboardConfig, playersContainer, playerID, localPlayerTeamId ); 
+		
 		}
 		
 	}
+
+	return 0.5
 
 }
 
@@ -152,8 +77,11 @@ function OnUpdAction( data )
 	//SetFlyoutScoreboardVisible( false );
 
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
-	GameEvents.Subscribe( "upd_action",  OnUpdAction);
+	CustomNetTables.SubscribeNetTableListener("lia_player_table",OnUpdatePlayerData)
+
+	$.Schedule(0.5,OnUpdatePlayerData)
+
 	GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
-	
+	OnUpdatePlayerData()
 	
 })();

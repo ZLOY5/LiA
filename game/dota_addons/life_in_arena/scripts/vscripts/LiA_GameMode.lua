@@ -267,10 +267,12 @@ end
 
 function LiA:OnConnectFull(event)
     PrintTable("OnConnectFull",event)
-    local entIndex = event.index+1
-    local player = EntIndexToHScript(entIndex)
-    local playerID = player:GetPlayerID()
+	
+	local playerID = event.PlayerID
+    local player = PlayerResource:GetPlayer(playerID)
+   
     print("playerID ",playerID)
+
     self.vUserIds[event.userid] = player
     player.userid = event.userid
     

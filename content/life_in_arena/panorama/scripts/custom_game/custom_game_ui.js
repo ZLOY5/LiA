@@ -1,17 +1,17 @@
 "use strict";
 
 Players.GetLumber = function(playerID) {
-	var netTable = CustomNetTables.GetTableValue("lia_player_table", "PlayersLumber")
+	var netTable = CustomNetTables.GetTableValue("lia_player_table", "Player"+playerID)
 	if (typeof(netTable) == "object") {
-		return netTable[playerID] 
+		return netTable.lumber 
 	}
 	return 0
 }
 
 Players.IsReadyToRound = function(playerID) {
-	var netTable = CustomNetTables.GetTableValue("lia_player_table", "PlayersReadyToRound");
+	var netTable = CustomNetTables.GetTableValue("lia_player_table", "Player"+playerID);
 	if (typeof(netTable) == "object") {
-		return netTable[playerID] 
+		return netTable.readyToRound 
 	}
 	return false
 }
