@@ -1,8 +1,10 @@
 function Survival:GetHeroToDuel()
-    for i = 1, #self.tHeroes do
-        if not self.tHeroes[i].IsDueled and IsValidEntity(self.tHeroes[i]) and not self.tHeroes[i].hidden then
-            self.tHeroes[i].IsDueled = true
-            return self.tHeroes[i]
+    for i = 1, 8 do
+        local playerId = PlayerResource:GetPlayerIdAtPlace(i)
+        local hero = PlayerResource:GetSelectedHeroEntity(playerId)
+        if hero and not hero.IsDueled and IsValidEntity(hero) and not hero.hidden then
+            hero.IsDueled = true
+            return hero
         end
     end
     return nil 

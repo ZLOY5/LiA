@@ -37,7 +37,7 @@ function OnUpdatePlayerData( data )
 	}
 
 	var containerPanel = $( "#TeamsContainer")
-	var teamPanelName = "_dynamic_team_" + localPlayerTeamId;
+	var teamPanelName = "_dynamic_team_" + DOTATeam_t.DOTA_TEAM_GOODGUYS;
 	var teamPanel = containerPanel.FindChild( teamPanelName );
 	if ( teamPanel === null )
 	{
@@ -60,7 +60,7 @@ function OnUpdatePlayerData( data )
 		
 	}
 
-	return 0.5
+	$.Schedule(0.5,OnUpdatePlayerData)
 
 }
 

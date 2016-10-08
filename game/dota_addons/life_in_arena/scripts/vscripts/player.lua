@@ -66,6 +66,15 @@ function CDOTA_PlayerResource:IncremetUpgrades(playerID)
 	CustomPlayerResource.data[playerID].upgrades = CustomPlayerResource.data[playerID].upgrades + 1
 end
 
+function CDOTA_PlayerResource:GetPlayerIdAtPlace(nPlace)
+	for playerID,playerData in pairs(CustomPlayerResource.data) do
+		if nPlace == playerData.place then
+			return playerID
+		end
+	end
+	return -1
+end
+
 function StableSort(A)
   local itemCount=#A-1
   --print(itemCount)
