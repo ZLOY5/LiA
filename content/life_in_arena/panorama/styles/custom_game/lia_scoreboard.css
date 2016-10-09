@@ -13,11 +13,14 @@
     transition-property: transform;
     transition-duration: 0.2s;
 
+    visibility: collapse;
+
 }
 
 .FlyoutScoreboardRoot.flyout_scoreboard_visible
 {
     transform: translatey( 0px );
+    visibility: visible;
 }
 
 #TeamsContainer

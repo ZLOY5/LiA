@@ -663,9 +663,9 @@ function Survival:EndGame(teamWin)
 
             self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil)
             
-            HeroToPedestal(self.tHeroes[1],1)
-            HeroToPedestal(self.tHeroes[2],2)
-            HeroToPedestal(self.tHeroes[3],3)
+            HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(1) ), 1)
+            HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(2) ), 2)
+            HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(3) ), 3)
         end
         GameRules:SetGameWinner(teamWin)
     end) 
