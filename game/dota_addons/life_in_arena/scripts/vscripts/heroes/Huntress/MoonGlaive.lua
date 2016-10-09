@@ -71,7 +71,7 @@ function moon_glaive_dummy_created( keys )
 	--print(caster:GetOwner():GetName())
 	if caster:GetOwner():GetClassname() == "player" then
 		local unit_ability = caster:FindAbilityByName("huntress_moon_glaive")
-		ability.damage = caster:GetAverageTrueAttackDamage()
+		ability.damage = caster:GetAverageTrueAttackDamage(target)
 		ability.bounceTable = {}
 		ability.bounceCount = 1
 		ability.maxBounces = unit_ability:GetLevelSpecialValueFor("bounces", unit_ability:GetLevel() - 1)
