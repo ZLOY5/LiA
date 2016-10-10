@@ -82,7 +82,7 @@ function RecalculateTradeResource()
 		}
 
 	}
-	$.Msg("RecalculateTradeResource")
+	//$.Msg("RecalculateTradeResource")
 	schedule = $.Schedule(0.1,RecalculateTradeResource);
 }
 

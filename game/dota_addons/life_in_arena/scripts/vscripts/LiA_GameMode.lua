@@ -360,8 +360,8 @@ function LiA:OnPlayerLearnedAbility(event)
 end
 
 function LiA:TradeRequest(event)
-	print("TradeRequest")
-	DeepPrintTable(event)
+	--print("TradeRequest")
+	--DeepPrintTable(event)
 
 	local playerID = event.PlayerID
 	event.PlayerID = nil
