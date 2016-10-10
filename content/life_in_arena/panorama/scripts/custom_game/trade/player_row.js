@@ -121,7 +121,7 @@ function DisableHelpToggle()
 
 	playerNameLabel.text = Players.GetPlayerName(context.playerID)
 
-	var needHeroName
+	var needHeroName = false;
 	if (heroName != "")
 		playerNameLabel.text = playerNameLabel.text+' | '+ heroName;
 	else {

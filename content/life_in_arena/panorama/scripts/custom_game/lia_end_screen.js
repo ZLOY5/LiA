@@ -24,7 +24,7 @@ function OnUpdActionEnd( data )
 
 	var numS =0;
 	var teamPlayers = Game.GetPlayerIDsOnTeam( DOTATeam_t.DOTA_TEAM_GOODGUYS );
-	$.Msg(teamPlayers)
+	//$.Msg(teamPlayers)
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
 	//$.Msg( "                  OnUpdActionEnd:	playersContainer ", playersContainer );
 	if ( playersContainer )

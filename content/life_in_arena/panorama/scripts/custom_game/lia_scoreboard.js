@@ -24,8 +24,13 @@ function OnUpdActionHide( dataHide )
 	//$.Msg( "                  				OnUpdActionHide    " );
 }
 
+function ScheduledUpdate()
+{
+	OnUpdatePlayerData()
+	$.Schedule(0.25,ScheduledUpdate)
+	//$.Msg("ScheduledUpdateScoreboard")
+}
 
-// for current player
 function OnUpdatePlayerData( data )
 {
 
@@ -77,7 +82,7 @@ function OnUpdatePlayerData( data )
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 	CustomNetTables.SubscribeNetTableListener("lia_player_table",OnUpdatePlayerData)
 
-	$.Schedule(0.5,function() { OnUpdatePlayerData(); return 0.5} )
+	$.Schedule(0.25,ScheduledUpdate)
 
 	GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
 	OnUpdatePlayerData()
