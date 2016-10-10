@@ -1,7 +1,5 @@
 "use strict";
-
-var hint_scoreboard = false;
-var show_hint = true;     
+   
 
 function OnRoundStart( msg )
 {        
@@ -43,18 +41,7 @@ function ClearDuelStartMessage()
 	$.GetContextPanel().SetHasClass( "duel_start", false ); 
 } 
 
-/*function SetFlyoutScoreboardVisible( bVisible )
-{
-	visible = bVisible;
-	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", visible );
-	show_hint = false;
-}*/
- 
-function OnHintGet(dat)
-{
-	show_hint = !dat.hide;
-	//$.Msg( "		show_hint = ", show_hint);
-}
+
 
 function OnHintFallen(ndata)
 {
@@ -74,35 +61,6 @@ function OnHintFallen(ndata)
 	GameEvents.Subscribe( "duel_start", OnDuelStart ); 
 	//
 	GameEvents.Subscribe( "upd_action_fallen", OnHintFallen ); 
-	//
-	//var childPanel = $.GetContextPanel().FindChildInLayoutFile( "LiANotification" );
-	//var childPanel2 = childPanel.FindChildInLayoutFile( "LiaScoreboard" ) 
-	//$.GetContextPanel().SetHasClass( "hint_active", false );
-	//$.GetContextPanel().SetHasClass( "round_start", false );
-	var delay;
-	for (var i = 0; i < 18; ++i)
-	{
-		$.Schedule( 1.*i, function() 
-						{
-							if (show_hint)
-							{
-								if (hint_scoreboard)
-									hint_scoreboard = false
-								else
-									hint_scoreboard = true;
-								//childPanel.SetHasClass( "hint_active", hint_scoreboard );
-								$.GetContextPanel().SetHasClass( "hint_active", hint_scoreboard );
-								//$.GetContextPanel().SetHasClass( "hint_active", false );
-								//$.GetContextPanel().SetHasClass( "hint_active", true );
-								//$( "#LiaScoreboard_Text" ).SetDialogVariable( "nam", "dwqewqeq" );
-							}
-							else
-								$.GetContextPanel().SetHasClass( "hint_active", false );
 
-						}
-		 );
-	}
-	//$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
-	GameEvents.Subscribe( "CustomUI_Set_forHint_Scoreboard", OnHintGet ); 
 })();
 

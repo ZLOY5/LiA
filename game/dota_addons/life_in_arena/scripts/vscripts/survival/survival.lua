@@ -193,7 +193,10 @@ function Survival:onThink()
         playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
         --local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 		local dataL = self:GetDataForSendUlu(true, nil,playerID,nil,nil,nil)
-		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(playerID), "upd_action_lumber", dataL )
+        local player = PlayerResource:GetPlayer(playerID)
+        if player then
+		  CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(playerID), "upd_action_lumber", dataL )
+        end
 		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
 	end
 	--
