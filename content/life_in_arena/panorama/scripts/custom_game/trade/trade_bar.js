@@ -1,10 +1,22 @@
 "use strict";
 
+var schedule = null;
 
 function OpenButtonClick() {
 	var TradeMain = $.FindChildInContext("#TradeMain")
 	TradeMain.ToggleClass("Open");
-	CleanResourceFields()
+
+	if (TradeMain.BHasClass("Open"))
+		schedule = $.Schedule(0.1,RecalculateTradeResource);
+	else
+	{
+		if (schedule != null)
+		{
+			$.CancelScheduled(schedule);
+			schedule = null;
+		}
+		CleanResourceFields()
+	}
 }
 
 
@@ -70,7 +82,8 @@ function RecalculateTradeResource()
 		}
 
 	}
-	$.Schedule(0.1,RecalculateTradeResource);
+	$.Msg("RecalculateTradeResource")
+	schedule = $.Schedule(0.1,RecalculateTradeResource);
 }
 
 function CleanResourceFields()
@@ -103,17 +116,12 @@ function TradeRequest()
 		}
 	}
 
-	$.Msg(eventData)
 	if (eventData) 
 		GameEvents.SendCustomGameEventToServer("lia_trade_request", eventData);
 
 	OpenButtonClick()
 }
 
-function OnPlayerStateChanged(table, key, data)
-{
-	$.Msg(table, key, data)
-}
 
 (function()
 {
@@ -132,12 +140,9 @@ function OnPlayerStateChanged(table, key, data)
 		
 	}
 
-	CustomNetTables.SubscribeNetTableListener("lia_player_table",OnPlayerStateChanged)
-
 	if (isOnePlayer) {
 		$.FindChildInContext("#OpenButton").visible = false;
 		return;
 	}
 
-	$.Schedule(0.1,RecalculateTradeResource);
 })();

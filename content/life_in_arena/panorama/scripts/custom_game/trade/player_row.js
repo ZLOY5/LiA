@@ -121,10 +121,11 @@ function DisableHelpToggle()
 
 	playerNameLabel.text = Players.GetPlayerName(context.playerID)
 
+	var needHeroName
 	if (heroName != "")
 		playerNameLabel.text = playerNameLabel.text+' | '+ heroName;
 	else {
-		var needHeroName = true;
+		needHeroName = true;
 	}
 
 	$.FindChildInContext("#PlayerRowContainer").style.backgroundColor = 'gradient( linear, 0% 0%, 110% 0%, from( #00000000 ), color-stop( 0.2, ' + playerColor + '44 ), to( #00000000 ) );'

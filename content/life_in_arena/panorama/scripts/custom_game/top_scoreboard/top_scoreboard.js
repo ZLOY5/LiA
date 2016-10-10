@@ -31,8 +31,6 @@ function OnUpdatePlayerData()
 		}
 		
 	}
-	
-	$.Schedule(0.5,OnUpdatePlayerData)
 }
 
 
@@ -65,8 +63,8 @@ function ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, scoreboardPan
 
 	CustomNetTables.SubscribeNetTableListener("lia_player_table",OnUpdatePlayerData)
 
-	$.Schedule(0.5,OnUpdatePlayerData)
-//
+	$.Schedule(0.5,function() { OnUpdatePlayerData(); return 0.5 } )
+
 	OnUpdatePlayerData()
 	
 })();
