@@ -551,18 +551,22 @@
   {
     "ApplyModifier"
     {
-      "Target"      "CASTER"
+      "Target"
+      {
+        "Center"    "CASTER"
+        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+      }
       "ModifierName"    "modifier_warlock_firestorm_datadriven"
     }
 
 
-                "RunScript"
-                {
-                  "ScriptFile"    "heroes/Warlock/firestorm.lua"
-                        "Function"  "firestormWave_castpoint"
-      "EventName" "OnSpellStart"
-      "Target" "POINT"
-    }
+      "RunScript"
+      {
+        "ScriptFile"    "heroes/Warlock/firestorm.lua"
+        "Function"  "firestormWave_castpoint"
+        "EventName" "OnSpellStart"
+        "Target" "POINT"
+     }
   }
   
   "OnChannelFinish"
