@@ -6,7 +6,7 @@
 
 .ScoreboardPlayer
 {
-
+	border: 1px solid black;
 }
 
 #TeamsContainer
@@ -29,22 +29,27 @@
 {
 	width: 80px;
 	height: 45px;
-	margin-left: 10px;
-
+	margin-left: 8px;
+	margin-right: 8px;
+	horizontal-align:center;
 }
 
 .PlayerPortraitWrapper
 {
-	flow-children:down;
-
+	flow-children: down;
 }
 
 #PlayerColorBar
 {
-	border-left: 1px solid black;
-	border-right: 1px solid black;
+	//border-bottom: 1px solid black;
 	width: 80px;
 	height: 5px;
+}
+
+#HeroIcon
+{
+	border: 0px;
+	border-top: 1px solid black;
 }
 
 .is_local_player #ScoreboardPlayer
@@ -52,23 +57,17 @@
 	box-shadow: -3px -3px 3px 6px #FFFFFF88;
 }
 
-#ReadyToRoundIndicator
-{
-	width: 78px;
-	height: 40px;
-	box-shadow: #00ff0080 0px 0px 6px 0px;
-	margin-left: 11px;
-	margin-top: 6px;
-	visibility: collapse;
-	z-index:2;
-}
 
- .ready_to_round #ReadyToRoundIndicator
+.ready_to_round #ScoreboardPlayer
 {
-	visibility: visible;
+	box-shadow: #00ff00ff 0px 0px 5px 0px;
+	border: 1px solid #00ee00;
+	border-top:1px solid black;
 }
 
 #UltimateIndicatorContainer
 {
 	z-index: 3;
+	horizontal-align:center;
+	margin-top: 35px;
 }
