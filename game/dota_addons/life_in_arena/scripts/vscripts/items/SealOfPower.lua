@@ -98,7 +98,7 @@ end
 
 function modifier_item_lia_seal_of_power_armor:OnIntervalThink()
 	if IsServer() then
-		local damage = math.floor(self:GetCaster():GetAverageTrueAttackDamage() - self.damageLose + 0.5)
+		local damage = math.floor(self:GetCaster():GetAverageTrueAttackDamage(nil) - self.damageLose + 0.5)
 		
 		self.armorBonusFromDamage = damage/self.oneArmorDamage
 		
