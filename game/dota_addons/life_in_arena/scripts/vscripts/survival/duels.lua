@@ -161,8 +161,8 @@ function Survival:EndDuel(winner,loser)
     if winner ~= nil then 
         StopTimer()
         Timers:RemoveTimer("duelExpireTime")
-        winner:ModifyGold(300-50*self.DuelNumber, false, DOTA_ModifyGold_Unspecified) 
-        PlayerResource:ModifyLumber(winner:GetPlayerOwnerID(),10 - self.DuelNumber)
+        winner:ModifyGold(200) 
+        PlayerResource:ModifyLumber(8)
     else --ничья
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end

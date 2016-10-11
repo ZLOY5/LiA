@@ -38,6 +38,12 @@ function OnUpdActionEnd( data )
 
 			_ScoreboardUpdater_UpdatePlayerPanel( _endScoreboardHandle.scoreboardConfig, playersContainer, playerID, localPlayerTeamId)
 		}	
+
+		for (var playerID of teamPlayers)
+		{
+			//Чтобы все герои стали на свои места в таблице
+			_ScoreboardUpdater_UpdatePlayerPanel( _endScoreboardHandle.scoreboardConfig, playersContainer, playerID, localPlayerTeamId)
+		}
 	}
 	
 	//
