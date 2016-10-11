@@ -161,8 +161,8 @@ function Survival:EndDuel(winner,loser)
     if winner ~= nil then 
         StopTimer()
         Timers:RemoveTimer("duelExpireTime")
-        winner:ModifyGold(200) 
-        PlayerResource:ModifyLumber(8)
+        winner:ModifyGold(200, false, DOTA_ModifyGold_Unspecified) 
+        PlayerResource:ModifyLumber(winner:GetPlayerOwnerID(),8)
     else --ничья
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
     end
@@ -225,6 +225,7 @@ function Survival:EndDuels()
         hero:RemoveModifierByName("modifier_stun_lua")
         FindClearSpaceForUnit(hero, hero.abs, false)
         SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
+        hero:Interrupt()
     end)
 
     EnableShop()
