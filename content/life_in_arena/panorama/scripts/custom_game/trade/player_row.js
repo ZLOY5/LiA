@@ -5,7 +5,7 @@ function CheckHeroName() {
 	var withoutHero = false
 	
 	var heroName = $.Localize("#"+Players.GetPlayerSelectedHero(context.playerID));
-	if (hero != "") {
+	if (heroName != "") {
 		$.FindChildInContext("#PlayerName").text = PlayerPanel.text+' | '+ heroName;
 		$.FindChildInContext("#HeroImage").heroname = Players.GetPlayerSelectedHero(context.playerID)
 	}

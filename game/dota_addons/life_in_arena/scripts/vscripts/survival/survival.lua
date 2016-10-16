@@ -638,6 +638,8 @@ function HeroToPedestal(hero,place)
     end
 
     hero:Purge(true, true, false, true, true)
+
+    hero:RemoveModifierByName("modifier_item_sphere_target")
     
     local fire_gloves = GetItemInInventory(hero,"item_lia_fire_gloves") or GetItemInInventory(hero,"item_lia_fire_gloves_2")
     if fire_gloves and fire_gloves:GetToggleState() then 
