@@ -74,6 +74,16 @@ function Survival:Duel(hero1,hero2)
             FindClearSpaceForUnit(hero1, ARENA_TELEPORT_COORD_BOT, false) 
             FindClearSpaceForUnit(hero2, ARENA_TELEPORT_COORD_TOP, false)
 
+            local modifierSpellBlock = hero1:FindModifierByName("modifier_item_sphere_target")
+            if modifierSpellBlock and modifierSpellBlock:GetAbility():GetAbilityName() == "item_lia_rune_of_protection" then
+                modifierSpellBlock:Destroy()
+            end
+
+            local modifierSpellBlock = hero2:FindModifierByName("modifier_item_sphere_target")
+            if modifierSpellBlock and modifierSpellBlock:GetAbility():GetAbilityName() == "item_lia_rune_of_protection" then
+                modifierSpellBlock:Destroy()
+            end
+
             hero1:Heal(9999,hero1)
             hero2:Heal(9999,hero2)
             hero1:GiveMana(9999)
