@@ -32,7 +32,7 @@ require('player')
 
 ------------------------------------------------------------------------------
 
---LinkLuaModifier( "modifier_stats_bonus_fix", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_stats_bonus_fix", "heroes/modifier_stats_bonus_fix.lua",LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_hide_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_orn_lua", LUA_MODIFIER_MOTION_NONE )
@@ -303,8 +303,8 @@ end
 
 function LiA:OnNPCSpawned( event )
     local spawnedUnit = EntIndexToHScript( event.entindex )
-    if spawnedUnit:IsHero() and not spawnedUnit:HasModifier("modifier_stats_bonus_fix") then
-        spawnedUnit:AddAbility("stats_bonus_fix") --исправляет бонусы за характеристики для героев
+    if spawnedUnit:IsHero() then 
+        spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_stats_bonus_fix",nil)
    end
 end
 

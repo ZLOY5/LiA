@@ -6,6 +6,8 @@ function OnCreatedModifier(event)
 end
 
 function OnDestroyModifier(event)
-	event.caster:ModifyStrength(-event.caster.bladeOfRage_strBonus)
-	event.caster:CalculateStatBonus()
+	local caster = event.caster
+	caster:AddNewModifier(caster,nil,"modifier_stats_bonus_fix",{strFix = caster.bladeOfRage_strBonus})
+	caster:ModifyStrength(-caster.bladeOfRage_strBonus)
+	caster:CalculateStatBonus()
 end

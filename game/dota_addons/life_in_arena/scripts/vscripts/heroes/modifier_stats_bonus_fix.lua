@@ -12,6 +12,10 @@ function modifier_stats_bonus_fix:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
 end
 
+function modifier_stats_bonus_fix:RemoveOnDeath()
+	return false
+end
+
 function modifier_stats_bonus_fix:DeclareFunctions()
 	local funcs = {
 		--MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
@@ -84,16 +88,14 @@ function modifier_stats_bonus_fix:CalculateStatsBonus(kv)
 	self.manaBonus = intellect * (HERO_STATS_MANA_BONUS - 12)
 	self.manaRegenBonus = intellect * (HERO_STATS_MANA_REGEN_BONUS - 0.04)
 
-	self:GetAbility().CalcStat = 1
 	hero:CalculateStatBonus()
-	self:GetAbility().CalcStat = nil
 
 end
 
 function modifier_stats_bonus_fix:OnCreated(kv)
 	if IsServer() then
 		self:CalculateStatsBonus(kv) 
-		self:StartIntervalThink(0.1)
+		self:StartIntervalThink(0.03)
 	end
 end
 

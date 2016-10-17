@@ -26,8 +26,12 @@ function OnCreatedModifier(event)
 	Timers:CreateTimer(duration,
 		function()
 			target:ModifyAgility(-agiAdd)
+
+			target:AddNewModifier(target,nil,"modifier_stats_bonus_fix",{strFix = strAdd})
 			target:ModifyStrength(-strAdd)
+			
 			target:ModifyIntellect(-intAdd)	
+
 			target:CalculateStatBonus()
 		end
 	)
