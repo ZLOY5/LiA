@@ -31,9 +31,7 @@ function modifier_dark_ranger_spiked_charm_aura:OnTakeDamage(params)
 				return 0
 			end
 
-			local bPhys = params.damage_type == DAMAGE_TYPE_PHYSICAL
-			local bRangedAttack = self.attack_record == params.record and self.ranged_attack
-			if bPhys and not bRangedAttack then 
+			if self.attack_record == params.record and not self.ranged_attack then
 				local target = params.unit
 				local return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage
 				
@@ -44,7 +42,7 @@ function modifier_dark_ranger_spiked_charm_aura:OnTakeDamage(params)
 					damage = return_damage, 
 					damage_type = DAMAGE_TYPE_MAGICAL,
 					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
-					ability = params.ability
+					ability = self:GetAbility()
 				})
 			end
 		end

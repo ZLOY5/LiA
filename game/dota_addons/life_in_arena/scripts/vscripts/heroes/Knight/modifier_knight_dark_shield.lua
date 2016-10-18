@@ -46,7 +46,7 @@ function modifier_knight_dark_shield:OnTakeDamage(params)
 					damage = return_damage, 
 					damage_type = DAMAGE_TYPE_MAGICAL,
 					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
-					ability = params.ability
+					ability = self:GetAbility()
 				})
 			end
 		end

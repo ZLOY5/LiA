@@ -60,7 +60,7 @@ function modifier_knight_cuirass_damage_return_lua:OnTakeDamage(params)
 					damage = return_damage, 
 					damage_type = DAMAGE_TYPE_MAGICAL,
 					damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
-					ability = params.ability
+					ability = self:GetAbility()
 				})
 				--print("Original damage = ",params.original_damage," Damage to return = ",return_damage," Applied damdge = ",damageApplied)
 
