@@ -31969,39 +31969,6 @@
 				"duration_invul"	"2"
 			}
 		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"		"abilities\hell_beast_sleep.lua"
-				"Function"			"hell_beast_sleep_on_spell_start"
-				"duration_hero" 	"%duration_hero"
-				"duration_creep"	"%duration_creep"
-				"duration_invul"	"%duration_invul"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_hellbeast_sleep"
-			{
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				"EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
-				"EffectAttachType"  "follow_overhead"
-				"OverrideAnimation"     "ACT_DOTA_DISABLED"
-				"OnAttacked"
-				{
-					"RemoveModifier"
-					{
-						"Target"		"TARGET"
-						"ModifierName"	"modifier_hellbeast_sleep"
-					}
-				}
-			}
-		}
 	}
 	
 	"boar_poison"
