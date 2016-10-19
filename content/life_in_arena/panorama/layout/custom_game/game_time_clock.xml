@@ -1,0 +1,33 @@
+<root>
+
+	<styles>
+        <include src="file://{resources}/styles/custom_game/game_time_clock.css" />
+    </styles>
+	
+	<script>
+		function Tick() 
+		{
+			var gameTime = Game.GetDOTATime( true, false )
+			
+			var minuts = Math.floor(gameTime/60)
+			var seconds = Math.floor(gameTime-minuts*60)
+			
+			var sTime = ( (minuts < 10) && "0" + minuts || minuts ) + ":" + ( (seconds < 10) && "0" + seconds || seconds )
+			
+			$("#Clock").text = sTime
+
+			$.Schedule(1,Tick)
+		}
+
+		(function()
+		{
+			$.Schedule(1,Tick)
+		})();
+	</script>
+
+	<Panel hittest="false" class="GameTimeClock">
+		<Label id="Clock" hittest="false" />
+	</Panel>
+
+
+</root>

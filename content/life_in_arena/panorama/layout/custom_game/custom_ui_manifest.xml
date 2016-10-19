@@ -19,16 +19,19 @@
 
     </script>
 	<Panel>
+        <CustomUIElement type="HeroSelection"   layoutfile="file://{resources}/layout/custom_game/lia_hero_select_overlay.xml" />
+        <CustomUIElement type="GameInfo"    layoutfile="file://{resources}/layout/custom_game/game_info.xml" />
 		<CustomUIElement type="FlyoutScoreboard"    layoutfile="file://{resources}/layout/custom_game/lia_scoreboard.xml" /> 
-        <CustomUIElement type="Hud"    layoutfile="file://{resources}/layout/custom_game//top_scoreboard/top_scoreboard.xml" />       
-		<CustomUIElement type="GameInfo" 	layoutfile="file://{resources}/layout/custom_game/game_info.xml" />
-		<CustomUIElement type="EndScreen" 			layoutfile="file://{resources}/layout/custom_game/lia_end_screen.xml" />
-		<CustomUIElement type="Hud"               layoutfile="file://{resources}/layout/custom_game/notifications.xml" />
+        <CustomUIElement type="EndScreen"           layoutfile="file://{resources}/layout/custom_game/lia_end_screen.xml" />
+        
+        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/killbosses.xml" />
+        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game//top_scoreboard/top_scoreboard.xml" />       
+		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/notifications.xml" />
 		<CustomUIElement type="Hud" 	layoutfile="file://{resources}/layout/custom_game/ulu_bar.xml" />
         <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/trade/trade_bar.xml" />
-		<CustomUIElement type="Hud" 	layoutfile="file://{resources}/layout/custom_game/killbosses.xml" />
-        <CustomUIElement type="HeroSelection"   layoutfile="file://{resources}/layout/custom_game/lia_hero_select_overlay.xml" />
         <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/glyph.xml" />
+        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/game_time_clock.xml" />
+
         <!--<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/lia_timer.xml" />-->
 	</Panel>
 </root>
