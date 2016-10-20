@@ -97,13 +97,22 @@
 			
 	"Creature"
 	{
+	//	"AttachWearables"
+	//	{
+	//		"Wearable1"		{	"ItemDef"		"5861"		} 
+	//		"Wearable2" 	{	"ItemDef"		"5868"		} 
+	//		"Wearable3"		{	"ItemDef"		"5896"		} 
+	//		"Wearable4"		{	"ItemDef"		"5897"		} 
+	//		"Wearable5"		{	"ItemDef"		"5898"		} 
+	//	}
+	
 		"AttachWearables"
 		{
-			"Wearable1"		{	"ItemDef"		"5861"		} 
-			"Wearable2" 	{	"ItemDef"		"5868"		} 
-			"Wearable3"		{	"ItemDef"		"5896"		} 
-			"Wearable4"		{	"ItemDef"		"5897"		} 
-			"Wearable5"		{	"ItemDef"		"5898"		} 
+			"Wearable1"		{	"ItemDef"		"6281"		} 
+			"Wearable2" 	{	"ItemDef"		"6282"		} 
+			"Wearable3"		{	"ItemDef"		"6283"		} 
+			"Wearable4"		{	"ItemDef"		"6284"		} 
+			"Wearable5"		{	"ItemDef"		"6280"		} 
 		}
 			
 		"DisableResistance"            "50.0"
@@ -298,12 +307,20 @@
 		{
 			"DisableResistance"     "50.0"
 	
+		//	"AttachWearables"
+		//	{
+		//		"Wearable1"		{	"ItemDef"		"7392"		} 
+		//		"Wearable2" 	{	"ItemDef"		"7393"		} 
+		//		"Wearable3"		{	"ItemDef"		"7394"		} 
+		//		"Wearable4"		{	"ItemDef"		"7395"		} 
+		//	}
+	
 			"AttachWearables"
 			{
-				"Wearable1"		{	"ItemDef"		"7392"		} 
-				"Wearable2" 	{	"ItemDef"		"7393"		} 
-				"Wearable3"		{	"ItemDef"		"7394"		} 
-				"Wearable4"		{	"ItemDef"		"7395"		} 
+				"Wearable1"		{	"ItemDef"		"6475"		} 
+				"Wearable2" 	{	"ItemDef"		"6476"		} 
+				"Wearable3"		{	"ItemDef"		"6477"		} 
+				"Wearable4"		{	"ItemDef"		"6478"		} 
 			}
 		}
 	
@@ -402,13 +419,21 @@
 		"DisableResistance"            "50.0"
 		"DefaultState"			"Invade"
 	
+	//	"AttachWearables"
+	//	{
+	//		"Wearable1"		{	"ItemDef"		"7650"		} 
+	//		"Wearable2" 	{	"ItemDef"		"7651"		} 
+	//		"Wearable3"		{	"ItemDef"		"7652"		} 
+	//		"Wearable4"		{	"ItemDef"		"7653"		} 
+	//		"Wearable5"		{	"ItemDef"		"7654"		} 
+	//	}
+	
 		"AttachWearables"
 		{
-			"Wearable1"		{	"ItemDef"		"7650"		} 
-			"Wearable2" 	{	"ItemDef"		"7651"		} 
-			"Wearable3"		{	"ItemDef"		"7652"		} 
-			"Wearable4"		{	"ItemDef"		"7653"		} 
-			"Wearable5"		{	"ItemDef"		"7654"		} 
+			"Wearable1"		{	"ItemDef"		"4212"		} 
+			"Wearable2" 	{	"ItemDef"		"4213"		} 
+			"Wearable3"		{	"ItemDef"		"4214"		} 
+			"Wearable4"		{	"ItemDef"		"4215"		} 
 		}
 	
 		"States"	
@@ -2252,6 +2277,149 @@
 		"vscripts"                    "destrSpawn.lua"
 	}
 			
+	"barricades_halloween" 
+	{
+	"BaseClass" "npc_dota_building" 
+	"Model" "models/props_structures/pumpkin003.vmdl" 
+	"ModelScale" "2.6" 
+	"Level" "1" 
+	"AttackAcquisitionRange" "0"
+	"BoundsHullName" "DOTA_HULL_SIZE_HUGE"
+	
+	"RingRadius" "70"
+	
+	"Ability1" "barrel_no_health_bar" 
+	"Ability2" "" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+	
+	"ArmorPhysical" "0" 
+	"MagicalResistance" "100" 
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+	
+	"BountyXP" "0" 
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE" 
+	
+	"StatusHealth" "1" 
+	"StatusHealthRegen" "0" 
+	"StatusMana" "0" 
+	"StatusManaRegen" "0" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	
+	"VisionDaytimeRange" "0" 
+	"VisionNighttimeRange" "0" 
+	
+	"HasInventory" "0" 
+	"vscripts" "destrSpawn.lua"
+	}
+	
+	"barricades_halloween2" 
+	{
+	"BaseClass" "npc_dota_building" 
+	"Model" "models/props_structures/pumpkin002.vmdl" 
+	"ModelScale" "1" 
+	"Level" "1" 
+	"AttackAcquisitionRange" "0"
+	"BoundsHullName" "DOTA_HULL_SIZE_HUGE"
+	
+	"RingRadius" "70"
+	
+	"Ability1" "barrel_no_health_bar" 
+	"Ability2" "" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+	
+	"ArmorPhysical" "0" 
+	"MagicalResistance" "100" 
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+	
+	"BountyXP" "0" 
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE" 
+	
+	"StatusHealth" "1" 
+	"StatusHealthRegen" "0" 
+	"StatusMana" "0" 
+	"StatusManaRegen" "0" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	
+	"VisionDaytimeRange" "0" 
+	"VisionNighttimeRange" "0" 
+	
+	"HasInventory" "0" 
+	"vscripts" "destrSpawn.lua"
+	}
+	
+	"barricades_halloween3" 
+	{
+	"BaseClass" "npc_dota_building" 
+	"Model" "models/props_structures/pumpkin001.vmdl" 
+	"ModelScale" "1" 
+	"Level" "1" 
+	"AttackAcquisitionRange" "0"
+	"BoundsHullName" "DOTA_HULL_SIZE_HUGE"
+	
+	"RingRadius" "70"
+	
+	"Ability1" "barrel_no_health_bar" 
+	"Ability2" "" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
+	
+	"ArmorPhysical" "0" 
+	"MagicalResistance" "100" 
+	
+	"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+	
+	"BountyXP" "0" 
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
+	
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_NONE" 
+	
+	"StatusHealth" "1" 
+	"StatusHealthRegen" "0" 
+	"StatusMana" "0" 
+	"StatusManaRegen" "0" 
+	
+	"TeamName" "DOTA_TEAM_GOODGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	
+	"VisionDaytimeRange" "0" 
+	"VisionNighttimeRange" "0" 
+	
+	"HasInventory" "0" 
+	"vscripts" "destrSpawn.lua"
+	}
 	//End of file decorations.txt
 
 
@@ -6696,7 +6864,8 @@
 	"1_wave_boss" 
 	{
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl" 
+	//	"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
+	"Model" "models/items/furion/treant/hallowed_horde/hallowed_horde.vmdl" 
 	"SoundSet" "n_creep_Melee" 
 	"ModelScale" "1.3"
 	//"RingRadius"         "55" 
@@ -7671,7 +7840,8 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl" 
+	//"Model" "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl" 
+	"Model" "models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_diretide_ancient_hulk.vmdl" 
 	"SoundSet" "n_creep_Melee" 
 	"ModelScale" "1" 
 	"Level" "1" 
@@ -8179,7 +8349,8 @@
 	"1_wave_creep" 
 	{
 		"BaseClass" "npc_dota_creature" 
-		"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
+	//	"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
+		"Model" "models/items/furion/treant/hallowed_horde/hallowed_horde.vmdl" 
 		"SoundSet" "n_creep_Melee" 
 		"ModelScale" "1" 
 		"Level" "1" 
@@ -8911,9 +9082,10 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl" 
+	//"Model" "models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl" 
+	"Model" "models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_diretide_ancient_hulk.vmdl" 
 	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
+	"ModelScale" "0.7" 
 	"Level" "1" 
 	
 	
@@ -9082,7 +9254,8 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl" 
+	//"Model" "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl" 
+	"Model" "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl" 
 	"SoundSet" "n_creep_Ranged" 
 	"ModelScale" "1" 
 	"Level" "1" 
@@ -9581,7 +9754,8 @@
 		// 
 		//
 		"BaseClass" "npc_dota_creature" // 
-		"Model" "models/heroes/undying/undying_minion.vmdl" // 
+	//	"Model" "models/heroes/undying/undying_minion.vmdl" 
+		"Model" "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl" 
 		"SoundSet" "n_creep_Melee" // 
 		"ModelScale" "1.6" // 
 		"Level" "1" // 
@@ -10176,7 +10350,8 @@
 	{
 		"BaseClass" 				"npc_dota_creature" 
 							//
-		"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 						//"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
+		//"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 	
+		"Model" 				"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
 		"SoundSet"				"Hero_WarlockGolem"
 		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
 		"ModelScale" "1" 
@@ -10185,6 +10360,7 @@
 		"precache"
 		{
 			"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
+			"model"	"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
 		}
 	
 		"Ability1" "spell_immunity" // 
