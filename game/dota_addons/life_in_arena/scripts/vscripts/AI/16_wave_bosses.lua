@@ -2,7 +2,7 @@
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
-    thisEntity:SetHullRadius(30) 
+    thisEntity:SetHullRadius(24) 
 	if thisEntity:GetPlayerOwnerID() ~= -1 then
 		return
 	end

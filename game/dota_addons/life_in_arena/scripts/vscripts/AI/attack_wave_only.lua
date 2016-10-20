@@ -1,7 +1,7 @@
 require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
-    thisEntity:SetHullRadius(30) 
+    thisEntity:SetHullRadius(24) 
 	if thisEntity:GetPlayerOwnerID() ~= -1 then
 		return
 	end
@@ -19,6 +19,6 @@ function ThinkAllWave()
 	end
 
 	AICreepsAttackOneUnit({unit = thisEntity})
-	
+
 	return 2
 end

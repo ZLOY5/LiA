@@ -231,6 +231,21 @@ function Survival:OnPlayerChat(event)
         if event.text == "zoom" then
             self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
         end 
+
+        if event.text == "ololo" then
+            local decor = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,--unit:GetTeam(),
+                                     Vector(0,0,0),
+                                     nil,
+                                     20000,
+                                     DOTA_UNIT_TARGET_TEAM_BOTH,
+                                     DOTA_UNIT_TARGET_BUILDING+DOTA_UNIT_TARGET_BASIC,
+                                     DOTA_UNIT_TARGET_FLAG_NONE,--DOTA_UNIT_TARGET_FLAG_NO_INVIS,
+                                     FIND_ANY_ORDER,
+                                     false)
+            for _,u in pairs(decor) do
+                DebugDrawCircle(u:GetAbsOrigin(), Vector(0,255,255), 0, u:GetPaddedCollisionRadius(), false, 30)
+            end
+        end
     
     end
 	

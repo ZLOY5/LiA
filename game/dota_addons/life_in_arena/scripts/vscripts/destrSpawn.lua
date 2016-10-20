@@ -6,21 +6,23 @@ function Spawn(entityKeyValues)
 	
 	local unitName = thisEntity:GetUnitName()
 
+
+
 	if unitName == "barricades" or unitName == "arena_rock" then
-		thisEntity:SetHullRadius(60)
+		thisEntity:SetHullRadius(50)
 	end
 
 	if unitName == "barricades_big" then
-		thisEntity:SetHullRadius(65)
+		thisEntity:SetHullRadius(55)
 	end
 
 	if unitName == "barricades_small" then
-		thisEntity:SetHullRadius(55)
+		thisEntity:SetHullRadius(45)
 	end
 	
 
 	if unitName == "small_barrel_side" then
-		thisEntity:SetHullRadius(60)
+		thisEntity:SetHullRadius(50)
 	end
 
 	if thisEntity:GetUnitName() == "tnt_barrel" then
