@@ -90,13 +90,13 @@ function Survival:Duel(hero1,hero2)
             hero2:GiveMana(9999)
             ResetAllAbilitiesCooldown(hero1)
             ResetAllAbilitiesCooldown(hero2)
-            hero1:AddNewModifier(hero1,nil,"modifier_invisible",{duration = 0.03})
+            hero1:AddNewModifier(hero1,nil,"modifier_invisible",{duration = 0.5})
             local gold = hero2:GetGold()
             hero2:SetTeam(DOTA_TEAM_BADGUYS)
             if hero2:GetPlayerOwner() then
                 hero2:GetPlayerOwner():SetTeam(DOTA_TEAM_BADGUYS)
             end
-            hero2:AddNewModifier(hero2,nil,"modifier_invisible",{duration = 0.03})
+            hero2:AddNewModifier(hero2,nil,"modifier_invisible",{duration = 0.5})
             PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_BADGUYS, 1)
             hero2:SetGold(gold, false)
 
