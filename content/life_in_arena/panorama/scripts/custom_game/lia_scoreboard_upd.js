@@ -151,10 +151,10 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 				}
 				else
 				{
-					if ( bufName.indexOf( "_2" ) >= 0 )
+					/*if ( bufName.indexOf( "_2" ) >= 0 )
 					{
 						bufName = bufName.replace( "_2", "" );
-					}
+					}*/
 					var item_image_name = "file://{images}/items/" + bufName.replace( "item_", "" ) + ".png";
 
 					//$.Msg( "		item_image_name = ", item_image_name );
