@@ -507,7 +507,8 @@
 	"item_lia_banner_of_victory"
 	{
 		"ID"							"1353"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_banner_of_victory.lua"
 		"ItemCost"						"715"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -516,58 +517,7 @@
 		"ItemQuality"					"common"
 		"AbilityTextureName"			"item_lia_banner_of_victory"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"Modifiers"
-		{
-			"modifier_item_lia_banner_of_victory"
-			{
-				"Passive"          	"1"    
-			    "IsHidden"         	"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				
-				"Aura" 				"modifier_item_banner_of_victory_aura_datadriven"
-	            "Aura_Radius" 		"%aura_radius"
-	            "Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	            "Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
-	            
-			    "Properties"
-			    {
-			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-			    }  
-			}
-			"modifier_item_banner_of_victory_aura_datadriven"
-			{
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"items\BannerOfVictory.lua"
-						"Function"				"modifier_item_banner_of_victory_datadriven_on_attack_landed"
-					}
-				}
-				"Properties"
-			    {
-			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%aura_armor"
-			    }
-			}
-			"modifier_item_banner_of_victory_datadriven_lifesteal"
-			{
-				"Passive"			"0"
-				"IsHidden"			"1"
-				
-				"OnDealDamage"
-				{
-					"Lifesteal"
-					{
-						"Target"
-						{
-							"Center"	"ATTACKER"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-						}
-						"LifestealPercent"	"%aura_lifesteal_percent"
-					}
-				}
-			}
-		}
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -2101,7 +2051,8 @@
 	"item_lia_ferus_shield"
 	{
 		"ID"							"1366"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_ferus_shield.lua"
 		"ItemCost"						"2090"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -2119,110 +2070,8 @@
 			"particle"  "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
 		}
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%panic_radius"
-					"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	    			"Types"  "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-				}
-				"ModifierName"	"modifier_ferus_shield_panic"
-				"Duration"		"%panic_duration"
-			}
-			"FireEffect"
-			{
-				"EffectName"        "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"Target"            "CASTER"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Sven.GodsStrength"
-				"Target" 		"CASTER"
-			}
-		}
 	
-		"Modifiers"
-		{
-			"modifier_item_lia_ferus_shield"
-			{
-				"Passive"          	"1"    
-			    "IsHidden"         	"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				
-				"Aura" 				"modifier_item_ferus_shield_aura_datadriven"
-	            "Aura_Radius" 		"%aura_radius"
-	            "Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	            "Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
-			    
-			    "Properties"
-			    {
-			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
-			    }  
-			}
 	
-			"modifier_item_ferus_shield_aura_datadriven"
-			{
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"items\FerusShield.lua"
-						"Function"				"modifier_item_ferus_shield_datadriven_on_attack_landed"
-					}
-				}
-				"Properties"
-			    {
-			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%aura_armor"
-			    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%aura_regen"	    	
-			    }
-			}
-	
-			"modifier_item_ferus_shield_datadriven_lifesteal"
-			{
-				"IsHidden"			"1"
-	
-				"OnDealDamage"
-				{
-					"Lifesteal"
-					{
-						"Target"
-						{
-							"Center"	"ATTACKER"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-						}
-						"LifestealPercent"	"%aura_lifesteal_percent"
-					}
-				}
-			}
-	
-			"modifier_ferus_shield_panic"
-			{
-				"IsDebuff"		"1"
-				"IsPurgable"	"1"
-				"EffectName"	"particles/generic_gameplay/generic_silenced.vpcf"
-				"EffectAttachType"	"follow_overhead"
-				"States"
-				{
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MUTED"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				
-				//"OnAttacked"
-				//{
-				//	"RunScript"
-				//	{
-				//		"ScriptFile"			"items\FerusShield.lua"
-				//		"Function"				"PanicAttacked"
-				//	}
-				//}
-			}
-		}
 		"AbilitySpecial"
 		{
 			"01"
