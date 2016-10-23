@@ -9,5 +9,7 @@ function SummonBeasts(event)
 		local num = RandomInt(1, level+1)
 		bm_beast = CreateUnitByName(unit_name[num], point, true, event.caster, event.caster, event.caster:GetTeam())
 		bm_beast:SetControllableByPlayer(event.caster:GetPlayerID(), true)
+		ResolveNPCPositions(bm_beast:GetAbsOrigin(),100)
 	end
+
 end

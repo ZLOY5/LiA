@@ -66,5 +66,7 @@ function LavaSpawnAttackCounter( event )
 		print(time)
 		lava_spawn:AddNewModifier(caster, ability, "modifier_kill", {duration = time})
 		lava_spawn.no_corpse = true
+
+		ResolveNPCPositions(lava_spawn:GetAbsOrigin(),65)
 	end
 end

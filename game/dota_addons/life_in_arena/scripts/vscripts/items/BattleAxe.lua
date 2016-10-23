@@ -7,6 +7,7 @@ function Bash(event)
 	end
 
 	local modifier = caster:FindModifierByNameAndAbility(event.modifierName,ability)
+	
 	if IsActiveBash(modifier) then
 		--print(event.modifierName,ability)
 		local damageTable = {

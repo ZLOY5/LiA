@@ -19,4 +19,6 @@ function MakeIllusion(event)
 	local origin = target:GetAbsOrigin() + ( target:GetForwardVector() * 150 )
 	
 	CreateIllusion(target,caster,origin,duration,outgoingDamage,incomingDamage)
+
+	ResolveNPCPositions(origin,65)
 end

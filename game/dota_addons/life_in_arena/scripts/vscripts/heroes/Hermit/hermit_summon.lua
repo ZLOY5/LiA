@@ -61,6 +61,8 @@ function summonCreate(keys)
 			cre:SetRenderColor(255,0,0)
 		end
 
+		ResolveNPCPositions(cre:GetAbsOrigin(),65)
+
 		table.insert(caster.tUnits,cre)
 	end
 

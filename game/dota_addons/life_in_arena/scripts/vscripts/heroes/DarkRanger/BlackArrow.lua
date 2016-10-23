@@ -23,4 +23,6 @@ function BlackArrow(event)
 	creep:SetRenderColor(249, 127, 127)
 	creep:MakeIllusion()
 	creep:SetAcquisitionRange(800)
+
+	ResolveNPCPositions(creep:GetAbsOrigin(),65)
 end

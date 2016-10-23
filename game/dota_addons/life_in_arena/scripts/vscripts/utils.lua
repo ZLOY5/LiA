@@ -291,6 +291,8 @@ function CreateIllusion(target,caster,origin,duration,outgoing_damage,incoming_d
 	-- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
 	illusion:MakeIllusion()
 	--
+	ResolveNPCPositions(illusion:GetAbsOrigin(),65)
+
 	return illusion
 end
 

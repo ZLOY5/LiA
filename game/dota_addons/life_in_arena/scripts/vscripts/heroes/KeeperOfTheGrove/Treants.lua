@@ -26,6 +26,7 @@ function SummonTreants(event)
 	for i=1,count do
 		kotg_treant = CreateUnitByName(unit_name, point, true, event.caster, event.caster, event.caster:GetTeam())
 		kotg_treant:SetControllableByPlayer(event.caster:GetPlayerID(), true)
+		ResolveNPCPositions(kotg_treant:GetAbsOrigin(),65)
 		table.insert(caster.treants,kotg_treant)
 	end
 end

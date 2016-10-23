@@ -13,4 +13,6 @@ function SpawnHellBeast(event)
     unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})
 	--
 	unit:SetRenderColor(255,0,0)
+
+	ResolveNPCPositions(unit:GetAbsOrigin(),65)
 end

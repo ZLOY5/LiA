@@ -31,6 +31,8 @@ function AnimateDead( event )
 			local resurected = CreateUnitByName(unit.unit_name, unit:GetAbsOrigin(), true, caster, caster, team)
 			resurected:SetControllableByPlayer(player, true)
 
+			ResolveNPCPositions(resurected:GetAbsOrigin(),65)
+
 			resurected.necromancerCorpse = true
 
 			-- Apply modifiers for the summon properties

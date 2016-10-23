@@ -56,6 +56,8 @@ function _G.CreateShadow(caster,originVec,forwardVec,lifetime,strength,agility,i
 	local shadow = CreateUnitByName("shadow_master_shadow", originVec, true, caster, caster, caster:GetTeamNumber())
 	shadow:SetControllableByPlayer(caster:GetPlayerID(), true)
 
+	ResolveNPCPositions(shadow:GetAbsOrigin(),65)
+
 	--shadow:SetRenderColor(20, 20, 20)
 	
 	shadow:SetForwardVector(forwardVec) 

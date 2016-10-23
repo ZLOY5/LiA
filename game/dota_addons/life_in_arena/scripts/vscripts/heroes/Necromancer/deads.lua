@@ -46,6 +46,7 @@
 		--
 		cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
 		cre:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
+		ResolveNPCPositions(cre:GetAbsOrigin(),65)
 	end
 	
 end

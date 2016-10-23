@@ -40,7 +40,7 @@ function Dominate(keys)
 			bmcreep.dominateStartTime = GameRules:GetGameTime()
 			bmcreep.beastmasterDominated = true
 			
-
+			ResolveNPCPositions(bmcreep:GetAbsOrigin(),65)
 		else 
 			ApplyDamage({victim = v, attacker = caster, damage = keys.ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = keys.ability})
 		end
@@ -73,6 +73,7 @@ function OnDestroy(keys)
 			if modifierKill then
 				newcreep:AddNewModifier(newcreep, nil, "modifier_kill", {duration = lifetime})
 			end
+			ResolveNPCPositions(newcreep:GetAbsOrigin(),65)
 		else
 			local newcreep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
 			newcreep:SetHealth(preDeathHP)
@@ -80,6 +81,7 @@ function OnDestroy(keys)
 			if modifierKill then
 				newcreep:AddNewModifier(newcreep, nil, "modifier_kill", {duration = lifetime})
 			end
+			ResolveNPCPositions(newcreep:GetAbsOrigin(),65)
 		end
 	else
 		local creepForGold = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)

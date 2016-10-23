@@ -11,4 +11,6 @@ function SpawnTroll(event)
     unit = CreateUnitByName("npc_lia_troll_defender", front_position, true, caster, caster, caster:GetTeam())
     unit:SetControllableByPlayer(playerID, true)
     unit:AddNewModifier(caster, nil, "modifier_kill", {duration = duration})
+
+    ResolveNPCPositions(unit:GetAbsOrigin(),65)
 end

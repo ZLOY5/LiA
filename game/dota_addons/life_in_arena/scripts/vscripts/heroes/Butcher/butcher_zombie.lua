@@ -43,6 +43,8 @@ function butcher_zombie:CreateZombie()
 		
 		local modifier = caster:FindModifierByName("modifier_butcher_zombie")
 		modifier:SetStackCount(modifier:GetStackCount()+1)
+
+		ResolveNPCPositions(zombie:GetAbsOrigin(),65)
 	end
 end
 
