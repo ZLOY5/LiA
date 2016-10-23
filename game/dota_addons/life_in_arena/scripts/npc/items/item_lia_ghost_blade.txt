@@ -122,40 +122,13 @@
 						{
 							"ScriptFile"	"items\BattleAxe.lua"
 							"Function"		"Bash"
+							"modifierName"	"modifier_item_lia_ghost_blade"
 						}
-						
-					//	"ApplyModifier"
-					//	{
-					//		"Target"			"CASTER"
-					//		"ModifierName"		"modifier_item_lia_ghost_blade_crit"
-					//	}
-
-						"FireSound"
-						{
-							"EffectName"		"DOTA_Item.MKB.Minibash"
-							"Target"			"TARGET"
-						}
+		
 					}
 				}
 			}
 		}
 
-		"modifier_item_lia_ghost_blade_crit"
-		{
-		    "IsHidden"  "1"
-		    "Properties"
-		    {
-		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-		    }
-		  
-		  "OnAttackLanded"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName"  "modifier_item_lia_ghost_blade_crit"
-		            "Target"   		"CASTER"    
-		        }
-		    }
-		}
 	}
 }

@@ -652,6 +652,7 @@
 							{
 								"ScriptFile"	"items\BattleAxe.lua"
 								"Function"		"Bash"
+								"modifierName"	"modifier_item_lia_battle_axe"
 							}
 						}
 					}
@@ -2882,41 +2883,14 @@
 							{
 								"ScriptFile"	"items\BattleAxe.lua"
 								"Function"		"Bash"
+								"modifierName"	"modifier_item_lia_ghost_blade"
 							}
-							
-						//	"ApplyModifier"
-						//	{
-						//		"Target"			"CASTER"
-						//		"ModifierName"		"modifier_item_lia_ghost_blade_crit"
-						//	}
-	
-							"FireSound"
-							{
-								"EffectName"		"DOTA_Item.MKB.Minibash"
-								"Target"			"TARGET"
-							}
+			
 						}
 					}
 				}
 			}
 	
-			"modifier_item_lia_ghost_blade_crit"
-			{
-			    "IsHidden"  "1"
-			    "Properties"
-			    {
-			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-			    }
-			  
-			  "OnAttackLanded"
-			    {
-			        "RemoveModifier"
-			        {
-			            "ModifierName"  "modifier_item_lia_ghost_blade_crit"
-			            "Target"   		"CASTER"    
-			        }
-			    }
-			}
 		}
 	}
 	//End of file item_lia_ghost_blade.txt
@@ -3279,7 +3253,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"40"
+				"minibash_chance"			"40"
 			}
 			"06"
 			{
@@ -3313,14 +3287,14 @@
 				{
 					"Random"
 					{
-						"Chance"			"%bash_chance"
+						"Chance"			"%minibash_chance"
 						"PseudoRandom"		"DOTA_PSEUDO_RANDOM_ITEM_MKB"
 						"OnSuccess"
 						{
 							
 							"RunScript"
 							{
-								"ScriptFile"	"items\BattleAxe.lua"
+								"ScriptFile"	"items\Hammer.lua"
 								"Function"		"Bash"
 							}
 							
@@ -3331,24 +3305,6 @@
 							}
 						}
 					}
-				}
-			}
-			"modifier_item_lia_hammer_bash"
-			{
-				"Duration"              "%bash_stun"
-				"Passive"				"0"
-				"IsHidden"				"1"
-				"IsBuff"				"0"
-				"IsDebuff"				"1"
-				"IsPurgable"			"1"
-				
-				"EffectName"            "particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"      "follow_overhead"
-				"OverrideAnimation"     "ACT_DOTA_DISABLED"
-				
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED" 		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}

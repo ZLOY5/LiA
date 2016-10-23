@@ -66,7 +66,7 @@
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bash_chance"			"40"
+			"minibash_chance"			"40"
 		}
 		"06"
 		{
@@ -100,14 +100,14 @@
 			{
 				"Random"
 				{
-					"Chance"			"%bash_chance"
+					"Chance"			"%minibash_chance"
 					"PseudoRandom"		"DOTA_PSEUDO_RANDOM_ITEM_MKB"
 					"OnSuccess"
 					{
 						
 						"RunScript"
 						{
-							"ScriptFile"	"items\BattleAxe.lua"
+							"ScriptFile"	"items\Hammer.lua"
 							"Function"		"Bash"
 						}
 						
@@ -118,24 +118,6 @@
 						}
 					}
 				}
-			}
-		}
-		"modifier_item_lia_hammer_bash"
-		{
-			"Duration"              "%bash_stun"
-			"Passive"				"0"
-			"IsHidden"				"1"
-			"IsBuff"				"0"
-			"IsDebuff"				"1"
-			"IsPurgable"			"1"
-			
-			"EffectName"            "particles/generic_gameplay/generic_stunned.vpcf"
-			"EffectAttachType"      "follow_overhead"
-			"OverrideAnimation"     "ACT_DOTA_DISABLED"
-			
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED" 		"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
 	}

@@ -6,10 +6,10 @@ function Bash(event)
 		return
 	end
 
-	local modifier = caster:FindModifierByNameAndAbility("modifier_naga_royal_guard_bash",ability)
+	local modifier = caster:FindModifierByNameAndAbility("modifier_dice_bash",ability)
 
 	if IsActiveBash(modifier) then
-		--print("modifier_naga_royal_guard_bash")
+
 		local damageTable = {
 						 	victim = event.target, 
 						 	attacker = caster, 
@@ -20,7 +20,7 @@ function Bash(event)
 
 		ability:ApplyDataDrivenModifier(caster, event.target, "modifier_stunned", {duration = ability:GetSpecialValueFor("bash_stun")})
 	
-		event.target:EmitSound("Hero_Slardar.Bash")
+		event.target:EmitSound("Roshan.Bash")
 	end
 
 end
@@ -47,3 +47,4 @@ function IsActiveBash(modifier)
 	end
 	return bResult
 end
+

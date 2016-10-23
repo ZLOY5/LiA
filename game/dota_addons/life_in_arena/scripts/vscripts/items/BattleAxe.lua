@@ -1,19 +1,48 @@
 function Bash(event)
-	if event.caster:IsIllusion() then
-		return 
-	end
-
+	local caster = event.caster
 	local ability = event.ability
 
-	local damageTable = {
+	if caster:IsIllusion() then
+		return
+	end
+
+	local modifier = caster:FindModifierByNameAndAbility(event.modifierName,ability)
+	if IsActiveBash(modifier) then
+		--print(event.modifierName,ability)
+		local damageTable = {
 						 	victim = event.target, 
-						 	attacker = event.caster, 
+						 	attacker = caster, 
 						 	damage = ability:GetSpecialValueFor("bash_damage"), 
 						 	damage_type = DAMAGE_TYPE_MAGICAL,
 						 	ability = ability
 						}
 
-	ApplyDamage(damageTable)
-	event.target:AddNewModifier(event.caster,ability,"modifier_stunned",{duration = ability:GetSpecialValueFor("bash_stun")})
-	event.target:EmitSound("DOTA_Item.MKB.Minibash")
+		ability:ApplyDataDrivenModifier(caster, event.target, "modifier_stunned", {duration = ability:GetSpecialValueFor("bash_stun")})
+	
+		event.target:EmitSound("DOTA_Item.MKB.Minibash")
+	end
+
+end
+
+function IsActiveBash(modifier)
+	local bResult = true
+	local ability = modifier:GetAbility()
+	local bashChance = ability:GetSpecialValueFor("bash_chance")
+
+	for _,mod in pairs(ability:GetCaster():FindAllModifiers()) do
+		local modAbility = mod:GetAbility()
+
+		if modAbility and modAbility ~= ability and modAbility:GetSpecialValueFor("bash_chance") then
+			local modBashChance = modAbility:GetSpecialValueFor("bash_chance")
+
+			if bashChance < modBashChance then
+				return false
+			elseif bashChance == modBashChance then
+				if modifier:GetCreationTime() < mod:GetCreationTime() then
+					bResult = false
+				end
+			end
+		end
+	end
+	return bResult
 end

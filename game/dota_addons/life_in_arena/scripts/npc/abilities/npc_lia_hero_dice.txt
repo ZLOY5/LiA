@@ -108,10 +108,7 @@
 		}
 	}
 
-		"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_dice_bash"
-	}
+
 	
 	"Modifiers"
 	{
@@ -129,17 +126,12 @@
 
 					"OnSuccess"
 					{
-						"FireSound"
-						{
-							"EffectName"	"Roshan.Bash"
-							"Target"		"TARGET"
-						}
-
 						"RunScript"
 						{
-							"ScriptFile"	"items\BattleAxe.lua"
+							"ScriptFile"	"heroes\Dice\Bash.lua"
 							"Function"		"Bash"
 						}
+
 
 					}
 				}

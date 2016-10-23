@@ -153,21 +153,17 @@ function modifier_item_lia_rune_of_lifesteal:GetModifierPreAttack_BonusDamage(pa
 end
 
 function modifier_item_lia_rune_of_lifesteal:OnAttackLanded(params)
-	if IsServer() then 
-		if params.attacker == self:GetParent() and not params.target:IsBuilding() and params.target:GetTeam() ~= self:GetParent():GetTeam() then 
-			self.lifesteal_record = params.record
-		end
+	if params.attacker == self:GetParent() and not params.target:IsBuilding() and params.target:GetTeam() ~= self:GetParent():GetTeam() then 
+		self.lifesteal_record = params.record
 	end
 end
 
 function modifier_item_lia_rune_of_lifesteal:OnTakeDamage(params)
-	if IsServer() then
-		if params.record == self.lifesteal_record then
-			local parent = self:GetParent()
-			local heal = params.damage*self.lifestealPercent*0.01
-			parent:Heal(heal, parent)
-			SendOverheadEventMessage(parent:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, parent, heal, nil)
-		end
+	if params.record == self.lifesteal_record then
+		local parent = self:GetParent()
+		local heal = params.damage*self.lifestealPercent*0.01
+		parent:Heal(heal, parent)
+		SendOverheadEventMessage(parent:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, parent, heal, nil)
 	end
 end
 

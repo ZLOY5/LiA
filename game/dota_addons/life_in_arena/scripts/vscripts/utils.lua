@@ -319,3 +319,12 @@ function CDOTABaseAbility:ReduceCooldown(reduction)
 		end
 	end
 end
+
+function CDOTA_BaseNPC:FindModifierByNameAndAbility(modifierName,ability)
+	for _,mod in pairs(self:FindAllModifiersByName(modifierName)) do
+		if mod:GetAbility() == ability then
+			return mod
+		end
+	end
+	return nil
+end

@@ -11863,10 +11863,7 @@
 			}
 		}
 	
-			"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_dice_bash"
-		}
+	
 		
 		"Modifiers"
 		{
@@ -11884,17 +11881,12 @@
 	
 						"OnSuccess"
 						{
-							"FireSound"
-							{
-								"EffectName"	"Roshan.Bash"
-								"Target"		"TARGET"
-							}
-	
 							"RunScript"
 							{
-								"ScriptFile"	"items\BattleAxe.lua"
+								"ScriptFile"	"heroes\Dice\Bash.lua"
 								"Function"		"Bash"
 							}
+	
 	
 						}
 					}
@@ -21030,11 +21022,6 @@
 	
 						"OnSuccess"
 						{
-							"FireSound"
-							{
-								"EffectName"	"Hero_Slardar.Bash"
-								"Target"		"TARGET"
-							}
 	
 							"RunScript"
 							{
@@ -24584,7 +24571,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"50 65 80"
+				"minibash_chance"			"50 65 80"
 			}
 			"02"
 			{
