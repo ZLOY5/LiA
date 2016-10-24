@@ -19,7 +19,18 @@ function Spawn(entityKeyValues)
 	if unitName == "barricades_small" then
 		thisEntity:SetHullRadius(45)
 	end
+
+	if unitName == "big_barrel" then
+		thisEntity:SetHullRadius(21)
+	end
+
+	if unitName == "small_barrel" then
+		thisEntity:SetHullRadius(21)
+	end
 	
+	if unitName == "npc_dota_creature_barrel" then
+		thisEntity:SetHullRadius(21)
+	end
 
 	if unitName == "small_barrel_side" then
 		thisEntity:SetHullRadius(50)

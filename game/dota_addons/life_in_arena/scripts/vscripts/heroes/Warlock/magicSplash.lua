@@ -19,7 +19,7 @@ function MagicSplash(event)
 	
 	for _,unit in pairs(targets) do 
 		ApplyDamage({victim = unit, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
-		ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak.vpcf",PATTACH_ABSORIGIN,unit)
+		ParticleManager:CreateParticle("particles/custom/warlock/keeper_mana_leak.vpcf",PATTACH_ABSORIGIN,unit)
 	end
 end
 
