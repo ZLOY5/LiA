@@ -51,21 +51,8 @@ function modifier_banner_of_victory:GetModifierAura()
 	return "modifier_banner_of_victory_aura_effect"
 end
 
-function modifier_banner_of_victory:DeclareFunctions()
-	local funcs = {
-		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE
-	}
- 
-	return funcs
-end
-
-function modifier_banner_of_victory:GetModifierPreAttack_BonusDamage()
-	return self.damageBonus
-end
-
 function modifier_banner_of_victory:OnCreated(kv)
 	self.radius = self:GetAbility():GetSpecialValueFor("aura_radius")
-	self.damageBonus = self:GetAbility():GetSpecialValueFor("bonus_damage")
 end
 
 -----------------------------------------------------------------------------------------
