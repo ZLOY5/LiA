@@ -27,15 +27,20 @@ function Think12WaveCreeps()
 		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
-						  250, 
+						  200, 
 						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
 						  DOTA_UNIT_TARGET_ALL - DOTA_UNIT_TARGET_BUILDING, 
-						  DOTA_UNIT_TARGET_FLAG_NONE, 
+						  DOTA_UNIT_TARGET_FLAG_NO_INVIS, 
 						  FIND_ANY_ORDER, 
 						  false)
 		--print(#targets)
 		if #targets ~= 0 then
-			thisEntity:CastAbilityNoTarget(ABILITY_12_wave_stomp, -1)
+			ExecuteOrderFromTable(
+			{
+		 		UnitIndex = thisEntity:entindex(), 
+		 		OrderType = DOTA_UNIT_ORDER_CAST_NO_TARGET,
+		 		AbilityIndex = ABILITY_12_wave_stomp:entindex(), 
+		 	})
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end
