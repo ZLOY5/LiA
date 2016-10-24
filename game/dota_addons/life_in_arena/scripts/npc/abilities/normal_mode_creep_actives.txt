@@ -345,97 +345,162 @@
 
   "precache"
   {
-    "particle"        "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
-    "particle"        "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
-	"particle"			"particles/dark_smoke_test.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts"
+        "particle"  "particles/custom/neutral/firestorm_wave.vpcf"
   }
 
-  "OnSpellStart"
-  {
-    "ApplyModifier"
+    "OnAbilityPhaseStart"
     {
-  		"Target"
-		{
-			"Center"  	"CASTER"
-			"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-		}
-      "ModifierName"    "modifier_warlock_firestorm_datadriven"
+        "FireSound"
+        {
+            "EffectName"    "Hero_AbyssalUnderlord.Firestorm.Start"
+            "Target"        "CASTER"
+        }
     }
 
+    "OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/Warlock/firestorm.lua"
+            "Function"      "RainOfFireStart"
+            "Target"        "POINT"
+        }
 
-    "RunScript"
-    {
-      "ScriptFile"    "heroes/Warlock/firestorm.lua"
-    	"Function"  "firestormWave_castpoint"
-      "EventName" "OnSpellStart"
-      "Target" "POINT"
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_rain_of_fire_channelling"
+            "Target"        "CASTER"
+        }
     }
-  }
-  
-  "OnChannelFinish"
-  {
-    "RemoveModifier"
+
+    "OnChannelFinish"
     {
-      "Target"      "CASTER"
-      "ModifierName"    "modifier_warlock_firestorm_datadriven"
+        "RunScript"
+        {
+            "ScriptFile"    "heroes/Warlock/firestorm.lua"
+            "Function"      "RainOfFireEnd"
+        } 
+
+        "RemoveModifier"
+        {
+            "ModifierName"  "modifier_rain_of_fire_channelling"
+            "Target"        "CASTER"
+        }   
     }
     
-  }
-
-
-  "Modifiers"
-  {
-    "modifier_warlock_firestorm_datadriven"
+    "Modifiers"
     {
-      "IsPurgable"      "0"
-      "IsHidden"        "1"
-      //"OverrideAnimation"   "ACT_DOTA_IDLE"
-		//"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
-		//"EffectAttachType"	"follow_origin"
-
-      "Duration"        "%wave_count*%wave_interval"
-      "Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-      "ThinkInterval"  "%wave_interval"
-
-      "OnIntervalThink"
-      {
-
-                          "RunScript"
-                                {
-                                  "ScriptFile"    "units/Megaboss5Firestorm.lua"
-                                  "Function"  "firestormWave_order"
-          "wave_num_exp" "%wave_num_exp"
-        }
-      }
-    }
-
-    "modifier_warlock_firestorm_burn"
-    {
-      "IsDebuff"      "1"
-      "IsPurgable"      "1"
-      "IsHidden"        "0"
-
-      "Duration"        "%burn_duration"
-
-      "ThinkInterval"  "%burn_interval"
-         
-      "OnIntervalThink"
-      {
-
-        "Damage"
+        "modifier_rain_of_fire_channelling"
         {
-          "Type" "DAMAGE_TYPE_MAGICAL"
-          "Target"  "TARGET"
-          "Damage" "%burn_damage"
+            "IsHidden"          "1"
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                    "Function"      "ApplyAnimation"
+                }
+            }
+            "ThinkInterval"     "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                    "Function"      "ApplyAnimation"
+                }
+            }
+            "OnDestroy"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                    "Function"      "StopAnimation"
+                }
+            }
         }
 
-      } 
-          "EffectName"        "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_fire_trail_egset.vpcf"
-          "EffectAttachType"  "follow_origin"   
+        "modifier_rain_of_fire_thinker"
+        {
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                    "Function"      "RainOfFireWave"
+                }
+                        
+                "ApplyModifier"
+                {
+                    "Target"
+                    {
+                        "Center"    "TARGET"
+                        "Radius"    "%radius"
+                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                        "Flags"     "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+                    }
+                    "ModifierName"  "modifier_rain_of_fire_burn"
+                }
+            }
+            "ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                    "Function"      "RainOfFireWave"
+                }
+                        
+                "ApplyModifier"
+                {
+                    "Target"
+                    {
+                        "Center"    "TARGET"
+                        "Radius"    "%radius"
+                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                        "Flags"     "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+                    }
+                    "ModifierName"  "modifier_rain_of_fire_burn"
+                }
+
+                "FireSound"
+                {
+                    "EffectName"        "Hero_Jakiro.LiquidFire"
+                    "Target"            "TARGET"
+                }
+            }
+        }
+
+        "modifier_rain_of_fire_burn"
+        {
+            "IsHidden"  "0"
+            "IsDebuff"  "1"
+            "Duration"  "%burn_duration"
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "Target"        "TARGET"
+                    "EffectName"    "particles/custom/neutral/firestorm_wave_burn.vpcf"
+                    "EffectAttachType"  "follow_origin"
+                }
+            }                                                                                                                                                                           
+
+            "ThinkInterval"  "%burn_interval"
+            "OnIntervalThink"
+            {
+                "Damage"
+                {
+                    "Target"        "TARGET"
+                    "Type"          "DAMAGE_TYPE_MAGICAL"
+                    "Damage"        "%burn_damage"
+                }               
+            }   
+        }
     }
-  }
-
-
 }
 
 
