@@ -1,18 +1,3 @@
---[[ ============================================================================================================
-	Author: Rook
-	Date: January 30, 2015
-	This function should be called from targeted datadriven abilities that can be blocked by Linken's Sphere.  
-	Checks to see if the inputted unit has modifier_item_sphere_target on them.  If they do, the sphere is popped,
-	the animation and sound plays, and true is returned.  If they do not, false is returned.
-================================================================================================================= ]]
-function is_spell_blocked_by_linkens_sphere(target)
-	if target:HasModifier("modifier_item_sphere_target") then
-		target:RemoveModifierByName("modifier_item_sphere_target")  --The particle effect is played automatically when this modifier is removed (but the sound isn't).
-		target:EmitSound("DOTA_Item.LinkensSphere.Activate")
-		return true
-	end
-	return false
-end
 
 
 --[[ ============================================================================================================
@@ -27,7 +12,6 @@ function item_lia_amulet_of_spell_shield_on_spell_start(keys)
 		--one of these modifiers is currently supported).
 		if not keys.target:HasModifier("modifier_item_sphere_target") then
 			keys.target:AddNewModifier(keys.caster, keys.ability, "modifier_item_sphere_target", {duration = keys.Duration})
-			keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_item_lia_amulet_of_spell_shield_icon", {duration = -1})
 		end
 		keys.target:EmitSound("DOTA_Item.LinkensSphere.Target")
 		
@@ -58,7 +42,6 @@ function modifier_item_lia_amulet_of_spell_shield_on_created(keys)
 			keys.caster:RemoveModifierByName("modifier_item_sphere_target")
 		end
 		keys.caster:AddNewModifier(keys.caster, keys.ability, "modifier_item_sphere_target", {duration = -1})
-		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_item_lia_amulet_of_spell_shield_icon", {duration = -1})
 		keys.caster.current_spellblock_is_passive = true
 	end
 end
@@ -78,10 +61,9 @@ function modifier_item_lia_amulet_of_spell_shield_on_destroy(keys)
 
 		for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
 			local current_item = keys.caster:GetItemInSlot(i)
-			if current_item ~= nil then
+			if current_item and current_item ~= ability then
 				if (current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
 					keys.caster:AddNewModifier(keys.caster, current_item, "modifier_item_sphere_target", {duration = -1})
-					current_item:ApplyDataDrivenModifier(keys.caster, keys.caster, "modifier_item_lia_amulet_of_spell_shield_icon", {duration = -1})
 					return
 				end
 			end
@@ -101,7 +83,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 	local num_off_cooldown_linkens_spheres_in_inventory = 0
 	for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
 		local current_item = keys.caster:GetItemInSlot(i)
-		if current_item ~= nil then
+		if current_item then
 			if (current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
 				num_off_cooldown_linkens_spheres_in_inventory = num_off_cooldown_linkens_spheres_in_inventory + 1
 			end
@@ -111,7 +93,6 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 	if num_off_cooldown_linkens_spheres_in_inventory > 0 and not keys.caster:HasModifier("modifier_item_sphere_target") then
 		if keys.caster.current_spellblock_is_passive == nil then  --If the Linken's Sphere just came off cooldown.
 			keys.caster:AddNewModifier(keys.caster, keys.ability, "modifier_item_sphere_target", {duration = -1})
-			keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_item_lia_amulet_of_spell_shield_icon", {duration = -1})
 			keys.caster.current_spellblock_is_passive = true
 		else  --keys.caster.current_spellblock_is_passive == true.
 			--The Linken's was presumably popped passively.  Note that modifier_item_sphere_target is non-dispellable.
@@ -141,18 +122,5 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 		end
 	else  --num_off_cooldown_linkens_spheres_in_inventory == 0
 		keys.caster.current_spellblock_is_passive = nil
-	end
-end
-
-
---[[ ============================================================================================================
-	Author: Rook
-	Date: January 30, 2015
-	This public-facing modifier is placed on units when they receive the modifier_item_sphere_target modifier.
-	Here, it regularly checks to see if the unit it's on still has modifier_item_sphere_target; if not, it removes itself.
-================================================================================================================= ]]
-function modifier_item_lia_amulet_of_spell_shield_icon_on_interval_think(keys)
-	if not keys.target:HasModifier("modifier_item_sphere_target") then
-		keys.target:RemoveModifierByName("modifier_item_lia_amulet_of_spell_shield_icon")
 	end
 end

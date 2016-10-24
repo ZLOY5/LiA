@@ -1,5 +1,9 @@
 modifier_ancient_priestess_mana_shield = class({})
 
+function modifier_ancient_priestess_mana_shield:IsPurgable()
+	return false 
+end
+
 function modifier_ancient_priestess_mana_shield:GetEffectName()
 	return "particles/medusa_mana_shield_custom.vpcf"
 end

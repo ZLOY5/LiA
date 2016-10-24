@@ -64,23 +64,6 @@
 				}
 			}
 		}
-		//A modifier that is applied to a unit when they receive the modifier_item_sphere_target modifier.
-		//So long as they still have that modifier, this one will remain and provide a public face on the modifier icon bar.
-		//This modifier deletes itself when modifier_item_sphere_target no longer exists on the unit.
-		"modifier_item_lia_amulet_of_spell_shield_icon"
-		{
-			"Passive"			"0"
-			"IsHidden"			"1"
-			
-			"ThinkInterval" 		".03"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"			"items/SpellShield.lua"
-					"Function"				"modifier_item_lia_amulet_of_spell_shield_icon_on_interval_think"
-				}
-			}
-		}
+
 	}
 }
