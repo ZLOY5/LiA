@@ -40,7 +40,7 @@ function modifier_banner_of_victory:GetAuraSearchTeam()
 end
 
 function modifier_banner_of_victory:GetAuraSearchFlags()
-	return DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_MELEE_ONLY
+	return DOTA_UNIT_TARGET_FLAG_INVULNERABLE
 end
 
 function modifier_banner_of_victory:GetAuraDuration()
@@ -91,7 +91,7 @@ function modifier_banner_of_victory_aura_effect:GetModifierPhysicalArmorBonus()
 end
 
 function modifier_banner_of_victory_aura_effect:OnAttackLanded(params)
-	if params.attacker == self:GetParent() and params.attacker:IsOpposingTeam(params.target:GetTeamNumber()) then 
+	if params.attacker == self:GetParent() and params.attacker:IsOpposingTeam(params.target:GetTeamNumber()) and not params.ranged_attack then 
 		self.attack_record = params.record
 	end
 end
