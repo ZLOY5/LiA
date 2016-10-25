@@ -78,7 +78,7 @@ function modifier_banner_of_victory_aura_effect:GetModifierPhysicalArmorBonus()
 end
 
 function modifier_banner_of_victory_aura_effect:OnAttackLanded(params)
-	if params.attacker == self:GetParent() and params.attacker:IsOpposingTeam(params.target:GetTeamNumber()) and not params.ranged_attack then 
+	if params.attacker == self:GetParent() and not params.target:IsBuilding() and not params.ranged_attack then 
 		self.attack_record = params.record
 	end
 end
@@ -88,8 +88,8 @@ function modifier_banner_of_victory_aura_effect:OnTakeDamage(params)
 		local lifesteal = params.damage * self.lifestealPercent 
 		params.attacker:Heal(lifesteal,self:GetAbility())
 		SendOverheadEventMessage(params.attacker:GetPlayerOwner(), OVERHEAD_ALERT_HEAL, params.attacker, lifesteal, nil)
-		local particle = ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, attacker)
-        ParticleManager:SetParticleControlEnt(particle, 0, params.attacker, PATTACH_POINT_FOLLOW, "attach_hitloc", params.attacker:GetAbsOrigin(), true)
+		local particle = ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, params.attacker)
+        ParticleManager:ReleaseParticleIndex(particle)
 	end
 end
 

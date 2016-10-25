@@ -58,7 +58,7 @@ function OnHintFallen(ndata)
         
 (function () { 
 	GameEvents.Subscribe( "round_start", OnRoundStart );
-	GameEvents.Subscribe( "duel_start", OnDuelStart ); 
+	//GameEvents.Subscribe( "duel_start", OnDuelStart ); 
 	//
 	GameEvents.Subscribe( "upd_action_fallen", OnHintFallen ); 
 
