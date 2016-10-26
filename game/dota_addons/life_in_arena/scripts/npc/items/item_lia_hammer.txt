@@ -8,8 +8,8 @@
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"650"	
-	"ItemShopTags"					"int;str;damage;health_pool;hard_to_tag"
+	"ItemCost"						"600"	
+	"ItemShopTags"					"str;damage;health_pool;hard_to_tag"
 	
 	// Recipe
 	//-------------------------------------------------------------------------------------------------------------
@@ -17,7 +17,7 @@
 	"ItemResult"					"item_lia_hammer"
 	"ItemRequirements"
 	{
-		"01"						"item_lia_spear;item_lia_amulet;item_lia_gloves_of_strength;item_lia_staff"
+		"01"						"item_lia_spear;item_lia_amulet;item_lia_gloves_of_strength"
 	}
 }
 
@@ -35,8 +35,8 @@
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"1280"
-	"ItemShopTags"					"int;str;damage;health_pool;hard_to_tag"
+	"ItemCost"						"1030"
+	"ItemShopTags"					"str;damage;health_pool;hard_to_tag"
 	"ItemQuality"					"epic"
 	"ItemAliases"					"basher"
 	// Special	
@@ -56,24 +56,19 @@
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_intelligence"	"18"
+			"bonus_health"	"250"
 		}
 		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_health"	"200"
+			"minibash_chance"			"30"
 		}
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"minibash_chance"			"40"
+			"bash_damage"			"250"
 		}
 		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_damage"			"300"
-		}
-		"07"
 		{
 			"var_type"				"FIELD_FLOAT"
 			"bash_stun"				"0.01"
@@ -92,7 +87,6 @@
 			{
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
 				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
 				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%bonus_health"
 			}
 			
