@@ -410,6 +410,229 @@
 	//End of file item_lia_anti_magic_potion.txt
 
 
+	//Start of file item_lia_armor_of_the_red_mist.txt
+	"item_recipe_lia_armor_of_the_red_mist"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1503"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"450"	
+		"ItemShopTags"					"health;armor;hard_to_tag"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_lia_armor_of_the_red_mist"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_shield_of_death;item_lia_mithril_armor"
+		}
+	}
+	
+	
+	
+	"item_lia_armor_of_the_red_mist"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+		"ID"							"1504"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			"item_lia_armor_of_the_red_mist"
+		
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"			"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
+			"particle"			"particles/custom/items/armor_of_the_red_mist_effect.vpcf"
+		}
+	
+		"AbilityCooldown"				"14.0"
+	
+		"AbilityManaCost"				"120"	
+	
+		"AbilitySharedCooldown" "Taunt"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"2555"
+		"ItemShopTags"					"health;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"basher"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"	"20"
+			}
+	
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health" "700"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_blocked"			"60"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_magic_resist_percentage"			"30"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"500"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"active_armor"			"25"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"6.0"
+			}
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Sven.WarCry.Signet"
+				"Target" 		"CASTER"
+			}
+	
+			"AttachEffect"
+			{
+				"EffectName"	"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"Target"	"CASTER"	
+				"ControlPoints"
+				{
+					"02"	"%radius %radius 0"
+				}
+			}
+	
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Flags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armor_of_the_red_mist.lua"
+						"Function"		"ApplyTaunt"
+					}
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"%damage"
+					}
+				}
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_lia_armor_of_the_red_mist_armor"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_lia_armor_of_the_red_mist"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
+			    	"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
+				}
+				
+				
+			}
+	
+			"modifier_item_lia_armor_of_the_red_mist_taunt"
+			{
+				"IsPurgable"		"0"
+				"IsDebuff"			"1"
+	
+				"StatusEffectName" 		"particles/custom/items/armor_of_the_red_mist_effect.vpcf" 	   
+				"StatusEffectPriority"  "10"
+	
+				"ThinkInterval"  "0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armor_of_the_red_mist.lua"
+						"Function"		"Taunt"
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armor_of_the_red_mist.lua"
+						"Function"		"TauntEnd"
+					}
+				}
+			}
+	
+			"modifier_item_lia_armor_of_the_red_mist_armor"
+			{
+				"Passive"				"0"
+				"IsHidden"				"0"
+				"IsBuff"				"1"
+				"IsPurgable"			"1"
+	
+				"Duration"				"%duration"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%active_armor"
+				}
+			}
+		}
+	}
+	//End of file item_lia_armor_of_the_red_mist.txt
+
+
 	//Start of file item_lia_axe.txt
 	"item_lia_axe"
 	{
@@ -3324,7 +3547,7 @@
 		"precache"
 		{
 			"particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
-			"particle"  "particles/items3_fx/silver_edge_slow.vpcf"
+			"particle"  "particles/custom/items/hammer_of_titans_debuff.vpcf"
 		}
 	
 		"Modifiers"
@@ -3355,34 +3578,23 @@
 							
 							"RunScript"
 							{
-								"ScriptFile"	"items\Hammer.lua"
-								"Function"		"Bash"
+								"ScriptFile"	"items\hammer_of_titans.lua"
+								"Function"		"OnSuccess"
+								"attack_damage"	"%attack_damage"
 							}
 	
-							"ApplyModifier"
-					        {
-					          "Target"
-						      {
-						        "Center"        "TARGET"
-						        "Radius"        "%cleave_radius"
-						        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-						        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						      }
-					          "ModifierName"  "modifier_item_lia_hammer_of_titans_slow"
-					        }
+				//			"ApplyModifier"
+				//	        {
+				//	          "Target"
+				//		      {
+				//		        "Center"        "TARGET"
+				//		        "Radius"        "%cleave_radius"
+				//		        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				//		        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				//		      }
+				//	          "ModifierName"  "modifier_item_lia_hammer_of_titans_slow"
+				//	        }
 	
-							"CleaveAttack"
-					    	{
-					    		"CleavePercent"         "%cleave_percent"
-					    		"CleaveRadius"          "%cleave_radius"
-					    		"CleaveEffect"          "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
-					    	}
-							
-							"FireSound"
-							{
-								"EffectName"		"DOTA_Item.MKB.Minibash"
-								"Target"			"TARGET"
-							}
 						}
 					}
 				}
@@ -3392,8 +3604,12 @@
 			{
 				"IsDebuff" "1"
 				"IsPurgable"	"1"
-				"EffectName"	"particles/items3_fx/silver_edge_slow.vpcf"
+	
+				"Duration"	"%slow_duration"
+	
+				"EffectName"	"particles/custom/items/hammer_of_titans_debuff.vpcf"
 				"EffectAttachType"	"follow_origin"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed_slow"
@@ -5942,6 +6158,8 @@
 	
 		"AbilityManaCost"				"80"	
 	
+		"AbilitySharedCooldown" "Taunt"
+	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"1045"
@@ -5971,7 +6189,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"500"
+				"radius"				"400"
 			}
 			"05"
 			{
@@ -6011,11 +6229,10 @@
 			
 				"Action"    
 				{
-					"ApplyModifier"
+					"RunScript"
 					{
-						"ModifierName"	"modifier_beserkers_call_enemy_datadriven"
-						"Target" 		"TARGET"
-						"Duration"		"%duration"
+						"ScriptFile"	"items/mithril_armor.lua"
+						"Function"		"ApplyTaunt"
 					}
 				}
 			}
@@ -6038,7 +6255,7 @@
 				
 			}
 	
-			"modifier_beserkers_call_enemy_datadriven"
+			"modifier_item_lia_mithril_armor_taunt"
 			{
 				"IsPurgable"		"0"
 				"IsDebuff"			"1"
@@ -8893,7 +9110,7 @@
 		
 	
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"12.0"
+		"AbilityCooldown"				"14.0"
 		"AbilityManaCost"				"180"
 		
 		"precache"
@@ -8909,32 +9126,18 @@
 				"EffectName"	"Hero_Invoker.EMP.Discharge"
 				"Target"		"CASTER"
 			}
-				"AttachEffect"
+			"AttachEffect"
 			{
 				"EffectName"	"particles/units/heroes/hero_queenofpain/queen_scream_of_pain_owner.vpcf"
 				"EffectAttachType"	"attach_origin"
 				"Target"		"CASTER"
 			}
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_item_shield_of_death_damage"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				}
-			}
 		
-			"ApplyModifier"
+			"RunScript"
 			{
-				"ModifierName"	"modifier_item_shield_of_death_armor"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}		
+				"ScriptFile"	"items/shield_of_death.lua"
+				"Function"		"ApplyArmor"
+			}	
 	
 			"Damage"
 			{
@@ -8963,32 +9166,7 @@
 					"MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
 				}
 			}
-			
-					"modifier_item_shield_of_death_damage"
-			{
-				"Passive"			"0"
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-		
-		
-			}
-			
-			"modifier_item_shield_of_death_armor"
-			{
-				"Passive"				"0"
-				"IsHidden"				"0"
-				"IsBuff"				"1"
-			//	"IsDebuff"				"0"
-				"IsPurgable"			"1"
-				"TextureName"			"item_lia_shield_of_death"
-				"Duration"				"%duration"
-				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%active_armor"
-				}
-			}
 		}
 		"AbilitySpecial"
 		{
@@ -9010,12 +9188,12 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"			"200"
+				"radius"			"250"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"active_armor"			"25"
+				"active_armor"			"20"
 			}
 			"06"
 			{

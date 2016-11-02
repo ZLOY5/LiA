@@ -8,9 +8,9 @@ function ApplyTaunt( keys )
 	local duration = ability:GetSpecialValueFor("duration")
 
 	if string.find(target:GetUnitName(),"megaboss") or target:IsHero() then
-		ability:ApplyDataDrivenModifier(caster,target,"modifier_item_lia_mithril_armor_taunt",{duration = duration/2})
+		ability:ApplyDataDrivenModifier(caster,target,"modifier_item_lia_armor_of_the_red_mist_taunt",{duration = duration/2})
 	else
-		ability:ApplyDataDrivenModifier(caster,target,"modifier_item_lia_mithril_armor_taunt",{duration = duration})
+		ability:ApplyDataDrivenModifier(caster,target,"modifier_item_lia_armor_of_the_red_mist_taunt",{duration = duration})
 	end
 
 	

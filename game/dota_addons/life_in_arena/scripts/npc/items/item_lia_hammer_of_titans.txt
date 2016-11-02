@@ -37,7 +37,7 @@
 	"precache"
 	{
 		"particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
-		"particle"  "particles/items3_fx/silver_edge_slow.vpcf"
+		"particle"  "particles/custom/items/hammer_of_titans_debuff.vpcf"
 	}
 
 	"Modifiers"
@@ -68,34 +68,23 @@
 						
 						"RunScript"
 						{
-							"ScriptFile"	"items\Hammer.lua"
-							"Function"		"Bash"
+							"ScriptFile"	"items\hammer_of_titans.lua"
+							"Function"		"OnSuccess"
+							"attack_damage"	"%attack_damage"
 						}
 
-						"ApplyModifier"
-				        {
-				          "Target"
-					      {
-					        "Center"        "TARGET"
-					        "Radius"        "%cleave_radius"
-					        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					      }
-				          "ModifierName"  "modifier_item_lia_hammer_of_titans_slow"
-				        }
+			//			"ApplyModifier"
+			//	        {
+			//	          "Target"
+			//		      {
+			//		        "Center"        "TARGET"
+			//		        "Radius"        "%cleave_radius"
+			//		        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+			//		        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			//		      }
+			//	          "ModifierName"  "modifier_item_lia_hammer_of_titans_slow"
+			//	        }
 
-						"CleaveAttack"
-				    	{
-				    		"CleavePercent"         "%cleave_percent"
-				    		"CleaveRadius"          "%cleave_radius"
-				    		"CleaveEffect"          "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
-				    	}
-						
-						"FireSound"
-						{
-							"EffectName"		"DOTA_Item.MKB.Minibash"
-							"Target"			"TARGET"
-						}
 					}
 				}
 			}
@@ -108,7 +97,7 @@
 
 			"Duration"	"%slow_duration"
 
-			"EffectName"	"particles/items3_fx/silver_edge_slow.vpcf"
+			"EffectName"	"particles/custom/items/hammer_of_titans_debuff.vpcf"
 			"EffectAttachType"	"follow_origin"
 
 			"Properties"

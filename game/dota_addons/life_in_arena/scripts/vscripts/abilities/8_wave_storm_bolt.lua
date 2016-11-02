@@ -2,7 +2,9 @@ function StormBolt(event)
 	local target = event.target
 	local ability = event.ability
 	local caster = event.caster
-	if target:TriggerSpellAbsorb(ability) then
+	if target:IsMagicImmune() then
+		return 
+	elseif target:TriggerSpellAbsorb(ability) then
 		return 
 	end
 	target:EmitSound("Hero_ChaosKnight.ChaosBolt.Impact")

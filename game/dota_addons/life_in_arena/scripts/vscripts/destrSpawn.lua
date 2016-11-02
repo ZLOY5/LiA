@@ -21,15 +21,15 @@ function Spawn(entityKeyValues)
 	end
 
 	if unitName == "big_barrel" then
-		thisEntity:SetHullRadius(21)
+		thisEntity:SetHullRadius(24)
 	end
 
 	if unitName == "small_barrel" then
-		thisEntity:SetHullRadius(21)
+		thisEntity:SetHullRadius(24)
 	end
 	
 	if unitName == "npc_dota_creature_barrel" then
-		thisEntity:SetHullRadius(21)
+		thisEntity:SetHullRadius(24)
 	end
 
 	if unitName == "small_barrel_side" then
