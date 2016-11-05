@@ -141,6 +141,21 @@ function Survival:Duel(hero1,hero2)
 
 end
 
+function Survival:DuelRegisterHeroDeath(attacker,killed)
+
+    if not self.DuelOneHeroKilled then
+        self.DuelOneHeroKilled = 1
+        Timers:CreateTimer(1,function()
+            if not killed:IsAlive() and not attacker:IsAlive() then 
+                Survival:EndDuel(nil,nil)
+            else
+                Survival:EndDuel(attacker,killed)
+            end
+            self.DuelOneHeroKilled = nil
+        end)
+    end
+end
+
 function Survival:EndDuel(winner,loser)
     local hero1 = self.DuelFirstHero
     local hero2 = self.DuelSecondHero
@@ -175,6 +190,11 @@ function Survival:EndDuel(winner,loser)
         PlayerResource:ModifyLumber(winner:GetPlayerOwnerID(),8)
     else --ничья
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
+        hero1:ModifyGold(100, false, DOTA_ModifyGold_Unspecified) 
+        PlayerResource:ModifyLumber(hero1:GetPlayerOwnerID(),4)
+
+        hero2:ModifyGold(100, false, DOTA_ModifyGold_Unspecified) 
+        PlayerResource:ModifyLumber(hero2:GetPlayerOwnerID(),4)
     end
 
     if hero1:IsAlive() then

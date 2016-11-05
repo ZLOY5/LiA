@@ -60,7 +60,7 @@ function Survival:_OnHeroDeath(keys)
     end
     
     if (self.State == SURVIVAL_STATE_DUEL_TIME) and (hero == self.DuelFirstHero or hero == self.DuelSecondHero) then
-        Survival:EndDuel(attackerHero,hero)
+        Survival:DuelRegisterHeroDeath(attackerHero,hero)
     else
         PlayerResource:IncremetDeaths(hero:GetPlayerOwnerID())
     
