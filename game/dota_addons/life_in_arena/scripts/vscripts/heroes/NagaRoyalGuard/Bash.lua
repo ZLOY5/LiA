@@ -26,7 +26,6 @@ function Bash(event)
 end
 
 function IsActiveBash(modifier)
-	local bResult = true
 	local ability = modifier:GetAbility()
 	local bashChance = ability:GetSpecialValueFor("bash_chance")
 
@@ -40,10 +39,10 @@ function IsActiveBash(modifier)
 				return false
 			elseif bashChance == modBashChance then
 				if modifier:GetCreationTime() < mod:GetCreationTime() then
-					bResult = false
+					return false
 				end
 			end
 		end
 	end
-	return bResult
+	return true
 end

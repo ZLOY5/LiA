@@ -39,7 +39,7 @@ end
 
 function modifier_18_wave_debuff:OnDeath(params)
 	if IsServer() then 
-		if params.attacker == self:GetParent() and params.unit:IsOpposingTeam(params.attacker:GetTeamNumber()) then 
+		if params.attacker == self:GetParent() and params.unit:GetTeamNumber() ~= params.attacker:GetTeamNumber() then 
 			params.attacker:ModifyHealth(self:GetParent():GetHealth()-100, nil, true, 0)
 		end
 	end

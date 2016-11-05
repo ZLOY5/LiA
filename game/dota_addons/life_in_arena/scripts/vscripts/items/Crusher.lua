@@ -1,3 +1,8 @@
+function ApplyAccuracy(event)
+	if event.ability:IsCooldownReady() then
+		event.ability:ApplyDataDrivenModifier(event.caster,event.caster,"modifier_item_lia_lightning_spear_accuracy",nil)
+	end
+end
 --[[
 	Author: Noya
 	Date: 17.01.2015.
@@ -10,7 +15,7 @@ function ChainLightning( event )
 	if not target:IsMagicImmune() then
 		local hero = event.caster
 		
-
+		ability:StartCooldown(ability:GetCooldown(ability:GetLevel()))
 		
 		local damage = ability:GetLevelSpecialValueFor( "lightning_damage", ability:GetLevel() - 1 )
 		local bounces = ability:GetLevelSpecialValueFor( "lightning_bounces", ability:GetLevel() - 1 )
@@ -37,9 +42,7 @@ function ChainLightning( event )
 		local dummy = nil
 		local units = nil
 
-		ability:StartCooldown(ability:GetCooldown(ability:GetLevel()))
-		ability:ApplyDataDrivenModifier(hero,hero,"modifier_item_lia_lightning_spear_cooldown",nil)
-		hero:RemoveModifierByName("modifier_item_lia_lightning_spear_lightning")
+
 
 		Timers:CreateTimer(DoUniqueString("ChainLightning"), {
 			endTime = time_between_bounces,
@@ -90,7 +93,7 @@ function ChainLightning( event )
 					    v.struckByChain = false
 					    v = nil
 					end
-				    print("End Chain, no more targets")
+				    --print("End Chain, no more targets")
 					return	
 				end
 
@@ -102,7 +105,7 @@ function ChainLightning( event )
 				damage = damage - (damage*decay)
 				ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
 				--PopupDamage(target,math.floor(damage))
-				print("Bounce "..bounces.." Hit Unit "..target:GetEntityIndex().. " for "..damage.." damage")
+				--print("Bounce "..bounces.." Hit Unit "..target:GetEntityIndex().. " for "..damage.." damage")
 
 				-- play the sound
 				EmitSoundOn("Hero_Zuus.ArcLightning.Target",target)
@@ -121,20 +124,10 @@ function ChainLightning( event )
 					   	v.struckByChain = false
 					   	v = nil
 					end
-					print("End Chain, no more bounces")
+					--print("End Chain, no more bounces")
 				end
 			end
 		})
 
-	end
-end
-
-function ApplyModifier(event)
-	local ability = event.ability
-	local hero = event.caster
-
-
-	if ability:IsCooldownReady() then
-		ability:ApplyDataDrivenModifier(hero,hero,"modifier_item_lia_lightning_spear_lightning",nil)
 	end
 end

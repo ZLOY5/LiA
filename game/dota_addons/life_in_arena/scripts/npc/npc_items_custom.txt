@@ -1716,23 +1716,8 @@
 			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
 			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 			    }  
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/Crusher.lua"
-						"Function"		"ApplyModifier"
-					}
-				}
-			}
-			"modifier_item_lia_lightning_spear_lightning"
-			{
-				"Passive"          "0"    
-			    "IsHidden"         "1"
 	
-	
-				"OnAttackStart"
+			    "OnAttackStart"
 				{
 					"Random"
 					{
@@ -1740,40 +1725,21 @@
 						"PseudoRandom" "DOTA_PSEUDO_RANDOM_ITEM_MAELSTROM"
 						"OnSuccess"
 						{
-							"ApplyModifier"
-						    {
-						    	"ModifierName"	"modifier_item_lia_lightning_spear_accuracy"
-						    	"Target"
-						    	{
-						    		"Center"  	"CASTER"
-						    		"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-						    	}
-						    }    
+							"RunScript"
+							{
+								"ScriptFile" "items/Crusher.lua"
+								"Function"	 "ApplyAccuracy"
+							}  
 						}
 					}
 				}
 			}
-			"modifier_item_lia_lightning_spear_cooldown"
-			{
-				"Passive"          "0"    
-			    "IsHidden"         "1"
-			    "Duration"			"%lightning_cooldown"
-	
-			    "OnDestroy"
-			    {
-			    	"RunScript"
-					{
-						"ScriptFile"	"items/Crusher.lua"
-						"Function"		"ApplyModifier"
-					}
-			    }
-	
-			}
 	
 			"modifier_item_lia_lightning_spear_accuracy"
-			{
-				"Passive"          "0"    
-			    "IsHidden"         "1"
+			{   
+			    "IsHidden"         	"1"
+			    "IsPurgable"		"0"
+	
 			    "States"
 			    {
 			    	"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
@@ -1790,7 +1756,11 @@
 					"RemoveModifier"
 					{
 						"ModifierName"	"modifier_item_lia_lightning_spear_accuracy"
-						"Target" 		"CASTER"
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
 					}
 			    }
 	
