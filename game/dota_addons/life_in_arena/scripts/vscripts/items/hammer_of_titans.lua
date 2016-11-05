@@ -36,7 +36,7 @@ function OnSuccess( keys )
 										false)
 
 	if caster:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then
-		DoCleaveAttack(caster,target,ability,cleave_percent, radius, "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf")
+		DoCleaveAttack(caster,target,ability,cleave_percent, radius, "particles/custom/items/hammer_of_titans_cleave.vpcf")
 		for _,v in pairs(targets) do
 			ability:ApplyDataDrivenModifier(caster,v,"modifier_item_lia_hammer_of_titans_slow",nil)
 		end

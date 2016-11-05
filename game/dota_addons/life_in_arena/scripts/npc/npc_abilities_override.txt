@@ -425,8 +425,8 @@
 		//=================================================================================================================
 		// Barrel: Explosion
 		//=================================================================================================================
-			"barrel_explosion"
-			{
+	"barrel_explosion"
+	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass" "ability_datadriven"
@@ -473,6 +473,15 @@
 			}
 	    }
 		
+	}
+	
+	"barrel_invulnerability"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities\barrel_invulnerability.lua"
+		"AbilityTextureName"			"techies_remote_mines"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	}
 	
 		
@@ -7714,20 +7723,20 @@
 				"Type"	"DAMAGE_TYPE_MAGICAL"
 			}
 			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/Android/PocketFactory.lua"
-				"Function"		"CauseDamageDecor"
-				"attack_damage" "%AbilityDamage"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"150"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-					"Types"		"DOTA_UNIT_TARGET_BUILDING"
-					//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
+	//		"RunScript"
+	//		{
+	//			"ScriptFile"	"heroes/Android/PocketFactory.lua"
+	//			"Function"		"CauseDamageDecor"
+	//			"attack_damage" "%AbilityDamage"
+	//			"Target"
+	//			{
+	//				"Center"	"CASTER"
+	//				"Radius"	"150"
+	//				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+	//				"Types"		"DOTA_UNIT_TARGET_BUILDING"
+	//				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	//			}
+	//		}
 		
 		}
 	
@@ -8515,11 +8524,11 @@
 	  
 	  // Time   
 	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCooldown"       "5"       
+	  "AbilityCooldown"       "4"       
 	
 	  // Cost
 	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityManaCost"       "50 100 150"
+	  "AbilityManaCost"       "50 75 100"
 	
 	
 	  "precache"
@@ -8546,7 +8555,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "manacost_per_charge" "10 20 30"
+	      "manacost_per_charge" "10 15 20"
 	    }
 	    "04"
 	    {
@@ -8605,11 +8614,11 @@
 	  
 	  // Time   
 	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCooldown"       "3"       
+	  "AbilityCooldown"       "2.5"       
 	
 	  // Cost
 	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityManaCost"       "100 150 200"
+	  "AbilityManaCost"       "100 125 150"
 	
 	
 	  "precache"
@@ -8636,7 +8645,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "manacost_per_charge" "10 20 30"
+	      "manacost_per_charge" "10 15 20"
 	    }
 	    "04"
 	    {
@@ -9050,7 +9059,7 @@
 	        "01"
 	        {
 	            "var_type"        "FIELD_INTEGER"
-	            "lol"             "25 45 65"
+	            "lol"             "45 65 85"
 	        }
 	        "02"
 	        {
@@ -17315,20 +17324,20 @@
 							"Damage"		"%AbilityDamage"
 						}
 						//
-						"RunScript"
-						{
-							"ScriptFile"	"heroes\Hermit\hermit_storm.lua"
-							"Function"		"CauseDamageDecor"
-							"damage" 		"%AbilityDamage"
-							"Target"
-							{
-								"Center"	"TARGET"
-								"Radius"	"150"
-								"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-								"Types"		"DOTA_UNIT_TARGET_BUILDING"
-								//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}
-						}
+			//			"RunScript"
+			//			{
+			//				"ScriptFile"	"heroes\Hermit\hermit_storm.lua"
+			//				"Function"		"CauseDamageDecor"
+			//				"damage" 		"%AbilityDamage"
+			//				"Target"
+			//				{
+			//					"Center"	"TARGET"
+			//					"Radius"	"150"
+			//					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+			//					"Types"		"DOTA_UNIT_TARGET_BUILDING"
+			//					//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			//				}
+			//			}
 					}
 				}
 			}
@@ -23703,20 +23712,20 @@
 					
 					//
 					
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
-						"Function"		"CauseDamageDecor"
-						"attack_damage" "%attack_damage"
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"150"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-							"Types"		"DOTA_UNIT_TARGET_BUILDING"
-							//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					}
+		//			"RunScript"
+		//			{
+		//				"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
+		//				"Function"		"CauseDamageDecor"
+		//				"attack_damage" "%attack_damage"
+		//				"Target"
+		//				{
+		//					"Center"	"TARGET"
+		//					"Radius"	"150"
+		//					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		//					"Types"		"DOTA_UNIT_TARGET_BUILDING"
+		//					//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		//				}
+		//			}
 				}
 				
 				"OnDestroy"

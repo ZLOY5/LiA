@@ -65,8 +65,8 @@
 	//=================================================================================================================
 	// Barrel: Explosion
 	//=================================================================================================================
-		"barrel_explosion"
-		{
+"barrel_explosion"
+{
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass" "ability_datadriven"
@@ -113,6 +113,15 @@
 		}
     }
 	
+}
+
+"barrel_invulnerability"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"abilities\barrel_invulnerability.lua"
+	"AbilityTextureName"			"techies_remote_mines"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 }
 
 	
