@@ -184,8 +184,6 @@ function Survival:EndDuel(winner,loser)
     PlayerResource:UpdateTeamSlot(hero2:GetPlayerID(), DOTA_TEAM_GOODGUYS, 1) 
 
     if winner ~= nil then 
-        StopTimer()
-        Timers:RemoveTimer("duelExpireTime")
         winner:ModifyGold(200, false, DOTA_ModifyGold_Unspecified) 
         PlayerResource:ModifyLumber(winner:GetPlayerOwnerID(),8)
     else --ничья
@@ -196,6 +194,9 @@ function Survival:EndDuel(winner,loser)
         hero2:ModifyGold(100, false, DOTA_ModifyGold_Unspecified) 
         PlayerResource:ModifyLumber(hero2:GetPlayerOwnerID(),4)
     end
+
+    StopTimer()
+    Timers:RemoveTimer("duelExpireTime")
 
     if hero1:IsAlive() then
         hero1:Purge(true, true, false, true, false)
