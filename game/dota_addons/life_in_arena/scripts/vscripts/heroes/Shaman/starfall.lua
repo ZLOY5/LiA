@@ -11,5 +11,5 @@ function starfallRegen(keys)
 	--
 	--caster:Heal(reg,caster)
 	caster:SetHealth(caster:GetHealth() + reg)
-
+	caster:Purge(false,true,false,false,false)
 end
