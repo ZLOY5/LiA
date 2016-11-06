@@ -8565,7 +8565,7 @@
 	    "05"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "charge_limit"  "5 6 7"
+	      "charge_limit"  "4 6 8"
 	    }   
 	    "06"
 	    {
@@ -8645,7 +8645,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "manacost_per_charge" "10 15 20"
+	      "manacost_per_charge" "20 25 30"
 	    }
 	    "04"
 	    {
@@ -8655,7 +8655,7 @@
 	    "05"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "charge_limit"  "5 6 7"
+	      "charge_limit"  "4 6 8"
 	    }   
 	    "06"
 	    {
@@ -12727,8 +12727,8 @@
 	            "IsBuff"        "1"
 	            "IsPurgable"    "1"
 	
-	            "EffectName"  "particles/econ/items/earth_spirit/earth_spirit_vanquishingdemons_summons/espirit_stoneremnant_base_vanquishingdemons.vpcf"
-	            "EffectAttachType"  "follow_origin"
+	            "StatusEffectName"     "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"      
+	            "StatusEffectPriority"  "10"
 	            "Properties"
 	            {
 	                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%bonus_armor"
@@ -26904,7 +26904,7 @@
 
 
 	//Start of file npc_lia_hero_time_lord.txt
-	"time_lord_death"
+	    "time_lord_death"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
@@ -26915,7 +26915,7 @@
 	    // Stats    
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityCastRange"        "700"
-	    "AbilityCastPoint"        "0.0"
+	    "AbilityCastPoint"        "0.4"
 	    "AbilityCooldown"         "18 17 16"
 	    "AbilityManaCost"         "100 150 200"
 	    "AoERadius"               "%radius"
@@ -26987,7 +26987,7 @@
 	    // Stats    
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilityCastRange"        "700"
-	    "AbilityCastPoint"        "0.0"
+	    "AbilityCastPoint"        "0.4"
 	    "AbilityCooldown"         "11 10 9"
 	    "AbilityManaCost"         "100 150 200"
 	    "AoERadius"               "%radius"
@@ -32097,6 +32097,7 @@
 		{
 			"modifier_bloodlust_hell_beast"
 			{
+				"IsPurgable"		"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
@@ -32374,7 +32375,7 @@
 	      "02"
 	      {
 	        "var_type"        "FIELD_INTEGER"
-	        "totem_damage_reduction"    "-80"
+	        "totem_damage_reduction"    "-60"
 	      }
 	      "03"
 	      {

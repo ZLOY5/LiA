@@ -27,7 +27,7 @@
 		},
 		{
 			_class = "C_OP_MovementMaintainOffset"
-			m_vecOffset = [ -7.0, 0.0, 0.0 ]
+			m_vecOffset = [ -8.0, 0.0, 0.0 ]
 		},
 		{
 			_class = "C_OP_Decay"
@@ -37,19 +37,19 @@
 			_class = "C_OP_SetParentControlPointsToChildCP"
 			m_bSetOrientation = true
 			m_nFirstSourcePoint = 1
-			m_nNumControlPoints = 7
+			m_nNumControlPoints = 8
 			m_nChildControlPoint = 1
 		},
 		{
 			_class = "C_OP_SetPerChildControlPoint"
 			m_bSetOrientation = true
-			m_nNumControlPoints = 7
+			m_nNumControlPoints = 8
 		},
 		{
 			_class = "C_OP_SetParentControlPointsToChildCP"
 			m_bSetOrientation = true
-			m_nFirstSourcePoint = 8
-			m_nNumControlPoints = 7
+			m_nFirstSourcePoint = 9
+			m_nNumControlPoints = 8
 			m_nChildControlPoint = 2
 		},
 	]
@@ -64,11 +64,14 @@
 	[
 		{
 			_class = "C_OP_InstantaneousEmitter"
-			m_nParticlesToEmit = 7
+			m_nParticlesToEmit = 8
 		},
 	]
 	m_Children = 
 	[
+		{
+			m_ChildRef = resource:"particles/visage_soul_overhead_point.vpcf"
+		},
 		{
 			m_ChildRef = resource:"particles/visage_soul_overhead_point.vpcf"
 		},

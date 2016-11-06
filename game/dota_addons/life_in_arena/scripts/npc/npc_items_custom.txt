@@ -460,6 +460,8 @@
 	
 		"AbilitySharedCooldown" "Taunt"
 	
+		"AbilityCastRange"				"400"
+	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"2555"
@@ -610,6 +612,11 @@
 						"ScriptFile"	"items/armor_of_the_red_mist.lua"
 						"Function"		"TauntEnd"
 					}
+				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 	
@@ -6251,6 +6258,11 @@
 						"Function"		"TauntEnd"
 					}
 				}
+	
+				"States"
+				{
+					"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
 			}
 		}
 	}
@@ -7024,7 +7036,7 @@
 		"AbilityTextureName"			"item_lia_pure_light"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	
-		"AbilityCooldown"				"50"
+		"AbilityCooldown"				"30"
 		"AbilityManaCost"				"350"
 	 	"AbilityCastRange"         		"600"
 	
@@ -7151,7 +7163,7 @@
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"totem_damage_reduction"		"80"
+				"totem_damage_reduction"		"60"
 			}
 			"07"
 			{
@@ -9082,6 +9094,8 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"14.0"
 		"AbilityManaCost"				"120"
+	
+		"AbilityCastRange"				"300"
 		
 		"precache"
 		{
@@ -9158,7 +9172,7 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"			"250"
+				"radius"			"300"
 			}
 			"05"
 			{
@@ -10512,7 +10526,7 @@
 			"07"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"	"20.0"
+				"duration"	"16.0"
 			}
 		}
 	}
@@ -10615,7 +10629,7 @@
 			"07"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"	"20.0"
+				"duration"	"16.0"
 			}
 		}
 	}

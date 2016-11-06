@@ -47,6 +47,8 @@
 
 	"AbilitySharedCooldown" "Taunt"
 
+	"AbilityCastRange"				"400"
+
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemCost"						"2555"
@@ -197,6 +199,11 @@
 					"ScriptFile"	"items/armor_of_the_red_mist.lua"
 					"Function"		"TauntEnd"
 				}
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
 
