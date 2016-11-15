@@ -9,6 +9,10 @@ function ManaBreak( keys )
 	local manaBurn = ability:GetSpecialValueFor("mana_per_hit")
 	local manaDamage = ability:GetSpecialValueFor("damage_per_burn")
 
+	if target:IsMagicImmune() then
+		return 
+	end
+
 	local damageTable = {}
 	damageTable.attacker = caster
 	damageTable.victim = target

@@ -1419,12 +1419,17 @@
 						"EffectAttachType"	"attach_hitloc"
 						"Target"		"TARGET"
 					}
+	
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_orn_lifesteal"
+						"Duration"		"0.03"
+					}
 				}
 			}
 	
 			"modifier_orn_lifesteal"
 			{
-				"Passive"			"1"
 				"IsHidden"			"1"
 				
 				"OnDealDamage"
@@ -1617,65 +1622,6 @@
 			        }
 			    }
 			}
-		}
-	}
-	"orn_return_old"
-	{
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityTextureName"			"nyx_assassin_spiked_carapace"
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type" "FIELD_INTEGER"
-				"damage_return" "30"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"empty_modifier_return_orn"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-			}
-			"orn_return_aura"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-	
-	        	"Aura"        "orn_return"
-	        	"Aura_Radius" "500"
-	        	"Aura_Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        	"Aura_Types"  "DOTA_UNIT_TARGET_ALL"
-	        	"Aura_Flags"  "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-	        	"Aura_ApplyToCaster" "0"  
-			}
-			"orn_return"
-			{
-				"IsHidden"          "1"
-				"IsPurgable"		"0"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"units/DamageReturn.lua"
-						"Function"			"OrnReturn"
-						"damage_return" 	"%damage_return"
-						"attack_damage" 	"%attack_damage"
-					}
-					"RemoveModifier"
-			    	{
-			    		"Target" 			"ATTACKER"
-			    		"ModifierName"		"orn_return"
-			    	}
-				}
-			} 
 		}
 	}
 	
@@ -10720,12 +10666,12 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage_penalty_percentage"	"-60 -70 -80"
+				"damage_penalty_percentage"	"-50 -60 -70"
 			}
 			"02"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"duration"			"20.0 25.0 30.0"
+				"duration"			"14 17 20"
 			}
 			"03"
 			{
@@ -15349,6 +15295,7 @@
 	    "modifier_general_rumble"
 	    {
 	      "IsDebuff"  "1"
+	      "IsPurgable"  "1"
 	      "Duration"  "%duration"
 	      
 	      "Properties"
