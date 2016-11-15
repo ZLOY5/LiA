@@ -41,7 +41,7 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_ghoul_persistence:GetAuraRadius()
-	return self.aura_radius
+	return self:GetParent():IsIllusion() and 1 or self.aura_radius 
 end
 
 --------------------------------------------------------------------------------
