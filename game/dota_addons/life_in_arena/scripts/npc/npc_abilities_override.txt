@@ -10375,7 +10375,7 @@
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
 		
-	   "AbilityCooldown"        "200.0 180.0 160.0"
+	   "AbilityCooldown"        "180 160 140"
 	   "AbilityManaCost"        "100 175 250"
 	
 	  // Stats
@@ -10694,20 +10694,26 @@
 				"EffectRadius"       "%radius"
 				"Target"	"CASTER"	
 			}
-			"ApplyModifier"
-			{
-				"ModifierName"  "modifier_butcher_howl_of_terror"
 	
+			"ActOnTargets"
+			{
 				"Target"
 				{
-					 "Center"    "CASTER"
-					 "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Center"  	"CASTER"
+					"Radius" 	"%radius"
+					"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 					 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 					 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					 "Radius"    "%radius"
 				}
-	
-				"Duration"    "%duration"
+			
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Butcher/HowlOfTerror.lua"
+						"Function"		"HowlOfTerror"
+					}
+				}
 			}
 	    }
 	
@@ -21190,7 +21196,7 @@
 		"LevelsBetweenUpgrades"  "2"
 		
 		"AbilityCooldown"				"20"	
-		"AbilityDuration"	"10.0 12.0 15.0"
+		"AbilityDuration"	"10.0 12.5 15.0"
 		"AbilityCastRange"	"250"
 		"AbilityManaCost"				"60 70 80"	
 		
@@ -21217,6 +21223,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"radius"		"250"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"10.0 12.5 15.0"
 			}
 		}
 		"OnSpellStart"
@@ -27179,12 +27190,12 @@
 	        "01"
 	        {
 	            "var_type"                    "FIELD_INTEGER"
-	            "bonus_intellect"             "1 2 3"
+	            "bonus_intellect"             "1"
 	        }
 	        "02"
 	        {
-	            "var_type"                    "FIELD_INTEGER"
-	            "stack_interval"              "60"
+	            "var_type"                    "FIELD_FLOAT"
+	            "stack_interval"              "60 40 20"
 	        }
 	    }
 	
@@ -31305,6 +31316,9 @@
 		{
 			"modifier_frost_armor"
 			{
+				"IsBuff"	"1"
+				"IsPurgable"	"1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
@@ -31356,6 +31370,7 @@
 			"modifier_frost_armor_slow"
 			{
 				"IsDebuff"	"1"
+				"IsPurgable"	"1"
 	
 				"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
 				"StatusEffectPriority"	"10"
@@ -31477,6 +31492,9 @@
 		{
 			"modifier_frost_armor"
 			{
+				"IsBuff"	"1"
+				"IsPurgable"	"1"
+	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
@@ -31528,6 +31546,7 @@
 			"modifier_frost_armor_slow"
 			{
 				"IsDebuff"	"1"
+				"IsPurgable"	"1"
 	
 				"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
 				"StatusEffectPriority"	"10"
