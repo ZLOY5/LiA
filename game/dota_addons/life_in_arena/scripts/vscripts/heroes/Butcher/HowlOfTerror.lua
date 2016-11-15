@@ -1,10 +1,12 @@
-function DealDamage( event )
-	local caster = event.caster
-	local ability = event.ability
-	local target = event.target
-	local targets = event.target_entities
-	local damage_to_deal = (caster:GetHealth()*ability:GetLevelSpecialValueFor("hp_damage_percentage", ability:GetLevel() - 1 )*0.01)
-	for _,v in pairs(targets) do
-			ApplyDamage({ victim = v, attacker = caster, damage = damage_to_deal, damage_type = DAMAGE_TYPE_PHYSICAL, ability = event.ability })
+function HowlOfTerror( keys )
+	local ability = keys.ability
+	local target = keys.target
+	local caster = keys.caster
+	local duration = ability:GetSpecialValueFor("duration")
+
+	if string.find(target:GetUnitName(),"megaboss") or target:IsHero() then
+		ability:ApplyDataDrivenModifier(caster,target,"modifier_butcher_howl_of_terror",{duration = duration/2})
+	else
+		ability:ApplyDataDrivenModifier(caster,target,"modifier_butcher_howl_of_terror",{duration = duration})
 	end
 end
