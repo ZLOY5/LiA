@@ -6,11 +6,8 @@ function Survival:OnPlayerPickHero(keys)
     local hero = EntIndexToHScript(keys.heroindex)
 
     CustomPlayerResource:InitPlayer(playerID)
+    --Upgrades:InitPlayer(playerID)
     
-    hero.creeps = 0
-    hero.bosses = 0
-    hero.deaths = 0
-    hero.rating = 0
     PlayerResource:ModifyLumber(playerID,3)
 	hero.percUlu = 0
 	hero.lumberSpent = 0
@@ -22,7 +19,7 @@ function Survival:OnPlayerPickHero(keys)
     
     player:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS, 1)
-    hero:SetTeam(DOTA_TEAM_GOODGUYS)
+    --hero:SetTeam(DOTA_TEAM_GOODGUYS)
 
     hero:ModifyGold(-70, false, DOTA_ModifyGold_Unspecified)
 
@@ -112,10 +109,6 @@ end
 
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
-    if keys.entindex_attacker then 
-        local attacker = EntIndexToHScript(keys.entindex_attacker)
-        local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
-    end
     
     if killed:IsRealHero() then
         Survival:_OnHeroDeath(keys)
@@ -133,6 +126,11 @@ function Survival:OnEntityKilled(keys)
     elseif string.find(killed:GetUnitName(),"_wave_megaboss") and not killed:IsIllusion() and self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
         Survival:EndRound()
     end 
+
+    if not killed:IsOwnedByAnyPlayer() then
+        Survival:ExperienceDistribute(killed)
+    end
+
 	--
 	if not string.find(killed:GetUnitName(),"_wave_megaboss") then
 		-- If the unit is supposed to leave a corpse, create a dummy_unit to use abilities on it.
@@ -232,19 +230,18 @@ function Survival:OnPlayerChat(event)
             self.tHeroes[1]:AddNewModifier(self.tHeroes[1],nil,"modifier_test_lia",nil) 
         end 
 
-        if event.text == "ololo" then
-            local decor = FindUnitsInRadius(DOTA_TEAM_GOODGUYS,--unit:GetTeam(),
-                                     Vector(0,0,0),
-                                     nil,
-                                     20000,
-                                     DOTA_UNIT_TARGET_TEAM_BOTH,
-                                     DOTA_UNIT_TARGET_BUILDING+DOTA_UNIT_TARGET_BASIC,
-                                     DOTA_UNIT_TARGET_FLAG_NONE,--DOTA_UNIT_TARGET_FLAG_NO_INVIS,
-                                     FIND_ANY_ORDER,
-                                     false)
-            for _,u in pairs(decor) do
-                DebugDrawCircle(u:GetAbsOrigin(), Vector(0,255,255), 0, u:GetPaddedCollisionRadius(), false, 30)
+        if event.text == "fire" then
+            FireGameEvent("dota_hud_error_message",{reason = 0, message = "OLOLO"})
+        end
+
+        if event.text == "upgrade" then
+            local playerID = player:GetPlayerID()
+            for upgradeName,_ in pairs(Upgrades.info) do
+                Upgrades.playersData[playerID][upgradeName] = Upgrades.playersData[playerID][upgradeName] + 1
             end
+            CustomNetTables:SetTableValue("lia_player_table","UpgradesPlayer"..playerID,Upgrades.playersData[playerID]) 
+            player:GetAssignedHero():AddNewModifier(nil,nil,"modifier_upgrades",nil)
+            
         end
     
     end

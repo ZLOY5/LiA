@@ -165,6 +165,10 @@ function Survival:ExperienceFilter(filterTable)
         return false
     end
 
+    if filterTable.reason_const == DOTA_ModifyXP_CreepKill then
+        return false
+    end
+
     local expMultiplier = self.flExpFix[Survival:GetHeroCount(false)] -- коррекция получаемого опыта в зависимости от кол-ва героев в игре
     
     if self.IsExtreme then --множители опыта для экстрима или лайта
@@ -174,17 +178,12 @@ function Survival:ExperienceFilter(filterTable)
     end
 
     filterTable.experience = filterTable.experience * expMultiplier
+    print(filterTable.experience)
     return true
 
 end
 
 function Survival:onThink()
-	local hero
-    for i = 1, #self.tHeroes do
-        hero = self.tHeroes[i]
-        hero.rating = math.floor(hero.percUlu * 7 + .5) + hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30 - 30
-    end 
-    table.sort(self.tHeroes,function(a,b) return a.rating > b.rating end)
 	
 	-- update lumber in hud
 	local playerID
@@ -673,10 +672,18 @@ function Survival:EndGame(teamWin)
             HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(3) ), 3)
         end
         GameRules:SetGameWinner(teamWin)
-    end) 
-    
-
-
+    end)
 end
 
+function Survival:ExperienceDistribute(killedUnit)
+    local nHeroesAlive = Survival:GetHeroCount(true)
+    local xp = killedUnit:GetDeathXP()/nHeroesAlive * self.flExpFix[nHeroesAlive] + RandomFloat(0,1)
+    DoWithAllHeroes(function(hero)
+        if hero:IsAlive() then
+            hero:AddExperience(xp,DOTA_ModifyXP_Unspecified,false,true)
+            --print(hero:GetCurrentXP())
+        end
+    end)
+
+end
 
