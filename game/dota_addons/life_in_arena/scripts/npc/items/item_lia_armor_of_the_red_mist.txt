@@ -10,6 +10,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemCost"						"450"	
 	"ItemShopTags"					"health;armor;hard_to_tag"
+	"ItemKillable" 					"0" 
 	
 	// Recipe
 	//-------------------------------------------------------------------------------------------------------------
@@ -33,7 +34,8 @@
 	"Model"							"models/props_gameplay/red_box.vmdl" 
 	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
 	"AbilityTextureName"			"item_lia_armor_of_the_red_mist"
-	
+	"ItemKillable" 					"0" 
+
 	"precache"
 	{
 		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
@@ -127,7 +129,7 @@
 				"Center"  	"CASTER"
 				"Radius" 	"%radius"
 				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Flags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		//		"Flags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			}
 		
 			"Action"    

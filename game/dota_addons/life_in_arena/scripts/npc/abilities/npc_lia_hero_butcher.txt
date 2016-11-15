@@ -227,20 +227,26 @@
 			"EffectRadius"       "%radius"
 			"Target"	"CASTER"	
 		}
-		"ApplyModifier"
-		{
-			"ModifierName"  "modifier_butcher_howl_of_terror"
 
+		"ActOnTargets"
+		{
 			"Target"
 			{
-				 "Center"    "CASTER"
-				 "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Center"  	"CASTER"
+				"Radius" 	"%radius"
+				"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 				 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 				 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				 "Radius"    "%radius"
 			}
-
-			"Duration"    "%duration"
+		
+			"Action"    
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/Butcher/HowlOfTerror.lua"
+					"Function"		"HowlOfTerror"
+				}
+			}
 		}
     }
 
