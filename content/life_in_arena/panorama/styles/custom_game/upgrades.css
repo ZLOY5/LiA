@@ -1,0 +1,80 @@
+.UpgradesRoot
+{
+	width: 100%;
+	height: 100%;
+}
+
+
+
+#OpenButton
+{
+	position: 7px 700px 0px;
+
+	width: 71px;
+	height: 90px;
+
+
+	background-image: url('file://{images}/custom_game/upgrades/open.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+
+
+	transition-timing-function: ease-in;
+	transition-property: brightness;
+	transition-duration: 0.1s;
+}
+
+#OpenButton:hover
+{
+	brightness:1.5;
+}
+
+#LumberAmount
+{
+	position: 4px 745px 0px;
+	font-size: 23px;
+	font-weight: bold;
+	color:#77EE77;
+	text-shadow: 2px 2px 10px 5.0 #000000ff;
+	text-align: center;
+	width: 75px;
+}
+
+#UpgradesContainer
+{
+	position: 10px 175px 0px;
+	height: 525px;
+
+}
+
+.Upgrade
+{
+	horizontal-align:center;
+	width: 60px;
+	height: 72px;
+	margin: 3px;
+
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	transition: brightness 0.1s ease-in 0s, position 0.3s ease-in-out 0s;
+
+	tooltip-position: right bottom;
+	tooltip-arrow-position: 50% 50%;
+
+}
+
+.Upgrade:hover
+{
+	brightness:1.2;
+}
+
+.Upgrade:disabled
+{
+	opacity: 0.4;
+}
+
+.Upgrade:disabled:hover
+{
+	brightness:1;
+}

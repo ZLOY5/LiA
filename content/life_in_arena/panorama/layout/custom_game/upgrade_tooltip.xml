@@ -1,0 +1,52 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/custom_game/upgrade_tooltip.css" />
+	</styles>
+
+	<script>
+
+		function setupTooltip(data)
+		{		
+			var upgradeName = $.GetContextPanel().GetAttributeString("upgradeName", "not found")
+
+			var playerID = Game.GetLocalPlayerID()
+			var level = Players.GetUpgradeLevel(upgradeName,playerID)
+
+			$("#Title").text = $.Localize("#"+upgradeName)
+
+			$("#Level").SetDialogVariableInt("level",level)
+
+			$("#Description").text = "#"+upgradeName+"_description"
+			$("#Description").SetDialogVariable("perLevelBonus",Players.GetUpgradeBonusPerLevel(upgradeName))
+
+			$("#Bonus").text = "#"+upgradeName+"_bonus"
+			$("#Bonus").SetDialogVariableInt("Bonus", Players.GetCurrentUpgradeBonus(upgradeName,playerID));
+
+			$("#LumberCost").text = Players.GetUpgradeLumberCost(upgradeName,level)
+			$("#CostContainer").visible = level != Players.GetMaxUpgradeLevel(upgradeName)
+		}
+
+		
+
+	</script>
+
+	<Panel class="UpgradeTooltip" hittest="false" ontooltiploaded="setupTooltip()"  >
+		<Panel id="TitleContainer" >
+			<Label id="Title" text="#Upgrade_attack_damage" />
+			<Label id="Level" text="#Upgrade_level" />
+		</Panel>
+		
+		<Label id="Description" html="true" text="#Upgrade_attack_damage_description" />
+
+		<Panel id="Container">
+			<Label id="Bonus" html="true" text="#Upgrade_attack_damage_bonus" />
+
+			<Panel id="CostContainer">
+				<Image id="LumberIcon" src="file://{images}/custom_game/lumber.png"/>
+				<Label id="LumberCost" text="1"/>
+			</Panel>
+		</Panel>
+	
+	</Panel>
+</root>

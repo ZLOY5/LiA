@@ -29,6 +29,7 @@ _G.HERO_STATS_MANA_REGEN_BONUS = 0.05
 require('survival/survival')
 require('runes')
 require('player')
+require('upgrades')
 
 ------------------------------------------------------------------------------
 
@@ -272,6 +273,8 @@ function LiA:OnConnectFull(event)
     table.insert(self.tPlayers,player)
     self.nPlayers = self.nPlayers + 1  
 
+    Upgrades:InitPlayer(playerID)
+
     if self.GameMode == LIA_MODE_SURVIVAL then
         Survival:OnConnectFull(event)
     end
@@ -306,6 +309,7 @@ function LiA:OnNPCSpawned( event )
     local spawnedUnit = EntIndexToHScript( event.entindex )
     if spawnedUnit:IsHero() then 
         spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_stats_bonus_fix",nil)
+        spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_upgrades",nil)
    end
 end
 

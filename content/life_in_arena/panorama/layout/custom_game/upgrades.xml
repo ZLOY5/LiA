@@ -1,0 +1,25 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/upgrades.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/upgrades.js" />
+	</scripts>
+	<Panel class="UpgradesRoot" hittest="false">
+
+		<Panel id="UpgradesContainer" />
+
+		<Button id="OpenButton" onactivate="Open()" />
+
+		<Label id="LumberAmount" hittest="false"/>
+
+		<!--<Image src="file://{images}/custom_game/upgrades/upgrade_attack_damage.png"/>
+		<Image src="file://{images}/custom_game/upgrades/upgrade_attack_speed.png"/>
+		<Image src="file://{images}/custom_game/upgrades/upgrade_health.png"/>
+		<Image src="file://{images}/custom_game/upgrades/upgrade_health_regen.png"/>
+		<Image src="file://{images}/custom_game/upgrades/upgrade_mana.png"/>
+		<Image src="file://{images}/custom_game/upgrades/upgrade_mana_regen.png"/>
+		<Image src="file://{images}/custom_game/upgrades/upgrade_armor.png"/>-->
+	</Panel>
+</root>

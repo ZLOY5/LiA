@@ -4,10 +4,6 @@ CustomPlayerResource.data = CustomPlayerResource.data or {}
 function CDOTA_PlayerResource:ModifyLumber(playerID, lumber)
 	CustomPlayerResource.data[playerID].lumber = CustomPlayerResource.data[playerID].lumber + lumber
 
-	if lumber < 0 then
-		CustomPlayerResource.data[playerID].lumberSpent = CustomPlayerResource.data[playerID].lumberSpent - lumber
-	end
-
 	--CustomNetTables:SetTableValue("lia_player_table", "Player"..playerID, CustomPlayerResource[player])
 	--DeepPrintTable(CustomNetTables:GetTableValue("lia_player_table", "PlayersLumber"))
 end

@@ -234,14 +234,8 @@ function Survival:OnPlayerChat(event)
             FireGameEvent("dota_hud_error_message",{reason = 0, message = "OLOLO"})
         end
 
-        if event.text == "upgrade" then
-            local playerID = player:GetPlayerID()
-            for upgradeName,_ in pairs(Upgrades.info) do
-                Upgrades.playersData[playerID][upgradeName] = Upgrades.playersData[playerID][upgradeName] + 1
-            end
-            CustomNetTables:SetTableValue("lia_player_table","UpgradesPlayer"..playerID,Upgrades.playersData[playerID]) 
-            player:GetAssignedHero():AddNewModifier(nil,nil,"modifier_upgrades",nil)
-            
+        if event.text == "lumber" then
+            PlayerResource:ModifyLumber(player:GetPlayerID(),100)
         end
     
     end
