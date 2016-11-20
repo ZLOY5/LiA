@@ -57,7 +57,6 @@
 			"var_type" 				"FIELD_INTEGER"
 			"bonus_damage" 			"75"
 		}
-	
 		"02"
 		{
 			"var_type" 				"FIELD_INTEGER"
@@ -76,29 +75,34 @@
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lightning_damage"		"400"
+			"crit_mult"				"190"
 		}
 		"06"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lightning_bounces"		"8"
+			"lightning_damage"		"400"
 		}
 		"07"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bounce_range"			"700"
+			"lightning_bounces"		"8"
 		}
 		"08"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lightning_decay"		"0"
+			"bounce_range"			"700"
 		}
 		"09"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"lightning_decay"		"0"
+		}
+		"10"
 		{
 			"var_type"				"FIELD_FLOAT"
 			"time_between_bounces"	"0.2"
 		}
-		"10"
+		"11"
 		{
 			"var_type"				"FIELD_FLOAT"
 			"lightning_cooldown"	"4"
@@ -108,7 +112,7 @@
 
 	"Modifiers"
 	{
-		"modifier_item_lia_lightning_spear"
+		"modifier_item_lia_crusher"
 		{
 			"Passive"          "1"    
 		    "IsHidden"         "1"
@@ -123,6 +127,16 @@
 
 		    "OnAttackStart"
 			{
+				"RemoveModifier"
+				{
+					"ModifierName" "modifier_item_lia_crusher_crit"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}
+				}
+
 				"Random"
 				{
 					"Chance" "%lightning_chance"
@@ -134,12 +148,21 @@
 							"ScriptFile" "items/Crusher.lua"
 							"Function"	 "ApplyAccuracy"
 						}  
+						"ApplyModifier"
+						{
+							"ModifierName" "modifier_item_lia_crusher_crit"
+							"Target"
+							{
+								"Center"  	"CASTER"
+								"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+							}   
+						}  
 					}
 				}
 			}
 		}
 
-		"modifier_item_lia_lightning_spear_accuracy"
+		"modifier_item_lia_crusher_accuracy"
 		{   
 		    "IsHidden"         	"1"
 		    "IsPurgable"		"0"
@@ -159,7 +182,7 @@
 
 				"RemoveModifier"
 				{
-					"ModifierName"	"modifier_item_lia_lightning_spear_accuracy"
+					"ModifierName"	"modifier_item_lia_crusher_accuracy"
 					"Target"
 					{
 						"Center"  	"CASTER"
@@ -168,6 +191,36 @@
 				}
 		    }
 
+		}
+
+		"modifier_item_lia_crusher_crit"
+		{
+			"IsHidden"  "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			}
+
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"  "modifier_item_lia_crusher_crit"
+					"Target"
+					{
+						"Center"  	"CASTER"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					}   
+				}
+
+				// Basic blood particle effect
+				"FireEffect"
+				{
+					"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"  "follow_origin"
+					"Target"    "TARGET"
+				}
+			}
 		}
 
 	}

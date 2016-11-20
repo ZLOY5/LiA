@@ -1,6 +1,6 @@
 function ApplyAccuracy(event)
 	if event.ability:IsCooldownReady() then
-		event.ability:ApplyDataDrivenModifier(event.caster,event.caster,"modifier_item_lia_lightning_spear_accuracy",nil)
+		event.ability:ApplyDataDrivenModifier(event.caster,event.caster,"modifier_item_lia_crusher_accuracy",nil)
 	end
 end
 --[[

@@ -47,52 +47,52 @@
 		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
 		    }  
 			"OnAttackStart"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName" "modifier_item_lia_fire_sword_crit"
+					"Target" "CASTER"
+				}
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					"OnSuccess"
 					{
-						"RemoveModifier"
+						"ApplyModifier"
 						{
 							"ModifierName" "modifier_item_lia_fire_sword_crit"
-							"Target" "CASTER"
-						}
-						"Random"
-						{
-							"Chance" "%crit_chance"
-							"OnSuccess"
-							{
-								"ApplyModifier"
-								{
-									"ModifierName" "modifier_item_lia_fire_sword_crit"
-									"Target"    "CASTER"    
-								}        
-							}
-						}
+							"Target"    "CASTER"    
+						}        
 					}
+				}
+			}
 		}
 		
 		"modifier_item_lia_fire_sword_crit"
+		{
+			"IsHidden"  "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			}
+
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
 				{
-					"IsHidden"  "1"
-					"Properties"
-					{
-						"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-					}
-
-					"OnAttackLanded"
-					{
-						"RemoveModifier"
-						{
-							"ModifierName"  "modifier_item_lia_fire_sword_crit"
-							"Target"    "CASTER"    
-						}
-
-						// Basic blood particle effect
-						"FireEffect"
-						{
-						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-							"EffectAttachType"  "follow_origin"
-							"Target"    "TARGET"
-						}
-					}
+					"ModifierName"  "modifier_item_lia_fire_sword_crit"
+					"Target"    "CASTER"    
 				}
+
+				// Basic blood particle effect
+				"FireEffect"
+				{
+				"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"  "follow_origin"
+					"Target"    "TARGET"
+				}
+			}
+		}
 	}
 	"AbilitySpecial"
 	{

@@ -8,6 +8,7 @@ function Dominate(keys)
 		if not string.find(v:GetUnitName(),"boss") and not v:IsIllusion() and not v:IsHero() then --проверяем не босс или не мегабосс ли юнит
 			local modifierKill = v:FindModifierByName("modifier_kill")
 			local health = v:GetHealth()
+			local mana = v:GetMana()
 			local forwardVector = v:GetForwardVector() 
 			local owner_id
 			local owner = v:GetOwner()
@@ -29,6 +30,7 @@ function Dominate(keys)
 			bmcreep = CreateUnitByName(v:GetUnitName(), v:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
 			bmcreep:SetForwardVector(forwardVector)
 			bmcreep:SetHealth(health)
+			bmcreep:SetMana(mana)
 			bmcreep:SetControllableByPlayer(caster:GetPlayerID(), true)
 		--	bmcreep:AddNewModifier(bmcreep, nil, "modifier_kill", {duration = duration})
 			if modifierKill then
@@ -59,6 +61,7 @@ function OnDestroy(keys)
 
 	if target.dominateEndTime - target.dominateStartTime >= 10 then
 		local preDeathHP = target:GetHealth()
+		local preDeathMP = target:GetMana()
 		local forwardVector = target:GetForwardVector() 
 		if modifierKill then
 			lifetime = modifierKill:GetRemainingTime()
@@ -69,6 +72,7 @@ function OnDestroy(keys)
 			local newcreep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, target.previousOwner, target.previousOwner, target.previousOwner:GetTeamNumber())
 			newcreep:SetControllableByPlayer(target.previousOwnerID, true)
 			newcreep:SetHealth(preDeathHP)
+			newcreep:SetHealth(preDeathMP)
 			newcreep:SetForwardVector(forwardVector)
 			if modifierKill then
 				newcreep:AddNewModifier(newcreep, nil, "modifier_kill", {duration = lifetime})
@@ -77,6 +81,7 @@ function OnDestroy(keys)
 		else
 			local newcreep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
 			newcreep:SetHealth(preDeathHP)
+			newcreep:SetHealth(preDeathMP)
 			newcreep:SetForwardVector(forwardVector)
 			if modifierKill then
 				newcreep:AddNewModifier(newcreep, nil, "modifier_kill", {duration = lifetime})
