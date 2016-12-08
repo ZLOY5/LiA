@@ -47,7 +47,7 @@
 	{
 		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_luna.vsndevts"
 		"particle"			"particles/units/heroes/hero_luna/luna_eclipse_impact.vpcf"
-		"particle"			"particles/units/heroes/hero_luna/luna_eclipse.vpcf"
+		"particle"			"particles/luna_eclipse_cast_moonlight_glow_ti_5.vpcf"
 	}
 	
 	"OnSpellStart"
@@ -60,7 +60,7 @@
 
 		"FireEffect"
 		{
-			"EffectName"        "particles/units/heroes/hero_luna/luna_eclipse.vpcf"
+			"EffectName"        "particles/luna_eclipse_small.vpcf"
 			"EffectAttachType"  "follow_origin"
 			"Target"            "TARGET"
 
@@ -79,7 +79,7 @@
 				"Center"	"TARGET"
 				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 			}
-			"ModifierName"	"modifier_item_lunar_necklace"	
+			"ModifierName"	"modifier_item_lia_lunar_necklace_stats"	
 		}
 	}
 	"Modifiers"
@@ -98,10 +98,14 @@
 			    "MODIFIER_PROPERTY_MANA_BONUS"		"%bonus_mana"
 		    }  
 		}
-		"modifier_item_lunar_necklace"
+		"modifier_item_lia_lunar_necklace_stats"
 		{
 			"Duration"		"%duration"
 			"IsBuff"		"1"
+			"IsPurgable"	"1"
+
+			"EffectName"        "particles/luna_eclipse_cast_moonlight_glow_ti_5.vpcf"
+			"EffectAttachType"  "follow_origin"
 
 			"Properties"
 		    {

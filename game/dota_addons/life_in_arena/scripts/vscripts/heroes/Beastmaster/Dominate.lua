@@ -72,7 +72,7 @@ function OnDestroy(keys)
 			local newcreep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, target.previousOwner, target.previousOwner, target.previousOwner:GetTeamNumber())
 			newcreep:SetControllableByPlayer(target.previousOwnerID, true)
 			newcreep:SetHealth(preDeathHP)
-			newcreep:SetHealth(preDeathMP)
+			newcreep:SetMana(preDeathMP)
 			newcreep:SetForwardVector(forwardVector)
 			if modifierKill then
 				newcreep:AddNewModifier(newcreep, nil, "modifier_kill", {duration = lifetime})

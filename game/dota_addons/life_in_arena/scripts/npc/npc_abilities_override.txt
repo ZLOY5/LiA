@@ -7727,20 +7727,20 @@
 				"Type"	"DAMAGE_TYPE_MAGICAL"
 			}
 			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/Android/PocketFactory.lua"
-				"Function"		"CauseDamageDecor"
-				"attack_damage" "%AbilityDamage"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"150"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-					"Types"		"DOTA_UNIT_TARGET_BUILDING"
-					//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
+	//		"RunScript"
+	//		{
+	//			"ScriptFile"	"heroes/Android/PocketFactory.lua"
+	//			"Function"		"CauseDamageDecor"
+	//			"attack_damage" "%AbilityDamage"
+	///			"Target"
+		//		{
+	//				"Center"	"CASTER"
+	//				"Radius"	"150"
+	//				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+	//				"Types"		"DOTA_UNIT_TARGET_BUILDING"
+	//				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	//			}
+	//		}
 			
 			"Damage"
 			{
@@ -12936,6 +12936,23 @@
 						"Dmg"			"%attack_damage"
 					}
 				} 
+	
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+						"Function"		"shell_cast"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+					}
+				}
 	
 				"ThinkInterval"	"1"
 				"OnIntervalThink"
@@ -23825,6 +23842,7 @@
 				{
 					"Duration"	"%buff_duration"
 					"IsDebuff"	"1"
+					"IsPurgable"	"1"
 		
 					"EffectName"	"particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
 					"EffectAttachType"	"follow_origin"
@@ -26051,7 +26069,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_movespeed"	"10 20 40"
+				"bonus_movespeed"	"10 20 30"
 			}
 			"02"
 			{

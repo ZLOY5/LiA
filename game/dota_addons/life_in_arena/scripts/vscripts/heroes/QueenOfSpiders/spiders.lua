@@ -61,8 +61,8 @@ function Infection(event)
 		return 
 	end
 	target:EmitSound("Hero_Broodmother.SpawnSpiderlingsImpact")
-	ApplyDamage({victim = target, attacker = caster, damage = ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_infection", nil)
+	ApplyDamage({victim = target, attacker = caster, damage = ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = ability})
 end
 
 function spiderCreate(keys)
