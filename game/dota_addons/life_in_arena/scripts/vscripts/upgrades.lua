@@ -6,9 +6,6 @@ if not Upgrades then
 
 	if IsServer() then 
 		Upgrades.playersData = {}
-
-		CustomNetTables:SetTableValue("upgrades","info",Upgrades.info) --Panorama
-		CustomGameEventManager:RegisterListener("upgrade_request", Dynamic_Wrap(Upgrades,'UpgradeRequest') )
 	end
 end
 
@@ -30,6 +27,7 @@ if IsServer() then
 	function Upgrades:UpgradeRequest(data)
 		local playerID = data.PlayerID
 		local upgradeName = data.upgradeName
+		--print("UpgradeRequest",playerID,upgradeName)
 
 		local plUpgradeLevel = Upgrades:GetPlayerUpgradeLevel(playerID,upgradeName)
 
@@ -57,6 +55,11 @@ if IsServer() then
 		end
 		CustomNetTables:SetTableValue("lia_player_table","UpgradesPlayer"..playerID,Upgrades.playersData[playerID])	
 	    --DeepPrintTable(Upgrades)
+	end
+
+	function Upgrades:Init()
+		CustomNetTables:SetTableValue("upgrades","info",Upgrades.info) --Panorama
+		CustomGameEventManager:RegisterListener("upgrade_request", Dynamic_Wrap(Upgrades,'UpgradeRequest') )
 	end
 
 end

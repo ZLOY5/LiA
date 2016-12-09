@@ -148,6 +148,8 @@ function LiA:InitGameMode()
 	MergeTables(GameRules.UnitKV, LoadKeyValues("scripts/npc/npc_heroes_custom.txt")) --Load HeroKV into UnitKV
 
 	GameRules.Damage = LoadKeyValues("scripts/kv/damage_table.kv")
+
+	Upgrades:Init()
 end
 
 

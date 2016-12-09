@@ -46,6 +46,7 @@ function Upgrade(upgradeName)
 	upgradeButton.upgradeName = upgradeName
 
 	upgradeButton.SetPanelEvent("onmouseactivate", function() { 
+		$.Msg("upgrade_request ",upgradeName)
 		GameEvents.SendCustomGameEventToServer("upgrade_request", {upgradeName: upgradeName}) 
 	})
 
@@ -63,11 +64,12 @@ function Upgrade(upgradeName)
 
 function Update()
 {
-	$.Schedule(0.01,Update)
-
+	$.Schedule(0.03,Update)
+	
 	var playerID = Game.GetLocalPlayerID()
-
+	
 	$("#LumberAmount").text = Players.GetLumber(playerID)
+	$("#LumberAmount").visible = Players.GetLumber(playerID) != 0
 
 	var playerID = Game.GetLocalPlayerID()
 	var data = CustomNetTables.GetTableValue("lia_player_table", "UpgradesPlayer"+playerID);
@@ -75,7 +77,7 @@ function Update()
 	for (var upgradeName in data)
 	{
 		var upgradeButton = container.FindChild(upgradeName)
-			
+
 		upgradeButton.enabled = 
 			( Players.GetUpgradeLumberCost(upgradeName,Players.GetUpgradeLevel(upgradeName,playerID)) <= Players.GetLumber(playerID) ) 
 			&&  ( Players.GetMaxUpgradeLevel(upgradeName) > Players.GetUpgradeLevel(upgradeName,playerID) )
@@ -93,8 +95,8 @@ function Update()
 		//$.Msg(upgradeList[i])
 		Upgrade(upgradeList[i])
 	} 
-
-	$.Schedule(0.01,Update)
+	
+	$.Schedule(0.03,Update)
 })();
 
 
