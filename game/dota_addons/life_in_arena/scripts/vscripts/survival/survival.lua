@@ -113,6 +113,7 @@ function Survival:InitSurvival()
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
     ListenToGameEvent('player_chat', Dynamic_Wrap(Survival, 'OnPlayerChat'), self)
+
     
     GameMode:SetContextThink( "AIThink", AIThink , 3)
     self.AICreepCasts = 0
@@ -132,6 +133,20 @@ function Survival:InitSurvival()
         end
     end
 
+    GameMode:SetContextThink("RandomGold",ThinkGoldGuard,0.1)
+    PlayerResource.RandomGoldReduced = {}
+end
+
+function ThinkGoldGuard()
+    for i = 0, DOTA_MAX_PLAYERS-1 do
+        if PlayerResource:IsValidTeamPlayerID(i) and PlayerResource:HasRandomed(i) and not PlayerResource.RandomGoldReduced[i] then
+            print("Random hero",PlayerResource:GetPlayerName(i))
+            PlayerResource:ModifyGold(i, -150, false, DOTA_ModifyGold_Unspecified)   
+            PlayerResource.RandomGoldReduced[i] = true
+        end
+    end
+    
+    return 0.1
 end
 
 function AIThink()
@@ -153,7 +168,7 @@ end
 
 function Survival:GoldFilter(filterTable)
     --PrintTable("GoldFilter",filterTable)
-    if filterTable.reason_const == DOTA_ModifyGold_HeroKill or filterTable.reason_const == DOTA_ModifyGold_SharedGold then 
+    if filterTable.reason_const == DOTA_ModifyGold_HeroKill or filterTable.reason_const == DOTA_ModifyGold_SharedGold or filterTable.reason_const == DOTA_ModifyGold_SelectionPenalty then 
         return false 
     end
     return true

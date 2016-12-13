@@ -21,17 +21,17 @@ function Survival:OnPlayerPickHero(keys)
     PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS, 1)
     --hero:SetTeam(DOTA_TEAM_GOODGUYS)
 
-    hero:ModifyGold(-70, false, DOTA_ModifyGold_Unspecified)
+    --hero:ModifyGold(-70, false, DOTA_ModifyGold_Unspecified)
 
-    if PlayerResource:HasRepicked(playerID) then
-        print("Has repicked")
-        hero:ModifyGold(100, false, DOTA_ModifyGold_Unspecified)
-    end
+    --if PlayerResource:HasRepicked(playerID) then
+    --    print("Has repicked")
+    --    hero:ModifyGold(100, false, DOTA_ModifyGold_Unspecified)
+    --end
 
-    if PlayerResource:HasRandomed(playerID) and not PlayerResource:HasRepicked(playerID) then
-        print("Random hero")
-        hero:ModifyGold(-150, false, DOTA_ModifyGold_Unspecified) -- в доте за рандом дают 200 золота
-    end 
+    --if PlayerResource:HasRandomed(playerID) --[[and not PlayerResource:HasRepicked(playerID)]] then
+    --    print("Random hero")
+    --    hero:ModifyGold(-150, false, DOTA_ModifyGold_Unspecified) -- в доте за рандом дают 200 золота
+    --end 
 end
 
 ---------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ end
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
        -- self.nRoundNum = 2
-        GameRules:SetPreGameTime(120)
+        --GameRules:SetPreGameTime(120)
         Survival:PrepareNextRound()
     end
 end

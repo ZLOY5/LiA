@@ -76,7 +76,7 @@ function LiA:InitGameMode()
 	GameRules:SetPreGameTime(0)
     GameRules:SetPostGameTime(120)
 	--
-	GameRules:SetGoldTickTime(2)
+	GameRules:SetGoldTickTime(0)
 	GameRules:SetGoldPerTick(0)
 	GameRules:SetHeroMinimapIconScale(0.8)
     GameRules:SetCreepMinimapIconScale(0.8)
@@ -85,7 +85,7 @@ function LiA:InitGameMode()
 
     GameRules:SetUseBaseGoldBountyOnHeroes(true)
 
-    GameRules:SetStartingGold(200)
+    GameRules:SetStartingGold(130)
 
     GameRules:SetCustomGameEndDelay(1)
     
@@ -153,101 +153,9 @@ function LiA:InitGameMode()
 end
 
 
-function LiA:RegisterClick( args )
-	local pID = args['idPlayer']
-	local name = args['nameUlu']  
-	local player = PlayerResource:GetPlayer(pID)
-	local hero = player:GetAssignedHero()
-	local doneU = false
-	local need_lumber
-	local ability
-	local lvl
-	--[[
-		"Ability6" "ulu_hero_armor" 	
-		"Ability7" "ulu_hero_attack" 					
-		"Ability8" "ulu_hero_attack_speed" 		
-		"Ability9" "ulu_hero_hp_points" 
-		"Ability10" "ulu_hero_mana_points" 
-		"Ability11" "ulu_hero_hp_regen" 		
-		"Ability12" "ulu_hero_mana_regen" 
-	]]
-    if Survival.State == SURVIVAL_STATE_DUEL_TIME then
-        return
-    end
-	--print(name)
-	local maxLumber = 333 -- 45*5=225 + 54*2=108 = 333
-	if name == "armor" then
-		ability = hero:GetAbilityByIndex(5)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl+1
-		--print("   ",need_lumber)
-	end
-	if name == "attack" then
-		ability = hero:GetAbilityByIndex(6)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl+1
-	end
-	if name == "attackSpeed" then
-		ability = hero:GetAbilityByIndex(7)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "hpPoints" then
-		ability = hero:GetAbilityByIndex(8)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "mpPoints" then
-		ability = hero:GetAbilityByIndex(9)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "hpRegen" then
-		ability = hero:GetAbilityByIndex(10)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	if name == "mpRegen" then
-		ability = hero:GetAbilityByIndex(11)
-		lvl =  ability:GetLevel()
-		need_lumber = lvl
-	end
-	--
-	local dataL
-	if ability:GetLevel()+1 <= ability:GetMaxLevel() then
-		--print("ability:GetLevel()",ability:GetLevel())
-		--print("ability:GetMaxLevel() ",ability:GetMaxLevel())
-		if PlayerResource:GetLumber(pID) >= 1+need_lumber then -- + Abilities.GetLevel(ability) )
-			--SetLevel
-			ability:SetLevel(ability:GetLevel()+1)
-			PlayerResource:ModifyLumber(pID,-(1+need_lumber))
-			hero.lumberSpent = hero.lumberSpent + (1+need_lumber)
-			hero.percUlu = 100*hero.lumberSpent/maxLumber
-			--Abilities.SetLevel(ability,Abilities.GetLevel(ability)+1);
-			--print("ability GetLevel ",ability:GetLevel())
-			doneU = true
-		end
-		--
-		if ability:GetLevel() == ability:GetMaxLevel() then
-			dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber,true,name)
-		else
-			dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber,false,name)
-		end
-		--
-		
-		-- update lumber in hud
-		CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(pID), "upd_action_lumber", dataL )
-		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
-	--else
-	--	dataL = Survival:GetDataForSendUlu(false,doneU,pID,1+need_lumber,true,name)
-	end
-
-	
-
-end
-
 function LiA:OnGameStateChange()  
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION then
+    	print("LIA_MODE_SURVIVAL")
         self.GameMode = LIA_MODE_SURVIVAL
         Survival:InitSurvival() --пока только так)
     end
