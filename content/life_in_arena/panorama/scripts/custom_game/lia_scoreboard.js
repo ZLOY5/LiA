@@ -80,6 +80,4 @@ function OnUpdatePlayerData( data )
 	}
 	func()
 
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("StatBranch").style.visibility = "collapse"
-
 })();
