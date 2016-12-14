@@ -1,27 +1,13 @@
 "use strict";
 
 var g_ScoreboardHandle = null;
-var visible;
-var firstH = false;
+
 
 
 function SetFlyoutScoreboardVisible( bVisible )
 {
-	visible = bVisible;
-	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", visible );
-	if (!firstH)
-	{
-		firstH = true;
-		GameEvents.SendCustomGameEventToServer( "apply_command_hint_hide", { "idPlayer" : Game.GetLocalPlayerID() } );
-		//$.Msg( "                  firstH ", firstH );
-	}
-}
-
-
-function OnUpdActionHide( dataHide )
-{
-	SetFlyoutScoreboardVisible( dataHide.visible );
-	//$.Msg( "                  				OnUpdActionHide    " );
+	if (bVisible != $.GetContextPanel().BHasClass("flyout_scoreboard_visible"))
+		$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible",bVisible);
 }
 
 function ScheduledUpdate()
@@ -84,8 +70,14 @@ function OnUpdatePlayerData( data )
 
 	$.Schedule(0.25,ScheduledUpdate)
 
-	GameEvents.Subscribe( "upd_action_hide",  OnUpdActionHide);
 	OnUpdatePlayerData()
 	//
-	
+
+	var func  = function() {
+		$.Schedule(0.03,func)
+		var scoreboard = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("scoreboard")
+		$.DispatchEvent("DOTACustomUI_SetFlyoutScoreboardVisible", !scoreboard.BHasClass("ScoreboardClosed"))
+	}
+	func()
+
 })();

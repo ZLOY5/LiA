@@ -16,6 +16,8 @@
 			
 			$("#Clock").text = sTime
 
+			$("#Clock").SetHasClass("underNetGraph",$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("NetGraph").BHasClass("Visible"))
+
 			$.Schedule(1,Tick)
 		}
 
