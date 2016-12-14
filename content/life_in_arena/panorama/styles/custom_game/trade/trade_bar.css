@@ -126,21 +126,36 @@
 
 #OpenButton
 {
-	width: 34px;
-	height: 40px;
-	background-image: url( "file://{images}/custom_game/trade_bar/trade-new.png" ); 
+	width: 30px;
+	height: 30px;
+
+	margin-left: 150px;
+	margin-top: 12px;
+
+	background-image: url( "file://{images}/custom_game/trade_bar/trade.png" ); 
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: 26px;
  
-	border-radius: 0px;
-	margin-left: 150px;
-	margin-top: 7px;
-	opacity: 1;
+	wash-color:#CDF;
+
+	opacity: 0.5;
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+
+	tooltip-position:bottom;
+	
+}
+
+#OpenButton:hover
+{
+	opacity: 1; 
 }
 
 #OpenButton:active
 {
-	background-image: url( "file://{images}/custom_game/trade_bar/trade-new-active.png" ); 
+	opacity: 1; 
 }
 
 #TradeSign:hover
