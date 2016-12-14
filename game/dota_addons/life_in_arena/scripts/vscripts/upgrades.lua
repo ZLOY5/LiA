@@ -123,7 +123,7 @@ function modifier_upgrades:DeclareFunctions()
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_MANA_BONUS,
 		MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE,
-		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_ILLUSIONS
+		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS
 	}
 	return funcs
 end
@@ -152,7 +152,7 @@ function modifier_upgrades:GetModifierPercentageManaRegen()
 	return self.manaRegenBonus
 end
 
-function modifier_upgrades:GetModifierPhysicalArmorBonusIllusions()
+function modifier_upgrades:GetModifierPhysicalArmorBonus()
 	return self.armorBonus
 end
 

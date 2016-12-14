@@ -1,6 +1,12 @@
 function Survival:OnPlayerPickHero(keys)
-    PrintTable("OnPlayerPickHero",keys)
+    
     local player = EntIndexToHScript(keys.player)
+
+    if not player then
+        return
+    end
+
+    PrintTable("OnPlayerPickHero",keys)
 
     local playerID = player:GetPlayerID()
     local hero = EntIndexToHScript(keys.heroindex)
@@ -236,6 +242,11 @@ function Survival:OnPlayerChat(event)
 
         if event.text == "lumber" then
             PlayerResource:ModifyLumber(player:GetPlayerID(),100)
+        end
+
+        if event.text == "armor" then
+            local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+            print(hero:GetPhysicalArmorValue())
         end
     
     end
