@@ -49,12 +49,14 @@ if IsServer() then
 	end
 
 	function Upgrades:InitPlayer(playerID)
-		Upgrades.playersData[playerID] = {}
-		for upgradeName,_ in pairs(Upgrades.info) do
-			Upgrades.playersData[playerID][upgradeName] = 0 --уровень улучшения
+		if not Upgrades.playersData[playerID] then
+			Upgrades.playersData[playerID] = {}
+			for upgradeName,_ in pairs(Upgrades.info) do
+				Upgrades.playersData[playerID][upgradeName] = 0 --уровень улучшения
+			end
+			CustomNetTables:SetTableValue("lia_player_table","UpgradesPlayer"..playerID,Upgrades.playersData[playerID])	
+		    --DeepPrintTable(Upgrades)
 		end
-		CustomNetTables:SetTableValue("lia_player_table","UpgradesPlayer"..playerID,Upgrades.playersData[playerID])	
-	    --DeepPrintTable(Upgrades)
 	end
 
 	function Upgrades:Init()
