@@ -118,7 +118,7 @@ function CustomPlayerResource:UpdatePlayersData()
 		CustomNetTables:SetTableValue("lia_player_table", "Player"..playerID, playerData)
 	end
 
-	return 1
+	return 0.2
 end
 
 
