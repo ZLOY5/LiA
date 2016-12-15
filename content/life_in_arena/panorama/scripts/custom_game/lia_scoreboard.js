@@ -80,4 +80,8 @@ function OnUpdatePlayerData( data )
 	}
 	func()
 
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("courier").style.visibility = "collapse";
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("CommonItems").style.visibility = "collapse";
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
 })();
