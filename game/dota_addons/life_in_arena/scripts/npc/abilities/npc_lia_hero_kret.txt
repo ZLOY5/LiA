@@ -125,12 +125,6 @@
 						"Target"		"TARGET"
 						"EffectName"	"Hero_BountyHunter.WindWalk"
 					}
-					"Damage"
-					{
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage" 	"%main_damage-%other_damage"
-					}
 				}
 
 				"OnDestroy"
@@ -442,11 +436,10 @@
 			"ThinkInterval" 		"%tick"
 			"OnIntervalThink"
 			{
-				"Damage"
+				"RunScript"
 				{
-					"Type" 		"DAMAGE_TYPE_MAGICAL"
-					"Target"	"TARGET"
-					"Damage" 	"%other_damage * %tick / %duration"
+					"ScriptFile"	"heroes\Kret\Acid.lua"
+					"Function"		"DamageOther"	
 				}
 			}
 			"Properties"
@@ -461,7 +454,7 @@
 		
 		"modifier_kret_acid_main_target"
 		{
-			"IsHidden"			"1"
+			//"IsHidden"			"1"
 			"IsDebuff"			"1"
 			"IsPurgable"			"1"
 			"Duration"	"%duration"
@@ -469,13 +462,21 @@
 			"ThinkInterval" "%tick"
 			"OnIntervalThink"
 			{
-				"Damage"
+				"RunScript"
 				{
-					"Type" 		"DAMAGE_TYPE_MAGICAL"
-					"Target"	"TARGET"
-					"Damage" 	"(%main_damage-%other_damage) * %tick / %duration"
+					"ScriptFile"	"heroes\Kret\Acid.lua"
+					"Function"		"Damage"	
 				}
 			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%reduce_ms"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+			}
+			
+			"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+			"EffectAttachType"  "follow_origin"
 		}
 	}
 }

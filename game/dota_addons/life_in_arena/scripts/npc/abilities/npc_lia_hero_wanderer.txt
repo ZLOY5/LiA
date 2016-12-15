@@ -114,7 +114,8 @@
 
 "wanderer_the_flow_of_life"
 {
-	"BaseClass"					"ability_datadriven"
+	"BaseClass"					"ability_lua"
+	"ScriptFile"				"heroes\Wanderer\wanderer_the_flow_of_life.lua"
 	"AbilityTextureName"		"wanderer_the_flow_of_life"
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
@@ -155,73 +156,13 @@
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
 	}
 
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Treant.LivingArmor.Cast"
-			"Target" 		"TARGET"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_the_flow_of_life"
-			"Target" 		"TARGET"
-			"Duration"		"%duration"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_the_flow_of_life"
-		{
-			"IsPurgable"		"1"
-	
-			"OnCreated"
-			{
-				"AttachEffect"
-				{
-					"EffectName"        "particles/wanderer_heal.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"            "TARGET"
-					"ControlPointEntities"
-		            {
-		                "TARGET"        "attach_origin"
-		                "TARGET"        "attach_origin"
-					}
-				}
-			}
-	
-		  "ThinkInterval"  "1.0"
-		  "OnIntervalThink"
-		  {
-			"Heal"
-			{
-				"Target"        "TARGET"
-				"HealAmount"	"%total_heal / %duration"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"    "heroes\Wanderer\the_flow_of_life.lua"    
-				"Function"      "HealMana"
-				"amount" 		"%total_mana / %duration"
-			}
-			
-		  }
-	
-			//"Properties"
-			//{
-			//	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%total_heal / %duration"
-			//	"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%total_mana / %duration"
-			//}
-		}
-	}
 }
 
 "wanderer_the_flow_of_life_staff"
 {
-	"BaseClass"					"ability_datadriven"
+	"BaseClass"					"ability_lua"
+	"ScriptFile"				"heroes\Wanderer\wanderer_the_flow_of_life_staff.lua"
+
 	"AbilityTextureName"		"wanderer_the_flow_of_life"
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
@@ -262,68 +203,6 @@
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
 	}
 
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Treant.LivingArmor.Cast"
-			"Target" 		"TARGET"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_the_flow_of_life"
-			"Target" 		"TARGET"
-			"Duration"		"%duration"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_the_flow_of_life"
-		{
-			"IsPurgable"		"1"
-	
-			"OnCreated"
-			{
-				"AttachEffect"
-				{
-					"EffectName"        "particles/wanderer_heal.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"            "TARGET"
-					"ControlPointEntities"
-		            {
-		                "TARGET"        "attach_origin"
-		                "TARGET"        "attach_origin"
-					}
-				}
-			}
-	
-		  "ThinkInterval"  "1.0"
-		  "OnIntervalThink"
-		  {
-			"Heal"
-			{
-				"Target"        "TARGET"
-				"HealAmount"	"%total_heal / %duration"
-			}
-			
-			"RunScript"
-			{
-				"ScriptFile"    "heroes\Wanderer\the_flow_of_life.lua"    
-				"Function"      "HealMana"
-				"amount" 		"%total_mana / %duration"
-			}
-			
-		  }
-	
-			//"Properties"
-			//{
-			//	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%total_heal / %duration"
-			//	"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%total_mana / %duration"
-			//}
-		}
-	}
 }
 
 

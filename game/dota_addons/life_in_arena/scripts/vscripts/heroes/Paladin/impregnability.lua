@@ -32,7 +32,7 @@ function ApplyModifiersV2(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	local radius = ability:GetSpecialValueFor("radius")
-	local damage = keys.damage
+	local damage = ability:GetSpecialValueFor("damage_per_sec") * ability:GetSpecialValueFor("tick")
 	local tbuf = {}
 	--
 	if not ability.tAlliesPal then
@@ -119,9 +119,9 @@ function ApplyModifiersV2(keys)
 	--for _,unit in pairs(table_target_enemy) do
 	local fxIndex
 	local particleName = "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-	print("---------")
+	--print("---------")
 	for i = 1, #table_target_enemy do
-		print(table_target_enemy[i]:GetUnitName())
+		--print(table_target_enemy[i]:GetUnitName())
 		--ability:ApplyDataDrivenModifier(caster, table_target_enemy[i], "modifier_impregnability_aura_dmg", nil) --{duration = 0.03} 
 		--
 		local damageTable =
@@ -137,7 +137,7 @@ function ApplyModifiersV2(keys)
 		fxIndex = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, table_target_enemy[i])
 		ParticleManager:SetParticleControl( fxIndex, 0, table_target_enemy[i]:GetAbsOrigin() )
 	end
-	print("---------")
+	--print("---------")
 	
 	--ability:ApplyDataDrivenModifier(caster, caster, "modifier_impregnability1", nil)
 	--ability:ApplyDataDrivenModifier(caster, caster, "modifier_impregnability2", nil)

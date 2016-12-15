@@ -83,7 +83,8 @@ function Update()
 		var upgradeButton = container.FindChild(upgradeName)
 
 		upgradeButton.enabled = 
-			( Players.GetUpgradeLumberCost(upgradeName,Players.GetUpgradeLevel(upgradeName,playerID)) <= Players.GetLumber(playerID) ) 
+			( Players.GetUpgradeLumberCost(upgradeName,Players.GetUpgradeLevel(upgradeName,playerID)) 
+				<= Players.GetLumber(playerID) ) 
 			&&  ( Players.GetMaxUpgradeLevel(upgradeName) > Players.GetUpgradeLevel(upgradeName,playerID) )
 
 		if ( upgradeButton.BHasClass("tooltip") )

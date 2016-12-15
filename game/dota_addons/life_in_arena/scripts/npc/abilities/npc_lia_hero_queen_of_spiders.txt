@@ -345,12 +345,12 @@
 			"var_type"				"FIELD_INTEGER"
 			"half_damage_radius"	"240"
 		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"	"50 82.5 125"
+		}
 	}
-	
-	   	"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_queen_of_spiders_furious_strikes"
-	}	
 	
 	"Modifiers"
 	{
@@ -368,33 +368,33 @@
 
 					"OnSuccess"
 					{
-						  "Damage"
-						  {
+						"Damage"
+						{
 							"Target"
 							{
-							  "Center"    "TARGET"
-							  "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-							  "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							  "Radius"    "%radius"
-							  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+								"Center"    "TARGET"
+								"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								"Radius"    "%radius"
+								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							}
 							"Type"   "DAMAGE_TYPE_PHYSICAL"
-							"Damage" "%AbilityDamage/2"           
+							"Damage" "%damage"           
 						  }
 
-						  "Damage"
-						  {
+						"Damage"
+						{
 							"Target"
 							{
-							  "Center"    "TARGET"
-							  "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-							  "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							  "Radius"    "%half_damage_radius"
-							  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							  	"Center"    "TARGET"
+							  	"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+							  	"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							  	"Radius"    "%half_damage_radius"
+							  	"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 							}
 							"Type"   "DAMAGE_TYPE_PHYSICAL"
-							"Damage" "%AbilityDamage/2"           
-						  }
+							"Damage" "%damage"           
+						}
 					}
 				}
 			}
@@ -416,10 +416,7 @@
     "RequiredLevel"          "5"
     "LevelsBetweenUpgrades"  "4"
   
-	   	"OnRespawn"
-	{
-		"ApplyModifier"	"royal_vitality_datadriven"
-	}
+
   
 "Modifiers"
 {

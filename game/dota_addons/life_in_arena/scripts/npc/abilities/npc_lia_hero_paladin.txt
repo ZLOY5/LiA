@@ -90,12 +90,6 @@
 			"Function"		"BlizzardStart"
 			"Target"		"POINT"
 		}
-
-		//"ApplyModifier"
-		//{
-		//	"ModifierName"	"modifier_blizzard_removeDummy"
-		//	"Target" 		"CASTER"
-		//}
 		
 		"FireSound"
 		{
@@ -104,83 +98,14 @@
 		}
 	}
 
-	//"OnChannelFinish"
-    	//{
-    	//	"RunScript"
-    	//	{
-    	//		"ScriptFile"	"heroes/archmage/blizzard.lua"
-	//		"Function"		"BlizzardEnd"
-    	//	} 
-	//
-    	//	"RemoveModifier"
-	//	{
-	//		"ModifierName"	"modifier_blizzard_channelling"
-	//		"Target" 		"CASTER"
-	//	}
-   	//		
-    	//}
-
 	"Modifiers"
-    	{
+    {
 
 		"modifier_blizzard_thinker"
 		{
-			"Duration"	"%wave_count*%wave_interval+0.7"
 			"ThinkInterval"  "%wave_interval"
 			"OnIntervalThink"
-			{
-				"DelayedAction"
-				{
-					"Delay"     "0.65" // 0.3 old
-								// with 0.7 and +0.5 in duration = crash
-					"Action"    
-					{						
-						"Damage"
-						{
-							"Target"
-							{
-								"Center"  	"TARGET"
-								"Radius" 	"%radius"
-								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-                						"MaxTargets"	"%max_targets"
-                						"Random"	"0"
-								
-							}
-							"Type"			"DAMAGE_TYPE_MAGICAL"
-							"Damage"		"%wave_damage"
-						}
-
-						"ApplyModifier"
-						{
-							"ModifierName"	"modifier_stunned"
-							"Target"
-							{
-								"Center"  	"TARGET"
-								"Radius" 	"%radius"
-								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-                						"MaxTargets"	"%max_targets"
-                						"Random"	"0"
-								
-							}
-							"Duration"	"%stun"	
-						}
-
-						"FireSound"
-						{
-							"EffectName"	"hero_Crystal.freezingField.explosion"
-							"Target"
-							{
-								"Center"  	"TARGET"
-								"Radius" 	"%radius"
-								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							}
-						}
-					}
-				}
-				
+			{			
 				"RunScript"
 				{
 					"ScriptFile"	"heroes\Paladin\blizzard.lua"
@@ -190,19 +115,13 @@
 
 			"OnDestroy"
 			{
-    				"RunScript"
-    				{
-    					"ScriptFile"	"heroes\Paladin\blizzard.lua"
+				"RunScript"
+				{
+					"ScriptFile"	"heroes\Paladin\blizzard.lua"
 					"Function"		"BlizzardEnd"
-    				} 
-			}
-
-
-			
+				} 
+			}		
 		}
-
-
-
 	}
 }
 
@@ -286,12 +205,6 @@
 			"Function"		"BlizzardStart"
 			"Target"		"POINT"
 		}
-
-		//"ApplyModifier"
-		//{
-		//	"ModifierName"	"modifier_blizzard_removeDummy"
-		//	"Target" 		"CASTER"
-		//}
 		
 		"FireSound"
 		{
@@ -300,83 +213,15 @@
 		}
 	}
 
-	//"OnChannelFinish"
-    	//{
-    	//	"RunScript"
-    	//	{
-    	//		"ScriptFile"	"heroes/archmage/blizzard.lua"
-	//		"Function"		"BlizzardEnd"
-    	//	} 
-	//
-    	//	"RemoveModifier"
-	//	{
-	//		"ModifierName"	"modifier_blizzard_channelling"
-	//		"Target" 		"CASTER"
-	//	}
-   	//		
-    	//}
 
 	"Modifiers"
     	{
 
 		"modifier_blizzard_thinker"
 		{
-			"Duration"	"%wave_count*%wave_interval+0.7"
 			"ThinkInterval"  "%wave_interval"
 			"OnIntervalThink"
 			{
-				"DelayedAction"
-				{
-					"Delay"     "0.65" // 0.3 old
-								// with 0.7 and +0.5 in duration = crash
-					"Action"    
-					{						
-						"Damage"
-						{
-							"Target"
-							{
-								"Center"  	"TARGET"
-								"Radius" 	"%radius"
-								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-                						"MaxTargets"	"%max_targets"
-                						"Random"	"0"
-								
-							}
-							"Type"			"DAMAGE_TYPE_MAGICAL"
-							"Damage"		"%wave_damage"
-						}
-
-						"ApplyModifier"
-						{
-							"ModifierName"	"modifier_stun_wave"
-							"Target"
-							{
-								"Center"  	"TARGET"
-								"Radius" 	"%radius"
-								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-                						"MaxTargets"	"%max_targets"
-                						"Random"	"0"
-								
-							}
-							"Duration"	"%stun"	
-						}
-
-						"FireSound"
-						{
-							"EffectName"	"hero_Crystal.freezingField.explosion"
-							"Target"
-							{
-								"Center"  	"TARGET"
-								"Radius" 	"%radius"
-								"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							}
-						}
-					}
-				}
-				
 				"RunScript"
 				{
 					"ScriptFile"	"heroes\Paladin\blizzard.lua"
@@ -386,33 +231,13 @@
 
 			"OnDestroy"
 			{
-    				"RunScript"
-    				{
-    					"ScriptFile"	"heroes\Paladin\blizzard.lua"
-					"Function"		"BlizzardEnd"
-    				} 
-			}
-
-
-			
+				"RunScript"
+				{
+					"ScriptFile"	"heroes\Paladin\blizzard.lua"
+				"Function"		"BlizzardEnd"
+				} 
+			}		
 		}
-
-
-		"modifier_stun_wave"
-		{
-			"IsDebuff"		"1"
-			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-			"EffectAttachType"	"follow_overhead"
-	
-			"OverrideAnimation"     "ACT_DOTA_DISABLED"
-
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
-
-
 	}
 }
 
@@ -806,7 +631,6 @@
 				"var_type"					"FIELD_FLOAT"
 				"duration"					"8 14 20"
 			}
-	
 		}
 	
 		"precache"
@@ -817,9 +641,7 @@
 			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
 	
 		}
-		//
-		//
-		//
+
 		"OnSpellStart"
 		{
 			"FireSound"
@@ -831,20 +653,7 @@
 					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			}
-	
-			//"FireEffect"
-			//{
-			//	"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
-			//	"EffectAttachType"  "follow_origin"
-			//	"Target"            "CASTER"
-			//}
-			
-			//"RunScript"
-			//{
-			//	"ScriptFile"	"heroes\Paladin\impregnability.lua"
-			//	"Function" 		"ApplyModifiers"
-			//}
-			
+		
 			"ApplyModifier"
 			{
 				"Target"
@@ -854,23 +663,8 @@
 				}
 				"ModifierName"		"modifier_impregnability_new"
 			}
-			
-			
-			//
-			//"ApplyModifier"
-			//{
-			//	"Target"			"CASTER"
-			//	"ModifierName"		"modifier_impregnability1"
-			//}
-			//
-			//"ApplyModifier"
-			//{
-			//	"Target"			"CASTER"
-			//	"ModifierName"		"modifier_impregnability2"
-			//}
-	
 		}
-		//OnChannelInterrupted
+
 		"OnChannelFinish"
 		{
 			"RemoveModifier"
@@ -881,25 +675,8 @@
 					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 				"ModifierName"	"modifier_impregnability_new"
-			}
-			
-			//"RemoveModifier"
-			//{
-			//	"Target"			"CASTER"
-			//	"ModifierName"		"modifier_impregnability1"
-			//}
-			//"RemoveModifier"
-			//{
-			//	"Target"			"CASTER"
-			//	"ModifierName"		"modifier_impregnability2"
-			//}
-			
+			}	
 		}
-	
-	
-		//
-		//
-		//
 	
 	
 		"Modifiers"
@@ -916,7 +693,6 @@
 					{
 						"ScriptFile"	"heroes\Paladin\impregnability.lua"
 						"Function" 		"ApplyModifiersV2"
-						"damage" 		"%damage_per_sec * %tick"
 					}
 				}
 				
@@ -949,13 +725,7 @@
 	    		"EffectAttachType"  "follow_origin"
 
 			}
-	
-	
-
-		
 		}
-	
-	
 	}
 
 

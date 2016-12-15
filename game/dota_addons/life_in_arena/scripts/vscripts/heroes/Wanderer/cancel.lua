@@ -2,8 +2,8 @@ require('timers')
 
 function Spawn(entityKeyValues)
 Timers:CreateTimer(0.01,function()
-	local abil = thisEntity:FindAbilityByName("wanderer_cancel_standard_aura")
-	abil:SetLevel(1)
+	thisEntity:RemoveModifierByName("modifier_silencer_int_steal")
+	return 1
 end)
 
 --[[	Timers:CreateTimer(0.01,function()

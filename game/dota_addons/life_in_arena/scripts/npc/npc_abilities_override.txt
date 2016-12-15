@@ -7621,132 +7621,20 @@
 		}
 		
 		"OnOwnerDied"
-		{
-			"FireEffect"
+		{	
+			"RunScript"
 			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-				}
-				"EffectName"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
-				"EffectAttachType"	"follow_origin"
+				"ScriptFile"	"heroes\Android\Kaboom.lua"
+				"Function"		"Kaboom"
 			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_Techies.Suicide"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-				}
-			}
-	
-			"Damage"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%small_radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Damage"	"%AbilityDamage * %big_radius_dmg"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-			}
-			
-			"Damage"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%big_radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Damage"	"%AbilityDamage * %big_radius_dmg"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-			}
-			
-	//		"RunScript"
-	//		{
-	//			"ScriptFile"	"heroes/Android/PocketFactory.lua"
-	//			"Function"		"CauseDamageDecor"
-	//			"attack_damage" "%AbilityDamage"
-	//			"Target"
-	//			{
-	//				"Center"	"CASTER"
-	//				"Radius"	"150"
-	//				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-	//				"Types"		"DOTA_UNIT_TARGET_BUILDING"
-	//				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	//			}
-	//		}
-		
 		}
 	
 		"OnSpellStart"
 		{
-			"FireEffect"
+			"RunScript"
 			{
-				"Target"		"CASTER"
-				"EffectName"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
-				"EffectAttachType"	"follow_origin"
-			}
-	
-			"FireSound"
-			{
-				"EffectName"	"Hero_Techies.Suicide"
-				"Target"	"CASTER"
-			}
-	
-			"Damage"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%small_radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Damage"	"%AbilityDamage * %big_radius_dmg"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-			}
-			
-			"Damage"
-			{
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%big_radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Damage"	"%AbilityDamage * %big_radius_dmg"
-				"Type"	"DAMAGE_TYPE_MAGICAL"
-			}
-			
-	//		"RunScript"
-	//		{
-	//			"ScriptFile"	"heroes/Android/PocketFactory.lua"
-	//			"Function"		"CauseDamageDecor"
-	//			"attack_damage" "%AbilityDamage"
-	///			"Target"
-		//		{
-	//				"Center"	"CASTER"
-	//				"Radius"	"150"
-	//				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-	//				"Types"		"DOTA_UNIT_TARGET_BUILDING"
-	//				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	//			}
-	//		}
-			
-			"Damage"
-			{
-				"Target"	"CASTER"			
-				"Damage"	"99999"
-				"Type"		"DAMAGE_TYPE_PURE"
+				"ScriptFile"	"heroes\Android\Kaboom.lua"
+				"Function"		"Kaboom"
 			}
 		}
 	
@@ -9545,7 +9433,7 @@
 	        "Heal"
 	        {
 	            "Target"        "TARGET"
-	            "HealAmount"    "%heal / %duration"
+	            "HealAmount"    "55"
 	        }
 	      }
 	    }
@@ -10318,10 +10206,6 @@
 	    "RequiredLevel"          "2"
 	    "LevelsBetweenUpgrades"  "2"
 	    
-		"OnRespawn"
-	    {
-			"ApplyModifier"	"drunken_punches_datadriven"
-		}
 		
 		"Modifiers"
 		{
@@ -11558,11 +11442,10 @@
 				"ThinkInterval" 		"%tick"
 				"OnIntervalThink"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage" 	"%other_damage * %tick / %duration"
+						"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+						"Function"		"DamageOther"	
 					}
 				}
 				"Properties"
@@ -11576,21 +11459,28 @@
 			
 			"modifier_dark_ranger_magic_arrow_main_target"
 			{
-				"IsHidden"			"1"
-				"IsDebuff"			"1"
+				//"IsHidden"				"1"
+				"IsDebuff"				"1"
 				"IsPurgable"			"1"
-				"Duration"	"%duration"
+				"Duration"				"%duration"
 				
-				"ThinkInterval" "%tick"
+				"ThinkInterval" 		"%tick"
 				"OnIntervalThink"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage" 	"(%main_damage-%other_damage) * %tick / %duration"
+						"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+						"Function"		"Damage"	
 					}
 				}
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+				}
+				
+				"EffectName"        "particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
+				"EffectAttachType"  "follow_origin"
 			}
 		}
 	}
@@ -12090,35 +11980,10 @@
 				"ThinkInterval"  "%steelstorm_damage_tick"
 				"OnIntervalThink"
 				{
-					"ActOnTargets"
+					"RunScript"
 					{
-						"Target"
-						{
-							"Center"  	"CASTER"
-							"Radius" 	"%steelstorm_radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					
-						"Action"    
-						{
-							"Damage"
-							{
-								"Target"		
-								{
-									"Center"	"TARGET"
-									"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-								}
-								"Type"			"DAMAGE_TYPE_PURE"
-								"Damage"		"%AbilityDamage * %steelstorm_damage_tick"
-							}
-							"FireSound"
-							{
-								"EffectName"	"Hero_Juggernaut.BladeFury.Impact"
-								"Target" 		"TARGET"
-							}
-						}
+						"ScriptFile" "heroes\Dice\Steelstorm.lua"
+						"Function"		"Damage"
 					}	
 	
 				}
@@ -16114,7 +15979,7 @@
 	        "03"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "burn_damage"             "20 40 60"
+	            "burn_damage"             "5 10 15"
 	        }
 	        "04"
 	        {
@@ -16163,7 +16028,7 @@
 	          {
 	            "Target"    "TARGET"
 	            "Type"      "DAMAGE_TYPE_MAGICAL"
-	            "Damage"    "%burn_damage / 4"
+	            "Damage"    "%burn_damage"
 	          }
 	        }      
 	      }
@@ -17236,7 +17101,7 @@
 				"07"
 				{
 					"var_type"			"FIELD_FLOAT"
-					"for_tick"		"1.00"
+					"for_tick"		"0.33 0.25 0.2"
 				}
 				"08"
 				{
@@ -17336,7 +17201,7 @@
 					//"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
 					//"EffectAttachType"	"follow_origin"
 			
-					"ThinkInterval"		"%for_tick / %num_in_sec"
+					"ThinkInterval"		"%for_tick"
 					"OnIntervalThink"
 					{
 						"RunScript"
@@ -19973,12 +19838,6 @@
 							"Target"		"TARGET"
 							"EffectName"	"Hero_BountyHunter.WindWalk"
 						}
-						"Damage"
-						{
-							"Type" 		"DAMAGE_TYPE_MAGICAL"
-							"Target"	"TARGET"
-							"Damage" 	"%main_damage-%other_damage"
-						}
 					}
 	
 					"OnDestroy"
@@ -20290,11 +20149,10 @@
 				"ThinkInterval" 		"%tick"
 				"OnIntervalThink"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage" 	"%other_damage * %tick / %duration"
+						"ScriptFile"	"heroes\Kret\Acid.lua"
+						"Function"		"DamageOther"	
 					}
 				}
 				"Properties"
@@ -20309,7 +20167,7 @@
 			
 			"modifier_kret_acid_main_target"
 			{
-				"IsHidden"			"1"
+				//"IsHidden"			"1"
 				"IsDebuff"			"1"
 				"IsPurgable"			"1"
 				"Duration"	"%duration"
@@ -20317,13 +20175,21 @@
 				"ThinkInterval" "%tick"
 				"OnIntervalThink"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage" 	"(%main_damage-%other_damage) * %tick / %duration"
+						"ScriptFile"	"heroes\Kret\Acid.lua"
+						"Function"		"Damage"	
 					}
 				}
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%reduce_ms"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+				}
+				
+				"EffectName"        "particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"  "follow_origin"
 			}
 		}
 	}
@@ -22357,12 +22223,6 @@
 				"Function"		"BlizzardStart"
 				"Target"		"POINT"
 			}
-	
-			//"ApplyModifier"
-			//{
-			//	"ModifierName"	"modifier_blizzard_removeDummy"
-			//	"Target" 		"CASTER"
-			//}
 			
 			"FireSound"
 			{
@@ -22371,83 +22231,14 @@
 			}
 		}
 	
-		//"OnChannelFinish"
-	    	//{
-	    	//	"RunScript"
-	    	//	{
-	    	//		"ScriptFile"	"heroes/archmage/blizzard.lua"
-		//		"Function"		"BlizzardEnd"
-	    	//	} 
-		//
-	    	//	"RemoveModifier"
-		//	{
-		//		"ModifierName"	"modifier_blizzard_channelling"
-		//		"Target" 		"CASTER"
-		//	}
-	   	//		
-	    	//}
-	
 		"Modifiers"
-	    	{
+	    {
 	
 			"modifier_blizzard_thinker"
 			{
-				"Duration"	"%wave_count*%wave_interval+0.7"
 				"ThinkInterval"  "%wave_interval"
 				"OnIntervalThink"
-				{
-					"DelayedAction"
-					{
-						"Delay"     "0.65" // 0.3 old
-									// with 0.7 and +0.5 in duration = crash
-						"Action"    
-						{						
-							"Damage"
-							{
-								"Target"
-								{
-									"Center"  	"TARGET"
-									"Radius" 	"%radius"
-									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	                						"MaxTargets"	"%max_targets"
-	                						"Random"	"0"
-									
-								}
-								"Type"			"DAMAGE_TYPE_MAGICAL"
-								"Damage"		"%wave_damage"
-							}
-	
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_stunned"
-								"Target"
-								{
-									"Center"  	"TARGET"
-									"Radius" 	"%radius"
-									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	                						"MaxTargets"	"%max_targets"
-	                						"Random"	"0"
-									
-								}
-								"Duration"	"%stun"	
-							}
-	
-							"FireSound"
-							{
-								"EffectName"	"hero_Crystal.freezingField.explosion"
-								"Target"
-								{
-									"Center"  	"TARGET"
-									"Radius" 	"%radius"
-									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								}
-							}
-						}
-					}
-					
+				{			
 					"RunScript"
 					{
 						"ScriptFile"	"heroes\Paladin\blizzard.lua"
@@ -22457,19 +22248,13 @@
 	
 				"OnDestroy"
 				{
-	    				"RunScript"
-	    				{
-	    					"ScriptFile"	"heroes\Paladin\blizzard.lua"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\Paladin\blizzard.lua"
 						"Function"		"BlizzardEnd"
-	    				} 
-				}
-	
-	
-				
+					} 
+				}		
 			}
-	
-	
-	
 		}
 	}
 	
@@ -22553,12 +22338,6 @@
 				"Function"		"BlizzardStart"
 				"Target"		"POINT"
 			}
-	
-			//"ApplyModifier"
-			//{
-			//	"ModifierName"	"modifier_blizzard_removeDummy"
-			//	"Target" 		"CASTER"
-			//}
 			
 			"FireSound"
 			{
@@ -22567,83 +22346,15 @@
 			}
 		}
 	
-		//"OnChannelFinish"
-	    	//{
-	    	//	"RunScript"
-	    	//	{
-	    	//		"ScriptFile"	"heroes/archmage/blizzard.lua"
-		//		"Function"		"BlizzardEnd"
-	    	//	} 
-		//
-	    	//	"RemoveModifier"
-		//	{
-		//		"ModifierName"	"modifier_blizzard_channelling"
-		//		"Target" 		"CASTER"
-		//	}
-	   	//		
-	    	//}
 	
 		"Modifiers"
 	    	{
 	
 			"modifier_blizzard_thinker"
 			{
-				"Duration"	"%wave_count*%wave_interval+0.7"
 				"ThinkInterval"  "%wave_interval"
 				"OnIntervalThink"
 				{
-					"DelayedAction"
-					{
-						"Delay"     "0.65" // 0.3 old
-									// with 0.7 and +0.5 in duration = crash
-						"Action"    
-						{						
-							"Damage"
-							{
-								"Target"
-								{
-									"Center"  	"TARGET"
-									"Radius" 	"%radius"
-									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	                						"MaxTargets"	"%max_targets"
-	                						"Random"	"0"
-									
-								}
-								"Type"			"DAMAGE_TYPE_MAGICAL"
-								"Damage"		"%wave_damage"
-							}
-	
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_stun_wave"
-								"Target"
-								{
-									"Center"  	"TARGET"
-									"Radius" 	"%radius"
-									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	                						"MaxTargets"	"%max_targets"
-	                						"Random"	"0"
-									
-								}
-								"Duration"	"%stun"	
-							}
-	
-							"FireSound"
-							{
-								"EffectName"	"hero_Crystal.freezingField.explosion"
-								"Target"
-								{
-									"Center"  	"TARGET"
-									"Radius" 	"%radius"
-									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								}
-							}
-						}
-					}
-					
 					"RunScript"
 					{
 						"ScriptFile"	"heroes\Paladin\blizzard.lua"
@@ -22653,33 +22364,13 @@
 	
 				"OnDestroy"
 				{
-	    				"RunScript"
-	    				{
-	    					"ScriptFile"	"heroes\Paladin\blizzard.lua"
-						"Function"		"BlizzardEnd"
-	    				} 
-				}
-	
-	
-				
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\Paladin\blizzard.lua"
+					"Function"		"BlizzardEnd"
+					} 
+				}		
 			}
-	
-	
-			"modifier_stun_wave"
-			{
-				"IsDebuff"		"1"
-				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType"	"follow_overhead"
-		
-				"OverrideAnimation"     "ACT_DOTA_DISABLED"
-	
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-	
-	
 		}
 	}
 	
@@ -23073,7 +22764,6 @@
 					"var_type"					"FIELD_FLOAT"
 					"duration"					"8 14 20"
 				}
-		
 			}
 		
 			"precache"
@@ -23084,9 +22774,7 @@
 				"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
 		
 			}
-			//
-			//
-			//
+	
 			"OnSpellStart"
 			{
 				"FireSound"
@@ -23098,20 +22786,7 @@
 						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 					}
 				}
-		
-				//"FireEffect"
-				//{
-				//	"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
-				//	"EffectAttachType"  "follow_origin"
-				//	"Target"            "CASTER"
-				//}
-				
-				//"RunScript"
-				//{
-				//	"ScriptFile"	"heroes\Paladin\impregnability.lua"
-				//	"Function" 		"ApplyModifiers"
-				//}
-				
+			
 				"ApplyModifier"
 				{
 					"Target"
@@ -23121,23 +22796,8 @@
 					}
 					"ModifierName"		"modifier_impregnability_new"
 				}
-				
-				
-				//
-				//"ApplyModifier"
-				//{
-				//	"Target"			"CASTER"
-				//	"ModifierName"		"modifier_impregnability1"
-				//}
-				//
-				//"ApplyModifier"
-				//{
-				//	"Target"			"CASTER"
-				//	"ModifierName"		"modifier_impregnability2"
-				//}
-		
 			}
-			//OnChannelInterrupted
+	
 			"OnChannelFinish"
 			{
 				"RemoveModifier"
@@ -23148,25 +22808,8 @@
 						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 					}
 					"ModifierName"	"modifier_impregnability_new"
-				}
-				
-				//"RemoveModifier"
-				//{
-				//	"Target"			"CASTER"
-				//	"ModifierName"		"modifier_impregnability1"
-				//}
-				//"RemoveModifier"
-				//{
-				//	"Target"			"CASTER"
-				//	"ModifierName"		"modifier_impregnability2"
-				//}
-				
+				}	
 			}
-		
-		
-			//
-			//
-			//
 		
 		
 			"Modifiers"
@@ -23183,7 +22826,6 @@
 						{
 							"ScriptFile"	"heroes\Paladin\impregnability.lua"
 							"Function" 		"ApplyModifiersV2"
-							"damage" 		"%damage_per_sec * %tick"
 						}
 					}
 					
@@ -23216,13 +22858,7 @@
 		    		"EffectAttachType"  "follow_origin"
 	
 				}
-		
-		
-	
-			
 			}
-		
-		
 		}
 	
 	
@@ -24066,12 +23702,12 @@
 				"var_type"				"FIELD_INTEGER"
 				"half_damage_radius"	"240"
 			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"	"50 82.5 125"
+			}
 		}
-		
-		   	"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_queen_of_spiders_furious_strikes"
-		}	
 		
 		"Modifiers"
 		{
@@ -24089,33 +23725,33 @@
 	
 						"OnSuccess"
 						{
-							  "Damage"
-							  {
+							"Damage"
+							{
 								"Target"
 								{
-								  "Center"    "TARGET"
-								  "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-								  "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								  "Radius"    "%radius"
-								  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+									"Center"    "TARGET"
+									"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+									"Radius"    "%radius"
+									"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 								}
 								"Type"   "DAMAGE_TYPE_PHYSICAL"
-								"Damage" "%AbilityDamage/2"           
+								"Damage" "%damage"           
 							  }
 	
-							  "Damage"
-							  {
+							"Damage"
+							{
 								"Target"
 								{
-								  "Center"    "TARGET"
-								  "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-								  "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								  "Radius"    "%half_damage_radius"
-								  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+								  	"Center"    "TARGET"
+								  	"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+								  	"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+								  	"Radius"    "%half_damage_radius"
+								  	"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 								}
 								"Type"   "DAMAGE_TYPE_PHYSICAL"
-								"Damage" "%AbilityDamage/2"           
-							  }
+								"Damage" "%damage"           
+							}
 						}
 					}
 				}
@@ -24137,10 +23773,7 @@
 	    "RequiredLevel"          "5"
 	    "LevelsBetweenUpgrades"  "4"
 	  
-		   	"OnRespawn"
-		{
-			"ApplyModifier"	"royal_vitality_datadriven"
-		}
+	
 	  
 	"Modifiers"
 	{
@@ -26667,10 +26300,7 @@
 	    }
 	  }
 	
-	  	 	"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_minotaur_fear"
-		}
+	
 	  
 	  "Modifiers"
 	  {
@@ -26736,10 +26366,7 @@
 	    }
 	  }
 	
-	    	"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_minotaur_demonic_power"
-		}
+	
 	  
 	  "Modifiers"
 	  {
@@ -29405,7 +29032,8 @@
 	
 	"wanderer_the_flow_of_life"
 	{
-		"BaseClass"					"ability_datadriven"
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\Wanderer\wanderer_the_flow_of_life.lua"
 		"AbilityTextureName"		"wanderer_the_flow_of_life"
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
@@ -29446,73 +29074,13 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
 		}
 	
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Treant.LivingArmor.Cast"
-				"Target" 		"TARGET"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_the_flow_of_life"
-				"Target" 		"TARGET"
-				"Duration"		"%duration"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_the_flow_of_life"
-			{
-				"IsPurgable"		"1"
-		
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"        "particles/wanderer_heal.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "TARGET"
-						"ControlPointEntities"
-			            {
-			                "TARGET"        "attach_origin"
-			                "TARGET"        "attach_origin"
-						}
-					}
-				}
-		
-			  "ThinkInterval"  "1.0"
-			  "OnIntervalThink"
-			  {
-				"Heal"
-				{
-					"Target"        "TARGET"
-					"HealAmount"	"%total_heal / %duration"
-				}
-				
-				"RunScript"
-				{
-					"ScriptFile"    "heroes\Wanderer\the_flow_of_life.lua"    
-					"Function"      "HealMana"
-					"amount" 		"%total_mana / %duration"
-				}
-				
-			  }
-		
-				//"Properties"
-				//{
-				//	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%total_heal / %duration"
-				//	"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%total_mana / %duration"
-				//}
-			}
-		}
 	}
 	
 	"wanderer_the_flow_of_life_staff"
 	{
-		"BaseClass"					"ability_datadriven"
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\Wanderer\wanderer_the_flow_of_life_staff.lua"
+	
 		"AbilityTextureName"		"wanderer_the_flow_of_life"
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "2"
@@ -29553,68 +29121,6 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
 		}
 	
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Treant.LivingArmor.Cast"
-				"Target" 		"TARGET"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_the_flow_of_life"
-				"Target" 		"TARGET"
-				"Duration"		"%duration"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_the_flow_of_life"
-			{
-				"IsPurgable"		"1"
-		
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"EffectName"        "particles/wanderer_heal.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"            "TARGET"
-						"ControlPointEntities"
-			            {
-			                "TARGET"        "attach_origin"
-			                "TARGET"        "attach_origin"
-						}
-					}
-				}
-		
-			  "ThinkInterval"  "1.0"
-			  "OnIntervalThink"
-			  {
-				"Heal"
-				{
-					"Target"        "TARGET"
-					"HealAmount"	"%total_heal / %duration"
-				}
-				
-				"RunScript"
-				{
-					"ScriptFile"    "heroes\Wanderer\the_flow_of_life.lua"    
-					"Function"      "HealMana"
-					"amount" 		"%total_mana / %duration"
-				}
-				
-			  }
-		
-				//"Properties"
-				//{
-				//	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%total_heal / %duration"
-				//	"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%total_mana / %duration"
-				//}
-			}
-		}
 	}
 	
 	

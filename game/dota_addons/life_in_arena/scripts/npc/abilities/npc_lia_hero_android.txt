@@ -252,132 +252,20 @@
 	}
 	
 	"OnOwnerDied"
-	{
-		"FireEffect"
+	{	
+		"RunScript"
 		{
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-			}
-			"EffectName"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
-			"EffectAttachType"	"follow_origin"
+			"ScriptFile"	"heroes\Android\Kaboom.lua"
+			"Function"		"Kaboom"
 		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Techies.Suicide"
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-			}
-		}
-
-		"Damage"
-		{
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Radius"	"%small_radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Damage"	"%AbilityDamage * %big_radius_dmg"
-			"Type"	"DAMAGE_TYPE_MAGICAL"
-		}
-		
-		"Damage"
-		{
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Radius"	"%big_radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Damage"	"%AbilityDamage * %big_radius_dmg"
-			"Type"	"DAMAGE_TYPE_MAGICAL"
-		}
-		
-//		"RunScript"
-//		{
-//			"ScriptFile"	"heroes/Android/PocketFactory.lua"
-//			"Function"		"CauseDamageDecor"
-//			"attack_damage" "%AbilityDamage"
-//			"Target"
-//			{
-//				"Center"	"CASTER"
-//				"Radius"	"150"
-//				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-//				"Types"		"DOTA_UNIT_TARGET_BUILDING"
-//				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-//			}
-//		}
-	
 	}
 
 	"OnSpellStart"
 	{
-		"FireEffect"
+		"RunScript"
 		{
-			"Target"		"CASTER"
-			"EffectName"	"particles/units/heroes/hero_techies/techies_suicide.vpcf"
-			"EffectAttachType"	"follow_origin"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Techies.Suicide"
-			"Target"	"CASTER"
-		}
-
-		"Damage"
-		{
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Radius"	"%small_radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Damage"	"%AbilityDamage * %big_radius_dmg"
-			"Type"	"DAMAGE_TYPE_MAGICAL"
-		}
-		
-		"Damage"
-		{
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Radius"	"%big_radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Damage"	"%AbilityDamage * %big_radius_dmg"
-			"Type"	"DAMAGE_TYPE_MAGICAL"
-		}
-		
-//		"RunScript"
-//		{
-//			"ScriptFile"	"heroes/Android/PocketFactory.lua"
-//			"Function"		"CauseDamageDecor"
-//			"attack_damage" "%AbilityDamage"
-///			"Target"
-	//		{
-//				"Center"	"CASTER"
-//				"Radius"	"150"
-//				"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-//				"Types"		"DOTA_UNIT_TARGET_BUILDING"
-//				//"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-//			}
-//		}
-		
-		"Damage"
-		{
-			"Target"	"CASTER"			
-			"Damage"	"99999"
-			"Type"		"DAMAGE_TYPE_PURE"
+			"ScriptFile"	"heroes\Android\Kaboom.lua"
+			"Function"		"Kaboom"
 		}
 	}
 

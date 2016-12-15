@@ -377,11 +377,10 @@
 			"ThinkInterval" 		"%tick"
 			"OnIntervalThink"
 			{
-				"Damage"
+				"RunScript"
 				{
-					"Type" 		"DAMAGE_TYPE_MAGICAL"
-					"Target"	"TARGET"
-					"Damage" 	"%other_damage * %tick / %duration"
+					"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+					"Function"		"DamageOther"	
 				}
 			}
 			"Properties"
@@ -395,21 +394,28 @@
 		
 		"modifier_dark_ranger_magic_arrow_main_target"
 		{
-			"IsHidden"			"1"
-			"IsDebuff"			"1"
+			//"IsHidden"				"1"
+			"IsDebuff"				"1"
 			"IsPurgable"			"1"
-			"Duration"	"%duration"
+			"Duration"				"%duration"
 			
-			"ThinkInterval" "%tick"
+			"ThinkInterval" 		"%tick"
 			"OnIntervalThink"
 			{
-				"Damage"
+				"RunScript"
 				{
-					"Type" 		"DAMAGE_TYPE_MAGICAL"
-					"Target"	"TARGET"
-					"Damage" 	"(%main_damage-%other_damage) * %tick / %duration"
+					"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+					"Function"		"Damage"	
 				}
 			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+			}
+			
+			"EffectName"        "particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
+			"EffectAttachType"  "follow_origin"
 		}
 	}
 }

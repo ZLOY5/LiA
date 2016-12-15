@@ -612,7 +612,7 @@
 			"07"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"for_tick"		"1.00"
+				"for_tick"		"0.33 0.25 0.2"
 			}
 			"08"
 			{
@@ -712,7 +712,7 @@
 				//"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
 				//"EffectAttachType"	"follow_origin"
 		
-				"ThinkInterval"		"%for_tick / %num_in_sec"
+				"ThinkInterval"		"%for_tick"
 				"OnIntervalThink"
 				{
 					"RunScript"

@@ -309,35 +309,10 @@
 			"ThinkInterval"  "%steelstorm_damage_tick"
 			"OnIntervalThink"
 			{
-				"ActOnTargets"
+				"RunScript"
 				{
-					"Target"
-					{
-						"Center"  	"CASTER"
-						"Radius" 	"%steelstorm_radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-				
-					"Action"    
-					{
-						"Damage"
-						{
-							"Target"		
-							{
-								"Center"	"TARGET"
-								"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}
-							"Type"			"DAMAGE_TYPE_PURE"
-							"Damage"		"%AbilityDamage * %steelstorm_damage_tick"
-						}
-						"FireSound"
-						{
-							"EffectName"	"Hero_Juggernaut.BladeFury.Impact"
-							"Target" 		"TARGET"
-						}
-					}
+					"ScriptFile" "heroes\Dice\Steelstorm.lua"
+					"Function"		"Damage"
 				}	
 
 			}
