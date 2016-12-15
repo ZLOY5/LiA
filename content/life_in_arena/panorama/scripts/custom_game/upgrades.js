@@ -46,6 +46,7 @@ function Upgrade(upgradeName)
 	upgradeButton.upgradeName = upgradeName
 
 	upgradeButton.SetPanelEvent("onmouseactivate", function() { 
+		//$.Msg("upgrade_request ",upgradeName,"   "+Game.Time())
 		GameEvents.SendCustomGameEventToServer("upgrade_request", {upgradeName: upgradeName}) 
 	})
 
@@ -67,6 +68,8 @@ function Update()
 	
 	var playerID = Game.GetLocalPlayerID()
 	
+	//if ( $("#LumberAmount").text != Players.GetLumber(playerID))
+	//	$.Msg(Players.GetLumber(playerID),"   "+Game.Time())
 
 
 	$("#LumberAmount").text = Players.GetLumber(playerID)
