@@ -54,6 +54,7 @@ function modifier_fallen_champion_return:OnTakeDamage(params)
 			damage_type = DAMAGE_TYPE_MAGICAL,
 			damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
 			ability = self:GetAbility()
+		})
 	end
 
 end			
