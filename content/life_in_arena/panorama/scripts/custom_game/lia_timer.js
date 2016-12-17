@@ -1,54 +1,85 @@
 "use strict";
 
-function SetTimer( data ) 
+var schedule
+var startTime 
+var endTime 
+var duration 
+
+function Tick()
 {
-	var timerText = "";
-	timerText += data.timer_minute_10;
-	timerText += data.timer_minute_01;
-	timerText += ":";
-	timerText += data.timer_second_10;
-	timerText += data.timer_second_01;
+	//$.Msg("Tick")
+	schedule = $.Schedule(0.03,Tick)
+	//$.Msg(Game.GetDOTATime( false, false ))
+	var currTime = Game.GetDOTATime( false, false )
+	//var duration = endTime - startTime
+	var progressBarValue = ( endTime - currTime ) / duration 
+	$("#TimerProgress").value = progressBarValue
 
-	$( "#TimerPanel_Timer" ).text = timerText;
-	$( "#TimerPanel_Text" ).text = $.Localize( data.text ).toUpperCase();
-	$( "#TimerPanel_Number" ).text = data.number;
+	var time = endTime - currTime
+	var minuts = Math.floor( time/60 )
+	var seconds = Math.floor( time - minuts*60 )	
+	var sTime = ( (minuts < 10) && "0" + minuts || minuts ) + ":" + ( (seconds < 10) && "0" + seconds || seconds )
+	$("#timer").text = sTime
 
-	$( "#TimerPanel_Timer" ).RemoveClass( "timer_hidden" );
+	if (currTime >= endTime)
+		StopTimer()
+	
 }
 
-function UpdateTimer( data )
+function StartTimer(data)
 {
-	var timerText = "";
-	timerText += data.timer_minute_10;
-	timerText += data.timer_minute_01;
-	timerText += ":";
-	timerText += data.timer_second_10;
-	timerText += data.timer_second_01;
+	//$.Msg("StartTimer")
+	//StopTimer()
 
-	$( "#TimerPanel_Timer" ).text = timerText;
+	startTime = data.startTime
+	endTime = data.endTime
+	duration = endTime - startTime
+
+	if (data.timerType == 1) //Wave 
+	{
+		$("#waveName").style.visibility = "visible"
+		$("#waveName").text = ($.Localize("#round_name_"+data.wave)).toUpperCase()
+
+		$("#timerText").text = $.Localize("#timer_wave")
+	}
+	else if (data.timerType == 2)//Preduel
+	{
+		$("#waveName").style.visibility = "collapse"
+		
+		$("#timerText").text = $.Localize("#timer_preduel")
+	}
+	else
+	{
+		$("#waveName").style.visibility = "collapse"
+		
+		$("#timerText").text = $.Localize("#timer_duel")
+	}
+
+	$("#TimerContainer").RemoveClass("Hidden")
+
+	if (schedule == null)
+		Tick()
 }
 
-function ShowTimer( data )
+function StopTimer()
 {
-	$( "#TimerPanel_Timer" ).RemoveClass( "timer_hidden" );
+	//$.Msg("StopTimer")
+	if (schedule != null)
+		$.CancelScheduled(schedule)
+	schedule = null
+	$("#TimerContainer").AddClass("Hidden")
 }
 
-function AlertTimer( data )
+function NewEndTime(data)
 {
-	$( "#TimerPanel_Timer" ).AddClass( "timer_alert" );
-}
-
-function HideTimer( data )
-{
-	$( "#TimerPanel_Timer" ).AddClass( "timer_hidden" );
+	endTime = data.endTime
 }
 
 (function()
 {
-	GameEvents.Subscribe( "set_timer", SetTimer );
-    GameEvents.Subscribe( "countdown", UpdateTimer );
-    GameEvents.Subscribe( "show_timer", ShowTimer );
-    GameEvents.Subscribe( "timer_alert", AlertTimer );
-    GameEvents.Subscribe( "hide_timer", HideTimer );
-})();
+	$("#TimerContainer").AddClass("Hidden")
 
+	GameEvents.Subscribe("lia_timer_start", StartTimer);
+	GameEvents.Subscribe("lia_timer_stop", StopTimer);
+	GameEvents.Subscribe("lia_timer_time_left", NewEndTime);
+})();

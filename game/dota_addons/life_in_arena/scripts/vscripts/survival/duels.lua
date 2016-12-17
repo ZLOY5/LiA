@@ -21,7 +21,7 @@ function Survival:StartDuels()
     end)
      
     --timerPopup:Start(self.nPreDuelTime,"#lia_duel",0)
-    StartTimer(self.nPreDuelTime,"#TimerPreDuel",0)
+    StartTimer(self.nPreDuelTime,2,0)
 	Timers:CreateTimer(self.nPreDuelTime,
 		function()
 			self.DuelNumber = 0
@@ -122,7 +122,7 @@ function Survival:Duel(hero1,hero2)
                 hero1:RemoveModifierByName("modifier_stun_lua")
                 hero2:RemoveModifierByName("modifier_stun_lua")
                 --timerPopup:Start(120,"#lia_expire_duel",0)
-                StartTimer(120,"TimerDuel",0)
+                StartTimer(120,3,0)
                 Timers:CreateTimer("duelExpireTime",{ --таймер дуэли
                     useGameTime = true,
                     endTime = 120,

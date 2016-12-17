@@ -84,4 +84,5 @@ function OnUpdatePlayerData( data )
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("CommonItems").style.visibility = "collapse";
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("quickstats").style.visibility = "collapse";
 })();

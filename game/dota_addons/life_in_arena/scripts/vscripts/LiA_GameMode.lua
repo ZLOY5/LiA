@@ -188,6 +188,8 @@ function LiA:OnConnectFull(event)
     if self.GameMode == LIA_MODE_SURVIVAL then
         Survival:OnConnectFull(event)
     end
+
+    ReconnectTimer(playerID)
 end
 
 function LiA:OnDisconnect(event)

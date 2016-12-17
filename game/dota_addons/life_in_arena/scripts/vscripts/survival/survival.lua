@@ -199,20 +199,7 @@ function Survival:ExperienceFilter(filterTable)
 end
 
 function Survival:onThink()
-	
-	-- update lumber in hud
-	local playerID
-    local playersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-    for i = 1, playersCount do 
-        playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
-        --local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-		local dataL = self:GetDataForSendUlu(true, nil,playerID,nil,nil,nil)
-        local player = PlayerResource:GetPlayer(playerID)
-        if player then
-		  CustomGameEventManager:Send_ServerToPlayer( PlayerResource:GetPlayer(playerID), "upd_action_lumber", dataL )
-        end
-		--CustomGameEventManager:Send_ServerToAllClients( "upd_action_lumber", dataL )
-	end
+
 	--
 	-- update for fallen count get damage
 	local ndata
@@ -342,26 +329,11 @@ function Survival:EndRound()
     end)
 end
 
-function Survival:_TimerMessage()
-    if self.nRoundNum % 5 == 0 then
-        local title
-        if self.nRoundNum == 20 then
-            title = "#TimerFinal"--"#lia_finalboss"
-        else
-            title = "#TimerMegaboss"--"#lia_megaboss"
-        end
-        --timerPopup:Start(self.nPreRoundTime,message,0)
-        StartTimer(self.nPreRoundTime,title,0)
-    else
-        --timerPopup:Start(self.nPreRoundTime,"#lia_wave_num",self.nRoundNum)
-        StartTimer(self.nPreRoundTime,"#TimerWave",self.nRoundNum)
-    end
-end
 
 function Survival:PrepareNextRound()
     self.nRoundNum = self.nRoundNum + 1
 
-    self.flRoundStartTime = GameRules:GetGameTime() + self.nPreRoundTime
+    self.flRoundStartTime = GameRules:GetDOTATime(false,false) + self.nPreRoundTime
     
     print("Next round - ", self.nRoundNum)
 
@@ -372,7 +344,8 @@ function Survival:PrepareNextRound()
     self.IsDuelOccured = false
     Survival.State = SURVIVAL_STATE_PRE_ROUND_TIME
 
-    Survival:_TimerMessage()
+    StartTimer(self.nPreRoundTime,1,self.nRoundNum)
+    print(GameRules:GetDOTATime(false,false))
 
     Timers:CreateTimer("StartRoundTimer",
         {
@@ -577,63 +550,6 @@ function Survival:StartRound()
     ) 
 end
 
---------------------------------------------------------------------------------------------------
-
-function Survival:GetDataForSendUlu(only_upd, done, pid, need, finish, name)
-	--local tPlayersId = {}
-	--local tlumber = {}
-	--local tpercUlu = {}
-	local hero = PlayerResource:GetSelectedHeroEntity(pid)
-	--
-    local data
-	if hero then
-		data =
-			{
-				--PlayersId = tPlayersId,
-				Lumber = PlayerResource:GetLumber(pid) or 0,
-				PercUlu = hero.percUlu or 0,
-				UluPlayerId = pid,
-				UluDone = done,
-				UluNeed = need,
-				OnlyUpd = only_upd,
-				Finish = finish,
-				Name = name,
-			}
-	else
-		data =
-			{
-				--PlayersId = tPlayersId,
-				Lumber = 0,
-				PercUlu = 0,
-				UluPlayerId = pid,
-				UluDone = done,
-				UluNeed = need,
-				OnlyUpd = only_upd,
-				Finish = finish,
-				Name = name,
-			}
-	
-	end
-	
-	
-    --[[local playersCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-    for i = 1, playersCount do 
-        local playerID = PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, i)
-		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-		table.insert(tPlayersId,playerID)
-        if hero then
-            table.insert(tlumber,hero.lumber or 0)
-			table.insert(tpercUlu,hero.percUlu or 0)
-        else 
-            table.insert(tlumber,0)
-			table.insert(tpercUlu,0)
-        end
-		--hero.percUlu
-	end
-	]]
-
-    return data
-end
 
 function HeroToPedestal(hero,place)
     if not hero then

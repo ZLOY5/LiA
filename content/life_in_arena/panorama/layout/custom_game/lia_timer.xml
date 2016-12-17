@@ -1,0 +1,19 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/dotastyles.css" />
+        <include src="file://{resources}/styles/custom_game/lia_timer.css" />
+    </styles>
+
+    <scripts>
+    	<include src="file://{resources}/scripts/custom_game/lia_timer.js" />
+    </scripts>
+
+	<Panel hittest="false" class="LiATimer">
+		<Panel id="TimerContainer" >
+			<Label id="timerText" text="ДО СЛЕДУЮЩЕЙ ВОЛНЫ   " />
+			<Label id="timer" text="00:30" />
+			<ProgressBar id="TimerProgress" value="0.5"/>
+			<Label id="waveName" text="КОБОЛЬДЫ" />
+		</Panel>
+	</Panel>
+</root>
