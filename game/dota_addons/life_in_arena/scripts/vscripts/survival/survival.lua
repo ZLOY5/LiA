@@ -141,7 +141,7 @@ function ThinkGoldGuard()
     for i = 0, DOTA_MAX_PLAYERS-1 do
         if PlayerResource:IsValidTeamPlayerID(i) then 
             if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION or GameRules:State_Get() == DOTA_GAMERULES_STATE_STRATEGY_TIME then
-                print(PlayerResource:GetGoldSpentOnItems(i)+PlayerResource:GetGoldSpentOnConsumables(i))
+                --print(PlayerResource:GetGoldSpentOnItems(i)+PlayerResource:GetGoldSpentOnConsumables(i))
                 if PlayerResource:HasRandomed(i) then
                     PlayerResource:SetGold(i, 180 - PlayerResource:GetGoldSpentOnItems(i) - PlayerResource:GetGoldSpentOnConsumables(i) , false)
                 else
