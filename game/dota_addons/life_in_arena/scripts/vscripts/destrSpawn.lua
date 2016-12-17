@@ -1,3 +1,4 @@
+if IsClient() then return end
 require('timers')
 
 function Spawn(entityKeyValues)

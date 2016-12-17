@@ -1,4 +1,5 @@
-﻿require('survival/AIcreeps')
+﻿if IsClient() then return end
+require('survival/AIcreeps')
 
 function Spawn(entityKeyValues)
 	--print("Spawn")
