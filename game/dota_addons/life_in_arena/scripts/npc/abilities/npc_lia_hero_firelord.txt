@@ -89,12 +89,6 @@
 			"ModifierName"	"modifier_flame_strike_thinker1"
 			"Target"		"POINT"
 		}
-
-		"DestroyTrees"
-		{
-			"Target"		"POINT"
-			"Radius"		"%radius"
-		}
 	}
 
 	"Modifiers"
@@ -102,7 +96,7 @@
 		"modifier_flame_strike_thinker1"
 		{
 			"IsHidden"		"1"
-			"Duration"		"%first_strike_duration + 0.1"
+			"Duration"		"%first_strike_duration"
 
 			"Aura" 				"modifier_flame_strike_first_burn"
     		"Aura_Radius" 		"%radius"
@@ -171,7 +165,7 @@
 		"modifier_flame_strike_thinker2"
 		{
 			"IsHidden"		"1"
-			"Duration"		"%burn_duration + 0.1"
+			"Duration"		"%burn_duration"
 
 			"Aura" 				"modifier_flame_strike_second_burn"
     		"Aura_Radius" 		"%radius"
@@ -339,11 +333,6 @@
 			"Target"		"POINT"
 		}
 
-		"DestroyTrees"
-		{
-			"Target"		"POINT"
-			"Radius"		"%radius"
-		}
 	}
 
 	"Modifiers"
@@ -351,7 +340,7 @@
 		"modifier_flame_strike_thinker1"
 		{
 			"IsHidden"		"1"
-			"Duration"		"%first_strike_duration + 0.1"
+			"Duration"		"%first_strike_duration"
 
 			"Aura" 				"modifier_flame_strike_first_burn"
     		"Aura_Radius" 		"%radius"
@@ -420,7 +409,7 @@
 		"modifier_flame_strike_thinker2"
 		{
 			"IsHidden"		"1"
-			"Duration"		"%burn_duration + 0.1"
+			"Duration"		"%burn_duration"
 
 			"Aura" 				"modifier_flame_strike_second_burn"
     		"Aura_Radius" 		"%radius"
