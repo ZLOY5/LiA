@@ -43,7 +43,7 @@ function onPlayerReadyToWave(playerID)
 					end)
 				--
 			
-				Survival.flRoundStartTime = GameRules:GetGameTime() + newTimeLeft
+				Survival.flRoundStartTime = GameRules:GetDOTATime(false,false) + newTimeLeft
 				Timers:RemoveTimer("StartRoundTimer")
 
 			    Timers:CreateTimer("StartRoundTimer", 
