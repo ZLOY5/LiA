@@ -1,43 +1,20 @@
 function Survival:OnPlayerPickHero(keys)
-    
-    local player = EntIndexToHScript(keys.player)
-
-    if not player then
-        return
-    end
-
     PrintTable("OnPlayerPickHero",keys)
 
-    local playerID = player:GetPlayerID()
     local hero = EntIndexToHScript(keys.heroindex)
 
+    table.insert(self.tHeroes, hero)
+
+    local playerID = hero:GetPlayerID()
     CustomPlayerResource:InitPlayer(playerID)
     --Upgrades:InitPlayer(playerID)
-    
     PlayerResource:ModifyLumber(playerID,3)
-	hero.percUlu = 0
-	hero.lumberSpent = 0
-
-    
-    
-    table.insert(self.tHeroes, hero)
-    
-    
-    player:SetTeam(DOTA_TEAM_GOODGUYS)
     PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS, 1)
-    --hero:SetTeam(DOTA_TEAM_GOODGUYS)
 
-    --hero:ModifyGold(-70, false, DOTA_ModifyGold_Unspecified)
-
-    --if PlayerResource:HasRepicked(playerID) then
-    --    print("Has repicked")
-    --    hero:ModifyGold(100, false, DOTA_ModifyGold_Unspecified)
-    --end
-
-    --if PlayerResource:HasRandomed(playerID) --[[and not PlayerResource:HasRepicked(playerID)]] then
-    --    print("Random hero")
-    --    hero:ModifyGold(-150, false, DOTA_ModifyGold_Unspecified) -- в доте за рандом дают 200 золота
-    --end 
+    local player = EntIndexToHScript(keys.player) 
+    if player then 
+        player:SetTeam(DOTA_TEAM_GOODGUYS) 
+    end
 end
 
 ---------------------------------------------------------------------------------------------------------------------------

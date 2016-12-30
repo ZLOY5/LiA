@@ -345,7 +345,7 @@ function Survival:PrepareNextRound()
     Survival.State = SURVIVAL_STATE_PRE_ROUND_TIME
 
     StartTimer(self.nPreRoundTime,1,self.nRoundNum)
-    print(GameRules:GetDOTATime(false,false))
+    --print(GameRules:GetDOTATime(false,false))
 
     Timers:CreateTimer("StartRoundTimer",
         {
