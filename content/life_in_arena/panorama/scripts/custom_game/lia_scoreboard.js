@@ -85,4 +85,111 @@ function OnUpdatePlayerData( data )
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("quickstats").style.visibility = "collapse";
+
+
+	//Valve can`t fix, but I can)
+	var iconFixer = function() {
+		$.Schedule(0.1,iconFixer)
+		
+		var inventory = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("inventory_list_container")
+
+		for (var i = 0; i < 6; i++) {
+			var item = inventory.FindChildTraverse("inventory_slot_"+i)
+			FixItemIcon(item)
+		}
+
+		var shopCombines = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("shop").FindChildTraverse("ItemCombines").FindChildTraverse("ItemsContainer")
+		var childrens = shopCombines.Children()
+		for (var item of childrens) 
+			FixItemIcon(item)
+
+		var shopItemBuild = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("shop").FindChildTraverse("Categories")
+		var childrens = shopItemBuild.Children()
+		for (var category of childrens) {
+			var childrensCat = category.FindChildTraverse("ItemList").Children()
+			for (var item of childrensCat) 
+				FixItemIcon(item)
+		}
+
+		//var abilitiesPanel = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("center_with_stats").FindChildTraverse("abilities")
+		//var childrens = abilitiesPanel.Children()
+		//for (var ability of childrens) {
+		//	FixAbilityIcon(ability)
+		//}
+		
+	}
+	iconFixer()
+
+
+
+	var shopMain = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("shop").FindChildTraverse("GridFlyoutMainShopContents")
+
+	var shopMainBasic = shopMain.FindChildTraverse("GridFlyoutBasicItems")
+	var childrens = shopMainBasic.Children()
+	for (var category of childrens) {
+		var childrensCat = category.Children()
+		for (var item of childrensCat) 
+			FixItemIcon(item)		
+	}
+
+	var shopMainUpgrades = shopMain.FindChildTraverse("GridFlyoutUpgradeItems")
+	var childrens = shopMainUpgrades.Children()
+	for (var category of childrens) {
+		var childrensCat = category.Children()
+		for (var item of childrensCat) 
+			FixItemIcon(item)		
+	}
+
 })();
+
+function FixAbilityIcon(abilityPanel)
+{
+	var valveImage = abilityPanel.FindChildTraverse("AbilityImage")
+	//$.Msg(valveImage)
+
+	valveImage.visible = false
+	
+	var image = abilityPanel.FindChildTraverse("FixedIcon")
+	if (image == null) {
+		valveImage.GetParent().BCreateChildren("<Image id='FixedIcon' />")
+		image = abilityPanel.FindChildTraverse("FixedIcon")
+	}
+	image.style.zIndex = "-1"
+	image.style.margin = "7px"
+
+	image.style.saturation = 1
+	if (abilityPanel.BHasClass("no_level")) {
+		//$.Msg(Abilities.GetAbilityName(valveImage.contextEntityIndex))
+		image.style.saturation = 0
+		image.SetHasClass("no_level", true)
+	}
+	
+	var texture =  Abilities.GetAbilityTextureName(valveImage.contextEntityIndex)
+	//$.Msg(texture)
+	
+	image.SetImage("file://{images}/spellicons/"+texture+".png")
+}
+
+function FixItemIcon(abilityPanel)
+{
+	var valveImage = abilityPanel.FindChildTraverse("ItemImage")
+
+
+	valveImage.visible = false
+	
+	var image = abilityPanel.FindChildTraverse("FixedIcon")
+	if (image == null) {
+		image = $.CreatePanel( "Image", valveImage.GetParent(), "FixedIcon" )
+		image.style.zIndex = -1
+	}
+
+	
+	var itemName = valveImage.itemname
+	//$.Msg(itemName)
+	if ( itemName !== undefined)
+		//$.Msg(itemName)
+		itemName = itemName.replace("item_","")
+	//$.Msg(itemName)
+	
+	image.SetImage("file://{images}/items/"+itemName+".png")
+}
