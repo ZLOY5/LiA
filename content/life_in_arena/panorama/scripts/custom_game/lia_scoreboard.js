@@ -191,5 +191,8 @@ function FixItemIcon(abilityPanel)
 		itemName = itemName.replace("item_","")
 	//$.Msg(itemName)
 	
-	image.SetImage("file://{images}/items/"+itemName+".png")
+	if (itemName.search("recipe") != -1)
+		image.SetImage("file://{images}/items/recipe.png")
+	else 
+		image.SetImage("file://{images}/items/"+itemName+".png")
 }
