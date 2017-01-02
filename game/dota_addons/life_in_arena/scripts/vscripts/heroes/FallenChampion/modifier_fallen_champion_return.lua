@@ -25,7 +25,7 @@ end
 
 
 function modifier_fallen_champion_return:OnTakeDamage(params)
-
+	--PrintTable("OnTakeDamage",params)
 	if self:GetParent():PassivesDisabled() then
 		return
 	end
@@ -41,7 +41,7 @@ function modifier_fallen_champion_return:OnTakeDamage(params)
 		local return_damage 
 		if RollPercentage(self:GetAbility():GetSpecialValueFor("full_damage_chance")) then
 			return_damage = params.original_damage
-			SendOverheadEventMessage(nil, OVERHEAD_ALERT_DAMAGE, target, return_damage, nil)
+			SendOverheadEventMessage(nil, OVERHEAD_ALERT_DAMAGE, params.attacker, return_damage, nil)
 		else
 			return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage
 		end

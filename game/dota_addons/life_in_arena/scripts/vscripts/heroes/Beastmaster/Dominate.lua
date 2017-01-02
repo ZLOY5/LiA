@@ -81,7 +81,7 @@ function OnDestroy(keys)
 		else
 			local newcreep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_NEUTRALS)
 			newcreep:SetHealth(preDeathHP)
-			newcreep:SetHealth(preDeathMP)
+			newcreep:SetMana(preDeathMP)
 			newcreep:SetForwardVector(forwardVector)
 			if modifierKill then
 				newcreep:AddNewModifier(newcreep, nil, "modifier_kill", {duration = lifetime})
