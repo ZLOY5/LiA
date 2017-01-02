@@ -4,10 +4,12 @@ var context;
 function CheckHeroName() {
 	var withoutHero = false
 	
-	var heroName = $.Localize("#"+Players.GetPlayerSelectedHero(context.playerID));
-	if (heroName != "") {
+	var hero = Players.GetPlayerSelectedHero(context.playerID)
+	
+	if (hero != "") {
+		var heroName = $.Localize("#"+hero);
 		$.FindChildInContext("#PlayerName").text = $.FindChildInContext("#PlayerName").text+' | '+ heroName;
-		$.FindChildInContext("#HeroImage").heroname = Players.GetPlayerSelectedHero(context.playerID)
+		$.FindChildInContext("#HeroImage").heroname = hero
 	}
 	else 
 		withoutHero = true;
@@ -15,7 +17,7 @@ function CheckHeroName() {
 	if (withoutHero) 
 		$.Schedule(0.5,CheckHeroName);
 
-	$.Msg("CheckHeroNames");
+	//$.Msg("CheckHeroNames");
 }
 
 function ChangeGold(bIncrement)

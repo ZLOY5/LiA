@@ -88,7 +88,14 @@ function OnUpdatePlayerData( data )
 
 
 	//Valve can`t fix, but I can)
-	var iconFixer = function() {
+	$.Schedule(1,ValvePlzFix)
+
+})();
+
+function ValvePlzFix()
+{
+	var iconFixer = function() 
+	{
 		$.Schedule(0.1,iconFixer)
 		
 		var inventory = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("inventory_list_container")
@@ -116,7 +123,6 @@ function OnUpdatePlayerData( data )
 		//for (var ability of childrens) {
 		//	FixAbilityIcon(ability)
 		//}
-		
 	}
 	iconFixer()
 
@@ -139,8 +145,7 @@ function OnUpdatePlayerData( data )
 		for (var item of childrensCat) 
 			FixItemIcon(item)		
 	}
-
-})();
+}
 
 function FixAbilityIcon(abilityPanel)
 {

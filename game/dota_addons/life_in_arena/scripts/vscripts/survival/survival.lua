@@ -249,7 +249,7 @@ function Survival:_GiveRoundBounty()
     goldBounty = goldBounty + 30 --компенсация за отключенные тики золота
 
     -- Золото за быстрое прохождение
-    local roundDuration = GameRules:GetGameTime() - self.flRoundStartTime - 1
+    local roundDuration = GameRules:GetDOTATime(false,false) - self.flRoundStartTime - 1
 
     local roundDurationMessage = roundDuration --для дебага
     
@@ -522,7 +522,7 @@ function Survival:StartRound()
     Timers:CreateTimer(3,function()
             DisableShop()
 
-            self.flRoundStartTime = GameRules:GetGameTime()
+            self.flRoundStartTime = GameRules:GetDOTATime(false,false)
             
             if self.nRoundNum % 5 == 0 then -- мегабоосс
                 CleanUnitsOnMap()

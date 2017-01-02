@@ -2,10 +2,15 @@ function Survival:OnPlayerPickHero(keys)
     PrintTable("OnPlayerPickHero",keys)
 
     local hero = EntIndexToHScript(keys.heroindex)
+    local playerID = hero:GetPlayerID()
+
+    if playerID == -1 then
+        return
+    end
 
     table.insert(self.tHeroes, hero)
 
-    local playerID = hero:GetPlayerID()
+    
     CustomPlayerResource:InitPlayer(playerID)
     --Upgrades:InitPlayer(playerID)
     PlayerResource:ModifyLumber(playerID,3)
@@ -172,9 +177,9 @@ function Survival:OnConnectFull(event)
 end
 
 function Survival:OnDisconnect(event)
-    local player = LiA.vUserIds[event.userid]
-    
-    local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+    local playerID = event.PlayerID
+    --print("Survival Disconnect")
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     if hero then
         Survival:HideHero(hero) --in utils.lua
     end
@@ -183,22 +188,22 @@ end
 ---------------------------------------------------------------------------------------------------------------------------
 
 function Survival:OnPlayerChat(event)
-    --PrintTable("Survival:OnPlayerChat",event)
-    local player = LiA.vUserIds[event.userid]
+    PrintTable("Survival:OnPlayerChat",event)
+    local playerID = event.playerid
 
     if event.text == "+" then
-        onPlayerReadyToWave(player:GetPlayerID()) --LiA_ForceRound.lua
+        onPlayerReadyToWave(playerID) --LiA_ForceRound.lua
     end
     
 	if IsInToolsMode() then
     	
         if event.text == "kill" then
-    		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+    		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             hero:ForceKill(true)
         end
     	
     	if event.text == "res" then
-    		local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+    		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             hero:RespawnHero(false,false,false)
         end
     	
@@ -219,11 +224,11 @@ function Survival:OnPlayerChat(event)
         end
 
         if event.text == "lumber" then
-            PlayerResource:ModifyLumber(player:GetPlayerID(),100)
+            PlayerResource:ModifyLumber(playerID,100)
         end
 
         if event.text == "armor" then
-            local hero = PlayerResource:GetSelectedHeroEntity(player:GetPlayerID())
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             print(hero:GetPhysicalArmorValue())
         end
     

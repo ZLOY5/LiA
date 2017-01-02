@@ -172,8 +172,6 @@ function LiA:OnConnectFull(event)
 	local playerID = event.PlayerID
     local player = PlayerResource:GetPlayer(playerID)
    
-    print("playerID ",playerID)
-
     self.vUserIds[event.userid] = player
     player.userid = event.userid
     
@@ -194,15 +192,13 @@ end
 
 function LiA:OnDisconnect(event)
     PrintTable("OnDisconnect",event)
-    local player = self.vUserIds[event.userid]
 
-    if not player then
-        return 
-    end
     
-    local playerID = player:GetPlayerID()
+    local playerID = event.PlayerID
 
     PlayerResource:SetReadyToRound(playerID,false)
+
+    local player = PlayerResource:GetPlayer(playerID)
     
     for k,v in pairs(self.tPlayers) do 
         if player == v then
