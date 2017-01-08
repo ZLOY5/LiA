@@ -194,7 +194,8 @@ function FixItemIcon(abilityPanel)
 {
 	var valveImage = abilityPanel.FindChildTraverse("ItemImage")
 
-
+	if (valveImage === null) 
+		return 
 	//valveImage.visible = false
 	
 
