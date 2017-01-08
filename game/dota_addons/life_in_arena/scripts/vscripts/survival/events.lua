@@ -97,6 +97,8 @@ end
 
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
+    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    --print(attacker:GetUnitName())
     
     if killed:IsRealHero() then
         Survival:_OnHeroDeath(keys)
@@ -115,7 +117,7 @@ function Survival:OnEntityKilled(keys)
         Survival:EndRound()
     end 
 
-    if not killed:IsOwnedByAnyPlayer() then
+    if not killed:IsOwnedByAnyPlayer() and attacker ~= killed then
         Survival:ExperienceDistribute(killed)
     end
 

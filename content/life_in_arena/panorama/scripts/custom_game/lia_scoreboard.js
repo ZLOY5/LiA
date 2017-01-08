@@ -85,6 +85,12 @@ function OnUpdatePlayerData( data )
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
 	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("quickstats").style.visibility = "collapse";
+	
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("StatBranchChannel").style.visibility = "collapse";
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("StatBranch").ClearPanelEvent("onmouseover")
+	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("StatBranch").ClearPanelEvent("onactivate")
+
 
 
 	//Valve can`t fix, but I can)
@@ -96,12 +102,17 @@ function ValvePlzFix()
 {
 	var iconFixer = function() 
 	{
-		$.Schedule(0.1,iconFixer)
+		$.Schedule(0.2,iconFixer)
 		
 		var inventory = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("inventory_list_container")
-
-		for (var i = 0; i < 6; i++) {
+		for (var i = 0; i <= 5; i++) {
 			var item = inventory.FindChildTraverse("inventory_slot_"+i)
+			FixItemIcon(item)
+		}
+
+		var backpack = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("inventory_backpack_list")
+		for (var i = 6; i <= 8; i++) {
+			var item = backpack.FindChildTraverse("inventory_slot_"+i)
 			FixItemIcon(item)
 		}
 
@@ -123,6 +134,10 @@ function ValvePlzFix()
 		//for (var ability of childrens) {
 		//	FixAbilityIcon(ability)
 		//}
+
+
+		var tooltipManager = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("Tooltips")
+		FixItemIcon(tooltipManager)
 	}
 	iconFixer()
 
@@ -180,15 +195,10 @@ function FixItemIcon(abilityPanel)
 	var valveImage = abilityPanel.FindChildTraverse("ItemImage")
 
 
-	valveImage.visible = false
+	//valveImage.visible = false
 	
-	var image = abilityPanel.FindChildTraverse("FixedIcon")
-	if (image == null) {
-		image = $.CreatePanel( "Image", valveImage.GetParent(), "FixedIcon" )
-		image.style.zIndex = -1
-	}
 
-	
+
 	var itemName = valveImage.itemname
 	//$.Msg(itemName)
 	if ( itemName !== undefined)
@@ -197,7 +207,7 @@ function FixItemIcon(abilityPanel)
 	//$.Msg(itemName)
 	
 	if (itemName.search("recipe") != -1)
-		image.SetImage("file://{images}/items/recipe.png")
+		valveImage.SetImage("file://{images}/items/recipe.png")
 	else 
-		image.SetImage("file://{images}/items/"+itemName+".png")
+		valveImage.SetImage("file://{images}/items/"+itemName+".png")
 }

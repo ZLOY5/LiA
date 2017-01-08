@@ -21,7 +21,7 @@
 			$("#Description").SetDialogVariable("perLevelBonus",Players.GetUpgradeBonusPerLevel(upgradeName))
 
 			$("#Bonus").text = "#"+upgradeName+"_bonus"
-			$("#Bonus").SetDialogVariableInt("Bonus", Players.GetCurrentUpgradeBonus(upgradeName,playerID));
+			$("#Bonus").SetDialogVariable("Bonus", Players.GetCurrentUpgradeBonus(upgradeName,playerID));
 
 			$("#LumberCost").text = Players.GetUpgradeLumberCost(upgradeName,level)
 			$("#CostContainer").visible = level != Players.GetMaxUpgradeLevel(upgradeName)
