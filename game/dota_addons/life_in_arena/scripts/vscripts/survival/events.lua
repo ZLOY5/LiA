@@ -233,6 +233,14 @@ function Survival:OnPlayerChat(event)
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             print(hero:GetPhysicalArmorValue())
         end
+
+        if event.text == "openshop" then
+            EnableShop()
+        end
+
+        if event.text == "closeshop" then
+            DisableShop()
+        end
     
     end
 	
