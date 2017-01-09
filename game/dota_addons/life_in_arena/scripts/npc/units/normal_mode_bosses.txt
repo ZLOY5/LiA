@@ -700,26 +700,26 @@
 "ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" 
 "ProjectileSpeed"           "1300" 	
 	"precache"
-			{
-				"model"	"models/items/morphling/ancient_armor_arms/ancient_armor_arms.mdl"
-				"model"	"models/items/morphling/ancient_armor_back/ancient_armor_back.mdl"
-				"model"	"models/items/morphling/ancient_armor_breastplates/ancient_armor_breastplates.mdl"
-				"model"	"models/items/morphling/ancient_armor_head/ancient_armor_head.mdl"
-				"model"	"models/items/morphling/ancient_armor_shoulders/ancient_armor_shoulders.mdl"
-	
-			}
+	{
+		"model"	"models/items/morphling/ancient_armor_arms/ancient_armor_arms.mdl"
+		"model"	"models/items/morphling/ancient_armor_back/ancient_armor_back.mdl"
+		"model"	"models/items/morphling/ancient_armor_breastplates/ancient_armor_breastplates.mdl"
+		"model"	"models/items/morphling/ancient_armor_head/ancient_armor_head.mdl"
+		"model"	"models/items/morphling/ancient_armor_shoulders/ancient_armor_shoulders.mdl"
+
+	}
 			
 	"Creature"
-			{
-			"AttachWearables"
-				{
-					"Wearable1"		{	"ItemDef"		"5442"		} 
-					"Wearable2" 	{	"ItemDef"		"5443"		} 
-					"Wearable3"		{	"ItemDef"		"5444"		} 
-					"Wearable4"		{	"ItemDef"		"5445"		} 
-					"Wearable5"		{	"ItemDef"		"5446"		} 
-				}
-				}
+	{
+	"AttachWearables"
+		{
+			"Wearable1"		{	"ItemDef"		"5442"		} 
+			"Wearable2" 	{	"ItemDef"		"5443"		} 
+			"Wearable3"		{	"ItemDef"		"5444"		} 
+			"Wearable4"		{	"ItemDef"		"5445"		} 
+			"Wearable5"		{	"ItemDef"		"5446"		} 
+		}
+	}
 	
 
 
@@ -1328,11 +1328,20 @@
 "Level" "1" 
 "ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
 "ProjectileSpeed" "1900" 
-	"precache"
-		{
-			"model" "models/heroes/viper/viper.vmdl"
-			"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
-		}
+"precache"
+{
+	"model" "models/heroes/viper/viper.vmdl"
+	"model" "models/heroes/viper/viper_back.vmdl"
+	"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
+}
+		
+"Creature"
+{
+	"AttachWearables"
+	{
+		"Wearable1"		{	"ItemDef"		"611"		} 
+	}
+}
 
 
 
