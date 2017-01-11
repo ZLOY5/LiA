@@ -73,23 +73,27 @@ function OnUpdatePlayerData( data )
 	OnUpdatePlayerData()
 	//
 
+	var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent()
+
 	var func  = function() {
 		$.Schedule(0.03,func)
-		var scoreboard = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("scoreboard")
+		var scoreboard = dotaHud.FindChildTraverse("scoreboard")
 		$.DispatchEvent("DOTACustomUI_SetFlyoutScoreboardVisible", !scoreboard.BHasClass("ScoreboardClosed"))
 	}
 	func()
 
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("courier").style.visibility = "collapse";
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("CommonItems").style.visibility = "collapse";
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("quickstats").style.visibility = "collapse";
+
+
+	dotaHud.FindChildTraverse("courier").style.visibility = "collapse";
+	dotaHud.FindChildTraverse("CommonItems").style.visibility = "collapse";
+	dotaHud.FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
+	dotaHud.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
+	dotaHud.FindChildTraverse("quickstats").style.visibility = "collapse";
 	
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("StatBranchChannel").style.visibility = "collapse";
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("level_stats_frame").style.visibility = "collapse";
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("StatBranch").ClearPanelEvent("onmouseover")
-	$.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("StatBranch").ClearPanelEvent("onactivate")
+	dotaHud.FindChildTraverse("StatBranchChannel").style.visibility = "collapse";
+	dotaHud.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+	dotaHud.FindChildTraverse("StatBranch").ClearPanelEvent("onmouseover")
+	dotaHud.FindChildTraverse("StatBranch").ClearPanelEvent("onactivate")
 
 
 
@@ -103,25 +107,27 @@ function ValvePlzFix()
 	var iconFixer = function() 
 	{
 		$.Schedule(0.2,iconFixer)
+
+		var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent()
 		
-		var inventory = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("inventory_list_container")
+		var inventory = dotaHud.FindChildTraverse("inventory_list_container")
 		for (var i = 0; i <= 5; i++) {
 			var item = inventory.FindChildTraverse("inventory_slot_"+i)
 			FixItemIcon(item)
 		}
 
-		var backpack = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("inventory_backpack_list")
+		var backpack = dotaHud.FindChildTraverse("inventory_backpack_list")
 		for (var i = 6; i <= 8; i++) {
 			var item = backpack.FindChildTraverse("inventory_slot_"+i)
 			FixItemIcon(item)
 		}
 
-		var shopCombines = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("shop").FindChildTraverse("ItemCombines").FindChildTraverse("ItemsContainer")
+		var shopCombines = dotaHud.FindChildTraverse("shop").FindChildTraverse("ItemCombines").FindChildTraverse("ItemsContainer")
 		var childrens = shopCombines.Children()
 		for (var item of childrens) 
 			FixItemIcon(item)
 
-		var shopItemBuild = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("shop").FindChildTraverse("Categories")
+		var shopItemBuild = dotaHud.FindChildTraverse("shop").FindChildTraverse("Categories")
 		var childrens = shopItemBuild.Children()
 		for (var category of childrens) {
 			var childrensCat = category.FindChildTraverse("ItemList").Children()
@@ -129,14 +135,19 @@ function ValvePlzFix()
 				FixItemIcon(item)
 		}
 
-		//var abilitiesPanel = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("center_with_stats").FindChildTraverse("abilities")
-		//var childrens = abilitiesPanel.Children()
-		//for (var ability of childrens) {
-		//	FixAbilityIcon(ability)
-		//}
+		var abilitiesPanel = dotaHud.FindChildTraverse("center_with_stats").FindChildTraverse("abilities")
+		var childrens = abilitiesPanel.Children()
+		for (var ability of childrens) {
+			FixAbilityIcon(ability)
+		}
 
 
-		var tooltipManager = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("Tooltips")
+		//var buffs = dotaHud.FindChildTraverse("buffs")
+		//var buff0 = buffs.FindChildTraverse("Buff0")
+		//$.Msg(buff0)
+
+
+		var tooltipManager = dotaHud.FindChildTraverse("Tooltips")
 		FixItemIcon(tooltipManager)
 	}
 	iconFixer()
@@ -165,36 +176,21 @@ function ValvePlzFix()
 function FixAbilityIcon(abilityPanel)
 {
 	var valveImage = abilityPanel.FindChildTraverse("AbilityImage")
-	//$.Msg(valveImage)
 
-	valveImage.visible = false
-	
-	var image = abilityPanel.FindChildTraverse("FixedIcon")
-	if (image == null) {
-		valveImage.GetParent().BCreateChildren("<Image id='FixedIcon' />")
-		image = abilityPanel.FindChildTraverse("FixedIcon")
-	}
-	image.style.zIndex = "-1"
-	image.style.margin = "7px"
+	if (valveImage == null) 
+		return
 
-	image.style.saturation = 1
-	if (abilityPanel.BHasClass("no_level")) {
-		//$.Msg(Abilities.GetAbilityName(valveImage.contextEntityIndex))
-		image.style.saturation = 0
-		image.SetHasClass("no_level", true)
-	}
-	
 	var texture =  Abilities.GetAbilityTextureName(valveImage.contextEntityIndex)
 	//$.Msg(texture)
-	
-	image.SetImage("file://{images}/spellicons/"+texture+".png")
+
+	valveImage.SetImage("file://{images}/spellicons/"+texture+".png")
 }
 
 function FixItemIcon(abilityPanel)
 {
 	var valveImage = abilityPanel.FindChildTraverse("ItemImage")
 
-	if (valveImage === null) 
+	if (valveImage == null) 
 		return 
 	//valveImage.visible = false
 	
