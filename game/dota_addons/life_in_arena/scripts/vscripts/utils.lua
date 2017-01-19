@@ -330,3 +330,16 @@ function CDOTA_BaseNPC:FindModifierByNameAndAbility(modifierName,ability)
 	end
 	return nil
 end
+
+function CDOTA_BaseNPC:HasItemInInventory(itemName,bIncludeBackpack)
+	local bIncludeBackpack = bIncludeBackpack or false
+	local slots = bIncludeBackpack and 8 or 5
+
+	for i = 0, slots do
+		local item = self:GetItemInSlot(i)
+		if item and item:GetAbilityName() == itemName then
+			return true
+		end
+	end
+	return false
+end
