@@ -72,7 +72,7 @@ function LiA:InitGameMode()
     self.nPlayers = 0
     
     GameRules:SetSafeToLeave(true)
-	GameRules:SetHeroSelectionTime(30)
+	GameRules:SetHeroSelectionTime(999)
 
 	GameRules:SetPreGameTime(0)
     GameRules:SetPostGameTime(120)
@@ -233,7 +233,7 @@ function LiA:OnPlayerLevelUp(event)
     end
     --print(hero:GetUnitName(), "Lvl Up")
 
-    if not hero.abilityPointsUsed then
+    --[[if not hero.abilityPointsUsed then
     	hero.abilityPointsUsed = 0 
     end
     
@@ -243,7 +243,7 @@ function LiA:OnPlayerLevelUp(event)
 
     if hero.abilityPointsUsed >= 22 then 
     	hero:SetAbilityPoints(0)
-    end
+    end]]
 end
 
 function LiA:OnPlayerLearnedAbility(event)
@@ -255,11 +255,11 @@ function LiA:OnPlayerLearnedAbility(event)
     	return
     end
     
-    if not hero.abilityPointsUsed then
+    --[[if not hero.abilityPointsUsed then
     	hero.abilityPointsUsed = 0 
     end
 
-    hero.abilityPointsUsed = hero.abilityPointsUsed + 1 
+    hero.abilityPointsUsed = hero.abilityPointsUsed + 1 ]]
 end
 
 function LiA:TradeRequest(event)
