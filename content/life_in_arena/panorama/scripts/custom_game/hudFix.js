@@ -104,7 +104,14 @@ function ValvePlzFix()
 					var childrensCat = category.FindChildTraverse("ItemList").Children()
 					for (var item of childrensCat) 
 						FixItemIcon(item)
+
 				}
+				
+				var popularItems = shopItemBuild.GetChild(4)
+				if (popularItems != null)
+					popularItems.style.visibility = "collapse"
+
+
 			}
 		}
 		else
