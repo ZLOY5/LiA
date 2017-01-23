@@ -27,56 +27,34 @@
 	dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
 
 
-	var abilitiesContainer = dotaHud.FindChildTraverse("abilities")
-	var ultAbi = abilitiesContainer.FindChildTraverse("Ability4")
-	var plusAbi = abilitiesContainer.FindChildTraverse("Ability3")
-	abilitiesContainer.MoveChildBefore(ultAbi,plusAbi)
 
-	/*var statBranch = dotaHud.FindChildTraverse("StatBranch")
-
-	var plusImage = $.CreatePanel("Button", statBranch, "PlusButton")
-	plusImage.style.width = "100%"
-	plusImage.style.height = "100%"
-	plusImage.style.backgroundImage = "url( 'file://{images}/custom_game/plus_button_bg.png')"
-	plusImage.style.backgroundSize = "contain"
-	
-	plusImage.SetPanelEvent("onmouseover",
-		function() 
-		{ 
-			var unit = Players.GetLocalPlayerPortraitUnit()
-			var abilityName = Abilities.GetAbilityName( Entities.GetAbilityByName(unit, "attribute_bonuses") )
-			$.DispatchEvent("DOTAShowAbilityTooltipForEntityIndex", plusImage, abilityName, unit)
-		});
-
-	plusImage.SetPanelEvent("onmouseout",
-		function() 
-		{ 
-			$.DispatchEvent("DOTAHideAbilityTooltip", plusImage)
-		})
-
-	plusImage.SetPanelEvent("onactivate",
-		function()
-		{
-			var unit = Players.GetLocalPlayerPortraitUnit()
-			var ability = Entities.GetAbilityByName(unit, "attribute_bonuses")
-			Abilities.AttemptToUpgrade(ability)
-		})
-
-	var func = function()
-		{
-			$.Schedule(0.1, func)
-			
-			var unit = Players.GetLocalPlayerPortraitUnit()
-			var ability = Entities.GetAbilityByName(unit, "attribute_bonuses")
-			if ( Abilities.CanAbilityBeUpgraded(ability) == AbilityLearnResult_t.ABILITY_CAN_BE_UPGRADED ) 
-				plusImage.style.backgroundImage = "url( 'file://{images}/custom_game/plus_button_lvlup.png')"
+	var onPreGame = function() {
+		if ( Game.GameStateIs(DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS) ) {
+			var abilitiesContainer = dotaHud.FindChildTraverse("abilities")
+			var ultAbi = abilitiesContainer.FindChildTraverse("Ability4")
+			var plusAbi = abilitiesContainer.FindChildTraverse("Ability3")
+			if (ultAbi != null)
+				abilitiesContainer.MoveChildBefore(ultAbi,plusAbi)
 			else
-				plusImage.style.backgroundImage = "url( 'file://{images}/custom_game/plus_button_bg.png')"
+				$.Schedule(1,onPreGame)
+		}
+	}
+
+	GameEvents.Subscribe( "game_rules_state_change", onPreGame );
+
+	var onUpdateHeroSelection = function() {
+		var heroPickAbi = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroAbilities")
+		for (var panel of heroPickAbi.Children()) {
+			if ( panel.BHasClass("StatBranch") )
+				panel.style.visibility = "collapse";
 		}
 
-	func()*/
+		var ultAbi = heroPickAbi.GetChild(4)
+		var plusAbi = heroPickAbi.GetChild(3)
+		heroPickAbi.MoveChildBefore(ultAbi,plusAbi)
+	}
 
-
+	GameEvents.Subscribe( "dota_player_hero_selection_dirty", onUpdateHeroSelection );
 
 	//Valve can`t fix, but I can)
 	$.Schedule(1,ValvePlzFix)
@@ -128,6 +106,10 @@ function ValvePlzFix()
 						FixItemIcon(item)
 				}
 			}
+		}
+		else
+		{
+
 		}
 
 
