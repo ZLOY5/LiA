@@ -339,6 +339,26 @@ function OnEquip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
+		end	
+
+		if name == "npc_dota_hero_shadow_demon" then
+			par = {
+				unit = caster,
+				oldAbi = "demonologist_demonic_seal",
+				newAbi = "demonologist_demonic_seal_staff",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "demonologist_ritual_of_summoning",
+				newAbi = "demonologist_ritual_of_summoning_staff",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = true
 		end				
 					
 		
@@ -692,6 +712,26 @@ function OnUnequip(event)
 				unit = caster,
 				oldAbi = "archmage_anomaly_staff",
 				newAbi = "archmage_anomaly",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			caster.STupgrades = false
+		end	
+
+		if name == "npc_dota_hero_shadow_demon" then
+			par = {
+				unit = caster,
+				oldAbi = "demonologist_demonic_seal_staff",
+				newAbi = "demonologist_demonic_seal",
+				tPassiveModifiers_by_oldAbi = {},
+			}
+			ReplaceAbi(par)
+			--
+			par = {
+				unit = caster,
+				oldAbi = "demonologist_ritual_of_summoning_staff",
+				newAbi = "demonologist_ritual_of_summoning",
 				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)

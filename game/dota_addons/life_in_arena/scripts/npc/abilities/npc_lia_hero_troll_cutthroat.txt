@@ -269,9 +269,14 @@
 
 				"FireEffect"
 				{
-					"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"    "TARGET"
+					"EffectName"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	"start_at_customorigin"
+					
+					"ControlPointEntities"
+					{
+						"TARGET"	"follow_origin"
+						"TARGET"	"follow_origin"
+					}
 				}
 		    }
 		}
