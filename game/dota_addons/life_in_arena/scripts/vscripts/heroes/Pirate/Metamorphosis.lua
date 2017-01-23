@@ -102,3 +102,44 @@ function CauseDamageDecor(event)
 	end
 
 end
+
+function CauseDamage(event)
+	local ability = event.ability
+	local target = event.target
+	local attacker = event.attacker
+	local attack_damage = event.attack_damage
+
+	local halfDamage = attack_damage / 2
+	local quarterDamage = attack_damage / 4
+
+	local damageTable = {attacker = attacker, damage = attack_damage/2, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability}
+
+	local targets = FindUnitsInRadius(attacker:GetTeamNumber(),
+		target:GetAbsOrigin(),
+		nil,
+		250,
+		DOTA_UNIT_TARGET_TEAM_ENEMY,
+		DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_BUILDING,
+		DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+		FIND_ANY_ORDER,
+		false)
+
+	for _,v in pairs(targets) do
+		damageTable.victim = v
+
+		local range = v:GetRangeToUnit(target)
+
+		if range <= 50 then
+			damageTable.damage = attack_damage
+		elseif range <= 150 then
+			damageTable.damage = halfDamage
+		else
+			damageTable.damage = quarterDamage
+		end
+
+		ApplyDamage(damageTable)
+	end
+
+	
+
+end

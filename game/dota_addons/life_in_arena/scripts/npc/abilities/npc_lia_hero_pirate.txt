@@ -412,44 +412,12 @@
 			
 			"OnAttackLanded"
 			{
-				"Damage"
+
+				"RunScript"
 				{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"50"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					"Type" "DAMAGE_TYPE_PHYSICAL"
-					"Damage" "%attack_damage / 2"
-				}
-				"Damage"
-				{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"150"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					"Type" "DAMAGE_TYPE_PHYSICAL"
-					"Damage" "%attack_damage / 4"
-				}
-				"Damage"
-				{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"250"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					"Type" "DAMAGE_TYPE_PHYSICAL"
-					"Damage" "%attack_damage / 4"
+					"ScriptFile"	"heroes/Pirate/Metamorphosis.lua"
+					"Function"		"CauseDamage"
+					"attack_damage" "%attack_damage"
 				}
 				
 				//
