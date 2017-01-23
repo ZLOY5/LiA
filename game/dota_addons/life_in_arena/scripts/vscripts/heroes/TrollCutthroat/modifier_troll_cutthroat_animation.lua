@@ -12,6 +12,10 @@ function modifier_troll_cutthroat_animation:IsPurgable()
 	return false
 end
 
+function modifier_troll_cutthroat_animation:RemoveOnDeath()
+	return false
+end
+
 function modifier_troll_cutthroat_animation:DeclareFunctions()
 	local funcs = {
 					MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS,
