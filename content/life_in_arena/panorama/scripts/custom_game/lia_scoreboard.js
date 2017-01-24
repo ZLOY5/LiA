@@ -65,7 +65,7 @@ function OnUpdatePlayerData( data )
 	
 	//SetFlyoutScoreboardVisible( false );
 
-	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
+	$.RegisterForUnhandledEvent( "DOTACustomUI_SetFlyoutScoreboardVisible",SetFlyoutScoreboardVisible );
 	CustomNetTables.SubscribeNetTableListener("lia_player_table",OnUpdatePlayerData)
 
 	$.Schedule(0.25,ScheduledUpdate)
