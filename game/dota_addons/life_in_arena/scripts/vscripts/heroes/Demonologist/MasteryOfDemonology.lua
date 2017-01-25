@@ -14,14 +14,12 @@ function GiveAbility(event)
 	local target = event.target
 	local ability = event.ability
 
-	if caster:IsHero() then
-		if not target:IsIllusion() then
-			if not target:HasAbility("demonologist_mastery_of_demonology") then	
-				target:AddAbility("demonologist_mastery_of_demonology")
-				local given_ability = target:FindAbilityByName("demonologist_mastery_of_demonology")
-				given_ability:SetLevel(ability:GetLevel())
-			--	ability:ApplyDataDrivenModifier(caster,target,"modifier_mastery_of_demonology_buff",nil)
-			end
+	if not target:IsIllusion() then
+		if not target:HasAbility("demonologist_mastery_of_demonology_creep") then	
+			target:AddAbility("demonologist_mastery_of_demonology_creep")
+			local given_ability = target:FindAbilityByName("demonologist_mastery_of_demonology_creep")
+			given_ability:SetLevel(ability:GetLevel())
+		--	ability:ApplyDataDrivenModifier(caster,target,"modifier_mastery_of_demonology_buff",nil)
 		end
 	end
 	
