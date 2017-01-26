@@ -34,15 +34,16 @@
 			var ultAbi = abilitiesContainer.FindChildTraverse("Ability4")
 			var plusAbi = abilitiesContainer.FindChildTraverse("Ability3")
 			if (ultAbi != null)
-				abilitiesContainer.MoveChildBefore(ultAbi,plusAbi)
+					abilitiesContainer.MoveChildBefore(ultAbi,plusAbi)
 			else
-				$.Schedule(1,onPreGame)
+				$.Schedule(1,onPreGame)	
 		}
 	}
 
 	GameEvents.Subscribe( "game_rules_state_change", onPreGame );
 
-	var onUpdateHeroSelection = function() {
+	var onUpdateHeroSelection = function(data) {
+		//$.Msg(data)
 		var heroPickAbi = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroAbilities")
 		for (var panel of heroPickAbi.Children()) {
 			if ( panel.BHasClass("StatBranch") )
@@ -51,7 +52,8 @@
 
 		var ultAbi = heroPickAbi.GetChild(4)
 		var plusAbi = heroPickAbi.GetChild(3)
-		heroPickAbi.MoveChildBefore(ultAbi,plusAbi)
+		if ( ultAbi.BHasClass("AbilityIsUltimate") )
+			heroPickAbi.MoveChildBefore(ultAbi,plusAbi)
 	}
 
 	GameEvents.Subscribe( "dota_player_hero_selection_dirty", onUpdateHeroSelection );
