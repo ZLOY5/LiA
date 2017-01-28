@@ -29,14 +29,16 @@ function GiveAbility(event)
 	local target = event.target
 	local ability = event.ability
 
-	if not target:IsIllusion() then
-		if not target:HasAbility("demonologist_mastery_of_demonology_creep") then	
-			target:AddAbility("demonologist_mastery_of_demonology_creep")
-			local given_ability = target:FindAbilityByName("demonologist_mastery_of_demonology_creep")
-			given_ability:SetLevel(ability:GetLevel())
-			target:SetBaseMaxHealth(target:GetMaxHealth() + ability:GetSpecialValueFor("bonus_health"))
-			target:SetHealth(target:GetHealth() + ability:GetSpecialValueFor("bonus_health"))
-		--	ability:ApplyDataDrivenModifier(caster,target,"modifier_mastery_of_demonology_buff",nil)
+	if target:GetOwner() == caster then
+		if not target:IsIllusion() then
+			if not target:HasAbility("demonologist_mastery_of_demonology_creep") then	
+				target:AddAbility("demonologist_mastery_of_demonology_creep")
+				local given_ability = target:FindAbilityByName("demonologist_mastery_of_demonology_creep")
+				given_ability:SetLevel(ability:GetLevel())
+				target:SetBaseMaxHealth(target:GetMaxHealth() + ability:GetSpecialValueFor("bonus_health"))
+				target:SetHealth(target:GetHealth() + ability:GetSpecialValueFor("bonus_health"))
+			--	ability:ApplyDataDrivenModifier(caster,target,"modifier_mastery_of_demonology_buff",nil)
+			end
 		end
 	end
 	

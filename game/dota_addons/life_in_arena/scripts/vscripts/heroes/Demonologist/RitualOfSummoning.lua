@@ -15,10 +15,14 @@ function OnSpellStart(event)
 	caster.demonologistUltimateCreepCount = math.floor(default_creeps + additional_creeps)
 	caster.demonologistUltimateBossCount = boss_count
 
-	if Survival.nRoundNum % 5 == 0 or Survival.IsDuelOccured then
+	if Survival.nRoundNum % 5 == 0 then
 		caster.demonologistUltimateCreepCount = math.floor(caster.demonologistUltimateCreepCount/2)
-		caster.demonologistUltimateBossCount = math.ceil(caster.demonologistUltimateBossCount/2)
 	end
+	if Survival.IsDuelOccured then
+		caster.demonologistUltimateCreepCount = math.floor(caster.demonologistUltimateCreepCount/2)
+		caster.demonologistUltimateBossCount = 0
+	end
+
 end
 
 function SpawnUnits(event)
