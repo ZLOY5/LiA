@@ -7371,7 +7371,8 @@
 	"item_lia_blade_of_rage_agi"
 	{
 		"ID"							"1329"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_blade_of_rage_agi.lua"
 		"ItemCost"						"1065"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -7388,57 +7389,7 @@
 			"particle"  "particles/units/heroes/hero_morphling/morphling_morph_agi.vpcf"
 		}
 	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"		"CASTER"
-				"ModifierName"	"modifier_item_blade_of_rage_agi"	
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_lia_blade_of_rage_agi"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "AllowIllusionDuplicate"    "1"
-			    "Properties"
-			    {
-			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		    "%bonus_agility"
-			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
-			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
-			    }  
-			}
-			"modifier_item_blade_of_rage_agi"
-			{
-				"Duration"		"%duration"
-				"Attributes" 	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"IsBuff"		"1"
 	
-				"EffectName"	"particles/units/heroes/hero_morphling/morphling_morph_agi.vpcf"
-				"EffectAttachType"	"follow_origin"
-	
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items\BladeOfRageAgi.lua"
-						"Function"		"OnCreatedModifier"
-						"agi_percent"	"%agi_percent"
-					}
-				}  
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items\BladeOfRageAgi.lua"
-						"Function"		"OnDestroyModifier"
-					}
-				}  
-			}
-		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -7502,7 +7453,8 @@
 	"item_lia_blade_of_rage_int"
 	{
 		"ID"							"1531"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_blade_of_rage_int.lua"
 		"ItemCost"						"1065"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -7519,57 +7471,7 @@
 			"particle"  "particles/morphling_morph_int.vpcf"
 		}
 	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"		"CASTER"
-				"ModifierName"	"modifier_item_blade_of_rage_int"	
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_lia_blade_of_rage_int"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "AllowIllusionDuplicate"    "1"
-			    "Properties"
-			    {
-			    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		    "%bonus_intellect"
-			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
-			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
-			    }  
-			}
-			"modifier_item_blade_of_rage_int"
-			{
-				"Duration"		"%duration"
-				"Attributes" 	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"IsBuff"		"1"
 	
-				"EffectName"	"particles/morphling_morph_int.vpcf"
-				"EffectAttachType"	"follow_origin"
-				
-				"OnCreated"
-				{	
-					"RunScript"
-					{
-						"ScriptFile"	"items\BladeOfRageInt.lua"
-						"Function"		"OnCreatedModifier"
-						"int_percent"	"%int_percent"
-					}
-				}  
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items\BladeOfRageInt.lua"
-						"Function"		"OnDestroyModifier"
-					}
-				}  
-			}
-		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -7633,7 +7535,8 @@
 	"item_lia_blade_of_rage_str"
 	{
 		"ID"							"1331"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_blade_of_rage_str.lua"
 		"ItemCost"						"1065"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -7650,57 +7553,9 @@
 			"particle"  "particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
 		}
 	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target"		"CASTER"
-				"ModifierName"	"modifier_item_blade_of_rage_str"	
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_lia_blade_of_rage_str"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "AllowIllusionDuplicate"    "1"
-			    "Properties"
-			    {
-			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		    "%bonus_strength"
-			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
-			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
-			    }  
-			}
-			"modifier_item_blade_of_rage_str"
-			{
-				"Duration"		"%duration"
-				"Attributes" 	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"IsBuff"		"1"
 	
-				"EffectName"	"particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
-				"EffectAttachType"	"follow_origin"
-				
-				"OnCreated"
-				{	
-					"RunScript"
-					{
-						"ScriptFile"	"items\BladeOfRageStr.lua"
-						"Function"		"OnCreatedModifier"
-						"str_percent"	"%str_percent"
-					}
-				}  
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items\BladeOfRageStr.lua"
-						"Function"		"OnDestroyModifier"
-					}
-				}  
-			}
-		}
+	
+	
 		"AbilitySpecial"
 		{
 			"01"
