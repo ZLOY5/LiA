@@ -25,6 +25,7 @@
     {
         "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
         "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+        "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
     }
   
     "AbilitySpecial"
@@ -58,12 +59,18 @@
   
     "OnSpellStart"
     {
-
         "FireSound"
         {
             "EffectName"    "Hero_ShadowDemon.Soul_Catcher.Cast"
             "Target"         "CASTER"
         }  
+
+        "CreateThinker"
+        {
+          "ModifierName"  "modifier_demonologist_demonic_seal_particle_thinker"
+          "Target"    "POINT"
+        }
+        
 
         "RunScript"
         {
@@ -99,6 +106,32 @@
                   "Target"      "TARGET"
               }  
             }
+        }
+        "modifier_demonologist_demonic_seal_particle_thinker"
+        {
+          "IsHidden"        "1"
+          "Duration"        "2"
+
+          "OnCreated"
+          {
+            "FireEffect"
+            {
+              "EffectName"        "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
+              "EffectAttachType"  "follow_origin"
+              "Target"       "TARGET"
+               "ControlPointEntities"
+                {
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                }
+            }
+          }
         }
     }
 }
@@ -170,6 +203,12 @@
             "Target"         "CASTER"
         }  
 
+        "CreateThinker"
+        {
+          "ModifierName"  "modifier_demonologist_demonic_seal_particle_thinker"
+          "Target"    "POINT"
+        }
+
         "RunScript"
         {
             "ScriptFile"  "heroes/Demonologist/DemonicSeal.lua" 
@@ -204,6 +243,32 @@
                   "Target"      "TARGET"
               }  
             }
+        }
+        "modifier_demonologist_demonic_seal_particle_thinker"
+        {
+          "IsHidden"        "1"
+          "Duration"        "2"
+
+          "OnCreated"
+          {
+            "FireEffect"
+            {
+              "EffectName"        "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
+              "EffectAttachType"  "follow_origin"
+              "Target"       "TARGET"
+               "ControlPointEntities"
+                {
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                    "TARGET" "attach_origin"
+                }
+            }
+          }
         }
     }
 }
@@ -320,6 +385,7 @@
   //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityTextureName"      "shadow_demon_demonic_purge"
+  "CastFilterRejectCaster"    "1"
 
   
   "MaxLevel"               "3"
@@ -337,7 +403,7 @@
   "precache"
   {
     "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+    "particle"  "particles/custom/demonologist/shadow_demon_demonic_purge_finale.vpcf"
     //"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
     "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
 
@@ -376,6 +442,7 @@
     "modifier_mastery_of_demonology_aura_emitter"
     {
       "Passive" "1"
+      "IsPurgable"  "0"
       "IsHidden"      "1"
       "Aura"            "modifier_mastery_of_demonology"
       "Aura_Radius"     "4000"
@@ -412,6 +479,7 @@
   //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityTextureName"      "shadow_demon_demonic_purge"
+  "CastFilterRejectCaster"    "1"
 
   
   "MaxLevel"               "3"
@@ -426,14 +494,6 @@
 
   "AbilityManaCost"       "0" 
 
-  "precache"
-  {
-    "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-    //"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-
-  }
   
   "AbilitySpecial"
   {
@@ -470,21 +530,10 @@
       "IsPurgable"  "0"
       "IsHidden"      "0"
       "Passive" "1"
-      "IsBuff"  "1"
-
-      "OnCreated"
-      {
-        "RunScript"
-        {
-          "ScriptFile"  "heroes/Demonologist/MasteryOfDemonology.lua"
-          "Function"    "GiveAbility"
-        }
-      }
 
       "Properties"
       {
         "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
-        "MODIFIER_PROPERTY_HEALTH_BONUS"  "%bonus_health"
       }
     }
 
@@ -514,13 +563,9 @@
 
     "precache"
     {
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
 
-        "particle"  "particles/units/heroes/heroes_underlord/abbysal_underlord_darkrift_ambient.vpcf"
-        
-        //Goblin Ability
-        "particle"  "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+        "particle"  "particles/custom/demonologist/lia_demonog_render.vpcf"
+        "particle"  "particles/custom/demonologist/lia_demonologist_ritual_of_summoning.vpcf"
     }
     
     "AbilitySpecial"
@@ -561,8 +606,8 @@
     {
       "FireSound"
       {
-          "EffectName"    "Hero_Lycan.SummonWolves"
-          "Target"        "CASTER"
+          "EffectName"    "Hero_ShadowDemon.Disruption"
+          "Target"        "POINT"
       }
       "CreateThinker"
       {
@@ -585,16 +630,20 @@
       {
         "AttachEffect"
         {
-          "EffectName"    "particles/units/heroes/heroes_underlord/abbysal_underlord_darkrift_ambient.vpcf"
-          "EffectAttachType"  "start_at_customorigin"
-          "Target"      "TARGET"
-//          "ControlPoints"
-  //        {
-    //        "00" "0 0 0"
-      //      "01" "%radius 1 1"
-        //    "15" "25 150 25"
-          //  "16" "1 0 0"
-          //}
+          "EffectName"    "particles/custom/demonologist/lia_demonog_render.vpcf"
+          "EffectAttachType"  "follow_origin"
+          "Target" "TARGET"
+             "ControlPointEntities"
+            {
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+            }
         }
       }
 
@@ -605,6 +654,139 @@
           "ScriptFile"  "heroes/Demonologist/RitualOfSummoning.lua"
           "Function"    "SpawnUnits"
           "Target"      "TARGET"
+        }
+        "FireSound"
+        {
+            "EffectName"    "Hero_ShadowDemon.Disruption.End"
+            "Target"        "POINT"
+        }
+      }
+    }
+
+  }
+}
+
+"demonologist_ritual_of_summoning_staff"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityTextureName"            "demonologist_ritual_of_summoning"
+
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
+
+    "AbilityCastRange"              "700"
+    "AbilityCastPoint"              "0.3"
+    "AbilityCooldown"               "130 110 90"
+
+    "AbilityManaCost"               "250 300 350"
+    "AoERadius"                     "245"
+
+    "precache"
+    {
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+
+        "particle"  "particles/custom/demonologist/lia_demonog_render.vpcf"
+        
+        //Goblin Ability
+        "particle"  "particles/custom/demonologist/lia_demonologist_ritual_of_summoning.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "unit_count"  "4 6 8"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "boss_count"  "1 1 2"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "intelligence_for_unit"  "40"
+        }
+        "04"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "delay"  "1.5"
+        }
+        "05"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "lifetime"  "35"
+        }
+        "06"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "spawn_radius"  "245"
+        }
+    }
+
+    "OnSpellStart"
+    {
+      "FireSound"
+      {
+          "EffectName"    "Hero_AbyssalUnderlord.DarkRift.Cast"
+          "Target"        "POINT"
+      }
+      "CreateThinker"
+      {
+        "ModifierName"  "modifier_demonologist_ritual_of_summoning_thinker"
+        "Target"    "POINT"
+      }
+      "RunScript"
+      {
+        "ScriptFile"  "heroes/Demonologist/RitualOfSummoning.lua"
+        "Function"    "OnSpellStart"
+      }
+    }
+    "Modifiers"
+  {
+    "modifier_demonologist_ritual_of_summoning_thinker"
+    {
+      "Duration"        "%delay"
+
+      "OnCreated"
+      {
+        "AttachEffect"
+        {
+          "EffectName"    "particles/custom/demonologist/lia_demonog_render.vpcf"
+          "EffectAttachType"  "follow_origin"
+          "Target" "TARGET"
+             "ControlPointEntities"
+            {
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+                "TARGET" "attach_origin"
+            }
+        }
+      }
+
+      "OnDestroy"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "heroes/Demonologist/RitualOfSummoning.lua"
+          "Function"    "SpawnUnits"
+          "Target"      "TARGET"
+        }
+        "FireSound"
+        {
+            "EffectName"    "Hero_ShadowDemon.Disruption.End"
+            "Target"        "POINT"
         }
       }
     }

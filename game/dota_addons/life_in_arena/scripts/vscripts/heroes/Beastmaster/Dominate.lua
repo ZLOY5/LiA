@@ -41,6 +41,10 @@ function Dominate(keys)
 			bmcreep.previousOwnerID = owner_id
 			bmcreep.dominateStartTime = GameRules:GetGameTime()
 			bmcreep.beastmasterDominated = true
+			if v.demonologistRitualCreep == true then
+				bmcreep.demonologistRitualCreepDominated = true
+				bmcreep:AddNewModifier(bmcreep, nil, "modifier_demonologist_riual_of_summoning_status_effect", nil)
+			end
 			
 			ResolveNPCPositions(bmcreep:GetAbsOrigin(),65)
 		else 
@@ -76,6 +80,10 @@ function OnDestroy(keys)
 			newcreep:SetForwardVector(forwardVector)
 			if modifierKill then
 				newcreep:AddNewModifier(newcreep, nil, "modifier_kill", {duration = lifetime})
+			end
+			if target.demonologistRitualCreepDominated == true then
+				newcreep.demonologistRitualCreep = true
+				newcreep:AddNewModifier(newcreep, nil, "modifier_demonologist_riual_of_summoning_status_effect", nil)
 			end
 			ResolveNPCPositions(newcreep:GetAbsOrigin(),65)
 		else

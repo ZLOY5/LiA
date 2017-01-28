@@ -11,14 +11,22 @@ function OnSpellStart(event)
 	local ability = event.ability
 	local default_creeps = ability:GetSpecialValueFor("unit_count")
 	local additional_creeps = caster:GetIntellect() / ability:GetSpecialValueFor("intelligence_for_unit")
+	local boss_count = ability:GetSpecialValueFor("boss_count")
 	caster.demonologistUltimateCreepCount = math.floor(default_creeps + additional_creeps)
+	caster.demonologistUltimateBossCount = boss_count
+
+	if Survival.nRoundNum % 5 == 0 or Survival.IsDuelOccured then
+		caster.demonologistUltimateCreepCount = math.floor(caster.demonologistUltimateCreepCount/2)
+		caster.demonologistUltimateBossCount = math.ceil(caster.demonologistUltimateBossCount/2)
+	end
 end
 
 function SpawnUnits(event)
 	local caster = event.caster
 	local target = event.target
 	local ability = event.ability
-	local boss_count = ability:GetSpecialValueFor("boss_count")
+	local lifetime = ability:GetSpecialValueFor("lifetime")
+	
 
 	local creep_name
 	local boss_name
@@ -39,9 +47,11 @@ function SpawnUnits(event)
 	local point = target:GetAbsOrigin()
     local points = caster.demonologistUltimateCreepCount
 
-    if boss_count > 0 then
-	    for i=1,boss_count do
+    if caster.demonologistUltimateBossCount > 0 then
+	    for i=1,caster.demonologistUltimateBossCount do
 	        local demonologistBoss = CreateUnitByName(boss_name, point, true, caster, caster, caster:GetTeam())
+	        demonologistBoss:AddNewModifier(demonologistBoss, nil, "modifier_kill", {duration = lifetime})
+	        demonologistBoss:AddNewModifier(demonologistBoss, nil, "modifier_demonologist_riual_of_summoning_status_effect", nil)
 	        demonologistBoss.demonologistRitualCreep = true
 			demonologistBoss:SetControllableByPlayer(caster:GetPlayerID(), true)
 			ResolveNPCPositions(demonologistBoss:GetAbsOrigin(),100)
@@ -51,6 +61,8 @@ function SpawnUnits(event)
     for i=1,points do
         local position = GetPositionOnCircle(point,Vector(1,0,0),radius,i,points)
         local demonologistCreep = CreateUnitByName(creep_name, position, true, caster, caster, caster:GetTeam())
+        demonologistCreep:AddNewModifier(demonologistCreep, nil, "modifier_kill", {duration = lifetime})
+        demonologistCreep:AddNewModifier(demonologistCreep, nil, "modifier_demonologist_riual_of_summoning_status_effect", nil)
         demonologistCreep.demonologistRitualCreep = true
 		demonologistCreep:SetControllableByPlayer(caster:GetPlayerID(), true)
 		ResolveNPCPositions(demonologistCreep:GetAbsOrigin(),100)
