@@ -2,9 +2,14 @@
 {       
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-        "BaseClass"						"item_datadriven"
 	"ID"							"1132"
-        "AbilityBehavior"                                       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+
+    "BaseClass"						"item_lua"
+    "ScriptFile"					"items\item_lia_health_elixir.lua"
+	
+
+    
+    "AbilityBehavior"                                       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
@@ -33,18 +38,6 @@
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			        "2"
 
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"		"items.lua"
-			"Function"			"Heal"
-			"Target"			"UNIT"
-			"heal_amount"		"%heal_amount"
-		}
-                
-	}
 
 	// Special	
 	//-------------------------------------------------------------------------------------------------------------

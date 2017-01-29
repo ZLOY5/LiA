@@ -2,6 +2,9 @@
 {
 	"ID"							"1133"
 
+	"BaseClass"						"item_lua"
+	"ScriptFile"					"items\item_lia_mana_elixir.lua"
+
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -10,7 +13,7 @@
 	"AbilitySharedCooldown" "ReplenishMana"
 
 	
-	"BaseClass"						"item_datadriven"
+	
 	"AbilityTextureName"			"item_lia_mana_elixir"
 	"ItemKillable"                  "0"
 	"ItemSellable"                  "1"
@@ -32,19 +35,6 @@
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"2"
 
-	"OnSpellStart"
-	{
-
-		"RunScript"
-		{
-			"ScriptFile"		"items.lua"
-			"Function"			"ReplenishMana"
-			"Target"			"UNIT"
-			"mana_amount"		"%mana_amount"
-		}
-
-	
-	}
 
 	// Special	
 	//-------------------------------------------------------------------------------------------------------------

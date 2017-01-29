@@ -2,6 +2,8 @@
 {
 	"ID"							"1130"
 
+	"BaseClass"						"item_lua"
+	"ScriptFile"					"items\item_lia_health_stone_potion.lua"
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
@@ -11,7 +13,7 @@
 
 //	"Model"							"models/props_gameplay/halloween_candy.vmdl"
 
-	"BaseClass"						"item_datadriven"
+	
 	"AbilityTextureName"			"lia_health_stone_potion"
 
 	// Stats
@@ -32,30 +34,7 @@
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"2"
 
-	"Modifiers"
-	{
-		"modifier_item_lia_health_stone_potion"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	    "5"
-			}	
-		}
-	}
 
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"		"items.lua"
-			"Function"			"Heal"
-			"Target"			"UNIT"
-			"heal_amount"		"%heal_amount"
-		}
-	
-	}
 
 // Special	
 	//-------------------------------------------------------------------------------------------------------------
