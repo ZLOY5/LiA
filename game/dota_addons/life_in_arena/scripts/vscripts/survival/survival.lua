@@ -139,9 +139,12 @@ end
 
 function ThinkGoldGuard()
     for i = 0, DOTA_MAX_PLAYERS-1 do
-        if PlayerResource:IsValidTeamPlayerID(i) and PlayerResource:HasRandomed(i) and not PlayerResource.RandomGoldReduced[i] then
-            print("Random hero",PlayerResource:GetPlayerName(i))
-            PlayerResource:ModifyGold(i, -150, false, DOTA_ModifyGold_Unspecified)   
+        if PlayerResource:IsValidTeamPlayerID(i) and PlayerResource:GetSelectedHeroName(i) ~= "" and not PlayerResource.RandomGoldReduced[i] then
+            if PlayerResource:HasRandomed(i) then
+                PlayerResource:SetGold(i, 180, false)
+            else
+                PlayerResource:SetGold(i, 130, false)
+            end
             PlayerResource.RandomGoldReduced[i] = true
         end
     end
@@ -167,7 +170,7 @@ function Survival:OrderFilter(filterTable)
 end
 
 function Survival:GoldFilter(filterTable)
-    --PrintTable("GoldFilter",filterTable)
+    PrintTable("GoldFilter",filterTable)
     if filterTable.reason_const == DOTA_ModifyGold_HeroKill or filterTable.reason_const == DOTA_ModifyGold_SharedGold or filterTable.reason_const == DOTA_ModifyGold_SelectionPenalty then 
         return false 
     end

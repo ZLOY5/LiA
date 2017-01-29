@@ -13,6 +13,8 @@
 	}
 	func()
 
+	dotaHud.FindChildTraverse("GameInfoButton").style.visibility = "collapse";
+
 	dotaHud.FindChildTraverse("courier").style.visibility = "collapse";
 	dotaHud.FindChildTraverse("CommonItems").style.visibility = "collapse";
 	dotaHud.FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
@@ -28,19 +30,19 @@
 
 
 
-	var onPreGame = function() {
-		if ( Game.GameStateIs(DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS) ) {
-			var abilitiesContainer = dotaHud.FindChildTraverse("abilities")
-			var ultAbi = abilitiesContainer.FindChildTraverse("Ability4")
-			var plusAbi = abilitiesContainer.FindChildTraverse("Ability3")
-			if (ultAbi != null)
-					abilitiesContainer.MoveChildBefore(ultAbi,plusAbi)
-			else
-				$.Schedule(1,onPreGame)	
-		}
+	var swapUltimate = function() {
+		var abilitiesContainer = dotaHud.FindChildTraverse("abilities")
+		var ultAbi = abilitiesContainer.FindChildTraverse("Ability4")
+		var plusAbi = abilitiesContainer.FindChildTraverse("Ability3")
+		if (ultAbi != null)
+				abilitiesContainer.MoveChildBefore(ultAbi,plusAbi)
+		else
+			$.Schedule(1,swapUltimate)	
 	}
 
-	GameEvents.Subscribe( "game_rules_state_change", onPreGame );
+	swapUltimate()
+
+	
 
 	var onUpdateHeroSelection = function(data) {
 		//$.Msg(data)
