@@ -72,7 +72,7 @@ function LiA:InitGameMode()
     self.nPlayers = 0
     
     GameRules:SetSafeToLeave(true)
-	GameRules:SetHeroSelectionTime(30)
+	GameRules:SetHeroSelectionTime(999)
 
 	GameRules:SetPreGameTime(0)
     GameRules:SetShowcaseTime(0)

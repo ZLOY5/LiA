@@ -28,7 +28,7 @@
 	dotaHud.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
 	dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
 
-
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeaderCenter").style.marginLeft = "1150px"
 
 	var swapUltimate = function() {
 		var abilitiesContainer = dotaHud.FindChildTraverse("abilities")
@@ -185,7 +185,7 @@ function FixItemIcon(abilityPanel)
 		itemName = itemName.replace("item_","")
 	//$.Msg(itemName)
 	
-	if (itemName.search("recipe") != -1)
+	if ( (itemName != undefined) && (itemName.search("recipe") != -1) )
 		valveImage.SetImage("file://{images}/items/recipe.png")
 	else 
 		valveImage.SetImage("file://{images}/items/"+itemName+".png")
