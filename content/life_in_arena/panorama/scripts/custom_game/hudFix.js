@@ -29,6 +29,7 @@
 	dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
 
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeaderCenter").style.marginLeft = "1150px"
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("TeamPurchasesStrategyControl").style.visibility = "collapse";
 
 	var swapUltimate = function() {
 		var abilitiesContainer = dotaHud.FindChildTraverse("abilities")
