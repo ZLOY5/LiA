@@ -10,11 +10,12 @@
     horizontal-align: center;
     opacity: 0.;
     margin-top: 120px;
-    transition-property: transform, opacity;
+    transition-property: opacity;
     transition-duration: 0.2s;
-    transform: translatey(-180px);
-    //visibility:  collapse;
-    //border: 1px solid blue;
+
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
 }
 
 #LiaKillBoss1
@@ -23,11 +24,12 @@
     horizontal-align: center;
     opacity: 0.;
     margin-top: 75px;
-    transition-property: transform, opacity;
+    transition-property: opacity;
     transition-duration: 0.2s;
-    transform: translatey(-120px);
-    //visibility:  collapse;
-    //border: 1px solid blue;
+
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
 }
 
 #LiaKillBoss_Text
@@ -36,7 +38,7 @@
     horizontal-align: center;
 	vertical-align: center;
     text-shadow: 1px 1px 1px 2.  #121212;
-    font-size: 23px;
+    font-size: 26px;
     font-weight: bold;
 	margin-left: 10px;
 }
@@ -60,13 +62,35 @@
 .kill_start1 #LiaKillBoss1
 {
     opacity: 1.;
-    transform: scaleX(1) scaleY(1);
+    //transform: scaleX(1) scaleY(1);
     //visibility: visible;
+    animation-name: BossReveal;
 }
 
 .kill_start2 #LiaKillBoss2
 {
     opacity: 1.;
-    transform: scaleX(1) scaleY(1);
+    //transform: scaleX(1) scaleY(1);
     //visibility: visible;
+    animation-name: BossReveal;
+}
+
+@keyframes 'BossReveal'
+{
+    0%
+    {
+        opacity: 0;
+        pre-transform-scale2d: 1.0;
+    }
+
+    50%
+    {
+        pre-transform-scale2d: 1.6;
+    }
+
+    100%
+    {
+        pre-transform-scale2d: 1.0;
+        opacity: 1;
+    }
 }

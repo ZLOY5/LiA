@@ -260,7 +260,7 @@ function decimalToHexString(number)
     return number.toString(16).toUpperCase();
 }
 
-
+/*
 CreateToast({
 	eventType: 1,
 	killerPlayer: Game.GetLocalPlayerID(),
@@ -325,3 +325,4 @@ CreateToast({
 	to: 1,
 	lumber: 13
 })
+*/
