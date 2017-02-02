@@ -11,7 +11,7 @@
 	horizontal-align: right;
 	vertical-align: bottom;
 
-	margin-bottom: 13px;
+	margin-bottom: 12px;
 	margin-right: 6px;
 
 	width: 120px;
@@ -25,10 +25,17 @@
 
 
 	transition-timing-function: ease-in-out;
-	transition-property: background-image;
+	transition-property: background-image, transform;
 	transition-duration: 0.18s;
 
 	flow-children:right;
+}
+
+DOTAHud.IsBeforeGameplay #OpenButton
+{
+	transform: translateY(230px);
+	transition-duration: 1s;
+	transition-delay: 2s;	
 }
 
 #OpenButton:hover
