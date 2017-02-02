@@ -6,12 +6,12 @@
 
 	var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent().GetParent().GetParent()
 
-	var func  = function() {
+	/*var func  = function() {
 		$.Schedule(0.03,func)
 		var scoreboard = dotaHud.FindChildTraverse("scoreboard")
 		$.DispatchEvent("DOTACustomUI_SetFlyoutScoreboardVisible", !scoreboard.BHasClass("ScoreboardClosed"))
 	}
-	func()
+	func()*/
 
 	dotaHud.FindChildTraverse("GameInfoButton").style.visibility = "collapse";
 
@@ -55,7 +55,7 @@
 
 		var ultAbi = heroPickAbi.GetChild(4)
 		var plusAbi = heroPickAbi.GetChild(3)
-		if ( ultAbi.BHasClass("AbilityIsUltimate") )
+		if ( (ultAbi != null) || (ultAbi.BHasClass("AbilityIsUltimate")) )
 			heroPickAbi.MoveChildBefore(ultAbi,plusAbi)
 	}
 

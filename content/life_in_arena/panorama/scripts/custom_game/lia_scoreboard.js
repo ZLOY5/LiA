@@ -6,8 +6,7 @@ var g_ScoreboardHandle = null;
 
 function SetFlyoutScoreboardVisible( bVisible )
 {
-	if (bVisible != $.GetContextPanel().BHasClass("flyout_scoreboard_visible"))
-		$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible",bVisible);
+	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible",bVisible);
 }
 
 function ScheduledUpdate()
