@@ -186,8 +186,21 @@ function Survival:EndDuel(winner,loser)
     if winner ~= nil then 
         winner:ModifyGold(200, false, DOTA_ModifyGold_Unspecified) 
         PlayerResource:ModifyLumber(winner:GetPlayerOwnerID(),8)
+
+         CreateToast({eventType = 1, 
+            killerPlayer = winner:GetPlayerID(), 
+            killedPlayer = loser:GetPlayerID(),
+            gold = 200,
+            lumber = 8
+        })
     else --ничья
         --GameRules:SendCustomMessage("#lia_duel_expiretime", DOTA_TEAM_GOODGUYS, 0)
+        CreateToast({eventType = 3, 
+            firstPlayer = hero1:GetPlayerID(), 
+            secondPlayer = hero2:GetPlayerID(),
+            gold = 100,
+            lumber = 4
+        })
         hero1:ModifyGold(100, false, DOTA_ModifyGold_Unspecified) 
         PlayerResource:ModifyLumber(hero1:GetPlayerOwnerID(),4)
 

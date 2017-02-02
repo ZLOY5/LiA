@@ -295,6 +295,19 @@ function LiA:TradeRequest(event)
 			PlayerResource:ModifyLumber(tradePlayerID, data.lumber)
 
 		end
+
+        local toastData = {eventType = 4, from = playerID, to = tradePlayerID}
+
+        if data.gold > 0 then
+            toastData.gold = data.gold
+        end
+
+        if data.lumber > 0 then
+            toastData.lumber = data.lumber
+        end
+
+        CreateToast(toastData)
+
 	end
 end
 

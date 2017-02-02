@@ -14,7 +14,7 @@
     GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
 
 
-    GameUI.CustomUIConfig().players_color = ["#ff0303","#0042ff","#1ce6b9","#540081","#fffc01","#feba0e","#20c000","#e55bb0"];
+    GameUI.CustomUIConfig().players_color = ["#ff0303","#3375ff","#1ce6b9","#BF00BF","#F3F00B","#FF6B00","#20c000","#FE86C2"];
 
     var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent()
     var customUI = dotaHud.FindChildTraverse("PreGame")
@@ -64,6 +64,8 @@
         <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/lia_timer.xml" />
 
         <CustomUIElement type="GameInfo"     layoutfile="file://{resources}/layout/custom_game/hudFix.xml" />
+
+        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/combat_events.xml" />
 
         <!--<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/imageCompiler.xml" />-->
 

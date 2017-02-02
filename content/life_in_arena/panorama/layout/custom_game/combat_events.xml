@@ -1,0 +1,30 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/combat_events.css" />
+	</styles>
+
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/combat_events.js" />
+	</scripts>
+
+	<snippets>
+		
+		<snippet name="CombatEventRow">
+			<Panel class="CombatEventRow ToastPanel" hittest="false" hittestchildren="false" >
+				<Panel id="SlashContainer">
+						<Panel id="TeamColorBar" />
+				</Panel>
+				<Label id="EventLabel" class="EventListLabel" html="true" />
+			</Panel>
+		</snippet>
+
+	</snippets>
+
+	<Panel class="CombatEvents" >
+		<Panel id="ToastLinesWrapper" hittest="false">
+			<Panel id="ToastManager" hittest="false" />
+		</Panel>
+	</Panel>
+</root>

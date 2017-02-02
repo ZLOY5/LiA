@@ -48,6 +48,7 @@ function Survival:_OnHeroDeath(keys)
         Survival:DuelRegisterHeroDeath(attackerHero,hero)
     else
         PlayerResource:IncremetDeaths(hero:GetPlayerOwnerID())
+        CreateToast({eventType = 1, killerPlayer = -1, killedPlayer = hero:GetPlayerOwnerID()})
     
         if self:GetHeroCount(true) == 0 then
             GameRules:SetCustomVictoryMessage("#lose_message")
@@ -85,6 +86,7 @@ function Survival:_OnBossDeath(keys)
         end
 		--send to all players info about kill boss
 		CustomGameEventManager:Send_ServerToAllClients( "upd_action_killboss", {pID = hero:GetPlayerID() } )
+        CreateToast({eventType = 2, killerPlayer = hero:GetPlayerOwnerID(), gold = killed:GetGoldBounty(), lumber = 3})
     end
 
     if self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
@@ -98,7 +100,7 @@ end
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
     local attacker = EntIndexToHScript(keys.entindex_attacker)
-    --print(attacker:GetUnitName())
+    --print(attacker:GetUnitName(),killed:IsOwnedByAnyPlayer())
     
     if killed:IsRealHero() then
         Survival:_OnHeroDeath(keys)

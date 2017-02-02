@@ -343,3 +343,7 @@ function CDOTA_BaseNPC:HasItemInInventory(itemName,bIncludeBackpack)
 	end
 	return false
 end
+
+function CreateToast(data)
+	CustomGameEventManager:Send_ServerToAllClients("lia_create_toast", data)
+end
