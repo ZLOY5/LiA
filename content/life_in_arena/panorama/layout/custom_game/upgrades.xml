@@ -10,9 +10,12 @@
 
 		<Panel id="UpgradesContainer" />
 
-		<Button id="OpenButton" onactivate="Open()" />
+		<Button id="OpenButton" onactivate="Open()" >
+			<Label id="LumberAmount" class="MonoNumbersFont" hittest="false"/>
+			<Panel id="LumberIcon" hittest="false"/>
+		</Button>
 
-		<Label id="LumberAmount" hittest="false"/>
+		
 
 		<!--<Image src="file://{images}/custom_game/upgrades/upgrade_attack_damage.png"/>
 		<Image src="file://{images}/custom_game/upgrades/upgrade_attack_speed.png"/>

@@ -19,21 +19,6 @@ function Open()
 
 	$("#OpenButton").ToggleClass("opened")
 
-	var childrens = container.Children()
-
-	for (var child in childrens)
-	{
-		if (container.BHasClass("opened"))
-		{ 
-			childrens[child].style.position = "0px " + ((525-78*child)-78) +"px 0px"
-			//childrens[child].style.opacity = "1"
-		}
-		else
-		{ 
-			childrens[child].style.position = "0px 580px 0px"
-			//childrens[child].style.opacity = "0"
-		}
-	}
 }
 
 function Upgrade(upgradeName)
@@ -65,6 +50,12 @@ function Upgrade(upgradeName)
 function Update()
 {
 	$.Schedule(0.03,Update)
+
+
+	var container = $("#UpgradesContainer")
+
+	var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent()
+	container.SetHasClass("ShopOpen", dotaHud.FindChildTraverse("shop").BHasClass("ShopOpen") )
 	
 	var playerID = Game.GetLocalPlayerID()
 	
@@ -73,7 +64,7 @@ function Update()
 
 
 	$("#LumberAmount").text = Players.GetLumber(playerID)
-	$("#LumberAmount").visible = Players.GetLumber(playerID) != 0
+	//$("#LumberAmount").visible = Players.GetLumber(playerID) != 0
 
 	var playerID = Game.GetLocalPlayerID()
 	var data = CustomNetTables.GetTableValue("lia_player_table", "UpgradesPlayer"+playerID);
