@@ -90,11 +90,11 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			}
 		}
 
-		var playerColorBar = playerPanel.FindChildInLayoutFile( "PlayerColorBar" );
+		var playerColorBar = playerPanel.FindChildInLayoutFile( "PlayerPortraitWrapper" );
 		if (playerColorBar)
 		{
 			var playerColor = GameUI.CustomUIConfig().players_color[playerId];
-			playerColorBar.style.backgroundColor = 'gradient( linear, -15% 0%, 115% 0%, from( #000000ff ), color-stop( 0.3, ' + playerColor + '), color-stop( 0.7, ' + playerColor + '), to( #000000ff ) );'
+			playerColorBar.style.backgroundColor = playerColor+';'
 		}
 
 
