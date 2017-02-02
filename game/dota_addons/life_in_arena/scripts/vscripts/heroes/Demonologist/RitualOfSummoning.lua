@@ -56,6 +56,14 @@ function SpawnUnits(event)
 	        local demonologistBoss = CreateUnitByName(boss_name, point, true, caster, caster, caster:GetTeam())
 	        demonologistBoss:AddNewModifier(demonologistBoss, nil, "modifier_kill", {duration = lifetime})
 	        demonologistBoss:AddNewModifier(demonologistBoss, nil, "modifier_demonologist_riual_of_summoning_status_effect", nil)
+	        for k=0,15 do
+				local abilityToRemove = demonologistBoss:GetAbilityByIndex(k)
+				if abilityToRemove then
+					if not abilityToRemove:IsPassive() then
+						demonologistBoss:RemoveAbility(abilityToRemove:GetAbilityName())
+					end
+				end
+			end
 	        demonologistBoss.demonologistRitualCreep = true
 			demonologistBoss:SetControllableByPlayer(caster:GetPlayerID(), true)
 			ResolveNPCPositions(demonologistBoss:GetAbsOrigin(),100)
@@ -67,6 +75,14 @@ function SpawnUnits(event)
         local demonologistCreep = CreateUnitByName(creep_name, position, true, caster, caster, caster:GetTeam())
         demonologistCreep:AddNewModifier(demonologistCreep, nil, "modifier_kill", {duration = lifetime})
         demonologistCreep:AddNewModifier(demonologistCreep, nil, "modifier_demonologist_riual_of_summoning_status_effect", nil)
+        for k=0,15 do
+			local abilityToRemove = demonologistCreep:GetAbilityByIndex(k)
+			if abilityToRemove then
+				if not abilityToRemove:IsPassive() then
+					demonologistCreep:RemoveAbility(abilityToRemove:GetAbilityName())
+				end
+			end
+		end
         demonologistCreep.demonologistRitualCreep = true
 		demonologistCreep:SetControllableByPlayer(caster:GetPlayerID(), true)
 		ResolveNPCPositions(demonologistCreep:GetAbsOrigin(),100)

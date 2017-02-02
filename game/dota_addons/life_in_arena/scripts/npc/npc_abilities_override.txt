@@ -4398,7 +4398,7 @@
 	"5_megaboss_firestorm"
 	{
 	  "BaseClass"       "ability_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" // 
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" // 
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
@@ -4409,7 +4409,7 @@
 	  "AoERadius"               "300"
 	  "AbilityCastAnimation" 	"ACT_DOTA_CAST_ABILITY_1"
 	  //"AbilityCastAnimation"   		"ACT_DOTA_CHANNEL_ABILITY_1"
-	  "AnimationPlaybackRate"  "0.05"  
+	//  "AnimationPlaybackRate"  "0.05"  
 	
 	  "AbilityTextureName"      "warlock_firestorm"
 	  
@@ -4418,7 +4418,6 @@
 	
 	  "AbilityManaCost"       "200"
 	  
-	  "AbilityChannelTime"      "3"
 	
 	  "AbilitySpecial"
 	  {
@@ -4467,6 +4466,11 @@
 	      "var_type"            "FIELD_INTEGER"
 	      "exp_radius"          "150"
 	    }
+	    "10"
+	    {
+	      "var_type"            "FIELD_FLOAT"
+	      "duration"         "3.0"
+	    }
 	  }
 	
 	  "precache"
@@ -4488,32 +4492,13 @@
 	    {
 	        "RunScript"
 	        {
-	            "ScriptFile"    "heroes/Warlock/firestorm.lua"
+	            "ScriptFile"    "abilities/5_wave_firestorm.lua"
 	            "Function"      "RainOfFireStart"
 	            "Target"        "POINT"
 	        }
 	
-	        "ApplyModifier"
-	        {
-	            "ModifierName"  "modifier_rain_of_fire_channelling"
-	            "Target"        "CASTER"
-	        }
 	    }
 	
-	    "OnChannelFinish"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"    "heroes/Warlock/firestorm.lua"
-	            "Function"      "RainOfFireEnd"
-	        } 
-	
-	        "RemoveModifier"
-	        {
-	            "ModifierName"  "modifier_rain_of_fire_channelling"
-	            "Target"        "CASTER"
-	        }   
-	    }
 	    
 	    "Modifiers"
 	    {
@@ -4524,7 +4509,7 @@
 	            {
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                    "ScriptFile"    "abilities/5_wave_firestorm.lua"
 	                    "Function"      "ApplyAnimation"
 	                }
 	            }
@@ -4533,7 +4518,7 @@
 	            {
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                    "ScriptFile"    "abilities/5_wave_firestorm.lua"
 	                    "Function"      "ApplyAnimation"
 	                }
 	            }
@@ -4541,7 +4526,7 @@
 	            {
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                    "ScriptFile"    "abilities/5_wave_firestorm.lua"
 	                    "Function"      "StopAnimation"
 	                }
 	            }
@@ -4553,7 +4538,7 @@
 	            {
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                    "ScriptFile"    "abilities/5_wave_firestorm.lua"
 	                    "Function"      "RainOfFireWave"
 	                }
 	                        
@@ -4575,7 +4560,7 @@
 	            {
 	                "RunScript"
 	                {
-	                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+	                    "ScriptFile"    "abilities/5_wave_firestorm.lua"
 	                    "Function"      "RainOfFireWave"
 	                }
 	                        
@@ -11958,12 +11943,11 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PURE"
-	  "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
 	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	  "AbilityCastRange"        "450"
 	
-	  "AbilityManaCost"       "10 20 30"
+	  "AbilityManaCost"       "20 35 50"
 	
 	  "precache"
 	  {
@@ -11982,12 +11966,12 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "radius"          "115"   
+	      "radius"          "130"   
 	    } 
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "mana"            "10 20 30"   
+	      "mana"            "20 35 50"   
 	    }     
 	  }
 	

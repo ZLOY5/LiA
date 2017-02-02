@@ -272,7 +272,7 @@
 "5_megaboss_firestorm"
 {
   "BaseClass"       "ability_datadriven"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" // 
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" // 
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
   "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
@@ -283,7 +283,7 @@
   "AoERadius"               "300"
   "AbilityCastAnimation" 	"ACT_DOTA_CAST_ABILITY_1"
   //"AbilityCastAnimation"   		"ACT_DOTA_CHANNEL_ABILITY_1"
-  "AnimationPlaybackRate"  "0.05"  
+//  "AnimationPlaybackRate"  "0.05"  
 
   "AbilityTextureName"      "warlock_firestorm"
   
@@ -292,7 +292,6 @@
 
   "AbilityManaCost"       "200"
   
-  "AbilityChannelTime"      "3"
 
   "AbilitySpecial"
   {
@@ -341,6 +340,11 @@
       "var_type"            "FIELD_INTEGER"
       "exp_radius"          "150"
     }
+    "10"
+    {
+      "var_type"            "FIELD_FLOAT"
+      "duration"         "3.0"
+    }
   }
 
   "precache"
@@ -362,64 +366,16 @@
     {
         "RunScript"
         {
-            "ScriptFile"    "heroes/Warlock/firestorm.lua"
+            "ScriptFile"    "abilities/5_wave_firestorm.lua"
             "Function"      "RainOfFireStart"
             "Target"        "POINT"
         }
 
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_rain_of_fire_channelling"
-            "Target"        "CASTER"
-        }
     }
 
-    "OnChannelFinish"
-    {
-        "RunScript"
-        {
-            "ScriptFile"    "heroes/Warlock/firestorm.lua"
-            "Function"      "RainOfFireEnd"
-        } 
-
-        "RemoveModifier"
-        {
-            "ModifierName"  "modifier_rain_of_fire_channelling"
-            "Target"        "CASTER"
-        }   
-    }
     
     "Modifiers"
     {
-        "modifier_rain_of_fire_channelling"
-        {
-            "IsHidden"          "1"
-            "OnCreated"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
-                    "Function"      "ApplyAnimation"
-                }
-            }
-            "ThinkInterval"     "1.0"
-            "OnIntervalThink"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
-                    "Function"      "ApplyAnimation"
-                }
-            }
-            "OnDestroy"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
-                    "Function"      "StopAnimation"
-                }
-            }
-        }
 
         "modifier_rain_of_fire_thinker"
         {
@@ -427,7 +383,7 @@
             {
                 "RunScript"
                 {
-                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                    "ScriptFile"    "abilities/5_wave_firestorm.lua"
                     "Function"      "RainOfFireWave"
                 }
                         
@@ -449,7 +405,7 @@
             {
                 "RunScript"
                 {
-                    "ScriptFile"    "heroes/Warlock/firestorm.lua"
+                    "ScriptFile"    "abilities/5_wave_firestorm.lua"
                     "Function"      "RainOfFireWave"
                 }
                         

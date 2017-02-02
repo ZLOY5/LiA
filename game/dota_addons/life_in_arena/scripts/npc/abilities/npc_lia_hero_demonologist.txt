@@ -285,12 +285,11 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  "AbilityUnitDamageType"     "DAMAGE_TYPE_PURE"
-  "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
   "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
   "AbilityCastRange"        "450"
 
-  "AbilityManaCost"       "10 20 30"
+  "AbilityManaCost"       "20 35 50"
 
   "precache"
   {
@@ -309,12 +308,12 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "radius"          "115"   
+      "radius"          "130"   
     } 
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "mana"            "10 20 30"   
+      "mana"            "20 35 50"   
     }     
   }
 
