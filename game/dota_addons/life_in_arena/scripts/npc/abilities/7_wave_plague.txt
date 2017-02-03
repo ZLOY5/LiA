@@ -6,6 +6,11 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"7_wave_disease_cloud"
 
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_pudge/pudge_rot_body.vpcf"
+	}
+
 
 	// Special	
 	//-------------------------------------------------------------------------------------------------------------
@@ -42,7 +47,10 @@
 			"Aura"		  		"modifier_plague_aura_datadriven"
 			"Aura_Radius" 		"%radius"
 	        "Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        "Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+	        "Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+
+	        "EffectName"	"particles/units/heroes/hero_pudge/pudge_rot_body.vpcf"
+	        "EffectAttachType"	"follow_origin"	
 		}
 		"modifier_plague_aura_datadriven"
 		{
@@ -76,6 +84,10 @@
 			"IsDebuff"			"1"
 			"IsPurgable"		"1"
 			"ThinkInterval"		"0.25"
+
+			"EffectName"	"particles/units/heroes/hero_pudge/pudge_rot_radius_d.vpcf"
+	        "EffectAttachType"	"follow_origin"	
+	        
 			"OnIntervalThink"
 			{
 				"RunScript"
