@@ -67,6 +67,7 @@ function SpawnUnits(event)
 	        demonologistBoss.demonologistRitualCreep = true
 			demonologistBoss:SetControllableByPlayer(caster:GetPlayerID(), true)
 			ResolveNPCPositions(demonologistBoss:GetAbsOrigin(),100)
+			demonologistBoss:SetAcquisitionRange(500)
 	    end
 	end
 
@@ -86,6 +87,7 @@ function SpawnUnits(event)
         demonologistCreep.demonologistRitualCreep = true
 		demonologistCreep:SetControllableByPlayer(caster:GetPlayerID(), true)
 		ResolveNPCPositions(demonologistCreep:GetAbsOrigin(),100)
+		demonologistCreep::SetAcquisitionRange(500)
     end
 
 	
