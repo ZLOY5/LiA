@@ -10485,6 +10485,21 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
+				"zombie_stats_percentage"		"50 75 100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_percent_threshold"		"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_limit"			"4 5 6"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
 				"zombie_cooldown"		"15"
 			}
 		}
@@ -11927,6 +11942,7 @@
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+	  "AbilityUnitTargetFlags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	  "AbilityCastRange"        "450"
 	
@@ -16904,7 +16920,7 @@
 	        "04"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "stackTime"               "5"
+	            "stackTime"               "8"
 	        }
 	    } 
 	   
