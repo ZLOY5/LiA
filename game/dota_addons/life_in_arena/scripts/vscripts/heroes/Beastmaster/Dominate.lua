@@ -47,6 +47,7 @@ function Dominate(keys)
 			end
 			
 			ResolveNPCPositions(bmcreep:GetAbsOrigin(),65)
+			bmcreep::SetAcquisitionRange(500)
 		else 
 			ApplyDamage({victim = v, attacker = caster, damage = keys.ability:GetSpecialValueFor("damage"), damage_type = DAMAGE_TYPE_MAGICAL, ability = keys.ability})
 		end
