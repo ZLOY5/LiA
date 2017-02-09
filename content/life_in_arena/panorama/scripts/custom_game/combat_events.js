@@ -247,18 +247,8 @@ function CreateToast(data) {
 	}
 	Reveal()
 
-	$.Msg(Players.GetPlayerColor(5).toString(16))
 })();
 
-function decimalToHexString(number)
-{
-    if (number < 0)
-    {
-        number = 0xFFFFFFFF + number + 1;
-    }
-
-    return number.toString(16).toUpperCase();
-}
 
 /*
 CreateToast({

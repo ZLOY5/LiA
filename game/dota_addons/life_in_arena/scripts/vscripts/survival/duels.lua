@@ -40,10 +40,10 @@ function Survival:StartDuels()
 	)
 
     for _,hero in pairs(self.tHeroes) do
-        if hero.prorogueHide then 
-            self:HideHero(hero)
-        elseif hero.prorogueUnhide then
-            self:UnhideHero(hero)
+        if hero:GetPlayerOwner() == nil then
+            HideHero(hero)
+        elseif hero.hidden then
+            UnhideHero(hero)
         end
     end
 end
@@ -146,7 +146,7 @@ function Survival:DuelRegisterHeroDeath(attacker,killed)
     if not self.DuelOneHeroKilled then
         self.DuelOneHeroKilled = 1
         Timers:CreateTimer(1,function()
-            if not killed:IsAlive() and not attacker:IsAlive() then 
+            if not attacker:IsAlive() and not attacker:IsReincarnating() then 
                 Survival:EndDuel(nil,nil)
             else
                 Survival:EndDuel(attacker,killed)
