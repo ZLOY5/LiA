@@ -160,7 +160,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        self.nRoundNum = 7
+       -- self.nRoundNum = 2
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
         Survival:PrepareNextRound()
@@ -224,7 +224,7 @@ function Survival:OnPlayerChat(event)
         end 
 
         if event.text == "fire" then
-            SendErrorMessage(playerID, "Custom Error")
+            FireGameEvent("dota_hud_error_message",{reason = 0, message = "OLOLO"})
         end
 
         if event.text == "lumber" then
