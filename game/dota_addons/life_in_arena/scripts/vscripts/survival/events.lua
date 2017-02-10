@@ -224,7 +224,7 @@ function Survival:OnPlayerChat(event)
         end 
 
         if event.text == "fire" then
-            FireGameEvent("dota_hud_error_message",{reason = 0, message = "OLOLO"})
+            SendErrorMessage(playerID, "Custom Error")
         end
 
         if event.text == "lumber" then

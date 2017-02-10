@@ -36,3 +36,14 @@ Players.GetNumPlayers = function() {
 	}
 	return n
 }
+
+
+function ErrorMessage(data) {
+	var reason = data.reason || 80
+	GameEvents.SendEventClientSide( "dota_hud_error_message",{reason: reason, message: data.message} )
+}
+
+(function()
+{
+	GameEvents.Subscribe("custom_error_message", ErrorMessage);
+})();

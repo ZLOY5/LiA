@@ -56,6 +56,6 @@ function onPlayerReadyToWave(playerID)
 			end
 		end
 	else
-		FireGameEvent( 'custom_error_show', { player_ID = playerID, _error = "#lia_hud_error_cant_force_round" } )
+		SendErrorMessage(playerID, "#lia_hud_error_cant_force_round")
 	end
 end
