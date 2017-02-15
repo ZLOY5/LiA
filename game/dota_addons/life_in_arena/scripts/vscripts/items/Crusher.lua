@@ -15,7 +15,10 @@ function ChainLightning( event )
 	if not target:IsMagicImmune() then
 		local hero = event.caster
 		
-		ability:StartCooldown(ability:GetCooldown(ability:GetLevel()))
+		if ability:IsCooldownReady() then
+			ability:StartCooldown(ability:GetSpecialValueFor("lightning_cooldown"))
+		end
+
 		
 		local damage = ability:GetLevelSpecialValueFor( "lightning_damage", ability:GetLevel() - 1 )
 		local bounces = ability:GetLevelSpecialValueFor( "lightning_bounces", ability:GetLevel() - 1 )

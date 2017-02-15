@@ -36,13 +36,16 @@
 	"ItemQuality"					"rare"
 	
 	"AbilityTextureName"			"custom/lia_crusher"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
 
-	"AbilityCooldown"				"4.0"
+	"AbilityCastRange"				"700"
+	"AbilityCooldown"				"8.0"
+	"AbilityManaCost"				"100"
+	"AbilitySharedCooldown" 		"ItemChainLigtning"
 
 
 	"precache"
@@ -108,6 +111,15 @@
 			"var_type"				"FIELD_FLOAT"
 			"lightning_cooldown"	"4"
 		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/Crusher.lua"
+			"Function"		"ChainLightning"
+		} 
 	}
 
 
