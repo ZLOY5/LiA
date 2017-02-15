@@ -34,14 +34,18 @@ function modifier_19_wave_debuff:OnCreated(kv)
 end
 
 function modifier_19_wave_debuff:OnIntervalThink()
-	self:GetParent():ModifyHealth(self:GetParent():GetHealth()-50, nil, true, 0)
-	self:GetParent():ReduceMana(30)
+	if not self:GetParent():IsInvulnerable() then
+		self:GetParent():ModifyHealth(self:GetParent():GetHealth()-50, nil, true, 0)
+		self:GetParent():ReduceMana(30)
+	end
 end
 
 function modifier_19_wave_debuff:OnDeath(params)
 	if IsServer() then 
 		--PrintTable("OnDeath",params)
-		if params.attacker == self:GetParent() and params.unit:GetTeamNumber() ~= params.attacker:GetTeamNumber() then 
+		if params.attacker == self:GetParent() 
+		and params.unit:GetTeamNumber() ~= params.attacker:GetTeamNumber() 
+		and not self:GetParent():IsInvulnerable() then 
 			params.attacker:ModifyHealth(self:GetParent():GetHealth()-100, nil, true, 0)
 		end
 	end
@@ -50,7 +54,7 @@ end
 function modifier_19_wave_debuff:OnAbilityFullyCast(params)
 	if IsServer() then  
 		--PrintTable("OnAbilityFullyCast",params)
-		if params.unit == self:GetCaster() then 
+		if params.unit == self:GetCaster() and not self:GetParent():IsInvulnerable() then 
 			if params.ability:IsItem() and not params.ability:IsPermanent() and params.ability:GetAbilityName() == "troll_cuthroat_boomeang_axe_return" then
 				return 
 			end

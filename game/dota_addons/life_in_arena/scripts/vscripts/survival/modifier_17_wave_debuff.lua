@@ -25,6 +25,8 @@ function modifier_17_wave_debuff:OnCreated(kv)
 end
 
 function modifier_17_wave_debuff:OnIntervalThink()
-	self:GetParent():ModifyHealth(self:GetParent():GetHealth()-50, nil, true, 0)
-	self:GetParent():ReduceMana(30)
+	if not self:GetParent():IsInvulnerable() then
+		self:GetParent():ModifyHealth(self:GetParent():GetHealth()-50, nil, true, 0)
+		self:GetParent():ReduceMana(30)
+	end
 end
