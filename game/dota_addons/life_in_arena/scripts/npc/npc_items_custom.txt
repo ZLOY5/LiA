@@ -5324,7 +5324,8 @@
 	"item_lia_lunar_necklace"
 	{
 		"ID"							"1451"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_lunar_necklace.lua"
 		"ItemCost"						"1690"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -5346,79 +5347,7 @@
 			"particle"			"particles/luna_eclipse_cast_moonlight_glow_ti_5.vpcf"
 		}
 		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Luna.Eclipse.Cast"
-				"Target" 		"TARGET"
-			}
 	
-			"FireEffect"
-			{
-				"EffectName"        "particles/luna_eclipse_small.vpcf"
-				"EffectAttachType"  "follow_origin"
-				"Target"            "TARGET"
-	
-				"ControlPointEntities"
-				{
-					"TARGET"	"attach_origin"
-					"TARGET"	"attach_origin"
-					"TARGET"	"attach_origin"
-				}
-			}
-			
-			"ApplyModifier"
-			{
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-				"ModifierName"	"modifier_item_lia_lunar_necklace_stats"	
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_lia_lunar_necklace"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-			    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			    "Properties"
-			    {
-			    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		    "%bonus_all_stats"
-			    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		    "%bonus_all_stats"
-			    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		    "%bonus_all_stats"
-				    "MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
-				    "MODIFIER_PROPERTY_MANA_BONUS"		"%bonus_mana"
-			    }  
-			}
-			"modifier_item_lia_lunar_necklace_stats"
-			{
-				"Duration"		"%duration"
-				"IsBuff"		"1"
-				"IsPurgable"	"1"
-	
-				"EffectName"        "particles/luna_eclipse_cast_moonlight_glow_ti_5.vpcf"
-				"EffectAttachType"  "follow_origin"
-	
-				"Properties"
-			    {
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage_active"
-			    } 
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"items\LunarNecklace.lua"
-						"Function"			"OnCreatedModifier"
-						"stat_percent"		"%stat_percent"
-						"stat_bonus_max" 	"%stat_bonus_max"
-					}
-				}   
-			}
-		}
 		"AbilitySpecial"
 		{
 			"01"
