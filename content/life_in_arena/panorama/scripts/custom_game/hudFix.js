@@ -76,7 +76,7 @@ function ValvePlzFix()
 
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
 		{
-			var inventory = dotaHud.FindChildTraverse("inventory_list_container")
+			/*var inventory = dotaHud.FindChildTraverse("inventory_list_container")
 			for (var i = 0; i <= 5; i++) {
 				var item = inventory.FindChildTraverse("inventory_slot_"+i)
 				FixItemIcon(item)
@@ -86,7 +86,7 @@ function ValvePlzFix()
 			for (var i = 6; i <= 8; i++) {
 				var item = backpack.FindChildTraverse("inventory_slot_"+i)
 				FixItemIcon(item)
-			}
+			}*/
 
 			var abilitiesPanel = dotaHud.FindChildTraverse("center_with_stats").FindChildTraverse("abilities")
 			var childrens = abilitiesPanel.Children()
@@ -98,19 +98,19 @@ function ValvePlzFix()
 			
 			if ( shop.BHasClass("ShopOpen") )
 			{ 	
-				var shopCombines = shop.FindChildTraverse("ItemCombines").FindChildTraverse("ItemsContainer")
+				/*var shopCombines = shop.FindChildTraverse("ItemCombines").FindChildTraverse("ItemsContainer")
 				var childrens = shopCombines.Children()
 				for (var item of childrens) 
-					FixItemIcon(item)
+					FixItemIcon(item)*/
 
 				var shopItemBuild = shop.FindChildTraverse("Categories")
-				var childrens = shopItemBuild.Children()
+				/*var childrens = shopItemBuild.Children()
 				for (var category of childrens) {
 					var childrensCat = category.FindChildTraverse("ItemList").Children()
 					for (var item of childrensCat) 
 						FixItemIcon(item)
 
-				}
+				}*/
 				
 				var popularItems = shopItemBuild.GetChild(4)
 				if (popularItems != null)
@@ -130,14 +130,14 @@ function ValvePlzFix()
 		//$.Msg(buff0)
 
 
-		var tooltipManager = dotaHud.FindChildTraverse("Tooltips")
-		FixItemIcon(tooltipManager)
+		/*var tooltipManager = dotaHud.FindChildTraverse("Tooltips")
+		FixItemIcon(tooltipManager)*/
 	}
 	iconFixer()
 
 
 
-	var shopMain = dotaHud.FindChildTraverse("shop").FindChildTraverse("GridMainShopContents")
+	/*var shopMain = dotaHud.FindChildTraverse("shop").FindChildTraverse("GridMainShopContents")
 
 	var shopMainBasic = shopMain.FindChildTraverse("GridBasicItems")
 	var childrens = shopMainBasic.Children()
@@ -153,7 +153,7 @@ function ValvePlzFix()
 		var childrensCat = category.Children()
 		for (var item of childrensCat) 
 			FixItemIcon(item)		
-	}
+	}*/
 }
 
 function FixAbilityIcon(abilityPanel)
