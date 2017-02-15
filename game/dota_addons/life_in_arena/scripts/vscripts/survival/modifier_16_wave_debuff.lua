@@ -1,7 +1,7 @@
 modifier_16_wave_debuff = class({})
 
 function modifier_16_wave_debuff:GetTexture() 
-	return "orns_presence"
+	return "custom/orns_presence"
 end
 
 function modifier_16_wave_debuff:IsDebuff()

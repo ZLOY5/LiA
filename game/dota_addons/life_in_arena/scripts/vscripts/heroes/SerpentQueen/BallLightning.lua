@@ -220,7 +220,13 @@ function LocustSwarmPhysics( event )
 						damage_table.victim = unit.current_target
 						damage_table.attacker = caster					
 						damage_table.damage_type = abilityDamageType
-						damage_table.damage = locust_damage
+
+						if unit.current_target:IsHero() then
+							damage_table.damage = locust_damage/2
+						else
+							damage_table.damage = locust_damage
+						end
+
 						damage_table.ability = ability
 
 						ApplyDamage(damage_table)
