@@ -1,7 +1,55 @@
 function ScheduledUpdate()
 {
+	$.Schedule(0.03,ScheduledUpdate)
 	OnUpdatePlayerData()
-	$.Schedule(0.25,ScheduledUpdate)
+	
+}
+
+function UpdatePlayerPanel(playerID) {
+	var playersContainer = $.GetContextPanel().FindChildTraverse( "PlayersContainer" );
+	var playerPanel = playersContainer.FindChildTraverse("player"+playerID)
+
+	var customPlayerInfo = CustomNetTables.GetTableValue("lia_player_table", "Player"+playerID)
+
+	if (playerPanel == null) {
+		var playerPanel = $.CreatePanel( "Panel",  playersContainer, "player"+playerID );
+		playerPanel.BLoadLayout("file://{resources}/layout/custom_game/top_scoreboard/top_scoreboard_player.xml", false, false)
+	}
+
+	playerPanel.AddClass("Slot"+playerID)
+
+	var heroImage = playerPanel.FindChildTraverse("HeroImage")
+	heroImage.heroname = Players.GetPlayerSelectedHero(playerID)
+
+	var hero = Players.GetPlayerHeroEntityIndex(playerID)
+
+	playerPanel.FindChildTraverse("HealthBar").max = 100
+	playerPanel.FindChildTraverse("HealthBar").value = Entities.GetHealthPercent(hero)
+	playerPanel.FindChildTraverse("ManaBar").value = Entities.GetMana(hero)/Entities.GetMaxMana(hero)
+
+	playerPanel.SetHasClass("AltPressed",GameUI.IsAltDown() )
+	playerPanel.SetHasClass("Dead", !Entities.IsAlive(hero) )
+
+	if (customPlayerInfo != null) {
+		var panel = playersContainer.GetChild(customPlayerInfo.place-1)
+			if (panel !== null) 
+				playersContainer.MoveChildBefore(playerPanel,playersContainer.GetChild(customPlayerInfo.place-1))
+			playerPanel.style.zIndex = -customPlayerInfo.place
+
+		playerPanel.SetHasClass( "ReadyToRound", customPlayerInfo.readyToRound );
+	}
+
+
+
+	ultStateOrTime = Game.GetPlayerUltimateStateOrTime(playerID)
+
+	playerPanel.SetHasClass( "UltLearned", ( !(ultStateOrTime == PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_NOT_LEVELED) ) );
+	playerPanel.SetHasClass( "UltReady", ( ultStateOrTime == PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_READY ) );
+	playerPanel.SetHasClass( "UltReadyNoMana", ( ultStateOrTime == PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_NO_MANA) );
+	playerPanel.SetHasClass( "UltOnCooldown", ( ultStateOrTime > 0 ) );
+
+	var playerInfo = Game.GetPlayerInfo(playerID)
+	playerPanel.SetHasClass( "Disconnected", ( (playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_DISCONNECTED) || (playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_ABANDONED) ) );
 }
 
 function OnUpdatePlayerData()
@@ -32,7 +80,7 @@ function OnUpdatePlayerData()
 		
 		for (var playerID of teamPlayers) {
 			
-			_ScoreboardUpdater_UpdatePlayerPanel( g_ScoreboardHandle.scoreboardConfig, playersContainer, playerID, localPlayerTeamId ); 
+			UpdatePlayerPanel(playerID); 
 		
 		}
 		

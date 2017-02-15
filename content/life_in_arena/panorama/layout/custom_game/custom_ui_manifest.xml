@@ -20,14 +20,14 @@
     var customUI = dotaHud.FindChildTraverse("PreGame")
     var heroSelection
         
-
-
     function OnStateChanged() {
         if ( Game.GameStateIs( DOTA_GameState.DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD ) ) {
             if (heroSelection == null) { 
                 heroSelection = $.CreatePanel( "Panel", customUI, "customHeroSelection" )
                 heroSelection.BLoadLayout( "file://{resources}/layout/custom_game/lia_hero_select_overlay.xml", false, false )
                 heroSelection.style.visibility = "visible"
+
+                customUI.FindChildTraverse("ConnectingLabelContainer").style.marginLeft = "1150px"
             }
         }
         else if ( Game.GameStateIs( DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION ) ) {
@@ -44,6 +44,7 @@
 
     }
     GameEvents.Subscribe("game_rules_state_change", OnStateChanged);
+    OnStateChanged()
 
 
     </script>

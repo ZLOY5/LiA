@@ -1,8 +1,6 @@
 <root>
 	<styles>
 		<include src="file://{resources}/styles/dotastyles.css" />		
-		<include src="file://{resources}/styles/custom_game/lia_scoreboard.css" />
-		<include src="file://{resources}/styles/custom_game/lia_scoreboard_styles.css" />
 		<include src="file://{resources}/styles/custom_game/top_scoreboard/top_scoreboard.css" />
 	</styles>
 	<script>
@@ -13,16 +11,22 @@
 	}
 	</script>
 	<Panel hittest="false" class="ScoreboardPlayerWrapper">
-		<Panel hittest="false" id="ScoreboardPlayer" class="ScoreboardPlayer">
-			<Button id="PlayerPortraitWrapper" class="PlayerPortraitWrapper" onmouseactivate="PortraitClicked();">
-				<Panel hittest="false" id="PlayerColorBar" />
-				<Image hittest="false" id="HeroIcon" />
+		<Panel id="SlantedContainerPanel" class="SlantedContainer" always-cache-composition-layer="true" >
+			<Panel id="PlayerColor"/>
+			<Image id="DeadLayer" src="s2r://panorama/images/hud/reborn/top_bar_dead_overlay_png.vtex"/>
+			
+			<Panel id="DisconnectIcon" hittest="false"/>
+			<Button onmouseactivate="PortraitClicked()">
+				<DOTAHeroImage id="HeroImage" class="TopBarHeroImage" always-cache-composition-layer="true"  hittest="true" >
+					<Image id="PlusLayer" src="file://{images}/custom_game/top_bar_ready_to_round.png" />/>
+				</DOTAHeroImage>
+
 			</Button>
-			<Image hittest="false" id="DisconnectionIndicator" src="file://{images}/custom_game/icon_disconnect.png" />
+			<Panel id="PlayerColorShadow" hittest="false"/>
 		</Panel>
-		<Panel hittest="false" id="UltimateIndicatorContainer">
-			<Panel hittest="false" id="UltimateIndicatorBG" class="UltimateIndicatorShared" />
-			<Panel hittest="false" id="UltimateIndicator" class="UltimateIndicatorShared" />
-		</Panel>
+
+		<ProgressBar id="HealthBar" class="TopBarHealthBar"/>
+		<ProgressBar id="ManaBar" class="TopBarManaBar"/>
+		<Panel id="TopBarUltIndicator" class="TopBarUltIndicator"/>
 	</Panel>
 </root>

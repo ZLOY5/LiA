@@ -55,7 +55,7 @@
 
 		var ultAbi = heroPickAbi.GetChild(4)
 		var plusAbi = heroPickAbi.GetChild(3)
-		if ( (ultAbi != null) || (ultAbi.BHasClass("AbilityIsUltimate")) )
+		if ( (ultAbi != null) && (ultAbi.BHasClass("AbilityIsUltimate")) )
 			heroPickAbi.MoveChildBefore(ultAbi,plusAbi)
 	}
 

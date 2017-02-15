@@ -133,7 +133,7 @@ DOTAHud.IsBeforeGameplay #OpenButton
 	background-size: contain;
 	background-repeat: no-repeat;
 
-	transition: brightness 0.1s ease-in 0s, opacity 0.2s ease-in-out 0s;
+	transition: brightness 0.1s ease-in 0s, opacity 0.2s ease-in-out 0s, saturation 0.2s ease-in-out 0s;
 
 	tooltip-position: left bottom;
 	tooltip-arrow-position: 50% 50%;
@@ -153,7 +153,8 @@ DOTAHud.IsBeforeGameplay #OpenButton
 
 .Upgrade:disabled
 {
-	opacity: 0.8;
+	opacity: 0.5;
+	saturation:0.7;
 }
 
 .Upgrade:disabled:hover

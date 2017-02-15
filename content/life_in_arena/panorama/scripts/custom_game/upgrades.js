@@ -15,10 +15,15 @@ var upgradeList = [	"upgrade_attack_damage",
 function Open()
 {
 	var container = $("#UpgradesContainer")
-	container.ToggleClass("opened")
-
-	$("#OpenButton").ToggleClass("opened")
-
+	
+	var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent()
+	if ( dotaHud.FindChildTraverse("shop").BHasClass("ShopOpen") ) {
+		$.DispatchEvent( "DOTAShopHideShop" );
+		container.AddClass("opened")
+	}
+	else
+		container.ToggleClass("opened")
+	
 }
 
 function Upgrade(upgradeName)

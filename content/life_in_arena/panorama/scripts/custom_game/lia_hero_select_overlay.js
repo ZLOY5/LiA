@@ -2,9 +2,10 @@
 
 function OnUpdateHeroSelection()
 {
-	for ( var playerId of Game.GetPlayerIDsOnTeam(DOTATeam_t.DOTA_TEAM_GOODGUYS) )
+	for ( var playerId of Game.GetAllPlayerIDs() )
 	{
-		UpdatePlayer( playerId );
+		if (!(Players.IsSpectator(playerId)))
+			UpdatePlayer( playerId );
 	}
 }
 
