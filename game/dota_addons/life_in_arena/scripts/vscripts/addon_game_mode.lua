@@ -12,6 +12,10 @@ function Activate()
 	GameRules.LiA:InitGameMode()
 end
 
+
+RegisterCustomAnimationScriptForModel("models/heroes/axe/axe.vmdl", "animation/axe.lua")
+
+
 function Precache( context )
 		--
 		PrecacheUnitByNameAsync("npc_water_elemental_1", function(...) end)

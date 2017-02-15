@@ -192,7 +192,7 @@ end
 ---------------------------------------------------------------------------------------------------------------------------
 
 function Survival:OnPlayerChat(event)
-    PrintTable("Survival:OnPlayerChat",event)
+    --PrintTable("Survival:OnPlayerChat",event)
     local playerID = event.playerid
 
     if event.text == "+" then
@@ -242,6 +242,11 @@ function Survival:OnPlayerChat(event)
 
         if event.text == "closeshop" then
             DisableShop()
+        end
+
+        if event.text == "test" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            hero:StartGesture(ACT_DOTA_CAST_ABILITY_5)
         end
     
     end

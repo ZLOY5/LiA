@@ -170,7 +170,7 @@ function Survival:OrderFilter(filterTable)
 end
 
 function Survival:GoldFilter(filterTable)
-    PrintTable("GoldFilter",filterTable)
+    --PrintTable("GoldFilter",filterTable)
     if filterTable.reason_const == DOTA_ModifyGold_HeroKill or filterTable.reason_const == DOTA_ModifyGold_SharedGold or filterTable.reason_const == DOTA_ModifyGold_SelectionPenalty then 
         return false 
     end
