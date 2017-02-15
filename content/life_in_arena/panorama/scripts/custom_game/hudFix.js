@@ -86,13 +86,13 @@ function ValvePlzFix()
 			for (var i = 6; i <= 8; i++) {
 				var item = backpack.FindChildTraverse("inventory_slot_"+i)
 				FixItemIcon(item)
-			}*/
+			}
 
 			var abilitiesPanel = dotaHud.FindChildTraverse("center_with_stats").FindChildTraverse("abilities")
 			var childrens = abilitiesPanel.Children()
 			for (var ability of childrens) {
 				FixAbilityIcon(ability)
-			}
+			}*/
 
 			var shop = dotaHud.FindChildTraverse("shop")
 			
