@@ -41,9 +41,9 @@ function Survival:StartDuels()
 
     for _,hero in pairs(self.tHeroes) do
         if hero:GetPlayerOwner() == nil then
-            HideHero(hero)
+            self:HideHero(hero)
         elseif hero.hidden then
-            UnhideHero(hero)
+            self:UnhideHero(hero)
         end
     end
 end

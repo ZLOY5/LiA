@@ -19,6 +19,8 @@ function Survival:OnPlayerPickHero(keys)
     local player = EntIndexToHScript(keys.player) 
     if player then 
         player:SetTeam(DOTA_TEAM_GOODGUYS) 
+    else
+        self:HideHero(hero)
     end
 end
 
