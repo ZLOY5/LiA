@@ -142,7 +142,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 			var itemEntId = Entities.GetItemInSlot(heroEntId,i);
 			if (itemEntId != -1) {
 				var TextureName = Abilities.GetAbilityTextureName( itemEntId )
-				$.Msg( "		TextureName = ", TextureName );
+				//$.Msg( "		TextureName = ", TextureName );
 				var bufName = TextureName;
 
 				if ( bufName.indexOf( "recipe" ) >= 0 || bufName.indexOf( "item_datadriven" ) >= 0 )
