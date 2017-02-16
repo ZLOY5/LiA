@@ -18,6 +18,11 @@ function onPlayerReadyToWave(playerID)
 				local curTimeLeft = Survival.flRoundStartTime - GameRules:GetDOTATime(false,false)
 				local newTimeLeft =	curTimeLeft - 40 * ( 1 / LiA.nPlayers )	-- curTimeLeft * ( 1 - ( 1 / LiA.nPlayers ) )   --curTimeLeft - 60 * ( 1 / LiA.nPlayers )
 
+				if Survival.nRoundNum == 20 then
+					newTimeLeft = curTimeLeft - 60 * ( 1 / LiA.nPlayers )
+				end
+
+
 				if curTimeLeft < 20 then
 					return
 				end

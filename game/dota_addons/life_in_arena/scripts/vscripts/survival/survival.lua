@@ -73,6 +73,7 @@ function Survival:InitSurvival()
     self.nEqualGoldPool = 0
 	self.barrelExplosions = 0
     
+    self.nPreFinalTime = 90
 	self.nPreRoundTime = 60
 	self.nPreDuelTime = 30
     self.nDuelTime = 120
@@ -354,7 +355,12 @@ end
 function Survival:PrepareNextRound()
     self.nRoundNum = self.nRoundNum + 1
 
-    self.flRoundStartTime = GameRules:GetDOTATime(false,false) + self.nPreRoundTime
+    local timeBeforeNextRound = self.nPreRoundTime
+    if self.nRoundNum == 20 then
+        timeBeforeNextRound = self.nPreFinalTime
+    end
+
+    self.flRoundStartTime = GameRules:GetDOTATime(false,false) + timeBeforeNextRound
     
     print("Next round - ", self.nRoundNum)
 
@@ -365,12 +371,12 @@ function Survival:PrepareNextRound()
     self.IsDuelOccured = false
     Survival.State = SURVIVAL_STATE_PRE_ROUND_TIME
 
-    StartTimer(self.nPreRoundTime,1,self.nRoundNum)
+    StartTimer(timeBeforeNextRound,1,self.nRoundNum)
     --print(GameRules:GetDOTATime(false,false))
 
     Timers:CreateTimer("StartRoundTimer",
         {
-            endTime = self.nPreRoundTime-3, 
+            endTime = timeBeforeNextRound-3, 
             callback = function() Survival:StartRound() end
         }
     )
