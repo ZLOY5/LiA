@@ -163,9 +163,27 @@ function AIThink()
 end
 
 function Survival:OrderFilter(filterTable)
+    --DeepPrint(filterTable)
     if filterTable.order_type == DOTA_UNIT_ORDER_GLYPH then
         return false
     end
+
+    if filterTable.order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
+        if Survival.State ~= SURVIVAL_STATE_PRE_GAME and Survival.State ~= SURVIVAL_STATE_PRE_ROUND_TIME and Survival.State ~= SURVIVAL_STATE_PRE_DUEL_TIME then
+            --print(filterTable.units["0"])
+            local hero = PlayerResource:GetSelectedHeroEntity(filterTable.issuer_player_id_const)
+            if hero:GetNumItemsInStash() == 6 then
+                return false
+            end
+        end
+    end
+
+    if filterTable.order_type == DOTA_UNIT_ORDER_EJECT_ITEM_FROM_STASH then
+        if Survival.State ~= SURVIVAL_STATE_PRE_ROUND_TIME and Survival.State ~= SURVIVAL_STATE_PRE_DUEL_TIME then
+            return false
+        end
+    end
+
     return true
 end
 

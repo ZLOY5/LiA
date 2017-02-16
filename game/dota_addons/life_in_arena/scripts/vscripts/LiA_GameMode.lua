@@ -104,7 +104,7 @@ function LiA:InitGameMode()
     
     GameMode:SetBuybackEnabled(false)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
-    GameMode:SetStashPurchasingDisabled(true)
+    GameMode:SetStashPurchasingDisabled(false)
     GameMode:SetLoseGoldOnDeath(false)
 
     GameRules:LockCustomGameSetupTeamAssignment(true)
