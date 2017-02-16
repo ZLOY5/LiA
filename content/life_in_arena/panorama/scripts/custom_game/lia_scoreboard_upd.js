@@ -155,7 +155,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 					{
 						bufName = bufName.replace( "_2", "" );
 					}*/
-					var item_image_name = "file://{images}/items/" + bufName.replace( "item_", "" ) + ".png";
+					var item_image_name = "file://{images}/items/" + bufName.replace( "custom/", "" ) + ".png";
 
 					//$.Msg( "		item_image_name = ", item_image_name );
 				}

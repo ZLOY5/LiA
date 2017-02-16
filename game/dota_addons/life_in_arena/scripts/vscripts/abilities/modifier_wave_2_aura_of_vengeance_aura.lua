@@ -30,7 +30,7 @@ function modifier_wave_2_aura_of_vengeance_aura:OnTakeDamage(params)
 			return
 		end
 		
-		local return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage
+		local return_damage = self.returnPercent*0.01*params.original_damage
 		
 		ApplyDamage(
 		{
@@ -43,4 +43,8 @@ function modifier_wave_2_aura_of_vengeance_aura:OnTakeDamage(params)
 		})
 	end
 
+end
+
+function modifier_wave_2_aura_of_vengeance_aura:OnCreated()
+	self.returnPercent = self:GetAbility():GetSpecialValueFor("damage_return")
 end

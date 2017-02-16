@@ -2,6 +2,11 @@ LiA.bForceRoundEnabled = false
 
 function onPlayerReadyToWave(playerID)
 	if Survival.State == SURVIVAL_STATE_PRE_ROUND_TIME and LiA.bForceRoundEnabled then
+		if GameRules:IsGamePaused() then
+			SendErrorMessage(playerID, "#dota_hud_error_game_is_paused")
+			return
+		end
+
 		if not PlayerResource:IsReadyToRound(playerID) then
 			PlayerResource:SetReadyToRound(playerID,true)
 			if PlayerResource:GetNumPlayersReadyToRound() == LiA.nPlayers then
@@ -12,6 +17,11 @@ function onPlayerReadyToWave(playerID)
 			else
 				local curTimeLeft = Survival.flRoundStartTime - GameRules:GetDOTATime(false,false)
 				local newTimeLeft =	curTimeLeft - 40 * ( 1 / LiA.nPlayers )	-- curTimeLeft * ( 1 - ( 1 / LiA.nPlayers ) )   --curTimeLeft - 60 * ( 1 / LiA.nPlayers )
+
+				if Survival.nRoundNum == 20 then
+					newTimeLeft = curTimeLeft - 60 * ( 1 / LiA.nPlayers )
+				end
+
 
 				if curTimeLeft < 20 then
 					return

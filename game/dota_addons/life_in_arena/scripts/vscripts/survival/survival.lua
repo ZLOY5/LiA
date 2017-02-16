@@ -73,6 +73,7 @@ function Survival:InitSurvival()
     self.nEqualGoldPool = 0
 	self.barrelExplosions = 0
     
+    self.nPreFinalTime = 90
 	self.nPreRoundTime = 60
 	self.nPreDuelTime = 30
     self.nDuelTime = 120
@@ -163,9 +164,27 @@ function AIThink()
 end
 
 function Survival:OrderFilter(filterTable)
+    --DeepPrint(filterTable)
     if filterTable.order_type == DOTA_UNIT_ORDER_GLYPH then
         return false
     end
+
+    if filterTable.order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
+        if Survival.State ~= SURVIVAL_STATE_PRE_GAME and Survival.State ~= SURVIVAL_STATE_PRE_ROUND_TIME and Survival.State ~= SURVIVAL_STATE_PRE_DUEL_TIME then
+            --print(filterTable.units["0"])
+            local hero = PlayerResource:GetSelectedHeroEntity(filterTable.issuer_player_id_const)
+            if hero:GetNumItemsInStash() == 6 then
+                return false
+            end
+        end
+    end
+
+    if filterTable.order_type == DOTA_UNIT_ORDER_EJECT_ITEM_FROM_STASH then
+        if Survival.State ~= SURVIVAL_STATE_PRE_ROUND_TIME and Survival.State ~= SURVIVAL_STATE_PRE_DUEL_TIME then
+            return false
+        end
+    end
+
     return true
 end
 
@@ -336,7 +355,12 @@ end
 function Survival:PrepareNextRound()
     self.nRoundNum = self.nRoundNum + 1
 
-    self.flRoundStartTime = GameRules:GetDOTATime(false,false) + self.nPreRoundTime
+    local timeBeforeNextRound = self.nPreRoundTime
+    if self.nRoundNum == 20 then
+        timeBeforeNextRound = self.nPreFinalTime
+    end
+
+    self.flRoundStartTime = GameRules:GetDOTATime(false,false) + timeBeforeNextRound
     
     print("Next round - ", self.nRoundNum)
 
@@ -347,12 +371,12 @@ function Survival:PrepareNextRound()
     self.IsDuelOccured = false
     Survival.State = SURVIVAL_STATE_PRE_ROUND_TIME
 
-    StartTimer(self.nPreRoundTime,1,self.nRoundNum)
+    StartTimer(timeBeforeNextRound,1,self.nRoundNum)
     --print(GameRules:GetDOTATime(false,false))
 
     Timers:CreateTimer("StartRoundTimer",
         {
-            endTime = self.nPreRoundTime-3, 
+            endTime = timeBeforeNextRound-3, 
             callback = function() Survival:StartRound() end
         }
     )

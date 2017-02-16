@@ -14,6 +14,7 @@ function UpdatePlayerPanel(playerID) {
 	if (playerPanel == null) {
 		var playerPanel = $.CreatePanel( "Panel",  playersContainer, "player"+playerID );
 		playerPanel.BLoadLayout("file://{resources}/layout/custom_game/top_scoreboard/top_scoreboard_player.xml", false, false)
+		playerPanel.SetAttributeInt("player_id", playerID)
 	}
 
 	playerPanel.AddClass("Slot"+playerID)
