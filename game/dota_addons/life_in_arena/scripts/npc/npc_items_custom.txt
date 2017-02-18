@@ -6760,7 +6760,11 @@
 		{
 			"ApplyModifier"
 			{
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"		"modifier_item_poleaxe_of_rage_berserk"
 			}
 			

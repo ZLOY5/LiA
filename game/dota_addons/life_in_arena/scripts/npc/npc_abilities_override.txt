@@ -28319,7 +28319,11 @@
 			"ApplyModifier"
 			{
 				"ModifierName" "modifier_troll_cutthroat_battle_trance"
-				"Target"	"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"Duration"	"%duration"
 			}
 	
