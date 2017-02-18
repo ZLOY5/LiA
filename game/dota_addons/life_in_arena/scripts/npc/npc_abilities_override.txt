@@ -32455,12 +32455,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"movement_and_attack_slow"		"-25"
+				"movement_slow"		"-25"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"tooltip_slow"		"25"
+				"attack_slow"		"-25"
 			}
 			"03"
 			{
@@ -32511,8 +32511,8 @@
 				
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_and_attack_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%movement_and_attack_slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_slow"
 				}
 			}
 		}

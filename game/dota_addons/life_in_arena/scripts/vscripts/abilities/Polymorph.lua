@@ -1,3 +1,5 @@
+LinkLuaModifier( "modifier_19_wave_polymorph_lua", "abilities/modifier_19_wave_polymorph_lua.lua", LUA_MODIFIER_MOTION_NONE)
+
 function Polymorph(event)
 	local target = event.target
 	local ability = event.ability
@@ -6,8 +8,8 @@ function Polymorph(event)
 		return 
 	end
 	target:EmitSound("Hero_Lion.Hex.Target")
-	ParticleManager:CreateParticle("particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-	ability:ApplyDataDrivenModifier(caster, target, "modifier_hex", {duration = ability:GetSpecialValueFor("duration")})
+	ParticleManager:CreateParticle("particles/lion_spell_voodoo.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+	target:AddNewModifier(caster,ability,"modifier_19_wave_polymorph_lua",{duration = ability:GetSpecialValueFor("duration")})
 end
 
 --[[Author: Pizzalol
