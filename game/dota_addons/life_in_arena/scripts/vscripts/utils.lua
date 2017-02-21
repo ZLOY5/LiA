@@ -173,7 +173,7 @@ end
 function CreateIllusion(target,caster,origin,duration,outgoing_damage,incoming_damage)
 	local player = caster:GetPlayerOwner()
 
-	local illusion = CreateUnitByName(target:GetUnitName(), origin, true, caster, nil, caster:GetTeamNumber())
+	local illusion = CreateUnitByName(target:GetUnitName(), origin, true, caster, caster, caster:GetTeamNumber())
 	
 	illusion:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
 	illusion:SetForwardVector(target:GetForwardVector())
