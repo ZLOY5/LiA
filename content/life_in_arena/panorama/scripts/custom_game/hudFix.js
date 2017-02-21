@@ -76,119 +76,60 @@ function ValvePlzFix()
 
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
 		{
-			/*var inventory = dotaHud.FindChildTraverse("inventory_list_container")
-			for (var i = 0; i <= 5; i++) {
-				var item = inventory.FindChildTraverse("inventory_slot_"+i)
-				FixItemIcon(item)
-			}
+			var shop = dotaHud.FindChildTraverse("shop")	
 
-			var backpack = dotaHud.FindChildTraverse("inventory_backpack_list")
-			for (var i = 6; i <= 8; i++) {
-				var item = backpack.FindChildTraverse("inventory_slot_"+i)
-				FixItemIcon(item)
-			}
+			var shopItemBuild = shop.FindChildTraverse("Categories")
+			var popularItems = shopItemBuild.GetChild(4)
+			if (popularItems != null)
+				popularItems.style.visibility = "collapse"
+		}
 
-			var abilitiesPanel = dotaHud.FindChildTraverse("center_with_stats").FindChildTraverse("abilities")
-			var childrens = abilitiesPanel.Children()
-			for (var ability of childrens) {
-				FixAbilityIcon(ability)
-			}*/
+		var tooltipManager = dotaHud.FindChildTraverse("Tooltips")
+		var statsTooltip = tooltipManager.FindChildTraverse("DOTAHUDDamageArmorTooltip")
 
-			var shop = dotaHud.FindChildTraverse("shop")
+		if (statsTooltip != null) {
+			var bonusStr = Number(statsTooltip.FindChildTraverse("BonusStrengthLabel").text.replace(" + ",""))
+			var strength = Number(statsTooltip.FindChildTraverse("BaseStrengthLabel").text )
 			
-			if ( shop.BHasClass("ShopOpen") )
-			{ 	
-				/*var shopCombines = shop.FindChildTraverse("ItemCombines").FindChildTraverse("ItemsContainer")
-				var childrens = shopCombines.Children()
-				for (var item of childrens) 
-					FixItemIcon(item)*/
-
-				var shopItemBuild = shop.FindChildTraverse("Categories")
-				/*var childrens = shopItemBuild.Children()
-				for (var category of childrens) {
-					var childrensCat = category.FindChildTraverse("ItemList").Children()
-					for (var item of childrensCat) 
-						FixItemIcon(item)
-
-				}*/
+			if (!isNaN(strength)) {
+				if (!statsTooltip.FindChildTraverse("StrengthContainer").BHasClass("NoBonus"))
+					strength = strength + bonusStr
 				
-				var popularItems = shopItemBuild.GetChild(4)
-				if (popularItems != null)
-					popularItems.style.visibility = "collapse"
+				$.Msg(strength)
+				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariableInt("strength_hp", strength*8)
+				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariable("strength_hp_regen", (strength*0.05).toFixed(1))
 
+				statsTooltip.FindChildTraverse("StrengthDamageLabel").SetDialogVariableInt("primary_attribute_damage", strength*1.5)
+				
+			}
 
+			var bonusAgi = Number(statsTooltip.FindChildTraverse("BonusAgilityabel").text.replace(" + ",""))
+			var agility = Number(statsTooltip.FindChildTraverse("BaseAgilityLabel").text )
+			
+			if (!isNaN(agility)) {
+				if (!statsTooltip.FindChildTraverse("AgilityContainer").BHasClass("NoBonus"))
+					agility = agility + bonusAgi
+				
+				statsTooltip.FindChildTraverse("AgilityDetails").SetDialogVariable("agility_armor", (agility/6).toFixed(1))
+
+				statsTooltip.FindChildTraverse("AgilityDamageLabel").SetDialogVariableInt("primary_attribute_damage", agility*1.5)
+			}
+
+			var bonusInt = Number(statsTooltip.FindChildTraverse("BonusIntelligenceLabel").text.replace(" + ",""))
+			var intellect = Number(statsTooltip.FindChildTraverse("BaseIntelligenceLabel").text )
+			
+			if (!isNaN(intellect)) {
+				if (!statsTooltip.FindChildTraverse("IntelligenceContainer").BHasClass("NoBonus"))
+					intellect = intellect + bonusInt
+				
+				statsTooltip.FindChildTraverse("IntelligenceDetails").SetDialogVariable("intelligence_mana_regen", (intellect*0.05).toFixed(1))
+
+				statsTooltip.FindChildTraverse("IntelligenceDamageLabel").SetDialogVariableInt("primary_attribute_damage", intellect*1.5)
 			}
 		}
-		else
-		{
-
-		}
-
-
-		//var buffs = dotaHud.FindChildTraverse("buffs")
-		//var buff0 = buffs.FindChildTraverse("Buff0")
-		//$.Msg(buff0)
-
-
-		/*var tooltipManager = dotaHud.FindChildTraverse("Tooltips")
-		FixItemIcon(tooltipManager)*/
 	}
 	iconFixer()
-
-
-
-	/*var shopMain = dotaHud.FindChildTraverse("shop").FindChildTraverse("GridMainShopContents")
-
-	var shopMainBasic = shopMain.FindChildTraverse("GridBasicItems")
-	var childrens = shopMainBasic.Children()
-	for (var category of childrens) {
-		var childrensCat = category.Children()
-		for (var item of childrensCat) 
-			FixItemIcon(item)		
-	}
-
-	var shopMainUpgrades = shopMain.FindChildTraverse("GridUpgradeItems")
-	var childrens = shopMainUpgrades.Children()
-	for (var category of childrens) {
-		var childrensCat = category.Children()
-		for (var item of childrensCat) 
-			FixItemIcon(item)		
-	}*/
 }
 
-function FixAbilityIcon(abilityPanel)
-{
-	var valveImage = abilityPanel.FindChildTraverse("AbilityImage")
 
-	if (valveImage == null) 
-		return
-
-	var texture =  Abilities.GetAbilityTextureName(valveImage.contextEntityIndex)
-	//$.Msg(texture)
-
-	valveImage.SetImage("file://{images}/spellicons/"+texture+".png")
-}
-
-function FixItemIcon(abilityPanel)
-{
-	var valveImage = abilityPanel.FindChildTraverse("ItemImage")
-
-	if (valveImage == null) 
-		return 
-	//valveImage.visible = false
-	
-
-
-	var itemName = valveImage.itemname
-	//$.Msg(itemName)
-	if ( itemName !== undefined)
-		//$.Msg(itemName)
-		itemName = itemName.replace("item_","")
-	//$.Msg(itemName)
-	
-	if ( (itemName != undefined) && (itemName.search("recipe") != -1) )
-		valveImage.SetImage("file://{images}/items/recipe.png")
-	else 
-		valveImage.SetImage("file://{images}/items/"+itemName+".png")
-}
 
