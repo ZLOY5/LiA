@@ -99,7 +99,7 @@
   // General
   //-------------------------------------------------------------------------------------------------------------
 	"BaseClass"              "ability_datadriven"
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
 	"AbilityTextureName"     "custom/illusionist_mastery_of_deception"
 	//"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
@@ -107,13 +107,48 @@
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
+
+	"OnUpgrade"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/Illusionist/illusionist_mastery_of_deception.lua"
+			"Function"		"OnUpgrade"
+		}
+	}
+
+	"OnToggleOn"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_illusionist_mastery_of_deception"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+		}
+	}
+
+	"OnToggleOff"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_illusionist_mastery_of_deception"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}	
+		}
+	}
 	
 	"Modifiers"
 	{
 	
-	  "Modifier_illusionist_mastery_of_deception"
+	  "modifier_illusionist_mastery_of_deception"
 	  {
-		"Passive"       "1"
+		"Passive"       "0"
 		"IsHidden"      "1"
 		"IsBuff"        "1"
 

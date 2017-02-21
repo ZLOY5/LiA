@@ -49,6 +49,7 @@ function illusions( event )
 
 		local illusion = CreateIllusion(caster,caster,origin,duration,outgoingDamage,incomingDamage)
 		illusion:SetHealth(casterHealthPercent*illusion:GetMaxHealth())
+		illusion:SetMana(caster:GetMana())
 		-- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
 		table.insert(caster.mirror_image_illusions, illusion)
 

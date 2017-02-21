@@ -1142,7 +1142,7 @@
 		//"ItemStockMax" "1"
 		//"ItemStockTime" "30"	
 	
-		"ItemCost"                      "110" 
+		"ItemCost"                      "75" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
@@ -1170,7 +1170,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"				"30"
+				"duration"				"35"
 			}
 		}
 	}
@@ -3476,7 +3476,7 @@
 			"07"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"		"230"
+				"radius"		"275"
 			}
 			"08"
 			{
@@ -6760,7 +6760,11 @@
 		{
 			"ApplyModifier"
 			{
-				"Target"			"CASTER"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 				"ModifierName"		"modifier_item_poleaxe_of_rage_berserk"
 			}
 			
@@ -8898,7 +8902,8 @@
 		"ItemSellable"                  "1"
 		"ItemPurchasable"		 		"0"
 		"ItemQuality"					"rare"
-		"AbilityTextureName"			"custom\lia_seal_of_power_armor"
+		"AbilityTextureName"			"custom/lia_seal_of_power_armor"
+	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
 	
 	
@@ -8954,7 +8959,8 @@
 		"ItemSellable"                  "1"
 		"ItemPurchasable"		 		"0"
 		"ItemQuality"					"rare"
-		"AbilityTextureName"			"custom\lia_seal_of_power_damage"
+		"AbilityTextureName"			"custom/lia_seal_of_power_damage"
+	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
 	
 	
@@ -10849,7 +10855,7 @@
 		"ItemStockMax" "1"
 		"ItemStockTime" "20"
 	
-		"ItemCost"                      "100" 
+		"ItemCost"                      "90" 
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"

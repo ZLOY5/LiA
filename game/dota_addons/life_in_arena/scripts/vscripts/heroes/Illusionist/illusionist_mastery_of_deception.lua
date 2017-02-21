@@ -1,3 +1,9 @@
+function OnUpgrade( event )
+	if event.ability:GetLevel() == 1 then
+		event.ability:ToggleAbility()
+	end
+end
+
 function illusions( event )
 	local caster = event.caster
 	local ability = event.ability
