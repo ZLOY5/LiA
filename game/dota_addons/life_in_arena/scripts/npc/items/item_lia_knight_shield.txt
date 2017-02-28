@@ -27,7 +27,8 @@
 "item_lia_knight_shield"
 {
 	"ID"							"1323"
-	"BaseClass" 					"item_datadriven"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\item_lia_knight_shield.lua"
 	"ItemCost"						"565"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
@@ -36,45 +37,7 @@
 	"ItemQuality"					"common"
 	"AbilityTextureName"			"custom/lia_knight_shield"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"OnEquip"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"items\onlyone.lua"
-			"Function"		"KnightCuirassShield"
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_item_lia_knight_shield"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
-		    }  
-        	"OnCreated"
-        	{
-        		"ApplyModifier"
-        		{
-        			"ModifierName"	"modifier_knight_shield_damage_return_lua"
-        			"Target"		"CASTER"
-        		}
-        	}
-        	"OnDestroy"
-        	{
-        		"RemoveModifier"
-        		{
-        			"ModifierName"	"modifier_knight_shield_damage_return_lua"
-        			"Target"		"CASTER"
-        		}
-        	}
-		}   
-	}
+
 	"AbilitySpecial"
 	{
 		"01"

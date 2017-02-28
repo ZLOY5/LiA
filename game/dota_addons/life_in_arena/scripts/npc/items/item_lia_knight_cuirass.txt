@@ -27,7 +27,8 @@
 "item_lia_knight_cuirass"
 {
 	"ID"							"1325"
-	"BaseClass" 					"item_datadriven"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\item_lia_knight_cuirass.lua"
 	"ItemCost"						"2240"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
@@ -38,80 +39,6 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"AbilityCooldown"        		"30"
 	"AbilityManaCost"				"85"
-	"OnEquip"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"items\onlyone.lua"
-			"Function"		"KnightCuirassShield"
-		}
-	}
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"sounds/items/dota_item_blade_mail.vsnd"
-			"Target"		"CASTER"
-		}
-		"ApplyModifier"
-		{
-			"Target" 		"CASTER"
-			"ModifierName"	"modifier_item_lia_knight_cuirass_ability"
-			"Duration"		"5"
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_item_lia_knight_cuirass"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
-		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
-		    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-		    }
-		    "OnCreated"
-		    {
-		    	"ApplyModifier"
-		    	{
-		    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-		    	}
-		    }
-		    "OnDestroy"
-		    {
-		    	"RemoveModifier"
-		    	{
-		    		"ModifierName"	"modifier_knight_cuirass_damage_return_lua"
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-		    	}
-		    }
-		  
-		}   
-		"modifier_item_lia_knight_cuirass_ability" 
-		{
-			//"IsHidden"				"1"
-			"IsBuff"				"1"
-			"IsPurgable"			"1"
-			
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			
-			"EffectName" 			"particles/items_fx/blademail.vpcf"
-   			"EffectAttachType" 		"follow_origin"
-		}
-	}
 
 	"AbilitySpecial"
 	{
@@ -139,6 +66,11 @@
 		{
 			"var_type" "FIELD_INTEGER"
 			"damage_return_abi" "50"
+		}
+		"06"
+		{
+			"var_type" "FIELD_INTEGER"
+			"duration" "5"
 		}
 	}
 }

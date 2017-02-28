@@ -109,6 +109,7 @@ function Survival:InitSurvival()
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
     GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
     GameMode:SetExecuteOrderFilter(Dynamic_Wrap(Survival, "OrderFilter"), self)
+    GameMode:SetItemAddedToInventoryFilter(Dynamic_Wrap(Survival, "ItemAddFilter"), self)
 
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
@@ -185,6 +186,41 @@ function Survival:OrderFilter(filterTable)
         end
     end
 
+    if filterTable.order_type == DOTA_UNIT_ORDER_MOVE_ITEM then
+        local item = EntIndexToHScript(filterTable.entindex_ability)
+        local hero = EntIndexToHScript(filterTable.units["0"])
+        local itemName = item:GetAbilityName()
+        if itemName == "item_lia_knight_shield" or itemName == "item_lia_knight_cuirass" then
+            if filterTable.entindex_target <= 5 
+            and ( hero:HasItemInInventory("item_lia_knight_shield",false,item) or hero:HasItemInInventory("item_lia_knight_cuirass",false,item) ) then
+                SendErrorMessage(hero:GetPlayerID(), "#lia_hud_error_cant_have_two_items_retdmg")
+                return false
+            end
+        end
+
+    end
+
+
+    return true
+end
+
+function Survival:ItemAddFilter(filterTable)
+    --DeepPrint(filterTable)
+    local item = EntIndexToHScript(filterTable.item_entindex_const)
+    local hero = EntIndexToHScript(filterTable.inventory_parent_entindex_const)
+    local itemName = item:GetAbilityName()
+    --print(itemName)
+    if itemName == "item_lia_knight_shield" or itemName == "item_lia_knight_cuirass" then
+        if hero:HasItemInInventory("item_lia_knight_shield",false) or hero:HasItemInInventory("item_lia_knight_cuirass",false) then
+            for i=6,9 do
+                if hero:GetItemInSlot(i) == nil then 
+                    filterTable.suggested_slot = i
+                    SendErrorMessage(hero:GetPlayerID(), "#lia_hud_error_cant_have_two_items_retdmg")
+                    return true
+                end
+            end
+        end
+    end
     return true
 end
 

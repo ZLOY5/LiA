@@ -95,7 +95,7 @@ function ValvePlzFix()
 				if (!statsTooltip.FindChildTraverse("StrengthContainer").BHasClass("NoBonus"))
 					strength = strength + bonusStr
 				
-				$.Msg(strength)
+				//$.Msg(strength)
 				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariableInt("strength_hp", strength*8)
 				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariable("strength_hp_regen", (strength*0.05).toFixed(1))
 

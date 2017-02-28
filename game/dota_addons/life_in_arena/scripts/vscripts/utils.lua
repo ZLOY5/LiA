@@ -250,8 +250,7 @@ function CDOTA_Item:GetItemSlot()
 		return nil 
 	end
 
-
-	for i=0,5 do
+	for i=0,8 do
 		if caster:GetItemInSlot(i) == self then
 			return i
 		end
@@ -279,13 +278,13 @@ function CDOTA_BaseNPC:FindModifierByNameAndAbility(modifierName,ability)
 	return nil
 end
 
-function CDOTA_BaseNPC:HasItemInInventory(itemName,bIncludeBackpack)
+function CDOTA_BaseNPC:HasItemInInventory(itemName,bIncludeBackpack,hExcludeItem)
 	local bIncludeBackpack = bIncludeBackpack or false
 	local slots = bIncludeBackpack and 8 or 5
 
 	for i = 0, slots do
 		local item = self:GetItemInSlot(i)
-		if item and item:GetAbilityName() == itemName then
+		if item and item:GetAbilityName() == itemName and item ~= hExcludeItem then
 			return true
 		end
 	end

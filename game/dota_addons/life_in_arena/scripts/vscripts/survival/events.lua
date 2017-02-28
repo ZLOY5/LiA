@@ -247,10 +247,34 @@ function Survival:OnPlayerChat(event)
         end
 
         if event.text == "test" then
-            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            hero:StartGesture(ACT_DOTA_CAST_ABILITY_5)
+            self:SubmitMatch(2)
         end
     
+    end
+    
+    if event.text == "test" then
+        local data = self:SubmitMatch(2)
+        local req = CreateHTTPRequest("POST", "http://stats.lifeinarena.net/saveStat.php")
+        local encoded = json.encode(data)
+        print(encoded)
+        req:SetHTTPRequestRawPostBody("application/json",encoded)
+        
+        req:Send(function(res)
+            PrintTable("",res)
+            if res.StatusCode ~= 200 then
+                --print("Server connection failure")
+
+                if rep ~= nil and rep > 0 then
+                    --print("Repeating in 3 seconds")
+
+                    --Timers:CreateTimer(3, function() Stats.SendData(url, callback, rep - 1) end)
+                end
+
+                return
+            end
+
+        end)
+
     end
 	
 end
