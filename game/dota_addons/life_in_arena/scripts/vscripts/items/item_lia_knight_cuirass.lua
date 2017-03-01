@@ -9,7 +9,7 @@ end
 function item_lia_knight_cuirass:OnSpellStart()
 	self:GetCaster():AddNewModifier(self:GetCaster(),self,"modifier_item_lia_knight_cuirass_ability",
 		{ duration = self:GetSpecialValueFor("duration") } )
-	self:GetCaster():EmitSound("???")
+	self:GetCaster():EmitSound("DOTA_Item.BladeMail.Activate")
 end
 
 
@@ -78,6 +78,7 @@ function modifier_item_lia_knight_cuirass:OnTakeDamage(params)
 		local reflect_percent
 		if params.unit:HasModifier("modifier_item_lia_knight_cuirass_ability") then 
 			reflect_percent = self.reflectPercentActive
+			self:GetCaster():EmitSound("DOTA_Item.BladeMail.Damage")
 		else 
 			reflect_percent = self.reflectPercent
 		end 
@@ -93,6 +94,7 @@ function modifier_item_lia_knight_cuirass:OnTakeDamage(params)
 			damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
 			ability = self:GetAbility()
 		})
+
 	end
 
 end
