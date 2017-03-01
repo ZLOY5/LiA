@@ -183,10 +183,10 @@ function CreateIllusion(target,caster,origin,duration,outgoing_damage,incoming_d
 	if target:IsRealHero() then
 		illusion:SetPlayerID(player:GetPlayerID())
 		illusion:SetOwner(player)
-		local targetLevel = target:GetLevel()
-		for i=1,targetLevel-1 do
-			illusion:HeroLevelUp(false)
-		end
+		--local targetLevel = target:GetLevel()
+		--for i=1,targetLevel-1 do
+		--	illusion:HeroLevelUp(false)
+		--end
 		illusion:SetAbilityPoints(0)
 	end
 
