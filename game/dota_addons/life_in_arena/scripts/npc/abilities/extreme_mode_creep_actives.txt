@@ -142,12 +142,12 @@
 		"01"
 		{
 			"var_type"						"FIELD_INTEGER"
-			"damage"						"100"
+			"damage"						"150"
 		}	
 		"02"
 		{
 			"var_type"						"FIELD_FLOAT"
-			"stun_duration"					"2"
+			"stun_duration"					"3"
 		}
 		"03"
 		{
@@ -369,10 +369,10 @@
 			"Target"				"TARGET"
 		}
 
-		"ApplyModifier"
+		"RunScript"
 		{
-			"Target"				"TARGET"
-			"ModifierName"			"modifier_4_wave_ensnare_extreme"
+			"ScriptFile"	"abilities/4_wave_ensnare.lua"
+			"Function"		"Ensnare"
 		}
 	}
 
