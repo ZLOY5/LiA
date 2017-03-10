@@ -296,6 +296,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"400"
 			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"value_heal_target"			"50 200 350"
+			}
 		}
 	
 		"OnSpellStart"
@@ -305,15 +310,15 @@
 			"ActOnTargets"
 			{
 				"Target"
-            			{
-                			"Center" "TARGET"
-                			"Radius" "%radius"
-                			"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-                			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-            			}
+    			{
+        			"Center" "TARGET"
+        			"Radius" "%radius"
+        			"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+        			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    			}
 
-            			"Action"
-            			{
+    			"Action"
+    			{
 					"FireSound"
 					{
 						"EffectName"	"Hero_Omniknight.Purification"
@@ -350,10 +355,10 @@
 			}
 
 			"Heal"
-        		{          
-     				"Target"		"TARGET"
-            			"HealAmount" "%value_heal-%value_heal_other"
-        		}
+    		{          
+ 				"Target"		"TARGET"
+        			"HealAmount" "%value_heal_target"
+    		}
 
 			
 		}
@@ -415,6 +420,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"radius"				"400"
 			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"value_heal_target"			"350 700 750"
+			}
 		}
 	
 		"OnSpellStart"
@@ -424,15 +434,15 @@
 			"ActOnTargets"
 			{
 				"Target"
-            			{
-                			"Center" "TARGET"
-                			"Radius" "%radius"
-                			"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-                			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-            			}
+    			{
+        			"Center" "TARGET"
+        			"Radius" "%radius"
+        			"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+        			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    			}
 
-            			"Action"
-            			{
+    			"Action"
+    			{
 					"FireSound"
 					{
 						"EffectName"	"Hero_Omniknight.Purification"
@@ -469,10 +479,10 @@
 			}
 
 			"Heal"
-        		{          
-     				"Target"		"TARGET"
-            			"HealAmount" "%value_heal-%value_heal_other"
-        		}
+    		{          
+ 				"Target"		"TARGET"
+        			"HealAmount" "%value_heal_target"
+    		}
 
 			
 		}
