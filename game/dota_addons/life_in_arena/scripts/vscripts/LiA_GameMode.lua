@@ -137,10 +137,8 @@ function LiA:InitGameMode()
 	CustomGameEventManager:RegisterListener("shared_hero_toggle", Dynamic_Wrap(LiA, "SharedHeroToggle"))
 	CustomGameEventManager:RegisterListener("shared_units_toggle", Dynamic_Wrap(LiA, "SharedUnitsToggle"))
 	CustomGameEventManager:RegisterListener("disable_help_toggle", Dynamic_Wrap(LiA, "DisableHelpToggle"))
-	--upgrades
-	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
-	--CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
-	--for hint
+	
+    CustomGameEventManager:RegisterListener("lia_random_hero", Dynamic_Wrap(LiA, "RandomHero"))
 
     trigger_shop = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
     
@@ -334,4 +332,15 @@ end
 
 function EnableShop()
     trigger_shop:Enable()
+end
+
+function LiA:RandomHero(event)
+    print(event.PlayerID, "requested random hero")
+    if not PlayerResource:HasRandomed(event.PlayerID) then
+        PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
+        PlayerResource:SetHasRandomed(event.PlayerID)
+    elseif not PlayerResource:HasRepicked(event.PlayerID) then
+        PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
+        PlayerResource:SetHasRepicked(event.PlayerID)
+    end
 end

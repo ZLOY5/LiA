@@ -74,12 +74,28 @@ function ValvePlzFix()
 	{
 		$.Schedule(0.1,iconFixer)
 
+		var randomHeroButton = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("RandomButton")
+		randomHeroButton.style.saturation = 1
+		randomHeroButton.style.brightness = 1
+		randomHeroButton.SetPanelEvent("onactivate", function() { GameEvents.SendCustomGameEventToServer( "lia_random_hero", {} ) } )
+		randomHeroButton.SetPanelEvent("onmouseover", 
+			function() { 
+				randomHeroButton.ClearPropertyFromCode("brightness") 
+				randomHeroButton.style.brightness = 1.5 
+			} )
+		randomHeroButton.SetPanelEvent("onmouseout", 
+			function() { 
+				randomHeroButton.ClearPropertyFromCode("brightness") 
+				randomHeroButton.style.brightness = 1 
+			} )
+
+
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
 		{
 			var shop = dotaHud.FindChildTraverse("shop")	
 
 			var shopItemBuild = shop.FindChildTraverse("Categories")
-			var popularItems = shopItemBuild.GetChild(4)
+			var popularItems = shopItemBuild.GetChild(5)
 			if (popularItems != null)
 				popularItems.style.visibility = "collapse"
 		}

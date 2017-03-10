@@ -247,7 +247,13 @@ function Survival:OnPlayerChat(event)
         end
 
         if event.text == "test" then
-            self:SubmitMatch(2)
+            PlayerResource:SetHasRandomed(playerID)
+            PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection()
+        end
+
+        if event.text == "test2" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            print(hero:GetunitName())
         end
     
     end
