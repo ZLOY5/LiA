@@ -443,7 +443,80 @@
 	}
 }
 
+"12_wave_crit_extreme"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"ursa_fury_swipes"
 
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_mult"					"250"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"35"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_12_wave_crit"
+		{
+		    "Passive"   "1"
+		    "IsHidden"  "1"
+		    "OnAttackStart"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName" 	"modifier_12_wave_crit_crit"
+		            "Target" 		"CASTER"
+		        }
+
+		        "Random"
+		        {
+		            "Chance" "%crit_chance"
+		            "OnSuccess"
+		            {
+		                "ApplyModifier"
+		                {
+		                    "ModifierName" 	"modifier_12_wave_crit_crit"
+		                    "Target"    	"CASTER"    
+		                }        
+		            }
+		        }
+		    }
+		}
+
+		"modifier_12_wave_crit_crit"
+		{
+		    "IsHidden"  "1"
+		    "Properties"
+		    {
+		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+		    }
+
+		    "OnAttackLanded"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName"  "modifier_12_wave_crit_crit"
+		            "Target"   		"CASTER"    
+		        }
+		    }
+		}
+	}
+}
 
 "13_wave_aura_extreme"
 {
@@ -501,6 +574,37 @@
 		}
 	}	
 }
+
+"16_wave_evasion_extreme"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"evasion"		"35"
+		}
+	}
+
+	"Modifiers"
+	{
+		"16_wave_evasion"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+			}
+		}
+	}
+}
+
 
 "17_wave_evasion_extreme"
 {

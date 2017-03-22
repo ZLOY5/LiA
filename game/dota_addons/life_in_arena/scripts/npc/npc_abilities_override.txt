@@ -2117,6 +2117,242 @@
 		}
 	}
 	
+	"14_wave_shadow_strike_extreme"
+	{
+		"BaseClass"             		"ability_datadriven"
+		//"AbilityTextureName"			"warden_shadow_strike"
+		"AbilityTextureName"     "custom/14_wave_shadow_strike"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	
+		"AbilityCastRange"				"350"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"15.0"
+	
+		"AbilityManaCost"				"200"
+		//"AbilityDamage"					"75 130 200"
+	
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
+			"particle"	"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+			"particle"	"particles/units/heroes/hero_viper/viper_viper_strike_impact.vpcf"
+			"particle"	"particles/units/heroes/hero_viper/viper_viper_strike_warmup.vpcf"
+			"particle"	"particles/units/heroes/hero_viper/viper_viper_strike_beam.vpcf"
+			"particle"	"particles/status_fx/status_effect_poison_viper.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"initial_damage"	"150"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_every_3sec"	"150"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"all_slow"	"-20"
+			}
+		}
+	
+		"OnAbilityPhaseStart"
+		{
+			"FireEffect"
+			{
+				// This particle is bugged, it has some unattached childs that always generates at 0 0 0 (because viper has 4 wing points)
+				"EffectName"		"particles/units/heroes/hero_viper/viper_viper_strike_warmup.vpcf"
+				"EffectAttachType"	"attach_attack1"
+				"Target"			"CASTER"
+				"ControlPointEntities"
+				{
+					"CASTER"		"attach_attack1"
+					"CASTER"		"attach_attack1"
+				}
+			}		
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"hero_viper.viperStrike"
+				"Target"			"TARGET"
+			}
+	
+			"TrackingProjectile"
+	        {
+	            "Target"			"TARGET"
+	            "EffectName"        "particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
+	            "Dodgeable"         "0"
+	            "ProvidesVision"    "1"
+	            "VisionRadius"      "300"
+	            "MoveSpeed"         "1200"
+	            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	        }
+	    }
+	
+	    "OnProjectileHitUnit"
+		{
+			"DeleteOnHit"		"0"
+	
+	
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/14_wave_shadow_strike.lua"
+				"Function"		"ShadowStrike"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_shadow_strike"	
+			{	
+				"Duration"	"%duration"
+				"IsDebuff"	"1"
+				"IsPurgable"		"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%all_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%all_slow"
+				}
+	
+				"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
+	
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"TARGET"
+					}
+	
+					"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_MAGICAL"
+						"Damage"        "%initial_damage"
+						"Target"		"TARGET"
+					}
+				}
+				"ThinkInterval"	"3"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_MAGICAL"
+						"Damage"        "%damage_every_3sec"
+						"Target"		"TARGET"
+					}
+				}
+			}
+		}
+	}
+	
+	"14_wave_storm_bolt_extreme"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+		"AbilityTextureName"			"sven_storm_bolt"
+	
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900"
+		"AbilityCastPoint"				"0.0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10.0"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"950"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"500"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"projectile_speed"	"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"	"4.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"	"950"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Sven.StormBolt"
+				"Target" 		"CASTER"
+			}
+			
+			"TrackingProjectile"
+			{
+				"Target"
+				{
+					"Center"	"TARGET"
+				}
+				"EffectName"		"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+				"Dodgeable"			"1"
+				"ProvidesVision"	"0"
+				"MoveSpeed"        	"%projectile_speed"
+				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}			
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+			"FireSound"
+			{
+				"EffectName"	"Hero_ChaosKnight.ChaosBolt.Impact"
+				"Target" 		"TARGET"
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/8_wave_storm_bolt.lua"
+				"Function"		"StormBolt"
+			}
+			
+		
+		}	
+	}
 	
 	"16_wave_mana_burn_extreme"
 	{
@@ -2147,7 +2383,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"mana_burn"			"400"
+				"mana_burn"			"350"
 			}
 			"02"
 			{
@@ -3132,7 +3368,80 @@
 		}
 	}
 	
+	"12_wave_crit_extreme"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"			"ursa_fury_swipes"
 	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"250"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"35"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_12_wave_crit"
+			{
+			    "Passive"   "1"
+			    "IsHidden"  "1"
+			    "OnAttackStart"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName" 	"modifier_12_wave_crit_crit"
+			            "Target" 		"CASTER"
+			        }
+	
+			        "Random"
+			        {
+			            "Chance" "%crit_chance"
+			            "OnSuccess"
+			            {
+			                "ApplyModifier"
+			                {
+			                    "ModifierName" 	"modifier_12_wave_crit_crit"
+			                    "Target"    	"CASTER"    
+			                }        
+			            }
+			        }
+			    }
+			}
+	
+			"modifier_12_wave_crit_crit"
+			{
+			    "IsHidden"  "1"
+			    "Properties"
+			    {
+			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			    }
+	
+			    "OnAttackLanded"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName"  "modifier_12_wave_crit_crit"
+			            "Target"   		"CASTER"    
+			        }
+			    }
+			}
+		}
+	}
 	
 	"13_wave_aura_extreme"
 	{
@@ -3190,6 +3499,37 @@
 			}
 		}	
 	}
+	
+	"16_wave_evasion_extreme"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"evasion"		"35"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"16_wave_evasion"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
+				}
+			}
+		}
+	}
+	
 	
 	"17_wave_evasion_extreme"
 	{
@@ -7016,6 +7356,81 @@
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+			}
+		}
+	}
+	
+	"12_wave_crit"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"			"ursa_fury_swipes"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"25"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_12_wave_crit"
+			{
+			    "Passive"   "1"
+			    "IsHidden"  "1"
+			    "OnAttackStart"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName" 	"modifier_12_wave_crit_crit"
+			            "Target" 		"CASTER"
+			        }
+	
+			        "Random"
+			        {
+			            "Chance" "%crit_chance"
+			            "OnSuccess"
+			            {
+			                "ApplyModifier"
+			                {
+			                    "ModifierName" 	"modifier_12_wave_crit_crit"
+			                    "Target"    	"CASTER"    
+			                }        
+			            }
+			        }
+			    }
+			}
+	
+			"modifier_12_wave_crit_crit"
+			{
+			    "IsHidden"  "1"
+			    "Properties"
+			    {
+			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+			    }
+	
+			    "OnAttackLanded"
+			    {
+			        "RemoveModifier"
+			        {
+			            "ModifierName"  "modifier_12_wave_crit_crit"
+			            "Target"   		"CASTER"    
+			        }
+			    }
 			}
 		}
 	}
@@ -17330,6 +17745,12 @@
 	            "var_type"                "FIELD_FLOAT"
 	            "duration"                "3"
 	        }
+	        "05"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "burn_damage_actual"             "5 10 15"
+	        }
+	
 	    }
 	
 	    "OnSpellStart"
@@ -17372,7 +17793,7 @@
 	          {
 	            "Target"    "TARGET"
 	            "Type"      "DAMAGE_TYPE_MAGICAL"
-	            "Damage"    "%burn_damage"
+	            "Damage"    "%burn_damage_actual"
 	          }
 	        }      
 	      }
