@@ -185,7 +185,6 @@ function LiA:OnConnectFull(event)
         Survival:OnConnectFull(event)
     end
 
-    ReconnectTimer(playerID)
 end
 
 function LiA:OnDisconnect(event)
