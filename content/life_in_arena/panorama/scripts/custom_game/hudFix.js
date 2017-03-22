@@ -61,6 +61,29 @@
 
 	GameEvents.Subscribe( "dota_player_hero_selection_dirty", onUpdateHeroSelection );
 
+    
+	var randomHeroButton = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("RandomButton")
+	randomHeroButton.style.saturation = 1
+	randomHeroButton.style.brightness = 1
+	randomHeroButton.SetPanelEvent("onactivate", function() { GameEvents.SendCustomGameEventToServer( "lia_random_hero", {} ) } )
+	randomHeroButton.SetPanelEvent("onmouseover", 
+		function() { 
+			randomHeroButton.ClearPropertyFromCode("brightness") 
+			randomHeroButton.style.brightness = 1.5 
+		} )
+	randomHeroButton.SetPanelEvent("onmouseout", 
+		function() { 
+			randomHeroButton.ClearPropertyFromCode("brightness") 
+			randomHeroButton.style.brightness = 1 
+		} )
+
+	var reRandomHeroButton = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("ReRandomButton")
+	reRandomHeroButton.SetPanelEvent("onactivate", function() { GameEvents.SendCustomGameEventToServer( "lia_random_hero", {} ) } )
+
+	reRandomHeroButton = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("StrategyScreen").FindChildTraverse("EnterGameReRandomButton")
+	reRandomHeroButton.SetPanelEvent("onactivate", function() { GameEvents.SendCustomGameEventToServer( "lia_random_hero", {} ) } )
+
+
 	//Valve can`t fix, but I can)
 	$.Schedule(1,ValvePlzFix)
 
@@ -74,20 +97,6 @@ function ValvePlzFix()
 	{
 		$.Schedule(0.1,iconFixer)
 
-		var randomHeroButton = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("RandomButton")
-		randomHeroButton.style.saturation = 1
-		randomHeroButton.style.brightness = 1
-		randomHeroButton.SetPanelEvent("onactivate", function() { GameEvents.SendCustomGameEventToServer( "lia_random_hero", {} ) } )
-		randomHeroButton.SetPanelEvent("onmouseover", 
-			function() { 
-				randomHeroButton.ClearPropertyFromCode("brightness") 
-				randomHeroButton.style.brightness = 1.5 
-			} )
-		randomHeroButton.SetPanelEvent("onmouseout", 
-			function() { 
-				randomHeroButton.ClearPropertyFromCode("brightness") 
-				randomHeroButton.style.brightness = 1 
-			} )
 
 
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
