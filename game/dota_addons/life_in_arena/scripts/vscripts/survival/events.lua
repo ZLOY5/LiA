@@ -101,7 +101,11 @@ end
 
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    
+    local attacker 
+    if keys.entindex_attacker then 
+        attacker = EntIndexToHScript(keys.entindex_attacker)
+    end
     --print(attacker:GetUnitName(),killed:IsOwnedByAnyPlayer())
     
     if killed:IsRealHero() then
@@ -162,7 +166,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-       -- self.nRoundNum = 2
+        --self.nRoundNum = 16
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
         Survival:PrepareNextRound()
@@ -245,42 +249,9 @@ function Survival:OnPlayerChat(event)
         if event.text == "closeshop" then
             DisableShop()
         end
-
-        if event.text == "test" then
-            PlayerResource:SetHasRandomed(playerID)
-            PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection()
-        end
-
-        if event.text == "test2" then
-            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            print(hero:GetunitName())
-        end
     
     end
     
-    if event.text == "test" then
-        local data = self:SubmitMatch(2)
-        local req = CreateHTTPRequest("POST", "http://stats.lifeinarena.net/saveStat.php")
-        local encoded = json.encode(data)
-        print(encoded)
-        req:SetHTTPRequestRawPostBody("application/json",encoded)
-        
-        req:Send(function(res)
-            PrintTable("",res)
-            if res.StatusCode ~= 200 then
-                --print("Server connection failure")
 
-                if rep ~= nil and rep > 0 then
-                    --print("Repeating in 3 seconds")
-
-                    --Timers:CreateTimer(3, function() Stats.SendData(url, callback, rep - 1) end)
-                end
-
-                return
-            end
-
-        end)
-
-    end
 	
 end
