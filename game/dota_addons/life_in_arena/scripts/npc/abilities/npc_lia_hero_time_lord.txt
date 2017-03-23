@@ -360,14 +360,13 @@
                 }
             }
       
-            "ThinkInterval"  "%stack_interval"
+            "ThinkInterval"  "0.1"
             "OnIntervalThink"
             {
                 "RunScript"
                 {
                     "ScriptFile"            "heroes/TimeLord/WisdomFlow.lua"
-                    "Function"              "AddIntellect"
-                    "bonus_intellect"       "%bonus_intellect"
+                    "Function"              "CheckCooldown"
                 }
             }      
         }
