@@ -21521,6 +21521,7 @@
 			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 			"AbilityTextureName"			"viper_viper_strike"
 			"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 		
@@ -21594,7 +21595,12 @@
 				
 	            "TrackingProjectile"
 	            {
-	                "Target" 			"TARGET"
+	                "Target"
+					{
+						"Center"	"TARGET"
+						"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					}
 	                "EffectName" 		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
 	                "Dodgeable" 		"1"
 	                "ProvidesVision" 	"1"
@@ -21618,6 +21624,7 @@
 						"Radius"	"%radius"
 						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 						"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 					}
 				}			
 	    	}
