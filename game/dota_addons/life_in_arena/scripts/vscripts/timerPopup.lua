@@ -19,7 +19,7 @@ function SetTimeLeft(newTimeLeft)
     CustomNetTables:SetTableValue("lia_player_table", "lia_timer", 
         {
             startTime = timeStart, 
-            endTime = timeEnd, 
+            endTime = GameRules:GetDOTATime(false,false)+newTimeLeft, 
             timerType = timerTypeSaved,
             wave = waveNumSaved
         })

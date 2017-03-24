@@ -338,8 +338,9 @@ function LiA:RandomHero(event)
     if not PlayerResource:HasRandomed(event.PlayerID) then
         PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
         PlayerResource:SetHasRandomed(event.PlayerID)
-    elseif not PlayerResource:HasRepicked(event.PlayerID) then
+    elseif PlayerResource:CanRepick(event.PlayerID) and PlayerResource:GetGold(event.PlayerID) >= 50 then
         PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
-        PlayerResource:SetHasRepicked(event.PlayerID)
+        PlayerResource:SetCanRepick(event.PlayerID,false)
+        PlayerResource:ModifyGold(event.PlayerID, -150, false, DOTA_ModifyGold_Unspecified)
     end
 end
