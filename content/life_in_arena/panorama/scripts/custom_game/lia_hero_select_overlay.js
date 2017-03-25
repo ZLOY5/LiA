@@ -27,6 +27,11 @@ function UpdatePlayer( playerId )
 	var playerName = playerPanel.FindChildInLayoutFile( "PlayerName" );
 	playerName.text = Players.GetPlayerName( playerId )
 
+	if ( playerId == Players.GetLocalPlayer() )
+	{
+		playerPanel.AddClass( "IsLocalPlayer" );	
+	}
+
 	var playerInfo = Game.GetPlayerInfo( playerId );
 	if ( !playerInfo )
 		return;
@@ -42,11 +47,7 @@ function UpdatePlayer( playerId )
 
 	playerPanel.AddClass( "PlayerInControl" );
 	
-	if ( playerId == localPlayerInfo.player_id )
-	{
-		playerPanel.AddClass( "IsLocalPlayer" );
-		
-	}
+
 
 	var heroName = playerPanel.FindChildInLayoutFile( "HeroName" );
 

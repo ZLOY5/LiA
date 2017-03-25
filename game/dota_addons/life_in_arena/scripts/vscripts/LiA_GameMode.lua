@@ -203,7 +203,9 @@ function LiA:OnDisconnect(event)
         end
     end
    
-    self.nPlayers = self.nPlayers - 1
+    if not PlayerResource:IsFakeClient(playerID) then
+        self.nPlayers = self.nPlayers - 1
+    end
 
     if self.GameMode == LIA_MODE_SURVIVAL then
         Survival:OnDisconnect(event)
@@ -334,13 +336,18 @@ function EnableShop()
 end
 
 function LiA:RandomHero(event)
-    print(event.PlayerID, "requested random hero")
-    if not PlayerResource:HasRandomed(event.PlayerID) then
-        PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
-        PlayerResource:SetHasRandomed(event.PlayerID)
-    elseif PlayerResource:CanRepick(event.PlayerID) and PlayerResource:GetGold(event.PlayerID) >= 50 then
-        PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
-        PlayerResource:SetCanRepick(event.PlayerID,false)
-        PlayerResource:ModifyGold(event.PlayerID, -150, false, DOTA_ModifyGold_Unspecified)
+    if GameRules:State_Get() >= DOTA_GAMERULES_STATE_HERO_SELECTION then
+        if not PlayerResource:HasRandomed(event.PlayerID) then
+            PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
+            PlayerResource:SetHasRandomed(event.PlayerID)
+        elseif PlayerResource:CanRepick(event.PlayerID) and PlayerResource:GetGold(event.PlayerID) >= 50 then
+            PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
+            PlayerResource:SetCanRepick(event.PlayerID,false)
+            if PlayerResource:GetGold(event.PlayerID) > 280 then
+                PlayerResource:ModifyGold(event.PlayerID, -250, false, DOTA_ModifyGold_Unspecified)
+            else
+                PlayerResource:ModifyGold(event.PlayerID, -150, false, DOTA_ModifyGold_Unspecified)
+            end
+        end
     end
 end

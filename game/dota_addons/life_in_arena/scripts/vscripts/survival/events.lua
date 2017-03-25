@@ -3,8 +3,10 @@ function Survival:OnPlayerPickHero(keys)
 
     local hero = EntIndexToHScript(keys.heroindex)
     local playerID = hero:GetPlayerID()
-
-    if playerID == -1 then
+    
+    local heroSelected = PlayerResource:GetSelectedHeroEntity(playerID)
+    
+    if heroSelected then --отсеиваем иллюзии
         return
     end
 
@@ -49,7 +51,7 @@ function Survival:_OnHeroDeath(keys)
     if (self.State == SURVIVAL_STATE_DUEL_TIME) and (hero == self.DuelFirstHero or hero == self.DuelSecondHero) then
         Survival:DuelRegisterHeroDeath(attackerHero,hero)
     else
-        PlayerResource:IncremetDeaths(hero:GetPlayerOwnerID())
+        PlayerResource:IncrementDeaths(hero:GetPlayerOwnerID())
         CreateToast({eventType = 1, killerPlayer = -1, killedPlayer = hero:GetPlayerOwnerID()})
     
         if self:GetHeroCount(true) == 0 then
@@ -65,7 +67,7 @@ function Survival:_OnCreepDeath(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
     if hero then
-        PlayerResource:IncremetCreepKills(hero:GetPlayerOwnerID())
+        PlayerResource:IncrementCreepKills(hero:GetPlayerOwnerID())
     end
 
     self.nDeathCreeps = self.nDeathCreeps + 1
@@ -80,7 +82,7 @@ function Survival:_OnBossDeath(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
     if hero then
-        PlayerResource:IncremetBossKills(hero:GetPlayerOwnerID())
+        PlayerResource:IncrementBossKills(hero:GetPlayerOwnerID())
         PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),3)
         --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = hero.lumber })
         if attacker:GetPlayerOwner() then
@@ -248,6 +250,10 @@ function Survival:OnPlayerChat(event)
 
         if event.text == "closeshop" then
             DisableShop()
+        end
+
+        if event.text == "test" then
+            LiA:RandomHero({PlayerID = playerID})
         end
     
     end

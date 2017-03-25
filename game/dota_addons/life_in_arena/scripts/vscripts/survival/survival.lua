@@ -61,8 +61,8 @@ function Survival:InitSurvival()
     self.flExpFix = {0.75, 1, 1.15, 1.2, 1.25, 1.29, 1.32, 1.3}
     
     self.IsAllRandom = false
-    self.IsExtreme = false
-    self.IsLight = false
+    self.IsExtreme = not not string.find(GetMapName(),"extreme")
+    self.IsLight = not not string.find(GetMapName(),"light")
 
     self.flExtremeExpMultiplier = -0.3
     self.flLightExpMultiplier = 0.2
@@ -430,7 +430,7 @@ function Survival:PrepareNextRound()
     PrecacheUnitByNameAsync(bossName, function(...) end)
 
     for _,hero in pairs(self.tHeroes) do
-        if hero:GetPlayerOwner() == nil then
+        if hero:GetPlayerOwner() == nil and not hero.hidden then
             self:HideHero(hero)
         elseif hero.hidden then
             self:UnhideHero(hero)
