@@ -3,14 +3,25 @@ function AddIntellect(keys)
 	local ability = keys.ability
 	
 	ability:StartCooldown(ability:GetSpecialValueFor("stack_interval"))
+	ability.cooldownStarted = true
 
-	ability.currentStacks = ability.currentStacks+keys.bonus_intellect
+	ability.currentStacks = ability.currentStacks+1
 
-	caster:ModifyIntellect(keys.bonus_intellect)
+	caster:ModifyIntellect(1)
 	caster:CalculateStatBonus()
 
 	caster:SetModifierStackCount("modifier_time_lord_wisdom_flow", ability, ability.currentStacks)
 end 
+
+function CheckCooldown(keys)
+	local caster = keys.caster	
+	local ability = keys.ability
+
+	if ability:IsCooldownReady() and ability.cooldownStarted then
+		AddIntellect(keys)
+	end
+end
+
 
 
 
@@ -23,6 +34,7 @@ function StartCooldown(keys)
 	end
 
 	ability:StartCooldown(ability:GetSpecialValueFor("stack_interval"))
+	ability.cooldownStarted = true
 
 	caster:SetModifierStackCount("modifier_time_lord_wisdom_flow", ability, ability.currentStacks)
 end
@@ -30,4 +42,5 @@ end
 
 function StopCooldown(keys)
 	keys.ability:EndCooldown()
+	ability.cooldownStarted = false
 end

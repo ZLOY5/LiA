@@ -9,7 +9,7 @@ function ResetAllAbilitiesCooldown(unit)
 	local abilities = unit:GetAbilityCount()
 	for i = 0, abilities-1 do
 		local ability = unit:GetAbilityByIndex(i)
-		if ability and not ability:IsCooldownReady() then
+		if ability and not ability:IsCooldownReady() and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
 			ability:EndCooldown()
 		end
 	end

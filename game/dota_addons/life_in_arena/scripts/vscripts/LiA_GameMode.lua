@@ -137,10 +137,8 @@ function LiA:InitGameMode()
 	CustomGameEventManager:RegisterListener("shared_hero_toggle", Dynamic_Wrap(LiA, "SharedHeroToggle"))
 	CustomGameEventManager:RegisterListener("shared_units_toggle", Dynamic_Wrap(LiA, "SharedUnitsToggle"))
 	CustomGameEventManager:RegisterListener("disable_help_toggle", Dynamic_Wrap(LiA, "DisableHelpToggle"))
-	--upgrades
-	CustomGameEventManager:RegisterListener( "apply_ulu_command", Dynamic_Wrap(LiA, "RegisterClick"))
-	--CustomGameEventManager:RegisterListener( "apply_ulu_command_getlumber", Dynamic_Wrap(LiA, "RegisterGetLumber"))
-	--for hint
+	
+    CustomGameEventManager:RegisterListener("lia_random_hero", Dynamic_Wrap(LiA, "RandomHero"))
 
     trigger_shop = Entities:FindByClassname(nil, "trigger_shop") --находим триггер отвечающий за работу магазина
     
@@ -187,7 +185,6 @@ function LiA:OnConnectFull(event)
         Survival:OnConnectFull(event)
     end
 
-    ReconnectTimer(playerID)
 end
 
 function LiA:OnDisconnect(event)
@@ -206,7 +203,9 @@ function LiA:OnDisconnect(event)
         end
     end
    
-    self.nPlayers = self.nPlayers - 1
+    if not PlayerResource:IsFakeClient(playerID) then
+        self.nPlayers = self.nPlayers - 1
+    end
 
     if self.GameMode == LIA_MODE_SURVIVAL then
         Survival:OnDisconnect(event)
@@ -334,4 +333,21 @@ end
 
 function EnableShop()
     trigger_shop:Enable()
+end
+
+function LiA:RandomHero(event)
+    if GameRules:State_Get() >= DOTA_GAMERULES_STATE_HERO_SELECTION then
+        if not PlayerResource:HasRandomed(event.PlayerID) then
+            PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
+            PlayerResource:SetHasRandomed(event.PlayerID)
+        elseif PlayerResource:CanRepick(event.PlayerID) and PlayerResource:GetGold(event.PlayerID) >= 50 then
+            PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
+            PlayerResource:SetCanRepick(event.PlayerID,false)
+            if PlayerResource:GetGold(event.PlayerID) > 280 then
+                PlayerResource:ModifyGold(event.PlayerID, -250, false, DOTA_ModifyGold_Unspecified)
+            else
+                PlayerResource:ModifyGold(event.PlayerID, -150, false, DOTA_ModifyGold_Unspecified)
+            end
+        end
+    end
 end

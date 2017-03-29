@@ -3,8 +3,10 @@ function Survival:OnPlayerPickHero(keys)
 
     local hero = EntIndexToHScript(keys.heroindex)
     local playerID = hero:GetPlayerID()
-
-    if playerID == -1 then
+    
+    local heroSelected = PlayerResource:GetSelectedHeroEntity(playerID)
+    
+    if heroSelected then --отсеиваем иллюзии
         return
     end
 
@@ -49,7 +51,7 @@ function Survival:_OnHeroDeath(keys)
     if (self.State == SURVIVAL_STATE_DUEL_TIME) and (hero == self.DuelFirstHero or hero == self.DuelSecondHero) then
         Survival:DuelRegisterHeroDeath(attackerHero,hero)
     else
-        PlayerResource:IncremetDeaths(hero:GetPlayerOwnerID())
+        PlayerResource:IncrementDeaths(hero:GetPlayerOwnerID())
         CreateToast({eventType = 1, killerPlayer = -1, killedPlayer = hero:GetPlayerOwnerID()})
     
         if self:GetHeroCount(true) == 0 then
@@ -65,7 +67,7 @@ function Survival:_OnCreepDeath(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
     if hero then
-        PlayerResource:IncremetCreepKills(hero:GetPlayerOwnerID())
+        PlayerResource:IncrementCreepKills(hero:GetPlayerOwnerID())
     end
 
     self.nDeathCreeps = self.nDeathCreeps + 1
@@ -80,7 +82,7 @@ function Survival:_OnBossDeath(keys)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     
     if hero then
-        PlayerResource:IncremetBossKills(hero:GetPlayerOwnerID())
+        PlayerResource:IncrementBossKills(hero:GetPlayerOwnerID())
         PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),3)
         --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = hero.lumber })
         if attacker:GetPlayerOwner() then
@@ -101,7 +103,11 @@ end
 
 function Survival:OnEntityKilled(keys)
     local killed = EntIndexToHScript(keys.entindex_killed)
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    
+    local attacker 
+    if keys.entindex_attacker then 
+        attacker = EntIndexToHScript(keys.entindex_attacker)
+    end
     --print(attacker:GetUnitName(),killed:IsOwnedByAnyPlayer())
     
     if killed:IsRealHero() then
@@ -162,7 +168,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-       -- self.nRoundNum = 2
+        --self.nRoundNum = 16
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
         Survival:PrepareNextRound()
@@ -247,34 +253,11 @@ function Survival:OnPlayerChat(event)
         end
 
         if event.text == "test" then
-            self:SubmitMatch(2)
+            LiA:RandomHero({PlayerID = playerID})
         end
     
     end
     
-    if event.text == "test" then
-        local data = self:SubmitMatch(2)
-        local req = CreateHTTPRequest("POST", "http://stats.lifeinarena.net/saveStat.php")
-        local encoded = json.encode(data)
-        print(encoded)
-        req:SetHTTPRequestRawPostBody("application/json",encoded)
-        
-        req:Send(function(res)
-            PrintTable("",res)
-            if res.StatusCode ~= 200 then
-                --print("Server connection failure")
 
-                if rep ~= nil and rep > 0 then
-                    --print("Repeating in 3 seconds")
-
-                    --Timers:CreateTimer(3, function() Stats.SendData(url, callback, rep - 1) end)
-                end
-
-                return
-            end
-
-        end)
-
-    end
 	
 end

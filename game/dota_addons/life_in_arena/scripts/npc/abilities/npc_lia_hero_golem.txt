@@ -50,6 +50,12 @@
             "var_type"                "FIELD_FLOAT"
             "duration"                "3"
         }
+        "05"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "burn_damage_actual"             "5 10 15"
+        }
+
     }
 
     "OnSpellStart"
@@ -92,7 +98,7 @@
           {
             "Target"    "TARGET"
             "Type"      "DAMAGE_TYPE_MAGICAL"
-            "Damage"    "%burn_damage"
+            "Damage"    "%burn_damage_actual"
           }
         }      
       }

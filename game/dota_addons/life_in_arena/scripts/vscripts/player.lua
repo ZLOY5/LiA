@@ -46,16 +46,32 @@ function CDOTA_PlayerResource:GetPlayerRating(playerID)
 	return CustomPlayerResource.data[playerID].rating
 end
 
-function CDOTA_PlayerResource:IncremetCreepKills(playerID)
+function CDOTA_PlayerResource:GetCreepKills(playerID)
+	return CustomPlayerResource.data[playerID].killedCreeps or 0
+end
+
+function CDOTA_PlayerResource:IncrementCreepKills(playerID)
 	CustomPlayerResource.data[playerID].killedCreeps = CustomPlayerResource.data[playerID].killedCreeps + 1
 end
 
-function CDOTA_PlayerResource:IncremetBossKills(playerID)
+function CDOTA_PlayerResource:GetBossKills(playerID)
+	return CustomPlayerResource.data[playerID].killedBosses or 0
+end
+
+function CDOTA_PlayerResource:IncrementBossKills(playerID)
 	CustomPlayerResource.data[playerID].killedBosses = CustomPlayerResource.data[playerID].killedBosses + 1
 end
 
-function CDOTA_PlayerResource:IncremetDeaths(playerID)
+function CDOTA_PlayerResource:GetDeaths(playerID)
+	return CustomPlayerResource.data[playerID].heroDeaths or 0
+end
+
+function CDOTA_PlayerResource:IncrementDeaths(playerID)
 	CustomPlayerResource.data[playerID].heroDeaths = CustomPlayerResource.data[playerID].heroDeaths + 1
+end
+
+function CDOTA_PlayerResource:GetUpgradesPercent(playerID)
+	return CustomPlayerResource.data[playerID].lumberSpent/333*100 or 0
 end
 
 function CDOTA_PlayerResource:IncremetUpgrades(playerID)

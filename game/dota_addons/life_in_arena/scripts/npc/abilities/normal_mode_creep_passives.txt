@@ -546,6 +546,25 @@
 	}
 }
 
+"9_wave_incorporeity"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"abilities/2_wave_centaurs_revenge.lua"
+	"AbilityTextureName"			"custom/2_wave_thorns_aura"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_return"				"10"		
+		}	
+	}
+
+}
+
 "fire_golem_10_wave_megaboss_immolation"
 {
 	"BaseClass"             		"ability_datadriven"
@@ -721,6 +740,81 @@
 			{
 				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
+		}
+	}
+}
+
+"12_wave_crit"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"ursa_fury_swipes"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_mult"					"200"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"25"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_12_wave_crit"
+		{
+		    "Passive"   "1"
+		    "IsHidden"  "1"
+		    "OnAttackStart"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName" 	"modifier_12_wave_crit_crit"
+		            "Target" 		"CASTER"
+		        }
+
+		        "Random"
+		        {
+		            "Chance" "%crit_chance"
+		            "OnSuccess"
+		            {
+		                "ApplyModifier"
+		                {
+		                    "ModifierName" 	"modifier_12_wave_crit_crit"
+		                    "Target"    	"CASTER"    
+		                }        
+		            }
+		        }
+		    }
+		}
+
+		"modifier_12_wave_crit_crit"
+		{
+		    "IsHidden"  "1"
+		    "Properties"
+		    {
+		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+		    }
+
+		    "OnAttackLanded"
+		    {
+		        "RemoveModifier"
+		        {
+		            "ModifierName"  "modifier_12_wave_crit_crit"
+		            "Target"   		"CASTER"    
+		        }
+		    }
 		}
 	}
 }

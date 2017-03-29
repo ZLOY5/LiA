@@ -8,7 +8,7 @@ var duration
 function Tick()
 {
 	//$.Msg("Tick")
-	schedule = $.Schedule(0.03,Tick)
+	schedule = $.Schedule(1/60,Tick)
 	//$.Msg(Game.GetDOTATime( false, false ))
 	var currTime = Game.GetDOTATime( false, false )
 	//var duration = endTime - startTime
@@ -75,11 +75,28 @@ function NewEndTime(data)
 	endTime = data.endTime
 }
 
+function OnTimerChanged(table, key, data)
+{
+	if (key == "lia_timer")
+	{
+		if (data.startTime != startTime)
+			StartTimer(data)
+		else
+			endTime = data.endTime
+	}
+}
+
 (function()
 {
 	$("#TimerContainer").AddClass("Hidden")
 
-	GameEvents.Subscribe("lia_timer_start", StartTimer);
+	CustomNetTables.SubscribeNetTableListener("lia_player_table", OnTimerChanged)
+	//GameEvents.Subscribe("lia_timer_start", StartTimer);
 	GameEvents.Subscribe("lia_timer_stop", StopTimer);
-	GameEvents.Subscribe("lia_timer_time_left", NewEndTime);
+	//GameEvents.Subscribe("lia_timer_time_left", NewEndTime);
+
+	var data = CustomNetTables.GetTableValue("lia_player_table", "lia_timer")
+	if (typeof(data) == "object") {
+		StartTimer(data)
+	} 
 })();
