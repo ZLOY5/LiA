@@ -1,5 +1,5 @@
 function ApplyAccuracy(event)
-	if event.ability:IsCooldownReady() then
+	if event.ability:IsCooldownReady()  then
 		event.ability:ApplyDataDrivenModifier(event.caster,event.caster,"modifier_item_lia_crusher_accuracy",nil)
 	end
 end
@@ -12,7 +12,7 @@ function ChainLightning( event )
 	local ability = event.ability
 	local target = event.target
 
-	if not target:IsMagicImmune() then
+	if not target:IsMagicImmune() and not event.caster:IsIllusion() then
 		local hero = event.caster
 		
 		if ability:IsCooldownReady() then
