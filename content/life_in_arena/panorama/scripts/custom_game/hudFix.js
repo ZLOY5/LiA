@@ -83,7 +83,12 @@
 	reRandomHeroButton = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("StrategyScreen").FindChildTraverse("EnterGameReRandomButton")
 	reRandomHeroButton.SetPanelEvent("onactivate", function() { GameEvents.SendCustomGameEventToServer( "lia_random_hero", {} ) } )
 
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroRoles").FindChildTraverse("Role_Carry").style.visibility = "collapse"
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroRoles").FindChildTraverse("Role_Support").style.visibility = "collapse"
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroRoles").FindChildTraverse("Role_Initiator").style.visibility = "collapse"
 
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroFilters").FindChildTraverse("BottomLineFilters").FindChildTraverse("RoleOptions").style.visibility = "collapse"
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroFilters").FindChildTraverse("AttributeOptions").GetChild(6).style.visibility = "collapse"
 	//Valve can`t fix, but I can)
 	$.Schedule(1,ValvePlzFix)
 
