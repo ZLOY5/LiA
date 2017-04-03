@@ -12,7 +12,7 @@ function ChainLightning( event )
 	local ability = event.ability
 	local target = event.target
 
-	if not target:IsMagicImmune() and not event.caster:IsIllusion() then
+	if not target:IsMagicImmune()  then
 		local hero = event.caster
 		
 		if ability:IsCooldownReady() then
@@ -34,7 +34,9 @@ function ChainLightning( event )
 		--ParticleManager:SetParticleControlEnt(lightningBolt, 1, target, 1, "attach_hitloc", target:GetAbsOrigin(), true)
 
 		EmitSoundOn("Hero_Zuus.ArcLightning.Target", target)	
-		ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
+		if not hero:IsIllusion() then
+			ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
+		end
 		--PopupDamage(target,math.floor(damage))
 
 		-- Every target struck by the chain is added to a list of targets struck, And set a boolean inside its index to be sure we don't hit it twice.
@@ -106,7 +108,9 @@ function ChainLightning( event )
 				
 				-- damage and decay
 				damage = damage - (damage*decay)
-				ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
+				if not hero:IsIllusion() then
+					ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
+				end
 				--PopupDamage(target,math.floor(damage))
 				--print("Bounce "..bounces.." Hit Unit "..target:GetEntityIndex().. " for "..damage.." damage")
 
