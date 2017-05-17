@@ -1,322 +1,4 @@
 // kret
-
-	"kret_virus"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"AbilityTextureName"			"viper_viper_strike"
-		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
-	
-		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"			
-		"MaxLevel"               "3"
-		"RequiredLevel"          "5"
-		"LevelsBetweenUpgrades"  "4"
-	
-		"AbilityCastRange"				"500"
-		"AbilityCastPoint"				"0.2"
-	
-		"AbilityCooldown"				"25.0"
-	
-		"AbilityManaCost"				"80 100 120"	
-	
-		"precache"
-		{
-			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf" 
-			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf" 
-			"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_warmup.vpcf" 
-			"particle"		"particles/status_fx/status_effect_poison_viper.vpcf"
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"main_damage"			"150 300 450"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"other_damage"			"100 200 300"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"reduce_ms"				"-50"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"4.5"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_speed"			"1300.0"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_vision"			"500.0"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"450"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Huskar.Burning_Spear"
-				"Target" 		"CASTER"
-			}
-			
-            "TrackingProjectile"
-            {
-                "Target"
-				{
-					"Center"	"TARGET"
-					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-                "EffectName" 		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
-                "Dodgeable" 		"1"
-                "ProvidesVision" 	"1"
-                "VisionRadius" 		"%acid_vision"
-                "MoveSpeed" 		"%acid_speed"
-                "SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-            }
-		}
-
-    	"OnProjectileHitUnit"
-    	{
-        	"DeleteOnHit" "1"
-			
-			"RunScript"
-			{
-				"ScriptFile"	"heroes\Kret\Virus.lua"
-				"Function"		"Virus"
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}			
-    	}
-
-		"Modifiers"
-		{			
-			"modifier_kret_virus_main_target"
-			{
-				"IsDebuff"			"1"
-				"IsPurgable"		"1"
-				
-				"Duration"	"%duration"
-
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"Target"		"TARGET"
-						"EffectName"	"Hero_BountyHunter.WindWalk"
-					}
-				}
-
-				"OnDestroy"
-				{
-					"Damage"
-					{
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage" 	"%main_damage"
-					}
-				}
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
-				}
-				
-				"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
-				"StatusEffectPriority"	"15"
-			}
-		}
-	}
-
-
-"kret_lust_for_life"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"            	"custom/kret_lust_for_life"
-	//
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"bonus_health"				"100 200 300"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"tolltip"		"10" 
-		}
-		"03"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"health_regen_percent"		"0.15 0.25 0.35" 
-		}
-	}
-
-	"OnRespawn"
-	{
-		"ApplyModifier"		"modifier_lust_for_life"
-	}
-
-	"Modifiers"
-	{
-		"modifier_lust_for_life"
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
-			}
-
-			"ThinkInterval" "1"
-				
-			"OnIntervalThink"
-    		{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Kret\lustForLife.lua"
-					"Function"		"UpdateRegen"
-				}
-    		}	
-		}
-		"modifier_lust_for_life_health_regen"
-		{
-			"IsHidden"		"1"
-			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%health_regen_percent"   
-			}
-		}
-
-	}
-
-}
-
-
-
-
-"kret_poisoning"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"AbilityTextureName"            	"viper_corrosive_skin"
-	"AbilityUnitTargetTeam"         	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"         	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"precache"
-	{
-		"particle"			"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
-	}
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"chanceVal"					"33"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"adsorbVal"					"50 100 150"
-		}
-	}
-
-	"OnRespawn"
-	{
-		"ApplyModifier"		"modifier_kret_poisoning"
-	}
-
-	"Modifiers"
-	{
-		"modifier_kret_poisoning"
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-			"IsPurgable"	"0"
-			//
-    			"OnAttacked"
-    			{
-
-				"Random"
-				{
-					"Chance"		"%chanceVal"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-					//
-					"OnSuccess"
-					{
-
-						"RunScript"
-						{
-							"ScriptFile"	"heroes\Kret\poisoning.lua"
-							"Function"	"SetAdsorbFromKret"
-							"adsorbVal"	"%adsorbVal"
-						}
-						//
-						"AttachEffect"
-						{
-							"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
-							"EffectAttachType"	"follow_origin"	
-							"Target" "ATTACKER"
-						}
-					}
-				}
-    		}	
-		}
-	}
-}
-
-
-
 "kret_acid"
 {
 	// General
@@ -325,6 +7,7 @@
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	"AbilityTextureName"			"viper_poison_attack"
 	"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 
@@ -487,3 +170,315 @@
 		}
 	}
 }
+
+"kret_poisoning"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"AbilityTextureName"            	"viper_corrosive_skin"
+	"AbilityUnitTargetTeam"         	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"         	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"precache"
+	{
+		"particle"			"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"chanceVal"					"33"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"adsorbVal"					"50 100 150"
+		}
+	}
+
+	"OnRespawn"
+	{
+		"ApplyModifier"		"modifier_kret_poisoning"
+	}
+
+	"Modifiers"
+	{
+		"modifier_kret_poisoning"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"IsPurgable"	"0"
+			//
+    			"OnAttacked"
+    			{
+
+				"Random"
+				{
+					"Chance"		"%chanceVal"
+					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+					//
+					"OnSuccess"
+					{
+
+						"RunScript"
+						{
+							"ScriptFile"	"heroes\Kret\poisoning.lua"
+							"Function"	"SetAdsorbFromKret"
+							"adsorbVal"	"%adsorbVal"
+						}
+						//
+						"AttachEffect"
+						{
+							"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+							"EffectAttachType"	"follow_origin"	
+							"Target" "ATTACKER"
+						}
+					}
+				}
+    		}	
+		}
+	}
+}
+
+"kret_lust_for_life"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"            	"custom/kret_lust_for_life"
+	//
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_health"				"100 200 300"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"tolltip"		"10" 
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"health_regen_percent"		"0.15 0.25 0.35" 
+		}
+	}
+
+	"OnRespawn"
+	{
+		"ApplyModifier"		"modifier_lust_for_life"
+	}
+
+	"Modifiers"
+	{
+		"modifier_lust_for_life"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
+			}
+
+			"ThinkInterval" "1"
+				
+			"OnIntervalThink"
+    		{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes\Kret\lustForLife.lua"
+					"Function"		"UpdateRegen"
+				}
+    		}	
+		}
+		"modifier_lust_for_life_health_regen"
+		{
+			"IsHidden"		"1"
+			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%health_regen_percent"   
+			}
+		}
+
+	}
+
+}
+
+
+"kret_virus"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityTextureName"			"viper_viper_strike"
+	"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"			
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+
+	"AbilityCastRange"				"500"
+	"AbilityCastPoint"				"0.2"
+
+	"AbilityCooldown"				"25.0"
+
+	"AbilityManaCost"				"80 100 120"	
+
+	"precache"
+	{
+		"particle"		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf" 
+		"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf" 
+		"particle"		"particles/units/heroes/hero_viper/viper_viper_strike_warmup.vpcf" 
+		"particle"		"particles/status_fx/status_effect_poison_viper.vpcf"
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"main_damage"			"150 300 450"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"other_damage"			"100 200 300"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"reduce_ms"				"-50"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"4.5"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"acid_speed"			"1300.0"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"acid_vision"			"500.0"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"450"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Huskar.Burning_Spear"
+			"Target" 		"CASTER"
+		}
+		
+        "TrackingProjectile"
+        {
+            "Target"
+			{
+				"Center"	"TARGET"
+				"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
+            "EffectName" 		"particles/units/heroes/hero_viper/viper_viper_strike.vpcf"
+            "Dodgeable" 		"1"
+            "ProvidesVision" 	"1"
+            "VisionRadius" 		"%acid_vision"
+            "MoveSpeed" 		"%acid_speed"
+            "SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+        }
+	}
+
+	"OnProjectileHitUnit"
+	{
+    	"DeleteOnHit" "1"
+		
+		"RunScript"
+		{
+			"ScriptFile"	"heroes\Kret\Virus.lua"
+			"Function"		"Virus"
+			"Target"
+			{
+				"Center"	"TARGET"
+				"Radius"	"%radius"
+				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+			}
+		}			
+	}
+
+	"Modifiers"
+	{			
+		"modifier_kret_virus_main_target"
+		{
+			"IsDebuff"			"1"
+			"IsPurgable"		"1"
+			
+			"Duration"	"%duration"
+
+			"OnCreated"
+			{
+				"FireSound"
+				{
+					"Target"		"TARGET"
+					"EffectName"	"Hero_BountyHunter.WindWalk"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Type" 		"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+					"Damage" 	"%main_damage"
+				}
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%reduce_ms"
+			}
+			
+			"StatusEffectName"		"particles/status_fx/status_effect_poison_viper.vpcf"
+			"StatusEffectPriority"	"15"
+		}
+	}
+}
+
