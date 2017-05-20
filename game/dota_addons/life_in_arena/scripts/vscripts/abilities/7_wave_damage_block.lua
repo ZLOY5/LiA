@@ -1,19 +1,19 @@
 7_wave_damage_block = class({}) 
 LinkLuaModifier("modifier_7_wave_damage_block", "abilities/7_wave_damage_block.lua", LUA_MODIFIER_MOTION_NONE)
 
-function android_armor:GetIntrinsicModifierName()
+function 7_wave_damage_block:GetIntrinsicModifierName()
 	return "modifier_7_wave_damage_block" 
 end
 
 -----------------------------------------------------------------------------------------
 
-modifier_android_armor = class({}) 
+modifier_7_wave_damage_block = class({}) 
 
-function modifier_android_armor:IsHidden()
+function modifier_7_wave_damage_block:IsHidden()
 	return true 
 end
 
-function modifier_android_armor:DeclareFunctions()
+function modifier_7_wave_damage_block:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR,
 	}
@@ -21,16 +21,16 @@ function modifier_android_armor:DeclareFunctions()
 	return funcs
 end
 
-function modifier_android_armor:OnCreated(kv)
+function modifier_7_wave_damage_block:OnCreated(kv)
 	self.damage_block = self:GetAbility():GetSpecialValueFor("damage_block")
 end
 
-function modifier_android_armor:OnRefresh(kv)
+function modifier_7_wave_damage_block:OnRefresh(kv)
 	self.damage_block = self:GetAbility():GetSpecialValueFor("damage_block")
 	self.minimumDamage = self:GetAbility():GetSpecialValueFor("min_damage")
 end
 
-function modifier_android_armor:GetModifierPhysical_ConstantBlockUnavoidablePreArmor(params) 
+function modifier_7_wave_damage_block:GetModifierPhysical_ConstantBlockUnavoidablePreArmor(params) 
 	--PrintTable("GetModifierPhysical_ConstantBlockUnavoidablePreArmor",params)
 	if params.inflictor then --не действует на физ урон от способностей
 		return 0

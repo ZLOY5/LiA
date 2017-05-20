@@ -74,7 +74,7 @@ function modifier_stats_bonus_fix:CalculateStatsBonus(kv)
 	self.attackBonus = primaryStat * (HERO_STATS_ATTACK_BONUS - 1)
 
 	self.healthBonus = strength * (HERO_STATS_HEALTH_BONUS - 20)
-	self.healtRegenBonus = strength * (HERO_STATS_HEALTH_REGEN_BONUS - 0.03)
+	self.healtRegenBonus = strength * (HERO_STATS_HEALTH_REGEN_BONUS - 0.06)
 	
 
 	hero.baseArmorValue = hero.baseArmorValue or hero:GetPhysicalArmorBaseValue()
@@ -85,7 +85,7 @@ function modifier_stats_bonus_fix:CalculateStatsBonus(kv)
 	self.attackSpeedBonus = agility * (HERO_STATS_ATTACK_SPEED_BONUS - 1)
 	self.moveSpeedBonus = agility * HERO_STATS_MOVE_SPEED_BONUS -- в доте нет его?
 
-	self.manaBonus = intellect * (HERO_STATS_MANA_BONUS - 12)
+	self.manaBonus = intellect * (HERO_STATS_MANA_BONUS - 11)
 	self.manaRegenBonus = intellect * (HERO_STATS_MANA_REGEN_BONUS - 0.04)
 
 	hero:CalculateStatBonus()
