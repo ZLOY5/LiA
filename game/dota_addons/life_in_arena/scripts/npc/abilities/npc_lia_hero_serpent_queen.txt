@@ -213,7 +213,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_agility"	"30 60 90"
+			"bonus_agility"	"25 50 75"
 		}
 		"02"
 		{
@@ -232,7 +232,6 @@
 				"Center"  	"CASTER"
 				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 			}
-			"Duration"	"%duration"
 		}	
 	}
 	
@@ -240,23 +239,15 @@
 	{
 		"modifier_serpent_queen_heavenly_power"
 		{
+			"Duration"		"%duration"
+			"IsBuff"		"1"
 			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"OnCreated"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\SerpentQueen\HeavenlyPower.lua"
-					"Function"		"AddAgility"
-				}
-			}
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\SerpentQueen\HeavenlyPower.lua"
-					"Function"		"RemoveAgility"
-				}
-			}
+			"Properties"
+	      		{	
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+	      		}
+		      	"EffectName"        "particles/units/heroes/hero_invoker/invoker_alacrity.vpcf"
+			"EffectAttachType"  "follow_overhead"
 		}
 
 	}
