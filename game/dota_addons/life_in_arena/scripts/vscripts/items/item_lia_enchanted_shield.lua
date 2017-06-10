@@ -4,3 +4,7 @@ LinkLuaModifier("modifier_item_lia_enchanted_shield", "items/modifier_item_lia_e
 function item_lia_enchanted_shield:GetIntrinsicModifierName() 
 	return "modifier_item_lia_enchanted_shield"
 end
+
+function item_lia_enchanted_shield:GetAbilityTextureName()
+	return "custom/lia_enchanted_shield"
+end

@@ -17,6 +17,10 @@ function item_lia_lunar_necklace:OnSpellStart()
 	EmitSoundOn("Hero_Luna.Eclipse.Cast",target)
 end
 
+function item_lia_lunar_necklace:GetAbilityTextureName()
+	return "custom/lia_lunar_necklace"
+end
+
 ----------------------------------------------------------------------
 
 modifier_item_lia_lunar_necklace = class({})

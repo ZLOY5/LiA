@@ -26,3 +26,7 @@ function item_lia_health_elixir:OnSpellStart()
 	end
 end
 
+function item_lia_health_elixir:GetAbilityTextureName()
+	return "custom/lia_health_elixir"
+end
+

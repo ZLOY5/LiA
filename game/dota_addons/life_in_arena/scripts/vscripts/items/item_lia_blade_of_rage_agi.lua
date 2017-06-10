@@ -10,6 +10,10 @@ function item_lia_blade_of_rage_agi:OnSpellStart()
 	self:GetCaster():AddNewModifier(self:GetCaster(), self, "modifier_item_lia_blade_of_rage_agi_active", {duration = self:GetSpecialValueFor("duration")} )	
 end
 
+function item_lia_blade_of_rage_agi:GetAbilityTextureName()
+	return "custom/lia_blade_of_rage_agi"
+end
+
 ---------------------------------------
 
 modifier_item_lia_blade_of_rage_agi = class({})

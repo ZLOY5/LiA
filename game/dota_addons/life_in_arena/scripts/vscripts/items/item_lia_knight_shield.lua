@@ -11,6 +11,10 @@ function item_lia_knight_shield:OnSpellStart()
 	self:GetCaster():EmitSound("???")
 end
 
+function item_lia_knight_shield:GetAbilityTextureName()
+	return "custom/lia_knight_shield"
+end
+
 
 -----------------------------------------------------------
 
