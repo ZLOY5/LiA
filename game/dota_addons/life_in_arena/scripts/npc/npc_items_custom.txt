@@ -1842,40 +1842,15 @@
 							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 						}
 					}
-			    }
 	
-			}
-	
-			"modifier_item_lia_crusher_crit"
-			{
-				"IsHidden"  "1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-				}
-	
-				"OnAttackLanded"
-				{
-					"RemoveModifier"
-					{
-						"ModifierName"  "modifier_item_lia_crusher_crit"
-						"Target"
-						{
-							"Center"  	"CASTER"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-						}   
-					}
-	
-					// Basic blood particle effect
 					"FireEffect"
 					{
 						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
 						"EffectAttachType"  "follow_origin"
 						"Target"    "TARGET"
 					}
-				}
+			    }
 			}
-	
 		}
 	}
 	//End of file item_lia_crusher.txt

@@ -338,16 +338,19 @@ end
 function LiA:RandomHero(event)
     if GameRules:State_Get() >= DOTA_GAMERULES_STATE_HERO_SELECTION then
         if not PlayerResource:HasRandomed(event.PlayerID) then
+            --print("Random")
             PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
             PlayerResource:SetHasRandomed(event.PlayerID)
-        elseif PlayerResource:CanRepick(event.PlayerID) and PlayerResource:GetGold(event.PlayerID) >= 50 then
+            if PlayerResource:GetGold(event.PlayerID) == 330 then
+                PlayerResource:ModifyGold(event.PlayerID, -150, false, DOTA_ModifyGold_Unspecified)
+            else
+                PlayerResource:ModifyGold(event.PlayerID, 50, false, DOTA_ModifyGold_Unspecified)
+            end
+        --[[elseif PlayerResource:CanRepick(event.PlayerID) and PlayerResource:GetGold(event.PlayerID) >= 50 then 
+            print("RePick")
             PlayerResource:GetPlayer(event.PlayerID):MakeRandomHeroSelection()
             PlayerResource:SetCanRepick(event.PlayerID,false)
-            if PlayerResource:GetGold(event.PlayerID) > 280 then
-                PlayerResource:ModifyGold(event.PlayerID, -250, false, DOTA_ModifyGold_Unspecified)
-            else
-                PlayerResource:ModifyGold(event.PlayerID, -150, false, DOTA_ModifyGold_Unspecified)
-            end
+            --PlayerResource:ModifyGold(event.PlayerID, -250, false, DOTA_ModifyGold_Unspecified)]]
         end
     end
 end

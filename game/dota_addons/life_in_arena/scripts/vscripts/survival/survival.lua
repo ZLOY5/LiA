@@ -106,6 +106,8 @@ function Survival:InitSurvival()
     --    PlayerResource:SetGold(playerID, 500, false)
     --end
 
+    GameMode:SetSelectionGoldPenaltyEnabled(false)
+
     GameMode:SetModifyExperienceFilter(Dynamic_Wrap(Survival, "ExperienceFilter"), self)
     GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
     GameMode:SetExecuteOrderFilter(Dynamic_Wrap(Survival, "OrderFilter"), self)
@@ -135,11 +137,11 @@ function Survival:InitSurvival()
         end
     end
 
-    GameMode:SetContextThink("RandomGold",ThinkGoldGuard,0.1)
-    PlayerResource.RandomGoldReduced = {}
+    --GameMode:SetContextThink("RandomGold",ThinkGoldGuard,0.1)
+    --PlayerResource.RandomGoldReduced = {}
 end
 
-function ThinkGoldGuard()
+--[[function ThinkGoldGuard()
     for i = 0, DOTA_MAX_PLAYERS-1 do
         if PlayerResource:IsValidTeamPlayerID(i) and PlayerResource:GetSelectedHeroName(i) ~= "" and not PlayerResource.RandomGoldReduced[i] then
             if PlayerResource:HasRandomed(i) then
@@ -152,7 +154,7 @@ function ThinkGoldGuard()
     end
     
     return 0.1
-end
+end]]
 
 function AIThink()
     --print("CleanAICasts")
