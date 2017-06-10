@@ -31,10 +31,6 @@ function item_lia_mana_stone_potion:OnSpellStart()
 	end
 end
 
-function item_lia_mana_stone_potion:GetAbilityTextureName()
-	return "custom/lia_mana_stone_potion"
-end
-
 -----------------------------------------------------------------------
 
 modifier_item_lia_mana_stone_potion = class({})

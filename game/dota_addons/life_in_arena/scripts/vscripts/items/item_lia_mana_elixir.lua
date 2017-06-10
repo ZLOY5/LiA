@@ -25,7 +25,3 @@ function item_lia_mana_elixir:OnSpellStart()
 		self:RemoveSelf()
 	end
 end
-
-function item_lia_mana_elixir:GetAbilityTextureName()
-	return "custom/lia_mana_elixir"
-end

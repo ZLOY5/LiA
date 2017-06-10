@@ -6,10 +6,6 @@ function item_lia_banner_of_victory:GetIntrinsicModifierName()
 	return "modifier_banner_of_victory"
 end
 
-function item_lia_banner_of_victory:GetAbilityTextureName()
-	return "custom/lia_banner_of_victory"
-end
-
 -------------------------------------------------------------------------------
 
 modifier_banner_of_victory = class({})

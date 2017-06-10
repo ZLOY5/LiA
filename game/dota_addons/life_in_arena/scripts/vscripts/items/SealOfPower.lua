@@ -47,10 +47,6 @@ function item_lia_seal_of_power_armor:OnSpellStart()
 	caster:SwapItems(itemSlot1,itemSlot2)
 end
 
-function item_lia_seal_of_power_armor:GetAbilityTextureName()
-	return "custom/lia_seal_of_power_armor"
-end
-
 ---------------------------------------------------------------------------------------
 
 modifier_item_lia_seal_of_power_armor = class({})
@@ -151,10 +147,6 @@ function item_lia_seal_of_power_damage:OnSpellStart()
 
 	local itemSlot2 = item:GetItemSlot()
 	caster:SwapItems(itemSlot1,itemSlot2)
-end
-
-function item_lia_seal_of_power_damage:GetAbilityTextureName()
-	return "custom/lia_seal_of_power_damage"
 end
 
 ---------------------------------------------------------------------------------------

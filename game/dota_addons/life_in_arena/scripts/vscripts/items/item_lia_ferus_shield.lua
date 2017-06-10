@@ -33,10 +33,6 @@ function item_lia_ferus_shield:OnSpellStart()
 
 end
 
-function item_lia_ferus_shield:GetAbilityTextureName()
-	return "custom/lia_ferus_shield"
-end
-
 -------------------------------------------------------------------------------
 
 modifier_ferus_shield = class({})

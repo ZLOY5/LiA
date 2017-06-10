@@ -12,9 +12,6 @@ function item_lia_knight_cuirass:OnSpellStart()
 	self:GetCaster():EmitSound("DOTA_Item.BladeMail.Activate")
 end
 
-function item_lia_knight_cuirass:GetAbilityTextureName()
-	return "custom/lia_knight_cuirass"
-end
 
 -----------------------------------------------------------
 
