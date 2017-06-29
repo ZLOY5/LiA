@@ -60,7 +60,7 @@ function Survival:UnhideHero(hero)
 			hero:RespawnHero(false, false, false)
 		end
 		hero:RemoveModifierByName("modifier_hide_lua")
-		FindClearSpaceForUnit(hero, hero.abs, false)
+		FindClearSpaceForUnit_IgnoreNeverMove(hero, hero.abs, false)
 		ResolveNPCPositions(hero.abs, 64)
 		hero:RemoveNoDraw()
 		hero.hidden = nil
@@ -84,7 +84,7 @@ function RespawnAllHeroes()
 	DoWithAllHeroes(function(hero)
 		if not hero:IsAlive() then
 			hero:RespawnHero(false,false,false)
-			FindClearSpaceForUnit(hero, hero:GetAbsOrigin(), false)
+			FindClearSpaceForUnit_IgnoreNeverMove(hero, hero:GetAbsOrigin(), false)
 		end
 	end)
 end
@@ -319,4 +319,10 @@ function LeavesCorpse( unit )
             return true
         end
     end
+end
+
+function FindClearSpaceForUnit_IgnoreNeverMove(unit,position,useInterp)
+	unit:SetNeverMoveToClearSpace(false)
+ 	FindClearSpaceForUnit(unit,postion,useInterp)
+	unit:SetNeverMoveToClearSpace(true)
 end

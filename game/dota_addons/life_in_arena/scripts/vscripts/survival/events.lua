@@ -24,6 +24,9 @@ function Survival:OnPlayerPickHero(keys)
     else
         self:HideHero(hero)
     end
+
+    hero:SetNeverMoveToClearSpace(true)
+
 end
 
 ---------------------------------------------------------------------------------------------------------------------------

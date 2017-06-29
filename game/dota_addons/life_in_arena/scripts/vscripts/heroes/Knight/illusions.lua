@@ -41,7 +41,7 @@ function illusions( event )
 
 
 	-- At first, move the main hero to one of the random spawn positions.
-	FindClearSpaceForUnit( caster, table.remove( vRandomSpawnPos,RandomInt(1, #vRandomSpawnPos)), true )
+	FindClearSpaceForUnit_IgnoreNeverMove( caster, table.remove( vRandomSpawnPos,RandomInt(1, #vRandomSpawnPos)), true )
 
 	-- Spawn illusions
 	for i=1, images_count do

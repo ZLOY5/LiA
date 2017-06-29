@@ -13,7 +13,7 @@ function ResetAllAbilitiesCooldown(unit)
 			ability:EndCooldown()
 		end
 	end
-	for i = 0, 5 do
+	for i = 0, 8 do
 		local item = unit:GetItemInSlot(i)
 		if item and not item:IsCooldownReady() then
 			item:EndCooldown()

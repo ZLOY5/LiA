@@ -18,6 +18,14 @@ function Survival:StartDuels()
 
     DoWithAllHeroes(function(hero)
         hero:ModifyGold(15, false, DOTA_ModifyGold_Unspecified) --компенсация за отключенные тики золота
+
+        local abilities = unit:GetAbilityCount()
+        for i = 0, abilities-1 do
+            local ability = unit:GetAbilityByIndex(i)
+            if ability and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
+                ability.savedCooldown = ability:GetCooldownTimeRemaining()
+            end
+        end
     end)
      
     --timerPopup:Start(self.nPreDuelTime,"#lia_duel",0)
@@ -71,8 +79,8 @@ function Survival:Duel(hero1,hero2)
             hero1:SetForwardVector(Vector(0,1,0))
             hero2:SetForwardVector(Vector(0,-1,0))
 
-            FindClearSpaceForUnit(hero1, ARENA_TELEPORT_COORD_BOT, false) 
-            FindClearSpaceForUnit(hero2, ARENA_TELEPORT_COORD_TOP, false)
+            FindClearSpaceForUnit_IgnoreNeverMove(hero1, ARENA_TELEPORT_COORD_BOT, false) 
+            FindClearSpaceForUnit_IgnoreNeverMove(hero2, ARENA_TELEPORT_COORD_TOP, false)
 
             local modifierSpellBlock = hero1:FindModifierByName("modifier_item_sphere_target")
             if modifierSpellBlock and modifierSpellBlock:GetAbility():GetAbilityName() == "item_lia_rune_of_protection" then
@@ -246,8 +254,8 @@ function Survival:EndDuel(winner,loser)
             hero2:AddNewModifier(hero2, nil, "modifier_stun_lua", nil)
         end
     
-        FindClearSpaceForUnit(hero1, hero1.abs, false) 
-        FindClearSpaceForUnit(hero2, hero2.abs, false) 
+        FindClearSpaceForUnit_IgnoreNeverMove(hero1, hero1.abs, false) 
+        FindClearSpaceForUnit_IgnoreNeverMove(hero2, hero2.abs, false) 
 
         Survival:CheckDuel()
     end)  
@@ -265,11 +273,23 @@ function Survival:EndDuels()
     ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
 
     DoWithAllHeroes(function(hero)
-        ResetAllAbilitiesCooldown(hero)
+        --ResetAllAbilitiesCooldown(hero)
         hero:RemoveModifierByName("modifier_stun_lua")
-        FindClearSpaceForUnit(hero, hero.abs, false)
+        FindClearSpaceForUnit_IgnoreNeverMove(hero, hero.abs, false)
         SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
         hero:Interrupt()
+
+        local abilities = unit:GetAbilityCount()
+        for i = 0, abilities-1 do
+            local ability = unit:GetAbilityByIndex(i)
+            if ability and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
+                if ability.savedCooldown ~= nil and ability.savedCooldown > 0 then
+                    ability:StartCooldown(ability.savedCooldown)
+                else
+                    ability:EndCooldown()
+                end
+            end
+        end
     end)
 
     EnableShop()

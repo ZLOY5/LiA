@@ -46,7 +46,7 @@ function TimeLapse(keys)
 			end
 
 			if ability.coordinatTable ~= nil then
-				FindClearSpaceForUnit(caster, ability.coordinatTable[1][1], true)
+				FindClearSpaceForUnit_IgnoreNeverMove(caster, ability.coordinatTable[1][1], true)
 				caster:SetHealth(ability.coordinatTable[1][2])
 				--caster:SetMana(ability.coordinatTable[1][3])
 			end

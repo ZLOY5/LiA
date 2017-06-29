@@ -41,7 +41,7 @@ function AncestralSpirits( event )
 	table.insert( vRandomSpawnPos, RandomInt( 1, images_count+1 ), Vector( 0, 0, 0 ) )
 
 	-- At first, move the main hero to one of the random spawn positions.
-	FindClearSpaceForUnit( caster, casterOrigin + table.remove( vRandomSpawnPos, 1 ), true )
+	FindClearSpaceForUnit_IgnoreNeverMove( caster, casterOrigin + table.remove( vRandomSpawnPos, 1 ), true )
 
 	-- Spawn illusions
 	for i=1, images_count do
