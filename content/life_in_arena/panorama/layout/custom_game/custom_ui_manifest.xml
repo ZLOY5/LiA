@@ -38,14 +38,16 @@
             }
         }
         else if ( Game.GameStateIs( DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS ) ) {
-            heroSelection.style.visibility = "collapse"
-            heroSelection.DeleteAsync(0)
+            if (typeof(heroSelection) !== "undefined")
+            {
+                heroSelection.style.visibility = "collapse"
+                heroSelection.DeleteAsync(0)
+            }
         }
 
     }
     GameEvents.Subscribe("game_rules_state_change", OnStateChanged);
     OnStateChanged()
-
 
     </script>
 	<Panel>
