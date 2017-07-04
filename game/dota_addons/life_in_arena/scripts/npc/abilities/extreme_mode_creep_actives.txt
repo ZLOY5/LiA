@@ -1490,3 +1490,72 @@
 		}
 	}
 }
+
+orn_mutant_boss_slow
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"			"custom/16_wave_slow"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"99999"
+	"AbilityCastRange"				"600"
+	"AbilityCastPoint"				"0.0"
+	"AbilityManaCost"				"0"
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"cripple_attack_slow"					"-25"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"cripple_movespeed_slow_pct"				"-75"
+		}
+		"03"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"10"
+		}
+	}
+
+	"OnSpellStart"
+	{		
+		"RunScript"
+		{
+			"ScriptFile"	"abilities/10_wave_slow.lua"
+			"Function"		"Slow"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_10_wave_slow"
+		{
+			"Duration"			"%duration"
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"1"
+			"IsPurgable"			"1"
+
+			"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
+			"EffectAttachType"		"follow_origin"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
+			}
+		}
+	}
+}
