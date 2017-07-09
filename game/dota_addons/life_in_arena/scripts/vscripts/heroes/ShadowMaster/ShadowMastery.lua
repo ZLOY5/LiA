@@ -11,7 +11,7 @@ function OnAttackLanded(event)
 			victim = target,
 			attacker = caster,
 			damage = target_damage,
-			damage_type = DAMAGE_TYPE_MAGICAL,
+			damage_type = DAMAGE_TYPE_PHYSICAL,
 			ability = ability
 		}
 

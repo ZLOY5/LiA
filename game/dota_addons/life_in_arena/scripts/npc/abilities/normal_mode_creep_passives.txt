@@ -465,6 +465,35 @@
 	}
 }
 
+7_wave_creep_block
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_blocked"			"60"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"7_block"
+		{
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
+			}
+		}
+	}
+}
+
 "8_wave_lifesteal"
 {
 	// General
