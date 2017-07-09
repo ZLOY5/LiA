@@ -108,6 +108,8 @@ function ValvePlzFix()
 		{
 			var shop = dotaHud.FindChildTraverse("shop")	
 
+			shop.RemoveClass("GuidesDisabled")
+
 			var shopItemBuild = shop.FindChildTraverse("Categories")
 			var popularItems = shopItemBuild.GetChild(5)
 			if (popularItems != null)
