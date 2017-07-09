@@ -87,9 +87,9 @@ function OnMotionDone(caster, target, ability)
 
     --Particles and effects
 
-
-
-    
+    caster:SetNeverMoveToClearSpace(false)
+    ResolveNPCPositions(caster:GetAbsOrigin(),128)
+    caster:SetNeverMoveToClearSpace(true)
 
     DoDamage(caster, target, ability)
 

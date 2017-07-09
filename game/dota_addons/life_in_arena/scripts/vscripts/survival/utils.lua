@@ -84,7 +84,7 @@ function RespawnAllHeroes()
 	DoWithAllHeroes(function(hero)
 		if not hero:IsAlive() then
 			hero:RespawnHero(false,false,false)
-			FindClearSpaceForUnit_IgnoreNeverMove(hero, hero:GetAbsOrigin(), false)
+			FindClearSpaceForUnit_IgnoreNeverMove(hero, Vector(0,1500,168)+RandomVector(RandomFloat(0, 200)), false)
 		end
 	end)
 end
@@ -322,7 +322,13 @@ function LeavesCorpse( unit )
 end
 
 function FindClearSpaceForUnit_IgnoreNeverMove(unit,position,useInterp)
-	unit:SetNeverMoveToClearSpace(false)
- 	FindClearSpaceForUnit(unit,postion,useInterp)
-	unit:SetNeverMoveToClearSpace(true)
+	if unit.neverMoveToClearSpace then
+		unit:SetNeverMoveToClearSpace(false)
+	end
+ 	
+ 	FindClearSpaceForUnit(unit,position,useInterp)
+	
+ 	if unit.neverMoveToClearSpace then
+		unit:SetNeverMoveToClearSpace(true)
+	end
 end

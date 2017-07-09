@@ -19,9 +19,9 @@ function Survival:StartDuels()
     DoWithAllHeroes(function(hero)
         hero:ModifyGold(15, false, DOTA_ModifyGold_Unspecified) --компенсация за отключенные тики золота
 
-        local abilities = unit:GetAbilityCount()
+        local abilities = hero:GetAbilityCount()
         for i = 0, abilities-1 do
-            local ability = unit:GetAbilityByIndex(i)
+            local ability = hero:GetAbilityByIndex(i)
             if ability and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
                 ability.savedCooldown = ability:GetCooldownTimeRemaining()
             end
@@ -279,9 +279,9 @@ function Survival:EndDuels()
         SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
         hero:Interrupt()
 
-        local abilities = unit:GetAbilityCount()
+        local abilities = hero:GetAbilityCount()
         for i = 0, abilities-1 do
-            local ability = unit:GetAbilityByIndex(i)
+            local ability = hero:GetAbilityByIndex(i)
             if ability and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
                 if ability.savedCooldown ~= nil and ability.savedCooldown > 0 then
                     ability:StartCooldown(ability.savedCooldown)

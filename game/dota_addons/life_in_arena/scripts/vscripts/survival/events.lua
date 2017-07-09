@@ -25,7 +25,7 @@ function Survival:OnPlayerPickHero(keys)
         self:HideHero(hero)
     end
 
-    hero:SetNeverMoveToClearSpace(true)
+    Timers:CreateTimer(5,function() hero:SetNeverMoveToClearSpace(true) hero.neverMoveToClearSpace = true end)
 
 end
 
