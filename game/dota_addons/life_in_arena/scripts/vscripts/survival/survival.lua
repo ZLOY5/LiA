@@ -493,27 +493,33 @@ function Survival:_SpawnWave()
     
     local pathEffect = "particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf"
     
-    boss1 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    boss2 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
-    ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss1)
-    ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss2)
-    boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
-    boss2:EmitSound("DOTA_Item.BlinkDagger.Activate")
-    
-    Survival:AICreepsInsertToTable(boss1,boss2)
-    
-    if self.IsEqualGold then
-        self.nEqualGoldPool = self.nEqualGoldPool + boss1:GetGoldBounty()*2
-        boss1:SetMinimumGoldBounty(0)
-        boss2:SetMinimumGoldBounty(0)
-        boss1:SetMaximumGoldBounty(0)
-        boss2:SetMaximumGoldBounty(0)
-    end
+
 
     local spawnCount = 0
     
     local all_time = 2.0
     local tick = all_time/self.nWaveSpawnCount[self.nHeroCountCreepsSpawned]
+
+    Timers:CreateTimer(RandomFloat(tick*2,all_time),
+        function()
+            boss1 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_LEFT + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+            boss2 = CreateUnitByName(bossName, WAVE_SPAWN_COORD_TOP  + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+            ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss1)
+            ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss2)
+            boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
+            boss2:EmitSound("DOTA_Item.BlinkDagger.Activate")
+            
+            Survival:AICreepsInsertToTable(boss1,boss2)
+            
+            if self.IsEqualGold then
+                self.nEqualGoldPool = self.nEqualGoldPool + boss1:GetGoldBounty()*2
+                boss1:SetMinimumGoldBounty(0)
+                boss2:SetMinimumGoldBounty(0)
+                boss1:SetMaximumGoldBounty(0)
+                boss2:SetMaximumGoldBounty(0)
+            end
+        end
+    )
     --
     Timers:CreateTimer(tick,
         function()
