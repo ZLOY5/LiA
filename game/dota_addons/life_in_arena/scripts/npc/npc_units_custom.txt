@@ -5436,7 +5436,7 @@
 		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
 		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
 		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"AttackType"    "chaos"
 		"ArmorType"     "heavy"
 	
@@ -5517,7 +5517,7 @@
 		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
 		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
 		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"AttackType"    "chaos"
 		"ArmorType"     "heavy"
 		
@@ -5598,7 +5598,7 @@
 		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
 		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
 		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"AttackType"    "chaos"
 		"ArmorType"     "heavy"
 		
@@ -5679,7 +5679,7 @@
 		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
 		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
 		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		"AttackType"    "chaos"
 		"ArmorType"     "heavy"
 		
@@ -7356,7 +7356,7 @@
 	
 	"Ability1" "7_wave_howl_of_terror" 
 	"Ability2" "7_wave_plague" 
-	"Ability3" "" 
+	"Ability3" "7_wave_creep_block" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -8701,7 +8701,7 @@
 	
 	
 	"Ability1" "7_wave_plague" 
-	"Ability2" "" 
+	"Ability2" "7_wave_creep_block" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -9783,7 +9783,7 @@
 		// 
 		//----------------------------------------------------------------
 		
-		"Ability1" "" // 
+		"Ability1" "orn_mutant_boss_slow" // 
 		"Ability2" "" // 
 		"Ability3" "" // 
 		"Ability4" "" // 
@@ -9842,6 +9842,7 @@
 		"VisionNighttimeRange" "2000" // 
 		
 		//----------------------------------------------------------------
+		"vscripts"	"AI\orn_mutant_boss_slow.lua"
 		//
 		"HasInventory" "0" // 
 		}

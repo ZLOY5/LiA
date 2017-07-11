@@ -107,7 +107,7 @@ end
 modifier_item_lia_rune_of_lifesteal = class({})
 
 function modifier_item_lia_rune_of_lifesteal:GetAttributes()
-	return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
+	return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
 end
 
 function modifier_item_lia_rune_of_lifesteal:GetTexture()
