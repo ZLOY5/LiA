@@ -20,13 +20,6 @@
 	dotaHud.FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
 	dotaHud.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
 	dotaHud.FindChildTraverse("quickstats").style.visibility = "collapse";
-	
-	dotaHud.FindChildTraverse("StatBranch").style.visibility = "collapse";
-	dotaHud.FindChildTraverse("StatBranchChannel").style.visibility = "collapse";
-	dotaHud.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
-	dotaHud.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
-	dotaHud.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
-	dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
 
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeaderCenter").style.marginLeft = "1150px"
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("TeamPurchasesStrategyControl").style.visibility = "collapse";
@@ -89,20 +82,30 @@
 
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroFilters").FindChildTraverse("BottomLineFilters").FindChildTraverse("RoleOptions").style.visibility = "collapse"
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroFilters").FindChildTraverse("AttributeOptions").GetChild(6).style.visibility = "collapse"
-	//Valve can`t fix, but I can)
+	
 	$.Schedule(1,ValvePlzFix)
+
 
 })();
 
 function ValvePlzFix()
 {
 	var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent().GetParent().GetParent()
+
+
 	
 	var iconFixer = function() 
 	{
 		$.Schedule(0.1,iconFixer)
 
-
+		var statBranch = dotaHud.FindChildTraverse("StatBranch")
+		if (statBranch != null){
+			statBranch.DeleteAsync(1)
+			dotaHud.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+			dotaHud.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
+			dotaHud.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
+			dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
+		}
 
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
 		{
