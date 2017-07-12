@@ -52,9 +52,10 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"item_datadriven"
-	"ID"							"1435"  //Valve's version of this item uses the ID "135".
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"BaseClass"						"item_lua"
+	"ScriptFile"					"items\item_lia_fire_gloves.lua"
+	"ID"							"1435"  
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
@@ -123,88 +124,14 @@
 			"radius"				"220"
 		}
 	}
-			"OnToggleOn"
-			{
-				"ApplyModifier"
-				{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-					"ModifierName"		"modifier_immolation"
-				}
-				"FireSound"
-				{
-					"EffectName"		"Hero_EmberSpirit.FlameGuard.Cast"
-					"Target"			"CASTER"
-				}
-			}
-
-			"OnToggleOff"
-			{
-				"RemoveModifier"
-				{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-					"ModifierName"		"modifier_immolation"
-				}
-			}	
-	"Modifiers"
-	{
-		"modifier_item_lia_fire_gloves"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-			"Properties"
-			{
-		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-			}
-			
-
-		}
-		"modifier_immolation"
-		{	
-			"IsPassive"		"1"
-			"IsBuff"		"1"
-			"IsPurgable"	"0"
-			
-			"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
-			"EffectAttachType"		"follow_origin"
-
-			
-			"ThinkInterval"		"1"
-			"OnIntervalThink"
-			{
-				"RunScript"
-    			{
-			        "ScriptFile"    "items/FireGloves.lua"
-			        "Function"      "Immolation"
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-				}
-			}
-		}
-	}
 }
 
 "item_lia_fire_gloves_2"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"item_datadriven"
+	"BaseClass"						"item_lua"
+	"ScriptFile"					"items\item_lia_fire_gloves.lua"
 	"ID"							"1436"  //Valve's version of this item uses the ID "135".
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -273,80 +200,6 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"radius"				"220"
-		}
-	}
-			"OnToggleOn"
-			{
-				"ApplyModifier"
-				{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-					"ModifierName"		"modifier_immolation"
-				}
-				"FireSound"
-				{
-					"EffectName"		"Hero_EmberSpirit.FlameGuard.Cast"
-					"Target"			"CASTER"
-				}
-			}
-
-			"OnToggleOff"
-			{
-				"RemoveModifier"
-				{
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-					"ModifierName"		"modifier_immolation"
-				}
-			}	
-	"Modifiers"
-	{
-		"modifier_item_lia_fire_gloves_2"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
-			{
-		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-			}
-			
-
-		}
-		"modifier_immolation"
-		{	
-			"IsPassive"		"1"
-			"IsBuff"		"1"
-			"IsPurgable"	"0"
-			
-			"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
-			"EffectAttachType"		"follow_origin"
-			
-			"ThinkInterval"		"1"
-			"OnIntervalThink"
-			{
-				"RunScript"
-    			{
-			        "ScriptFile"    "items/FireGloves.lua"
-			        "Function"      "Immolation"
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-				}
-			}
 		}
 	}
 }
