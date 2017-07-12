@@ -41,7 +41,7 @@
 	
 	--
 	for i=1,count do
-		local cre = CreateUnitByName(unitname, front_position, false, caster, caster, caster:GetTeam())
+		local cre = CreateUnitByName(unitname, front_position, true, caster, caster, caster:GetTeam())
 		cre:SetControllableByPlayer(PID, false)
 		--
 		cre:AddNewModifier(caster, nil, "modifier_kill", { duration = durat })
