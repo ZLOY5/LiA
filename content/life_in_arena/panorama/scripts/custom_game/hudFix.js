@@ -98,14 +98,12 @@ function ValvePlzFix()
 	{
 		$.Schedule(0.1,iconFixer)
 
-		var statBranch = dotaHud.FindChildTraverse("StatBranch")
-		if (statBranch != null){
-			statBranch.DeleteAsync(1)
-			dotaHud.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
-			dotaHud.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
-			dotaHud.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
-			dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
-		}
+		dotaHud.FindChildTraverse("lower_hud").FindChildTraverse("StatBranch").style.visibility = "collapse";
+		dotaHud.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+		dotaHud.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
+		dotaHud.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
+		dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
+		
 
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
 		{
