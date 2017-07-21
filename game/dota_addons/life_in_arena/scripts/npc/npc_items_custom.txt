@@ -6843,7 +6843,8 @@
 	"item_lia_pure_light"
 	{
 		"ID"							"1487"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_pure_light.lua"
 		"ItemCost"						"1500"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -6862,94 +6863,9 @@
 			"particle"  "particles/units/heroes/hero_puck/puck_dreamcoil.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_puck.vsndevts"
 			"particle"  "particles/templar_assassin_trap_rings_butterfly.vpcf"
-		}
-		
-		"OnUnequip" 
-		{
-			"RunScript"
-			{
-				"ScriptFile" "items\AuraFix.lua"
-				"Function"  "OnUnequip"
-				"ModifierName" "modifier_item_pure_light_aura_emitter"
-			}
+			"particle"  "particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
 		}
 	
-		"OnSpellStart"
-		{
-			"SpawnUnit"
-			{
-				"UnitName"    "dummy_unit_pure_light"
-				"Target"     "POINT"
-				"Duration"    "%totem_duration"
-				"UnitCount"    "1"
-			}
-			"CreateThinker"
-			{
-				"ModifierName"	"modifier_item_lia_pure_light_radius_check_thinker"
-				"Target" 		"POINT"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_item_lia_pure_light"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
-				}
-			}
-			"modifier_item_lia_pure_light_aura_emitter"
-			{
-				"Passive"				"1"
-				"IsHidden"				"1"
-				
-				"Aura" 					"modifier_item_pure_light_aura"
-				"Aura_Radius" 			"%aura_radius"
-				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Aura_ApplyToCaster" 	"1"
-			}
-			"modifier_item_pure_light_aura"
-			{
-				"Passive"			"1"
-				"IsHidden"			"0"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"	"%aura_mana_regen"  
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%aura_health_regen"
-				}
-			}
-			"modifier_item_lia_pure_light_radius_check_thinker"
-		    {
-		      "Aura"         	"modifier_item_lia_pure_light_radius_check"
-		      "Aura_Radius"     "%totem_radius"
-		      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		      "Aura_Types"      "DOTA_UNIT_TARGET_HERO"
-		      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-		      "Duration"        "%totem_duration"
-	
-		      "OnCreated"
-		      {
-		        "AttachEffect"
-		        {
-		          "EffectName"    "particles/templar_assassin_trap_rings_butterfly.vpcf"
-		          "EffectAttachType"  "follow_origin"
-		          "Target"      "TARGET"
-		        }
-		      }
-		    }
-		    "modifier_item_lia_pure_light_radius_check"
-	    	{
-			  "IsDebuff"    "0"
-			  "IsHidden"    "1"
-			}
-		}
 		"AbilitySpecial"
 		{
 			"01"

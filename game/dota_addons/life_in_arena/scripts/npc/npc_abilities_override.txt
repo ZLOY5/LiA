@@ -33779,67 +33779,6 @@
 	//End of file purchasable_units_skills.txt
 
 
-	//Start of file pure_light_ability.txt
-	"pure_light_ability"
-	{
-	  	// General
-	  	//-------------------------------------------------------------------------------------------------------------
-	  	"BaseClass"			     "ability_lua" 
-	    "ScriptFile"         "items/pure_light_ability.lua"
-	  	"AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
-	    "AbilityTextureName" "custom/pure_light_ability"
-	    "AbilityCastRange"   "600"
-	  	"AOERadius"			     "600"
-	    "MaxLevel"           "1"
-	
-	
-	  	"preload"
-	  	{
-	  		"particle"	"particles/puck_dreamcoil_tether_pure_light.vpcf"
-	      "particle"  "particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf"
-	  	}
-	
-	
-	  	// Special
-	  	//-------------------------------------------------------------------------------------------------------------
-	  	"AbilitySpecial"
-	  	{
-	   		"01"
-	      {
-	        "var_type"        "FIELD_INTEGER"
-	        "health_percent_threshold"    "40"
-	      }
-	      "02"
-	      {
-	        "var_type"        "FIELD_INTEGER"
-	        "totem_damage_reduction"    "-60"
-	      }
-	      "03"
-	      {
-	        "var_type"        "FIELD_INTEGER"
-	        "totem_targets"   "3"
-	      }
-	      "04"
-	      {
-	        "var_type"        "FIELD_FLOAT"
-	        "totem_duration"    "6"
-	      }
-	      "05"
-	      {
-	        "var_type"        "FIELD_FLOAT"
-	        "buff_duration"    "5"
-	      }
-	      "06"
-	      {
-	        "var_type"        "FIELD_INTEGER"
-	        "totem_radius"      "600"
-	      }
-	  	}
-		
-	 }
-	//End of file pure_light_ability.txt
-
-
 	//Start of file shadow_abilities.txt
 	"shadow_return_to_owner"
 	{
