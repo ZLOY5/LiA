@@ -432,7 +432,7 @@ function Survival:PrepareNextRound()
     PrecacheUnitByNameAsync(bossName, function(...) end)
 
     for _,hero in pairs(self.tHeroes) do
-        if hero:GetPlayerOwner() == nil and not hero.hidden then
+        if hero:GetPlayerOwner() == nil then
             self:HideHero(hero)
         elseif hero.hidden then
             self:UnhideHero(hero)

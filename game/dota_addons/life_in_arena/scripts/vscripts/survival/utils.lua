@@ -1,23 +1,22 @@
 function Survival:HideHero(hero)
-	print("Hide hero", hero:GetName())
 
 	hero.prorogueUnhide = false
 	hero.prorogueHide = false
 
 	if hero.hidden then 
-		print("Already hidden")
+		--print(hero:GetName().." already hidden")
 		return 
 	end
 	
 	if self.State >= SURVIVAL_STATE_ROUND_WAVE then
 		if hero:IsAlive() then --отложим хайд героя, если сейчас идет раунд и герой жив
 			hero.prorogueHide = true
-			print("prorogueHide")
+			print(hero:GetName().." prorogue hide")
 		end
 	end
 
 	if not hero.prorogueHide then
-		print("hero hidden")
+		print(hero:GetName().." hidden")
 		hero:Interrupt()
 		hero:AddNoDraw()
 		hero:AddNewModifier(hero, nil, "modifier_hide_lua", nil)
@@ -28,18 +27,17 @@ function Survival:HideHero(hero)
 end
 
 function Survival:UnhideHero(hero)
-	print("Unhide hero", hero:GetName())
 
 	hero.prorogueUnhide = false
 	hero.prorogueHide = false
 
 	if not hero.hidden then 
-		print("Not hidden")
+		--print(hero:GetName().." not hidden")
 		return 
 	end
 
 	if self.State >= SURVIVAL_STATE_ROUND_WAVE then --во время раунда не возвращаем героя
-		print("prorogue unhide")
+		print(hero:GetName().." prorogue unhide")
 		hero.prorogueUnhide = true
 
 		if self.State == SURVIVAL_STATE_ROUND_WAVE then 
@@ -55,7 +53,7 @@ function Survival:UnhideHero(hero)
 	end
 
 	if not hero.prorogueUnhide then
-		print("hero unhidden")
+		print(hero:GetName().." unhidden")
 		if not hero:IsAlive() then
 			hero:RespawnHero(false, false, false)
 		end
