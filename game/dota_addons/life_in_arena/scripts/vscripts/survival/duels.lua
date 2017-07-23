@@ -92,6 +92,18 @@ function Survival:Duel(hero1,hero2)
                 modifierSpellBlock:Destroy()
             end
 
+            local modifier = hero1:FindModifierByName("modifier_archmage_magic_barrier")
+            if modifier and modifier:GetCaster() ~= hero1 then
+                modifier:OnDeath( { unit = hero1 } )
+                modifier:Destroy()
+            end
+
+            modifier = hero2:FindModifierByName("modifier_archmage_magic_barrier")
+            if modifier and modifier:GetCaster() ~= hero2 then
+                modifier:OnDeath( { unit = hero2 } )
+                modifier:Destroy()
+            end
+
             hero1:Heal(9999,hero1)
             hero2:Heal(9999,hero2)
             hero1:GiveMana(9999)
