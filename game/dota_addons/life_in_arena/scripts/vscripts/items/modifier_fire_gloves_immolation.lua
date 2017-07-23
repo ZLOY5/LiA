@@ -22,7 +22,7 @@ if IsServer() then
 		self.tick = 0.25
 		self.manaCost = self:GetAbility():GetSpecialValueFor("mana_cost_per_second")*self.tick
 		self.damage = self:GetAbility():GetSpecialValueFor("damage_per_second")*self.tick
-		self.radius = self:GetAbility():GetSpecialValueFor("raduis")
+		self.radius = self:GetAbility():GetSpecialValueFor("radius")
 
 		self:StartIntervalThink(self.tick)
 	end
@@ -48,7 +48,7 @@ if IsServer() then
 					DOTA_UNIT_TARGET_FLAG_NONE,
 					FIND_ANY_ORDER,
 					false)
-
+			
 			local damageTable = {attacker = caster, damage = self.damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability }
 			-- Deal damage to all targets passed
 			for _,unit in pairs(targets) do

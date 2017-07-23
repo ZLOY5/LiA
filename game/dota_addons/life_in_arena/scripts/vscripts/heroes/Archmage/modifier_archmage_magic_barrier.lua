@@ -119,11 +119,8 @@ end
 
 
 function modifier_archmage_magic_barrier:OnDeath(params)
-	if self:GetParent().magicBarrerParticle ~= nil then
-		ParticleManager:DestroyParticle(self:GetParent().magicBarrerParticle,true)
-		self:GetParent().magicBarrerParticle = nil
-	end
 	if params.unit == self:GetParent() then
+
 		self:GetAbility().target = nil
 		CustomNetTables:SetTableValue("custom_modifier_state", tostring( self:GetAbility():GetEntityIndex().."behavior" ), 
 			{ behavior = DOTA_ABILITY_BEHAVIOR_UNIT_TARGET } )
