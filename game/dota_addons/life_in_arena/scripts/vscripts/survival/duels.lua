@@ -24,6 +24,7 @@ function Survival:StartDuels()
             local ability = hero:GetAbilityByIndex(i)
             if ability and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
                 ability.savedCooldown = ability:GetCooldownTimeRemaining()
+                print(hero:GetUnitName(), ability:GetAbilityName(), ability.savedCooldown)
             end
         end
     end)
@@ -296,6 +297,7 @@ function Survival:EndDuels()
             local ability = hero:GetAbilityByIndex(i)
             if ability and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
                 if ability.savedCooldown ~= nil and ability.savedCooldown > 0 then
+                    ability:EndCooldown()
                     ability:StartCooldown(ability.savedCooldown)
                 else
                     ability:EndCooldown()
