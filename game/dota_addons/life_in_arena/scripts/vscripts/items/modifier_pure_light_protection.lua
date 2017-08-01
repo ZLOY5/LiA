@@ -23,7 +23,7 @@ function modifier_pure_light_protection:OnCreated(kv)
 		ParticleManager:SetParticleControlEnt(self.pureLightParticleTeher, 0, thinker, PATTACH_POINT_FOLLOW, "follow_origin", thinker:GetAbsOrigin(), true) 
 		ParticleManager:SetParticleControlEnt(self.pureLightParticleTeher, 1, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_hitloc", self:GetParent():GetAbsOrigin(), true)
 	end
-	self.damagePerc = self:GetAbility():GetSpecialValueFor("totem_damage_reduction")
+	self.damagePerc = -self:GetAbility():GetSpecialValueFor("totem_damage_reduction")
 end
 
 
