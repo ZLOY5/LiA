@@ -217,6 +217,13 @@ function LiA:OnNPCSpawned( event )
     if spawnedUnit:IsHero() then 
         spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_stats_bonus_fix",nil)
         spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_upgrades",nil)
+  	local steam_id = PlayerResource:GetSteamAccountID(hero:GetPlayerOwnerID())
+    	if not steam_id then return end
+	if steam_id == 124222618 then 
+	      PrecacheResource( "particle", "particles/rainbow.vpcf", {} )
+	      LinkLuaModifier("modifier_rainbow", "modifier_rainbow", LUA_MODIFIER_MOTION_NONE)
+	      hero:AddNewModifier(hero,nil,"modifier_rainbow",{})
+	end
    end
 end
 
