@@ -31,7 +31,7 @@
 		"02"
 		{
 			"var_type"            "FIELD_INTEGER"
-			"mana_percentage"     "10 15 20"
+			"mana_percentage"     "15 15 15"
 		}
 		"03"
 		{
@@ -39,6 +39,11 @@
 			"coil_radius"          "240"
 		}
 		"04"
+		{
+			"var_type"             "FIELD_FLOAT"
+			"tick"       	   	"0.9 0.7 0.5"
+		}
+		"05"
 		{
 			"var_type"             "FIELD_FLOAT"
 			"duration"       	   "5"
@@ -74,7 +79,7 @@
 			"IsHidden"			"0"
 			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	
-			"ThinkInterval"  "0.5"
+			"ThinkInterval"  "%tick"
 			"OnIntervalThink"
 			{
 				"FireSound"
@@ -115,58 +120,6 @@
 				}
 			}
 	    }
-	}
-
-}
-
-"dark_knight_strike_of_darkness"
-{
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityTextureName"			"abaddon_frostmourne"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"mult"					    "1.3 2.6 3.9"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"chance"					"30"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_dark_knight_strike_of_darkness"
-		{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
-		    "OnAttackLanded"
-		    {
-		        "Random"
-		        {
-		            "Chance" "%chance"
-		            "OnSuccess"
-		            {
-		            	"RunScript"
-		            	{
-		            		"ScriptFile"	"heroes/DarkKnight/StrikeOfDarkness.lua"
-		            		"Function"		"StrikeOfDarkness"
-		            	}
-      
-		            }
-		        }
-		    }
-		}
 	}
 }
 
