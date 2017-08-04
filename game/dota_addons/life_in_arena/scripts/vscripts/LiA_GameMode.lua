@@ -30,6 +30,7 @@ require('survival/survival')
 require('runes')
 require('player')
 require('upgrades')
+require('PseudoRandom')
 
 ------------------------------------------------------------------------------
 

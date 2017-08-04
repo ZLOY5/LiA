@@ -170,20 +170,21 @@
 	"item_lia_amulet_of_spell_shield"
 	{
 	
-			"ID"							"1117"
-			"ItemCost"						"300"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
-			"ItemQuality"					"component"
+		"ID"							"1117"
+		"BaseClass" "item_datadriven"
 	
-		"AbilityCooldown"				"30.0"
-			
-			"AbilityTextureName"			"custom/lia_amulet_of_spell_shield"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_datadriven"
+		"ItemCost"						"300"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"component"
+	
+		"AbilityCooldown"				"30.0"	
+		"AbilityTextureName"			"custom/lia_amulet_of_spell_shield"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
 		"AbilitySpecial"
 		{
 			"01"
@@ -2249,7 +2250,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"item_lua"
-		"ScriptFile"					"items\item_lia_enchanted_shield_2.lua"
+		"ScriptFile"					"items\item_lia_enchanted_shield.lua"
 		"ID"							"1412"  //Valve's version of this item uses the ID "135".
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Model"							"models/props_gameplay/red_box.vmdl" 
@@ -8178,43 +8179,39 @@
 		"ItemResult"					"item_lia_staff_of_power"
 		"ItemRequirements"
 		{
-			"01"						"item_lia_mask;item_lia_amulet_of_spell_shield;item_lia_runed_bracers"
+			"01"						"item_lia_mask;item_lia_amulet_of_spell_shield"
 		}
 	}
 	
 	"item_lia_staff_of_power"
 	{
 	
-			"ID"							"1462"
-			"ItemCost"						"790"
-			"ItemKillable" "0" 
-			"ItemDroppable" "1"
-			"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-			"ItemSellable"                  "1"
-			"ItemPurchasable"		 "1"
-			"ItemQuality"					"rare"
+		"ID"							"1462"
+		"BaseClass" "item_datadriven"
+		
+		"ItemCost"						"790"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"rare"
 	
-		"AbilityCooldown"				"15.0"
-			
-			"AbilityTextureName"			"custom/lia_staff_of_power"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"BaseClass" "item_datadriven"
+		"AbilityCooldown"				"20"	
+		"AbilityTextureName"			"custom/lia_staff_of_power"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_magic_resist_percentage" "40"
-			}
-			"02"
-			{
 				"var_type"							"FIELD_INTEGER"
 				"bonus_mana_regen_percentage"		"150"
 			}		
-			"03"
+			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"block_cooldown" "15.0"
+				"block_cooldown" "20"
 			}
 		}
 	
@@ -8228,7 +8225,6 @@
 	
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
 			    }
 				
@@ -8940,6 +8936,92 @@
 		}
 	}
 	//End of file item_lia_spear.txt
+
+
+	//Start of file item_lia_spellbreaker.txt
+	"item_recipe_lia_spellbreaker"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1505"						
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                     "item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"500"	
+		"ItemShopTags"					"health;armor;hard_to_tag"
+	
+		"ItemKillable" 					"0" 
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+	    "AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_spellbreaker"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_enchanted_shield_2;item_lia_staff_of_power"
+		}
+	}
+	
+	
+	"item_lia_spellbreaker"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1506"  
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_spellbreaker.lua"
+		
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		
+		"AbilityTextureName"			"custom/lia_spellbreaker"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCooldown"				"15.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemKillable" 					"0" 
+		"ItemCost"						"1185"
+		"ItemShopTags"					"health;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					""
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"20"
+			}
+	
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health" 			"600"
+			}
+	
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block"			"125"
+			}
+			"05"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_mana_regen_percentage"		"150"
+			}
+		}
+	}
+	//End of file item_lia_spellbreaker.txt
 
 
 	//Start of file item_lia_spherical_staff.txt
@@ -10354,7 +10436,7 @@
 		"ItemResult"					"item_lia_totem_of_persistence"
 		"ItemRequirements"
 		{
-			"01"						"item_lia_dwarf_armor;item_lia_staff_of_power"
+			"01"						"item_lia_dwarf_armor;item_lia_staff_of_power;item_lia_runed_bracers"
 		}
 	}
 	
@@ -10382,7 +10464,7 @@
 			"01"
 			{
 				"var_type" "FIELD_INTEGER"
-				"bonus_magic_resist_percentage" "45"
+				"bonus_magic_resist_percentage" "40"
 			}
 			"02"
 			{

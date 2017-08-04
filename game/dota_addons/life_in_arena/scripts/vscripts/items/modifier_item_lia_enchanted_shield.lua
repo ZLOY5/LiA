@@ -25,15 +25,21 @@ end
 function modifier_item_lia_enchanted_shield:OnCreated(kv)
 	self.healthBonus = self:GetAbility():GetSpecialValueFor("bonus_health")
 	self.armorBonus = self:GetAbility():GetSpecialValueFor("bonus_armor")
-	self.blockChance = self:GetAbility():GetSpecialValueFor("block_chance")
 	self.blockDamage = self:GetAbility():GetSpecialValueFor("damage_block")
+	
+	if IsServer() then
+		self.pseudo = PseudoRandom:New(self:GetAbility():GetSpecialValueFor("block_chance"))
+	end
 end
 
 function modifier_item_lia_enchanted_shield:OnRefresh(kv)
 	self.healthBonus = self:GetAbility():GetSpecialValueFor("bonus_health")
 	self.armorBonus = self:GetAbility():GetSpecialValueFor("bonus_armor")
-	self.blockChance = self:GetAbility():GetSpecialValueFor("block_chance")
 	self.blockDamage = self:GetAbility():GetSpecialValueFor("damage_block")
+	
+	if IsServer() then
+		self.pseudo = PseudoRandom:New(self:GetAbility():GetSpecialValueFor("block_chance")*0.01)
+	end
 end
 
 function modifier_item_lia_enchanted_shield:GetModifierHealthBonus(params)
@@ -45,7 +51,7 @@ function modifier_item_lia_enchanted_shield:GetModifierPhysicalArmorBonus(params
 end
 
 function modifier_item_lia_enchanted_shield:GetModifierPhysical_ConstantBlockUnavoidablePreArmor(params)
-	if not params.inflictor and RollPercentage(self.blockChance) then 
+	if not params.inflictor and self.pseudo:Trigger() then 
 		return self.blockDamage 
 	end
 	return 0

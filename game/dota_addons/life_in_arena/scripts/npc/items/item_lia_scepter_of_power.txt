@@ -20,43 +20,39 @@
 	"ItemResult"					"item_lia_staff_of_power"
 	"ItemRequirements"
 	{
-		"01"						"item_lia_mask;item_lia_amulet_of_spell_shield;item_lia_runed_bracers"
+		"01"						"item_lia_mask;item_lia_amulet_of_spell_shield"
 	}
 }
 
 "item_lia_staff_of_power"
 {
 
-		"ID"							"1462"
-		"ItemCost"						"790"
-		"ItemKillable" "0" 
-		"ItemDroppable" "1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		"ItemSellable"                  "1"
-		"ItemPurchasable"		 "1"
-		"ItemQuality"					"rare"
+	"ID"							"1462"
+	"BaseClass" "item_datadriven"
+	
+	"ItemCost"						"790"
+	"ItemKillable" "0" 
+	"ItemDroppable" "1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 "1"
+	"ItemQuality"					"rare"
 
-	"AbilityCooldown"				"15.0"
-		
-		"AbilityTextureName"			"custom/lia_staff_of_power"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" "item_datadriven"
+	"AbilityCooldown"				"20"	
+	"AbilityTextureName"			"custom/lia_staff_of_power"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
 	"AbilitySpecial"
 	{
 		"01"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_magic_resist_percentage" "40"
-		}
-		"02"
-		{
 			"var_type"							"FIELD_INTEGER"
 			"bonus_mana_regen_percentage"		"150"
 		}		
-		"03"
+		"02"
 		{
 			"var_type" "FIELD_FLOAT"
-			"block_cooldown" "15.0"
+			"block_cooldown" "20"
 		}
 	}
 
@@ -70,7 +66,6 @@
 
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
 				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
 		    }
 			

@@ -32,7 +32,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_destroy(keys)
 		for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
 		local current_item = keys.caster:GetItemInSlot(i)
 			if current_item and current_item ~= ability then
-				if (current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
+				if (current_item:GetName() == "item_lia_spellbreaker" or current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
 					keys.caster:AddNewModifier(keys.caster, current_item, "modifier_item_sphere_target", {duration = -1})
 				    return
 				end
@@ -70,7 +70,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 			for i=0, 5, 1 do --Put all Linken's Spheres in the player's inventory on cooldown.
 				local current_item = keys.caster:GetItemInSlot(i)
 				if current_item ~= nil then
-					if current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield" then
+					if current_item:GetName() == "item_lia_spellbreaker" or current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield" then
 						current_item:StartCooldown(current_item:GetCooldown(current_item:GetLevel()))
 					end
 				end
@@ -78,19 +78,5 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 			num_off_cooldown_linkens_spheres_in_inventory = 0
 		end
 	end
-	
-	--The passive modifier from a Linken's supersedes the active one due to its indefinite duration, so remove any modifiers that
-	--were transferred to this hero from an ally with a Linken's, now that an off-cooldown Linken's Sphere is in the player's inventory.
-	if num_off_cooldown_linkens_spheres_in_inventory > 0 then
-		keys.caster.current_spellblock_is_passive = true
-		local caster_team = keys.caster:GetTeam()
-		for i=0, 9, 1 do
-			local hero = HeroList:GetHero(i)
-			if hero ~= nil and hero ~= keys.caster and hero:GetTeam() ~= caster_team then
-				keys.caster:RemoveModifierByNameAndCaster("modifier_item_sphere_target", hero)
-			end
-		end
-	else  --num_off_cooldown_linkens_spheres_in_inventory == 0
-		keys.caster.current_spellblock_is_passive = nil
-	end
+
 end
