@@ -165,16 +165,20 @@ end
 function Survival:DuelRegisterHeroDeath(attacker,killed)
 
     if not self.DuelOneHeroKilled then
-        self.DuelOneHeroKilled = 1
+        self.DuelOneHeroKilled = true
         Timers:CreateTimer(1,function()
-            if not attacker:IsAlive() and not attacker:IsReincarnating() then 
+            if not attacker:IsAlive() and not attacker:IsReincarnating() and attacker ~= killed and not self.secondSuicide then 
                 Survival:EndDuel(nil,nil)
             else
                 Survival:EndDuel(attacker,killed)
             end
             self.DuelOneHeroKilled = nil
+            self.secondSuicide = nil
         end)
+    elseif attacker == killed then
+        self.secondSuicide = true
     end
+
 end
 
 function Survival:EndDuel(winner,loser)
