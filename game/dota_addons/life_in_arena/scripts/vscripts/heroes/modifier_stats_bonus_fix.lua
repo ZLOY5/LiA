@@ -24,7 +24,7 @@ function modifier_stats_bonus_fix:DeclareFunctions()
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_MANA_BONUS,
-		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
+		--MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
 	}
  
 	return funcs
@@ -87,7 +87,8 @@ function modifier_stats_bonus_fix:CalculateStatsBonus(kv)
 
 	self.manaBonus = intellect * (HERO_STATS_MANA_BONUS - 11)
 	self.manaRegenBonus = intellect * (HERO_STATS_MANA_REGEN_BONUS - 0.04)
-
+	hero:SetBaseManaRegen(self.manaRegenBonus)
+	
 	hero:CalculateStatBonus()
 
 end

@@ -3,36 +3,6 @@
 --[[ ============================================================================================================
 	Author: Rook
 	Date: January 30, 2015
-	Called when Linken's Sphere is cast.  Places a modifier_item_sphere_target on the targeted unit.
-	Additional parameters: Keys.Duration
-================================================================================================================= ]]
-function item_lia_amulet_of_spell_shield_on_spell_start(keys)
-	if keys.caster ~= keys.target then
-		--Place the modifier on the target, but only if they don't already have a modifier_item_sphere_target (a maximum of
-		--one of these modifiers is currently supported).
-		if not keys.target:HasModifier("modifier_item_sphere_target") then
-			keys.target:AddNewModifier(keys.caster, keys.ability, "modifier_item_sphere_target", {duration = keys.Duration})
-		end
-		keys.target:EmitSound("DOTA_Item.LinkensSphere.Target")
-		
-		--Remove the passively applied modifier from the caster while their Linken's Spheres are on cooldown.  The caster should
-		--have at most one modifier_item_sphere_target on themselves.
-		keys.caster:RemoveModifierByName("modifier_item_sphere_target")
-		keys.caster.current_spellblock_is_passive = nil
-	else  --If the player self-casted Linken's, which is currently disallowed for technical reasons.
-		keys.ability:RefundManaCost()
-		keys.ability:EndCooldown()
-		EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", keys.caster:GetPlayerOwner())
-		
-		--This makes use of the Custom Error Flash module by zedor. https://github.com/zedor/CustomError
-		FireGameEvent('custom_error_show', {player_ID = keys.caster:GetPlayerID(), _error = "Ability Can't Target Self"})
-	end
-end
-
-
---[[ ============================================================================================================
-	Author: Rook
-	Date: January 30, 2015
 	Called when Linken's Sphere is picked up.  Makes sure the caster has a passive modifier_item_sphere_target if 
 	the item is off cooldown.
 ================================================================================================================= ]]
@@ -84,7 +54,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 	for i=0, 5, 1 do --Search for off-cooldown Linken's Spheres in the player's inventory.
 		local current_item = keys.caster:GetItemInSlot(i)
 		if current_item then
-			if (current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
+			if (current_item:GetName() == "item_lia_spellbreaker" or current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield") and current_item:IsCooldownReady() then
 				num_off_cooldown_linkens_spheres_in_inventory = num_off_cooldown_linkens_spheres_in_inventory + 1
 			end
 		end
@@ -100,7 +70,7 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 			for i=0, 5, 1 do --Put all Linken's Spheres in the player's inventory on cooldown.
 				local current_item = keys.caster:GetItemInSlot(i)
 				if current_item ~= nil then
-					if current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield" then
+					if current_item:GetName() == "item_lia_spellbreaker" or current_item:GetName() == "item_lia_staff_of_power" or current_item:GetName() == "item_lia_amulet_of_spell_shield" then
 						current_item:StartCooldown(current_item:GetCooldown(current_item:GetLevel()))
 					end
 				end
@@ -108,19 +78,5 @@ function modifier_item_lia_amulet_of_spell_shield_on_interval_think(keys)
 			num_off_cooldown_linkens_spheres_in_inventory = 0
 		end
 	end
-	
-	--The passive modifier from a Linken's supersedes the active one due to its indefinite duration, so remove any modifiers that
-	--were transferred to this hero from an ally with a Linken's, now that an off-cooldown Linken's Sphere is in the player's inventory.
-	if num_off_cooldown_linkens_spheres_in_inventory > 0 then
-		keys.caster.current_spellblock_is_passive = true
-		local caster_team = keys.caster:GetTeam()
-		for i=0, 9, 1 do
-			local hero = HeroList:GetHero(i)
-			if hero ~= nil and hero ~= keys.caster and hero:GetTeam() ~= caster_team then
-				keys.caster:RemoveModifierByNameAndCaster("modifier_item_sphere_target", hero)
-			end
-		end
-	else  --num_off_cooldown_linkens_spheres_in_inventory == 0
-		keys.caster.current_spellblock_is_passive = nil
-	end
+
 end

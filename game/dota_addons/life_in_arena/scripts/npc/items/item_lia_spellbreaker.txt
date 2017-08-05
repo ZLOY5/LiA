@@ -1,64 +1,52 @@
-"item_recipe_lia_armor_of_the_red_mist"
+"item_recipe_lia_spellbreaker"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1503"						
+	"ID"							"1505"						
 	"Model"							"models/props_gameplay/recipe.mdl"
 	"BaseClass"                     "item_datadriven"
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"450"	
+	"ItemCost"						"500"	
 	"ItemShopTags"					"health;armor;hard_to_tag"
+
 	"ItemKillable" 					"0" 
 	
 	// Recipe
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemRecipe"					"1"
     "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_armor_of_the_red_mist"
+	"ItemResult"					"item_lia_spellbreaker"
 	"ItemRequirements"
 	{
-		"01"						"item_lia_shield_of_death;item_lia_mithril_armor"
+		"01"						"item_lia_enchanted_shield_2;item_lia_staff_of_power"
 	}
 }
 
 
-
-"item_lia_armor_of_the_red_mist"
+"item_lia_spellbreaker"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1506"  
 	"BaseClass"						"item_lua"
-	"ScriptFile"					"items\item_lia_armor_of_the_red_mist.lua"
-	"ID"							"1504"  //Valve's version of this item uses the ID "135".
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+	"ScriptFile"					"items\item_lia_spellbreaker.lua"
+	
 	"Model"							"models/props_gameplay/red_box.vmdl" 
 	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
-	"AbilityTextureName"			"custom/lia_armor_of_the_red_mist"
-	"ItemKillable" 					"0" 
-
-	"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-		"particle"			"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
-		"particle"			"particles/custom/items/armor_of_the_red_mist_effect.vpcf"
-	}
-
-	"AbilityCooldown"				"14.0"
-
-	"AbilityManaCost"				"120"	
-
-	"AbilitySharedCooldown" "Taunt"
-
-	"AbilityCastRange"				"400"
-
+	
+	"AbilityTextureName"			"custom/lia_spellbreaker"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityCooldown"				"15.0"
+	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"2555"
+	"ItemKillable" 					"0" 
+	"ItemCost"						"1185"
 	"ItemShopTags"					"health;armor;hard_to_tag"
 	"ItemQuality"					"epic"
-	"ItemAliases"					"basher"
+	"ItemAliases"					""
 	// Special	
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilitySpecial"
@@ -66,48 +54,29 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_armor"	"20"
+			"bonus_armor"			"20"
 		}
 
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_health" "700"
+			"bonus_health" 			"600"
 		}
+
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage_blocked"			"60"
+			"block_chance"			"50"
 		}
 		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_magic_resist_percentage"			"30"
+			"damage_block"			"125"
 		}
 		"05"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"400"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"active_armor"			"25"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"400"
-		}
-		"08"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"5.0"
-		}
-		"08"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration_hero_tooltip"				"2.5"
+			"var_type"							"FIELD_INTEGER"
+			"bonus_mana_regen_percentage"		"150"
 		}
 	}
 }
