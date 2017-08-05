@@ -16,7 +16,7 @@ function modifier_spellbreaker:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_HEALTH_BONUS,
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
-		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK_UNAVOIDABLE_PRE_ARMOR,
+		MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK,
 		MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE,
 	}
  
@@ -33,7 +33,7 @@ function modifier_spellbreaker:OnCreated(kv)
 
 	if IsServer() then
 		self.pseudo = PseudoRandom:New(ability:GetSpecialValueFor("block_chance")*0.01)
-
+		
 		if self:GetAbility():IsCooldownReady() then
 			local caster = self:GetCaster()
 			caster:RemoveModifierByName("modifier_item_sphere_target") --Remove any potentially temporary version of the modifier and replace it with an indefinite one.
@@ -105,11 +105,11 @@ function modifier_spellbreaker:GetModifierPhysicalArmorBonus(params)
 	return self.armorBonus
 end
 
-function modifier_spellbreaker:GetModifierPhysical_ConstantBlockUnavoidablePreArmor(params)
-	if not params.inflictor and self.pseudo:Trigger() then 
+function modifier_spellbreaker:GetModifierPhysical_ConstantBlock(params)
+	--print(params.record,params.damage)
+	if not params.inflictor and params.record ~= 11200 and self.pseudo:Trigger() then 
 		return self.blockDamage 
 	end
-	return 0
 end
 
 function modifier_spellbreaker:GetModifierPercentageManaRegen()

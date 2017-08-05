@@ -447,7 +447,8 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_armor_of_the_red_mist.lua"
 		"ID"							"1504"  //Valve's version of this item uses the ID "135".
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
 		"Model"							"models/props_gameplay/red_box.vmdl" 
@@ -525,129 +526,6 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"duration_hero_tooltip"				"2.5"
-			}
-		}
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Sven.WarCry.Signet"
-				"Target" 		"CASTER"
-			}
-	
-			"AttachEffect"
-			{
-				"EffectName"	"particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
-				"EffectAttachType"	"start_at_customorigin"
-				"Target"	"CASTER"	
-				"ControlPoints"
-				{
-					"02"	"%radius %radius 0"
-				}
-			}
-	
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Radius" 	"%radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			//		"Flags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			
-				"Action"    
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armor_of_the_red_mist.lua"
-						"Function"		"ApplyTaunt"
-					}
-					"Damage"
-					{
-						"Target"		"TARGET"
-						"Type"			"DAMAGE_TYPE_MAGICAL"
-						"Damage"		"%damage"
-					}
-				}
-			}
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_item_lia_armor_of_the_red_mist_armor"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_lia_armor_of_the_red_mist"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
-				"Properties"
-				{
-			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
-			    	"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
-					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
-				}
-				
-				
-			}
-	
-			"modifier_item_lia_armor_of_the_red_mist_taunt"
-			{
-				"IsPurgable"		"0"
-				"IsDebuff"			"1"
-	
-				"StatusEffectName" 		"particles/custom/items/armor_of_the_red_mist_effect.vpcf" 	   
-				"StatusEffectPriority"  "10"
-	
-				"ThinkInterval"  "0.1"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armor_of_the_red_mist.lua"
-						"Function"		"Taunt"
-					}
-				}
-	
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armor_of_the_red_mist.lua"
-						"Function"		"TauntEnd"
-					}
-				}
-	
-				"States"
-				{
-					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-	
-			"modifier_item_lia_armor_of_the_red_mist_armor"
-			{
-				"Passive"				"0"
-				"IsHidden"				"0"
-				"IsBuff"				"1"
-				"IsPurgable"			"1"
-	
-				"Duration"				"%duration"
-				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%active_armor"
-				}
 			}
 		}
 	}
@@ -2234,12 +2112,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"block_chance"			"80"
+				"block_chance"			"50"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_block"			"50 70"
+				"damage_block"			"75 100"
 			}
 		}
 	}
@@ -2290,12 +2168,12 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"block_chance"			"80"
+				"block_chance"			"50"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_block"			"70"
+				"damage_block"			"100"
 			}
 		}
 	}
@@ -2345,6 +2223,7 @@
 		"AoERadius"						"350"
 		"AbilityCooldown"				"25"
 		"AbilityManacost"				"250"
+		"AbilityCastRange"   				  "350"
 	
 		"precache"
 		{
@@ -5929,7 +5808,8 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_mithril_armor.lua"
 		"ID"							"1430"  //Valve's version of this item uses the ID "135".
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
 		"Model"							"models/props_gameplay/red_box.vmdl" 
@@ -5947,6 +5827,8 @@
 		"AbilityCooldown"				"14.0"
 	
 		"AbilityManaCost"				"80"	
+	
+		"AbilityCastRange"   				  "400"
 	
 		"AbilitySharedCooldown" "Taunt"
 	
@@ -5985,98 +5867,6 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"duration"				"5.0"
-			}
-		}
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Sven.Warcry"
-				"Target" 		"CASTER"
-			}
-	
-			"FireEffect"
-			{
-				"EffectName"        "particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
-				"EffectAttachType"  "start_at_customorigin"
-	
-				"ControlPointEntities"
-				{
-					"CASTER"	"follow_origin"
-					"CASTER"	"follow_origin"
-					"CASTER"	"follow_origin"
-				}
-			}
-	
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Radius" 	"%radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				}
-			
-				"Action"    
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/mithril_armor.lua"
-						"Function"		"ApplyTaunt"
-					}
-				}
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_lia_mithril_armor"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
-				"Properties"
-				{
-			    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-			    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
-					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
-				}
-				
-				
-			}
-	
-			"modifier_item_lia_mithril_armor_taunt"
-			{
-				"IsPurgable"		"0"
-				"IsDebuff"			"1"
-	
-				"StatusEffectName" 		"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf" 	   
-				"StatusEffectPriority"  "10"
-	
-				"ThinkInterval"  "0.1"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/mithril_armor.lua"
-						"Function"		"Taunt"
-					}
-				}
-	
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/mithril_armor.lua"
-						"Function"		"TauntEnd"
-					}
-				}
-	
-				"States"
-				{
-					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
 			}
 		}
 	}
