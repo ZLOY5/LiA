@@ -312,8 +312,6 @@ function Survival:EndDuels()
 
     EnableShop()
 
-    Survival:_GiveRoundBounty()
-
     --self.nRoundNum = self.nRoundNum - 1
     Survival:PrepareNextRound()
 end
