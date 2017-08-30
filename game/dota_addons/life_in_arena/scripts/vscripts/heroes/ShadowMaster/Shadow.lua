@@ -65,8 +65,8 @@ function _G.CreateShadow(caster,originVec,forwardVec,lifetime,strength,agility,i
 	shadow:SetHasInventory(false)
 
 	local healthBonus = strength * HERO_STATS_HEALTH_BONUS
-    local armorBonus = agility * HERO_STATS_ARMOR_BONUS
-    shadow:SetMaxHealth(shadow:GetMaxHealth()+healthBonus)
+	local armorBonus = agility * HERO_STATS_ARMOR_BONUS
+    shadow:SetBaseMaxHealth(shadow:GetMaxHealth()+healthBonus)
     shadow:SetHealth(shadow:GetMaxHealth())
     shadow:SetPhysicalArmorBaseValue(shadow:GetPhysicalArmorBaseValue()+armorBonus)
 
