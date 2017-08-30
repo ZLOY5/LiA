@@ -379,11 +379,13 @@ function Survival:EndRound()
 
         EnableShop()
         
+        Survival:_GiveRoundBounty()
+
         if self.nRoundNum % 3 == 0 and not self.IsDuelOccured and self:GetHeroCount(false) > 1 then
             Survival:StartDuels()
         else
 
-            Survival:_GiveRoundBounty()
+            --Survival:_GiveRoundBounty()
             Survival:PrepareNextRound()
         end
     end)
