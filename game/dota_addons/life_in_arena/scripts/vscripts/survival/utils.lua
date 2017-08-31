@@ -20,7 +20,6 @@ function Survival:HideHero(hero)
 		hero:Interrupt()
 		hero:AddNoDraw()
 		hero:AddNewModifier(hero, nil, "modifier_hide_lua", nil)
-		hero.abs = hero:GetAbsOrigin()
 		hero:SetAbsOrigin(Vector(-3000,-3000,0))
 		hero.hidden = 1
 	end
@@ -58,12 +57,12 @@ function Survival:UnhideHero(hero)
 			hero:RespawnHero(false, false, false)
 		end
 		hero:RemoveModifierByName("modifier_hide_lua")
-		FindClearSpaceForUnit_IgnoreNeverMove(hero, hero.abs, false)
-		ResolveNPCPositions(hero.abs, 64)
+		FindClearSpaceForUnit_IgnoreNeverMove(hero, Vector(0,1500,168), false)
+		ResolveNPCPositions(hero:GetAbsOrigin(), 64)
 		hero:RemoveNoDraw()
 		hero.hidden = nil
 
-		SetCameraToPosForPlayer(hero:GetPlayerID(),hero.abs)
+		SetCameraToPosForPlayer(hero:GetPlayerID(),hero:GetAbsOrigin())
 
 	end
 end
