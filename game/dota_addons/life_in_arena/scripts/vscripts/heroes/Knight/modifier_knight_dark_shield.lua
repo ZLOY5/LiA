@@ -34,7 +34,8 @@ function modifier_knight_dark_shield:OnTakeDamage(params)
 
 		if params.unit:HasModifier("modifier_brain_storm_decrepify") 
 		or params.unit:HasModifier("modifier_hermit_decrepify") 
-		or params.unit:HasModifier("modifier_illusionist_mastery_of_illusions") then
+		or params.unit:HasModifier("modifier_illusionist_mastery_of_illusions") 
+		or params.unit:HasModifier("modifier_decrepify_hero") then
 			return
 		end
 		
