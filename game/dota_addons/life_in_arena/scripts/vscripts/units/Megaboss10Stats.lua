@@ -4,9 +4,9 @@ function Spawn(entityKeyValues)
 	Timers:CreateTimer(0.01,function()
 		
 		local mult = Survival:GetHeroCount(false)
-		local hp = 23000 + 500*mult
-		local armor = 70 + 5*mult
-		local dmg = 800 + 50*mult
+		local hp = 22250 + 750*mult
+		local armor = 55 + 10*mult
+		local dmg = 725 + 75*mult
 
 		thisEntity:SetMaxHealth(hp)
 		thisEntity:SetBaseMaxHealth(hp)
