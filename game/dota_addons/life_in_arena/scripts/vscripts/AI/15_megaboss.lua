@@ -16,9 +16,9 @@ function Spawn(entityKeyValues)
 		
 	if not thisEntity:IsIllusion() then
 		local mult = Survival.nHeroCount
-		local hp = 26000 + 1000*mult
-		local armor = 80 + 10*mult
-		local dmg_min = 2450 + 100*mult
+		local hp = 24500 + 1500*mult
+		local armor = 65 + 15*mult
+		local dmg_min = 2300 + 150*mult
 		local dmg_max = dmg_min + 50
 
 		thisEntity:SetMaxHealth(hp)
