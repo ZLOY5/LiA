@@ -1,0 +1,549 @@
+"butterfly_swarm"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityTextureName"			"death_prophet_carrion_swarm"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+		}
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500 600 700"
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"18 18 18"
+		
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 120 140"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"			"80 160 240"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"500 600 700"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"700"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"shock_width"				"130"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"knockback_distance_max"	"500 600 700"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"knockback_duration"		"0.5 0.5 0.5"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"knockback_height"		"0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target" "POINT"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+				"MoveSpeed" "%speed"
+				"StartRadius" "%shock_width"
+				"StartPosition" "attach_origin"
+				"EndRadius" "%shock_width"
+				"FixedDistance" "%range"
+				"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
+				"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone" "1"
+				"ProvidesVision" "0"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "0"
+			"Damage"
+			{
+				"Target" "TARGET"
+				"Type" "DAMAGE_TYPE_MAGICAL"
+				"Damage" "%damage"
+			}
+			"RunScript"
+			{
+				"ScriptFile"		"heroes\Trent\knockback.lua"
+				"Function"			"butterfly_swarm_knockback"
+				"height"			"%knockback_height"
+				"duration"			"%knockback_duration"
+				"distance"			"%knockback_distance_max"
+				"range"				"%range"
+			}
+		}
+	}
+
+"entangle"
+	{
+		// General
+	  //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"              "ability_datadriven"
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	  "AbilityTextureName"     "custom/earth_lord_might_of_the_earth"
+
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+
+	  "AbilityCooldown"         "22"
+
+	  "AbilityCastPoint"        "0.2"
+	  "AbilityCastRange"        "300"
+
+	  "AbilityManaCost"        "50 50 50"
+
+	  "precache"
+	  {
+	  }
+
+	// Special    
+	//-------------------------------------------------------------------------------------------------------------
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                           "FIELD_INTEGER"
+	      "damage"                      		"50 50 50"
+	    }
+	    "02"
+	    {
+	      "var_type"                            "FIELD_FLOAT"
+	      "duration"                            "2 3 4"
+	    }
+	    "03"
+	    {
+	      "var_type"                           "FIELD_INTEGER"
+	      "radius"                             "400"
+	    }
+	    "04"
+	    {
+	      "var_type"                            "FIELD_FLOAT"
+	      "tick_interval"                       "1.0"
+	    }
+	   	"05"
+	    {
+	      "var_type"                            "FIELD_INTEGER"
+	      "bonus_health_regen"         			"10 20 30"
+	    }
+	   	"06"
+	    {
+	      "var_type"                            "FIELD_INTEGER"
+	      "mana_cost_per_second"         		"10 10 10"
+	    }
+	  }  
+
+	  // Casting
+	//-------------------------------------------------------------------------------------------------------------
+	  "OnSpellStart"
+	  {
+
+	  	"FireEffect"
+		{
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
+			"EffectAttachType" 	"follow_origin"
+			//"EffectRadius"		"%radius"
+			"Target" 			"CASTER"
+			"ControlPoints"
+			{
+				"01"	"%radius 0 %radius"
+			}
+		}
+
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"  				"CASTER"
+				"Radius" 				"%radius"
+				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+			}
+
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"Target" 		"TARGET"
+					"ModifierName"	"modifier_treant_root"
+					"Duration"      "%duration"
+				}
+			}
+		}	
+	  }
+
+	  "Modifiers"
+	  {
+	    "modifier_treant_root"
+	    {
+	      	"IsDebuff"		"1"
+			"Duration"		"%duration"
+			"IsPurgable"	"1"
+	      	"EffectName"						"particles/units/heroes/hero_ember_spirit/ember_spirit_searing_chains_debuff.vpcf"
+	      	"StatusEffectPriority" "10"
+		  	"EffectAttachType"				"follow_origin"
+
+	      	"States"
+			{
+				"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"ThinkInterval"					"1"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Damage"		"%damage"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+				}
+	    	}
+	  	}
+	  }
+	}
+
+"pull"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityTextureName"			"dark_seer_vacuum"
+		"AOERadius"						"%radius"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+			"particle"			"particles/units/heroes/hero_dark_seer/dark_seer_vacuum.vpcf"
+		}
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.4 0.4 0.4"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"30 26 22"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"120 140 160"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400 400 400"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"0.5 0.5 0.5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"50 100 150"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_2_x"			"80 160 240"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_dark_seer/dark_seer_vacuum.vpcf"
+				"EffectAttachType"  "start_at_customorigin"
+				"TargetPoint"      	"CASTER"
+
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+				}
+			}
+			"CreateThinker"
+			{
+				"ModifierName"	"modifier_vacuum_thinker_datadriven"
+				"Target" 		"CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_vacuum_thinker_datadriven"
+			{
+				"Duration"		"%duration"
+
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Dark_Seer.Vacuum"
+						"Target" 		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Trent/pull.lua"
+						"Function"		"VacuumStart"
+					}
+				}
+				"OnDestroy"
+				{
+					"ActOnTargets"
+					{
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Radius" 	"%radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+						}
+					
+						"Action"    
+						{			
+							"RunScript"
+							{
+								"ScriptFile"	"heroes/Trent/pull_damage.lua"
+								"Function"		"Vacuum_damage"
+							}
+						}
+					}
+				}
+
+				"ThinkInterval"  "0.03"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"heroes/Trent/pull.lua"
+						"Function"			"Vacuum"
+						"vacuum_modifier"	"modifier_vacuum_datadriven"
+					}
+				}
+			}
+
+			"modifier_vacuum_datadriven"
+			{
+				"IsPurgable"	"0"
+
+				"OverrideAnimation"     "ACT_DOTA_FLAIL"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+"bloody_spikes"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		"AbilityTextureName"			"bloodseeker_rupture"
+		
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf"
+			"soundfile"			"sounds/weapons/hero/bloodseeker/rupture.vsnd"
+			"soundfile"			"sounds/weapons/hero/bloodseeker/rupture_cast.vsnd"
+		}
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"120 110 100"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"250 325 400"		
+		
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+			
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"	"0.0"	// Only does damage
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"10.0"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_damage_pct"		"20 40 60"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_cap_amount"			"1300"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"damage_cap_interval"		"0.25"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cast_range_tooltip"		"500"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"300"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{	
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"	"POINT"	
+				"ControlPoints"
+				{
+					"01"	"%radius 0 0"
+				}
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Bloodseeker.Rupture"
+				"Target" 		"CASTER"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"	"POINT"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Type"		"DOTA_UNIT_TARGET_HERO"
+				}				
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_rupture_datadriven"
+						"Target"	"TARGET"
+						"Duration"	"%duration"
+					}	
+				}
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_rupture_datadriven"
+			{
+				"Duration"	"%duration"
+				"IsDebuff"	"1"
+				
+				"EffectName"	"particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf"
+				"EffectAttachType"	"attach_origin"
+				
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Trent/bloody_spikes.lua"
+						"Function"		"DistanceCheck"
+					}
+				}
+				
+				"ThinkInterval"	"%damage_cap_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Trent/bloody_spikes.lua"
+						"Function"		"DistanceCheck"
+					}
+				}
+			}
+		}
+	}
