@@ -9,7 +9,7 @@
 "Level" "1" 
 
 "Ability1" "1_wave_stomp" 
-"Ability2" "" 
+"Ability2" "wave_1_poison" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -73,31 +73,6 @@
 "PathfindingSearchDepthScale" "0.75" //0.3
 "vscripts"	"AI\1_wave_bosses.lua"
 
-//"Creature"
-//{
-//	"DefaultState"			"Invade"
-//	"States"	
-//	{
-//		"Invade"
-//		{
-//			"Name"				"Invade"
-//			"Aggression"		"90.0" //cast offensive spells whenever
-//			"Avoidance"			"0.0" //dont flee
-//			"Support"			"0.0" //start buffing
-//		}
-//	}
-//	
-//	"OffensiveAbilities"
-//	{
-//		"Ability1"
-//		{
-//			"Name"				"1_wave_stomp"
-//			"AOE"                "1"
-//			"Radius"             "245"
-//			"MinimumTargets"     "1"
-//		}
-//	}
-//}
 }
 
 "2_wave_boss" 
@@ -113,9 +88,9 @@
 
 
 
-"Ability1" "wave_2_aura_of_vengeance" 
-"Ability2" "" 
-"Ability3" "" 
+"Ability1" "second_wave_wave_of_force" 
+"Ability2" "wave_2_aura_of_vengeance" 
+"Ability3" "wave_2_centaurs_revenge" 
 "Ability4" "" 
 "Ability5" "" 
 "Ability6" "" 
@@ -177,7 +152,7 @@
 "HasInventory" "0" 
 
 "PathfindingSearchDepthScale" "0.75" //0.3
-"vscripts"	"AI\attack_wave_only.lua" //
+"vscripts"	"AI\2_wave_bosses.lua" //
 
 }
 
@@ -194,7 +169,7 @@
 	"model"	"models/creeps/neutral_creeps/n_creep_worg_large/n_creep_worg_large.vmdl"
 }
 
-"Ability1" "3_wave_evasion" 
+"Ability1" "wave_3_evasion" 
 "Ability2" "3_wave_rejuvenation" 
 "Ability3" "" 
 "Ability4" "" 

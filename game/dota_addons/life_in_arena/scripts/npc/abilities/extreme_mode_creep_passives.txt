@@ -1,8 +1,9 @@
-"1_wave_poison_extreme"
+"wave_1_poison_extreme"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"abilities/wave_1_poison_extreme"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 	"AbilityTextureName"			"sandking_caustic_finale"
@@ -10,7 +11,7 @@
 
 	"precache"
 	{
-	"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+		"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
 	}
 	
 	// Special	
@@ -39,64 +40,43 @@
 		}
 
 	}
-
-
-	"Modifiers"
-	{
-		"modifier_1_wave_poison_extreme"
-		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-	
-			"OnAttackLanded"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_poisoned_weapon_debuff"
-					"Target"	
-					{
-					"Center"	"TARGET"
-					"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
-					}
-				}
-			}
-		}
-		
-		"modifier_1_wave_poison_extreme_debuff"
-		{
-			"Passive"               "0"
-			"IsHidden"				"0"
-			"Duration"				"%duration"
-			
-			"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
-			"EffectAttachType"	"follow_origin"
-			
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_slow"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_slow"
-			}
-
-			"ThinkInterval"  "1.0"
-			"OnIntervalThink"
-			{
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%damage_per_second"
-				}
-			}
-		}
-	}
 }
 
-"2_wave_centaurs_revenge_extreme"
+"wave_2_aura_of_vengeance_extreme"
 {
 	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/2_wave_centaurs_revenge.lua"
+	"ScriptFile"					"abilities/wave_2_aura_of_vengeance_extreme.lua"
 	"AbilityTextureName"			"custom/2_wave_thorns_aura"
+
+	"MaxLevel"               		"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+	"AbilityCastRange"				"1000"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"					"1000"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_return"				"35"		
+		}	
+	}
+
+}
+
+"wave_2_centaurs_revenge_extreme"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"abilities/wave_2_centaurs_revenge_extreme.lua"
+	"AbilityTextureName"			"custom/brewmaster_punisment"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
@@ -131,12 +111,12 @@
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_speed"	"30"
+			"bonus_movement_speed_percentage"	"30"
 		}
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_speed_tooltip"	"30"
+			"bonus_attack_speed"	"30"
 		}
 	}
 	
@@ -158,10 +138,48 @@
 		{
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_speed"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_speed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed_percentage"
 			}
 		}
+	}
+}
+
+"wave_2_centaur_chieftain_aura_extreme"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"BaseClass"					"ability_lua"
+	"AbilityTextureName"				"centaur_khan_endurance_aura"
+	"ScriptFile"					"abilities/wave_2_centaur_chieftain_aura_extreme.lua"
+	
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"900"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"aura_radius"				"900"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_movement_speed_percentage"	"30"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_attack_speed"	"30"
+		}
+		
 	}
 }
 
@@ -194,6 +212,24 @@
 	}
 }
 
+"wave_3_evasion_extreme"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"abilities/wave_3_evasion_extreme.lua"
+	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"evasion"		"25"
+		}
+	}
+}
+
 "4_wave_true_hit_extreme"
 {
 	"BaseClass"             		"ability_datadriven"
@@ -201,6 +237,11 @@
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+
+	"precache"
+	{
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+	}
 	
 	"AbilitySpecial"
 	{
@@ -223,7 +264,7 @@
 			"Passive"	"1"
 			"IsHidden"	"1"
 
-			"OnAttackLanded"
+			"OnAttackStart"
 			{
 				"Random"
 				{
@@ -232,14 +273,47 @@
 
 					"OnSuccess"
 					{
-
-						"Damage"
+						"ApplyModifier"
 						{
-							"Target"	"TARGET"
-							"Type"   "DAMAGE_TYPE_PHYSICAL"
-							"Damage" "%damage"           
+							"ModifierName"	"modifier_4_wave_true_hit_damage"
+							"Target" 		"CASTER"
 						}
+						
 					}
+				}
+			}
+		}
+
+		"modifier_4_wave_true_hit_damage"
+		{
+			"IsHidden"	"1"
+			"IsPurgable"	"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"abilities/4_wave_true_hit"
+					"Function"		"DealDamageOrNot"
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_4_wave_true_hit_damage"
+					"Target" 		"CASTER"
+				}
+			}
+
+			"OnAttackFailed"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_4_wave_true_hit_damage"
+					"Target" 		"CASTER"
 				}
 			}
 		}

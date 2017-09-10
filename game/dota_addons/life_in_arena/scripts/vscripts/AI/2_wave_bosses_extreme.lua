@@ -9,6 +9,7 @@ function Spawn(entityKeyValues)
 	end
 	
 	ABILITY_1_war_stomp = thisEntity:FindAbilityByName("2_wave_war_stomp_extreme")
+	ABILITY_second_wave_wave_of_force = thisEntity:FindAbilityByName("second_wave_wave_of_force_extreme")
 	thisEntity:SetContextThink( "1_wave_think", Think1Wave , 0.1)
 
 end
@@ -42,6 +43,23 @@ function Think1Wave()
 		--print(#targets)
 		if #targets ~= 0 then
 			thisEntity:CastAbilityNoTarget(ABILITY_1_war_stomp, -1)
+			Survival.AICreepCasts = Survival.AICreepCasts + 1
+		end
+	end
+
+	if ABILITY_second_wave_wave_of_force:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
+		local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
+						  thisEntity:GetOrigin(), 
+						  nil, 
+						  900, 
+						  DOTA_UNIT_TARGET_TEAM_ENEMY, 
+						  DOTA_UNIT_TARGET_ALL - DOTA_UNIT_TARGET_BUILDING, 
+						  DOTA_UNIT_TARGET_FLAG_NONE, 
+						  FIND_ANY_ORDER, 
+						  false)
+		--print(#targets)
+		if #targets ~= 0 then
+			thisEntity:CastAbilityOnPosition(targets[RandomInt(1,#targets)]:GetAbsOrigin(), ABILITY_second_wave_wave_of_force, -1)
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
 	end
