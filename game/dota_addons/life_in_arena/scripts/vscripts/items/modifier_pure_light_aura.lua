@@ -9,7 +9,7 @@ function modifier_pure_light_aura:IsPurgable()
 	return false
 end
 
-function modifier_pure_light_aura:DeclareFunction()
+function modifier_pure_light_aura:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
 		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
