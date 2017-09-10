@@ -40,7 +40,7 @@
     "05"
     {
       "var_type"            "FIELD_FLOAT"
-      "duration"            "4"
+      "duration"            "8"
     }
   }
 
@@ -127,7 +127,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCooldown"				"7.0"
 	"AbilityManaCost"				"70"
-	"AbilityCastPoint"      "0.0"
+	"AbilityCastPoint"      "0.3"
   
 	"AbilityCastRange"				"300"
 
@@ -142,12 +142,12 @@
 		"01"
 		{
 			"var_type"						"FIELD_INTEGER"
-			"damage"						"150"
+			"damage"						"100"
 		}	
 		"02"
 		{
 			"var_type"						"FIELD_FLOAT"
-			"stun_duration"					"3"
+			"stun_duration"					"2"
 		}
 		"03"
 		{
@@ -212,6 +212,75 @@
 	}
 }
 
+"second_wave_wave_of_force_extreme"
+{
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+    "FightRecapLevel"               "1"
+    "BaseClass"                     "ability_lua"
+    "AbilityTextureName"            "magnataur_shockwave_alt"
+    "ScriptFile"                    "abilities/second_wave_wave_of_force_extreme.lua"
+    "MaxLevel"                      "1"
+
+    "precache"
+    {
+      "particle"  "particles/econ/items/magnataur/shock_of_the_anvil/magnataur_shockanvil.vpcf"
+      "particle"  "particles/econ/items/magnataur/shock_of_the_anvil/magnataur_shockanvil_hit.vpcf"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+    }
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"              "750"
+    "AbilityCastPoint"              "0.25"
+
+    // Time     
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"               "8"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"               "100"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "attack_speed"               "1050"
+        }
+        
+        "02"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "attack_width_initial"    "150"
+        }
+        "03"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "attack_width_end"        "150"
+        }
+        
+        "04"
+        {
+            "var_type"                  "FIELD_INTEGER"
+            "attack_distance"         "1150"
+        }
+        "05"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "max_health_damage"           "25"
+        }
+    }
+}
+
 "3_wave_rejuvenation_extreme"
 {
   // General
@@ -239,6 +308,11 @@
     {
       "var_type"            "FIELD_FLOAT"
       "duration"            "6"
+    }
+    "03"
+    {
+      "var_type"            "FIELD_INTEGER"
+      "heal_tooltip"              "1000"
     }
   }
 
@@ -382,7 +456,7 @@
 		{
 			"IsHidden"		"0"
 			"IsDebuff"		"1"
-			"IsPurgable"	"0"
+			"IsPurgable"	"1"
 
 			"Duration"		"%duration"
 

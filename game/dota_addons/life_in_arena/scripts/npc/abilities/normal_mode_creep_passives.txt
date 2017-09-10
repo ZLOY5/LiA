@@ -91,11 +91,85 @@
 	}
 }
 
-"2_wave_centaurs_revenge"
+"wave_1_poison"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"abilities/wave_1_poison"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"AbilityTextureName"			"sandking_caustic_finale"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+	}
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movement_slow"		"-25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_slow"		"-25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_per_second"		"15"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"4"
+		}
+
+	}
+}
+
+"wave_2_aura_of_vengeance"
 {
 	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/2_wave_centaurs_revenge.lua"
+	"ScriptFile"					"abilities/wave_2_aura_of_vengeance.lua"
 	"AbilityTextureName"			"custom/2_wave_thorns_aura"
+
+	"MaxLevel"               		"1"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+	"AbilityCastRange"				"1000"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_return"				"20"		
+		}	
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"					"1000"
+		}
+	}
+
+}
+
+"wave_2_centaurs_revenge"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"abilities/wave_2_centaurs_revenge.lua"
+	"AbilityTextureName"			"custom/brewmaster_punisment"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
@@ -192,6 +266,115 @@
 		}
 	}
 }
+
+"wave_3_evasion"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"abilities/wave_3_evasion.lua"
+	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"evasion"		"25"
+		}
+	}
+}
+
+"4_wave_true_hit"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"troll_warlord_berserkers_rage_active"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+
+	"precache"
+	{
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"strike_chance"			"25"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"	"30"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_4_wave_true_hit"	
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance"		"%strike_chance"
+					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_4_wave_true_hit_damage"
+							"Target" 		"CASTER"
+						}
+						
+					}
+				}
+			}
+		}
+
+		"modifier_4_wave_true_hit_damage"
+		{
+			"IsHidden"	"1"
+			"IsPurgable"	"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"abilities/4_wave_true_hit"
+					"Function"		"DealDamageOrNot"
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_4_wave_true_hit_damage"
+					"Target" 		"CASTER"
+				}
+			}
+
+			"OnAttackFailed"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_4_wave_true_hit_damage"
+					"Target" 		"CASTER"
+				}
+			}
+		}
+	}
+}
+
 
 "5_megaboss_bash"
 {
@@ -495,6 +678,178 @@
 	}
 }
 
+"7_wave_plague"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"custom/7_wave_disease_cloud"
+
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_pudge/pudge_rot_body.vpcf"
+	}
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"250"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"immunity_time"			"2"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"			    "40"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"plague_time"			    "10"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_plague_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Aura"		  		"modifier_plague_aura_datadriven"
+			"Aura_Radius" 		"%radius"
+	        "Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+
+	        "EffectName"	"particles/units/heroes/hero_pudge/pudge_rot_body.vpcf"
+	        "EffectAttachType"	"follow_origin"	
+		}
+		"modifier_plague_aura_datadriven"
+		{
+			"IsHidden"			"1"
+			
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"abilities\plague.lua"
+					"Function"				"modifier_plague_aura_datadriven_on_created"
+					"immunity_time"			"%immunity_time"
+					"modifier_name"			"modifier_plague_aura_datadriven"
+					"modifier_name_damage" 	"modifier_plague_damage_datadriven"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"abilities\plague.lua"
+					"Function"				"modifier_plague_aura_datadriven_on_destroy"
+					"modifier_name_damage" 	"modifier_plague_damage_datadriven"
+					"plague_time"			"%plague_time"
+				}
+			}
+		}
+
+		"modifier_plague_damage_datadriven"
+		{
+			"IsDebuff"			"1"
+			"IsPurgable"		"1"
+			"ThinkInterval"		"0.25"
+
+			"EffectName"	"particles/units/heroes/hero_pudge/pudge_rot_radius_d.vpcf"
+	        "EffectAttachType"	"follow_origin"	
+	        
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"abilities\plague.lua"
+					"Function"		"OnIntervalThink"
+					"damage"		"10"
+				}
+			}
+		}
+	}
+}
+
+"8_wave_lifesteal_aura"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"custom/8_wave_vampiric_aura"
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"1000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"lifesteal_percent"		"75"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_8_wave_lifesteal_aura_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Aura"		  		"modifier_8_wave_lifesteal_datadriven"
+			"Aura_Radius" 		"%radius"
+	        "Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	        "Aura_Types"  		"DOTA_UNIT_TARGET_BASIC"		
+		}
+		"modifier_8_wave_lifesteal_datadriven"
+		{
+			"Orb"
+			{
+				"Priority"		"DOTA_ORB_PRIORITY_ABILITY"
+			}
+			"OnOrbImpact"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"abilities\8_wave_lifesteal_aura.lua"
+					"Function"				"modifier_8_wave_lifesteal_datadriven_on_orb_impact"
+				}
+			}
+		}
+		"modifier_8_wave_lifesteal_datadriven_lifesteal"
+		{
+			"Passive"			"0"
+			"IsHidden"			"1"
+			
+			"OnDealDamage"
+			{
+				"Lifesteal"
+				{
+					"Target"			"ATTACKER"
+					"LifestealPercent"	"%lifesteal_percent"
+				}
+			}
+		}
+	}
+}
+
 "8_wave_lifesteal"
 {
 	// General
@@ -679,6 +1034,81 @@
 		{
 			"var_type" "FIELD_INTEGER"
 			"damage_return" "15" //10
+		}
+	}
+}
+
+"11_wave_invisibility"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_11_wave_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"OnCreated"	
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+					"Target"		"CASTER"
+				}
+			}
+			"OnAttack"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+					"Target"		"CASTER"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"abilities\11_wave_invisibility.lua"
+					"Function"		"modifier_11_wave_datadriven_on_attack_landed"
+				}
+			}		
+		}
+		"modifier_11_wave_invisibility_datadriven"
+		{
+			"IsHidden"			"1"
+			"OnCreated"	
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" 	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName" 	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
 		}
 	}
 }
