@@ -183,35 +183,6 @@
 	}
 }
 
-"3_wave_evasion_extreme"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"evasion"		"30"
-		}
-	}
-
-	"Modifiers"
-	{
-		"3_wave_evasion"
-		{
-			"Passive"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
-			}
-		}
-	}
-}
-
 "wave_3_evasion_extreme"
 {
 	"BaseClass"             		"ability_lua"
@@ -317,6 +288,45 @@
 				}
 			}
 		}
+	}
+}
+
+"wave_6_assassin_extreme"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_lua"
+	"ScriptFile"					"abilities/wave_6_assassin_extreme.lua"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"bounty_hunter_jinada"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_multiplier"					"200"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"20"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"evasion"				"20"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+		"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_weapon_blur_critical.vpcf"
 	}
 }
 

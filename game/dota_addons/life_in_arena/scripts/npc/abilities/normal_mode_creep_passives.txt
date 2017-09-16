@@ -238,35 +238,6 @@
 	}
 }
 
-"3_wave_evasion"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"evasion"		"25"
-		}
-	}
-
-	"Modifiers"
-	{
-		"3_evasion"
-		{
-			"Passive"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
-			}
-		}
-	}
-}
-
 "wave_3_evasion"
 {
 	"BaseClass"             		"ability_lua"
@@ -467,11 +438,51 @@
 	}
 }
 
-"5_megaboss_crit"
+"megaboss_5_bash"
+{
+	"BaseClass"             		"ability_lua"
+	"ScriptFile"					"abilities/megaboss_5_bash.lua"
+	"AbilityTextureName"			"faceless_void_time_lock"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+		"particle"	"particles/status_fx/status_effect_faceless_chronosphere.vpcf"
+		"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_chance"			"16"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"bash_duration"	"2.0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_damage"			"100"
+		}
+	}
+
+}
+
+
+
+"megaboss_5_crit"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
+	"BaseClass"				"ability_lua"
+	"ScriptFile"					"abilities/megaboss_5_crit.lua"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
@@ -484,7 +495,7 @@
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"crit_mult"					"200"
+			"crit_multiplier"					"200"
 		}
 		"02"
 		{
@@ -497,54 +508,6 @@
 	{
 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
 		"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_weapon_blur_critical.vpcf"
-	}
-
-	"Modifiers"
-	{
-		"modifier_megaboss_crit"
-		{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
-		    "OnAttackStart"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName" 	"modifier_megaboss_crit_crit"
-		            "Target" 		"CASTER"
-		        }
-
-		        "Random"
-		        {
-		            "Chance" "%crit_chance"
-		            "OnSuccess"
-		            {
-		                "ApplyModifier"
-		                {
-		                    "ModifierName" 	"modifier_megaboss_crit_crit"
-		                    "Target"    	"CASTER"    
-		                }        
-		            }
-		        }
-		    }
-		}
-
-		"modifier_megaboss_crit_crit"
-		{
-		    "IsHidden"  "1"
-		    "Properties"
-		    {
-		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-		    }
-
-		    "OnAttackLanded"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName"  "modifier_megaboss_crit_crit"
-		            "Target"   		"CASTER"    
-		        }
-		    }
-		}
 	}
 }
 
@@ -572,6 +535,144 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resist"
+			}
+		}
+	}
+}
+
+"wave_6_assassin"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_lua"
+	"ScriptFile"					"abilities/wave_6_assassin.lua"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"bounty_hunter_jinada"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_multiplier"					"150"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"15"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"evasion"				"15"
+		}
+	}
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+		"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_weapon_blur_critical.vpcf"
+	}
+}
+
+"wave_6_invisibility"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"abilities/wave_6_invisibility.lua"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"bounty_hunter_wind_walk"
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"delay"				"1"
+		}
+	}
+
+
+}
+
+"11_wave_invisibility"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_11_wave_datadriven"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"OnCreated"	
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+					"Target"		"CASTER"
+				}
+			}
+			"OnAttack"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
+					"Target"		"CASTER"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"abilities\11_wave_invisibility.lua"
+					"Function"		"modifier_11_wave_datadriven_on_attack_landed"
+				}
+			}		
+		}
+		"modifier_11_wave_invisibility_datadriven"
+		{
+			"IsHidden"			"1"
+			"OnCreated"	
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" 	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName" 	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
 	}
@@ -931,6 +1032,30 @@
 	}
 }
 
+"wave_8_cleave"
+{
+	"BaseClass"				"ability_lua"
+	"ScriptFile"			"abilities/wave_8_cleave.lua"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"sven_great_cleave"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cleave_radius"	"200.0"
+		}
+		
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cleave_percent"	"50"
+		}
+	}
+}
+
 "9_wave_incorporeity"
 {
 	"BaseClass"             		"ability_lua"
@@ -1038,80 +1163,7 @@
 	}
 }
 
-"11_wave_invisibility"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"keeper_of_the_light_blinding_light"
 
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"900"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_11_wave_datadriven"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"OnCreated"	
-			{
-				"ApplyModifier"
-				{
-					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
-					"Target"		"CASTER"
-				}
-			}
-			"OnAttack"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
-					"Target"		"CASTER"
-				}
-				"RunScript"
-				{
-					"ScriptFile"	"abilities\11_wave_invisibility.lua"
-					"Function"		"modifier_11_wave_datadriven_on_attack_landed"
-				}
-			}		
-		}
-		"modifier_11_wave_invisibility_datadriven"
-		{
-			"IsHidden"			"1"
-			"OnCreated"	
-			{
-				"ApplyModifier"
-				{
-					"ModifierName" 	"modifier_invisible"
-					"Target"		"CASTER"
-				}
-			}
-			"OnDestroy"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_invisible"
-					"Target"		"CASTER"
-				}
-			}
-			"States"
-			{
-				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
-	}
-}
 
 "12_wave_bash"
 {

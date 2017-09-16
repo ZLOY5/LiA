@@ -19,6 +19,7 @@ function Bash(event)
 						}
 
 		ability:ApplyDataDrivenModifier(caster, event.target, "modifier_stunned", {duration = ability:GetSpecialValueFor("bash_stun")})
+		ApplyDamage(damageTable)
 	
 		event.target:EmitSound("Roshan.Bash")
 	end

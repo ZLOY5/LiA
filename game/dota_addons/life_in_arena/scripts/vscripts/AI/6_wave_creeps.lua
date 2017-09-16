@@ -8,7 +8,7 @@ function Spawn(entityKeyValues)
 		return
 	end
 	
-	ABILITY_6_wave_immolation = thisEntity:FindAbilityByName("6_wave_immolation")
+	--ABILITY_6_wave_immolation = thisEntity:FindAbilityByName("6_wave_immolation")
 	thisEntity:SetContextThink( "AIThink", AIThink , 0.1)
 end
 
@@ -27,7 +27,7 @@ function AIThink()
 
 	AICreepsAttackOneUnit({unit = thisEntity})
 	--print(Survival.AICreepCasts)
-	local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
+	--[[local targets = FindUnitsInRadius(thisEntity:GetTeam(), 
 						  thisEntity:GetOrigin(), 
 						  nil, 
 						  200, 
@@ -46,7 +46,7 @@ function AIThink()
 		end
 	elseif abilityToggleState then
 		thisEntity:CastAbilityToggle(ABILITY_6_wave_immolation, -1)
-	end	
+	end	]]
 	
 	return 2
 end

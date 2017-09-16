@@ -351,8 +351,8 @@
 	
 	"Ability1" "5_megaboss_firestorm" 
 	"Ability2" "5_megaboss_stomp" 
-	"Ability3" "5_megaboss_bash" 
-	"Ability4" "5_megaboss_crit" 
+	"Ability3" "megaboss_5_bash" 
+	"Ability4" "megaboss_5_crit" 
 	"Ability5" "true_sight" 
 	"Ability6" "" 
 	"Ability7" "" 
@@ -2806,29 +2806,6 @@
 	"PathfindingSearchDepthScale" "0.5" //0.3
 	"vscripts"	"AI\4_wave_bosses_extreme.lua"
 	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"				"4_wave_death_coil"
-	//			"Damage"            "1"
-	//		}
-	//	}	
-	//}
 	}
 	
 	"6_wave_boss_extreme" 
@@ -2836,15 +2813,15 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl" 
+	"Model" "models/creeps/thief/thief_01_leader.vmdl" 
 	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
+	"ModelScale" "1.2" 
 	"Level" "1" 
 	
 	
 	"Ability1" "6_wave_curse" 
 	"Ability2" "6_wave_cripple" 
-	"Ability3" "" 
+	"Ability3" "wave_6_invisibility" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -2854,7 +2831,7 @@
 	
 	
 	"ArmorPhysical" "16" 
-	"MagicalResistance" "25" 
+	"MagicalResistance" "0" 
 	
 	
 	
@@ -2901,33 +2878,9 @@
 	"VisionNighttimeRange" "800" 
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
-	"vscripts"	"AI\6_wave_bosses.lua"
+	"vscripts"	"AI\6_wave_bosses_extreme.lua"
 	
 	"HasInventory" "0" 
-	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"				"6_wave_cripple"
-	//			"IsDebuff"              "1"
-	//		}
-	//	}	
-	//}
 	
 	}
 	
@@ -2951,7 +2904,7 @@
 	
 	"Ability1" "7_wave_howl_of_terror_extreme" 
 	"Ability2" "7_wave_plague" 
-	"Ability3" "7_wave_sharp_claws_extreme" 
+	"Ability3" "7_wave_sharp_claws_extreme_kek" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -3256,8 +3209,8 @@
 	
 	
 	
-	"Ability1" "11_wave_invisibility" 
-	"Ability2" "11_wave_mana_break_extreme" 
+	"Ability1" "11_wave_mana_break_extreme" 
+	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -4171,14 +4124,14 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl" 
+	"Model" "models/creeps/thief/thief_01.vmdl" 
 	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.75" 
+	"ModelScale" "0.85" 
 	"Level" "1" 
 	
 	
-	"Ability1" "6_wave_immolation" 
-	"Ability2" "" 
+	"Ability1" "wave_6_assassin_extreme" 
+	"Ability2" "wave_6_invisibility" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -4189,7 +4142,7 @@
 	
 	
 	"ArmorPhysical" "2" 
-	"MagicalResistance" "25" 
+	"MagicalResistance" "0" 
 	
 	
 	
@@ -4255,7 +4208,7 @@
 	
 	
 	"Ability1" "7_wave_plague" 
-	"Ability2" "7_wave_sharp_claws_extreme" 
+	"Ability2" "7_wave_sharp_claws_extreme_kek" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -4490,8 +4443,8 @@
 	
 	
 	
-	"Ability1" "11_wave_invisibility" 
-	"Ability2" "11_wave_mana_break_extreme" 
+	"Ability1" "11_wave_mana_break_extreme" 
+	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -7160,29 +7113,6 @@
 	"PathfindingSearchDepthScale" "0.75" //0.3
 	"vscripts"	"AI\4_wave_bosses.lua"
 	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"				"4_wave_death_coil"
-	//			"Damage"            "1"
-	//		}
-	//	}	
-	//}
 	}
 	
 	"6_wave_boss" 
@@ -7190,14 +7120,14 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl" 
+	"Model" "models/creeps/thief/thief_01_leader.vmdl" 
 	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
+	"ModelScale" "1.2" 
 	"Level" "1" 
 	
 	
-	"Ability1" "6_wave_curse" 
-	"Ability2" "6_wave_cripple" 
+	"Ability1" "6_wave_cripple" 
+	"Ability2" "wave_6_invisibility" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -7208,7 +7138,7 @@
 	
 	
 	"ArmorPhysical" "6" 
-	"MagicalResistance" "25" 
+	"MagicalResistance" "0" 
 	
 	
 	
@@ -7260,29 +7190,6 @@
 	
 	"HasInventory" "0" 
 	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"				"6_wave_cripple"
-	//			"IsDebuff"              "1"
-	//		}
-	//	}	
-	//}
 	
 	}
 	
@@ -7617,7 +7524,7 @@
 	
 	
 	
-	"Ability1" "11_wave_invisibility" 
+	"Ability1" "" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -8565,14 +8472,14 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl" 
+	"Model" "models/creeps/thief/thief_01.vmdl" 
 	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.75" 
+	"ModelScale" "0.85" 
 	"Level" "1" 
 	
 	
-	"Ability1" "6_wave_immolation" 
-	"Ability2" "" 
+	"Ability1" "wave_6_assassin" 
+	"Ability2" "wave_6_invisibility" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -8583,7 +8490,7 @@
 	
 	
 	"ArmorPhysical" "2" 
-	"MagicalResistance" "25" 
+	"MagicalResistance" "0" 
 	
 	
 	
@@ -8891,7 +8798,7 @@
 	
 	
 	
-	"Ability1" "11_wave_invisibility" 
+	"Ability1" "" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 

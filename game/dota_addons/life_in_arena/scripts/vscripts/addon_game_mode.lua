@@ -174,5 +174,9 @@ function Precache( context )
 
 		PrecacheModel("models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl", context)
 		PrecacheModel("models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_diretide_ancient_hulk.vmdl", context)
+
+		--Неоригинальные модели крипов
+		PrecacheModel("models/creeps/thief/thief_01_leader.vmdl", context)
+		PrecacheModel("models/creeps/thief/thief_01.vmdl", context)
 		
 end
