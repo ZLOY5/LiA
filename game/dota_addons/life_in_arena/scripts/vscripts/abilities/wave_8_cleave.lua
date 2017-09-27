@@ -21,80 +21,37 @@ end
 
 --------------------------------------------------------------------------------
 
-function modifier_wave_8_cleave:IsPurgable()
-	return false
-end
-
---------------------------------------------------------------------------------
-
 function modifier_wave_8_cleave:OnCreated( kv )
-	self.crit_chance = self:GetAbility():GetSpecialValueFor( "crit_chance" )
-	self.crit_multiplier = self:GetAbility():GetSpecialValueFor( "crit_multiplier" )
-	self.evasion = self:GetAbility():GetSpecialValueFor( "evasion" )
-
-	if IsServer() then
-		self.pseudo = PseudoRandom:New(self:GetAbility():GetSpecialValueFor("crit_chance")*0.01)
-		self.bIsCrit = false
-	end
+	self.cleave_percent = self:GetAbility():GetSpecialValueFor( "cleave_percent" )
+	self.cleave_radius = self:GetAbility():GetSpecialValueFor( "cleave_radius" )
 end
 
 --------------------------------------------------------------------------------
 
 function modifier_wave_8_cleave:DeclareFunctions()
-	local funcs =
-	{
-		MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE,
+	local funcs = {
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
-		MODIFIER_PROPERTY_EVASION_CONSTANT,
 	}
+
 	return funcs
-end
-
---------------------------------------------------------------------------------
-
-function modifier_wave_8_cleave:GetModifierPreAttack_CriticalStrike( params )
-	if IsServer() then
-		local hTarget = params.target
-		local hAttacker = params.attacker
-
-		if self:GetParent():PassivesDisabled() then
-			return 0.0
-		end
-
-		if hTarget and ( hTarget:IsBuilding() == false ) and ( hTarget:IsOther() == false ) and hAttacker and ( hAttacker:GetTeamNumber() ~= hTarget:GetTeamNumber() ) then
-			if self.pseudo:Trigger() then -- expose RollPseudoRandomPercentage?
-				self.bIsCrit = true
-				return self.crit_multiplier
-			end
-		end
-	end
-
-	return 0.0
 end
 
 --------------------------------------------------------------------------------
 
 function modifier_wave_8_cleave:OnAttackLanded( params )
 	if IsServer() then
-		-- play sounds and stuff
-		if self:GetParent() == params.attacker then
-			local hTarget = params.target
-			if hTarget ~= nil and self.bIsCrit then
-				EmitSoundOn( "DOTA_Item.Daedelus.Crit", self:GetParent() )
-				self.bIsCrit = false
+		if params.attacker == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
+			if self:GetParent():PassivesDisabled() then
+				return 0
+			end
+
+			local target = params.target
+			if target ~= nil and target:GetTeamNumber() ~= self:GetParent():GetTeamNumber() then
+				local cleaveDamage = ( self.cleave_percent * params.damage ) / 100.0
+				DoCleaveAttack( self:GetParent(), target, self:GetAbility(), cleaveDamage, self.cleave_radius, self.cleave_radius, self.cleave_radius, "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf" )
 			end
 		end
 	end
-
-	return 0.0
-end
-
---------------------------------------------------------------------------------
-
-function modifier_wave_8_cleave:GetModifierEvasion_Constant( params )
-	if self:GetCaster():PassivesDisabled() then
-		return 0
-	end
-
-	return self.evasion
+	
+	return 0
 end

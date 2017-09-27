@@ -43,7 +43,6 @@ function Think4Wave()
 			thisEntity:CastAbilityOnTarget(targets[RandomInt(1,#targets)], ABILITY_4_wave_death_coil, -1)
 			Survival.AICreepCasts = Survival.AICreepCasts + 1
 		end
-	end
 	else
 		if ABILITY_4_wave_ensnare_extreme:IsFullyCastable() and Survival.AICreepCasts < Survival.AIMaxCreepCasts then
 			local targets = FindUnitsInRadius(thisEntity:GetTeam(), 

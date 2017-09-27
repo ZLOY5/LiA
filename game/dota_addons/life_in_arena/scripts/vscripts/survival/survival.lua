@@ -53,6 +53,7 @@ function Survival:InitSurvival()
 
 
 	self.nDeathCreeps = 0
+    self.nCreepsSpawned = 0
 	self.nWaveSpawnCount = {20,26,32,38,44,50,56,62}   --крипов на спавн
 	self.nWaveMaxCount = {42,54,66,78,90,102,114,126}
 
@@ -344,6 +345,7 @@ end
 function Survival:EndRound()
     print("Survival:EndRound",self.nRoundNum)
     self.nDeathCreeps = 0
+    self.nCreepsSpawned = 0
 
 
     Timers:RemoveTimer("lateWaveDebuffs")
@@ -512,6 +514,7 @@ function Survival:_SpawnWave()
             boss2:EmitSound("DOTA_Item.BlinkDagger.Activate")
             
             Survival:AICreepsInsertToTable(boss1,boss2)
+            self.nCreepsSpawned = self.nCreepsSpawned + 2
             
             if self.IsEqualGold then
                 self.nEqualGoldPool = self.nEqualGoldPool + boss1:GetGoldBounty()*2
@@ -535,6 +538,7 @@ function Survival:_SpawnWave()
             --particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf
             
             Survival:AICreepsInsertToTable(unit1,unit2)
+            self.nCreepsSpawned = self.nCreepsSpawned + 2
             
             if self.IsEqualGold then
                 self.nEqualGoldPool = unit1:GetGoldBounty()*2
