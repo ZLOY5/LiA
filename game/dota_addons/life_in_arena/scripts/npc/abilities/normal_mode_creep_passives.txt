@@ -1203,6 +1203,38 @@
 
 }
 
+"wave_18_death"
+{
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"custom/orn_evasion"
+
+	"AbilityBehavior"				"DOTA_ABILTY_BEHAVIOR_HIDDEN"
+	
+	"AbilitySpecial"
+	{
+	}
+
+	"Modifiers"
+	{
+		"orn_main_bonuses"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"IsPurgable"	"1"
+			
+			"OnDeath"
+			{
+
+				"RunScript"
+				{
+					"ScriptFile"	"abilities/wave_18_death.lua"
+					"Function"		"NoCorpse"
+				}
+			}
+		}
+	}
+}
+
 "orn_all_bonuses"
 {
 	"BaseClass"             		"ability_datadriven"

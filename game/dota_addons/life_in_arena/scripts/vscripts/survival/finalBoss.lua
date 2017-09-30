@@ -59,7 +59,7 @@ function Survival:_OnFinalBossDeath(event)
 
     if killed == self.hFinalBoss then
         Survival:EndGame(DOTA_TEAM_GOODGUYS)
-    elseif killed.FinalBoss_firstStage then
+    elseif killed.FinalBoss_firstStage and not killed.giveNoRatingPoints then
         self.nDeathCounter_FirstStage = self.nDeathCounter_FirstStage + 1
         
         if self.nDeathCounter_FirstStage == 15 then
