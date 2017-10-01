@@ -18,8 +18,13 @@ end
 
 function modifier_mithril_armor_taunt:CheckState()
 	local state = {
-	[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
+		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
+		[MODIFIER_STATE_SILENCED] = true,
 	}
  
 	return state
+end
+
+function modifier_mithril_armor_taunt:OnDestroy()
+	self:GetParent():Interrupt()
 end
