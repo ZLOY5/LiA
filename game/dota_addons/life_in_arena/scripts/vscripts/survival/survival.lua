@@ -244,7 +244,7 @@ function Survival:ExperienceFilter(filterTable)
         return false
     end
 
-    local expMultiplier = self.flExpFix[Survival:GetHeroCount(false)] -- коррекция получаемого опыта в зависимости от кол-ва героев в игре
+    --[[local expMultiplier = self.flExpFix[Survival:GetHeroCount(false)] -- коррекция получаемого опыта в зависимости от кол-ва героев в игре
     
     if self.IsExtreme then --множители опыта для экстрима или лайта
         expMultiplier = expMultiplier + self.flExtremeExpMultiplier
@@ -252,7 +252,7 @@ function Survival:ExperienceFilter(filterTable)
         expMultiplier = expMultiplier + self.flLightExpMultiplier
     end
 
-    filterTable.experience = filterTable.experience * expMultiplier
+    filterTable.experience = filterTable.experience * expMultiplier]]
     print(filterTable.experience)
     return true
 
@@ -681,7 +681,18 @@ end
 
 function Survival:ExperienceDistribute(killedUnit)
     local nHeroesAlive = Survival:GetHeroCount(true)
-    local xp = killedUnit:GetDeathXP()/nHeroesAlive * self.flExpFix[nHeroesAlive] + RandomFloat(0,1)
+    
+    local expMultiplier = self.flExpFix[Survival:GetHeroCount(false)] -- коррекция получаемого опыта в зависимости от кол-ва героев в игре
+    
+    if self.IsExtreme then --множители опыта для экстрима или лайта
+        expMultiplier = expMultiplier + self.flExtremeExpMultiplier
+    elseif self.IsLight then
+        expMultiplier = expMultiplier + self.flLightExpMultiplier
+    end
+
+    local xp = killedUnit:GetDeathXP()/nHeroesAlive * expMultiplier + RandomFloat(0,1)
+
+
     DoWithAllHeroes(function(hero)
         if hero:IsAlive() then
             hero:AddExperience(xp,DOTA_ModifyXP_Unspecified,false,true)
