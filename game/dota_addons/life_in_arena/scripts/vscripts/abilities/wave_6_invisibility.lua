@@ -46,15 +46,17 @@ end
 
 function modifier_wave_6_invisibility:OnAttack(params)
 	if IsServer() then
-		self:GetParent():RemoveModifierByName("modifier_wave_6_invisibility_buff")	
+		if params.attacker == self:GetParent() then
+			self:GetParent():RemoveModifierByName("modifier_wave_6_invisibility_buff")	
 
-		if not self:GetCaster().invisTimer then 
-			self:GetCaster().invisTimer = DoUniqueString(nil)
+			if not self:GetCaster().invisTimer then 
+				self:GetCaster().invisTimer = DoUniqueString(nil)
+			end
+			Timers:CreateTimer(self:GetCaster().invisTimer,{ endTime = self.delay, callback = function()
+				self:GetParent():AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_wave_6_invisibility_buff",nil)
+		    	return nil
+		    end}) 
 		end
-		Timers:CreateTimer(self:GetCaster().invisTimer,{ endTime = self.delay, callback = function()
-			self:GetParent():AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_wave_6_invisibility_buff",nil)
-	    	return nil
-	    end}) 
 	end
 end
 --------------------------------------------------------------------------------
@@ -78,9 +80,6 @@ end
 
 function modifier_wave_6_invisibility_buff:OnCreated()
 	if IsServer() then
-		if self:GetParent():PassivesDisabled() then
-			return
-		end
 		self:GetParent():AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_invisible",nil)
 	end
 end
@@ -96,9 +95,11 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_wave_6_invisibility_buff:CheckState()
-	if not self:GetParent():PassivesDisabled() then 
-		return { [MODIFIER_STATE_INVISIBLE] = true} 
+	if self:GetParent():PassivesDisabled() then 
+		modifier_wave_6_invisibility_buff_state = { [MODIFIER_STATE_INVISIBLE] = false} 
+	else
+		modifier_wave_6_invisibility_buff_state = { [MODIFIER_STATE_INVISIBLE] = true} 
 	end
 
-	return state
+	return modifier_wave_6_invisibility_buff_state
 end

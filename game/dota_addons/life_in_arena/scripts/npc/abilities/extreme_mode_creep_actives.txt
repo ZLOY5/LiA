@@ -628,11 +628,102 @@
   }
  
 
+"11_wave_immolation_extreme"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"           "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+
+  "AbilityTextureName"      "custom/akron_immolation"
+  "AoERadius"           "220"
+  "AbilityCastRange"        "220"
+  "AbilityManaCost"       "25"
+
+  "precache"
+  {
+    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+    "particle" "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+  }
+  
+  // Special  
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "damage_per_second"   "90"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "mana_cost_per_second"  "25"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "radius"        "220"
+    }
+  }
+
+  "OnToggleOn"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_immolation"
+    }
+    "FireSound"
+    {
+      "EffectName"    "Hero_EmberSpirit.FlameGuard.Cast"
+      "Target"      "CASTER"
+    }
+  }
+
+  "OnToggleOff"
+  {
+    "RemoveModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_immolation"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_immolation"
+    {   
+      "EffectName"      "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+      "EffectAttachType"    "follow_origin"
+
+      "ThinkInterval"   "1"
+      "OnIntervalThink"
+      {
+        "RunScript"
+          {
+              "ScriptFile"    "abilities/6_wave_immolation.lua"
+              "Function"      "Immolation"
+          "Target"
+          {
+            "Center"  "CASTER"
+            "Radius"  "%radius"
+            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+          }
+        }
+      }
+    }
+  }
+}
 
 "12_wave_roots_extreme"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"keeper_entangling_roots"
+	"AbilityTextureName"			"custom/12_wave_entangling_roots"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -642,7 +733,7 @@
 
 	"AbilityCastRange"				"600"
 	"AbilityCastPoint"				"0.4"
-	"AbilityCooldown"				"7.0"
+	"AbilityCooldown"				"9.0"
 
 	"AbilityManaCost"				"100"
 
@@ -675,39 +766,19 @@
 
 	"OnSpellStart"
 	{
-		"FireSound"
+		"RunScript"
 		{
-			"EffectName"		"Hero_Treant.Overgrowth.Cast"
-			"Target" 			"TARGET"
-		}	
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_entangling_roots"
-			"Target"
-			{
-				"Center"	"TARGET"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Duration"		"%hero_duration"
+			"ScriptFile"	"abilities/12_wave_roots.lua"
+			"Function"		"Roots"
 		}
-
-		//"ApplyModifier"
-		//{
-		//	"ModifierName"	"modifier_entangling_roots"
-		//	"Target"
-		//	{
-		//		"Center"	"TARGET"
-		//		"Types"		"DOTA_UNIT_TARGET_BASIC"
-		//	}
-		//	"Duration"		"%creep_duration"
-		//}
 	}
 
 	"Modifiers"
 	{
 		"modifier_entangling_roots"
 		{
+			"Duration"	"%hero_duration"
+	        "IsPurgable"		"1"
 			"IsDebuff"		"1"
 			"States"
 			{
@@ -1515,12 +1586,12 @@
 "19_wave_polymorph_extreme"
 {
 	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"human_polymorph"
+	"AbilityTextureName"			"custom/19_wave_polymorph"
 	"MaxLevel" 						"1"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO" //Level 5 or below
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" //Level 5 or below
 	"AbilityCastPoint"				"0.1"
 	"AbilityCastRange"				"500"
 	"AbilityCooldown"				"15"
@@ -1554,25 +1625,11 @@
 			"EffectName"	"Hero_Lion.Voodoo"
 			"Target"		"TARGET"
 		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Lion.Hex.Target"
-			"Target"		"TARGET"
-		}
-
-		"FireEffect"
-		{
-			"EffectName"		"particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"Target"			"TARGET"
-		}
 		
-		"ApplyModifier"
+		"RunScript"
 		{
-			"ModifierName"	"modifier_hex"
-			"Target"		"TARGET"
-			"Duration"		"%duration"
+			"ScriptFile"	"abilities/Polymorph.lua"
+			"Function"		"Polymorph"
 		}
 	}	
 
@@ -1624,6 +1681,7 @@
 			"States"
 			{
 				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_MUTED"		"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_HEXED"		"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_EVADE_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -1633,7 +1691,7 @@
 	}
 }
 
-orn_mutant_boss_slow
+"orn_mutant_boss_slow"
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------

@@ -68,13 +68,14 @@ end
 function Survival:_OnCreepDeath(keys)   
     local attacker = EntIndexToHScript(keys.entindex_attacker)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+    local killed = EntIndexToHScript(keys.entindex_killed)
     
-    if hero then
+    if hero and not killed.giveNoRatingPoints then
         PlayerResource:IncrementCreepKills(hero:GetPlayerOwnerID())
     end
 
     self.nDeathCreeps = self.nDeathCreeps + 1
-    if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] then
+    if self.nDeathCreeps == self.nCreepsSpawned then
         Survival:EndRound()
     end
 end
@@ -98,7 +99,7 @@ function Survival:_OnBossDeath(keys)
 
     if self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
 	    self.nDeathCreeps = self.nDeathCreeps + 1
-	    if self.nDeathCreeps == self.nWaveMaxCount[self.nHeroCountCreepsSpawned] then
+	    if self.nDeathCreeps == self.nCreepsSpawned then
 	        Survival:EndRound()
 	    end
 	end
@@ -171,7 +172,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-        self.nRoundNum = 6
+        self.nRoundNum = 17
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
         Survival:PrepareNextRound()

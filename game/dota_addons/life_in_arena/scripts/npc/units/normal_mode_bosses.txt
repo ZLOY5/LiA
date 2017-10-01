@@ -485,31 +485,7 @@
 
 "HasInventory" "0" 
 
-//"Creature"
-//{
-//	"DefaultState"			"Invade"
-//	"States"	
-//	{
-//		"Invade"
-//		{
-//			"Name"				"Invade"
-//			"Aggression"		"90.0" //cast offensive spells whenever
-//			"Avoidance"			"0.0" //dont flee
-//			"Support"			"0.0" //start buffing
-//		}
-//	}
-//	
-//	"OffensiveAbilities"
-//	{
-//		"Ability1"
-//		{
-//			"Name"		 		 "7_wave_howl_of_terror"
-//			"AOE"                "1"
-//			"Radius"             "700"
-//			"MinimumTargets"     "1"
-//		}
-//	}
-//}
+
 }
 
 "8_wave_boss" 
@@ -521,40 +497,12 @@
 "SoundSet" "Hero_Sven" 
 "ModelScale" "1.5" 
 "Level" "1" 
-				
-
-//"Creature"
-//{
-//	"DefaultState"			"Invade"
-//	"States"	
-//	{
-//		"Invade"
-//		{
-//			"Name"				"Invade"
-//			"Aggression"		"90.0" //cast offensive spells whenever
-//			"Avoidance"			"0.0" //dont flee
-//			"Support"			"0.0" //start buffing
-//		}
-//	}
-//	
-//	"OffensiveAbilities"
-//	{
-//		"Ability1"
-//		{
-//			"Name"				"8_wave_storm_bolt"
-//			"Damage"            "1"
-//			"Stun"              "1"
-//		}
-//	}	
-//	
-//}
 
 
 
-
-"Ability1" "8_wave_cleave" 
+"Ability1" "wave_8_cleave" 
 "Ability2" "spell_immunity" 
-"Ability3" "8_wave_lifesteal_aura" 
+"Ability3" "wave_8_lifesteal_aura" 
 "Ability4" "8_wave_storm_bolt" 
 "Ability5" "" 
 "Ability6" "" 
@@ -654,8 +602,8 @@
 
 
 "Ability1" "9_wave_frost_nova" 
-"Ability2" "" 
-"Ability3" "" 
+"Ability2" "wave_9_morphallaxis" 
+"Ability3" "wave_9_incorporeity" 
 "Ability4" "" 
 "Ability5" "" 
 "Ability6" "" 
@@ -733,7 +681,7 @@
 
 
 
-"Ability1" "" 
+"Ability1" "11_wave_mana_break" 
 "Ability2" "" 
 "Ability3" "" 
 "Ability4" "" 
@@ -811,7 +759,7 @@
 
 
 
-"Ability1" "12_wave_bash" 
+"Ability1" "wave_12_bash" 
 "Ability2" "12_wave_bloodlust" 
 "Ability3" "12_wave_roots" 
 "Ability4" "" 
@@ -874,31 +822,6 @@
 
 "HasInventory" "0" 
 
-//"Creature"
-//	{
-//		"DefaultState"			"Invade"
-//		"States"	
-//			{
-//				"Invade"
-//				{
-//					"Name"				"Invade"
-//					"Aggression"		"0.0" //cast offensive spells whenever
-//					"Avoidance"			"0.0" //dont flee
-//					"Support"			"90.0" //start buffing
-//				}
-//			}
-//		
-//		"DefensiveAbilities"
-//			{
-//			    "Ability1"              
-//			    {
-//			        "Name"                "12_wave_bloodlust"
-//			        "UseSelfishly"        "1"
-//			        "Buff"                "1"
-//			        "UseAtHealthPercent"  "90"
-//			    }
-//			}
-//	}
 }
 
 "13_wave_boss" 
@@ -916,7 +839,7 @@
 
 
 "Ability1" "spell_immunity" 
-"Ability2" "13_wave_aura" 
+"Ability2" "wave_13_command_aura" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -1180,7 +1103,7 @@
 "Level" "1" 
 
 
-"Ability1" "17_wave_evasion" 
+"Ability1" "wave_17_evasion" 
 "Ability2" "" 
 "Ability3" "" 
 "Ability4" "" 
@@ -1251,17 +1174,16 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/viper/viper.vmdl" 
+"Model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl" 
 "SoundSet" "n_creep_Ranged" 
-"ModelScale" "1.4" 
+"ModelScale" "1.1" 
 "Level" "1" 
-"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
+"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
 "ProjectileSpeed" "1900" 
 "precache"
 {
-	"model" "models/heroes/viper/viper.vmdl"
-	"model" "models/heroes/viper/viper_back.vmdl"
-	"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
+	"model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
+	"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
 }
 		
 "Creature"
@@ -1274,8 +1196,8 @@
 
 
 
-"Ability1" "18_megaboss_bash" 
-"Ability2" "" 
+"Ability1" "wave_18_bash" 
+"Ability2" "wave_18_death" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -1286,7 +1208,7 @@
 
 
 "ArmorPhysical" "30" 
-"MagicalResistance" "0" 
+"MagicalResistance" "50" 
 
 
 

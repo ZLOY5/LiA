@@ -11,7 +11,7 @@ function StackCountIncrease(keys)
     local addStacks = 1
     
     if keys.attacker:IsRealHero() or string.find(keys.attacker:GetUnitName(),"megaboss") then
-        addStacks = 3
+        addStacks = ability:GetSpecialValueFor("heroStacks")
     end
 
     currentStacks = currentStacks + addStacks

@@ -253,11 +253,11 @@
 		"Ability3" "15_megaboss_astral"
 		"Ability4" "15_megaboss_mana_break" 
 		"Ability5" "true_sight" 
-		"Ability6" "" 
+		"Ability6" "megaboss_15_ghoul_purge" 
 		"Ability7" "" 
 		"Ability8" "" 
 	
-		"AbilityLayout"     "5"	
+		"AbilityLayout"     "6"	
 	
 		"ArmorPhysical" 		"80" 
 		"MagicalResistance" 	"0" 
@@ -716,8 +716,8 @@
 		// General
 		//----------------------------------------------------------------
 		"BaseClass"			"npc_dota_building"
-		"Model"				"models/props_structures/good_barracks_melee001.vmdl"
-		"ModelScale"		"0.8"
+		"Model"				"models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl"
+		"ModelScale"		"2.5"
 		"Level"				"4"
 		"SoundSet"			"Creep_Good_Melee"
 		"MinimapIcon"		"minimap_racks90"
@@ -788,8 +788,8 @@
 		// General
 		//----------------------------------------------------------------
 		"BaseClass"			"npc_dota_building"
-		"Model"				"models/props_structures/good_barracks_melee001.vmdl"
-		"ModelScale"		"0.8"
+		"Model"				"models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl"
+		"ModelScale"		"2.5"
 		"Level"				"5"
 		"SoundSet"			"Creep_Good_Melee"
 		"MinimapIcon"		"minimap_racks90"
@@ -860,8 +860,8 @@
 		// General
 		//----------------------------------------------------------------
 		"BaseClass"			"npc_dota_building"
-		"Model"				"models/props_structures/good_barracks_melee001.vmdl"
-		"ModelScale"		"0.8"
+		"Model"				"models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl"
+		"ModelScale"		"2.5"
 		"Level"				"6"
 		"SoundSet"			"Creep_Good_Melee"
 		"MinimapIcon"		"minimap_racks90"
@@ -2904,7 +2904,7 @@
 	
 	"Ability1" "7_wave_howl_of_terror_extreme" 
 	"Ability2" "7_wave_plague" 
-	"Ability3" "7_wave_sharp_claws_extreme_kek" 
+	"Ability3" "7_wave_sharp_claws_extreme" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -2965,31 +2965,6 @@
 	
 	"HasInventory" "0" 
 	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"		 		 "7_wave_howl_of_terror"
-	//			"AOE"                "1"
-	//			"Radius"             "700"
-	//			"MinimumTargets"     "1"
-	//		}
-	//	}
-	//}
 	}
 	
 	"8_wave_boss_extreme" 
@@ -3003,40 +2978,14 @@
 	"Level" "1" 
 					
 	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"				"8_wave_storm_bolt"
-	//			"Damage"            "1"
-	//			"Stun"              "1"
-	//		}
-	//	}	
-	//	
-	//}
 	
 	
 	
-	
-	"Ability1" "8_wave_cleave" 
+	"Ability1" "wave_8_cleave" 
 	"Ability2" "spell_immunity" 
-	"Ability3" "8_wave_lifesteal_aura" 
+	"Ability3" "wave_8_lifesteal_aura" 
 	"Ability4" "8_wave_storm_bolt" 
-	"Ability5" "" 
+	"Ability5" "wave_8_lifesteal_extreme" 
 	"Ability6" "" 
 	"Ability7" "" 
 	"Ability8" "" 
@@ -3132,8 +3081,8 @@
 	
 	
 	"Ability1" "9_wave_frost_nova" 
-	"Ability2" "" 
-	"Ability3" "" 
+	"Ability2" "wave_9_morphallaxis" 
+	"Ability3" "wave_9_incorporeity_extreme" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -3202,10 +3151,11 @@
 	"SoundSet" "n_creep_Melee" 
 	"ModelScale" "1.3" 
 	"Level" "1" 
-		"precache"
-			{
-				//"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"
-			}
+	
+	"precache"
+	{
+		//"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"
+	}
 	
 	
 	
@@ -3285,7 +3235,7 @@
 	
 	
 	
-	"Ability1" "12_wave_bash" 
+	"Ability1" "wave_12_bash" 
 	"Ability2" "12_wave_bloodlust_extreme" 
 	"Ability3" "12_wave_roots_extreme" 
 	"Ability4" "" 
@@ -3347,31 +3297,6 @@
 	
 	"HasInventory" "0" 
 	
-	//"Creature"
-	//	{
-	//		"DefaultState"			"Invade"
-	//		"States"	
-	//			{
-	//				"Invade"
-	//				{
-	//					"Name"				"Invade"
-	//					"Aggression"		"0.0" //cast offensive spells whenever
-	//					"Avoidance"			"0.0" //dont flee
-	//					"Support"			"90.0" //start buffing
-	//				}
-	//			}
-	//		
-	//		"DefensiveAbilities"
-	//			{
-	//			    "Ability1"              
-	//			    {
-	//			        "Name"                "12_wave_bloodlust"
-	//			        "UseSelfishly"        "1"
-	//			        "Buff"                "1"
-	//			        "UseAtHealthPercent"  "90"
-	//			    }
-	//			}
-	//	}
 	}
 	
 	"13_wave_boss_extreme" 
@@ -3388,7 +3313,7 @@
 	
 	
 	"Ability1" "spell_immunity" 
-	"Ability2" "13_wave_aura_extreme" 
+	"Ability2" "wave_13_command_aura_extreme" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -3553,7 +3478,7 @@
 	"VisionNighttimeRange" "800" 
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
-	"vscripts"	"AI\14_wave_bosses.lua"
+	"vscripts"	"AI\14_wave_bosses_extreme.lua"
 	
 	"HasInventory" "0" 
 	
@@ -3646,7 +3571,7 @@
 	"Level" "1" 
 	
 	
-	"Ability1" "17_wave_evasion_extreme" 
+	"Ability1" "wave_17_evasion_extreme" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -3715,22 +3640,22 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/viper/viper.vmdl" 
+	"Model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl" 
 	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "1.6" 
+	"ModelScale" "1.1" 
 	"Level" "1" 
-	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
+	"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
 	"ProjectileSpeed" "1900" 
-		"precache"
-			{
-				"model" "models/heroes/viper/viper.vmdl"
-				"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
-			}
+	"precache"
+	{
+		"model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
+		"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
+	}
 	
 	
 	
-	"Ability1" "18_megaboss_bash_extreme" 
-	"Ability2" "" 
+	"Ability1" "wave_18_bash_extreme" 
+	"Ability2" "wave_18_death" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -3741,7 +3666,7 @@
 	
 	
 	"ArmorPhysical" "60" 
-	"MagicalResistance" "0" 
+	"MagicalResistance" "75" 
 	
 	
 	
@@ -4069,7 +3994,7 @@
 		}
 	
 	
-		"Ability1" "" 
+		"Ability1" "4_wave_true_hit_extreme" 
 		"Ability2" "" 
 		"Ability3" "" 
 		"Ability4" "" 
@@ -4208,7 +4133,7 @@
 	
 	
 	"Ability1" "7_wave_plague" 
-	"Ability2" "7_wave_sharp_claws_extreme_kek" 
+	"Ability2" "7_wave_sharp_claws_extreme" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -4284,9 +4209,9 @@
 	
 	
 	
-	"Ability1" "8_wave_cleave" 
+	"Ability1" "wave_8_cleave" 
 	"Ability2" "neutral_spell_immunity" 
-	"Ability3" "" 
+	"Ability3" "wave_8_lifesteal_extreme" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -4367,7 +4292,7 @@
 	
 	
 	
-	"Ability1" "" 
+	"Ability1" "wave_9_incorporeity_extreme" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -4443,9 +4368,9 @@
 	
 	
 	
-	"Ability1" "11_wave_mana_break_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
+	"Ability1" "11_wave_immolation_extreme" 
+	"Ability2" "11_wave_mana_break_extreme_creeps" 
+	"Ability3" "wave_11_cleave" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -4502,7 +4427,7 @@
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
 	
-	"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\11_wave_creeps_extreme.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4522,7 +4447,7 @@
 	
 	
 	"Ability1" "12_wave_stomp" 
-	"Ability2" "12_wave_crit_extreme" 
+	"Ability2" "wave_12_crit_extreme" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -4747,7 +4672,7 @@
 	
 	"PathfindingSearchDepthScale" "0.5" //0.3
 	
-	"vscripts"	"AI\14_wave_creeps.lua" //
+	"vscripts"	"AI\14_wave_creeps_extreme.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -4768,7 +4693,7 @@
 	
 	
 	"Ability1" "16_wave_mana_burn_extreme" 
-	"Ability2" "16_wave_evasion_extreme" 
+	"Ability2" "wave_16_evasion_extreme" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -4855,7 +4780,7 @@
 	
 	
 	"ArmorPhysical" "40" 
-	"MagicalResistance" "50" 
+	"MagicalResistance" "0" 
 	
 	
 	
@@ -4913,16 +4838,20 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/viper/viper.vmdl" 
+	"Model" "models/heroes/dragon_knight/dragon_knight_dragon.vmdl" 
 	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "1" 
+	"ModelScale" "0.9" 
 	"Level" "1" 
 	
-	
+	"precache"
+	{
+		"model"	"models/heroes/dragon_knight/dragon_knight_dragon.vmdl"
+		"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
+	}
 	
 	
 	"Ability1" "18_wave_silence_extreme" 
-	"Ability2" "" 
+	"Ability2" "wave_18_death" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -4933,7 +4862,7 @@
 	
 	
 	"ArmorPhysical" "10" 
-	"MagicalResistance" "0" 
+	"MagicalResistance" "75" 
 	
 	
 	
@@ -4944,7 +4873,7 @@
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
 	"AttackRange" "250" 
-	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
+	"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
 	"ProjectileSpeed" "1900" 
 	
 	
@@ -7276,31 +7205,7 @@
 	
 	"HasInventory" "0" 
 	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"		 		 "7_wave_howl_of_terror"
-	//			"AOE"                "1"
-	//			"Radius"             "700"
-	//			"MinimumTargets"     "1"
-	//		}
-	//	}
-	//}
+	
 	}
 	
 	"8_wave_boss" 
@@ -7312,40 +7217,12 @@
 	"SoundSet" "Hero_Sven" 
 	"ModelScale" "1.5" 
 	"Level" "1" 
-					
-	
-	//"Creature"
-	//{
-	//	"DefaultState"			"Invade"
-	//	"States"	
-	//	{
-	//		"Invade"
-	//		{
-	//			"Name"				"Invade"
-	//			"Aggression"		"90.0" //cast offensive spells whenever
-	//			"Avoidance"			"0.0" //dont flee
-	//			"Support"			"0.0" //start buffing
-	//		}
-	//	}
-	//	
-	//	"OffensiveAbilities"
-	//	{
-	//		"Ability1"
-	//		{
-	//			"Name"				"8_wave_storm_bolt"
-	//			"Damage"            "1"
-	//			"Stun"              "1"
-	//		}
-	//	}	
-	//	
-	//}
 	
 	
 	
-	
-	"Ability1" "8_wave_cleave" 
+	"Ability1" "wave_8_cleave" 
 	"Ability2" "spell_immunity" 
-	"Ability3" "8_wave_lifesteal_aura" 
+	"Ability3" "wave_8_lifesteal_aura" 
 	"Ability4" "8_wave_storm_bolt" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -7445,8 +7322,8 @@
 	
 	
 	"Ability1" "9_wave_frost_nova" 
-	"Ability2" "" 
-	"Ability3" "" 
+	"Ability2" "wave_9_morphallaxis" 
+	"Ability3" "wave_9_incorporeity" 
 	"Ability4" "" 
 	"Ability5" "" 
 	"Ability6" "" 
@@ -7524,7 +7401,7 @@
 	
 	
 	
-	"Ability1" "" 
+	"Ability1" "11_wave_mana_break" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -7602,7 +7479,7 @@
 	
 	
 	
-	"Ability1" "12_wave_bash" 
+	"Ability1" "wave_12_bash" 
 	"Ability2" "12_wave_bloodlust" 
 	"Ability3" "12_wave_roots" 
 	"Ability4" "" 
@@ -7665,31 +7542,6 @@
 	
 	"HasInventory" "0" 
 	
-	//"Creature"
-	//	{
-	//		"DefaultState"			"Invade"
-	//		"States"	
-	//			{
-	//				"Invade"
-	//				{
-	//					"Name"				"Invade"
-	//					"Aggression"		"0.0" //cast offensive spells whenever
-	//					"Avoidance"			"0.0" //dont flee
-	//					"Support"			"90.0" //start buffing
-	//				}
-	//			}
-	//		
-	//		"DefensiveAbilities"
-	//			{
-	//			    "Ability1"              
-	//			    {
-	//			        "Name"                "12_wave_bloodlust"
-	//			        "UseSelfishly"        "1"
-	//			        "Buff"                "1"
-	//			        "UseAtHealthPercent"  "90"
-	//			    }
-	//			}
-	//	}
 	}
 	
 	"13_wave_boss" 
@@ -7707,7 +7559,7 @@
 	
 	
 	"Ability1" "spell_immunity" 
-	"Ability2" "13_wave_aura" 
+	"Ability2" "wave_13_command_aura" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -7971,7 +7823,7 @@
 	"Level" "1" 
 	
 	
-	"Ability1" "17_wave_evasion" 
+	"Ability1" "wave_17_evasion" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -8042,17 +7894,16 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/viper/viper.vmdl" 
+	"Model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl" 
 	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "1.4" 
+	"ModelScale" "1.1" 
 	"Level" "1" 
-	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
+	"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
 	"ProjectileSpeed" "1900" 
 	"precache"
 	{
-		"model" "models/heroes/viper/viper.vmdl"
-		"model" "models/heroes/viper/viper_back.vmdl"
-		"particle" "particles/units/heroes/hero_viper/viper_base_attack.vpcf"
+		"model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
+		"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
 	}
 			
 	"Creature"
@@ -8065,8 +7916,8 @@
 	
 	
 	
-	"Ability1" "18_megaboss_bash" 
-	"Ability2" "" 
+	"Ability1" "wave_18_bash" 
+	"Ability2" "wave_18_death" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -8077,7 +7928,7 @@
 	
 	
 	"ArmorPhysical" "30" 
-	"MagicalResistance" "0" 
+	"MagicalResistance" "50" 
 	
 	
 	
@@ -8558,7 +8409,7 @@
 	
 	
 	"Ability1" "7_wave_plague" 
-	"Ability2" "" 
+	"Ability2" "7_wave_sharp_claws" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -8636,7 +8487,7 @@
 	
 	
 	
-	"Ability1" "8_wave_cleave" 
+	"Ability1" "wave_8_cleave" 
 	"Ability2" "neutral_spell_immunity" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -8714,14 +8565,14 @@
 	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" 
 	"ProjectileSpeed"           "1300" 	
 			"precache"
-				{
-					"model"	"models/heroes/morphling/morphling.vmdl" 
-					"particle" "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
-				}
+			{
+				"model"	"models/heroes/morphling/morphling.vmdl" 
+				"particle" "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+			}
 	
 	
 	
-	"Ability1" "" 
+	"Ability1" "wave_9_incorporeity" 
 	"Ability2" "" 
 	"Ability3" "" 
 	"Ability4" "" 
@@ -8798,8 +8649,8 @@
 	
 	
 	
-	"Ability1" "" 
-	"Ability2" "" 
+	"Ability1" "11_wave_immolation" 
+	"Ability2" "wave_11_cleave" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -8858,7 +8709,7 @@
 	
 	"PathfindingSearchDepthScale" "1" //0.3
 	
-	"vscripts"	"AI\attack_wave_only.lua" //
+	"vscripts"	"AI\11_wave_creeps.lua" //
 	
 	
 	"HasInventory" "0" 
@@ -8878,7 +8729,7 @@
 	
 	
 	"Ability1" "12_wave_stomp" 
-	"Ability2" "" 
+	"Ability2" "wave_12_crit" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -9220,7 +9071,7 @@
 	
 	
 	"ArmorPhysical" "40" 
-	"MagicalResistance" "50" 
+	"MagicalResistance" "0" 
 	
 	
 	
@@ -9280,23 +9131,21 @@
 	
 	
 	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/viper/viper.vmdl" 
+	"Model" "models/heroes/dragon_knight/dragon_knight_dragon.vmdl" 
 	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "1" 
+	"ModelScale" "0.9" 
 	"Level" "1" 
 	
 		
-	"Creature"
+	"precache"
 	{
-		"AttachWearables"
-		{
-			"Wearable1"		{	"ItemDef"		"611"		} 
-		}
+		"model"	"models/heroes/dragon_knight/dragon_knight_dragon.vmdl"
+		"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
 	}
 	
 	
 	"Ability1" "18_wave_silence" 
-	"Ability2" "" 
+	"Ability2" "wave_18_death" 
 	"Ability3" "" 
 	"Ability4" "" 
 	"Ability5" "" 
@@ -9307,7 +9156,7 @@
 	
 	
 	"ArmorPhysical" "10" 
-	"MagicalResistance" "0" 
+	"MagicalResistance" "50" 
 	
 	
 	
@@ -9318,7 +9167,7 @@
 	"AttackAnimationPoint" "0.3" 
 	"AttackAcquisitionRange" "0" 
 	"AttackRange" "250" 
-	"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
+	"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
 	"ProjectileSpeed" "1900" 
 	
 	

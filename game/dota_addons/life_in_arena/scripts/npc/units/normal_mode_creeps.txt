@@ -344,7 +344,7 @@
 
 
 "Ability1" "7_wave_plague" 
-"Ability2" "" 
+"Ability2" "7_wave_sharp_claws" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -422,7 +422,7 @@
 
 
 
-"Ability1" "8_wave_cleave" 
+"Ability1" "wave_8_cleave" 
 "Ability2" "neutral_spell_immunity" 
 "Ability3" "" 
 "Ability4" "" 
@@ -500,14 +500,14 @@
 "ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" 
 "ProjectileSpeed"           "1300" 	
 		"precache"
-			{
-				"model"	"models/heroes/morphling/morphling.vmdl" 
-				"particle" "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
-			}
+		{
+			"model"	"models/heroes/morphling/morphling.vmdl" 
+			"particle" "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+		}
 
 
 
-"Ability1" "" 
+"Ability1" "wave_9_incorporeity" 
 "Ability2" "" 
 "Ability3" "" 
 "Ability4" "" 
@@ -584,8 +584,8 @@
 
 
 
-"Ability1" "" 
-"Ability2" "" 
+"Ability1" "11_wave_immolation" 
+"Ability2" "wave_11_cleave" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -626,7 +626,7 @@
 
 "StatusHealth" "1100" 
 "StatusHealthRegen" "0.5" 
-"StatusMana" "0" 
+"StatusMana" "300" 
 "StatusManaRegen" "0.75" 
 
 
@@ -644,7 +644,7 @@
 
 "PathfindingSearchDepthScale" "1" //0.3
 
-"vscripts"	"AI\attack_wave_only.lua" //
+"vscripts"	"AI\11_wave_creeps.lua" //
 
 
 "HasInventory" "0" 
@@ -664,7 +664,7 @@
 
 
 "Ability1" "12_wave_stomp" 
-"Ability2" "" 
+"Ability2" "wave_12_crit" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -1006,7 +1006,7 @@
 
 
 "ArmorPhysical" "40" 
-"MagicalResistance" "50" 
+"MagicalResistance" "0" 
 
 
 
@@ -1066,23 +1066,21 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/viper/viper.vmdl" 
+"Model" "models/heroes/dragon_knight/dragon_knight_dragon.vmdl" 
 "SoundSet" "n_creep_Ranged" 
-"ModelScale" "1" 
+"ModelScale" "0.9" 
 "Level" "1" 
 
 	
-"Creature"
+"precache"
 {
-	"AttachWearables"
-	{
-		"Wearable1"		{	"ItemDef"		"611"		} 
-	}
+	"model"	"models/heroes/dragon_knight/dragon_knight_dragon.vmdl"
+	"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
 }
 
 
 "Ability1" "18_wave_silence" 
-"Ability2" "" 
+"Ability2" "wave_18_death" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -1093,7 +1091,7 @@
 
 
 "ArmorPhysical" "10" 
-"MagicalResistance" "0" 
+"MagicalResistance" "50" 
 
 
 
@@ -1104,7 +1102,7 @@
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "0" 
 "AttackRange" "250" 
-"ProjectileModel" "particles/units/heroes/hero_viper/viper_base_attack.vpcf" 
+"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
 "ProjectileSpeed" "1900" 
 
 

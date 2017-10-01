@@ -9,7 +9,7 @@ function ManaBreak( keys )
 	local manaBurn = ability:GetSpecialValueFor("mana_per_hit")
 	local manaDamage = ability:GetSpecialValueFor("damage_per_burn")
 
-	if target:IsMagicImmune() then
+	if target:IsMagicImmune() or caster:PassivesDisabled() then
 		return 
 	end
 
@@ -29,5 +29,6 @@ function ManaBreak( keys )
 		target:ReduceMana(manaBurn)
 	end
 
+	target:EmitSound("Hero_Antimage.ManaBreak")
 	ApplyDamage(damageTable)
 end

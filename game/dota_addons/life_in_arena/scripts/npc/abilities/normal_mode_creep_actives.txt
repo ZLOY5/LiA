@@ -643,97 +643,7 @@
 	}
 }
 
-"6_wave_immolation"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
-	"AbilityTextureName"			"custom/akron_immolation"
-	"AoERadius"						"220"
-	"AbilityCastRange"				"220"
-	"AbilityManaCost"				"25"
-
-	"precache"
-	{
-		"soundfile" 	"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
-		"particle" "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
-	}
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_per_second"		"40"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"mana_cost_per_second"	"25"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"220"
-		}
-	}
-
-	"OnToggleOn"
-	{
-		"ApplyModifier"
-		{
-			"Target"			"CASTER"
-			"ModifierName"		"modifier_immolation"
-		}
-		"FireSound"
-		{
-			"EffectName"		"Hero_EmberSpirit.FlameGuard.Cast"
-			"Target"			"CASTER"
-		}
-	}
-
-	"OnToggleOff"
-	{
-		"RemoveModifier"
-		{
-			"Target"			"CASTER"
-			"ModifierName"		"modifier_immolation"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_immolation"
-		{		
-			"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
-			"EffectAttachType"		"follow_origin"
-
-			"ThinkInterval"		"1"
-			"OnIntervalThink"
-			{
-				"RunScript"
-    			{
-			        "ScriptFile"    "abilities/6_wave_immolation.lua"
-			        "Function"      "Immolation"
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-				}
-			}
-		}
-	}
-}
 
 "6_wave_cripple"
 {
@@ -810,6 +720,182 @@
 	}
 }
 
+"7_wave_howl_of_terror"
+ {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"              "ability_datadriven"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "AbilityTextureName"     "custom/7_wave_howl_of_terror"
+    
+    "AbilityCooldown" "12.0"
+
+    "AbilityManaCost" "100"
+  
+  
+    "precache"
+  {
+    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+    "particle"      "particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+    "particle"      "particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+  }
+  
+    "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "damage_penalty_percentage" "-50"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "duration"      "10.0"
+    }
+    "03"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "radius"          "800"
+    }
+  }
+  
+    "OnSpellStart"
+    {
+    "AttachEffect"
+    { 
+      "EffectName"  "particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+      "EffectAttachType"  "follow_origin"
+      "EffectRadius"       "%radius"
+      "Target"  "CASTER"  
+    }
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_7_wave_howl_of_terror"
+
+      "Target"
+      {
+         "Center"    "CASTER"
+         "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+         "Types"  "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+         "Flags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+         "Radius"    "%radius"
+      }
+
+      "Duration"    "%duration"
+    }
+    }
+
+    "Modifiers"
+    {
+      "modifier_7_wave_howl_of_terror"
+      {
+        "Passive"       "0"
+        "IsHidden"      "0"
+        "IsDebuff"      "1"
+        "IsPurgable"    "1"
+
+    
+
+    "EffectName"  "particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+    "EffectAttachType"  "follow_origin"
+    
+    
+        "Properties"
+        {
+         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 
+        }
+
+      }
+    }
+  }
+ 
+"8_wave_storm_bolt"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"       "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"  
+  "AbilityTextureName"      "sven_storm_bolt"
+
+  "precache"
+  {
+  "particle"  "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+  }
+  
+  // Casting
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCastRange"        "1000"
+  "AbilityCastPoint"        "0.0"
+  
+  // Time   
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityCooldown"       "5.0"
+
+  // Damage.
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityDamage"         "400"
+
+  // Cost
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilityManaCost"       "100"
+
+  // Special
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "projectile_speed"  "1000"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "duration"  "3.0"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "damage"  "400"
+    }
+  }
+  
+  "OnSpellStart"
+  {
+    "FireSound"
+    {
+      "EffectName"  "Hero_Sven.StormBolt"
+      "Target"    "CASTER"
+    }
+    
+    "TrackingProjectile"
+    {
+      "Target"
+      {
+        "Center"  "TARGET"
+      }
+      "EffectName"    "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+      "Dodgeable"     "1"
+      "ProvidesVision"  "0"
+      "MoveSpeed"         "%projectile_speed"
+      "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+    }     
+  }
+
+  "OnProjectileHitUnit"
+  {
+    "DeleteOnHit" "1"
+    
+    "RunScript"
+    {
+      "ScriptFile"  "abilities/8_wave_storm_bolt.lua"
+      "Function"    "StormBolt"
+    }
+  
+  } 
+}
 
 "9_wave_frost_nova"
 {
@@ -1231,6 +1317,98 @@
   }
 }
 
+"11_wave_immolation"
+{
+  // General
+  //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"           "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+
+  "AbilityTextureName"      "custom/akron_immolation"
+  "AoERadius"           "220"
+  "AbilityCastRange"        "220"
+  "AbilityManaCost"       "25"
+
+  "precache"
+  {
+    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+    "particle" "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+  }
+  
+  // Special  
+  //-------------------------------------------------------------------------------------------------------------
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "damage_per_second"   "60"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "mana_cost_per_second"  "25"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "radius"        "220"
+    }
+  }
+
+  "OnToggleOn"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_immolation"
+    }
+    "FireSound"
+    {
+      "EffectName"    "Hero_EmberSpirit.FlameGuard.Cast"
+      "Target"      "CASTER"
+    }
+  }
+
+  "OnToggleOff"
+  {
+    "RemoveModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_immolation"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_immolation"
+    {   
+      "EffectName"      "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+      "EffectAttachType"    "follow_origin"
+
+      "ThinkInterval"   "1"
+      "OnIntervalThink"
+      {
+        "RunScript"
+          {
+              "ScriptFile"    "abilities/6_wave_immolation.lua"
+              "Function"      "Immolation"
+          "Target"
+          {
+            "Center"  "CASTER"
+            "Radius"  "%radius"
+            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+          }
+        }
+      }
+    }
+  }
+}
+
 "12_wave_stomp"
 {
 	// General
@@ -1322,182 +1500,7 @@
 
 }
 
-"7_wave_howl_of_terror"
- {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"     "custom/7_wave_howl_of_terror"
-    
-    "AbilityCooldown" "12.0"
 
-    "AbilityManaCost" "100"
-	
-	
-		"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
-		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
-		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
-	}
-	
-		"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"damage_penalty_percentage"	"-50"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"			"10.0"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"800"
-		}
-	}
-	
-    "OnSpellStart"
-    {
-		"AttachEffect"
-		{	
-			"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"EffectRadius"       "%radius"
-			"Target"	"CASTER"	
-		}
-		"ApplyModifier"
-		{
-			"ModifierName"  "modifier_7_wave_howl_of_terror"
-
-			"Target"
-			{
-				 "Center"    "CASTER"
-				 "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				 "Radius"    "%radius"
-			}
-
-			"Duration"    "%duration"
-		}
-    }
-
-    "Modifiers"
-    {
-      "modifier_7_wave_howl_of_terror"
-      {
-        "Passive"       "0"
-        "IsHidden"      "0"
-        "IsDebuff"      "1"
-        "IsPurgable"		"1"
-
-		
-
-		"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
-		"EffectAttachType"	"follow_origin"
-		
-		
-        "Properties"
-        {
-         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 
-        }
-
-      }
-    }
-  }
- 
-"8_wave_storm_bolt"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
-	"AbilityTextureName"			"sven_storm_bolt"
-
-	"precache"
-	{
-	"particle"	"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-	}
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"1000"
-	"AbilityCastPoint"				"0.0"
-	
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"5.0"
-
-	// Damage.
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityDamage"					"400"
-
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"100"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"projectile_speed"	"1000"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"	"3.0"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"damage"	"400"
-		}
-	}
-	
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Sven.StormBolt"
-			"Target" 		"CASTER"
-		}
-		
-		"TrackingProjectile"
-		{
-			"Target"
-			{
-				"Center"	"TARGET"
-			}
-			"EffectName"		"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-			"Dodgeable"			"1"
-			"ProvidesVision"	"0"
-			"MoveSpeed"        	"%projectile_speed"
-			"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-		}			
-	}
-
-	"OnProjectileHitUnit"
-	{
-		"DeleteOnHit"	"1"
-		
-		"RunScript"
-		{
-			"ScriptFile"	"abilities/8_wave_storm_bolt.lua"
-			"Function"		"StormBolt"
-		}
-	
-	}	
-}
 
 
 
@@ -2187,23 +2190,7 @@
 			"ScriptFile"    "abilities/15_wave_astral.lua"
 			"Function"      "Banish"
 		}
-		
-		//"RunScript"
-		//{
-		//	"ScriptFile"    "heroes\Hermit\hermit_astral.lua"    
-		//	"Function"      "addMod"
-		//}
-		
-		//"ApplyModifier"
-		//{
-		//	"ModifierName"	"modifier_decrepify_ally"
-		//	"Target"
-		//	{
-		//		"Center"	"TARGET"
-		//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		//	}
-		//	"Duration"		"%AbilityDuration"
-		//}
+
 	}
 
 	"Modifiers"

@@ -486,6 +486,16 @@
 			{
 			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed" 
 			}
+
+			"OnDestroy"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_phase"
+					"Target" 		"CASTER"
+					"Duration"		"0.03"
+				}
+			}
 		}
 	}
 }
