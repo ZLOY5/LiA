@@ -18,8 +18,13 @@ end
 
 function modifier_armor_of_the_red_mist_taunt:CheckState()
 	local state = {
-	[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
+		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
+		[MODIFIER_STATE_SILENCED] = true,
 	}
  
 	return state
+end
+
+function modifier_armor_of_the_red_mist_taunt:OnDestroy()
+	self:GetParent():Interrupt()
 end

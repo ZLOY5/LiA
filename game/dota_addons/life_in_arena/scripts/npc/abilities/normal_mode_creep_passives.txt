@@ -458,81 +458,6 @@
 
 }
 
-"11_wave_invisibility"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"keeper_of_the_light_blinding_light"
-
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"900"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_11_wave_datadriven"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"OnCreated"	
-			{
-				"ApplyModifier"
-				{
-					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
-					"Target"		"CASTER"
-				}
-			}
-			"OnAttack"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_11_wave_invisibility_datadriven"
-					"Target"		"CASTER"
-				}
-				"RunScript"
-				{
-					"ScriptFile"	"abilities\11_wave_invisibility.lua"
-					"Function"		"modifier_11_wave_datadriven_on_attack_landed"
-				}
-			}		
-		}
-		"modifier_11_wave_invisibility_datadriven"
-		{
-			"IsHidden"			"1"
-			"OnCreated"	
-			{
-				"ApplyModifier"
-				{
-					"ModifierName" 	"modifier_invisible"
-					"Target"		"CASTER"
-				}
-			}
-			"OnDestroy"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_invisible"
-					"Target"		"CASTER"
-				}
-			}
-			"States"
-			{
-				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
-	}
-}
-
 "7_wave_sharp_claws"
 {
 	// General
@@ -1220,7 +1145,7 @@
 		{
 			"Passive"	"1"
 			"IsHidden"	"1"
-			"IsPurgable"	"1"
+			"IsPurgable"	"0"
 			
 			"OnDeath"
 			{

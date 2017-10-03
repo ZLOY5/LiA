@@ -17889,7 +17889,7 @@
 	
 	    "AbilityCooldown" "24 22 20"
 	    "AbilityCastRange"  "225"
-	    "AbilityManaCost" "50"
+	    "AbilityManaCost" "0"
 	    "AoERadius"  "225"
 	    
 	    "MaxLevel"               "3"
@@ -18093,6 +18093,11 @@
 	        {
 	            "var_type"                "FIELD_INTEGER"
 	            "stackTime"               "8"
+	        }
+	        "05"
+	        {
+	            "var_type"                "FIELD_INTEGER"
+	            "heroStacks"               "5"
 	        }
 	    } 
 	   
@@ -23184,6 +23189,8 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"custom/naga_siren_eating"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+		"AbilityCooldown"				"0.5"	
 		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
@@ -32623,6 +32630,7 @@
 	        "modifier_rain_of_fire_channelling"
 	        {
 	            "IsHidden"          "1"
+	            "IsPurgable"          "0"
 	            "OnCreated"
 	            {
 	                "RunScript"
