@@ -32,7 +32,11 @@ function Survival:FinalBoss_StartFirstStage()
             if counter % 5 == 0 then
                 unit = CreateUnitByName(tostring(counter).."_wave_megaboss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
             else
-                unit = CreateUnitByName(tostring(counter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                if self.IsExtreme then
+                    unit = CreateUnitByName(tostring(counter).."_wave_boss_extreme", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                else    
+                    unit = CreateUnitByName(tostring(counter).."_wave_boss", ARENA_CENTER_COORD + RandomVector(RandomInt(-800, 800)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+                end
             end
             print("Spawned Boss",counter,unit:GetUnitName())    
             unit.FinalBoss_firstStage = 1
