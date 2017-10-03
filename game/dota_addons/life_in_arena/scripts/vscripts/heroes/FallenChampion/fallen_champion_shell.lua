@@ -35,6 +35,11 @@ end
 
 function shell_cast(keys)
 	local caster = keys.caster
+
+	if caster:IsIllusion() then
+		return
+	end
+
 	local ability = keys.ability
 	local pr_damage = ability:GetSpecialValueFor("pr_damage")
 	local radius = ability:GetSpecialValueFor("radius")
