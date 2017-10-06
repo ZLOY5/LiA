@@ -4,7 +4,8 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"huskar_burning_spear"
 
 	"AbilityCastAnimation" "ACT_DOTA_ATTACK"
@@ -150,7 +151,7 @@
 {
   "BaseClass"               "ability_datadriven"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitDamageType"  	"DAMAGE_TYPE_PHYSICAL"
   "AbilityTextureName"      "huskar_life_break"
 
 	"MaxLevel"               "3"
