@@ -3,9 +3,10 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"AbilityTextureName"			                "pudge_dismember"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"pudge_dismember"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
@@ -115,6 +116,8 @@
   	"ScriptFile"			 "heroes\Butcher\butcher_skin.lua"
   	
   	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
+  	"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
   	"AbilityTextureName"     "pudge_flesh_heap"
 
 	"MaxLevel"               "3"
@@ -190,6 +193,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
     "AbilityTextureName"     "custom/butcher_howl_of_terror"
     
 	"AbilityCastRange"	"1500"

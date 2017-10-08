@@ -142,9 +142,10 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
 		"AbilityTextureName"			"luna_lucent_beam"
 	
 		// Precache
@@ -362,6 +363,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
 	    "AbilityTextureName"     "luna_eclipse"
 	
 	    "AbilityCooldown" "90"

@@ -131,6 +131,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
     "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
     "AbilityTextureName"     "pugna_nether_blast"
 
@@ -257,6 +258,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
     "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
     "AbilityTextureName"     "pugna_nether_blast"
 
@@ -385,6 +387,8 @@
   	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic.lua"
 
   	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  	"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL" 
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
   	"AbilityTextureName"      "pugna_life_drain"
 
 	"MaxLevel"               "3"
@@ -412,6 +416,8 @@
   	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic_staff.lua"
 
   	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  	"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL" 
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
   	"AbilityTextureName"      "pugna_life_drain"
 
 	"MaxLevel"               "3"
@@ -440,6 +446,7 @@
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
     "AbilityTextureName"     "pugna_decrepify"
 
     "AbilityCooldown" "100"

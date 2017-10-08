@@ -121,9 +121,7 @@ function Survival:OnEntityKilled(keys)
 
     if self.State == SURVIVAL_STATE_ROUND_FINALBOSS then
         Survival:_OnFinalBossDeath(keys)
-    end
-
-    if string.find(killed:GetUnitName(),"_wave_creep")  and not killed.beastmasterDominated and not killed.necromancerCorpse and not killed.demonologistRitualCreep then
+    elseif string.find(killed:GetUnitName(),"_wave_creep")  and not killed.beastmasterDominated and not killed.necromancerCorpse and not killed.demonologistRitualCreep then
         Survival:_OnCreepDeath(keys)   
     elseif string.find(killed:GetUnitName(),"_boss") and not killed:IsOwnedByAnyPlayer() and not killed.demonologistRitualCreep then
         Survival:_OnBossDeath(keys)

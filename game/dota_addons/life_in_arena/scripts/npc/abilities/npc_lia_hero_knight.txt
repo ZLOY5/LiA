@@ -2,10 +2,11 @@
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"             "ability_datadriven"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"                 "ability_datadriven"
+  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
-  "AbilityTextureName"    "custom/knight_illusions"
+  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
+  "AbilityTextureName"        "custom/knight_illusions"
 
   //"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
   "MaxLevel"               "3"
@@ -189,6 +190,8 @@
 {
 	"BaseClass"             		"ability_lua"
 	"ScriptFile"					"heroes/Knight/knight_dark_shield.lua"
+  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityTextureName"			"custom/knight_dark_shield"
 
 	"MaxLevel"               		"3"

@@ -4,6 +4,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"nyx_assassin_impale"
 
 
@@ -146,8 +147,9 @@
 	"RequiredLevel"          		"2"
 	"LevelsBetweenUpgrades"  		"2"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
+  	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
 	"precache"
@@ -214,6 +216,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityTextureName"			"nyx_assassin_vendetta"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
