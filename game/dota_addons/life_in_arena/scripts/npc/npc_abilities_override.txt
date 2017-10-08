@@ -2178,10 +2178,6 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"10.0"
 	
-		// Damage.
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"950"
-	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"500"
@@ -5591,9 +5587,6 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"10.0"
 	
-		// Damage.
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"750"
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -8148,6 +8141,7 @@
 		
 	   "AbilityCooldown"        "16"
 	   "AbilityManaCost"        "90 180 360"
+	   "AbilityCastRange" 	    "500"
 	
 	  	// Stats
 	  	//-------------------------------------------------------------------------------------------------------------
@@ -8353,7 +8347,7 @@
 	    
 	    "AbilityCastPoint"              "0"
 	    "AbilityCooldown"               "40 35 30"
-	
+	    "AbilityCastRange" "600"
 	    "AbilityManaCost"               "150 200 250"
 	
 		"precache"
@@ -8404,7 +8398,7 @@
 	
 	    "AbilityCastPoint"              "0"
 	    "AbilityCooldown"               "40 35 30"
-	
+		"AbilityCastRange" "600"
 	    "AbilityManaCost"               "200 250 300"
 	
 	    "AbilitySpecial"
@@ -10094,7 +10088,7 @@
 	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
 	
 	    "AbilityCooldown"               "24 20 16"
-	
+	    "AbilityCastRange"              "400"
 	    "AbilityManaCost"               "80 90 100"
 	
 	    "AbilitySpecial"
@@ -10273,7 +10267,7 @@
 	
 	    "AbilityCooldown"               "20"
 	    "AbilityDuration"               "15"
-	
+	    "AbilityCastRange" "500"
 	    "AbilityManaCost"               "100"
 	
 	    "AbilitySpecial"
@@ -13702,7 +13696,7 @@
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
-		
+		"AbilityCastRange" "800"
 		// Casting
 		"AbilitySpecial"
 		{
@@ -14723,9 +14717,6 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	
-	
-		"AbilityCastRange"				"600"
 	
 		"precache"
 		{
@@ -17554,7 +17545,7 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"80"
+		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
 		
 		// Time		
@@ -20721,7 +20712,7 @@
 		"AbilityCastRange"				"650"
 		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"220"
-	
+		"AoERadius"					"350"
 		"AbilityManaCost"				"200 250 300"
 		
 		"AbilitySpecial"
@@ -20834,7 +20825,7 @@
 		"AbilityCastRange"				"650"
 		"AbilityCastPoint"				"0.3"
 		"AbilityCooldown"				"220"
-	
+		"AoERadius"					"350"
 		"AbilityManaCost"				"250 350 450"
 		
 		"AbilitySpecial"
@@ -21113,7 +21104,7 @@
 	    }
 	
 	    "AbilityCastPoint"              "0.0"
-	
+		"AbilityCastRange"				"500"
 	    "AbilityCooldown"               "7 14 21"
 	
 	    "AbilitySpecial"
@@ -21215,7 +21206,7 @@
 	  // Casting
 	  //-------------------------------------------------------------------------------------------------------------
 	  "AbilityCastPoint"        "0.5"
-	
+	  "AbilityCastRange"	"350"
 	  // Time   
 	  //-------------------------------------------------------------------------------------------------------------
 	  "AbilityCooldown"       "14.0"
@@ -21646,7 +21637,7 @@
 	
 		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.0"
-	
+		"AoERadius"					"250"
 		"AbilityCooldown"				"16.0"
 	
 		"AbilityManaCost"				"40 50 60"	
@@ -21980,7 +21971,7 @@
 	
 		"AbilityCastRange"				"500"
 		"AbilityCastPoint"				"0.2"
-	
+		"AoERadius"					"450"
 		"AbilityCooldown"				"25.0"
 	
 		"AbilityManaCost"				"80 100 120"	
@@ -23256,7 +23247,7 @@
 		}
 	
 		"AbilityCooldown"				"40 40 40"
-	
+		"AbilityCastRange"				"650"
 		"AbilityManaCost"				"80 100 120"	
 	
 	
@@ -24563,7 +24554,7 @@
 			"MaxLevel"               "3"
 			"RequiredLevel"          "2"
 			"LevelsBetweenUpgrades"  "2"
-		
+			"AbilityCastRange"	"800"
 			// Special
 			//-------------------------------------------------------------------------------------------------------------
 			"AbilitySpecial"
@@ -26212,7 +26203,7 @@
 		}
 	
 		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-	
+		"AbilityCastRange"				"1000"
 		"AbilityCooldown"				"100"
 		"AbilityDuration"				"20 25 30"
 	
@@ -26646,7 +26637,6 @@
 		       "LevelsBetweenUpgrades"  "2"
 		
 			"AbilityChannelTime"      "2.1"
-		
 			"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"
 		
 			// Precache
@@ -26661,7 +26651,7 @@
 			// Casting
 			//-------------------------------------------------------------------------------------------------------------
 			"AbilityCastPoint"				"0.3"
-		
+			"AbilityCastRange"	"350 375 400"
 			// Time		
 			//-------------------------------------------------------------------------------------------------------------
 			"AbilityCooldown"				"15.0 14.0 13.0"
@@ -29764,7 +29754,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.0"
-	
+		"AbilityCastRange"				"450"
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"12 9 4"
@@ -30256,7 +30246,7 @@
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
-		
+		"AbilityCastRange"				"700"
 		// Casting
 		"AbilitySpecial"
 		{
