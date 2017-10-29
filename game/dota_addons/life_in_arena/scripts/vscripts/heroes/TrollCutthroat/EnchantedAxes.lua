@@ -196,3 +196,10 @@ function WhirlingAxesMeleeHit( keys )
 		ApplyDamage(damage_table)
 	end
 end
+
+function OnDestroy( event )
+	local caster = event.caster	
+
+	ResolveNPCPositions(caster:GetAbsOrigin(),25)
+
+end

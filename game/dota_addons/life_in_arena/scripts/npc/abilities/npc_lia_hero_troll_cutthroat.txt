@@ -489,11 +489,10 @@
 
 			"OnDestroy"
 			{
-				"ApplyModifier"
+				"RunScript"
 				{
-					"ModifierName"	"modifier_phase"
-					"Target" 		"CASTER"
-					"Duration"		"0.03"
+					"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+					"Function"		"OnDestroy"
 				}
 			}
 		}

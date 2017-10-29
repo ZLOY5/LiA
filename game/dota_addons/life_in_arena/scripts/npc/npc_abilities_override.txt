@@ -1656,7 +1656,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"     "butcher_howl_of_terror"
+	    "AbilityTextureName"     "custom/7_wave_howl_of_terror"
 	    
 	    "AbilityCooldown" "12.0"
 	
@@ -2323,7 +2323,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+		"AbilityTextureName"			"custom/16_wave_slow"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2470,8 +2470,7 @@
 		{
 			"modifier_purge"
 			{
-				"IsHidden"			"0"
-				"TextureName" 		"orc_purge"
+				"IsHidden"			"1"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				"OnCreated"
@@ -2495,7 +2494,7 @@
 	
 			"modifier_purge_slow"
 			{
-				"IsHidden"			"1"
+				"IsHidden"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 	
@@ -2527,7 +2526,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	  "AbilityTextureName"      "sandking_epicenter"
+	  "AbilityTextureName"      "custom/18_wave_silence"
 	  
 	
 	  // Stats
@@ -2614,7 +2613,7 @@
 	"19_wave_faerie_fire_extreme"
 	{
 		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"nightelf_faerie_fire"
+		"AbilityTextureName"		"custom/19_wave_faerie_fire"
 		"MaxLevel"					"1"
 			
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -3296,7 +3295,7 @@
 				"var_type"					"FIELD_INTEGER"
 				"melee_damage_reduction"				"-25"		
 			}	
-			"01"
+			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"ranged_damage_reduction"				"-40"		
@@ -3540,8 +3539,6 @@
 			}
 		}
 	}
-	
-	
 	
 	
 	"wave_18_bash_extreme"
@@ -6214,8 +6211,7 @@
 		{
 			"modifier_purge"
 			{
-				"IsHidden"			"1"
-				"TextureName" 		"orc_purge"
+				"IsHidden"			"0"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 				"OnCreated"
@@ -6239,7 +6235,7 @@
 	
 			"modifier_purge_slow"
 			{
-				"IsHidden"			"0"
+				"IsHidden"			"1"
 				"IsDebuff"			"1"
 				"IsPurgable"		"1"
 	
@@ -7318,7 +7314,7 @@
 				"var_type"					"FIELD_INTEGER"
 				"melee_damage_reduction"				"-15"		
 			}	
-			"01"
+			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"ranged_damage_reduction"				"-25"		
@@ -7746,7 +7742,7 @@
 		"BaseClass"             		"ability_datadriven"
 		"AbilityTextureName"			"custom/orn_evasion"
 	
-		"AbilityBehavior"				"DOTA_ABILTY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		
 		"AbilitySpecial"
 		{
@@ -7808,8 +7804,8 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
-		     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percent"
-			    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+		     //		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed_percent"
+			//    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 				}
 			}
 		}
@@ -8133,6 +8129,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "custom/ancient_priestess_surge_of_intelligence"
 	  
 		"MaxLevel"               "3"
@@ -8206,7 +8203,6 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 			
 		"AbilityCastRange"			"800"
@@ -8430,6 +8426,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
+	  	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"custom/android_war_stomp"
 	
 	
@@ -8649,6 +8647,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+	  	"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"				"3"
 	
 		"AbilityCastRange"		"100"
@@ -8747,6 +8746,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
 	
 		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
@@ -9131,6 +9131,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "night_stalker_void"
 	
 	    "AbilityCooldown" "15 13 11"
@@ -9965,10 +9966,11 @@
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"           "ability_datadriven"
+	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "custom/beastmaster_dominate"
 	  
 	    // Stats    
@@ -10802,7 +10804,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"huskar_burning_spear"
 	
 		"AbilityCastAnimation" "ACT_DOTA_ATTACK"
@@ -10948,7 +10951,7 @@
 	{
 	  "BaseClass"               "ability_datadriven"
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitDamageType"  	"DAMAGE_TYPE_PHYSICAL"
 	  "AbilityTextureName"      "huskar_life_break"
 	
 		"MaxLevel"               "3"
@@ -11131,7 +11134,6 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 	    "AbilityTextureName"     "brewmaster_drunken_haze"
 	  
 		"MaxLevel"               "3"
@@ -11254,6 +11256,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "custom/brewmaster_punisment"
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 	   
@@ -11307,6 +11310,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
 	    "AbilityTextureName"     "custom/brewmaster_avatar"
 	  
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -11409,9 +11413,10 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-		"AbilityTextureName"			                "pudge_dismember"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"pudge_dismember"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
@@ -11521,6 +11526,8 @@
 	  	"ScriptFile"			 "heroes\Butcher\butcher_skin.lua"
 	  	
 	  	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
+	  	"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	  	"AbilityTextureName"     "pudge_flesh_heap"
 	
 		"MaxLevel"               "3"
@@ -11596,6 +11603,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "custom/butcher_howl_of_terror"
 	    
 		"AbilityCastRange"	"1500"
@@ -11783,7 +11791,7 @@
 		"BaseClass"               "ability_datadriven"
 		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	
 		"AbilityTextureName"     "custom/dark_knight_dark_forces"
 		"MaxLevel"               "3"
@@ -11902,6 +11910,8 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"  		"DAMAGE_TYPE_PHYSICAL"
+	    "SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"abaddon_frostmourne"
 	
 	    "MaxLevel"               "3"
@@ -12146,6 +12156,7 @@
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityCastRange"				"550"
 	
@@ -12268,6 +12279,7 @@
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityCastRange"				"850"
 	
@@ -12376,11 +12388,13 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	    "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	    "SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+	    "AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/dark_ranger_magic_arrow"
 		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 	
@@ -12568,7 +12582,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	
 		"AbilityCastRange"				"600"
 	
@@ -12743,10 +12758,11 @@
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"           "ability_datadriven"
+	    "BaseClass"             "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "shadow_demon_soul_catcher"
 	  
 	    // Stats    
@@ -12885,6 +12901,7 @@
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "shadow_demon_soul_catcher"
 	  
 	    // Stats    
@@ -13625,6 +13642,7 @@
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 	
 		"AbilityDamage"					"70 140 210"
 	
@@ -13880,12 +13898,13 @@
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityType"         "DOTA_ABILITY_TYPE_BASIC"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "custom/earth_lord_earth_burn"
+	  "AbilityTextureName"        "custom/earth_lord_earth_burn"
 	
 	  // Precache
 	  //-------------------------------------------------------------------------------------------------------------
@@ -13997,12 +14016,13 @@
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityType"         "DOTA_ABILITY_TYPE_BASIC"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "custom/earth_lord_earth_burn"
+	  "AbilityTextureName"        "custom/earth_lord_earth_burn"
 	
 	  // Precache
 	  //-------------------------------------------------------------------------------------------------------------
@@ -14115,12 +14135,13 @@
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityType"         "DOTA_ABILITY_TYPE_BASIC"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "custom/earth_lord_split_earth"
+	  "AbilityTextureName"        "custom/earth_lord_split_earth"
 	
 	  // Precache
 	  //-------------------------------------------------------------------------------------------------------------
@@ -14218,12 +14239,13 @@
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityType"         "DOTA_ABILITY_TYPE_BASIC"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "custom/earth_lord_split_earth"
+	  "AbilityTextureName"        "custom/earth_lord_split_earth"
 	
 	  // Precache
 	  //-------------------------------------------------------------------------------------------------------------
@@ -14453,6 +14475,7 @@
 	  "BaseClass"              "ability_datadriven"
 	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityTextureName"     "custom/earth_lord_might_of_the_earth"
 	
 	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
@@ -14572,6 +14595,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"nyx_assassin_impale"
 	
 	
@@ -14714,8 +14738,9 @@
 		"RequiredLevel"          		"2"
 		"LevelsBetweenUpgrades"  		"2"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
+	  	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	
 		"precache"
@@ -14782,6 +14807,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"nyx_assassin_vendetta"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -14932,6 +14958,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_CHAOS_METEOR"
 	
 		"AbilityCastRange"				"800"
@@ -15176,6 +15203,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_CHAOS_METEOR"
 	
 		"AbilityCastRange"				"800"
@@ -15699,6 +15727,7 @@
 			
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
 			
@@ -16110,7 +16139,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"ancient_apparition_chilling_touch"
 		
 		"MaxLevel"               "3"
@@ -16252,7 +16282,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"ancient_apparition_chilling_touch"
 		
 		"MaxLevel"               "3"
@@ -16395,6 +16426,7 @@
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	
 		"AbilityDamage"					"50 100 150"
 	
@@ -16628,10 +16660,11 @@
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
-	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "BaseClass"       		"ability_datadriven"
+	  "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_POINT"
+	  "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityTextureName"      "ancient_apparition_ice_vortex"
 	
 	  // Precache
@@ -17175,14 +17208,15 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"BaseClass"				          "ability_datadriven"
+		"AbilityBehavior"				    "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"	
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"FightRecapLevel"				"1"
-		"AbilityTextureName"			"chaos_knight_chaos_bolt"
+	  "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+		"SpellImmunityType"				  "SPELL_IMMUNITY_ENEMIES_YES"
+		"FightRecapLevel"				    "1"
+		"AbilityTextureName"			  "chaos_knight_chaos_bolt"
 	
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
@@ -17657,9 +17691,10 @@
 	
 	"ghoul_mortal_strike"
 	{
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"life_stealer_open_wounds"
 	
 	    "MaxLevel"               "3"
@@ -17801,6 +17836,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "custom/golem_explosion"
 	
 	    "AbilityCooldown" "24 22 20"
@@ -17970,6 +18006,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "earthshaker_aftershock"
 	     "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"   
 	
@@ -18631,6 +18668,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"custom/hermit_frost_arrows"
 	
@@ -18760,6 +18798,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"custom/hermit_frost_arrows"
 	
@@ -19097,6 +19136,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	
 	
 		"MaxLevel"               "3"
@@ -19589,9 +19629,10 @@
 		{
 			// General
 			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"				"ability_datadriven"
+			"BaseClass"						"ability_datadriven"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+			"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
 			"AbilityTextureName"			"luna_lucent_beam"
 		
 			// Precache
@@ -19809,6 +19850,7 @@
 		    //-------------------------------------------------------------------------------------------------------------
 		    "BaseClass"              "ability_datadriven"
 		    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
 		    "AbilityTextureName"     "luna_eclipse"
 		
 		    "AbilityCooldown" "90"
@@ -19892,6 +19934,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "custom/illusionist_whiff_of_deception"
 	
 	    "AbilityCooldown" "8"
@@ -19987,7 +20030,6 @@
 	  //-------------------------------------------------------------------------------------------------------------
 		"BaseClass"              "ability_datadriven"
 		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_TOGGLE"
-		"AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
 		"AbilityTextureName"     "custom/illusionist_mastery_of_deception"
 		//"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
 	   
@@ -20373,6 +20415,7 @@
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityTextureName"			"treant_overgrowth"
 	
@@ -20702,6 +20745,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -20815,6 +20859,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -21193,10 +21238,11 @@
 	{
 	  // General
 	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"             "ability_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
-	  "AbilityTextureName"    "custom/knight_illusions"
+	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityTextureName"        "custom/knight_illusions"
 	
 	  //"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
 	  "MaxLevel"               "3"
@@ -21380,6 +21426,8 @@
 	{
 		"BaseClass"             		"ability_lua"
 		"ScriptFile"					"heroes/Knight/knight_dark_shield.lua"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"custom/knight_dark_shield"
 	
 		"MaxLevel"               		"3"
@@ -21622,11 +21670,13 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"viper_poison_attack"
 		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 	
@@ -21800,10 +21850,10 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"BaseClass"							"ability_datadriven"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"					"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"				"DAMAGE_TYPE_PHYSICAL"
 		"AbilityTextureName"            	"viper_corrosive_skin"
 		"AbilityUnitTargetTeam"         	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"         	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -21957,10 +22007,12 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"viper_viper_strike"
 		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
 	
@@ -22119,6 +22171,7 @@
 	
 		"AbilityTextureName"			"zuus_arc_lightning"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
@@ -22191,6 +22244,7 @@
 		"AbilityTextureName"			"zuus_arc_lightning"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	
@@ -22273,6 +22327,7 @@
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 			
 		"AbilityCastRange"			"600"
@@ -22358,6 +22413,7 @@
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 			
 		"AbilityCastRange"			"600"
@@ -22435,10 +22491,11 @@
 	    "LevelsBetweenUpgrades"  "2"
 		
 			
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		//"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
 		//"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		//"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
 			
 		"AbilityCastRange"			"800"
@@ -22538,7 +22595,7 @@
 		"BaseClass"						"ability_datadriven"
 		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		//
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
@@ -22807,6 +22864,7 @@
 		"AbilityTextureName"			"slardar_bash"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
@@ -22868,7 +22926,8 @@
 	{
 	  "BaseClass"               "ability_datadriven"
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"	
+	  "AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"	
 	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityTextureName"      "slardar_slithereen_crush"
 		
@@ -22986,7 +23045,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			                "custom/naga_siren_fury"
 	
 		"MaxLevel"               "3"
@@ -23232,6 +23292,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"custom/naga_siren_song"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -23666,7 +23727,6 @@
 		"ScriptFile"					"heroes\Necromancer\necromancer_reincarnation.lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		//"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		//"FightRecapLevel"				"2"
 		"AbilityTextureName"			"custom/necromancer_reincarnation"
 	    "MaxLevel"               "3"
@@ -24074,6 +24134,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 	
 		"MaxLevel" 				"3"
@@ -24189,6 +24250,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 	
 		"MaxLevel" 				"3"
@@ -24798,10 +24860,11 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"						"ability_datadriven"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityTextureName"			"custom/pirate_magic_rum"
 	
@@ -24935,7 +24998,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"custom/pirate_poisoned_weapon"
 		
 		"MaxLevel"               "3"
@@ -25440,6 +25504,8 @@
 	    // ----------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
+	  	"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AoERadius"              "%radius"
 	    "AbilityTextureName"     "broodmother_poison_sting"
 	    
@@ -25576,6 +25642,7 @@
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 	
 		"AbilityDamage"					"100 175 250"
 		"AbilityCastRange"	"240"
@@ -25885,6 +25952,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
 	
 		"AbilityCastRange"				"800"
@@ -26186,9 +26254,11 @@
 	"serpent_queen_anger"
 	{
 	
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"	"custom/serpent_queen_anger"
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"  	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"		"custom/serpent_queen_anger"
 		
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 		"MaxLevel"               "3"
@@ -26349,6 +26419,8 @@
 	{
 	    "BaseClass"                 "ability_datadriven"
 	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+	    "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"        "custom/shadow_master_steal_shadow"
 	
 	    "AbilityCooldown"           "13 12 11"
@@ -27128,6 +27200,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
 	    "AbilityTextureName"     "pugna_nether_blast"
 	
@@ -27254,6 +27327,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
 	    "AbilityTextureName"     "pugna_nether_blast"
 	
@@ -27382,6 +27456,8 @@
 	  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic.lua"
 	
 	  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL" 
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	  	"AbilityTextureName"      "pugna_life_drain"
 	
 		"MaxLevel"               "3"
@@ -27409,6 +27485,8 @@
 	  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic_staff.lua"
 	
 	  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  	"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL" 
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	  	"AbilityTextureName"      "pugna_life_drain"
 	
 		"MaxLevel"               "3"
@@ -27437,6 +27515,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "pugna_decrepify"
 	
 	    "AbilityCooldown" "100"
@@ -27577,6 +27656,8 @@
 	    // ----------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "custom/skeleton_thief_wind_walk"
 		
 		"MaxLevel"               "3"
@@ -27751,7 +27832,6 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 	    "AbilityTextureName"     "custom/skeleton_thief_fury"
 	  
 		"MaxLevel"               "3"
@@ -27831,6 +27911,15 @@
 	         	"MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
 				//"MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
 	        }
+	
+	        "OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/SkeletonThief/Fury.lua"
+					"Function"		"OnDestroy"
+				}
+			}
 	      }
 	    }
 	  }
@@ -27873,9 +27962,11 @@
 	
 	"skeleton_thief_concentration"
 	{
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"  		"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"custom/skeleton_thief_shield_of_death"
 	
 	    "MaxLevel"               "3"
@@ -27986,6 +28077,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "custom/skeleton_thief_obsession"
 		
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -28402,6 +28494,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"           "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "custom/time_lord_death"
 	  
 	    // Stats    
@@ -28474,6 +28567,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"           "ability_datadriven"
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "custom/time_lord_death"
 	  
 	    // Stats    
@@ -28553,6 +28647,7 @@
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "custom/time_lord_wisdom_flow"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
@@ -28629,6 +28724,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 	    "AbilityTextureName"     "custom/time_lord_wisdom_flow"
 	
@@ -28778,6 +28874,7 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	    "AbilityTextureName"     "custom/time_lord_stop_time"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -29924,11 +30021,10 @@
 	
 				"OnDestroy"
 				{
-					"ApplyModifier"
+					"RunScript"
 					{
-						"ModifierName"	"modifier_phase"
-						"Target" 		"CASTER"
-						"Duration"		"0.03"
+						"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+						"Function"		"OnDestroy"
 					}
 				}
 			}
@@ -30042,7 +30138,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"custom/valkyrie_rage"
 	
 		"MaxLevel"               		"3"
@@ -30173,7 +30270,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"custom/valkyrie_true_hit"
 	
 		"MaxLevel"               		"3"
@@ -30369,7 +30467,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"custom/vampire_life_drain"
 		
 		"MaxLevel"               "3"
@@ -30815,6 +30914,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
 	
 		"AbilityCastRange"				"800"
@@ -30887,6 +30987,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
 	
@@ -31132,6 +31233,8 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"custom/voven_from_blood_soul_burn"
 		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
 		
@@ -31900,6 +32003,7 @@
 			"BaseClass"              "ability_datadriven"
 			"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
 			"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+			"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 			"AbilityTextureName"     "custom/warlock_storm_datadriven"
 	
 		
@@ -31964,6 +32068,7 @@
 			"BaseClass"              "ability_datadriven"
 			"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
 			"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+			"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 			"AbilityTextureName"     "custom/warlock_storm_datadriven"
 	
 			"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
@@ -32152,6 +32257,8 @@
 	{
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityTextureName"     "custom/warlock_magic_splash"
 	
 	    "AbilityCastRange"       "400 450 500"
@@ -32212,6 +32319,7 @@
 	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+	     "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
 	
 	    "AbilityCastRange"              "700"
@@ -32441,6 +32549,7 @@
 	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+	     "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
 	    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
 	
 	    "AbilityCastRange"              "700"
@@ -32666,9 +32775,10 @@
 		"warrior_of_light_fetters"
 		{
 			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"				"ability_datadriven"
+			"BaseClass"						"ability_datadriven"
 			"AbilityTextureName" 			"custom/warrior_of_light_fetters"
 			"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+			 "AbilityUnitDamageType" 		 "DAMAGE_TYPE_MAGICAL"
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		
@@ -32785,6 +32895,8 @@
 		  	"ScriptFile"			  "heroes\WarriorOfLight\warrior_of_light_will_light.lua"
 	
 		  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+			"AbilityUnitDamageType"	  "DAMAGE_TYPE_PHYSICAL"
+			"SpellImmunityType"		  "SPELL_IMMUNITY_ENEMIES_YES"
 		  	"AbilityTextureName"      "custom/warrior_of_light_will_light"
 		
 		  	"MaxLevel"               "3"
@@ -33013,7 +33125,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityTextureName"			"custom/witch_doctor_negative_energy"
 		
 		"MaxLevel"               "3"
@@ -33118,7 +33231,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"	
 		"AbilityTextureName"			"custom/witch_doctor_negative_energy"
 		
 		"MaxLevel"               "3"
@@ -33577,7 +33691,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"custom/witch_doctor_discharge"
 		
 		"MaxLevel"               "3"
