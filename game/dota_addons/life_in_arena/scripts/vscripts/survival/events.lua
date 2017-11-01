@@ -218,7 +218,7 @@ function Survival:OnPlayerChat(event)
     	
     	if event.text == "res" then
     		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            hero:RespawnHero(false,false,false)
+            hero:RespawnHero(false,false)
         end
     	
         if event.text == "fade" then

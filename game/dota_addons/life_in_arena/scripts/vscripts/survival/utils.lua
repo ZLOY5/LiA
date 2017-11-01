@@ -54,7 +54,7 @@ function Survival:UnhideHero(hero)
 	if not hero.prorogueUnhide then
 		print(hero:GetName().." unhidden")
 		if not hero:IsAlive() then
-			hero:RespawnHero(false, false, false)
+			hero:RespawnHero(false,false)
 		end
 		hero:RemoveModifierByName("modifier_hide_lua")
 		FindClearSpaceForUnit_IgnoreNeverMove(hero, Vector(0,1500,168), false)
@@ -80,7 +80,7 @@ end
 function RespawnAllHeroes() 
 	DoWithAllHeroes(function(hero)
 		if not hero:IsAlive() then
-			hero:RespawnHero(false,false,false)
+			hero:RespawnHero(false,false)
 			FindClearSpaceForUnit_IgnoreNeverMove(hero, Vector(0,1500,168)+RandomVector(RandomFloat(0, 200)), false)
 		end
 	end)

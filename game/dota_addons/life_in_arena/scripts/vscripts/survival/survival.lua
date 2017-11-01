@@ -641,7 +641,7 @@ function HeroToPedestal(hero,place)
     }
 
     if not hero:IsAlive() then
-        hero:RespawnHero(false, false, false)
+        hero:RespawnHero(false,false)
     end
 
     hero:Purge(true, true, false, true, true)

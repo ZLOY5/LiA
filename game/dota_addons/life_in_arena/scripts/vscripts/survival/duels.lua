@@ -262,12 +262,12 @@ function Survival:EndDuel(winner,loser)
         CleanUnitsOnMap()
 
         if not hero1:IsAlive() then
-            hero1:RespawnHero(false, false, false)
+            hero1:RespawnHero(false,false)
             hero1:AddNewModifier(hero1, nil, "modifier_stun_lua", nil)
         end
 
         if not hero2:IsAlive() then
-            hero2:RespawnHero(false, false, false)
+            hero2:RespawnHero(false,false)
             hero2:AddNewModifier(hero2, nil, "modifier_stun_lua", nil)
         end
     

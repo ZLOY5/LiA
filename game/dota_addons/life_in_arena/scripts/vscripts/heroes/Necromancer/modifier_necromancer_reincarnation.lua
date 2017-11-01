@@ -59,7 +59,7 @@ function modifier_necromancer_reincarnation:ReincarnateTime(params)
 				parent:EmitSound("Hero_SkeletonKing.Reincarnate.Stinger")
 
 				if not parent:IsAlive() then
-					parent:RespawnHero(false, false, false)
+					parent:RespawnHero(false,false)
 				end
 			end
 		)
