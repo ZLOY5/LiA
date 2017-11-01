@@ -546,7 +546,7 @@
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"     "butcher_howl_of_terror"
+    "AbilityTextureName"     "custom/7_wave_howl_of_terror"
     
     "AbilityCooldown" "12.0"
 
@@ -1213,7 +1213,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"			"necronomicon_warrior_mana_burn"
+	"AbilityTextureName"			"custom/16_wave_slow"
 	
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
@@ -1360,8 +1360,7 @@
 	{
 		"modifier_purge"
 		{
-			"IsHidden"			"0"
-			"TextureName" 		"orc_purge"
+			"IsHidden"			"1"
 			"IsDebuff"			"1"
 			"IsPurgable"		"1"
 			"OnCreated"
@@ -1385,7 +1384,7 @@
 
 		"modifier_purge_slow"
 		{
-			"IsHidden"			"1"
+			"IsHidden"			"0"
 			"IsDebuff"			"1"
 			"IsPurgable"		"1"
 
@@ -1417,7 +1416,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
   "AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-  "AbilityTextureName"      "sandking_epicenter"
+  "AbilityTextureName"      "custom/18_wave_silence"
   
 
   // Stats
@@ -1504,7 +1503,7 @@
 "19_wave_faerie_fire_extreme"
 {
 	"BaseClass"					"ability_datadriven"
-	"AbilityTextureName"		"nightelf_faerie_fire"
+	"AbilityTextureName"		"custom/19_wave_faerie_fire"
 	"MaxLevel"					"1"
 		
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
