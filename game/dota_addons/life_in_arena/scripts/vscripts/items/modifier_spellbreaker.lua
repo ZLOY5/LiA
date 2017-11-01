@@ -17,7 +17,7 @@ function modifier_spellbreaker:DeclareFunctions()
 		MODIFIER_PROPERTY_HEALTH_BONUS,
 		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
 		MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK,
-		MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE,
+		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
 	}
  
 	return funcs
@@ -29,7 +29,7 @@ function modifier_spellbreaker:OnCreated(kv)
 	self.healthBonus = ability:GetSpecialValueFor("bonus_health")
 	self.armorBonus = ability:GetSpecialValueFor("bonus_armor")
 	self.blockDamage = ability:GetSpecialValueFor("damage_block")
-	self.bonusManaRegen = ability:GetSpecialValueFor("bonus_mana_regen_percentage")
+	self.bonusManaRegen = ability:GetSpecialValueFor("bonus_mana_regen")
 
 	if IsServer() then
 		self.pseudo = PseudoRandom:New(ability:GetSpecialValueFor("block_chance")*0.01)
@@ -112,6 +112,6 @@ function modifier_spellbreaker:GetModifierPhysical_ConstantBlock(params)
 	end
 end
 
-function modifier_spellbreaker:GetModifierPercentageManaRegen()
+function modifier_spellbreaker:GetModifierConstantManaRegen()
 	return self.bonusManaRegen
 end
