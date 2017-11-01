@@ -512,6 +512,12 @@ function Survival:_SpawnWave()
             ParticleManager:CreateParticle(pathEffect, PATTACH_ABSORIGIN, boss2)
             boss1:EmitSound("DOTA_Item.BlinkDagger.Activate")
             boss2:EmitSound("DOTA_Item.BlinkDagger.Activate")
+
+            boss1.deathXP = boss1:GetDeathXP()
+            boss1:SetDeathXP(0)
+
+            boss2.deathXP = boss2:GetDeathXP()
+            boss2:SetDeathXP(0)
             
             Survival:AICreepsInsertToTable(boss1,boss2)
             self.nCreepsSpawned = self.nCreepsSpawned + 2
@@ -536,7 +542,13 @@ function Survival:_SpawnWave()
             unit1:EmitSound("DOTA_Item.BlinkDagger.Activate")
             unit2:EmitSound("DOTA_Item.BlinkDagger.Activate")
             --particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf
-            
+            unit1.deathXP = unit1:GetDeathXP()
+            unit1:SetDeathXP(0)
+
+            unit2.deathXP = unit2:GetDeathXP()
+            unit2:SetDeathXP(0)
+
+
             Survival:AICreepsInsertToTable(unit1,unit2)
             self.nCreepsSpawned = self.nCreepsSpawned + 2
             
@@ -694,8 +706,13 @@ function Survival:ExperienceDistribute(killedUnit)
         expMultiplier = expMultiplier + self.flLightExpMultiplier
     end
 
-    local xp = killedUnit:GetDeathXP()/nHeroesAlive * expMultiplier + RandomFloat(0,1)
+    if not killedUnit.deathXP then
+        print("DeathXP not defined for "..killedUnit:GetUnitName())
+        return
+    end
 
+    local xp = killedUnit.deathXP/nHeroesAlive * expMultiplier + RandomFloat(0,1)
+    --print(xp)
 
     DoWithAllHeroes(function(hero)
         if hero:IsAlive() then
