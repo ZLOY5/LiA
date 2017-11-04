@@ -79,13 +79,13 @@ function modifier_stats_bonus_fix:CalculateStatsBonus(kv)
 
 	hero.baseArmorValue = hero.baseArmorValue or hero:GetPhysicalArmorBaseValue()
 	
-	self.armorBonus = agility * (HERO_STATS_ARMOR_BONUS - 1/7) --в доте за 7 ловкости дают 1 ед. защиты
+	self.armorBonus = agility * (HERO_STATS_ARMOR_BONUS - 1/6) --в доте за 6 ловкости дают 1 ед. защиты
 	hero:SetPhysicalArmorBaseValue(self.armorBonus+hero.baseArmorValue) 
 	
 	self.attackSpeedBonus = agility * (HERO_STATS_ATTACK_SPEED_BONUS - 1)
 	self.moveSpeedBonus = agility * HERO_STATS_MOVE_SPEED_BONUS -- в доте нет его?
 
-	self.manaBonus = intellect * (HERO_STATS_MANA_BONUS - 11)
+	self.manaBonus = intellect * (HERO_STATS_MANA_BONUS - 12)
 	self.manaRegenBonus = intellect * (HERO_STATS_MANA_REGEN_BONUS - 0.04)
 	hero:SetBaseManaRegen(self.manaRegenBonus)
 	

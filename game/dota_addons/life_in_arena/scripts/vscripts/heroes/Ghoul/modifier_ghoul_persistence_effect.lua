@@ -8,11 +8,23 @@ function modifier_ghoul_persistence_effect:DeclareFunctions()
 end
 
 function modifier_ghoul_persistence_effect:GetModifierConstantHealthRegen(params)
-	return self.regen_mult * self:GetCaster():GetBaseStrength()
+	local t = CustomNetTables:GetTableValue("custom_modifier_state","GhoulPersistence"..tostring(self:GetCaster():entindex()))
+	if not t then return end
+	
+	return self.regen_mult * t.str
 end
 
 function modifier_ghoul_persistence_effect:OnCreated( kv )
 	self.regen_mult = self:GetAbility():GetSpecialValueFor( "regen_mult" )
+
+	self:StartIntervalThink(0)
+end
+
+if IsServer() then
+	function modifier_ghoul_persistence_effect:OnIntervalThink()
+		CustomNetTables:SetTableValue("custom_modifier_state","GhoulPersistence"..tostring(self:GetCaster():entindex()),{str = self:GetCaster():GetBaseStrength()})
+		return 0.1
+	end
 end
 
 --------------------------------------------------------------------------------

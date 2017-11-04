@@ -73,7 +73,7 @@ function LiA:FilterDamage( filterTable )
 		local original_damage = filterTable["damage"] --Post reduction
 		
 		local armor = victim:GetPhysicalArmorValue()
-		local damage_reduction = ((armor)*0.06) / (1+0.06*(armor))
+		local damage_reduction = ((armor)*0.05) / (1+0.05*(armor))
 
 		-- If there is an inflictor, the damage came from an ability
 		local attack_damage = original_damage / ( 1 - damage_reduction ) 
