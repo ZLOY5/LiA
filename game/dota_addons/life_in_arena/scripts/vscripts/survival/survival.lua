@@ -95,6 +95,7 @@ function Survival:InitSurvival()
     GameRules:SetHideKillMessageHeaders(true)
     GameRules:SetTreeRegrowTime(60)
     GameRules:SetHeroRespawnEnabled(false)
+    GameRules:SetUseCustomHeroXPValues(true)
 
     GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 ) 
 

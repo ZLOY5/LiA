@@ -26,6 +26,8 @@ function Survival:OnPlayerPickHero(keys)
         return
     end
 
+   Timers:CreateTimer(1,function() hero:SetCustomDeathXP(0) end) 
+
     table.insert(self.tHeroes, hero)
 
     
