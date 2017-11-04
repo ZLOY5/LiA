@@ -34,7 +34,7 @@
 		"ItemSellable"                  "1"
 		"ItemPurchasable"		 		"1"
 		"ItemQuality"					"rare"
-	
+		"ItemAliases"					"ss;spherical staff;сп;сферический посох"
 		"AbilityTextureName"			"custom/lia_spherical_staff"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -57,8 +57,8 @@
 		{
 			"01"
 			{
-				"var_type" 						"FIELD_INTEGER"
-				"bonus_mana_regen_percentage" 	"100"
+				"var_type" 			"FIELD_FLOAT"
+				"bonus_mana_regen" 	"1"
 			}
 			"02"
 			{
@@ -207,7 +207,7 @@
 
 			    "Properties"
 			    {
-					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_int"
 			    }  
 	

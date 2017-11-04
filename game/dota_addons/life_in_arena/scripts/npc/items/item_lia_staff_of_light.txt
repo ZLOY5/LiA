@@ -34,6 +34,7 @@
 	"ItemSellable"                  "1"
 	"ItemPurchasable"		 		"1"
 	"ItemQuality"					"rare"
+	"ItemAliases"					"посох света;пс;sol;staff of light"
 	"AbilityTextureName"			"custom/lia_staff_of_light"
 	"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -84,7 +85,7 @@
         	"Properties"
 		    {
 		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intelligence"
-				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%bonus_mana_regen_percentage"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
 		    }  
 		}
 		"item_staff_of_light_ability_heal_modifier"
@@ -196,8 +197,8 @@
 		}
 		"02"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_mana_regen_percentage" "120"
+			"var_type" "FIELD_FLOAT"
+			"bonus_mana_regen" "1.2"
 		}
 		"03"
 		{

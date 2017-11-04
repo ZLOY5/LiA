@@ -49,13 +49,13 @@ end
 
 function modifier_item_lia_mana_stone_potion:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE,
+		MODIFIER_PROPERTY_MANA_REGEN_CONSTANT,
 	}
  
 	return funcs
 end
 
-function modifier_item_lia_mana_stone_potion:GetModifierPercentageManaRegen()
+function modifier_item_lia_mana_stone_potion:GetModifierConstantManaRegen()
 	return self.manaRegen
 end
 
