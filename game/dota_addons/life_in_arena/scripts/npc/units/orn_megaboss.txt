@@ -25,16 +25,17 @@
 		}
 		
 "Creature"
-		{
-		"AttachWearables"
-			{
-				"Wearable1"		{	"ItemDef"		"7164"		} 
-				"Wearable2" 	{	"ItemDef"		"7075"		} 
-				"Wearable3"		{	"ItemDef"		"7079"		} 
-				"Wearable4"		{	"ItemDef"		"7077"		} 
-				"Wearable5"		{	"ItemDef"		"7076"		} 
-			}
-		}
+{
+	"DisableResistance"            "50.0"
+	"AttachWearables"
+	{
+		"Wearable1"		{	"ItemDef"		"7164"		} 
+		"Wearable2" 	{	"ItemDef"		"7075"		} 
+		"Wearable3"		{	"ItemDef"		"7079"		} 
+		"Wearable4"		{	"ItemDef"		"7077"		} 
+		"Wearable5"		{	"ItemDef"		"7076"		} 
+	}
+}
 
 "Ability1" "true_sight" 
 "Ability2" "orn_all_bonuses" 
@@ -47,13 +48,13 @@
 
 "AbilityLayout"	"6"
 
-"ArmorPhysical" "100" 
+"ArmorPhysical" "80" 
 "MagicalResistance" "25" 
 
 
 "AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "700" 
-"AttackDamageMax" "750" 
+"AttackDamageMin" "675" 
+"AttackDamageMax" "725" 
 "AttackRate" "0.4" 
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "5000" 
@@ -86,4 +87,6 @@
 "VisionNighttimeRange" "2000" 
 
 "HasInventory" "0" 
+
+"vscripts"           "units\MegabossOrnStats.lua"
 }
