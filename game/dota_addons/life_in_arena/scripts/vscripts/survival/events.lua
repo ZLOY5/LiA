@@ -3,6 +3,12 @@ function Survival:OnNPCSpawned(event)
 
     if spawnedUnit:IsHero() then
         spawnedUnit:SetCustomDeathXP(0)
+        for i=0,8 do
+            local item = spawnedUnit:GetItemInSlot(i)
+            if item and (item:GetName() == "item_enchanted_mango"  or item:GetName() == "item_tpscroll") then
+                spawnedUnit:RemoveItem(item)
+            end
+        end
     else
         if self.state == SURVIVAL_STATE_DUEL_TIME then
             spawnedUnit:SetDeathXP(0)
