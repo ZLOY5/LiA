@@ -219,6 +219,10 @@ function LiA:OnNPCSpawned( event )
         spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_stats_bonus_fix",nil)
         spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_upgrades",nil)
    end
+
+    if self.GameMode == LIA_MODE_SURVIVAL then
+        Survival:OnNPCSpawned(event)
+    end
 end
 
 function LiA:OnPlayerLevelUp(event)

@@ -1,3 +1,19 @@
+function Survival:OnNPCSpawned(event)
+    local spawnedUnit = EntIndexToHScript( event.entindex )
+
+    if spawnedUnit:IsHero() then
+        spawnedUnit:SetCustomDeathXP(0)
+    else
+        if self.state == SURVIVAL_STATE_DUEL_TIME then
+            spawnedUnit:SetDeathXP(0)
+        elseif spawnedUnit:GetDeathXP() > 0 then
+            --print( spawnedUnit.deathXP)
+            spawnedUnit.deathXP = spawnedUnit:GetDeathXP()
+            spawnedUnit:SetDeathXP(0)
+        end
+    end
+end
+
 function Survival:OnPlayerPickHero(keys)
     PrintTable("OnPlayerPickHero",keys)
 
