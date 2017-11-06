@@ -3,12 +3,13 @@ function Survival:OnNPCSpawned(event)
 
     if spawnedUnit:IsHero() then
         spawnedUnit:SetCustomDeathXP(0)
-        for i=0,8 do
-            local item = spawnedUnit:GetItemInSlot(i)
-            if item and (item:GetName() == "item_enchanted_mango"  or item:GetName() == "item_tpscroll") then
-                spawnedUnit:RemoveItem(item)
+        Timers:CreateTimer(0.1,function() for i=0,8 do
+                local item = spawnedUnit:GetItemInSlot(i)
+                if item and (item:GetName() == "item_enchanted_mango"  or item:GetName() == "item_tpscroll") then
+                    spawnedUnit:RemoveItem(item)
+                end
             end
-        end
+        end)
     else
         if self.state == SURVIVAL_STATE_DUEL_TIME then
             spawnedUnit:SetDeathXP(0)
@@ -192,7 +193,7 @@ end
 
 function Survival:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-       -- self.nRoundNum = 17
+        --self.nRoundNum = 14
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
         Survival:PrepareNextRound()
