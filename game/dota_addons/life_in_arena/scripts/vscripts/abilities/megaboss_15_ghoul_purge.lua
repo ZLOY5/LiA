@@ -30,7 +30,7 @@ function modifier_megaboss_15_ghoul_purge:OnTakeDamage(keys)
 		if not self:GetParent():PassivesDisabled() then						
 			if keys.unit == self:GetParent() then 							--Если атакованный юнит носитель модификатора(просто эвент получения урона вызывается при получении урона любым существом на карте)
 				if keys.unit:GetTeamNumber() ~= keys.attacker:GetTeamNumber() then   --Если атаковавший не союзник
-					self.takeddmg = self.takeddmg + keys.original_damage			 --Прибавляем переменной полученый урон
+					self.takeddmg = self.takeddmg + keys.damage			 --Прибавляем переменной полученый урон
 					if self.takeddmg >= self.dmglimit then 							 --Проверка, если полученный урон превысил порог
 						self:GetParent():Purge(false,true,false,true,false)			 --Пурж
 						local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_life_stealer/life_stealer_rage_cast_mid.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )

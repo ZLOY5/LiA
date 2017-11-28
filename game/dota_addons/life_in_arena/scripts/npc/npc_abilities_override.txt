@@ -1,5 +1,5 @@
 //Generated using Dota Custom KVScript Files Merger by cris9696
-"DotaAbilities"
+"DotaSomething"
 {
 
 
@@ -7641,7 +7641,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage_threshold"				"7500"		
+				"damage_threshold"				"2500"		
 			}	
 		}
 	
@@ -11578,46 +11578,66 @@
 	{
 		"BaseClass"				"ability_lua"
 		"ScriptFile"			"heroes\Butcher\butcher_zombie.lua"
-		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityTextureName"	"custom/butcher_zombie"
 			
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 	
-		"AbilityCooldown"		 "0"
+		"AbilityCooldown"		 "22"
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+	
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_undying/undying_zombie_spawn.vpcf"
+		}
 		
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"zombie_hp_tooltip"		"200 400 600"
+				"zombie_base_health"		"200 400 600"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"zombie_damage_tooltip"	"14 39 69"
+				"zombie_butcher_heath_percent"		"10 15 20"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"zombie_stats_percentage"		"50 75 100"
+				"zombie_base_damage"	"15 40 70"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"health_percent_threshold"		"20"
+				"zombie_butcher_damage_percent"		"20 30 40"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"zombie_limit"			"4 5 6"
+				"health_precent_for_zombie"			"20 15 10"
 			}
 			"06"
 			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_limit"			"4 5 6"
+			}
+			"07"
+			{
 				"var_type"				"FIELD_FLOAT"
-				"zombie_cooldown"		"15"
+				"zombie_replenish_time"		"20"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"circle_radius"			"100"
 			}
 		}
 	}
@@ -11726,72 +11746,38 @@
 	    }
 	  }
 	 
-	 
-	 "butcher_zombie_bash"
+	
+	"butcher_zombie_bash"
 	{
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\Butcher\butcher_zombie_bash.lua"
 		"AbilityTextureName"			"faceless_void_time_lock"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		"%AbilityDamage"	"50"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	
 		
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"25"
+				"bash_chance"			"15"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"stun_duration"	"0.5"
+				"bash_duration"	"0.5"
 			}
-	
-		}
-	
-		"Modifiers"
-		{
-			"modifier_zombie_bash"	
+			"03"
 			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"OnAttackLanded"
-				{
-					"Random"
-					{
-						"Chance"		"%bash_chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-	
-						"OnSuccess"
-						{
-	
-							"ApplyModifier"
-							{
-								"ModifierName"	"modifier_stunned"
-								"Target"
-								{
-									"Center"	"TARGET"
-									"Types"		"DOTA_UNIT_TARGET_ALL"
-								}
-								"Duration"		"%stun_duration"	
-							}
-	
-	
-							"Damage"
-							{
-								"Target"	"TARGET"
-								"Type"		"DAMAGE_TYPE_MAGICAL"
-								"Damage"	"%AbilityDamage"
-							}
-						}
-					}
-				}
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"			"50"
 			}
 		}
+	
 	}
+	
 	 
 	 
 	 
