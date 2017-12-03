@@ -24,7 +24,7 @@ function Survival:StartDuels()
             local ability = hero:GetAbilityByIndex(i)
             if ability and ability:GetAbilityName() ~= "time_lord_wisdom_flow" then
                 ability.savedCooldown = ability:GetCooldownTimeRemaining()
-                print(hero:GetUnitName(), ability:GetAbilityName(), ability.savedCooldown)
+                --print(hero:GetUnitName(), ability:GetAbilityName(), ability.savedCooldown)
             end
         end
     end)
@@ -112,6 +112,7 @@ function Survival:Duel(hero1,hero2)
             ResetAllAbilitiesCooldown(hero1)
             ResetAllAbilitiesCooldown(hero2)
             hero1:AddNewModifier(hero1,nil,"modifier_invisible",{duration = 0.5})
+            
             local gold = hero2:GetGold()
             hero2:SetTeam(DOTA_TEAM_BADGUYS)
             if hero2:GetPlayerOwner() then

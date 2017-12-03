@@ -58,11 +58,6 @@ function Survival:_OnHeroDeath(keys)
         attacker = EntIndexToHScript(keys.entindex_attacker)
         attackerHero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
     end 
-    
-    local ownerHero = hero:GetPlayerOwner()
-    if ownerHero then
-        Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
-    end
 
     if hero:IsReincarnating() then 
         print("Will reincarnate")

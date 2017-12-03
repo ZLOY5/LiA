@@ -34,7 +34,6 @@ require('PseudoRandom')
 
 ------------------------------------------------------------------------------
 
-LinkLuaModifier( "modifier_stats_bonus_fix", "heroes/modifier_stats_bonus_fix.lua",LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier( "modifier_stun_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_hide_lua", LUA_MODIFIER_MOTION_NONE )
 LinkLuaModifier( "modifier_orn_lua", LUA_MODIFIER_MOTION_NONE )
@@ -100,6 +99,7 @@ function LiA:InitGameMode()
     --GameMode:SetHUDVisible(12, false)
     --GameMode:SetHUDVisible(1, false) 
     GameMode:SetTopBarTeamValuesVisible(false)
+    GameMode:SetHudCombatEventsDisabled(true)
     
     GameMode:SetBuybackEnabled(false)
     GameMode:SetTowerBackdoorProtectionEnabled(false)
@@ -114,6 +114,27 @@ function LiA:InitGameMode()
 
     GameRules:SetTimeOfDay(0.5)
     GameMode:SetDaynightCycleDisabled(true)
+
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_DAMAGE,1.5)
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_DAMAGE,1.5)
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT,1.5)
+
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP,8)
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP_REGEN_PERCENT,0.05)
+    --GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT,0)
+
+
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ARMOR,1/6)
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ATTACK_SPEED,1)
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_MOVE_SPEED_PERCENT,0)
+
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA,12)
+    GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN_PERCENT,0.05)
+    --GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_SPELL_AMP_PERCENT,0)
+    --GameMode:SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT,0)
+
+
+
 
     PlayerResource:SetCustomPlayerColor(0, 255, 3, 3)
     PlayerResource:SetCustomPlayerColor(1, 0, 66, 255)
@@ -148,7 +169,7 @@ function LiA:InitGameMode()
 
 	GameRules.Damage = LoadKeyValues("scripts/kv/damage_table.kv")
 
-	Upgrades:Init()
+	Upgrades:Init() 
 end
 
 
@@ -216,7 +237,6 @@ end
 function LiA:OnNPCSpawned( event )
     local spawnedUnit = EntIndexToHScript( event.entindex )
     if spawnedUnit:IsHero() then 
-        spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_stats_bonus_fix",nil)
         spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_upgrades",nil)
    end
 

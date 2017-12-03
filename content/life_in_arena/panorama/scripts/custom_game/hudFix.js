@@ -24,20 +24,6 @@
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeaderCenter").style.marginLeft = "1150px"
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("TeamPurchasesStrategyControl").style.visibility = "collapse";
 
-	var swapUltimate = function() {
-		var abilitiesContainer = dotaHud.FindChildTraverse("abilities")
-		var ultAbi = abilitiesContainer.FindChildTraverse("Ability4")
-		var plusAbi = abilitiesContainer.FindChildTraverse("Ability3")
-		if (ultAbi != null)
-				abilitiesContainer.MoveChildBefore(ultAbi,plusAbi)
-		else
-			$.Schedule(1,swapUltimate)	
-	}
-
-	swapUltimate()
-
-	
-
 	var onUpdateHeroSelection = function(data) {
 		//$.Msg(data)
 		var heroPickAbi = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroAbilities")
@@ -127,10 +113,14 @@ function ValvePlzFix()
 			if (!isNaN(strength)) {
 				if (!statsTooltip.FindChildTraverse("StrengthContainer").BHasClass("NoBonus"))
 					strength = strength + bonusStr
+
+				var baseHealthRegen = Number(statsTooltip.FindChildTraverse("HealthRegen").text)
 				
+				var healthBonus = strength*8
+				var healthRegenBouns = strength*5
 				//$.Msg(strength)
-				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariableInt("strength_hp", strength*8)
-				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariable("strength_hp_regen", (strength*0.05).toFixed(1))
+				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariableInt("strength_hp", healthBonus)
+				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariable("strength_hp_regen", healthRegenBouns.toFixed(1))
 
 				statsTooltip.FindChildTraverse("StrengthDamageLabel").SetDialogVariableInt("primary_attribute_damage", strength*1.5)
 				
@@ -155,7 +145,10 @@ function ValvePlzFix()
 				if (!statsTooltip.FindChildTraverse("IntelligenceContainer").BHasClass("NoBonus"))
 					intellect = intellect + bonusInt
 				
-				statsTooltip.FindChildTraverse("IntelligenceDetails").SetDialogVariable("intelligence_mana_regen", (intellect*0.05).toFixed(1))
+				var baseManaRegen = Number(statsTooltip.FindChildTraverse("ManaRegen").text)
+				var manaRegenBouns = intellect*5
+
+				statsTooltip.FindChildTraverse("IntelligenceDetails").SetDialogVariable("intelligence_mana_regen", manaRegenBouns.toFixed(1))
 
 				statsTooltip.FindChildTraverse("IntelligenceDamageLabel").SetDialogVariableInt("primary_attribute_damage", intellect*1.5)
 			}
