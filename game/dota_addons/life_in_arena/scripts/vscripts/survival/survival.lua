@@ -206,6 +206,22 @@ function Survival:OrderFilter(filterTable)
 
     end
 
+    if filterTable.order_type == DOTA_UNIT_ORDER_PICKUP_ITEM  then
+        local item = EntIndexToHScript(filterTable.entindex_target):GetContainedItem()
+        local hero = EntIndexToHScript(filterTable.units["0"])
+        local itemName = item:GetAbilityName()
+        local notPickableRunes = {"item_lia_rune_of_healing", "item_lia_rune_of_mana", "item_lia_rune_of_restoration", "item_lia_rune_of_speed", "item_lia_rune_of_lifesteal", "item_lia_rune_of_protection"}
+        if Survival.State == SURVIVAL_STATE_PRE_DUEL_TIME then
+            for i = 1,#notPickableRunes do
+                print(notPickableRunes[i])
+                if itemName == notPickableRunes[i] then
+                    SendErrorMessage(hero:GetPlayerID(), "#lia_cant_pick_this_rune_preduel")
+                    return false
+                end
+            end
+        end
+    end
+
 
     return true
 end
