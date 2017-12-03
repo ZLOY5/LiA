@@ -1065,86 +1065,93 @@
 {
 
 
-"BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/dragon_knight/dragon_knight_dragon.vmdl" 
-"SoundSet" "n_creep_Ranged" 
-"ModelScale" "0.9" 
-"Level" "1" 
+	"BaseClass" "npc_dota_creature" 
+	"Model" "models/heroes/enigma/eidelon.vmdl" 
+	"SoundSet" "n_creep_Ranged" 
+	"ModelScale" "1.1" 
+	"Level" "1" 
 
-	
-"precache"
-{
-	"model"	"models/heroes/dragon_knight/dragon_knight_dragon.vmdl"
-	"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
-}
-
-
-"Ability1" "18_wave_silence" 
-"Ability2" "wave_18_death" 
-"Ability3" "" 
-"Ability4" "" 
-"Ability5" "" 
-"Ability6" "" 
-"Ability7" "" 
-"Ability8" "" 
+		
+	"precache"
+	{
+		"model"	"models/heroes/enigma/eidelon.vmdl"
+		"particle" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf"
+	}
 
 
+	"Ability1" "18_wave_silence" 
+	"Ability2" "" 
+	"Ability3" "" 
+	"Ability4" "" 
+	"Ability5" "" 
+	"Ability6" "" 
+	"Ability7" "" 
+	"Ability8" "" 
 
-"ArmorPhysical" "10" 
-"MagicalResistance" "50" 
 
-
-
-"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-"AttackDamageMin" "451" 
-"AttackDamageMax" "455" 
-"AttackRate" "1.1" 
-"AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "0" 
-"AttackRange" "250" 
-"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
-"ProjectileSpeed" "1900" 
+	"ArmorPhysical" "10" 
+	"MagicalResistance" "50" 
 
 
 
-"BountyXP" "63" 
-"BountyGoldMin" "11" 
-"BountyGoldMax" "11" 
+	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" "451" 
+	"AttackDamageMax" "455" 
+	"AttackRate" "1.1" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "0" 
+	"AttackRange" "250" 
+	"ProjectileModel" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf" 
+	"ProjectileSpeed" "1900" 
 
 
 
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-"MovementSpeed" "350" 
-"MovementTurnRate" "0.5" 
+	"BountyXP" "63" 
+	"BountyGoldMin" "11" 
+	"BountyGoldMax" "11" 
 
 
 
-"StatusHealth" "2200" 
-"StatusHealthRegen" "1" 
-"StatusMana" "150" 
-"StatusManaRegen" "1" 
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "350" 
+	"MovementTurnRate" "0.5" 
 
 
 
-"TeamName" "DOTA_TEAM_BADGUYS" 
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-"AttackType"    "pierce"
-"ArmorType"     "medium" 
+	"StatusHealth" "2200" 
+	"StatusHealthRegen" "1" 
+	"StatusMana" "150" 
+	"StatusManaRegen" "1" 
+
+
+
+	"TeamName" "DOTA_TEAM_BADGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	"AttackType"    "pierce"
+	"ArmorType"     "medium" 
 
 
 
 
-"VisionDaytimeRange" "800" 
-"VisionNighttimeRange" "800" 
+	"VisionDaytimeRange" "800" 
+	"VisionNighttimeRange" "800" 
 
-"PathfindingSearchDepthScale" "0.75" //0.3
+	"PathfindingSearchDepthScale" "0.75" //0.3
 
-"vscripts"	"AI\18_wave_creeps.lua" //
+	"vscripts"	"AI\18_wave_creeps.lua" //
 
 
-"HasInventory" "0" 
+	"HasInventory" "0" 
+
+	"Creature"
+	{
+		"AttachWearables"
+		{
+			"Wearable1"		{	"ItemDef"		"498"		} 
+		}
+	}
 }
 
 "19_wave_creep" 

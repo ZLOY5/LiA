@@ -12,22 +12,11 @@ function Spawn(entityKeyValues)
 	ABILITY_15_megaboss_silence = thisEntity:FindAbilityByName("15_megaboss_silence")
 	thisEntity:SetContextThink( "15_megaboss_think", Think15Wave , 2)
 
-	Timers:CreateTimer(0.01,function()
+	Timers:CreateTimer(0.1,function()
 		
-	if not thisEntity:IsIllusion() then
-		local mult = Survival:GetHeroCount(false)
-		local hp = 24500 + 1500*mult
-		local armor = 65 + 15*mult
-		local dmg_min = 2300 + 150*mult
-		local dmg_max = dmg_min + 50
-
-		thisEntity:SetMaxHealth(hp)
-		thisEntity:SetBaseMaxHealth(hp)
-		thisEntity:SetHealth(hp)
-		thisEntity:SetPhysicalArmorBaseValue(armor)
-		thisEntity:SetBaseDamageMin(dmg_min)	
-		thisEntity:SetBaseDamageMax(dmg_max)
-	end
+	
+	thisEntity:AddNewModifier(thisEntity,nil,"modifier_megaboss_three_stats",nil)
+	
 
 	end)
 end

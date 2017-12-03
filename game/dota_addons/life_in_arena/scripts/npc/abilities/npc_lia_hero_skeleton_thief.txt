@@ -170,6 +170,15 @@
 					}
 				}
 			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/SkeletonThief/WindWalk.lua"
+					"Function"		"OnDestroy"
+				}
+			}
 		}
 	}
   }
@@ -259,15 +268,6 @@
          	"MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
 			//"MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
         }
-
-        "OnDestroy"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/SkeletonThief/Fury.lua"
-				"Function"		"OnDestroy"
-			}
-		}
       }
     }
   }

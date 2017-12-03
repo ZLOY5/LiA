@@ -1174,30 +1174,32 @@
 
 
 "BaseClass" "npc_dota_creature" 
-"Model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl" 
-"SoundSet" "n_creep_Ranged" 
+"Model" "models/heroes/enigma/enigma.vmdl" 
+"SoundSet" "Hero_Enigma" 
 "ModelScale" "1.1" 
 "Level" "1" 
-"ProjectileModel" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf" 
-"ProjectileSpeed" "1900" 
+
 "precache"
 {
-	"model" "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
-	"particle" "particles/units/heroes/hero_dragon_knight/dragon_knight_elder_dragon_corrosive.vpcf"
+	"model" "models/heroes/enigma/enigma.vmdl"
+	"particle" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf"
+	"particle" "particles/units/heroes/hero_enigma/enigma_ambient_eyes.vpcf"
+	"particle" "particles/units/heroes/hero_enigma/enigma_ambient_body.vpcf"
+	"soundfile" "soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
 }
 		
 "Creature"
 {
 	"AttachWearables"
 	{
-		"Wearable1"		{	"ItemDef"		"611"		} 
+		"Wearable1"		{	"ItemDef"		"498"		} 
 	}
 }
 
 
 
 "Ability1" "wave_18_bash" 
-"Ability2" "wave_18_death" 
+"Ability2" "" 
 "Ability3" "" 
 "Ability4" "" 
 "Ability5" "" 
@@ -1219,7 +1221,8 @@
 "AttackAnimationPoint" "0.3" 
 "AttackAcquisitionRange" "900" 
 "AttackRange" "250" 
-
+"ProjectileModel" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf" 
+"ProjectileSpeed" "1900" 
 
 
 

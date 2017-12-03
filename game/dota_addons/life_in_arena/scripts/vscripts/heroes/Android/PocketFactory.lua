@@ -22,7 +22,7 @@ function BuildPocketFactory( event )
 	caster.pocket_factory:SetHullRadius(sizeBuild)
 	Timers:CreateTimer(0.01,
 	function()
-		ResolveNPCPositions(point,sizeBuild*2)
+		ResolveNPCPositions(point,288)
 		FindClearSpaceForUnit(caster.pocket_factory, point, true)
 	end)
 	caster.pocket_factory:SetControllableByPlayer(caster:GetPlayerID(), true)

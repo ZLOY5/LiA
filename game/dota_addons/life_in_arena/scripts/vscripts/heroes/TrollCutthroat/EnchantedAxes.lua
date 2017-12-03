@@ -197,9 +197,7 @@ function WhirlingAxesMeleeHit( keys )
 	end
 end
 
-function OnDestroy( event )
+function ApplyPhase( event )
 	local caster = event.caster	
-
-	ResolveNPCPositions(caster:GetAbsOrigin(),25)
-
+	FindClearSpaceForUnit_IgnoreNeverMove(caster, caster:GetAbsOrigin(), true)
 end

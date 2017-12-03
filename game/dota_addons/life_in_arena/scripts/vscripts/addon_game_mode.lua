@@ -70,6 +70,8 @@ function Precache( context )
 		--Голем
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_fire_immolation_child.vpcf", context)			
 		PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf", context)		
+		--Butcher
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_undying.vsndevts", context)
 
 		PrecacheUnitByNameAsync("npc_dota_hero_terrorblade", function(...) end)
 		PrecacheUnitByNameAsync("npc_dota_hero_mirana", function(...) end)
