@@ -13,6 +13,12 @@ modifier_wave_16_evasion_extreme = class({})
 
 --------------------------------------------------------------------------------
 
+function modifier_wave_16_evasion_extreme:IsHidden()
+	return true
+end
+
+--------------------------------------------------------------------------------
+
 function modifier_wave_16_evasion_extreme:OnCreated( kv )
 	self.evasion = self:GetAbility():GetSpecialValueFor( "evasion" )
 end

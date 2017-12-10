@@ -2,11 +2,24 @@
 
 var g_ScoreboardHandle = null;
 
-
+var scoreboardDifficulty = $( "#ScoreboardDifficulty" );
+if (Game.GetMapInfo().map_display_name.indexOf("extreme") != -1)
+{
+	scoreboardDifficulty.text = $.Localize( "#end_screen_extreme_difficulty" ) ;	
+}
+else if (Game.GetMapInfo().map_display_name.indexOf("light") != -1)
+{
+	scoreboardDifficulty.text = $.Localize( "#end_screen_light_difficulty" ) ;	
+}
+else
+{
+	scoreboardDifficulty.text = $.Localize( "#end_screen_normal_difficulty" ) ;	
+}
 
 function SetFlyoutScoreboardVisible( bVisible )
 {
 	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible",bVisible);
+
 }
 
 function ScheduledUpdate()

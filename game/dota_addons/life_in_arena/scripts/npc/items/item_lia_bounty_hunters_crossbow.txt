@@ -1,0 +1,76 @@
+"item_recipe_lia_bounty_hunters_crossbow"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1369"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"650"	
+	"ItemShopTags"					"damage;attack_speed"
+	"ItemKillable" 					"0" 
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+    "AbilityTextureName"    		"recipe"
+	"ItemResult"					"item_lia_bounty_hunters_crossbow"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_battle_javelin;item_lia_demon_edge"
+	}
+}
+
+"item_lia_bounty_hunters_crossbow"
+{
+	"ID"							"1370"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\item_lia_bounty_hunters_crossbow.lua"
+	"ItemCost"						"1900"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"common"
+	"ItemAliases"					"bhc;bounty hunters crossbow;аозг;арбалет охотника за головами"
+	"AbilityTextureName"			"custom/lia_bounty_hunters_crossbow"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+	"AbilityCooldown"				"16"
+
+	"precache"
+	{
+		"particle"  "particles/custom/items/item_lia_bounty_hunters_crossbow.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage" "100"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_attack_speed" "35"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"pierce_chance" "25"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"active_pierce_chance" "50"
+		}
+		"05"
+		{
+			"var_type" "FIELD_FLOAT"
+			"active_duration" "5"
+		}
+	}
+}

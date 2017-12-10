@@ -26,6 +26,17 @@
 	transform: scaleX(1) scaleY(1);
 }
 
+#EndScreenDificulty
+{
+    color: white;
+    horizontal-align: center;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 20px;
+    font-weight: bold;
+	margin-bottom: 0px;
+	//visibility:  collapse;
+}
+
 #StatusScore
 {
     color: white;
@@ -77,9 +88,11 @@
 	horizontal-align: center;
 
 	text-transform: uppercase;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 	margin-top: -40px;
 	margin-right: 140px;
+
+	text-shadow: 1px 2px 2px black;
 }
 
 .EndScreenWindow
@@ -89,6 +102,20 @@
     flow-children: down;
     horizontal-align: right;
 	flow-children: down;
+}
+
+.EndScreenSocialMedia
+{
+    margin-top: 100px;
+    margin-right: 50px;
+    horizontal-align: right;
+    vertical-align: top;
+	flow-children: down;
+}
+
+.SocialMediaLink
+{
+	flow-children: right;
 }
 
 .AspectRatio4x3 .EndScreenWindow, .AspectRatio5x4 .EndScreenWindow
@@ -327,6 +354,7 @@
 {
 	//margin-top: 1px;
 	//margin-left: 1px;
+	text-shadow: 2px 2px 2px black;
 }
 
 .ScoreboardPanel Label

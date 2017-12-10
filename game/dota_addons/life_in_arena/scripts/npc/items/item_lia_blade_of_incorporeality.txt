@@ -1,0 +1,87 @@
+"item_recipe_lia_blade_of_incorporeality"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"1371"						
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                     "item_datadriven"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"500"	
+	"ItemShopTags"					"damage;attack_speed;evasion"
+	"ItemKillable" 					"0" 
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+    "AbilityTextureName"    		"recipe"
+	"ItemResult"					"item_lia_blade_of_incorporeality"
+	"ItemRequirements"
+	{
+		"01"						"item_lia_pantilus_blade;item_lia_magic_helm"
+	}
+}
+
+"item_lia_blade_of_incorporeality"
+{
+	"ID"							"1372"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\item_lia_blade_of_incorporeality.lua"
+	"ItemCost"						"1495"
+	"ItemKillable" 					"0" 
+	"ItemDroppable" 				"1"
+	"ItemSellable"                  "1"
+	"ItemPurchasable"		 		"1"
+	"ItemQuality"					"common"
+	"ItemAliases"					"boi;blade of incorporeality;кб;клинок бестелесности"
+	"AbilityTextureName"			"custom/lia_blade_of_incorporeality"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+	"AbilityCooldown"				"16"
+	"AbilityManaCost"				"80"
+
+	"precache"
+	{
+		"particle"  "particles/custom/items/item_lia_blade_of_incorporeality.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage" "35"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_attack_speed" "40"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_agility" "20"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_armor" "10"
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"evasion" "15"
+		}
+		"06"
+		{
+			"var_type" "FIELD_INTEGER"
+			"active_evasion" "75"
+		}
+		"07"
+		{
+			"var_type" "FIELD_INTEGER"
+			"active_duration" "4"
+		}
+	}
+}

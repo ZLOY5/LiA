@@ -1,3 +1,13 @@
+function CheckTarget(keys)
+    local target = keys.target
+    local caster = keys.caster
+
+    if not target:IsHero() and target:GetTeamNumber() == caster:GetTeamNumber() then
+        print("sosi")
+        return false
+    end
+end
+
 --[[
     Author: Bude
     Date: 30.09.2015.

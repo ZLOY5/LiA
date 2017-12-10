@@ -69,6 +69,21 @@ function OnUpdActionEnd( data )
 
 
 	}
+
+
+	var endScreenDificulty = $( "#EndScreenDificulty" );
+	if (Game.GetMapInfo().map_display_name.indexOf("extreme") != -1)
+	{
+		endScreenDificulty.text = $.Localize( "#end_screen_extreme_difficulty" ) ;	
+	}
+	else if (Game.GetMapInfo().map_display_name.indexOf("light") != -1)
+	{
+		endScreenDificulty.text = $.Localize( "#end_screen_light_difficulty" ) ;	
+	}
+	else
+	{
+		endScreenDificulty.text = $.Localize( "#end_screen_normal_difficulty" ) ;	
+	}
 	//
 	allscore = allscore + extraForTime;
 	//

@@ -159,11 +159,17 @@
 #LevelContainer,
 #KillsBossesContainer,
 #KillsCreepsContainer,
-#DeathsContainer,
-#TeamScoreContainer
+#DeathsContainer
 {
 	height: 100%;
 	width: 60px;
+	border-right: 1px solid #00000066;
+}
+
+#TeamScoreContainer
+{
+	height: 100%;
+	width: 120px;
 	border-right: 1px solid #00000066;
 }
 
@@ -349,9 +355,9 @@
 
 .ScoreCol_TeamScore
 {
-	width: 60px;
+	width: 120px;
 	text-align: center;
-	margin-left: -60px;
+	margin-left: -110px;
 }
 
 .ScoreCol_KillsBosses,

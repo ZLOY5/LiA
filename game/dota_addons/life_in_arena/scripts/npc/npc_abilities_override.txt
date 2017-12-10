@@ -11136,15 +11136,6 @@
 			"EffectName"			"particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
 			"EffectAttachType"		"follow_origin"	  
 	
-			"ThinkInterval"	"%duration"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Berserker\MadnessFix.lua"
-					"Function"		"MadnessFix"
-				}
-			}
 	    }
 	  } 
 	}
@@ -11602,7 +11593,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"zombie_base_health"		"200 400 600"
+				"zombie_base_health"		"200 300 400"
 			}
 			"02"
 			{
@@ -11617,24 +11608,19 @@
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"zombie_butcher_damage_percent"		"20 30 40"
+				"health_precent_for_zombie"			"20 15 10"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"health_precent_for_zombie"			"20 15 10"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"zombie_limit"			"4 5 6"
 			}
-			"07"
+			"06"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"zombie_replenish_time"		"20"
 			}
-			"08"
+			"07"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"circle_radius"			"100"
@@ -28496,6 +28482,141 @@
 	  }
 	}
 	//End of file npc_lia_hero_taur.txt
+
+
+	//Start of file npc_lia_hero_tauren_champion.txt
+	"tauren_champion_crushing_totem"
+	{
+	  "BaseClass"              "ability_lua"
+	  "ScriptFile"			 "heroes\TaurenChampion\tauren_champion_crushing_totem.lua"
+	
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityTextureName"     "earthshaker_echo_slam"
+	
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "1"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AbilityCooldown"        "10"
+	  "AbilityManaCost"        "100"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"     	 	"FIELD_INTEGER"
+	      "bonus_attack_speed"  		"30 50 70"
+	    }
+	    "02"
+	    {
+	      "var_type"      	"FIELD_INTEGER"
+	      "cleave_damage_percent"   	"60 70 80"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "attacks_count"      "2 3 4"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "cleave_starting_width"     "150"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "cleave_ending_width"      "200"
+	    }
+	    "06"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "cleave_distance"     "200"
+	    }
+	    "07"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "duration"      "6"
+	    }
+	  } 
+	}
+	
+	"tauren_champion_accumulated_rage"
+	{
+	  "BaseClass"              "ability_lua"
+	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_accumulated_rage.lua"
+	
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityTextureName"     "earthshaker_aftershock"
+	
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AbilityCooldown"        "10"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "max_damage_blocked"      "30 50 70"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "min_damage_blocked"     "100"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "absorption_count"      "2 3 4"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "health_lost_threshold_percent"     "12"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "damage_per_stack"      "7 14 21"
+	    }
+	    "06"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "shield_cooldown"      "12"
+	    }
+	  } 
+	}
+	
+	"tauren_champion_finish_off"
+	{
+	  "BaseClass"              "ability_lua"
+	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_finish_off.lua"
+	
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityTextureName"     "earthshaker_enchant_totem"
+	
+	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "5"
+	  "LevelsBetweenUpgrades"  "4"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "critical_damage"      "250 275 300"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "attack_count"     "3"
+	    }
+	  } 
+	}
+	//End of file npc_lia_hero_tauren_champion.txt
 
 
 	//Start of file npc_lia_hero_time_lord.txt

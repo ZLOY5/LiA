@@ -10,6 +10,7 @@
 	<Panel hittest="false" class="EndScreenRoot">
 		<Panel hittest="false" class="EndScreenWindow">
 			<Label id="EndScreenVictory" text="" />
+			<Label id="EndScreenDificulty" class="TitleFont" text="Dificulty: sosite" />
 			<Label hittest="false" id="StatusScore" class="TitleFont" text=" " />	
 			<Panel class="Legend">
 				<Panel class="LegendPanel ScoreCol_TeamInfo" />
@@ -30,6 +31,16 @@
 			<Button id="CloseButton" onactivate="Game.FinishGame();">
 				<Label text="#CustomEndScreenClose" />
 			</Button>
-		</Panel>
+			<Panel hittest="false" class="EndScreenSocialMedia">
+				<Panel hittest="false" id="EndScreenVK" class="SocialMediaLink">
+					<Image src="file://{images}/custom_game/upgrades/upgrade_attack_speed.png"/>
+					<Label id="Vk" text="kontaktik" />
+				</Panel>
+				<Panel hittest="false" id="EndScreenDiscord" class="SocialMediaLink">
+					<Image src="file://{images}/custom_game/upgrades/upgrade_attack_speed.png"/>
+					<Label id="Discord" text="discordic" />
+				</Panel>
+			</Panel>
+		</Panel>	
 	</Panel>
 </root>
