@@ -13,7 +13,7 @@ function Incinerate( keys )
 	local caster = keys.caster
 	local target = keys.target
 
-	if caster:GetTeamNumber() == target:GetTeamNumber() then 
+	if caster:GetTeamNumber() == target:GetTeamNumber() or caster:PassivesDisabled() then 
 		return 
 	end
 
