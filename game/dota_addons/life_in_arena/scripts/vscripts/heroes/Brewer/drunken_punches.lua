@@ -5,6 +5,9 @@ local damageType = event.ability:GetAbilityDamageType()
 local casterSTR = caster:GetStrength()
 local return_damage = casterSTR*event.Coefficient 
 
+if caster:PassivesDisabled() then
+	return
+end
 
 local damage_table = { 
   attacker = caster,
