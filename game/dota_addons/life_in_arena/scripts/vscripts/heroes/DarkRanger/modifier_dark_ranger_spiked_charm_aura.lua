@@ -22,7 +22,7 @@ end
 
 function modifier_dark_ranger_spiked_charm_aura:OnTakeDamage(params)
 
-	if self:GetParent():PassivesDisabled() then
+	if self:GetCaster():PassivesDisabled() then
 		return
 	end
 
