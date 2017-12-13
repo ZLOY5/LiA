@@ -9,7 +9,7 @@ function illusions( event )
 	local ability = event.ability
 	local attacker = event.attacker
 	
-	if caster:IsIllusion() then 
+	if caster:IsIllusion() or caster:PassivesDisabled() then 
 		return 
 	end
 
