@@ -4,6 +4,10 @@ function StackCountIncrease(keys)
     local maxStack = keys.Stack
     local stackTime = ability:GetSpecialValueFor("stackTime")
     local attackGameTime = GameRules:GetGameTime()
+    
+    if caster:PassivesDisabled() then
+        return
+    end
 
     ability.lastExplosionTime = ability.lastExplosionTime or 0
     
