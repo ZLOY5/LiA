@@ -1,6 +1,10 @@
 function Bash(event)
 	local caster = event.caster
 	local ability = event.ability
+	
+	if caster:PassivesDisabled() then
+		return
+	end
 
 	if caster:IsIllusion() then
 		return
