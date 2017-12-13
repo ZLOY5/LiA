@@ -117,60 +117,46 @@
 
 "araman_armor_of_darkness"
 {
-  	"BaseClass"               "ability_datadriven"
-  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  	"AbilityTextureName"      "custom/araman_armor_of_darkness"
+  "BaseClass"		"ability_lua"
+  "ScriptFile"		"heroes/Araman/araman_armor_of_darkness.lua"
 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-  
-	"AbilitySpecial"
-	{
-	    "01"
-	    {
-	      	"var_type"      "FIELD_INTEGER"
-	      	"incoming_damage_percentage"  "-10 -15 -20"
-	    }
-		"02"
-	    {
-	      	"var_type"      "FIELD_INTEGER"
-	      	"bonus_armor"  "4 8 12"
-	    }
-	}
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "custom/araman_armor_of_darkness"
 
-  	"Modifiers"
-  	{   
-    	"modifier_araman_armor_of_darkness"
-    	{
-    		"IsHidden"	"1"
-      		"Passive"  "1"
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
 
-      		"Properties"
-      		{
-	  			"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-        		"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
-      		}     
-    	}
-  	} 
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      	"var_type"      "FIELD_INTEGER"
+      	"incoming_damage_percentage"  "-10 -15 -20"
+    }
+	"02"
+    {
+      	"var_type"      "FIELD_INTEGER"
+      	"bonus_armor"  "4 8 12"
+    }
+  } 
 }
 
 "araman_morale"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Araman/araman_morale.lua"
+
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityTextureName"			"night_stalker_crippling_fear"
-	
+
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
-	
+
 	"AbilityCastRange"	"800"
-	
-	// Casting
+
 	"AbilitySpecial"
 	{
 		"01"
@@ -183,31 +169,10 @@
 			"var_type"				"FIELD_INTEGER"
 			"bonus_damage_percentage"	"20 30 40"
 		}
-	}
-	
-  
-	"Modifiers"
-	{
-		"modifier_araman_morale"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-	
-			"Aura"          	"modifier_araman_morale_buff"
-			"Aura_Radius"   	"%radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-		}
-
-		"modifier_araman_morale_buff"
-		{
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_percentage"
-			}
-		}
-	}
+	} 
 }
+
+
 
 
 "araman_power_of_scourge"

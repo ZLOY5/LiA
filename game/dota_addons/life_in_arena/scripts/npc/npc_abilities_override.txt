@@ -9268,60 +9268,46 @@
 	
 	"araman_armor_of_darkness"
 	{
-	  	"BaseClass"               "ability_datadriven"
-	  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  	"AbilityTextureName"      "custom/araman_armor_of_darkness"
+	  "BaseClass"		"ability_lua"
+	  "ScriptFile"		"heroes/Araman/araman_armor_of_darkness.lua"
 	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-	  
-		"AbilitySpecial"
-		{
-		    "01"
-		    {
-		      	"var_type"      "FIELD_INTEGER"
-		      	"incoming_damage_percentage"  "-10 -15 -20"
-		    }
-			"02"
-		    {
-		      	"var_type"      "FIELD_INTEGER"
-		      	"bonus_armor"  "4 8 12"
-		    }
-		}
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      "custom/araman_armor_of_darkness"
 	
-	  	"Modifiers"
-	  	{   
-	    	"modifier_araman_armor_of_darkness"
-	    	{
-	    		"IsHidden"	"1"
-	      		"Passive"  "1"
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
 	
-	      		"Properties"
-	      		{
-		  			"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-	        		"MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
-	      		}     
-	    	}
-	  	} 
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      	"var_type"      "FIELD_INTEGER"
+	      	"incoming_damage_percentage"  "-10 -15 -20"
+	    }
+		"02"
+	    {
+	      	"var_type"      "FIELD_INTEGER"
+	      	"bonus_armor"  "4 8 12"
+	    }
+	  } 
 	}
 	
 	"araman_morale"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Araman/araman_morale.lua"
+	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityTextureName"			"night_stalker_crippling_fear"
-		
+	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
-		
+	
 		"AbilityCastRange"	"800"
-		
-		// Casting
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -9334,31 +9320,10 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_damage_percentage"	"20 30 40"
 			}
-		}
-		
-	  
-		"Modifiers"
-		{
-			"modifier_araman_morale"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-		
-				"Aura"          	"modifier_araman_morale_buff"
-				"Aura_Radius"   	"%radius"
-				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-			}
-	
-			"modifier_araman_morale_buff"
-			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_percentage"
-				}
-			}
-		}
+		} 
 	}
+	
+	
 	
 	
 	"araman_power_of_scourge"
@@ -28488,7 +28453,7 @@
 	"tauren_champion_crushing_totem"
 	{
 	  "BaseClass"              "ability_lua"
-	  "ScriptFile"			 "heroes\TaurenChampion\tauren_champion_crushing_totem.lua"
+	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_crushing_totem.lua"
 	
 	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "AbilityTextureName"     "earthshaker_echo_slam"
@@ -28504,13 +28469,13 @@
 	  {
 	    "01"
 	    {
-	      "var_type"     	 	"FIELD_INTEGER"
-	      "bonus_attack_speed"  		"30 50 70"
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_attack_speed"      "30 50 70"
 	    }
 	    "02"
 	    {
-	      "var_type"      	"FIELD_INTEGER"
-	      "cleave_damage_percent"   	"60 70 80"
+	      "var_type"        "FIELD_INTEGER"
+	      "cleave_damage_percent"     "100"
 	    }
 	    "03"
 	    {
@@ -28535,7 +28500,57 @@
 	    "07"
 	    {
 	      "var_type"      "FIELD_FLOAT"
-	      "duration"      "6"
+	      "duration"      "3 3.5 4"
+	    }
+	  } 
+	}
+	
+	"tauren_champion_champions_jump"
+	{
+	  "BaseClass"              "ability_lua"
+	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_champions_jump.lua"
+	
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	  "AbilityTextureName"     "earthshaker_fissure"
+	
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AbilityCastRange"        "400"
+	  "AbilityCastPoint"        "0.3"
+	  "AbilityCooldown"        "12 10 8"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "land_damage"      "100 175 250"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "max_distance"     "400"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "radius"      "225"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "stun_duration"     "1.5"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "duration"     "2"
 	    }
 	  } 
 	}
@@ -28545,31 +28560,31 @@
 	  "BaseClass"              "ability_lua"
 	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_accumulated_rage.lua"
 	
-	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "AbilityTextureName"     "earthshaker_aftershock"
 	
 	  "MaxLevel"               "3"
 	  "RequiredLevel"          "2"
 	  "LevelsBetweenUpgrades"  "2"
 	
-	  "AbilityCooldown"        "10"
+	  "AbilityCooldown"        "12"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "max_damage_blocked"      "30 50 70"
+	      "max_damage_blocked_percent"      "5 10 15"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "min_damage_blocked"     "100"
+	      "min_damage_blocked_percent"     "1"
 	    }
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "absorption_count"      "2 3 4"
+	      "absorption_count"      "3 4 5"
 	    }
 	    "04"
 	    {
@@ -28583,7 +28598,7 @@
 	    }
 	    "06"
 	    {
-	      "var_type"      "FIELD_INTEGER"
+	      "var_type"      "FIELD_FLOAT"
 	      "shield_cooldown"      "12"
 	    }
 	  } 
@@ -28607,12 +28622,17 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "critical_damage"      "250 275 300"
+	      "crit_multiplier"      "250 275 300"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "attack_count"     "3"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "duration"     "5 10 15"
 	    }
 	  } 
 	}
