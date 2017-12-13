@@ -50,6 +50,10 @@ function moon_glaive_start_create_dummy( keys )
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
+	
+	if caster:PassivesDisabled() then
+		return
+	end
 
 	if caster:GetTeamNumber() ~= target:GetTeamNumber() then
 		local dummy = CreateUnitByName( "npc_dummy_blank", target:GetAbsOrigin(), false, caster, caster, target:GetTeamNumber() )
