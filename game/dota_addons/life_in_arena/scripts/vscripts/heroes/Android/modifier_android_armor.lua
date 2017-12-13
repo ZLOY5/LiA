@@ -23,6 +23,10 @@ function modifier_android_armor:OnRefresh(kv)
 end
 
 function modifier_android_armor:GetModifierPhysical_ConstantBlock(params) 
+	if self:GetParent():PassivesDisabled() then
+		return 0	
+	end
+	
 	if not params.inflictor then
 		if (params.original_damage - self.damage_block) <= self.minimumDamage then 
 			return params.original_damage
