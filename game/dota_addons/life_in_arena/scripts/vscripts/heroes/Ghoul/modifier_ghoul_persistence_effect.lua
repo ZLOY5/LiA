@@ -8,6 +8,10 @@ function modifier_ghoul_persistence_effect:DeclareFunctions()
 end
 
 function modifier_ghoul_persistence_effect:GetModifierConstantHealthRegen(params)
+	if self:GetCaster():PassivesDisabled() then
+		return 0
+	end
+	
 	local t = CustomNetTables:GetTableValue("custom_modifier_state","GhoulPersistence"..tostring(self:GetCaster():entindex()))
 	if not t then return end
 	
