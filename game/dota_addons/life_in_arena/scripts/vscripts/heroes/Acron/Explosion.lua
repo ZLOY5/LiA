@@ -16,7 +16,7 @@ function Explosion(event)
 	end
 
 	local battleFevor = caster:FindAbilityByName("acron_battle_fevor")
-	if battleFevor then
+	if battleFevor and not caster:PassivesDisabled() then
 		battleFevor:OnExplosion()
 	end
 end
