@@ -115,128 +115,6 @@
   }
 }
 
-"general_rumble_new"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-  "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
-  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-  "FightRecapLevel"         "1"
-  
-    "AbilityTextureName"     "centaur_hoof_stomp"
- 	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-	
-  // Stats
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastPoint"      "0.0"
-  "AbilityCooldown"       "10.0"
-  "AbilityManaCost"       "60 80 100"
-	"AbilityCastRange"	"275 275 300"
-	
-  // Special
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"            "FIELD_INTEGER"
-      "radius"              "150"
-    }
-    "02"
-    {
-      "var_type"            "FIELD_FLOAT"
-      "ability_duration"    "1.5 2.0 2.5"
-    }
-    "03"
-    {
-      "var_type"              "FIELD_INTEGER"
-      "stomp_damage"          "40 120 240"
-    }
-    "04"
-    {
-      "var_type"             "FIELD_INTEGER"
-      "attack_slow"          "-30 -50 -70"
-    }
-    "05"
-    {
-      "var_type"            "FIELD_FLOAT"
-      "duration"            "6.0"
-    }
-  }
-
-  "precache"
-  {
-    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
-    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-  }
-
-  "OnSpellStart"
-  {
-    "FireEffect"
-    {
-      "EffectName"         "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-      "EffectAttachType"   "follow_origin"
-      "EffectRadius"       "%radius"
-      "Target"             "CASTER"
-      "ControlPoints"
-      {
-        "01"  "%radius 0 %radius"
-      }
-    }
-
-    "FireSound"
-    {
-      "EffectName"    "Hero_Centaur.HoofStomp"
-      "Target"        "CASTER"
-    }
-    "ActOnTargets"
-    {
-      "Target"
-      {
-        "Center"        "CASTER"
-        "Radius"        "%radius"
-        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-      }
-
-      "Action"
-      {
-        "Damage"
-        {
-          "Target"  "TARGET"
-          "Type"    "DAMAGE_TYPE_MAGICAL"
-          "Damage"  "%stomp_damage"
-        }
-
-        "ApplyModifier"
-        {
-          "Target"        "TARGET"
-          "ModifierName"  "modifier_general_rumble"
-        }
-      }
-    }   
-  }
-
-  "Modifiers"
-  {
-    "modifier_general_rumble"
-    {
-      "IsDebuff"  "1"
-      "Duration"  "%duration"
-      
-      "Properties"
-      {
-        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_slow"
-      }
-    }
-  }
-}
-
-
 "general_dark_magic_flow"
 {
 	// General
@@ -371,107 +249,52 @@
 
 "general_furious_strike"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"AbilityTextureName"			                "chaos_knight_reality_rift"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
+  "BaseClass"     "ability_lua"
+  "ScriptFile"    "heroes/General/general_furious_strike.lua"
 
-	"AbilityCastRange"				"150"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_damage"		"60 120 180"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"		"150"
-		}
-	}
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+  "AbilityTextureName"    "chaos_knight_reality_rift"
 
-		"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_furious_strike"
-	}	
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
 
-	"Modifiers"
-	{
-		"modifier_furious_strike"
-		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-			"Orb"
-			{
-				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
-			}		
-			"OnOrbImpact"
-			{
-				"Damage"
-				{
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"%radius"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-					"Type" "DAMAGE_TYPE_PHYSICAL"
-					"Damage" "%bonus_damage"
-				}
-			}
-		}
-	}
-}
-
-"general_magic_armor"
-{
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"      "centaur_return"
-
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-  
   "AbilitySpecial"
   {
     "01"
     {
-      "var_type"      "FIELD_INTEGER"
-      "incoming_damage_percentage"  "-15 -30 -45"
+      "var_type"        "FIELD_INTEGER"
+      "bonus_damage"    "60 120 180"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "radius"    "150"
     }
   }
+}
 
-  		"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_magic_armor"
-	}	
-  
-  "Modifiers"
-  {   
-    "modifier_magic_armor"
-    {
-      "Passive"  "1"
-	  "IsHidden"	"1"
-	  
-      "Properties"
+"general_magic_armor"
+{
+  "BaseClass"     "ability_lua"
+  "ScriptFile"    "heroes/General/general_magic_armor.lua"
+
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"      "centaur_return"
+
+  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+  "MaxLevel"               "3"
+  "RequiredLevel"          "5"
+  "LevelsBetweenUpgrades"  "4"
+
+  "AbilitySpecial"
+  {
+    "01"
       {
-        "MODIFIER_PROPERTY_INCOMING_PHYSICAL_DAMAGE_PERCENTAGE" "%incoming_damage_percentage" 
-      }     
-    }
-  } 
+        "var_type"      "FIELD_INTEGER"
+        "incoming_damage_percentage"  "-15 -30 -45"
+      }
+  }
 }

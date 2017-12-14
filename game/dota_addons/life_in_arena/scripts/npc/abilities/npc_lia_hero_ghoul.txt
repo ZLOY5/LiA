@@ -243,29 +243,17 @@
 
 "ghoul_mortal_strike"
 {
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"life_stealer_open_wounds"
+	"BaseClass"		"ability_lua"
+	"ScriptFile"		"heroes/Ghoul/ghoul_mortal_strike.lua"
 
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
+	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"    "life_stealer_open_wounds"
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_mult"					"200 300 400"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"13"
-		}
-	}
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
 
 	"precache"
 	{
@@ -273,69 +261,17 @@
 		"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
 	}
 
-	"Modifiers"
+	"AbilitySpecial"
 	{
-		"modifier_ghoul_mortal_strike"
+		"01"
 		{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
-		    "OnAttackStart"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName" 	"modifier_ghoul_mortal_strike_crit"
-		            "Target" 		"CASTER"
-		        }
-
-		        "Random"
-		        {
-		            "Chance" "%crit_chance"
-		            "OnSuccess"
-		            {
-		            	"FireSound"
-				        {
-				        	"EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
-				        	"Target"		"CASTER"
-				        }
-
-						"FireEffect"
-						{
-							"EffectName"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-							"EffectAttachType"	"start_at_customorigin"
-							
-							"ControlPointEntities"
-							{
-								"TARGET"	"follow_origin"
-								"TARGET"	"follow_origin"
-							}
-						}
-
-		                "ApplyModifier"
-		                {
-		                    "ModifierName" 	"modifier_ghoul_mortal_strike_crit"
-		                    "Target"    	"CASTER"    
-		                }        
-		            }
-		        }
-		    }
+			"var_type"					"FIELD_INTEGER"
+			"crit_multiplier"					"200 300 400"
 		}
-
-		"modifier_ghoul_mortal_strike_crit"
+		"02"
 		{
-		    "IsHidden"  "1"
-		    "Properties"
-		    {
-		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-		    }
-
-		    "OnAttackLanded"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName"  "modifier_ghoul_mortal_strike_crit"
-		            "Target"   		"CASTER"    
-		        }
-		    }
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"13"
 		}
 	}
 }
