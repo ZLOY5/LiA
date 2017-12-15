@@ -32,7 +32,7 @@ function modifier_general_furious_strike:OnAttackLanded( params )
 		if self:GetParent() == params.attacker then
 
 			if self:GetParent():PassivesDisabled() then
-				return 0
+				return
 			end
 			
 			local hTarget = params.target
