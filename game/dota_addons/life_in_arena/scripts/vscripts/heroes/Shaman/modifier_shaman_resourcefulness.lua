@@ -54,6 +54,10 @@ end
 function modifier_shaman_resourcefulness:OnDeath(params)
 	if IsServer() then
 		if params.attacker == self:GetParent() and params.attacker:GetTeam() ~= params.unit:GetTeam() and not self:GetParent():IsIllusion() and not params.unit:IsIllusion() then
+			if self:GetParent():PassivesDisabled() then
+				return
+			end
+			
 			local ability = self:GetAbility()
 			ability.kill_stack = ability.kill_stack + 1
 			if ability.kill_stack >= ability:GetSpecialValueFor("kills_for_bonus_agility") then
