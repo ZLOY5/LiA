@@ -53,6 +53,10 @@ function OnAttackStart(event)
 	local level = ability:GetLevel()
 	local chance = ability:GetSpecialValueFor("crit_chance")
 
+	if caster:PassivesDisabled() then
+		return
+	end
+	
 	local random = RandomInt(1,100)
 
 	if random <= caster.skeletonThiefCritChance then
