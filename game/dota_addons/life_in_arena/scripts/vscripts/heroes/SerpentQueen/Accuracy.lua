@@ -6,6 +6,10 @@ function Bash(event)
 		if event.caster:IsIllusion() then
 			return 
 		end
+		
+		if event.caster:PassivesDisabled() then
+			return 
+		end
 
 		local damageTable = {
 							 	victim = event.target, 
