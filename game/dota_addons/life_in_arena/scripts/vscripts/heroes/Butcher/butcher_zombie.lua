@@ -6,14 +6,45 @@ function butcher_zombie:GetIntrinsicModifierName()
 	return "modifier_butcher_zombie"
 end
 
-function butcher_zombie:OnAbilityPhaseStart()
-	if IsServer() then
+function butcher_zombie:CastFilterResultTarget( hTarget )
+	if IsServer() then 
 		local modifier_stacks = self:GetCaster():FindModifierByName("modifier_butcher_zombie"):GetStackCount()
 		if modifier_stacks == 0 then
-			SendErrorMessage(self:GetCaster():GetPlayerOwnerID(), "#lia_hud_error_butcher_zombie")
-			return false
+			return UF_FAIL_CUSTOM
 		end
-		return true
+	end
+
+	return UnitFilter(hTarget,DOTA_UNIT_TARGET_TEAM_BOTH,DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,DOTA_UNIT_TARGET_FLAG_NONE,self:GetCaster():GetTeamNumber())
+
+end
+
+function butcher_zombie:GetCustomCastErrorTarget( hTarget )
+	if IsServer() then 
+		local modifier_stacks = self:GetCaster():FindModifierByName("modifier_butcher_zombie"):GetStackCount()
+		if modifier_stacks == 0 then
+			return "#lia_hud_error_butcher_zombie"
+		end
+	end
+end
+
+function butcher_zombie:CastFilterResultLocation( vLocation )
+	if IsServer() then 
+		local modifier_stacks = self:GetCaster():FindModifierByName("modifier_butcher_zombie"):GetStackCount()
+		if modifier_stacks == 0 then
+			return UF_FAIL_CUSTOM
+		end
+	end
+
+	return UF_SUCCESS
+
+end
+
+function butcher_zombie:GetCustomCastErrorLocation( vLocation )
+	if IsServer() then 
+		local modifier_stacks = self:GetCaster():FindModifierByName("modifier_butcher_zombie"):GetStackCount()
+		if modifier_stacks == 0 then
+			return "#lia_hud_error_butcher_zombie"
+		end
 	end
 end
 

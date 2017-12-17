@@ -245,6 +245,7 @@ function Survival:OnPlayerChat(event)
 
         if event.text == "win" then
             Survival:EndGame(DOTA_TEAM_GOODGUYS)
+            GameRules:SetPostGameTime(3600)
         end
         
         if event.text == "zoom" then

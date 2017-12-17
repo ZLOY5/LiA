@@ -90,7 +90,7 @@
 	text-transform: uppercase;
 	margin-bottom: 15px;
 	margin-top: -40px;
-	margin-right: 140px;
+	margin-right: 0px;
 
 	text-shadow: 1px 2px 2px black;
 }
@@ -107,10 +107,80 @@
 .EndScreenSocialMedia
 {
     margin-top: 100px;
-    margin-right: 50px;
+    margin-right: 0px;
     horizontal-align: right;
     vertical-align: top;
 	flow-children: down;
+}
+
+.SocialMediaButton
+{
+    margin-bottom: 10px;
+    margin-right: 8px;
+    height: 40px;
+    width: 255px;
+   // background-color: #303030DE;
+    opacity: 0.8;
+    flow-children: right;
+}
+
+#DiscordButton:hover
+{
+	background-color: #7289DA;
+
+}
+
+#VKButton:hover
+{
+	background-color: #5181b8;
+
+}
+
+#TwitterButton:hover
+{
+	background-color: #00aced;
+
+}
+
+.SocialMediaLabel
+{
+    margin-right: 10px;
+    font-size: 20px;
+    color: #e6e6e6;
+    text-shadow: 2px 2px 2px black;
+    vertical-align: center;
+    horizontal-align: right;
+    flow-children: right;
+}
+
+#DiscordImage
+{
+	
+	margin-top: 0px;
+}
+
+#TwitterImage
+{
+	
+}
+
+.SocialMediaImagePanel
+{
+	width:55px;
+	height: 100%;
+}
+
+.SocialMediaLabelPanel
+{
+	margin-left: 10px;
+	height: 100%;
+	width: 100%;
+}
+
+.SocialMediaImage
+{
+    horizontal-align: center;
+    vertical-align: center;
 }
 
 .SocialMediaLink
@@ -136,7 +206,7 @@
     horizontal-align: right;
 	vertical-align: bottom;
 	width: 200px;
-	margin-right: 7px;
+	margin-right: 8px;
 }
 
 #CloseButton:hover

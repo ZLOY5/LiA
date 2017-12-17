@@ -32,14 +32,30 @@
 				<Label text="#CustomEndScreenClose" />
 			</Button>
 			<Panel hittest="false" class="EndScreenSocialMedia">
-				<Panel hittest="false" id="EndScreenVK" class="SocialMediaLink">
-					<Image src="file://{images}/custom_game/upgrades/upgrade_attack_speed.png"/>
-					<Label id="Vk" text="kontaktik" />
-				</Panel>
-				<Panel hittest="false" id="EndScreenDiscord" class="SocialMediaLink">
-					<Image src="file://{images}/custom_game/upgrades/upgrade_attack_speed.png"/>
-					<Label id="Discord" text="discordic" />
-				</Panel>
+				<Button id="DiscordButton" class="SocialMediaButton" onactivate="ExternalBrowserGoToURL( 'http://discord.me/lifeinarena')">
+					<Panel class="SocialMediaImagePanel">
+						<Image id="DiscordImage" class="SocialMediaImage" src="file://{images}/custom_game/discord_logo.png"/>
+					</Panel>
+					<Panel class="SocialMediaLabelPanel">
+						<Label class="SocialMediaLabel" text="discord.me/lifeinarena" />
+					</Panel>
+				</Button>
+				<Button id="VKButton" class="SocialMediaButton" onactivate="ExternalBrowserGoToURL( 'http://vk.com/lifeinarena')">
+					<Panel class="SocialMediaImagePanel">
+						<Image id="VkImage" class="SocialMediaImage" src="file://{images}/custom_game/vk_logo.png"/>
+					</Panel>
+					<Panel class="SocialMediaLabelPanel">
+						<Label class="SocialMediaLabel" text="vk.com/lifeinarena" />
+					</Panel>
+				</Button>
+				<Button id="TwitterButton" class="SocialMediaButton" onactivate="ExternalBrowserGoToURL( 'http://twitter.com/lifeinarena')">
+					<Panel class="SocialMediaImagePanel">
+						<Image id="TwitterImage" class="SocialMediaImage" src="file://{images}/custom_game/twitter_logo.png"/>
+					</Panel>
+					<Panel class="SocialMediaLabelPanel">
+						<Label class="SocialMediaLabel" text="twitter.com/lifeinarena" />
+					</Panel>
+				</Button>
 			</Panel>
 		</Panel>	
 	</Panel>

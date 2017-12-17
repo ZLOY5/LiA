@@ -1,12 +1,45 @@
 item_lia_hyper_boots = class({})
 
-LinkLuaModifier("modifier_hyper_boots","items/modifiers/item_lia_hyper_boots.lua",LUA_MODIFIER_MOTION_HORIZONTAL)
+LinkLuaModifier("modifier_hyper_boots","items/modifiers/modifier_hyper_boots.lua",LUA_MODIFIER_MOTION_HORIZONTAL)
+
+function item_lia_hyper_boots:CastFilterResultTarget( hTarget )
+	local nCasterID = self:GetCaster():GetPlayerOwnerID()
+	local nTargetID = hTarget:GetPlayerOwnerID()
+	
+
+	if IsServer() then 
+		if not hTarget:IsHero() and hTarget:GetTeamNumber() == self:GetCaster():GetTeamNumber() then
+			return UF_FAIL_CUSTOM
+		end
+
+		if self:GetCaster() == hTarget then
+			return UF_FAIL_CUSTOM
+		end
+	end
+
+	return UnitFilter(hTarget,DOTA_UNIT_TARGET_TEAM_BOTH,DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,DOTA_UNIT_TARGET_FLAG_NONE,self:GetCaster():GetTeamNumber())
+
+end
+
+function item_lia_hyper_boots:GetCustomCastErrorTarget( hTarget )
+	if IsServer() then 
+		if not hTarget:IsHero() and hTarget:GetTeamNumber() == self:GetCaster():GetTeamNumber() then
+			return "#cant_target_allied_creeps"
+		end
+
+		if self:GetCaster() == hTarget then
+			return "#dota_hud_error_cant_cast_on_self"
+		end
+	end
+end
 
 function item_lia_hyper_boots:OnSpellStart()
 	if IsServer() then
-		self.target = self:GetCursorTarget()
 		self.caster = self:GetCaster()
 		self.speed = self:GetSpecialValueFor("charge_speed")
+		self.target = self:GetCursorTarget()
+
+		self.vProjectileLocation = self.caster:GetOrigin()
 
 		self.ProjectileInfo =
 		{
@@ -27,6 +60,8 @@ function item_lia_hyper_boots:OnSpellStart()
 			}
 
 		self.caster:AddNewModifier( self.caster, self, "modifier_hyper_boots", kv )
+
+		EmitSoundOn("DOTA_Item.ForceStaff.Activate", self.caster)
 	end	
 end		
 
