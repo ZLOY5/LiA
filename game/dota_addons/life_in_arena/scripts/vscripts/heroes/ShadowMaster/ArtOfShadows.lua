@@ -3,6 +3,10 @@ require("heroes/ShadowMaster/Shadow")
 function ArtOfShadows(event)
 	local caster = event.caster
 	local ability = event.ability
+	
+	if caster:PassivesDisabled() then
+		return 
+	end
 
 	local shadowsMax = ability:GetSpecialValueFor("max_shadows")
 	if not ability.shadowsNumber then 
