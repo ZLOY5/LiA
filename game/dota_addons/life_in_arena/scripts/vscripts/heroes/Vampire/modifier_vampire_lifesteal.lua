@@ -28,6 +28,11 @@ end
 
 function modifier_vampire_lifesteal:OnDeath(params)
 	if IsServer() then 
+		
+		if self:GetParent():PassivesDisabled() then
+			return
+		end
+		
 		local parent = self:GetParent()
 		if params.attacker == self:GetParent() 
 		and not params.unit:IsBuilding() 
@@ -54,6 +59,11 @@ end
 function modifier_vampire_lifesteal:OnTakeDamage(params)
 	if IsServer() then
 		if params.record == self.lifesteal_record then
+			
+			if self:GetParent():PassivesDisabled() then
+				return
+			end
+			
 			local parent = self:GetParent()
 			local heal_percent = self:GetAbility():GetSpecialValueFor("lifesteal_percentage")*0.01
 			local heal = heal_percent*params.damage
