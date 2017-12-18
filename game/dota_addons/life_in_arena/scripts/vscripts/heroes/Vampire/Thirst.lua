@@ -6,6 +6,10 @@ function Thirst(event)
 	local health_percent = ability:GetSpecialValueFor("activation_health_percent")
 	local thirst_points_bonus = ability:GetSpecialValueFor("thirst_points_bonus")
 
+	if caster:PassivesDisabled() then
+		return 
+	end
+	
 	for _,unit in pairs(targets) do 
 		if unit:GetHealthPercent() < health_percent then 
 			if not caster:HasModifier("modifier_vampire_thirst_bonus") then 
