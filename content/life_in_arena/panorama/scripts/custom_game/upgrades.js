@@ -134,10 +134,10 @@ Players.GetCurrentUpgradeBonus = function(upgradeName,playerID)
 
 Players.GetUpgradeBonus = function(upgradeName,level)
 {
-	return upgradesInfo[upgradeName]["BonusPerLevel"]*level
+	return Math.floor(upgradesInfo[upgradeName]["BonusPerLevel"]*level*100)/100
 }
 
 Players.GetUpgradeBonusPerLevel = function(upgradeName)
 {
-	return upgradesInfo[upgradeName]["BonusPerLevel"]
+	return Math.floor(upgradesInfo[upgradeName]["BonusPerLevel"]*100)/100
 }

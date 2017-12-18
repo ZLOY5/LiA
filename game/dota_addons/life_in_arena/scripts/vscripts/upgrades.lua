@@ -93,7 +93,7 @@ function Upgrades:GetMaxLevel(upgradeName)
 end
 
 function Upgrades:GetLumberCost(upgradeName,level)
-	return Upgrades.info[upgradeName]["InitialLumberCost"]+ Upgrades.info[upgradeName]["LumberCostPerLevel"]*level
+	return Upgrades.info[upgradeName]["InitialLumberCost"] + Upgrades.info[upgradeName]["LumberCostPerLevel"]*level
 end
 
 function Upgrades:GetBonus(upgradeName,level)
