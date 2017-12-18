@@ -1,5 +1,10 @@
 function DealDamage( event )
 	local caster = event.caster
+	
+	if caster:PassivesDisabled() then
+		return
+	end
+	
 	local ability = event.ability
 	local target = event.target
 	local targets = event.target_entities
