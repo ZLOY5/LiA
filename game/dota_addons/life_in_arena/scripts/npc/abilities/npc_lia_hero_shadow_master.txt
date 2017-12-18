@@ -158,95 +158,116 @@
 
 "shadow_master_art_of_shadows"
 {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"        "custom/shadow_master_art_of_shadows"
+	"BaseClass"                 "ability_datadriven"
+	"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"AbilityTextureName"        "custom/shadow_master_art_of_shadows"
+
+	"MaxLevel"                  "3"
+	"RequiredLevel"             "2"
+	"LevelsBetweenUpgrades"     "2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+		    "var_type"                  "FIELD_INTEGER"
+		    "max_shadows"               "4 5 6"
+		}
+		"02"
+		{
+		    "var_type"                  "FIELD_INTEGER"
+		    "shadow_lifetime"           "8 10 12"
+		}
+		"03"
+		{
+		    "var_type"                  "FIELD_INTEGER"
+		    "shadow_attributes_perc"    "75 100 125"
+		}
+		"04"
+		{
+		    "var_type"                  "FIELD_INTEGER"
+		    "spawn_chance"              "17"
+		}
+	}
+
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+		    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
+		    "Function"          "HeroDied"
+		}
+	}
     
-    "MaxLevel"                  "3"
-    "RequiredLevel"             "2"
-    "LevelsBetweenUpgrades"     "2"
+    	"OnToggleOn"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_art_of_shadows"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}
+		}
+	}
 
-    "precache"
-    {
+	"OnToggleOff"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_art_of_shadows"
+			"Target"
+			{
+				"Center"  	"CASTER"
+				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+			}	
+		}
+	}
 
-    }
+	"Modifiers"
+	{
+		"modifier_art_of_shadows"
+		{
+		    "Passive"           "0"
 
-    "AbilitySpecial"
-    {
-        "01"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "max_shadows"               "4 5 6"
-        }
-        "02"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "shadow_lifetime"           "8 10 12"
-        }
-        "03"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "shadow_attributes_perc"    "75 100 125"
-        }
-        "04"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "spawn_chance"              "17"
-        }
-    }
+		    "Orb"
+		    {
+			"Priority"            "DOTA_ORB_PRIORITY_ABILITY"
+		    }
 
-    "OnOwnerDied"
-    {
-        "RunScript"
-        {
-            "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
-            "Function"          "HeroDied"
-        }
-    }
+		    "OnOrbImpact"
+		    {
+			"Random"
+			{
+			    "Chance"            "%spawn_chance"
+			    "OnSuccess"
+			    {
+				"RunScript"
+				{
+				    "ScriptFile"    "heroes/ShadowMaster/ArtOfShadows.lua"
+				    "Function"      "ArtOfShadows"
+				}
+			    }
+			}
+		    }  
+		}
 
-    "Modifiers"
-    {
-        "modifier_art_of_shadows"
-        {
-            "Passive"           "1"
-            
-            "Orb"
-            {
-                "Priority"            "DOTA_ORB_PRIORITY_ABILITY"
-            }
-            
-            "OnOrbImpact"
-            {
-                "Random"
-                {
-                    "Chance"            "%spawn_chance"
-                    "OnSuccess"
-                    {
-                        "RunScript"
-                        {
-                            "ScriptFile"    "heroes/ShadowMaster/ArtOfShadows.lua"
-                            "Function"      "ArtOfShadows"
-                        }
-                    }
-                }
-            }  
-        }
+		"modifier_art_of_shadows_shadow"
+		{
+		    "IsHidden"           "1"
 
-        "modifier_art_of_shadows_shadow"
-        {
-            "IsHidden"           "1"
-            
-            "OnDeath"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
-                    "Function"          "ShadowDeath"
-                }
-            }
- 
-        }
-    }
+		    "OnDeath"
+		    {
+			"RunScript"
+			{
+			    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
+			    "Function"          "ShadowDeath"
+			}
+		    }
+
+		}
+	}
 }
 
 "shadow_master_agility_of_shadows"
