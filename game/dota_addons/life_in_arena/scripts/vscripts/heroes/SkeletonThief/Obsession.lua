@@ -9,6 +9,10 @@ function Obsession(event)
 	if not ability.attacks then
 		ability.attacks = 0
 	end
+	
+	if caster:PassivesDisabled() then
+		return
+	end
 
 	ability.attacks = ability.attacks + 1
 
