@@ -1,6 +1,10 @@
 function ApplyBuffs(event)
 	local caster = event.caster
 	local ability = event.ability
+	
+	if caster:PassivesDisabled() then
+		return 
+	end
 
 	local duration = ability:GetSpecialValueFor("duration")
 
