@@ -44,6 +44,7 @@ if IsServer() then
 				CustomNetTables:SetTableValue("lia_player_table","UpgradesPlayer"..playerID,Upgrades.playersData[playerID])	
 				local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 				hero:AddNewModifier(hero,nil,"modifier_upgrades",nil)
+				hero:CalculateStatBonus()
 			end
 		end
 
