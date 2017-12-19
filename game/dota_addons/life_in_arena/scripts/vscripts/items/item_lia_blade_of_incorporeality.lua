@@ -36,6 +36,7 @@ function modifier_blade_of_incorporeality:DeclareFunctions()
 		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
 		MODIFIER_PROPERTY_EVASION_CONSTANT,
 		MODIFIER_PROPERTY_STATS_AGILITY_BONUS,
+		MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS,
 	}
  
 	return funcs
@@ -53,6 +54,10 @@ function modifier_blade_of_incorporeality:GetModifierBonusStats_Agility()
 	return self.bonus_agility
 end
 
+function modifier_blade_of_incorporeality:GetModifierPhysicalArmorBonus()
+	return self.bonus_armor
+end
+
 function modifier_blade_of_incorporeality:GetModifierEvasion_Constant()
 	if self:GetParent():HasModifier("modifier_blade_of_incorporeality_active") then
 		return self.active_evasion
@@ -62,6 +67,7 @@ function modifier_blade_of_incorporeality:GetModifierEvasion_Constant()
 end
 
 function modifier_blade_of_incorporeality:OnCreated(kv)
+	self.bonus_armor = self:GetAbility():GetSpecialValueFor("bonus_armor")
 	self.bonus_agility = self:GetAbility():GetSpecialValueFor("bonus_agility")
 	self.bonus_damage = self:GetAbility():GetSpecialValueFor("bonus_damage")
 	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")

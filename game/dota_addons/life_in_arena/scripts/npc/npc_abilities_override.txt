@@ -17007,8 +17007,8 @@
 		"AbilityBehavior"				    "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	  "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+	  	"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
 		"SpellImmunityType"				  "SPELL_IMMUNITY_ENEMIES_YES"
 		"FightRecapLevel"				    "1"
 		"AbilityTextureName"			  "chaos_knight_chaos_bolt"
@@ -17139,6 +17139,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
 	  "AbilityTextureName"    "chaos_knight_reality_rift"
 	
 	  "MaxLevel"               "3"
@@ -21123,107 +21124,42 @@
 	
 	}
 	
-	
 	"knight_ancient_shield"
 	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"dragon_knight_dragon_tail"
-		"MaxLevel" 						"3"
-		"RequiredLevel"          		"2"
-		"LevelsBetweenUpgrades"  		"2"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/Knight/knight_ancient_shield.lua"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	  "AbilityTextureName"    "dragon_knight_dragon_tail"
 	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"piercing_damage_reduction"	"50 30 10"
-			}
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "ranged_damage_reduction" "-30 -50 -70"
+	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "immun_magic"     "20 40 60"
+	      "bonus_magic_resistance"     "20 40 60"
 	    }
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_speed_reduction"	"-30 -25 -20"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"reflect_chance"			"30"
-			}
-		}
-	
-		"OnToggleOn"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_ancient_shield_defend"
-				"Target"		"CASTER"
-			}
-		}
-	
-		"OnToggleOff"
-		{
-			"RemoveModifier"
-			{
-				"ModifierName"	"modifier_ancient_shield_defend"
-				"Target"		"CASTER"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_ancient_shield_defend"
-			{
-				"Passive"			"0"
-				"IsHidden"			"0"
-				"IsDebuff"			"0"
-	
-				"Properties"
-				{
-				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_speed_reduction" 
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" 	"%immun_magic"
-				}
-				"OnAttacked"
-				// "%attack_damage" is set to the damage value after mitigation
-				{
-					"Random"
-					{
-						"Chance"			"%reflect_chance"
-						"OnSuccess"
-						{
-							"Damage"
-							{
-								"Target"
-								{
-									"Center"  	"ATTACKER"
-									"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								}
-								"Type"			"DAMAGE_TYPE_MAGICAL"
-								"Damage"		"%attack_damage"
-							}
-							
-							//"Heal"
-							//{          
-							//	"Target" "CASTER"
-							//	"HealAmount" "%attack_damage"
-							//}
-							
-						}
-					}
-	
-					//Check the type of the attack, if its piercing, reduce it by piercing_damage_reduction
-				}
-			}
-		}
+	    "03"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "movement_speed_reduction"  "-30 -25 -20"
+	    }
+	    "04"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "reflect_chance"      "30"
+	    }
+	  }
 	}
-	
 	
 	"knight_dark_gifts" 
 	  {
@@ -26187,95 +26123,116 @@
 	
 	"shadow_master_art_of_shadows"
 	{
-	    "BaseClass"                 "ability_datadriven"
-	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"        "custom/shadow_master_art_of_shadows"
+		"BaseClass"                 "ability_datadriven"
+		"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityTextureName"        "custom/shadow_master_art_of_shadows"
+	
+		"MaxLevel"                  "3"
+		"RequiredLevel"             "2"
+		"LevelsBetweenUpgrades"     "2"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			    "var_type"                  "FIELD_INTEGER"
+			    "max_shadows"               "4 5 6"
+			}
+			"02"
+			{
+			    "var_type"                  "FIELD_INTEGER"
+			    "shadow_lifetime"           "8 10 12"
+			}
+			"03"
+			{
+			    "var_type"                  "FIELD_INTEGER"
+			    "shadow_attributes_perc"    "75 100 125"
+			}
+			"04"
+			{
+			    "var_type"                  "FIELD_INTEGER"
+			    "spawn_chance"              "17"
+			}
+		}
+	
+		"OnOwnerDied"
+		{
+			"RunScript"
+			{
+			    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
+			    "Function"          "HeroDied"
+			}
+		}
 	    
-	    "MaxLevel"                  "3"
-	    "RequiredLevel"             "2"
-	    "LevelsBetweenUpgrades"     "2"
+	    	"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_art_of_shadows"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+		}
 	
-	    "precache"
-	    {
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_art_of_shadows"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}	
+			}
+		}
 	
-	    }
+		"Modifiers"
+		{
+			"modifier_art_of_shadows"
+			{
+			    "Passive"           "0"
 	
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"                  "FIELD_INTEGER"
-	            "max_shadows"               "4 5 6"
-	        }
-	        "02"
-	        {
-	            "var_type"                  "FIELD_INTEGER"
-	            "shadow_lifetime"           "8 10 12"
-	        }
-	        "03"
-	        {
-	            "var_type"                  "FIELD_INTEGER"
-	            "shadow_attributes_perc"    "75 100 125"
-	        }
-	        "04"
-	        {
-	            "var_type"                  "FIELD_INTEGER"
-	            "spawn_chance"              "17"
-	        }
-	    }
+			    "Orb"
+			    {
+				"Priority"            "DOTA_ORB_PRIORITY_ABILITY"
+			    }
 	
-	    "OnOwnerDied"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
-	            "Function"          "HeroDied"
-	        }
-	    }
+			    "OnOrbImpact"
+			    {
+				"Random"
+				{
+				    "Chance"            "%spawn_chance"
+				    "OnSuccess"
+				    {
+					"RunScript"
+					{
+					    "ScriptFile"    "heroes/ShadowMaster/ArtOfShadows.lua"
+					    "Function"      "ArtOfShadows"
+					}
+				    }
+				}
+			    }  
+			}
 	
-	    "Modifiers"
-	    {
-	        "modifier_art_of_shadows"
-	        {
-	            "Passive"           "1"
-	            
-	            "Orb"
-	            {
-	                "Priority"            "DOTA_ORB_PRIORITY_ABILITY"
-	            }
-	            
-	            "OnOrbImpact"
-	            {
-	                "Random"
-	                {
-	                    "Chance"            "%spawn_chance"
-	                    "OnSuccess"
-	                    {
-	                        "RunScript"
-	                        {
-	                            "ScriptFile"    "heroes/ShadowMaster/ArtOfShadows.lua"
-	                            "Function"      "ArtOfShadows"
-	                        }
-	                    }
-	                }
-	            }  
-	        }
+			"modifier_art_of_shadows_shadow"
+			{
+			    "IsHidden"           "1"
 	
-	        "modifier_art_of_shadows_shadow"
-	        {
-	            "IsHidden"           "1"
-	            
-	            "OnDeath"
-	            {
-	                "RunScript"
-	                {
-	                    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
-	                    "Function"          "ShadowDeath"
-	                }
-	            }
-	 
-	        }
-	    }
+			    "OnDeath"
+			    {
+				"RunScript"
+				{
+				    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
+				    "Function"          "ShadowDeath"
+				}
+			    }
+	
+			}
+		}
 	}
 	
 	"shadow_master_agility_of_shadows"
