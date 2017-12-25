@@ -296,8 +296,7 @@
 
 "shaman_resourcefulness"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
+
 	"BaseClass"					"ability_lua"
 	"ScriptFile"				"heroes\Shaman\shaman_resourcefulness.lua"
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -325,58 +324,24 @@
 
 "shaman_ancient_forces"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"            	"custom/shaman_ancient_forces"
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	//
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/Shaman/shaman_ancient_forces.lua"
 
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"attack_percentage"				"50 75 100"
-		}
-	}
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "custom/shaman_ancient_forces"
+
+  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+  "MaxLevel"               "3"
+  "RequiredLevel"          "5"
+  "LevelsBetweenUpgrades"  "4"
 
 
-	"Modifiers"
-	{
-		"modifier_ancient_forces"
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"           "%attack_percentage"
-			}
-
-                	//"AttachEffect"
-                	//{
-                    	//	"Target" "TARGET"
-                    	//	"EffectName" "particles/units/heroes/hero_mirana/mirana_moonlight_cast.vpcf"
-                    	//	"EffectAttachType" "follow_origin"
-			//
- 			//           "ControlPoints"
-                    	//	{
-                        //		"00" "0 0 0"
-                        //		"01" "100 0 0"
-                    	//	}
-                	//}
-
-		}
-	}
-
-
-
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"    "FIELD_INTEGER"
+      "bonus_damage_percentage"       "50 75 100"
+    }
+  } 
 }

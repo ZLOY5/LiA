@@ -208,162 +208,65 @@
 
 "wanderer_arcane_aura"
 {
-	"BaseClass"					"ability_datadriven"
-	"AbilityTextureName"		"custom/wanderer_arcane_aura"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-	
-		
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	//"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-	//"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	//"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
-	//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
-		
-	"AbilityCastRange"			"800"
-	//"AbilityCastPoint"			"0"
-	//"AbilityCooldown"			"2.0 1.5 1.0"
-	//"AbilityManaCost"			"200 240 280"
-		
-	//"AOERadius"					"800"
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Wanderer/wanderer_arcane_aura.lua"
+
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_BOTH"
+	"AbilityUnitTargetType"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"		  "SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"      "custom/wanderer_arcane_aura"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastRange"	"800"
+
+	"precache"
+	{
+		"particle"  "particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6_ring_mist.vpcf"
+	}
+
 	"AbilitySpecial"
 	{
 		"01"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"regen_mana_const"		"2 4 0"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"regen_mana_prc"		"0 0 1"
-		}
-		"03"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"damage_val"			"100 200 300"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"slow_val"		"-50"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"slow_sec"		"4"
-		}
-		"06"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"radius_aura_dmg"		"550"
-		}
-		"07"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"800"
-		}
-	}
-	
-	"precache"
-	{
-		"particle" "particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_slow_dazzle.vpcf"
-		"particle"  "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
-	}
-	"Modifiers"
-	{
-	
-		"modifier_wanderer_arcane_aura"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Aura"		  		"modifier_wanderer_arcane_aura_mod"
-			"Aura_Radius" 		"%radius"
-			"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-		}
-		
-		"modifier_wanderer_arcane_aura_mod"
-		{
-			"IsHidden"		"0"
-			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE"	"%regen_mana_prc"
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%regen_mana_const"
-			}
-		}
-	
-		"modifier_wanderer_arcane_aura_2"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Aura"		  		"modifier_wanderer_arcane_aura_2_mod"
-			"Aura_Radius" 		"%radius_aura_dmg"
-			"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-		}
-
-		"modifier_wanderer_arcane_aura_2_mod"
-		{
-			//"Passive"	"1"
-			"IsHidden"			"1"
-			"OnAbilityExecuted"
-			{
-
-				
-		    	"RunScript"
-		    	{
-		    		"ScriptFile"	"heroes\Wanderer\arcane_aura.lua"   
-		    		"Function"		"OnCast"
-		    	}
-
-
-				//"Damage"
-				//{
-				//	"Type" 		"DAMAGE_TYPE_MAGICAL"
-				//	"Target"	"CASTER"
-				//	"Damage" 	"%damage_val"
-				//}
-			
-				//"ApplyModifier"
-				//{
-				//	"ModifierName"	"modifier_wanderer_arcane_aura_2_mod_slow"
-				//	"Target" 		"CASTER"
-				//	"Duration"				"%slow_sec"
-				//}
-		
-				//"RunScript"
-				//{
-				//	"ScriptFile"   "heroes/LightningLord/holy_wrath.lua"
-				//	"Function"     "damageTo"
-				//}
-		
-			}
-			
-		}
-		
-		"modifier_wanderer_arcane_aura_2_mod_slow"
-		{
-			"IsDebuff"				"1"
-			"IsPurgable"			"1"
-			"Duration"				"%slow_sec"
-			
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%slow_val"
-			}
-			
-			"EffectName"        "particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_slow_dazzle.vpcf"
-			"EffectAttachType"  "follow_origin"
-		}
-		
-		
-		
-	}
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "regen_mana_constant"    "2 4 0"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "regen_mana_percent"    "0 0 1"
+	    }
+	    "03"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "damage"      "100 200 300"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "movement_slow_percentage"    "-50"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "slow_duration"    "4"
+	    }
+	    "06"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "enemy_effect_radius"   "550"
+	    }
+	    "07"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "aura_radius"    "800"
+	    }
+	} 
 }
 
 

@@ -200,60 +200,32 @@
 
 "valkyrie_agility"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"custom/valkyrie_agility"
-	
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Valkyrie/valkyrie_agility.lua"
+
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityTextureName"      "custom/valkyrie_agility"
+
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
-	"AbilityCastRange"				"700"
-	// Casting
+
+	"AbilityCastRange"	"700"
+
 	"AbilitySpecial"
 	{
 		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"700"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"15 30 45"
-		}
-	}
-	
-    	"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_valkyrie_agility"
-	}	
-	
-	"Modifiers"
-	{
-		"modifier_valkyrie_agility"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-	
-			"Aura"          	"modifier_valkyrie_agility_buff"
-			"Aura_Radius"   	"%radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-			"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
-		}
-
-		"modifier_valkyrie_agility_buff"
-		{
-	  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-			}
-		}
-	}
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "aura_radius"        "700"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_attack_speed"  "15 30 45"
+	    }
+	} 
 }
 
 "valkyrie_fury"
@@ -280,7 +252,7 @@
 
 	"precache"
 	{
-	"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+		"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
 	}
 	
 	"AbilitySpecial"
@@ -301,9 +273,9 @@
 	{
 		"ApplyModifier"
 		{
-		"ModifierName" "modifier_valkyrie_fury_buff"
-		"Target"	"TARGET"
-		"Duration"	"%duration"
+			"ModifierName" "modifier_valkyrie_fury_buff"
+			"Target"	"TARGET"
+			"Duration"	"%duration"
 		}
 
 		

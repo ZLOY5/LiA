@@ -121,124 +121,78 @@
 
 "minotaur_fear"
 {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"               "ability_datadriven"
+  "BaseClass"   "ability_lua"
+  "ScriptFile"  "heroes/Minotaur/minotaur_fear.lua"
+
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
   "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityTextureName"      "elder_titan_natural_order"
-  
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-  // Casting
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastRange"        "700"
-  
-  // Special
-  //-------------------------------------------------------------------------------------------------------------
+
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
+
+  "AbilityCastRange"  "700"
+
   "AbilitySpecial"
   {
     "01"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "penalty_armor"  "-4 -8 -12"
-    }
-    "02"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "aura_radius"   "700"
-    }
-  }
-
-
-  
-  "Modifiers"
-  {
-    "modifier_minotaur_fear"
-    {
-      "Passive"       "1"
-      "IsHidden"      "1"
-      
-      "Aura"            "modifier_minotaur_fear_enemy"
-      "Aura_Radius"     "%aura_radius"
-      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    }
-      
-    "modifier_minotaur_fear_enemy"
-    {
-      "IsDebuff"  "1"
-
-      "Properties"
       {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%penalty_armor" 
-      }     
-    }
+        "var_type"      "FIELD_INTEGER"
+        "penalty_armor"  "-4 -8 -12"
+      }
+      "02"
+      {
+        "var_type"      "FIELD_INTEGER"
+        "aura_radius"   "700"
+      }
   } 
 }
 
 
-
 "minotaur_demonic_power"
 {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"                "ability_datadriven"
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/Minotaur/minotaur_demonic_power.lua"
+
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
   "AbilityTextureName"      "custom/minotaur_demonic_power"
-  
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-  // Precache
-  //-------------------------------------------------------------------------------------------------------------
+
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
+
   "precache"
   {
     "particle"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
   }
-      
-  // Special
-  //-------------------------------------------------------------------------------------------------------------
+
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "great_cleave_radius" "225 250 275"
+      "cleave_start_radius" "150 175 200"
     }
-    
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "great_cleave_damage" "20 30 40"
+      "cleave_end_radius" "225 250 275"
     }
-  }
-
-
-  
-  "Modifiers"
-  {
-    "modifier_minotaur_demonic_power"
+    "03"
     {
-      "Passive"   "1"
-      "IsHidden"  "1"
-
-      "OnAttackLanded"
-      {
-        "CleaveAttack"
-        {
-          "CleavePercent"   "%great_cleave_damage"
-          "CleaveRadius"    "%great_cleave_radius"
-          "CleaveEffect"    "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-        }
-      }
+      "var_type"        "FIELD_INTEGER"
+      "cleave_distance" "225 250 275"
     }
-  }
+    "04"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "cleave_percent" "20 30 40"
+    }
+  } 
 }
+
 
 "minotaur_guardian_spirits"
 {

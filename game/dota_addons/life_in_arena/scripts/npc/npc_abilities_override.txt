@@ -22295,14 +22295,16 @@
 	
 	"naga_royal_guard_persistence"
 	{
-	  "BaseClass"               "ability_datadriven"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/NagaRoyalGuard/naga_royal_guard_persistence.lua"
+	
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "AbilityTextureName"      "slardar_sprint"
 	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-	  
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -22315,27 +22317,9 @@
 	      "var_type"      "FIELD_INTEGER"
 	      "bonus_strength"   "9 18 27"
 	    }
-	  }
-	  
-		"OnRespawn"
-		{
-		"ApplyModifier"		"modifier_naga_royal_guard_persistence"
-		}
-		
-	  "Modifiers"
-	  {   
-	    "modifier_naga_royal_guard_persistence"
-	    {
-	      "Passive"  "1"
-	      "IsHidden"	"1"
-	      "Properties"
-	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor" 
-			"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
-	      }     
-	    }
 	  } 
 	}
+	
 	
 	"naga_royal_guard_bash"
 	{
@@ -22680,90 +22664,36 @@
 	
 	"naga_siren_art_of_battle"
 	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"naga_siren_mirror_image"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"evasion"		"5 10 15"
-			}
-			"02"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"crit_chance"		"15 30 45"
-			}
-			"03"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"crit_mult"		"150"
-			}
-		}
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/NagaSiren/naga_siren_art_of_battle.lua"
 	
-		"Modifiers"
-		{
-				"modifier_naga_siren_art_of_battle_crit_random"
-			{
-			    "Passive"   "1"
-			    "IsHidden"  "1"
-			    "OnAttackStart"
-			    {
-			        "RemoveModifier"
-			        {
-			            "ModifierName" 	"modifier_naga_siren_art_of_battle_crit"
-			            "Target" 		"CASTER"
-			        }
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      "naga_siren_mirror_image"
 	
-			        "Random"
-			        {
-			            "Chance" "%crit_chance"
-			            "OnSuccess"
-			            {
-			                "ApplyModifier"
-			                {
-			                    "ModifierName" 	"modifier_naga_siren_art_of_battle_crit"
-			                    "Target"    	"CASTER"    
-			                }        
-			            }
-			        }
-			    }
-			}
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
 	
-			"modifier_naga_siren_art_of_battle_crit"
-			{
-			    "IsHidden"  "1"
-			    "Properties"
-			    {
-			        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-			    }
-	
-			    "OnAttackLanded"
-			    {
-			        "RemoveModifier"
-			        {
-			            "ModifierName"  "modifier_naga_siren_art_of_battle_crit"
-			            "Target"   		"CASTER"    
-			        }
-			    }
-			}
-			"modifier_naga_siren_art_of_battle_evasion"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
-				}
-			}
-		}
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "evasion"   "5 10 15"
+	    }
+	    "02"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "crit_chance"   "15 30 45"
+	    }
+	    "03"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "crit_multiplier"   "150"
+	    }
+	  } 
 	}
+	
 	
 	"naga_siren_song"
 	{
@@ -24084,98 +24014,41 @@
 		
 		
 	
-		"paladin_elect"
+	"paladin_elect"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Paladin/paladin_elect.lua"
+	
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"      "custom/paladin_elect"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"	"800"
+	
+		"AbilitySpecial"
 		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"				"ability_datadriven"
-			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"AbilityTextureName"            	"custom/paladin_elect"
-			//
-			"MaxLevel"               "3"
-			"RequiredLevel"          "2"
-			"LevelsBetweenUpgrades"  "2"
-			"AbilityCastRange"	"800"
-			// Special
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilitySpecial"
-			{
-				"01"
-				{
-					"var_type"					"FIELD_INTEGER"
-					"value_regen"				"10 0 0"
-				}
-				"02"
-				{
-					"var_type"					"FIELD_INTEGER"
-					"value_regen_percen"		"0 1 2"
-				}
-				"03"
-				{
-					"var_type"					"FIELD_INTEGER"
-					"aura_radius"				"800"
-				}
-				//"04"
-				//{
-				//	"var_type"					"FIELD_FLOAT"
-				//	"tick"						"0.5"
-				//}
-			}
-		
-			//"OnOwnerSpawned"
-			//{
-			//	"ApplyModifier"		"modifier_elect"
-			//}
-		
-			"Modifiers"
-			{
-				"modifier_elect"
-				{
-					"Passive"	"1"
-					"IsHidden"      "1"
-					//
-					"Aura"            "modifier_elect_aura"
-					"Aura_Radius"     "%aura_radius"
-					"Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					"Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-					//
-				}
-		
-		
-				"modifier_elect_aura"
-				{
-					//"Passive"       "1"
-					"IsHidden"      "0"
-					"IsPurgable"    "0"
-					
-					"Properties" 
-		        	{
-		            	"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%value_regen_percen"
-						"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%value_regen"
-		        	}
-					
-					//
-					//"ThinkInterval"  "%tick"
-			     
-					//"OnIntervalThink"
-					//{
-		        	//		"RunScript"
-		        	//		{
-		            //				"ScriptFile" "heroes\Paladin\elect.lua"
-		            //				"Function"   "electRegen"
-					//				"value_regen" "%value_regen"
-					//				"tick" "%tick"
-		        	//		}
-					//
-		 			//}
-		
-				}
-			}
-		
-		
-		
-		}
+			"01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "constant_regen"       "10 0 0"
+	    }
+	    "02"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "regen_percentage"    "0 1 2"
+	    }
+	    "03"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "aura_radius"       "800"
+	    }
+		} 
+	}
+	
 	
 	
 		"paladin_impregnability"
@@ -24576,36 +24449,24 @@
 	
 	"pirate_evasion"
 	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/pirate_evasion"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/Pirate/pirate_evasion.lua"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"evasion"		"15 20 25"
-			}
-		}
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      "custom/pirate_evasion"
 	
-		"Modifiers"
-		{
-			"modifier_pirate_evasion"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
-				}
-			}
-		}
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "evasion"   "15 20 25"
+	    }
+	  } 
 	}
 	
 	"pirate_metamorphosis"
@@ -24977,265 +24838,102 @@
 			}
 		}
 	
-	 "queen_of_spiders_poison" 
-	  {
-	    // General  
-	    // ----------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
-	  	"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-	    "AoERadius"              "%radius"
-	    "AbilityTextureName"     "broodmother_poison_sting"
+	
+	"queen_of_spiders_poison"
+	{
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_poison.lua"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"
+	  "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+	  "AbilityTextureName"    "broodmother_poison_sting"
 	    
-		"AbilityCastRange"	"290"
+	  "AbilityCastRange"  "300"
 	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
 	
-		"precache"
-		{
-		"particle"	"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
-		}
-		
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	       "01"
-	        {
-	          "var_type"                "FIELD_INTEGER"
-	           "radius"              "290"
-	        }
-	       "02"
-	        { 
-	          "var_type"  "FIELD_INTEGER"
-	          "damage" "15 30 45"
-	        }
-	    }	
-		
-	    "Modifiers"
-	    {
-	      "modifiers_queen_of_spiders_poison"
-	     {
-	       "Passive"         "1"
-	       "IsHidden"        "1"
-	       "IsPurgable"      "0"
-			
-			"OnCreated"
-			{
-					"AttachEffect"
-					{
-						"Target"				"TARGET"
-						"EffectName"			"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
-						"EffectAttachType"		"start_at_customorigin"
-						"ControlPointEntities"
-						{
-							"TARGET"			"attach_origin"
-							"TARGET"			"attach_origin"
-						}
-					}
-			}
-			
-	       "OnDeath"
-	       {
-	        "RemoveModifier"
-	         {
-	           "ModifierName"  "modifiers_queen_of_spiders_poison"
-	           
-	           "Target"
-	           {
-	             "Center"    "CASTER"
-	             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	             "Types"   "DOTA_UNIT_TARGET_HERO"
-	             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-	           }
-	         }
-	       }
-	
-	       "ThinkInterval" "1"
-	
-	        "OnIntervalThink"
-	        {
-	          "ActOnTargets"
-	           {
-	                "Target"
-	                {
-	                    "Center" "CASTER"
-	                    "Radius" "%radius"
-	                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
-	                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	                }
-	
-	                "Action"
-	                {
-	                  "Damage"
-	                  {
-	                    "Target"  "TARGET"
-	                    "Type"    "DAMAGE_TYPE_MAGICAL"
-	                    "Damage"  "%damage"
-	                  }
-	                }
-	            }
-	        }
-	      
-	            "Aura"            "modifiers_queen_of_spiders_poison_aura"
-	            "Aura_Radius"     "%radius"
-	            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-	      }
-	  
-	
-	
-	      "modifiers_queen_of_spiders_poison_aura"
-	      {
-	      "Passive"       "0"
-	      "IsHidden"      "0"
-	      "IsDebuff"      "1"
-	      "IsPurgable"    "0"
-		  		"OnCreated"
-			{
-					"AttachEffect"
-					{
-						"Target"				"TARGET"
-						"EffectName"			"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
-						"EffectAttachType"		"start_at_customorigin"
-						"ControlPointEntities"
-						{
-							"TARGET"			"attach_origin"
-							"TARGET"			"attach_origin"
-						}
-					}
-			}
-	      }
-	    }
-	  }
-	  
-	 "queen_of_spiders_furious_strike"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"broodmother_incapacitating_bite"
-	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-	
-		"AbilityDamage"					"100 175 250"
-		"AbilityCastRange"	"240"
-		
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"strike_chance"			"30 35 40"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"	"180"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"half_damage_radius"	"240"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"	"50 82.5 125"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_queen_of_spiders_furious_strikes"	
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"OnAttackLanded"
-				{
-					"Random"
-					{
-						"Chance"		"%strike_chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-	
-						"OnSuccess"
-						{
-							"Damage"
-							{
-								"Target"
-								{
-									"Center"    "TARGET"
-									"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-									"Radius"    "%radius"
-									"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-								}
-								"Type"   "DAMAGE_TYPE_PHYSICAL"
-								"Damage" "%damage"           
-							  }
-	
-							"Damage"
-							{
-								"Target"
-								{
-								  	"Center"    "TARGET"
-								  	"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-								  	"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								  	"Radius"    "%half_damage_radius"
-								  	"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-								}
-								"Type"   "DAMAGE_TYPE_PHYSICAL"
-								"Damage" "%damage"           
-							}
-						}
-					}
-				}
-			}
-		}
-	}	
-	
-	 "quenn_of_spiders_endurance"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	    "AbilityTextureName"     "broodmother_insatiable_hunger"
-	
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
-	  
-	
-	  
-	"Modifiers"
-	{
-	  "royal_vitality_datadriven"
+	  "precache"
 	  {
-	    "Passive"       "1"
-	    "IsHidden"      "1"
+	    "particle"  "particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+	  }
 	
-	    "Properties"
-	      {
-	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%bonus_health_regen"
-	      }
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "aura_radius"     "300"
+	    }
+	    "02"
+	    { 
+	      "var_type"  "FIELD_INTEGER"
+	      "damage_per_second"    "20 40 60"
+	    }
+	    "03"
+	    { 
+	      "var_type"  "FIELD_FLOAT"
+	      "tick_time"    "0.5"
+	    }
 	  }
 	}
 	
-	  // Special  
-	  //-------------------------------------------------------------------------------------------------------------
+	"queen_of_spiders_furious_strike"
+	{
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_furious_strike.lua"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+	  "AbilityTextureName"    "broodmother_incapacitating_bite"
+	
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "chance"     "30 35 40"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "damage"  "100 175 250"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "full_damage_radius"  "180"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "half_damage_radius"  "240"
+	    }  
+	  }
+	}
+	
+	"queen_of_spiders_endurance"
+	{
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_endurance.lua"
+	
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      "broodmother_insatiable_hunger"
+	
+	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "5"
+	  "LevelsBetweenUpgrades"  "4"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -25243,8 +24941,9 @@
 	      "var_type"              "FIELD_INTEGER"
 	      "bonus_health_regen"    "25 50 75"
 	    }
-	  }
+	  } 
 	}
+	
 	
 	"queen_of_spiders_spider_poision_1"
 	{
@@ -26479,8 +26178,7 @@
 	
 	"shaman_resourcefulness"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
+	
 		"BaseClass"					"ability_lua"
 		"ScriptFile"				"heroes\Shaman\shaman_resourcefulness.lua"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -26508,60 +26206,26 @@
 	
 	"shaman_ancient_forces"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"            	"custom/shaman_ancient_forces"
-		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-		//
-		"MaxLevel"               "3"
-		"RequiredLevel"          "5"
-		"LevelsBetweenUpgrades"  "4"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/Shaman/shaman_ancient_forces.lua"
 	
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"attack_percentage"				"50 75 100"
-			}
-		}
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName"      "custom/shaman_ancient_forces"
+	
+	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "5"
+	  "LevelsBetweenUpgrades"  "4"
 	
 	
-		"Modifiers"
-		{
-			"modifier_ancient_forces"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"           "%attack_percentage"
-				}
-	
-	                	//"AttachEffect"
-	                	//{
-	                    	//	"Target" "TARGET"
-	                    	//	"EffectName" "particles/units/heroes/hero_mirana/mirana_moonlight_cast.vpcf"
-	                    	//	"EffectAttachType" "follow_origin"
-				//
-	 			//           "ControlPoints"
-	                    	//	{
-	                        //		"00" "0 0 0"
-	                        //		"01" "100 0 0"
-	                    	//	}
-	                	//}
-	
-			}
-		}
-	
-	
-	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "bonus_damage_percentage"       "50 75 100"
+	    }
+	  } 
 	}
 	//End of file npc_lia_hero_shaman.txt
 
@@ -27750,124 +27414,78 @@
 	
 	"minotaur_fear"
 	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"               "ability_datadriven"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"  "heroes/Minotaur/minotaur_fear.lua"
+	
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityTextureName"      "elder_titan_natural_order"
-	  
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastRange"        "700"
-	  
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
+	
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
+	  "AbilityCastRange"  "700"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "penalty_armor"  "-4 -8 -12"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "aura_radius"   "700"
-	    }
-	  }
-	
-	
-	  
-	  "Modifiers"
-	  {
-	    "modifier_minotaur_fear"
-	    {
-	      "Passive"       "1"
-	      "IsHidden"      "1"
-	      
-	      "Aura"            "modifier_minotaur_fear_enemy"
-	      "Aura_Radius"     "%aura_radius"
-	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    }
-	      
-	    "modifier_minotaur_fear_enemy"
-	    {
-	      "IsDebuff"  "1"
-	
-	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%penalty_armor" 
-	      }     
-	    }
+	        "var_type"      "FIELD_INTEGER"
+	        "penalty_armor"  "-4 -8 -12"
+	      }
+	      "02"
+	      {
+	        "var_type"      "FIELD_INTEGER"
+	        "aura_radius"   "700"
+	      }
 	  } 
 	}
 	
 	
-	
 	"minotaur_demonic_power"
 	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"                "ability_datadriven"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"    "heroes/Minotaur/minotaur_demonic_power.lua"
+	
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	  "AbilityTextureName"      "custom/minotaur_demonic_power"
-	  
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		
-	  // Precache
-	  //-------------------------------------------------------------------------------------------------------------
+	
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "2"
+	  "LevelsBetweenUpgrades"  "2"
+	
 	  "precache"
 	  {
 	    "particle"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
 	  }
-	      
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "great_cleave_radius" "225 250 275"
+	      "cleave_start_radius" "150 175 200"
 	    }
-	    
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "great_cleave_damage" "20 30 40"
+	      "cleave_end_radius" "225 250 275"
 	    }
-	  }
-	
-	
-	  
-	  "Modifiers"
-	  {
-	    "modifier_minotaur_demonic_power"
+	    "03"
 	    {
-	      "Passive"   "1"
-	      "IsHidden"  "1"
-	
-	      "OnAttackLanded"
-	      {
-	        "CleaveAttack"
-	        {
-	          "CleavePercent"   "%great_cleave_damage"
-	          "CleaveRadius"    "%great_cleave_radius"
-	          "CleaveEffect"    "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-	        }
-	      }
+	      "var_type"        "FIELD_INTEGER"
+	      "cleave_distance" "225 250 275"
 	    }
-	  }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "cleave_percent" "20 30 40"
+	    }
+	  } 
 	}
+	
 	
 	"minotaur_guardian_spirits"
 	{
@@ -30024,60 +29642,32 @@
 	
 	"valkyrie_agility"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityTextureName"			"custom/valkyrie_agility"
-		
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Valkyrie/valkyrie_agility.lua"
+	
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"      "custom/valkyrie_agility"
+	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
-		"AbilityCastRange"				"700"
-		// Casting
+	
+		"AbilityCastRange"	"700"
+	
 		"AbilitySpecial"
 		{
 			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"700"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"15 30 45"
-			}
-		}
-		
-	    	"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_valkyrie_agility"
-		}	
-		
-		"Modifiers"
-		{
-			"modifier_valkyrie_agility"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-		
-				"Aura"          	"modifier_valkyrie_agility_buff"
-				"Aura_Radius"   	"%radius"
-				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
-			}
-	
-			"modifier_valkyrie_agility_buff"
-			{
-		  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				}
-			}
-		}
+		    {
+		      "var_type"        "FIELD_INTEGER"
+		      "aura_radius"        "700"
+		    }
+		    "02"
+		    {
+		      "var_type"        "FIELD_INTEGER"
+		      "bonus_attack_speed"  "15 30 45"
+		    }
+		} 
 	}
 	
 	"valkyrie_fury"
@@ -30104,7 +29694,7 @@
 	
 		"precache"
 		{
-		"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
 		}
 		
 		"AbilitySpecial"
@@ -30125,9 +29715,9 @@
 		{
 			"ApplyModifier"
 			{
-			"ModifierName" "modifier_valkyrie_fury_buff"
-			"Target"	"TARGET"
-			"Duration"	"%duration"
+				"ModifierName" "modifier_valkyrie_fury_buff"
+				"Target"	"TARGET"
+				"Duration"	"%duration"
 			}
 	
 			
@@ -31379,162 +30969,65 @@
 	
 	"wanderer_arcane_aura"
 	{
-		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"custom/wanderer_arcane_aura"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-		
-			
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		//"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-		//"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		//"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
-		//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
-			
-		"AbilityCastRange"			"800"
-		//"AbilityCastPoint"			"0"
-		//"AbilityCooldown"			"2.0 1.5 1.0"
-		//"AbilityManaCost"			"200 240 280"
-			
-		//"AOERadius"					"800"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Wanderer/wanderer_arcane_aura.lua"
+	
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"   "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"		  "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"      "custom/wanderer_arcane_aura"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"	"800"
+	
+		"precache"
+		{
+			"particle"  "particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6_ring_mist.vpcf"
+		}
+	
 		"AbilitySpecial"
 		{
 			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"regen_mana_const"		"2 4 0"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"regen_mana_prc"		"0 0 1"
-			}
-			"03"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"damage_val"			"100 200 300"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_val"		"-50"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_sec"		"4"
-			}
-			"06"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"radius_aura_dmg"		"550"
-			}
-			"07"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"radius"		"800"
-			}
-		}
-		
-		"precache"
-		{
-			"particle" "particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_slow_dazzle.vpcf"
-			"particle"  "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
-		}
-		"Modifiers"
-		{
-		
-			"modifier_wanderer_arcane_aura"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Aura"		  		"modifier_wanderer_arcane_aura_mod"
-				"Aura_Radius" 		"%radius"
-				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-			}
-			
-			"modifier_wanderer_arcane_aura_mod"
-			{
-				"IsHidden"		"0"
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_REGEN_TOTAL_PERCENTAGE"	"%regen_mana_prc"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%regen_mana_const"
-				}
-			}
-		
-			"modifier_wanderer_arcane_aura_2"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Aura"		  		"modifier_wanderer_arcane_aura_2_mod"
-				"Aura_Radius" 		"%radius_aura_dmg"
-				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-			}
-	
-			"modifier_wanderer_arcane_aura_2_mod"
-			{
-				//"Passive"	"1"
-				"IsHidden"			"1"
-				"OnAbilityExecuted"
-				{
-	
-					
-			    	"RunScript"
-			    	{
-			    		"ScriptFile"	"heroes\Wanderer\arcane_aura.lua"   
-			    		"Function"		"OnCast"
-			    	}
-	
-	
-					//"Damage"
-					//{
-					//	"Type" 		"DAMAGE_TYPE_MAGICAL"
-					//	"Target"	"CASTER"
-					//	"Damage" 	"%damage_val"
-					//}
-				
-					//"ApplyModifier"
-					//{
-					//	"ModifierName"	"modifier_wanderer_arcane_aura_2_mod_slow"
-					//	"Target" 		"CASTER"
-					//	"Duration"				"%slow_sec"
-					//}
-			
-					//"RunScript"
-					//{
-					//	"ScriptFile"   "heroes/LightningLord/holy_wrath.lua"
-					//	"Function"     "damageTo"
-					//}
-			
-				}
-				
-			}
-			
-			"modifier_wanderer_arcane_aura_2_mod_slow"
-			{
-				"IsDebuff"				"1"
-				"IsPurgable"			"1"
-				"Duration"				"%slow_sec"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 	"%slow_val"
-				}
-				
-				"EffectName"        "particles/econ/items/lanaya/lanaya_epit_trap/templar_assassin_epit_trap_slow_dazzle.vpcf"
-				"EffectAttachType"  "follow_origin"
-			}
-			
-			
-			
-		}
+		    {
+		      "var_type"        "FIELD_FLOAT"
+		      "regen_mana_constant"    "2 4 0"
+		    }
+		    "02"
+		    {
+		      "var_type"        "FIELD_INTEGER"
+		      "regen_mana_percent"    "0 0 1"
+		    }
+		    "03"
+		    {
+		      "var_type"    "FIELD_INTEGER"
+		      "damage"      "100 200 300"
+		    }
+		    "04"
+		    {
+		      "var_type"        "FIELD_INTEGER"
+		      "movement_slow_percentage"    "-50"
+		    }
+		    "05"
+		    {
+		      "var_type"        "FIELD_FLOAT"
+		      "slow_duration"    "4"
+		    }
+		    "06"
+		    {
+		      "var_type"    "FIELD_INTEGER"
+		      "enemy_effect_radius"   "550"
+		    }
+		    "07"
+		    {
+		      "var_type"    "FIELD_INTEGER"
+		      "aura_radius"    "800"
+		    }
+		} 
 	}
 	
 	
@@ -32617,72 +32110,27 @@
 	
 	
 	
-		"warrior_of_light_holy_power"
+	"warrior_of_light_holy_power"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/WarriorOfLight/warrior_of_light_holy_power.lua"
+	
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "custom/warrior_of_light_holy_power"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilitySpecial"
 		{
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"				"ability_datadriven"
-			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-			"AbilityTextureName"			"custom/warrior_of_light_holy_power"
-			//"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
-			
-			"MaxLevel"               "3"
-			"RequiredLevel"          "2" 
-			"LevelsBetweenUpgrades"  "2"
-	
-			"precache"
-			{
-				"particle"	"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
-				"soundfile"		"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-			}
-			
-			// Special	
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilitySpecial"
-			{
-				"01"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"block_chance"		"15 20 25"
-				}
-			}
-			
-				"OnRespawn"
-			{
-				"ApplyModifier"	"modifier_holy_power"
-			}
-			
-			"Modifiers"
-			{
-				"modifier_holy_power"
-				{
-					"Passive"       "1"
-					"IsHidden"		"1"
-					"OnTakeDamage"
-	    			{
-						"Random"
-						{
-							"Chance"		"%block_chance"
-							"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-							"OnSuccess"
-							{
-	    						"Heal"
-	    						{          
-									"Target" "CASTER"
-	        						"HealAmount" "%attack_damage"
-	    						}
-								"AttachEffect"
-								{
-									"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
-									"EffectAttachType"	"follow_origin"	
-									"Target" "CASTER"
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	
+			"01"
+		    {
+		      "var_type"        "FIELD_INTEGER"
+		      "block_chance"    "15 20 25"
+		    }
+		} 
+	}
 	
 		
 	"warrior_of_light_divine_protection"

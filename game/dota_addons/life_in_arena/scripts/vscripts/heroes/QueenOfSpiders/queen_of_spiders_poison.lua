@@ -1,0 +1,8 @@
+queen_of_spiders_poison = class({})
+LinkLuaModifier("modifier_queen_of_spiders_poison_aura","heroes/QueenOfSpiders/modifier_queen_of_spiders_poison_aura.lua",LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_queen_of_spiders_poison_effect","heroes/QueenOfSpiders/modifier_queen_of_spiders_poison_effect.lua",LUA_MODIFIER_MOTION_NONE)
+
+function queen_of_spiders_poison:GetIntrinsicModifierName()
+	return "modifier_queen_of_spiders_poison_aura"
+end
+

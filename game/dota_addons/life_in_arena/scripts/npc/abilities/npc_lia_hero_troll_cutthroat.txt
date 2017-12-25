@@ -172,6 +172,51 @@
 
 "troll_cutthroat_vulnerability"
 {
+	"BaseClass"		"ability_lua"
+	"ScriptFile"		"heroes/TrollCutthroat/troll_cutthroat_vulnerability.lua"
+
+	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"    "troll_warlord_fervor"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+		"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_multiplier"			"200"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"14 17 20"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"armor_reduction"			"-4 -7 -10"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"5"
+		}
+	}
+}
+
+"troll_cutthroat_vulnerability"
+{
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"

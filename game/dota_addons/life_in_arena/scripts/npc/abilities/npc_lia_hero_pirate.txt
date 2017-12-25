@@ -239,36 +239,24 @@
 
 "pirate_evasion"
 {
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"custom/pirate_evasion"
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/Pirate/pirate_evasion.lua"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"evasion"		"15 20 25"
-		}
-	}
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "custom/pirate_evasion"
 
-	"Modifiers"
-	{
-		"modifier_pirate_evasion"
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
-			}
-		}
-	}
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"    "FIELD_INTEGER"
+      "evasion"   "15 20 25"
+    }
+  } 
 }
 
 "pirate_metamorphosis"

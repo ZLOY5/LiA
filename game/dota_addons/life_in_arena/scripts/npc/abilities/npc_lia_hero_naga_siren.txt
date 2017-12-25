@@ -160,90 +160,36 @@
 
 "naga_siren_art_of_battle"
 {
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"naga_siren_mirror_image"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"evasion"		"5 10 15"
-		}
-		"02"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"crit_chance"		"15 30 45"
-		}
-		"03"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"crit_mult"		"150"
-		}
-	}
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/NagaSiren/naga_siren_art_of_battle.lua"
 
-	"Modifiers"
-	{
-			"modifier_naga_siren_art_of_battle_crit_random"
-		{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
-		    "OnAttackStart"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName" 	"modifier_naga_siren_art_of_battle_crit"
-		            "Target" 		"CASTER"
-		        }
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "naga_siren_mirror_image"
 
-		        "Random"
-		        {
-		            "Chance" "%crit_chance"
-		            "OnSuccess"
-		            {
-		                "ApplyModifier"
-		                {
-		                    "ModifierName" 	"modifier_naga_siren_art_of_battle_crit"
-		                    "Target"    	"CASTER"    
-		                }        
-		            }
-		        }
-		    }
-		}
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
 
-		"modifier_naga_siren_art_of_battle_crit"
-		{
-		    "IsHidden"  "1"
-		    "Properties"
-		    {
-		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-		    }
-
-		    "OnAttackLanded"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName"  "modifier_naga_siren_art_of_battle_crit"
-		            "Target"   		"CASTER"    
-		        }
-		    }
-		}
-		"modifier_naga_siren_art_of_battle_evasion"
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_EVASION_CONSTANT"	"%evasion"
-			}
-		}
-	}
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"    "FIELD_INTEGER"
+      "evasion"   "5 10 15"
+    }
+    "02"
+    {
+      "var_type"    "FIELD_INTEGER"
+      "crit_chance"   "15 30 45"
+    }
+    "03"
+    {
+      "var_type"    "FIELD_INTEGER"
+      "crit_multiplier"   "150"
+    }
+  } 
 }
+
 
 "naga_siren_song"
 {

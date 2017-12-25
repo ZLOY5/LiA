@@ -106,14 +106,16 @@
 
 "naga_royal_guard_persistence"
 {
-  "BaseClass"               "ability_datadriven"
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/NagaRoyalGuard/naga_royal_guard_persistence.lua"
+
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "AbilityTextureName"      "slardar_sprint"
 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-  
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
+
   "AbilitySpecial"
   {
     "01"
@@ -126,27 +128,9 @@
       "var_type"      "FIELD_INTEGER"
       "bonus_strength"   "9 18 27"
     }
-  }
-  
-	"OnRespawn"
-	{
-	"ApplyModifier"		"modifier_naga_royal_guard_persistence"
-	}
-	
-  "Modifiers"
-  {   
-    "modifier_naga_royal_guard_persistence"
-    {
-      "Passive"  "1"
-      "IsHidden"	"1"
-      "Properties"
-      {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor" 
-		"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
-      }     
-    }
   } 
 }
+
 
 "naga_royal_guard_bash"
 {

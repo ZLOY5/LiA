@@ -42,5 +42,5 @@ end
 
 function StopCooldown(keys)
 	keys.ability:EndCooldown()
-	ability.cooldownStarted = false
+	keys.ability.cooldownStarted = false
 end

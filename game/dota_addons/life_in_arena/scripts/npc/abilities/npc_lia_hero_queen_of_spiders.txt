@@ -60,7 +60,7 @@
 			"07"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"count"					"1 2 3"
+				"count"					"3 3 3"
 			}
 			"08"
 			{
@@ -178,265 +178,102 @@
 		}
 	}
 
- "queen_of_spiders_poison" 
-  {
-    // General  
-    // ----------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
-  	"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-    "AoERadius"              "%radius"
-    "AbilityTextureName"     "broodmother_poison_sting"
+
+"queen_of_spiders_poison"
+{
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_poison.lua"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"
+  "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+  "AbilityTextureName"    "broodmother_poison_sting"
     
-	"AbilityCastRange"	"290"
+  "AbilityCastRange"  "300"
 
-    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
 
-	"precache"
-	{
-	"particle"	"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
-	}
-	
-    // Special    
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-       "01"
-        {
-          "var_type"                "FIELD_INTEGER"
-           "radius"              "290"
-        }
-       "02"
-        { 
-          "var_type"  "FIELD_INTEGER"
-          "damage" "15 30 45"
-        }
-    }	
-	
-    "Modifiers"
-    {
-      "modifiers_queen_of_spiders_poison"
-     {
-       "Passive"         "1"
-       "IsHidden"        "1"
-       "IsPurgable"      "0"
-		
-		"OnCreated"
-		{
-				"AttachEffect"
-				{
-					"Target"				"TARGET"
-					"EffectName"			"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
-					"EffectAttachType"		"start_at_customorigin"
-					"ControlPointEntities"
-					{
-						"TARGET"			"attach_origin"
-						"TARGET"			"attach_origin"
-					}
-				}
-		}
-		
-       "OnDeath"
-       {
-        "RemoveModifier"
-         {
-           "ModifierName"  "modifiers_queen_of_spiders_poison"
-           
-           "Target"
-           {
-             "Center"    "CASTER"
-             "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-             "Types"   "DOTA_UNIT_TARGET_HERO"
-             "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-           }
-         }
-       }
-
-       "ThinkInterval" "1"
-
-        "OnIntervalThink"
-        {
-          "ActOnTargets"
-           {
-                "Target"
-                {
-                    "Center" "CASTER"
-                    "Radius" "%radius"
-                    "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
-                    "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-                }
-
-                "Action"
-                {
-                  "Damage"
-                  {
-                    "Target"  "TARGET"
-                    "Type"    "DAMAGE_TYPE_MAGICAL"
-                    "Damage"  "%damage"
-                  }
-                }
-            }
-        }
-      
-            "Aura"            "modifiers_queen_of_spiders_poison_aura"
-            "Aura_Radius"     "%radius"
-            "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-            "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-      }
-  
-
-
-      "modifiers_queen_of_spiders_poison_aura"
-      {
-      "Passive"       "0"
-      "IsHidden"      "0"
-      "IsDebuff"      "1"
-      "IsPurgable"    "0"
-	  		"OnCreated"
-		{
-				"AttachEffect"
-				{
-					"Target"				"TARGET"
-					"EffectName"			"particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
-					"EffectAttachType"		"start_at_customorigin"
-					"ControlPointEntities"
-					{
-						"TARGET"			"attach_origin"
-						"TARGET"			"attach_origin"
-					}
-				}
-		}
-      }
-    }
-  }
-  
- "queen_of_spiders_furious_strike"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"broodmother_incapacitating_bite"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-
-	"AbilityDamage"					"100 175 250"
-	"AbilityCastRange"	"240"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"strike_chance"			"30 35 40"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"	"180"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"half_damage_radius"	"240"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"	"50 82.5 125"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_queen_of_spiders_furious_strikes"	
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-
-			"OnAttackLanded"
-			{
-				"Random"
-				{
-					"Chance"		"%strike_chance"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-
-					"OnSuccess"
-					{
-						"Damage"
-						{
-							"Target"
-							{
-								"Center"    "TARGET"
-								"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-								"Radius"    "%radius"
-								"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}
-							"Type"   "DAMAGE_TYPE_PHYSICAL"
-							"Damage" "%damage"           
-						  }
-
-						"Damage"
-						{
-							"Target"
-							{
-							  	"Center"    "TARGET"
-							  	"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-							  	"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							  	"Radius"    "%half_damage_radius"
-							  	"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}
-							"Type"   "DAMAGE_TYPE_PHYSICAL"
-							"Damage" "%damage"           
-						}
-					}
-				}
-			}
-		}
-	}
-}	
-
- "quenn_of_spiders_endurance"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"     "broodmother_insatiable_hunger"
-
-
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "5"
-    "LevelsBetweenUpgrades"  "4"
-  
-
-  
-"Modifiers"
-{
-  "royal_vitality_datadriven"
+  "precache"
   {
-    "Passive"       "1"
-    "IsHidden"      "1"
+    "particle"  "particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+  }
 
-    "Properties"
-      {
-        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"   "%bonus_health_regen"
-      }
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"    "FIELD_INTEGER"
+      "aura_radius"     "300"
+    }
+    "02"
+    { 
+      "var_type"  "FIELD_INTEGER"
+      "damage_per_second"    "20 40 60"
+    }
+    "03"
+    { 
+      "var_type"  "FIELD_FLOAT"
+      "tick_time"    "0.5"
+    }
   }
 }
 
-  // Special  
-  //-------------------------------------------------------------------------------------------------------------
+"queen_of_spiders_furious_strike"
+{
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_furious_strike.lua"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+  "AbilityTextureName"    "broodmother_incapacitating_bite"
+
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "chance"     "30 35 40"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "damage"  "100 175 250"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "full_damage_radius"  "180"
+    }
+    "04"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "half_damage_radius"  "240"
+    }  
+  }
+}
+
+"queen_of_spiders_endurance"
+{
+  "BaseClass"   "ability_lua"
+  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_endurance.lua"
+
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"      "broodmother_insatiable_hunger"
+
+  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+  "MaxLevel"               "3"
+  "RequiredLevel"          "5"
+  "LevelsBetweenUpgrades"  "4"
+
   "AbilitySpecial"
   {
     "01"
@@ -444,8 +281,9 @@
       "var_type"              "FIELD_INTEGER"
       "bonus_health_regen"    "25 50 75"
     }
-  }
+  } 
 }
+
 
 "queen_of_spiders_spider_poision_1"
 {

@@ -157,72 +157,27 @@
 
 
 
-	"warrior_of_light_holy_power"
+"warrior_of_light_holy_power"
+{
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/WarriorOfLight/warrior_of_light_holy_power.lua"
+
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"      "custom/warrior_of_light_holy_power"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilitySpecial"
 	{
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"custom/warrior_of_light_holy_power"
-		//"SpellImmunityType"			"SPELL_IMMUNITY_ENEMIES_YES"
-		
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2" 
-		"LevelsBetweenUpgrades"  "2"
-
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-		}
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"block_chance"		"15 20 25"
-			}
-		}
-		
-			"OnRespawn"
-		{
-			"ApplyModifier"	"modifier_holy_power"
-		}
-		
-		"Modifiers"
-		{
-			"modifier_holy_power"
-			{
-				"Passive"       "1"
-				"IsHidden"		"1"
-				"OnTakeDamage"
-    			{
-					"Random"
-					{
-						"Chance"		"%block_chance"
-						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-						"OnSuccess"
-						{
-    						"Heal"
-    						{          
-								"Target" "CASTER"
-        						"HealAmount" "%attack_damage"
-    						}
-							"AttachEffect"
-							{
-								"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
-								"EffectAttachType"	"follow_origin"	
-								"Target" "CASTER"
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
+		"01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "block_chance"    "15 20 25"
+	    }
+	} 
+}
 
 	
 "warrior_of_light_divine_protection"
