@@ -243,7 +243,64 @@
 	}
 }
 
+"paladin_grace"
+{
+  	"BaseClass"              "ability_lua"
+  	"ScriptFile"			 "heroes\Paladin\paladin_grace.lua"
+  	
+  	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  	"AbilityTextureName"     "omniknight_purification"
 
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AoERadius"               "400"	
+
+	"AbilityCastRange"				"800"
+	"AbilityCastPoint"				"0.3"
+	"AbilityCooldown"				"8.0"
+	"AbilityManaCost"				"110 130 150"	
+  	
+  	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+
+	}
+
+  	"AbilitySpecial"
+  	{
+    	"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"primary_target_heal"				"200 500 800"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"primary_target_heal_scepter"				"600 900 1200"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"nearby_allies_heal"			"150 300 450"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"400"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"manacost_scepter"				"160 180 200"
+		}
+  	} 
+}
 
 
 "paladin_grace"
