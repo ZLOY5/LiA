@@ -186,8 +186,7 @@
 
 	"precache"
 	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
-		"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+		"particle"	"particles/custom/troll_cutthroat/troll_cutthroat_vulnerability.vpcf"
 	}
 
 	"AbilitySpecial"
@@ -211,134 +210,6 @@
 		{
 			"var_type"					"FIELD_FLOAT"
 			"duration"					"5"
-		}
-	}
-}
-
-"troll_cutthroat_vulnerability"
-{
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityTextureName"			"troll_warlord_fervor"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"15 17 20"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_mult"					"200"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"armor_reductiion"			"-4 -7 -10"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"					"5"
-		}
-	}
-
-	"precache"
-	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
-		"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-	}
-
-	"Modifiers"
-	{
-		"modifier_troll_cutthroat_vulnerability"
-		{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
-		    "OnAttackStart"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName" 	"modifier_troll_cutthroat_vulnerability_crit"
-		            "Target" 		"CASTER"
-		        }
-
-		        "Random"
-		        {
-		            "Chance" "%crit_chance"
-		            "OnSuccess"
-		            {
-		                "ApplyModifier"
-		                {
-		                    "ModifierName" 	"modifier_troll_cutthroat_vulnerability_crit"
-		                    "Target"    	"CASTER"    
-		                }    
-		                "ApplyModifier"
-		                {
-		                    "ModifierName" 	"modifier_troll_cutthroat_vulnerability_debuff"
-		                    "Target"    	"TARGET"    
-		                }      
-		            }
-		        }
-		    }
-		}
-
-		"modifier_troll_cutthroat_vulnerability_crit"
-		{
-		    "IsHidden"  "1"
-		    "Properties"
-		    {
-		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-		    }
-
-		    "OnAttackLanded"
-		    {
-		        "RemoveModifier"
-		        {
-		            "ModifierName"  "modifier_troll_cutthroat_vulnerability_crit"
-		            "Target"   		"CASTER"    
-		        }
-
-		        "FireSound"
-		        {
-		        	"EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
-		        	"Target"		"CASTER"
-		        }
-
-				"FireEffect"
-				{
-					"EffectName"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-					"EffectAttachType"	"start_at_customorigin"
-					
-					"ControlPointEntities"
-					{
-						"TARGET"	"follow_origin"
-						"TARGET"	"follow_origin"
-					}
-				}
-		    }
-		}
-
-		"modifier_troll_cutthroat_vulnerability_debuff"
-		{
-			"Passive"               "0"
-			"IsHidden"				"0"
-			"IsPurgable"		"1"
-			"IsDebuff"			"1"
-
-			"Duration"	"%duration"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	    "%armor_reductiion"
-			}
 		}
 	}
 }
