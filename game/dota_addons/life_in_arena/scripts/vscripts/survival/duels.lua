@@ -16,6 +16,8 @@ function Survival:StartDuels()
     self.IsDuelOccured = true
     Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
 
+    GameRules:GetGameModeEntity():SetStashPurchasingDisabled(true)
+
     DoWithAllHeroes(function(hero)
         hero:ModifyGold(15, false, DOTA_ModifyGold_Unspecified) --компенсация за отключенные тики золота
 
@@ -289,6 +291,8 @@ function Survival:EndDuels()
     RespawnAllHeroes()
 
     ChangeWorldBounds(WORLD_BOUNDS_MAX,WORLD_BOUNDS_MIN)
+
+    GameRules:GetGameModeEntity():SetStashPurchasingDisabled(false)
 
     DoWithAllHeroes(function(hero)
         --ResetAllAbilitiesCooldown(hero)

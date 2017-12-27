@@ -136,25 +136,23 @@
 
 "pirate_poisoned_weapon"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"		"ability_lua"
+	"ScriptFile"		"heroes/Pirate/pirate_poisoned_weapon.lua"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityTextureName"			"custom/pirate_poisoned_weapon"
-	
+
 	"MaxLevel"               "3"
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
 
 	"precache"
 	{
-	"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+		"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
 	}
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
+
 	"AbilitySpecial"
 	{
 		"01"
@@ -165,12 +163,12 @@
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"movement_and_attack_slow"		"-10 -20 -30"
+			"movement_slow_percent"		"-10 -20 -30"
 		}
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"tooltip_slow"		"10 20 30"
+			"attack_slow"		"-10 -20 -30"
 		}
 		"04"
 		{
@@ -181,58 +179,6 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"radius"		"130"
-		}
-	}
-
-
-	"Modifiers"
-	{
-		"modifier_poisoned_weapon"
-		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-	
-			"OnAttackLanded"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_poisoned_weapon_debuff"
-					"Target"	
-					{
-						"Center"	"TARGET"
-						"Radius"	"%radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
-					}
-				}
-			}
-		}
-		
-		"modifier_poisoned_weapon_debuff"
-		{
-			"IsDebuff"		"1"
-			"IsPurgable"	"1"
-			"Duration"				"%duration"
-			
-			"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
-			"EffectAttachType"	"follow_origin"
-			
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_and_attack_slow"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%movement_and_attack_slow"
-			}
-			
-			"ThinkInterval"	"1.0"
-			"OnIntervalThink"
-			{
-				"Damage"
-				{
-					"Target"	"TARGET"
-					"Type"		"DAMAGE_TYPE_MAGICAL"
-					"Damage"	"%damage_per_second"
-				}
-			}
 		}
 	}
 }

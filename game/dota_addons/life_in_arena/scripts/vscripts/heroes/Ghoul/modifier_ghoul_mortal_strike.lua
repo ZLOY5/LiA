@@ -28,7 +28,7 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_ghoul_mortal_strike:OnRefresh( kv )
-	self.crit_chance = self:GetAbility():GetSpecialValueFor( "crit_chance" )
+	self.crit_multiplier = self:GetAbility():GetSpecialValueFor( "crit_multiplier" )
 end
 
 --------------------------------------------------------------------------------
