@@ -129,6 +129,78 @@
 
 }
 
+"troll_cuthroat_boomeang_axe_lua"
+{
+	"BaseClass"              "ability_lua"
+	"ScriptFile"       "heroes\TrollCutthroat\troll_cuthroat_boomeang_axe.lua"
+
+	"AbilityTextureName"			"troll_warlord_berserkers_rage"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+	"AbilityCastRange"				"600"
+	"AbilityCastPoint"				"0.2"
+	"AbilityCooldown"				"20 17.5 15"
+	"AbilityManaCost"				"100 125 150"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"precache"
+	{
+		"particle" 	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_pct"			"50 65 80"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_prc_dmg"			"150"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_duration"			"0.3 0.5 0.7"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"max_targets"			"8 10 12"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"axe_speed"				"600"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"time_between_bounces"	"0.2"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"return_speed"				"1000"
+		}
+	}
+}
+
 "troll_cuthroat_boomeang_axe_return"
 {
 	// General

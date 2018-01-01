@@ -88,11 +88,7 @@ function modifier_tauren_champion_champions_jump:OnDestroy()
 		ParticleManager:SetParticleControl( nFXIndex, 0, self:GetParent():GetOrigin() )
 		EmitSoundOn("Hero_EarthShaker.Totem.Immortal", self:GetParent())
 
-
-		self:GetParent():SetNeverMoveToClearSpace(false) 
-		ResolveNPCPositions(self:GetParent():GetAbsOrigin(),128) 
-		self:GetParent():SetNeverMoveToClearSpace(true)
-
+		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_tauren_champion_champions_jump_phase", nil)
 		
 	end
 end
