@@ -23766,7 +23766,7 @@
 		}
 	}
 	
-	"paladin_grace"
+	"paladin_grace_lua"
 	{
 	  	"BaseClass"              "ability_lua"
 	  	"ScriptFile"			 "heroes\Paladin\paladin_grace.lua"
@@ -27619,14 +27619,26 @@
 	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_crushing_totem.lua"
 	
 	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "AbilityTextureName"     "earthshaker_echo_slam"
+	  "SpellDispellableType"      "SPELL_DISPELLABLE_YES"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityTextureName"     "earthshaker_enchant_totem"
 	
 	  "MaxLevel"               "3"
 	  "RequiredLevel"          "1"
 	  "LevelsBetweenUpgrades"  "2"
 	
+	  "AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_2"
+	  "AbilityCastPoint"       "0.3"
+	  "AnimationPlaybackRate"  "2"
+	
 	  "AbilityCooldown"        "10"
-	  "AbilityManaCost"        "100"
+	  "AbilityManaCost"        "75 100 125"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
+	    "particle"  "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_egset.vpcf"
+	  }
 	
 	  "AbilitySpecial"
 	  {
@@ -27638,7 +27650,7 @@
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "cleave_damage_percent"     "100"
+	      "cleave_damage_percent"     "60 70 80"
 	    }
 	    "03"
 	    {
@@ -27648,22 +27660,22 @@
 	    "04"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "cleave_starting_width"     "150"
+	      "cleave_starting_width"     "200"
 	    }
 	    "05"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "cleave_ending_width"      "200"
+	      "cleave_ending_width"      "250"
 	    }
 	    "06"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "cleave_distance"     "200"
+	      "cleave_distance"     "300"
 	    }
 	    "07"
 	    {
 	      "var_type"      "FIELD_FLOAT"
-	      "duration"      "3 3.5 4"
+	      "duration"      "10"
 	    }
 	  } 
 	}
@@ -27673,7 +27685,7 @@
 	  "BaseClass"              "ability_lua"
 	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_champions_jump.lua"
 	
-	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -27684,9 +27696,17 @@
 	  "RequiredLevel"          "2"
 	  "LevelsBetweenUpgrades"  "2"
 	
+	  "AoERadius" "225"
+	
 	  "AbilityCastRange"        "400"
 	  "AbilityCastPoint"        "0.3"
-	  "AbilityCooldown"        "12 10 8"
+	  "AbilityCooldown"        "16 14 12"
+	  "AbilityManaCost"        "100 125 150"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_leap_impact.vpcf"
+	  }
 	
 	  "AbilitySpecial"
 	  {
@@ -27713,7 +27733,7 @@
 	    "05"
 	    {
 	      "var_type"        "FIELD_FLOAT"
-	      "duration"     "2"
+	      "duration"     "0.5"
 	    }
 	  } 
 	}
@@ -27730,7 +27750,14 @@
 	  "RequiredLevel"          "2"
 	  "LevelsBetweenUpgrades"  "2"
 	
-	  "AbilityCooldown"        "12"
+	//  "AbilityCooldown"        "12"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff_parent.vpcf"
+	    "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff.vpcf"
+	    "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_shield_impact.vpcf"
+	  }
 	
 	  "AbilitySpecial"
 	  {
@@ -27742,7 +27769,7 @@
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "min_damage_blocked_percent"     "1"
+	      "min_damage_blocked_percent"     "5"
 	    }
 	    "03"
 	    {
@@ -27772,13 +27799,20 @@
 	  "BaseClass"              "ability_lua"
 	  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_finish_off.lua"
 	
-	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "AbilityTextureName"     "earthshaker_enchant_totem"
+	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityTextureName"     "earthshaker_echo_slam"
 	
 	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
 	  "MaxLevel"               "3"
 	  "RequiredLevel"          "5"
 	  "LevelsBetweenUpgrades"  "4"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_stack_number.vpcf"
+	    "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_buff.vpcf"
+	  }
 	
 	  "AbilitySpecial"
 	  {
@@ -27795,7 +27829,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_FLOAT"
-	      "duration"     "5 10 15"
+	      "duration"     "15"
 	    }
 	  } 
 	}
@@ -28974,6 +29008,78 @@
 			}
 		}
 	
+	}
+	
+	"troll_cuthroat_boomeang_axe_lua"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\TrollCutthroat\troll_cuthroat_boomeang_axe.lua"
+	
+		"AbilityTextureName"			"troll_warlord_berserkers_rage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"20 17.5 15"
+		"AbilityManaCost"				"100 125 150"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_pct"			"50 65 80"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"str_prc_dmg"			"150"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"0.3 0.5 0.7"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_targets"			"8 10 12"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"axe_speed"				"600"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"600"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"return_speed"				"1000"
+			}
+		}
 	}
 	
 	"troll_cuthroat_boomeang_axe_return"
