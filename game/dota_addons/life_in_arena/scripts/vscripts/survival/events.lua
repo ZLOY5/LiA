@@ -68,6 +68,12 @@ function Survival:_OnHeroDeath(keys)
         print("Will reincarnate")
         return
     end
+
+    hero.goldLostToDeaths = hero.goldLostToDeaths or 0
+    local goldLostToLastDeath = PlayerResource:GetGoldLostToDeath(hero:GetPlayerID()) - hero.goldLostToDeaths
+    print("Hero dead. Giving him "..goldLostToLastDeath.." gold because GameMode:SetLoseGoldOnDeath(false) broken")
+    hero:ModifyGold( goldLostToLastDeath, false, DOTA_ModifyGold_Unspecified)
+    hero.goldLostToDeaths = PlayerResource:GetGoldLostToDeath(hero:GetPlayerID())
     
     if (self.State == SURVIVAL_STATE_DUEL_TIME) and (hero == self.DuelFirstHero or hero == self.DuelSecondHero) then
         Survival:DuelRegisterHeroDeath(attackerHero,hero)
