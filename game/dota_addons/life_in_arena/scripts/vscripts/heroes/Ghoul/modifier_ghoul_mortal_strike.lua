@@ -45,45 +45,39 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_ghoul_mortal_strike:GetModifierPreAttack_CriticalStrike( params )
-	if IsServer() then
-		local hTarget = params.target
-		local hAttacker = params.attacker
+	--print(IsServer(),"GetModifierPreAttack_CriticalStrike")
+	local hTarget = params.target
+	local hAttacker = params.attacker
 
-		if self:GetParent():PassivesDisabled() then
-			return 0.0
-		end
-
-		if hTarget and ( hTarget:IsBuilding() == false ) and ( hTarget:IsOther() == false ) and hAttacker and ( hAttacker:GetTeamNumber() ~= hTarget:GetTeamNumber() ) then
-			if self.pseudo:Trigger() then -- expose RollPseudoRandomPercentage?
-				self.bIsCrit = true
-				return self.crit_multiplier
-			end
-		end
+	if self:GetParent():PassivesDisabled() then
+		return 
 	end
 
-	return 0.0
+	if hTarget and ( hTarget:IsBuilding() == false ) and ( hTarget:IsOther() == false ) and hAttacker and ( hAttacker:GetTeamNumber() ~= hTarget:GetTeamNumber() ) then
+		if self.pseudo:Trigger() then -- expose RollPseudoRandomPercentage?
+			self.critRecord = params.record
+			return self.crit_multiplier
+		end
+	end
 end
 
 --------------------------------------------------------------------------------
 
 function modifier_ghoul_mortal_strike:OnAttackLanded( params )
-	if IsServer() then
-		-- play sounds and stuff
-		if self:GetParent() == params.attacker then
-			if self:GetParent():PassivesDisabled() then
-				return 0
-			end
+	
+	if self:GetParent() == params.attacker then
+		--print(IsServer(),"OnAttackLanded",params.damage)
+		if self:GetParent():PassivesDisabled() then
+			return 0
+		end
 
-			local hTarget = params.target
-			if hTarget ~= nil and self.bIsCrit then
-				local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf", PATTACH_CUSTOMORIGIN, hTarget)
-				ParticleManager:SetParticleControl(nFXIndex,0,hTarget:GetOrigin())
-				ParticleManager:SetParticleControl(nFXIndex,1,hTarget:GetOrigin())
-				EmitSoundOn( "Hero_PhantomAssassin.CoupDeGrace", self:GetParent() )   
-				self.bIsCrit = false
-			end
+		local hTarget = params.target
+		if hTarget ~= nil and self.critRecord == params.record then
+			local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf", PATTACH_CUSTOMORIGIN, hTarget)
+			ParticleManager:SetParticleControl(nFXIndex,0,hTarget:GetOrigin())
+			ParticleManager:SetParticleControl(nFXIndex,1,hTarget:GetOrigin())
+			EmitSoundOn( "Hero_PhantomAssassin.CoupDeGrace", self:GetParent() )   
+
 		end
 	end
-
-	return 0.0
 end
