@@ -65,14 +65,14 @@ function modifier_queen_of_spiders_furious_strike:OnAttackLanded( params )
 											nil, self.full_damage_radius, 
 											DOTA_UNIT_TARGET_TEAM_ENEMY, 
 											DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-											0, 0, false)
+											DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
 
 					local half_damage_radius = FindUnitsInRadius(self:GetParent():GetTeam(), 
 											hTarget:GetAbsOrigin(), 
 											nil, self.half_damage_radius, 
 											DOTA_UNIT_TARGET_TEAM_ENEMY, 
 											DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-											0, 0, false)
+											DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
 
 					for k,v in pairs (full_damage_targets) do
 						for t,s in pairs (half_damage_radius) do

@@ -27638,6 +27638,7 @@
 	  {
 	    "particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
 	    "particle"  "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_egset.vpcf"
+	    "particle"  "particles/custom/tauren_champion/modifier_tauren_champion_accumulated_rage_damage.vpcf"
 	  }
 	
 	  "AbilitySpecial"
@@ -28879,153 +28880,23 @@
 
 
 	//Start of file npc_lia_hero_troll_cutthroat.txt
-	"troll_cuthroat_boomeang_axe"
-	{
-	
-		"BaseClass" 					"ability_datadriven"
-	
-		"AbilityTextureName"			"troll_warlord_berserkers_rage"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	
-		"AbilityCastRange"				"600"
-		//"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"20 17.5 15"
-		"AbilityManaCost"				"100 125 150"
-	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-		
-		"precache"
-		{
-			"particle" 	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_pct"			"50 65 80"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"str_prc_dmg"			"150"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_duration"			"0.3 0.5 0.7"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"max_targets"			"8 10 12"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"axe_speed"				"600"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"600"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"return_speed"				"1000"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/TrollCutthroat/BoomerangAxe.lua"
-				"Function"		"Initialize"
-			}
-	
-			"TrackingProjectile"
-			{
-				"Target"           	"TARGET"
-				"EffectName"		"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
-				"Dodgeable"			"0"
-				"ProvidesVision"	"0"
-				"MoveSpeed"        	"%axe_speed"
-				"SourceAttachment"	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_troll_cuthroat_boomeang_axe_disarm"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}
-			
-		}
-	
-		"OnProjectileHitUnit"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/TrollCutthroat/BoomerangAxe.lua"
-				"Function"		"BoomerangAxes"
-				"sound_enemy"		"Hero_TrollWarlord.ProjectileImpact"
-				"boomerang_projectile"	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_troll_cuthroat_boomeang_axe_disarm"
-			{
-				"Passive"			"0"
-				"IsHidden"			"0"
-				"IsDebuff"			"1"
-				
-				"EffectName"	"particles/generic_gameplay/generic_disarm.vpcf"
-				"EffectAttachType"	"follow_overhead"
-	
-				"States"
-				{
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
-	
-	}
-	
-	"troll_cuthroat_boomeang_axe_lua"
+	"troll_cutthroat_boomeang_axe"
 	{
 		"BaseClass"              "ability_lua"
-		"ScriptFile"       "heroes\TrollCutthroat\troll_cuthroat_boomeang_axe.lua"
+		"ScriptFile"       "heroes/TrollCutthroat/troll_cutthroat_boomeang_axe.lua"
 	
 		"AbilityTextureName"			"troll_warlord_berserkers_rage"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	
-		"AbilityCastRange"				"600"
+		"AbilityCastRange"				"300 400 500"
 		"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"20 17.5 15"
-		"AbilityManaCost"				"100 125 150"
+		"AbilityCooldown"				"20 17 14"
+		"AbilityManaCost"				"100 75 50"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
@@ -29042,47 +28913,42 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_pct"			"50 65 80"
+				"damage_percentage"			"50"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"str_prc_dmg"			"150"
+				"strength_into_damage_percentage"			"150"
 			}
 			"03"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_duration"			"0.3 0.5 0.7"
+				"var_type"				"FIELD_INTEGER"
+				"max_targets"			"6 7 8"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"max_targets"			"8 10 12"
+				"axe_speed"				"600"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"axe_speed"				"600"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"radius"				"600"
 			}
-			"08"
+			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"return_speed"				"1000"
 			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"ability_cast_range"				"300 400 500"
+			}
 		}
 	}
 	
-	"troll_cuthroat_boomeang_axe_return"
+	"troll_cutthroat_boomeang_axe_return"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -29101,7 +28967,7 @@
 		{
 			"ApplyModifier"
 			{
-				"ModifierName" "modifier_troll_cuthroat_boomeang_axe_return"
+				"ModifierName" "modifier_troll_cutthroat_boomeang_axe_return"
 				"Target"
 				{
 					"Center"  	"CASTER"
@@ -29114,7 +28980,7 @@
 	
 		"Modifiers"
 		{
-			"modifier_troll_cuthroat_boomeang_axe_return"
+			"modifier_troll_cutthroat_boomeang_axe_return"
 			{
 				"Passive"			"0"
 				"IsHidden"			"1"
@@ -29205,7 +29071,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"damage"					"60 120 180"
+				"damage"					"50 100 150"
 			}
 			"02"
 			{
@@ -29389,7 +29255,7 @@
 	
 		"precache"
 		{
-		"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
 		}
 		
 		"AbilitySpecial"
