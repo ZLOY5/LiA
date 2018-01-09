@@ -330,8 +330,8 @@ function FindClearSpaceForUnit_IgnoreNeverMove(unit,position,useInterp)
 	end
 end
 
-function CDOTA_BaseNPC:ManaBurn(hCaster, hAbility, fManaAmount, fDamagePerMana, iDamageType, bAffecteByManaLossReduction)
-	if bAffecteByManaLossReduction then
+function CDOTA_BaseNPC:ManaBurn(hCaster, hAbility, fManaAmount, fDamagePerMana, iDamageType, bAffectedByManaLossReduction)
+	if bAffectedByManaLossReduction then
 		fManaAmount = fManaAmount * (100 - self:GetManaLossReduction()) * 0.01
 	end
 
@@ -348,7 +348,7 @@ function CDOTA_BaseNPC:ManaBurn(hCaster, hAbility, fManaAmount, fDamagePerMana, 
 	end 
 end
 
-function CDOTA_BaseNPC:GetManaLossReductionPercentage()
+function CDOTA_BaseNPC:GetManaLossReduction()
 	local mana_loss_reduction = 0
 	local mana_loss_reduction_unique = 0
 	for _, parent_modifier in pairs(self:FindAllModifiers()) do
