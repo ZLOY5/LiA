@@ -329,3 +329,40 @@ function FindClearSpaceForUnit_IgnoreNeverMove(unit,position,useInterp)
 		unit:SetNeverMoveToClearSpace(true)
 	end
 end
+
+function CDOTA_BaseNPC:ManaBurn(hCaster, hAbility, fManaAmount, fDamagePerMana, iDamageType, bAffecteByManaLossReduction)
+	if bAffecteByManaLossReduction then
+		fManaAmount = fManaAmount * (100 - self:GetManaLossReduction()) * 0.01
+	end
+
+	local fCurrentMana = self:GetMana()
+	if fCurrentMana < fManaAmount then
+		fManaAmount = fCurrentMana
+	end
+
+	local fDamageToDeal = fManaAmount * fDamagePerMana
+
+	self:ReduceMana(fManaAmount)
+	if fDamagePerMana and iDamageType then
+		ApplyDamage({ victim = self, attacker = hCaster, damage = fDamageToDeal, damage_type = iDamageType, ability = hAbility })
+	end 
+end
+
+function CDOTA_BaseNPC:GetManaLossReductionPercentage()
+	local mana_loss_reduction = 0
+	local mana_loss_reduction_unique = 0
+	for _, parent_modifier in pairs(self:FindAllModifiers()) do
+
+		if parent_modifier.GetManaLossReductionPercentageUnique then
+			mana_loss_reduction_unique = math.max(mana_loss_reduction_unique, parent_modifier:GetManaLossReductionPercentageUnique())
+		end
+
+		if parent_modifier.GetManaLossReductionPercentage then
+			mana_loss_reduction = mana_loss_reduction + parent_modifier:GetManaLossReductionPercentage()
+		end
+	end
+
+	mana_loss_reduction = mana_loss_reduction + mana_loss_reduction_unique
+
+	return mana_loss_reduction
+end

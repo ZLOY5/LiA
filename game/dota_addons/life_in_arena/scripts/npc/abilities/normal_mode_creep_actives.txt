@@ -2360,6 +2360,39 @@
   }
 }
 
+"wave_16_mana_burn"
+{
+  "BaseClass"       "ability_lua"
+  "ScriptFile"      "abilities/wave_16_mana_burn.lua"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+
+  "AbilityCastRange"      "500"
+  "AbilityCastPoint"      "0.3"
+  "AbilityCooldown"       "7.0"
+  "AbilityManaCost"       "90"
+
+  "precache"
+  {
+    "particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf"
+  }
+
+  "AbilitySpecial"
+  { 
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "mana_burn"     "250"
+    }
+    "02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "damage_per_mana" "1"
+    }
+  }
+}
 
 "16_wave_mana_burn"
 {
