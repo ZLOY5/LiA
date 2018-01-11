@@ -21,7 +21,9 @@ function troll_cutthroat_boomeang_axe:OnSpellStart()
 	caster:SwapAbilities("troll_cutthroat_boomeang_axe", "troll_cutthroat_boomeang_axe_return", true, true)
 	ability1:SetHidden(true)
 	ability2:SetHidden(false)
-	caster:AddNewModifier(caster, self, "modifier_troll_cutthroat_boomeang_axe_disarm", nil)
+	if not caster:HasModifier("modifier_troll_cutthroat_battle_trance") then
+		caster:AddNewModifier(caster, self, "modifier_troll_cutthroat_boomeang_axe_disarm", nil)
+	end
 
 	-- activate Enchanted Axes ability
 	local whirl = caster:FindAbilityByName("troll_cutthroat_enchanted_axes")
@@ -60,11 +62,11 @@ function troll_cutthroat_boomeang_axe:OnProjectileHit( hTarget, vLocation )
 			self.boomerang_jumps = self.boomerang_jumps + 1
 
 			-- axe performs a ranged attack on the target with reduced damage
-			caster:SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
+	--		caster:SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
 			caster:AddNewModifier(caster, self, "modifier_troll_cutthroat_boomeang_axe_damage", nil)
 			caster:PerformAttack( hTarget, true, true, true, true, false, false, true )
 			caster:RemoveModifierByName("modifier_troll_cutthroat_boomeang_axe_damage")
-			caster:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
+	--		caster:SetAttackCapability(DOTA_UNIT_CAP_MELEE_ATTACK)
 
 			-- return axe back to the hero if he used Return Axe ability
 			if caster:HasModifier("modifier_troll_cutthroat_boomeang_axe_return") then
@@ -130,7 +132,9 @@ function troll_cutthroat_boomeang_axe:OnProjectileHit( hTarget, vLocation )
 		local whirl = caster:FindAbilityByName("troll_cutthroat_enchanted_axes")
 		local ability1 = caster:FindAbilityByName("troll_cutthroat_boomeang_axe")
 		local ability2 = caster:FindAbilityByName("troll_cutthroat_boomeang_axe_return")
-		caster:RemoveModifierByName("modifier_troll_cutthroat_boomeang_axe_disarm")
+		if caster:HasModifier("modifier_troll_cutthroat_boomeang_axe_disarm") then
+			caster:RemoveModifierByName("modifier_troll_cutthroat_boomeang_axe_disarm")
+		end
 		if caster:HasModifier("modifier_troll_cutthroat_boomeang_axe_return") then
 			caster:RemoveModifierByName("modifier_troll_cutthroat_boomeang_axe_return")
 		end
