@@ -67,20 +67,29 @@ function modifier_queen_of_spiders_furious_strike:OnAttackLanded( params )
 											DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
 											DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
 
-					local half_damage_radius = FindUnitsInRadius(self:GetParent():GetTeam(), 
+					local half_damage_targets = FindUnitsInRadius(self:GetParent():GetTeam(), 
 											hTarget:GetAbsOrigin(), 
 											nil, self.half_damage_radius, 
 											DOTA_UNIT_TARGET_TEAM_ENEMY, 
 											DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
 											DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
 
-					for k,v in pairs (full_damage_targets) do
-						for t,s in pairs (half_damage_radius) do
+					for _,s in pairs (full_damage_targets) do
+						print(self.damage)
+						ApplyDamage({ victim = s, attacker = params.attacker, damage = self.damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })
+					end
+
+					for _,v in pairs (half_damage_targets) do
+						local bDealDamage = true
+						for _,s in pairs (full_damage_targets) do
 							if s == v then
-								ApplyDamage({ victim = s, attacker = params.attacker, damage = self.damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })
-							else
-								ApplyDamage({ victim = s, attacker = params.attacker, damage = self.damage / 2, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })	
+								bDealDamage = false
+								break
 							end
+						end
+						if bDealDamage == true then
+							print(self.damage/2)
+							ApplyDamage({ victim = v, attacker = params.attacker, damage = self.damage / 2, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })	
 						end
 					end 
 				end
