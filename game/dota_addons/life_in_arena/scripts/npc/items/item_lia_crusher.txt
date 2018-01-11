@@ -8,7 +8,7 @@
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"470"	
+	"ItemCost"						"650"	
 	"ItemShopTags"					"crit;damage;hard_to_tag"
 
 	"ItemKillable" 					"0" 
@@ -20,7 +20,7 @@
 	"ItemResult"					"item_lia_crusher"
 	"ItemRequirements"
 	{
-		"01"						"item_lia_battle_javelin;item_lia_lightning_spear"
+		"01"						"item_lia_pantilus_blade;item_lia_lightning_spear"
 	}
 }
 
@@ -28,7 +28,7 @@
 {
 	"ID"							"1485"
 	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"2000"
+	"ItemCost"						"2050"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
 	"ItemSellable"                  "1"
@@ -60,7 +60,7 @@
 		"01"
 		{
 			"var_type" 				"FIELD_INTEGER"
-			"bonus_damage" 			"120"
+			"bonus_damage" 			"75"
 		}
 		"02"
 		{
@@ -135,7 +135,7 @@
 		    "Properties"
 		    {
 		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-		    //	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+		    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
 		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
 		    }  
 
