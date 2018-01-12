@@ -39,7 +39,8 @@ function modifier_mana_break:OnAttackLanded( params )
 			end
 
 			params.target:ManaBurn(params.attacker, self:GetAbility(), self.mana_per_hit, self.damage_per_mana, DAMAGE_TYPE_PHYSICAL, true)
-			
+			local nFXIndex = ParticleManager:CreateParticle( "particles/generic_gameplay/generic_manaburn.vpcf", PATTACH_CUSTOMORIGIN, nil )
+			ParticleManager:SetParticleControl( nFXIndex, 0, params.target:GetOrigin() )
 			params.target:EmitSound("Hero_Antimage.ManaBreak")
 		end
 	end

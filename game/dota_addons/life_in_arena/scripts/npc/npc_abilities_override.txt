@@ -11761,47 +11761,47 @@
 	
 	"dark_knight_dark_energy_zone"
 	{
-	  "BaseClass"              "ability_lua"
-	  "ScriptFile"       "heroes\DarkKnight\dark_knight_dark_energy_zone.lua"
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes/DarkKnight/dark_knight_dark_energy_zone.lua"
 	
-	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	  "AbilityTextureName"     "abaddon_frostmourne"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"     "abaddon_frostmourne"
 	
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "2"
-	  "LevelsBetweenUpgrades"  "2"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 	
-	  "AoERadius" "225 250 275"
+		"AbilityCastRange"        "500"
+		"AbilityCastPoint"        "0.3"
+		"AbilityCooldown"         "25"
+		"AbilityManaCost"         "75"
+		"AoERadius"               "%radius"
 	
-	  "AbilityCastPoint"        "0.3"
-	  "AbilityCooldown"        "25"
-	  "AbilityManaCost"        "0"
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_leap_impact.vpcf"
+		}
 	
-	  "precache"
-	  {
-	    "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_leap_impact.vpcf"
-	  }
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "duration"      "3 5 7"
-	    }
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "mana_loss_reduction"     "50"
-	    }
-	    "03"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "radius"     "225 250 275"
-	    }
-	  } 
+		"AbilitySpecial"
+		{
+		"01"
+		{
+		  "var_type"      "FIELD_FLOAT"
+		  "duration"      "3 5 7"
+		}
+		"02"
+		{
+		  "var_type"        "FIELD_INTEGER"
+		  "mana_loss_reduction"     "50"
+		}
+		"03"
+		{
+		  "var_type"        "FIELD_INTEGER"
+		  "radius"     "225 250 275"
+		}
+		} 
 	}
 	
 	"dark_knight_incinerate"

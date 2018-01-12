@@ -53,8 +53,8 @@ end
 function modifier_dark_knight_dark_energy_zone_thinker:OnCreated( kv )
 	self.radius = self:GetAbility():GetSpecialValueFor( "radius" )
 	if IsServer() then
-		self.webParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_broodmother/broodmother_web.vpcf",PATTACH_ABSORIGIN,self:GetParent())
-		ParticleManager:SetParticleControl(self.webParticle,1,Vector(self.radius,0,self.radius))
+	--	self.webParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_broodmother/broodmother_web.vpcf",PATTACH_ABSORIGIN,self:GetParent())
+	--	ParticleManager:SetParticleControl(self.webParticle,1,Vector(self.radius,0,self.radius))
 		--EmitSoundOn("Hero_Broodmother.SpinWebCast",self:GetParent())
 	end
 end
@@ -63,7 +63,7 @@ end
 
 function modifier_dark_knight_dark_energy_zone_thinker:OnDestroy()
 	if IsServer() then
-		ParticleManager:DestroyParticle(self.webParticle,true)
+	--	ParticleManager:DestroyParticle(self.webParticle,true)
 	end
 end
 
