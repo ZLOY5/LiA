@@ -1149,16 +1149,6 @@
 		}
 		"03"
 		{
-			"var_type"				"FIELD_FLOAT"
-			"damage_per_burn"		"1.0"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"mana_per_hit"			"150"
-		}
-		"05"
-		{
 			"var_type"		"FIELD_INTEGER"
 			"lifesteal_percent"		"30"
 		}
@@ -1193,26 +1183,6 @@
 
 			"OnOrbImpact"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"units/ManaBreak.lua"
-					"Function"		"ManaBreak"
-					"Target"		"TARGET"
-				}
-
-				"FireSound"
-				{
-					"EffectName"	"Hero_Antimage.ManaBreak"
-					"Target"		"TARGET"
-				}
-
-				"AttachEffect"
-				{
-					"EffectName"	"particles/generic_gameplay/generic_manaburn.vpcf"
-					"EffectAttachType"	"attach_hitloc"
-					"Target"		"TARGET"
-				}
-
 				"ApplyModifier"
 				{
 					"ModifierName"	"modifier_orn_lifesteal"
@@ -1237,6 +1207,34 @@
 	}
 }
 
+"orn_mana_break"
+{
+	"BaseClass"				"ability_lua"
+	"ScriptFile"			"abilities/orn_mana_break.lua"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"		
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"nyx_assassin_mana_burn"
+
+	"precache"
+	{
+		"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
+	}
+
+	"AbilitySpecial"
+	{	
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_per_hit"			"150"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"damage_per_mana"		"1.0"
+		}
+	}
+}
 
 "orn_bash"
 {

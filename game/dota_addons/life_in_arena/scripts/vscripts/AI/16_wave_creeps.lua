@@ -8,7 +8,7 @@ function Spawn(entityKeyValues)
 		return
 	end
 	
-	ABILITY_16_wave_mana_burn = thisEntity:FindAbilityByName("16_wave_mana_burn")
+	ABILITY_16_wave_mana_burn = thisEntity:FindAbilityByName("wave_16_mana_burn")
 	thisEntity:SetContextThink( "16_wave_think", Think16Wave , 0.1)
 end
 

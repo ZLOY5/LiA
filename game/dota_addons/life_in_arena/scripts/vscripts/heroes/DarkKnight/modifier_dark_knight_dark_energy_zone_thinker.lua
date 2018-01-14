@@ -44,6 +44,12 @@ end
 
 --------------------------------------------------------------------------------
 
+function modifier_dark_knight_dark_energy_zone_thinker:GetAuraDuration()
+	return 0.1
+end
+
+--------------------------------------------------------------------------------
+
 function modifier_dark_knight_dark_energy_zone_thinker:GetAuraRadius()
 	return self.radius
 end
@@ -53,9 +59,9 @@ end
 function modifier_dark_knight_dark_energy_zone_thinker:OnCreated( kv )
 	self.radius = self:GetAbility():GetSpecialValueFor( "radius" )
 	if IsServer() then
-	--	self.webParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_broodmother/broodmother_web.vpcf",PATTACH_ABSORIGIN,self:GetParent())
-	--	ParticleManager:SetParticleControl(self.webParticle,1,Vector(self.radius,0,self.radius))
-		--EmitSoundOn("Hero_Broodmother.SpinWebCast",self:GetParent())
+		self.DarkEnergyZoneParticle = ParticleManager:CreateParticle("particles/custom/dark_knight/dark_knight_dark_energy_zone.vpcf",PATTACH_ABSORIGIN,self:GetParent())
+		ParticleManager:SetParticleControl(self.DarkEnergyZoneParticle,1,Vector(self.radius,self.radius,self.radius))
+		self:GetParent():EmitSound("Hero_Abaddon.BorrowedTime")
 	end
 end
 
@@ -63,7 +69,8 @@ end
 
 function modifier_dark_knight_dark_energy_zone_thinker:OnDestroy()
 	if IsServer() then
-	--	ParticleManager:DestroyParticle(self.webParticle,true)
+		ParticleManager:DestroyParticle(self.DarkEnergyZoneParticle,true)
+		self:GetParent():StopSound("Hero_Abaddon.BorrowedTime")
 	end
 end
 
