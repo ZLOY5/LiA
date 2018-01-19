@@ -210,7 +210,67 @@
 	}
 }
 
+"witch_doctor_negative_energy_lua"
+{
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/WitchDoctor/witch_doctor_negative_energy.lua"
 
+	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"          
+	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
+	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"      "custom/witch_doctor_negative_energy"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastRange"      "650"
+	"AbilityCastPoint"      "0.3"
+	"AbilityCooldown"       "11 10 9"
+	"AbilityManaCost"       "100 175 250"
+
+	"precache"
+	{
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+		"particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+		  "var_type"    "FIELD_INTEGER"
+		  "damage"      "100 200 300"
+		}
+		"02"
+		{
+		  "var_type"    "FIELD_INTEGER"
+		  "damage_scepter"      "300 400 500"
+		}
+		"03"
+		{
+		  "var_type"        "FIELD_INTEGER"
+		  "start_width"      "80"
+		}
+		"04"
+		{
+		  "var_type"        "FIELD_INTEGER"
+		  "end_width"      "200"
+		}
+		"05"
+		{
+		  "var_type"        "FIELD_INTEGER"
+		  "distance"         "650"
+		}
+		"06"
+		{
+		  "var_type"        "FIELD_INTEGER"
+		  "speed"         "1100"
+		}     
+	}
+}
 
 "witch_doctor_frost_armor"
 {
@@ -562,6 +622,79 @@
 			}
 		}
 	}
+}
+
+"witch_doctor_frost_armor_lua"
+{
+  "BaseClass"   "ability_lua"
+  "ScriptFile"  "heroes/WitchDoctor/witch_doctor_frost_armor.lua"
+
+  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
+  "AbilityTextureName"      "custom/witch_doctor_frost_armor"
+
+  "MaxLevel"               "3"
+  "RequiredLevel"          "2"
+  "LevelsBetweenUpgrades"  "2"
+
+  "AbilityCastRange"        "800"
+  "AbilityCastPoint"        "0.4"
+  "AbilityCooldown"         "6.0"
+
+  "AbilityManaCost"       "100 125 150"
+
+  "precache"
+  {
+    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+    "particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "armor_bonus"     "5 10 15"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "armor_bonus_scepter"     "20 25 30"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "duration"        "10 15 20"
+    }
+    "04"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "duration_scepter"        "30"
+    }
+    "05"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "slow_duration"     "5.0"
+    }
+    "06"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "slow_movement_speed" "-40"
+    }
+    "07"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "slow_attack_speed"   "-25"
+    }
+    "08"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "manacost_scepter"   "150 175 200"
+    }
+      
+  }
 }
 
 "witch_doctor_discharge"
