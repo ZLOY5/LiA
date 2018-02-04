@@ -1,11 +1,12 @@
 witch_doctor_negative_energy = class({})
-LinkLuaModifier("modifier_witch_doctor_negative_energy","heroes/WitchDoctor/modifier_witch_doctor_negative_energy.lua",LUA_MODIFIER_MOTION_NONE)
 
 function witch_doctor_negative_energy:OnSpellStart()
 	self.speed = self:GetSpecialValueFor( "speed" )
+	self.projectile_distance = self:GetSpecialValueFor( "projectile_distance" )
 	self.start_width = self:GetSpecialValueFor( "start_width" )
 	self.end_width = self:GetSpecialValueFor( "end_width" )
-	self.distance = self:GetSpecialValueFor( "distance" )
+	
+	print("projectile_distance "..self.projectile_distance)
 
 	local vPos = nil
 	if self:GetCursorTarget() then
@@ -18,7 +19,7 @@ function witch_doctor_negative_energy:OnSpellStart()
 	vDirection.z = 0.0
 	vDirection = vDirection:Normalized()
 
-	self.speed = self.speed * ( self.distance / ( self.distance - self.start_width ) )
+	self.speed = self.speed * ( self.projectile_distance / ( self.projectile_distance - self.start_width ) )
 
 	local info = {
 		EffectName = "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf",
@@ -27,7 +28,7 @@ function witch_doctor_negative_energy:OnSpellStart()
 		fStartRadius = self.start_width,
 		fEndRadius = self.end_width,
 		vVelocity = vDirection * self.speed,
-		fDistance = self.distance,
+		fDistance = self.projectile_distance,
 		Source = self:GetCaster(),
 		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
 		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,

@@ -1,216 +1,5 @@
+
 "witch_doctor_negative_energy"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"custom/witch_doctor_negative_energy"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
-	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
-		"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
-	}
-
-
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"650"
-	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"11 10 9"
-	
-	
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"100 175 250"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"			"100 200 300"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"start_radius"			"80"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"end_radius"			"200"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"range"					"650"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"speed"					"1100"
-		}
-				
-	}
-	
-	"OnSpellStart"
-	{
-		"LinearProjectile"
-		{
-			"Target" "POINT"
-			"EffectName" "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
-			"MoveSpeed" "%speed"
-			"StartRadius" "%start_radius"
-			"StartPosition" "attach_origin"
-			"EndRadius" "%end_radius"
-			"FixedDistance" "%range"
-			"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
-			"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-			"HasFrontalCone" "1"
-			"ProvidesVision" "0"
-		}
-		"FireSound"
-		{
-			"EffectName" "Hero_ShadowDemon.ShadowPoison"
-			"Target" "CASTER"
-		}
-	}
-	"OnProjectileHitUnit"
-	{
-		"DeleteOnHit" "0"
-		"Damage"
-		{
-			"Target" "TARGET"
-			"Type" "DAMAGE_TYPE_MAGICAL"
-			"Damage" "%damage"
-		}
-	}
-}
-
-"witch_doctor_negative_energy_staff"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"	
-	"AbilityTextureName"			"custom/witch_doctor_negative_energy"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
-	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
-		"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
-	}
-
-
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"650"
-	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"11 10 9"
-	
-	
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"100 200 300"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"			"300 400 500"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"start_radius"			"80"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"end_radius"			"200"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"range"					"650"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"speed"					"1100"
-		}
-				
-	}
-	
-	"OnSpellStart"
-	{
-		"LinearProjectile"
-		{
-			"Target" "POINT"
-			"EffectName" "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
-			"MoveSpeed" "%speed"
-			"StartRadius" "%start_radius"
-			"StartPosition" "attach_origin"
-			"EndRadius" "%end_radius"
-			"FixedDistance" "%range"
-			"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
-			"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-			"HasFrontalCone" "1"
-			"ProvidesVision" "0"
-		}
-		"FireSound"
-		{
-			"EffectName" "Hero_ShadowDemon.ShadowPoison"
-			"Target" "CASTER"
-		}
-	}
-	"OnProjectileHitUnit"
-	{
-		"DeleteOnHit" "0"
-		"Damage"
-		{
-			"Target" "TARGET"
-			"Type" "DAMAGE_TYPE_MAGICAL"
-			"Damage" "%damage"
-		}
-	}
-}
-
-"witch_doctor_negative_energy_lua"
 {
 	"BaseClass"		"ability_lua"
 	"ScriptFile"	"heroes/WitchDoctor/witch_doctor_negative_energy.lua"
@@ -231,9 +20,10 @@
 	"AbilityCooldown"       "11 10 9"
 	"AbilityManaCost"       "100 175 250"
 
+	"HasScepterUpgrade"		"1"
+
 	"precache"
 	{
-		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
 		"particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
 	}
 
@@ -252,17 +42,17 @@
 		"03"
 		{
 		  "var_type"        "FIELD_INTEGER"
-		  "start_width"      "80"
+		  "projectile_distance"    "650"
 		}
 		"04"
 		{
 		  "var_type"        "FIELD_INTEGER"
-		  "end_width"      "200"
+		  "start_width"      "80"
 		}
 		"05"
 		{
 		  "var_type"        "FIELD_INTEGER"
-		  "distance"         "650"
+		  "end_width"      "200"
 		}
 		"06"
 		{

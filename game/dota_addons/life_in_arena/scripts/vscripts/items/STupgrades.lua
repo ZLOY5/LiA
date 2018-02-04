@@ -2,6 +2,9 @@ function OnEquip(event)
 	local caster = event.caster
 	local name = caster:GetUnitName()
 	local par
+	if not caster:HasModifier("modifier_ultimate_upgrade") then
+		caster:AddNewModifier(caster, event.ability, "modifier_ultimate_upgrade", nil)
+	end
 	--
 	-- names of heroes-mages
 	--if name == "npc_dota_hero_bane" then --or "" then
@@ -176,7 +179,7 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		--
-		if name == "npc_dota_hero_shadow_shaman" then
+--[[		if name == "npc_dota_hero_shadow_shaman" then
 			par = {
 				group = caster.groupArmor,
 				nameModifier = "modifier_frost_armor",
@@ -201,7 +204,7 @@ function OnEquip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
-		end
+		end]]
 		
 		if name == "npc_dota_hero_leshrac" then
 			par = {
@@ -382,6 +385,23 @@ function OnUnequip(event)
 	if not caster.STupgrades then
 		caster.STupgrades = false
 	end
+
+	local num_scepters_in_inventory = 0
+
+	for i=0, 5, 1 do  --Search for Aghanim's Scepters in the player's inventory.
+		local current_item = caster:GetItemInSlot(i)
+		if current_item ~= nil then
+			local item_name = current_item:GetName()
+			
+			if item_name == "item_lia_spherical_staff" then
+				num_scepters_in_inventory = num_scepters_in_inventory + 1
+			end
+		end
+	end
+
+	if num_scepters_in_inventory == 0 and caster:HasModifier("modifier_ultimate_upgrade") then
+		caster:RemoveModifierByName("modifier_ultimate_upgrade")
+	end
 	--
 	if not caster:HasItemInInventory("item_lia_spherical_staff") then
 	--if caster.STupgrades == false then
@@ -552,7 +572,7 @@ function OnUnequip(event)
 			caster.STupgrades = false
 		end
 		--
-		if name == "npc_dota_hero_shadow_shaman" then
+--[[		if name == "npc_dota_hero_shadow_shaman" then
 			par = {
 				group = caster.groupArmor,
 				nameModifier = "modifier_frost_armor",
@@ -577,7 +597,7 @@ function OnUnequip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = false
-		end
+		end]]
 
 		if name == "npc_dota_hero_leshrac" then
 			par = {
