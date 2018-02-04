@@ -85,6 +85,8 @@ function Precache( context )
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts", context)
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts", context)
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts", context)
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts", context)
+		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts", context)
 
 		PrecacheUnitByNameAsync("npc_dota_hero_terrorblade", function(...) end)
 		PrecacheUnitByNameAsync("npc_dota_hero_mirana", function(...) end)
