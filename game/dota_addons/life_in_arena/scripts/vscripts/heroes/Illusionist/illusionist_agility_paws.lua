@@ -40,7 +40,15 @@ function stay_agi(event)
 	--end
 end
 
+function SetStack(event)
+	local caster = event.caster
 
+	local modif = caster:FindModifierByName('modifier_illusionist_agility_paws_i')
+	if modif then
+		modif:SetStackCount(caster.all_agi)
+	end
+
+end
 
 --[[function init( event )
 	local caster = event.caster

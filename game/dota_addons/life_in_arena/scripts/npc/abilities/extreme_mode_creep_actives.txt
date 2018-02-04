@@ -486,7 +486,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCooldown"				"6"
 	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.0"
+	"AbilityCastPoint"				"0.3"
 	"AbilityManaCost"				"80"
 	
 	"precache"
@@ -532,9 +532,9 @@
 			"EffectName"			"particles/units/heroes/hero_bane/bane_enfeeble.vpcf"
 			"EffectAttachType"		"follow_overhead"
 			
-			"Properties"
+			"States"
 			{
-				"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%miss"
+				"MODIFIER_STATE_PASSIVES_DISABLED"		"MODIFIER_STATE_VALUE_ENABLED"
 			}
 		}
 	}
