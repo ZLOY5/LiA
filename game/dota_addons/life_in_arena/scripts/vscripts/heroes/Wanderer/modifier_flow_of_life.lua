@@ -23,19 +23,20 @@ function modifier_flow_of_life:DeclareFunctions()
 end
 
 function modifier_flow_of_life:GetModifierConstantHealthRegen()
-	return self.healthRegen
+	return self.bonus_health_regen
 end
 
 function modifier_flow_of_life:GetModifierConstantManaRegen()
-	return self.manaRegen
+	return self.bonus_mana_regen
 end
 
 function modifier_flow_of_life:OnCreated(kv)
-	self.healthRegen = self:GetAbility():GetSpecialValueFor("total_heal") / self:GetDuration()
-	self.manaRegen = self:GetAbility():GetSpecialValueFor("total_mana") / self:GetDuration()
-end
-
-function modifier_flow_of_life:OnRefresh(kv)
-	self.healthRegen = self:GetAbility():GetSpecialValueFor("total_heal") / self:GetDuration()
-	self.manaRegen = self:GetAbility():GetSpecialValueFor("total_mana") / self:GetDuration()
+	if self:GetCaster():HasScepter() then
+		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen_scepter")
+		self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen_scepter")
+	else
+		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
+		self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
+	end
+	
 end
