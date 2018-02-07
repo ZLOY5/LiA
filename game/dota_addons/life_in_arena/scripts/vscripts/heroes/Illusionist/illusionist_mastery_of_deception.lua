@@ -47,7 +47,7 @@ function illusions( event )
 	local ability2 = caster:FindAbilityByName('illusionist_agility_paws')
 	if ability2:GetLevel() > 0 then
 		local bonus_agi = ability2:GetLevelSpecialValueFor( "bonus_agility", ability2:GetLevel() - 1 )
-		local max_bonus = ability2:GetLevelSpecialValueFor( "max_bonus", ability2:GetLevel() - 1 )
+		local max_bonus = ability2:GetLevelSpecialValueFor( "bonus_per_level", ability2:GetLevel() - 1 ) * caster:GetLevel()
 		--local modifier = FindModifierByName()
 		if max_bonus > caster.curr_agi then
 			if max_bonus < caster.curr_agi + bonus_agi then

@@ -3,6 +3,7 @@ function startd(event)
 	local ability = event.ability
 	local value_p = ability:GetSpecialValueFor("value_p")
 	local radius = ability:GetSpecialValueFor("radius")
+	local base_damage = ability:GetSpecialValueFor("base_damage")
 	--
 	local agility = caster:GetAgility()
 	local damage
@@ -12,6 +13,8 @@ function startd(event)
 	else
 		damage = agility *caster.count_ill *value_p
 	end
+
+	damage = damage + base_damage
 	
 	--print('		damage',damage)
 	local targets = event.target_entities

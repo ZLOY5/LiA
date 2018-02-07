@@ -265,13 +265,7 @@ function OnEquip(event)
 		end			
 		
 		if name == "npc_dota_hero_silencer" then
-			par = {
-				unit = caster,
-				oldAbi = "wanderer_the_flow_of_life",
-				newAbi = "wanderer_the_flow_of_life_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
+	
 			--
 			par = {
 				unit = caster,
@@ -660,14 +654,7 @@ function OnUnequip(event)
 		end
 		
 		if name == "npc_dota_hero_silencer" then
-			par = {
-				unit = caster,
-				oldAbi = "wanderer_the_flow_of_life_staff",
-				newAbi = "wanderer_the_flow_of_life",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
+			
 			par = {
 				unit = caster,
 				oldAbi = "wanderer_ghosts_staff",

@@ -19396,16 +19396,21 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilitySpecial"
 	    {
-	      "01"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "radius"                  "300"
-	        }
-	       "02"
-	        {
-	            "var_type"                "FIELD_FLOAT"
-	            "value_p"                   "0.8 0.9 1.0"
-	        }
+	      	"01"
+		    {
+		        "var_type"                "FIELD_INTEGER"
+		        "radius"                  "300"
+		    }
+		    "02"
+		    {
+		        "var_type"                "FIELD_FLOAT"
+		        "base_damage"             "75 125 175"
+		    }
+		  	"03"
+		    {
+		        "var_type"                "FIELD_FLOAT"
+		        "value_p"                   "0.8 0.9 1.0"
+		    }
 	    }
 		
 		"Modifiers"
@@ -19592,6 +19597,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"max_bonus"		"200"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_per_level"		"10"
 			}
 		}
 	
@@ -30566,7 +30576,9 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+	
+		"HasScepterUpgrade"			"1"
 			
 		"AbilityCastRange"			"700"
 		"AbilityCastPoint"			"0"
@@ -30578,17 +30590,32 @@
 			"01"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"duration"		"5"
+				"bonus_health_regen"	"20 40 80"
 			}
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"total_heal"	"100 200 400"
+				"bonus_health_regen_scepter"	"40 80 160"
 			}
 			"03"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"total_mana"	"100 150 200"
+				"bonus_mana_regen"	"20 30 40"
+			}
+			"04"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"bonus_mana_regen_scepter"	"40 60 80"
+			}
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"5"
+			}
+			"06"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"cooldown_scepter"		"7"
 			}
 		}
 	
@@ -30851,7 +30878,59 @@
 	}
 	
 	
+	"wanderer_ghosts"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\Wanderer\ghosts.lua"
 	
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    "AbilityTextureName"		"custom/wanderer_ghosts"
+		
+		"HasScepterUpgrade"			"1"
+	
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "5"
+	    "LevelsBetweenUpgrades"  "4"
+	
+		"AbilityCooldown"               "160"
+	    "AbilityManaCost"               "350 450 550"
+			
+		"AbilitySpecial"
+		{
+			"01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "ghost_health"  "1000 1500 2000"
+	        }
+	        "01"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "ghost_health_scepter"  "1500 2000 2500"
+	        }
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "ghost_damage"  "135 185 255"
+	        }
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "ghost_damage_scepter"  "185 255 325"
+	        }
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "duration"  "120"
+	        }
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "manacost_scepter"  "600 700 800"
+	        }
+		}
+	
+	}
 	
 	
 	
@@ -31735,29 +31814,34 @@
 	        "06"
 	        {
 	            "var_type"              "FIELD_FLOAT"
-	            "burn_duration"         "10.0"
+	            "wave_interval"         "1.0"
 	        }
 	        "07"
+	        {
+	            "var_type"              "FIELD_FLOAT"
+	            "burn_duration"         "10.0"
+	        }
+	        "08"
 	        {
 	            "var_type"              "FIELD_INTEGER"
 	            "wave_count"            "6"
 	        }
-	        "08"
+	        "09"
 	        {
 	            "var_type"              "FIELD_FLOAT"
 	            "channel_time"         "6.0"
 	        }
-	        "09"
+	        "10"
 	        {
 	            "var_type"              "FIELD_INTEGER"
 	            "radius"                "300"
 	        }
-	        "10"
+	        "11"
 	        {
 	            "var_type"              "FIELD_INTEGER"
 	            "radius_scepter"                "325"
 	        }    
-	        "11"
+	        "12"
 	        {
 	            "var_type"              "FIELD_INTEGER"
 	            "manacost_scepter"                "350 400 450"

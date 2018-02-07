@@ -4,12 +4,15 @@ LinkLuaModifier("modifier_witch_doctor_frost_armor_debuff","heroes/WithcDoctor/m
 
 function witch_doctor_frost_armor:OnSpellStart()
 	if IsServer() then
-		local duration = self:GetSpecialValueFor( "duration" )
+		if self:GetCaster():HasScepter() then
+			self.duration = self:GetSpecialValueFor( "duration" )
+		else
+			self.duration = self:GetSpecialValueFor( "duration_scepter" )
+		end
+		
 		local target = self:GetCursorTarget()
 		
-		if self:GetCaster():HasScepter() then
-			duration = self:GetSpecialValueFor( "duration_scepter" )
-		end
+		
 
 		target:AddNewModifier(self:GetCaster(), self, pszScriptName, hModifierTable)
 
