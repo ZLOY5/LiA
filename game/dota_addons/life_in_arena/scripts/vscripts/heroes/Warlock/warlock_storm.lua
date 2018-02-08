@@ -8,6 +8,10 @@ function warlock_storm:GetManaCost(iLevel)
 	return self.BaseClass.GetManaCost( self, iLevel ) 
 end
 
+function warlock_storm:GetAOERadius()
+	return self:GetSpecialValueFor( "radius" )
+end
+
 function warlock_storm:OnSpellStart()
 	self.radius = self:GetSpecialValueFor( "radius" )
 	self.target = self:GetCursorPosition()

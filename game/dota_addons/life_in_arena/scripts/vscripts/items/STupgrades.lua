@@ -159,7 +159,7 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end
 		--
-		if name == "npc_dota_hero_lion" then
+--[[		if name == "npc_dota_hero_lion" then
 			par = {
 				unit = caster,
 				oldAbi = "warlock_storm_datadriven",
@@ -177,7 +177,7 @@ function OnEquip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = true
-		end
+		end]]
 		--
 --[[		if name == "npc_dota_hero_shadow_shaman" then
 			par = {
@@ -546,7 +546,7 @@ function OnUnequip(event)
 			caster.STupgrades = false
 		end
 		--
-		if name == "npc_dota_hero_lion" then
+--[[		if name == "npc_dota_hero_lion" then
 			par = {
 				unit = caster,
 				oldAbi = "warlock_storm_datadriven_staff",
@@ -564,7 +564,7 @@ function OnUnequip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = false
-		end
+		end]]
 		--
 --[[		if name == "npc_dota_hero_shadow_shaman" then
 			par = {

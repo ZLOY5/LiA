@@ -1,134 +1,5 @@
 
-	"warlock_storm_datadriven"
-	{
-		"BaseClass"              "ability_datadriven"
-		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"     "custom/warlock_storm_datadriven"
-
-	
-
-		"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-	
-	
-	  	"precache"
-	  	{
-	    	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
-	    	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-	  	}
-	
-	
-	  	"AbilityCastPoint"        "0.3"
-	  	"AbilityCooldown"         "6"
-	  	"AbilityManaCost"         "75 100 125"
-	  	"AbilityCastRange"        "700"
-	
-	  	"AoERadius"               "250"
-	 
-	
-	 	"OnSpellStart"  
-	 	{
-	 		"RunScript"
-	 		{
-	 			"ScriptFile"	"heroes\Warlock\storm.lua"
-	 			"Function"		"Storm"
-	 		}
-	 		"FireSound"
-			{
-				"EffectName"	"Hero_Zuus.LightningBolt"
-				"Target" 		"CASTER"
-			}
-	  	}                                
-	
-		"Modifiers"
-		{
-
-		}
-	
-	  	"AbilitySpecial"
-	  	{
-	   		"01"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"radius"                "250"
-	   		}
-	   		"02"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"damage"         		"50 100 150"
-	   		}		
-	 	}	
-	}
-
-	"warlock_storm_datadriven_staff"
-	{
-		"BaseClass"              "ability_datadriven"
-		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"     "custom/warlock_storm_datadriven"
-
-		"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-	
-	  	"precache"
-	  	{
-	    	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-	    	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-	  	}
-	
-	
-	  	"AbilityCastPoint"        "0.3"
-	  	"AbilityCooldown"         "6"
-	  	"AbilityManaCost"         "100 125 150"
-	  	"AbilityCastRange"        "700"
-	
-	  	"AoERadius"               "250"
-	 
-	
-	 	"OnSpellStart"  
-	 	{
-	 		"RunScript"
-	 		{
-	 			"ScriptFile"	"heroes\Warlock\storm.lua"
-	 			"Function"		"Storm"
-	 		}
-	 		"FireSound"
-			{
-				"EffectName"	"Hero_Zuus.LightningBolt"
-				"Target" 		"CASTER"
-			}
-	  	}  
-                           
-	
-		"Modifiers"
-		{
-
-		}
-	
-	  	"AbilitySpecial"
-	  	{
-	   		"01"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"radius"                "250"
-	   		}
-	   		"02"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"damage"         		"150 200 250"
-	   		}
-	 	}
-	
-	}
-	
-"warlock_storm_lua"
+"warlock_storm"
 {
 	"BaseClass"		"ability_lua"
 	"ScriptFile"	"heroes/Warlock/warlock_storm.lua"
@@ -146,6 +17,12 @@
   	"AbilityCastRange"        "700"
 
   	"AoERadius"               "250"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+
+    "HasScepterUpgrade"     "1"
 
   	"precache"
   	{
@@ -168,8 +45,8 @@
    		{
      			"var_type"              "FIELD_INTEGER"
      			"radius"                "250"
-   		} 
-   		"03"
+   		}  
+   		"04"
    		{
      			"var_type"              "FIELD_INTEGER"
      			"manacost_scepter"      "100 125 150"
