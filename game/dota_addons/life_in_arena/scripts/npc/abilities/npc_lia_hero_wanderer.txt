@@ -431,7 +431,7 @@
 	"BaseClass"					"ability_lua"
 	"ScriptFile"				"heroes\Wanderer\ghosts.lua"
 
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
     "AbilityTextureName"		"custom/wanderer_ghosts"
 	
 	"HasScepterUpgrade"			"1"
@@ -443,6 +443,7 @@
 
 	"AbilityCooldown"               "160"
     "AbilityManaCost"               "350 450 550"
+    "AbilityCastPoint"              "0.3"
 		
 	"AbilitySpecial"
 	{
@@ -451,33 +452,37 @@
             "var_type"          "FIELD_INTEGER"
             "ghost_health"  "1000 1500 2000"
         }
-        "01"
+        "02"
         {
             "var_type"          "FIELD_INTEGER"
             "ghost_health_scepter"  "1500 2000 2500"
         }
-        "02"
+        "03"
         {
             "var_type"          "FIELD_INTEGER"
             "ghost_damage"  "135 185 255"
         }
-        "02"
+        "04"
         {
             "var_type"          "FIELD_INTEGER"
             "ghost_damage_scepter"  "185 255 325"
         }
-        "03"
+        "05"
         {
-            "var_type"          "FIELD_INTEGER"
+            "var_type"          "FIELD_FLOAT"
             "duration"  "120"
         }
-        "03"
+        "06"
         {
             "var_type"          "FIELD_INTEGER"
             "manacost_scepter"  "600 700 800"
         }
+        "07"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghosts_count"  "2"
+        }
 	}
-
 }
 
 
