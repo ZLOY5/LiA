@@ -175,54 +175,6 @@
 
 }
 
-"wanderer_the_flow_of_life_staff"
-{
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\Wanderer\wanderer_the_flow_of_life_staff.lua"
-
-	"AbilityTextureName"		"custom/wanderer_the_flow_of_life"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-		
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-		
-	"AbilityCastRange"			"700"
-	"AbilityCastPoint"			"0"
-	"AbilityCooldown"			"7"
-	"AbilityManaCost"			"100 200 300"
-		
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"duration"		"5"
-		}
-		"02"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"total_heal"	"200 400 800"
-		}
-		"03"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"total_mana"	"100 200 400"
-		}
-	}
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
-	}
-
-}
-
-
 "wanderer_arcane_aura"
 {
 	"BaseClass"		"ability_lua"
