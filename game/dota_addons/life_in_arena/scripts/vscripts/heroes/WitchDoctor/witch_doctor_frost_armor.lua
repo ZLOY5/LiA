@@ -29,8 +29,8 @@ function witch_doctor_frost_armor:OnSpellStart()
 	end
 end
 
-function witch_doctor_frost_armor:OnUpgrage()
-	self:SetContextThink("Autocast", DynamicWrap(self, "AutocastThink"), 1)	
+function witch_doctor_frost_armor:OnUpgrade()
+	self:SetContextThink("Autocast", Dynamic_Wrap(self, "AutocastThink"), 1)	
 end
 
 function witch_doctor_frost_armor:AutocastThink()
