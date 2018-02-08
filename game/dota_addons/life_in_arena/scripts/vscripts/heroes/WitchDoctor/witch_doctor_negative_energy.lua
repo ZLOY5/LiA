@@ -5,8 +5,6 @@ function witch_doctor_negative_energy:OnSpellStart()
 	self.projectile_distance = self:GetSpecialValueFor( "projectile_distance" )
 	self.start_width = self:GetSpecialValueFor( "start_width" )
 	self.end_width = self:GetSpecialValueFor( "end_width" )
-	
-	print("projectile_distance "..self.projectile_distance)
 
 	local vPos = nil
 	if self:GetCursorTarget() then

@@ -30023,36 +30023,108 @@
 	
 	}
 	
+	"vowen_from_blood_steal_blood"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\VowenFromBlood\vowen_from_blood_steal_blood.lua"
+			
+		"AbilityTextureName"			"custom/vowen_from_blood_steal_blood"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_NO"
 	
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"12.0"
+		"AbilityManaCost"				"100 150 200"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"		"75 150 300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_scepter"		"150 300 600"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_per_target"		"45"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounces"		"5 7 9"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounces_scepter"		"6 8 10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"800"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+			"08"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"manacost_scepter"		"200 250 300"
+			}
+		}
+	}
 	
 	"vowen_from_blood_spiritual_flame"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\VowenFromBlood\vowen_from_blood_spiritual_flame.lua"
+			
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		"AbilityTextureName"			"custom/vowen_from_blood_spiritual_flame"
 		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
 	
-		
 		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
+	    "RequiredLevel"          "2"
+	    "LevelsBetweenUpgrades"  "2"
 	
+		"HasScepterUpgrade"			"1"
+			
 		"AbilityCastRange"				"700"
 		"AbilityCastPoint"				"0.0"
 	
-		"AbilityCooldown"				"15.0 12.0 10.0"
+		"AbilityCooldown"				"15.0 12.5 10.0"
 	
-		"AbilityManaCost"				"90 150 210"	
-	
+		"AbilityManaCost"				"100 150 200"
+		
 		"precache"
 		{
-		"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
+			"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
 		}
-		
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -30068,132 +30140,25 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_hp_regen"	"10 20 30"
+				"bonus_health_regen"	"10 20 30"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_hp_regen_scepter"	"20 40 80"
+				"bonus_health_regen_scepter"	"20 40 60"
 			}
 			"05"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"20.0"
+				"var_type"		"FIELD_FLOAT"
+				"duration"		"20"
 			}
-		}
-	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
+			"06"
 			{
-				"ModifierName" "modifier_vowen_from_blood_spiritual_flame"
-				"Target"	"TARGET"
-				"Duration"	"%duration"
-			}	
-		}
-		"Modifiers"
-		{
-			"modifier_vowen_from_blood_spiritual_flame"
-			{
-				"IsBuff"		"1"
-				"IsPurgable"	"1"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_percentage"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%bonus_hp_regen"
-				}
-				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-				"EffectAttachType"  "follow_origin"
+				"var_type"		"FIELD_INTEGER"
+				"manacost_scepter"		"200 250 300"
 			}
 		}
 	}
-	
-	"vowen_from_blood_spiritual_flame_staff"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityTextureName"			"custom/vowen_from_blood_spiritual_flame"
-		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
-	
-		
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-	
-		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.0"
-	
-		"AbilityCooldown"				"15.0 12.0 10.0"
-	
-		"AbilityManaCost"				"200 250 300"	
-	
-		"precache"
-		{
-		"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-		}
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage_percentage"	"50 75 100"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage_percentage_scepter"	"50 75 100"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_hp_regen"	"20 40 80"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_hp_regen_scepter"	"20 40 80"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"20.0"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_vowen_from_blood_spiritual_flame"
-				"Target"	"TARGET"
-				"Duration"	"%duration"
-			}	
-		}
-		"Modifiers"
-		{
-			"modifier_vowen_from_blood_spiritual_flame"
-			{
-				"IsBuff"		"1"
-				"IsPurgable"	"1"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_percentage"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%bonus_hp_regen"
-				}
-				"EffectName"        "particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
-				"EffectAttachType"  "follow_origin"
-			}
-		}
-	}
-	
-	
 	
 	"vowen_from_blood_soul_burn"
 	{
@@ -30627,54 +30592,6 @@
 	
 	}
 	
-	"wanderer_the_flow_of_life_staff"
-	{
-		"BaseClass"					"ability_lua"
-		"ScriptFile"				"heroes\Wanderer\wanderer_the_flow_of_life_staff.lua"
-	
-		"AbilityTextureName"		"custom/wanderer_the_flow_of_life"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-			
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-			
-		"AbilityCastRange"			"700"
-		"AbilityCastPoint"			"0"
-		"AbilityCooldown"			"7"
-		"AbilityManaCost"			"100 200 300"
-			
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"duration"		"5"
-			}
-			"02"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"total_heal"	"200 400 800"
-			}
-			"03"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"total_mana"	"100 200 400"
-			}
-		}
-	
-		"precache"
-		{
-			"particle"  "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
-		}
-	
-	}
-	
-	
 	"wanderer_arcane_aura"
 	{
 		"BaseClass"		"ability_lua"
@@ -30883,7 +30800,7 @@
 		"BaseClass"					"ability_lua"
 		"ScriptFile"				"heroes\Wanderer\ghosts.lua"
 	
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
 	    "AbilityTextureName"		"custom/wanderer_ghosts"
 		
 		"HasScepterUpgrade"			"1"
@@ -30895,6 +30812,7 @@
 	
 		"AbilityCooldown"               "160"
 	    "AbilityManaCost"               "350 450 550"
+	    "AbilityCastPoint"              "0.3"
 			
 		"AbilitySpecial"
 		{
@@ -30903,33 +30821,37 @@
 	            "var_type"          "FIELD_INTEGER"
 	            "ghost_health"  "1000 1500 2000"
 	        }
-	        "01"
+	        "02"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "ghost_health_scepter"  "1500 2000 2500"
 	        }
-	        "02"
+	        "03"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "ghost_damage"  "135 185 255"
 	        }
-	        "02"
+	        "04"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "ghost_damage_scepter"  "185 255 325"
 	        }
-	        "03"
+	        "05"
 	        {
-	            "var_type"          "FIELD_INTEGER"
+	            "var_type"          "FIELD_FLOAT"
 	            "duration"  "120"
 	        }
-	        "03"
+	        "06"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "manacost_scepter"  "600 700 800"
 	        }
+	        "07"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "ghosts_count"  "2"
+	        }
 		}
-	
 	}
 	
 	
@@ -32223,358 +32145,6 @@
 	
 	"witch_doctor_frost_armor"
 	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/witch_doctor_frost_armor"
-	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-	
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.4"
-		"AbilityCooldown"				"6.0"
-	
-		"AbilityManaCost"				"100 125 150"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"armor_bonus"			"5 10 15"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"				"10 15 20"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_duration"			"5.0"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_movement_speed"	"-40"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_attack_speed"		"-25"
-			}
-	
-			// Extra values to control the Autocast AI
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"autocast_radius"		"900"
-			}
-		}
-	
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
-			"particle"	"particles/status_fx/status_effect_frost_armor.vpcf"
-			"particle"	"particles/status_fx/status_effect_frost.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
-		}
-	
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Lich.FrostArmor"
-				"Target"		"TARGET"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_frost_armor"
-				"Target"		"TARGET"
-				"Duration"		"%duration"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_frost_armor"
-			{
-				"IsBuff"	"1"
-				"IsPurgable"	"1"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
-				}
-	
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
-				        "Function"      "FrostArmorParticle"	
-				    }
-				}
-	
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
-				        "Function"      "EndFrostArmorParticle"	
-				    }
-				}
-	
-				"StatusEffectName"		"particles/status_fx/status_effect_frost_armor.vpcf"
-				"StatusEffectPriority"	"10"
-	
-				//Frost Armor only slows units that attack the unit with a Melee attack.
-				"OnAttacked"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_frost_armor_slow"
-						"Target"
-						{
-							"Center"	"ATTACKER"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-						}
-						"Duration"		"%slow_duration"
-					}
-	
-					"FireSound"
-					{
-						"EffectName"	"Hero_Lich.FrostArmorDamage"
-						"Target"		"TARGET"
-					}
-				}
-			}
-	
-			"modifier_frost_armor_slow"
-			{
-				"IsDebuff"	"1"
-				"IsPurgable"	"1"
-	
-				"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
-				"StatusEffectPriority"	"10"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
-				}
-			}
-	
-			"modifier_frost_armor_autocast_aura"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"Aura" 				"modifier_frost_armor_autocast_attacked"
-				"Aura_Radius" 		"%autocast_radius"
-				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO"
-			}
-	
-			"modifier_frost_armor_autocast_attacked"
-			{
-				"IsHidden"	"1"
-				"OnAttacked"
-				{
-					"RunScript"
-				    {
-				        "ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
-				        "Function"      "FrostArmorAutocast"
-				    }
-				}
-			}
-		}
-	}
-	
-	"witch_doctor_frost_armor_staff"
-	{
-		"BaseClass"             		"ability_datadriven"
-		"AbilityTextureName"			"custom/witch_doctor_frost_armor"
-	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-	
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.4"
-		"AbilityCooldown"				"6.0"
-	
-		"AbilityManaCost"				"150 175 200"
-		
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"armor_bonus"			"20 25 30"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"				"30 30 30"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_duration"			"5.0"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_movement_speed"	"-40"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"slow_attack_speed"		"-25"
-			}
-	
-			// Extra values to control the Autocast AI
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"autocast_radius"		"900"
-			}
-		}
-	
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
-			"particle"	"particles/status_fx/status_effect_frost_armor.vpcf"
-			"particle"	"particles/status_fx/status_effect_frost.vpcf"
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
-		}
-	
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_Lich.FrostArmor"
-				"Target"		"TARGET"
-			}
-	
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_frost_armor"
-				"Target"		"TARGET"
-				"Duration"		"%duration"
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_frost_armor"
-			{
-				"IsBuff"	"1"
-				"IsPurgable"	"1"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
-				}
-	
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
-				        "Function"      "FrostArmorParticle"	
-				    }
-				}
-	
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
-				        "Function"      "EndFrostArmorParticle"	
-				    }
-				}
-	
-				"StatusEffectName"		"particles/status_fx/status_effect_frost_armor.vpcf"
-				"StatusEffectPriority"	"10"
-	
-				//Frost Armor only slows units that attack the unit with a Melee attack.
-				"OnAttacked"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_frost_armor_slow"
-						"Target"
-						{
-							"Center"	"ATTACKER"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_MELEE_ONLY"
-						}
-						"Duration"		"%slow_duration"
-					}
-	
-					"FireSound"
-					{
-						"EffectName"	"Hero_Lich.FrostArmorDamage"
-						"Target"		"TARGET"
-					}
-				}
-			}
-	
-			"modifier_frost_armor_slow"
-			{
-				"IsDebuff"	"1"
-				"IsPurgable"	"1"
-	
-				"StatusEffectName"		"particles/status_fx/status_effect_frost.vpcf"
-				"StatusEffectPriority"	"10"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_attack_speed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
-				}
-			}
-	
-			"modifier_frost_armor_autocast_aura"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"Aura" 				"modifier_frost_armor_autocast_attacked"
-				"Aura_Radius" 		"%autocast_radius"
-				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO"
-			}
-	
-			"modifier_frost_armor_autocast_attacked"
-			{
-				"IsHidden"	"1"
-				"OnAttacked"
-				{
-					"RunScript"
-				    {
-				        "ScriptFile"    "heroes/WitchDoctor/FrostArmor.lua"
-				        "Function"      "FrostArmorAutocast"
-				    }
-				}
-			}
-		}
-	}
-	
-	"witch_doctor_frost_armor_lua"
-	{
 	  "BaseClass"   "ability_lua"
 	  "ScriptFile"  "heroes/WitchDoctor/witch_doctor_frost_armor.lua"
 	
@@ -32595,10 +32165,12 @@
 	  "AbilityManaCost"       "100 125 150"
 	
 	  "precache"
-	  {
-	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
-	    "particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
-	  }
+		{
+			"particle"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost_armor.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+		}
 	
 	  "AbilitySpecial"
 	  {
@@ -32624,18 +32196,18 @@
 	    }
 	    "05"
 	    {
-	      "var_type"        "FIELD_FLOAT"
-	      "slow_duration"     "5.0"
+	      "var_type"        "FIELD_INTEGER"
+	      "movement_slow_percent" "-40"
 	    }
 	    "06"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "slow_movement_speed" "-40"
+	      "attack_slow"   "-25"
 	    }
 	    "07"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "slow_attack_speed"   "-25"
+	      "var_type"        "FIELD_FLOAT"
+	      "slow_duration"     "5.0"
 	    }
 	    "08"
 	    {
