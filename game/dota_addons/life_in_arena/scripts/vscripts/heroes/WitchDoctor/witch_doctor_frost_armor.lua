@@ -28,3 +28,36 @@ function witch_doctor_frost_armor:OnSpellStart()
 		EmitSoundOn("Hero_Lich.FrostArmor", self:GetCaster())
 	end
 end
+
+function witch_doctor_frost_armor:OnUpgrage()
+	self:SetContextThink("Autocast", DynamicWrap(self, "AutocastThink"), 1)	
+end
+
+function witch_doctor_frost_armor:AutocastThink()
+	if self:GetAutoCastState() and self:IsFullyCastable() then
+		local caster = self:GetCaster()
+		local target
+		if not self:GetCaster():HasModifier("modifier_witch_doctor_frost_armor_buff") then
+			target = caster
+		else
+			local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, self:GetCastRange(), DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS, FIND_ANY_ORDER, false )
+			for _,unit in pairs(units) do
+				if not unit:HasModifier("modifier_witch_doctor_frost_armor_buff") then
+					target = unit
+					break
+				end
+			end
+		end
+		if target then
+			local orderTable = { 
+				UnitIndex = caster:entindex(), 
+ 				OrderType = DOTA_UNIT_ORDER_CAST_TARGET,
+ 		 		TargetIndex = target:entindex(), 
+ 				AbilityIndex = self:entindex(), 
+ 				Queue = 1 
+			}
+			ExecuteOrderFromTable(orderTable)
+		end	
+	end
+	return 1
+end
