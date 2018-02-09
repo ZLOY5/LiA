@@ -15,8 +15,13 @@ end
 function modifier_ancient_priestess_mana_shield:GetBlockDamage(attack_damage)
 	local parent = self:GetParent()
 
-	local absorb_percent = self:GetAbility():GetSpecialValueFor("absorption_percent")
-	local damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana")
+	if self:GetCaster():HasScepter() then
+		local absorb_percent = self:GetAbility():GetSpecialValueFor("absorption_percent_scepter")
+		local damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana_scepter")
+	else
+		local absorb_percent = self:GetAbility():GetSpecialValueFor("absorption_percent")
+		local damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana")
+	end
 
 	local damage_abs = attack_damage * absorb_percent * 0.01
 
