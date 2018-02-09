@@ -3,8 +3,9 @@ LinkLuaModifier("modifier_witch_doctor_frost_armor_buff","heroes/WitchDoctor/mod
 LinkLuaModifier("modifier_witch_doctor_frost_armor_debuff","heroes/WitchDoctor/modifier_witch_doctor_frost_armor_debuff.lua",LUA_MODIFIER_MOTION_NONE)
 
 function witch_doctor_frost_armor:GetManaCost(iLevel)
+	--print("Level",iLevel)
 	if self:GetCaster():HasScepter() then
-		return self:GetSpecialValueFor( "manacost_scepter" )
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
 	end
 
 	return self.BaseClass.GetManaCost( self, iLevel ) 
@@ -40,7 +41,7 @@ function witch_doctor_frost_armor:AutocastThink()
 		if not self:GetCaster():HasModifier("modifier_witch_doctor_frost_armor_buff") then
 			target = caster
 		else
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, self:GetCastRange(), DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS, FIND_ANY_ORDER, false )
+			local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), nil, self:GetCastRange(caster:GetAbsOrigin(),nil), DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS, FIND_ANY_ORDER, false )
 			for _,unit in pairs(units) do
 				if not unit:HasModifier("modifier_witch_doctor_frost_armor_buff") then
 					target = unit
