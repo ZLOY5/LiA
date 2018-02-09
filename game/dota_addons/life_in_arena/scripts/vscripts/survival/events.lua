@@ -96,6 +96,7 @@ function Survival:_OnCreepDeath(keys)
     
     if hero and not killed.giveNoRatingPoints then
         PlayerResource:IncrementCreepKills(hero:GetPlayerOwnerID())
+        FightRecap:IncrementCreepKills(hero:GetPlayerOwnerID())
     end
 
     self.nDeathCreeps = self.nDeathCreeps + 1
@@ -111,6 +112,11 @@ function Survival:_OnBossDeath(keys)
     
     if hero then
         PlayerResource:IncrementBossKills(hero:GetPlayerOwnerID())
+
+        if self.State == SURVIVAL_STATE_ROUND_WAVE then
+            FightRecap:IncrementBossKills(hero:GetPlayerOwnerID())
+        end
+
         PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),3)
         --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = hero.lumber })
         if attacker:GetPlayerOwner() then
@@ -188,6 +194,39 @@ function Survival:OnEntityKilled(keys)
 	--
 
     Survival:AICreepsRemoveFromTable(killed)
+end
+
+
+function Survival:OnEntityHurt(event)
+    --PrintTable("OnEntityHurt",event)
+    if event.entindex_attacker and event.entindex_killed then
+        local victim = EntIndexToHScript(event.entindex_killed)
+        local attacker = EntIndexToHScript(event.entindex_attacker)
+
+        if victim:IsNPC() then
+            if victim:GetTeamNumber() == DOTA_TEAM_GOODGUYS then 
+                if victim:IsRealHero() then --calc only damage done to hero or his mobs too?
+                    FightRecap:AddRecievedDamage(victim:GetPlayerOwnerID(), event.damage)
+                end
+            else
+                FightRecap:AddDamage(attacker:GetPlayerOwnerID(), event.damage)
+            end
+
+        end
+    end
+end
+
+function Survival:OnAbilityUsed(event)
+    PrintTable("OnAbilityUsed",event)
+    local hero = PlayerResource:GetSelectedHeroEntity(event.PlayerID)
+
+    local abiName = event.abilityname
+
+    if hero:HasAbility(abiName) then
+        FightRecap:AbilityUsed(event.PlayerID, abiName)
+    elseif hero:HasItemInInventory(abiName) then
+        FightRecap:ItemUsed(event.PlayerID, abiName)
+    end
 end
 
 ---------------------------------------------------------------------------------------------------------------------------
