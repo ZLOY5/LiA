@@ -28,6 +28,7 @@ end
 require('survival/events')
 require('survival/duels')
 require('survival/finalBoss')
+require('survival/fightrecap')
 require('survival/utils')
 
 ------------------------------------------------------------------------------------------------
@@ -121,6 +122,8 @@ function Survival:InitSurvival()
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
     ListenToGameEvent('dota_player_pick_hero', Dynamic_Wrap(Survival, 'OnPlayerPickHero'), self)
     ListenToGameEvent('player_chat', Dynamic_Wrap(Survival, 'OnPlayerChat'), self)
+    ListenToGameEvent('entity_hurt', Dynamic_Wrap(Survival, 'OnEntityHurt'), self)
+    ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(Survival, 'OnAbilityUsed'), self)
 
     
     GameMode:SetContextThink( "AIThink", AIThink , 3)
@@ -140,6 +143,8 @@ function Survival:InitSurvival()
             CustomPlayerResource:InitPlayer(i)
         end
     end
+
+    FightRecap:Init()
 
     --GameMode:SetContextThink("RandomGold",ThinkGoldGuard,0.1)
     --PlayerResource.RandomGoldReduced = {}
@@ -402,6 +407,8 @@ function Survival:EndRound()
         
         Survival:_GiveRoundBounty()
 
+        FightRecap:UpdateClientInfo(Survival.State == SURVIVAL_STATE_ROUND_MEGABOSS)
+
         if self.nRoundNum % 3 == 0 and not self.IsDuelOccured and self:GetHeroCount(false) > 1 then
             Survival:StartDuels()
         else
@@ -618,6 +625,8 @@ function Survival:StartRound()
         Survival:EndGame(DOTA_TEAM_BADGUYS)
         return   
     end
+
+    FightRecap:Init()
 
     self.hHealer:Disable()
 
