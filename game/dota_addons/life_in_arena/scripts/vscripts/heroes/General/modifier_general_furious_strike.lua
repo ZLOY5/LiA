@@ -43,7 +43,7 @@ function modifier_general_furious_strike:OnAttackLanded( params )
 											nil, self.radius, 
 											DOTA_UNIT_TARGET_TEAM_ENEMY, 
 											DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-											0, 0, false)
+											DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 0, false)
 
 				for k,v in pairs (targets) do
 					ApplyDamage({ victim = v, attacker = params.attacker, damage = self.bonus_damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })

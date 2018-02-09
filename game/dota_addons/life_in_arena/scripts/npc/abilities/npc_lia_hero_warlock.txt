@@ -1,134 +1,58 @@
 
-	"warlock_storm_datadriven"
+"warlock_storm"
+{
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Warlock/warlock_storm.lua"
+
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
+	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"     "custom/warlock_storm_datadriven"        
+
+  	"AbilityCastPoint"        "0.3"
+  	"AbilityCooldown"         "6"
+  	"AbilityManaCost"         "75 100 125"
+  	"AbilityCastRange"        "700"
+
+  	"AoERadius"               "250"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+
+    "HasScepterUpgrade"     "1"
+
+  	"precache"
+  	{
+    	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+  	} 
+
+	"AbilitySpecial"
 	{
-		"BaseClass"              "ability_datadriven"
-		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"     "custom/warlock_storm_datadriven"
-
-	
-
-		"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-	
-	
-	  	"precache"
-	  	{
-	    	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
-	    	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-	  	}
-	
-	
-	  	"AbilityCastPoint"        "0.3"
-	  	"AbilityCooldown"         "6"
-	  	"AbilityManaCost"         "75 100 125"
-	  	"AbilityCastRange"        "700"
-	
-	  	"AoERadius"               "250"
-	 
-	
-	 	"OnSpellStart"  
-	 	{
-	 		"RunScript"
-	 		{
-	 			"ScriptFile"	"heroes\Warlock\storm.lua"
-	 			"Function"		"Storm"
-	 		}
-	 		"FireSound"
-			{
-				"EffectName"	"Hero_Zuus.LightningBolt"
-				"Target" 		"CASTER"
-			}
-	  	}                                
-	
-		"Modifiers"
-		{
-
-		}
-	
-	  	"AbilitySpecial"
-	  	{
-	   		"01"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"radius"                "250"
-	   		}
-	   		"02"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"damage"         		"50 100 150"
-	   		}		
-	 	}	
+		"01"
+   		{
+     			"var_type"              "FIELD_INTEGER"
+     			"damage"         		"50 100 150"
+   		}
+   		"02"
+   		{
+     			"var_type"              "FIELD_INTEGER"
+     			"damage_scepter"        "150 200 250"
+   		}
+   		"03"
+   		{
+     			"var_type"              "FIELD_INTEGER"
+     			"radius"                "250"
+   		}  
+   		"04"
+   		{
+     			"var_type"              "FIELD_INTEGER"
+     			"manacost_scepter"      "100 125 150"
+   		}   
 	}
-
-	"warlock_storm_datadriven_staff"
-	{
-		"BaseClass"              "ability_datadriven"
-		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"     "custom/warlock_storm_datadriven"
-
-		"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-	
-	  	"precache"
-	  	{
-	    	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-	    	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-	  	}
-	
-	
-	  	"AbilityCastPoint"        "0.3"
-	  	"AbilityCooldown"         "6"
-	  	"AbilityManaCost"         "100 125 150"
-	  	"AbilityCastRange"        "700"
-	
-	  	"AoERadius"               "250"
-	 
-	
-	 	"OnSpellStart"  
-	 	{
-	 		"RunScript"
-	 		{
-	 			"ScriptFile"	"heroes\Warlock\storm.lua"
-	 			"Function"		"Storm"
-	 		}
-	 		"FireSound"
-			{
-				"EffectName"	"Hero_Zuus.LightningBolt"
-				"Target" 		"CASTER"
-			}
-	  	}  
-                           
-	
-		"Modifiers"
-		{
-
-		}
-	
-	  	"AbilitySpecial"
-	  	{
-	   		"01"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"radius"                "250"
-	   		}
-	   		"02"
-	   		{
-	     			"var_type"              "FIELD_INTEGER"
-	     			"damage"         		"150 200 250"
-	   		}
-	 	}
-	
-	}
-	
-	
+}	
 
 "warlock_sacrifice"
 {
@@ -764,4 +688,99 @@
         }
     }
 }
+
+"warlock_firestorm_lua"
+{
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Warlock/warlock_firestorm.lua"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_NO"
+    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
+
+    "AbilityCastRange"              "700"
+    "AbilityCastPoint"              "0.4"       
+    "AbilityCooldown"               "150.0"
+    "AbilityManaCost"               "250 300 350"
+
+    "AOERadius"                     "300"
+    "AbilityChannelTime"            "6"
+
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
+
+  	"precache"
+    {
+        "particle"  "particles/custom/neutral/firestorm_wave.vpcf"
+    }
+
+    "AbilitySpecial"
+    {           
+        "01"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "wave_damage"           "90 120 150"
+        }
+        "02"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "wave_damage_scepter"           "180 210 240"
+        }
+        "03"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "burn_damage"           "20 40 60"
+        }
+        "04"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "burn_damage_scepter"           "40 60 80"
+        }
+        "05"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "burn_interval"         "1.0"
+        }
+        "06"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "wave_interval"         "1.0"
+        }
+        "07"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "burn_duration"         "10.0"
+        }
+        "08"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "wave_count"            "6"
+        }
+        "09"
+        {
+            "var_type"              "FIELD_FLOAT"
+            "channel_time"         "6.0"
+        }
+        "10"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "radius"                "300"
+        }
+        "11"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "radius_scepter"                "325"
+        }    
+        "12"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "manacost_scepter"                "350 400 450"
+        }      
+    }
+}	
   

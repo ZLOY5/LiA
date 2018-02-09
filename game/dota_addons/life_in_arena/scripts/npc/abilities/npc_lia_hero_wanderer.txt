@@ -124,7 +124,9 @@
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+	"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+
+	"HasScepterUpgrade"			"1"
 		
 	"AbilityCastRange"			"700"
 	"AbilityCastPoint"			"0"
@@ -136,17 +138,32 @@
 		"01"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"duration"		"5"
+			"bonus_health_regen"	"20 40 80"
 		}
 		"02"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"total_heal"	"100 200 400"
+			"bonus_health_regen_scepter"	"40 80 160"
 		}
 		"03"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"total_mana"	"100 150 200"
+			"bonus_mana_regen"	"20 30 40"
+		}
+		"04"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"bonus_mana_regen_scepter"	"40 60 80"
+		}
+		"05"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"duration"		"5"
+		}
+		"06"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"cooldown_scepter"		"7"
 		}
 	}
 
@@ -157,54 +174,6 @@
 	}
 
 }
-
-"wanderer_the_flow_of_life_staff"
-{
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\Wanderer\wanderer_the_flow_of_life_staff.lua"
-
-	"AbilityTextureName"		"custom/wanderer_the_flow_of_life"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-		
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-		
-	"AbilityCastRange"			"700"
-	"AbilityCastPoint"			"0"
-	"AbilityCooldown"			"7"
-	"AbilityManaCost"			"100 200 300"
-		
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"duration"		"5"
-		}
-		"02"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"total_heal"	"200 400 800"
-		}
-		"03"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"total_mana"	"100 200 400"
-		}
-	}
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_treant/treant_livingarmor_regen.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
-	}
-
-}
-
 
 "wanderer_arcane_aura"
 {
@@ -409,7 +378,64 @@
 }
 
 
+"wanderer_ghosts"
+{
+	"BaseClass"					"ability_lua"
+	"ScriptFile"				"heroes\Wanderer\ghosts.lua"
 
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityTextureName"		"custom/wanderer_ghosts"
+	
+	"HasScepterUpgrade"			"1"
+
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
+
+	"AbilityCooldown"               "160"
+    "AbilityManaCost"               "350 450 550"
+    "AbilityCastPoint"              "0.3"
+		
+	"AbilitySpecial"
+	{
+		"01"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghost_health"  "1000 1500 2000"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghost_health_scepter"  "1500 2000 2500"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghost_damage"  "135 185 255"
+        }
+        "04"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghost_damage_scepter"  "185 255 325"
+        }
+        "05"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "duration"  "120"
+        }
+        "06"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "manacost_scepter"  "600 700 800"
+        }
+        "07"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "ghosts_count"  "2"
+        }
+	}
+}
 
 
 

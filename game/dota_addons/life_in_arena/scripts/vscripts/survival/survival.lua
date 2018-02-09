@@ -38,6 +38,7 @@ LinkLuaModifier( "modifier_17_wave_debuff", "survival/modifier_17_wave_debuff.lu
 LinkLuaModifier( "modifier_18_wave_debuff", "survival/modifier_18_wave_debuff.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier( "modifier_19_wave_debuff", "survival/modifier_19_wave_debuff.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier( "modifier_megaboss_three_stats", "units/modifier_megaboss_three_stats.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier( "modifier_ultimate_upgrade", "items/modifiers/modifier_ultimate_upgrade.lua", LUA_MODIFIER_MOTION_NONE)
 
 ------------------------------------------------------------------------------------------------
 

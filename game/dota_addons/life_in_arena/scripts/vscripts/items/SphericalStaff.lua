@@ -1,6 +1,6 @@
 function modifier_item_spherical_staff_datadriven_on_created(keys)
-	if not keys.caster:HasModifier("modifier_item_ultimate_scepter") then
-		keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_ultimate_scepter", {duration = -1})
+	if not keys.caster:HasModifier("modifier_ultimate_upgrade") then
+		keys.caster:AddNewModifier(keys.caster, keys.ability, "modifier_ultimate_upgrade", nil)
 	end
 end
 
@@ -20,8 +20,8 @@ function modifier_item_spherical_staff_datadriven_on_destroy(keys)
 	end
 
 	--Remove the stock Aghanim's Scepter modifier if the player no longer has a scepter in their inventory.
-	if num_scepters_in_inventory == 0 and keys.caster:HasModifier("modifier_item_ultimate_scepter") then
-		keys.caster:RemoveModifierByName("modifier_item_ultimate_scepter")
+	if num_scepters_in_inventory == 0 and keys.caster:HasModifier("modifier_ultimate_upgrade") then
+		keys.caster:RemoveModifierByName("modifier_ultimate_upgrade")
 	end
 end
 

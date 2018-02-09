@@ -27,6 +27,6 @@ end
 function modifier_17_wave_debuff:OnIntervalThink()
 	if not self:GetParent():IsInvulnerable() then
 		self:GetParent():ModifyHealth(self:GetParent():GetHealth()-50, nil, true, 0)
-		self:GetParent():ReduceMana(30)
+		self:GetParent():ManaBurn(nil, nil, 30, nil, nil, true)
 	end
 end

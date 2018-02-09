@@ -50,7 +50,7 @@ function modifier_kret_poisoning:OnAttackLanded( params )
 						}
 
 				ApplyDamage(damageTable)
-				params.attacker:ReduceMana(self.mana_burn)
+				params.attacker:ManaBurn(self:GetParent(), self:GetAbility(), self.mana_burn, nil, nil, true)
 
 				local nFXIndex = ParticleManager:CreateParticle( "particles/custom/kret/kret_poisonous_scales.vpcf", PATTACH_CUSTOMORIGIN, nil )
 				ParticleManager:SetParticleControl( nFXIndex, 0, params.attacker:GetOrigin() )
