@@ -2,10 +2,10 @@ warlock_storm = class({})
 
 function warlock_storm:GetManaCost(iLevel)
 	if self:GetCaster():HasScepter() then
-		return self:GetSpecialValueFor( "manacost_scepter" )
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
 	end
 
-	return self.BaseClass.GetManaCost( self, iLevel ) 
+	return self.BaseClass.GetManaCost( self, iLevel )  
 end
 
 function warlock_storm:GetAOERadius()
