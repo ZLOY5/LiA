@@ -45,7 +45,11 @@ end
 
 function modifier_ancient_priestess_ritual_protection:OnCreated(kv)
 	if IsServer() then
-		self.damage_absorb = self:GetAbility():GetSpecialValueFor("damage_absorb")
+		if self:GetCaster():HasScepter() then
+			self.damage_absorb = self:GetSpecialValueFor( "damage_absorb_scepter" )
+		else
+			self.damage_absorb = self:GetSpecialValueFor( "damage_absorb" )
+		end
 		CustomNetTables:SetTableValue( "custom_modifier_state", string.format( "%d", self:GetParent():GetEntityIndex() ), { ritual_protection_damage_absorb = self.damage_absorb } )
 	end
 end

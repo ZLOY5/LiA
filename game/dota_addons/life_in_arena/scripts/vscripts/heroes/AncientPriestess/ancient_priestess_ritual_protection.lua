@@ -1,6 +1,14 @@
 ancient_priestess_ritual_protection = class({})
 LinkLuaModifier("modifier_ancient_priestess_ritual_protection", "heroes/AncientPriestess/modifier_ancient_priestess_ritual_protection.lua",LUA_MODIFIER_MOTION_NONE)
 
+function ancient_priestess_ritual_protection:GetManaCost(iLevel)
+	if self:GetCaster():HasScepter() then
+		return self:GetSpecialValueFor( "manacost_scepter" )
+	end
+
+	return self.BaseClass.GetManaCost( self, iLevel ) 
+end
+
 function ancient_priestess_ritual_protection:OnSpellStart() 
 	local caster = self:GetCaster() 
 

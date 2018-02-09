@@ -379,7 +379,86 @@
     }
   }
   
+"skeleton_mage_light_magic"
+{
+  	"BaseClass"               "ability_lua"
+  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_light_magic.lua"
 
+  	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
+    "AbilityTextureName"     "pugna_nether_blast"
+
+   	"AbilityCooldown" "18"
+	"AbilityCastRange"	"500"
+    "AbilityManaCost" "80 120 160"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+	
+    "AbilityCastPoint"  "0.3"
+
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+	}
+  
+  	"AbilitySpecial"
+  	{
+    	"01"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_constant"         "150 300 0"
+        }
+        "02"
+        {
+           "var_type"                "FIELD_INTEGER"
+           "damage_constant_scepter"         "150 300 0"
+        }
+		"03"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_percentage"       "0 0 30"
+        }
+		"04"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "damage_percentage_scepter"       "0 0 25"
+        }
+		"05"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_constant"           "250 500 0"
+        }
+        "06"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_constant_scepter"           "300 500 0"
+        }
+		"07"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_percentage"         "0 0 35"
+        }
+		"08"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "heal_percentage_scepter"         "0 0 35"
+        }
+        "09"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "radius"                  "500"
+        }
+        "10"
+        {
+            "var_type"                "FIELD_INTEGER"
+            "manacost_scepter"        "80 160 240"
+        }
+  	} 
+}
 
  "skeleton_mage_dark_magic"
 {
@@ -402,42 +481,14 @@
       		"var_type"      			"FIELD_INTEGER"
       		"damage_return"  			"30 40 50"
     	}
-    	//"02"
-    	//{
-      	//	"var_type"      			"FIELD_INTEGER"
-      	//	"damage_return_scepter"   	"50 60 70"
-    	//}
-  	} 
-}
-
- "skeleton_mage_dark_magic_staff"
-{
-  	"BaseClass"               "ability_lua"
-  	"ScriptFile"			  "heroes\SkeletonMage\skeleton_mage_dark_magic_staff.lua"
-
-  	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  	"AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL" 
-    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-  	"AbilityTextureName"      "pugna_life_drain"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-  
-  	"AbilitySpecial"
-  	{
-    	"01"
+    	"02"
     	{
       		"var_type"      			"FIELD_INTEGER"
-      		"damage_return"  			"50 60 70"
+      		"damage_return_scepter"   	"50 60 70"
     	}
-    	//"02"
-    	//{
-      	//	"var_type"      			"FIELD_INTEGER"
-      	//	"damage_return_scepter"   	"50 60 70"
-    	//}
   	} 
 }
+
 
 "skeleton_mage_death_energy"
  {

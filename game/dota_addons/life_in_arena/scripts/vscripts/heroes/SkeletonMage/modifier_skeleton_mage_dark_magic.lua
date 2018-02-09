@@ -22,18 +22,17 @@ function modifier_skeleton_mage_dark_magic:OnTakeDamage(params)
 			return 0
 		end
 
-		local damage_return
 		if self:GetParent():HasScepter() then 
-			damage_return = self:GetAbility():GetSpecialValueFor("damage_return_scepter")
+			self.damage_return = self:GetAbility():GetSpecialValueFor("self.damage_return_scepter")
 		else 
-			damage_return = self:GetAbility():GetSpecialValueFor("damage_return")
+			self.damage_return = self:GetAbility():GetSpecialValueFor("self.damage_return")
 		end
 
 		ApplyDamage(
 		{
 			victim = params.attacker, 
 			attacker = params.unit, 
-			damage = damage_return, 
+			damage = self.damage_return, 
 			damage_type = DAMAGE_TYPE_MAGICAL,
 			damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
 			ability = params.ability
