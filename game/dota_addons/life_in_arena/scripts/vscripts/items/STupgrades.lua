@@ -138,74 +138,7 @@ function OnEquip(event)
 			--
 			caster.STupgrades = true
 		end
-		--
-		if name == "npc_dota_hero_nevermore" then
-			par = {
-				unit = caster,
-				oldAbi = "vowen_from_blood_steal_blood",
-				newAbi = "vowen_from_blood_steal_blood_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "vowen_from_blood_spiritual_flame",
-				newAbi = "vowen_from_blood_spiritual_flame_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = true
-		end
-		--
---[[		if name == "npc_dota_hero_lion" then
-			par = {
-				unit = caster,
-				oldAbi = "warlock_storm_datadriven",
-				newAbi = "warlock_storm_datadriven_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "warlock_firestorm_datadriven",
-				newAbi = "warlock_firestorm_datadriven_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = true
-		end]]
-		--
---[[		if name == "npc_dota_hero_shadow_shaman" then
-			par = {
-				group = caster.groupArmor,
-				nameModifier = "modifier_frost_armor",
-			}
-			deleteModifierFromAllGlobalUnits(par)
-			caster.groupArmor = {}
-			--
-			par = {
-				unit = caster,
-				oldAbi = "witch_doctor_negative_energy",
-				newAbi = "witch_doctor_negative_energy_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "witch_doctor_frost_armor",
-				newAbi = "witch_doctor_frost_armor_staff",
-				tPassiveModifiers_by_oldAbi = {"modifier_frost_armor_autocast_aura"},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = true
-		end]]
-		
+
 		if name == "npc_dota_hero_leshrac" then
 			par = {
 				unit = caster,
@@ -264,19 +197,6 @@ function OnEquip(event)
 			caster.STupgrades = true
 		end			
 		
-		if name == "npc_dota_hero_silencer" then
-	
-			--
-			par = {
-				unit = caster,
-				oldAbi = "wanderer_ghosts",
-				newAbi = "wanderer_ghosts_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = true
-		end		
 
 		if name == "npc_dota_hero_invoker" then
 			par = {
@@ -525,73 +445,7 @@ function OnUnequip(event)
 			--
 			caster.STupgrades = false
 		end
-		--
-		if name == "npc_dota_hero_nevermore" then
-			par = {
-				unit = caster,
-				oldAbi = "vowen_from_blood_steal_blood_staff",
-				newAbi = "vowen_from_blood_steal_blood",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "vowen_from_blood_spiritual_flame_staff",
-				newAbi = "vowen_from_blood_spiritual_flame",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = false
-		end
-		--
---[[		if name == "npc_dota_hero_lion" then
-			par = {
-				unit = caster,
-				oldAbi = "warlock_storm_datadriven_staff",
-				newAbi = "warlock_storm_datadriven",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "warlock_firestorm_datadriven_staff",
-				newAbi = "warlock_firestorm_datadriven",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = false
-		end]]
-		--
---[[		if name == "npc_dota_hero_shadow_shaman" then
-			par = {
-				group = caster.groupArmor,
-				nameModifier = "modifier_frost_armor",
-			}
-			deleteModifierFromAllGlobalUnits(par)
-			caster.groupArmor = {}
-			--
-			par = {
-				unit = caster,
-				oldAbi = "witch_doctor_negative_energy_staff",
-				newAbi = "witch_doctor_negative_energy",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "witch_doctor_frost_armor_staff",
-				newAbi = "witch_doctor_frost_armor",
-				tPassiveModifiers_by_oldAbi = {"modifier_frost_armor_autocast_aura"},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = false
-		end]]
+
 
 		if name == "npc_dota_hero_leshrac" then
 			par = {
@@ -651,20 +505,7 @@ function OnUnequip(event)
 			ReplaceAbi(par)
 			--
 			caster.STupgrades = false
-		end
-		
-		if name == "npc_dota_hero_silencer" then
-			
-			par = {
-				unit = caster,
-				oldAbi = "wanderer_ghosts_staff",
-				newAbi = "wanderer_ghosts",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = false
-		end		
+		end	
 
 		if name == "npc_dota_hero_invoker" then
 			par = {

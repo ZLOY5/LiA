@@ -37,6 +37,15 @@ function modifier_flow_of_life:OnCreated(kv)
 	else
 		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
 		self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
-	end
-	
+	end	
+end
+
+function modifier_flow_of_life:OnRefresh(kv)
+	if self:GetCaster():HasScepter() then
+		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen_scepter")
+		self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen_scepter")
+	else
+		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
+		self.bonus_mana_regen = self:GetAbility():GetSpecialValueFor("bonus_mana_regen")
+	end	
 end

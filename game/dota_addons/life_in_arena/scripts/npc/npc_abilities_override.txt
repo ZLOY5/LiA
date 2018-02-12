@@ -29951,153 +29951,6 @@
 
 
 	//Start of file npc_lia_hero_vowen_from_blood.txt
-	"vowen_from_blood_steal_blood"
-	{
-	
-		"BaseClass" 					"ability_datadriven"
-	
-		"AbilityTextureName"			"custom/vowen_from_blood_steal_blood"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
-	
-		"AbilityCastRange"				"800"
-		//"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"12.0"
-		"AbilityManaCost"				"110 150 190"
-	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-		
-		"precache"
-		{
-			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_damage"		"75 150 300"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_bounces"		"5 7 9"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bounce_range"			"800"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_decay"		"10"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"heal_per_target"		"45"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-	
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/VowenFromBlood/StealBlood.lua"
-				"Function"		"StealBlood"
-			}
-		}
-	
-	}
-	
-	"vowen_from_blood_steal_blood_staff"
-	{
-	
-		"BaseClass" 					"ability_datadriven"
-	
-		"AbilityTextureName"			"custom/vowen_from_blood_steal_blood"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"AbilityCastAnimation"   "ACT_DOTA_ATTACK"
-	
-		"AbilityCastRange"				"800"
-		//"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"12.0"
-		"AbilityManaCost"				"200 250 300"
-	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-		
-		"precache"
-		{
-			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_damage"		"150 300 600"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_bounces"		"6 8 10"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bounce_range"			"800"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_decay"		"10"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"heal_per_target"		"45"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-	
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/VowenFromBlood/StealBlood.lua"
-				"Function"		"StealBlood"
-			}
-		}
-	
-	}
 	
 	"vowen_from_blood_steal_blood"
 	{
@@ -30124,8 +29977,8 @@
 		
 		"precache"
 		{
-			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+			"particle" 	"particles/custom/bloodwoven/bloodwoven_bloodworm_projectile.vpcf"
+			"particle"  "particles/custom/bloodwoven/bloodwoven_bloodworm_heal.vpcf"
 		}
 	
 		"AbilitySpecial"
@@ -30162,18 +30015,13 @@
 			}
 			"07"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
-			}
-			"08"
-			{
 				"var_type"		"FIELD_INTEGER"
 				"manacost_scepter"		"200 250 300"
 			}
-			"09"
+			"08"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"axe_speed"	"800"
+				"projectile_speed"	"800"
 			}
 		}
 	}
@@ -30197,7 +30045,7 @@
 		"HasScepterUpgrade"			"1"
 			
 		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.0"
+		"AbilityCastPoint"				"0.3"
 	
 		"AbilityCooldown"				"15.0 12.5 10.0"
 	
@@ -30740,148 +30588,11 @@
 	
 	
 	
-	"wanderer_ghosts"
-	{
-	
-	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityTextureName"    "custom/wanderer_ghosts"
-	    
-	 
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
-	    
-		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-		
-	    "precache"
-	    {
-	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
-	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
-	    }
-	
-	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
-	
-	    "AbilityCooldown"               "160"
-	
-	    "AbilityManaCost"               "350 450 550"
-	
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "ghost_health"  "1000 1500 2000"
-	        }
-	        "02"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "ghost_damage"  "135 185 255"
-	        }
-	        "03"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "duration"  "120"
-	        }
-	    }
-	
-	    "OnSpellStart"
-	    {
-		
-			"RunScript"
-			{
-				"ScriptFile"    "heroes\Wanderer\ghosts.lua"    
-				"Function"      "ghostsCreate"
-				"durat" 	"%duration"
-			}
-		
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Ability.static.end"
-	            "Target"        "CASTER"
-	        }
-	
-	
-	    }
-	
-	}
-	
-	
-	"wanderer_ghosts_staff"
-	{
-	
-	    "BaseClass"             "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityTextureName"    "custom/wanderer_ghosts"
-	    
-	 
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
-	    
-		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-		
-	    "precache"
-	    {
-	        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
-	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
-	    }
-	
-	    "AbilityCastPoint"              "0.0 0.0 0.0 0.0"
-	
-	    "AbilityCooldown"               "160"
-	
-	    "AbilityManaCost"               "600 700 800"
-	
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "ghost_health"  "1500 2000 2500"
-	        }
-	        "02"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "ghost_damage"  "185 255 325"
-	        }
-	        "03"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "duration"  "120"
-	        }
-	    }
-	
-	    "OnSpellStart"
-	    {
-		
-			"RunScript"
-			{
-				"ScriptFile"    "heroes\Wanderer\ghosts.lua"    
-				"Function"      "ghostsCreate"
-				"durat" 	"%duration"
-			}
-		
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Ability.static.end"
-	            "Target"        "CASTER"
-	        }
-	
-	
-	    }
-	
-	}
-	
 	
 	"wanderer_ghosts"
 	{
 		"BaseClass"					"ability_lua"
-		"ScriptFile"				"heroes\Wanderer\ghosts.lua"
+		"ScriptFile"				"heroes\Wanderer\wanderer_ghosts.lua"
 	
 	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
 	    "AbilityTextureName"		"custom/wanderer_ghosts"

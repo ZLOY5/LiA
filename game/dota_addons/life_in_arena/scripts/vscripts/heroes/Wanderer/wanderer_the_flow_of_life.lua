@@ -3,10 +3,10 @@ LinkLuaModifier("modifier_flow_of_life","heroes/Wanderer/modifier_flow_of_life.l
 
 function wanderer_the_flow_of_life:GetCooldown( iLevel )
 	if self:GetCaster():HasScepter() then
-		return self:GetSpecialValueFor( "cooldown_scepter" )
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
 	end
 
-	return self.BaseClass.GetCooldown( self, iLevel )
+	return self.BaseClass.GetManaCost( self, iLevel )  
 end
 
 function wanderer_the_flow_of_life:OnSpellStart()

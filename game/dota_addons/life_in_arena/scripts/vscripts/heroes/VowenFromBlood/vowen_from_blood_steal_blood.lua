@@ -1,20 +1,33 @@
 vowen_from_blood_steal_blood = class({})
 
+function vowen_from_blood_steal_blood:GetManaCost( iLevel )
+	if self:GetCaster():HasScepter() then
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
+	end
+
+	return self.BaseClass.GetManaCost( self, iLevel )  
+end
+
 function vowen_from_blood_steal_blood:OnSpellStart()
 	self.jumps = 0 -- number of hit units
 	self.targets_table = {} -- table of hit units
 
-	self.axe_speed = self:GetSpecialValueFor( "axe_speed" )
-	self.max_targets = self:GetSpecialValueFor( "max_targets" )
-	self.stun_duration = self:GetSpecialValueFor( "stun_duration" )
-	self.radius = self:GetSpecialValueFor( "radius" )
-	self.return_speed = self:GetSpecialValueFor( "return_speed" )
+	self.projectile_speed = self:GetSpecialValueFor( "projectile_speed" )
+	self.bounce_range = self:GetSpecialValueFor( "bounce_range" )
+	self.heal_per_target = self:GetSpecialValueFor( "heal_per_target" )
 
-	-- send the projectile to the target
+	if self:GetCaster():HasScepter() then
+		self.damage = self:GetSpecialValueFor( "damage_scepter" )
+		self.bounces = self:GetSpecialValueFor( "bounces_scepter" )
+	else
+		self.damage = self:GetSpecialValueFor( "damage" )
+		self.bounces = self:GetSpecialValueFor( "bounces" )
+	end
+
 	local info = {
-			EffectName = "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf",
+			EffectName = "particles/custom/bloodwoven/bloodwoven_bloodworm_projectile.vpcf",
 			Ability = self,
-			iMoveSpeed = self.axe_speed,
+			iMoveSpeed = self.projectile_speed,
 			Source = self:GetCaster(),
 			Target = self:GetCursorTarget(),
 			bDodgeable = false,
@@ -35,29 +48,34 @@ function vowen_from_blood_steal_blood:OnProjectileHit( hTarget, vLocation )
 		EmitSoundOn( "Hero_TrollWarlord.ProjectileImpact", hTarget )
 
 		-- enter a unit into the table and increment the variable on hot
-		table.insert(self.boomerang_table, hTarget) 
-		self.boomerang_jumps = self.boomerang_jumps + 1
+		table.insert(self.targets_table, hTarget) 
+		self.jumps = self.jumps + 1
+		print(self.jumps)
+
+		ApplyDamage({victim = hTarget, attacker = self:GetCaster(), ability = self, damage_type = DAMAGE_TYPE_MAGICAL, damage = self.damage})
+		caster:Heal(self.heal_per_target, caster)
 
 
-		if self.boomerang_jumps < self.max_targets then -- search for anorher target if hit count hasn't reached the target limit
+
+		if self.jumps < self.bounces then -- search for anorher target if hit count hasn't reached the target limit
 			
 			-- search for units around the last target
-			local jump_targets = FindUnitsInRadius(caster:GetTeam(), 
+			local possible_targets = FindUnitsInRadius(caster:GetTeam(), 
 								target_location, 
-								nil, self.radius, 
+								nil, self.bounce_range, 
 								DOTA_UNIT_TARGET_TEAM_ENEMY, 
 								DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
 								DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_CLOSEST, false)
 
 			
 
-			if #jump_targets > 1 then -- if the last target hit is not the only one in radius the move on 
-				for _,v in ipairs(jump_targets) do
+			if #possible_targets > 1 then -- if the last target hit is not the only one in radius the move on 
+				for _,v in ipairs(possible_targets) do
 					hit_helper = false
 					local hit_check = false -- variable to show that the compared units are the same
 
 					-- if the compared units are the same, check the next target
-					for _,k in ipairs(self.boomerang_table) do
+					for _,k in ipairs(self.targets_table) do
 						if k == v then 
 							hit_check = true
 							break
@@ -67,9 +85,9 @@ function vowen_from_blood_steal_blood:OnProjectileHit( hTarget, vLocation )
 					-- if the target hasn't been hit, send the axe to it
 					if not hit_check then
 						local info = {
-								EffectName = "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf",
+								EffectName = "particles/custom/bloodwoven/bloodwoven_bloodworm_projectile.vpcf",
 								Ability = self,
-								iMoveSpeed = self.axe_speed,
+								iMoveSpeed = self.projectile_speed,
 								Source = hTarget,
 								Target = v,
 								bDodgeable = false,

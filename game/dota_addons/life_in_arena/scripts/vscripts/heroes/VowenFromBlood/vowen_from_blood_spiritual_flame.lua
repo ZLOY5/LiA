@@ -3,13 +3,13 @@ LinkLuaModifier("modifier_vowen_from_blood_spiritual_flame","heroes/VowenFromBlo
 
 function vowen_from_blood_spiritual_flame:GetManaCost( iLevel )
 	if self:GetCaster():HasScepter() then
-		return self:GetSpecialValueFor( "manacost_scepter" )
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
 	end
 
-	return self.BaseClass.GetManaCost( self, iLevel )
+	return self.BaseClass.GetManaCost( self, iLevel )  
 end
 
 function vowen_from_blood_spiritual_flame:OnSpellStart()
 	self:GetCursorTarget():AddNewModifier(self:GetCaster(),self,"modifier_vowen_from_blood_spiritual_flame",{duration = self:GetSpecialValueFor("duration")})
-	--EmitSoundOn("Hero_Treant.LivingArmor.Cast",self:GetCursorTarget())
+	EmitSoundOn("Hero_EmberSpirit.FireRemnant.Activate",self:GetCursorTarget())
 end
