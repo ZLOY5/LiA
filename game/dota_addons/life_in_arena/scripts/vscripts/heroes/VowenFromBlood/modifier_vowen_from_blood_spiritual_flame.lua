@@ -46,5 +46,14 @@ function modifier_vowen_from_blood_spiritual_flame:OnCreated(kv)
 		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
 		self.bonus_damage_percentage = self:GetAbility():GetSpecialValueFor("bonus_damage_percentage")
 	end
-	
+end
+
+function modifier_vowen_from_blood_spiritual_flame:OnRefresh(kv)
+	if self:GetCaster():HasScepter() then
+		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen_scepter")
+		self.bonus_damage_percentage = self:GetAbility():GetSpecialValueFor("bonus_damage_percentage_scepter")
+	else
+		self.bonus_health_regen = self:GetAbility():GetSpecialValueFor("bonus_health_regen")
+		self.bonus_damage_percentage = self:GetAbility():GetSpecialValueFor("bonus_damage_percentage")
+	end
 end
