@@ -1,6 +1,7 @@
 //Generated using Dota Custom KVScript Files Merger by cris9696
-"DotaSomething"
+"DOTAAbilities"
 {
+	
 
 
 	//Start of file 1366
@@ -9349,7 +9350,8 @@
 		"item_lia_spherical_staff"
 		{
 			"ID"							"1361"
-			"BaseClass" 					"item_datadriven"
+			"BaseClass" 					"item_lua"
+			"ScriptFile"					"items\item_lia_spherical_staff.lua"
 			"ItemCost"						"1620"
 			"ItemKillable" 					"0" 
 			"ItemDroppable" 				"1"
@@ -9367,11 +9369,11 @@
 			"AbilityManaCost"				"250"
 			//
 			//"AbilityDamage"					"300"
-			"AOERadius" 					"%radius"
+			"AoERadius"						"%radius"
 		
 			"preload"
 			{
-				"particle"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"
+				"particle"	"particles/custom/items/spherical_staff_infernal.vpcf"
 				"soundfile"	"soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"
 			}
 		
@@ -9416,138 +9418,6 @@
 				//{
 				//	"var_type" 						"FIELD_INTEGER"
 				//	"auraRadius" 						"1000"
-				//}
-		
-			}
-			
-			"OnEquip"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"items\STupgrades.lua"
-					"Function"		"OnEquip"
-				}
-			}
-			
-			"OnUnequip"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"items\STupgrades.lua"
-					"Function"		"OnUnequip"
-				}
-			}
-			
-			"OnSpellStart"
-			{
-				"DelayedAction"
-				{
-					"Delay"     "1"
-					"Action"    
-					{
-						"FireSound"
-						{
-							"EffectName"			"Hero_Warlock.RainOfChaos_buildup"
-							"Target"				"CASTER"
-						}
-		
-	
-						"SpawnUnit"
-						{
-							"UnitName"			"spherical_staff_fire_golem"
-							"Target"			"POINT"
-							"UnitCount"			"1"
-							"Duration"			"%infernal_duration"
-	
-							"OnSpawn"
-							{
-								"RunScript"
-								{
-									"ScriptFile"    "items/SphericalStaff.lua"
-				        			"Function"      "RenderInferno"
-								}
-	
-								"FireEffect"
-								{
-									"EffectName"        "particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"
-									"EffectAttachType"  "follow_origin"
-									"Target"            "TARGET"
-								}
-								
-								"ApplyModifier"
-								{
-									"ModifierName"	"modifier_phased"
-									"Target"		"TARGET"
-									"Duration"		"0.03"
-								}
-							}
-						}
-	
-						"DestroyTrees"
-						{
-							"Target"	"POINT"
-							"Radius"	"%radius"
-						}
-		
-						"ApplyModifier"
-						{
-							"ModifierName"    "modifier_stunned"
-							"Target"
-							{
-								"Center"	"POINT"
-								"Radius"	"%radius"
-								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-								"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}
-							"Duration"		"%stun_duration"
-						}
-		
-						"Damage"
-						{
-							"Type" 		"DAMAGE_TYPE_MAGICAL"
-							"Damage" 	"%damage"
-							"Target"
-							{
-								"Center"	"POINT"
-								"Radius"	"%radius"
-								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							}
-						}
-					}
-				}
-			}
-		
-			
-			"Modifiers"
-			{
-				"modifier_item_lia_spherical_staff"
-				{
-				    "Passive"          "1"    
-				    "IsHidden"         "1"
-				   	"Attributes" 	   "MODIFIER_ATTRIBUTE_MULTIPLE"
-	
-				    "Properties"
-				    {
-						"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
-						"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_int"
-				    }  
-		
-					//"Aura" 			"item_lia_spherical_staff_modifier_aura"
-		    		//"Aura_Radius" 	"%auraRadius"
-		    		//"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		    		//"Aura_Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				//"item_lia_spherical_staff_modifier_aura"
-				//{
-				//	"IsHidden"		"0"
-				//	//"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				//
-				//	"Properties"
-				//	{
-				//		"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "%aura_health_regen_percentage"   
-				//	}
 				//}
 			}
 			

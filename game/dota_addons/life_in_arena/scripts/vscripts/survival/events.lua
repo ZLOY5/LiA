@@ -217,7 +217,7 @@ function Survival:OnEntityHurt(event)
 end
 
 function Survival:OnAbilityUsed(event)
-    PrintTable("OnAbilityUsed",event)
+    --PrintTable("OnAbilityUsed",event)
     local hero = PlayerResource:GetSelectedHeroEntity(event.PlayerID)
 
     local abiName = event.abilityname

@@ -37,7 +37,7 @@ if IsClient() then
 	function C_DOTABaseAbility:GetLevelSpecialValueFor(szName,nLevel)
 		local abiName = self:GetName()
 		if nLevel == -1 then
-			self:GetSpecialValueFor(szName)
+			return self:GetSpecialValueFor(szName)
 		else
 			nLevel = nLevel + 1
 
