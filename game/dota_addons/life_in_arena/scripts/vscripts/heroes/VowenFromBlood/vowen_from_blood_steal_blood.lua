@@ -9,8 +9,8 @@ function vowen_from_blood_steal_blood:GetManaCost( iLevel )
 end
 
 function vowen_from_blood_steal_blood:OnSpellStart()
-	self.jumps = 0 -- number of hit units
-	self.targets_table = {} -- table of hit units
+	self.jumps = 0 
+	self.targets_table = {} 
 
 	self.projectile_speed = self:GetSpecialValueFor( "projectile_speed" )
 	self.bounce_range = self:GetSpecialValueFor( "bounce_range" )
@@ -35,7 +35,7 @@ function vowen_from_blood_steal_blood:OnSpellStart()
 		}
 
 	ProjectileManager:CreateTrackingProjectile( info )
-	EmitSoundOn( "Hero_TrollWarlord.PreAttack", self:GetCaster() )
+	EmitSoundOn( "Hero_Medusa.MysticSnake.Cast", self:GetCaster() )
 end
 
 
@@ -43,23 +43,20 @@ function vowen_from_blood_steal_blood:OnProjectileHit( hTarget, vLocation )
 	local caster = self:GetCaster()
 	if hTarget ~= nil then
 		local target_location = hTarget:GetAbsOrigin()
-		local hit_helper -- variable used to define if there are valid targets left
+		local hit_helper
 
-		EmitSoundOn( "Hero_TrollWarlord.ProjectileImpact", hTarget )
+		EmitSoundOn( "Hero_Medusa.MysticSnake.Target", hTarget )
 
-		-- enter a unit into the table and increment the variable on hot
 		table.insert(self.targets_table, hTarget) 
 		self.jumps = self.jumps + 1
-		print(self.jumps)
 
 		ApplyDamage({victim = hTarget, attacker = self:GetCaster(), ability = self, damage_type = DAMAGE_TYPE_MAGICAL, damage = self.damage})
 		caster:Heal(self.heal_per_target, caster)
+		local nFXIndex = ParticleManager:CreateParticle( "particles/custom/bloodwoven/bloodwoven_bloodworm_heal.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster )
+		ParticleManager:SetParticleControl( nFXIndex, 0, caster:GetOrigin() )
 
+		if self.jumps < self.bounces then 
 
-
-		if self.jumps < self.bounces then -- search for anorher target if hit count hasn't reached the target limit
-			
-			-- search for units around the last target
 			local possible_targets = FindUnitsInRadius(caster:GetTeam(), 
 								target_location, 
 								nil, self.bounce_range, 
@@ -69,12 +66,11 @@ function vowen_from_blood_steal_blood:OnProjectileHit( hTarget, vLocation )
 
 			
 
-			if #possible_targets > 1 then -- if the last target hit is not the only one in radius the move on 
+			if #possible_targets > 1 then
 				for _,v in ipairs(possible_targets) do
 					hit_helper = false
-					local hit_check = false -- variable to show that the compared units are the same
+					local hit_check = false
 
-					-- if the compared units are the same, check the next target
 					for _,k in ipairs(self.targets_table) do
 						if k == v then 
 							hit_check = true
@@ -82,7 +78,6 @@ function vowen_from_blood_steal_blood:OnProjectileHit( hTarget, vLocation )
 						end
 					end	
 
-					-- if the target hasn't been hit, send the axe to it
 					if not hit_check then
 						local info = {
 								EffectName = "particles/custom/bloodwoven/bloodwoven_bloodworm_projectile.vpcf",
@@ -95,7 +90,7 @@ function vowen_from_blood_steal_blood:OnProjectileHit( hTarget, vLocation )
 							}
 
 						ProjectileManager:CreateTrackingProjectile( info )
-						hit_helper = true -- we've found a valid target
+						hit_helper = true 
 						break
 					end
 					
