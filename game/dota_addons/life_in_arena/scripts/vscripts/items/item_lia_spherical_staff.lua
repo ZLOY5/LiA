@@ -1,15 +1,15 @@
-item_lia_spherical_staff = class({})
+item_ultimate_scepter = class({})
 LinkLuaModifier("modifier_spherical_staff", "items/modifier_spherical_staff.lua", LUA_MODIFIER_MOTION_NONE)
 
-function item_lia_spherical_staff:GetIntrinsicModifierName()
+function item_ultimate_scepter:GetIntrinsicModifierName()
 	return "modifier_spherical_staff"
 end
 
-function item_lia_spherical_staff:GetAOERadius()
+function item_ultimate_scepter:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
 
-function item_lia_spherical_staff:OnSpellStart()
+function item_ultimate_scepter:OnSpellStart()
 	local caster = self:GetCaster()
 	local point = self:GetCursorPosition()
 

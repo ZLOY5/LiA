@@ -9321,7 +9321,7 @@
 
 
 	//Start of file item_lia_spherical_staff.txt
-	"item_recipe_lia_spherical_staff"
+	"item_recipe_ultimate_scepter"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -9340,14 +9340,14 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"					"1"
 	    "AbilityTextureName"    "recipe"
-		"ItemResult"					"item_lia_spherical_staff"
+		"ItemResult"					"item_ultimate_scepter"
 		"ItemRequirements"
 		{
 			"01"						"item_lia_hell_mask;item_lia_staff"
 		}
 	}
 	
-		"item_lia_spherical_staff"
+		"item_ultimate_scepter"
 		{
 			"ID"							"1361"
 			"BaseClass" 					"item_lua"
@@ -9363,6 +9363,9 @@
 			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 			"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 			"AbilityUnitDamageType" 		"DAMAGE_TYPE_MAGICAL"
+	
+			"ItemDeclarations"				""
+			"ShouldBeSuggested"				"0"
 			
 		 	"AbilityCastRange" 				"800"
 			"AbilityCooldown"				"45.0"
@@ -9379,46 +9382,59 @@
 		
 			"AbilitySpecial"
 			{
+				//first 3 broken
 				"01"
 				{
 					"var_type" 			"FIELD_FLOAT"
 					"bonus_mana_regen" 	"1"
 				}
+				
 				"02"
 				{
 					"var_type" 						"FIELD_INTEGER"
 					"bonus_int" 					"30"
 				}
-				//"03"
-				//{
-				//	"var_type" 						"FIELD_FLOAT"
-				//	"aura_health_regen_percentage" 		"1.50"
-				//}
-				"04"
+	
+				"03"
 				{
 					"var_type" 						"FIELD_INTEGER"
 					"infernal_duration" 			"60"
 				}
-				"05"
+				
+				"04"
 				{
 					"var_type" 						"FIELD_FLOAT"
 					"stun_duration" 				"2.7"
 				}
-				"06"
+				
+				"05"
 				{
 					"var_type" 						"FIELD_INTEGER"
 					"radius" 						"220"
 				}
-				"07"
+				
+				"06"
 				{
 					"var_type" 						"FIELD_INTEGER"
 					"damage" 						"300"
 				}
-				//"08"
-				//{
-				//	"var_type" 						"FIELD_INTEGER"
-				//	"auraRadius" 						"1000"
-				//}
+				"11"
+				{
+					"var_type" 			"FIELD_FLOAT"
+					"bonus_mana_regen" 	"1"
+				}
+				
+				"12"
+				{
+					"var_type" 						"FIELD_INTEGER"
+					"bonus_int" 					"30"
+				}
+	
+				"13"
+				{
+					"var_type" 						"FIELD_INTEGER"
+					"infernal_duration" 			"60"
+				}
 			}
 			
 		}

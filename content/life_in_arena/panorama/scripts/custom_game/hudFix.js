@@ -1,10 +1,10 @@
 "use strict";
 
+var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent().GetParent().GetParent();
+
 
 (function()
 {
-
-	var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent().GetParent().GetParent()
 
 	/*var func  = function() {
 		$.Schedule(0.03,func)
@@ -71,14 +71,46 @@
 	
 	$.Schedule(1,ValvePlzFix)
 
-
+	//$.RegisterForUnhandledEvent("DOTAShowAbilityInventoryItemTooltip",ItemTooltip)
+	
 })();
+
+//Weird
+/*function ItemTooltip(panelID,entID,itemSlot) {
+	var item = Entities.GetItemInSlot(entID,itemSlot)
+	var itemName = Abilities.GetAbilityName(item)
+	if (itemName == 'item_lia_spherical_staff') {
+		var slotPanel = dotaHud.FindChildTraverse("lower_hud")
+			.FindChildTraverse("center_block")
+			.FindChildTraverse("inventory")
+			.FindChildTraverse("inventory_slot_"+(itemSlot+1))
+		
+		$.DispatchEvent("DOTAShowAbilityTooltipForEntityIndex", slotPanel, "item_ultimate_scepter", entID)
+
+		var textScepter = dotaHud.FindChildTraverse("Tooltips")
+			.FindChildTraverse("DOTAAbilityTooltip")
+			.FindChildTraverse("AbilityDetails")
+			.FindChildTraverse("ItemScepterDescription").text
+
+		$.Schedule(0, function() {
+			var scepterDesc = dotaHud.FindChildTraverse("Tooltips")
+				.FindChildTraverse("DOTAAbilityTooltip")
+				.FindChildTraverse("AbilityDetails")
+				.FindChildTraverse("ItemScepterDescription")
+
+			scepterDesc.text = textScepter
+			scepterDesc.RemoveClass("Hidden")
+
+			dotaHud.FindChildTraverse("Tooltips")
+				.FindChildTraverse("DOTAAbilityTooltip").style.transform= "translate3d(1170px, 500px, 0px);"
+
+		})
+	}
+}*/
+
 
 function ValvePlzFix()
 {
-	var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent().GetParent().GetParent()
-
-
 	
 	var iconFixer = function() 
 	{

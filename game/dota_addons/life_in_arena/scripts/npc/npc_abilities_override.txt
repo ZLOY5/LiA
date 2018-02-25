@@ -885,11 +885,11 @@
 			"ItemPurchasable"				"0"
 			"ItemDroppable"					"0"
 		}
-		"item_ultimate_scepter"
-		{
-			"ItemPurchasable"				"0"
-			"ItemDroppable"					"0"
-		}
+	//	"item_ultimate_scepter"
+	//	{
+	//		"ItemPurchasable"				"0"
+	//		"ItemDroppable"					"0"
+	//	}
 		"item_urn_of_shadows"
 		{
 			"ItemPurchasable"				"0"
@@ -16141,6 +16141,95 @@
 		}
 	}
 		
+	"frost_lord_frost_breath"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/FrostLord/frost_lord_frost_breath.lua"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"AbilityTextureName"			"ancient_apparition_chilling_touch"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"      "650 700 750"
+		"AbilityCastPoint"      "0.3"
+		"AbilityCooldown"       "14"
+		"AbilityManaCost"       "90 110 130"
+	
+		"HasScepterUpgrade"		"1"
+	
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_jakiro/jakiro_dual_breath_ice.vpcf"
+			"particle"  	"particles/status_fx/status_effect_frost_lich.vpcf"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"70 140 210"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_scepter"				"225 300 375"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"9 18 36"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second_scepter"		"15 30 45"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"start_width"			"150"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"end_width"			"150"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"projectile_distance"					"650 700 750"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"950"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4 5 6"
+			}   
+			"10"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration_scepter"				"6 7 8"
+			}  
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"manacost_scepter"				"130 160 190"
+			}   
+		}
+	}	
 	
 	"frost_lord_cold"
 	{
@@ -16635,6 +16724,81 @@
 	  }
 	}
 	
+	
+	"frost_lord_ice"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/FrostLord/frost_lord_ice.lua"
+	
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	  	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"AbilityTextureName"      "ancient_apparition_ice_vortex"
+	  
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"AbilityCastRange"        "500"
+		"AbilityCastPoint"        "0.3"
+	
+		"AbilityCooldown"       "140"
+	
+		"AbilityManaCost"       "225 275 325" 
+	
+		"HasScepterUpgrade"		"1"
+	
+		"precache"
+		{
+		"particle"   "particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"  
+		"particle"  "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+		"particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf"
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"    
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"       
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+		    {
+		      "var_type"      "FIELD_INTEGER"
+		      "damage"    "100 250 400"
+		    }
+		    "02"
+		    {
+		      "var_type"      "FIELD_INTEGER"
+		      "movement_slow"    "-50"
+		    }
+		    "03"
+		    {
+		      "var_type"      "FIELD_FLOAT"
+		      "slow_duration"  "4"
+		    }
+		    "04"
+		    {
+		      "var_type"      "FIELD_FLOAT"
+		      "duration"  "3 4 5"
+		    }
+		    "05"
+		    {
+		      "var_type"      "FIELD_INTEGER"
+		      "radius"      "500"
+		    }
+		    "06"
+		    {
+		      "var_type"      "FIELD_INTEGER"
+		      "damage_radius"      "190"
+		    }  
+			"11"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"manacost_scepter"				"325 375 425"
+			}   
+		}
+	}
 	//End of file npc_lia_hero_frost_lord.txt
 
 
@@ -30023,11 +30187,6 @@
 				"var_type"				"FIELD_FLOAT"
 				"projectile_speed"	"800"
 			}
-			"09"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"axe_speed"	"800"
-			}
 		}
 	}
 	
@@ -31374,6 +31533,7 @@
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	  "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
+	  "SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 	  "AbilityTextureName"      "custom/witch_doctor_frost_armor"
 	
 	  "MaxLevel"               "3"
