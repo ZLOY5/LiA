@@ -237,6 +237,14 @@ function Survival:OnGameStateChange()
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
         Survival:PrepareNextRound()
+
+    elseif GameRules:State_Get() == DOTA_GAMERULES_STATE_TEAM_SHOWCASE then
+        for i = 0, DOTA_MAX_PLAYERS-1 do
+            local hPlayer = PlayerResource:GetPlayer(i)
+            if PlayerResource:IsValidPlayerID(i) and hPlayer and not PlayerResource:HasSelectedHero(i) then
+                hPlayer:MakeRandomHeroSelection()
+            end
+        end
     end
 end
 
@@ -318,8 +326,22 @@ function Survival:OnPlayerChat(event)
             DisableShop()
         end
 
+        function GetClass(t)
+            local class = getmetatable(t).__index 
+            if class then
+                for k,v in pairs(_G) do
+                    if v == class then
+                        return k
+                    end
+                end
+            end
+            return "Just a table"
+        end
+
         if event.text == "test" then
-            LiA:RandomHero({PlayerID = playerID})
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            print(GetClass(hero))
+            print(GetClass(hero:GetAbilityByIndex(0)))
         end
     
     end
