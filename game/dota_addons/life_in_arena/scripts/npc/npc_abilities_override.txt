@@ -27969,6 +27969,8 @@
 	    "RequiredLevel"          "1"
 	    "LevelsBetweenUpgrades"  "2"
 	
+	    "HasScepterUpgrade"      "1"
+	
 	    "precache"
 	    {
 	        "particle"  "particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
@@ -28025,15 +28027,15 @@
 	}
 	
 	
-	
 	"time_lord_timelapse"
 	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
+	    "BaseClass"              "ability_lua"
+	    "ScriptFile"             "heroes\TimeLord\time_lord_timelapse"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
 	    "AbilityTextureName"     "custom/time_lord_wisdom_flow"
 	
 	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
@@ -28065,121 +28067,18 @@
 	            "var_type"              "FIELD_INTEGER"
 	            "damage"                "50 100 150"
 	        }
-	    }
-	     
-	    "OnSpellStart"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"  "heroes/TimeLord/TimeLapse.lua"
-	            "Function"    "TimeLapse"
-	        }
-	    }
-	
-	    "Modifiers"
-	    {
-	        "modifier_time_lord_timelapse"
-	        {
-	            "Passive"           "1"
-	            "IsHidden"          "1"
-	            
-	            "ThinkInterval"     "0.1"
-	            "OnIntervalThink"
-	            {
-	                "RunScript"
-	                {
-	                    "ScriptFile"  "heroes/TimeLord/TimeLapse.lua"
-	                    "Function"    "TickLapse"
-	                }
-	            }
-	        }
-	        "modifier_time_lord_timelapse_invul"
-	        {
-	            "IsHidden"          "1"
-	            "States"
-	            {
-	                "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
-	            }
-	        }
-	    }  
-	}
-	
-	"time_lord_timelapse_staff"
-	{
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "custom/time_lord_wisdom_flow"
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-	
-	    // Stats
-	    //-------------------------------------------------------------------------------------------------------------
-	  
-	    "AbilityCastPoint"        "0.3"
-	    "AbilityCooldown"         "8 7 6"
-	    "AbilityManaCost"         "150 200 250"
-	
-	    "preload"
-	    {
-	        "particle"  "particles/units/heroes/hero_weaver/weaver_timelapse.vpcf"
-	    }
-	
-	    "AbilitySpecial"
-	    {
-	        "01"
+	        "03"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "damage_radius"         "300"
+	            "cooldown_scepter"      "8 7 6"
 	        }
-	        "02"
+	        "04"
 	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "damage"                "50 100 150"
+	            "time"                  "5"
 	        }
 	    }
-	     
-	    "OnSpellStart"
-	    {
-	        "RunScript"
-	        {
-	            "ScriptFile"  "heroes/TimeLord/TimeLapse.lua"
-	            "Function"    "TimeLapse"
-	        }
-	    }
-	
-	    "Modifiers"
-	    {
-	        "modifier_time_lord_timelapse"
-	        {
-	            "Passive"           "1"
-	            "IsHidden"          "1"
-	            
-	            "ThinkInterval"     "0.1"
-	            "OnIntervalThink"
-	            {
-	                "RunScript"
-	                {
-	                    "ScriptFile"  "heroes/TimeLord/TimeLapse.lua"
-	                    "Function"    "TickLapse"
-	                }
-	            }
-	        }
-	        "modifier_time_lord_timelapse_invul"
-	        {
-	            "IsHidden"          "1"
-	            "States"
-	            {
-	                "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
-	            }
-	        }
-	    }  
+	       
 	}
 	
 	
