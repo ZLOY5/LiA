@@ -115,7 +115,7 @@ function Precache( context )
 		PrecacheItemByNameAsync("item_lia_ice_sword", function(...) end)
 		PrecacheItemByNameAsync("item_lia_rune_of_lifesteal", function(...) end)
 		
-		PrecacheItemByNameAsync("item_lia_spherical_staff", function(...) end)
+		--PrecacheItemByNameAsync("item_lia_spherical_staff", function(...) end)
 		PrecacheUnitByNameAsync("spherical_staff_fire_golem", function(...) end)	
 
 		
