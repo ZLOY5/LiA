@@ -33,7 +33,7 @@ if IsServer() then
 		end
 
 		table.insert(ability.heroState,{caster:GetAbsOrigin(),caster:GetHealth(),caster:GetMana()})
-		DebugDrawSphere(caster:GetAbsOrigin(),Vector(255,0,0),255,20,true,5)
+		--DebugDrawSphere(caster:GetAbsOrigin(),Vector(255,0,0),255,20,true,5)
 		ability.lastGameState = Survival.State
 
 		return self.tick

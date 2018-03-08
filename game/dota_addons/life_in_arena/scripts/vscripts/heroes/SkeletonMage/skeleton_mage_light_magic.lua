@@ -49,7 +49,7 @@ function skeleton_mage_light_magic:OnSpellStart()
 	local particleName = "particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
 
 	self.FXIndex = ParticleManager:CreateParticle( particleName, PATTACH_POINT, self:GetCaster())
-	ParticleManager:SetParticleControl( self.FXIndex, 0, self.target )
+	ParticleManager:SetParticleControl( self.FXIndex, 0, caster )
 	ParticleManager:SetParticleControl( self.FXIndex, 1, Vector( self.radius, 0, 0 ) )
 	ParticleManager:ReleaseParticleIndex(self.FXIndex)
 

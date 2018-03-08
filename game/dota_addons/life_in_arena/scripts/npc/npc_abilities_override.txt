@@ -26349,260 +26349,6 @@
 			}
 		}	
 	
-	
-	"skeleton_mage_light_magic"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-	    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "pugna_nether_blast"
-	
-	    "AbilityCooldown" "18"
-		"AbilityCastRange"	"500"
-	    "AbilityManaCost" "80 120 160"
-	
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-		
-	    "AbilityCastPoint"  "0.3"
-	
-	
-		"precache"
-		{
-		"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
-		}
-		
-	    "OnSpellStart"
-	    {
-			"RunScript"
-			{
-				"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua" 
-				"Function"      "DealDamageAndHeal"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
-			//"RunScript"
-			//{
-			//	"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
-			//	"Function"      "Heal"
-			//	"Target"
-			//	{
-			//		"Center"	"CASTER"
-			//		"Radius"	"%radius"
-			//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			//		"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-			//	}
-			//}
-		  	"FireSound"
-			{
-				"EffectName"	"Hero_Pugna.NetherBlast"
-				"Target"		"CASTER"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
-				"EffectAttachType"	"start_at_customorigin"
-				"Target"	"CASTER"	
-				"ControlPoints"
-				{
-					"01"	"%radius 0 0"
-					"15"	"255 200 100"
-				}
-			}
-	    }
-	    
-	  
-	   
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	       "01"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_constant"         "60 150 0"
-	        }
-			"02"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_percentage"       "0 0 20"
-	        }
-			"03"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_constant_scepter"         "150 300 0"
-	        }
-			"04"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_percentage_scepter"       "0 0 25"
-	        }
-			"05"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_constant"           "100 300 0"
-	        }
-			"06"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_percentage"         "0 0 25"
-	        }
-			"07"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_constant_scepter"           "300 500 0"
-	        }
-			"08"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_percentage_scepter"         "0 0 35"
-	        }
-	        "09"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "radius"                  "500"
-	        }
-	    }
-	  }
-	  
-	"skeleton_mage_light_magic_staff"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-	    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"//"DAMAGE_TYPE_MAGICAL"
-	    "AbilityTextureName"     "pugna_nether_blast"
-	
-	    "AbilityCooldown" "18"
-		"AbilityCastRange"	"500"
-	    "AbilityManaCost" "80 150 250"
-	
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-		
-	    "AbilityCastPoint"  "0.3"
-	
-	
-		"precache"
-		{
-		"particle"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
-		}
-		
-	    "OnSpellStart"
-	    {
-			"RunScript"
-			{
-				"ScriptFile"    "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua" 
-				"Function"      "DealDamageAndHeal"
-				"Target"
-				{
-					"Center"	"CASTER"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-			}
-			//"RunScript"
-			//{
-			//	"ScriptFile"     "heroes/SkeletonMage/LightMagic.lua" //"LightMagic.lua"
-			//	"Function"      "Heal"
-			//	"Target"
-			//	{
-			//		"Center"	"CASTER"
-			//		"Radius"	"%radius"
-			//		"Teams"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			//		"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			//		"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES"
-			//	}
-			//}
-		  	"FireSound"
-			{
-				"EffectName"	"Hero_Pugna.NetherBlast"
-				"Target"		"CASTER"
-			}
-			"AttachEffect"
-			{
-				"EffectName"	"particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
-				"EffectAttachType"	"start_at_customorigin"
-				"Target"	"CASTER"	
-				"ControlPoints"
-				{
-					"01"	"%radius 0 0"
-					"15"	"255 200 100"
-				}
-			}
-	    }
-	    
-	  
-	   
-	    // Special    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_constant"         "150 300 0"
-	        }
-			"02"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "damage_percentage"       "0 0 30"
-	        }
-			//"03"
-	        //{
-	        //    "var_type"                "FIELD_INTEGER"
-	        //    "damage_constant_scepter"         "150 300 0"
-	        //}
-			//"04"
-	        //{
-	        //    "var_type"                "FIELD_INTEGER"
-	        //    "damage_percentage_scepter"       "0 0 25"
-	        //}
-			"03"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_constant"           "250 500 0"
-	        }
-			"04"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "heal_percentage"         "0 0 35"
-	        }
-			//"07"
-	        //{
-	        //    "var_type"                "FIELD_INTEGER"
-	        //    "heal_constant_scepter"           "300 500 0"
-	        //}
-			//"08"
-	        //{
-	        //    "var_type"                "FIELD_INTEGER"
-	        //    "heal_percentage_scepter"         "0 0 35"
-	        //}
-	        "05"
-	        {
-	            "var_type"                "FIELD_INTEGER"
-	            "radius"                  "500"
-	        }
-	    }
-	  }
 	  
 	"skeleton_mage_light_magic"
 	{
@@ -26624,6 +26370,8 @@
 		
 	    "AbilityCastPoint"  "0.3"
 	
+	    "HasScepterUpgrade"     "1"
+	
 	
 		"precache"
 		{
@@ -26635,7 +26383,7 @@
 	    	"01"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "damage_constant"         "150 300 0"
+	            "damage_constant"         "60 150 0"
 	        }
 	        "02"
 	        {
@@ -26645,7 +26393,7 @@
 			"03"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "damage_percentage"       "0 0 30"
+	            "damage_percentage"       "0 0 20"
 	        }
 			"04"
 	        {
@@ -26655,7 +26403,7 @@
 			"05"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "heal_constant"           "250 500 0"
+	            "heal_constant"           "100 300 0"
 	        }
 	        "06"
 	        {
@@ -26665,7 +26413,7 @@
 			"07"
 	        {
 	            "var_type"                "FIELD_INTEGER"
-	            "heal_percentage"         "0 0 35"
+	            "heal_percentage"         "0 0 25"
 	        }
 			"08"
 	        {
@@ -26698,6 +26446,8 @@
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
+	
+		"HasScepterUpgrade"     "1"
 	  
 	  	"AbilitySpecial"
 	  	{
@@ -27874,158 +27624,47 @@
 
 
 	//Start of file npc_lia_hero_time_lord.txt
-	    "time_lord_death"
+	"time_lord_death"
 	{
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"           "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-	    "AbilityTextureName"     "custom/time_lord_death"
-	  
-	    // Stats    
-	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"     "ability_lua"
+	    "ScriptFile"    "heroes/TimeLord/time_lord_death.lua"
+	
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+	    "AbilityTextureName"     "custom/time_lord_death"        
+	
 	    "AbilityCastRange"        "700"
 	    "AbilityCastPoint"        "0.4"
 	    "AbilityCooldown"         "18 17 16"
-	    "AbilityManaCost"         "100 150 200"
-	    "AoERadius"               "%radius"
-	  
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "AbilityManaCost"         "150 175 200"
+	
+	    "AoERadius"               "150 175 200"
+	
 	    "MaxLevel"               "3"
 	    "RequiredLevel"          "1"
 	    "LevelsBetweenUpgrades"  "2"
 	
+	    "HasScepterUpgrade"     "1"
+	
 	    "precache"
 	    {
 	        "particle"  "particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
 	    }
-	  
+	
 	    "AbilitySpecial"
 	    {
 	        "01"
 	        {
 	            "var_type"        "FIELD_INTEGER"
 	            "radius"          "150 175 200"
-	        }
-	    }
-	  
-	    "OnSpellStart"
-	    {
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Hero_Magnataur.ReversePolarity.Cast"
-	            "Target"         "CASTER"
 	        }  
-	
-	        "FireEffect"
-	        {   
-	            "EffectName"    "particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
-	            "EffectAttachType"  "start_at_customorigin"
-	            "TargetPoint"   "POINT" 
-	            "ControlPoints"
-	            {
-	                "01"    "%radius 0 0"
-	                "03"    "255 0 0"
-	            }
-	        }
-	
-	        "RunScript"
+	        "02"
 	        {
-	            "ScriptFile"  "heroes/TimeLord/Death.lua" 
-	            "Function"    "Death"
-	            "Target"
-	            {
-	                "Center"  "POINT"
-	                "Radius"  "%radius"
-	                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                "Types"   "DOTA_UNIT_TARGET_BASIC"
-	            }
+	            "var_type"              "FIELD_INTEGER"
+	            "cooldown_scepter"      "11 10 9"
 	        }   
-	    }  
-	}
-	
-	"time_lord_death_staff"
-	{
-	    // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"           "ability_datadriven"
-	    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-	    "AbilityTextureName"     "custom/time_lord_death"
-	  
-	    // Stats    
-	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilityCastRange"        "700"
-	    "AbilityCastPoint"        "0.4"
-	    "AbilityCooldown"         "11 10 9"
-	    "AbilityManaCost"         "100 150 200"
-	    "AoERadius"               "%radius"
-	  
-	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "1"
-	    "LevelsBetweenUpgrades"  "2"
-	
-	    "HasScepterUpgrade"      "1"
-	
-	    "precache"
-	    {
-	        "particle"  "particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
-	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
 	    }
-	  
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"        "FIELD_INTEGER"
-	            "radius"          "150 175 200"
-	        }
-	    }
-	  
-	    "OnSpellStart"
-	    {
-	
-	        "FireSound"
-	        {
-	            "EffectName"    "Hero_Magnataur.ReversePolarity.Cast"
-	            "Target"
-	            {
-	                "Center"    "CASTER"
-	                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-	            }
-	        }  
-	
-	        "FireEffect"
-	        {   
-	            "EffectName"    "particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
-	            "EffectAttachType"  "start_at_customorigin"
-	            "TargetPoint"   "POINT" 
-	            "ControlPoints"
-	            {
-	                "01"    "%radius 0 0"
-	                "03"    "255 0 0"
-	            }
-	        }
-	
-	        "RunScript"
-	        {
-	            "ScriptFile"  "heroes/TimeLord/Death.lua" 
-	            "Function"    "Death"
-	            "Target"
-	            {
-	                "Center"  "POINT"
-	                "Radius"  "%radius"
-	                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                "Types"   "DOTA_UNIT_TARGET_BASIC"
-	            }
-	        }   
-	    }  
-	}
-	
+	}   
 	
 	"time_lord_timelapse"
 	{
@@ -28049,6 +27688,8 @@
 	    "AbilityCastPoint"        "0.3"
 	    "AbilityCooldown"         "13 11 9"
 	    "AbilityManaCost"         "150 200 250"
+	
+	    "HasScepterUpgrade"     "1"
 	
 	    "preload"
 	    {
