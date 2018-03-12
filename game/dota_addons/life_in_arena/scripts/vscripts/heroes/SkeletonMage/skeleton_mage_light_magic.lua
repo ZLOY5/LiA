@@ -38,7 +38,7 @@ function skeleton_mage_light_magic:OnSpellStart()
 		local max_health = v:GetMaxHealth()
 		if v:GetTeamNumber() ~= caster:GetTeamNumber() then
 			local damage_to_deal = (max_health * self.damage_percentage * 0.01 + self.damage_constant)
-			ApplyDamage({ victim = v, attacker = caster, damage = dmgAll, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability })
+			ApplyDamage({ victim = v, attacker = caster, damage = damage_to_deal, damage_type = DAMAGE_TYPE_PHYSICAL, ability = ability })
 		else
 			local heal = (max_health * self.heal_percentage * 0.01 + self.heal_constant)
 			v:Heal(heal, caster)	
@@ -49,7 +49,7 @@ function skeleton_mage_light_magic:OnSpellStart()
 	local particleName = "particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
 
 	self.FXIndex = ParticleManager:CreateParticle( particleName, PATTACH_POINT, self:GetCaster())
-	ParticleManager:SetParticleControl( self.FXIndex, 0, caster )
+	ParticleManager:SetParticleControl( self.FXIndex, 0, caster:GetAbsOrigin() )
 	ParticleManager:SetParticleControl( self.FXIndex, 1, Vector( self.radius, 0, 0 ) )
 	ParticleManager:ReleaseParticleIndex(self.FXIndex)
 

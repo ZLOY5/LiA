@@ -65,6 +65,6 @@ end
 
 function FightRecap:UpdateClientInfo(isMegaboss)
 	self.data.isMegaboss = isMegaboss
-	CustoNetTables:SetTableValue("lia_player_table","FightRecap",self.data)
+	CustomNetTables:SetTableValue("lia_player_table","FightRecap",self.data)
 end
  
