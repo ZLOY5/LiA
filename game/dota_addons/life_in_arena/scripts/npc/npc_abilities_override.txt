@@ -20067,7 +20067,7 @@
 			"01"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"damage_per_second"		"30 60 90"
+				"damage_per_second"		"30 60 120"
 			}
 			"02"
 			{
@@ -20232,7 +20232,8 @@
 	 {
 	   // General
 	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
+	    "BaseClass"              "ability_lua"
+	    "ScriptFile"			 "heroes\KeeperOfTheGrove\keeper_of_the_grove_guardian_spirit.lua"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	    "AbilityTextureName"     "custom/keeper_of_the_grove_guardian_spirit"
 	
@@ -20242,14 +20243,16 @@
 	    "RequiredLevel"          "2"
 	    "LevelsBetweenUpgrades"  "2"
 	
+	    "HasScepterUpgrade"		 "1"
+	
 	    "precache"
 	    {
 	    	"model"		"models/heroes/leshrac/leshrac.vmdl"
 	    	"model"		"models/heroes/leshrac/leshrac_armor.mdl"
 	    	"model"		"models/heroes/leshrac/leshrac_head.mdl"
 	    	"model"		"models/heroes/leshrac/leshrac_tail.mdl"
-	    	"particle"  "particle_name"
-	    	"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
+	    	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
+	    	//"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
 	    }
 	
 	    "AbilitySpecial"
@@ -20264,92 +20267,18 @@
 	    		"var_type"			"FIELD_FLOAT"
 	    		"lifetime"			"10 15 20"
 	    	}
-	    }
-	
-	
-	    "OnSpellStart"
-	    {
-	    	"RunScript"
-	    	{
-	    		"ScriptFile"	"heroes/KeeperOfTheGrove/GuardianSpirit.lua"
-	    		"Function"		"SummonSpirit"
-	    	}
-	    }
-	
-	    "Modifiers"
-	    {
-	    	"modifier_status_effect_spirit"
-	    	{
-	    		"Passive"			"0"
-	    		"IsHidden"			"1"
-	    		"IsDebuff"			"0"
-	    
-				"StatusEffectName" 		"particles/status_fx/status_effect_ancestral_spirit.vpcf" 	   
-				"StatusEffectPriority"  "10"
-	    	}
-	    }
-	}
-	
-	"keeper_of_the_grove_guardian_spirit_staff"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityTextureName"     "custom/keeper_of_the_grove_guardian_spirit"
-	
-		"AbilityCooldown"				"40"
-	
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "2"
-	    "LevelsBetweenUpgrades"  "2"
-	
-	    "precache"
-	    {
-	    	"model"		"models/heroes/leshrac/leshrac.vmdl"
-	    	"model"		"models/heroes/leshrac/leshrac_armor.mdl"
-	    	"model"		"models/heroes/leshrac/leshrac_head.mdl"
-	    	"model"		"models/heroes/leshrac/leshrac_tail.mdl"
-	    	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
-	    	"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
-	    }
-	
-	    "AbilitySpecial"
-	    {
-	    	"01"
+	    	"03"
 	    	{
 	    		"var_type"			"FIELD_INTEGER"
-	    		"bonus_stats"		"25 50 75"
+	    		"bonus_stats_scepter"		"25 50 75"
 	    	}
-	    	"02"
+	    	"04"
 	    	{
 	    		"var_type"			"FIELD_FLOAT"
-	    		"lifetime"			"15 20 25"
+	    		"lifetime_scepter"			"15 20 25"
 	    	}
 	    }
 	
-	
-	    "OnSpellStart"
-	    {
-	    	"RunScript"
-	    	{
-	    		"ScriptFile"	"heroes/KeeperOfTheGrove/GuardianSpirit.lua"
-	    		"Function"		"SummonSpirit"
-	    	}
-	    }
-	
-	    "Modifiers"
-	    {
-	    	"modifier_status_effect_spirit"
-	    	{
-	    		"Passive"			"0"
-	    		"IsHidden"			"1"
-	    		"IsDebuff"			"0"
-	    
-				"StatusEffectName" 		"particles/status_fx/status_effect_ancestral_spirit.vpcf" 	   
-				"StatusEffectPriority"  "10"
-	    	}
-	    }
 	}
 	
 	"keeper_of_the_grove_natures_curse"
@@ -20381,71 +20310,47 @@
 	    "HasScepterUpgrade"     "1"
 	
 	  	"precache"
-	    {
-	        "particle"  "particles/custom/neutral/firestorm_wave.vpcf"
-	    }
+		{
+			"particle"			"particles/units/heroes/hero_furion/furion_wrath_of_nature.vpcf"
+			"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
+		}
 	
 	    "AbilitySpecial"
 	    {           
 	        "01"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "wave_damage"           "90 120 150"
-	        }
-	        "02"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "wave_damage_scepter"           "180 210 240"
-	        }
-	        "03"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "burn_damage"           "20 40 60"
-	        }
-	        "04"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "burn_damage_scepter"           "40 60 80"
-	        }
-	        "05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"60 90 120"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second_scepter"		"90 120 150"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"10"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hero_duration"			"5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"350"
+			}  
+			"06"
 	        {
 	            "var_type"              "FIELD_FLOAT"
-	            "burn_interval"         "1.0"
-	        }
-	        "06"
-	        {
-	            "var_type"              "FIELD_FLOAT"
-	            "wave_interval"         "1.0"
+	            "cooldown_scepter"      "150"
 	        }
 	        "07"
 	        {
-	            "var_type"              "FIELD_FLOAT"
-	            "burn_duration"         "10"
-	        }
-	        "08"
-	        {
 	            "var_type"              "FIELD_INTEGER"
-	            "wave_count"            "6"
-	        }
-	        "09"
-	        {
-	            "var_type"              "FIELD_FLOAT"
-	            "channel_time"         "6.1"
-	        }
-	        "10"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "radius"                "280 290 300"
-	        }
-	        "11"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "radius_scepter"                "325"
-	        }    
-	        "12"
-	        {
-	            "var_type"              "FIELD_INTEGER"
-	            "manacost_scepter"                "350 400 450"
+	            "manacost_scepter"                "250 350 450"
 	        }      
 	    }
 	}	
@@ -20478,7 +20383,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"60 90 120"
+				"damage_per_second"		"90 120 150"
 			}
 			"02"
 			{
@@ -23016,32 +22921,32 @@
 	            "var_type"          "FIELD_INTEGER"
 	            "skeleton_health"  "275 650 1250"
 	        }
-	        "01"
+	        "02"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "skeleton_health_scepter"  "650 1250 1500"
 	        }
-	        "02"
+	        "03"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "skeleton_damage"  "15 25 50"
 	        }
-	        "02"
+	        "04"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "skeleton_damage_scepter"  "25 50 100"
 	        }
-	        "04"
+	        "05"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "skeleton_count"  "2 3 4"
 	        }
-	        "03"
+	        "06"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "duration"  "60"
 	        }
-	        "06"
+	        "07"
 	        {
 	            "var_type"          "FIELD_INTEGER"
 	            "manacost_scepter"  "150 300 450"
