@@ -21638,7 +21638,8 @@
 	"lord_of_lightning_chain_lightning"
 	{
 	
-		"BaseClass" 					"ability_datadriven"
+		"BaseClass" 					"ability_lua"
+		"ScriptFile"					"heroes\LightningLord\lord_of_lightning_chain_lightning.lua"
 	
 		"AbilityTextureName"			"zuus_arc_lightning"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -21655,6 +21656,8 @@
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
+	
+		"HasScepterUpgrade"		 "1"
 		
 		"precache"
 		{
@@ -21689,107 +21692,41 @@
 				"var_type"				"FIELD_FLOAT"
 				"time_between_bounces"	"0.2"
 			}
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
+			"06"
 			{
-				"ScriptFile"	"heroes/LightningLord/chain_lightning.lua"
-				"Function"		"chainLightning"
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage_scepter"		"85 135 200"
 			}
-			"FireSound"
+			"07"
 			{
-				"EffectName"	"Hero_Zuus.ArcLightning.Cast"
-				"Target" 		"CASTER"
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces_scepter"		"12 13 14"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay_scepter"		"-15 -15 -15"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cooldown_scepter"		"9 8 7"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_scepter"		"150 225 300"
 			}
 		}
-	
 	}
 	
-	"lord_of_lightning_chain_lightning_staff"
-	{
-	
-		"BaseClass" 					"ability_datadriven"
-	
-		"AbilityTextureName"			"zuus_arc_lightning"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	
-		"AbilityCastRange"				"700"
-		//"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"9.0 8.0 7.0"
-		"AbilityManaCost"				"150 225 300"
-	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		
-		"precache"
-		{
-			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-		}
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_damage"		"85 135 200"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_bounces"		"12 13 14"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bounce_range"			"500"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_decay"		"-15 -15 -15"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"heroes/LightningLord/chain_lightning.lua"
-				"Function"		"chainLightning"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Zuus.ArcLightning.Cast"
-				"Target" 		"CASTER"
-			}
-		}
-	
-	}
-	
-	
-	
-	//=================================================================================
-	// Ability: Lightning Shield
-	// Description: "Forms a shield of electricity around a target unit, dealing <Alsh,DataA1> damage per second to units around it. |nLasts <Alsh,Dur1> seconds."
-	// Code Reference: Alsh
-	//=================================================================================
 	"lord_of_lightning_lightning_shield"
 	{
-		"BaseClass"					"ability_datadriven"
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\LightningLord\lord_of_lightning_lightning_shield.lua"
+	
 		"AbilityTextureName"		"custom/lightning_lord_lightning_shield"
+		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
@@ -21808,149 +21745,49 @@
 			
 		"AOERadius"					"160"
 	
+		"HasScepterUpgrade"			"1"
+	
 		"precache"
 		{
 			"particle"  "particles/lightning_shield.vpcf"
 			"particle"  "particles/lightning_shield_hit.vpcf"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
 		}
+	
 		"AbilitySpecial"
 		{
 			"01"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"radius"		"160"
+				"var_type"							"FIELD_INTEGER"
+				"radius"							"160"
 			}
 			"02"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"damage_per_second"			"20 40 80"
+				"var_type"							"FIELD_INTEGER"
+				"damage_per_second"					"20 40 80"
 			}
 			"03"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"think_interval"		"0.3"
+				"var_type"							"FIELD_FLOAT"
+				"think_interval"					"0.33"
 			}
 			"04"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"duration"		"8"
+				"var_type"							"FIELD_INTEGER"
+				"duration"							"8"
 			}
-			// It ticks every second Kappa (actually is 0.1 now Keepo)
-			// Edit: 0.3 looks nicer with a particle hit :D
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
+			"05"
 			{
-				"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
-				"Function"				"LightningShieldOnSpellStart"
+				"var_type"							"FIELD_INTEGER"
+				"manacost_scepter"					"200 240 280"
 			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_lord_of_lightning_lightning_shield"
+			"06"
 			{
-				"IsPurgable"		"1"
-				"Duration"			"%duration"
-				
-				"EffectName"            "particles/lightning_shield.vpcf"
-				"EffectAttachType"      "follow_origin"
-				
-				"ThinkInterval" 		"%think_interval"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
-						"Function"				"ModifierLightningShieldOnIntervalThink"
-					}
-				}
+				"var_type"							"FIELD_INTEGER"
+				"damage_per_second_scepter"			"40 70 100"
 			}
 		}
 	}
-	
-	"lord_of_lightning_lightning_shield_staff"
-	{
-		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"custom/lightning_lord_lightning_shield"
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-			
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
-		"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
-			
-		"AbilityCastRange"			"600"
-		"AbilityCastPoint"			"0"
-		"AbilityCooldown"			"16 14 12"
-		"AbilityManaCost"			"200 240 280"
-			
-		"AOERadius"					"160"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"radius"		"160"
-			}
-			"02"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"damage_per_second"			"40 70 100"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"think_interval"		"0.3"
-			}
-			"04"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"duration"		"8"
-			}
-			// It ticks every second Kappa (actually is 0.1 now Keepo)
-			// Edit: 0.3 looks nicer with a particle hit :D
-		}
-	
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
-				"Function"				"LightningShieldOnSpellStart"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_lord_of_lightning_lightning_shield"
-			{
-				"IsPurgable"		"1"
-				"Duration"			"%duration"
-				
-				"EffectName"            "particles/lightning_shield.vpcf"
-				"EffectAttachType"      "follow_origin"
-				
-				"ThinkInterval" 		"%think_interval"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"heroes/LightningLord/lightning_shield.lua"
-						"Function"				"ModifierLightningShieldOnIntervalThink"
-					}
-				}
-			}
-		}
-	}
-	
 	
 	
 	"lord_of_lightning_holy_wrath"
