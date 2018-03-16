@@ -1,21 +1,34 @@
---[[
-	Author: Noya
-	Date: 17.01.2015.
-	Bounces a chain lightning
-]]
-function chainLightning( event )
+lord_of_lightning_chain_lightning = class({})
 
-	local hero = event.caster
-	local target = event.target
-	local ability = event.ability
+function lord_of_lightning_chain_lightning:GetManaCost(iLevel)
+	--print("Level",iLevel)
+	if self:GetCaster():HasScepter() then
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
+	end
 
+	return self.BaseClass.GetManaCost( self, iLevel ) 
+end
 
+function lord_of_lightning_chain_lightning:GetCooldown(iLevel)
+	--print("Level",iLevel)
+	if self:GetCaster():HasScepter() then
+		return self:GetLevelSpecialValueFor( "cooldown_scepter" , iLevel)
+	end
+
+	return self.BaseClass.GetCooldown( self, iLevel ) 
+end
+
+function lord_of_lightning_chain_lightning:OnSpellStart()
+	local caster = self:GetCaster()
+	local target = self:GetCursorTarget()
 	
-	local damage = ability:GetLevelSpecialValueFor( "lightning_damage", ability:GetLevel() - 1 )
-	local bounces = ability:GetLevelSpecialValueFor( "lightning_bounces", ability:GetLevel() - 1 )
-	local bounce_range = ability:GetLevelSpecialValueFor( "bounce_range", ability:GetLevel() - 1 )
-	local decay = ability:GetLevelSpecialValueFor( "lightning_decay", ability:GetLevel() - 1 ) * 0.01
-	local time_between_bounces = ability:GetLevelSpecialValueFor( "time_between_bounces", ability:GetLevel() - 1 )
+	
+	local damage = self:GetSpecialValueFor(caster:HasScepter() and "lightning_damage_scepter" or "lightning_damage")
+	local bounces = self:GetSpecialValueFor(caster:HasScepter() and "lightning_bounces_scepter" or "lightning_bounces")
+	local decay = self:GetSpecialValueFor(caster:HasScepter() and "lightning_decay_scepter" or "lightning_decay") * 0.01
+	
+	local bounce_range = self:GetSpecialValueFor("bounce_range")
+	local time_between_bounces = self:GetSpecialValueFor("time_between_bounces")
 
 	local lightningBolt = ParticleManager:CreateParticle("particles/items_fx/chain_lightning.vpcf", PATTACH_WORLDORIGIN, hero)
 	--local lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf", PATTACH_WORLDORIGIN, hero)
@@ -23,13 +36,14 @@ function chainLightning( event )
 	ParticleManager:SetParticleControl(lightningBolt,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z + target:GetBoundingMaxs().z ))	
 	--ParticleManager:SetParticleControlEnt(lightningBolt, 1, target, 1, "attach_hitloc", target:GetAbsOrigin(), true)
 
+	EmitSoundOn("Hero_Zuus.ArcLightning.Cast", caster)
 	EmitSoundOn("Hero_Dazzle.Shadow_Wave", target)	
 
-	if target:TriggerSpellAbsorb(ability) then
+	if target:TriggerSpellAbsorb(self) then
 		return 
 	end
 
-	ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
+	ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = self })
 	--PopupDamage(target,math.floor(damage))
 
 	-- Every target struck by the chain is added to a list of targets struck, And set a boolean inside its index to be sure we don't hit it twice.
@@ -99,7 +113,7 @@ function chainLightning( event )
 			
 			-- damage and decay
 			damage = damage - (damage*decay)
-			ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = ability })
+			ApplyDamage({ victim = target, attacker = hero, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = self })
 			--PopupDamage(target,math.floor(damage))
 			--print("Bounce "..bounces.." Hit Unit "..target:GetEntityIndex().. " for "..damage.." damage")
 
@@ -124,4 +138,5 @@ function chainLightning( event )
 			end
 		end
 	})
+
 end

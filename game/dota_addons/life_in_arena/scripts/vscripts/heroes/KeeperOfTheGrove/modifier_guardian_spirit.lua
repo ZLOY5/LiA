@@ -8,6 +8,14 @@ function modifier_guardian_spirit:GetAttributes()
 	return MODIFIER_ATTRIBUTE_PERMANENT + MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE 
 end
 
+function modifier_guardian_spirit:GetStatusEffectName()
+	return "particles/status_fx/status_effect_ancestral_spirit.vpcf"
+end
+
+function modifier_guardian_spirit:StatusEffectPriority()
+	return 10
+end
+
 function modifier_guardian_spirit:DeclareFunctions()
 	local funcs = {
 		--MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,

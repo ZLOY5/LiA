@@ -207,7 +207,8 @@
  {
    // General
     //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
+    "BaseClass"              "ability_lua"
+    "ScriptFile"			 "heroes\KeeperOfTheGrove\keeper_of_the_grove_guardian_spirit.lua"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityTextureName"     "custom/keeper_of_the_grove_guardian_spirit"
 
@@ -217,14 +218,16 @@
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
 
+    "HasScepterUpgrade"		 "1"
+
     "precache"
     {
     	"model"		"models/heroes/leshrac/leshrac.vmdl"
     	"model"		"models/heroes/leshrac/leshrac_armor.mdl"
     	"model"		"models/heroes/leshrac/leshrac_head.mdl"
     	"model"		"models/heroes/leshrac/leshrac_tail.mdl"
-    	"particle"  "particle_name"
-    	"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
+    	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
+    	//"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
     }
 
     "AbilitySpecial"
@@ -239,92 +242,18 @@
     		"var_type"			"FIELD_FLOAT"
     		"lifetime"			"10 15 20"
     	}
-    }
-
-
-    "OnSpellStart"
-    {
-    	"RunScript"
-    	{
-    		"ScriptFile"	"heroes/KeeperOfTheGrove/GuardianSpirit.lua"
-    		"Function"		"SummonSpirit"
-    	}
-    }
-
-    "Modifiers"
-    {
-    	"modifier_status_effect_spirit"
-    	{
-    		"Passive"			"0"
-    		"IsHidden"			"1"
-    		"IsDebuff"			"0"
-    
-			"StatusEffectName" 		"particles/status_fx/status_effect_ancestral_spirit.vpcf" 	   
-			"StatusEffectPriority"  "10"
-    	}
-    }
-}
-
-"keeper_of_the_grove_guardian_spirit_staff"
- {
-   // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"     "custom/keeper_of_the_grove_guardian_spirit"
-
-	"AbilityCooldown"				"40"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-    "precache"
-    {
-    	"model"		"models/heroes/leshrac/leshrac.vmdl"
-    	"model"		"models/heroes/leshrac/leshrac_armor.mdl"
-    	"model"		"models/heroes/leshrac/leshrac_head.mdl"
-    	"model"		"models/heroes/leshrac/leshrac_tail.mdl"
-    	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
-    	"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
-    }
-
-    "AbilitySpecial"
-    {
-    	"01"
+    	"03"
     	{
     		"var_type"			"FIELD_INTEGER"
-    		"bonus_stats"		"25 50 75"
+    		"bonus_stats_scepter"		"25 50 75"
     	}
-    	"02"
+    	"04"
     	{
     		"var_type"			"FIELD_FLOAT"
-    		"lifetime"			"15 20 25"
+    		"lifetime_scepter"			"15 20 25"
     	}
     }
 
-
-    "OnSpellStart"
-    {
-    	"RunScript"
-    	{
-    		"ScriptFile"	"heroes/KeeperOfTheGrove/GuardianSpirit.lua"
-    		"Function"		"SummonSpirit"
-    	}
-    }
-
-    "Modifiers"
-    {
-    	"modifier_status_effect_spirit"
-    	{
-    		"Passive"			"0"
-    		"IsHidden"			"1"
-    		"IsDebuff"			"0"
-    
-			"StatusEffectName" 		"particles/status_fx/status_effect_ancestral_spirit.vpcf" 	   
-			"StatusEffectPriority"  "10"
-    	}
-    }
 }
 
 "keeper_of_the_grove_natures_curse"
