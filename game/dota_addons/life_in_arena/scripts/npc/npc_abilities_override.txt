@@ -14671,7 +14671,9 @@
 	//Start of file npc_lia_hero_firelord.txt
 	"firelord_flame_strike"
 	{
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\Firelord\firelord_flame_strike.lua"
+	
 		"AbilityTextureName"			"custom/firelord_flame_strike"
 	
 		"MaxLevel"               "3"
@@ -14692,6 +14694,8 @@
 		"AbilityManaCost"				"150 170 190"
 		"AbilityChannelTime"			"1.33"
 		"AoERadius"						"175 200 225"
+	
+		"HasScepterUpgrade"				"1"
 	
 		"precache"
 		{
@@ -14717,7 +14721,7 @@
 			}
 			"03"
 			{
-				"var_type"				"FIELD_INTEGER"
+				"var_type"				"FIELD_FLOAT"
 				"first_strike_duration"	"2.8"
 			}
 			"04"
@@ -14735,6 +14739,16 @@
 				"var_type"				"FIELD_FLOAT"
 				"delay"					"1.33"
 			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"first_strike_dps_scepter"		"150 200 250"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_scepter"		"250 275 300"
+			}	
 		}
 	
 		"OnSpellStart"
