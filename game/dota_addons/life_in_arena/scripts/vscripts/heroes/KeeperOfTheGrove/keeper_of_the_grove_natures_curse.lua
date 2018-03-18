@@ -2,14 +2,6 @@ keeper_of_the_grove_natures_curse = class({})
 LinkLuaModifier("modifier_keeper_of_the_grove_natures_curse_damage","heroes/KeeperOfTheGrove/modifier_keeper_of_the_grove_natures_curse_damage.lua",LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_keeper_of_the_grove_natures_curse_disarm","heroes/KeeperOfTheGrove/modifier_keeper_of_the_grove_natures_curse_disarm.lua",LUA_MODIFIER_MOTION_NONE)
 
-function keeper_of_the_grove_natures_curse:GetManaCost(iLevel)
-	if self:GetCaster():HasScepter() then
-		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
-	end
-
-	return self.BaseClass.GetManaCost( self, iLevel )  
-end
-
 function keeper_of_the_grove_natures_curse:GetCooldown(iLevel)
 	if self:GetCaster():HasScepter() then
 		return self:GetLevelSpecialValueFor( "cooldown_scepter" , iLevel)

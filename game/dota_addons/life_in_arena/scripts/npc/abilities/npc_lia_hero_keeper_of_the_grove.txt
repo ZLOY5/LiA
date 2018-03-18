@@ -227,7 +227,6 @@
     	"model"		"models/heroes/leshrac/leshrac_head.mdl"
     	"model"		"models/heroes/leshrac/leshrac_tail.mdl"
     	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
-    	//"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
     }
 
     "AbilitySpecial"
@@ -239,13 +238,13 @@
     	}
     	"02"
     	{
-    		"var_type"			"FIELD_FLOAT"
-    		"lifetime"			"10 15 20"
+    		"var_type"			"FIELD_INTEGER"
+    		"bonus_stats_scepter"		"25 50 75"
     	}
     	"03"
     	{
-    		"var_type"			"FIELD_INTEGER"
-    		"bonus_stats_scepter"		"25 50 75"
+    		"var_type"			"FIELD_FLOAT"
+    		"lifetime"			"10 15 20"
     	}
     	"04"
     	{
@@ -320,7 +319,7 @@
 		"06"
         {
             "var_type"              "FIELD_FLOAT"
-            "cooldown_scepter"      "150"
+            "cooldown_scepter"      "160"
         }    
     }
 }	

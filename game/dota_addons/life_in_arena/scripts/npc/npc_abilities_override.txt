@@ -20252,7 +20252,6 @@
 	    	"model"		"models/heroes/leshrac/leshrac_head.mdl"
 	    	"model"		"models/heroes/leshrac/leshrac_tail.mdl"
 	    	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
-	    	//"soundfile" "soundevents/game_sounds_heroes/game_sounds_HERO.vsndevts"
 	    }
 	
 	    "AbilitySpecial"
@@ -20264,13 +20263,13 @@
 	    	}
 	    	"02"
 	    	{
-	    		"var_type"			"FIELD_FLOAT"
-	    		"lifetime"			"10 15 20"
+	    		"var_type"			"FIELD_INTEGER"
+	    		"bonus_stats_scepter"		"25 50 75"
 	    	}
 	    	"03"
 	    	{
-	    		"var_type"			"FIELD_INTEGER"
-	    		"bonus_stats_scepter"		"25 50 75"
+	    		"var_type"			"FIELD_FLOAT"
+	    		"lifetime"			"10 15 20"
 	    	}
 	    	"04"
 	    	{
@@ -20345,7 +20344,7 @@
 			"06"
 	        {
 	            "var_type"              "FIELD_FLOAT"
-	            "cooldown_scepter"      "150"
+	            "cooldown_scepter"      "160"
 	        }    
 	    }
 	}	
@@ -21450,32 +21449,32 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bounce_range"			"500"
+				"lightning_bounces_scepter"		"12 13 14"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lightning_decay"		"-10 -10 -10"
+				"bounce_range"			"500"
 			}
 			"05"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"-10 -10 -10"
 			}
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lightning_damage_scepter"		"85 135 200"
+				"lightning_decay_scepter"		"-15 -15 -15"
 			}
 			"07"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_bounces_scepter"		"12 13 14"
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
 			}
 			"08"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lightning_decay_scepter"		"-15 -15 -15"
+				"lightning_damage_scepter"		"85 135 200"
 			}
 			"09"
 			{
@@ -21513,7 +21512,7 @@
 		"AbilityCooldown"			"16 14 12"
 		"AbilityManaCost"			"120 180 240"
 			
-		"AOERadius"					"160"
+		"AOERadius"					"200"
 	
 		"HasScepterUpgrade"			"1"
 	
@@ -21529,12 +21528,12 @@
 			"01"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"radius"							"160"
+				"damage_per_second"					"20 40 80"
 			}
 			"02"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"damage_per_second"					"20 40 80"
+				"damage_per_second_scepter"			"40 70 100"
 			}
 			"03"
 			{
@@ -21544,18 +21543,18 @@
 			"04"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"duration"							"8"
+				"radius"							"200"
 			}
 			"05"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"manacost_scepter"					"200 240 280"
+				"duration"							"8"
 			}
 			"06"
 			{
 				"var_type"							"FIELD_INTEGER"
-				"damage_per_second_scepter"			"40 70 100"
-			}
+				"manacost_scepter"					"200 240 280"
+			}	
 		}
 	}
 	
@@ -21578,7 +21577,7 @@
 			
 		"AbilityCastRange"			"800"
 		//"AbilityCastPoint"			"0"
-		"AbilityCooldown"			"2.0 1.5 1.0"
+		"AbilityCooldown"			"2.0"
 		//"AbilityManaCost"			"200 240 280"
 			
 		//"AOERadius"					"800"
@@ -22818,7 +22817,7 @@
 	
 		"AOERadius"     				"%radius"
 	
-		//"AbilityChannelTime"				"7.0 9.0 11.0"
+		"HasScepterUpgrade"		 "1"
 		
 		"AbilitySpecial"
 		{
@@ -22829,40 +22828,39 @@
 			}
 			"02"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"stun"						"0.25"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"wave_interval"				"1.0"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"wave_count"				"6 8 10"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"175 200 225"
-			}		
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"manacost_scepter"			"200 275 300"
-			}	
-			"07"
-			{
 				"var_type"					"FIELD_INTEGER"
 				"wave_damage_scepter"		"60 120 180"
 			}
-			"08"
+			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"wave_count_scepter"		"8 10 12"
 			}
-	
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"stun"						"0.25"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"wave_interval"				"1.0"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"wave_count"				"6 8 10"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"175 200 225"
+			}		
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"manacost_scepter"			"200 275 300"
+			}	
 		}
 	
 		"precache"
@@ -22878,7 +22876,7 @@
 	}
 	
 	
-	"paladin_grace_lua"
+	"paladin_grace"
 	{
 	  	"BaseClass"              "ability_lua"
 	  	"ScriptFile"			 "heroes\Paladin\paladin_grace.lua"
@@ -22917,7 +22915,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"primary_target_heal_scepter"				"600 900 1200"
+				"primary_target_heal_scepter"				"800 1000 1200"
 			}
 			"03"
 			{
@@ -22937,255 +22935,6 @@
 	  	} 
 	}
 	
-	
-	"paladin_grace"
-		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"				"ability_datadriven"
-			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			//"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"AbilityTextureName"			"omniknight_purification"
-			"AbilityCastAnimation"   		"ACT_DOTA_CAST_ABILITY_2"
-		
-			
-			"MaxLevel"               "3"
-			"RequiredLevel"          "2"
-			"LevelsBetweenUpgrades"  "2"
-	
-			"AoERadius"               "400"	
-	
-			"AbilityCastRange"				"800"
-			"AbilityCastPoint"				"0.3"
-		
-			"AbilityCooldown"				"8.0"
-		
-			"AbilityManaCost"				"110 130 150"	
-		
-			"precache"
-			{
-				"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-				"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-				//"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-				"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-	
-			}
-			
-			"AbilitySpecial"
-			{
-				"01"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"value_heal"				"200 500 800"
-				}
-				"02"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"value_heal_other"			"150 300 450"
-				}
-				"03"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"radius"				"400"
-				}
-				"04"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"value_heal_target"			"50 200 350"
-				}
-			}
-		
-			"OnSpellStart"
-			{
-	
-	
-				"ActOnTargets"
-				{
-					"Target"
-	    			{
-	        			"Center" "TARGET"
-	        			"Radius" "%radius"
-	        			"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-	        			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    			}
-	
-	    			"Action"
-	    			{
-						"FireSound"
-						{
-							"EffectName"	"Hero_Omniknight.Purification"
-							"Target"		"TARGET"
-						}
-	
-						"FireEffect"
-						{
-							"Target"			"TARGET"
-							"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-							"EffectAttachType"	"follow_origin"
-							"ControlPoints"
-							{
-								"00"	"0 0 0"
-								"01"	"%radius %radius %radius"
-							}
-						}
-			
-						"FireEffect"
-						{
-							"Target"			"TARGET"
-							"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-							"EffectAttachType"	"follow_origin"
-						}
-	
-						"Heal"
-	        				{          
-	     						"Target"		"TARGET"
-	            					"HealAmount" "%value_heal_other"
-	        				}
-					}
-	
-	
-				}
-	
-				"Heal"
-	    		{          
-	 				"Target"		"TARGET"
-	        			"HealAmount" "%value_heal_target"
-	    		}
-	
-				
-			}
-	
-		
-	
-		}
-	
-	
-	"paladin_grace_staff"
-		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"				"ability_datadriven"
-			"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			//"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"AbilityTextureName"			"omniknight_purification"
-			"AbilityCastAnimation"   		"ACT_DOTA_CAST_ABILITY_2"
-		
-			
-			"MaxLevel"               "3"
-			"RequiredLevel"          "2"
-			"LevelsBetweenUpgrades"  "2"
-	
-			"AoERadius"               "400"	
-	
-			"AbilityCastRange"				"800"
-			"AbilityCastPoint"				"0.3"
-		
-			"AbilityCooldown"				"8.0"
-		
-			"AbilityManaCost"				"225 250 275"	
-		
-			"precache"
-			{
-				"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-				"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-				//"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-				"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-	
-			}
-			
-			"AbilitySpecial"
-			{
-				"01"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"value_heal"				"800 1000 1200"
-				}
-				"02"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"value_heal_other"			"150 300 450"
-				}
-				"03"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"radius"				"400"
-				}
-				"04"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"value_heal_target"			"350 700 750"
-				}
-			}
-		
-			"OnSpellStart"
-			{
-	
-	
-				"ActOnTargets"
-				{
-					"Target"
-	    			{
-	        			"Center" "TARGET"
-	        			"Radius" "%radius"
-	        			"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-	        			"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	    			}
-	
-	    			"Action"
-	    			{
-						"FireSound"
-						{
-							"EffectName"	"Hero_Omniknight.Purification"
-							"Target"		"TARGET"
-						}
-	
-						"FireEffect"
-						{
-							"Target"			"TARGET"
-							"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-							"EffectAttachType"	"follow_origin"
-							"ControlPoints"
-							{
-								"00"	"0 0 0"
-								"01"	"%radius %radius %radius"
-							}
-						}
-			
-						"FireEffect"
-						{
-							"Target"			"TARGET"
-							"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-							"EffectAttachType"	"follow_origin"
-						}
-	
-						"Heal"
-	        				{          
-	     						"Target"		"TARGET"
-	            					"HealAmount" "%value_heal_other"
-	        				}
-					}
-	
-	
-				}
-	
-				"Heal"
-	    		{          
-	 				"Target"		"TARGET"
-	        			"HealAmount" "%value_heal_target"
-	    		}
-	
-				
-			}
-	
-		
-	
-		}
-		
-		
 	
 	"paladin_elect"
 	{
