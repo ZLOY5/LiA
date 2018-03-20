@@ -470,307 +470,69 @@
 	}
 }
 
-
 "firelord_fire_serpent"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
+	"BaseClass"					"ability_lua"
+	"ScriptFile"				"heroes\Firelord\firelord_fire_serpent.lua"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+    "AbilityTextureName"		"custom/firelord_fire_serpent"
+	
+	"HasScepterUpgrade"			"1"
 
-	"AbilityTextureName"			"custom/firelord_fire_serpent"
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
 
-	"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               	"3"
-    "RequiredLevel"          	"5"
-    "LevelsBetweenUpgrades"  	"4"
-    
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"700"
 	"AbilityCastPoint"				"0.3"
-	
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCooldown"				"20"
-
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"150 175 200"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"ward_count"		"4"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"20 40 60"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"health"				"250 500 750"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"60"
-		}
-		// Extra
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"ward_1_count"			"4 0 0"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"ward_2_count"			"0 4 0"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"ward_3_count"			"0 0 4"
-		}
-	}
+	"AbilityManaCost"				"150 250 350"
 
 	"precache"
 	{
 		"particle"  "particles/units/heroes/hero_shadowshaman/shadow_shaman_ward_base_attack.vpcf"
 		"soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
 	}
-
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"		"Hero_ShadowShaman.SerpentWard"
-			"Target"			"CASTER"
-		}
-
-		"SpawnUnit"
-		{
-			"UnitName"			"npc_serpent_ward_1"
-			"Target"			"POINT"
-			"UnitCount"			"%ward_1_count"
-			"Duration"			"%duration"
-			"SpawnRadius"		"?10 100"
-			"GrantsGold"		"1"
-			"GrantsXP"			"1"
-
-			"OnSpawn"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-			}
-		}	
-
-		"SpawnUnit"
-		{
-			"UnitName"			"npc_serpent_ward_2"
-			"Target"			"POINT"
-			"UnitCount"			"%ward_2_count"
-			"Duration"			"%duration"
-			"SpawnRadius"		"?10 100"
-			"GrantsGold"		"1"
-			"GrantsXP"			"1"
-
-			"OnSpawn"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-			}
-		}	
-
-		"SpawnUnit"
-		{
-			"UnitName"			"npc_serpent_ward_3"
-			"Target"			"POINT"
-			"UnitCount"			"%ward_3_count"
-			"Duration"			"%duration"
-			"SpawnRadius"		"?10 100"
-			"GrantsGold"		"1"
-			"GrantsXP"			"1"
-
-			"OnSpawn"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-			}
-		}
-	}
-
-}
-
-"firelord_fire_serpent_staff"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-
-	"AbilityTextureName"			"custom/firelord_fire_serpent"
-
-	"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               	"3"
-    "RequiredLevel"          	"5"
-    "LevelsBetweenUpgrades"  	"4"
-    
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.3"
-	
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"20"
-
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"400"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
+		
 	"AbilitySpecial"
 	{
 		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"ward_count"		"4"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"40 60 160"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"health"				"500 750 1200"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"60"
-		}
-		// Extra
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"ward_1_count"			"4 0 0"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"ward_2_count"			"0 4 0"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"ward_3_count"			"0 0 4"
-		}
+        {
+            "var_type"          "FIELD_INTEGER"
+            "serpent_health"  "250 500 750"
+        }
+        "02"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "serpent_health_scepter"  "500 750 1200"
+        }
+        "03"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "serpent_damage"  "20 40 60"
+        }
+        "04"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "serpent_damage_scepter"  "40 60 160"
+        }
+        "05"
+        {
+            "var_type"          "FIELD_FLOAT"
+            "duration"  "60"
+        }
+        "06"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "manacost_scepter"  "250 350 450"
+        }
+        "07"
+        {
+            "var_type"          "FIELD_INTEGER"
+            "serpent_count"  "4"
+        }
 	}
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_shadowshaman/shadow_shaman_ward_base_attack.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
-	}
-
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"		"Hero_ShadowShaman.SerpentWard"
-			"Target"			"CASTER"
-		}
-
-		"SpawnUnit"
-		{
-			"UnitName"			"npc_serpent_ward_2"
-			"Target"			"POINT"
-			"UnitCount"			"%ward_1_count"
-			"Duration"			"%duration"
-			"SpawnRadius"		"?10 100"
-			"GrantsGold"		"1"
-			"GrantsXP"			"1"
-
-			"OnSpawn"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-			}
-		}	
-
-		"SpawnUnit"
-		{
-			"UnitName"			"npc_serpent_ward_3"
-			"Target"			"POINT"
-			"UnitCount"			"%ward_2_count"
-			"Duration"			"%duration"
-			"SpawnRadius"		"?10 100"
-			"GrantsGold"		"1"
-			"GrantsXP"			"1"
-
-			"OnSpawn"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-			}
-		}	
-
-		"SpawnUnit"
-		{
-			"UnitName"			"npc_serpent_ward_4"
-			"Target"			"POINT"
-			"UnitCount"			"%ward_3_count"
-			"Duration"			"%duration"
-			"SpawnRadius"		"?10 100"
-			"GrantsGold"		"1"
-			"GrantsXP"			"1"
-
-			"OnSpawn"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-			}
-		}
-	}
-
 }
+
