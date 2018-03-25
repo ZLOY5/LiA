@@ -9,6 +9,7 @@ function frost_lord_frost_breath:GetManaCost(iLevel)
 	return self.BaseClass.GetManaCost( self, iLevel ) 
 end
 
+
 function frost_lord_frost_breath:OnSpellStart()
 	self.speed = self:GetSpecialValueFor( "speed" )
 	self.projectile_distance = self:GetSpecialValueFor( "projectile_distance" )
@@ -64,7 +65,7 @@ function frost_lord_frost_breath:OnProjectileHit( hTarget, vLocation )
 		}
 
 		ApplyDamage( damage )
-		hTarget:AddNewModifier(self:GetCaster(), self, pszScriptName, hModifierTable)
+		hTarget:AddNewModifier(self:GetCaster(), self, "modifier_frost_lord_frost_breath_debuff", {duration = self.duration})
 	end
 
 	return false
