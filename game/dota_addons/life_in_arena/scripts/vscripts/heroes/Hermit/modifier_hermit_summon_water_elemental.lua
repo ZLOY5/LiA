@@ -62,7 +62,7 @@ function modifier_hermit_summon_water_elemental:OnCreated(params)
 		end
 		--
 		local flag = false
-		if hCaster:HasItemInInventory("item_lia_spherical_staff") then
+		if hCaster:HasScepter() then
 			--unitname = "npc_water_elemental_4"
 			if lvl == 0 then
 				unitname = "npc_water_elemental_2"

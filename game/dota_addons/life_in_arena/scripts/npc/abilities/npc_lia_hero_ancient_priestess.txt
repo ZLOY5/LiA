@@ -145,6 +145,8 @@
 	"AbilityManaCost"				"30 60 100"
 	"AbilityCooldown"				"15"
 
+	"HasScepterUpgrade"			"1"
+
 	"AbilitySpecial"
 	{
 		"01"
@@ -182,43 +184,6 @@
 	}	
 }
 
-"ancient_priestess_mana_shield_staff"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\AncientPriestess\ancient_priestess_mana_shield_staff.lua"
-	"AbilityTextureName"			"custom/ancient_priestess_mana_shield"
-
-  	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-
-	"AbilityManaCost"				"30 60 100"
-	"AbilityCooldown"				"5"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"damage_per_mana"		"2 3 4"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"absorption_percent"	"100"
-		}
-	}
-
-	"precache"
-	{
-		"particle" 	"particles/medusa_mana_shield_custom.vpcf"
-		"particle"	"particles/medusa_mana_shield_impact.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
-	}
-}
-
 
 "ancient_priestess_ritual_protection"
 {
@@ -236,6 +201,8 @@
     "AbilityCooldown"               "40 35 30"
     "AbilityCastRange" "600"
     "AbilityManaCost"               "150 200 250"
+
+    "HasScepterUpgrade"			"1"
 
 	"precache"
 	{
@@ -274,46 +241,3 @@
     }
 }
 
-"ancient_priestess_ritual_protection_staff"
-{
-    "BaseClass"             	"ability_lua"
-    "ScriptFile"				"heroes\AncientPriestess\ancient_priestess_ritual_protection_staff.lua"
-    "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "AbilityTextureName"    "custom/ancient_priestess_ritual_protection"
-    
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "5"
-    "LevelsBetweenUpgrades"  "4"
-    
-    //"precache"
-    //{
-        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
-        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
-    //}
-
-    "AbilityCastPoint"              "0"
-    "AbilityCooldown"               "40 35 30"
-	"AbilityCastRange" "600"
-    "AbilityManaCost"               "200 250 300"
-
-    "AbilitySpecial"
-    {
-        "01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "damage_absorb"      "600 800 1000"        
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "radius"    "600"
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "duration"  "15"
-        }
-    }
-}
