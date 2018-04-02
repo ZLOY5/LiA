@@ -1,7 +1,6 @@
 lord_of_lightning_chain_lightning = class({})
 
 function lord_of_lightning_chain_lightning:GetManaCost(iLevel)
-	--print("Level",iLevel)
 	if self:GetCaster():HasScepter() then
 		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
 	end
