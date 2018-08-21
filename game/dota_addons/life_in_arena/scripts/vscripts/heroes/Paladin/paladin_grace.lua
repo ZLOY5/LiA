@@ -1,5 +1,14 @@
 paladin_grace = class ({})
 
+
+function paladin_grace:GetManaCost(iLevel)
+	if self:GetCaster():HasScepter() then
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
+	end
+
+	return self.BaseClass.GetManaCost( self, iLevel )  
+end
+
 function paladin_grace:GetAOERadius()
 	self.radius = self:GetSpecialValueFor( "radius" )
 	return self.radius

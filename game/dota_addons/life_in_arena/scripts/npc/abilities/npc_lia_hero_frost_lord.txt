@@ -1,291 +1,5 @@
 "frost_lord_frost_breath"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"ancient_apparition_chilling_touch"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
-	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
-		"particle"		"particles/units/heroes/hero_jakiro/jakiro_dual_breath_ice.vpcf"
-		"particle"  	"particles/status_fx/status_effect_frost_lich.vpcf"
-	}
-
-
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"%range"
-	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"14"
-	
-	
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"90 110 130"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"70 140 210"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_per_second"		"9 18 36"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"start_radius"			"150"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"end_radius"			"150"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"range"					"650 700 750"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"speed"					"950"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"4 5 6"
-		}		
-	}
-	
-	"OnSpellStart"
-	{
-		"LinearProjectile"
-		{
-			"Target" "POINT"
-			"EffectName" "particles/units/heroes/hero_jakiro/jakiro_dual_breath_ice.vpcf"
-			"MoveSpeed" "%speed"
-			"StartRadius" "%start_radius"
-			"StartPosition" "attach_origin"
-			"EndRadius" "%end_radius"
-			"FixedDistance" "%range"
-			"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
-			"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-			"HasFrontalCone" "1"
-			"ProvidesVision" "0"
-		}
-		"FireSound"
-		{
-			"EffectName" "Hero_Jakiro.DualBreath"
-			"Target" "CASTER"
-		}
-	}
-	"OnProjectileHitUnit"
-	{
-		"DeleteOnHit" "0"
-		"Damage"
-		{
-			"Target" "TARGET"
-			"Type" "DAMAGE_TYPE_MAGICAL"
-			"Damage" "%damage"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_frost_lord_frost_breath"
-			"Target" 		"TARGET"
-			"Duration"		"%duration"
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_frost_lord_frost_breath"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsDebuff"			"0"
-	
-			"ThinkInterval"  "1.0"
-			"OnIntervalThink"
-			{
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%damage_per_second"
-				}
-			}
-		}
-	}
-}
-
-"frost_lord_frost_breath_staff"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"ancient_apparition_chilling_touch"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
-	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
-		"particle"		"particles/units/heroes/hero_jakiro/jakiro_dual_breath_ice.vpcf"
-		"particle"  	"particles/status_fx/status_effect_frost_lich.vpcf"
-	}
-
-
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"%range"
-	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"14"
-	
-	
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"130 160 190"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"225 300 375"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_per_second"		"15 30 45"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"start_radius"			"150"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"end_radius"			"150"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"range"					"650 700 750"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"speed"					"950"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"6 7 8"
-		}		
-	}
-	
-	"OnSpellStart"
-	{
-		"LinearProjectile"
-		{
-			"Target" "POINT"
-			"EffectName" "particles/units/heroes/hero_jakiro/jakiro_dual_breath_ice.vpcf"
-			"MoveSpeed" "%speed"
-			"StartRadius" "%start_radius"
-			"StartPosition" "attach_origin"
-			"EndRadius" "%end_radius"
-			"FixedDistance" "%range"
-			"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
-			"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-			"HasFrontalCone" "1"
-			"ProvidesVision" "0"
-		}
-		"FireSound"
-		{
-			"EffectName" "Hero_Jakiro.DualBreath"
-			"Target" "CASTER"
-		}
-	}
-	"OnProjectileHitUnit"
-	{
-		"DeleteOnHit" "0"
-		"Damage"
-		{
-			"Target" "TARGET"
-			"Type" "DAMAGE_TYPE_MAGICAL"
-			"Damage" "%damage"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_frost_lord_frost_breath"
-			"Target" 		"TARGET"
-			"Duration"		"%duration"
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_frost_lord_frost_breath"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsDebuff"			"0"
-	
-			"ThinkInterval"  "1.0"
-			"OnIntervalThink"
-			{
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%damage_per_second"
-				}
-			}
-		}
-	}
-}
-	
-"frost_lord_frost_breath"
-{
 	"BaseClass"		"ability_lua"
 	"ScriptFile"	"heroes/FrostLord/frost_lord_frost_breath.lua"
 
@@ -562,7 +276,7 @@
 }
 
 
-"frost_lord_ice"
+"frost_lord_ice_1"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
@@ -715,7 +429,7 @@
   }
 }
 
-  "frost_lord_ice_staff"
+  "frost_lord_ice_staff_1"
 {
   // General
   //-------------------------------------------------------------------------------------------------------------
@@ -898,44 +612,52 @@
 	{
 	"particle"   "particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"  
 	"particle"  "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-	"particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf"
-	"soundfile"   "soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"    
-	"soundfile"   "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"       
+	"particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf" 
 	}
 
 	"AbilitySpecial"
 	{
 		"01"
 	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage"    "100 250 400"
+			"var_type"      "FIELD_INTEGER"
+			"damage"    "100 250 400"
 	    }
-	    "02"
+		"02"
+		{
+			"var_type"      "FIELD_INTEGER"
+			"damage_scepter"    "175 325 475"
+		}
+		"03"
 	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "movement_slow"    "-50"
+			"var_type"      "FIELD_FLOAT"
+			"duration"  "3 4 5"
 	    }
-	    "03"
+		"04"
 	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "slow_duration"  "4"
-	    }
-	    "04"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "duration"  "3 4 5"
+			"var_type"      "FIELD_FLOAT"
+			"duration_scepter"  "4 5 6"
 	    }
 	    "05"
 	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "radius"      "500"
+			"var_type"      "FIELD_INTEGER"
+			"movement_slow"    "-50"
 	    }
 	    "06"
 	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage_radius"      "190"
+			"var_type"      "FIELD_FLOAT"
+			"slow_duration"  "4"
+	    }
+	    "07"
+	    {
+			"var_type"      "FIELD_INTEGER"
+			"radius"      "500"
+	    }
+	    "08"
+	    {
+			"var_type"      "FIELD_INTEGER"
+			"damage_radius"      "190"
 	    }  
-		"11"
+		"09"
 		{
 			"var_type"				"FIELD_FLOAT"
 			"manacost_scepter"				"325 375 425"

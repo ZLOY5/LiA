@@ -1,5 +1,80 @@
 "demonologist_demonic_seal"
 {
+    "BaseClass"     "ability_lua"
+    "ScriptFile"    "heroes/Demonologist/demonologist_demonic_seal.lua"
+
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE" 
+    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+    "AbilityTextureName"     "shadow_demon_soul_catcher"        
+
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCooldown"         "16 15 14"
+    "AbilityManaCost"         "100 125 150"
+
+    "AoERadius"               "150 175 200"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+
+    "HasScepterUpgrade"     "1"
+
+    "precache"
+    {
+        "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+        "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+    	"01"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "initial_damage"          "10 20 30"
+        }
+        "02"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "initial_damage_scepter"          "20 40 60"
+        }
+        "03"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "additional_damage_scepter"          "6"
+        }
+        "04"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "additional_damage"          "12"
+        }
+        "05"
+        {
+            "var_type"        "FIELD_FLOAT"
+            "initial_duration"        "2"
+        }
+        "06"
+        {
+            "var_type"        "FIELD_FLOAT"
+            "additional_duration"        "0.5"
+        }
+        "07"
+        {
+            "var_type"        "FIELD_INTEGER"
+            "radius"          "175"
+        } 
+        "08"
+        {
+            "var_type"              "FIELD_INTEGER"
+            "manacost_scepter"      "125 175 225"
+        }   
+    }
+}  
+
+"demonologist_demonic_seal"
+{
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"             "ability_datadriven"

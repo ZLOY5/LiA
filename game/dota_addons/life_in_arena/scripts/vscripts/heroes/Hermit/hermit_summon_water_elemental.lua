@@ -2,7 +2,7 @@ hermit_summon_water_elemental = class ({})
 LinkLuaModifier("modifier_hermit_summon_water_elemental","heroes/Hermit/modifier_hermit_summon_water_elemental.lua",LUA_MODIFIER_MOTION_NONE)
 
 function hermit_summon_water_elemental:GetManaCost( hTarget )
-	if 	self:GetCaster():HasItemInInventory("item_lia_spherical_staff") then
+	if 	self:GetCaster():HasScepter() then
 		return self:GetSpecialValueFor( "ManaCost_Scepter" )
 	end
 
@@ -10,7 +10,7 @@ function hermit_summon_water_elemental:GetManaCost( hTarget )
 end
 
 function hermit_summon_water_elemental:GetCooldown( nLevel )
-	if self:GetCaster():HasItemInInventory("item_lia_spherical_staff") then
+	if self:GetCaster():HasScepter() then
 		return self:GetSpecialValueFor( "Cooldown_Scepter" )
 	end
  
