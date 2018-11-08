@@ -8052,7 +8052,7 @@
 			"05"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"heal_value"		"20 40 60"
+				"heal_value"		"15 25 35"
 			}
 			"06"
 			{
@@ -8077,6 +8077,8 @@
 	
 		"AbilityManaCost"				"30 60 100"
 		"AbilityCooldown"				"15"
+	
+		"HasScepterUpgrade"			"1"
 	
 		"AbilitySpecial"
 		{
@@ -8115,43 +8117,6 @@
 		}	
 	}
 	
-	"ancient_priestess_mana_shield_staff"
-	{
-		"BaseClass"             		"ability_lua"
-		"ScriptFile"					"heroes\AncientPriestess\ancient_priestess_mana_shield_staff.lua"
-		"AbilityTextureName"			"custom/ancient_priestess_mana_shield"
-	
-	  	"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	
-		"AbilityManaCost"				"30 60 100"
-		"AbilityCooldown"				"5"
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"damage_per_mana"		"2 3 4"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"absorption_percent"	"100"
-			}
-		}
-	
-		"precache"
-		{
-			"particle" 	"particles/medusa_mana_shield_custom.vpcf"
-			"particle"	"particles/medusa_mana_shield_impact.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
-		}
-	}
-	
 	
 	"ancient_priestess_ritual_protection"
 	{
@@ -8168,7 +8133,9 @@
 	    "AbilityCastPoint"              "0"
 	    "AbilityCooldown"               "40 35 30"
 	    "AbilityCastRange" "600"
-	    "AbilityManaCost"               "150 200 250"
+	    "AbilityManaCost"               "150"
+	
+	    "HasScepterUpgrade"			"1"
 	
 		"precache"
 		{
@@ -8182,12 +8149,12 @@
 	        "01"
 	        {
 	            "var_type"          "FIELD_INTEGER"
-	            "damage_absorb"     "400 600 800"        
+	            "damage_absorb"     "400 500 600"        
 	        }
 	        "02"
 	        {
 	            "var_type"          "FIELD_INTEGER"
-	            "damage_absorb_scepter"      "600 800 1000"        
+	            "damage_absorb_scepter"      "800 1000 1200"        
 	        }
 	        "03"
 	        {
@@ -8199,57 +8166,9 @@
 	            "var_type"          "FIELD_INTEGER"
 	            "duration"  		"15"
 	        }
-	        "05"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "manacost_scepter"  		"200 250 300"
-	        }
 	    }
 	}
 	
-	"ancient_priestess_ritual_protection_staff"
-	{
-	    "BaseClass"             	"ability_lua"
-	    "ScriptFile"				"heroes\AncientPriestess\ancient_priestess_ritual_protection_staff.lua"
-	    "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	    "AbilityTextureName"    "custom/ancient_priestess_ritual_protection"
-	    
-		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
-	    
-	    //"precache"
-	    //{
-	        //"soundfile"         "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
-	        //"particle"          "particles/units/heroes/hero_lone_druid/lone_druid_battle_cry_overhead.vpcf"
-	        //"particle"          "particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
-	    //}
-	
-	    "AbilityCastPoint"              "0"
-	    "AbilityCooldown"               "40 35 30"
-		"AbilityCastRange" "600"
-	    "AbilityManaCost"               "200 250 300"
-	
-	    "AbilitySpecial"
-	    {
-	        "01"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "damage_absorb"      "600 800 1000"        
-	        }
-	        "02"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "radius"    "600"
-	        }
-	        "03"
-	        {
-	            "var_type"          "FIELD_INTEGER"
-	            "duration"  "15"
-	        }
-	    }
-	}
 	//End of file npc_lia_hero_ancient_priestess.txt
 
 
@@ -12478,6 +12397,81 @@
 
 
 	//Start of file npc_lia_hero_demonologist.txt
+	"demonologist_demonic_seal"
+	{
+	    "BaseClass"     "ability_lua"
+	    "ScriptFile"    "heroes/Demonologist/demonologist_demonic_seal.lua"
+	
+	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+	    "AbilityTextureName"     "shadow_demon_soul_catcher"        
+	
+	    "AbilityCastRange"        "700"
+	    "AbilityCastPoint"        "0.3"
+	    "AbilityCooldown"         "16 15 14"
+	    "AbilityManaCost"         "100 125 150"
+	
+	    "AoERadius"               "150 175 200"
+	
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    "HasScepterUpgrade"     "1"
+	
+	    "precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+	        "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
+	    }
+	
+	    "AbilitySpecial"
+	    {
+	    	"01"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "initial_damage"          "10 20 30"
+	        }
+	        "02"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "initial_damage_scepter"          "20 40 60"
+	        }
+	        "03"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "additional_damage_scepter"          "6"
+	        }
+	        "04"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "additional_damage"          "12"
+	        }
+	        "05"
+	        {
+	            "var_type"        "FIELD_FLOAT"
+	            "initial_duration"        "2"
+	        }
+	        "06"
+	        {
+	            "var_type"        "FIELD_FLOAT"
+	            "additional_duration"        "0.5"
+	        }
+	        "07"
+	        {
+	            "var_type"        "FIELD_INTEGER"
+	            "radius"          "175"
+	        } 
+	        "08"
+	        {
+	            "var_type"              "FIELD_INTEGER"
+	            "manacost_scepter"      "125 175 225"
+	        }   
+	    }
+	}  
+	
 	"demonologist_demonic_seal"
 	{
 	    // General
@@ -17076,6 +17070,7 @@
 		"BaseClass"						"ability_lua"
 		"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
 		"AbilityTextureName"			"custom/hermit_summon_water_elemental"
+	
 		"MaxLevel" 						"3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
@@ -17083,6 +17078,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCooldown"				"20 19 18"
 		"AbilityManaCost"				"100 125 150"
+	
+		"HasScepterUpgrade"			"1"
 	
 		"AbilitySpecial"
 		{
