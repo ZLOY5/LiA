@@ -315,7 +315,7 @@ function Survival:OnPlayerChat(event)
 
         if event.text == "armor" then
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            print(hero:GetPhysicalArmorValue())
+            print(hero:GetPhysicalArmorValue(false))
         end
 
         if event.text == "openshop" then

@@ -189,7 +189,7 @@ function modifier_item_lia_seal_of_power_damage:OnCreated(kv)
 end
 
 function modifier_item_lia_seal_of_power_damage:OnIntervalThink()
-	local armor = self:GetCaster():GetPhysicalArmorValue() - self.armorLose --броню отнятую самим скиллом не учитываем
+	local armor = self:GetCaster():GetPhysicalArmorValue(false) - self.armorLose --броню отнятую самим скиллом не учитываем
 	
 	self.damageBonusFromArmor = armor/self.oneArmorDamage
 	
