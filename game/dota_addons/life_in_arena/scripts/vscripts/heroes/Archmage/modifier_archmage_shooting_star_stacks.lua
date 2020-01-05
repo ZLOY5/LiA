@@ -37,6 +37,13 @@ end
 
 
 function modifier_archmage_shooting_star_stacks:OnTooltip(params)
-	return self:GetStackCount() * self:GetAbility():GetSpecialValueFor("damage_per_charge") + self:GetAbility():GetSpecialValueFor("initial_damage")
+	if self:GetParent():HasScepter() then
+		damagePerCharge = self:GetAbility():GetSpecialValueFor("damage_per_charge_scepter") 
+		damageInit = self:GetAbility():GetSpecialValueFor("initial_damage_scepter") 
+	else
+		damagePerCharge = self:GetAbility():GetSpecialValueFor("damage_per_charge") 
+		damageInit = self:GetAbility():GetSpecialValueFor("initial_damage") 
+	end
+	return self:GetStackCount() * damagePerCharge + damageInit
 end
 

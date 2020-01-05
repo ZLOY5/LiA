@@ -24,9 +24,16 @@ end
 
 function archmage_shooting_star:GetManaCost(level)
 	local caster = self:GetCaster()
-	local defManaCost =  self.BaseClass.GetManaCost( self, level )
-	local charge_limit = self:GetSpecialValueFor("charge_limit") 
-	local manacost_per_charge = self:GetSpecialValueFor("manacost_per_charge") 
+	local defManaCost
+	local manacost_per_charge
+	if caster:HasScepter() then
+		manacost_per_charge = self:GetSpecialValueFor("manacost_per_charge_scepter")
+		defManaCost =  self:GetSpecialValueFor("initial_manacost_scepter")
+	else
+		defManaCost =  self.BaseClass.GetManaCost( self, level )
+		manacost_per_charge = self:GetSpecialValueFor("manacost_per_charge")
+	end
+	local charge_limit = self:GetSpecialValueFor("charge_limit")
 	local netTable = CustomNetTables:GetTableValue("custom_modifier_state",tostring(caster:GetEntityIndex()).."shootingStar")
 
 	local charges = 0
@@ -45,13 +52,21 @@ function archmage_shooting_star:GetManaCost(level)
 end
 
 function archmage_shooting_star:OnSpellStart()
-	local damagePerCharge = self:GetSpecialValueFor("damage_per_charge") 
-	local damageInit = self:GetSpecialValueFor("initial_damage") 
+	local damagePerCharge
+	local damageInit
+	local caster = self:GetCaster()
+	if caster:HasScepter() then
+		damagePerCharge = self:GetSpecialValueFor("damage_per_charge_scepter") 
+		damageInit = self:GetSpecialValueFor("initial_damage_scepter") 
+	else
+		damagePerCharge = self:GetSpecialValueFor("damage_per_charge") 
+		damageInit = self:GetSpecialValueFor("initial_damage") 
+	end
+	
 	local charge_limit = self:GetSpecialValueFor("charge_limit") 
 	local charge_duration = self:GetSpecialValueFor("charge_duration")
 	local anomaly_radius = self:GetSpecialValueFor("anomaly_radius")
 	local target = self:GetCursorTarget()
-	local caster = self:GetCaster()
 	local stack_modifier = caster:FindModifierByName("modifier_archmage_shooting_star_stacks")
 	local half_damage_radius = self:GetSpecialValueFor("half_damage_radius")
 
@@ -95,7 +110,7 @@ function archmage_shooting_star:OnSpellStart()
 		end
 	)	
 
-	if target:HasModifier("modifier_archmage_anomaly") then
+	if target:HasModifier("modifier_archmage_anomaly_effect") then
 
 		EmitSoundOn( "Hero_Mirana.Starstorm.Cast", target )
 

@@ -7,7 +7,7 @@ function Polymorph(event)
 		return 
 	end
 
-	if target:HasModifier("modifier_archmage_anomaly") then
+	if target:HasModifier("modifier_archmage_anomaly_effect") then
 
 		local searchForDummies = FindUnitsInRadius(caster:GetTeamNumber(), 
 													target:GetAbsOrigin(), 
