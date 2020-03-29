@@ -1,5 +1,5 @@
 demonologist_demonic_seal = class({})
-LinkLuaModifier("modifier_demonologist_demonic_seal", "heroes/Demonologist/demonologist_demonic_seal.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_demonologist_demonic_seal_debuff", "heroes/Demonologist/modifier_demonologist_demonic_seal_debuff.lua", LUA_MODIFIER_MOTION_NONE)
 
 function demonologist_demonic_seal:GetManaCost(iLevel)
 	if self:GetCaster():HasScepter() then
@@ -33,7 +33,7 @@ function demonologist_demonic_seal:OnSpellStart()
 	duration = duration + #targets * additional_duration 
 
 	for _,v in pairs(targets) do
-		v:AddNewModifier(self:GetCaster(), self, "modifier_demonologist_demonic_seal", {duration = duration})
+		v:AddNewModifier(self:GetCaster(), self, "modifier_demonologist_demonic_seal_debuff", {duration = duration})
 	end
 
 	local particleName = "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
