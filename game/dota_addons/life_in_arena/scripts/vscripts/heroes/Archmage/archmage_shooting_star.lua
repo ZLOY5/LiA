@@ -9,6 +9,14 @@ function archmage_shooting_star:GetCastAnimation()
 	return ACT_DOTA_CAST_ABILITY_4
 end
 
+function archmage_shooting_star:GetCooldown(iLevel)
+	if self:GetCaster():HasScepter() then
+		return self:GetLevelSpecialValueFor( "cooldown_scepter" , iLevel)
+	end
+
+	return self.BaseClass.GetCooldown( self, iLevel ) 
+end
+
 function archmage_shooting_star:OnUpgrade()
 	local modifier = self:GetCaster():FindModifierByName("modifier_archmage_shooting_star_stacks")
 	local stacks = modifier:GetStackCount()

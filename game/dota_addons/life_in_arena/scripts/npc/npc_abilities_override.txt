@@ -8018,8 +8018,6 @@
 		"AbilityCastPoint"			"0"
 		"AbilityCooldown"			"20"
 		"AbilityManaCost"			"60 70 80"
-			
-		//"AOERadius"					"800"
 	
 		"precache"
 		{
@@ -9216,6 +9214,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "anomaly_radius"  "450"
+	    }
+	    "14"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "cooldown_scepter"  "2.5"
 	    }
 	  }
 	}
@@ -13037,33 +13040,23 @@
 
 
 	//Start of file npc_lia_hero_earth_lord.txt
-	  "earth_lord_earth_burn"
+	"earth_lord_earth_burn"
 	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"                 "ability_datadriven"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"  "heroes/EarthLord/earth_lord_earth_burn.lua"
+	
 	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
 	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityTextureName"        "custom/earth_lord_earth_burn"
-	
-	  // Precache
-	  //-------------------------------------------------------------------------------------------------------------
-	  "precache"
-	  {
-	    "particle"   "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"  
-	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"        
-	  }
 	  
-	  //"AbilityCastAnimation"   "ACT_DOTA_ATTACK"  
-	    
 	  "MaxLevel"               "3"
 	  "RequiredLevel"          "1"
 	  "LevelsBetweenUpgrades"  "2"
 	
-	  "AoERadius" "%radius"
+	  "AoERadius" "150 175 200"
 	  
 	  "AbilityCastRange"        "700"
 	  "AbilityCastPoint"        "0.3"
@@ -13072,230 +13065,56 @@
 	
 	  "AbilityManaCost"       "100 150 200"  
 	
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage"    "40 80 120"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "duration"  "4"
-	    }
-	    "03"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "radius"      "150 175 200"
-	    }
-	  }
+	  "HasScepterUpgrade"   "1"
 	
-	    "OnSpellStart"
-	  {
-	    "CreateThinker"
-	    {
-	      "ModifierName"  "modifier_earth_lord_earth_burn_thinker"
-	      "Target"    "POINT"
-	    }
-	  } 
-	
-	  "Modifiers"
-	  {
-	    "modifier_earth_lord_earth_burn_thinker"
-	    {
-	      "Aura"          "modifier_earth_lord_earth_burn"
-	      "Aura_Radius"     "%radius"
-	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
-	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	      "Duration"        "%duration"
-	
-	      "OnCreated"
-	      {
-	        "RunScript"
-	        {
-	          "ScriptFile"  "heroes/EarthLord/EarthBurn.lua"
-	          "Function"    "EarthBurnSound"
-	        }
-	
-	        "AttachEffect"
-	        {
-	          "EffectName"    "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"
-	          "EffectAttachType"  "follow_origin"
-	          "Target"      "TARGET"
-	          "ControlPoints"
-	          {
-	            "00" "0 0 0"
-	            "01" "%radius 1 1"
-	            "15" "25 150 25"
-	            "16" "1 0 0"
-	          }
-	        }
-	      }
-	    }
-	
-	    "modifier_earth_lord_earth_burn"
-	    {
-	      "IsDebuff"    "1"
-	      "ThinkInterval" "1"
-	
-	      "OnIntervalThink"
-	      {
-	        "Damage"
-	        {
-	          "Target"     "TARGET"
-	          "Type"       "DAMAGE_TYPE_MAGICAL"
-	          "Damage"     "%damage"
-	        }
-	      }
-	    }
-	  }
-	}
-	
-	  "earth_lord_earth_burn_staff"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"                 "ability_datadriven"
-	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
-	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
-	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"        "custom/earth_lord_earth_burn"
-	
-	  // Precache
-	  //-------------------------------------------------------------------------------------------------------------
 	  "precache"
 	  {
 	    "particle"   "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"  
 	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"        
 	  }
-	  
-	  //"AbilityCastAnimation"   "ACT_DOTA_ATTACK"  
-	    
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "1"
-	  "LevelsBetweenUpgrades"  "2"
 	
-	  "AoERadius" "%radius"
-	  
-	  "AbilityCastRange"        "700"
-	  "AbilityCastPoint"        "0.3"
-	
-	  "AbilityCooldown"       "11 10 9"
-	
-	  "AbilityManaCost"       "100 200 300"  
-	
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "damage"    "100 140 180"
+	      "damage_per_second"    "40 80 120"
 	    }
 	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "damage_per_second_scepter"    "100 140 180"
+	    }
+	    "03"
 	    {
 	      "var_type"      "FIELD_FLOAT"
 	      "duration"  "4"
 	    }
-	    "03"
+	    "04"
 	    {
 	      "var_type"      "FIELD_INTEGER"
 	      "radius"      "150 175 200"
 	    }
-	  }
-	
-	    "OnSpellStart"
-	  {
-	    "CreateThinker"
+	    "05"
 	    {
-	      "ModifierName"  "modifier_earth_lord_earth_burn_thinker"
-	      "Target"    "POINT"
-	    }
-	  } 
-	
-	  "Modifiers"
-	  {
-	    "modifier_earth_lord_earth_burn_thinker"
-	    {
-	      "Aura"          "modifier_earth_lord_earth_burn"
-	      "Aura_Radius"     "%radius"
-	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
-	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	      "Duration"        "%duration"
-	
-	      "OnCreated"
-	      {
-	        "RunScript"
-	        {
-	          "ScriptFile"  "heroes/EarthLord/EarthBurn.lua"
-	          "Function"    "EarthBurnSound"
-	        }
-	
-	        "AttachEffect"
-	        {
-	          "EffectName"    "particles/econ/items/warlock/warlock_staff_hellborn/warlock_upheaval_hellborn_edge.vpcf"
-	          "EffectAttachType"  "follow_origin"
-	          "Target"      "TARGET"
-	          "ControlPoints"
-	          {
-	            "00" "0 0 0"
-	            "01" "%radius 1 1"
-	            "15" "25 150 25"
-	            "16" "1 0 0"
-	          }
-	        }
-	      }
-	    }
-	
-	    "modifier_earth_lord_earth_burn"
-	    {
-	      "IsDebuff"    "1"
-	      "ThinkInterval" "1"
-	
-	      "OnIntervalThink"
-	      {
-	        "Damage"
-	        {
-	          "Target"     "TARGET"
-	          "Type"       "DAMAGE_TYPE_PHYSICAL"
-	          "Damage"     "%damage"
-	        }
-	      }
-	    }
+	      "var_type"        "FIELD_FLOAT"
+	      "manacost_scepter"        "100 200 300"
+	    }   
 	  }
 	}
 	
-	
-	 "earth_lord_split_earth"
+	"earth_lord_split_earth"
 	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"                 "ability_datadriven"
+	  "BaseClass"   "ability_lua"
+	  "ScriptFile"  "heroes/EarthLord/earth_lord_split_earth.lua"
+	
 	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
 	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityTextureName"        "custom/earth_lord_split_earth"
-	
-	  // Precache
-	  //-------------------------------------------------------------------------------------------------------------
-	  "precache"
-	  {
-	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"  
-	    "particle"    "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"        
-	  }
 	  
-	  //"AbilityCastAnimation"   "ACT_DOTA_ATTACK"  
-	    
 	  "MaxLevel"               "3"
 	  "RequiredLevel"          "2"
 	  "LevelsBetweenUpgrades"  "2"
@@ -13307,120 +13126,22 @@
 	
 	  "AbilityCooldown"       "18"
 	
-	  "AbilityManaCost"       "150 200 250"  
+	  "AbilityManaCost"       "150 200 250"
 	
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage"    "150 200 300"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "stun_duration"  "1 2 3"
-	    }
-	    "03"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "radius"      "175 200 225"
-	    }
-	  }
+	  "HasScepterUpgrade"   "1"
 	
-	  "OnSpellStart"
-	  {
-	    "FireEffect"
-	    { 
-	      "EffectName"  "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
-	      "EffectAttachType"  "start_at_customorigin"
-	      "TargetPoint" "POINT" 
-	      "ControlPoints"
-	      {
-	        "01"  "%radius 0 0"
-	      }
-	    }
-	
-	    "FireSound"
-	    {
-	      "EffectName"  "Hero_Leshrac.Split_Earth"
-	      "Target"    "CASTER"
-	    } 
-	
-	    "ActOnTargets"
-	    {
-	      "Target"
-	      {
-	        "Center"  "POINT"
-	        "Radius"  "%radius"
-	        "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	      }
-	    
-	      "Action"    
-	      {
-	        "ApplyModifier"
-	        {
-	          "ModifierName" "modifier_stunned"
-	          "Target"  "TARGET"
-	          "Duration"  "%stun_duration"
-	        } 
-	        "Damage"
-	        {
-	          "Type"      "DAMAGE_TYPE_MAGICAL"
-	          "Target"  "TARGET"              
-	          "Damage"    "%damage"
-	        }
-	      }
-	    }
-	  }
-	}
-	
-	 "earth_lord_split_earth_staff"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"                 "ability_datadriven"
-	  "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
-	  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
-	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"        "custom/earth_lord_split_earth"
-	
-	  // Precache
-	  //-------------------------------------------------------------------------------------------------------------
 	  "precache"
 	  {
 	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"  
 	    "particle"    "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"        
 	  }
-	  
-	  //"AbilityCastAnimation"   "ACT_DOTA_ATTACK"  
-	    
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "2"
-	  "LevelsBetweenUpgrades"  "2"
 	
-	  "AoERadius" "%radius"
-	  
-	  "AbilityCastRange"        "700"
-	  "AbilityCastPoint"        "0.3"
-	
-	  "AbilityCooldown"       "15 14 13"
-	
-	  "AbilityManaCost"       "150 250 350"  
-	
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "damage"    "150 200 300"
+	      "damage"        "100 200 300"
 	    }
 	    "02"
 	    {
@@ -13430,55 +13151,18 @@
 	    "03"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "radius"      "175 200 225"
-	    }
-	  }
-	
-	  "OnSpellStart"
-	  {
-	    "FireEffect"
-	    { 
-	      "EffectName"  "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
-	      "EffectAttachType"  "start_at_customorigin"
-	      "TargetPoint" "POINT" 
-	      "ControlPoints"
-	      {
-	        "01"  "%radius 0 0"
-	      }
-	    }
-	
-	    "FireSound"
-	    {
-	      "EffectName"  "Hero_Leshrac.Split_Earth"
-	      "Target"    "CASTER"
+	      "radius"        "175 200 225"
 	    } 
-	
-	    "ActOnTargets"
+	    "04"
 	    {
-	      "Target"
-	      {
-	        "Center"  "POINT"
-	        "Radius"  "%radius"
-	        "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	      }
-	    
-	      "Action"    
-	      {
-	        "ApplyModifier"
-	        {
-	          "ModifierName" "modifier_stunned"
-	          "Target"  "TARGET"
-	          "Duration"  "%stun_duration"
-	        } 
-	        "Damage"
-	        {
-	          "Type"      "DAMAGE_TYPE_MAGICAL"
-	          "Target"  "TARGET"              
-	          "Damage"    "%damage"
-	        }
-	      }
+	      "var_type"      "FIELD_FLOAT"
+	      "cooldown_scepter"  "15 14 13"
 	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "manacost_scepter"        "150 250 350"
+	    } 
 	  }
 	}
 	
@@ -14906,313 +14590,6 @@
 			}
 		} 
 	}
-	
-	
-	"frost_lord_ice_1"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"       		"ability_datadriven"
-	  "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_POINT"
-	  "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
-	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "ancient_apparition_ice_vortex"
-	
-	  // Precache
-	  //-------------------------------------------------------------------------------------------------------------
-	  "precache"
-	  {
-	    "particle"   "particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"  
-	    "particle"  "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-	    "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf"
-	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"    
-	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"       
-	  }
-	  
-	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "5"
-	  "LevelsBetweenUpgrades"  "4"
-	  
-	  "AbilityCastRange"        "500"
-	  "AbilityCastPoint"        "0.3"
-	
-	  "AbilityCooldown"       "140"
-	
-	  "AbilityManaCost"       "225 275 325"  
-	
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage"    "100 250 400"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "movement_slow"    "-50"
-	    }
-	    "03"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "slow_duration"  "4"
-	    }
-	    "04"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "duration"  "3 4 5"
-	    }
-	    "05"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "radius"      "500"
-	    }
-	    "06"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage_radius"      "190"
-	    }
-	  }
-	
-	    "OnSpellStart"
-	  {
-	    "CreateThinker"
-	    {
-	      "ModifierName"  "modifier_frost_lord_ice"
-	      "Target"    "POINT"
-	    }
-	  } 
-	
-	  "Modifiers"
-	  {
-	    "modifier_frost_lord_ice"
-	    {
-	    	"ThinkInterval" "1"
-		    "OnIntervalThink"
-	      {
-			"ActOnTargets"
-			{
-			 "Target"
-			 {
-			  "Center" "TARGET" 
-			  "Radius" "%radius"
-		      "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		      "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			  "Random" "1"
-			  "MaxTargets" "1"
-			 }
-			 "Action"
-			 {
-			  "RunScript"
-			  {
-			  	"ScriptFile"	"heroes/FrostLord/Ice.lua"
-			  	"Function"		"Ice"
-			  	"Target"		"TARGET"
-			  }
-			  "FireEffect"
-			  {
-			  	"EffectName"        "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-			  	"EffectAttachType"  "follow_origin"
-			  	"Target"            "TARGET"
-			  }
-			  "FireSound"
-			  {
-			  	"EffectName"	"Ability.FrostNova"
-			  	"Target" 		"CASTER"
-			  }
-			 }
-			}
-	      }
-	      "Duration"	"%duration"
-	      "OnCreated"
-	      {
-	
-	        "AttachEffect"
-	        {
-	          "EffectName"    "particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"
-	          "EffectAttachType"  "follow_origin"
-	          "Target"      "TARGET"
-	          "ControlPoints"
-	          {
-	            "00" "0 0 0"
-	            "01" "%radius 1 1"
-	            "15" "25 150 25"
-	            "16" "1 0 0"
-	          }
-	        }
-	      }
-	    }
-	
-	    "modifier_modifier_frost_lord_ice_damage"
-	    {	
-	    	"IsDebuff"	"1"
-	    	"StatusEffectName" 		"particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf" 	   
-	    	"StatusEffectPriority"  "10"
-	    	"Duration"	"%slow_duration"
-	    	"Properties"
-	    	{
-	    	    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_slow" 
-	    	}
-	    }
-	  }
-	}
-	
-	  "frost_lord_ice_staff_1"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
-	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "AbilityTextureName"      "ancient_apparition_ice_vortex"
-	
-	  // Precache
-	  //-------------------------------------------------------------------------------------------------------------
-	  "precache"
-	  {
-	    "particle"   "particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"  
-	    "particle"  "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-	    "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf"
-	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"    
-	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"       
-	  }
-	  
-	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "5"
-	  "LevelsBetweenUpgrades"  "4"
-	  
-	  "AbilityCastRange"        "500"
-	  "AbilityCastPoint"        "0.3"
-	
-	  "AbilityCooldown"       "140"
-	
-	  "AbilityManaCost"       "325 375 425"  
-	
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage"    "175 325 475"
-	    }
-	    "02"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "movement_slow"    "-50"
-	    }
-	    "03"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "slow_duration"  "4"
-	    }
-	    "04"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "duration"  "4 5 6"
-	    }
-	    "05"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "radius"      "500"
-	    }
-	    "06"
-	    {
-	      "var_type"      "FIELD_INTEGER"
-	      "damage_radius"      "190"
-	    }
-	  }
-	
-	    "OnSpellStart"
-	  {
-	    "CreateThinker"
-	    {
-	      "ModifierName"  "modifier_frost_lord_ice"
-	      "Target"    "POINT"
-	    }
-	  } 
-	
-	  "Modifiers"
-	  {
-	    "modifier_frost_lord_ice"
-	    {
-	    	"ThinkInterval" "1"
-		    "OnIntervalThink"
-	      {
-			"ActOnTargets"
-			{
-			 "Target"
-			 {
-			  "Center" "TARGET" 
-			  "Radius" "%radius"
-		      "Teams"    "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		      "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			  "Random" "1"
-			  "MaxTargets" "1"
-			 }
-			 "Action"
-			 {
-			  "RunScript"
-			  {
-			  	"ScriptFile"	"heroes/FrostLord/Ice.lua"
-			  	"Function"		"Ice"
-			  	"Target"		"TARGET"
-			  }
-			  "FireEffect"
-			  {
-			  	"EffectName"        "particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-			  	"EffectAttachType"  "follow_origin"
-			  	"Target"            "TARGET"
-			  }
-			  "FireSound"
-			  {
-			  	"EffectName"	"Ability.FrostNova"
-			  	"Target" 		"CASTER"
-			  }
-			 }
-			}
-	      }
-	      "Duration"	"%duration"
-	      "OnCreated"
-	      {
-	
-	        "AttachEffect"
-	        {
-	          "EffectName"    "particles/units/heroes/hero_ancient_apparition/ancient_ice_vortex.vpcf"
-	          "EffectAttachType"  "follow_origin"
-	          "Target"      "TARGET"
-	          "ControlPoints"
-	          {
-	            "00" "0 0 0"
-	            "01" "%radius 1 1"
-	            "15" "25 150 25"
-	            "16" "1 0 0"
-	          }
-	        }
-	      }
-	    }
-	
-	    "modifier_modifier_frost_lord_ice_damage"
-	    {	
-	    	"IsDebuff"	"1"
-	    	"StatusEffectName" 		"particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf" 	   
-	    	"StatusEffectPriority"  "10"
-	    	"Duration"	"%slow_duration"
-	    	"Properties"
-	    	{
-	    	    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%movement_slow" 
-	    	}
-	    }
-	  }
-	}
-	
 	
 	"frost_lord_ice"
 	{
