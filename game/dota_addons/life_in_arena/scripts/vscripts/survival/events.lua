@@ -282,6 +282,12 @@ function Survival:OnPlayerChat(event)
     
 	if IsInToolsMode() then
     	
+        for i = 1,20 do
+            if event.text == "wave " .. i then
+                self.nRoundNum = i
+            end
+        end
+
         if event.text == "kill" then
     		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             hero:ForceKill(true)
