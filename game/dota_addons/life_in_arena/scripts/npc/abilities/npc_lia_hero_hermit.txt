@@ -1,6 +1,5 @@
-"hermit_summon_water_elemental_old"
+"hermit_summon_water_elemental"
 {
-	//"BaseClass"             		"ability_datadriven"
 	"BaseClass"						"ability_lua"
 	"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
 	"AbilityTextureName"			"custom/hermit_summon_water_elemental"
@@ -20,12 +19,13 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"duration"				"60"
+			"hit_points"			"300 550 800"
 		}
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"hit_points"			"300 550 800"
+			"hit_points_scepter"	"550 800 1450"
+			"RequiresScepter"		"1"
 		}
 		"03"
 		{
@@ -35,167 +35,44 @@
 		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"unit_count"			"2 2 2"
-		}	
+			"damage_scepter"		"30 60 120"
+			"RequiresScepter"		"1"
+		}
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"spawn_radius"			"200"
+			"unit_count"			"2"
 		}
 		"06"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"ManaCost_Scepter"			"150 200 250"
+			"unit_count_scepter"	"3"
+			"RequiresScepter"		"1"
 		}
 		"07"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"Cooldown_Scepter"			"22 22 22"
+			"duration"				"60"
 		}
 		"08"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"hit_points_Scepter"	"550 800 1450"
-		}
+			"manacost_scepter"			"150 200 250"
+			"RequiresScepter"		"1"
+		}	
 		"09"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage_Scepter"		"30 60 120"
-		}
-	}
-
-	"precache"
-	{
-		"particle"					"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
-		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
-	}
-
-}
-
-
-
-"hermit_summon_water_elemental_new"
-{
-	"BaseClass"             		"ability_datadriven"
-	//"BaseClass"						"ability_lua"
-	//"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
-	"AbilityTextureName"			"custom/hermit_summon_water_elemental"
-	"MaxLevel" 						"3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityCooldown"				"20 19 18"
-	"AbilityManaCost"				"100 125 150"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"60"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"hit_points"			"300 550 800"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"15 30 60"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"unit_count"			"2 2 2"
-		}	
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
 			"spawn_radius"			"200"
 		}
 	}
 
-
 	"precache"
 	{
 		"particle"					"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
 	}
 
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"    "heroes\Hermit\hermit_summon.lua"    
-			"Function"      "summonCreate"
-		}
-	}
-	
-}
-
-
-"hermit_summon_water_elemental_new_staff"
-{
-	"BaseClass"             		"ability_datadriven"
-	//"BaseClass"						"ability_lua"
-	//"ScriptFile"					"heroes/Hermit/hermit_summon_water_elemental.lua"
-	"AbilityTextureName"			"custom/hermit_summon_water_elemental"
-	"MaxLevel" 						"3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityCooldown"				"20 19 18"
-	"AbilityManaCost"				"150 200 250"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"60"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"hit_points"			"550 800 1450"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"30 60 120"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"unit_count"			"2 2 2"
-		}	
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"spawn_radius"			"200"
-		}
-		
-	}
-
-
-	"precache"
-	{
-		"particle"					"particles/units/heroes/hero_morphling/morphling_replicate_finish.vpcf"
-		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"    "heroes\Hermit\hermit_summon.lua"    
-			"Function"      "summonCreate"
-		}
-	}
-	
 }
 
 
@@ -527,7 +404,96 @@
 }
 
 
-	"hermit_storm"
+"hermit_storm"
+{
+	"BaseClass"						"ability_lua"
+	"ScriptFile"					"heroes/Hermit/hermit_storm.lua"
+	"AbilityTextureName"			"custom/hermit_storm"
+
+	"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"
+		
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	
+	"AbilityCastRange"				"400"
+	"AbilityCastPoint"				"0.3 0.3 0.3"
+	"AbilityCooldown"				"160"
+	"AbilityDuration"				"8.0 12.0 16.0"
+	"AbilityChannelTime"      		"8.0 12.0 16.0"
+	"AbilityManaCost"				"250 300 350"
+
+	"HasScepterUpgrade"			"1"
+
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+		"particle"		"particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"wave_damage"		"90 190 290"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"waves_per_second"		"2 3 4"
+		}
+		"03"
+		{
+			"var_type"		"FIELD_FLOAT"
+			"duration"		"8 12 16"
+		}	
+		"04"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"hits_for_elemental"		"10"
+			"RequiresScepter"		"1"
+		}	
+		"05"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"wave_speed"		"1150.0"
+		}
+		"06"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"wave_width"		"50"
+		}
+		"07"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"vision_aoe"		"400"
+		}	
+		"08"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage_radius"		"200"
+		}
+		"09"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"delay_cause"		"0.20"
+		}
+		"10"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"		"800"
+		}
+		
+	}
+}
+
+	"hermit_storm1"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------

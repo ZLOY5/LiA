@@ -33,23 +33,25 @@
 	{
 		"01"
    		{
-     			"var_type"              "FIELD_INTEGER"
-     			"damage"         		"50 100 150"
+ 			"var_type"              "FIELD_INTEGER"
+ 			"damage"         		"50 100 150"
    		}
    		"02"
    		{
-     			"var_type"              "FIELD_INTEGER"
-     			"damage_scepter"        "150 200 250"
+ 			"var_type"              "FIELD_INTEGER"
+ 			"damage_scepter"        "150 200 250"
+			"RequiresScepter"		"1"
    		}
    		"03"
    		{
-     			"var_type"              "FIELD_INTEGER"
-     			"radius"                "250"
+ 			"var_type"              "FIELD_INTEGER"
+ 			"radius"                "250"
    		}  
    		"04"
    		{
-     			"var_type"              "FIELD_INTEGER"
-     			"manacost_scepter"      "100 125 150"
+ 			"var_type"              "FIELD_INTEGER"
+ 			"manacost_scepter"      "100 125 150"
+			"RequiresScepter"		"1"
    		}   
 	}
 }	
@@ -276,6 +278,7 @@
         {
             "var_type"              "FIELD_INTEGER"
             "wave_damage_scepter"           "180 210 240"
+			"RequiresScepter"		"1"
         }
         "03"
         {
@@ -286,6 +289,7 @@
         {
             "var_type"              "FIELD_INTEGER"
             "burn_damage_scepter"           "40 60 80"
+			"RequiresScepter"		"1"
         }
         "05"
         {
@@ -321,11 +325,13 @@
         {
             "var_type"              "FIELD_INTEGER"
             "radius_scepter"                "325"
+			"RequiresScepter"		"1"
         }    
         "12"
         {
             "var_type"              "FIELD_INTEGER"
             "manacost_scepter"                "350 400 450"
+			"RequiresScepter"		"1"
         }      
     }
 }	

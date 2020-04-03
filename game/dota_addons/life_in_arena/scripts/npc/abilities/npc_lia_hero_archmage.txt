@@ -49,6 +49,7 @@
     {
       "var_type"        "FIELD_INTEGER"
       "initial_damage_scepter"  "150 200 250"
+      "RequiresScepter"   "1"
     }
     "03"
     {
@@ -59,6 +60,7 @@
     {
       "var_type"        "FIELD_INTEGER"
       "damage_per_charge_scepter" "30 40 50"
+      "RequiresScepter"   "1"
     }
     "05"
     {
@@ -69,6 +71,7 @@
     {
       "var_type"        "FIELD_INTEGER"
       "manacost_per_charge_scepter" "20 25 30"
+      "RequiresScepter"   "1"
     }
     "07"
     {
@@ -94,6 +97,7 @@
     {
       "var_type"        "FIELD_INTEGER"
       "initial_manacost_scepter"  "100 150 200"
+      "RequiresScepter"   "1"
     }
     "12"
     {
@@ -109,96 +113,7 @@
     {
       "var_type"        "FIELD_FLOAT"
       "cooldown_scepter"  "2.5"
-    }
-  }
-}
-
-"archmage_shooting_star_staff"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
-  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-  "FightRecapLevel"       "1"
-  "BaseClass"         "ability_lua"
-  "AbilityTextureName"        "custom/archmage_shooting_star"
-  "ScriptFile"          "heroes/Archmage/archmage_shooting_star_staff.lua"
-
-  "MaxLevel"               "3"
-  "RequiredLevel"          "1"
-  "LevelsBetweenUpgrades"  "2"
-  // Casting
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastRange"        "700"
-  "AbilityCastPoint"        "0.0"
-  
-  // Time   
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCooldown"       "2.5"       
-
-  // Cost
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityManaCost"       "100 125 150"
-
-
-  "precache"
-  {
-    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
-    "particle"    "particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
-    "particle"    "particles/visage_soul_overhead.vpcf"
-  }
-
-  // Special
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "initial_damage"  "150 200 250"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "damage_per_charge" "30 40 50"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "manacost_per_charge" "20 25 30"
-    }
-    "04"
-    {
-      "var_type"        "FIELD_FLOAT"
-      "charge_duration"  "35.0"
-    }
-    "05"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "charge_limit"  "4 6 8"
-    }   
-    "06"
-    {
-      "var_type"      "FIELD_FLOAT"
-      "starfall_delay"  "0.57"
-    }
-    "07"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "initial_manacost"  "100 150 200"
-    }
-    "08"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "half_damage_radius"  "125"
-    }
-    "09"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "anomaly_radius"  "450"
+      "RequiresScepter"   "1"
     }
   }
 }
@@ -373,6 +288,7 @@
     {
       "var_type"      "FIELD_FLOAT"
       "duration_scepter"      "8 10 12"
+      "RequiresScepter"   "1"
     }
     "03"
     {
@@ -383,6 +299,7 @@
     {
       "var_type"      "FIELD_INTEGER"
       "manacost_scepter"        "300 350 400"
+      "RequiresScepter"   "1"
     }
 	} 
 }

@@ -1,33 +1,50 @@
-hermit_summon_water_elemental = class ({})
-LinkLuaModifier("modifier_hermit_summon_water_elemental","heroes/Hermit/modifier_hermit_summon_water_elemental.lua",LUA_MODIFIER_MOTION_NONE)
+hermit_summon_water_elemental = class({})
 
-function hermit_summon_water_elemental:GetManaCost( hTarget )
-	if 	self:GetCaster():HasScepter() then
-		return self:GetSpecialValueFor( "ManaCost_Scepter" )
-	end
-
-	return self.BaseClass.GetManaCost( self, hTarget )
-end
-
-function hermit_summon_water_elemental:GetCooldown( nLevel )
+function hermit_summon_water_elemental:GetManaCost(iLevel)
 	if self:GetCaster():HasScepter() then
-		return self:GetSpecialValueFor( "Cooldown_Scepter" )
+		return self:GetLevelSpecialValueFor( "manacost_scepter" , iLevel)
 	end
- 
-	return self.BaseClass.GetCooldown( self, nLevel )
+
+	return self.BaseClass.GetManaCost( self, iLevel )  
 end
 
 function hermit_summon_water_elemental:OnSpellStart()
-	local hCaster = self:GetCaster()
-	
-	if hCaster == nil then
-		return
-	end
-	
-	hCaster:AddNewModifier(hCaster, self, "modifier_hermit_summon_water_elemental", { duration = 0.10 })
-	
-	--
+	self.duration = self:GetSpecialValueFor("duration")
+	self.unit_count = self:GetSpecialValueFor("unit_count")
+	self.spawn_radius = self:GetSpecialValueFor("spawn_radius")
 
-	--EmitSoundOnLocationWithCaster( hCaster:GetOrigin(), "Hero_Nightstalker.Darkness", hCaster )
+	self.caster = self:GetCaster()
+	if self.caster:HasScepter() then
+		self.water_elemental = {"npc_water_elemental_2", "npc_water_elemental_3", "npc_water_elemental_4"}
+		self.unit_count = self:GetSpecialValueFor("unit_count_scepter")
+	else
+		self.water_elemental = {"npc_water_elemental_1", "npc_water_elemental_2", "npc_water_elemental_3"}
+		self.unit_count = self:GetSpecialValueFor("unit_count")
+	end
+
+	if not self.caster.summoned_water_elementals then
+		self.caster.summoned_water_elementals = {}
+	else
+		for i=1, #self.caster.summoned_water_elementals do
+			if not self.caster.summoned_water_elementals[i]:IsNull() then
+				self.caster.summoned_water_elementals[i]:ForceKill(false)
+			end
+		end
+		self.caster.summoned_water_elementals = {}
+	end
+
+	local water_elemental_to_spawn = self.water_elemental[self:GetLevel()]
+	local front_position = self.caster:GetAbsOrigin() + self.caster:GetForwardVector() * self.spawn_radius
+	for i=1,self.unit_count do
+		local creature = CreateUnitByName(water_elemental_to_spawn, front_position, false, self.caster, self.caster, self.caster:GetTeam())
+		if water_elemental_to_spawn == "npc_water_elemental_4" then
+			creature:SetRenderColor(255,0,0)
+		end
+		creature:SetControllableByPlayer(self.caster:GetPlayerOwnerID(), false)
+		creature:AddNewModifier(self.caster, nil, "modifier_kill", { duration = self.duration })
+		creature:AddNewModifier(self.caster, nil, "modifier_phased", { duration = 0.03 })
+		ResolveNPCPositions(creature:GetAbsOrigin(),65)
+		table.insert(self.caster.summoned_water_elementals,creature)
+	end
 
 end
