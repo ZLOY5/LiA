@@ -289,10 +289,10 @@ function LiA:TradeRequest(event)
 	--print("TradeRequest")
 	--DeepPrintTable(event)
 
-    if Survival.State == SURVIVAL_STATE_DUEL_TIME then return end
-
 	local playerID = event.PlayerID
 	event.PlayerID = nil
+
+    if Survival.State == SURVIVAL_STATE_DUEL_TIME then SendErrorMessage(playerID, "#lia_hud_error_cant_trade_on_duels") return end
 	
 	for sTradePlayerID,data in pairs(event) do
 		
