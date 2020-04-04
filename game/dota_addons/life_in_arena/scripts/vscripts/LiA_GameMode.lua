@@ -289,6 +289,8 @@ function LiA:TradeRequest(event)
 	--print("TradeRequest")
 	--DeepPrintTable(event)
 
+    if Survival.State == SURVIVAL_STATE_DUEL_TIME then return end
+
 	local playerID = event.PlayerID
 	event.PlayerID = nil
 	
