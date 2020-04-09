@@ -1,6 +1,11 @@
 item_lia_hyper_boots = class({})
 
 LinkLuaModifier("modifier_hyper_boots","items/modifiers/modifier_hyper_boots.lua",LUA_MODIFIER_MOTION_HORIZONTAL)
+LinkLuaModifier("modifier_hyper_boots_movespeed","items/item_lia_hyper_boots.lua",LUA_MODIFIER_MOTION_NONE)
+
+function item_lia_hyper_boots:GetIntrinsicModifierName()
+	return "modifier_hyper_boots_movespeed"
+end
 
 function item_lia_hyper_boots:CastFilterResultTarget( hTarget )
 	local nCasterID = self:GetCaster():GetPlayerOwnerID()
@@ -78,3 +83,35 @@ function item_lia_hyper_boots:OnProjectileHit( hTarget, vLocation )
 
 	return false
 end							
+
+-------------------------------------------------------------------
+
+modifier_hyper_boots_movespeed = class({})
+
+function modifier_hyper_boots_movespeed:GetAttributes() 
+	return MODIFIER_ATTRIBUTE_PERMANENT 
+end
+
+function modifier_hyper_boots_movespeed:IsHidden()
+	return false 
+end
+
+function modifier_hyper_boots_movespeed:IsPurgable()
+	return false 
+end
+
+function modifier_hyper_boots_movespeed:OnCreated(kv)
+	self.bonus_movement_speed = self:GetAbility():GetSpecialValueFor("bonus_movement_speed")
+end
+
+function modifier_hyper_boots_movespeed:DeclareFunctions()
+    local funcs = {
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE,
+	}
+ 
+	return funcs
+end
+
+function modifier_hyper_boots_movespeed:GetModifierMoveSpeedBonus_Special_Boots()
+    return self.bonus_movement_speed
+end

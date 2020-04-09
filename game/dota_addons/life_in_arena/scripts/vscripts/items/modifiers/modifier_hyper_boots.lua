@@ -17,6 +17,7 @@ end
 
 function modifier_hyper_boots:OnCreated( kv )
 	if IsServer() then
+		self.bonus_movement_speed = self:GetAbility():GetSpecialValueFor( "bonus_movement_speed" )
 		if self:ApplyHorizontalMotionController() == false then
 			self:Destroy()
 			return
@@ -81,3 +82,4 @@ end
 function modifier_hyper_boots:GetEffectAttachType()
 	return PATTACH_CUSTOMORIGIN_FOLLOW
 end
+

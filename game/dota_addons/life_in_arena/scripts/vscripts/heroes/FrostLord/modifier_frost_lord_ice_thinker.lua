@@ -62,6 +62,8 @@ if IsServer() then
 					ApplyDamage({ victim = v, attacker = self:GetCaster(), damage = self.damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = self:GetAbility() })
 					v:AddNewModifier(self:GetCaster(), self:GetAbility(), "modifier_frost_lord_ice_debuff", {duration = self.slow_duration})
 				end 
+				ParticleManager:CreateParticle("particles/units/heroes/hero_lich/lich_frost_nova.vpcf", PATTACH_POINT_FOLLOW, target)
+				target:EmitSound("Ability.FrostNova")
 			end
 
 		end

@@ -19,14 +19,14 @@ function item_ultimate_scepter:OnSpellStart()
 	local golemLifeTime = self:GetSpecialValueFor("infernal_duration")
 
 	local pFX = ParticleManager:CreateParticle("particles/custom/items/spherical_staff_infernal.vpcf", PATTACH_WORLDORIGIN, caster)
-	ParticleManager:SetParticleControl(pFX, 0, point + Vector(500,500,2000))
+	ParticleManager:SetParticleControl(pFX, 0, point + Vector(500,500,1300))
 	ParticleManager:SetParticleControl(pFX, 1, point)
-	ParticleManager:SetParticleControl(pFX, 2, Vector(2,0,0))
+	ParticleManager:SetParticleControl(pFX, 2, Vector(1.3,0,0))
 	ParticleManager:ReleaseParticleIndex(pFX)
 
 	EmitSoundOnLocationWithCaster(point, "DOTA_Item.MeteorHammer.Cast", caster)
 
-	Timers:CreateTimer(2, function() 
+	Timers:CreateTimer(1.3, function() 
 		local targets = FindUnitsInRadius(
 			caster:GetTeamNumber(),
 			point,

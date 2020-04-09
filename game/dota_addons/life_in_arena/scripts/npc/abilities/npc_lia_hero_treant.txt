@@ -1,4 +1,65 @@
-"butterfly_swarm"
+"treant_butterfly_flock"
+{
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Treant/treant_butterfly_flock.lua"
+
+	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"          
+	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
+	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"      "custom/treant_butterfly_flock"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastRange"      "650"
+	"AbilityCastPoint"      "0.3"
+	"AbilityCooldown"       "11 10 9"
+	"AbilityManaCost"       "100 175 250"
+
+	"precache"
+	{
+		"particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+		  	"var_type"    "FIELD_INTEGER"
+		  	"damage"      "100 200 300"
+		}
+		"02"
+		{
+		  	"var_type"    "FIELD_INTEGER"
+		  	"damage_scepter"      "300 400 500"
+		}
+		"03"
+		{
+		  	"var_type"        "FIELD_INTEGER"
+		  	"projectile_distance"    "650"
+		}
+		"04"
+		{
+		  	"var_type"        "FIELD_INTEGER"
+		  	"start_width"      "80"
+		}
+		"05"
+		{
+		  	"var_type"        "FIELD_INTEGER"
+		  	"end_width"      "200"
+		}
+		"06"
+		{
+		  	"var_type"        "FIELD_INTEGER"
+		  	"speed"         "1100"
+		}     
+	}
+}
+
+"butterfly_swarm1"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------

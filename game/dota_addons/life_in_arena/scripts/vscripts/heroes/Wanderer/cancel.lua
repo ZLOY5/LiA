@@ -1,4 +1,4 @@
-require('timers')
+--require('timers')
 if IsServer() then
 	function Spawn(entityKeyValues)
 		Timers:CreateTimer(0.01,function()

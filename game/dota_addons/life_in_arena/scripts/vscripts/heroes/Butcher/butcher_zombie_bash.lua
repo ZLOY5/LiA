@@ -51,7 +51,7 @@ end
 
 function modifier_butcher_zombie_bash:OnAttackLanded( params )
 	if IsServer() then
-		if params.attacker:PassivesDisabled() then
+		if params.attacker:PassivesDisabled() or params.attacker:IsIllusion() then
 			return 
 		end
 

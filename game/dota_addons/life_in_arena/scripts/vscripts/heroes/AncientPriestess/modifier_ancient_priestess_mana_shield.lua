@@ -16,24 +16,24 @@ function modifier_ancient_priestess_mana_shield:GetBlockDamage(attack_damage)
 	local parent = self:GetParent()
 
 	if self:GetCaster():HasScepter() then
-		local absorb_percent = self:GetAbility():GetSpecialValueFor("absorption_percent_scepter")
-		local damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana_scepter")
+		self.absorption_percent = self:GetAbility():GetSpecialValueFor("absorption_percent_scepter")
+		self.damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana_scepter")
 	else
-		local absorb_percent = self:GetAbility():GetSpecialValueFor("absorption_percent")
-		local damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana")
+		self.absorption_percent = self:GetAbility():GetSpecialValueFor("absorption_percent")
+		self.damage_per_mana = self:GetAbility():GetSpecialValueFor("damage_per_mana")
 	end
-
-	local damage_abs = attack_damage * absorb_percent * 0.01
+	
+	local damage_abs = attack_damage * self.absorption_percent * 0.01
 
 	local parent_mana = parent:GetMana()
-	local mana_needed = damage_abs / damage_per_mana
+	local mana_needed = damage_abs / self.damage_per_mana
 
 	local damage_block = 0
 
 	if mana_needed <= parent_mana then --если требуется маны меньше чем есть, то блокируем урон полностью
 		damage_block = damage_abs
 	else --если маны требуется больше чем есть, то блокируем часть урона и отключаем скилл
-		damage_block = parent_mana * damage_per_mana
+		damage_block = parent_mana * self.damage_per_mana
 		mana_needed = parent_mana
 		self:GetAbility():ToggleAbility()
 	end

@@ -78,7 +78,7 @@ end
 
 function modifier_butcher_zombie:OnDeath(params)
 	if IsServer() then 
-		if params.unit == self:GetParent() then
+		if params.unit == self:GetParent() and not params.unit:IsIllusion() then
 			self:GetAbility():OnSpellStart()
 		end
 	end
