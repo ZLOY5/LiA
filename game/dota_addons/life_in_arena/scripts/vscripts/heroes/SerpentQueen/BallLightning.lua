@@ -47,7 +47,7 @@ function LocustSwarmPhysics( event )
 	local duration = ability:GetLevelSpecialValueFor( "duration", ability:GetLevel() - 1 )
 	local locusts_speed = ability:GetLevelSpecialValueFor( "locusts_speed", ability:GetLevel() - 1 )
 	local locust_damage = ability:GetLevelSpecialValueFor( "locust_damage", ability:GetLevel() - 1 )
-	local locust_heal_threshold = ability:GetLevelSpecialValueFor( "locust_heal_threshold", ability:GetLevel() - 1 )
+	local locust_heal_threshold = locust_damage
 	local max_locusts_on_target = ability:GetLevelSpecialValueFor( "max_locusts_on_target", ability:GetLevel() - 1 )
 	local max_distance = ability:GetLevelSpecialValueFor( "max_distance", ability:GetLevel() - 1 )
 	local give_up_distance = ability:GetLevelSpecialValueFor( "give_up_distance", ability:GetLevel() - 1 )
@@ -228,16 +228,17 @@ function LocustSwarmPhysics( event )
 						end
 
 						damage_table.ability = ability
-
+						--print(damage_table.damage .. " damage done")
 						ApplyDamage(damage_table)
 
 						-- Calculate how much physical damage was dealt
-						local targetArmor = unit.current_target:GetPhysicalArmorValue()
-						local damageReduction = ((0.06 * targetArmor) / (1 + 0.06 * targetArmor))
-						local damagePostReduction = locust_damage * (1 - damageReduction)
+						--local targetArmor = unit.current_target:GetPhysicalArmorValue()
+						--local damageReduction = ((0.06 * targetArmor) / (1 + 0.06 * targetArmor))
+						--local damagePostReduction = locust_damage * (1 - damageReduction)
+						--local damagePostReduction = locust_damage
 						--print(locust_damage, damageReduction, damagePostReduction)
 
-						unit.damage_done = unit.damage_done + damagePostReduction
+						unit.damage_done = unit.damage_done + locust_damage
 
 						-- Damage particle
 						local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN, unit.current_target)

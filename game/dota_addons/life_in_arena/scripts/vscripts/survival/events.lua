@@ -282,22 +282,6 @@ function Survival:OnPlayerChat(event)
     
 	if IsInToolsMode() then
     	
-        for i = 1,20 do
-            if event.text == "wave " .. i then
-                self.nRoundNum = i
-            end
-        end
-
-        if event.text == "kill" then
-    		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            hero:ForceKill(true)
-        end
-    	
-    	if event.text == "res" then
-    		local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            hero:RespawnHero(false,false)
-        end
-    	
         if event.text == "fade" then
             ParticleManager:CreateParticle("particles/black_screen.vpcf", PATTACH_WORLDORIGIN, player:GetAssignedHero())
         end
@@ -315,15 +299,6 @@ function Survival:OnPlayerChat(event)
             FireGameEvent("dota_hud_error_message",{reason = 0, message = "OLOLO"})
         end
 
-        if event.text == "lumber" then
-            PlayerResource:ModifyLumber(playerID,100)
-        end
-
-        if event.text == "armor" then
-            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            print(hero:GetPhysicalArmorValue(false))
-        end
-
         if event.text == "openshop" then
             EnableShop()
         end
@@ -331,6 +306,11 @@ function Survival:OnPlayerChat(event)
         if event.text == "closeshop" then
             DisableShop()
         end
+        
+        if event.text == "armor" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            print(hero:GetPhysicalArmorValue(false))
+        end 
 
         function GetClass(t)
             local class = getmetatable(t).__index 
@@ -350,6 +330,33 @@ function Survival:OnPlayerChat(event)
             print(GetClass(hero:GetAbilityByIndex(0)))
         end
     
+    end
+
+    if IsInToolsMode() or IsCheatMode() then
+        for i = 1,20 do
+            if event.text == "wave " .. i then
+                self.nRoundNum = i
+            end
+        end
+
+        if event.text == "kill" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            hero:ForceKill(true)
+        end
+        
+        if event.text == "res" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            hero:RespawnHero(false,false)
+        end
+
+        if event.text == "lumber" then
+            PlayerResource:ModifyLumber(playerID,350)
+        end
+
+        if event.text == "gold" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            PlayerResource:ModifyGold(hero:GetPlayerID() ,50000, false, DOTA_ModifyGold_Unspecified)
+        end
     end
     
 

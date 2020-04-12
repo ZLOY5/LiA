@@ -21864,7 +21864,7 @@
 			"09"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"locust_heal_threshold"	"20 40 60"	//The amount of physical damage that needs to be done to return and heal the caster
+				"locust_heal_threshold"	"1 1 1"	//The amount of physical damage that needs to be done to return and heal the caster
 			}
 			"10"
 			{
@@ -24601,16 +24601,16 @@
 		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
 		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"      "custom/treant_butterfly_flock"
+		"AbilityTextureName"      "custom/treant_butterly_flock"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
 	
-		"AbilityCastRange"      "650"
-		"AbilityCastPoint"      "0.3"
-		"AbilityCooldown"       "11 10 9"
-		"AbilityManaCost"       "100 175 250"
+		"AbilityCastRange"      "500 600 700"
+		"AbilityCastPoint"      "0.4"
+		"AbilityCooldown"       "18"
+		"AbilityManaCost"       "100 120 140"
 	
 		"precache"
 		{
@@ -24622,7 +24622,7 @@
 			"01"
 			{
 			  	"var_type"    "FIELD_INTEGER"
-			  	"damage"      "100 200 300"
+			  	"damage"      "80 160 240"
 			}
 			"02"
 			{
@@ -24637,17 +24637,17 @@
 			"04"
 			{
 			  	"var_type"        "FIELD_INTEGER"
-			  	"start_width"      "80"
+			  	"start_width"      "125"
 			}
 			"05"
 			{
 			  	"var_type"        "FIELD_INTEGER"
-			  	"end_width"      "200"
+			  	"end_width"      "125"
 			}
 			"06"
 			{
 			  	"var_type"        "FIELD_INTEGER"
-			  	"speed"         "1100"
+			  	"speed"         "700"
 			}     
 		}
 	}
