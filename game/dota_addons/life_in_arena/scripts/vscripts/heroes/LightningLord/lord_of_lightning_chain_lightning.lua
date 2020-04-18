@@ -59,7 +59,7 @@ function lord_of_lightning_chain_lightning:OnSpellStart()
 	
 			-- unit selection and counting
 			units = FindUnitsInRadius(hero:GetTeamNumber(), target:GetOrigin(), target, bounce_range, DOTA_UNIT_TARGET_TEAM_ENEMY, 
-						DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, true)
+						DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, true)
 
 			-- particle and dummy to start the chain
 			targetVec = target:GetAbsOrigin()
@@ -79,7 +79,7 @@ function lord_of_lightning_chain_lightning:OnSpellStart()
 
 			-- Select nearest unit
 			local newTarget 
-			local distance = 9999999
+			local distance = bounce_range
 			local newTargetVec
 			for _,v in pairs(possibleTargetsBounce) do
 				newTargetVec = v:GetAbsOrigin()

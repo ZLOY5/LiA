@@ -7,7 +7,7 @@ if IsServer() then
             -- thisEntity:SetOriginalModel("models/heroes/tiny/tiny_03/tiny_03.vmdl")
             -- thisEntity:NotifyWearablesOfModelChange(false)
             local model_name = thisEntity:GetModelName()
-            if not model_name == "models/items/tiny/scarlet_quarry/scarlet_quarry01.vmdl" then
+            if not (model_name == "models/items/tiny/scarlet_quarry/scarlet_quarry01.vmdl") then
                 local new_model_name = string.gsub(model_name,"01","03")
                 thisEntity:SetOriginalModel(new_model_name)
             else

@@ -49,6 +49,8 @@ function item_ultimate_scepter:OnSpellStart()
 		local golem = CreateUnitByName("spherical_staff_fire_golem", point, true, caster, caster, caster:GetTeamNumber())
 		golem:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
 		golem:AddNewModifier(caster,self,"modifier_kill",{duration = golemLifeTime})
+		golem:AddNewModifier(caster, nil, "modifier_phased", { duration = 0.03 })
+		ResolveNPCPositions(golem:GetAbsOrigin(),65)
 
 		EmitSoundOnLocationWithCaster(point,"DOTA_Item.MeteorHammer.Impact",caster)
 

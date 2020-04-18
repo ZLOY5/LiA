@@ -24614,7 +24614,7 @@
 	
 		"precache"
 		{
-			"particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
+			"particle"    "particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf"
 		}
 	
 		"AbilitySpecial"
@@ -24626,13 +24626,13 @@
 			}
 			"02"
 			{
-			  	"var_type"    "FIELD_INTEGER"
-			  	"damage_scepter"      "300 400 500"
+			  	"var_type"    "FIELD_FLOAT"
+			  	"knockback_duration"      "1"
 			}
 			"03"
 			{
 			  	"var_type"        "FIELD_INTEGER"
-			  	"projectile_distance"    "650"
+			  	"projectile_distance"    "500 600 700"
 			}
 			"04"
 			{
@@ -24647,129 +24647,72 @@
 			"06"
 			{
 			  	"var_type"        "FIELD_INTEGER"
-			  	"speed"         "700"
+			  	"speed"         "650"
 			}     
 		}
 	}
 	
-	"butterfly_swarm1"
+	"treant_take_root"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"  "heroes/Treant/treant_take_root.lua"
+	
+		"AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"        "custom/treant_take_root"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AoERadius" "300"
+	
+		"AbilityCastRange"        "700"
+		"AbilityCastPoint"        "0.3"
+	
+		"AbilityCooldown"       "22"
+	
+		"AbilityManaCost"       "25"  
+	
+		"precache"
 		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"						"ability_datadriven"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
-			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-			"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-			"AbilityTextureName"			"death_prophet_carrion_swarm"
-			
-			"MaxLevel"               "3"
-			"RequiredLevel"          "1"
-			"LevelsBetweenUpgrades"  "2"
-	
-			// Precache
-			//-------------------------------------------------------------------------------------------------------------
-			"precache"
-			{
-				"particle"			"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
-			}
-	
-			// Casting
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCastRange"				"500 600 700"
-			"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-	
-			// Time		
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityCooldown"				"18 18 18"
-			
-			
-			// Cost
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilityManaCost"				"100 120 140"
-			
-			// Special	
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilitySpecial"
-			{
-				"01"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"damage"			"80 160 240"
-				}
-				"02"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"range"					"500 600 700"
-				}
-				"03"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"speed"					"700"
-				}
-				"04"
-				{
-					"var_type"					"FIELD_INTEGER"
-					"shock_width"				"130"
-				}
-				"05"
-				{
-					"var_type"					"FIELD_FLOAT"
-					"knockback_distance_max"	"500 600 700"
-				}
-				"06"
-				{
-					"var_type"					"FIELD_FLOAT"
-					"knockback_duration"		"0.5 0.5 0.5"
-				}
-				"07"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"knockback_height"		"0"
-				}
-			}
-			
-			"OnSpellStart"
-			{
-				"LinearProjectile"
-				{
-					"Target" "POINT"
-					"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
-					"MoveSpeed" "%speed"
-					"StartRadius" "%shock_width"
-					"StartPosition" "attach_origin"
-					"EndRadius" "%shock_width"
-					"FixedDistance" "%range"
-					"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
-					"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-					"HasFrontalCone" "1"
-					"ProvidesVision" "0"
-				}
-			}
-	
-			"OnProjectileHitUnit"
-			{
-				"DeleteOnHit" "0"
-				"Damage"
-				{
-					"Target" "TARGET"
-					"Type" "DAMAGE_TYPE_MAGICAL"
-					"Damage" "%damage"
-				}
-				"RunScript"
-				{
-					"ScriptFile"		"heroes\Trent\knockback.lua"
-					"Function"			"butterfly_swarm_knockback"
-					"height"			"%knockback_height"
-					"duration"			"%knockback_duration"
-					"distance"			"%knockback_distance_max"
-					"range"				"%range"
-				}
-			}
+			"particle"   "particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"  
+			"soundfile"   "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"        
 		}
 	
-	"entangle"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "damage_per_second"    "50"
+			}
+			"02"
+			{
+			  "var_type"      "FIELD_FLOAT"
+			  "root_duration"  "2 3 4"
+			}
+			"03"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "health_regeneration"    "10 20 30"
+			}
+			"04"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "manacost_per_second"    "10"
+			}
+			"05"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "radius"      "300"
+			} 
+		}
+	}
+		"qwer"
 		{
 			// General
 		  //-------------------------------------------------------------------------------------------------------------
