@@ -16,8 +16,6 @@ function Survival:StartDuels()
     self.IsDuelOccured = true
     Survival.State = SURVIVAL_STATE_PRE_DUEL_TIME
 
-    GameRules:GetGameModeEntity():SetStashPurchasingDisabled(true)
-
     DoWithAllHeroes(function(hero)
         hero:ModifyGold(15, false, DOTA_ModifyGold_Unspecified) --компенсация за отключенные тики золота
 
@@ -37,6 +35,7 @@ function Survival:StartDuels()
 		function()
 			self.DuelNumber = 0
 			self.State = SURVIVAL_STATE_DUEL_TIME
+            GameRules:GetGameModeEntity():SetStashPurchasingDisabled(true)
 			DisableShop()
             
 			DoWithAllHeroes(function(hero)

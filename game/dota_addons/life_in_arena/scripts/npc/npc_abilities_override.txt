@@ -6947,6 +6947,11 @@
 				"var_type"				"FIELD_FLOAT"
 				"delay"				"1"
 			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"60"
+			}
 		}
 	
 	
@@ -13837,7 +13842,7 @@
 			"05"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"attacks_to_split"			"7 8 9"
+				"attacks_to_split"			"7"
 			}
 			"06"
 			{
@@ -17717,47 +17722,47 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"reduce_spell_damage_pct"	"-40"
-			}
+			// "01"
+			// {
+			// 	"var_type"					"FIELD_INTEGER"
+			// 	"reduce_spell_damage_pct"	"-40"
+			// }
 			//"02"
 			//{
 			//	"var_type"					"FIELD_INTEGER"
 			//	"reduce_movement_speed"		"0 0 0"
 			//}
-			"03"
+			"01"
 			{
 				"var_type"					"FIELD_FLOAT"
 				"duration_hero"				"3.0"
 			}
-			"04"
+			"02"
 			{
 				"var_type"					"FIELD_FLOAT"
 				"duration_other"			"3.0"
 			}
-			"05"
+			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"count_illusion"			"3"
 			}
-			"06"
+			"04"
 			{
 				"var_type"					"FIELD_FLOAT"
 				"life_illusion"			"8 9 10"
 			}
-			"07"
+			"05"
 			{
 			  "var_type"               "FIELD_INTEGER"
 			  "outgoing_damage"        "-20 -10 -0"
 			}
-			"08"
+			"06"
 			{
 			  "var_type"          "FIELD_INTEGER"
 			  "incoming_damage"     "200 150 100"
 			}
-			"09"
+			"07"
 			{
 			  "var_type"               "FIELD_INTEGER"
 			  "outgoing_damage_tooltip"        "80 90 100"
@@ -17785,19 +17790,13 @@
 			{
 				"IsDebuff"			"1"
 				"IsPurgable"			"1"
-				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
-				    //"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%reduce_movement_speed" 
-				}
+				"EffectName"		"particles/generic_gameplay/generic_disarm.vpcf"
+				"EffectAttachType"	"follow_overhead"
 	
 				"States"
 				{
 					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
+					// "MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
 				}			
 			}
 		}	
@@ -19459,123 +19458,83 @@
 		}
 	}
 	
-	
 	"lord_of_lightning_brain_storm"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		//
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"disruptor_glimpse"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/LightningLord/lord_of_lightning_brain_storm.lua"
 	
-		"AoERadius"		"500"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_NO"
+	    "AbilityTextureName"			"disruptor_glimpse"
+	
+	    "AoERadius"		"500"
 		
 		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"              "3"
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0"
-		
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"80 70 60"
-		//"AbilityDuration"				"0.0 0.0 0.0"
 	
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.3"
+	
+		"AbilityCooldown"				"120"
 		"AbilityManaCost"				"150 200 250"
 	
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+	  	"precache"
+		{
+			"particle" 	"particles/custom/lightning_lord/lightning_lord_brain_storm_debuff.vpcf"
+			"particle" 	"particles/custom/lightning_lord/lightning_lord_brain_storm_disarm.vpcf"
+			"particle"  "particles/econ/items/disruptor/disruptor_resistive_pinfold/disruptor_kf_wall_end.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
+		}
+	
+	    "AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"reduce_spell_damage_pct"	"-40"
+				"reduce_spell_damage_pct"	"-25"
 			}
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"reduce_movement_speed"		"-20"
+				"phys_damage_resist"	"60"
 			}
 			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"magic_attacks_vulnerability"	"50"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_slow_percentage"		"-20"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attack_slow"		"-50"
+			}
+			"06"
 			{
 				"var_type"					"FIELD_FLOAT"
 				"duration"					"6 8 10"
 			}
-			"04"
+			"07"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"disarm_duration"				"2 3 4"
+			}
+			"08"
 			{
 				"var_type"					"FIELD_INTEGER"
 				"radius"					"500"
 			}
 		}
-	
-		"precache"
-		{
-			"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-		}
-	
-		"OnSpellStart"
-		{
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  	"POINT"
-					"Radius" 	"%radius"
-					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				"Action"    
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_brain_storm_decrepify"
-						"Duration"		"%duration"
-						"Target"		"TARGET"
-					}
-					
-				}
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Pugna.Decrepify"
-				"Target"		"CASTER"	
-			}
-		}
-	
-		"Modifiers"
-		{
-			"modifier_brain_storm_decrepify"
-			{
-				"IsDebuff"			"1"
-				
-				"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				"EffectAttachType"	"follow_origin"
-		
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE" "%reduce_spell_damage_pct"
-				    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" 			"%reduce_movement_speed" 
-				}
-	
-				"States"
-				{
-					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
-				}			
-			}
-		}	
-	}
+	}	
 	//End of file npc_lia_hero_lord_of_lightning.txt
 
 

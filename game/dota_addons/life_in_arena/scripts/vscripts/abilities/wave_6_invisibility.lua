@@ -29,7 +29,8 @@ end
 function modifier_wave_6_invisibility:OnCreated( kv )
 	if IsServer() then
 		self.delay = self:GetAbility():GetSpecialValueFor( "delay" )
-		self:GetParent():AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_wave_6_invisibility_buff",nil)
+		self.duration = self:GetAbility():GetSpecialValueFor( "duration" )
+		self:GetParent():AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_wave_6_invisibility_buff",{duration = self.duration})
 	end
 end
 
@@ -53,7 +54,7 @@ function modifier_wave_6_invisibility:OnAttack(params)
 				self:GetCaster().invisTimer = DoUniqueString(nil)
 			end
 			Timers:CreateTimer(self:GetCaster().invisTimer,{ endTime = self.delay, callback = function()
-				self:GetParent():AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_wave_6_invisibility_buff",nil)
+				self:GetParent():AddNewModifier(self:GetParent(),self:GetAbility(),"modifier_wave_6_invisibility_buff", {duration = self.duration})
 		    	return nil
 		    end}) 
 		end

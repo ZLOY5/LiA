@@ -10,13 +10,6 @@ function AddModifier(keys)
 	if not caster.count_ill then
 		caster.count_ill=0
 	end
-
-	if string.find(target:GetUnitName(),"megaboss") then
-		ability:RefundManaCost()
-		ability:EndCooldown()
-		--FireGameEvent( 'custom_error_show', { player_ID = event.caster:GetPlayerOwnerID(), _error = "#lia_hud_error_item_lia_staff_of_illusions_megaboss" } )
-		return
-	end
 	
 	local durationTarget
 	if target:IsHero() then
@@ -25,8 +18,13 @@ function AddModifier(keys)
 		durationTarget = ability:GetSpecialValueFor("duration_other")
 	end
 	target:EmitSound("Hero_Pugna.Decrepify")
-	ability:ApplyDataDrivenModifier(caster, target, 'modifier_illusionist_mastery_of_illusions', {duration = durationTarget} )
-	
+
+	if target:GetTeamNumber() ~= caster:GetTeamNumber() then
+		ability:ApplyDataDrivenModifier(caster, target, 'modifier_illusionist_mastery_of_illusions', {duration = durationTarget} )
+	end
+
+	if string.find(target:GetUnitName(),"megaboss") then return end
+
 	-- дадим ловкость Антаро за каждую вызванную иллюзию: повесим модификатор, где будем все делать
 	local ability2 = caster:FindAbilityByName('illusionist_agility_paws')
 

@@ -122,11 +122,14 @@ function LiA:FilterDamage( filterTable )
 		--end
 
 		-- Extra rules for certain ability modifiers
-		if victim:HasModifier("modifier_brain_storm_decrepify") or victim:HasModifier("modifier_hermit_decrepify")
-			or victim:HasModifier("modifier_illusionist_mastery_of_illusions")
-		then
+		if victim:HasModifier("modifier_lord_of_lightning_brain_storm_debuff") or victim:HasModifier("modifier_hermit_decrepify") then
 			if attack_type ~= "magic" then
-				damage = 0
+				if victim:HasModifier("modifier_lord_of_lightning_brain_storm_debuff") then
+					damage = damage * 0.4
+				end
+				if victim:HasModifier("modifier_hermit_decrepify") then
+					damage = 0
+				end
 			else
 				damage = damage * 1.5
 			end
