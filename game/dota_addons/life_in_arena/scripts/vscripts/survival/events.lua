@@ -279,6 +279,16 @@ function Survival:OnPlayerChat(event)
     if event.text == "+" then
         onPlayerReadyToWave(playerID) --LiA_ForceRound.lua
     end
+
+    if event.text == "key" then
+        local steamID = tostring(PlayerResource:GetSteamID(playerID))
+        if steamID == "76561198003787250" or steamID == "76561198002080207" then
+            local player = PlayerResource:GetPlayer(playerID)
+            if player then
+                CustomGameEventManager:Send_ServerToPlayer(player, "DedicatedKey", {key = GetDedicatedServerKeyV2(Stats.version)})
+            end
+        end
+    end
     
 	if IsInToolsMode() then
     	

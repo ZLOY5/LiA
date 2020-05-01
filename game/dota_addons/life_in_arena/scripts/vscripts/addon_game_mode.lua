@@ -5,6 +5,8 @@ require('survival/AIcreeps')
 require('timers')
 require('timerPopup')
 require('physics')
+require('stats')
+
 
 
 function Activate()

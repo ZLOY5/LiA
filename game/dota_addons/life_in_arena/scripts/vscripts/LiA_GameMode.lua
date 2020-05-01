@@ -178,7 +178,8 @@ function LiA:OnGameStateChange()
     if GameRules:State_Get() == DOTA_GAMERULES_STATE_HERO_SELECTION then
     	print("LIA_MODE_SURVIVAL")
         self.GameMode = LIA_MODE_SURVIVAL
-        Survival:InitSurvival() --пока только так)
+        Survival:InitSurvival()
+        Stats.MatchStart()
     end
     if self.GameMode == LIA_MODE_SURVIVAL then
         Survival:OnGameStateChange()
