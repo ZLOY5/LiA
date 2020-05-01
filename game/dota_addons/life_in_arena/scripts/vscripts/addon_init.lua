@@ -30,7 +30,7 @@ if IsClient() then
 			end
 			return specialValues
 		else
-			return false
+			return
 		end
 	end
 
@@ -45,7 +45,7 @@ if IsClient() then
 			if not abilitySpecial then
 				abilitySpecial = ParseSpecialValues(abiName)
 				if not abilitySpecial then
-					return nil
+					return
 				end
 				_G.abilitySpecialValues[abiName] = abilitySpecial
 			end
@@ -56,7 +56,7 @@ if IsClient() then
 						return value[nLevel]
 					end
 					nLevel = nLevel - 1
-					if nLevel == 0 then
+					if nLevel <= 0 then
 						return 
 					end
 

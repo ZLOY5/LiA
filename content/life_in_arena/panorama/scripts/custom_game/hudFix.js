@@ -62,51 +62,10 @@ var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent(
 	reRandomHeroButton = dotaHud.FindChildTraverse("PreGame").FindChildTraverse("StrategyScreen").FindChildTraverse("EnterGameReRandomButton")
 	reRandomHeroButton.SetPanelEvent("onactivate", function() { GameEvents.SendCustomGameEventToServer( "lia_random_hero", {} ) } )
 
-	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroRoles").FindChildTraverse("Role_Carry").style.visibility = "collapse"
-	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroRoles").FindChildTraverse("Role_Support").style.visibility = "collapse"
-	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroRoles").FindChildTraverse("Role_Initiator").style.visibility = "collapse"
-
-	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroFilters").FindChildTraverse("BottomLineFilters").FindChildTraverse("RoleOptions").style.visibility = "collapse"
-	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPickScreen").FindChildTraverse("HeroFilters").FindChildTraverse("AttributeOptions").GetChild(6).style.visibility = "collapse"
-	
 	$.Schedule(1,ValvePlzFix)
 
-	//$.RegisterForUnhandledEvent("DOTAShowAbilityInventoryItemTooltip",ItemTooltip)
 	
 })();
-
-//Weird
-/*function ItemTooltip(panelID,entID,itemSlot) {
-	var item = Entities.GetItemInSlot(entID,itemSlot)
-	var itemName = Abilities.GetAbilityName(item)
-	if (itemName == 'item_lia_spherical_staff') {
-		var slotPanel = dotaHud.FindChildTraverse("lower_hud")
-			.FindChildTraverse("center_block")
-			.FindChildTraverse("inventory")
-			.FindChildTraverse("inventory_slot_"+(itemSlot+1))
-		
-		$.DispatchEvent("DOTAShowAbilityTooltipForEntityIndex", slotPanel, "item_ultimate_scepter", entID)
-
-		var textScepter = dotaHud.FindChildTraverse("Tooltips")
-			.FindChildTraverse("DOTAAbilityTooltip")
-			.FindChildTraverse("AbilityDetails")
-			.FindChildTraverse("ItemScepterDescription").text
-
-		$.Schedule(0, function() {
-			var scepterDesc = dotaHud.FindChildTraverse("Tooltips")
-				.FindChildTraverse("DOTAAbilityTooltip")
-				.FindChildTraverse("AbilityDetails")
-				.FindChildTraverse("ItemScepterDescription")
-
-			scepterDesc.text = textScepter
-			scepterDesc.RemoveClass("Hidden")
-
-			dotaHud.FindChildTraverse("Tooltips")
-				.FindChildTraverse("DOTAAbilityTooltip").style.transform= "translate3d(1170px, 500px, 0px);"
-
-		})
-	}
-}*/
 
 
 function ValvePlzFix()
@@ -114,15 +73,18 @@ function ValvePlzFix()
 	
 	var iconFixer = function() 
 	{
-		$.Schedule(0.1,iconFixer)
+		$.Schedule(1,iconFixer)
 
 		dotaHud.FindChildTraverse("lower_hud").FindChildTraverse("StatBranch").style.visibility = "collapse";
 		dotaHud.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
 		dotaHud.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
 		dotaHud.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
 		dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
-		
 
+		dotaHud.FindChildTraverse("inventory_neutral_slot_container").style.visibility = "collapse";
+		dotaHud.FindChildTraverse("inventory_tpscroll_container").FindChild("inventory_tpscroll_slot").backgroundImage = "url('s2r://panorama/images/hud/reborn/inventory_bg_psd.vtex')" 
+		dotaHud.FindChildTraverse("right_flare").style.marginBottom = "-55px"
+		
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
 		{
 			var shop = dotaHud.FindChildTraverse("shop")	
@@ -146,14 +108,6 @@ function ValvePlzFix()
 				if (!statsTooltip.FindChildTraverse("StrengthContainer").BHasClass("NoBonus"))
 					strength = strength + bonusStr
 
-				var baseHealthRegen = Number(statsTooltip.FindChildTraverse("HealthRegen").text)
-				
-				var healthBonus = strength*8
-				var healthRegenBouns = strength*5
-				//$.Msg(strength)
-				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariableInt("strength_hp", healthBonus)
-				statsTooltip.FindChildTraverse("StrengthDetails").SetDialogVariable("strength_hp_regen", healthRegenBouns.toFixed(1))
-
 				statsTooltip.FindChildTraverse("StrengthDamageLabel").SetDialogVariableInt("primary_attribute_damage", strength*1.5)
 				
 			}
@@ -164,8 +118,6 @@ function ValvePlzFix()
 			if (!isNaN(agility)) {
 				if (!statsTooltip.FindChildTraverse("AgilityContainer").BHasClass("NoBonus"))
 					agility = agility + bonusAgi
-				
-				statsTooltip.FindChildTraverse("AgilityDetails").SetDialogVariable("agility_armor", (agility/6).toFixed(1))
 
 				statsTooltip.FindChildTraverse("AgilityDamageLabel").SetDialogVariableInt("primary_attribute_damage", agility*1.5)
 			}
@@ -176,11 +128,6 @@ function ValvePlzFix()
 			if (!isNaN(intellect)) {
 				if (!statsTooltip.FindChildTraverse("IntelligenceContainer").BHasClass("NoBonus"))
 					intellect = intellect + bonusInt
-				
-				var baseManaRegen = Number(statsTooltip.FindChildTraverse("ManaRegen").text)
-				var manaRegenBouns = intellect*5
-
-				statsTooltip.FindChildTraverse("IntelligenceDetails").SetDialogVariable("intelligence_mana_regen", manaRegenBouns.toFixed(1))
 
 				statsTooltip.FindChildTraverse("IntelligenceDamageLabel").SetDialogVariableInt("primary_attribute_damage", intellect*1.5)
 			}

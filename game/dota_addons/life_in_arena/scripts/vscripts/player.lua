@@ -74,7 +74,7 @@ function CDOTA_PlayerResource:GetUpgradesPercent(playerID)
 	return CustomPlayerResource.data[playerID].lumberSpent/333*100 or 0
 end
 
-function CDOTA_PlayerResource:IncremetUpgrades(playerID)
+function CDOTA_PlayerResource:IncrementUpgrades(playerID)
 	CustomPlayerResource.data[playerID].upgrades = CustomPlayerResource.data[playerID].upgrades + 1
 end
 
