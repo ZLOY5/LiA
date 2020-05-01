@@ -8,7 +8,7 @@
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityTextureName"			"treant_overgrowth"
+	"AbilityTextureName"			"treant_natures_grasp"
 
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@
 		"01"
 		{
 			"var_type"			"FIELD_INTEGER"
-			"damage_per_second"		"30 60 120"
+			"damage_per_second"		"30 60 90"
 		}
 		"02"
 		{
@@ -63,16 +63,6 @@
 
 	"OnSpellStart"
 	{
-		"FireEffect"
-		{	
-			"EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
-			"EffectAttachType"	"start_at_customorigin"
-			"TargetPoint"	"POINT"	
-			"ControlPoints"
-			{
-				"01"	"%radius 0 0"
-			}
-		}
 
 		"FireSound"
 		{
@@ -111,7 +101,7 @@
 		"modifier_keeper_of_the_grove_roots"
 		{
 			"IsPurgable"	"1"
-			"EffectName" 	"particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"
+			"EffectName" 	"particles/units/heroes/hero_treant/treant_bramble_root.vpcf"
 			"EffectAttachType"  "follow_origin"
 			
 			"States"

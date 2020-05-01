@@ -21,7 +21,7 @@ function treant_butterfly_flock:OnSpellStart()
 	self.speed = self.speed * ( self.projectile_distance / ( self.projectile_distance - self.start_width ) )
 
 	local info = {
-		EffectName = "particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf",
+		EffectName = "particles/custom/treant/treant_butterfly_flock.vpcf",
 		Ability = self,
 		vSpawnOrigin = self:GetCaster():GetOrigin(), 
 		fStartRadius = self.start_width,
@@ -34,7 +34,7 @@ function treant_butterfly_flock:OnSpellStart()
 	}
 
 	ProjectileManager:CreateLinearProjectile( info )
-	EmitSoundOn( "Hero_ShadowDemon.ShadowPoison", self:GetCaster() )
+	EmitSoundOn( "Hero_DeathProphet.CarrionSwarm", self:GetCaster() )
 end
 
 function treant_butterfly_flock:OnProjectileHit( hTarget, vLocation )
@@ -54,8 +54,6 @@ function treant_butterfly_flock:OnProjectileHit( hTarget, vLocation )
 		local distance_from_caster = (vLocation - self.caster_position):Length2D()
 		local distance_to_travel = math.abs(self.projectile_distance - distance_from_caster)
 		local knockback_duration = distance_to_travel / self.speed
-
-		print(distance_from_caster .. " " .. distance_to_travel .. " " .. knockback_duration)
 
 		local kv =
 		{

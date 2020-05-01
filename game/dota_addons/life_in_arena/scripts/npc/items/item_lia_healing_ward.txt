@@ -2,7 +2,8 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						      "item_datadriven"
+	"BaseClass"							"item_lua"
+    "ScriptFile"						"items\item_lia_healing_ward.lua"
 	"ID"						          "1804"  //Valve's version of this item uses the ID "34".
 	"AbilityBehavior"				      "DOTA_ABILITY_BEHAVIOR_POINT"
 	"Model"						       	  "models/props_gameplay/red_box.vmdl"
@@ -23,10 +24,10 @@
 	"ItemCost"					      	"30"
 	"ItemShopTags"				      	"regen_health"
 	"ItemQuality"					  	"consumable"
-	"ItemAliases"					  	"healing ward;hw;дц;духи-целители"
+	"ItemAliases"					  	"healing ward;hw;дц;духи-целители;вард"
     "ItemStackable"				   		"1"
 	"ItemPermanent"				       	"0"
-	"ItemKillable" 					"0" 
+	"ItemKillable" 						"0" 
 	"ItemInitialCharges"	            "1"
 	"ItemRequiresCharges"               "1"
 
@@ -57,3 +58,5 @@
         "SpendCharge" {}
 	}
 }
+
+

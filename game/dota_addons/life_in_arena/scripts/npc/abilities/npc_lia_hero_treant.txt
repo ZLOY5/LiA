@@ -21,7 +21,8 @@
 
 	"precache"
 	{
-		"particle"    "particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf"
+		"particle"    "particles/custom/treant/treant_butterfly_flock.vpcf"  
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"     
 	}
 
 	"AbilitySpecial"
@@ -65,7 +66,7 @@
 	"ScriptFile"  "heroes/Treant/treant_take_root.lua"
 
 	"AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
-	"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
 	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 	"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
 	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -75,9 +76,8 @@
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
 
-	"AoERadius" "300"
+	"AbilityCastRange" "400"
 
-	"AbilityCastRange"        "700"
 	"AbilityCastPoint"        "0.3"
 
 	"AbilityCooldown"       "22"
@@ -86,8 +86,10 @@
 
 	"precache"
 	{
-		"particle"   "particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"  
-		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"        
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"	
+		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
+		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"	  
+		"particle"  	"particles/custom/treant/treant_take_root_self.vpcf"    
 	}
 
 	"AbilitySpecial"
@@ -115,293 +117,126 @@
 		"05"
 		{
 		  "var_type"      "FIELD_INTEGER"
-		  "radius"      "300"
+		  "radius"      "400"
 		} 
 	}
 }
-	"qwer"
+
+"treant_craving_for_nature"
+{
+	"BaseClass"   "ability_lua"
+	"ScriptFile"  "heroes/Treant/treant_craving_for_nature.lua"
+
+	"AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityTextureName"        "custom/treant_craving_for_nature"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "2"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastRange" "400"
+
+	"AbilityCastPoint"        "0.3"
+
+	"AbilityCooldown"       "30 26 22"
+
+	"AbilityManaCost"       "120 140 160"  
+
+	"precache"
 	{
-		// General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"              "ability_datadriven"
-	  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-	  "AbilityTextureName"     "custom/earth_lord_might_of_the_earth"
-
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "2"
-	  "LevelsBetweenUpgrades"  "2"
-
-	  "AbilityCooldown"         "22"
-
-	  "AbilityCastPoint"        "0.2"
-	  "AbilityCastRange"        "300"
-
-	  "AbilityManaCost"        "50 50 50"
-
-	  "precache"
-	  {
-	  }
-
-	// Special    
-	//-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"                           "FIELD_INTEGER"
-	      "damage"                      		"50 50 50"
-	    }
-	    "02"
-	    {
-	      "var_type"                            "FIELD_FLOAT"
-	      "duration"                            "2 3 4"
-	    }
-	    "03"
-	    {
-	      "var_type"                           "FIELD_INTEGER"
-	      "radius"                             "400"
-	    }
-	    "04"
-	    {
-	      "var_type"                            "FIELD_FLOAT"
-	      "tick_interval"                       "1.0"
-	    }
-	   	"05"
-	    {
-	      "var_type"                            "FIELD_INTEGER"
-	      "bonus_health_regen"         			"10 20 30"
-	    }
-	   	"06"
-	    {
-	      "var_type"                            "FIELD_INTEGER"
-	      "mana_cost_per_second"         		"10 10 10"
-	    }
-	  }  
-
-	  // Casting
-	//-------------------------------------------------------------------------------------------------------------
-	  "OnSpellStart"
-	  {
-
-	  	"FireEffect"
-		{
-			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
-			"EffectAttachType" 	"follow_origin"
-			//"EffectRadius"		"%radius"
-			"Target" 			"CASTER"
-			"ControlPoints"
-			{
-				"01"	"%radius 0 %radius"
-			}
-		}
-
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center"  				"CASTER"
-				"Radius" 				"%radius"
-				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-
-			"Action"
-			{
-				"ApplyModifier"
-				{
-					"Target" 		"TARGET"
-					"ModifierName"	"modifier_treant_root"
-					"Duration"      "%duration"
-				}
-			}
-		}	
-	  }
-
-	  "Modifiers"
-	  {
-	    "modifier_treant_root"
-	    {
-	      	"IsDebuff"		"1"
-			"Duration"		"%duration"
-			"IsPurgable"	"1"
-	      	"EffectName"						"particles/units/heroes/hero_ember_spirit/ember_spirit_searing_chains_debuff.vpcf"
-	      	"StatusEffectPriority" "10"
-		  	"EffectAttachType"				"follow_origin"
-
-	      	"States"
-			{
-				"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
-			}
-
-			"ThinkInterval"					"1"
-			"OnIntervalThink"
-			{
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Damage"		"%damage"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-				}
-	    	}
-	  	}
-	  }
+		"particle"   "particles/custom/treant/treant_craving_for_nature.vpcf"  
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"        
 	}
 
-"pull"
+	"AbilitySpecial"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		
-		"MaxLevel"               "3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-
-		"AbilityTextureName"			"dark_seer_vacuum"
-		"AOERadius"						"%radius"
-
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
+		"01"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
-			"particle"			"particles/units/heroes/hero_dark_seer/dark_seer_vacuum.vpcf"
+		  "var_type"      "FIELD_INTEGER"
+		  "damage"    "50 100 150"
 		}
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.4 0.4 0.4"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"30 26 22"
-		
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"120 140 160"
-		
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"02"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"400 400 400"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"0.5 0.5 0.5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"50 100 150"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_2_x"			"80 160 240"
-			}
+		  "var_type"      "FIELD_FLOAT"
+		  "root_damage_multiplier"  "2"
 		}
-
-		"OnSpellStart"
+		"03"
 		{
-			"FireEffect"
-			{
-				"EffectName"        "particles/units/heroes/hero_dark_seer/dark_seer_vacuum.vpcf"
-				"EffectAttachType"  "start_at_customorigin"
-				"TargetPoint"      	"CASTER"
-
-				"ControlPoints"
-				{
-					"01"	"%radius 0 0"
-				}
-			}
-			"CreateThinker"
-			{
-				"ModifierName"	"modifier_vacuum_thinker_datadriven"
-				"Target" 		"CASTER"
-			}
+		  "var_type"      "FIELD_FLOAT"
+		  "tick_time"    "0.03"
 		}
-
-		"Modifiers"
+		"04"
 		{
-			"modifier_vacuum_thinker_datadriven"
-			{
-				"Duration"		"%duration"
-
-				"OnCreated"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Dark_Seer.Vacuum"
-						"Target" 		"CASTER"
-					}
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/Trent/pull.lua"
-						"Function"		"VacuumStart"
-					}
-				}
-				"OnDestroy"
-				{
-					"ActOnTargets"
-					{
-						"Target"
-						{
-							"Center"  	"CASTER"
-							"Radius" 	"%radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-						}
-					
-						"Action"    
-						{			
-							"RunScript"
-							{
-								"ScriptFile"	"heroes/Trent/pull_damage.lua"
-								"Function"		"Vacuum_damage"
-							}
-						}
-					}
-				}
-
-				"ThinkInterval"  "0.03"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"		"heroes/Trent/pull.lua"
-						"Function"			"Vacuum"
-						"vacuum_modifier"	"modifier_vacuum_datadriven"
-					}
-				}
-			}
-
-			"modifier_vacuum_datadriven"
-			{
-				"IsPurgable"	"0"
-
-				"OverrideAnimation"     "ACT_DOTA_FLAIL"
-
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
+		  "var_type"      "FIELD_INTEGER"
+		  "distance_per_tick"    "20"
 		}
+		"04"
+		{
+		  "var_type"      "FIELD_INTEGER"
+		  "radius"      "400"
+		} 
 	}
+}
+
+"treant_sharp_thorns"
+{
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Treant/treant_sharp_thorns.lua"
+
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"
+    "SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
+    "AbilityTextureName"			"furion_sprout"
+
+    "AbilityCastRange"				"500"
+	"AbilityCastPoint"				"0.3"
+	"AbilityCooldown"				"120 110 100"
+	"AbilityManaCost"				"250 325 400"
+
+    "AoERadius"                     "300"
+
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
+
+  	"precache"
+	{
+		"particle"			"particles/units/heroes/hero_furion/furion_wrath_of_nature.vpcf"
+		"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
+	}
+
+    "AbilitySpecial"
+    {           
+        "01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"distance_to_damage_percentage"		"20 40 60"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"10"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"300"
+		}  
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"check_interval"		"0.1"
+		}   
+    }
+}	
 
 "bloody_spikes"
 	{

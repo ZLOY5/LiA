@@ -26,5 +26,7 @@ function modifier_mithril_armor_taunt:CheckState()
 end
 
 function modifier_mithril_armor_taunt:OnDestroy()
-	self:GetParent():Interrupt()
+	if IsServer() then
+		self:GetParent():Interrupt()
+	end
 end

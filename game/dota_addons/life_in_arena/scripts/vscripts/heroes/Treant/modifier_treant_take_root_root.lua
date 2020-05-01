@@ -9,7 +9,7 @@ function modifier_treant_take_root_root:IsPurgable()
 end
 
 function modifier_treant_take_root_root:OnCreated(kv)	
-	self.damage_per_second = self:GetAbility():GetSpecialValueFor( "damage_per_second_scepter" )
+	self.damage_per_second = self:GetAbility():GetSpecialValueFor( "damage_per_second" )
 
 	if IsServer() then
 		self:StartIntervalThink(1)

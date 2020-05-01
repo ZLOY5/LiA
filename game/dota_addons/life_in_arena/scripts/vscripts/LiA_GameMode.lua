@@ -75,6 +75,7 @@ function LiA:InitGameMode()
 	GameRules:SetPreGameTime(0)
     GameRules:SetShowcaseTime(0)
     GameRules:SetPostGameTime(120)
+    GameRules:SetStrategyTime(0)
 	--
 	GameRules:SetGoldTickTime(0)
 	GameRules:SetGoldPerTick(0)

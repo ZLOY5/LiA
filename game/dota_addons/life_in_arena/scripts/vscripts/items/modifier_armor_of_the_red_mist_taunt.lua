@@ -26,5 +26,7 @@ function modifier_armor_of_the_red_mist_taunt:CheckState()
 end
 
 function modifier_armor_of_the_red_mist_taunt:OnDestroy()
-	self:GetParent():Interrupt()
+	if IsServer() then
+		self:GetParent():Interrupt()
+	end
 end

@@ -257,6 +257,11 @@ function Survival:ItemAddFilter(filterTable)
             end
         end
     end
+
+    if itemName == "item_lia_healing_ward" then
+        item:SetCanBeUsedOutOfInventory(true)
+        filterTable.suggested_slot = 15 
+    end
     return true
 end
 

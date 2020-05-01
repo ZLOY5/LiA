@@ -1,4 +1,3 @@
-require('timers')
 LinkLuaModifier( "modifier_troll_cutthroat_animation", "heroes/TrollCutthroat/modifier_troll_cutthroat_animation.lua", LUA_MODIFIER_MOTION_NONE)
 
 function Spawn(entityKeyValues)
