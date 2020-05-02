@@ -8,7 +8,7 @@ var duration
 function Tick()
 {
 	//$.Msg("Tick")
-	schedule = $.Schedule(1/60,Tick)
+	schedule = $.Schedule(0.,Tick)
 	//$.Msg(Game.GetDOTATime( false, false ))
 	var currTime = Game.GetDOTATime( false, false )
 	//var duration = endTime - startTime
