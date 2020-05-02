@@ -243,7 +243,7 @@ function CreateIllusion(target,caster,origin,duration,outgoing_damage,incoming_d
 	return illusion
 end
 
-function CDOTA_Item:GetItemSlot()
+--[[function CDOTA_Item:GetItemSlot()
 	local caster = self:GetCaster()
 	if not caster then 
 		return nil 
@@ -255,7 +255,7 @@ function CDOTA_Item:GetItemSlot()
 		end
 	end
 	return nil
-end
+end]]
 
 function CDOTABaseAbility:ReduceCooldown(reduction)
 	local cooldown = self:GetCooldownTimeRemaining()

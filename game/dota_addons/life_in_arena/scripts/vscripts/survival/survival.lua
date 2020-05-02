@@ -1,4 +1,4 @@
-﻿
+
 _G.SURVIVAL_STATE_PRE_GAME = 0
 _G.SURVIVAL_STATE_PRE_ROUND_TIME = 1
 _G.SURVIVAL_STATE_PRE_DUEL_TIME = 2
@@ -380,6 +380,7 @@ function Survival:EndRound()
     self.nDeathCreeps = 0
     self.nCreepsSpawned = 0
 
+    TimeLine:RoundEnd()
 
     Timers:RemoveTimer("lateWaveDebuffs")
     DoWithAllHeroes(function(hero)
@@ -648,6 +649,8 @@ function Survival:StartRound()
     Timers:CreateTimer(3,function()
             DisableShop()
 
+            TimeLine:RoundStart()
+
             self.flRoundStartTime = GameRules:GetDOTATime(false,false)
             
             if self.nRoundNum % 5 == 0 then -- мегабоосс
@@ -728,6 +731,7 @@ function Survival:EndGame(teamWin)
             HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(2) ), 2)
             HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(3) ), 3)
         end
+        TimeLine:GameEnd()
         GameRules:SetGameWinner(teamWin)
     end)
 end

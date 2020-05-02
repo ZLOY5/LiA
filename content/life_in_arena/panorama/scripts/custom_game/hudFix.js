@@ -82,7 +82,7 @@ function ValvePlzFix()
 		dotaHud.FindChildTraverse("DOTAStatBranch").style.visibility = "collapse";
 
 		dotaHud.FindChildTraverse("inventory_neutral_slot_container").style.visibility = "collapse";
-		dotaHud.FindChildTraverse("inventory_tpscroll_container").FindChild("inventory_tpscroll_slot").backgroundImage = "url('s2r://panorama/images/hud/reborn/inventory_bg_psd.vtex')" 
+		dotaHud.FindChildTraverse("inventory_tpscroll_container").FindChild("inventory_tpscroll_slot").style.backgroundImage = "url('s2r://panorama/images/custom_game/bg_tp_slot_png.vtex')" 
 		dotaHud.FindChildTraverse("right_flare").style.marginBottom = "-55px"
 		
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
