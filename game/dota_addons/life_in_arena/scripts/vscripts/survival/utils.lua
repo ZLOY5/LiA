@@ -330,6 +330,20 @@ function FindClearSpaceForUnit_IgnoreNeverMove(unit,position,useInterp)
 	end
 end
 
+function CDOTA_BaseNPC:IsBoss()
+	if string.find(self:GetUnitName(),"_boss") then
+		return true
+	end
+	return false
+end
+
+function CDOTA_BaseNPC:IsMegaboss()
+	if string.find(self:GetUnitName(),"_megaboss") then
+		return true
+	end
+	return false
+end
+
 function CDOTA_BaseNPC:ManaBurn(hCaster, hAbility, fManaAmount, fDamagePerMana, iDamageType, bAffectedByManaLossReduction)
 	if bAffectedByManaLossReduction then
 		fManaAmount = fManaAmount * (100 - self:GetManaLossReductionPercentage()) * 0.01

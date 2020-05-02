@@ -11,7 +11,7 @@ end
 function modifier_treant_take_root_self:OnCreated(kv)
 	self.caster = self:GetCaster()	
 	self.health_regeneration = self:GetAbility():GetSpecialValueFor("health_regeneration")
-	self.tick = 0.25
+	self.tick = 0.2
 	self.manaCost = self:GetAbility():GetSpecialValueFor("manacost_per_second")*self.tick
 	if IsServer() then
 		self:StartIntervalThink(self.tick)
@@ -23,7 +23,7 @@ function modifier_treant_take_root_self:OnRefresh(kv)
 end
  
 function modifier_treant_take_root_self:GetEffectName()
-	return "particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"	
+	return "particles/custom/treant/treant_take_root_self.vpcf"	
 end
 
 function modifier_treant_take_root_self:GetEffectAttachType()

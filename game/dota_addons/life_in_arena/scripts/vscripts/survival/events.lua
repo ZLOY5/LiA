@@ -3,7 +3,7 @@ function Survival:OnNPCSpawned(event)
 
     if spawnedUnit:IsHero() then
         spawnedUnit:SetCustomDeathXP(0)
-        Timers:CreateTimer(0.1,function() for i=0,8 do
+        Timers:CreateTimer(0.1,function() for i=0,15 do
                 local item = spawnedUnit:GetItemInSlot(i)
                 if item and (item:GetName() == "item_enchanted_mango"  or item:GetName() == "item_tpscroll") then
                     spawnedUnit:RemoveItem(item)
@@ -341,7 +341,7 @@ function Survival:OnPlayerChat(event)
     
     end
 
-    if IsInToolsMode() or IsCheatMode() then
+    if IsInToolsMode() or GameRules:IsCheatMode() then
         for i = 1,20 do
             if event.text == "wave " .. i then
                 self.nRoundNum = i

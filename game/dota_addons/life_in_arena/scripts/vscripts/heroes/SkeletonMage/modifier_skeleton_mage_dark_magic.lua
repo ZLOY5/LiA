@@ -23,9 +23,9 @@ function modifier_skeleton_mage_dark_magic:OnTakeDamage(params)
 		end
 
 		if self:GetParent():HasScepter() then 
-			self.damage_return = self:GetAbility():GetSpecialValueFor("self.damage_return_scepter")
+			self.damage_return = self:GetAbility():GetSpecialValueFor("damage_return_scepter")
 		else 
-			self.damage_return = self:GetAbility():GetSpecialValueFor("self.damage_return")
+			self.damage_return = self:GetAbility():GetSpecialValueFor("damage_return")
 		end
 
 		ApplyDamage(
