@@ -1,4 +1,4 @@
-﻿
+
 _G.SURVIVAL_STATE_PRE_GAME = 0
 _G.SURVIVAL_STATE_PRE_ROUND_TIME = 1
 _G.SURVIVAL_STATE_PRE_DUEL_TIME = 2
@@ -178,11 +178,25 @@ end
 
 function Survival:OrderFilter(filterTable)
     --DeepPrint(filterTable)
+
     if filterTable.order_type == DOTA_UNIT_ORDER_GLYPH then
         return false
     end
 
+    if filterTable.order_type == DOTA_UNIT_ORDER_CAST_POSITION then
+        local ability = EntIndexToHScript(filterTable.entindex_ability)
+        local unit = EntIndexToHScript(filterTable.units["0"])
+
+        if unit and ability and ability:GetAbilityName() == "item_lia_healing_ward" then
+            local castPoint = Vector(filterTable.position_x, filterTable.position_y, filterTable.position_z)
+            unit:CastAbilityOnPosition(castPoint, ability, filterTable.issuer_player_id_const)
+            return false
+        end
+    end
+
     if filterTable.order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
+
+
         if Survival.State ~= SURVIVAL_STATE_PRE_GAME and Survival.State ~= SURVIVAL_STATE_PRE_ROUND_TIME and Survival.State ~= SURVIVAL_STATE_PRE_DUEL_TIME then
             --print(filterTable.units["0"])
             local hero = PlayerResource:GetSelectedHeroEntity(filterTable.issuer_player_id_const)
@@ -209,6 +223,23 @@ function Survival:OrderFilter(filterTable)
                 return false
             end
         end
+
+        if itemName == "item_lia_healing_ward" then
+            if item:GetItemSlot() >= DOTA_ITEM_STASH_MIN and item:GetItemSlot() < DOTA_ITEM_STASH_MAX then
+                if filterTable.entindex_target >= DOTA_ITEM_STASH_MIN and filterTable.entindex_target < DOTA_ITEM_STASH_MAX then --from stash to stash
+                    return true
+                else
+                    if not hero:IsInRangeOfShop(DOTA_SHOP_HOME, true) then
+                        return false
+                    end
+                end
+            end
+
+            hero:TakeItem(item)
+            hero:AddItem(item)
+            return false
+        end
+
 
     end
 
@@ -245,7 +276,6 @@ function Survival:ItemAddFilter(filterTable)
     local item = EntIndexToHScript(filterTable.item_entindex_const)
     local hero = EntIndexToHScript(filterTable.inventory_parent_entindex_const)
     local itemName = item:GetAbilityName()
-    --print(itemName)
     if itemName == "item_lia_knight_shield" or itemName == "item_lia_knight_cuirass" then
         if hero:HasItemInInventory("item_lia_knight_shield",false) or hero:HasItemInInventory("item_lia_knight_cuirass",false) then
             for i=6,9 do
@@ -258,9 +288,11 @@ function Survival:ItemAddFilter(filterTable)
         end
     end
 
-    if itemName == "item_lia_healing_ward" then
-        filterTable.suggested_slot = 15 
+    if itemName == "item_lia_healing_ward" and (hero:IsInRangeOfShop(DOTA_SHOP_HOME, true) or filterTable.item_parent_entindex_const == -1) then
+        filterTable.suggested_slot = 15
+        item:SetCanBeUsedOutOfInventory(true)
     end
+
     return true
 end
 
@@ -384,6 +416,7 @@ function Survival:EndRound()
     self.nDeathCreeps = 0
     self.nCreepsSpawned = 0
 
+    TimeLine:RoundEnd()
 
     Timers:RemoveTimer("lateWaveDebuffs")
     DoWithAllHeroes(function(hero)
@@ -652,6 +685,8 @@ function Survival:StartRound()
     Timers:CreateTimer(3,function()
             DisableShop()
 
+            TimeLine:RoundStart()
+
             self.flRoundStartTime = GameRules:GetDOTATime(false,false)
             
             if self.nRoundNum % 5 == 0 then -- мегабоосс
@@ -732,6 +767,7 @@ function Survival:EndGame(teamWin)
             HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(2) ), 2)
             HeroToPedestal(PlayerResource:GetSelectedHeroEntity( PlayerResource:GetPlayerIdAtPlace(3) ), 3)
         end
+        TimeLine:GameEnd()
         GameRules:SetGameWinner(teamWin)
     end)
 end

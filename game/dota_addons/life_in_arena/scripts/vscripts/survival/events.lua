@@ -336,8 +336,7 @@ function Survival:OnPlayerChat(event)
 
         if event.text == "test" then
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            print(GetClass(hero))
-            print(GetClass(hero:GetAbilityByIndex(0)))
+            hero:GetItemInSlot(15):RemoveSelf()
         end
     
     end
