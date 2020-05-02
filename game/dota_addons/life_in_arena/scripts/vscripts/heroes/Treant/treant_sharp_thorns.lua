@@ -25,9 +25,9 @@ function treant_sharp_thorns:OnSpellStart()
 			v:AddNewModifier(self.caster, self, "modifier_treant_sharp_thorns_debuff", {duration = self.duration})
 		end 
 
-		-- self.splitEarthParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf",PATTACH_WORLDORIGIN,caster)
-		-- ParticleManager:SetParticleControl( self.splitEarthParticle, 0, self.vPos )
+		self.sharpThornsParticle = ParticleManager:CreateParticle("particles/custom/treant/treant_sharp_thorns.vpcf",PATTACH_WORLDORIGIN,self.caster)
+		ParticleManager:SetParticleControl( self.sharpThornsParticle, 0, self.vPos )
 		-- ParticleManager:SetParticleControl( self.splitEarthParticle, 1, Vector( self.radius, 1, 1 ) )
-		-- StartSoundEventFromPosition("Hero_Leshrac.Split_Earth", self.vPos)
+		StartSoundEventFromPosition("Hero_Bristleback.QuillSpray.Cast", self.vPos)
 	end
 end

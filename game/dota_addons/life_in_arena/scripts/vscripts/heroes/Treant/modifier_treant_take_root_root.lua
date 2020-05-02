@@ -21,7 +21,7 @@ function modifier_treant_take_root_root:GetEffectName()
 end
 
 function modifier_treant_take_root_root:GetEffectAttachType()
-	return PATTACH_CUSTOMORIGIN_FOLLOW
+	return PATTACH_ABSORIGIN_FOLLOW
 end
 
 function modifier_treant_take_root_root:OnIntervalThink()

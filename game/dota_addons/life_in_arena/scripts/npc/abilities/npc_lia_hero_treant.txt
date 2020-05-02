@@ -193,7 +193,7 @@
     "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"
     "SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_YES"
     "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
-    "AbilityTextureName"			"furion_sprout"
+    "AbilityTextureName"			"custom/treant_sharp_thorns"
 
     "AbilityCastRange"				"500"
 	"AbilityCastPoint"				"0.3"
@@ -209,8 +209,9 @@
 
   	"precache"
 	{
-		"particle"			"particles/units/heroes/hero_furion/furion_wrath_of_nature.vpcf"
+		"particle"			"particles/custom/treant/treant_sharp_thorns_debuff.vpcf"
 		"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts"  
 	}
 
     "AbilitySpecial"
@@ -237,152 +238,3 @@
 		}   
     }
 }	
-
-"bloody_spikes"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
-		"MaxLevel"               "3"
-		"RequiredLevel"          "5"
-		"LevelsBetweenUpgrades"  "4"
-		"AbilityTextureName"			"bloodseeker_rupture"
-		
-		"precache"
-		{
-			"particle"			"particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf"
-			"soundfile"			"sounds/weapons/hero/bloodseeker/rupture.vsnd"
-			"soundfile"			"sounds/weapons/hero/bloodseeker/rupture_cast.vsnd"
-		}
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"120 110 100"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"250 325 400"		
-		
-		// Cast Range
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500"
-			
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityModifierSupportValue"	"0.0"	// Only does damage
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"10.0"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_damage_pct"		"20 40 60"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_cap_amount"			"1300"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"damage_cap_interval"		"0.25"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"cast_range_tooltip"		"500"
-			}
-			"06"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"300"
-			}
-		}
-		
-		"OnSpellStart"
-		{
-			"FireEffect"
-			{	
-				"EffectAttachType"	"start_at_customorigin"
-				"TargetPoint"	"POINT"	
-				"ControlPoints"
-				{
-					"01"	"%radius 0 0"
-				}
-			}
-			"FireSound"
-			{
-				"EffectName"	"Hero_Bloodseeker.Rupture"
-				"Target" 		"CASTER"
-			}
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"	"POINT"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Type"		"DOTA_UNIT_TARGET_HERO"
-				}				
-				"Action"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_rupture_datadriven"
-						"Target"	"TARGET"
-						"Duration"	"%duration"
-					}	
-				}
-			}
-		}
-		
-		"Modifiers"
-		{
-			"modifier_rupture_datadriven"
-			{
-				"Duration"	"%duration"
-				"IsDebuff"	"1"
-				
-				"EffectName"	"particles/units/heroes/hero_bloodseeker/bloodseeker_rupture.vpcf"
-				"EffectAttachType"	"attach_origin"
-				
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/Trent/bloody_spikes.lua"
-						"Function"		"DistanceCheck"
-					}
-				}
-				
-				"ThinkInterval"	"%damage_cap_interval"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/Trent/bloody_spikes.lua"
-						"Function"		"DistanceCheck"
-					}
-				}
-			}
-		}
-	}
