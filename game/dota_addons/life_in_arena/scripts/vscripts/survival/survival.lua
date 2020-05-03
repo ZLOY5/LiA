@@ -769,6 +769,7 @@ function Survival:EndGame(teamWin)
         end
         TimeLine:GameEnd()
         GameRules:SetGameWinner(teamWin)
+        Stats:MatchResult(teamWin == DOTA_TEAM_GOODGUYS)
     end)
 end
 
