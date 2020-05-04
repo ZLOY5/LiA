@@ -24684,9 +24684,9 @@
 	
 		"AbilityCastPoint"        "0.3"
 	
-		"AbilityCooldown"       "30 26 22"
+		"AbilityCooldown"       "30 25 20"
 	
-		"AbilityManaCost"       "120 140 160"  
+		"AbilityManaCost"       "120"  
 	
 		"precache"
 		{
@@ -24753,27 +24753,32 @@
 		{
 			"particle"			"particles/custom/treant/treant_sharp_thorns_debuff.vpcf"
 			"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
-			"soundfile"   "soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts"  
+			"soundfile"   		"soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts"  
 		}
 	
 	    "AbilitySpecial"
-	    {           
-	        "01"
+	    {     
+	    	"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"distance_to_damage_percentage"		"20 40 60"
+				"damage"		"150 250 350"
+			}      
+	        "02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"distance_to_damage_percentage"		"25 50 75"
 			}
-			"02"
+			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"duration"				"10"
 			}
-			"03"
+			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"300"
+				"radius"				"400"
 			}  
-			"04"
+			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
 				"check_interval"		"0.1"
