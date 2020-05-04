@@ -1,6 +1,6 @@
 Stats = Stats or {}
 
-Stats.host = IsInToolsMode() and "http://127.0.0.1:3000" or ""
+Stats.host = IsInToolsMode() and "http://localhost:3000" or "http://ec2-18-157-62-204.eu-central-1.compute.amazonaws.com"
 Stats.version = "v1"
 
 
@@ -126,4 +126,5 @@ function Stats.SendData(url, data, callback, rep)
     end)
 end
 
+--Stats.MatchStart()
 --Stats.MatchResult(true)
