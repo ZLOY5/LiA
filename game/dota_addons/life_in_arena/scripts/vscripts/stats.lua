@@ -92,6 +92,8 @@ function Stats.MatchResult(win)
 		end
 	end
 
+	--DeepPrintTable(data)
+
 	Stats.SendData(url, data, Stats.MatchEndResponse, 5)
 end
 
