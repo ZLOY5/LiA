@@ -22,6 +22,10 @@ function modifier_skeleton_mage_dark_magic:OnTakeDamage(params)
 			return 0
 		end
 
+		if params.attacker:HasModifier("modifier_skeleton_mage_dark_magic_cooldown") then
+			return 0
+		end
+
 		if self:GetParent():HasScepter() then 
 			self.damage_return = self:GetAbility():GetSpecialValueFor("damage_return_scepter")
 		else 
@@ -37,5 +41,8 @@ function modifier_skeleton_mage_dark_magic:OnTakeDamage(params)
 			damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
 			ability = params.ability
 		})
+
+		self.cooldown = self:GetAbility():GetSpecialValueFor("cooldown")
+		params.attacker:AddNewModifier(params.unit, self:GetAbility(), "modifier_skeleton_mage_dark_magic_cooldown", {duration = self.cooldown})
 	end
 end
