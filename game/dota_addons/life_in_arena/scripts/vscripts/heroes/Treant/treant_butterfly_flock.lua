@@ -62,10 +62,9 @@ function treant_butterfly_flock:OnProjectileHit( hTarget, vLocation )
 			center_z = self.caster_position.z,
 			should_stun = true, 
 			duration = knockback_duration,
-			knockback_duration = knockback_duration,
 			knockback_distance = distance_to_travel,
 		}
-		hTarget:AddNewModifier( self:GetCaster(), self, "modifier_knockback", kv )
+		hTarget:AddNewModifier( self:GetCaster(), self, "modifier_knockback_lia", kv )
 
 	end
 

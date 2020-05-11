@@ -18488,7 +18488,7 @@
 	  "precache"
 	  {
 	    "soundfile"         "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
-	    "particle"          "particles/dragon_knight_transform_red_low.vpcf"
+	    "particle"          "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_flames02.vpcf"
 	  }
 	
 	  "OnSpellStart"
@@ -18559,7 +18559,7 @@
 	          {
 	            "FireEffect"
 	            {
-	              "EffectName"        "particles/dragon_knight_transform_red_low.vpcf"
+	              "EffectName"        "particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red_flames02.vpcf"
 	              "EffectAttachType"  "follow_origin"
 	              "Target"            "TARGET"
 	            }
@@ -23095,6 +23095,11 @@
 	    	{
 	      		"var_type"      			"FIELD_INTEGER"
 	      		"damage_return_scepter"   	"50 60 70"
+	    	}
+	    	"03"
+	    	{
+	      		"var_type"      "FIELD_FLOAT"
+	      		"cooldown"   	"1.5"
 	    	}
 	  	} 
 	}
