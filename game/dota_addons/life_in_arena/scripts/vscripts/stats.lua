@@ -39,8 +39,8 @@ function Stats.MatchStart()
 	data.players = {}
 
 	for i = 0, 63 do
-		if PlayerResource:IsValidTeamPlayerID(i) and not PlayerResource:IsFakeClient(pID) then
-			local steamid = tostring(PlayerResource:GetSteamID(pID))
+		if PlayerResource:IsValidTeamPlayerID(i) and not PlayerResource:IsFakeClienti) then
+			local steamid = tostring(PlayerResource:GetSteamID(i))
 			if steamid ~= "0" then
 				table.insert(data.players, steamid)
 			end
