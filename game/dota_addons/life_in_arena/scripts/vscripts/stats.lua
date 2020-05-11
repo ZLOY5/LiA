@@ -34,13 +34,16 @@ function Stats.MatchStart()
 	data.version = Stats.version
 	data.matchid = tostring(GameRules:GetMatchID())
 	data.cheats = GameRules:IsCheatMode()
-	data.mode = Survival.IsExtreme and "extreme" or (Survival.IsLight and "light" or "none")
+	data.mode = Survival.IsExtreme and 2 or (Survival.IsLight and 0 or 1)
 
 	data.players = {}
 
 	for i = 0, 63 do
-		if PlayerResource:IsValidTeamPlayerID(i) then
-			table.insert(data.players, tostring(PlayerResource:GetSteamID(i)))
+		if PlayerResource:IsValidTeamPlayerID(i) and not PlayerResource:IsFakeClient(pID) then
+			local steamid = tostring(PlayerResource:GetSteamID(pID))
+			if steamid ~= "0" then
+				table.insert(data.players, steamid)
+			end
 		end
 	end
 
@@ -60,35 +63,45 @@ function Stats.MatchResult(win)
 	data.matchid = tostring(GameRules:GetMatchID())
 	data.win = win
 	data.wave = Survival.nRoundNum
-	data.mode = Survival.IsExtreme and "extreme" or (Survival.IsLight and "light"  or "none")
+	data.duration = GameRules:GetGameTime()
 
 	data.players = {}
 	CustomPlayerResource:UpdatePlayersData()
 
 	for pID = 0, 63 do
-		if PlayerResource:IsValidTeamPlayerID(pID) then
-			local pData = {}
-			pData.steamid64 = tostring(PlayerResource:GetSteamID(pID))
-			
-			pData.creeps = PlayerResource:GetCreepKills(pID)
-			pData.bosses = PlayerResource:GetBossKills(pID)
-			pData.deaths = PlayerResource:GetDeaths(pID)
-			pData.upgrades = PlayerResource:GetUpgradesPercent(pID)
-			pData.rating = PlayerResource:GetPlayerRating(pID)
+		
+		if PlayerResource:IsValidTeamPlayerID(pID) and not PlayerResource:IsFakeClient(pID) then
+			local steamid = tostring(PlayerResource:GetSteamID(pID))
+			if steamid ~= "0" then
+				local pData = {}
+				pData.steamid64 = steamid
+				
+				pData.creeps = PlayerResource:GetCreepKills(pID)
+				pData.bosses = PlayerResource:GetBossKills(pID)
+				pData.deaths = PlayerResource:GetDeaths(pID)
+				pData.upgrades = PlayerResource:GetUpgradesPercent(pID)
+				pData.rating = PlayerResource:GetPlayerRating(pID)
 
-			local hero = PlayerResource:GetSelectedHeroEntity(pID)
-			if hero then 
-				for i=0,5 do
-					local item = hero:GetItemInSlot(i)
-					if item then
-						pData["item"..i] = item:GetAbilityKeyValues().ID
+				local hero = PlayerResource:GetSelectedHeroEntity(pID)
+				if hero then
+					pData.heroid = DOTAGameManager:GetHeroIDByName(hero:GetUnitName())
+					pData.lvl = hero:GetLevel()
+				end
+
+				local hero = PlayerResource:GetSelectedHeroEntity(pID)
+				if hero then 
+					for i=0,5 do
+						local item = hero:GetItemInSlot(i)
+						if item then
+							pData["item"..i] = item:GetAbilityKeyValues().ID
+						end
 					end
 				end
+
+				--pData.team = PlayerResource:GetTeam(pID)
+
+				table.insert(data.players, pData)
 			end
-
-			--pData.team = PlayerResource:GetTeam(pID)
-
-			table.insert(data.players, pData)
 		end
 	end
 
