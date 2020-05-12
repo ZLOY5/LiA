@@ -14,6 +14,10 @@
 			<Label id="timer" text="00:30" />
 			<ProgressBar id="TimerProgress" value="0.5"/>
 			<Label id="waveName" text="КОБОЛЬДЫ" />
+			<Panel id="VoteContainer">
+				<Label id="ForceVote" class="Vote" text="#timer_vote" onactivate="ForceRound()"/>
+				<Label id="ForceVote2" text="#timer_vote2"/>
+			</Panel>
 		</Panel>
 	</Panel>
 </root>
