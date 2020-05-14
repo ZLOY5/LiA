@@ -676,7 +676,7 @@ function Survival:StartRound()
 
     self.hHealer:Disable()
 
-    PlayerResource:ClearReadyToRound()
+    
     LiA.bForceRoundEnabled = false
     CustomGameEventManager:Send_ServerToAllClients("round_force_enabled", {enabled = false})
     
@@ -684,6 +684,7 @@ function Survival:StartRound()
     
     Timers:CreateTimer(3,function()
             DisableShop()
+            PlayerResource:ClearReadyToRound()
 
             TimeLine:RoundStart()
 

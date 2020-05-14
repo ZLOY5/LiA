@@ -3,7 +3,8 @@
 var schedule
 var startTime 
 var endTime 
-var duration 
+var duration
+var timerType
 
 function Tick()
 {
@@ -23,6 +24,10 @@ function Tick()
 
 	if (currTime >= endTime)
 		StopTimer()
+
+	var pData = CustomNetTables.GetTableValue("lia_player_table", "Player" + Players.GetLocalPlayer())
+
+	$("#VoteContainer").visible = !pData.readyToRound && timerType == 1
 	
 }
 
@@ -34,6 +39,7 @@ function StartTimer(data)
 	startTime = data.startTime
 	endTime = data.endTime
 	duration = endTime - startTime
+	timerType = data.timerType
 
 	if (data.timerType == 1) //Wave 
 	{
@@ -84,6 +90,10 @@ function OnTimerChanged(table, key, data)
 		else
 			endTime = data.endTime
 	}
+}
+
+function ForceRound() {
+	GameEvents.SendCustomGameEventToServer("glyph_clicked", {})
 }
 
 (function()
