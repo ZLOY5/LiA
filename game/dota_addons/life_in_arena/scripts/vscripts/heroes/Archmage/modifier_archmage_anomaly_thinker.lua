@@ -53,7 +53,7 @@ end
 function modifier_archmage_anomaly_thinker:OnCreated( kv )
 	self.radius = self:GetAbility():GetSpecialValueFor( "radius" )
 	if IsServer() then
-		self.AnomalyParticle = ParticleManager:CreateParticle("particles/fv_chronosphere_aeons.vpcf",PATTACH_ABSORIGIN,self:GetParent())
+		self.AnomalyParticle = ParticleManager:CreateParticle("particles/econ/items/faceless_void/faceless_void_mace_of_aeons/fv_chronosphere_aeons.vpcf",PATTACH_ABSORIGIN,self:GetParent())
 		ParticleManager:SetParticleControl(self.AnomalyParticle,1,Vector(self.radius,self.radius,self.radius))
 		--self:GetParent():EmitSound("Hero_FacelessVoid.Chronosphere")
 	end

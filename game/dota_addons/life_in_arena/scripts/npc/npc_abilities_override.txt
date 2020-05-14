@@ -7935,6 +7935,243 @@
 	//End of file normal_mode_creep_passives.txt
 
 
+	//Start of file npc_lia_hero_alchemist.txt
+	
+	"alchemist_fire_potion"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Alchemist/alchemist_fire_potion.lua"
+	
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"          
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"      "alchemist_unstable_concoction"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"      "500"
+		"AbilityCastPoint"      "0.2"
+		"AbilityCooldown"       "8"
+		"AbilityManaCost"       "70 90 110"
+	
+		"HasScepterUpgrade"		"1"
+	
+		"precache"
+		{
+			"particle"    	"particles/units/heroes/hero_jakiro/jakiro_dual_breath_fire.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"damage"      "60 120 240"
+			}
+			"02"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"self_damage"      "60 120 240"
+			}
+			"03"
+			{
+			  	"var_type"        "FIELD_INTEGER"
+			  	"projectile_distance"    "500"
+			}
+			"04"
+			{
+			  	"var_type"        "FIELD_INTEGER"
+			  	"start_width"      "100"
+			}
+			"05"
+			{
+			  	"var_type"        "FIELD_INTEGER"
+			  	"end_width"      "300"
+			}
+			"06"
+			{
+			  	"var_type"        "FIELD_INTEGER"
+			  	"speed"         "1100"
+			}     
+			"07"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"manacost_scepter"      "140 180 220"
+				"RequiresScepter"		"1"
+			}
+		}
+	}
+	
+	"alchemist_swiftness_potion"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Alchemist/alchemist_swiftness_potion.lua"
+	
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"          
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"      "alchemist_unstable_concoction_throw"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"      "450"
+		"AbilityCastPoint"      "0.0"
+		"AbilityCooldown"       "8"
+		"AbilityManaCost"       "50 70 90"
+	
+		"HasScepterUpgrade"		"1"
+	
+		"precache"
+		{
+			"particle"    	"particles/units/heroes/hero_jakiro/jakiro_dual_breath_fire.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"damage"      "75 150 300"
+			}
+			"02"
+			{
+			  	"var_type"        "FIELD_FLOAT"
+			  	"stun_duration"    		"1.5"
+			}
+			"03"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"bonus_attack_speed"      "30 50 70"
+			}
+			"04"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"bonus_attack_speed_scepter"      "60 100 140"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+			  	"var_type"        "FIELD_FLOAT"
+			  	"duration"    		"7"
+			}
+			"06"
+			{
+			  	"var_type"        "FIELD_FLOAT"
+			  	"hit_width"      "100"
+			}
+			"07"
+			{
+			  	"var_type"        "FIELD_FLOAT"
+			  	"distance"      "450"
+			}   
+			"08"
+			{
+			  	"var_type"        "FIELD_INTEGER"
+			  	"speed"      "550"
+			}  
+			"09"
+			{
+			  	"var_type"        "FIELD_FLOAT"
+			  	"enemy_knockback_distance"      "450"
+			}   
+			"10"
+			{
+			  	"var_type"        "FIELD_INTEGER"
+			  	"enemy_knockback_speed"      "550"
+			} 
+			"11"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"manacost_scepter"      "100 140 180"
+				"RequiresScepter"		"1"
+			}
+		}
+	}
+	
+	"alchemist_unity"
+	{
+	    // General  
+	    // ----------------------------------------------------------------------------------------
+	    "BaseClass"                 "ability_lua"
+	    "ScriptFile"                "heroes\Alchemist\alchemist_unity.lua"
+	
+	    "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"        "vengefulspirit_nether_swap"
+	
+	    "MaxLevel"                  "3"
+	    "RequiredLevel"             "2"
+	    "LevelsBetweenUpgrades"     "2"
+	  
+	    // Special    
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                          "FIELD_INTEGER"
+	            "bonus_stats_percentage"            "25 50 75"
+	        }
+	    }
+	}  
+	
+	"alchemist_side_effect"
+	{
+	  "BaseClass"              "ability_lua"
+	  "ScriptFile"       "heroes\Alchemist\alchemist_side_effect.lua"
+	
+	  "AbilityBehavior"        	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+	  "AbilityTextureName"     	"alchemist_acid_spray"
+	
+	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+	  "MaxLevel"               "3"
+	  "RequiredLevel"          "5"
+	  "LevelsBetweenUpgrades"  "4"
+	
+	  "precache"
+	  {
+	    "particle"  	"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "damage_per_second"      "30 45 60"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "radius"     "350"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "duration"     "6"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "potions_to_trigger"     "3"
+	    }
+	  } 
+	}
+	//End of file npc_lia_hero_alchemist.txt
+
+
 	//Start of file npc_lia_hero_ancient_priestess.txt
 	"ancient_priestess_surge_of_intelligence" 
 	{
@@ -9391,7 +9628,7 @@
 	
 	  "precache"
 	  {
-	    "particle"   "particles/fv_chronosphere_aeons.vpcf"  
+	    "particle"    "particles/econ/items/faceless_void/faceless_void_mace_of_aeons/fv_chronosphere_aeons.vpcf"  
 	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"        
 	  }
 	
@@ -20708,20 +20945,20 @@
 		"AbilitySpecial"
 		{
 			"01"
-	    {
-	      "var_type"          "FIELD_INTEGER"
-	      "constant_regen"       "10 0 0"
-	    }
-	    "02"
-	    {
-	      "var_type"          "FIELD_INTEGER"
-	      "regen_percentage"    "0 1 2"
-	    }
-	    "03"
-	    {
-	      "var_type"          "FIELD_INTEGER"
-	      "aura_radius"       "800"
-	    }
+		    {
+		      "var_type"          "FIELD_INTEGER"
+		      "constant_regen"       "10 0 0"
+		    }
+		    "02"
+		    {
+		      "var_type"          "FIELD_INTEGER"
+		      "regen_percentage"    "0 1 2"
+		    }
+		    "03"
+		    {
+		      "var_type"          "FIELD_INTEGER"
+		      "aura_radius"       "800"
+		    }
 		} 
 	}
 	
