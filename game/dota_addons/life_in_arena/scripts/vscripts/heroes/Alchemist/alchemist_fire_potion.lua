@@ -8,6 +8,22 @@ function alchemist_fire_potion:OnSpellStart()
 	self.self_damage = self:GetSpecialValueFor( "self_damage" )
 	self.caster = self:GetCaster()
 
+	
+	if self.caster:HasScepter() then
+		self.wave_count = self:GetSpecialValueFor( "wave_count_scepter" )
+		self.delay_between_waves = self:GetSpecialValueFor( "delay_between_waves_scepters" )
+		self.potion_count = 2
+	else
+		self.wave_count = self:GetSpecialValueFor( "wave_count" )
+		self.delay_between_waves = self:GetSpecialValueFor( "delay_between_waves" )
+		self.potion_count = 1
+	end
+
+	local hSideEffectAbility = self.caster:FindAbilityByName("alchemist_side_effect")
+	if hSideEffectAbility and hSideEffectAbility:GetLevel() > 0 then
+		self.caster:FindModifierByNameAndCaster("modifier_alchemist_side_effect", self.caster):IncrementPotionCount(self.potion_count)
+	end
+
 	local vPos = nil
 	if self:GetCursorTarget() then
 		vPos = self:GetCursorTarget():GetOrigin()
@@ -34,25 +50,12 @@ function alchemist_fire_potion:OnSpellStart()
 		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
 	}
 
+	for i = 1,self.wave_count do
+
+	end
+
 	ProjectileManager:CreateLinearProjectile( info )
 	EmitSoundOn( "Hero_Jakiro.DualBreath.Cast", self.caster )
-	local hSideEffectAbility = self.caster:FindAbilityByName("alchemist_side_effect")
-	if hSideEffectAbility and hSideEffectAbility:GetLevel() > 0 then
-		self.caster:FindModifierByNameAndCaster("modifier_alchemist_side_effect", self.caster):IncrementPotionCount(1)
-	end
-	if self.caster:HasScepter() then
-		Timers:CreateTimer({
-            useGameTime = false,
-            endTime = 0.2,
-            callback = function()
-				ProjectileManager:CreateLinearProjectile( info )
-				if hSideEffectAbility and hSideEffectAbility:GetLevel() > 0 then
-					self.caster:FindModifierByNameAndCaster("modifier_alchemist_side_effect", self.caster):IncrementPotionCount(1)
-				end
-            end
-          })
-		EmitSoundOn( "Hero_Jakiro.DualBreath.Cast", self.caster )
-	end
 
 	local damage = {
 		victim = self.caster,

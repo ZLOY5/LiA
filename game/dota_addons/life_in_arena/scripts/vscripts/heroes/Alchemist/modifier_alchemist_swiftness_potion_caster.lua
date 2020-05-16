@@ -14,7 +14,7 @@ function modifier_alchemist_swiftness_potion_caster:OnCreated( kv )
 		self.ability = self:GetAbility()
 		self.unit = self:GetParent()
 		self:StartIntervalThink( 0.03 )
-		self.target =  self:GetAbility().vTargetPosition
+		self.target = self.ability.vTargetPosition
 		self.distance_per_tick = kv.distance_per_tick
 		self.duration = kv.duration
 		self.hit_width = self:GetAbility():GetSpecialValueFor("hit_width")
@@ -22,7 +22,11 @@ function modifier_alchemist_swiftness_potion_caster:OnCreated( kv )
 		self.enemy_knockback_speed = self:GetAbility():GetSpecialValueFor("enemy_knockback_speed")
 		self.enemy_knockback_duration = self.enemy_knockback_distance / self.enemy_knockback_speed
 		self.stun_duration = self:GetAbility():GetSpecialValueFor("stun_duration")
+		self.buff_duration = self:GetAbility():GetSpecialValueFor("duration")
 		self.damage = self:GetAbility():GetSpecialValueFor("damage")
+		self.old_position = self.unit:GetAbsOrigin()
+		self.older_position = self.old_position
+		self.bCanFindPath = GridNav:CanFindPath(self.old_position, self.target)
 	end
 end
 
@@ -45,11 +49,26 @@ end
 
 function modifier_alchemist_swiftness_potion_caster:OnIntervalThink()
 	if IsServer() then
+		local position = self.unit:GetAbsOrigin()
 		local distance = (self.unit:GetAbsOrigin() - self.target):Length2D()
 		local direction = (self.target - self.unit:GetAbsOrigin()):Normalized()
 		local delta = (distance * 1.0 / self.duration) * 1.0 / self.distance_per_tick
+		local next_position = position + direction * delta
 
-		self.unit:SetAbsOrigin(self.unit:GetAbsOrigin() + direction * delta)
+		if GridNav:IsBlocked(next_position) or not GridNav:IsTraversable(next_position) then
+			if not self.bCanFindPath then
+				self.unit:SetAbsOrigin(self.older_position)
+		    	self:Destroy()
+		    else
+		    	self.older_position = self.old_position
+				self.old_position = self.unit:GetAbsOrigin()
+		    	self.unit:SetAbsOrigin(next_position)
+		    end
+		else
+			self.older_position = self.old_position
+			self.old_position = self.unit:GetAbsOrigin()
+		    self.unit:SetAbsOrigin(next_position)
+		end
 
 		self.caster_position = self.caster:GetAbsOrigin()
 
@@ -83,8 +102,8 @@ function modifier_alchemist_swiftness_potion_caster:OnIntervalThink()
 					duration = self.enemy_knockback_duration,
 					knockback_distance = self.enemy_knockback_distance,
 				}
-				v:AddNewModifier( self:GetCaster(), self, "modifier_alchemist_swiftness_potion_enemy", kv )
-				v:AddNewModifier( self:GetCaster(), self, "modifier_stunned", {duration = self.stun_duration} )
+				v:AddNewModifier( self:GetCaster(), self.ability, "modifier_alchemist_swiftness_potion_enemy", kv )
+				v:AddNewModifier( self:GetCaster(), self.ability, "modifier_stunned", {duration = self.stun_duration} )
 			end
 		end
 	end
@@ -92,15 +111,11 @@ end
 
 function modifier_alchemist_swiftness_potion_caster:OnDestroy()
 	if IsServer() then
-		-- self.damage = self.ability:GetSpecialValueFor("damage")
-		-- if self.unit:HasModifier("modifier_treant_take_root_root") then
-		-- 	self.damage = self.damage * self.ability:GetSpecialValueFor("root_damage_multiplier")
-		-- end
-
-		-- ApplyDamage({ victim = self.unit, attacker = self.caster, ability = self.ability, damage_type = DAMAGE_TYPE_MAGICAL, damage = self.damage })
-		
-		-- self.unit:AddNewModifier(self.caster, nil, "modifier_phased", { duration = 0.03 })
-		-- ResolveNPCPositions(self.unit:GetAbsOrigin(),65)
+		print(GridNav:IsBlocked(self.unit:GetAbsOrigin()))
+		FindClearSpaceForUnit(self.unit, self.unit:GetAbsOrigin(), true)
+		self.unit:AddNewModifier(self.caster, self.ability, "modifier_phased", { duration = 0.03 })
+		ResolveNPCPositions(self.unit:GetAbsOrigin(),65)
+		self.unit:AddNewModifier( self.unit, self.ability, "modifier_alchemist_swiftness_potion_buff", {duration = self.buff_duration} )
 		local hSideEffectAbility = self.caster:FindAbilityByName("alchemist_side_effect")
 		if hSideEffectAbility and hSideEffectAbility:GetLevel() > 0 then
 			if self.caster:HasScepter() then self.iPotionCount = 2 else self.iPotionCount = 1 end

@@ -8,6 +8,41 @@ function modifier_alchemist_side_effect_thinker:IsPurgable()
 	return false
 end
 
+
+function modifier_alchemist_side_effect_thinker:IsAura()
+	return true
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_alchemist_side_effect_thinker:GetModifierAura()
+	return "modifier_alchemist_side_effect_debuff"
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_alchemist_side_effect_thinker:GetAuraSearchTeam()
+	return DOTA_UNIT_TARGET_TEAM_ENEMY
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_alchemist_side_effect_thinker:GetAuraSearchType()
+	return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_alchemist_side_effect_thinker:GetAuraSearchFlags()
+	return DOTA_UNIT_TARGET_FLAG_NONE
+end
+
+--------------------------------------------------------------------------------
+
+function modifier_alchemist_side_effect_thinker:GetAuraRadius()
+	return self.radius
+end
+
 if IsServer() then
 	function modifier_alchemist_side_effect_thinker:OnCreated(kv)
 		self.damage_per_second = self:GetAbility():GetSpecialValueFor( "damage_per_second" )

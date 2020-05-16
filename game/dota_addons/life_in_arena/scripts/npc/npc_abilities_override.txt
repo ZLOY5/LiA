@@ -8032,8 +8032,8 @@
 	
 		"precache"
 		{
-			"particle"    	"particles/units/heroes/hero_jakiro/jakiro_dual_breath_fire.vpcf"
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+			"particle"    	"particles/units/heroes/hero_alchemist/alchemist_chemical_rage.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
 		}
 	
 		"AbilitySpecial"
@@ -8159,10 +8159,20 @@
 	    }
 	    "03"
 	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "movespeed_slow_percentage"      "10 15 20"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "turn_rate_slow_percentage"     "30 40 50"
+	    }
+	    "05"
+	    {
 	      "var_type"        "FIELD_FLOAT"
 	      "duration"     "6"
 	    }
-	    "04"
+	    "06"
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "potions_to_trigger"     "3"

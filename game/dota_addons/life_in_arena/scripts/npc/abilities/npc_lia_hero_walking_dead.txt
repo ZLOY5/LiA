@@ -1,0 +1,67 @@
+
+"walking_dead_decay"
+{
+	"BaseClass"   "ability_lua"
+	"ScriptFile"  "heroes/WalkingDead/walking_dead_decay.lua"
+
+	"AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityTextureName"        "undying_decay"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastRange" "400"
+
+	"AbilityCastPoint"        "0.3"
+
+	"AbilityCooldown"       "28"
+
+	"AbilityManaCost"       "25"  
+
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"	
+		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
+		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"	  
+		"particle"  	"particles/custom/treant/treant_take_root_self.vpcf"    
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+		  "var_type"      "FIELD_INTEGER"
+		  "damage_per_second"    "15 25 35"
+		}
+		"02"
+		{
+		  "var_type"      "FIELD_INTEGER"
+		  "movespeed_slow_percentage"    "20 30 40"
+		}
+		"03"
+		{
+		  "var_type"      "FIELD_FLOAT"
+		  "decay_duration"  "12"
+		}
+		"04"
+		{
+		  "var_type"      "FIELD_INTEGER"
+		  "health_regeneration"    "30 50 70"
+		}
+		"05"
+		{
+		  "var_type"      "FIELD_FLOAT"
+		  "regeneration_duration"  "6"
+		}
+		"06"
+		{
+		  "var_type"      "FIELD_INTEGER"
+		  "radius"      "275"
+		} 
+	}
+}
