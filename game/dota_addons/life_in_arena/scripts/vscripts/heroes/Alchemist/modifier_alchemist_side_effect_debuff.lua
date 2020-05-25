@@ -1,6 +1,10 @@
 
 modifier_alchemist_side_effect_debuff = class({})
 
+function modifier_alchemist_side_effect_debuff:GetAttributes()
+	return MODIFIER_ATTRIBUTE_MULTIPLE
+end
+
 function modifier_alchemist_side_effect_debuff:IsHidden()
 	return false
 end

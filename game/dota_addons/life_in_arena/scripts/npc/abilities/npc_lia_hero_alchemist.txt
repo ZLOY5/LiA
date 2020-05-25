@@ -9,14 +9,14 @@
 	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
 	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 	"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"      "alchemist_unstable_concoction"
+	"AbilityTextureName"      "custom/alchemist_fire_potion"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
 	"LevelsBetweenUpgrades"  "2"
 
 	"AbilityCastRange"      "500"
-	"AbilityCastPoint"      "0.2"
+	"AbilityCastPoint"      "0.0"
 	"AbilityCooldown"       "8"
 	"AbilityManaCost"       "70 90 110"
 
@@ -33,12 +33,12 @@
 		"01"
 		{
 		  	"var_type"    "FIELD_INTEGER"
-		  	"damage"      "60 120 240"
+		  	"damage"      "30 60 120"
 		}
 		"02"
 		{
 		  	"var_type"    "FIELD_INTEGER"
-		  	"self_damage"      "60 120 240"
+		  	"self_damage"      "30 60 120"
 		}
 		"03"
 		{
@@ -49,6 +49,7 @@
 		{
 		  	"var_type"    "FIELD_INTEGER"
 		  	"wave_count_scepter"      "4"
+			"RequiresScepter"		"1"
 			
 		}
 		"05"
@@ -60,6 +61,7 @@
 		{
 		  	"var_type"        "FIELD_FLOAT"
 		  	"delay_between_waves_scepters"    		"0.1"
+			"RequiresScepter"		"1"
 			
 		}
 		"07"
@@ -104,7 +106,7 @@
 	"AbilityTextureName"      "alchemist_unstable_concoction_throw"
 
 	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
+	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
 
 	"AbilityCastRange"      "450"
@@ -130,51 +132,46 @@
 		}
 		"02"
 		{
-		  	"var_type"        "FIELD_FLOAT"
-		  	"stun_duration"    		"1.5"
-		}
-		"03"
-		{
 		  	"var_type"    "FIELD_INTEGER"
 		  	"bonus_attack_speed"      "30 50 70"
 		}
-		"04"
+		"03"
 		{
 		  	"var_type"    "FIELD_INTEGER"
 		  	"bonus_attack_speed_scepter"      "60 100 140"
 			"RequiresScepter"		"1"
 		}
-		"05"
+		"04"
 		{
 		  	"var_type"        "FIELD_FLOAT"
 		  	"duration"    		"7"
 		}
-		"06"
+		"05"
 		{
 		  	"var_type"        "FIELD_FLOAT"
 		  	"hit_width"      "120"
 		}
-		"07"
+		"06"
 		{
 		  	"var_type"        "FIELD_FLOAT"
 		  	"distance"      "450"
 		}   
-		"08"
+		"07"
 		{
 		  	"var_type"        "FIELD_INTEGER"
 		  	"speed"      "850"
 		}  
-		"09"
+		"08"
 		{
 		  	"var_type"        "FIELD_FLOAT"
 		  	"enemy_knockback_distance"      "250"
 		}   
-		"10"
+		"09"
 		{
 		  	"var_type"        "FIELD_INTEGER"
 		  	"enemy_knockback_speed"      "500"
 		} 
-		"11"
+		"10"
 		{
 		  	"var_type"    "FIELD_INTEGER"
 		  	"manacost_scepter"      "100 140 180"
@@ -224,43 +221,76 @@
   "RequiredLevel"          "5"
   "LevelsBetweenUpgrades"  "4"
 
+  "HasScepterUpgrade"		"1"
+
   "precache"
   {
     "particle"  	"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+    "particle"  	"particles/units/heroes/hero_batrider/batrider_flamebreak_explosion.vpcf"
 	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+	"soundfile"		"soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
   }
 
   "AbilitySpecial"
   {
     "01"
     {
-      "var_type"        "FIELD_INTEGER"
-      "damage_per_second"      "30 45 60"
+	      "var_type"        "FIELD_INTEGER"
+	      "damage_per_second"      "30 45 60"
     }
     "02"
     {
-      "var_type"        "FIELD_INTEGER"
-      "radius"     "350"
+	      "var_type"        "FIELD_INTEGER"
+	      "radius"     "350"
     }
     "03"
     {
-      "var_type"        "FIELD_INTEGER"
-      "movespeed_slow_percentage"      "10 15 20"
+	      "var_type"        "FIELD_INTEGER"
+	      "movespeed_slow_percentage"      "-10 -15 -20"
     }
     "04"
     {
-      "var_type"        "FIELD_INTEGER"
-      "turn_rate_slow_percentage"     "30 40 50"
+	      "var_type"        "FIELD_INTEGER"
+	      "turn_rate_slow_percentage"     "-30 -40 -50"
     }
     "05"
     {
-      "var_type"        "FIELD_FLOAT"
-      "duration"     "6"
+	      "var_type"        "FIELD_FLOAT"
+	      "duration"     "6"
     }
     "06"
     {
-      "var_type"        "FIELD_INTEGER"
-      "potions_to_trigger"     "3"
+      	"var_type"        "FIELD_INTEGER"
+      	"bonus_intelligence_explosion_damage_percentage"      "100"
+		"RequiresScepter"		"1"
+    }
+    "07"
+    {
+      	"var_type"        "FIELD_INTEGER"
+      	"base_strength_burn_damage_percentage"      "100"
+		"RequiresScepter"		"1"
+    }
+    "08"
+    {
+      	"var_type"        "FIELD_FLOAT"
+      	"stun_duration"     "1.5"
+		"RequiresScepter"		"1"
+    }
+    "09"
+    {
+      	"var_type"        "FIELD_FLOAT"
+      	"burn_duration"     "3"
+		"RequiresScepter"		"1"
+    }
+    "10"
+    {
+	    "var_type"        "FIELD_INTEGER"
+	    "potions_to_trigger"     "3"
+    }
+    "11"
+    {
+      	"var_type"        "FIELD_FLOAT"
+      	"charge_delay"     "0.5"
     }
   } 
 }

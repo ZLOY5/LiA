@@ -17,6 +17,10 @@ function modifier_alchemist_swiftness_potion_buff:GetHeroEffectName()
 	return "particles/units/heroes/hero_alchemist/alchemist_chemical_rage_hero_effect.vpcf"
 end
 
+function modifier_alchemist_swiftness_potion_buff:HeroEffectPriority()
+	return 10
+end
+
 function modifier_alchemist_swiftness_potion_buff:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end

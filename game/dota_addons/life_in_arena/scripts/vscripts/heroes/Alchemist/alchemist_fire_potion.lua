@@ -19,10 +19,7 @@ function alchemist_fire_potion:OnSpellStart()
 		self.potion_count = 1
 	end
 
-	local hSideEffectAbility = self.caster:FindAbilityByName("alchemist_side_effect")
-	if hSideEffectAbility and hSideEffectAbility:GetLevel() > 0 then
-		self.caster:FindModifierByNameAndCaster("modifier_alchemist_side_effect", self.caster):IncrementPotionCount(self.potion_count)
-	end
+	
 
 	local vPos = nil
 	if self:GetCursorTarget() then
@@ -51,11 +48,15 @@ function alchemist_fire_potion:OnSpellStart()
 	}
 
 	for i = 1,self.wave_count do
-
+		Timers:CreateTimer({
+            useGameTime = false,
+            endTime = self.delay_between_waves,
+            callback = function()
+				ProjectileManager:CreateLinearProjectile( info )
+				EmitSoundOn( "Hero_Jakiro.DualBreath.Cast", self.caster )
+            end
+          })
 	end
-
-	ProjectileManager:CreateLinearProjectile( info )
-	EmitSoundOn( "Hero_Jakiro.DualBreath.Cast", self.caster )
 
 	local damage = {
 		victim = self.caster,
@@ -66,8 +67,40 @@ function alchemist_fire_potion:OnSpellStart()
 	}
 
 	ApplyDamage( damage )
+
+	local hSideEffectAbility = self.caster:FindAbilityByName("alchemist_side_effect")
+	if hSideEffectAbility and hSideEffectAbility:GetLevel() > 0 then
+		self.caster:FindModifierByNameAndCaster("modifier_alchemist_side_effect", self.caster):IncrementPotionCount(self.potion_count)
+	end
 end
 
+function alchemist_fire_potion:OnProjectileThink(vLocation)
+	if self.caster:HasScepter() then
+		local targets = FindUnitsInRadius(self.caster:GetTeamNumber(),
+											vLocation,
+											nil,
+											350,
+											DOTA_UNIT_TARGET_TEAM_FRIENDLY, 
+											DOTA_UNIT_TARGET_ALL, 
+											DOTA_UNIT_TARGET_FLAG_INVULNERABLE + DOTA_UNIT_TARGET_FLAG_OUT_OF_WORLD, 
+											FIND_ANY_ORDER, 
+											false)
+
+		for i = 1, #targets do
+			if targets[i]:GetUnitName() == "dummy_unit_side_effect" then
+				Timers:CreateTimer({
+		            useGameTime = false,
+		            endTime = self.delay_between_waves,
+		            callback = function()
+		            	if targets[i]:IsAlive() then
+							targets[i]:FindModifierByName("modifier_alchemist_side_effect_thinker"):SideEffectExplosion()
+						end
+		            end
+		          })
+			end
+		end
+	end
+end
 function alchemist_fire_potion:OnProjectileHit( hTarget, vLocation )
 	if hTarget ~= nil and ( not hTarget:IsMagicImmune() ) and ( not hTarget:IsInvulnerable() ) then
 		self.damage = self:GetSpecialValueFor( "damage" )

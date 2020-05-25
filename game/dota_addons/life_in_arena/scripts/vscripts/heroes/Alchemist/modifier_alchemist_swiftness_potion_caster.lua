@@ -27,6 +27,7 @@ function modifier_alchemist_swiftness_potion_caster:OnCreated( kv )
 		self.old_position = self.unit:GetAbsOrigin()
 		self.older_position = self.old_position
 		self.bCanFindPath = GridNav:CanFindPath(self.old_position, self.target)
+		self.hSwiftnessPotionDummy = CreateUnitByName("dummy_unit_phase_hero", self.old_position, false, self.caster, self.caster, self.caster:GetTeam())
 	end
 end
 
@@ -47,27 +48,31 @@ function modifier_alchemist_swiftness_potion_caster:GetOverrideAnimationRate()
 	return 1.5
 end
 
+function modifier_alchemist_swiftness_potion_caster:GetHeroEffectName()
+	return "particles/units/heroes/hero_alchemist/alchemist_chemical_rage_hero_effect.vpcf"
+end
+
+function modifier_alchemist_swiftness_potion_caster:HeroEffectPriority()
+	return 10
+end
+
 function modifier_alchemist_swiftness_potion_caster:OnIntervalThink()
 	if IsServer() then
 		local position = self.unit:GetAbsOrigin()
-		local distance = (self.unit:GetAbsOrigin() - self.target):Length2D()
-		local direction = (self.target - self.unit:GetAbsOrigin()):Normalized()
+		local distance = (position - self.target):Length2D()
+		local direction = (self.target - position):Normalized()
 		local delta = (distance * 1.0 / self.duration) * 1.0 / self.distance_per_tick
-		local next_position = position + direction * delta
+		local next_position = position + direction * self.distance_per_tick
 
 		if GridNav:IsBlocked(next_position) or not GridNav:IsTraversable(next_position) then
-			if not self.bCanFindPath then
-				self.unit:SetAbsOrigin(self.older_position)
-		    	self:Destroy()
-		    else
-		    	self.older_position = self.old_position
-				self.old_position = self.unit:GetAbsOrigin()
-		    	self.unit:SetAbsOrigin(next_position)
-		    end
+			self.unit:SetAbsOrigin(self.older_position)
+			self.hSwiftnessPotionDummy:SetAbsOrigin(self.older_position)
+	    	self:Destroy()
 		else
 			self.older_position = self.old_position
 			self.old_position = self.unit:GetAbsOrigin()
 		    self.unit:SetAbsOrigin(next_position)
+		   	self.hSwiftnessPotionDummy:SetAbsOrigin(next_position)
 		end
 
 		self.caster_position = self.caster:GetAbsOrigin()
@@ -103,7 +108,6 @@ function modifier_alchemist_swiftness_potion_caster:OnIntervalThink()
 					knockback_distance = self.enemy_knockback_distance,
 				}
 				v:AddNewModifier( self:GetCaster(), self.ability, "modifier_alchemist_swiftness_potion_enemy", kv )
-				v:AddNewModifier( self:GetCaster(), self.ability, "modifier_stunned", {duration = self.stun_duration} )
 			end
 		end
 	end
@@ -111,11 +115,48 @@ end
 
 function modifier_alchemist_swiftness_potion_caster:OnDestroy()
 	if IsServer() then
-		print(GridNav:IsBlocked(self.unit:GetAbsOrigin()))
-		FindClearSpaceForUnit(self.unit, self.unit:GetAbsOrigin(), true)
-		self.unit:AddNewModifier(self.caster, self.ability, "modifier_phased", { duration = 0.03 })
-		ResolveNPCPositions(self.unit:GetAbsOrigin(),65)
+		local position = self.unit:GetAbsOrigin()
+		-- for x = -30, 30 do
+		-- 	for y = -30, 30 do
+		-- 		local position_check = Vector(position.x + x, position.y + y, position.z)
+		-- 		print(position_check)
+		-- 		print(GridNav:IsBlocked(position_check))
+		-- 		print(GridNav:IsTraversable(position_check))
+		-- 	end
+		-- end
+		-- local decorations = FindUnitsInRadius(self.caster:GetTeamNumber(),
+		-- 								self.caster_position,
+		-- 								nil,
+		-- 								32,
+		-- 								DOTA_UNIT_TARGET_TEAM_BOTH, 
+		-- 								DOTA_UNIT_TARGET_BUILDING, 
+		-- 								DOTA_UNIT_TARGET_FLAG_NONE, 
+		-- 								FIND_ANY_ORDER, 
+		-- 								false)
+
+		-- for i = 1, #decorations do
+		-- 	print(decorations[i]:GetUnitName())
+		-- 	print(decorations[i]:GetHullRadius())
+		-- end
+		-- self.unit:SetAbsOrigin(Vector(position.x, position.y, GetGroundHeight(position,nil)))
+		-- self.unit:AddNewModifier(self.caster, self.ability, "modifier_phased", { duration = 3.3 })
+		-- ResolveNPCPositions(position,65)
+		-- FindClearSpaceForUnit(self.unit, position, true)
+
+		self.hSwiftnessPotionDummy:AddNewModifier(self.caster, self.ability, "modifier_phased", { duration = 0.03 })
+
+		Timers:CreateTimer({
+            useGameTime = false,
+            endTime = 0.04,
+            callback = function()
+				self.unit:SetAbsOrigin(self.hSwiftnessPotionDummy:GetAbsOrigin())
+            end
+          })
+
+		--self.unit:AddNewModifier(self.caster, self.ability, "modifier_phased", { duration = 0.03 })
+		self.hSwiftnessPotionDummy:ForceKill(false)
 		self.unit:AddNewModifier( self.unit, self.ability, "modifier_alchemist_swiftness_potion_buff", {duration = self.buff_duration} )
+
 		local hSideEffectAbility = self.caster:FindAbilityByName("alchemist_side_effect")
 		if hSideEffectAbility and hSideEffectAbility:GetLevel() > 0 then
 			if self.caster:HasScepter() then self.iPotionCount = 2 else self.iPotionCount = 1 end

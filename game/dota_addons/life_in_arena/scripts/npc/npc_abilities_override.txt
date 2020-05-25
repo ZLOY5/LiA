@@ -7947,14 +7947,14 @@
 		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
 		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"      "alchemist_unstable_concoction"
+		"AbilityTextureName"      "custom/alchemist_fire_potion"
 	
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
 	
 		"AbilityCastRange"      "500"
-		"AbilityCastPoint"      "0.2"
+		"AbilityCastPoint"      "0.0"
 		"AbilityCooldown"       "8"
 		"AbilityManaCost"       "70 90 110"
 	
@@ -7971,34 +7971,58 @@
 			"01"
 			{
 			  	"var_type"    "FIELD_INTEGER"
-			  	"damage"      "60 120 240"
+			  	"damage"      "30 60 120"
 			}
 			"02"
 			{
 			  	"var_type"    "FIELD_INTEGER"
-			  	"self_damage"      "60 120 240"
+			  	"self_damage"      "30 60 120"
 			}
 			"03"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"wave_count"      "2"
+			}
+			"04"
+			{
+			  	"var_type"    "FIELD_INTEGER"
+			  	"wave_count_scepter"      "4"
+				"RequiresScepter"		"1"
+				
+			}
+			"05"
+			{
+			  	"var_type"        "FIELD_FLOAT"
+			  	"delay_between_waves"    		"0.2"
+			}
+			"06"
+			{
+			  	"var_type"        "FIELD_FLOAT"
+			  	"delay_between_waves_scepters"    		"0.1"
+				"RequiresScepter"		"1"
+				
+			}
+			"07"
 			{
 			  	"var_type"        "FIELD_INTEGER"
 			  	"projectile_distance"    "500"
 			}
-			"04"
+			"08"
 			{
 			  	"var_type"        "FIELD_INTEGER"
 			  	"start_width"      "100"
 			}
-			"05"
+			"09"
 			{
 			  	"var_type"        "FIELD_INTEGER"
 			  	"end_width"      "300"
 			}
-			"06"
+			"10"
 			{
 			  	"var_type"        "FIELD_INTEGER"
 			  	"speed"         "1100"
 			}     
-			"07"
+			"11"
 			{
 			  	"var_type"    "FIELD_INTEGER"
 			  	"manacost_scepter"      "140 180 220"
@@ -8020,7 +8044,7 @@
 		"AbilityTextureName"      "alchemist_unstable_concoction_throw"
 	
 		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
+		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 	
 		"AbilityCastRange"      "450"
@@ -8033,6 +8057,7 @@
 		"precache"
 		{
 			"particle"    	"particles/units/heroes/hero_alchemist/alchemist_chemical_rage.vpcf"
+			"particle"  	"particles/units/heroes/hero_alchemist/alchemist_chemical_rage_hero_effect.vpcf"
 			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
 		}
 	
@@ -8067,7 +8092,7 @@
 			"06"
 			{
 			  	"var_type"        "FIELD_FLOAT"
-			  	"hit_width"      "100"
+			  	"hit_width"      "120"
 			}
 			"07"
 			{
@@ -8077,17 +8102,17 @@
 			"08"
 			{
 			  	"var_type"        "FIELD_INTEGER"
-			  	"speed"      "550"
+			  	"speed"      "850"
 			}  
 			"09"
 			{
 			  	"var_type"        "FIELD_FLOAT"
-			  	"enemy_knockback_distance"      "450"
+			  	"enemy_knockback_distance"      "250"
 			}   
 			"10"
 			{
 			  	"var_type"        "FIELD_INTEGER"
-			  	"enemy_knockback_speed"      "550"
+			  	"enemy_knockback_speed"      "500"
 			} 
 			"11"
 			{
@@ -8139,43 +8164,76 @@
 	  "RequiredLevel"          "5"
 	  "LevelsBetweenUpgrades"  "4"
 	
+	  "HasScepterUpgrade"		"1"
+	
 	  "precache"
 	  {
 	    "particle"  	"particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+	    "particle"  	"particles/units/heroes/hero_batrider/batrider_flamebreak_explosion.vpcf"
 		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
 	  }
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "damage_per_second"      "30 45 60"
+		      "var_type"        "FIELD_INTEGER"
+		      "damage_per_second"      "30 45 60"
 	    }
 	    "02"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "radius"     "350"
+		      "var_type"        "FIELD_INTEGER"
+		      "radius"     "350"
 	    }
 	    "03"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "movespeed_slow_percentage"      "10 15 20"
+		      "var_type"        "FIELD_INTEGER"
+		      "movespeed_slow_percentage"      "-10 -15 -20"
 	    }
 	    "04"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "turn_rate_slow_percentage"     "30 40 50"
+		      "var_type"        "FIELD_INTEGER"
+		      "turn_rate_slow_percentage"     "-30 -40 -50"
 	    }
 	    "05"
 	    {
-	      "var_type"        "FIELD_FLOAT"
-	      "duration"     "6"
+		      "var_type"        "FIELD_FLOAT"
+		      "duration"     "6"
 	    }
 	    "06"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "potions_to_trigger"     "3"
+	      	"var_type"        "FIELD_INTEGER"
+	      	"bonus_intelligence_explosion_damage_percentage"      "100"
+			"RequiresScepter"		"1"
+	    }
+	    "07"
+	    {
+	      	"var_type"        "FIELD_INTEGER"
+	      	"base_strength_burn_damage_percentage"      "100"
+			"RequiresScepter"		"1"
+	    }
+	    "08"
+	    {
+	      	"var_type"        "FIELD_FLOAT"
+	      	"stun_duration"     "1.5"
+			"RequiresScepter"		"1"
+	    }
+	    "09"
+	    {
+	      	"var_type"        "FIELD_FLOAT"
+	      	"burn_duration"     "3"
+			"RequiresScepter"		"1"
+	    }
+	    "10"
+	    {
+		    "var_type"        "FIELD_INTEGER"
+		    "potions_to_trigger"     "3"
+	    }
+	    "11"
+	    {
+	      	"var_type"        "FIELD_FLOAT"
+	      	"charge_delay"     "0.5"
 	    }
 	  } 
 	}
@@ -26638,6 +26696,77 @@
 		}
 	}	
 	//End of file npc_lia_hero_vowen_from_blood.txt
+
+
+	//Start of file npc_lia_hero_walking_dead.txt
+	
+	"walking_dead_decay"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"  "heroes/WalkingDead/walking_dead_decay.lua"
+	
+		"AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"        "undying_decay"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange" "400"
+	
+		"AbilityCastPoint"        "0.3"
+	
+		"AbilityCooldown"       "28"
+	
+		"AbilityManaCost"       "25"  
+	
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"	
+			"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
+			"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"	  
+			"particle"  	"particles/custom/treant/treant_take_root_self.vpcf"    
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "damage_per_second"    "15 25 35"
+			}
+			"02"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "movespeed_slow_percentage"    "20 30 40"
+			}
+			"03"
+			{
+			  "var_type"      "FIELD_FLOAT"
+			  "decay_duration"  "12"
+			}
+			"04"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "health_regeneration"    "30 50 70"
+			}
+			"05"
+			{
+			  "var_type"      "FIELD_FLOAT"
+			  "regeneration_duration"  "6"
+			}
+			"06"
+			{
+			  "var_type"      "FIELD_INTEGER"
+			  "radius"      "275"
+			} 
+		}
+	}
+	//End of file npc_lia_hero_walking_dead.txt
 
 
 	//Start of file npc_lia_hero_wanderer.txt

@@ -3,33 +3,6 @@ LinkLuaModifier("modifier_alchemist_swiftness_potion_caster","heroes/Alchemist/m
 LinkLuaModifier("modifier_alchemist_swiftness_potion_enemy","heroes/Alchemist/modifier_alchemist_swiftness_potion_enemy.lua",LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_alchemist_swiftness_potion_buff","heroes/Alchemist/modifier_alchemist_swiftness_potion_buff.lua",LUA_MODIFIER_MOTION_NONE)
 
--- function alchemist_swiftness_potion:OnAbilityPhaseStart()
--- 	self.radius = self:GetSpecialValueFor( "radius" )
--- 	self.target = self:GetCursorPosition()
-
--- 	local present_targets = FindUnitsInRadius(self:GetCaster():GetTeamNumber(),
--- 										self.target,
--- 										nil,
--- 										self.radius,
--- 										DOTA_UNIT_TARGET_TEAM_ENEMY, 
--- 										DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 
--- 										DOTA_UNIT_TARGET_FLAG_NONE, 
--- 										FIND_ANY_ORDER, 
--- 										false)
-
--- 	local count = 0
-
--- 	for _,v in pairs(present_targets) do
--- 		count = count + 1
--- 	end
-
--- 	if count == 0 then
--- 		SendErrorMessage(self:GetCaster():GetPlayerOwnerID(), "#lia_hud_error_keeper_of_the_grove_natures_curse_no_targets")
--- 		return false
--- 	end
-
--- 	return true
--- end
 
 function alchemist_swiftness_potion:OnSpellStart()
 	self.iSpeed = self:GetSpecialValueFor( "speed" )
@@ -61,9 +34,7 @@ function alchemist_swiftness_potion:OnSpellStart()
 	}
 	self:GetCaster():AddNewModifier( self:GetCaster(), self, "modifier_alchemist_swiftness_potion_caster", kv )
 
-	if self:GetCaster():HasScepter() then
-		
-	end
+	EmitSoundOn( "Hero_Alchemist.UnstableConcoction.Throw", self:GetCaster() )
 
 end
 
