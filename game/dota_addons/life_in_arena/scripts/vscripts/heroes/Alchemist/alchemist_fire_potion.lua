@@ -7,10 +7,6 @@ function alchemist_fire_potion:OnSpellStart()
 	self.end_width = self:GetSpecialValueFor( "end_width" )
 	self.self_damage = self:GetSpecialValueFor( "self_damage" )
 	self.caster = self:GetCaster()
-	print(self.speed, self.projectile_distance, self.start_width)
-	if IsServer() then
-		print("server ", self.speed, self.projectile_distance, self.start_width)
-	end
 	
 	if self.caster:HasScepter() then
 		self.wave_count = self:GetSpecialValueFor( "wave_count_scepter" )
