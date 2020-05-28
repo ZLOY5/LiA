@@ -8070,51 +8070,46 @@
 			}
 			"02"
 			{
-			  	"var_type"        "FIELD_FLOAT"
-			  	"stun_duration"    		"1.5"
-			}
-			"03"
-			{
 			  	"var_type"    "FIELD_INTEGER"
 			  	"bonus_attack_speed"      "30 50 70"
 			}
-			"04"
+			"03"
 			{
 			  	"var_type"    "FIELD_INTEGER"
 			  	"bonus_attack_speed_scepter"      "60 100 140"
 				"RequiresScepter"		"1"
 			}
-			"05"
+			"04"
 			{
 			  	"var_type"        "FIELD_FLOAT"
 			  	"duration"    		"7"
 			}
-			"06"
+			"05"
 			{
 			  	"var_type"        "FIELD_FLOAT"
 			  	"hit_width"      "120"
 			}
-			"07"
+			"06"
 			{
 			  	"var_type"        "FIELD_FLOAT"
 			  	"distance"      "450"
 			}   
-			"08"
+			"07"
 			{
 			  	"var_type"        "FIELD_INTEGER"
 			  	"speed"      "850"
 			}  
-			"09"
+			"08"
 			{
 			  	"var_type"        "FIELD_FLOAT"
 			  	"enemy_knockback_distance"      "250"
 			}   
-			"10"
+			"09"
 			{
 			  	"var_type"        "FIELD_INTEGER"
 			  	"enemy_knockback_speed"      "500"
 			} 
-			"11"
+			"10"
 			{
 			  	"var_type"    "FIELD_INTEGER"
 			  	"manacost_scepter"      "100 140 180"
@@ -26765,6 +26760,153 @@
 			  "radius"      "275"
 			} 
 		}
+	}
+	
+	"walking_dead_rot_curse"
+	{
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_PURE" 
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+		"BaseClass"         "ability_lua"
+		"AbilityTextureName"        "custom/archmage_shooting_star"
+		"ScriptFile"          "heroes/WalkingDead/walking_dead_rot_curse.lua"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+	
+		"AbilityCastRange"        "700"
+		"AbilityCastPoint"        "0.3"
+	
+		"AbilityCooldown"       "23 18 13"       
+	
+		"AbilityManaCost"       "50 75 100"
+	
+		"precache"
+		{
+			"soundfile"   "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+			"particle"    "particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
+			"particle"    "particles/visage_soul_overhead.vpcf"
+		}
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"health_steal_per_second"  "40 60 80"
+			}
+			"02"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"damage_per_second" "20 40 60"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"radius"  			"200"
+			}
+			"04"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"duration"  			"7"
+			}
+		}
+	}
+	
+	"walking_dead_vitality"
+	{
+	    "BaseClass"                 "ability_lua"
+	    "ScriptFile"                "heroes\WalkingDead\walking_dead_vitality.lua"
+	
+	    "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
+	    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"        "custom/akron_immolation"
+	    
+	    "MaxLevel"                  "3"
+	    "RequiredLevel"             "2"
+	    "LevelsBetweenUpgrades"     "2"
+	
+	    "precache"
+	    {
+	        "particle"  "particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient.vpcf"
+	    }
+	  
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                          "FIELD_INTEGER"
+	            "incoming_damage_reduction"         "10 15 20"
+	        }
+	        "02"
+	        {
+	            "var_type"                          "FIELD_INTEGER"
+	            "health_regen_per_charge"           "2 4 6"
+	        }
+	        "03"
+	        { 
+	            "var_type"                          "FIELD_INTEGER"
+	            "charge_duration"                    "5"
+	        }
+	    }
+	}  
+	
+	"walking_dead_ultimate"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\WalkingDead\walking_dead_ultimate.lua"
+	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+		"AbilityTextureName"     "earthshaker_enchant_totem"
+	
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"AbilityCastPoint"       "0.8"
+		// "AnimationPlaybackRate"  "2"
+	
+		"AbilityCooldown"        "90"
+		"AbilityManaCost"        "75 100 125"
+	
+		"precache"
+		{
+			"particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
+			"particle"  "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_egset.vpcf"
+			"particle"  "particles/custom/tauren_champion/modifier_tauren_champion_accumulated_rage_damage.vpcf"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"bonus_base_strength"      "30 40 50"
+			}
+			"02"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"heal_to_damage_percentage"     "40 50 60"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"radius"      "350"
+			}
+			"04"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"duration"      "10"
+			}
+		} 
 	}
 	//End of file npc_lia_hero_walking_dead.txt
 
