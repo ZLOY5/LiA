@@ -366,6 +366,17 @@ function Survival:OnPlayerChat(event)
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             PlayerResource:ModifyGold(hero:GetPlayerID() ,50000, false, DOTA_ModifyGold_Unspecified)
         end
+
+        if event.text == "cd" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            hero:AddNewModifier(nil, nil, "modifier_test_no_cooldown", nil)
+        end
+
+        if event.text == "dmg" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            ApplyDamage({ victim = hero, attacker = hero, damage = 500, damage_type = DAMAGE_TYPE_PURE, ability = nil })
+        end
+
     end
     
 

@@ -1,22 +1,21 @@
-modifier_dummy_passive = class({})
+modifier_dummy_passive_nofly = class({})
 
 --------------------------------------------------------------------------------
 
-function modifier_dummy_passive:IsHidden()
+function modifier_dummy_passive_nofly:IsHidden()
 	return true
 end
 
 --------------------------------------------------------------------------------
 
-function modifier_dummy_passive:IsPurgable()
+function modifier_dummy_passive_nofly:IsPurgable()
 	return false
 end
 
 --------------------------------------------------------------------------------
 
-function modifier_dummy_passive:CheckState()
+function modifier_dummy_passive_nofly:CheckState()
 	local state = {
-		[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
 		[MODIFIER_STATE_NO_TEAM_MOVE_TO] = true,
 		[MODIFIER_STATE_NO_TEAM_SELECT] = true,
 		[MODIFIER_STATE_COMMAND_RESTRICTED] = true,
@@ -26,8 +25,8 @@ function modifier_dummy_passive:CheckState()
 		[MODIFIER_STATE_UNSELECTABLE] = true,
 		[MODIFIER_STATE_OUT_OF_GAME] = true,
 		[MODIFIER_STATE_NO_HEALTH_BAR] = true,
-		[MODIFIER_STATE_FLYING] = true,
 	}
 
 	return state
 end
+

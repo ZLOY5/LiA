@@ -15,7 +15,7 @@
 	"RequiredLevel"          "1"
 	"LevelsBetweenUpgrades"  "2"
 
-	"AbilityCastRange" "400"
+	"AbilityCastRange" "275"
 
 	"AbilityCastPoint"        "0.3"
 
@@ -25,10 +25,9 @@
 
 	"precache"
 	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"	
-		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
-		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"	  
-		"particle"  	"particles/custom/treant/treant_take_root_self.vpcf"    
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"	
+		"particle"		"particles/custom/walking_dead/walking_dead_decay_recipient.vpcf"
+		"particle"		"particles/custom/walking_dead/walking_dead_decay.vpcf"	   
 	}
 
 	"AbilitySpecial"
@@ -51,18 +50,28 @@
 		"04"
 		{
 		  "var_type"      "FIELD_INTEGER"
-		  "health_regeneration"    "30 50 70"
+		  "active_regeneration_reduction_percentage"    "-100"
 		}
 		"05"
+		{
+		  "var_type"      "FIELD_INTEGER"
+		  "health_regeneration"    "30 50 70"
+		}
+		"06"
 		{
 		  "var_type"      "FIELD_FLOAT"
 		  "regeneration_duration"  "6"
 		}
-		"06"
+		"07"
 		{
 		  "var_type"      "FIELD_INTEGER"
 		  "radius"      "275"
 		} 
+		"08"
+		{
+		  "var_type"      "FIELD_FLOAT"
+		  "tick_interval"  "0.25"
+		}
 	}
 }
 
@@ -74,7 +83,7 @@
 	"AbilityUnitDamageType"     "DAMAGE_TYPE_PURE" 
 	"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
 	"BaseClass"         "ability_lua"
-	"AbilityTextureName"        "custom/archmage_shooting_star"
+	"AbilityTextureName"        "undying_soul_rip"
 	"ScriptFile"          "heroes/WalkingDead/walking_dead_rot_curse.lua"
 
 	"MaxLevel"               "3"
@@ -87,13 +96,14 @@
 
 	"AbilityCooldown"       "23 18 13"       
 
-	"AbilityManaCost"       "50 75 100"
+	"AbilityManaCost"       "60 80 100"
 
 	"precache"
 	{
-		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
-		"particle"    "particles/econ/items/mirana/mirana_starstorm_bow/mirana_starstorm_starfall_attack.vpcf"
-		"particle"    "particles/visage_soul_overhead.vpcf"
+		"soundfile"   	"soundevents/game_sounds_heroes/game_sounds_undying.vsndevts"
+		"particle"    	"particles/units/heroes/hero_undying/undying_soul_rip_heal.vpcf"
+		"particle"    	"particles/units/heroes/hero_undying/undying_decay.vpcf"
+		"particle"  	"particles/custom/walking_dead/walking_dead_rot_curse_overhead_model.vpcf"
 	}
 
 	// Special
@@ -120,6 +130,16 @@
 			"var_type"        "FIELD_FLOAT"
 			"duration"  			"7"
 		}
+		"05"
+		{
+		  	"var_type"      "FIELD_FLOAT"
+		  	"tick_interval"  "1"
+		}
+		"06"
+		{
+			"var_type"        "FIELD_INTEGER"
+			"break_distance"  			"800"
+		}
 	}
 }
 
@@ -130,7 +150,7 @@
 
     "AbilityType"               "DOTA_ABILITY_TYPE_BASIC"
     "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"        "custom/akron_immolation"
+    "AbilityTextureName"        "undying_tombstone"
     
     "MaxLevel"                  "3"
     "RequiredLevel"             "2"
@@ -146,7 +166,7 @@
         "01"
         {
             "var_type"                          "FIELD_INTEGER"
-            "incoming_damage_reduction"         "10 15 20"
+            "incoming_damage_reduction"         "-10 -15 -20"
         }
         "02"
         {
@@ -161,14 +181,14 @@
     }
 }  
 
-"walking_dead_ultimate"
+"walking_dead_cemetery_power"
 {
 	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes\WalkingDead\walking_dead_ultimate.lua"
+	"ScriptFile"       "heroes\WalkingDead\walking_dead_cemetery_power.lua"
 
 	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
-	"AbilityTextureName"     "earthshaker_enchant_totem"
+	"AbilityTextureName"     "undying_flesh_golem"
 
 	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
 	"MaxLevel"               "3"
@@ -183,8 +203,8 @@
 
 	"precache"
 	{
-		"particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
-		"particle"  "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_egset.vpcf"
+		"particle"  "particles/units/heroes/hero_undying/undying_fg_aura2.vpcf"
+		"particle"  "particles/units/heroes/hero_undying/undying_decay_strength_xfer.vpcf"
 		"particle"  "particles/custom/tauren_champion/modifier_tauren_champion_accumulated_rage_damage.vpcf"
 	}
 

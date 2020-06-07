@@ -4,7 +4,7 @@ function Discharge( event )
 	local target = event.target
 	local targets = event.target_entities
 	local air_time = ability:GetSpecialValueFor("air_time") + 0.01
-	local emp_effect = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_emp.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	local emp_effect = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_emp.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster)
 	for _,v in pairs(targets) do
 		if v:GetTeamNumber() ~= caster:GetTeamNumber() then
 			local dmg = ability:GetLevelSpecialValueFor("damage", ability:GetLevel() - 1 )

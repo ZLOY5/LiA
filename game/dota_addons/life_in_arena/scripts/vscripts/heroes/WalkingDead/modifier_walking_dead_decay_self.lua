@@ -8,21 +8,50 @@ function modifier_walking_dead_decay_self:IsPurgable()
 	return false
 end
 
+function modifier_walking_dead_decay_self:IsAura()
+	return true
+end
+
+function modifier_walking_dead_decay_self:GetModifierAura()
+	return "modifier_walking_dead_decay_debuff"
+end
+
+function modifier_walking_dead_decay_self:GetAuraSearchTeam()
+	return DOTA_UNIT_TARGET_TEAM_ENEMY
+end
+
+function modifier_walking_dead_decay_self:GetAuraSearchType()
+	return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP
+end
+
+function modifier_walking_dead_decay_self:GetAuraSearchFlags()
+	return DOTA_UNIT_TARGET_FLAG_NONE
+end
+
+function modifier_walking_dead_decay_self:GetAuraRadius()
+	return self.radius
+end
+
+
 function modifier_walking_dead_decay_self:OnCreated(kv)
 	self.caster = self:GetCaster()	
-	self.health_regeneration = self:GetAbility():GetSpecialValueFor("health_regeneration")
-	self.tick = 1
+	self.radius = self:GetAbility():GetSpecialValueFor("radius")
+	self.tick_interval = self:GetAbility():GetSpecialValueFor("tick_interval")
+	self.active_regeneration_reduction_percentage = self:GetAbility():GetSpecialValueFor("active_regeneration_reduction_percentage")
+	self.damage_per_second = self:GetAbility():GetSpecialValueFor("damage_per_second")
 	if IsServer() then
-		self:StartIntervalThink(self.tick)
+		self:StartIntervalThink(self.tick_interval)
 	end
 end
 
-function modifier_walking_dead_decay_self:OnRefresh(kv)	
-	self.health_regeneration = self:GetAbility():GetSpecialValueFor("health_regeneration")
+function modifier_walking_dead_decay_self:OnDestroy()
+	if self:GetAbility():GetToggleState() then
+		self:GetAbility():ToggleAbility()
+	end
 end
  
 function modifier_walking_dead_decay_self:GetEffectName()
-	return "particles/custom/treant/treant_take_root_self.vpcf"	
+	return "particles/custom/walking_dead/walking_dead_decay.vpcf"	
 end
 
 function modifier_walking_dead_decay_self:GetEffectAttachType()
@@ -31,31 +60,31 @@ end
 
 function modifier_walking_dead_decay_self:OnIntervalThink()
 	if IsServer() then
-		if self.caster:GetMana() >= self.manaCost then
-			self.caster:SpendMana( self.manaCost, self:GetAbility())
-		else
-			self:GetAbility():ToggleAbility()
-		end	
+		local targets = FindUnitsInRadius(self.caster:GetTeamNumber(), 
+											self:GetParent():GetAbsOrigin(), 
+											nil, self.radius, 
+											DOTA_UNIT_TARGET_TEAM_ENEMY, 
+											DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP, 
+											DOTA_UNIT_TARGET_FLAG_NONE, 
+											FIND_ANY_ORDER, 
+											false)
+
+		for k,v in pairs (targets) do
+			ApplyDamage({ victim = v, attacker = self:GetCaster(), damage = self.damage_per_second, damage_type = DAMAGE_TYPE_MAGICAL, ability = self:GetAbility() })
+		end 
+		ApplyDamage({ victim = self:GetParent(), attacker = self:GetCaster(), damage = self.damage_per_second, damage_type = DAMAGE_TYPE_MAGICAL, ability = self:GetAbility() })
 	end
-end
-
-function modifier_walking_dead_decay_self:CheckState()
-	local state = {
-		[MODIFIER_STATE_ROOTED] = true,
-	}
-
-	return state
 end
 
 function modifier_walking_dead_decay_self:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT,
+		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
 	}
  
 	return funcs
 
 end
 
-function modifier_walking_dead_decay_self:GetModifierConstantHealthRegen()
-	return self.health_regeneration
+function modifier_walking_dead_decay_self:GetModifierHPRegenAmplify_Percentage()
+	return self.active_regeneration_reduction_percentage
 end

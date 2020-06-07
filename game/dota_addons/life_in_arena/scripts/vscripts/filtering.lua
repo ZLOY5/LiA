@@ -318,3 +318,12 @@ function GetSmallSplashDamage( unit ) --QFact in war3
 	
 	return 0
 end
+
+
+function LiA:FilterHealing( filterTable )
+	-- for k, v in pairs( filterTable ) do
+	-- 	print("Heal: " .. k .. " " .. tostring(v) )
+	-- end
+
+	return true
+end
