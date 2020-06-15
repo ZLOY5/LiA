@@ -9,12 +9,40 @@ function modifier_minotaur_fear_effect:IsPurgable()
 	return false
 end
 
-function modifier_minotaur_fear_effect:OnCreated(kv)
-	self.penalty_armor = self:GetAbility():GetSpecialValueFor("penalty_armor")
+if IsServer() then
+	function modifier_minotaur_fear_effect:OnCreated(kv)
+	
+		self.base_armor_reduction = self:GetAbility():GetSpecialValueFor("base_armor_reduction")
+		self.armor_reduction_per_spirit = self:GetAbility():GetSpecialValueFor("armor_reduction_per_spirit")
+		self.illusion_multiplier = 0
+		self.additional_armor_reduction = 0
+		if self:GetCaster().guardian_spirits ~= nil and not self:GetCaster():IsIllusion() then
+			print("In Fear Created Illusion count", #self:GetCaster().guardian_spirits)
+			self.armor_reduction = self.base_armor_reduction + self.armor_reduction_per_spirit * #self:GetCaster().guardian_spirits
+		else
+			print("In Fear Created Illusion count without spirits", 0)
+			self.additional_armor_reduction = self.base_armor_reduction
+		end
+		self:SetStackCount(self.additional_armor_reduction)
+	end	
 end
 
-function modifier_minotaur_fear_effect:OnRefresh(kv)
-	self.penalty_armor = self:GetAbility():GetSpecialValueFor("penalty_armor")
+if IsServer() then
+	function modifier_minotaur_fear_effect:OnRefresh(kv)
+	
+		self.base_armor_reduction = self:GetAbility():GetSpecialValueFor("base_armor_reduction")
+		self.armor_reduction_per_spirit = self:GetAbility():GetSpecialValueFor("armor_reduction_per_spirit")
+		self.illusion_multiplier = 0
+		self.additional_armor_reduction = 0
+		if self:GetCaster().guardian_spirits ~= nil and not self:GetCaster():IsIllusion() then
+			print("In Fear Created Illusion count", #self:GetCaster().guardian_spirits)
+			self.armor_reduction = self.base_armor_reduction + self.armor_reduction_per_spirit * #self:GetCaster().guardian_spirits
+		else
+			print("In Fear Created Illusion count without spirits", 0)
+			self.additional_armor_reduction = self.base_armor_reduction
+		end
+		self:SetStackCount(self.additional_armor_reduction)
+	end	
 end
 
 function modifier_minotaur_fear_effect:DeclareFunctions()
@@ -26,10 +54,16 @@ function modifier_minotaur_fear_effect:DeclareFunctions()
 end
 
 function modifier_minotaur_fear_effect:GetModifierPhysicalArmorBonus()
-	if self:GetCaster():PassivesDisabled() then
-		return 0
-	end
-
-	return self.penalty_armor
+		if self:GetCaster():PassivesDisabled() then
+			return 0
+		end
+		-- if IsServer() then
+		-- 	if self:GetCaster().guardian_spirits ~= nil and not self:GetCaster():IsIllusion() then
+		-- 		print("In Fear", self.additional_armor_reduction)
+		-- 		return self.base_armor_reduction + self.additional_armor_reduction
+		-- 	end
+		-- end
+		--print("In Fear Modifier Armor", self.additional_armor_reduction)
+		return self:GetStackCount()
 end
 
