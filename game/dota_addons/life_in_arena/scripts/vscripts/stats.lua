@@ -1,6 +1,6 @@
 Stats = Stats or {}
 
-Stats.host = IsInToolsMode() and "http://localhost:3000" or "http://ec2-18-157-62-204.eu-central-1.compute.amazonaws.com"
+Stats.host = IsInToolsMode() and "http://localhost:3000" or "http://lifeinarena-env1.eba-cep35ffb.eu-central-1.elasticbeanstalk.com/"
 Stats.version = "v1"
 
 

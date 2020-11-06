@@ -12,15 +12,6 @@ function modifier_minotaur_guardian_spirits:IsPurgable()
 	return false
 end
 
-function modifier_minotaur_guardian_spirits:OnOwnerSpawned()
-	if IsServer() then
-		self.caster.guardian_spirits = {}
-
-		print("OnOwnerSpawned", #self.caster.guardian_spirits)
-	end
-end
---------------------------------------------------------------------------------
-
 function modifier_minotaur_guardian_spirits:OnCreated(kv)
 	self.ability = self:GetAbility()
 	self.caster = self.ability:GetCaster()
@@ -28,8 +19,8 @@ function modifier_minotaur_guardian_spirits:OnCreated(kv)
 
 	self.images_count = self.ability:GetSpecialValueFor("images_count")
 	self.duration = self.ability:GetSpecialValueFor("illusion_duration")
-	self.outgoing_damage_percentage = 100 - self.ability:GetSpecialValueFor("outgoing_damage_percentage")
-	self.incoming_damage_percentage = 100 - self.ability:GetSpecialValueFor("incoming_damage_percentage")
+	self.outgoing_damage_percentage = self.ability:GetSpecialValueFor("outgoing_damage_percentage") - 100
+	self.incoming_damage_percentage = self.ability:GetSpecialValueFor("incoming_damage_percentage") - 100
 end
 
 function modifier_minotaur_guardian_spirits:OnDestroy()
@@ -42,6 +33,7 @@ function modifier_minotaur_guardian_spirits:OnDestroy()
 			self.caster.guardian_spirits = {}
 		end
 
+		print("SPIRITS COUNT ON CAST: ", #self.caster.guardian_spirits)
 		-- Kill the old images
 		for k,v in pairs(self.caster.guardian_spirits) do
 			if v and IsValidEntity(v) then 
@@ -49,7 +41,8 @@ function modifier_minotaur_guardian_spirits:OnDestroy()
 			end
 		end
 
-		-- Start a clean illusion table
+		-- -- Start a clean illusion table
+		-- self.caster.guardian_spirits = {}
 		
 
 		-- Setup a table of potential spawn positions
@@ -77,12 +70,16 @@ function modifier_minotaur_guardian_spirits:OnDestroy()
 			local origin = self.caster_origin + table.remove( self.vRandomSpawnPos, 1 )
 
 			-- handle_UnitOwner needs to be nil, else it will crash the game.
-			local illusion = CreateIllusion(self.caster,self.caster,origin,self.duration,self.outgoing_damage_percentage,self.incoming_damage_percentage)
+			local illusion = CreateIllusion_CustomModifier(self.caster,self.caster,origin,self.duration,self.outgoing_damage_percentage,self.incoming_damage_percentage, "modifier_minotaur_guardian_spirits_status_effect")
 
 			-- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
 			table.insert(self.caster.guardian_spirits, illusion)
 
+			-- illusion:AddNewModifier(self.caster, self.ability, "modifier_minotaur_guardian_spirits_status_effect", nil)
+
+
 		end
+		
 	end
 end
 
@@ -99,9 +96,10 @@ function modifier_minotaur_guardian_spirits:CheckState()
 end
 
 function modifier_minotaur_guardian_spirits:GetEffectName()
-	return "particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
+	return "particles/custom/tauren_chieftain/tauren_chieftain_guardian_spirit.vpcf"
 end
 
 function modifier_minotaur_guardian_spirits:GetEffectAttachType()
 	return PATTACH_ABSORIGIN_FOLLOW
 end
+

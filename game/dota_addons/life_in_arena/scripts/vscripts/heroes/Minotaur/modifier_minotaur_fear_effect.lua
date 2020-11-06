@@ -1,6 +1,7 @@
 
 modifier_minotaur_fear_effect = class({})
 
+
 function modifier_minotaur_fear_effect:IsHidden()
 	return false
 end
@@ -17,10 +18,8 @@ if IsServer() then
 		self.illusion_multiplier = 0
 		self.additional_armor_reduction = 0
 		if self:GetCaster().guardian_spirits ~= nil and not self:GetCaster():IsIllusion() then
-			print("In Fear Created Illusion count", #self:GetCaster().guardian_spirits)
-			self.armor_reduction = self.base_armor_reduction + self.armor_reduction_per_spirit * #self:GetCaster().guardian_spirits
+			self.additional_armor_reduction = self.base_armor_reduction + self.armor_reduction_per_spirit * #self:GetCaster().guardian_spirits
 		else
-			print("In Fear Created Illusion count without spirits", 0)
 			self.additional_armor_reduction = self.base_armor_reduction
 		end
 		self:SetStackCount(self.additional_armor_reduction)
@@ -34,11 +33,9 @@ if IsServer() then
 		self.armor_reduction_per_spirit = self:GetAbility():GetSpecialValueFor("armor_reduction_per_spirit")
 		self.illusion_multiplier = 0
 		self.additional_armor_reduction = 0
-		if self:GetCaster().guardian_spirits ~= nil and not self:GetCaster():IsIllusion() then
-			print("In Fear Created Illusion count", #self:GetCaster().guardian_spirits)
-			self.armor_reduction = self.base_armor_reduction + self.armor_reduction_per_spirit * #self:GetCaster().guardian_spirits
+		if self:GetCaster().guardian_spirits ~= nil then
+			self.additional_armor_reduction = self.base_armor_reduction + self.armor_reduction_per_spirit * #self:GetCaster().guardian_spirits
 		else
-			print("In Fear Created Illusion count without spirits", 0)
 			self.additional_armor_reduction = self.base_armor_reduction
 		end
 		self:SetStackCount(self.additional_armor_reduction)
@@ -57,13 +54,7 @@ function modifier_minotaur_fear_effect:GetModifierPhysicalArmorBonus()
 		if self:GetCaster():PassivesDisabled() then
 			return 0
 		end
-		-- if IsServer() then
-		-- 	if self:GetCaster().guardian_spirits ~= nil and not self:GetCaster():IsIllusion() then
-		-- 		print("In Fear", self.additional_armor_reduction)
-		-- 		return self.base_armor_reduction + self.additional_armor_reduction
-		-- 	end
-		-- end
-		--print("In Fear Modifier Armor", self.additional_armor_reduction)
+
 		return self:GetStackCount()
 end
 

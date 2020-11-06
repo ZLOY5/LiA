@@ -8,6 +8,11 @@ function modifier_minotaur_fear_aura:IsPurgable()
 	return false
 end
 
+
+function modifier_minotaur_fear_aura:AllowIllusionDuplicate()
+	return false
+end
+
 --------------------------------------------------------------------------------
 
 function modifier_minotaur_fear_aura:IsAura()
