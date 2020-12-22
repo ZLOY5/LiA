@@ -118,6 +118,7 @@ function Survival:InitSurvival()
     GameMode:SetModifyGoldFilter(Dynamic_Wrap(Survival, "GoldFilter"), self)
     GameMode:SetExecuteOrderFilter(Dynamic_Wrap(Survival, "OrderFilter"), self)
     GameMode:SetItemAddedToInventoryFilter(Dynamic_Wrap(Survival, "ItemAddFilter"), self)
+    GameMode:SetTPScrollSlotItemOverride("item_lia_healing_ward")
 
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
@@ -183,17 +184,6 @@ function Survival:OrderFilter(filterTable)
         return false
     end
 
-    if filterTable.order_type == DOTA_UNIT_ORDER_CAST_POSITION then
-        local ability = EntIndexToHScript(filterTable.entindex_ability)
-        local unit = EntIndexToHScript(filterTable.units["0"])
-
-        if unit and ability and ability:GetAbilityName() == "item_lia_healing_ward" then
-            local castPoint = Vector(filterTable.position_x, filterTable.position_y, filterTable.position_z)
-            unit:CastAbilityOnPosition(castPoint, ability, filterTable.issuer_player_id_const)
-            return false
-        end
-    end
-
     if filterTable.order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
 
 
@@ -223,24 +213,6 @@ function Survival:OrderFilter(filterTable)
                 return false
             end
         end
-
-        if itemName == "item_lia_healing_ward" then
-            if item:GetItemSlot() >= DOTA_ITEM_STASH_MIN and item:GetItemSlot() < DOTA_ITEM_STASH_MAX then
-                if filterTable.entindex_target >= DOTA_ITEM_STASH_MIN and filterTable.entindex_target < DOTA_ITEM_STASH_MAX then --from stash to stash
-                    return true
-                else
-                    if not hero:IsInRangeOfShop(DOTA_SHOP_HOME, true) then
-                        return false
-                    end
-                end
-            end
-
-            hero:TakeItem(item)
-            hero:AddItem(item)
-            return false
-        end
-
-
     end
 
     if filterTable.order_type == DOTA_UNIT_ORDER_PICKUP_ITEM  then
@@ -286,11 +258,6 @@ function Survival:ItemAddFilter(filterTable)
                 end
             end
         end
-    end
-
-    if itemName == "item_lia_healing_ward" and (hero:IsInRangeOfShop(DOTA_SHOP_HOME, true) or filterTable.item_parent_entindex_const == -1) then
-        filterTable.suggested_slot = 15
-        item:SetCanBeUsedOutOfInventory(true)
     end
 
     return true
