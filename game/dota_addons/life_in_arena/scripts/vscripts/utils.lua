@@ -219,7 +219,7 @@ function CreateIllusion(target,caster,origin,duration,outgoing_damage,incoming_d
 		illusion:SetBaseAgility(target:GetBaseAgility())
 		illusion:SetBaseIntellect(target:GetBaseIntellect())
 		illusion:SetBaseStrength(target:GetBaseStrength())
-		illusion:CalculateStatBonus()
+		illusion:CalculateStatBonus(true)
 	end
 
 	if target:HasModifier("modifier_metamorphosis") then
@@ -292,7 +292,7 @@ function CreateIllusion_CustomModifier(target,caster,origin,duration,outgoing_da
 		illusion:SetBaseAgility(target:GetBaseAgility())
 		illusion:SetBaseIntellect(target:GetBaseIntellect())
 		illusion:SetBaseStrength(target:GetBaseStrength())
-		illusion:CalculateStatBonus()
+		illusion:CalculateStatBonus(true)
 	end
 
 	if target:HasModifier("modifier_metamorphosis") then

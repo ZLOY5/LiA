@@ -10,7 +10,7 @@ function remove_agi(event)
 	caster.curr_agi = caster.curr_agi - target.bonus_agi
 	
 	caster:ModifyAgility(-target.bonus_agi)
-	caster:CalculateStatBonus()
+	caster:CalculateStatBonus(true)
 	--
 	--if caster.count_ill then
 --	caster.count_ill = caster.count_ill -1

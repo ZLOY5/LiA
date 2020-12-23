@@ -8,7 +8,7 @@ function AddIntellect(keys)
 	ability.currentStacks = ability.currentStacks+1
 
 	caster:ModifyIntellect(1)
-	caster:CalculateStatBonus()
+	caster:CalculateStatBonus(true)
 
 	caster:SetModifierStackCount("modifier_time_lord_wisdom_flow", ability, ability.currentStacks)
 end 

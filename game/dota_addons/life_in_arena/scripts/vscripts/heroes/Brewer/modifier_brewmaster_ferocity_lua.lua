@@ -42,7 +42,7 @@ function modifier_brewmaster_ferocity_lua:OnIntervalThink(event)
 		self.bonus_strength = self.bonus_strength_per_unit * (#units-1) -- отнимаем 1 чтобы исключить самого героя	
 	
 		self:GetParent():ModifyStrength(self.bonus_strength - previous_bonus_strength) 
-		self:GetParent():CalculateStatBonus()
+		self:GetParent():CalculateStatBonus(true)
 
 		self:SetStackCount(self.bonus_strength)
 		--self:ForceRefresh()

@@ -64,7 +64,7 @@ function modifier_shaman_resourcefulness:OnDeath(params)
 				ability.agility_stack = ability.agility_stack + 1
 				ability.kill_stack = 0
 				self:GetParent():ModifyAgility(1) -- для того чтобы добавленная ловкость была "белая"
-				self:GetParent():CalculateStatBonus()
+				self:GetParent():CalculateStatBonus(true)
 				self:SetStackCount(ability.agility_stack)
 			end
 		end

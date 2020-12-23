@@ -60,7 +60,7 @@ function AddModifier(keys)
 				end
 				caster.curr_agi = caster.curr_agi + bonus_agi
 				caster:ModifyAgility(bonus_agi)
-				caster:CalculateStatBonus()
+				caster:CalculateStatBonus(true)
 				illus.bonus_agi = bonus_agi -- чтобы каждый крип знал сколько он добавил ловки герою
 				ability2:ApplyDataDrivenModifier(caster, illus, "modifier_illusionist_agility_paws", {})
 			end

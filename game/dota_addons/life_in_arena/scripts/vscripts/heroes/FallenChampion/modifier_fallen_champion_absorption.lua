@@ -58,7 +58,7 @@ function modifier_fallen_champion_absorption:OnDeath(params)
 				self:GetParent():ModifyStrength(val)
 				--print("ModifyStrength(val)=",val)
 				self:SetStackCount(ability.str_stack)
-				self:GetParent():CalculateStatBonus()
+				self:GetParent():CalculateStatBonus(true)
 			else
 				ability.kill_stack = ability.kill_stack + 1
 				--print("ability.kill_stack=",ability.kill_stack)
@@ -68,7 +68,7 @@ function modifier_fallen_champion_absorption:OnDeath(params)
 					self:GetParent():ModifyStrength(1) -- для того чтобы добавленная ловкость была "белая"
 					--print("ModifyStrength(1)")
 					self:SetStackCount(ability.str_stack)
-					self:GetParent():CalculateStatBonus()
+					self:GetParent():CalculateStatBonus(true)
 				end
 				--
 			end

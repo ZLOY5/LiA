@@ -53,7 +53,7 @@ VerticalScrollBar
 
 #ToastManager > .ToastPanel
 {
-	opacity: 0.0;
+	opacity: 0;
 	transform: translateX( -40px );
 
 	transition-property: opacity, transform;
@@ -139,7 +139,7 @@ VerticalScrollBar
     font-weight: bold;
 	text-shadow: 2px 2px 0px 1 black;
 	vertical-align: center;
-    padding-top: -9px;
+    padding-top: 4px;
 	height: 30px;
     padding-left: 18px;
     padding-right: 0px;
@@ -156,9 +156,9 @@ VerticalScrollBar
 {
 	width: 20px;
 	height: 20px;
-	margin-left: 2px;
-	margin-right: 2px;
-	transform: translateY( 14px );
+	margin-left: 3px;
+	margin-right: 3px;
+	//transform: translateY( 14px );
 	background-image: url("s2r://panorama/images/hud/icon_gold_psd.vtex");
 	background-size: 100%;
 }
@@ -167,9 +167,9 @@ VerticalScrollBar
 {
 	width: 20px;
 	height: 20px;
-	margin-left: 2px;
-	margin-right: 2px;
-	transform: translateY( 14px );
+	margin-left: 3px;
+	margin-right: 3px;
+	//transform: translateY( 14px );
 	background-image: url( "file://{images}/custom_game/lumber.png" );
 	background-size: 100%;
 }
@@ -180,7 +180,7 @@ VerticalScrollBar
 	height: 30px;
 	margin-left: 2px;
 	margin-right: 2px;
-	transform: translateY( 9px );
+	transform: translateY( -2px );
 	background-image: url("s2r://panorama/images/hud/icon_kill_enemy_psd.vtex");
 	background-size: 100%;
 }
@@ -204,7 +204,7 @@ VerticalScrollBar
     vertical-align: center;
     padding-bottom: 3px;
     margin-right: 4px;
-    transform: translateY( 11px );
+    //transform: translateY( 11px );
 }
 
 .DuelDrawIcon
@@ -213,7 +213,7 @@ VerticalScrollBar
 	height: 30px;
 	margin-left: 2px;
 	margin-right: 2px;
-	transform: translateY( 9px );
+	transform: translateY( -2px );
 	background-image: url( "file://{images}/custom_game/toast_icon_duel_draw.png");
 	background-size: 100%;
 }
@@ -224,7 +224,7 @@ VerticalScrollBar
 	height: 30px;
 	margin-left: 2px;
 	margin-right: 2px;
-	transform: translateY( 9px );
+	transform: translateY( -2px );
 	background-image: url( "file://{images}/custom_game/toast_icon_trade.png");
 	background-size: 100%;
 }
@@ -235,7 +235,7 @@ VerticalScrollBar
 {
     width: 48px;
     height: 30px;
-	transform: translateY( 8px );
+	transform: translateY( -2px );
 	background-size: 100%;
 	background-image: url("s2r://panorama/images/hud/icon_suicide_enemy_psd.vtex");
 }
@@ -250,7 +250,7 @@ VerticalScrollBar
 	margin-top: 3px;
     width: 24px;
 	height: 24px;
-	transform: translateY( 10px );
+	transform: translateY( -2px );
 	margin-left: 2px;
 	margin-right: 2px;
 }
