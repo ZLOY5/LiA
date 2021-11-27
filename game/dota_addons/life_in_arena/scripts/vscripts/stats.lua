@@ -32,7 +32,7 @@ function Stats.MatchStart()
 	local url = "/api/matches/init"
 	local data = {}
 	data.version = Stats.version
-	data.matchid = tostring(GameRules:GetMatchID())
+	data.matchid = tostring(GameRules:Script_GetMatchID())
 	data.cheats = GameRules:IsCheatMode()
 	data.mode = Survival.IsExtreme and 2 or (Survival.IsLight and 0 or 1)
 
