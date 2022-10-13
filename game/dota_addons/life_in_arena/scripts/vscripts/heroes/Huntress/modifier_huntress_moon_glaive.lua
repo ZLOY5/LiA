@@ -34,7 +34,11 @@ end
 
 function modifier_huntress_moon_glaive:OnAttackLanded(params)
 	if IsServer() then
-		-- play sounds and stuff
+		
+        if self:GetParent():PassivesDisabled() then
+            return
+        end
+
 		if self:GetParent() == params.attacker then
 			if self:GetParent():PassivesDisabled() then
 				return
