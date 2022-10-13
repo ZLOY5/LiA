@@ -81,7 +81,7 @@ function moon_glaive_dummy_created( keys )
 		ability.maxBounces = unit_ability:GetLevelSpecialValueFor("bounces", unit_ability:GetLevel() - 1)
 		ability.bounceRange = unit_ability:GetLevelSpecialValueFor("range", unit_ability:GetLevel() - 1)
 		ability.dmgMultiplier = unit_ability:GetLevelSpecialValueFor("damage_reduction_percent", unit_ability:GetLevel() - 1) / 100
-
+		
 		ability.particle_name = particle_name
 		ability.projectile_speed = projectile_speed
 		--ability.particle_name, ability.projectile_speed = findProjectileInfo(caster:GetClassname())
