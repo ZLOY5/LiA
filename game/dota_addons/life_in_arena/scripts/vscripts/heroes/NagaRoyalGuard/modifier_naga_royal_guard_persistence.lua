@@ -28,17 +28,9 @@ function modifier_naga_royal_guard_persistence:DeclareFunctions()
 end
 
 function modifier_naga_royal_guard_persistence:GetModifierBonusStats_Strength()
-	if self:GetParent():PassivesDisabled() then
-		return 0
-	end
-
 	return self.bonus_strength
 end
 
 function modifier_naga_royal_guard_persistence:GetModifierPhysicalArmorBonus()
-	if self:GetParent():PassivesDisabled() then
-		return 0
-	end
-	
 	return self.bonus_armor
 end
