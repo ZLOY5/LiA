@@ -50,7 +50,7 @@ function modifier_huntress_moon_glaive:OnAttackLanded(params)
 											nil, self.range, 
 											DOTA_UNIT_TARGET_TEAM_ENEMY, 
 											DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-											DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 
+											DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NO_INVIS, 
                                             FIND_CLOSEST, false)
             for k,v in pairs(targets) do
                 if (v ~= hTarget) then
@@ -65,6 +65,7 @@ function modifier_huntress_moon_glaive:OnAttackLanded(params)
                             bounces = 1,
                             projectile = self.sProjectileName,
                             speed = self.iProjectileSpeed,
+                            damage = params.damage
                         }
                     }
     

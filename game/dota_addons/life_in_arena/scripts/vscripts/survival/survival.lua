@@ -78,7 +78,7 @@ function Survival:InitSurvival()
 	self.barrelExplosions = 0
     
     self.nPreFinalTime = 90
-	self.nPreRoundTime = 60
+	self.nPreRoundTime = 360
 	self.nPreDuelTime = 30
     self.nDuelTime = 120
 

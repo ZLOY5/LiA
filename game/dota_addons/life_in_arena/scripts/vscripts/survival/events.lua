@@ -377,6 +377,10 @@ function Survival:OnPlayerChat(event)
             ApplyDamage({ victim = hero, attacker = hero, damage = 500, damage_type = DAMAGE_TYPE_PURE, ability = nil })
         end
 
+        if event.text == "c" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            CreateUnitByName("1_wave_creep", Vector(-1770,  1177, 0) + RandomVector(RandomInt(-500, 500)), true, nil, nil, DOTA_TEAM_NEUTRALS)
+        end
     end
     
 

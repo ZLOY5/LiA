@@ -10,9 +10,8 @@ function huntress_moon_glaive:OnProjectileHit_ExtraData( hTarget, vLocation, Ext
         local damage_reduction_percentage = self:GetSpecialValueFor( "damage_reduction_percentage" )
         local range = self:GetSpecialValueFor( "range" )
         local max_bounces = self:GetSpecialValueFor( "bounces" )
-         
-        print(max_bounces)
-        print(ExtraData.bounces)
+        local damage_to_deal = ExtraData.damage * (1 - damage_reduction_percentage * 0.01) 
+        print(damage_to_deal)
 
         if ExtraData.bounces < max_bounces then
             local targets = FindUnitsInRadius(self:GetCaster():GetTeam(), 
@@ -20,7 +19,7 @@ function huntress_moon_glaive:OnProjectileHit_ExtraData( hTarget, vLocation, Ext
                                             nil, range, 
                                             DOTA_UNIT_TARGET_TEAM_ENEMY, 
                                             DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 
-                                            DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 
+                                            DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_NO_INVIS, 
                                             FIND_CLOSEST, false)
             for k,v in pairs(targets) do
                 if (v ~= hTarget) then
@@ -37,6 +36,7 @@ function huntress_moon_glaive:OnProjectileHit_ExtraData( hTarget, vLocation, Ext
                             bounces = ExtraData.bounces + 1,
                             projectile = ExtraData.projectile,
                             speed = ExtraData.speed,
+                            damage = damage_to_deal
                         }
                     }
 
@@ -49,7 +49,7 @@ function huntress_moon_glaive:OnProjectileHit_ExtraData( hTarget, vLocation, Ext
 		local damage = {
 			victim = hTarget,
 			attacker = self:GetCaster(),
-			damage = self:GetCaster():GetAttackDamage() * (1 - (damage_reduction_percentage * 0.01)) ^ (max_bounces - ExtraData.bounces),
+			damage = damage_to_deal,
 			damage_type = DAMAGE_TYPE_PHYSICAL,
 			ability = self
 		}
