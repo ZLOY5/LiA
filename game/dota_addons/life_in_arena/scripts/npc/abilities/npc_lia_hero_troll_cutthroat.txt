@@ -354,28 +354,21 @@
 
 "troll_cutthroat_battle_trance"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"			"troll_warlord_battle_trance"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"BaseClass"              "ability_lua"
+	"ScriptFile"       "heroes\TrollCutthroat\troll_cutthroat_battle_trance.lua"
+
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"     "troll_warlord_battle_trance"
+
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "5"
 	"LevelsBetweenUpgrades"  "4"
-
-	"AbilityCastPoint"				"0.0"
-
-	"AbilityCooldown"				"80"
-
-	"AbilityManaCost"				"170 200 230"	
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
-	}
 	
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"80"
+	"AbilityManaCost"				"170 200 230"
+
 	"AbilitySpecial"
 	{
 		"01"
@@ -398,54 +391,5 @@
 			"var_type"				"FIELD_FLOAT"
 			"duration"				"9 12 15"
 		}
-	}
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName" "modifier_troll_cutthroat_battle_trance"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"Duration"	"%duration"
-		}
-
-		
-	}
-	"Modifiers"
-	{
-		"modifier_troll_cutthroat_battle_trance"
-		{
-			"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
-			"EffectAttachType"  "follow_origin"
-
-			"OnCreated"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/TrollCutthroat/BattleTrance.lua"
-					"Function"		"EnableWhirl"
-				}
-			}
-
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/TrollCutthroat/BattleTrance.lua"
-					"Function"		"DisableWhirl"
-				}
-			}
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-			//	"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_reduction"
-			//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_strength"
-			}
-			
-		}
-	}
+	} 
 }
