@@ -11,7 +11,6 @@ function huntress_moon_glaive:OnProjectileHit_ExtraData( hTarget, vLocation, Ext
         local range = self:GetSpecialValueFor( "range" )
         local max_bounces = self:GetSpecialValueFor( "bounces" )
         local damage_to_deal = ExtraData.damage * (1 - damage_reduction_percentage * 0.01) 
-        print(damage_to_deal)
 
         if ExtraData.bounces < max_bounces then
             local targets = FindUnitsInRadius(self:GetCaster():GetTeam(), 
@@ -23,8 +22,6 @@ function huntress_moon_glaive:OnProjectileHit_ExtraData( hTarget, vLocation, Ext
                                             FIND_CLOSEST, false)
             for k,v in pairs(targets) do
                 if (v ~= hTarget) then
-
-                    print("bounce")
                     local info = {
                         EffectName = ExtraData.projectile,
                         Ability = self,
