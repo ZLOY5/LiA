@@ -1,3 +1,62 @@
+"huntress_curse_of_elune"
+{
+	"BaseClass"   "ability_lua"
+	"ScriptFile"    "heroes/Huntress/huntress_curse_of_elune.lua"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
+	"AbilityTextureName"			"luna_lucent_beam"
+
+	"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_1"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AoERadius"	"230"
+	
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.3"
+
+	"AbilityCooldown"				"15.0 14.0 13.0"
+	"AbilityManaCost"				"80 100 120"
+
+  	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage_initial"			"20 40 60"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage_per_second"		"10 20 30"
+		}
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage_hp_percentage_creeps"	"5 10 15"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_hp_percentage_heroes"	"2 4 6"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"			"230"
+		}
+		"06"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"	"4.0"
+		}
+	}
+}
+
 
 "huntress_moon_glaive"
 {
@@ -41,176 +100,11 @@
 }
 
 
-
-
-
-
-	"huntress_curse_of_elune"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
-		"AbilityTextureName"			"luna_lucent_beam"
-	
-		// Precache
-		//-------------------------------------------------------------------------------------------------------------
-
-
-		"precache"
-		{
-			//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
-			//"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
-			//"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher.vpcf"		
-					
-		}
-		
-		"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_1"
-		
-
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-	
-		"AoERadius"	"230"
-		
-		"AbilityCastRange"				"700"
-		"AbilityCastPoint"				"0.0"
-	
-		"AbilityCooldown"				"15.0 14.0 13.0"
-	
-		"AbilityManaCost"				"80 100 120"	
-	
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_inst"			"20 40 60"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_per_sec"		"10 20 30"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"	"4.0"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_proc_for_creeps"	"5 10 15"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_proc_for_heroes_and_mega"	"2 4 6"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"			"230"
-			}
-		}
-	
-		"OnSpellStart"
-		{
-	
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"	"POINT"
-					"Radius"	"%radius"
-					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-				
-				"Action"
-				{
-					"Damage"
-					{
-						"Type" "DAMAGE_TYPE_MAGICAL"
-						"Target"	"TARGET"
-						"Damage" "%damage_inst"
-					}
-					"ApplyModifier"
-					{
-						"ModifierName"	"huntress_curse_of_elune1"
-						"Target"	"TARGET"
-					}				
-				}
-			}
-	
-	
-		}
-	
-		"Modifiers"
-		{
-			"huntress_curse_of_elune1"
-			{
-				"IsDebuff"	"1"
-				"Duration"	"%duration"
-				"IsPurgable"	"1"
-				
-				"StatusEffectName" 		"particles/status_fx/status_effect_maledict.vpcf" 	   
-				"StatusEffectPriority"  "10"
-
-				"ThinkInterval" "1.00"
-				"OnIntervalThink"
-				{
-
-					//
-					"RunScript"
-	    				{
-				        	"ScriptFile"    "heroes/Huntress/CurseOfElune.lua"   //"1.lua"
-				        	"Function"      "SetDamageFromHuntress"
-						"Target" "TARGET"
-						"damage_per_sec" "%damage_per_sec"
-						"damage_proc_for_creeps" "%damage_proc_for_creeps"
-						"damage_proc_for_heroes_and_mega" "%damage_proc_for_heroes_and_mega"
-					}
-				}
-
-	       			"OnDeath"
-	       			{
-	        			"RemoveModifier"
-	         			{
-	           				"ModifierName"  "huntress_curse_of_elune1"
-	       	 				"Target" "TARGET"
-
-	         			}
-	       			}
-
-	
-			}
-		}
-
-
-
-	}	
-
-
-
-
-
-
-
-
-
-
-
-//power of the moon
-//
 "huntress_power_of_the_moon"
 {
-	"BaseClass"               "ability_datadriven"
+	"BaseClass"   "ability_lua"
+	"ScriptFile"    "heroes/Huntress/huntress_power_of_the_moon.lua"
+
 	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"      "luna_lunar_blessing"
 
@@ -218,128 +112,67 @@
 	"RequiredLevel"          "2"
 	"LevelsBetweenUpgrades"  "2"
 
-	"AbilitySpecial"
+  	"AbilitySpecial"
 	{
 		"01"
 		{
 			"var_type"      "FIELD_INTEGER"
-			"immun_magic"  	"10 20 30"
+			"bonus_magic_resistance_percentage"  	"10 20 30"
 		}
 		"02"
 		{
 			"var_type"      "FIELD_INTEGER"
-			"attackSpeed"  	"8 16 24"
+			"bonus_attack_speed"  	"8 16 24"
 		}
 		"03"
 		{
 			"var_type"      "FIELD_INTEGER"
-			"moveSpeed"  	"5 10 15"
+			"bonus_movement_speed_percentage"  	"5 10 15"
 		}
 		"04"
 		{
 			"var_type"      "FIELD_INTEGER"
-			"agility"  	"5 10 15"
+			"bonus_agility"  	"5 10 15"
 		}
 	}
-
-
-	"Modifiers"
-	{   
-		"power_of_the_moon"
-		{
-			"Passive"  "1"
-			"IsHidden"	"1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%immun_magic"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%moveSpeed"
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%agility"
-			}     
-		}
-	} 
 }
 
+"huntress_moon_rite"
+{
+	"BaseClass"   "ability_lua"
+	"ScriptFile"    "heroes/Huntress/huntress_moon_rite.lua"
 
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"     "luna_eclipse"
 
+	"AbilityCooldown" "90"
+	"AbilityManaCost" "100 125 150"
 
-
-"huntress_ritual"
-	 {
-	   // General
-	    //-------------------------------------------------------------------------------------------------------------
-	    "BaseClass"              "ability_datadriven"
-	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
-	    "AbilityTextureName"     "luna_eclipse"
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
 	
-	    "AbilityCooldown" "90"
-	    "AbilityManaCost" "100 125 150"
-	
-	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	    "MaxLevel"               "3"
-	    "RequiredLevel"          "5"
-	    "LevelsBetweenUpgrades"  "4"
-		
-	    "AbilityCastPoint"  "1"
-	    "AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_4"
-	    //"AnimationPlaybackRate"  "0.5"
-		
-		//"precache"
-		//{
-		//"particle"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
-		//"particle"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-		//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
-		//}
+	"AbilityCastPoint"  "0.5"
+	"AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_4"
 
-	  "AbilitySpecial"
-	  {
-	    "01"
+  	"AbilitySpecial"
+	{
+		"01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "attackSpeed"  	"40 80 120"
+	      "bonus_attack_speed"  	"40 80 120"
 	    }
 	    "02"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "attackDamage"  	"80 160 240"
+	      "bonus_damage"  	"80 160 240"
 	    }
 	    "03"
 	    {
 	      "var_type"      "FIELD_FLOAT"
 	      "duration"  	"9.0"
 	    }
-	  }
-
-	    "OnSpellStart"
-	    {
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_huntress_ritual"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}	
-	    }
-		
-		"Modifiers"
-		{
-			"modifier_huntress_ritual"
-			{
-				"Duration"	"%duration"
-				//"EffectName"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-				//"EffectAttachType"	"follow_origin"
-	
-				   "Properties"
-				  {
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
-					//
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%attackDamage"
-				  }
-	
-			}
-			
-		}
+	}
 }
+

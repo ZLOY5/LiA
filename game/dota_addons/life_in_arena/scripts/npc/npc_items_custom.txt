@@ -4268,7 +4268,7 @@
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"300"	
+		"ItemCost"						"265"	
 		"ItemShopTags"					"str;damage;hard_to_tag"
 	
 		"ItemKillable" 					"0" 
@@ -4280,7 +4280,7 @@
 		"ItemResult"					"item_lia_huge_axe"
 		"ItemRequirements"
 		{
-			"01"						"item_lia_axe;item_lia_claws;item_lia_claws"
+			"01"						"item_lia_axe;item_lia_claws;item_lia_orb_of_fire"
 		}
 	}
 	
@@ -5170,19 +5170,6 @@
 							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 						}  
 					}
-	
-					// Basic blood particle effect
-					"FireEffect"
-					{
-						"EffectName"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-						"EffectAttachType"	"start_at_customorigin"
-						
-						"ControlPointEntities"
-						{
-							"TARGET"	"follow_origin"
-							"TARGET"	"follow_origin"
-						}
-					}
 				}
 			}
 			"item_lighting_bow_heaven_wrath_modifier"
@@ -5438,9 +5425,8 @@
 		
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_luna.vsndevts"
-			"particle"			"particles/units/heroes/hero_luna/luna_eclipse_impact.vpcf"
-			"particle"			"particles/luna_eclipse_cast_moonlight_glow_ti_5.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+			"particle"			"particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
 		}
 		
 	
@@ -7735,7 +7721,7 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		
-		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
+		"Model"							"models/gameplay/attrib_tome_agi.vmdl"
 		"Effect"						"particles/rune_lifeinarena_green.vpcf"
 	
 		"precache"
@@ -7871,7 +7857,7 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		
-		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
+		"Model"							"models/gameplay/attrib_tome_int.vmdl"
 		"Effect"						"particles/rune_lifeinarena_blue.vpcf"
 	
 		"precache"
@@ -8352,7 +8338,7 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		
-		"Model"							"models/props_gameplay/rune_illusion01.vmdl"
+		"Model"							"models/gameplay/attrib_tome_str.vmdl"
 		"Effect"						"particles/rune_lifeinarena_red.vpcf"
 	
 		"precache"

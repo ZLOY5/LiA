@@ -1,16 +1,16 @@
-"npc_dota_hero_silencer"
+"npc_dota_hero_windrunner"
 {
-	"override_hero"				"npc_dota_hero_silencer"
+	"override_hero"				"npc_dota_hero_windrunner"
 	
-	"Role"		"Disabler,Escape,Jungler"
-	"Rolelevels"	"2,3,2"
-	"Complexity"	"3"
+	"Role"		"Nuker,Pusher"
+	"Rolelevels"	"1,3"
+	"Complexity"	"1"
 	
-	"Ability1" "wanderer_spirit_of_the_plains"	
-	"Ability2" "wanderer_the_flow_of_life" 		
-	"Ability3" "wanderer_arcane_aura" 
-	"Ability4" "wanderer_ghosts" 	
-	"Ability5" "" 						
+	"Ability1" "huntress_curse_of_elune"	
+	"Ability2" "huntress_power_of_the_moon" 		
+	"Ability3" "huntress_moon_glaive" 
+	"Ability4" "huntress_moon_rite" 	
+	"Ability5" "" 							
 	"Ability6"         ""
     "Ability7"         ""
     "Ability8"         ""
@@ -25,38 +25,39 @@
     "Ability17"         ""
     "Ability25"         ""
 
-	"ArmorPhysical" "0" 		
+	"ArmorPhysical" "2" 		
 	"MagicalResistance" "25"	
 
 	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "6" 
-	"AttackDamageMax" "22" 
+	"AttackDamageMin" "2" 
+	"AttackDamageMax" "18" 
 	"AttackRate" "1.9" 
 	"AttackAnimationPoint" "0.5" 
 	"AttackAcquisitionRange" "800" 
-	"AttackRange" "610" 
+	"AttackRange" "525"
 	"ProjectileSpeed"   "900"
 
-	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
-	"AttributeBaseStrength"		"6"										
+
+	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+	"AttributeBaseStrength"		"5"										
 	"AttributeStrengthGain"		"2.1"										
-	"AttributeBaseIntelligence"	"24"										
-	"AttributeIntelligenceGain"	"3.0"										
-	"AttributeBaseAgility"		"5"										
-	"AttributeAgilityGain"		"2.2"	
+	"AttributeBaseIntelligence"	"7"										
+	"AttributeIntelligenceGain"	"1.6"										
+	"AttributeBaseAgility"		"23"										
+	"AttributeAgilityGain"		"2.3"	
 
 	"BountyXP" "0"
 	"BountyGoldMin" "0" 
 	"BountyGoldMax" "0" 
 
 	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "255" 
-	"MovementTurnRate" "0.5" 
+	"MovementSpeed" "270" 
+	"MovementTurnRate" "0.6" 
 
-	"StatusHealth" "520"
-	"StatusHealthRegen" "1.15" 
-	"StatusMana" "75" 
-	"StatusManaRegen" "0.25" 
+	"StatusHealth" "475"
+	"StatusHealthRegen" "1.0" 
+	"StatusMana" "50" 
+	"StatusManaRegen" "0.25"
 
 	"TeamName" "DOTA_TEAM_GOODGUYS" 
 	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
@@ -68,7 +69,5 @@
 	"VisionDaytimeRange" "900"
 	"VisionNighttimeRange" "800" 
 
-	"HasInventory" "1" 
-
-	"vscripts"	"heroes/Wanderer/cancel.lua"
-}	
+	"HasInventory" "1"  
+}

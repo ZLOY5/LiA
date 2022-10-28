@@ -69,7 +69,7 @@
 		"1_wave_boss"	"Boss"
 		"2_wave_creep"	"Centaur Warrior"
 		"2_wave_boss"	"Boss"		
-		"3_wave_creep"	"Giant Wolf"
+		"3_wave_creep"	"Dragonspawn"
 		"3_wave_boss"	"Boss"		
 		"4_wave_creep"	"Dark Troll"
 		"4_wave_boss"	"Boss"	
@@ -106,7 +106,7 @@
 		"1_wave_boss_extreme"	"Boss"
 		"2_wave_creep_extreme"	"Centaur Warrior"
 		"2_wave_boss_extreme"	"Boss"		
-		"3_wave_creep_extreme"	"Giant Wolf"
+		"3_wave_creep_extreme"	"Dragonspawn"
 		"3_wave_boss_extreme"	"Boss"		
 		"4_wave_creep_extreme"	"Dark Troll"
 		"4_wave_boss_extreme"	"Boss"	
@@ -137,7 +137,7 @@
 
 		"1_bm"	"Kobold"
 		"2_bm"	"Centaur Warrior"	
-		"3_bm"	"Giant Wolf"
+		"3_bm"	"Dragonspawn"
 		"4_bm"	"Dark Troll"
 		"6_bm"	"Bandit"
 		"7_bm"	"Plague Treant"		
@@ -155,7 +155,7 @@
 
 		"1_wave_creeps"		"Kobolds"
 		"2_wave_creeps"		"Centaurs"
-		"3_wave_creeps"		"Giant Wolves"
+		"3_wave_creeps"		"Dragonspawn"
 		"4_wave_creeps"		"Dark Trolls"
 		"6_wave_creeps"		"Bandits"
 		"7_wave_creeps"		"Plague Treants"
@@ -324,9 +324,9 @@
 		"DOTA_Tooltip_Ability_item_lia_rune_of_restoration_Description"	"Restores 300 health and mana to all allies in a 2000 radius."
 
 		"DOTA_Tooltip_Ability_item_lia_rune_of_speed"	"Rune Of Speed"
-		"DOTA_Tooltip_Ability_item_lia_rune_of_strength"	"Rune Of Strength"
-		"DOTA_Tooltip_Ability_item_lia_rune_of_agility"	"Rune Of Agility"
-		"DOTA_Tooltip_Ability_item_lia_rune_of_intellect"	"Rune Of Intellect"
+		"DOTA_Tooltip_Ability_item_lia_rune_of_strength"	"Tome Of Strength"
+		"DOTA_Tooltip_Ability_item_lia_rune_of_agility"	"Tome Of Agility"
+		"DOTA_Tooltip_Ability_item_lia_rune_of_intellect"	"Tome Of Intellect"
 		"DOTA_Tooltip_Ability_item_lia_rune_gold"			"Coin"
 		"DOTA_Tooltip_Ability_item_lia_rune_lumber"			"Lumber"
 		"DOTA_Tooltip_Ability_item_lia_rune_of_lifesteal"			"Rune Of Lifesteal"
@@ -347,6 +347,9 @@
 
 		"DOTA_Tooltip_ability_barrel_invulnerability"  "Invulnerability"
 		"DOTA_Tooltip_ability_barrel_invulnerability_Description"  "The barrel can not be destroyed if there are more than two alive heroes."
+
+		"DOTA_Tooltip_modifier_attribute_bonus_custom"  "Attribute Bonus"
+		"DOTA_Tooltip_modifier_attribute_bonus_custom_Description"  "The hero gains bonus strength, agility and intellect by %dMODIFIER_PROPERTY_STATS_STRENGTH_BONUS%%."
 
 
 		"DOTA_Tooltip_ability_1_wave_stomp"  "Ground Slam"
@@ -977,17 +980,18 @@
 		"DOTA_Tooltip_modifier_berserker_madness_Description"	"This unit's attributes are increased."
 
 		"DOTA_Tooltip_ability_minotaur_thunder_strike"	"Thunder Clap"
-		"DOTA_Tooltip_ability_minotaur_thunder_strike_Description"	"Slams the ground, damaging and slowing the attack and movement speed of nearby enemy units for 3 seconds."
-		"DOTA_Tooltip_ability_minotaur_thunder_strike_stomp_damage"	"DAMAGE:"
-		"DOTA_Tooltip_ability_minotaur_thunder_strike_slow_movement_and_attack_speed"	"ATTACK SPEED SLOW:"		
-		"DOTA_Tooltip_ability_minotaur_thunder_strike_slow_tooltip"	"%MOVEMENT SPEED SLOW:"			
+		"DOTA_Tooltip_ability_minotaur_thunder_strike_Description"	"Slams the ground, damaging and slowing the attack and movement speed of enemy units in a %radius% radius for %slow_duration% seconds."
+		"DOTA_Tooltip_ability_minotaur_thunder_strike_damage"	"DAMAGE:"
+		"DOTA_Tooltip_ability_minotaur_thunder_strike_attack_speed_slow"	"ATTACK SPEED SLOW:"		
+		"DOTA_Tooltip_ability_minotaur_thunder_strike_movespeed_slow_percentage"	"%MOVEMENT SPEED SLOW:"			
 
 		"DOTA_Tooltip_modifier_minotaur_thunder_strike"	"Thunder Clap"
 		"DOTA_Tooltip_modifier_minotaur_thunder_strike_Description"	"This unit is slowed."
 
 		"DOTA_Tooltip_ability_minotaur_fear"	"Fear"
-		"DOTA_Tooltip_ability_minotaur_fear_Description"	"Tauren Chieftain intimidates his enemies so much that their armor decreases."
-		"DOTA_Tooltip_ability_minotaur_fear_penalty_armor"	"ARMOR REDUCTION:"
+		"DOTA_Tooltip_ability_minotaur_fear_Description"	"Tauren Chieftain intimidates his enemies so much that their armor decreases. Each Guardian Spirit increases the effect."
+		"DOTA_Tooltip_ability_minotaur_fear_base_armor_reduction"	"ARMOR REDUCTION:"
+		"DOTA_Tooltip_ability_minotaur_fear_armor_reduction_per_spirit"	"ARMOR REDUCTION PER SPIRIT:"
 
 		"DOTA_Tooltip_modifier_minotaur_fear_effect"	"Fear"
 		"DOTA_Tooltip_modifier_minotaur_fear_effect_Description"	"This unit's armor is decreased by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%."
@@ -1372,11 +1376,11 @@
 
 		"DOTA_Tooltip_ability_huntress_curse_of_elune"	"Elune's Curse"
 		"DOTA_Tooltip_ability_huntress_curse_of_elune_Description"	"Curses target enemies dealing initial damage first and then dealing damage every second. Target units also take damage which depends on their missing hit points."
-		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_inst"	"INITIAL DAMAGE:"		
-		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_per_sec"	"DAMAGE PER SECOND:"						
-		"DOTA_Tooltip_ability_huntress_curse_of_elune_duration"	"DURATION:"			
-		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_proc_for_creeps"	"%DAMAGE PERCENTAGE OF MISSING HP TO CREEPS:"
-		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_proc_for_heroes_and_mega"	"%DAMAGE PERCENTAGE OF MISSING HP TO HEROES AND MEGABOSSES:"			
+		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_initial"	"INITIAL DAMAGE:"		
+		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_per_second"	"DAMAGE PER SECOND:"		
+		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_hp_percentage_creeps"	"%DAMAGE PERCENTAGE OF MISSING HP TO CREEPS:"
+		"DOTA_Tooltip_ability_huntress_curse_of_elune_damage_hp_percentage_heroes"	"%DAMAGE PERCENTAGE OF MISSING HP TO HEROES AND MEGABOSSES:"								
+		"DOTA_Tooltip_ability_huntress_curse_of_elune_duration"	"DURATION:"	
 
 		"DOTA_Tooltip_huntress_curse_of_elune1"	"Elune's Curse"
 		"DOTA_Tooltip_huntress_curse_of_elune1_Description"	"This unit is taking damage."
@@ -1388,18 +1392,18 @@
 		
 		"DOTA_Tooltip_ability_huntress_power_of_the_moon"	"Power of the Moon"
 		"DOTA_Tooltip_ability_huntress_power_of_the_moon_Description"	"Huntress gains bonus magic resistance, attack and move speed and agility."
-		"DOTA_Tooltip_ability_huntress_power_of_the_moon_immun_magic"	"%MAGIC RESISTANCE:"		
-		"DOTA_Tooltip_ability_huntress_power_of_the_moon_attackSpeed"	"ATTACK SPEED:"						
-		"DOTA_Tooltip_ability_huntress_power_of_the_moon_moveSpeed"	"%MOVEMENT SPEED:"			
-		"DOTA_Tooltip_ability_huntress_power_of_the_moon_agility"	"AGILITY:"		
+		"DOTA_Tooltip_ability_huntress_power_of_the_moon_bonus_magic_resistance_percentage"	"%MAGIC RESISTANCE:"		
+		"DOTA_Tooltip_ability_huntress_power_of_the_moon_bonus_attack_speed"	"ATTACK SPEED:"						
+		"DOTA_Tooltip_ability_huntress_power_of_the_moon_bonus_movement_speed_percentage"	"%MOVEMENT SPEED:"			
+		"DOTA_Tooltip_ability_huntress_power_of_the_moon_bonus_agility"	"AGILITY:"		
 		
-		"DOTA_Tooltip_ability_huntress_ritual"	"Moon Rite"
-		"DOTA_Tooltip_ability_huntress_ritual_Description"	"Hutress perfoms a ritual in 0.5 seconds that increases her damage and attack speed for 9 seconds."
-		"DOTA_Tooltip_ability_huntress_ritual_attackDamage"	"BONUS DAMAGE:"		
-		"DOTA_Tooltip_ability_huntress_ritual_attackSpeed"	"BONUS ATTACK SPEED:"		
+		"DOTA_Tooltip_ability_huntress_moon_rite"	"Moon Rite"
+		"DOTA_Tooltip_ability_huntress_moon_rite_Description"	"Hutress perfoms a ritual in 0.5 seconds that increases her damage and attack speed for %duration% seconds."
+		"DOTA_Tooltip_ability_huntress_moon_rite_bonus_damage"	"BONUS DAMAGE:"		
+		"DOTA_Tooltip_ability_huntress_moon_rite_bonus_attack_speed"	"BONUS ATTACK SPEED:"		
 
-		"DOTA_Tooltip_modifier_huntress_ritual"	"Moon Rite"
-		"DOTA_Tooltip_modifier_huntress_ritual_Description"	"Huntress has her attack damage and speed increased."
+		"DOTA_Tooltip_modifier_huntress_moon_rite"	"Moon Rite"
+		"DOTA_Tooltip_modifier_huntress_moon_rite_Description"	"Huntress has her attack damage and speed increased."
 
 		"DOTA_Tooltip_ability_shaman_starfall_datadriven"	"Starfall"
 		"DOTA_Tooltip_ability_shaman_starfall_datadriven_Description"	"Calls down a wave of meteors to damage nearby enemy units. Shaman becomes invulnerable and gets bonus regeneration when the ability is active."
@@ -2761,7 +2765,33 @@
 		"DOTA_Tooltip_modifier_walking_dead_cemetery_power"	"Cemetery Power"
 		"DOTA_Tooltip_modifier_walking_dead_cemetery_power_Description"	"Base strength increased and the hero deals damage to nearby enemies based on heal received."
 
+		"DOTA_Tooltip_ability_furbolg_champion_furious_clap"	"Furious Clap"
+		"DOTA_Tooltip_ability_furbolg_champion_furious_clap_Description"	"Urisar makes a furious clap dealing to enemies in a %radius% radius base and strength-based damage. Stuns if Sharp Claws are charged. Furbolg loses %health_cost% hit points on cast."
+		"DOTA_Tooltip_ability_furbolg_champion_furious_clap_initial_damage"	"BASE DAMAGE:"
+		"DOTA_Tooltip_ability_furbolg_champion_furious_clap_damage_per_strength"	"DAMAGE PER STRENGTH:"
+		"DOTA_Tooltip_ability_furbolg_champion_furious_clap_stun_duration"	"STUN DURATION WITH CHARGED SHARP CLAWS:"
+		"DOTA_Tooltip_ability_furbolg_champion_furious_clap_Note0"	"The ability cannot kill the caster."
 
+		"DOTA_Tooltip_ability_furbolg_champion_sharp_claws"	"Sharp Claws"
+		"DOTA_Tooltip_ability_furbolg_champion_sharp_claws_Description"	"After making %attacks_required% attacks, the next one deals agility-based damage and stuns the enemy."
+		"DOTA_Tooltip_ability_furbolg_champion_sharp_claws_damage_per_agility"	"DAMAGE PER AGILITY:"
+		"DOTA_Tooltip_ability_furbolg_champion_sharp_claws_stun_duration"	"STUN DURATION:"
+
+		"DOTA_Tooltip_modifier_furbolg_champion_sharp_claws"	"Sharp Claws"
+		"DOTA_Tooltip_modifier_furbolg_champion_sharp_claws_Description"	"Every fourth attack charges Furbolg's claws."
+
+		"DOTA_Tooltip_ability_furbolg_champion_swelling_rage"	"Swelling Rage"
+		"DOTA_Tooltip_ability_furbolg_champion_swelling_rage_Description"	"After losing a percent of his health, Urisar makes a Furious Clap."
+		"DOTA_Tooltip_ability_furbolg_champion_swelling_rage_health_lost_percentage_required"	"%HP LOSS TO TRIGGER:"
+
+		"DOTA_Tooltip_ability_furbolg_champion_bears_agility"	"Bear's Agility"
+		"DOTA_Tooltip_ability_furbolg_champion_bears_agility_Description"	"Urisar gets fierce gaining bonus attack speed. Each attack takes health from Furbolg. However, his health can't drop below %health_loss_limit_percentage%%."
+		"DOTA_Tooltip_ability_furbolg_champion_bears_agility_bonus_attack_speed"	"BONUS ATTACK SPEED:"
+		"DOTA_Tooltip_ability_furbolg_champion_bears_agility_health_loss_per_attack"	"HEALTH LOSS PER ATTACK:"
+		"DOTA_Tooltip_ability_furbolg_champion_bears_agility_duration"	"DURATION:"
+
+		"DOTA_Tooltip_modifier_furbolg_champion_bears_agility"	"Bear's Agility"
+		"DOTA_Tooltip_modifier_furbolg_champion_bears_agility_Description"	"Attack speed increased, but the hero takes damage with each hit. The health of the hero can't drop below 10%%"
 
 
 

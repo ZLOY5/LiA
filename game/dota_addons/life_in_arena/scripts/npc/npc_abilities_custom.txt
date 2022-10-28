@@ -3557,7 +3557,7 @@
 			"01"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"evasion"		"100"
+				"evasion"		"99"
 			}
 		}
 	}
@@ -10953,7 +10953,7 @@
 	  
 	 "precache"
 		{
-			"particle" "particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+			"particle" "particles/units/heroes/hero_troll_warlord/troll_warlord_rampage_resistance_buff.vpcf"
 		}
 	  "AbilitySpecial"
 	  {
@@ -10994,7 +10994,7 @@
 				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_all_stats"
 	      	} 
 			
-			"EffectName"			"particles/units/heroes/hero_ursa/ursa_enrage_buff.vpcf"
+			"StatusEffectName"			"particles/units/heroes/hero_troll_warlord/troll_warlord_rampage_resistance_buff.vpcf"
 			"EffectAttachType"		"follow_origin"	  
 	
 	    }
@@ -15035,6 +15035,161 @@
 	//End of file npc_lia_hero_frost_lord.txt
 
 
+	//Start of file npc_lia_hero_furbolg_champion.txt
+	"furbolg_champion_furious_clap"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\FurbolgChampion\furbolg_champion_furious_clap.lua"
+	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellDispellableType"      "SPELL_DISPELLABLE_YES"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"     "ursa_earthshock"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastAnimation"   	"ACT_DOTA_GENERIC_CHANNEL_1"
+		"AnimationPlaybackRate" 	"1.5"
+		"AbilityCastPoint"     	  	"0.3"
+	
+		"AbilityCooldown"        "4"
+		"AbilityManaCost"        "50 50 50"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"initial_damage"      "50 60 70"
+			}
+			"02"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"damage_per_strength"     "0.6 0.8 1.0"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"stun_duration"      "0.7 1.0 1.3"
+			}
+			"04"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"radius"     "250"
+			}
+			"05"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"health_cost"      "50"
+			}
+		} 
+	}
+	
+	"furbolg_champion_sharp_claws"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\FurbolgChampion\furbolg_champion_sharp_claws.lua"
+	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     "ursa_fury_swipes"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"attacks_required"      "4"
+			}
+			"02"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"damage_per_agility"     "1.2 1.6 2"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"stun_duration"      "0.7 1.0 1.3"
+			}
+		} 
+	}
+	
+	"furbolg_champion_swelling_rage"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\FurbolgChampion\furbolg_champion_swelling_rage.lua"
+	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     "ursa_overpower"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCooldown"        "1 0.85 0.7"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"health_lost_percentage_required"      "15 12.5 10"
+			}
+		} 
+	}
+	
+	"furbolg_champion_bears_agility"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\FurbolgChampion\furbolg_champion_bears_agility.lua"
+	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"     "ursa_enrage"
+	
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		"AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastPoint"       "0.3"
+	
+		"AbilityCooldown"        "60"
+		"AbilityManaCost"        "100 100 100"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"bonus_attack_speed"      "80 160 240"
+			}
+			"02"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"health_loss_per_attack"      "40 60 80"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"health_loss_limit_percentage"      "10"
+			}
+			"04"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"duration"      "8"
+			}
+		} 
+	}
+	//End of file npc_lia_hero_furbolg_champion.txt
+
+
 	//Start of file npc_lia_hero_general.txt
 	"general_rumble"
 	{
@@ -17284,6 +17439,65 @@
 
 
 	//Start of file npc_lia_hero_huntress.txt
+	"huntress_curse_of_elune"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/Huntress/huntress_curse_of_elune.lua"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
+		"AbilityTextureName"			"luna_lucent_beam"
+	
+		"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_1"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AoERadius"	"230"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.3"
+	
+		"AbilityCooldown"				"15.0 14.0 13.0"
+		"AbilityManaCost"				"80 100 120"
+	
+	  	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_initial"			"20 40 60"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_per_second"		"10 20 30"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_hp_percentage_creeps"	"5 10 15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_hp_percentage_heroes"	"2 4 6"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"			"230"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"	"4.0"
+			}
+		}
+	}
+	
 	
 	"huntress_moon_glaive"
 	{
@@ -17327,176 +17541,11 @@
 	}
 	
 	
-	
-	
-	
-	
-		"huntress_curse_of_elune"
-		{
-			// General
-			//-------------------------------------------------------------------------------------------------------------
-			"BaseClass"						"ability_datadriven"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-			"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
-			"AbilityTextureName"			"luna_lucent_beam"
-		
-			// Precache
-			//-------------------------------------------------------------------------------------------------------------
-	
-	
-			"precache"
-			{
-				//"soundfile"		"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
-				//"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
-				//"particle"		"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher.vpcf"		
-						
-			}
-			
-			"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_1"
-			
-	
-			"MaxLevel"               "3"
-			"RequiredLevel"          "1"
-			"LevelsBetweenUpgrades"  "2"
-		
-			"AoERadius"	"230"
-			
-			"AbilityCastRange"				"700"
-			"AbilityCastPoint"				"0.0"
-		
-			"AbilityCooldown"				"15.0 14.0 13.0"
-		
-			"AbilityManaCost"				"80 100 120"	
-		
-			// Special
-			//-------------------------------------------------------------------------------------------------------------
-			"AbilitySpecial"
-			{
-				"01"
-				{
-					"var_type"			"FIELD_INTEGER"
-					"damage_inst"			"20 40 60"
-				}
-				"02"
-				{
-					"var_type"			"FIELD_INTEGER"
-					"damage_per_sec"		"10 20 30"
-				}
-				"03"
-				{
-					"var_type"			"FIELD_FLOAT"
-					"duration"	"4.0"
-				}
-				"04"
-				{
-					"var_type"			"FIELD_INTEGER"
-					"damage_proc_for_creeps"	"5 10 15"
-				}
-				"05"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"damage_proc_for_heroes_and_mega"	"2 4 6"
-				}
-				"06"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"radius"			"230"
-				}
-			}
-		
-			"OnSpellStart"
-			{
-		
-				"ActOnTargets"
-				{
-					"Target"
-					{
-						"Center"	"POINT"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-					
-					"Action"
-					{
-						"Damage"
-						{
-							"Type" "DAMAGE_TYPE_MAGICAL"
-							"Target"	"TARGET"
-							"Damage" "%damage_inst"
-						}
-						"ApplyModifier"
-						{
-							"ModifierName"	"huntress_curse_of_elune1"
-							"Target"	"TARGET"
-						}				
-					}
-				}
-		
-		
-			}
-		
-			"Modifiers"
-			{
-				"huntress_curse_of_elune1"
-				{
-					"IsDebuff"	"1"
-					"Duration"	"%duration"
-					"IsPurgable"	"1"
-					
-					"StatusEffectName" 		"particles/status_fx/status_effect_maledict.vpcf" 	   
-					"StatusEffectPriority"  "10"
-	
-					"ThinkInterval" "1.00"
-					"OnIntervalThink"
-					{
-	
-						//
-						"RunScript"
-		    				{
-					        	"ScriptFile"    "heroes/Huntress/CurseOfElune.lua"   //"1.lua"
-					        	"Function"      "SetDamageFromHuntress"
-							"Target" "TARGET"
-							"damage_per_sec" "%damage_per_sec"
-							"damage_proc_for_creeps" "%damage_proc_for_creeps"
-							"damage_proc_for_heroes_and_mega" "%damage_proc_for_heroes_and_mega"
-						}
-					}
-	
-		       			"OnDeath"
-		       			{
-		        			"RemoveModifier"
-		         			{
-		           				"ModifierName"  "huntress_curse_of_elune1"
-		       	 				"Target" "TARGET"
-	
-		         			}
-		       			}
-	
-		
-				}
-			}
-	
-	
-	
-		}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//power of the moon
-	//
 	"huntress_power_of_the_moon"
 	{
-		"BaseClass"               "ability_datadriven"
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/Huntress/huntress_power_of_the_moon.lua"
+	
 		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"      "luna_lunar_blessing"
 	
@@ -17504,131 +17553,70 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 	
-		"AbilitySpecial"
+	  	"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"      "FIELD_INTEGER"
-				"immun_magic"  	"10 20 30"
+				"bonus_magic_resistance_percentage"  	"10 20 30"
 			}
 			"02"
 			{
 				"var_type"      "FIELD_INTEGER"
-				"attackSpeed"  	"8 16 24"
+				"bonus_attack_speed"  	"8 16 24"
 			}
 			"03"
 			{
 				"var_type"      "FIELD_INTEGER"
-				"moveSpeed"  	"5 10 15"
+				"bonus_movement_speed_percentage"  	"5 10 15"
 			}
 			"04"
 			{
 				"var_type"      "FIELD_INTEGER"
-				"agility"  	"5 10 15"
+				"bonus_agility"  	"5 10 15"
 			}
 		}
-	
-	
-		"Modifiers"
-		{   
-			"power_of_the_moon"
-			{
-				"Passive"  "1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "%immun_magic"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%moveSpeed"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%agility"
-				}     
-			}
-		} 
 	}
 	
+	"huntress_moon_rite"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/Huntress/huntress_moon_rite.lua"
 	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"     "luna_eclipse"
 	
+		"AbilityCooldown" "90"
+		"AbilityManaCost" "100 125 150"
 	
-	
-	"huntress_ritual"
-		 {
-		   // General
-		    //-------------------------------------------------------------------------------------------------------------
-		    "BaseClass"              "ability_datadriven"
-		    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
-		    "AbilityTextureName"     "luna_eclipse"
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
 		
-		    "AbilityCooldown" "90"
-		    "AbilityManaCost" "100 125 150"
-		
-		    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-		    "MaxLevel"               "3"
-		    "RequiredLevel"          "5"
-		    "LevelsBetweenUpgrades"  "4"
-			
-		    "AbilityCastPoint"  "1"
-		    "AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_4"
-		    //"AnimationPlaybackRate"  "0.5"
-			
-			//"precache"
-			//{
-			//"particle"	"particles/units/heroes/hero_death_prophet/death_prophet_silence.vpcf"
-			//"particle"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-			//"soundfile"	"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
-			//}
+		"AbilityCastPoint"  "0.5"
+		"AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_4"
 	
-		  "AbilitySpecial"
-		  {
-		    "01"
+	  	"AbilitySpecial"
+		{
+			"01"
 		    {
 		      "var_type"      "FIELD_INTEGER"
-		      "attackSpeed"  	"40 80 120"
+		      "bonus_attack_speed"  	"40 80 120"
 		    }
 		    "02"
 		    {
 		      "var_type"      "FIELD_INTEGER"
-		      "attackDamage"  	"80 160 240"
+		      "bonus_damage"  	"80 160 240"
 		    }
 		    "03"
 		    {
 		      "var_type"      "FIELD_FLOAT"
 		      "duration"  	"9.0"
 		    }
-		  }
-	
-		    "OnSpellStart"
-		    {
-				"ApplyModifier"
-				{
-					"ModifierName" "modifier_huntress_ritual"
-					"Target"
-					{
-						"Center"  	"CASTER"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-				}	
-		    }
-			
-			"Modifiers"
-			{
-				"modifier_huntress_ritual"
-				{
-					"Duration"	"%duration"
-					//"EffectName"	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-					//"EffectAttachType"	"follow_origin"
-		
-					   "Properties"
-					  {
-						"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attackSpeed"
-						//
-						"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%attackDamage"
-					  }
-		
-				}
-				
-			}
+		}
 	}
+	
 	//End of file npc_lia_hero_huntress.txt
 
 
@@ -22057,6 +22045,10 @@
 	//End of file npc_lia_hero_queen_of_spiders.txt
 
 
+	//Start of file npc_lia_hero_ranger.txt
+	//End of file npc_lia_hero_ranger.txt
+
+
 	//Start of file npc_lia_hero_serpent_queen.txt
 	"serpent_queen_ball_lightning"
 	{
@@ -24103,126 +24095,6 @@
 	  } 
 	}
 	
-	"minotaur_thunder_strike1"
-	{
-	  // General
-	  //-------------------------------------------------------------------------------------------------------------
-	  "BaseClass"               "ability_datadriven"
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "AbilityUnitDamageType"   "DAMAGE_TYPE_MAGICAL"
-	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-	  "FightRecapLevel"         "1"
-	  "AbilityTextureName"      "elder_titan_echo_stomp"
-	  
-	  	"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
-		
-	  // Stats
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilityCastPoint"      "0.5 0.5 0.5 0.5"
-	  "AbilityCooldown"       "10.0 7.0 4.0"
-	  "AbilityManaCost"       "50 70 90"
-	 	"AbilityCastRange"				"250 300 350" 
-	  // Special
-	  //-------------------------------------------------------------------------------------------------------------
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"            "FIELD_INTEGER"
-	      "radius"              "250 300 350"
-	    }
-	    "02"
-	    {
-	      "var_type"            "FIELD_FLOAT"
-	      "duration"            "3"
-	    }
-	    "03"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "stomp_damage"          "50 100 150"
-	    }
-	    "04"
-	    {
-	      "var_type"                                "FIELD_INTEGER"
-	      "slow_movement_and_attack_speed"          "-30 -45 -60"
-	    }
-		"05"
-	    {
-	      "var_type"                                "FIELD_INTEGER"
-	      "slow_tooltip"          "-30 -45 -60"
-	    }
-	  }
-	
-	  "precache"
-	  {
-	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
-	    "particle"  "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-	  }
-	
-	  "OnSpellStart"
-	  {
-	    "FireEffect"
-	    {
-	      "EffectName"         "particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-	      "EffectAttachType"   "follow_origin"
-	      "EffectRadius"       "%radius"
-	      "Target"             "CASTER"
-	      "ControlPoints"
-	      {
-	        "01"  "%radius 0 %radius"
-	      }
-	    }
-	
-	    "FireSound"
-	    {
-	      "EffectName"    "Hero_Centaur.HoofStomp"
-	      "Target"        "CASTER"
-	    }
-	    "ActOnTargets"
-	    {
-	      "Target"
-	      {
-	        "Center"        "CASTER"
-	        "Radius"        "%radius"
-	        "Teams"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	        "Types"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	      }
-	
-	      "Action"
-	      {
-	        "Damage"
-	        {
-	          "Target"  "TARGET"
-	          "Type"    "DAMAGE_TYPE_MAGICAL"
-	          "Damage"  "%stomp_damage"
-	        }
-	
-	        "ApplyModifier"
-	        {
-	          "Target"        "TARGET"
-	          "ModifierName"  "modifier_minotaur_thunder_strike"
-	        }
-	      }
-	    }   
-	  }
-	
-	  "Modifiers"
-	  {
-	    "modifier_minotaur_thunder_strike"
-	    {
-	      "IsDebuff"  "1"
-	      "Duration"  "%duration"
-	      
-	      "Properties"
-	      {
-	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%slow_movement_and_attack_speed"
-	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%slow_movement_and_attack_speed" 
-	      }
-	    }
-	  }
-	}
 	
 	"minotaur_fear"
 	{
@@ -25589,28 +25461,21 @@
 	
 	"troll_cutthroat_battle_trance"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"			"troll_warlord_battle_trance"
-		
-	    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\TrollCutthroat\troll_cutthroat_battle_trance.lua"
+	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"     "troll_warlord_battle_trance"
+	
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
 		"MaxLevel"               "3"
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
-	
-		"AbilityCastPoint"				"0.0"
-	
-		"AbilityCooldown"				"80"
-	
-		"AbilityManaCost"				"170 200 230"	
-	
-		"precache"
-		{
-			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
-		}
 		
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"80"
+		"AbilityManaCost"				"170 200 230"
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -25633,56 +25498,7 @@
 				"var_type"				"FIELD_FLOAT"
 				"duration"				"9 12 15"
 			}
-		}
-	
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_troll_cutthroat_battle_trance"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-				"Duration"	"%duration"
-			}
-	
-			
-		}
-		"Modifiers"
-		{
-			"modifier_troll_cutthroat_battle_trance"
-			{
-				"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
-				"EffectAttachType"  "follow_origin"
-	
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/TrollCutthroat/BattleTrance.lua"
-						"Function"		"EnableWhirl"
-					}
-				}
-	
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes/TrollCutthroat/BattleTrance.lua"
-						"Function"		"DisableWhirl"
-					}
-				}
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				//	"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_reduction"
-				//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_strength"
-				}
-				
-			}
-		}
+		} 
 	}
 	//End of file npc_lia_hero_troll_cutthroat.txt
 

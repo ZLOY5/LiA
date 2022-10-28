@@ -1,3 +1,6 @@
+
+LinkLuaModifier( "modifier_attribute_bonus_custom", "heroes/modifier_attribute_bonus_custom.lua", LUA_MODIFIER_MOTION_NONE)
+
 function Survival:OnNPCSpawned(event)
     local spawnedUnit = EntIndexToHScript( event.entindex )
 
@@ -9,6 +12,7 @@ function Survival:OnNPCSpawned(event)
                     spawnedUnit:RemoveItem(item)
                 end
             end
+            spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_attribute_bonus_custom", nil)
         end)
     else
         if self.state == SURVIVAL_STATE_DUEL_TIME then
