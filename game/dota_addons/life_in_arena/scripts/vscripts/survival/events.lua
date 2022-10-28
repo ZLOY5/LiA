@@ -13,6 +13,9 @@ function Survival:OnNPCSpawned(event)
                 end
             end
             spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_attribute_bonus_custom", nil)
+            if spawnedUnit:HasModifier("modifier_fountain_invulnerability") then
+                spawnedUnit:RemoveModifierByName("modifier_fountain_invulnerability")
+            end
         end)
     else
         if self.state == SURVIVAL_STATE_DUEL_TIME then
