@@ -11,10 +11,10 @@ function item_lia_lunar_necklace:OnSpellStart()
 
 	target:AddNewModifier(self:GetCaster(),self,"modifier_item_lia_lunar_necklace_active",{duration = self:GetSpecialValueFor("duration")})
 
-	local particle = ParticleManager:CreateParticle("particles/luna_eclipse_small.vpcf",PATTACH_ABSORIGIN_FOLLOW,target)
-	ParticleManager:ReleaseParticleIndex(particle)
+	-- local particle = ParticleManager:CreateParticle("particles/luna_eclipse_small.vpcf",PATTACH_ABSORIGIN_FOLLOW,target)
+	-- ParticleManager:ReleaseParticleIndex(particle)
 	
-	EmitSoundOn("Hero_Luna.Eclipse.Cast",target)
+	EmitSoundOn("Ability.MoonlightShadow",target)
 end
 
 ----------------------------------------------------------------------
@@ -82,11 +82,11 @@ function modifier_item_lia_lunar_necklace_active:IsBuff()
 end
 
 function modifier_item_lia_lunar_necklace_active:GetEffectName()
-	return "particles/luna_eclipse_cast_moonlight_glow_ti_5.vpcf"
+	return "particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
 end
 
 function modifier_item_lia_lunar_necklace_active:GetEffectAttachType()
-	return PATTACH_ABSORIGIN_FOLLOW
+	return PATTACH_OVERHEAD_FOLLOW
 end
 
 if IsServer() then
