@@ -56,61 +56,33 @@
 			"particle"	"particles/custom/items/spherical_staff_infernal.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"
 		}
-	
+		
+		"AbilityValues"
+		{
+			"bonus_mana_regen"		"1"
+			"bonus_int"			"30"
+			"infernal_duration"		"60"
+			"stun_duration"			"2.7"
+			"radius"			"220"
+			"damage"			"300"
+		}
+
 		"AbilitySpecial"
 		{
-			//first 3 broken
 			"01"
 			{
-				"var_type" 			"FIELD_FLOAT"
-				"bonus_mana_regen" 	"1"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_all_stats"		"0"
 			}
-			
 			"02"
 			{
-				"var_type" 						"FIELD_INTEGER"
-				"bonus_int" 					"30"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"0"
 			}
-
 			"03"
 			{
-				"var_type" 						"FIELD_INTEGER"
-				"infernal_duration" 			"60"
-			}
-			
-			"04"
-			{
-				"var_type" 						"FIELD_FLOAT"
-				"stun_duration" 				"2.7"
-			}
-			
-			"05"
-			{
-				"var_type" 						"FIELD_INTEGER"
-				"radius" 						"220"
-			}
-			
-			"06"
-			{
-				"var_type" 						"FIELD_INTEGER"
-				"damage" 						"300"
-			}
-			"11"
-			{
-				"var_type" 			"FIELD_FLOAT"
-				"bonus_mana_regen" 	"1"
-			}
-			
-			"12"
-			{
-				"var_type" 						"FIELD_INTEGER"
-				"bonus_int" 					"30"
-			}
-
-			"13"
-			{
-				"var_type" 						"FIELD_INTEGER"
-				"infernal_duration" 			"60"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"0"
 			}
 		}
 		
