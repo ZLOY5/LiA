@@ -31,11 +31,6 @@ var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent(
 			if ( panel.BHasClass("StatBranch") )
 				panel.style.visibility = "collapse";
 		}
-
-		var ultAbi = heroPickAbi.GetChild(4)
-		var plusAbi = heroPickAbi.GetChild(3)
-		if ( (ultAbi != null) && (ultAbi.BHasClass("AbilityIsUltimate")) )
-			heroPickAbi.MoveChildBefore(ultAbi,plusAbi)
 	}
 
 	GameEvents.Subscribe( "dota_player_hero_selection_dirty", onUpdateHeroSelection );
