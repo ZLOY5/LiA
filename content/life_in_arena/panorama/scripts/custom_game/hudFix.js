@@ -81,6 +81,8 @@ function ValvePlzFix()
 		dotaHud.FindChildTraverse("inventory_tpscroll_slot").style.boxShadow = "none"
 
 		dotaHud.FindChildTraverse("AghsStatusContainer").style.visibility = "collapse";
+		dotaHud.FindChildTraverse("AghsTooltipConnecter").style.visibility = "collapse";
+		dotaHud.FindChildTraverse("BottomSection").style.visibility = "collapse";
 		
 		if ( Game.GameStateIsAfter(DOTA_GameState.DOTA_GAMERULES_STATE_PRE_GAME-1) )
 		{
