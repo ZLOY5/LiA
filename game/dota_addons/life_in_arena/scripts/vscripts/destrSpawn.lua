@@ -1,13 +1,13 @@
 if IsClient() then return end
 require('timers')
 
+-- LinkLuaModifier( "modifier_destuctable_object", "units/modifier_destuctable_object.lua", LUA_MODIFIER_MOTION_NONE )
+
 function Spawn(entityKeyValues)
 	thisEntity.destructable = 1
 	thisEntity:FindAbilityByName("barrel_no_health_bar"):SetLevel(1)
 	
 	local unitName = thisEntity:GetUnitName()
-
-
 
 	if unitName == "barricades" or unitName == "arena_rock" then
 		thisEntity:SetHullRadius(50)
@@ -45,7 +45,7 @@ function Spawn(entityKeyValues)
 	
 	Timers:CreateTimer(0.01,function()
 		thisEntity:RemoveModifierByName("modifier_invulnerable")
-
+		-- thisEntity:AddNewModifier(thisEntity, nil, "modifier_destuctable_object", nil)
 		--print(unitName,thisEntity:GetHullRadius())
 	end)
 	--print("barrelspawned")
