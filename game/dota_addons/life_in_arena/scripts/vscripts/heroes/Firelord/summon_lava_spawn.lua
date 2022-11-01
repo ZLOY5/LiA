@@ -53,8 +53,10 @@ function LavaSpawnAttackCounter( event )
 	end
 
 	-- Increase counter
-	attacker.attack_counter = attacker.attack_counter + 1
-
+	if event.target:GetTeamNumber() ~= event.attacker:GetTeamNumber() then
+		attacker.attack_counter = attacker.attack_counter + 1
+	end
+	
 	-- Copy the unit, applying all the necessary modifiers
 	if attacker.attack_counter == attacks_to_split then
 		
