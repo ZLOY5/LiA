@@ -19,7 +19,9 @@ function ThinkAllWave()
 		return 1
 	end
 
-	AICreepsAttackOneUnit({unit = thisEntity})
+	if not thisEntity:HasModifier("modifier_beastmaster_dominate") then
+		AICreepsAttackOneUnit({unit = thisEntity})
+	end
 	
 	return 2
 end

@@ -9895,6 +9895,36 @@
 	//Start of file npc_lia_hero_beastmaster.txt
 	"beastmaster_dominate"
 	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/Beastmaster/beastmaster_dominate.lua"
+	
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+	    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
+	    "AbilityTextureName"     "custom/beastmaster_dominate"
+	
+	    "AbilityCastRange"        "750"
+	    "AbilityCastPoint"        "0.0"
+	    "AbilityCooldown"         "26 25 24"
+	    "AbilityManaCost"         "100"
+	    "AoERadius"               "%radius"
+	  
+	    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	    "MaxLevel"               "3"
+	    "RequiredLevel"          "1"
+	    "LevelsBetweenUpgrades"  "2"
+	
+	    "AbilityValues"
+	    {
+	        "radius"          "100 125 150"
+	        "duration"        "10"
+	        "damage"          "90 180 270"
+	    }
+	}
+	
+	"beastmaster_dominate1"
+	{
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"             "ability_datadriven"
