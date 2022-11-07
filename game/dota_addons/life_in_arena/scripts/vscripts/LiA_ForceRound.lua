@@ -38,7 +38,7 @@ function onPlayerReadyToWave(playerID)
 				local diff = curTimeLeft - newTimeLeft
 				DoWithAllHeroes(
 					function(hero)
-						for i=0,4 do
+						for i=0,5 do
 							local ability = hero:GetAbilityByIndex(i)
 							if ability then
 								ability:ReduceCooldown(diff)
