@@ -71,13 +71,3 @@ function modifier_furbolg_champion_sharp_claws:OnAttackLanded( params )
 		end
 	end
 end
-
-function modifier_furbolg_champion_sharp_claws:GetEffectName()
-	if self.full_stacks then
-		return "particles/custom/furbolg_champion/furbolg_champion_sharp_claws_buff.vpcf"
-	end
-end
-
-function modifier_furbolg_champion_sharp_claws:GetEffectAttachType()
-	return PATTACH_ABSORIGIN_FOLLOW
-end

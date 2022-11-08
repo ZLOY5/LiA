@@ -418,14 +418,12 @@
 	}
 }
 
-  "skeleton_thief_obsession"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
-    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
+"skeleton_thief_obsession"
+{
+	"BaseClass"              "ability_lua"
+	"ScriptFile"       "heroes\SkeletonThief\skeleton_thief_obsession.lua"
+
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityTextureName"     "custom/skeleton_thief_obsession"
 	
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
@@ -433,41 +431,10 @@
 	"RequiredLevel"          "5"
 	"LevelsBetweenUpgrades"  "4"
 
-    "AbilitySpecial"
-      {
-        "01"
-        {
-          "var_type"              "FIELD_FLOAT"
-          "damage"                "150 300 450"
-        }
-        "02"
-        {
-          "var_type"              "FIELD_INTEGER"
-          "number_of_attacks"        "5 5 5"
-        }
-      }
-	  
-	 	"OnRespawn"
+	"AbilityValues"
 	{
-		"ApplyModifier"	"modifier_skeleton_thief_obsession"
+		"bonus_damage"         "150 275 400"
+		"attacks_required"        "4"
 	}
-	
-    "Modifiers"
-    {
-      "modifier_skeleton_thief_obsession"
-      {
-        "Passive"       "1"
-        "IsHidden"      "1"
-    
-        "OnAttackLanded"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "heroes\SkeletonThief\Obsession.lua"
-            "Function"    "Obsession"
-          }
-        } 
-      }
-    }
+}
 
-  }
