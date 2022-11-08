@@ -1,0 +1,39 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf45:version{73c3d623-a141-4df2-b548-41dd786e6300} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 32
+	m_ConstantColor = [ 186, 36, 36, 255 ]
+	m_nBehaviorVersion = 12
+	m_flConstantRadius = 22.1
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_POINT_FOLLOW"
+					m_attachmentName = "attach_attack1"
+					m_entityName = "parent"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/items/wraith_king/relicsword_weapon/relicsword_weapon.vmdl"
+			}
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/custom/thief_king/thief_king_obsession_glow.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/econ/items/wraith_king/wraith_king_relic_weapon/wraith_king_relic_weapon_mist.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/custom/thief_king/thief_king_obsession_glow_core.vpcf"
+		},
+	]
+}
