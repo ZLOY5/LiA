@@ -38,7 +38,7 @@ function modifier_walking_dead_decay_self:OnCreated(kv)
 	self.radius = self:GetAbility():GetSpecialValueFor("radius")
 	self.tick_interval = self:GetAbility():GetSpecialValueFor("tick_interval")
 	self.active_regeneration_reduction_percentage = self:GetAbility():GetSpecialValueFor("active_regeneration_reduction_percentage")
-	self.damage_per_second = self:GetAbility():GetSpecialValueFor("damage_per_second")
+	self.damage_per_tick = self:GetAbility():GetSpecialValueFor("damage_per_second") * self.tick_interval
 	if IsServer() then
 		self:StartIntervalThink(self.tick_interval)
 	end
@@ -70,9 +70,9 @@ function modifier_walking_dead_decay_self:OnIntervalThink()
 											false)
 
 		for k,v in pairs (targets) do
-			ApplyDamage({ victim = v, attacker = self:GetCaster(), damage = self.damage_per_second, damage_type = DAMAGE_TYPE_MAGICAL, ability = self:GetAbility() })
+			ApplyDamage({ victim = v, attacker = self:GetCaster(), damage = self.damage_per_tick, damage_type = DAMAGE_TYPE_MAGICAL, ability = self:GetAbility() })
 		end 
-		ApplyDamage({ victim = self:GetParent(), attacker = self:GetCaster(), damage = self.damage_per_second, damage_type = DAMAGE_TYPE_MAGICAL, ability = self:GetAbility() })
+		ApplyDamage({ victim = self:GetParent(), attacker = self:GetCaster(), damage = self.damage_per_tick, damage_type = DAMAGE_TYPE_MAGICAL, ability = self:GetAbility() })
 	end
 end
 

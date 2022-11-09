@@ -27,7 +27,7 @@ if IsServer() then
 		self.radius = self:GetAbility():GetSpecialValueFor("radius")
 
 		self.break_distance = self:GetAbility():GetSpecialValueFor( "break_distance" )
-
+		self.stun_duration = self:GetAbility():GetSpecialValueFor( "stun_duration" )
 		
 		self.unit:EmitSound("Hero_Undying.Decay.Cast")
 		self:StartIntervalThink(self.tick_interval)		
@@ -37,11 +37,12 @@ if IsServer() then
 	function modifier_walking_dead_rot_curse_enemy:OnIntervalThink()
 		if IsServer() then
 			if (self.caster:GetAbsOrigin() - self.unit:GetAbsOrigin()):Length2D() >= self.break_distance then
+				self.destroyReasonDistance = true
 				self:Destroy()
 			end
 
 			local targets = FindUnitsInRadius(self.caster:GetTeamNumber(), 
-												self:GetParent():GetAbsOrigin(), 
+												self.unit:GetAbsOrigin(), 
 												nil, self.radius, 
 												DOTA_UNIT_TARGET_TEAM_ENEMY, 
 												DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP, 
@@ -50,7 +51,7 @@ if IsServer() then
 												false)
 
 			for k,v in pairs (targets) do
-				if v == self:GetParent() then
+				if v == self.unit then
 					ApplyDamage({ victim = v, attacker = self:GetCaster(), damage = self.health_steal_per_second, damage_type = DAMAGE_TYPE_PURE, ability = self:GetAbility() })
 				else
 					ApplyDamage({ victim = v, attacker = self:GetCaster(), damage = self.damage_per_second, damage_type = DAMAGE_TYPE_PURE, ability = self:GetAbility() })
@@ -60,7 +61,7 @@ if IsServer() then
 				
 			end 
 			self.rotCurseAoEParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_undying/undying_decay.vpcf",PATTACH_WORLDORIGIN,self:GetCaster())
-			ParticleManager:SetParticleControl( self.rotCurseAoEParticle, 0, self:GetParent():GetAbsOrigin() )
+			ParticleManager:SetParticleControl( self.rotCurseAoEParticle, 0, self.unit:GetAbsOrigin() )
 			ParticleManager:SetParticleControl( self.rotCurseAoEParticle, 1, Vector( self.radius, 1, 1 ) )
 			self.unit:EmitSound("Hero_Undying.Decay.Target")
 
@@ -74,8 +75,9 @@ end
 
 function modifier_walking_dead_rot_curse_enemy:OnDestroy()
 	if IsServer() then
-		-- ParticleManager:DestroyParticle(self.sideEffectParticle,true)
-		-- self:GetParent():StopSound("Hero_Alchemist.AcidSpray") 
+		if not self.destroyReasonDistance and self.unit:IsAlive() then
+			self.unit:AddNewModifier(self.caster, self:GetAbility(), "modifier_stunned", {duration = self.stun_duration})
+		end
 	end
 end
 

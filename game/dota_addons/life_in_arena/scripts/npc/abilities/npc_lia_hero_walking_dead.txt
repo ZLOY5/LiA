@@ -19,7 +19,7 @@
 
 	"AbilityCastPoint"        "0.3"
 
-	"AbilityCooldown"       "28"
+	"AbilityCooldown"       "28 24 20"
 
 	"AbilityManaCost"       "0"  
 
@@ -45,7 +45,7 @@
 		"03"
 		{
 		  "var_type"      "FIELD_FLOAT"
-		  "decay_duration"  "8 10 12"
+		  "decay_duration"  "9"
 		}
 		"04"
 		{
@@ -106,40 +106,15 @@
 		"particle"  	"particles/custom/walking_dead/walking_dead_rot_curse_overhead_model.vpcf"
 	}
 
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"AbilityValues"
 	{
-		"01"
-		{
-			"var_type"        "FIELD_INTEGER"
-			"health_steal_per_second"  "40 60 80"
-		}
-		"02"
-		{
-			"var_type"        "FIELD_INTEGER"
-			"damage_per_second" "20 40 60"
-		}
-		"03"
-		{
-			"var_type"        "FIELD_INTEGER"
-			"radius"  			"200"
-		}
-		"04"
-		{
-			"var_type"        "FIELD_FLOAT"
-			"duration"  			"7"
-		}
-		"05"
-		{
-		  	"var_type"      "FIELD_FLOAT"
-		  	"tick_interval"  "1"
-		}
-		"06"
-		{
-			"var_type"        "FIELD_INTEGER"
-			"break_distance"  			"800"
-		}
+		"health_steal_per_second"  "40 60 80"
+		"damage_per_second" "20 40 60"
+		"radius"  			"200"
+		"duration"  			"5"
+		"stun_duration"		"2"
+		"tick_interval"  "1"
+		"break_distance"  			"800"
 	}
 }
 
