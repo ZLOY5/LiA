@@ -23581,8 +23581,6 @@
 		"ScriptFile"    "heroes/SpiderQueen/spider_queen_killer_instinct.lua"
 	
 		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
 		"AbilityTextureName"    "broodmother_incapacitating_bite"
 	
@@ -23599,466 +23597,94 @@
 		"AbilityValues"
 		{
 			"damage"  "100 175 250"
-			"attacks_count"     "3 4 5"
+			"attacks_count"     "2 3 4"
 			"duration"	"6"
-			"full_damage_radius"  "180"
-			"half_damage_radius"  "240"
+			"full_radius"  "180"
+			"half_radius"  "240"
+		}
+	}
+	
+	"spider_queen_spider_yarn"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes/SpiderQueen/spider_queen_spider_yarn.lua"
+	
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"     "broodmother_spin_web"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastRange"        "500"
+		"AbilityCastPoint"        "0.2"
+		"AbilityCastAnimation"	  "ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"         "20"
+		"AbilityManaCost"         "40 60 80"
+		"AoERadius"               "300"
+	
+		"AbilityValues"
+		{
+			"damage_per_second" "15 30 45"
+			"miss_chance"	"10 20 30"
+			"movement_slow_percentage"	"-10 -20 -30"
+			"base_duration"	"8"
+			"bonus_duration_per_spider"	"2"
+			"radius"	"300"
+		} 
+	}
+	
+	"spider_queen_infection"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/SpiderQueen/spider_queen_infection.lua"
+	
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"    "broodmother_spawn_spiderlings"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastPoint"				"0.2 0.2 0.2"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+	
+		"AbilityCooldown"				"20"
+		"AbilityManaCost"				"20 25 30"
+	
+		"AbilityValues"
+		{
+			"infection_chance"	"40"
+			"spider_hp_tooltip"	"150 350 550"
+			"spider_dmg_tooltip"	"11 24 51"
+			"spider_duration"	"30"
+			"spider_max_count"	"2 4 6"
 		}
 	}	
-		
-		"queen_of_spiders_infection"
-		{
-			"BaseClass"				"ability_datadriven"
-			"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-			"AbilityTextureName"			"broodmother_spawn_spiderlings"
-			"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-			"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-				
-			"MaxLevel"               "3"
-			"RequiredLevel"          "1"
-			"LevelsBetweenUpgrades"  "2"
-			
-			"AbilityCastRange"				"900"
-			"AbilityCastPoint"				"0.0"
-			"AbilityCooldown"				"5.0"
-			"AbilityManaCost"				"15 30 45"
-		
-			"precache"
-			{
-				"soundfile"			"soundevents/game_sounds_heroes/game_sounds_broodmother.vsndevts"
-				"particle"			"particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
-				"particle"			"particles/units/heroes/hero_broodmother/broodmother_web_cast.vpcf"
-				"particle"			"particles/units/heroes/hero_broodmother/broodmother_spiderlings_spawn.vpcf"
-			}
-		
-			"AbilitySpecial"
-			{
-				"01"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"damage"				"20 40 60"
-				}
-				"02"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"buff_duration"			"10.0"
-				}
-				"03"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"projectile_speed"	"900"
-				}
-				"04"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"spider_hp_tooltip"	"70 220 550"
-				}
-				"05"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"spider_damage_tooltip"	"11 24 51"
-				}
-				"06"
-				{
-					"var_type"				"FIELD_FLOAT"
-					"spiderling_duration"	"60.0"
-				}
-				"07"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"count"					"3 3 3"
-				}
-				"08"
-				{
-					"var_type"				"FIELD_INTEGER"
-					"autocast_radius"	"900"
-				}
-			}
-		
-			"OnSpellStart"
-			{
-				"FireSound"
-				{
-					"EffectName"	"Hero_Broodmother.SpawnSpiderlingsCast"
-					"Target"		"CASTER"
-				}
-		
-				"TrackingProjectile"
-				{
-					"Target" "TARGET"
-					"EffectName" "particles/units/heroes/hero_broodmother/broodmother_web_cast.vpcf"
-					"Dodgeable" "1"
-					"ProvidesVision" "0"
-					"MoveSpeed" "%projectile_speed"
-					"SourceAttachment" "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-				}
-			}
-		
-			"OnProjectileHitUnit"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\QueenOfSpiders\spiders.lua"
-					"Function"		"Infection"
-				}
-			}
-		
-			"Modifiers"
-			{
-			
-				"modifier_infection_autocast"
-				{
-					"Passive"	"1"
-					"IsHidden"	"1"
-					
-					"ThinkInterval"	"1"
-					"OnIntervalThink"
-					{
-						"RunScript"
-						{
-							"ScriptFile"    "heroes\QueenOfSpiders\spiders.lua"
-							"Function"      "spiderAutocast"
-						}
-					}
 	
-				}
-				
-				"modifier_infection"
-				{
-					"Duration"	"%buff_duration"
-					"IsDebuff"	"1"
-					"IsPurgable"	"1"
-		
-					"EffectName"	"particles/units/heroes/hero_broodmother/broodmother_spiderlings_debuff.vpcf"
-					"EffectAttachType"	"follow_origin"
-					
-					"ThinkInterval"	"1"
-					"OnIntervalThink"
-					{
-						"Damage"
-						{
-							"Target"	"TARGET"
-							"Type"		"DAMAGE_TYPE_MAGICAL"
-							"Damage"	"%damage"
-						}
-					}
-				
-					"OnDeath"
-					{
-						"FireSound"
-						{
-							"EffectName"	"Hero_Broodmother.SpawnSpiderlings"
-							"Target"
-							{
-								"Center"	"UNIT"
-								"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-							}
-						}
-		
-						"FireEffect"
-						{
-							"EffectName"        "particles/units/heroes/hero_broodmother/broodmother_spiderlings_spawn.vpcf"
-							"EffectAttachType"  "follow_origin"
-							"Target"
-							{
-								"Center"	"UNIT"
-								"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-							}
-						}
-		
-						"RunScript"
-						{
-							"ScriptFile"    "heroes\QueenOfSpiders\spiders.lua"    
-							"Function"      "spiderCreate"
-							"Target"		
-							{
-								"Center" 	"UNIT"
-								"Flags"		"DOTA_UNIT_TARGET_FLAG_DEAD"
-							}
-							"durat" 	"%spiderling_duration"
-							"count" 	"%count"
-						}
-		
-					}
-				}
-			}
-		}
-	
-	
-	"queen_of_spiders_poison"
+	"spider_queen_thick_cover"
 	{
-	  "BaseClass"   "ability_lua"
-	  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_poison.lua"
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/SpiderQueen/spider_queen_thick_cover.lua"
 	
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
-	  "AbilityTextureName"    "broodmother_poison_sting"
-	    
-	  "AbilityCastRange"  "300"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "broodmother_insatiable_hunger"
 	
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "2"
-	  "LevelsBetweenUpgrades"  "2"
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
 	
-	  "precache"
-	  {
-	    "particle"  "particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
-	  }
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"    "FIELD_INTEGER"
-	      "aura_radius"     "300"
-	    }
-	    "02"
-	    { 
-	      "var_type"  "FIELD_INTEGER"
-	      "damage_per_second"    "20 40 60"
-	    }
-	    "03"
-	    { 
-	      "var_type"  "FIELD_FLOAT"
-	      "tick_time"    "0.5"
-	    }
-	  }
-	}
-	
-	"queen_of_spiders_furious_strike"
-	{
-	  "BaseClass"   "ability_lua"
-	  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_furious_strike.lua"
-	
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	  "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
-	  "AbilityTextureName"    "broodmother_incapacitating_bite"
-	
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "2"
-	  "LevelsBetweenUpgrades"  "2"
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "chance"     "30 35 40"
-	    }
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "damage"  "100 175 250"
-	    }
-	    "03"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "full_damage_radius"  "180"
-	    }
-	    "04"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "half_damage_radius"  "240"
-	    }  
-	  }
-	}
-	
-	"queen_of_spiders_endurance"
-	{
-	  "BaseClass"   "ability_lua"
-	  "ScriptFile"    "heroes/QueenOfSpiders/queen_of_spiders_endurance.lua"
-	
-	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName"      "broodmother_insatiable_hunger"
-	
-	  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "5"
-	  "LevelsBetweenUpgrades"  "4"
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"              "FIELD_INTEGER"
-	      "bonus_health_regen"    "25 50 75"
-	    }
-	  } 
-	}
-	
-	
-	"queen_of_spiders_spider_poision_1"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityTextureName"			"broodmother_poison_sting"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"1.0"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_speed"			"-10"
-			}			
-		}
-	
-		"Modifiers"
-		{
-			"modifier_poison_1"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"OnAttackLanded"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_poison_debuff_1"
-						"Target"		"TARGET"
-					}
-				}
-			}
-	
-			"modifier_poison_debuff_1"
-			{
-				"IsDebuff"	"1"
-				"Duration"	"%duration"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_speed"
-				}
-			}
-		}
-	}
-	
-	"queen_of_spiders_spider_poision_2"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityTextureName"			"broodmother_poison_sting"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"1.0"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_speed"			"-20"
-			}			
-		}
-	
-		"Modifiers"
-		{
-			"modifier_poison_2"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"OnAttackLanded"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_poison_debuff_2"
-						"Target"		"TARGET"
-					}
-				}
-			}
-	
-			"modifier_poison_debuff_2"
-			{
-				"IsDebuff"	"1"
-				"Duration"	"%duration"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_speed"
-				}
-			}
-		}
-	}
-	
-	"queen_of_spiders_spider_poision_3"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"AbilityTextureName"			"broodmother_poison_sting"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"1.0"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_speed"			"-30"
-			}			
-		}
-	
-		"Modifiers"
-		{
-			"modifier_poison_3"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
-				"OnAttackLanded"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_poison_debuff_3"
-						"Target"		"TARGET"
-					}
-				}
-			}
-	
-			"modifier_poison_debuff_3"
-			{
-				"IsDebuff"	"1"
-				"Duration"	"%duration"
-	
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_speed"
-				}
-			}
-		}
+			"bonus_health_regen"    "25 50 75"
+			"bonus_base_agility"	"10 20 30"
+		} 
 	}
 	//End of file npc_lia_hero_spider_queen.txt
 

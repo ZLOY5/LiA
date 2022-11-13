@@ -2687,82 +2687,6 @@
 	//End of file npc_lia_hero_pirate.txt
 
 
-	//Start of file npc_lia_hero_queen_of_spiders.txt
-	"npc_dota_hero_broodmother"
-	{
-		"override_hero"				"npc_dota_hero_broodmother"
-			
-		"Role"		"Pusher,Nuker,Durable,Jungler"
-		"Rolelevels"	"2,1,1,1"
-		"Complexity"	"1"
-			
-		"Ability1" "queen_of_spiders_infection"	
-		"Ability2" "queen_of_spiders_poison" 		
-		"Ability3" "queen_of_spiders_furious_strike" 
-		"Ability4" "generic_hidden"	
-		"Ability5" "generic_hidden"					 	
-		"Ability6"         "queen_of_spiders_endurance"
-	    "Ability7"         ""
-	    "Ability8"         ""
-	    "Ability9"         ""					
-		"Ability10"         ""
-	    "Ability11"         ""
-	    "Ability12"         ""
-	    "Ability13"         ""
-	    "Ability14"         ""
-	    "Ability15"         ""
-	    "Ability16"         ""
-	    "Ability17"         ""
-	    "Ability25"         ""
-	
-		"ArmorPhysical" "0" 		
-		"MagicalResistance" "25"	
-	
-		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" "2" 
-		"AttackDamageMax" "22" 
-		"AttackRate" "1.9" 
-		"AttackAnimationPoint" "0.5" 
-		"AttackAcquisitionRange" "800" 
-		"AttackRange" "110" 
-	
-	
-		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
-		"AttributeBaseStrength"		"12"										
-		"AttributeStrengthGain"		"1.9"										
-		"AttributeBaseIntelligence"	"6"										
-		"AttributeIntelligenceGain"	"1.9"										
-		"AttributeBaseAgility"		"17"										
-		"AttributeAgilityGain"		"2.9"	
-	
-		"BountyXP" "0"
-		"BountyGoldMin" "0" 
-		"BountyGoldMax" "0" 
-	
-		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-		"MovementSpeed" "270" 
-		"MovementTurnRate" "0.5" 
-	
-		"StatusHealth" "500"
-		"StatusHealthRegen" "1.0" 
-		"StatusMana" "75" 
-		"StatusManaRegen" "0.25" 
-	
-		"TeamName" "DOTA_TEAM_GOODGUYS" 
-		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
-		"AttackType"    "hero"
-		"ArmorType"     "hero" 
-	
-		"VisionDaytimeRange" "900"
-		"VisionNighttimeRange" "800" 
-	
-		"HasInventory" "1" 
-	}	
-	//End of file npc_lia_hero_queen_of_spiders.txt
-
-
 	//Start of file npc_lia_hero_ranger.txt
 	"npc_dota_hero_windrunner"
 	{
@@ -3219,6 +3143,82 @@
 		"HasInventory" "1" 
 	}	
 	//End of file npc_lia_hero_skeleton_thief.txt
+
+
+	//Start of file npc_lia_hero_spider_queen.txt
+	"npc_dota_hero_broodmother"
+	{
+		"override_hero"				"npc_dota_hero_broodmother"
+			
+		"Role"		"Pusher,Nuker,Durable,Jungler"
+		"Rolelevels"	"2,1,1,1"
+		"Complexity"	"1"
+			
+		"Ability1" "spider_queen_killer_instinct"	
+		"Ability2" "spider_queen_spider_yarn" 		
+		"Ability3" "spider_queen_infection" 
+		"Ability4" "generic_hidden"	
+		"Ability5" "generic_hidden"					 	
+		"Ability6" "spider_queen_thick_cover"
+	    "Ability7"         ""
+	    "Ability8"         ""
+	    "Ability9"         ""					
+		"Ability10"         ""
+	    "Ability11"         ""
+	    "Ability12"         ""
+	    "Ability13"         ""
+	    "Ability14"         ""
+	    "Ability15"         ""
+	    "Ability16"         ""
+	    "Ability17"         ""
+	    "Ability25"         ""
+	
+		"ArmorPhysical" "0" 		
+		"MagicalResistance" "25"	
+	
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "2" 
+		"AttackDamageMax" "22" 
+		"AttackRate" "1.9" 
+		"AttackAnimationPoint" "0.5" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "110" 
+	
+	
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"12"										
+		"AttributeStrengthGain"		"1.9"										
+		"AttributeBaseIntelligence"	"6"										
+		"AttributeIntelligenceGain"	"1.9"										
+		"AttributeBaseAgility"		"17"										
+		"AttributeAgilityGain"		"2.9"	
+	
+		"BountyXP" "0"
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+	
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "270" 
+		"MovementTurnRate" "0.5" 
+	
+		"StatusHealth" "500"
+		"StatusHealthRegen" "1.0" 
+		"StatusMana" "75" 
+		"StatusManaRegen" "0.25" 
+	
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+		"AttackType"    "hero"
+		"ArmorType"     "hero" 
+	
+		"VisionDaytimeRange" "900"
+		"VisionNighttimeRange" "800" 
+	
+		"HasInventory" "1" 
+	}	
+	//End of file npc_lia_hero_spider_queen.txt
 
 
 	//Start of file npc_lia_hero_tauren_champion.txt

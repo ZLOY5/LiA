@@ -209,9 +209,9 @@
 
 		"item_lia_healing_ward_unit"	"Healing Ward"
 
-		"queen_of_spiders_spider_1" "Weak Spider"
-		"queen_of_spiders_spider_2" "Strong Spider"
-		"queen_of_spiders_spider_3" "Spider Warrior"
+		"npc_dota_broodmother_spiderling_custom_1" "Weak Spider"
+		"npc_dota_broodmother_spiderling_custom_2" "Strong Spider"
+		"npc_dota_broodmother_spiderling_custom_3" "Spider Warrior"
 
 		"spirit_of_the_plains1" "Spirit of the Plains"
 		"spirit_of_the_plains2" "Spirit of the Plains"
@@ -1097,20 +1097,33 @@
 		"DOTA_Tooltip_ability_spider_queen_killer_instinct_Description"	"When attacking, Linoria gets an ability to deal bonus damage to enemies around the target. The effect expires after %duration% seconds of when all the attacks are done."
 		"DOTA_Tooltip_ability_spider_queen_killer_instinct_damage"	"DAMAGE:"
 		"DOTA_Tooltip_ability_spider_queen_killer_instinct_attacks_count"	"ATTACK COUNT:"
-		"DOTA_Tooltip_ability_spider_queen_killer_instinct_full_damage_radius"	"FULL DAMAGE RADIUS:"
-		"DOTA_Tooltip_ability_spider_queen_killer_instinct_half_damage_radius"	"HALF DAMAGE RADIUS:"
+		"DOTA_Tooltip_ability_spider_queen_killer_instinct_full_radius"	"FULL DAMAGE RADIUS:"
+		"DOTA_Tooltip_ability_spider_queen_killer_instinct_half_radius"	"HALF DAMAGE RADIUS:"
 
-		"DOTA_Tooltip_ability_queen_of_spiders_infection"	"Infection"
-		"DOTA_Tooltip_ability_queen_of_spiders_infection_Description"	"Spider Queen injects her egg into an enemy unit, dealing damage every second. The spiders will hatch if the target is killed while under this influence"
-		"DOTA_Tooltip_ability_queen_of_spiders_infection_damage"	"DAMAGE PER SECOND:"		
-		"DOTA_Tooltip_ability_queen_of_spiders_infection_buff_duration"	"EFFECT DURATION:"		
-		"DOTA_Tooltip_ability_queen_of_spiders_infection_spider_hp_tooltip"	"SPIDER'S HEALTH:"		
-		"DOTA_Tooltip_ability_queen_of_spiders_infection_spider_damage_tooltip"	"SPIDER'S DAMAGE:"			
-		"DOTA_Tooltip_ability_queen_of_spiders_infection_spiderling_duration"	"SPIDER'S DURATION:"			
-		"DOTA_Tooltip_ability_queen_of_spiders_infection_count"	"SPIDERS COUNT:"
+		"DOTA_Tooltip_ability_spider_queen_spider_yarn"	"Spider Yarn"
+		"DOTA_Tooltip_ability_spider_queen_spider_yarn_Description"	"Spider Queen spreads her web in a target area for %base_duration% seconds, all enemies inside get a chance to miss while attacking, have their movespeed slowed and take damage every second. Every dead spider adds %bonus_duration_per_spider% seconds to the duration of the web."
+		"DOTA_Tooltip_ability_spider_queen_spider_yarn_damage_per_second"	"DAMAGE PER SECOND:"
+		"DOTA_Tooltip_ability_spider_queen_spider_yarn_miss_chance"	"%MISS CHANCE:"
+		"DOTA_Tooltip_ability_spider_queen_spider_yarn_movement_slow_percentage"	"%MOVESPEED SLOW:"
+		"DOTA_Tooltip_ability_spider_queen_spider_yarn_radius"	"AREA OF EFFECT:"
 
-		"DOTA_Tooltip_modifier_infection"	"Infection"
-		"DOTA_Tooltip_modifier_infection_Description"	"This unit is taking damage. When he dies, Linoria's spiders will spawn."
+		"DOTA_Tooltip_modifier_spider_queen_spider_yarn_debuff"	"Spider Yarn"
+		"DOTA_Tooltip_modifier_spider_queen_spider_yarn_debuff_Description"	"This unit has a %dMODIFIER_PROPERTY_MISS_PERCENTAGE%%% chance to miss and taked damage every second."
+
+		"DOTA_Tooltip_ability_spider_queen_infection"	"Infection"
+		"DOTA_Tooltip_ability_spider_queen_infection_Description"	"When Linoria kills an enemy there is a %infection_chance%%% to inject an egg into him and spawn a Spider. Using the ability summons half of the spider limit but disables the passive effect during the cooldown."	
+		"DOTA_Tooltip_ability_spider_queen_infection_spider_hp_tooltip"	"SPIDER HEALTH:"		
+		"DOTA_Tooltip_ability_spider_queen_infection_spider_dmg_tooltip"	"SPIDER DAMAGE:"			
+		"DOTA_Tooltip_ability_spider_queen_infection_spider_duration"	"SPIDER LIFETIME:"			
+		"DOTA_Tooltip_ability_spider_queen_infection_spider_max_count"	"SPIDER LIMIT:"
+
+		"DOTA_Tooltip_modifier_spider_queen_infection"	"Infection"
+		"DOTA_Tooltip_modifier_spider_queen_infection_Description"	"Alive spiders count."
+
+		"DOTA_Tooltip_ability_spider_queen_thick_cover"	"Thick Cover"
+		"DOTA_Tooltip_ability_spider_queen_thick_cover_Description"	"Spider Queen has a very thick hide that increases her health regeneration. In addition, she gains a little base agility"
+		"DOTA_Tooltip_ability_spider_queen_thick_cover_bonus_health_regen"	"BONUS HEALTH REGEN"	
+		"DOTA_Tooltip_ability_spider_queen_thick_cover_bonus_base_agility"	"ADDITIONAL BASE AGILITY"
 
 		"DOTA_Tooltip_ability_queen_of_spiders_spider_poision_1"	"Spider Bite"
 		"DOTA_Tooltip_ability_queen_of_spiders_spider_poision_1_Description"	"Each attack reduces the target's movespeed by 10%% for 1 second."
@@ -1127,17 +1140,6 @@
 
 		"DOTA_Tooltip_modifiers_queen_of_spiders_poison_aura"	"Poisonous Gas"
 		"DOTA_Tooltip_modifiers_queen_of_spiders_poison_aura_Description"	"This unit is taking damage."
-
-		"DOTA_Tooltip_ability_queen_of_spiders_furious_strike"	"Killer Instinct"
-		"DOTA_Tooltip_ability_queen_of_spiders_furious_strike_Description"	"Spider Queen has a chance to deal bonus damage to the enemies around her."
-		"DOTA_Tooltip_ability_queen_of_spiders_furious_strike_chance"	"%CHANCE:"
-		"DOTA_Tooltip_ability_queen_of_spiders_furious_strike_damage"	"DAMAGE:"
-		"DOTA_Tooltip_ability_queen_of_spiders_furious_strike_full_damage_radius"	"FULL DAMAGE RADIUS:"
-		"DOTA_Tooltip_ability_queen_of_spiders_furious_strike_half_damage_radius"	"HALF DAMAGE RADIUS:"			
-
-		"DOTA_Tooltip_ability_queen_of_spiders_endurance"	"Thick Cover"
-		"DOTA_Tooltip_ability_queen_of_spiders_endurance_Description"	"Spider Queen have very thick hide and increased regeneration rate."
-		"DOTA_Tooltip_ability_queen_of_spiders_endurance_bonus_health_regen"	"+$hp_regen"
 
 		"DOTA_Tooltip_modifier_poison_debuff_1"	"Poison"
 		"DOTA_Tooltip_modifier_poison_debuff_1_Description"	"This unit is slowed."
