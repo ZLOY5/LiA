@@ -379,3 +379,37 @@ function CDOTA_BaseNPC:GetManaLossReductionPercentage()
 
 	return mana_loss_reduction
 end
+
+-- Searches for units in an isosceles trapezoid area based on its top and bottom middle points (startPos and endPos) and the widths of the top and bottom sides (startWidth and endWidth).
+function FindUnitsInTrapezoid_TwoPoints(team, startPos, endPos, cacheUnit, startWidth, endWidth, teamFilter, typeFilter, flagFilter)
+	local width = endWidth
+	if startWidth > endWidth then width = startWidth end
+
+	local direction = (endPos - startPos):Normalized()
+
+	local trapezoid_points = {startPos + startWidth * Vector(-direction.y, direction.x, 0), startPos + startWidth * Vector(direction.y, -direction.x, 0), endPos + endWidth * Vector(direction.y, -direction.x, 0), endPos + endWidth * Vector(-direction.y, direction.x, 0)}
+
+	local initial_targets = FindUnitsInLine(team, startPos, endPos, cacheUnit, width, teamFilter, typeFilter, flagFilter)
+	local final_targets = {}
+	for k, v in pairs(initial_targets) do
+		if PointBelongsToPolygon(trapezoid_points, v:GetAbsOrigin()) then
+			table.insert(final_targets, v)
+		end
+	end
+	return final_targets
+end
+
+-- Checks if a point belongs to a polygon. The 1st parameter is an array of ordered vertices of the polygon (can go both clockwise and counterclockwise). The 2nd parameter is the point to check for.
+function PointBelongsToPolygon(polygon, point)
+    local oddNodes = false
+    local j = #polygon
+    for i = 1, #polygon do
+        if (polygon[i].y < point.y and polygon[j].y >= point.y or polygon[j].y < point.y and polygon[i].y >= point.y) then
+            if (polygon[i].x + ( point.y - polygon[i].y ) / (polygon[j].y - polygon[i].y) * (polygon[j].x - polygon[i].x) < point.x) then
+                oddNodes = not oddNodes;
+            end
+        end
+        j = i;
+    end
+    return oddNodes 
+end
