@@ -31,11 +31,19 @@ function modifier_item_lia_hammer_of_titans:OnCreated()
 	self.bonus_agility = self.ability:GetSpecialValueFor("bonus_agility") 
 	self.bonus_intelligence = self.ability:GetSpecialValueFor("bonus_intelligence") 
 
-	self.cleave = self.ability:GetSpecialValueFor("cleave_percent")
-	self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
-	self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
-	self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
+	if self.parent:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then 
+		self.damage_percent = self.ability:GetSpecialValueFor("cleave_percent")
+		self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
+		self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
+		self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
+	elseif self.parent:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+		self.damage_percent = self.ability:GetSpecialValueFor("splash_percent_ranged")
+		self.splash_radius = self.ability:GetSpecialValueFor("splash_radius")
+	end
 
+	if IsServer() then
+		self.pseudo = PseudoRandom:New(self:GetAbility():GetSpecialValueFor("minibash_chance")*0.01)
+	end
 	self.slow_duration = self.ability:GetSpecialValueFor("slow_duration")
 end
 
@@ -69,33 +77,34 @@ end
 
 function modifier_item_lia_hammer_of_titans:GetModifierProcAttack_Feedback(params)
 	if IsServer() then
-		if self.parent:GetAttackCapability()~=DOTA_UNIT_CAP_MELEE_ATTACK then return end
+		if self.pseudo:Trigger() then
+			local damage = params.damage * self.damage_percent / 100
 
-		local damage = params.damage * self.cleave / 100
+			if self.parent:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then 
+				DoCleaveAttack(self.parent,	params.target, self.ability, damage, self.radius_start, self.radius_end, self.radius_dist, "particles/custom/items/hammer_of_titans_cleave.vpcf")
 
-		-- cleave
-		DoCleaveAttack(
-			self.parent,
-			params.target,
-			self.ability,
-			self.cleave,
-			self.radius_start,
-			self.radius_end,
-			self.radius_dist,
-			"particles/custom/items/hammer_of_titans_cleave.vpcf"
-		)
+				local direction = self.parent:GetForwardVector()
+				local startPos = self.parent:GetAbsOrigin() + direction
+				local endPos = self.parent:GetAbsOrigin() + direction * self.radius_dist
 
-		local direction = self.parent:GetForwardVector()
-		local startPos = self.parent:GetAbsOrigin() + direction
-		local endPos = self.parent:GetAbsOrigin() + direction * self.radius_dist
+				local cleaveTargets = FindUnitsInTrapezoid_TwoPoints(params.attacker:GetTeam(), startPos, endPos, nil, self.radius_start, self.radius_end, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0)	
 
-		local trapezoid_points = {startPos + self.radius_start * Vector(-direction.y, direction.x, 0), startPos + self.radius_start * Vector(direction.y, -direction.x, 0), endPos + self.radius_end * Vector(direction.y, -direction.x, 0), endPos + self.radius_end * Vector(-direction.y, direction.x, 0)}
+				for k, v in pairs(cleaveTargets) do
+					v:AddNewModifier(self.parent, self.ability, "modifier_item_lia_hammer_of_titans_debuff", {duration = self.slow_duration})
+				end
+			elseif self.parent:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+				local splashTargets = FindUnitsInRadius(self.parent:GetTeam(), params.target:GetAbsOrigin(), nil, self.splash_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
 
-		local cleaveTargets = FindUnitsInTrapezoid_TwoPoints(params.attacker:GetTeam(), startPos, endPos, nil, self.radius_start, self.radius_end, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, 0)
-
-		for k, v in pairs(cleaveTargets) do
-			v:AddNewModifier(self.parent, self.ability, "modifier_item_lia_hammer_of_titans_debuff", {duration = self.slow_duration})
-		end
+				for k, v in pairs(splashTargets) do
+					if v ~= params.target then
+						ApplyDamage({victim = v, attacker = self.parent, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self.ability})
+					end
+					if not v:IsMagicImmune() then
+						v:AddNewModifier(self.parent, self.ability, "modifier_item_lia_hammer_of_titans_debuff", {duration = self.slow_duration})
+					end	
+				end
+			end	
+		end	
 	end
 end
 
