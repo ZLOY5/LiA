@@ -380,6 +380,30 @@ function CDOTA_BaseNPC:GetManaLossReductionPercentage()
 	return mana_loss_reduction
 end
 
+-- Old-style DoCleaveAttack ignoring physical armor value
+function DoCleaveAttack_IgnorePhysicalArmor(attacker, target, ability, damage, startRadius, endRadius, distance, effectName)
+	local direction = attacker:GetForwardVector()
+	local startPos = attacker:GetAbsOrigin() + direction
+	local endPos = attacker:GetAbsOrigin() + direction * distance
+
+	local cleaveTargets = FindUnitsInTrapezoid_TwoPoints(attacker:GetTeam(), startPos, endPos, nil, startRadius, endRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES)
+	
+	local particle = ParticleManager:CreateParticle(effectName, PATTACH_ABSORIGIN_FOLLOW, attacker)
+	ParticleManager:SetParticleControl(particle,0,attacker:GetAbsOrigin())
+
+	local target_number = 1
+
+	for k, v in pairs(cleaveTargets) do
+		if v ~= target then
+			ApplyDamage({victim = v, attacker = attacker, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR + DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, ability = ability})
+			if target_number <= 16 then
+				ParticleManager:SetParticleControl(particle,target_number,v:GetAbsOrigin())
+				target_number = target_number + 1
+			end
+		end
+	end
+end
+
 -- Searches for units in an isosceles trapezoid area based on its top and bottom middle points (startPos and endPos) and the widths of the top and bottom sides (startWidth and endWidth).
 function FindUnitsInTrapezoid_TwoPoints(team, startPos, endPos, cacheUnit, startWidth, endWidth, teamFilter, typeFilter, flagFilter)
 	local width = endWidth

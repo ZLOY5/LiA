@@ -31,20 +31,21 @@ function modifier_item_lia_hammer_of_titans:OnCreated()
 	self.bonus_agility = self.ability:GetSpecialValueFor("bonus_agility") 
 	self.bonus_intelligence = self.ability:GetSpecialValueFor("bonus_intelligence") 
 
-	if self.parent:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then 
-		self.damage_percent = self.ability:GetSpecialValueFor("cleave_percent")
-		self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
-		self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
-		self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
-	elseif self.parent:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
-		self.damage_percent = self.ability:GetSpecialValueFor("splash_percent_ranged")
-		self.splash_radius = self.ability:GetSpecialValueFor("splash_radius")
-	end
+	self.slow_duration = self.ability:GetSpecialValueFor("slow_duration")
 
 	if IsServer() then
+		if self.parent:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then 
+			self.damage_percent = self.ability:GetSpecialValueFor("cleave_percent")
+			self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
+			self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
+			self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
+		elseif self.parent:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+			self.damage_percent = self.ability:GetSpecialValueFor("splash_percent_ranged")
+			self.splash_radius = self.ability:GetSpecialValueFor("splash_radius")
+		end
+
 		self.pseudo = PseudoRandom:New(self:GetAbility():GetSpecialValueFor("minibash_chance")*0.01)
 	end
-	self.slow_duration = self.ability:GetSpecialValueFor("slow_duration")
 end
 
 function modifier_item_lia_hammer_of_titans:DeclareFunctions()
@@ -81,7 +82,7 @@ function modifier_item_lia_hammer_of_titans:GetModifierProcAttack_Feedback(param
 			local damage = params.damage * self.damage_percent / 100
 
 			if self.parent:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then 
-				DoCleaveAttack(self.parent,	params.target, self.ability, damage, self.radius_start, self.radius_end, self.radius_dist, "particles/custom/items/hammer_of_titans_cleave.vpcf")
+				DoCleaveAttack_IgnorePhysicalArmor(self.parent,	params.target, self.ability, damage, self.radius_start, self.radius_end, self.radius_dist, "particles/custom/items/hammer_of_titans_cleave.vpcf")
 
 				local direction = self.parent:GetForwardVector()
 				local startPos = self.parent:GetAbsOrigin() + direction
@@ -97,7 +98,7 @@ function modifier_item_lia_hammer_of_titans:GetModifierProcAttack_Feedback(param
 
 				for k, v in pairs(splashTargets) do
 					if v ~= params.target then
-						ApplyDamage({victim = v, attacker = self.parent, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self.ability})
+						ApplyDamage({victim = v, attacker = self.parent, damage = damage, damage_type = DAMAGE_TYPE_PHYSICAL, damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR + DOTA_DAMAGE_FLAG_NO_SPELL_LIFESTEAL + DOTA_DAMAGE_FLAG_NO_SPELL_AMPLIFICATION, ability = self.ability})
 					end
 					if not v:IsMagicImmune() then
 						v:AddNewModifier(self.parent, self.ability, "modifier_item_lia_hammer_of_titans_debuff", {duration = self.slow_duration})
