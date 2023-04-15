@@ -22,36 +22,33 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_wave_8_cleave:OnCreated( kv )
-	self.cleave_percent = self:GetAbility():GetSpecialValueFor( "cleave_percent" )
-	self.cleave_radius = self:GetAbility():GetSpecialValueFor( "cleave_radius" )
+	self.damage_percent = self.ability:GetSpecialValueFor("cleave_percent")
+	self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
+	self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
+	self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
 end
 
 --------------------------------------------------------------------------------
 
 function modifier_wave_8_cleave:DeclareFunctions()
 	local funcs = {
-		MODIFIER_EVENT_ON_ATTACK_LANDED,
+		MODIFIER_PROPERTY_PROCATTACK_FEEDBACK,
 	}
 
 	return funcs
 end
 
 --------------------------------------------------------------------------------
-
-function modifier_wave_8_cleave:OnAttackLanded( params )
+function modifier_wave_8_cleave:GetModifierProcAttack_Feedback(params)
 	if IsServer() then
 		if params.attacker == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
 			if self:GetParent():PassivesDisabled() then
 				return 0
 			end
+			local damage = params.damage * self.damage_percent / 100
 
-			local target = params.target
-			if target ~= nil and target:GetTeamNumber() ~= self:GetParent():GetTeamNumber() then
-				local cleaveDamage = ( self.cleave_percent * params.damage ) / 100.0
-				DoCleaveAttack( self:GetParent(), target, self:GetAbility(), cleaveDamage, self.cleave_radius, self.cleave_radius, self.cleave_radius, "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf" )
-			end
+			DoCleaveAttack_IgnorePhysicalArmor(self.parent,	params.target, self.ability, damage, self.radius_start, self.radius_end, self.radius_dist, "particles/custom/items/cleave.vpcf")
 		end
 	end
-	
-	return 0
 end
+
