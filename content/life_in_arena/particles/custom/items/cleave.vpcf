@@ -1,0 +1,245 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf54:version{326b1595-45e8-4004-aa5a-3e08655ff51f} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 300
+	m_flConstantRadius = 64.0
+	m_bShouldSort = false
+	m_nBehaviorVersion = 5
+	m_nFirstMultipleOverride_BackwardCompat = 3
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 128.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_InitFloat"
+			m_InputValue = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.7
+			}
+			m_nOutputField = 1
+		},
+		{
+			_class = "C_INIT_InitFloat"
+			m_InputValue = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+			m_nOutputField = 7
+		},
+		{
+			_class = "C_INIT_RingWave"
+			m_bEvenDistribution = true
+			m_flParticlesPerOrbit = 127.0
+			m_flInitialRadius = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 1.0
+			}
+			m_flInitialSpeedMin = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 2200.0
+			}
+			m_flInitialSpeedMax = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 2200.0
+			}
+			m_flYaw = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 180.0
+			}
+		},
+		{
+			_class = "C_INIT_PositionOffset"
+			m_OffsetMax = [ 0.0, 0.0, 32.0 ]
+			m_OffsetMin = [ 0.0, 0.0, 32.0 ]
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_nFieldOutput = 16
+			m_nInputMin = 20
+			m_nInputMax = 50
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_nFieldOutput = 16
+			m_nInputMin = 70
+			m_nInputMax = 110
+			m_flOutputMin = 1.0
+			m_flOutputMax = 0.0
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.15
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_flEndScale = 0.85
+			m_flBias = 0.75
+		},
+		{
+			_class = "C_OP_ControlpointLight"
+			m_LightZeroDist4 = 100.0
+			m_LightFiftyDist4 = 64.0
+			m_LightColor4 = [ 178, 34, 34 ]
+			m_nControlPoint4 = 5
+			m_LightZeroDist3 = 100.0
+			m_LightFiftyDist3 = 64.0
+			m_LightColor3 = [ 178, 34, 34 ]
+			m_nControlPoint3 = 4
+			m_LightZeroDist2 = 100.0
+			m_LightFiftyDist2 = 64.0
+			m_LightColor2 = [ 178, 34, 34 ]
+			m_nControlPoint2 = 3
+			m_LightZeroDist1 = 100.0
+			m_LightFiftyDist1 = 64.0
+			m_LightColor1 = [ 178, 34, 34 ]
+			m_nControlPoint1 = 2
+			m_bUseHLambert = false
+		},
+		{
+			_class = "C_OP_ControlpointLight"
+			m_bClampLowerRange = true
+			m_nControlPoint1 = 6
+			m_LightColor1 = [ 178, 34, 34 ]
+			m_LightFiftyDist1 = 64.0
+			m_LightZeroDist1 = 100.0
+			m_nControlPoint2 = 7
+			m_LightColor2 = [ 178, 34, 34 ]
+			m_LightFiftyDist2 = 64.0
+			m_LightZeroDist2 = 100.0
+			m_nControlPoint3 = 8
+			m_LightColor3 = [ 178, 34, 34 ]
+			m_LightFiftyDist3 = 64.0
+			m_LightZeroDist3 = 100.0
+			m_nControlPoint4 = 9
+			m_LightColor4 = [ 178, 34, 34 ]
+			m_LightFiftyDist4 = 64.0
+			m_LightZeroDist4 = 100.0
+			m_bUseHLambert = false
+		},
+		{
+			_class = "C_OP_ControlpointLight"
+			m_bClampLowerRange = true
+			m_nControlPoint1 = 10
+			m_LightColor1 = [ 178, 34, 34 ]
+			m_LightFiftyDist1 = 64.0
+			m_LightZeroDist1 = 100.0
+			m_nControlPoint2 = 11
+			m_LightColor2 = [ 178, 34, 34 ]
+			m_LightFiftyDist2 = 64.0
+			m_LightZeroDist2 = 100.0
+			m_nControlPoint3 = 12
+			m_LightColor3 = [ 178, 34, 34 ]
+			m_LightFiftyDist3 = 64.0
+			m_LightZeroDist3 = 100.0
+			m_nControlPoint4 = 13
+			m_LightColor4 = [ 139, 0, 0 ]
+			m_LightFiftyDist4 = 64.0
+			m_LightZeroDist4 = 100.0
+			m_bUseHLambert = false
+		},
+		{
+			_class = "C_OP_ControlpointLight"
+			m_LightZeroDist4 = 100.0
+			m_LightFiftyDist4 = 64.0
+			m_LightColor4 = [ 139, 0, 0 ]
+			m_nControlPoint4 = 17
+			m_LightZeroDist3 = 100.0
+			m_LightFiftyDist3 = 64.0
+			m_LightColor3 = [ 178, 34, 34 ]
+			m_nControlPoint3 = 16
+			m_LightZeroDist2 = 100.0
+			m_LightFiftyDist2 = 64.0
+			m_LightColor2 = [ 178, 34, 34 ]
+			m_nControlPoint2 = 15
+			m_LightZeroDist1 = 100.0
+			m_LightFiftyDist1 = 64.0
+			m_LightColor1 = [ 178, 34, 34 ]
+			m_nControlPoint1 = 14
+			m_bClampLowerRange = true
+			m_bUseHLambert = false
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.1
+		},
+	]
+	m_ForceGenerators = 
+	[
+		{
+			_class = "C_OP_AttractToControlPoint"
+			m_fForceAmount = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = -150.0
+			}
+			m_fFalloffPower = -0.1
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_bDisableZBuffering = true
+			m_flOverbrightFactor = 6.0
+			m_nScaleCP1 = 0
+			m_nScaleCP2 = 1
+			m_flRadiusScale = 0.5
+			m_flTextureVWorldSize = 1000.0
+			m_flTextureVOffset = 0.957031
+			m_flTextureVScrollRate = 10.0
+			m_nMaxTesselation = 2
+			m_nMinTesselation = 2
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/beam_plasma_06.vtex"
+					m_TextureControls = 
+					{
+						m_flFinalTextureScaleU = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = -1.0
+						}
+					}
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+		},
+	]
+}

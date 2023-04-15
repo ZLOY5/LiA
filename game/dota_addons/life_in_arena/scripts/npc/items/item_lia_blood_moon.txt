@@ -27,7 +27,8 @@
 "item_lia_blood_moon"
 {
 	"ID"							"1303"
-	"BaseClass" 					"item_datadriven"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items\item_lia_blood_moon.lua"
 	"ItemCost"						"2135"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
@@ -38,78 +39,14 @@
 	"AbilityTextureName"			"custom/lia_blood_moon"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-	"Modifiers"
+	"AbilityValues"
 	{
-		"modifier_item_blood_moon"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "OnCreated"
-			{
-				"RunScript"
-				{
-					"ScriptFile" "items\cleave_axes"
-					"Function"   "OnEquipBloodMoon"
-				}
-			}
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile" "items\cleave_axes"
-					"Function"   "OnUnequip"
-				}
-			}
-			
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-		    }
-		    
-		}
-		"item_blood_moon_cleave_modifier"
-		{
-			"IsHidden"         "1"
-			"OnAttackLanded"
-		    {
-		    	"CleaveAttack"
-		    	{
-		    		"CleavePercent"         "%cleave_percent"
-		    		"CleaveRadius"          "%cleave_radius"
-		    		"CleaveEffect"          "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
-		    	}
-		    }
-		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_strength" "50"
-		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "100"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_attack_speed" "40"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"cleave_percent" "30"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"cleave_radius" "200"
-		}	
+		"bonus_damage" "100"
+		"bonus_strength"	"50"
+		"bonus_attack_speed"	"40"
+		"cleave_percent" "30"
+		"cleave_start_width" "150"
+		"cleave_end_width" "200"
+		"cleave_length" "200"
 	}
 }
