@@ -22,7 +22,10 @@ end
 --------------------------------------------------------------------------------
 
 function modifier_wave_8_cleave:OnCreated( kv )
-	self.damage_percent = self.ability:GetSpecialValueFor("cleave_percent")
+	self.ability = self:GetAbility()
+	self.parent = self:GetParent()
+
+	self.cleave_percent = self.ability:GetSpecialValueFor("cleave_percent")
 	self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
 	self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
 	self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
@@ -41,11 +44,11 @@ end
 --------------------------------------------------------------------------------
 function modifier_wave_8_cleave:GetModifierProcAttack_Feedback(params)
 	if IsServer() then
-		if params.attacker == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
-			if self:GetParent():PassivesDisabled() then
+		if  not self.parent:IsIllusion()  then
+			if self.parent:PassivesDisabled() then
 				return 0
 			end
-			local damage = params.damage * self.damage_percent / 100
+			local damage = params.damage * self.cleave_percent / 100
 
 			DoCleaveAttack_IgnorePhysicalArmor(self.parent,	params.target, self.ability, damage, self.radius_start, self.radius_end, self.radius_dist, "particles/custom/items/cleave.vpcf")
 		end

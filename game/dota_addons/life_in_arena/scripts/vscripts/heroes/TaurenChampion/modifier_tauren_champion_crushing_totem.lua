@@ -9,12 +9,15 @@ function modifier_tauren_champion_crushing_totem:IsPurgable()
 end
 
 function modifier_tauren_champion_crushing_totem:OnCreated(kv)
-	self.bonus_attack_speed = self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
-	self.attacks_count = self:GetAbility():GetSpecialValueFor("attacks_count")
-	self.cleave_damage_percent = self:GetAbility():GetSpecialValueFor("cleave_damage_percent")
-	self.cleave_starting_width = self:GetAbility():GetSpecialValueFor("cleave_starting_width")
-	self.cleave_ending_width = self:GetAbility():GetSpecialValueFor("cleave_ending_width")
-	self.cleave_distance = self:GetAbility():GetSpecialValueFor("cleave_distance")
+	self.ability = self:GetAbility()
+	self.parent = self:GetParent()
+
+	self.bonus_attack_speed = self.ability:GetSpecialValueFor("bonus_attack_speed")
+	self.attacks_count = self.ability:GetSpecialValueFor("attacks_count")
+	self.damage_percent = self.ability:GetSpecialValueFor("cleave_percent")
+	self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
+	self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
+	self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
 	if IsServer() then
 		self:SetStackCount(self.attacks_count)
 		self.totemParticle = ParticleManager:CreateParticle("particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_egset.vpcf", PATTACH_POINT_FOLLOW, self:GetParent())
@@ -41,8 +44,8 @@ function modifier_tauren_champion_crushing_totem:OnAttackLanded( params )
 	if IsServer() then
 		if self:GetParent() == params.attacker then
 			if params.target ~= nil and params.target:GetTeamNumber() ~= self:GetParent():GetTeamNumber() then
-				local cleaveDamage = ( self.cleave_damage_percent * params.damage ) / 100.0
-				DoCleaveAttack( self:GetParent(), params.target, self:GetAbility(), cleaveDamage, self.cleave_starting_width, self.cleave_ending_width, self.cleave_distance, "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf" )
+				local damage = params.damage * self.damage_percent / 100
+				DoCleaveAttack_IgnorePhysicalArmor(self.parent,	params.target, self.ability, damage, self.radius_start, self.radius_end, self.radius_dist, "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf")
 				self:DecrementStackCount()
 				if self:GetStackCount() == 0 then
 					self:GetParent():RemoveModifierByName( "modifier_tauren_champion_crushing_totem" )

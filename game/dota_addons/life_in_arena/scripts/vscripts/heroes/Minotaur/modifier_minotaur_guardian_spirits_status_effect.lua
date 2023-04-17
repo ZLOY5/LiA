@@ -42,7 +42,7 @@ if IsServer() then
 end
 
 function modifier_minotaur_guardian_spirits_status_effect:GetStatusEffectName()
-	if GetLocalPlayerTeam() == self:GetParent():GetTeamNumber() then
+	if GetLocalPlayerTeam(GetLocalPlayerID()) == self:GetParent():GetTeamNumber() then
 	    return "particles/custom/tauren_chieftain/tauren_chieftain_guardian_spirit_status_effect.vpcf"
 	end
 end

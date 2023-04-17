@@ -7267,19 +7267,12 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"sven_great_cleave"
 	
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"cleave_radius"	"200"
-			}
-			
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"cleave_percent"	"50"
-			}
+			"cleave_percent" "50"
+			"cleave_start_width" "150"
+			"cleave_end_width" "200"
+			"cleave_length" "200"
 		}
 	}
 	
@@ -7421,19 +7414,12 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"sven_great_cleave"
 	
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"cleave_radius"	"200"
-			}
-			
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"cleave_percent"	"100"
-			}
+			"cleave_percent" "100"
+			"cleave_start_width" "150"
+			"cleave_end_width" "200"
+			"cleave_length" "200"
 		}
 	}
 	
@@ -23845,32 +23831,16 @@
 	
 	  "precache"
 	  {
-	    "particle"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+	    "particle"      "particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
 	  }
 	
-	  "AbilitySpecial"
+	  "AbilityValues"
 	  {
-	    "01"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_start_radius" "150 175 200"
-	    }
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_end_radius" "225 250 275"
-	    }
-	    "03"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_distance" "225 250 275"
-	    }
-	    "04"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_percent" "20 30 40"
-	    }
-	  } 
+	    "cleave_percent" "20 30 40"
+	    "cleave_start_width" "150 175 200"
+	    "cleave_end_width" "225 250 275"
+	    "cleave_length" "225 250 275"
+	  }
 	}
 	
 	"minotaur_guardian_spirits"
@@ -24076,44 +24046,16 @@
 	    "particle"  "particles/custom/tauren_champion/modifier_tauren_champion_accumulated_rage_damage.vpcf"
 	  }
 	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "bonus_attack_speed"      "30 50 70"
-	    }
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_damage_percent"     "60 70 80"
-	    }
-	    "03"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "attacks_count"      "2 3 4"
-	    }
-	    "04"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_starting_width"     "200"
-	    }
-	    "05"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_ending_width"      "250"
-	    }
-	    "06"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "cleave_distance"     "300"
-	    }
-	    "07"
-	    {
-	      "var_type"      "FIELD_FLOAT"
-	      "duration"      "10"
-	    }
-	  } 
+	  "AbilityValues"
+		{
+			"bonus_attack_speed"      "30 50 70"
+			"attacks_count"      "2 3 4"
+			"cleave_percent" "60 70 80"
+			"cleave_start_width" "200"
+			"cleave_end_width" "250"
+			"cleave_length" "300"
+	    "duration"      "10"
+		}
 	}
 	
 	"tauren_champion_champions_jump"

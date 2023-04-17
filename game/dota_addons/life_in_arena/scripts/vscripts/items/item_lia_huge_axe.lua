@@ -66,7 +66,7 @@ end
 modifier_item_lia_huge_axe_cleave = class({})
 
 function modifier_item_lia_huge_axe_cleave:IsHidden() 
-	return false
+	return true
 end
 
 function modifier_item_lia_huge_axe_cleave:IsPurgable()

@@ -72,7 +72,7 @@ end
 modifier_item_lia_blood_moon_cleave = class({})
 
 function modifier_item_lia_blood_moon_cleave:IsHidden() 
-	return false
+	return true
 end
 
 function modifier_item_lia_blood_moon_cleave:IsPurgable()

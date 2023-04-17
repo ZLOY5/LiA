@@ -109,32 +109,16 @@
 
   "precache"
   {
-    "particle"      "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+    "particle"      "particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
   }
 
-  "AbilitySpecial"
+  "AbilityValues"
   {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "cleave_start_radius" "150 175 200"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "cleave_end_radius" "225 250 275"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "cleave_distance" "225 250 275"
-    }
-    "04"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "cleave_percent" "20 30 40"
-    }
-  } 
+    "cleave_percent" "20 30 40"
+    "cleave_start_width" "150 175 200"
+    "cleave_end_width" "225 250 275"
+    "cleave_length" "225 250 275"
+  }
 }
 
 "minotaur_guardian_spirits"

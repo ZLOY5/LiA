@@ -10,39 +10,39 @@ function modifier_minotaur_demonic_power:IsPurgable()
 end
 
 function modifier_minotaur_demonic_power:OnCreated(kv)
-	self.cleave_start_radius = self:GetAbility():GetSpecialValueFor( "cleave_start_radius" )
-	self.cleave_end_radius = self:GetAbility():GetSpecialValueFor( "cleave_end_radius" )
-	self.cleave_distance = self:GetAbility():GetSpecialValueFor( "cleave_distance" )
-	self.cleave_percent = self:GetAbility():GetSpecialValueFor( "cleave_percent" )
+	self.ability = self:GetAbility()
+	self.parent = self:GetParent()
+
+	self.damage_percent = self.ability:GetSpecialValueFor("cleave_percent")
+	self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
+	self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
+	self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
 end
 
 function modifier_minotaur_demonic_power:OnRefresh(kv)
-	self.cleave_start_radius = self:GetAbility():GetSpecialValueFor( "cleave_start_radius" )
-	self.cleave_end_radius = self:GetAbility():GetSpecialValueFor( "cleave_end_radius" )
-	self.cleave_distance = self:GetAbility():GetSpecialValueFor( "cleave_distance" )
-	self.cleave_percent = self:GetAbility():GetSpecialValueFor( "cleave_percent" )
+	self.cleave_percent = self.ability:GetSpecialValueFor("cleave_percent")
+	self.radius_start = self.ability:GetSpecialValueFor("cleave_start_width")
+	self.radius_end = self.ability:GetSpecialValueFor("cleave_end_width")
+	self.radius_dist = self.ability:GetSpecialValueFor("cleave_length")
 end
 
 function modifier_minotaur_demonic_power:DeclareFunctions()
 	local funcs = {
-		MODIFIER_EVENT_ON_ATTACK_LANDED,
+		MODIFIER_PROPERTY_PROCATTACK_FEEDBACK,
 	}
  
 	return funcs
 end
 
-function modifier_minotaur_demonic_power:OnAttackLanded( params )
+function modifier_minotaur_demonic_power:GetModifierProcAttack_Feedback( params )
 	if IsServer() then
-		if params.attacker == self:GetParent() and ( not self:GetParent():IsIllusion() ) then
-			if self:GetParent():PassivesDisabled() then
+		if  not self.parent:IsIllusion()  then
+			if self.parent:PassivesDisabled() then
 				return 0
 			end
+			local damage = params.damage * self.cleave_percent / 100
 
-			local target = params.target
-			if target ~= nil and target:GetTeamNumber() ~= self:GetParent():GetTeamNumber() then
-				local cleaveDamage = ( self.cleave_percent * params.damage ) / 100.0
-				DoCleaveAttack( self:GetParent(), target, self:GetAbility(), cleaveDamage, self.cleave_start_radius, self.cleave_end_radius, self.cleave_distance, "particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf" )
-			end
+			DoCleaveAttack_IgnorePhysicalArmor(self.parent,	params.target, self.ability, damage, self.radius_start, self.radius_end, self.radius_dist, "particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf")
 		end
 	end
 	
