@@ -39,7 +39,6 @@ function Kaboom(event)
 	ParticleManager:CreateParticle("particles/units/heroes/hero_techies/techies_suicide.vpcf",PATTACH_ABSORIGIN,caster)
 
 	if caster:IsAlive() then
-		caster:ForceKill(false)
+		caster:Kill(ability, caster)
 	end
-
 end

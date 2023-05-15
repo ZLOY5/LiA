@@ -354,7 +354,7 @@ function CDOTA_BaseNPC:ManaBurn(hCaster, hAbility, fManaAmount, fDamagePerMana, 
 		fManaAmount = fCurrentMana
 	end
 
-	self:ReduceMana(fManaAmount)
+	self:Script_ReduceMana(fManaAmount, hAbility)
 	if fDamagePerMana and iDamageType then
 		local fDamageToDeal = fManaAmount * fDamagePerMana
 		ApplyDamage({ victim = self, attacker = hCaster, damage = fDamageToDeal, damage_type = iDamageType, ability = hAbility })

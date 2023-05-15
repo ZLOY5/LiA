@@ -38,7 +38,7 @@ function Director(keys)
 	local reduction = caster:GetMaxHealth()*barrier_reduction
 
 	changeAll(caster, radius, change_per_teak )--Лечим 
-	caster:ReduceMana( changeMana )
+	caster:Script_ReduceMana(changeMana, ability)
 
 	if caster:GetHealth()-changeHp > reduction then       --Проверка уровня хп после уменьшения
   		caster:SetHealth(caster:GetHealth()-changeHp ) 

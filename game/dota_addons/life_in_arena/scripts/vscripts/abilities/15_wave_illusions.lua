@@ -18,7 +18,7 @@ function Illusions( event )
 	-- Kill the old images
 	for k,v in pairs(caster.mirror_image_illusions) do
 		if v and IsValidEntity(v) then 
-			v:ForceKill(false)
+			v:Kill(nil, nil)
 		end
 	end
 

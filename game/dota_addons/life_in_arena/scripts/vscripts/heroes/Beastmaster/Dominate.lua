@@ -23,7 +23,7 @@ function Dominate(keys)
 			v:AddNoDraw()
 			v.no_corpse = true 
 			v.beastmasterDominated = true
-			v:ForceKill(false)
+			v:Kill(nil, nil)
 
 			
 			
@@ -72,7 +72,7 @@ function OnDestroy(keys)
 			lifetime = modifierKill:GetRemainingTime()
 		end
 		target:AddNoDraw()
-		target:ForceKill(false)
+		target:Kill(nil, nil)
 		if target.previousOwner ~= nil then
 			local newcreep = CreateUnitByName(target:GetUnitName(), target:GetAbsOrigin(), false, target.previousOwner, target.previousOwner, target.previousOwner:GetTeamNumber())
 			newcreep:SetControllableByPlayer(target.previousOwnerID, true)

@@ -47,7 +47,7 @@ end
 
 function modifier_dark_knight_dark_energy_zone_effect:OnDestroy()
 	if IsServer() then
-		self:GetParent():ReduceMana(self.total_mana_spent)
+		self:GetParent():Script_ReduceMana(self.total_mana_spent, self:GetAbility())
 		if self.total_mana_spent > 0 then
 			EmitSoundOn("Hero_Abaddon.AphoticShield.Destroy", self:GetParent())
 			PopupNumbers(self:GetParent():GetPlayerOwner() ,self:GetParent(), "mana_loss", Vector(77,230,255), 3, self.total_mana_spent, POPUP_SYMBOL_PRE_MINUS, nil)

@@ -23,10 +23,10 @@ function ManaBreak( keys )
 	-- Checking the mana of the target and calculating the damage
 	if(target:GetMana() >= manaBurn) then
 		damageTable.damage = manaBurn * manaDamage
-		target:ReduceMana(manaBurn)
+		target:Script_ReduceMana(manaBurn, ability)
 	else
 		damageTable.damage = target:GetMana() * manaDamage
-		target:ReduceMana(manaBurn)
+		target:Script_ReduceMana(manaBurn, ability)
 	end
 
 	target:EmitSound("Hero_Antimage.ManaBreak")

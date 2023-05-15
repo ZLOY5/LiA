@@ -110,7 +110,7 @@ function CleanUnitsOnMap()
         if not unit:IsRealHero() and not unit.destructable then
         	--print(unit:GetUnitName())
         	unit.cleanerKilled = 1
-            unit:ForceKill(true)
+            unit:Kill(nil, nil)
         end
     end
 end

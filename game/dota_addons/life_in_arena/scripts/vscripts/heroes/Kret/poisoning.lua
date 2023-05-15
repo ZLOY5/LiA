@@ -17,7 +17,7 @@ function SetAdsorbFromKret( keys )
 		ability = keys.ability
 	})
 	--
-	attacker_loc:ReduceMana(adsorbVal)
+	attacker_loc:Script_ReduceMana(adsorbVal, keys.ability)
 end
 
 
