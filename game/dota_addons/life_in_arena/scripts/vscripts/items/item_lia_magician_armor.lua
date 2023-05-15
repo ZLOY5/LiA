@@ -64,6 +64,6 @@ function modifier_item_lia_magician_armor:GetModifierSpellAmplify_Percentage()
 	return self.bonus_spell_damage_percentage
 end
 
-function modifier_item_lia_magician_armor:GetModifierStatusResistanceCaster()
-	return -self.bonus_debuff_duration_percentage
-end
+-- function modifier_item_lia_magician_armor:GetModifierStatusResistanceCaster()
+-- 	return -self.bonus_debuff_duration_percentage
+-- end

@@ -28,17 +28,9 @@ function modifier_berserker_frenzy_aura:DeclareFunctions()
 end
 
 function modifier_berserker_frenzy_aura:GetModifierAttackSpeedBonus_Constant()
-	if self:GetParent():PassivesDisabled() then
-		return 0
-	end
-
 	return self.bonus_attack_speed
 end
 
 function modifier_berserker_frenzy_aura:GetModifierPreAttack_BonusDamage()
-	if self:GetParent():PassivesDisabled() then
-		return 0
-	end
-	
 	return self.bonus_damage
 end
