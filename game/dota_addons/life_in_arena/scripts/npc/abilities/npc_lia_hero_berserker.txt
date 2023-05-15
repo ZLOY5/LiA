@@ -1,5 +1,48 @@
 "berserker_fire_spear"
 {
+	"BaseClass"		"ability_lua"
+	"ScriptFile"	"heroes/Berserker/berserker_fire_spear.lua"
+
+	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"          
+	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"      "huskar_burning_spear"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastRange"				"600 750 900"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"13.0 12.0 11.0"
+	"AbilityManaCost"				"60 70 80"
+	"AbilityChannelTime"			"2.0"
+
+	"precache"
+	{
+		"particle"			"particles/berserker_fire_spear.vpcf"
+		"particle"  		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
+		"particle"          "particles/units/heroes/hero_huskar/huskar_burning_spear.vpcf"	
+	}
+
+	"AbilityValues"
+	{
+		"base_damage"	"45 90 135"
+		"attributes_damage_max_pct" "100"
+		"movespeed_slow_percentage"	"-45"
+		"slow_duration"		"3 4 5"	
+		"spear_width"		"100"
+		"spear_range"		"600 750 900"
+		"spear_speed"		"1200.0"
+		"channel_duration"	"2"
+		"channel_duration_ultimate"	"0.75"	
+	}
+}
+
+"berserker_fire_spear1"
+{
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"				"ability_datadriven"
@@ -58,7 +101,7 @@
 		"03"
 		{
 			"var_type"			"FIELD_INTEGER"
-			"movement_speed_slow"	"-45"
+			"movement_slow_percentage"	"-45"
 		}
 		"04"
 		{
@@ -208,35 +251,35 @@
 
 "berserker_madness"
 {
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "AbilityTextureName"      "huskar_berserkers_blood"
-	
+	"BaseClass"               "ability_datadriven"
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"      "huskar_berserkers_blood"
+
 	"AbilityCooldown"				"80"
 	"AbilityManacost"				"125 150 175"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
 	"MaxLevel"               "3"
 	"RequiredLevel"          "5"
 	"LevelsBetweenUpgrades"  "4"
-  
- "precache"
+
+	"precache"
 	{
 		"particle" "particles/units/heroes/hero_troll_warlord/troll_warlord_rampage_resistance_buff.vpcf"
 	}
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "bonus_all_stats"  "30 60 90"
-    }
-    "02"
-    {
-      "var_type"      "FIELD_FLOAT"
-      "duration"  "8.0 9.0 10.0"
-    }
-  }
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"      "FIELD_INTEGER"
+			"bonus_all_stats"  "30 60 90"
+		}
+		"02"
+		{
+			"var_type"      "FIELD_FLOAT"
+			"duration"  "11 12 13"
+		}
+	}
 	"OnSpellStart"
 	{
 		"ApplyModifier"
@@ -249,24 +292,25 @@
 			"ModifierName"	"modifier_berserker_madness"	
 		}
 	}
-  "Modifiers"
-  {
-    "modifier_berserker_madness"
-    {
-		"Duration"		"%duration"
-		"IsBuff"		"1"
-		"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
-      	"Properties"
-      	{
-			"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_all_stats"
-			"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_all_stats"
-			"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_all_stats"
-      	} 
-		
-		"StatusEffectName"			"particles/units/heroes/hero_troll_warlord/troll_warlord_rampage_resistance_buff.vpcf"
-		"EffectAttachType"		"follow_origin"	  
+	"Modifiers"
+	{
+		"modifier_berserker_madness"
+		{
+			"Duration"		"%duration"
+			"IsBuff"		"1"
+			"IsPurgable"	"0"
+			"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_all_stats"
+			} 
+			
+			"StatusEffectName"		"particles/units/heroes/hero_troll_warlord/troll_warlord_rampage_resistance_buff.vpcf"
+			"EffectAttachType"		"follow_origin"	  
 
-    }
-  } 
+		}
+	} 
 }
 
