@@ -97,7 +97,7 @@ function Survival:_OnHeroDeath(keys)
 end
 
 function Survival:_OnCreepDeath(keys)   
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    local attacker = EntIndexToHScript(keys.entindex_attacker or -1)
     local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
     local killed = EntIndexToHScript(keys.entindex_killed)
     
