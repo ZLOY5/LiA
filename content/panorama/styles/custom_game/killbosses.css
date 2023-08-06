@@ -1,0 +1,84 @@
+.KillsHud {
+	width: 100%;
+	height: 100%;
+}
+
+#LiaKillBoss2 {
+	flow-children: right;
+	horizontal-align: center;
+	opacity: 0;
+	margin-top: 120px;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+
+	animation-duration: 0.2s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+}
+
+#LiaKillBoss1 {
+	flow-children: right;
+	horizontal-align: center;
+	opacity: 0;
+	margin-top: 75px;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+
+	animation-duration: 0.2s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+}
+
+#LiaKillBoss_Text {
+	color: white;
+	horizontal-align: center;
+	vertical-align: center;
+	text-shadow: 1px 1px 1px 2 #121212;
+	font-size: 26px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+#LiaKillBoss_Text2 {
+	color: white;
+	horizontal-align: center;
+	vertical-align: center;
+	text-shadow: 1px 1px 1px 2 #121212;
+	font-size: 23px;
+	font-weight: bold;
+	margin-left: 2px;
+}
+
+#HeroIcon {
+	vertical-align: middle;
+}
+
+.kill_start1 #LiaKillBoss1 {
+	opacity: 1;
+	//transform: scaleX(1) scaleY(1);
+	//visibility: visible;
+	animation-name: BossReveal;
+}
+
+.kill_start2 #LiaKillBoss2 {
+	opacity: 1;
+	//transform: scaleX(1) scaleY(1);
+	//visibility: visible;
+	animation-name: BossReveal;
+}
+
+@keyframes 'BossReveal' {
+	0% {
+		opacity: 0;
+		pre-transform-scale2d: 1;
+	}
+
+	50% {
+		pre-transform-scale2d: 1.2;
+	}
+
+	100% {
+		pre-transform-scale2d: 1;
+		opacity: 1;
+	}
+}

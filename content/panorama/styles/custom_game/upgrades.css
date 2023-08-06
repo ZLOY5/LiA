@@ -1,0 +1,151 @@
+.UpgradesRoot {
+	width: 100%;
+	height: 100%;
+}
+
+.Precache {
+	background-image: url("file://{images}/custom_game/upgrades/upgrade_attack_damage.png");
+	background-image: url("file://{images}/custom_game/upgrades/upgrade_attack_speed.png");
+	background-image: url("file://{images}/custom_game/upgrades/upgrade_health.png");
+	background-image: url("file://{images}/custom_game/upgrades/upgrade_health_regen.png");
+	background-image: url("file://{images}/custom_game/upgrades/upgrade_mana.png");
+	background-image: url("file://{images}/custom_game/upgrades/upgrade_mana_regen.png");
+	background-image: url("file://{images}/custom_game/upgrades/upgrade_armor.png");
+}
+
+#OpenButton {
+	horizontal-align: right;
+	vertical-align: bottom;
+
+	margin-bottom: 12px;
+	margin-right: 6px;
+
+	width: 120px;
+	height: 36px;
+
+	//background-color: green;
+
+	background-image: url("file://{images}/custom_game/upgrade_button.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+
+	transition-timing-function: ease-in-out;
+	transition-property: background-image, transform;
+	transition-duration: 0.18s;
+
+	flow-children: right;
+}
+
+DOTAHud.IsBeforeGameplay #OpenButton {
+	transform: translateY(230px);
+	transition-duration: 1s;
+	transition-delay: 2s;
+}
+
+#OpenButton:hover {
+	background-image: url("file://{images}/custom_game/upgrade_button_hover.png");
+	//brightness:1.5;
+}
+
+.HUDFlipped #OpenButton {
+	horizontal-align: left;
+	margin-left: 132px;
+}
+
+#LumberAmount {
+	width: 75px;
+
+	font-size: 22px;
+	font-weight: bold;
+	letter-spacing: 1px;
+
+	color: white;
+	text-shadow: 0px 1px 0px 3 #00000077;
+	text-align: right;
+
+	horizontal-align: right;
+	vertical-align: center;
+
+	margin-right: 5px;
+	margin-top: 2px;
+}
+
+#LumberIcon {
+	background-image: url("file://{images}/custom_game/lumber.png");
+	background-size: 100% 100%;
+
+	width: 35px;
+	height: 35px;
+
+	//horizontal-align: right;
+	vertical-align: center;
+
+	//margin-bottom: 2px;
+}
+
+#UpgradesContainer {
+	horizontal-align: right;
+
+	margin-top: 160px;
+
+	flow-children: up;
+
+	transform: translateX(90px);
+	transition-property: transform;
+	transition-duration: 0.08s;
+	transition-timing-function: ease-in-out;
+}
+
+.HUDFlipped #UpgradesContainer {
+	transform: translateX(-90px);
+}
+
+.HUDFlipped #UpgradesContainer {
+	horizontal-align: left;
+}
+
+#UpgradesContainer.opened {
+	transform: translateX(0px);
+}
+
+.HUDFlipped #UpgradesContainer.opened {
+	transform: translateX(0px);
+}
+
+#UpgradesContainer.ShopOpen {
+	visibility: collapse;
+}
+
+.Upgrade {
+	horizontal-align: center;
+	width: 80px;
+	height: 94px;
+	margin: 3px;
+
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	transition: brightness 0.1s ease-in 0s, opacity 0.2s ease-in-out 0s, saturation 0.2s ease-in-out 0s;
+
+	tooltip-position: left bottom;
+	tooltip-arrow-position: 50% 50%;
+
+	z-index: -1;
+}
+
+.HUDFlipped .Upgrade {
+	tooltip-position: right bottom;
+}
+
+.Upgrade:hover {
+	brightness: 1.2;
+}
+
+.Upgrade:disabled {
+	opacity: 0.5;
+	saturation: 0.7;
+}
+
+.Upgrade:disabled:hover {
+	brightness: 1;
+}

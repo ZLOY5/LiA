@@ -1,0 +1,346 @@
+@define BACKGROUND_COLOR: #303030DE;
+@define BACKGROUND_COLOR_WHITE: #FFFFFF28;
+
+.FlyoutScoreboardRoot {
+	horizontal-align: left;
+	vertical-align: top;
+	margin-top: 150px;
+	flow-children: down;
+	padding: 10px;
+
+	transform: translatex(-750px);
+	transition-property: transform;
+	transition-duration: 0.2s;
+
+	visibility: collapse;
+}
+
+.FlyoutScoreboardRoot.flyout_scoreboard_visible {
+	transform: translatey(0px);
+	visibility: visible;
+}
+
+#TeamsContainer {
+	flow-children: down;
+	horizontal-align: center;
+	box-shadow: #000000 0px 1px 10px 0px;
+	margin-left: 73px;
+}
+
+.FlyoutTeam {
+	margin-top: 3px;
+}
+
+.FlyoutTeam.no_players {
+	visibility: collapse;
+}
+
+.local_player_team.FlyoutTeam {
+	z-index: 99;
+}
+
+.FlyoutTeamData {
+	flow-children: right;
+}
+
+.TeamInfo {
+	margin-top: 1px;
+	height: 100%;
+}
+
+.FlyoutPlayer {
+	flow-children: right;
+}
+
+.TeamCloseSpacer {
+}
+
+#PlayersContainer {
+	flow-children: down;
+}
+
+.TeamId {
+	flow-children: right;
+}
+
+#TeamLogo {
+	vertical-align: top;
+	horizontal-align: right;
+	margin-top: 2px;
+	margin-right: 2px;
+}
+
+#TeamScore {
+	vertical-align: center;
+	horizontal-align: center;
+	color: #cccccc;
+	font-size: 42px;
+	text-shadow: 2px 2px 2px black;
+	font-weight: bold;
+	margin-top: -3px;
+	text-overflow: clip;
+}
+
+.one_player #TeamScore {
+	font-size: 32px;
+}
+
+#TeamScorePanel {
+	margin-top: 1px;
+	margin-left: 286px;
+	width: 49px;
+	height: 100%;
+	background-color: BACKGROUND_COLOR;
+}
+
+.Legend {
+	flow-children: right;
+}
+
+.Legend Label {
+	text-shadow: 5px 5px 5px black;
+	font-size: 15px;
+	color: #dddddd;
+	//background-color: BACKGROUND_COLOR;
+}
+
+.PlayerRow {
+	height: 35px;
+	flow-children: right;
+
+	transition-property: position;
+	transition-duration: 0.5s;
+}
+
+#PlayerRowContainer {
+	flow-children: right;
+	height: 35px;
+	background-color: BACKGROUND_COLOR;
+	border-bottom: 1px solid #00000066;
+}
+
+#HeroIcon {
+	vertical-align: middle;
+	border: 1px solid black;
+
+	transition-property: saturation;
+	transition-duration: 0.5s;
+}
+
+#LevelContainer,
+#KillsBossesContainer,
+#KillsCreepsContainer,
+#DeathsContainer {
+	height: 100%;
+	width: 60px;
+	border-right: 1px solid #00000066;
+}
+
+#TeamScoreContainer {
+	height: 100%;
+	width: 120px;
+	border-right: 1px solid #00000066;
+}
+
+#RatingContainer {
+	height: 100%;
+	width: 60px;
+}
+
+#UpdContainer {
+	height: 100%;
+	width: 85px;
+	border-right: 1px solid #00000066;
+}
+
+.ScoreboardPanel {
+	//background-color: BACKGROUND_COLOR;
+	//margin-top: 1px;
+	//margin-left: 1px;
+}
+
+.LegendPanel {
+	margin-top: 1px;
+	margin-left: 1px;
+}
+
+.is_local_player .ScoreboardPanel {
+	//background-color: #444444;
+	// background-color: BACKGROUND_COLOR_WHITE;
+}
+
+.is_local_player #PlayerRowContainer {
+	box-shadow: fill #222222aa 0px 0px 3px 0px;
+}
+.ScoreboardPanel Label {
+	font-size: 30px;
+	text-shadow: 2px 2px 2px black;
+}
+
+.UltimateIndicatorShared {
+	width: 20px;
+	height: 20px;
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+#Level {
+	vertical-align: center;
+	horizontal-align: center;
+	color: #898b8c;
+}
+
+#Level,
+#KillsCreeps,
+#KillsBosses,
+#Deaths,
+#Rating,
+#Upd {
+	vertical-align: center;
+	font-size: 19px;
+	text-align: center;
+	margin-top: 5px;
+	width: 100%;
+	color: #ffffff98;
+}
+
+#PlayerName {
+	vertical-align: center;
+	color: #ffffff98;
+	font-size: 20px;
+	//margin-bottom: -4px;
+	margin-top: 5px;
+	white-space: nowrap;
+}
+
+#HeroNameAndDescription {
+	color: #898b8c;
+	font-size: 13px;
+	text-shadow: 2px 2px 2px black;
+	margin-top: -1px;
+	vertical-align: center;
+}
+#MuteButton {
+	margin-right: 0px;
+	margin-top: 0px;
+	horizontal-align: right;
+	vertical-align: center;
+	width: 18px;
+	height: 18px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-image: url("file://{images}/custom_game/button_audio_on.psd");
+	visibility: collapse;
+	opacity: 0.8;
+}
+
+.local_player_teammate #MuteButton {
+	visibility: visible;
+}
+
+#MuteButton:hover {
+	opacity: 1;
+}
+
+.player_muted #MuteButton {
+	background-image: url("file://{images}/custom_game/button_audio_off.psd");
+}
+
+#TeammateGoldAmount {
+	margin-right: -1px;
+	margin-bottom: -2px;
+	vertical-align: bottom;
+	horizontal-align: right;
+	color: #ffd300;
+	font-size: 13px;
+	text-shadow: 2px 2px 2px black;
+	visibility: collapse;
+}
+
+.local_player_team #TeammateGoldAmount {
+	visibility: visible;
+}
+
+#PlayerDetailsContainer {
+	height: 100%;
+	border-right: 1px solid #00000066;
+}
+
+#PlayerAndHeroName {
+	flow-children: down;
+	padding-left: 8px;
+	vertical-align: center;
+}
+
+.is_local_player #KillsBosses,
+.is_local_player #KillsCreeps,
+.is_local_player #Level,
+.is_local_player #Deaths,
+.is_local_player #Upd,
+.is_local_player #PlayerName,
+.is_local_player #Rating {
+	color: #ffffffff;
+}
+
+.ScoreCol_TeamInfo {
+	width: 60px;
+}
+
+.ScoreCol_PlayerDetails {
+	width: 200px;
+}
+
+.ScoreCol_Hero {
+	width: 60px;
+}
+
+.ScoreCol_TeamScore {
+	width: 120px;
+	text-align: center;
+	margin-left: -110px;
+}
+
+.ScoreCol_KillsBosses,
+.ScoreCol_KillsCreeps,
+.ScoreCol_Deaths,
+.ScoreCol_Rating,
+.ScoreCol_Level {
+	width: 60px;
+	text-align: center;
+}
+
+.ScoreCol_Upd {
+	width: 85px;
+	text-align: center;
+}
+
+#DisconnectionIndicator {
+	opacity: 0;
+	width: 100%;
+	height: 18px;
+	vertical-align: top;
+	margin-top: 15px;
+}
+
+.player_dead #HeroIcon {
+	wash-color: #cccccc;
+	saturation: 0;
+}
+
+.player_connection_abandoned #DisconnectionIndicator,
+.player_connection_failed #DisconnectionIndicator,
+.player_connection_disconnected #DisconnectionIndicator {
+	opacity: 1;
+}
+
+.player_connection_abandoned #HeroIcon,
+.player_connection_failed #HeroIcon,
+.player_connection_disconnected #HeroIcon {
+	saturation: 0.5;
+}
+
+#ScoreRow {
+	width: 100%;
+}

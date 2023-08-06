@@ -1,0 +1,398 @@
+.TopScoreboardRoot {
+	width: 100%;
+	height: 100%;
+}
+
+#TeamsContainer {
+	horizontal-align: center;
+	box-shadow: none;
+}
+
+#PlayersContainer {
+	flow-children: right;
+}
+
+.ScoreboardPlayerWrapper {
+	height: 70px;
+	transition-property: position;
+	transition-duration: 0.75s;
+	margin-right: -4px;
+}
+
+DOTAHeroImage {
+	transition-property: wash-color, saturation, brightness, contrast;
+	transition-duration: 0.4s;
+	z-index: 3;
+}
+
+.PlayerContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.TopBarHeroImage {
+	background-color: #222;
+	background-color: gradient(
+		linear,
+		0% 0%,
+		0% 100%,
+		from(#333),
+		color-stop(0.2, #444),
+		color-stop(0.5, #333),
+		to(#111)
+	);
+	width: 85px;
+	height: 43px;
+	margin-top: 4px;
+	vertical-align: top;
+	transition-duration: 0.4s;
+	saturation: 1;
+	brightness: 1;
+	contrast: 1;
+}
+
+.AltPressed .Dead.BuybackReady #BuybackIcon {
+	opacity: 0;
+}
+
+.SlantedContainer {
+	opacity-mask: url("s2r://panorama/images/masks/topbar_heroslant_left_psd.vtex");
+
+	background-color: #222222;
+}
+
+.TopBarHealthBar .ProgressBarLeft {
+	background-color: #339933;
+	background-image: url("s2r://panorama/images/hud/reborn/topbar_health_psd.vtex");
+	background-size: cover;
+	border-radius: 0px;
+}
+
+.ColorBlindModeEnabled .TopBarHealthBar .ProgressBarLeft {
+	background-color: gradient(
+		linear,
+		0% 0%,
+		0% 100%,
+		from(#658fdf),
+		color-stop(0.2, #a4caff),
+		color-stop(0.5, #3f6fcb),
+		to(#2c56ab)
+	);
+}
+
+.TopBarHealthBar .ProgressBarRight {
+	background-color: gradient(
+		linear,
+		0% 0%,
+		0% 100%,
+		from(#17200d),
+		color-stop(0.2, #222e13),
+		color-stop(0.5, #1e2911),
+		to(#17200d)
+	);
+}
+
+.TopBarUltIndicator {
+	vertical-align: top;
+	horizontal-align: center;
+
+	width: 38px;
+	height: 20px;
+
+	background-size: 18px;
+	background-position: 50% 100%;
+	background-repeat: no-repeat;
+
+	z-index: 500;
+
+	opacity: 0;
+	margin-top: 38px;
+	margin-left: 7px;
+	tooltip-position: bottom;
+	tooltip-body-position: 50% 50%;
+}
+
+.UltLearned #TopBarUltIndicator {
+	opacity: 1;
+}
+
+.UltReady #TopBarUltIndicator {
+	background-image: url("s2r://panorama/images/hud/reborn/ult_ready_psd.vtex");
+}
+
+.UltReadyNoMana #TopBarUltIndicator {
+	background-image: url("s2r://panorama/images/hud/reborn/ult_no_mana_psd.vtex");
+}
+
+.UltOnCooldown #TopBarUltIndicator {
+	background-image: url("s2r://panorama/images/hud/reborn/ult_cooldown_psd.vtex");
+}
+
+#RadiantTeamScorePlayers .Dead #RespawnTimer,
+.Dead #RespawnTimer {
+	opacity: 1;
+	transform: translateY(0px);
+}
+
+.Dead DOTAHeroImage {
+	wash-color: #898989;
+	saturation: 0;
+}
+
+#DeadLayer {
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	opacity: 0;
+	transform: scaleX(-1);
+
+	transition-property: opacity;
+	transition-duration: 0.4s;
+}
+
+#PlusLayer {
+	//margin-top: 2px;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	opacity: 0;
+	transform: scaleX(-1);
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.ReadyToRound #PlusLayer {
+	opacity: 1;
+}
+
+.Dead #DeadLayer {
+	opacity: 1;
+}
+
+.EnemyHeroMissing DOTAHeroImage {
+	opacity: 1;
+}
+
+.HideElement {
+	opacity: 0;
+}
+
+.EnemyTeam #TopBarUltIndicator,
+.EnemyTeam #HealthBar {
+	opacity: 0;
+}
+
+.AltPressed .EnemyTeam #ManaBar {
+	opacity: 0;
+}
+
+.Spectating #ManaBar {
+	opacity: 1;
+	transform: translateY(11px);
+}
+
+#PlayerColor {
+	width: 100%;
+	height: 5px;
+	z-index: 5;
+	background-image: url("s2r://panorama/images/hud/reborn/topbar_playerslot_vignette_psd.vtex");
+	background-size: 92% 100%;
+	background-repeat: no-repeat;
+}
+
+#PlayerColorShadow {
+	width: 100%;
+	height: 100%;
+	margin-top: 4px;
+	z-index: 4;
+	background-color: gradient(
+		linear,
+		0% 0%,
+		0% 100%,
+		from(#000),
+		color-stop(0.03, #000a),
+		color-stop(0.1, #0000),
+		color-stop(0.91, #0000),
+		color-stop(0.95, #0006),
+		to(#000a)
+	);
+}
+
+#TopBarDirePlayersContainer #PlayerColor {
+	background-size: 93% 100%;
+	background-position: 5px 0px;
+}
+
+.Disconnected DOTAHeroImage {
+	opacity: 0.5;
+}
+
+#DisconnectIcon {
+	width: 85px;
+	height: 25px;
+	margin-top: 12px;
+	vertical-align: top;
+	background-image: url("s2r://panorama/images/hud/reborn/icon_disconnect_png.vtex");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	z-index: 20;
+	opacity: 0;
+}
+
+.Disconnected #DisconnectIcon {
+	opacity: 1;
+}
+
+.TopBarHealthBar {
+	width: 77px;
+	height: 8px;
+	border: 0px;
+	z-index: 2;
+	margin-bottom: 26px;
+	vertical-align: bottom;
+	border-radius: 0px;
+	opacity: 0;
+	z-index: -500;
+	margin-left: 7px;
+
+	transition-property: transform, opacity;
+	transition-duration: 0.12s;
+	transition-timing-function: ease-in-out;
+}
+
+.AltPressed .TopBarHealthBar,
+.IsLocalPlayerSpectating .TopBarHealthBar {
+	opacity: 1;
+	transform: translateY(11px);
+}
+
+#ManaBar {
+	width: 77px;
+	height: 8px;
+	border: 0px;
+	z-index: 1;
+	margin-bottom: 18px;
+	vertical-align: bottom;
+	box-shadow: none;
+	border-radius: 0px;
+	opacity: 0;
+	margin-left: 7px;
+
+	transition-property: transform, opacity;
+	transition-duration: 0.12s;
+	transition-timing-function: ease-in-out;
+}
+
+.AltPressed #ManaBar {
+	opacity: 1;
+	transform: translateY(11px);
+}
+
+.Dead #HealthBar,
+.Dead #ManaBar {
+	opacity: 0;
+}
+
+#ManaBar .ProgressBarLeft {
+	border-radius: 0px;
+	background-image: url("s2r://panorama/images/hud/reborn/topbar_mana_psd.vtex");
+	background-size: cover;
+}
+
+#ManaBar .ProgressBarRight {
+	border-radius: 0px;
+	background-color: gradient(
+		linear,
+		0% 0%,
+		0% 100%,
+		from(#101932),
+		color-stop(0.2, #172447),
+		color-stop(0.5, #162244),
+		to(#101932)
+	);
+}
+
+@define HeroSlot0Color: #ff0303FF;
+@define HeroSlot1Color: #3375ffFF;
+@define HeroSlot2Color: #1ce6b9FF;
+@define HeroSlot3Color: #BF00BFFF;
+@define HeroSlot4Color: #F3F00BFF;
+@define HeroSlot5Color: #FF6B00FF;
+@define HeroSlot6Color: #20c000FF;
+@define HeroSlot7Color: #FE86C2FF;
+
+@define HeroSlot0ColorHalf: #ff030333;
+@define HeroSlot1ColorHalf: #3375ff44;
+@define HeroSlot2ColorHalf: #1ce6b988;
+@define HeroSlot3ColorHalf: #BF00BF33;
+@define HeroSlot4ColorHalf: #F3F00B33;
+@define HeroSlot5ColorHalf: #FF6B0044;
+@define HeroSlot6ColorHalf: #20c00066;
+@define HeroSlot7ColorHalf: #FE86C233;
+
+.Slot0 #PlayerColor {
+	background-color: HeroSlot0Color;
+	transition-delay: 0s;
+}
+.Slot1 #PlayerColor {
+	background-color: HeroSlot1Color;
+	transition-delay: 0s;
+}
+.Slot2 #PlayerColor {
+	background-color: HeroSlot2Color;
+	transition-delay: 0s;
+}
+.Slot3 #PlayerColor {
+	background-color: HeroSlot3Color;
+	transition-delay: 0s;
+}
+.Slot4 #PlayerColor {
+	background-color: HeroSlot4Color;
+	transition-delay: 0s;
+}
+.Slot5 #PlayerColor {
+	background-color: HeroSlot5Color;
+	transition-delay: 0s;
+}
+.Slot6 #PlayerColor {
+	background-color: HeroSlot6Color;
+	transition-delay: 0s;
+}
+.Slot7 #PlayerColor {
+	background-color: HeroSlot7Color;
+	transition-delay: 0s;
+}
+
+.BecomeActive .Slot0 #PlayerColor {
+	background-color: HeroSlot0Color;
+	transition-delay: 1.8s;
+}
+.BecomeActive .Slot1 #PlayerColor {
+	background-color: HeroSlot1Color;
+	transition-delay: 1.9s;
+}
+.BecomeActive .Slot2 #PlayerColor {
+	background-color: HeroSlot2Color;
+	transition-delay: 2s;
+}
+.BecomeActive .Slot3 #PlayerColor {
+	background-color: HeroSlot3Color;
+	transition-delay: 2.1s;
+}
+.BecomeActive .Slot4 #PlayerColor {
+	background-color: HeroSlot4Color;
+	transition-delay: 2.2s;
+}
+.BecomeActive .Slot5 #PlayerColor {
+	background-color: HeroSlot5Color;
+	transition-delay: 2.3s;
+}
+.BecomeActive .Slot6 #PlayerColor {
+	background-color: HeroSlot6Color;
+	transition-delay: 2.4s;
+}
+.BecomeActive .Slot7 #PlayerColor {
+	background-color: HeroSlot7Color;
+	transition-delay: 2.5s;
+}
