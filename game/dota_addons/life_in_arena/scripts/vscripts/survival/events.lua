@@ -114,24 +114,27 @@ end
 
 function Survival:_OnBossDeath(keys)  
     local killed = EntIndexToHScript(keys.entindex_killed)
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
-    local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+    local attacker = EntIndexToHScript(keys.entindex_attacker or -1)
     
-    if hero then
-        PlayerResource:IncrementBossKills(hero:GetPlayerOwnerID())
+    if attacker then
+    	local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
 
-        if self.State == SURVIVAL_STATE_ROUND_WAVE then
-            FightRecap:IncrementBossKills(hero:GetPlayerOwnerID())
-        end
+    	if hero then
+	        PlayerResource:IncrementBossKills(hero:GetPlayerOwnerID())
 
-        PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),3)
-        --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = hero.lumber })
-        if attacker:GetPlayerOwner() then
-            PopupNumbers(attacker:GetPlayerOwner() ,killed, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
-        end
-		--send to all players info about kill boss
-		CustomGameEventManager:Send_ServerToAllClients( "upd_action_killboss", {pID = hero:GetPlayerID() } )
-        CreateToast({eventType = 2, killerPlayer = hero:GetPlayerOwnerID(), gold = killed:GetGoldBounty(), lumber = 3})
+	        if self.State == SURVIVAL_STATE_ROUND_WAVE then
+	            FightRecap:IncrementBossKills(hero:GetPlayerOwnerID())
+	        end
+
+	        PlayerResource:ModifyLumber(hero:GetPlayerOwnerID(),3)
+	        --FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = hero.lumber })
+	        if attacker:GetPlayerOwner() then
+	            PopupNumbers(attacker:GetPlayerOwner() ,killed, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
+	        end
+			--send to all players info about kill boss
+			CustomGameEventManager:Send_ServerToAllClients( "upd_action_killboss", {pID = hero:GetPlayerID() } )
+	        CreateToast({eventType = 2, killerPlayer = hero:GetPlayerOwnerID(), gold = killed:GetGoldBounty(), lumber = 3})
+	    end
     end
 
     if self.State ~= SURVIVAL_STATE_ROUND_FINALBOSS then
