@@ -98,13 +98,16 @@ end
 
 function Survival:_OnCreepDeath(keys)   
     local attacker = EntIndexToHScript(keys.entindex_attacker or -1)
-    local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
-    local killed = EntIndexToHScript(keys.entindex_killed)
-    
-    if hero and not killed.giveNoRatingPoints then
-        PlayerResource:IncrementCreepKills(hero:GetPlayerOwnerID())
-        FightRecap:IncrementCreepKills(hero:GetPlayerOwnerID())
-    end
+
+    if attacker then
+	    local hero = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID()) --находим героя игрока, владеющего юнитом
+	    local killed = EntIndexToHScript(keys.entindex_killed)
+	    
+	    if hero and not killed.giveNoRatingPoints then
+	        PlayerResource:IncrementCreepKills(hero:GetPlayerOwnerID())
+	        FightRecap:IncrementCreepKills(hero:GetPlayerOwnerID())
+	    end
+	end
 
     self.nDeathCreeps = self.nDeathCreeps + 1
     if self.nDeathCreeps == self.nCreepsSpawned then
