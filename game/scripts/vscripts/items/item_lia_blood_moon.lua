@@ -71,13 +71,9 @@ end
 
 modifier_item_lia_blood_moon_cleave = class({})
 
-function modifier_item_lia_blood_moon_cleave:IsHidden() 
-	return true
-end
-
-function modifier_item_lia_blood_moon_cleave:IsPurgable()
-	return false
-end
+function modifier_item_lia_blood_moon_cleave:IsHidden() return true end
+function modifier_item_lia_blood_moon_cleave:IsPurgable() return false end
+function modifier_item_lia_blood_moon_cleave:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
 function modifier_item_lia_blood_moon_cleave:OnCreated()
 	self.ability = self:GetAbility()

@@ -65,13 +65,9 @@ end
 
 modifier_item_lia_huge_axe_cleave = class({})
 
-function modifier_item_lia_huge_axe_cleave:IsHidden() 
-	return true
-end
-
-function modifier_item_lia_huge_axe_cleave:IsPurgable()
-	return false
-end
+function modifier_item_lia_huge_axe_cleave:IsHidden() return true end
+function modifier_item_lia_huge_axe_cleave:IsPurgable() return false end
+function modifier_item_lia_huge_axe_cleave:GetAttributes() return MODIFIER_ATTRIBUTE_PERMANENT end
 
 function modifier_item_lia_huge_axe_cleave:OnCreated()
 	self.ability = self:GetAbility()
