@@ -411,13 +411,24 @@ function FindUnitsInTrapezoid_TwoPoints(team, startPos, endPos, cacheUnit, start
 
 	local direction = (endPos - startPos):Normalized()
 
-	local trapezoid_points = {startPos + startWidth * Vector(-direction.y, direction.x, 0), startPos + startWidth * Vector(direction.y, -direction.x, 0), endPos + endWidth * Vector(direction.y, -direction.x, 0), endPos + endWidth * Vector(-direction.y, direction.x, 0)}
+	local trapezoid_points = {
+		startPos + startWidth * Vector(-direction.y, direction.x, 0), 
+		startPos + startWidth * Vector(direction.y, -direction.x, 0), 
+		endPos + endWidth * Vector(direction.y, -direction.x, 0), 
+		endPos + endWidth * Vector(-direction.y, direction.x, 0)
+	}
+
+	--DebugDrawLine(trapezoid_points[1], trapezoid_points[2], 255, 255, 0, true, 5)
+	--DebugDrawLine(trapezoid_points[2], trapezoid_points[3], 255, 255, 0, true, 5)
+	--DebugDrawLine(trapezoid_points[3], trapezoid_points[4], 255, 255, 0, true, 5)
+	--DebugDrawLine(trapezoid_points[4], trapezoid_points[1], 255, 255, 0, true, 5)
 
 	local initial_targets = FindUnitsInLine(team, startPos, endPos, cacheUnit, width, teamFilter, typeFilter, flagFilter)
 	local final_targets = {}
 	for k, v in pairs(initial_targets) do
 		if PointBelongsToPolygon(trapezoid_points, v:GetAbsOrigin()) then
 			table.insert(final_targets, v)
+			--DebugDrawSphere(v:GetAbsOrigin(), Vector(255,0,0), 0, 20, true, 5)
 		end
 	end
 	return final_targets
