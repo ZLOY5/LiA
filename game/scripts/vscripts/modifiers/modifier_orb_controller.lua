@@ -38,21 +38,21 @@ function modifier_orb_controller:SortOrbsByPriority()
 		if modifier:IsNull() then table.remove(self.orb_modifiers, i) end
 	end
 
-	--for k,v in ipairs(self.orb_modifiers) do print(k,v) end
-
 	table.sort(self.orb_modifiers, function(a,b) 
 		local priority_a = a.GetOrbPriority and a:GetOrbPriority() or DOTA_ORB_PRIORITY_DEFAULT
 		local priority_b = b.GetOrbPriority and b:GetOrbPriority() or DOTA_ORB_PRIORITY_DEFAULT
 
-		if priority_a ~= priority_b then return priority_a < priority_b end
+		if priority_a ~= priority_b then return priority_a > priority_b end
 
 		local ability_a = a:GetAbility()
 		local ability_b = b:GetAbility()
 
-		if ability_a:IsItem() and ability_b:IsItem() then return ability_a:GetItemSlot() > ability_b:GetItemSlot() end
+		if ability_a:IsItem() and ability_b:IsItem() then return ability_a:GetItemSlot() < ability_b:GetItemSlot() end
 
 		return a:GetCreationTime() < b:GetCreationTime()
 	end)
+
+	for k,v in ipairs(self.orb_modifiers) do print(k,v:GetName()) end
 end
 
 function modifier_orb_controller:GetActiveOrb()
@@ -63,9 +63,13 @@ function modifier_orb_controller:GetActiveOrb()
 	for k, modifier in ipairs(self.orb_modifiers) do
 		if modifier.IsOrbActive then
 			local success, result = pcall(modifier.IsOrbActive, modifier)
-			if success and result then active_orb = modifier end
+			if success and result then 
+				active_orb = modifier 
+				break
+			end
 		else
 			active_orb = modifier
+			break
 		end
 	end
 
