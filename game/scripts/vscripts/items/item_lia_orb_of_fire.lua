@@ -48,7 +48,7 @@ function modifier_item_lia_orb_of_fire:GetOrbProjectileName()
 	return "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
 end
 
-function modifier_item_lia_orb_of_fire:OnOrnFire()
+function modifier_item_lia_orb_of_fire:OnOrbFire()
 	self.parent:EmitSound("Hero_Jakiro.Attack")
 end
 

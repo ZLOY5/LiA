@@ -28,7 +28,9 @@
 "item_lia_alanith_spear"
 {
 	"ID"							"1311"
-	"BaseClass" 					"item_datadriven"
+	"BaseClass" 					"item_lua"
+	"ScriptFile"					"items/item_lia_alanith_spear"
+
 	"ItemCost"						"490"
 	"ItemKillable" 					"0" 
 	"ItemDroppable" 				"1"
@@ -38,62 +40,10 @@
 	"ItemAliases"					"ка;копье аланита;копьё аланита;as"
 	"AbilityTextureName"			"custom/lia_alanith_spear"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
-	"Modifiers"
-	{
-		"modifier_item_alanith_spear"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"Orb"
-			{
-				"Priority"		"DOTA_ORB_PRIORITY_ITEM"
-			}
 
-			"OnOrbImpact"
-			{
-				"RunScript"
-				{
-					"ScriptFile"			"items\alanith.lua"
-					"Function"				"modifier_item_alanith_datadriven_on_orb_impact"
-				}
-			}
-
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-		    }  
-		}
-		"modifier_item_alanith_datadriven_lifesteal"
-		{
-			"Passive"			"0"
-			"IsHidden"			"1"		
-			"OnDealDamage"
-			{
-				"Lifesteal"
-				{
-					"Target"			
-					{
-						"Center"	"ATTACKER"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-					"LifestealPercent"	"%lifesteal_percent"
-				}
-			}
-		}
-	}
-	"AbilitySpecial"
+	"AbilityValues"
 	{
-		"01"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "25"
-		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"lifesteal_percent" "17"
-		}
+		"bonus_damage"			"25"
+		"lifesteal_percent"		"17"
 	}
 }
-

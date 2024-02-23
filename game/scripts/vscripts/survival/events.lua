@@ -249,7 +249,7 @@ function Survival:OnGameStateChange()
        -- self.nRoundNum = 16
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
-        --Survival:PrepareNextRound()
+        Survival:PrepareNextRound()
 
     elseif GameRules:State_Get() == DOTA_GAMERULES_STATE_TEAM_SHOWCASE then
         for i = 0, DOTA_MAX_PLAYERS-1 do

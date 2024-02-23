@@ -40,7 +40,7 @@ function modifier_valkyrie_rage:OnAttackLanded( params )
 
 
 				for _,v in pairs (targets) do	
-					ApplyDamage({ victim = v, attacker = params.attacker, damage = damage_to_deal, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })
+					ApplyDamage({ victim = v, attacker = params.attacker, damage = self.damage, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })
 					local particle = ParticleManager:CreateParticle("particles/pa_arcana_phantom_strike_end_custom.vpcf", PATTACH_ABSORIGIN_FOLLOW, v)
 					ParticleManager:SetParticleControl(particle, 1, v:GetAbsOrigin())
 				end
