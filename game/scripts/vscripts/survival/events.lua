@@ -249,7 +249,7 @@ function Survival:OnGameStateChange()
        -- self.nRoundNum = 16
         --GameRules:SetPreGameTime(120)
         --Survival:StartDuels()
-        Survival:PrepareNextRound()
+        --Survival:PrepareNextRound()
 
     elseif GameRules:State_Get() == DOTA_GAMERULES_STATE_TEAM_SHOWCASE then
         for i = 0, DOTA_MAX_PLAYERS-1 do
@@ -349,9 +349,9 @@ function Survival:OnPlayerChat(event)
 
         if event.text == "test" then
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            hero:GetItemInSlot(15):RemoveSelf()
+           	hero:RemoveModifierByName("modifier_orb_controller")
+           	hero:AddNewModifier(hero, nil,"modifier_orb_controller", nil)
         end
-    
     end
 
     if IsInToolsMode() or GameRules:IsCheatMode() then

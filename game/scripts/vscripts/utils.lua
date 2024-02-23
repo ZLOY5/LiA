@@ -370,3 +370,24 @@ end
 function SendErrorMessage(playerID, message)
    CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "custom_error_message", {message=message}) 
 end
+
+function RegisterOrbEffectModifier(modifier)
+	local parent = modifier:GetParent()
+
+	local orb_controller = parent:FindModifierByName("modifier_orb_controller")
+
+	if not orb_controller then
+		orb_controller = parent:AddNewModifier(parent, nil, "modifier_orb_controller", nil)
+	end
+
+	orb_controller:RegisterOrb(modifier)
+end
+
+function table.contains(t, element)
+	for _, value in pairs(t) do
+		if value == element then
+			return true
+		end
+	end
+	return false
+end

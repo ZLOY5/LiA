@@ -34,7 +34,9 @@
 	"item_lia_alanith_spear"
 	{
 		"ID"							"1311"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items/item_lia_alanith_spear"
+
 		"ItemCost"						"490"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -44,62 +46,11 @@
 		"ItemAliases"					"ка;копье аланита;копьё аланита;as"
 		"AbilityTextureName"			"custom/lia_alanith_spear"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
-		"Modifiers"
+
+		"AbilityValues"
 		{
-			"modifier_item_alanith_spear"
-			{
-				"Passive"          "1"    
-			    "IsHidden"         "1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Orb"
-				{
-					"Priority"		"DOTA_ORB_PRIORITY_ITEM"
-				}
-	
-				"OnOrbImpact"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"items\alanith.lua"
-						"Function"				"modifier_item_alanith_datadriven_on_orb_impact"
-					}
-				}
-	
-			    "Properties"
-			    {
-			    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-			    }  
-			}
-			"modifier_item_alanith_datadriven_lifesteal"
-			{
-				"Passive"			"0"
-				"IsHidden"			"1"		
-				"OnDealDamage"
-				{
-					"Lifesteal"
-					{
-						"Target"			
-						{
-							"Center"	"ATTACKER"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-						}
-						"LifestealPercent"	"%lifesteal_percent"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_damage" "25"
-			}
-			"02"
-			{
-				"var_type" "FIELD_INTEGER"
-				"lifesteal_percent" "17"
-			}
+			"bonus_damage"			"25"
+			"lifesteal_percent"		"17"
 		}
 	}
 	
@@ -6166,7 +6117,8 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_lia_orb_of_fire"
 		"ID"							"1445"  //Valve's version of this item uses the ID "13".
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Model"							"models/props_gameplay/red_box.vmdl" 
@@ -6187,70 +6139,17 @@
 			
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"		"15"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"		"180"
-			}
+			"bonus_damage"		"15"
+			"radius"			"180"
 		}
 		
 		"precache"
 		{
 			"particle"  "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
 		}
-	
-		"Modifiers"
-		{
-			"modifier_item_lia_orb_of_fire"
-			{
-				"Passive"               "1"
-				"IsHidden"				"1"
-				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
-				}
-	
-				"Orb"
-				{
-					"Priority"			"DOTA_ORB_PRIORITY_ITEM"
-					"ProjectileName"    "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
-				}
-				"OnOrbFire"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Jakiro.Attack"
-						"Target"		"CASTER"
-					}
-				}
-				
-				"OnOrbImpact"
-				{
-					"RunScript"
-	    			{
-				        "ScriptFile"    "items/OrbOfFire.lua"
-				        "Function"      "OnOrbImpact"
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"%radius"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"Damage"	"%bonus_damage"
-					}
-				}
-			}
-		}
+
 	}
 	//End of file item_lia_orb_of_fire.txt
 
