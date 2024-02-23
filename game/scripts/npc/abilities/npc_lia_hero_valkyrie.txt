@@ -1,5 +1,42 @@
 "valkyrie_rage"
 {
+	"BaseClass"              "ability_lua"
+	"ScriptFile"       "heroes\Valkyrie\valkyrie_rage.lua"
+
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"SpellDispellableType"      "SPELL_DISPELLABLE_NO"
+	"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"     "custom/valkyrie_rage"
+
+	"MaxLevel"               "3"
+	"RequiredLevel"          "1"
+	"LevelsBetweenUpgrades"  "2"
+
+	"AbilityCastPoint"       "0.2"
+
+	"AbilityCooldown"				"22.0"	
+	"AbilityDuration"				"8.0 12.0 16.0"
+	"AbilityCastRange"				"260"
+	"AbilityManaCost"				"80"
+
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+		"particle"			"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
+		"particle"			"particles/pa_arcana_phantom_strike_end_custom.vpcf"
+	}
+
+	"AbilityValues"
+	{
+		"bonus_damage"		"20 40 60"
+		"bonus_agility"		"15 30 45"
+		"radius"		 	"260"
+		"duration"      	"8 12 16"
+	}
+}
+
+"valkyrie_rage1"
+{
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"

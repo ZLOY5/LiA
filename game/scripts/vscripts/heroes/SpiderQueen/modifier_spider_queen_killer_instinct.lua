@@ -21,6 +21,13 @@ function modifier_spider_queen_killer_instinct:OnCreated( kv )
 	end
 end
 
+function modifier_frost_lord_freezing:OnRefresh( kv )
+	self.damage = self:GetAbility():GetSpecialValueFor( "damage" )
+	self.full_damage_radius = self:GetAbility():GetSpecialValueFor( "full_radius" )
+	self.half_damage_radius = self:GetAbility():GetSpecialValueFor( "half_radius" )
+	self.attacks_count = self:GetAbility():GetSpecialValueFor( "attacks_count" )
+end
+
 function modifier_spider_queen_killer_instinct:OnDestroy()
 	if IsServer() then
 		ParticleManager:DestroyParticle(self.particle, true)

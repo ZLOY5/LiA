@@ -1,119 +1,39 @@
 "butcher_rage"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"pudge_dismember"
+	"BaseClass"              "ability_lua"
+	"ScriptFile"       "heroes\Butcher\butcher_rage.lua"
+
+	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"SpellDispellableType"      "SPELL_DISPELLABLE_NO"
+	"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"     "pudge_dismember"
 
 	"MaxLevel"               "3"
 	"RequiredLevel"          "1"
 	"LevelsBetweenUpgrades"  "2"
-	
-	"AbilityCooldown"				"20.0 18.0 16.0"	
-	"AbilityDuration"	"10.0"
-	"AbilityCastRange"	"225"
-	"AbilityManaCost"				"60 70 80"	
-	
+
+	"AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_2"
+	"AbilityCastPoint"       "0.3"
+
+	"AbilityCooldown"		"20.0 18.0 16.0"	
+	"AbilityDuration"		"10.0"
+	"AbilityCastRange"		"225"
+	"AbilityManaCost"		"60 70 80"
+
 	"precache"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
 		"particle"			"particles/units/heroes/hero_pudge/pudge_dismember.vpcf"
-		"particle"  		"particles/bloodseeker_bloodbath_custom.vpcf"		
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"hp_damage_percentage"		"8 12 16"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"		"225"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"		"10"
-		}
-	}
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-		"ModifierName" "modifier_butcher_rage"
-		"Duration"	"%AbilityDuration"
-		"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
+		"particle"  		"particles/units/heroes/hero_bloodseeker/bloodseeker_rupture_trail03.vpcf"		
 	}
 
-	"Modifiers"
+	"AbilityValues"
 	{
-		"modifier_butcher_rage"
-		{
-			"Passive"               "0"
-			"IsHidden"				"0"
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-
-			"Orb"
-			{
-				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
-			}		
-			"OnOrbImpact"
-			{
-				"RunScript"
-    			{
-			        "ScriptFile"    "heroes/Butcher/ButcherRage.lua"
-			        "Function"      "DealDamage"
-					"Target"
-					{
-						"Center"	"TARGET"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-					"Damage"	"%bonus_damage"
-				}
-				"ActOnTargets"
-				{
-					"Target"
-					{
-						"Center"  	"TARGET"
-						"Radius" 	"%radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-				
-					"Action"    
-					{
-						"FireEffect"
-						{
-							"EffectName"        "particles/units/heroes/hero_pudge/pudge_dismember.vpcf"
-							"EffectAttachType"  "follow_origin"
-							"Target"
-							{
-								"Center"	"TARGET"
-								"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}
-						}
-					}
-				}
-			}
-		}
+		"hp_pct_to_dmg"      "8 12 16"
+		"radius" "225"
+		"duration"      "10"
 	}
 }
-
 
 "butcher_skin"
 {
