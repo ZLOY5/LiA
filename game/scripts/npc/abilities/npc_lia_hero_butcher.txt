@@ -1,278 +1,266 @@
-"butcher_rage"
+"DotaAbilities"
 {
-	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes\Butcher\butcher_rage.lua"
-
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"SpellDispellableType"      "SPELL_DISPELLABLE_NO"
-	"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"     "pudge_dismember"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_2"
-	"AbilityCastPoint"       "0.3"
-
-	"AbilityCooldown"		"20.0 18.0 16.0"	
-	"AbilityDuration"		"10.0"
-	"AbilityCastRange"		"225"
-	"AbilityManaCost"		"60 70 80"
-
-	"precache"
+	"butcher_rage"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
-		"particle"			"particles/units/heroes/hero_pudge/pudge_dismember.vpcf"
-		"particle"  		"particles/units/heroes/hero_bloodseeker/bloodseeker_rupture_trail03.vpcf"		
-	}
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\Butcher\butcher_rage.lua"
 
-	"AbilityValues"
-	{
-		"hp_pct_to_dmg"      "8 12 16"
-		"radius" "225"
-		"duration"      "10"
-	}
-}
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellDispellableType"      "SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"     "pudge_dismember"
 
-"butcher_skin"
-{
-  	"BaseClass"              "ability_lua"
-  	"ScriptFile"			 "heroes\Butcher\butcher_skin.lua"
-  	
-  	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  	"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
-  	"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-  	"AbilityTextureName"     "pudge_flesh_heap"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-  
-  	"AbilitySpecial"
-  	{
-    	"01"
-    	{
-      		"var_type"     	 	"FIELD_INTEGER"
-      		"bonus_armor"  		"5 10 15"
-    	}
-    	"02"
-    	{
-      		"var_type"      	"FIELD_INTEGER"
-      		"damage_return"   	"4 8 12"
-    	}
-  	} 
-}
+		"AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCastPoint"       "0.3"
 
- "butcher_zombie"
-{
-	"BaseClass"				"ability_lua"
-	"ScriptFile"			"heroes\Butcher\butcher_zombie.lua"
-	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityTextureName"	"custom/butcher_zombie"
-		
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
+		"AbilityCooldown"		"20.0 18.0 16.0"	
+		"AbilityDuration"		"10.0"
+		"AbilityCastRange"		"225"
+		"AbilityManaCost"		"60 70 80"
 
-	"AbilityCooldown"		 "22"
-	"AbilityCastRange"				"300"
-	"AbilityCastPoint"				"0.3"
-	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_undying/undying_zombie_spawn.vpcf"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"zombie_base_health"		"200 300 400"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"zombie_butcher_heath_percent"		"10 15 20"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"zombie_base_damage"	"15 40 70"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"health_precent_for_zombie"			"20 15 10"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"zombie_limit"			"4 5 6"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"zombie_replenish_time"		"20"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"circle_radius"			"100"
-		}
-	}
-}
-
-"butcher_howl_of_terror"
- {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
-    "AbilityTextureName"     "custom/butcher_howl_of_terror"
-    
-	"AbilityCastRange"	"1500"
-    "AbilityCooldown" "60.0"
-
-    "AbilityManaCost" "100 150 200"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	
 		"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
-		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
-		"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+			"particle"			"particles/units/heroes/hero_pudge/pudge_dismember.vpcf"
+			"particle"  		"particles/units/heroes/hero_bloodseeker/bloodseeker_rupture_trail03.vpcf"		
+		}
+
+		"AbilityValues"
+		{
+			"hp_pct_to_dmg"      "8 12 16"
+			"radius" "225"
+			"duration"      "10"
+		}
 	}
+
+	"butcher_skin"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"			 "heroes\Butcher\butcher_skin.lua"
+		
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL" 
+		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"     "pudge_flesh_heap"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 	
 		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"     	 	"FIELD_INTEGER"
+				"bonus_armor"  		"5 10 15"
+			}
+			"02"
+			{
+				"var_type"      	"FIELD_INTEGER"
+				"damage_return"   	"4 8 12"
+			}
+		} 
+	}
+
+	"butcher_zombie"
 	{
-		"01"
+		"BaseClass"				"ability_lua"
+		"ScriptFile"			"heroes\Butcher\butcher_zombie.lua"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityTextureName"	"custom/butcher_zombie"
+			
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCooldown"		 "22"
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+
+		"precache"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"damage_penalty_percentage"	"-50 -60 -70"
+			"particle"  "particles/units/heroes/hero_undying/undying_zombie_spawn.vpcf"
 		}
-		"02"
+		
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"			"14 17 20"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"1500"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_base_health"		"200 300 400"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_butcher_heath_percent"		"10 15 20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_base_damage"	"15 40 70"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_precent_for_zombie"			"20 15 10"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"zombie_limit"			"4 5 6"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"zombie_replenish_time"		"20"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"circle_radius"			"100"
+			}
 		}
 	}
-	
-    "OnSpellStart"
-    {
-			"FireSound"
-		{
-			"EffectName"	"Hero_VengefulSpirit.WaveOfTerror"
-			"Target" 		"CASTER"
-		}
-		"AttachEffect"
-		{	
-			"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"EffectRadius"       "%radius"
-			"Target"	"CASTER"	
-		}
 
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Radius" 	"%radius"
-				"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				 "Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				 "Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			}
+	"butcher_howl_of_terror"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"     "custom/butcher_howl_of_terror"
 		
-			"Action"    
+		"AbilityCastRange"	"1500"
+		"AbilityCooldown" "60.0"
+
+		"AbilityManaCost" "100 150 200"
+		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
+			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"RunScript"
+				"var_type"					"FIELD_INTEGER"
+				"damage_penalty_percentage"	"-50 -60 -70"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"			"14 17 20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"1500"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_VengefulSpirit.WaveOfTerror"
+				"Target" 		"CASTER"
+			}
+			"AttachEffect"
+			{	
+				"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_cast.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"EffectRadius"       "%radius"
+				"Target"	"CASTER"	
+			}
+
+			"ActOnTargets"
+			{
+				"Target"
 				{
-					"ScriptFile"	"heroes/Butcher/HowlOfTerror.lua"
-					"Function"		"HowlOfTerror"
+					"Center"  	"CASTER"
+					"Radius" 	"%radius"
+					"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Butcher/HowlOfTerror.lua"
+						"Function"		"HowlOfTerror"
+					}
 				}
 			}
 		}
-    }
 
-    "Modifiers"
-    {
-      "modifier_butcher_howl_of_terror"
-      {
-        "Passive"       "0"
-        "IsHidden"      "0"
-        "IsDebuff"      "1"
-		
-
-		"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
-		"EffectAttachType"	"follow_origin"
-		
-		
-        "Properties"
-        {
-         "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 
-        }
-
-      }
-    }
-  }
- 
-
-"butcher_zombie_bash"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\Butcher\butcher_zombie_bash.lua"
-	"AbilityTextureName"			"faceless_void_time_lock"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
-	
-	"AbilitySpecial"
-	{
-		"01"
+		"Modifiers"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_chance"			"10"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bash_duration"	"0.5"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_damage"			"50"
+			"modifier_butcher_howl_of_terror"
+			{
+				"Passive"       "0"
+				"IsHidden"      "0"
+				"IsDebuff"      "1"
+				
+
+				"EffectName"	"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_penalty_percentage" 
+				}
+
+			}
 		}
 	}
+	
 
+	"butcher_zombie_bash"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\Butcher\butcher_zombie_bash.lua"
+		"AbilityTextureName"			"faceless_void_time_lock"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_duration"	"0.5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"			"50"
+			}
+		}
+	}
 }
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-

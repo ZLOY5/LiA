@@ -1,4 +1,6 @@
-"brewmaster_might" 
+"DotaAbilities"
+{
+  "brewmaster_might" 
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
@@ -6,175 +8,171 @@
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
     "AbilityTextureName"     "brewmaster_drunken_haze"
   
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-	
-   "AbilityCooldown"        "20.0"
-   "AbilityManaCost"        "60 70 80"
-
-  // Stats
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastPoint"  "0.0"
-
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"              "FIELD_FLOAT"
-      "duration"              "15"
-    }
-    "02"
-    {
-      "var_type"                      "FIELD_INTEGER"
-      "bonus_movespeed_percentage"    "5 10 20"
-    }
-    "03"
-    {
-      "var_type"              "FIELD_INTEGER"
-      "bonus_attackspeed"           "10 20 40"
-    }
-    "04"
-    {
-      "var_type"              "FIELD_INTEGER"
-      "bonus_strength"           "15 30 45"
-    }
-  }
-    
-  // Casting
-  //-------------------------------------------------------------------------------------------------------------
-  "OnSpellStart"
-  {
-   "ApplyModifier"
-    {
-     "ModifierName"   "modifier_brewmaster_might"
-      "Target"
-      {
-        "Center"    "CASTER"
-        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-      }
-     "Duration"       "%duration"
-    }
-  }
-  
-  "precache"
-  {
-  "particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-  }
-    
-    // Modifiers
-    //-------------------------------------------------------------------------------------------------------------
-    "Modifiers"
-    {
-      "modifier_brewmaster_might"
-      {
-        "Passive"       "0"
-        "IsHidden"      "0"
-        "IsBuff"        "1"
-    
-        "Properties"
-        {
-         "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
-         "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"         "%bonus_strength"
-         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
-        }
-		"EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
-		"EffectAttachType"  "follow_origin"
-      }
-    }
-  }
-
-   "brewmaster_ferocity"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_lua"
-    "ScriptFile"             "heroes\Brewer\brewmaster_ferocity"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityTextureName"     "brewmaster_fire_permanent_immolation"
-    "AbilityUnitTargetFlags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-    "AoERadius"               "375"
-
-    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
-    "RequiredLevel"          "2"
+    "RequiredLevel"          "1"
     "LevelsBetweenUpgrades"  "2"
-    
-  // Special  
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-    "01"
+	
+    "AbilityCooldown"        "20.0"
+    "AbilityManaCost"        "60 70 80"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"  "0.0"
+
+
+    "AbilitySpecial"
     {
-      "var_type"              "FIELD_INTEGER"
-      "bonus_strength"        "1 2 3"
+      "01"
+      {
+        "var_type"              "FIELD_FLOAT"
+        "duration"              "15"
+      }
+      "02"
+      {
+        "var_type"                      "FIELD_INTEGER"
+        "bonus_movespeed_percentage"    "5 10 20"
+      }
+      "03"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "bonus_attackspeed"           "10 20 40"
+      }
+      "04"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "bonus_strength"           "15 30 45"
+      }
     }
-    "02"
+      
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "OnSpellStart"
     {
-      "var_type"              "FIELD_INTEGER"
-      "radius"                "375"
+      "ApplyModifier"
+      {
+        "ModifierName"   "modifier_brewmaster_might"
+        "Target"
+        {
+          "Center"    "CASTER"
+          "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+        }
+        "Duration"       "%duration"
+      }
+    }
+    
+    "precache"
+    {
+      "particle"	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+    }
+      
+      // Modifiers
+      //-------------------------------------------------------------------------------------------------------------
+      "Modifiers"
+      {
+        "modifier_brewmaster_might"
+        {
+          "Passive"       "0"
+          "IsHidden"      "0"
+          "IsBuff"        "1"
+      
+          "Properties"
+          {
+            "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
+            "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"         "%bonus_strength"
+            "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
+          }
+          "EffectName" 	"particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf"
+          "EffectAttachType"  "follow_origin"
+        }
+      }
+  }
+
+  "brewmaster_ferocity"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+      "BaseClass"              "ability_lua"
+      "ScriptFile"             "heroes\Brewer\brewmaster_ferocity"
+      "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+      "AbilityTextureName"     "brewmaster_fire_permanent_immolation"
+      "AbilityUnitTargetFlags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      "AoERadius"               "375"
+
+      "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+      "MaxLevel"               "3"
+      "RequiredLevel"          "2"
+      "LevelsBetweenUpgrades"  "2"
+      
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "bonus_strength"        "1 2 3"
+      }
+      "02"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "radius"                "375"
+      }
     }
   }
-}
   
-
-"brewmaster_punisment"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
+  "brewmaster_punisment"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
     "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
     "AbilityTextureName"     "custom/brewmaster_punisment"
     "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-   
+  
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
+    "LevelsBetweenUpgrades"  "2"  
     
-	
-	"Modifiers"
-	{
-	  "drunken_punches_datadriven"
-	  {
-		"Passive"       "1"
-		"IsHidden"      "1"
-		"IsBuff"        "1"
+    "Modifiers"
+    {
+      "drunken_punches_datadriven"
+      {
+        "Passive"       "1"
+        "IsHidden"      "1"
+        "IsBuff"        "1"
 
-	   "OnAttacked"
-	   {
-		 "RunScript"
-		  {
-			"ScriptFile"   "heroes/Brewer/drunken_punches.lua"
-			"Function"     "Return"
-			"Coefficient"  "%strength_percentage_return"
-		  }
-	   }
-	  }
-
-  
-	}
-
-  // Special  
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-    "01"
-    { 
-      "var_type"                          "FIELD_FLOAT"
-      "strength_percentage_return"        "0.6 0.8 1.0"
+        "OnAttacked"
+        {
+          "RunScript"
+          {
+            "ScriptFile"   "heroes/Brewer/drunken_punches.lua"
+            "Function"     "Return"
+            "Coefficient"  "%strength_percentage_return"
+          }
+        }
+      }
     }
-	"02"
-    { 
-      "var_type"                          "FIELD_INTEGER"
-      "strength_percentage_return_tooltip"        "60 80 100"
+
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      { 
+        "var_type"                          "FIELD_FLOAT"
+        "strength_percentage_return"        "0.6 0.8 1.0"
+      }
+      "02"
+      { 
+        "var_type"                          "FIELD_INTEGER"
+        "strength_percentage_return_tooltip"        "60 80 100"
+      }
     }
   }
-}
 
-"brewmaster_avatar" 
+  "brewmaster_avatar" 
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
@@ -184,67 +182,66 @@
     "AbilityTextureName"     "custom/brewmaster_avatar"
   
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	
-   "AbilityCooldown"        "180 160 140"
-   "AbilityManaCost"        "100 175 250"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
+  
+    "AbilityCooldown"        "180 160 140"
+    "AbilityManaCost"        "100 175 250"
 
-  // Stats
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastPoint"  "0"
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastPoint"  "0"
 
-	"precache"
-	{
-	"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_earth_ambient.vpcf"
-	}
+    "precache"
+    {
+      "particle"	"particles/units/heroes/hero_brewmaster/brewmaster_earth_ambient.vpcf"
+    }
 
-  "AbilitySpecial"
-  {
-    "01"
+    "AbilitySpecial"
     {
-      "var_type"              "FIELD_INTEGER"
-      "bonus_damage"          "60 120 180"
-    }
-    "02"
-    {
-      "var_type"              "FIELD_INTEGER"
-      "bonus_armor"           "10 20 30"
-    }
-    "03"
-    {
-      "var_type"              "FIELD_INTEGER"
-      "bonus_health"           "400 700 1000"
-    }
-	"04"
-    {
-      "var_type"              "FIELD_FLOAT"
-      "duration"              "10"
-    }
+      "01"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "bonus_damage"          "60 120 180"
+      }
+      "02"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "bonus_armor"           "10 20 30"
+      }
+      "03"
+      {
+        "var_type"              "FIELD_INTEGER"
+        "bonus_health"           "400 700 1000"
+      }
+      "04"
+      {
+        "var_type"              "FIELD_FLOAT"
+        "duration"              "10"
+      }
   }
     
   // Casting
   //-------------------------------------------------------------------------------------------------------------
-  "OnSpellStart"
-  {
-   "ApplyModifier"
+    "OnSpellStart"
     {
-      "ModifierName"   "modifier_power_of_the_mountains"
-        "Target"
-        {
-          "Center"    "CASTER"
-          "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-        }
-        "Duration"       "%duration"
-
+      "ApplyModifier"
+      {
+        "ModifierName"   "modifier_power_of_the_mountains"
+          "Target"
+          {
+            "Center"    "CASTER"
+            "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+          }
+          "Duration"       "%duration"
       }
       "RunScript"
       {
         "ScriptFile"  "heroes\Brewer\Avatar.lua"
         "Function"    "Purge"
       } 
-  }
+    }
     
     // Modifiers
     //-------------------------------------------------------------------------------------------------------------
@@ -258,19 +255,18 @@
     
         "Properties"
         {
-         "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
-         "MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
+          "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
+          "MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
         }
 
         "States"
         {
-         "MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
         }
-		"EffectName"	"particles/units/heroes/hero_brewmaster/brewmaster_earth_ambient.vpcf"
-		"EffectAttachType"	"follow_origin"
+        "EffectName"	"particles/units/heroes/hero_brewmaster/brewmaster_earth_ambient.vpcf"
+        "EffectAttachType"	"follow_origin"
       }
     }
   }
-
-
+}

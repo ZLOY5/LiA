@@ -1,335 +1,329 @@
-"dice_rage"
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"axe_berserkers_call"
-
-	"AbilityCastRange"				"500"
-	"AbilityCastPoint"				"0.0"
-
-	"AbilityCooldown"				"10"
-
-	"AbilityManaCost"				"40 50 60"	
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-	
-	"precache"
+	"dice_rage"
 	{
-	"particle"	"particles/status_fx/status_effect_beserkers_call.vpcf"
-	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"30 60 90"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health"			"100 200 300"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"15.0 20.0 25.0"
-		}
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"axe_berserkers_call"
 
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Axe.Berserkers_Call"
-			"Target"		"TARGET"
-		}
-		"ApplyModifier"
-		{
-			"ModifierName" "modifier_dice_rage"
-			"Target"	"TARGET"
-			"Duration"	"%duration"
-		}
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.0"
 
+		"AbilityCooldown"				"10"
+
+		"AbilityManaCost"				"40 50 60"	
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 		
-	}
-	"Modifiers"
-	{
-		"modifier_dice_rage"
+		"precache"
 		{
-			"IsPurgable"	"1"
-			"IsBuff"	"1"
-
-			"Properties"
+			"particle"	"particles/status_fx/status_effect_beserkers_call.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"30 60 90"
 			}
-			"StatusEffectName"     "particles/status_fx/status_effect_beserkers_call.vpcf"
-		}
-
-	}
-}
-
-"dice_bash"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"axe_culling_blade"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-
-	"AbilityDamage"					"70 140 210"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_chance"			"15 20 25"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bash_stun"	"1.0"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_damage"	"70 140 210"
-		}
-	}
-
-
-	
-	"Modifiers"
-	{
-		"modifier_dice_bash"	
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-
-			"OnAttackLanded"
+			"02"
 			{
-				"Random"
-				{
-					"Chance"		"%bash_chance"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"100 200 300"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"15.0 20.0 25.0"
+			}
+		}
 
-					"OnSuccess"
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Axe.Berserkers_Call"
+				"Target"		"TARGET"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_dice_rage"
+				"Target"	"TARGET"
+				"Duration"	"%duration"
+			}	
+		}
+		"Modifiers"
+		{
+			"modifier_dice_rage"
+			{
+				"IsPurgable"	"1"
+				"IsBuff"	"1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
+				}
+				"StatusEffectName"     "particles/status_fx/status_effect_beserkers_call.vpcf"
+			}
+		}
+	}
+
+	"dice_bash"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"axe_culling_blade"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+
+		"AbilityDamage"					"70 140 210"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"15 20 25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_stun"	"1.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"	"70 140 210"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_dice_bash"	
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackLanded"
+				{
+					"Random"
 					{
-						"RunScript"
+						"Chance"		"%bash_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+						"OnSuccess"
 						{
-							"ScriptFile"	"heroes\Dice\Bash.lua"
-							"Function"		"Bash"
+							"RunScript"
+							{
+								"ScriptFile"	"heroes\Dice\Bash.lua"
+								"Function"		"Bash"
+							}
 						}
-
-
 					}
-				}
-			}
-		}
-
-
-	}
-}	
-"dice_endurance_aura"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"axe_battle_hunger"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	"AbilityCastRange" "800"
-	// Casting
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"800"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_speed"	"10 20 30"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_speed_tooltip"	"10 20 30"
-		}
-	}
-
-	"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_dice_endurance_aura"
-	}
-	
-	"Modifiers"
-	{
-		"modifier_dice_endurance_aura"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-	
-			"Aura"          	"modifier_dice_endurance_aura_buff"
-			"Aura_Radius"   	"%radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-			"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES" 
-		}
-
-		"modifier_dice_endurance_aura_buff"
-		{
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_speed"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_speed"
-			}
-		}
-	}
-}
-
-"dice_steelstorm"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"axe_counter_helix"
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-
-	"AbilityCastRange"				"300"
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"180.0 160.0 140.0"
-
-	"AbilityManaCost"				"100 150 200"
-	"AbilityDamage"					"150 300 450"
-
-	"precache"
-	{
-		"particle" 	"particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"steelstorm_damage_tick"	"0.06"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"steelstorm_radius"			"300"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"					"6.0 8.0 10.0"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_steelstorm"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"Duration"		"%duration"
-		}	
-	}
-
-	"Modifiers"
-	{
-		"modifier_steelstorm"
-		{	
-			"OverrideAnimation"     	"ACT_DOTA_CAST_ABILITY_5"
-			"States"
-			{
-				"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_SILENCED"			"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_DISARMED"			"MODIFIER_STATE_VALUE_ENABLED"
-			}
-			"OnCreated"
-			{
-				"AttachEffect"
-				{
-					"EffectName"        "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"
-					{
-						"Center"  	"CASTER"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-					"ControlPoints"
-					{
-						"05"	"%steelstorm_radius 0 0"
-					}					
-				}
-				"FireSound"
-				{
-					"EffectName"	"Hero_Juggernaut.BladeFuryStart"
-					"Target"
-					{
-						"Center"  	"CASTER"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-				}			
-			}
-			
-			"ThinkInterval"  "%steelstorm_damage_tick"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile" "heroes\Dice\Steelstorm.lua"
-					"Function"		"Damage"
-				}	
-
-			}
-			"OnDestroy"
-			{
-				"FireSound"
-				{
-					"EffectName"	"Hero_Juggernaut.BladeFuryStop"
-					"Target" 		"CASTER"
-				}
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/Dice/bladestorm.lua"
-					"Function"		"BladeFuryStop"
 				}
 			}
 		}
 	}	
+	"dice_endurance_aura"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"axe_battle_hunger"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		"AbilityCastRange" "800"
+		// Casting
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"800"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_speed"	"10 20 30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_speed_tooltip"	"10 20 30"
+			}
+		}
+
+		"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_dice_endurance_aura"
+		}
+		
+		"Modifiers"
+		{
+			"modifier_dice_endurance_aura"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"Aura"          	"modifier_dice_endurance_aura_buff"
+				"Aura_Radius"   	"%radius"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES" 
+			}
+
+			"modifier_dice_endurance_aura_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_speed"
+				}
+			}
+		}
+	}
+
+	"dice_steelstorm"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"axe_counter_helix"
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"180.0 160.0 140.0"
+
+		"AbilityManaCost"				"100 150 200"
+		"AbilityDamage"					"150 300 450"
+
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"steelstorm_damage_tick"	"0.06"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"steelstorm_radius"			"300"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"6.0 8.0 10.0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_steelstorm"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"		"%duration"
+			}	
+		}
+
+		"Modifiers"
+		{
+			"modifier_steelstorm"
+			{	
+				"OverrideAnimation"     	"ACT_DOTA_CAST_ABILITY_5"
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"			"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+						"ControlPoints"
+						{
+							"05"	"%steelstorm_radius 0 0"
+						}					
+					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_Juggernaut.BladeFuryStart"
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+					}			
+				}
+				
+				"ThinkInterval"  "%steelstorm_damage_tick"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile" "heroes\Dice\Steelstorm.lua"
+						"Function"		"Damage"
+					}	
+
+				}
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Juggernaut.BladeFuryStop"
+						"Target" 		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Dice/bladestorm.lua"
+						"Function"		"BladeFuryStop"
+					}
+				}
+			}
+		}	
+	}
 }

@@ -1,15 +1,10 @@
-// shaman
-
-
-
-// Rewrite of the Mirana Starfall ability
-// Author (base ability): Pizzalol
-// Date: 04.01.2015.
-//
-// Author (this modification) : CeZaRRR
-// Date: 15.06.2015.
-
-
+"DotaAbilities"
+{
+	// Rewrite of the Mirana Starfall ability
+	// Author (base ability): Pizzalol
+	// Date: 04.01.2015.
+	// Author (this modification) : CeZaRRR
+	// Date: 15.06.2015.
 	"shaman_starfall_datadriven"
 	{
 		// General
@@ -21,9 +16,9 @@
 		//"FightRecapLevel"				"1"
 		"AbilityTextureName"			"custom/shaman_starfall_datadriven"
 	
-	       "MaxLevel"               "3"
-	       "RequiredLevel"          "1"
-	       "LevelsBetweenUpgrades"  "2"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 	
 		"AbilityChannelTime"      "2.1"
 		"AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"
@@ -165,17 +160,15 @@
 		"OnChannelFinish"
 		{
 			"RemoveModifier"
-	       		{
+			{
 	         		"ModifierName"  "starfall_regen"
 	         		"Target"        
 		 		{		
 					"Center"	"CASTER"
 					"Flags"  "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		 		}
-	       		}
+			}
 		}  
-	
-	
 	
 	    // Modifiers
 	    //-------------------------------------------------------------------------------------------------------------
@@ -186,21 +179,21 @@
 		        "Passive"       "0"
 		        "IsHidden"      "0"
 		        "IsBuff"        "1"
-			"IsPurgable"	"0"
-	
-			"Duration" "%AbilityDuration"
-	
-			"ThinkInterval"  "%tick"
-			"OnIntervalThink"
-			{
-		        	"RunScript"
-		        	{
-			            	"ScriptFile" 		"heroes\Shaman\starfall.lua"
-		        	    	"Function"   		"starfallRegen"
-					"regen_percentage"  	"%regen_percentage"
-					"tick" 			"%tick"
-		        	}
-		 	}
+				"IsPurgable"	"0"
+		
+				"Duration" "%AbilityDuration"
+		
+				"ThinkInterval"  "%tick"
+				"OnIntervalThink"
+				{
+						"RunScript"
+						{
+								"ScriptFile" 		"heroes\Shaman\starfall.lua"
+								"Function"   		"starfallRegen"
+						"regen_percentage"  	"%regen_percentage"
+						"tick" 			"%tick"
+						}
+				}
 	
 		        "States"
 		        {
@@ -210,93 +203,90 @@
 	    }
 	}
 
+	"shaman_madness_datadriven" 
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		//"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+		"AbilityTextureName"     "custom/shaman_madness_datadriven"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 
+		"AbilityCooldown"        "20"
+		"AbilityManaCost"        "100"
 
-"shaman_madness_datadriven" 
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    //"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "AbilityTextureName"     "custom/shaman_madness_datadriven"
-  
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
+		"precache"
+		{
+			"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
+			//"particle" "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+				
+		}
 
-   "AbilityCooldown"        "20"
-   "AbilityManaCost"        "100"
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"  "0.2"
 
-   "precache"
-   {
-   	"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
-	//"particle" "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			"var_type"                      "FIELD_INTEGER"
+			"bonus_movespeed_percentage"    "20 40 60"
+			}
+			"02"
+			{
+			"var_type"                      "FIELD_INTEGER"
+			"bonus_attackspeed"             "50 100 150"
+			}
+			"03"
+			{
+			"var_type"                      "FIELD_FLOAT"
+			"duration"                      "10"
+			}
+		}
 		
-   }
-
-  // Stats
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityCastPoint"  "0.2"
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"                      "FIELD_INTEGER"
-      "bonus_movespeed_percentage"    "20 40 60"
-    }
-    "02"
-    {
-      "var_type"                      "FIELD_INTEGER"
-      "bonus_attackspeed"             "50 100 150"
-    }
-	"03"
-    {
-      "var_type"                      "FIELD_FLOAT"
-      "duration"                      "10"
-    }
-  }
-    
-  // Casting
-  //-------------------------------------------------------------------------------------------------------------
-  "OnSpellStart"
-  {
-   "ApplyModifier"
-    {
-     "ModifierName"   "madness_datadriven"
-     "Target"         "CASTER"
-     "Duration"       "%duration"
-    }
-  }
-    
-    // Modifiers
-    //-------------------------------------------------------------------------------------------------------------
-    "Modifiers"
-    {
-      "madness_datadriven"
-      {
-        "Passive"       "0"
-        "IsHidden"      "0"
-        "IsBuff"        "1"
-    
-        "Properties"
-        {
-         
-         	"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
-         	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
-        }
-	//
-    	//"EffectName"        "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
-    	//"EffectAttachType"  "follow_origin"
-      }
-    }
-  }
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"OnSpellStart"
+		{
+		"ApplyModifier"
+			{
+			"ModifierName"   "madness_datadriven"
+			"Target"         "CASTER"
+			"Duration"       "%duration"
+			}
+		}
+		
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"madness_datadriven"
+			{
+				"Passive"       "0"
+				"IsHidden"      "0"
+				"IsBuff"        "1"
+			
+				"Properties"
+				{
+				
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"   "%bonus_movespeed_percentage"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"   "%bonus_attackspeed"
+				}
+			//
+				//"EffectName"        "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+				//"EffectAttachType"  "follow_origin"
+			}
+		}
+	}
 
 
 "shaman_resourcefulness"
 {
-
 	"BaseClass"					"ability_lua"
 	"ScriptFile"				"heroes\Shaman\shaman_resourcefulness.lua"
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -321,27 +311,26 @@
 	}
 }
 
-
 "shaman_ancient_forces"
 {
-  "BaseClass"   "ability_lua"
-  "ScriptFile"    "heroes/Shaman/shaman_ancient_forces.lua"
+	"BaseClass"   "ability_lua"
+	"ScriptFile"    "heroes/Shaman/shaman_ancient_forces.lua"
 
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"      "custom/shaman_ancient_forces"
+	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"      "custom/shaman_ancient_forces"
 
-  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
-  "MaxLevel"               "3"
-  "RequiredLevel"          "5"
-  "LevelsBetweenUpgrades"  "4"
+	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+	"MaxLevel"               "3"
+	"RequiredLevel"          "5"
+	"LevelsBetweenUpgrades"  "4"
 
 
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"    "FIELD_INTEGER"
-      "bonus_damage_percentage"       "50 75 100"
-    }
-  } 
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"    "FIELD_INTEGER"
+			"bonus_damage_percentage"       "50 75 100"
+		}
+  	} 
 }

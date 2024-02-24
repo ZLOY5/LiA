@@ -1,18 +1,15 @@
-// WarriorOfLight
-
-
-
+"DotaAbilities"
+{
 	"warrior_of_light_fetters"
 	{
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName" 			"custom/warrior_of_light_fetters"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		 "AbilityUnitDamageType" 		 "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitDamageType" 		 "DAMAGE_TYPE_MAGICAL"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	
-
 		"precache"
 		{
 			"particle"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura_debuff.vpcf"				
@@ -75,10 +72,7 @@
      				"Teams"  "DOTA_UNIT_TARGET_TEAM_ENEMY"
      				"Type" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
     			}     
-			}
-	
-
-	
+			}	
 		}
 	
 		"Modifiers"
@@ -88,39 +82,28 @@
 				"IsDebuff"	"1"
 				"Duration"	"%duration"
 				"IsPurgable"	"1"
-				//
-				//
-				//
+
 				"OnAttackStart"
 				{
-
 					"Damage"
 					{
 						"Target"	"ATTACKER"
 						"Type"		"DAMAGE_TYPE_MAGICAL"
 						"Damage"	"%damage_for_attack"
 					}
-
-
 				}
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%penalty_ms"
 				}
-				//
 				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura_debuff.vpcf"
 				"EffectAttachType"	"follow_origin"	
-
 			}
-
 		}
 	}	
 	
-
-
 	"warrior_of_light_will_light"
 	{
-
 	  	"BaseClass"               "ability_lua"
 	  	"ScriptFile"			  "heroes\WarriorOfLight\warrior_of_light_will_light.lua"
 
@@ -155,34 +138,31 @@
 	  	}
 	}
 
-
-
-"warrior_of_light_holy_power"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"	"heroes/WarriorOfLight/warrior_of_light_holy_power.lua"
-
-	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"      "custom/warrior_of_light_holy_power"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilitySpecial"
+	"warrior_of_light_holy_power"
 	{
-		"01"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "block_chance"    "15 20 25"
-	    }
-	} 
-}
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/WarriorOfLight/warrior_of_light_holy_power.lua"
 
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "custom/warrior_of_light_holy_power"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+			"var_type"        "FIELD_INTEGER"
+			"block_chance"    "15 20 25"
+			}
+		} 
+	}
 	
-"warrior_of_light_divine_protection"
-{
-	   // General
+	"warrior_of_light_divine_protection"
+	{
+	   	// General
 	    //-------------------------------------------------------------------------------------------------------------
 	    "BaseClass"              "ability_datadriven"
 	    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -203,7 +183,7 @@
 	    
 	    "precache"
 	    {
-		"particle"	"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
 	    }
 	    "AbilityCastAnimation"     "ACT_DOTA_CAST_ABILITY_4"//"ACT_DOTA_ATTACK"
 
@@ -211,31 +191,27 @@
 	    //-------------------------------------------------------------------------------------------------------------
 	    "AbilitySpecial"
 	    {
-
-	     "01"
-	      {
-	       "var_type"                            "FIELD_INTEGER"
-	       "armor"      "1000"
-	      }
-	     "02"
-	      {
-	       "var_type"                            "FIELD_INTEGER"
-	       "attack_damage_proc"      "0"
-	      }
-	     "03"
-	     {
-	       "var_type"                            "FIELD_FLOAT"
-	       "duration"                            "8 10 12"
-	     }
-	      "04"
-	      {
-	       "var_type"                           "FIELD_INTEGER"
-	       "radius"                             "1000"
-	      }
+			"01"
+			{
+				"var_type"                            "FIELD_INTEGER"
+				"armor"      "1000"
+			}
+			"02"
+			{
+				"var_type"                            "FIELD_INTEGER"
+				"attack_damage_proc"      "0"
+			}
+			"03"
+			{
+				"var_type"                            "FIELD_FLOAT"
+				"duration"                            "8 10 12"
+			}
+			"04"
+			{
+				"var_type"                           "FIELD_INTEGER"
+				"radius"                             "1000"
+			}
 	    }  	
-
-	    // Casting
-	    //-------------------------------------------------------------------------------------------------------------
 
 	    "OnSpellStart"
 	    {
@@ -260,41 +236,38 @@
 	          	}
 	          
 	          	"Action"
-	          	{
-	            
-	            		"ApplyModifier"
-	             		{
-	              			"Target"        "TARGET"
-	              			"ModifierName"  "modifier_divine_protection_datadriven"
-	             		}
-	
+	          	{	            
+					"ApplyModifier"
+					{
+						"Target"        "TARGET"
+						"ModifierName"  "modifier_divine_protection_datadriven"
+					}	
 	          	}
 	        }
-	}
+		}
 
 
 	
-	"Modifiers"
-	{
-	      "modifier_divine_protection_datadriven"
-	      {
-	        "Passive"         "0"
-	        "IsHidden"        "0"
-	        "IsBuff"        "1"
-	    
-	        "Duration"        "%duration"
+		"Modifiers"
+		{
+			"modifier_divine_protection_datadriven"
+			{
+				"Passive"         "0"
+				"IsHidden"        "0"
+				"IsBuff"        "1"
+			
+				"Duration"        "%duration"
 
-		"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
-		"EffectAttachType"	"follow_origin"	      
+				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+				"EffectAttachType"	"follow_origin"	      
 
-	        "Properties"
-	        {
-	          "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%armor"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%armor"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%attack_damage_proc"
+				}
 
-	          "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%attack_damage_proc"
-	        }
-
-	      }
+			}
+		}
 	}
-	
 }

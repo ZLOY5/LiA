@@ -1,395 +1,393 @@
-"troll_cutthroat_boomeang_axe"
+"DotaAbilities"
 {
-	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes/TrollCutthroat/troll_cutthroat_boomeang_axe.lua"
-
-	"AbilityTextureName"			"troll_warlord_berserkers_rage"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-
-	"AbilityCastRange"				"300 400 500"
-	"AbilityCastPoint"				"0.2"
-	"AbilityCooldown"				"20 17 14"
-	"AbilityManaCost"				"100 75 50"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"precache"
+	"troll_cutthroat_boomeang_axe"
 	{
-		"particle" 	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
-	}
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes/TrollCutthroat/troll_cutthroat_boomeang_axe.lua"
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_percentage"			"50"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"strength_into_damage_percentage"			"150"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"max_targets"			"6 7 8"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"axe_speed"				"600"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"600"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"return_speed"				"1000"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"ability_cast_range"				"300 400 500"
-		}
-	}
-}
+		"AbilityTextureName"			"troll_warlord_berserkers_rage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 
-"troll_cutthroat_boomeang_axe_return"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	"AbilityTextureName"			"custom/troll_cuthroat_boomeang_axe_return"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"	
-	"MaxLevel"               "1"
+		"AbilityCastRange"				"300 400 500"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"20 17 14"
+		"AbilityManaCost"				"100 75 50"
 
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-	"AbilityCastPoint"				"0.0"
-
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
+		"precache"
 		{
-			"ModifierName" "modifier_troll_cutthroat_boomeang_axe_return"
-			"Target"
+			"particle" 	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"				"FIELD_INTEGER"
+				"damage_percentage"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"strength_into_damage_percentage"			"150"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_targets"			"6 7 8"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"axe_speed"				"600"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"600"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"return_speed"				"1000"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"ability_cast_range"				"300 400 500"
 			}
 		}
+	}
 
+	"troll_cutthroat_boomeang_axe_return"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"			"custom/troll_cuthroat_boomeang_axe_return"
 		
+		"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"	
+		"MaxLevel"               "1"
+
+		"AbilityCastPoint"				"0.0"
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_troll_cutthroat_boomeang_axe_return"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}	
+		}
+
+		"Modifiers"
+		{
+			"modifier_troll_cutthroat_boomeang_axe_return"
+			{
+				"Passive"			"0"
+				"IsHidden"			"1"
+				"IsDebuff"			"0"
+			}
+		}
 	}
 
-	"Modifiers"
+	"troll_cutthroat_vulnerability"
 	{
-		"modifier_troll_cutthroat_boomeang_axe_return"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"heroes/TrollCutthroat/troll_cutthroat_vulnerability.lua"
+
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"    "troll_warlord_fervor"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"precache"
 		{
-			"Passive"			"0"
-			"IsHidden"			"1"
-			"IsDebuff"			"0"
+			"particle"	"particles/custom/troll_cutthroat/troll_cutthroat_vulnerability.vpcf"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_multiplier"			"200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"14 17 20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor_reduction"			"-4 -7 -10"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"5"
+			}
 		}
 	}
-}
 
-"troll_cutthroat_vulnerability"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"		"heroes/TrollCutthroat/troll_cutthroat_vulnerability.lua"
-
-	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"    "troll_warlord_fervor"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"precache"
+	"troll_cutthroat_enchanted_axes"
 	{
-		"particle"	"particles/custom/troll_cutthroat/troll_cutthroat_vulnerability.vpcf"
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"troll_warlord_whirling_axes_melee"
 
-	"AbilitySpecial"
-	{
-		"01"
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_multiplier"			"200"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"14 17 20"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"armor_reduction"			"-4 -7 -10"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"					"5"
-		}
-	}
-}
-
-"troll_cutthroat_enchanted_axes"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"troll_warlord_whirling_axes_melee"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
-		"particle"			"particles/units/heroes/hero_troll_warlord/troll_warlord_whirling_axe_melee.vpcf"
-	}
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastPoint"				"0.0"
-	"AbilityCastRange"				"450"
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"12 9 4"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"damage"					"50 100 150"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"str_prc_dmg"				"75"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"hit_radius"				"100"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"max_range"					"450.0"
-		}
-		"05"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"axe_movement_speed"		"1400"
-		}
-		"06"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"bonus_movement_speed"		"30"
-		}
-		"07"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"blind_pct"					"60 60 60 60"
-		}
-		"08"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"whirl_duration"			"3.0"
-		}
-		// Extra
-		"09"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"axe_turn_rate"				"360"
-		}
-		"10"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"start_radius"				"1"
-		}
-		"11"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"think_interval"			"0.06"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+			"particle"			"particles/units/heroes/hero_troll_warlord/troll_warlord_whirling_axe_melee.vpcf"
 		}
 		
-	}
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+		"AbilityCastRange"				"450"
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12 9 4"
 
-	"OnUpgrade"
-	{
-		"RunScript"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
-			"Function"		"LevelUpAbility"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_TrollWarlord.WhirlingAxes.Melee"
-			"Target" 		"CASTER"
-		}
-
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
-			"Function"		"WhirlingAxesMelee"
-			"axe_projectile"	"particles/units/heroes/hero_troll_warlord/troll_warlord_whirling_axe_melee.vpcf"
-			"axe_modifier"		"modifier_whirling_axes_melee_think_datadriven"
-		}
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_whirling_axes_melee_phase"
-			"Target" 		"CASTER"
-			"Duration"		"%whirl_duration"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_whirling_axes_melee_think_datadriven"
-		{
-			"IsHidden"		"1"
-			"IsPurgable"	"0"
-
-			"Aura"          	"modifier_whirling_axes_melee_aura_datadriven"
-			"Aura_Radius"   	"%hit_radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE"
-			"Aura_ApplyToCaster" "0"
-
-			"ThinkInterval"  "%think_interval"
-			"OnIntervalThink"
+			"01"
 			{
-				"RunScript"
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"50 100 150"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"str_prc_dmg"				"75"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"hit_radius"				"100"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"max_range"					"450.0"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"axe_movement_speed"		"1400"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_movement_speed"		"30"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"blind_pct"					"60 60 60 60"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"whirl_duration"			"3.0"
+			}
+			// Extra
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"axe_turn_rate"				"360"
+			}
+			"10"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"start_radius"				"1"
+			}
+			"11"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"think_interval"			"0.06"
+			}		
+		}
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+				"Function"		"LevelUpAbility"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_TrollWarlord.WhirlingAxes.Melee"
+				"Target" 		"CASTER"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+				"Function"		"WhirlingAxesMelee"
+				"axe_projectile"	"particles/units/heroes/hero_troll_warlord/troll_warlord_whirling_axe_melee.vpcf"
+				"axe_modifier"		"modifier_whirling_axes_melee_think_datadriven"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_whirling_axes_melee_phase"
+				"Target" 		"CASTER"
+				"Duration"		"%whirl_duration"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_whirling_axes_melee_think_datadriven"
+			{
+				"IsHidden"		"1"
+				"IsPurgable"	"0"
+
+				"Aura"          	"modifier_whirling_axes_melee_aura_datadriven"
+				"Aura_Radius"   	"%hit_radius"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags"    	"DOTA_UNIT_TARGET_FLAG_NONE"
+				"Aura_ApplyToCaster" "0"
+
+				"ThinkInterval"  "%think_interval"
+				"OnIntervalThink"
 				{
-					"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
-					"Function"		"WhirlingAxesMeleeThink"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+						"Function"		"WhirlingAxesMeleeThink"
+					}
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 
-			"States"
+			"modifier_whirling_axes_melee_aura_datadriven"
 			{
-				"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_UNSELECTABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
+				"IsHidden"	"1"
 
-		"modifier_whirling_axes_melee_aura_datadriven"
-		{
-			"IsHidden"	"1"
-
-			"OnCreated"
-			{
-				"RunScript"
+				"OnCreated"
 				{
-					"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
-					"Function"		"WhirlingAxesMeleeHit"
-					"sound"			"Hero_TrollWarlord.WhirlingAxes.Target"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+						"Function"		"WhirlingAxesMeleeHit"
+						"sound"			"Hero_TrollWarlord.WhirlingAxes.Target"
+					}
 				}
 			}
-		}
 
-		"modifier_whirling_axes_melee_phase"
-		{
-			"IsBuff"		"1"
-
-			"States"
+			"modifier_whirling_axes_melee_phase"
 			{
-				"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
-			}
+				"IsBuff"		"1"
 
-			"Properties"
-			{
-			    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed" 
-			}
-
-			"OnDestroy"
-			{
-				"RunScript"
+				"States"
 				{
-					"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
-					"Function"		"ApplyPhase"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movement_speed" 
+				}
+
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/TrollCutthroat/EnchantedAxes.lua"
+						"Function"		"ApplyPhase"
+					}
 				}
 			}
 		}
 	}
-}
 
-"troll_cutthroat_battle_trance"
-{
-	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes\TrollCutthroat\troll_cutthroat_battle_trance.lua"
-
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"     "troll_warlord_battle_trance"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"80"
-	"AbilityManaCost"				"170 200 230"
-
-	"AbilitySpecial"
+	"troll_cutthroat_battle_trance"
 	{
-		"01"
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\TrollCutthroat\troll_cutthroat_battle_trance.lua"
+
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"     "troll_warlord_battle_trance"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"80"
+		"AbilityManaCost"				"170 200 230"
+
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"50 100 150"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_reduction"		"-25"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_strength"		"20 40 60"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"9 12 15"
-		}
-	} 
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"50 100 150"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reduction"		"-25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"20 40 60"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"9 12 15"
+			}
+		} 
+	}
 }

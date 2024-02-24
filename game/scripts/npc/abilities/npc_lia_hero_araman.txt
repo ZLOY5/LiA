@@ -1,229 +1,225 @@
-"araman_curse"
- {
-   // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-    "AbilityTextureName"     "night_stalker_void"
-
-    "AbilityCooldown" "15 13 11"
-	"AbilityCastRange"	"400 500 600"
-    "AbilityManaCost" "70 90 100"
-	"AbilityCastPoint"	"0.4"
-	
-    "MaxLevel"               "3"
-    "RequiredLevel"          "1"
-    "LevelsBetweenUpgrades"  "2"
-
-
-	"precache"
+"DotaAbilities"
+{
+	"araman_curse"
 	{
-		"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
-	}
-	
-    "OnSpellStart"
-    {
-      	"RunScript"
-      	{
-      		"ScriptFile"	"heroes/Araman/Curse.lua"
-      		"Function"		"Curse"
-	        "Target"
-	        {
-	          	"Center"    "CASTER"
-	          	"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	          	"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	          	"Radius"    "%radius"
-	        }
-      	}
-	  	"FireSound"
-		{
-			"EffectName"	"Hero_Nightstalker.Void"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-		"AttachEffect"
-		{
-			"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
-			"EffectAttachType"	"attach_origin"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-		"Random"
-		{
-			"Chance"		"%stun_chance"
-			"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-
-			"OnSuccess"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_stunned"
-					"Target"
-					{
-						"Center"	"CASTER"
-			            "Radius"  	"%radius"
-					    "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-					"Duration"		"%stun_duration"	
-				}
-
-			}
-		}
-    }
-    
-  
-   
-    // Special    
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      	"01"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "radius"                  "400 500 600"
-        }
-        "02"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "full_damage_radius"      "150"
-        }	
-       	"03"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "damage"                   "100 200 400"
-        }
-       	"04"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "stun_chance"             "50"
-        }
-       	"05"
-        {
-            "var_type"                "FIELD_FLOAT"
-            "stun_duration"            "2"
-        }
-    }
-}
-
-"araman_armor_of_darkness"
-{
-  "BaseClass"		"ability_lua"
-  "ScriptFile"		"heroes/Araman/araman_armor_of_darkness.lua"
-
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"      "custom/araman_armor_of_darkness"
-
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      	"var_type"      "FIELD_INTEGER"
-      	"incoming_damage_percentage"  "-10 -15 -20"
-    }
-	"02"
-    {
-      	"var_type"      "FIELD_INTEGER"
-      	"bonus_armor"  "4 8 12"
-    }
-  } 
-}
-
-"araman_morale"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"	"heroes/Araman/araman_morale.lua"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"night_stalker_crippling_fear"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastRange"	"800"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"800"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_damage_percentage"	"20 30 40"
-		}
-	} 
-}
-
-
-
-
-"araman_power_of_scourge"
-{
 	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_lua"
-	"ScriptFile"					"heroes/Araman/araman_power_of_scourge.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"			"night_stalker_hunter_in_the_night"
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"     "night_stalker_void"
 
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	
-	"AbilityCooldown"				"70.0"	
-	"AbilityDuration"				"25.0"
-	"AbilityManaCost"				"100 150 200"	
-	
-	"precache"
-	{
-		"particle"			"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
+		"AbilityCooldown" "15 13 11"
+		"AbilityCastRange"	"400 500 600"
+		"AbilityManaCost" "70 90 100"
+		"AbilityCastPoint"	"0.4"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/Araman/Curse.lua"
+				"Function"		"Curse"
+				"Target"
+				{
+					"Center"    "CASTER"
+					"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Radius"    "%radius"
+				}
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Nightstalker.Void"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+			"AttachEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+			"Random"
+			{
+				"Chance"		"%stun_chance"
+				"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+				"OnSuccess"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_stunned"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"  	"%radius"
+							"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						"Duration"		"%stun_duration"	
+					}
+				}
+			}
+		}
+		
+		// Special    
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                "FIELD_INTEGER"
+				"radius"                  "400 500 600"
+			}
+			"02"
+			{
+				"var_type"                "FIELD_INTEGER"
+				"full_damage_radius"      "150"
+			}	
+			"03"
+			{
+				"var_type"                "FIELD_INTEGER"
+				"damage"                   "100 200 400"
+			}
+			"04"
+			{
+				"var_type"                "FIELD_INTEGER"
+				"stun_chance"             "50"
+			}
+			"05"
+			{
+				"var_type"                "FIELD_FLOAT"
+				"stun_duration"            "2"
+			}
+		}
 	}
-	
-	"AbilitySpecial"
+
+	"araman_armor_of_darkness"
 	{
-		"01"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"heroes/Araman/araman_armor_of_darkness.lua"
+
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "custom/araman_armor_of_darkness"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"50 70 90"
+			"01"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"incoming_damage_percentage"  "-10 -15 -20"
+			}
+			"02"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"bonus_armor"  "4 8 12"
+			}
+		} 
+	}
+
+	"araman_morale"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Araman/araman_morale.lua"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"night_stalker_crippling_fear"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastRange"	"800"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"800"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage_percentage"	"20 30 40"
+			}
+		} 
+	}
+
+	"araman_power_of_scourge"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/Araman/araman_power_of_scourge.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"			"night_stalker_hunter_in_the_night"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		"AbilityCooldown"				"70.0"	
+		"AbilityDuration"				"25.0"
+		"AbilityManaCost"				"100 150 200"	
+		
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
 		}
-		"02"
+		
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_move_speed"		"30 50 70"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_per_attack"		"20 30 40"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_stack_max"		"11 13 15"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"sum_damage_tooltip"	"220 420 600"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"50 70 90"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_move_speed"		"30 50 70"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_attack"		"20 30 40"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_stack_max"		"11 13 15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"sum_damage_tooltip"	"220 420 600"
+			}
 		}
 	}
-}
+}	

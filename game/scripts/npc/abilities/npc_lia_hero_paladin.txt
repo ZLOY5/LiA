@@ -1,189 +1,184 @@
-
-"paladin_blizzard"
+"DotaAbilities"
 {
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\Paladin\paladin_blizzard.lua"
-
-	"AbilityTextureName"			"custom/paladin_blizzard"
-						
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT |  DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
-
-	"MaxLevel" 				"3"
-	"RequiredLevel"          		"1"
-	"LevelsBetweenUpgrades"  		"2"
-
-	"AbilityCastRange"				"800"
-	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"19.0 18.0 17.0"
-	"AbilityManaCost"				"100 175 200"
-
-	"AOERadius"     				"%radius"
-
-	"HasScepterUpgrade"		 "1"
-	
-	"AbilitySpecial"
+	"paladin_blizzard"
 	{
-		"01"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\Paladin\paladin_blizzard.lua"
+
+		"AbilityTextureName"			"custom/paladin_blizzard"
+							
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT |  DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+
+		"MaxLevel" 				"3"
+		"RequiredLevel"          		"1"
+		"LevelsBetweenUpgrades"  		"2"
+
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"19.0 18.0 17.0"
+		"AbilityManaCost"				"100 175 200"
+
+		"AOERadius"     				"%radius"
+
+		"HasScepterUpgrade"		 "1"
+		
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"wave_damage"				"30 60 120"
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"wave_damage"				"30 60 120"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"wave_damage_scepter"		"60 120 180"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"wave_count_scepter"		"8 10 12"
+				"RequiresScepter"		"1"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"stun"						"0.25"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"wave_interval"				"1.0"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"wave_count"				"6 8 10"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"175 200 225"
+			}		
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"manacost_scepter"			"200 275 300"
+				"RequiresScepter"		"1"
+			}	
 		}
-		"02"
+
+		"precache"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"wave_damage_scepter"		"60 120 180"
-			"RequiresScepter"		"1"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_snow.vpcf"
+			"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_explosion.vpcf"
+			"particle"	"particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
 		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"wave_count_scepter"		"8 10 12"
-			"RequiresScepter"		"1"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"stun"						"0.25"
-		}
-		"05"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"wave_interval"				"1.0"
-		}
-		"06"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"wave_count"				"6 8 10"
-		}
-		"07"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"175 200 225"
-		}		
-		"08"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"manacost_scepter"			"200 275 300"
-			"RequiresScepter"		"1"
-		}	
 	}
 
-	"precache"
+	"paladin_grace"
 	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
-		"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_snow.vpcf"
-		"particle"	"particles/units/heroes/hero_crystalmaiden/maiden_freezing_field_explosion.vpcf"
-		"particle"	"particles/generic_gameplay/generic_slowed_cold.vpcf"
-		"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
+		"BaseClass"              "ability_lua"
+		"ScriptFile"			 "heroes\Paladin\paladin_grace.lua"
+		
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"     "omniknight_purification"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AoERadius"               "400"	
+
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"8.0"
+		"AbilityManaCost"				"110 130 150"	
+		
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"primary_target_heal"				"200 500 800"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"primary_target_heal_scepter"				"800 1000 1200"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"nearby_allies_heal"			"150 300 450"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_scepter"				"160 180 200"
+				"RequiresScepter"		"1"
+			}
+		} 
 	}
 
-
-}
-
-
-"paladin_grace"
-{
-  	"BaseClass"              "ability_lua"
-  	"ScriptFile"			 "heroes\Paladin\paladin_grace.lua"
-  	
-  	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-  	"AbilityTextureName"     "omniknight_purification"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AoERadius"               "400"	
-
-	"AbilityCastRange"				"800"
-	"AbilityCastPoint"				"0.3"
-	"AbilityCooldown"				"8.0"
-	"AbilityManaCost"				"110 130 150"	
-  	
-  	"precache"
+	"paladin_elect"
 	{
-		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Paladin/paladin_elect.lua"
 
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"      "custom/paladin_elect"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastRange"	"800"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"constant_regen"       "10 0 0"
+			}
+			"02"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"regen_percentage"    "0 1 2"
+			}
+			"03"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"aura_radius"       "800"
+			}
+		} 
 	}
-
-  	"AbilitySpecial"
-  	{
-    	"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"primary_target_heal"				"200 500 800"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"primary_target_heal_scepter"				"800 1000 1200"
-			"RequiresScepter"		"1"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"nearby_allies_heal"			"150 300 450"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"400"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"manacost_scepter"				"160 180 200"
-			"RequiresScepter"		"1"
-		}
-  	} 
-}
-
-
-"paladin_elect"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"	"heroes/Paladin/paladin_elect.lua"
-
-	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"      "custom/paladin_elect"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastRange"	"800"
-
-	"AbilitySpecial"
-	{
-		"01"
-	    {
-	      "var_type"          "FIELD_INTEGER"
-	      "constant_regen"       "10 0 0"
-	    }
-	    "02"
-	    {
-	      "var_type"          "FIELD_INTEGER"
-	      "regen_percentage"    "0 1 2"
-	    }
-	    "03"
-	    {
-	      "var_type"          "FIELD_INTEGER"
-	      "aura_radius"       "800"
-	    }
-	} 
-}
-
-
 
 	"paladin_impregnability"
 	{
@@ -201,7 +196,7 @@
 		"AbilityTextureName"			"custom/paladin_impregnability"
 		
 		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	    "MaxLevel"               "3"
+		"MaxLevel"               "3"
 		"RequiredLevel"          "5"
 		"LevelsBetweenUpgrades"  "4"
 		
@@ -245,9 +240,7 @@
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 			"particle"	"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
-			//
 			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-	
 		}
 
 		"OnSpellStart"
@@ -285,16 +278,14 @@
 				"ModifierName"	"modifier_impregnability_new"
 			}	
 		}
-	
-	
+
 		"Modifiers"
 		{
-
 			"modifier_impregnability_new"
 			{
 				"IsHidden"			"1"
 				"ThinkInterval"  "%tick"
-		       
+			
 				"OnIntervalThink"
 				{
 					"RunScript"
@@ -315,7 +306,7 @@
 				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
 				"EffectAttachType"  "follow_origin"
 			}
-			//
+			
 			"modifier_impregnability_aura_inv"
 			{
 				//"IsBuff" 			"1"
@@ -324,17 +315,14 @@
 	
 				"Duration"				"%duration"
 	
-	        	"States"
-	        	{
-	         		"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-	        	}
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
 	
-	    		"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
-	    		"EffectAttachType"  "follow_origin"
-
+				"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+				"EffectAttachType"  "follow_origin"
 			}
 		}
 	}
-
-
-
+}

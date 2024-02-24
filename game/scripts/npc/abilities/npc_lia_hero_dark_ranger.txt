@@ -1,607 +1,602 @@
-"dark_ranger_black_arrow"
+"DotaAbilities"
 {
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"custom/dark_ranger_black_arrow"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
-	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"AbilityCastRange"				"550"
-
-	"AbilityManaCost"				"6 12 18"
-	"AbilityDamage"					"25 50 75"
-
-	"precache"
+	"dark_ranger_black_arrow"
 	{
-		"particle"				"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
-		"particle"				"particles/status_fx/status_effect_gods_strength.vpcf"
-		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/dark_ranger_black_arrow"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityCastRange"				"550"
+
+		"AbilityManaCost"				"6 12 18"
+		"AbilityDamage"					"25 50 75"
+
+		"precache"
 		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"					"2"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"lifetime"					"4 5 6"		
-		}	
-		"03"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"mana"						"6 12 18"		
-		}			
-	}
-
-	"Modifiers"
-	{ 
-		"modifier_dark_ranger_black_arrow"
-		{
-			"Passive"		"1"
-			"IsHidden"	 	"1"
-			"Orb"
-			{
-				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
-				"ProjectileName"    "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
-				"CastAttack"		"1"
-			}
-
-			"OnOrbFire"
-			{
-				"SpendMana"
-				{
-					"Mana"		"%AbilityManaCost"
-				}
-			}
-			
-			"OnOrbImpact"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
-					"Function"		"AddModifier"
-					"Target" 		"TARGET"
-				}
-				"FireSound"
-				{
-					"EffectName"		"Hero_Medusa.MysticSnake.Target"
-					"Target"			"CASTER"
-				}
-				"Damage"
-				{
-					"Type"          "DAMAGE_TYPE_PHYSICAL"
-					"Damage"        "%AbilityDamage"
-					"Target"						
-					{
-						"Center"  	"TARGET"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-				}
-			}
-		}
-
-		"modifier_dark_ranger_black_arrow_spawn"
-		{
-			"Duration"	"%duration"
-			"OnDeath"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
-					"Function"		"BlackArrow"
-					"Target"
-					{
-						"Center"  	"UNIT"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-					}
-				}
-			}
-		}
-
-		"modifier_dark_ranger_black_arrow_unit"
-		{
-			"IsHidden"	"1"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_IS_ILLUSION" 		"1"
-			}
-		}
-	}
-}
-
-"dark_ranger_black_arrow_ultimate"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"custom/dark_ranger_black_arrow"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"AbilityCastRange"				"850"
-
-	"AbilityManaCost"				"0"
-	"AbilityDamage"					"25 50 75"
-
-	"precache"
-	{
-		"particle"				"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
-		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"					"2"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"lifetime"					"4 5 6"		
-		}				
-	}
-
-	"Modifiers"
-	{ 
-		"modifier_dark_ranger_black_arrow_ultimate"
-		{
-			"Passive"		"1"
-			"IsHidden"	 	"1"
-			"Orb"
-			{
-				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
-				"ProjectileName"    "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
-				"CastAttack"		"1"
-			}
-
-			"OnOrbFire"
-			{
-				"SpendMana"
-				{
-					"Mana"		"%AbilityManaCost"
-				}
-			}
-			
-			"OnOrbImpact"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
-					"Function"		"AddModifier"
-					"Target" 		"TARGET"
-				}
-				"FireSound"
-				{
-					"EffectName"		"Hero_Medusa.MysticSnake.Target"
-					"Target"			"CASTER"
-				}
-				"Damage"
-				{
-					"Type"          "DAMAGE_TYPE_PHYSICAL"
-					"Damage"        "%AbilityDamage"
-					"Target"						
-					{
-						"Center"  	"TARGET"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-				}
-			}
-		}
-
-		"modifier_dark_ranger_black_arrow_spawn"
-		{
-			"Duration"	"%duration"
-			"OnDeath"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
-					"Function"		"BlackArrow"
-					"Target"
-					{
-						"Center"  	"UNIT"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-					}
-				}
-			}
-		}
-
-		"modifier_dark_ranger_black_arrow_unit"
-		{
-			"IsHidden"	"1"
-
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_IS_ILLUSION" 		"1"
-			}
-
-		}
-	}
-}
-
-"dark_ranger_magic_arrow"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-    "SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-    "AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
-	"AbilityTextureName"			"custom/dark_ranger_magic_arrow"
-	"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
-
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.0"
-
-	"AbilityCooldown"				"13 12 11"
-
-	"AbilityManaCost"				"50 60 70"	
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
-		"particle" 	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"		
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"reduce_armor"				"-4 -8 -12"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"main_damage"				"120 200 280"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"other_damage"				"80 160 240"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"dps_main"				"15 25 35"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"dps_secondary"			"10 20 30"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"8.0"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"tick"					"0.5"
-		}
-		"08"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"acid_speed"				"1250.0"
-		}
-		"09"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"acid_vision"				"300.0"
-		}
-		"10"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"250"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_TemplarAssassin.Meld.Attack"
-			"Target" 		"CASTER"
+			"particle"				"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+			"particle"				"particles/status_fx/status_effect_gods_strength.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
 		}
 		
-    	"TrackingProjectile"
-    	{
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"2"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"lifetime"					"4 5 6"		
+			}	
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"mana"						"6 12 18"		
+			}			
+		}
+
+		"Modifiers"
+		{ 
+			"modifier_dark_ranger_black_arrow"
+			{
+				"Passive"		"1"
+				"IsHidden"	 	"1"
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName"    "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+					"CastAttack"		"1"
+				}
+
+				"OnOrbFire"
+				{
+					"SpendMana"
+					{
+						"Mana"		"%AbilityManaCost"
+					}
+				}
+				
+				"OnOrbImpact"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
+						"Function"		"AddModifier"
+						"Target" 		"TARGET"
+					}
+					"FireSound"
+					{
+						"EffectName"		"Hero_Medusa.MysticSnake.Target"
+						"Target"			"CASTER"
+					}
+					"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_PHYSICAL"
+						"Damage"        "%AbilityDamage"
+						"Target"						
+						{
+							"Center"  	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+					}
+				}
+			}
+
+			"modifier_dark_ranger_black_arrow_spawn"
+			{
+				"Duration"	"%duration"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
+						"Function"		"BlackArrow"
+						"Target"
+						{
+							"Center"  	"UNIT"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					}
+				}
+			}
+
+			"modifier_dark_ranger_black_arrow_unit"
+			{
+				"IsHidden"	"1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_IS_ILLUSION" 		"1"
+				}
+			}
+		}
+	}
+
+	"dark_ranger_black_arrow_ultimate"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/dark_ranger_black_arrow"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityCastRange"				"850"
+
+		"AbilityManaCost"				"0"
+		"AbilityDamage"					"25 50 75"
+
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"2"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"lifetime"					"4 5 6"		
+			}				
+		}
+
+		"Modifiers"
+		{ 
+			"modifier_dark_ranger_black_arrow_ultimate"
+			{
+				"Passive"		"1"
+				"IsHidden"	 	"1"
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName"    "particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
+					"CastAttack"		"1"
+				}
+
+				"OnOrbFire"
+				{
+					"SpendMana"
+					{
+						"Mana"		"%AbilityManaCost"
+					}
+				}
+				
+				"OnOrbImpact"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
+						"Function"		"AddModifier"
+						"Target" 		"TARGET"
+					}
+					"FireSound"
+					{
+						"EffectName"		"Hero_Medusa.MysticSnake.Target"
+						"Target"			"CASTER"
+					}
+					"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_PHYSICAL"
+						"Damage"        "%AbilityDamage"
+						"Target"						
+						{
+							"Center"  	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+					}
+				}
+			}
+
+			"modifier_dark_ranger_black_arrow_spawn"
+			{
+				"Duration"	"%duration"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkRanger/BlackArrow.lua"
+						"Function"		"BlackArrow"
+						"Target"
+						{
+							"Center"  	"UNIT"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					}
+				}
+			}
+
+			"modifier_dark_ranger_black_arrow_unit"
+			{
+				"IsHidden"	"1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_IS_ILLUSION" 		"1"
+				}
+			}
+		}
+	}
+
+	"dark_ranger_magic_arrow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
+		"AbilityTextureName"			"custom/dark_ranger_magic_arrow"
+		"AbilityCastAnimation"   		"ACT_DOTA_ATTACK"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+
+		"AbilityCooldown"				"13 12 11"
+
+		"AbilityManaCost"				"50 60 70"	
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
+			"particle" 	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"		
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"reduce_armor"				"-4 -8 -12"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"main_damage"				"120 200 280"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"other_damage"				"80 160 240"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dps_main"				"15 25 35"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"dps_secondary"			"10 20 30"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"8.0"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tick"					"0.5"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_speed"				"1250.0"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"acid_vision"				"300.0"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"250"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_TemplarAssassin.Meld.Attack"
+				"Target" 		"CASTER"
+			}
+			
+			"TrackingProjectile"
+			{
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+					}
+					"EffectName" 		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
+					"Dodgeable" 		"1"
+					"ProvidesVision" 	"1"
+					"VisionRadius" 		"%acid_vision"
+					"MoveSpeed" 		"%acid_speed"
+					"SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+		}
+
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "1"
+			
+			"RunScript"
+			{
+				"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+				"Function"		"MagicArrow"
 				"Target"
 				{
 					"Center"	"TARGET"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				}
-        		"EffectName" 		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_attack.vpcf"
-        		"Dodgeable" 		"1"
-        		"ProvidesVision" 	"1"
-        		"VisionRadius" 		"%acid_vision"
-        		"MoveSpeed" 		"%acid_speed"
-        		"SourceAttachment" 	"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-    	}
+			}				
+		}
+
+		"Modifiers"
+		{
+			"modifier_dark_ranger_magic_arrow_all_target"
+			{
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				"Duration"				"%duration"
+						
+				"ThinkInterval" 		"%tick"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+						"Function"		"DamageOther"	
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+				}
+				
+				"EffectName"        "particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+			
+			"modifier_dark_ranger_magic_arrow_main_target"
+			{
+				//"IsHidden"				"1"
+				"IsDebuff"				"1"
+				"IsPurgable"			"1"
+				"Duration"				"%duration"
+				
+				"ThinkInterval" 		"%tick"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
+						"Function"		"Damage"	
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
+				}
+				
+				"EffectName"        "particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+		}
 	}
 
-	"OnProjectileHitUnit"
+	"dark_ranger_spiked_charm"
 	{
-		"DeleteOnHit" "1"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\DarkRanger\dark_ranger_spiked_charm.lua"
+		"AbilityTextureName"			"custom/dark_ranger_spiked_charm"
+
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"2"
+		"LevelsBetweenUpgrades"  		"2"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+
+		"AbilityCastRange"				"600"
 		
-		"RunScript"
+		"AbilitySpecial"
 		{
-			"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
-			"Function"		"MagicArrow"
-			"Target"
+			"01"
 			{
-				"Center"	"TARGET"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Type"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"600"
 			}
-		}				
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"10 15 20"		
+			}	
+		}
+
 	}
 
-	"Modifiers"
+	"dark_ranger_fury"
 	{
-		"modifier_dark_ranger_magic_arrow_all_target"
-		{
-			"IsDebuff"				"1"
-			"IsPurgable"			"1"
-			"Duration"				"%duration"
-					
-			"ThinkInterval" 		"%tick"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
-					"Function"		"DamageOther"	
-				}
-			}
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
-			}
-			
-			"EffectName"        "particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
-			"EffectAttachType"  "follow_origin"
-		}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"custom/dark_ranger_fury"
 		
-		"modifier_dark_ranger_magic_arrow_main_target"
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"90.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 125 150"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			//"IsHidden"				"1"
-			"IsDebuff"				"1"
-			"IsPurgable"			"1"
-			"Duration"				"%duration"
-			
-			"ThinkInterval" 		"%tick"
-			"OnIntervalThink"
+			"01"
 			{
-				"RunScript"
+				"var_type"				"FIELD_FLOAT"
+				"transformation_time"	"0.35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_damage"			"30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_range"			"300"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_attack_range"			"850"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health"			"100 200 300"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"20 25 30"
+			}
+		}
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
+			"particle"  "particles/units/heroes/hero_templar_assassin/templar_assassin_meld_armor.vpcf"
+			"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_explode.vpcf"
+			"particle"	"particles/templar_assassin_trap_explode_custom.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+			"model"		"models/heroes/terrorblade/demon.vmdl"
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"Hero_TemplarAssassin.Trap.Explode"
+				"Target"
 				{
-					"ScriptFile"	"heroes\DarkRanger\MagicArrow.lua"
-					"Function"		"Damage"	
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			}
-
-			"Properties"
+			"FireEffect"
 			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 		"%reduce_armor"
-			}
-			
-			"EffectName"        "particles/units/heroes/hero_templar_assassin/templar_assassin_trap_slow.vpcf"
-			"EffectAttachType"  "follow_origin"
-		}
-	}
-}
-
-"dark_ranger_spiked_charm"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\DarkRanger\dark_ranger_spiked_charm.lua"
-	"AbilityTextureName"			"custom/dark_ranger_spiked_charm"
-
-	"MaxLevel"               		"3"
-	"RequiredLevel"          		"2"
-	"LevelsBetweenUpgrades"  		"2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-
-	"AbilityCastRange"				"600"
-
-	"precache"
-	{
-
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"600"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"damage_return"				"10 15 20"		
-		}	
-	}
-
-}
-
-"dark_ranger_fury"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityTextureName"			"custom/dark_ranger_fury"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastPoint"				"0.0"
-
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"90.0"
-
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"100 125 150"
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"transformation_time"	"0.35"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bonus_damage"			"30"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_range"			"300"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"tooltip_attack_range"			"850"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health"			"100 200 300"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"20 25 30"
-		}
-	}
-
-	"precache"
-	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"
-		"particle"  "particles/units/heroes/hero_templar_assassin/templar_assassin_meld_armor.vpcf"
-		"particle"	"particles/units/heroes/hero_templar_assassin/templar_assassin_trap_explode.vpcf"
-		"particle"	"particles/templar_assassin_trap_explode_custom.vpcf"
-		"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
-		"model"		"models/heroes/terrorblade/demon.vmdl"
-	}
-
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"		"Hero_TemplarAssassin.Trap.Explode"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-		"FireEffect"
-		{
-			"EffectName"		"particles/templar_assassin_trap_explode_custom.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-		"ApplyModifier"
-		{
-			"ModifierName"		"dark_ranger_fury"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-	}
-
-	"Modifiers"
-	{
-		"dark_ranger_fury"
-		{
-			"Duration"	"%duration"
-			
-			"EffectName" 		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_armor.vpcf"
-			"EffectAttachType"  "follow_origin"
-
-			"AllowsIllusionDuplicate"	"1"
-
-			"OnCreated"
-			{
-				"RunScript"
+				"EffectName"		"particles/templar_assassin_trap_explode_custom.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"
 				{
-					"ScriptFile"	"heroes\DarkRanger\Fury.lua"
-					"Function"		"OnCreated"
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			}
-
-			"OnDestroy"
+			"ApplyModifier"
 			{
-				"RunScript"
+				"ModifierName"		"dark_ranger_fury"
+				"Target"
 				{
-					"ScriptFile"	"heroes\DarkRanger\Fury.lua"
-					"Function"		"OnDestroy"
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
 			}
+		}
 
-			"Properties"
+		"Modifiers"
+		{
+			"dark_ranger_fury"
 			{
-				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
-				"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"	
-				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"		
+				"Duration"	"%duration"
+				
+				"EffectName" 		"particles/units/heroes/hero_templar_assassin/templar_assassin_meld_armor.vpcf"
+				"EffectAttachType"  "follow_origin"
+
+				"AllowsIllusionDuplicate"	"1"
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\DarkRanger\Fury.lua"
+						"Function"		"OnCreated"
+					}
+				}
+
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\DarkRanger\Fury.lua"
+						"Function"		"OnDestroy"
+					}
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
+					"MODIFIER_PROPERTY_HEALTH_BONUS" 	"%bonus_health"	
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"		
+				}
 			}
 		}
 	}
 }
-

@@ -1,345 +1,344 @@
-
-"lord_of_lightning_chain_lightning"
+"DotaAbilities"
 {
-
-	"BaseClass" 					"ability_lua"
-	"ScriptFile"					"heroes\LightningLord\lord_of_lightning_chain_lightning.lua"
-
-	"AbilityTextureName"			"zuus_arc_lightning"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
-	"AbilityCastRange"				"700"
-	//"AbilityCastPoint"				"0.2"
-	"AbilityCooldown"				"10.0 9.0 8.0"
-	"AbilityManaCost"				"100 175 200"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"HasScepterUpgrade"		 "1"
-	
-	"precache"
+	"lord_of_lightning_chain_lightning"
 	{
-		"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-	}
+		"BaseClass" 					"ability_lua"
+		"ScriptFile"					"heroes\LightningLord\lord_of_lightning_chain_lightning.lua"
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_damage"		"85 135 200"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_bounces"		"8 9 10"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_bounces_scepter"		"12 13 14"
-			"RequiresScepter"		"1"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bounce_range"			"500"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_decay"		"-10 -10 -10"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_decay_scepter"		"-15 -15 -15"
-			"RequiresScepter"		"1"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"time_between_bounces"	"0.2"
-		}
-		"08"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_damage_scepter"		"85 135 200"
-			"RequiresScepter"		"1"
-		}
-		"09"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"cooldown_scepter"		"9 8 7"
-			"RequiresScepter"		"1"
-		}
-		"10"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"manacost_scepter"		"150 225 300"
-			"RequiresScepter"		"1"
-		}
-	}
-}
+		"AbilityTextureName"			"zuus_arc_lightning"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
-"lord_of_lightning_lightning_shield"
-{
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\LightningLord\lord_of_lightning_lightning_shield.lua"
+		"AbilityCastRange"				"700"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"10.0 9.0 8.0"
+		"AbilityManaCost"				"100 175 200"
 
-	"AbilityTextureName"		"custom/lightning_lord_lightning_shield"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		"HasScepterUpgrade"		 "1"
 		
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
-		
-	"AbilityCastRange"			"600"
-	"AbilityCastPoint"			"0"
-	"AbilityCooldown"			"16 14 12"
-	"AbilityManaCost"			"120 180 240"
-		
-	"AOERadius"					"200"
-
-	"HasScepterUpgrade"			"1"
-
-	"precache"
-	{
-		"particle"  "particles/lightning_shield.vpcf"
-		"particle"  "particles/lightning_shield_hit.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
+		"precache"
 		{
-			"var_type"							"FIELD_INTEGER"
-			"damage_per_second"					"20 40 80"
-		}
-		"02"
-		{
-			"var_type"							"FIELD_INTEGER"
-			"damage_per_second_scepter"			"40 70 100"
-			"RequiresScepter"		"1"
-		}
-		"03"
-		{
-			"var_type"							"FIELD_FLOAT"
-			"think_interval"					"0.33"
-		}
-		"04"
-		{
-			"var_type"							"FIELD_INTEGER"
-			"radius"							"200"
-		}
-		"05"
-		{
-			"var_type"							"FIELD_INTEGER"
-			"duration"							"8"
-		}
-		"06"
-		{
-			"var_type"							"FIELD_INTEGER"
-			"manacost_scepter"					"200 240 280"
-			"RequiresScepter"		"1"
-		}	
-	}
-}
-
-
-"lord_of_lightning_holy_wrath"
-{
-	"BaseClass"					"ability_datadriven"
-	"AbilityTextureName"		"custom/lord_of_lightning_holy_wrath"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-	
-		
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	//"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
-	//"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-	//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
-		
-	"AbilityCastRange"			"800"
-	//"AbilityCastPoint"			"0"
-	"AbilityCooldown"			"2.0"
-	//"AbilityManaCost"			"200 240 280"
-		
-	//"AOERadius"					"800"
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"chance_dmg"		"11 12 13"
-		}
-		"02"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"800"
-		}
-		"03"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"damage_per_int"			"3 4 5"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius_dop_dmg"		"200"
-		}
-	}
-	
-	"precache"
-	{
-		"particle" "particles/units/heroes/hero_zuus/zuus_arc_lightning_impact_b.vpcf"
-		"particle"  "particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
-	}
-	"Modifiers"
-	{
-		"modifier_lord_of_lightning_holy_wrath"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Aura"		  		"modifier_lord_of_lightning_holy_wrath_aura"
-			"Aura_Radius" 		"%radius"
-			"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			"particle" 	"particles/units/heroes/hero_rubick/rubick_fade_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
 		}
 
-		"modifier_lord_of_lightning_holy_wrath_aura"
+		"AbilitySpecial"
 		{
-			//"Passive"	"1"
-			"IsHidden"			"1"
-			"OnAttacked"
+			"01"
 			{
-				"Random"
-				{
-					"Chance"		"%chance_dmg"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-
-					"OnSuccess"
-					{
-						//"FireSound"
-						//{
-						//	"EffectName"	"Roshan.Bash"
-						//	"Target"		"ATTACKER"
-						//}
-						
-						//"AttachEffect"
-						//{
-						//	"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
-						//	"EffectAttachType"	"follow_origin"	
-						//	"Target" 			"ATTACKER"
-						//}
-
-						"RunScript"
-						{
-							"ScriptFile"   "heroes/LightningLord/holy_wrath.lua"
-							"Function"     "damageTo"
-						}
-
-					}
-				}
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage"		"85 135 200"
 			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces"		"8 9 10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces_scepter"		"12 13 14"
+				"RequiresScepter"		"1"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"500"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"-10 -10 -10"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay_scepter"		"-15 -15 -15"
+				"RequiresScepter"		"1"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage_scepter"		"85 135 200"
+				"RequiresScepter"		"1"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cooldown_scepter"		"9 8 7"
+				"RequiresScepter"		"1"
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_scepter"		"150 225 300"
+				"RequiresScepter"		"1"
+			}
+		}
+	}
+
+	"lord_of_lightning_lightning_shield"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\LightningLord\lord_of_lightning_lightning_shield.lua"
+
+		"AbilityTextureName"		"custom/lightning_lord_lightning_shield"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+			
+		"AbilityCastRange"			"600"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"16 14 12"
+		"AbilityManaCost"			"120 180 240"
+			
+		"AOERadius"					"200"
+
+		"HasScepterUpgrade"			"1"
+
+		"precache"
+		{
+			"particle"  "particles/lightning_shield.vpcf"
+			"particle"  "particles/lightning_shield_hit.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"damage_per_second"					"20 40 80"
+			}
+			"02"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"damage_per_second_scepter"			"40 70 100"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"							"FIELD_FLOAT"
+				"think_interval"					"0.33"
+			}
+			"04"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"radius"							"200"
+			}
+			"05"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"duration"							"8"
+			}
+			"06"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"manacost_scepter"					"200 240 280"
+				"RequiresScepter"		"1"
+			}	
+		}
+	}
+
+
+	"lord_of_lightning_holy_wrath"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"custom/lord_of_lightning_holy_wrath"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+			
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_BOTH"
+		//"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		//"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+			
+		"AbilityCastRange"			"800"
+		//"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"2.0"
+		//"AbilityManaCost"			"200 240 280"
+			
+		//"AOERadius"					"800"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"chance_dmg"		"11 12 13"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"800"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage_per_int"			"3 4 5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius_dop_dmg"		"200"
+			}
 		}
 		
+		"precache"
+		{
+			"particle" "particles/units/heroes/hero_zuus/zuus_arc_lightning_impact_b.vpcf"
+			"particle"  "particles/units/heroes/hero_zuus/zuus_lightning_bolt.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
+		}
+		"Modifiers"
+		{
+			"modifier_lord_of_lightning_holy_wrath"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_lord_of_lightning_holy_wrath_aura"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+
+			"modifier_lord_of_lightning_holy_wrath_aura"
+			{
+				//"Passive"	"1"
+				"IsHidden"			"1"
+				"OnAttacked"
+				{
+					"Random"
+					{
+						"Chance"		"%chance_dmg"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+						"OnSuccess"
+						{
+							//"FireSound"
+							//{
+							//	"EffectName"	"Roshan.Bash"
+							//	"Target"		"ATTACKER"
+							//}
+							
+							//"AttachEffect"
+							//{
+							//	"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_death_coil_explosion_f.vpcf"
+							//	"EffectAttachType"	"follow_origin"	
+							//	"Target" 			"ATTACKER"
+							//}
+
+							"RunScript"
+							{
+								"ScriptFile"   "heroes/LightningLord/holy_wrath.lua"
+								"Function"     "damageTo"
+							}
+
+						}
+					}
+				}				
+			}			
+		}
 	}
-}
 
-"lord_of_lightning_brain_storm"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"	"heroes/LightningLord/lord_of_lightning_brain_storm.lua"
-
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_NO"
-    "AbilityTextureName"			"disruptor_glimpse"
-
-    "AoERadius"		"500"
-	
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	"MaxLevel"              "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-
-	"AbilityCastRange"				"800"
-	"AbilityCastPoint"				"0.3"
-
-	"AbilityCooldown"				"120"
-	"AbilityManaCost"				"150 200 250"
-
-  	"precache"
+	"lord_of_lightning_brain_storm"
 	{
-		"particle" 	"particles/custom/lightning_lord/lightning_lord_brain_storm_debuff.vpcf"
-		"particle" 	"particles/custom/lightning_lord/lightning_lord_brain_storm_disarm.vpcf"
-		"particle"  "particles/econ/items/disruptor/disruptor_resistive_pinfold/disruptor_kf_wall_end.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
-	}
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/LightningLord/lord_of_lightning_brain_storm.lua"
 
-    "AbilitySpecial"
-	{
-		"01"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"disruptor_glimpse"
+
+		"AoERadius"		"500"
+		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"              "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.3"
+
+		"AbilityCooldown"				"120"
+		"AbilityManaCost"				"150 200 250"
+
+		"precache"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"reduce_spell_damage_pct"	"-25"
+			"particle" 	"particles/custom/lightning_lord/lightning_lord_brain_storm_debuff.vpcf"
+			"particle" 	"particles/custom/lightning_lord/lightning_lord_brain_storm_disarm.vpcf"
+			"particle"  "particles/econ/items/disruptor/disruptor_resistive_pinfold/disruptor_kf_wall_end.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
 		}
-		"02"
+
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"phys_damage_resist"	"60"
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"reduce_spell_damage_pct"	"-25"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"phys_damage_resist"	"60"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"magic_attacks_vulnerability"	"50"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_slow_percentage"		"-20"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attack_slow"		"-50"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"6 8 10"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"disarm_duration"				"2 3 4"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"500"
+			}
 		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"magic_attacks_vulnerability"	"50"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"movement_slow_percentage"		"-20"
-		}
-		"05"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"attack_slow"		"-50"
-		}
-		"06"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"					"6 8 10"
-		}
-		"07"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"disarm_duration"				"2 3 4"
-		}
-		"08"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"500"
-		}
-	}
+	}	
 }	

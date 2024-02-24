@@ -1,348 +1,350 @@
-"dark_knight_dark_forces"
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"               "ability_datadriven"
-	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-
-	"AbilityTextureName"     "custom/dark_knight_dark_forces"
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastPoint"      "0.0"
-	"AbilityCooldown"       "14"
-	"AbilityManaCost"       "60 100 140"
-	"AbilityCastRange"		"300"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"dark_knight_dark_forces"
 	{
-		"01"
-		{
-			"var_type"            "FIELD_INTEGER"
-			"radius"              "200"
-		}
-		"02"
-		{
-			"var_type"            "FIELD_INTEGER"
-			"mana_percentage"     "10 15 20"
-		}
-		"03"
-		{
-			"var_type"              "FIELD_INTEGER"
-			"coil_radius"          "175"
-		}
-		"04"
-		{
-			"var_type"             "FIELD_FLOAT"
-			"duration"       	   "5"
-		}
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"               "ability_datadriven"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 
-	"precache"
-	{
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
-		"particle"	"particles/nevermore_shadowraze_editfirst.vpcf"
-		"particle"  "particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
-	}
+		"AbilityTextureName"     "custom/dark_knight_dark_forces"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-	"OnSpellStart"
-	{
-		"ApplyModifier"
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"      "0.0"
+		"AbilityCooldown"       "14"
+		"AbilityManaCost"       "60 100 140"
+		"AbilityCastRange"		"300"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"ModifierName"	"modifier_dark_knight_dark_forces"
-			"Target"
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"            "FIELD_INTEGER"
+				"radius"              "200"
 			}
-			"Duration"		"%duration"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_dark_knight_dark_forces"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-	
-			"ThinkInterval"  "0.5"
-			"OnIntervalThink"
+			"02"
 			{
-				"FireSound"
-				{
-					"EffectName"	"Hero_Nevermore.Shadowraze"
-					"Target" 		"CASTER"
-				}
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
-					"Function"		"DarkForcesThinker"
-				}
+				"var_type"            "FIELD_INTEGER"
+				"mana_percentage"     "10 15 20"
+			}
+			"03"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"coil_radius"          "175"
+			}
+			"04"
+			{
+				"var_type"             "FIELD_FLOAT"
+				"duration"       	   "5"
 			}
 		}
 
-		"modifier_dark_knight_dark_forces_thinker"
-	    {
-			"OnCreated"
+		"precache"
+		{
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+			"particle"	"particles/nevermore_shadowraze_editfirst.vpcf"
+			"particle"  "particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
 			{
-				"RunScript"
+				"ModifierName"	"modifier_dark_knight_dark_forces"
+				"Target"
 				{
-					"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
-					"Function"		"DarkForces"
-					"Target"
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"		"%duration"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_dark_knight_dark_forces"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+		
+				"ThinkInterval"  "0.5"
+				"OnIntervalThink"
+				{
+					"FireSound"
 					{
-						"Center"  	"TARGET"
-						"Radius" 	"%coil_radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						"EffectName"	"Hero_Nevermore.Shadowraze"
+						"Target" 		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
+						"Function"		"DarkForcesThinker"
 					}
 				}
-				"AttachEffect"
+			}
+
+			"modifier_dark_knight_dark_forces_thinker"
+			{
+				"OnCreated"
 				{
-					"EffectName"    "particles/nevermore_shadowraze_editfirst.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"      "TARGET"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/DarkKnight/DarkForces.lua"
+						"Function"		"DarkForces"
+						"Target"
+						{
+							"Center"  	"TARGET"
+							"Radius" 	"%coil_radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+					}
+					"AttachEffect"
+					{
+						"EffectName"    "particles/nevermore_shadowraze_editfirst.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"      "TARGET"
+					}
 				}
 			}
-	    }
-	}
-
-}
-
-
-"dark_knight_dark_energy_zone"
-{
-	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes/DarkKnight/dark_knight_dark_energy_zone.lua"
-
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"     "abaddon_borrowed_time"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastRange"        "500"
-	"AbilityCastPoint"        "0.3"
-	"AbilityCooldown"         "25"
-	"AbilityManaCost"         "75"
-	"AoERadius"               "250 275 300"
-
-	"precache"
-	{
-		"particle"  "particles/custom/dark_knight/dark_knight_dark_energy_zone.vpcf"
-		"particle"  "particles/custom/dark_knight/dark_knight_dark_energy_zone_buff.vpcf"
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-		  "var_type"      "FIELD_FLOAT"
-		  "duration"      "3 5 7"
-		}
-		"02"
-		{
-		  "var_type"        "FIELD_INTEGER"
-		  "mana_loss_reduction"     "100"
-		}
-		"03"
-		{
-		  "var_type"        "FIELD_INTEGER"
-		  "radius"     "250 275 300"
-		}
-	} 
-}
-
-"dark_knight_incinerate"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"custom/dark_knight_incinerate"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"						"FIELD_FLOAT"
-			"bonus_reset_time"				"6"
-		}
-		"02"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"damage_per_stack"				"6 12 24"
-		}
-		"03"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"incineration_damage"			"50 100 200"
-		}
-		"04"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"incineration_radius"			"100"
 		}
 	}
-	
-	"precache"
+
+
+	"dark_knight_dark_energy_zone"
 	{
-		"particle" 	"particles/ogre_magi_unr_fireblast_blue.vpcf"
-		"particle"  "particles/ogre_magi_ignite_debuff_d_blue.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
-	}
-	
-	"OnToggleOn"
-	{
-		"ApplyModifier"
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes/DarkKnight/dark_knight_dark_energy_zone.lua"
+
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"     "abaddon_borrowed_time"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastRange"        "500"
+		"AbilityCastPoint"        "0.3"
+		"AbilityCooldown"         "25"
+		"AbilityManaCost"         "75"
+		"AoERadius"               "250 275 300"
+
+		"precache"
 		{
-			"ModifierName"	"modifier_dark_knight_incinerate"
-			"Target"
+			"particle"  "particles/custom/dark_knight/dark_knight_dark_energy_zone.vpcf"
+			"particle"  "particles/custom/dark_knight/dark_knight_dark_energy_zone_buff.vpcf"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"      "FIELD_FLOAT"
+				"duration"      "3 5 7"
 			}
-		}
-	}
-
-	"OnToggleOff"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"	"modifier_dark_knight_incinerate"
-			"Target"
+			"02"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}	
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_dark_knight_incinerate"
-		{
-			"Passive"						"0"
-			"IsHidden"						"1"
-			"IsPurgable"					"0"
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
-			"Orb"
-			{
-				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				"var_type"        "FIELD_INTEGER"
+				"mana_loss_reduction"     "100"
 			}
-
-			"OnOrbImpact"
+			"03"
 			{
-				"RunScript"
-				{
-					"ScriptFile"			"heroes/DarkKnight/Incinerate.lua"
-					"Function"				"Incinerate"
-				}
+				"var_type"        "FIELD_INTEGER"
+				"radius"     "250 275 300"
+			}
+		} 
+	}
+
+	"dark_knight_incinerate"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"custom/dark_knight_incinerate"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"bonus_reset_time"				"6"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_per_stack"				"6 12 24"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"incineration_damage"			"50 100 200"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"incineration_radius"			"100"
 			}
 		}
 		
-		"modifier_dark_knight_incinerate_target"
+		"precache"
 		{
-			"IsHidden"					"0"
-			"IsPurgable"				"0"
-			"IsDebuff"					"1"
-
-			"EffectName"	"particles/ogre_magi_ignite_debuff_d_blue.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"OnDeath"
+			"particle" 	"particles/ogre_magi_unr_fireblast_blue.vpcf"
+			"particle"  "particles/ogre_magi_ignite_debuff_d_blue.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+		}
+		
+		"OnToggleOn"
+		{
+			"ApplyModifier"
 			{
-				"FireEffect"
+				"ModifierName"	"modifier_dark_knight_incinerate"
+				"Target"
 				{
-					"EffectName"        "particles/ogre_magi_unr_fireblast_blue.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"
-				    {
-				       "Center" "UNIT"
-				       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
-				   	}
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
-				"FireSound"
+			}
+		}
+
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_dark_knight_incinerate"
+				"Target"
 				{
-					"EffectName"	"Hero_OgreMagi.Fireblast.Cast"
-					"Target"
-				    {
-				       "Center" "UNIT"
-				       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
-				   	}
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}	
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_dark_knight_incinerate"
+			{
+				"Passive"						"0"
+				"IsHidden"						"1"
+				"IsPurgable"					"0"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
 				}
 
-				"Damage"
+				"OnOrbImpact"
 				{
-					"Target"
+					"RunScript"
 					{
-						"Center"  	"UNIT"
-						"Radius" 	"%incineration_radius"
-						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"ScriptFile"			"heroes/DarkKnight/Incinerate.lua"
+						"Function"				"Incinerate"
 					}
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%incineration_damage"
+				}
+			}
+			
+			"modifier_dark_knight_incinerate_target"
+			{
+				"IsHidden"					"0"
+				"IsPurgable"				"0"
+				"IsDebuff"					"1"
+
+				"EffectName"	"particles/ogre_magi_ignite_debuff_d_blue.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"OnDeath"
+				{
+					"FireEffect"
+					{
+						"EffectName"        "particles/ogre_magi_unr_fireblast_blue.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"
+						{
+						"Center" "UNIT"
+						"Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					}
+					"FireSound"
+					{
+						"EffectName"	"Hero_OgreMagi.Fireblast.Cast"
+						"Target"
+						{
+						"Center" "UNIT"
+						"Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					}
+
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"  	"UNIT"
+							"Radius" 	"%incineration_radius"
+							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%incineration_damage"
+					}
 				}
 			}
 		}
 	}
-}
 
-"dark_knight_speed"
-{
-    "BaseClass"						"ability_lua"
-    "ScriptFile"					"heroes\DarkKnight\dark_knight_speed.lua"
-	"AbilityTextureName" 			"abaddon_frostmourne"
-	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-
-	"AbilitySpecial"
+	"dark_knight_speed"
 	{
-		"01"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes\DarkKnight\dark_knight_speed.lua"
+		"AbilityTextureName" 			"abaddon_frostmourne"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilitySpecial"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"bonus_attack_speed"			"20 60 100"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"attack_speed_per_attack"	"15"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"max_attack_speed"			"75"
-		}
-		"04"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"duration"			"3 4 5"
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_attack_speed"			"20 60 100"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"attack_speed_per_attack"	"15"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"max_attack_speed"			"75"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"3 4 5"
+			}
 		}
 	}
-}
+}	

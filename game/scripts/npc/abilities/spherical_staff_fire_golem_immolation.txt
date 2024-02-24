@@ -1,68 +1,71 @@
-"spherical_staff_fire_golem_immolation"
+"DotaAbilities"
 {
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"warlock_golem_permanent_immolation"
-	"MaxLevel" 						"1"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
-	"AbilityCastRange"				"220"
-
-	"precache"
+	"spherical_staff_fire_golem_immolation"
 	{
-		"particle"	"particles/items2_fx/radiance.vpcf"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"warlock_golem_permanent_immolation"
+		"MaxLevel" 						"1"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+
+		"AbilityCastRange"				"220"
+
+		"precache"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"220"
+			"particle"	"particles/items2_fx/radiance.vpcf"
 		}
-		"02"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"dps"			"45"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_inferno_immolation"
-   		{
-    		"Passive" 			"1"
-    		"IsHidden" 			"1"
-
-    		"States"
-			{
-				"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
-			}
-
-    		"Aura" 				"modifier_inferno_immolation_burn"
-    		"Aura_Radius" 		"%radius"
-    		"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-    		"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-            "EffectName"		"particles/items2_fx/radiance.vpcf"
-			"EffectAttachType" 	"attach_hitloc"
-   		}
 		
-		"modifier_inferno_immolation_burn"
-   		{
-   			"ThinkInterval"		"1"
-   			"OnIntervalThink"    	
-   			{
-   				"Damage"
-				{		
-					"Type" 		"DAMAGE_TYPE_MAGICAL"
-					"Damage" 	"%dps"
-					"Target"	"TARGET"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"220"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"dps"			"45"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_inferno_immolation"
+			{
+				"Passive" 			"1"
+				"IsHidden" 			"1"
+
+				"States"
+				{
+					"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"Aura" 				"modifier_inferno_immolation_burn"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+				"EffectName"		"particles/items2_fx/radiance.vpcf"
+				"EffectAttachType" 	"attach_hitloc"
+			}
+			
+			"modifier_inferno_immolation_burn"
+			{
+				"ThinkInterval"		"1"
+				"OnIntervalThink"    	
+				{
+					"Damage"
+					{		
+						"Type" 		"DAMAGE_TYPE_MAGICAL"
+						"Damage" 	"%dps"
+						"Target"	"TARGET"
+					}
 				}
 			}
-	    }
+		}
 	}
 }

@@ -1,193 +1,196 @@
-"tauren_champion_crushing_totem"
+"DotaAbilities"
 {
-  "BaseClass"              "ability_lua"
-  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_crushing_totem.lua"
-
-  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "SpellDispellableType"      "SPELL_DISPELLABLE_YES"
-  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-  "AbilityTextureName"     "earthshaker_enchant_totem"
-
-  "MaxLevel"               "3"
-  "RequiredLevel"          "1"
-  "LevelsBetweenUpgrades"  "2"
-
-  "AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_2"
-  "AbilityCastPoint"       "0.3"
-  "AnimationPlaybackRate"  "2"
-
-  "AbilityCooldown"        "10"
-  "AbilityManaCost"        "75 100 125"
-
-  "precache"
+  "tauren_champion_crushing_totem"
   {
-    "particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
-    "particle"  "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_egset.vpcf"
-    "particle"  "particles/custom/tauren_champion/modifier_tauren_champion_accumulated_rage_damage.vpcf"
+    "BaseClass"              "ability_lua"
+    "ScriptFile"       "heroes\TaurenChampion\tauren_champion_crushing_totem.lua"
+
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellDispellableType"      "SPELL_DISPELLABLE_YES"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityTextureName"     "earthshaker_enchant_totem"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "2"
+
+    "AbilityCastAnimation"   "ACT_DOTA_CAST_ABILITY_2"
+    "AbilityCastPoint"       "0.3"
+    "AnimationPlaybackRate"  "2"
+
+    "AbilityCooldown"        "10"
+    "AbilityManaCost"        "75 100 125"
+
+    "precache"
+    {
+      "particle"  "particles/econ/items/faceless_void/faceless_void_weapon_bfury/faceless_void_weapon_bfury_cleave.vpcf"
+      "particle"  "particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_totem_buff_egset.vpcf"
+      "particle"  "particles/custom/tauren_champion/modifier_tauren_champion_accumulated_rage_damage.vpcf"
+    }
+
+    "AbilityValues"
+    {
+      "bonus_attack_speed"      "30 50 70"
+      "attacks_count"      "2 3 4"
+      "cleave_percent" "60 70 80"
+      "cleave_start_width" "200"
+      "cleave_end_width" "250"
+      "cleave_length" "300"
+      "duration"      "10"
+    }
   }
 
-  "AbilityValues"
-	{
-		"bonus_attack_speed"      "30 50 70"
-		"attacks_count"      "2 3 4"
-		"cleave_percent" "60 70 80"
-		"cleave_start_width" "200"
-		"cleave_end_width" "250"
-		"cleave_length" "300"
-    "duration"      "10"
-	}
-}
-
-"tauren_champion_champions_jump"
-{
-  "BaseClass"              "ability_lua"
-  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_champions_jump.lua"
-
-  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-  "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
-  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  "AbilityTextureName"     "earthshaker_fissure"
-
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
-
-  "AoERadius" "225"
-
-  "AbilityCastRange"        "400"
-  "AbilityCastPoint"        "0.3"
-  "AbilityCooldown"        "16 14 12"
-  "AbilityManaCost"        "100 125 150"
-
-  "precache"
+  "tauren_champion_champions_jump"
   {
-    "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_leap_impact.vpcf"
+    "BaseClass"              "ability_lua"
+    "ScriptFile"       "heroes\TaurenChampion\tauren_champion_champions_jump.lua"
+
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+    "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityTextureName"     "earthshaker_fissure"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+
+    "AoERadius" "225"
+
+    "AbilityCastRange"        "400"
+    "AbilityCastPoint"        "0.3"
+    "AbilityCooldown"        "16 14 12"
+    "AbilityManaCost"        "100 125 150"
+
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_leap_impact.vpcf"
+    }
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "land_damage"      "100 175 250"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "max_distance"     "400"
+      }
+      "03"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "radius"      "225"
+      }
+      "04"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "stun_duration"     "1.5"
+      }
+      "05"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "duration"     "0.5"
+      }
+    } 
   }
 
-  "AbilitySpecial"
+  "tauren_champion_accumulated_rage"
   {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "land_damage"      "100 175 250"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "max_distance"     "400"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "radius"      "225"
-    }
-    "04"
-    {
-      "var_type"        "FIELD_FLOAT"
-      "stun_duration"     "1.5"
-    }
-    "05"
-    {
-      "var_type"        "FIELD_FLOAT"
-      "duration"     "0.5"
-    }
-  } 
-}
+    "BaseClass"              "ability_lua"
+    "ScriptFile"       "heroes\TaurenChampion\tauren_champion_accumulated_rage.lua"
 
-"tauren_champion_accumulated_rage"
-{
-  "BaseClass"              "ability_lua"
-  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_accumulated_rage.lua"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName"     "earthshaker_aftershock"
 
-  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"     "earthshaker_aftershock"
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
 
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
+    //  "AbilityCooldown"        "12"
 
-//  "AbilityCooldown"        "12"
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff_parent.vpcf"
+      "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff.vpcf"
+      "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_shield_impact.vpcf"
+    }
 
-  "precache"
-  {
-    "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff_parent.vpcf"
-    "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff.vpcf"
-    "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_shield_impact.vpcf"
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "max_damage_blocked_percent"      "5 10 15"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "min_damage_blocked_percent"     "5"
+      }
+      "03"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "absorption_count"      "3 4 5"
+      }
+      "04"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "health_lost_threshold_percent"     "12"
+      }
+      "05"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "damage_per_stack"      "7 14 21"
+      }
+      "06"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "shield_cooldown"      "12"
+      }
+    } 
   }
 
-  "AbilitySpecial"
+  "tauren_champion_finish_off"
   {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "max_damage_blocked_percent"      "5 10 15"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "min_damage_blocked_percent"     "5"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "absorption_count"      "3 4 5"
-    }
-    "04"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "health_lost_threshold_percent"     "12"
-    }
-    "05"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "damage_per_stack"      "7 14 21"
-    }
-    "06"
-    {
-      "var_type"      "FIELD_FLOAT"
-      "shield_cooldown"      "12"
-    }
-  } 
-}
+    "BaseClass"              "ability_lua"
+    "ScriptFile"       "heroes\TaurenChampion\tauren_champion_finish_off.lua"
 
-"tauren_champion_finish_off"
-{
-  "BaseClass"              "ability_lua"
-  "ScriptFile"       "heroes\TaurenChampion\tauren_champion_finish_off.lua"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+    "AbilityTextureName"     "earthshaker_echo_slam"
 
-  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-  "AbilityTextureName"     "earthshaker_echo_slam"
+    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+    "MaxLevel"               "3"
+    "RequiredLevel"          "5"
+    "LevelsBetweenUpgrades"  "4"
 
-  "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
-  "MaxLevel"               "3"
-  "RequiredLevel"          "5"
-  "LevelsBetweenUpgrades"  "4"
+    "precache"
+    {
+      "particle"  "particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_stack_number.vpcf"
+      "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_buff.vpcf"
+    }
 
-  "precache"
-  {
-    "particle"  "particles/units/heroes/hero_monkey_king/monkey_king_quad_tap_stack_number.vpcf"
-    "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_buff.vpcf"
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "crit_multiplier"      "250 275 300"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "attack_count"     "3"
+      }
+      "03"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "duration"     "15"
+      }
+    } 
   }
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "crit_multiplier"      "250 275 300"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "attack_count"     "3"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_FLOAT"
-      "duration"     "15"
-    }
-  } 
 }

@@ -1,163 +1,166 @@
-"valkyrie_rage"
+"DotaAbilities"
 {
-	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes\Valkyrie\valkyrie_rage.lua"
-
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"SpellDispellableType"      "SPELL_DISPELLABLE_NO"
-	"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"     "custom/valkyrie_rage"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastPoint"       "0.2"
-
-	"AbilityCooldown"				"22.0"	
-	"AbilityDuration"				"8.0 12.0 16.0"
-	"AbilityCastRange"				"260"
-	"AbilityManaCost"				"80"
-
-	"precache"
+	"valkyrie_rage"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
-		"particle"			"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
-		"particle"			"particles/pa_arcana_phantom_strike_end_custom.vpcf"
-	}
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\Valkyrie\valkyrie_rage.lua"
 
-	"AbilityValues"
-	{
-		"damage"			"20 40 60"
-		"bonus_agility"		"15 30 45"
-		"radius"		 	"260"
-		"duration"      	"8 12 16"
-	}
-}
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellDispellableType"      "SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"     "custom/valkyrie_rage"
 
-"valkyrie_rage1"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"custom/valkyrie_rage"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-	"MaxLevel"               		"3"
-	"RequiredLevel"          		"1"
-	"LevelsBetweenUpgrades"  		"2"
-	
-	"AbilityCooldown"				"22.0"	
-	"AbilityDuration"				"8.0 12.0 16.0"
-	"AbilityCastRange"				"260"
-	"AbilityManaCost"				"80"	
-	
-	"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
-		"particle"			"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
-		"particle"			"particles/pa_arcana_phantom_strike_end_custom.vpcf"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilityCastPoint"       "0.2"
+
+		"AbilityCooldown"				"22.0"	
+		"AbilityDuration"				"8.0 12.0 16.0"
+		"AbilityCastRange"				"260"
+		"AbilityManaCost"				"80"
+
+		"precache"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_damage"			"20 40 60"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+			"particle"			"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
+			"particle"			"particles/pa_arcana_phantom_strike_end_custom.vpcf"
 		}
-		"02"
+
+		"AbilityValues"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_agility"			"15 30 45"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"260"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"8.0 12.0 16.0"
+			"damage"			"20 40 60"
+			"bonus_agility"		"15 30 45"
+			"radius"		 	"260"
+			"duration"      	"8 12 16"
 		}
 	}
-	"OnSpellStart"
+
+	"valkyrie_rage1"
 	{
-		"ApplyModifier"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"custom/valkyrie_rage"
+
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"1"
+		"LevelsBetweenUpgrades"  		"2"
+		
+		"AbilityCooldown"				"22.0"	
+		"AbilityDuration"				"8.0 12.0 16.0"
+		"AbilityCastRange"				"260"
+		"AbilityManaCost"				"80"	
+		
+		"precache"
 		{
-			"ModifierName" 		"modifier_valkyrie_rage"
-			"Target"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
+			"particle"			"particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
+			"particle"			"particles/pa_arcana_phantom_strike_end_custom.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"20 40 60"
 			}
-			"Duration"			"%AbilityDuration"
-		}
-		"FireEffect"
-		{
-			"EffectName"        "particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
-			"EffectAttachType"  "follow_origin"
-			"Target"
+			"02"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"			"15 30 45"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"260"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"8.0 12.0 16.0"
 			}
 		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_valkyrie_rage"
+		"OnSpellStart"
 		{
-			"Passive"               "0"
-			"IsHidden"				"0"
-
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			
-			"Properties"
+			"ApplyModifier"
 			{
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
-			}			
-			
-			"Orb"
-			{
-				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
-			}		
-			"OnOrbImpact"
-			{
-				"ActOnTargets"
+				"ModifierName" 		"modifier_valkyrie_rage"
+				"Target"
 				{
-					"Target"
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"			"%AbilityDuration"
+			}
+			"FireEffect"
+			{
+				"EffectName"        "particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/pa_arcana_attack_crit.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_valkyrie_rage"
+			{
+				"Passive"               "0"
+				"IsHidden"				"0"
+
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+				}			
+				
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}		
+				"OnOrbImpact"
+				{
+					"ActOnTargets"
 					{
-						"Center"	"TARGET"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-					"Action"
-					{
-						"Damage"
+						"Target"
 						{
-							"Target"
-							{
-								"Center"	"TARGET"
-								"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							}
-							"Type" 		"DAMAGE_TYPE_PHYSICAL"
-							"Damage" 	"%bonus_damage"
+							"Center"	"TARGET"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 						}
-						"FireEffect"
+						"Action"
 						{
-							"EffectName"		"particles/pa_arcana_phantom_strike_end_custom.vpcf"
-							"EffectAttachType"	"follow_origin"
-							"Target"
+							"Damage"
 							{
-								"Center"	"TARGET"
-								"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+								}
+								"Type" 		"DAMAGE_TYPE_PHYSICAL"
+								"Damage" 	"%bonus_damage"
+							}
+							"FireEffect"
+							{
+								"EffectName"		"particles/pa_arcana_phantom_strike_end_custom.vpcf"
+								"EffectAttachType"	"follow_origin"
+								"Target"
+								{
+									"Center"	"TARGET"
+									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+								}
 							}
 						}
 					}
@@ -165,168 +168,166 @@
 			}
 		}
 	}
-}
 
-"valkyrie_true_hit"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"custom/valkyrie_true_hit"
+	"valkyrie_true_hit"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"custom/valkyrie_true_hit"
 
-	"MaxLevel"               		"3"
-	"RequiredLevel"          		"2"
-	"LevelsBetweenUpgrades"  		"2"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"main_target_percent"		"2 4 6"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"secondary_target_percent"		"2"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"		"275"
-		}
-	}
-	
-    	"OnRespawn"
-	{
-		"ApplyModifier"	"modifier_true_hit"
-	}	
-
-	"Modifiers"
-	{
-		"modifier_true_hit"
-		{
-			"Passive"               "1"
-			"IsHidden"				"1"
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"2"
+		"LevelsBetweenUpgrades"  		"2"
 		
-			"OnAttackStart"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"RunScript"
-    			{
-			        "ScriptFile"    "heroes/Valkyrie/TrueHit.lua"
-			        "Function"      "DealDamage"
-					"Target"
+				"var_type"				"FIELD_INTEGER"
+				"main_target_percent"		"2 4 6"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"secondary_target_percent"		"2"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"		"275"
+			}
+		}
+		
+			"OnRespawn"
+		{
+			"ApplyModifier"	"modifier_true_hit"
+		}	
+
+		"Modifiers"
+		{
+			"modifier_true_hit"
+			{
+				"Passive"               "1"
+				"IsHidden"				"1"
+			
+				"OnAttackStart"
+				{
+					"RunScript"
 					{
-						"Center"	"TARGET"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						"ScriptFile"    "heroes/Valkyrie/TrueHit.lua"
+						"Function"      "DealDamage"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"Damage"	"%bonus_damage"
 					}
-					"Damage"	"%bonus_damage"
 				}
 			}
 		}
 	}
-}
 
-"valkyrie_agility"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"	"heroes/Valkyrie/valkyrie_agility.lua"
-
-	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"      "custom/valkyrie_agility"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastRange"	"700"
-
-	"AbilitySpecial"
+	"valkyrie_agility"
 	{
-		"01"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "aura_radius"        "700"
-	    }
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "bonus_attack_speed"  "15 30 45"
-	    }
-	} 
-}
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/Valkyrie/valkyrie_agility.lua"
 
-"valkyrie_fury"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"custom/valkyrie_fury"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"      "custom/valkyrie_agility"
 
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.0"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 
-	"AbilityCooldown"				"35.0 30.0 25.0"
+		"AbilityCastRange"	"700"
 
-	"AbilityManaCost"				"80 90 100"	
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"150 200 250"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"10.0"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName" "modifier_valkyrie_fury_buff"
-			"Target"	"TARGET"
-			"Duration"	"%duration"
-		}
-
-		
-	}
-	"Modifiers"
-	{
-		"modifier_valkyrie_fury_buff"
-		{
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				"var_type"        "FIELD_INTEGER"
+				"aura_radius"        "700"
 			}
-			"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
-			"EffectAttachType"  "follow_origin"
+			"02"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"bonus_attack_speed"  "15 30 45"
+			}
+		} 
+	}
+
+	"valkyrie_fury"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"custom/valkyrie_fury"
+		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+
+		"AbilityCooldown"				"35.0 30.0 25.0"
+
+		"AbilityManaCost"				"80 90 100"	
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"150 200 250"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"10.0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_valkyrie_fury_buff"
+				"Target"	"TARGET"
+				"Duration"	"%duration"
+			}		
+		}
+		"Modifiers"
+		{
+			"modifier_valkyrie_fury_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				}
+				"EffectName"        "particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
 		}
 	}
 }

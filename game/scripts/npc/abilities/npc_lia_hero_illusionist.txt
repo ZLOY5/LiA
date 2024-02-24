@@ -1,489 +1,453 @@
-"illusionist_whiff_of_deception"
- {
-   // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
-    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
-    "AbilityTextureName"     "custom/illusionist_whiff_of_deception"
-
-    "AbilityCooldown" "8"
-	"AbilityCastRange"	"300"
-    "AbilityManaCost" "50"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "1"
-    "LevelsBetweenUpgrades"  "2"
-	
-    "AbilityCastPoint"  "0.2"
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_arc_warden.vsndevts"
-	}
-	
-    "OnSpellStart"
-    {
-	    "RunScript"
-        {
-            "ScriptFile"    "heroes\Illusionist\illusionist_whiff_of_deception.lua"
-            "Function"      "startd"
-			"Target"
-			{
-				"Center"	"CASTER"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			}
-        }
-	  	"FireSound"
-		{
-			"EffectName"	"Hero_ArcWarden.Flux.Cast"
-			"Target"		"CASTER"
-		}
-		
-		"FireEffect"
-		{
-			"EffectName"        "particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf"
-			"EffectAttachType"  "follow_origin"
-			"Target"            "CASTER"
-		}
-    }
-    
-  
-   
-    // Special    
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      	"01"
-	    {
-	        "var_type"                "FIELD_INTEGER"
-	        "radius"                  "300"
-	    }
-	    "02"
-	    {
-	        "var_type"                "FIELD_FLOAT"
-	        "base_damage"             "75"
-	    }
-	  	"03"
-	    {
-	        "var_type"                "FIELD_FLOAT"
-	        "value_p"                   "0.6 0.8 1.0"
-	    }
-    }
-	
-	"Modifiers"
-	{
-		"modifier_illusionist_whiff_of_deception"
-		{
-			//"Passive"       "1"
-			"IsHidden"				"1"
-			"IsPurgable"		"0"
-			
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"   "heroes/Illusionist/illusionist_whiff_of_deception.lua"
-					"Function"     "remove_count"
-				}
-			}
-		}
-	
-	}
-
-	
-  }
-  
-  
-"illusionist_mastery_of_deception"
+"DotaAbilities"
 {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-	"BaseClass"              "ability_datadriven"
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	"AbilityTextureName"     "custom/illusionist_mastery_of_deception"
-	//"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
-   
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"OnUpgrade"
+	"illusionist_whiff_of_deception"
 	{
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/Illusionist/illusionist_mastery_of_deception.lua"
-			"Function"		"OnUpgrade"
-		}
-	}
-
-	"OnToggleOn"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_illusionist_mastery_of_deception"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-	}
-
-	"OnToggleOff"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"	"modifier_illusionist_mastery_of_deception"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}	
-		}
-	}
-	
-	"Modifiers"
-	{
-	
-	  "modifier_illusionist_mastery_of_deception"
-	  {
-		"Passive"       "0"
-		"IsHidden"      "1"
-		"IsBuff"        "1"
-
-		//"OnCreated"
-		//{
-		//	 "RunScript"
-		//	  {
-		//		"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
-		//		"Function"     "init"
-		//	  }
-		//}
-		
-	   "OnAttacked"
-	   {
-			"Random"
-			{
-				"Chance"		"%bchance"
-				"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-
-				"OnSuccess"
-				{
-
-					 "RunScript"
-					  {
-						"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
-						"Function"     "illusions"
-					  }
-
-				}
-			}
-	   
-
-	   }
-	  }
-
-  
-	}
-
-  // Special  
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-	"01"
-	{ 
-	  "var_type"                          "FIELD_FLOAT"
-	  "time"        "4 6 7"
-	}
-	"02"
-	{ 
-	  "var_type"                          "FIELD_INTEGER"
-	  "bchance"        "20"
-	}
-    "03"
-    {
-      "var_type"               "FIELD_INTEGER"
-      "outgoing_damage"        "-80 -70 -60"
-    }
-    "04"
-    {
-      "var_type"          "FIELD_INTEGER"
-      "incoming_damage"     "400 300 200"
-    }
-    "05"
-    {
-      "var_type"               "FIELD_INTEGER"
-      "outgoing_damage_tooltip"        "20 30 40"
-    }
-  }
-  
-}
-
-
-"illusionist_agility_paws"
-{
 	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" // DOTA_ABILITY_BEHAVIOR_NO_TARGET | 
-	//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"AbilityTextureName"			                "custom/illusionist_agility_paws"
-	//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"     "custom/illusionist_whiff_of_deception"
 
-	//"AbilityCastRange"				"150"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_agility"		"1 2 3"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"prt_bonus"		"10"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"max_bonus"		"200"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_per_level"		"10"
-		}
-	}
+		"AbilityCooldown" "8"
+		"AbilityCastRange"	"300"
+		"AbilityManaCost" "50"
 
-	//"OnRespawn"
-	//{
-	//	"ApplyModifier"	"modifier_illusionist_agility_paws"
-	//}	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCastPoint"  "0.2"
 
-	"Modifiers"
-	{
-	
-		"modifier_illusionist_agility_paws_i"
+		"precache"
 		{
-			"Passive"       "1"
-			"IsHidden"				"0" //"1"
-			"IsPurgable"		"0"
-			
-			//"OnCreated"
-			//{
-			//	 "RunScript"
-			//	  {
-			//		"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
-			//		"Function"     "init"
-			//	  }
-			//}
-			
-			//"OnCreated"
-			//{
-			//		"ApplyModifier"
-			//		{
-			//			"ModifierName" 	"modifier_illusionist_agility_paws2"
-			//			"Target"		"CASTER"
-			//		}
-			//}
-
-			"OnRespawn"
+			"particle"	"particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_arc_warden.vsndevts"
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
 			{
-				"RunScript"
+				"ScriptFile"    "heroes\Illusionist\illusionist_whiff_of_deception.lua"
+				"Function"      "startd"
+				"Target"
 				{
-					"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
-					"Function"     "SetStack"
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 				}
 			}
-		
-
-		}	
-		
-//		"modifier_illusionist_agility_paws2"
-//		{
-//			"IsHidden"				"0"
-//			"IsPurgable"		"0"
-//			"OnCreated"
-//			{
-//			
-//			
-//				 "RunScript"
-//				  {
-//					"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
-//					"Function"     "init"
-//				  }
-//			}
-//		}
-		
-		
-		"modifier_illusionist_agility_paws"
-		{
-			//"Passive"       "1"
-			"IsHidden"				"1"
-			"IsPurgable"		"0"
-			
-			"OnDestroy"
+			"FireSound"
 			{
+				"EffectName"	"Hero_ArcWarden.Flux.Cast"
+				"Target"		"CASTER"
+			}
 			
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_arc_warden/arc_warden_flux_cast.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+			}
+		}
 
-				  
-				"Random"
+		// Special    
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"                "FIELD_INTEGER"
+				"radius"                  "300"
+			}
+			"02"
+			{
+				"var_type"                "FIELD_FLOAT"
+				"base_damage"             "75"
+			}
+			"03"
+			{
+				"var_type"                "FIELD_FLOAT"
+				"value_p"                   "0.6 0.8 1.0"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_illusionist_whiff_of_deception"
+			{
+				//"Passive"       "1"
+				"IsHidden"				"1"
+				"IsPurgable"		"0"
+				
+				"OnDestroy"
 				{
-					"Chance"		"%prt_bonus"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-
-					"OnSuccess"
+					"RunScript"
 					{
-						"RunScript"
+						"ScriptFile"   "heroes/Illusionist/illusionist_whiff_of_deception.lua"
+						"Function"     "remove_count"
+					}
+				}
+			}
+		}	
+	}
+	
+	"illusionist_mastery_of_deception"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"AbilityTextureName"     "custom/illusionist_mastery_of_deception"
+		//"AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/Illusionist/illusionist_mastery_of_deception.lua"
+				"Function"		"OnUpgrade"
+			}
+		}
+
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_illusionist_mastery_of_deception"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+		}
+
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_illusionist_mastery_of_deception"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}	
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_illusionist_mastery_of_deception"
+			{
+				"Passive"       "0"
+				"IsHidden"      "1"
+				"IsBuff"        "1"
+
+				//"OnCreated"
+				//{
+				//	 "RunScript"
+				//	  {
+				//		"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
+				//		"Function"     "init"
+				//	  }
+				//}
+				
+				"OnAttacked"
+				{
+					"Random"
+					{
+						"Chance"		"%bchance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+						"OnSuccess"
 						{
-							"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
-							"Function"     "stay_agi"
+
+							"RunScript"
+							{
+								"ScriptFile"   "heroes/Illusionist/illusionist_mastery_of_deception.lua"
+								"Function"     "illusions"
+							}
+
 						}
 					}
-					
-					"OnFailure"
-					{
-			
-						 "RunScript"
-						  {
-							"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
-							"Function"     "remove_agi"
-						  }
-					}
 				}
 			}
-			
 		}
-	
-	}
-}
 
-
-"illusionist_mastery_of_illusions"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
-
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"custom/illusionist_mastery_of_illusions"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	// Casting
-	"MaxLevel"              "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"700 700 700"
-	"AbilityCastPoint"				"0.0 0.0 0.0"
-	
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"30.0"
-	//"AbilityDuration"				"0.0 0.0 0.0"
-
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"100 120 140"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		// "01"
-		// {
-		// 	"var_type"					"FIELD_INTEGER"
-		// 	"reduce_spell_damage_pct"	"-40"
-		// }
-		//"02"
-		//{
-		//	"var_type"					"FIELD_INTEGER"
-		//	"reduce_movement_speed"		"0 0 0"
-		//}
-		"01"
+		// Special  
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_FLOAT"
-			"duration_hero"				"3.0"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration_other"			"3.0"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"count_illusion"			"3"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"life_illusion"			"8 9 10"
-		}
-		"05"
-		{
-		  "var_type"               "FIELD_INTEGER"
-		  "outgoing_damage"        "-20 -10 -0"
-		}
-		"06"
-		{
-		  "var_type"          "FIELD_INTEGER"
-		  "incoming_damage"     "200 150 100"
-		}
-		"07"
-		{
-		  "var_type"               "FIELD_INTEGER"
-		  "outgoing_damage_tooltip"        "80 90 100"
-		}
-	}
-
-	"precache"
-	{
-		"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"    "heroes\Illusionist\illusionist_mastery_of_illusions.lua"    
-			"Function"      "AddModifier"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_illusionist_mastery_of_illusions"
-		{
-			"IsDebuff"			"1"
-			"IsPurgable"			"1"
-			"EffectName"		"particles/generic_gameplay/generic_disarm.vpcf"
-			"EffectAttachType"	"follow_overhead"
-
-			"States"
+			"01"
+			{ 
+				"var_type"                          "FIELD_FLOAT"
+				"time"        "4 6 7"
+			}
+			"02"
+			{ 
+				"var_type"                          "FIELD_INTEGER"
+				"bchance"        "20"
+			}
+			"03"
 			{
-				"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
-				// "MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
-			}			
+				"var_type"               "FIELD_INTEGER"
+				"outgoing_damage"        "-80 -70 -60"
+			}
+			"04"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"incoming_damage"     "400 300 200"
+			}
+			"05"
+			{
+				"var_type"               "FIELD_INTEGER"
+				"outgoing_damage_tooltip"        "20 30 40"
+			}
 		}
-	}	
+	}
+
+	"illusionist_agility_paws"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" // DOTA_ABILITY_BEHAVIOR_NO_TARGET | 
+		//"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityTextureName"			                "custom/illusionist_agility_paws"
+		//"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		//"AbilityCastRange"				"150"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"		"1 2 3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"prt_bonus"		"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_bonus"		"200"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_per_level"		"10"
+			}
+		}
+
+		//"OnRespawn"
+		//{
+		//	"ApplyModifier"	"modifier_illusionist_agility_paws"
+		//}	
+
+		"Modifiers"
+		{	
+			"modifier_illusionist_agility_paws_i"
+			{
+				"Passive"       "1"
+				"IsHidden"				"0" //"1"
+				"IsPurgable"		"0"
+				
+				//"OnCreated"
+				//{
+				//	 "RunScript"
+				//	  {
+				//		"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+				//		"Function"     "init"
+				//	  }
+				//}
+				
+				//"OnCreated"
+				//{
+				//		"ApplyModifier"
+				//		{
+				//			"ModifierName" 	"modifier_illusionist_agility_paws2"
+				//			"Target"		"CASTER"
+				//		}
+				//}
+
+				"OnRespawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+						"Function"     "SetStack"
+					}
+				}
+			}	
+						
+			"modifier_illusionist_agility_paws"
+			{
+				//"Passive"       "1"
+				"IsHidden"				"1"
+				"IsPurgable"		"0"
+				
+				"OnDestroy"
+				{				
+					"Random"
+					{
+						"Chance"		"%prt_bonus"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+								"Function"     "stay_agi"
+							}
+						}
+						
+						"OnFailure"
+						{
+				
+							"RunScript"
+							{
+								"ScriptFile"   "heroes/Illusionist/illusionist_agility_paws.lua"
+								"Function"     "remove_agi"
+							}
+						}
+					}
+				}				
+			}		
+		}
+	}
+
+
+	"illusionist_mastery_of_illusions"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"custom/illusionist_mastery_of_illusions"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+		// Casting
+		"MaxLevel"              "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700 700 700"
+		"AbilityCastPoint"				"0.0 0.0 0.0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"30.0"
+		//"AbilityDuration"				"0.0 0.0 0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 120 140"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			// "01"
+			// {
+			// 	"var_type"					"FIELD_INTEGER"
+			// 	"reduce_spell_damage_pct"	"-40"
+			// }
+			//"02"
+			//{
+			//	"var_type"					"FIELD_INTEGER"
+			//	"reduce_movement_speed"		"0 0 0"
+			//}
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_hero"				"3.0"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration_other"			"3.0"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"count_illusion"			"3"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"life_illusion"			"8 9 10"
+			}
+			"05"
+			{
+				"var_type"               "FIELD_INTEGER"
+				"outgoing_damage"        "-20 -10 -0"
+			}
+			"06"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"incoming_damage"     "200 150 100"
+			}
+			"07"
+			{
+				"var_type"               "FIELD_INTEGER"
+				"outgoing_damage_tooltip"        "80 90 100"
+			}
+		}
+
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"    "heroes\Illusionist\illusionist_mastery_of_illusions.lua"    
+				"Function"      "AddModifier"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_illusionist_mastery_of_illusions"
+			{
+				"IsDebuff"			"1"
+				"IsPurgable"			"1"
+				"EffectName"		"particles/generic_gameplay/generic_disarm.vpcf"
+				"EffectAttachType"	"follow_overhead"
+
+				"States"
+				{
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
+					// "MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
+				}			
+			}
+		}	
+	}
 }
-  

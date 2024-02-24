@@ -1,440 +1,441 @@
-"skeleton_thief_wind_walk" 
-  {
-    // General  
-    // ----------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-    "AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
-    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
-    "AbilityTextureName"     "custom/skeleton_thief_wind_walk"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-	
-	"AbilityCooldown"       "15 14 13"
-	"AbilityManaCost"		"40 50 60"
-	
-	"AbilitySpecial"
+"DotaAbilities"
+{
+	"skeleton_thief_wind_walk" 
 	{
-		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"bonus_movespeed"	"10 20 30"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"bonus_damage"		"80 160 240"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"duration"			"8"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"FireEffect"
-		{
-			"Target"		
-			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-			"EffectAttachType"	"attach_origin"
-		}
-
-		"FireSound"
-		{
-			"Target"		
-			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"EffectName"	"Hero_BountyHunter.WindWalk"
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName" 	"modifier_skeleton_thief_wind_walk"
-			"Target"		
-			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"Duration"		"%duration"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_skeleton_thief_wind_walk"
-		{
-			"IsBuff"			"1"
-			"IsHidden"			"1"
-			"Duration"          "%duration"
-			"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			
-			"OnCreated"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName" 	"modifier_invisible"
-					"Target"		
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-					"Duration"		"%duration"
-				}
-			}
-			
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_movespeed"
-			}
-			
-			"States"
-			{
-				"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-			
-			"OnAttackLanded"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_invisible"
-					"Target"		
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-				}
-
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_skeleton_thief_wind_walk"
-					"Target"		
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-				}
-
-				"Damage"
-				{
-					"Target"	"TARGET"
-					"Type"		"DAMAGE_TYPE_PHYSICAL"
-					"Damage"	"%bonus_damage"
-				}
-
-				"FireEffect"
-				{
-					"EffectName"		"particles/msg_fx/msg_crit.vpcf"
-					"EffectAttachType"	"follow_overhead"
-					"Target"			"TARGET"
-					"ControlPoints"
-					{
-						"01"		"9 %bonus_damage 4"	//pre number post
-						"02"		"1 4 0"					//lifetime digits
-						"03"		"255 0 0"				//color
-					}
-				}
-			}
-
-			"OnAbilityExecuted"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_invisible"
-					"Target"		
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-				}
-
-				"RemoveModifier"
-				{
-					"ModifierName" 	"modifier_skeleton_thief_wind_walk"
-					"Target"		
-					{
-						"Center"	"CASTER"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-					}
-				}
-			}
-
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/SkeletonThief/WindWalk.lua"
-					"Function"		"OnDestroy"
-				}
-			}
-		}
-	}
-  }
-  
-"skeleton_thief_fury"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "AbilityTextureName"     "custom/skeleton_thief_fury"
-  
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-    "AbilityCooldown"        "12.0"
-    "AbilityManaCost"        "50 60 70"
-
-	"AbilityCastPoint"  "0.0"
-	"AbilityCastRange"  "0"
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
-	}
-	
-	 "AbilitySpecial"
-	{
-		"01"
-		{
-		  "var_type"              "FIELD_INTEGER"
-		  "bonus_attackspeed"     "150 250 350"
-		}
-		"02"
-		{
-		  "var_type"              "FIELD_FLOAT"
-		  "duration"              "2.0 3.0 4.0"
-		}
-	}
-    
-	  // Casting
-	  //-------------------------------------------------------------------------------------------------------------
-	"OnSpellStart"
-	{
-	 	"ApplyModifier"
-		{
-		 	"ModifierName"   "modifier_skeleton_thief_fury"
-			"Target"		
-			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"Duration"       "%duration"
-		}
-		"RunScript"
-		{
-			"ScriptFile"	"heroes\SkeletonThief\Fury.lua"
-			"Function"		"Purge"
-		}	
-	}
-    
-    // Modifiers
-    //-------------------------------------------------------------------------------------------------------------
-    "Modifiers"
-    {
-      "modifier_skeleton_thief_fury"
-      {
-        "Passive"       "0"
-        "IsHidden"      "0"
-		"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"		
-		"EffectName"	"particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
-		"EffectAttachType"	"follow_origin"
+		// General  
+		// ----------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"   "DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"     "custom/skeleton_thief_wind_walk"
 		
-        "Properties"
-        {
-         	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
-         	//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"     "1"
-         	//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"     "1"
-         	//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
-			//"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"100"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCooldown"       "15 14 13"
+		"AbilityManaCost"		"40 50 60"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_movespeed"	"10 20 30"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"		"80 160 240"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"8"
+			}
+		}
 
-        }
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"Target"		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+				"EffectAttachType"	"attach_origin"
+			}
 
-        "States"
-        {
-         	"MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
-			//"MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
-        }
-      }
-    }
-  }
+			"FireSound"
+			{
+				"Target"		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"EffectName"	"Hero_BountyHunter.WindWalk"
+			}
 
-"skeleton_thief_shield_of_death"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_lua"
-    "ScriptFile"			 "heroes\SkeletonThief\skeleton_thief_shield_of_death.lua"
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_skeleton_thief_wind_walk"
+				"Target"		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"		"%duration"
+			}
+		}
 
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
-    "AbilityTextureName"     "custom/skeleton_thief_shield_of_death"
+		"Modifiers"
+		{
+			"modifier_skeleton_thief_wind_walk"
+			{
+				"IsBuff"			"1"
+				"IsHidden"			"1"
+				"Duration"          "%duration"
+				"EffectName"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+						"Duration"		"%duration"
+					}
+				}
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_movespeed"
+				}
+				
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+					}
 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_skeleton_thief_wind_walk"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+					}
+
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_PHYSICAL"
+						"Damage"	"%bonus_damage"
+					}
+
+					"FireEffect"
+					{
+						"EffectName"		"particles/msg_fx/msg_crit.vpcf"
+						"EffectAttachType"	"follow_overhead"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"01"		"9 %bonus_damage 4"	//pre number post
+							"02"		"1 4 0"					//lifetime digits
+							"03"		"255 0 0"				//color
+						}
+					}
+				}
+
+				"OnAbilityExecuted"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_invisible"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+					}
+
+					"RemoveModifier"
+					{
+						"ModifierName" 	"modifier_skeleton_thief_wind_walk"
+						"Target"		
+						{
+							"Center"	"CASTER"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+					}
+				}
+
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/WindWalk.lua"
+						"Function"		"OnDestroy"
+					}
+				}
+			}
+		}
+	}
 	
-	"AbilitySpecial"
+	"skeleton_thief_fury"
 	{
-		"01"
-		{
-		  	"var_type"      				"FIELD_INTEGER"
-		  	"damage_return"  				"10 50 100"
-		}
-		"02"
-		{
-		  	"var_type"      				"FIELD_INTEGER"
-		  	"chance_additional_damage"   	"20"
-		}
-		"03"
-		{
-		  	"var_type"      				"FIELD_INTEGER"
-		  	"additional_damage"   			"100 150 200"
-		}
-	}
- 
-  }
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"     "custom/skeleton_thief_fury"
+	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCooldown"        "12.0"
+		"AbilityManaCost"        "50 60 70"
 
-"skeleton_thief_concentration"
-{
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitDamageType"  		"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"custom/skeleton_thief_shield_of_death"
+		"AbilityCastPoint"  "0.0"
+		"AbilityCastRange"  "0"
 
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-	"AbilitySpecial"
-	{
-		"01"
+		"precache"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_mult"					"150 175 200"
+			"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
 		}
-		"02"
+		
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"7 10 13"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance_cap"			"50"
-		}
-	}
-
-	"OnUpgrade"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
-			"Function"		"OnUpgrade"
-		}
-	}
-
-	"OnOwnerSpawned"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_skeleton_thief_concentration_chance"
-			"Target" 		"CASTER"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_skeleton_thief_concentration_attack"	
-		{
-			"Passive"	"1"
-			"OnAttackStart"
-			// "%attack_damage" is set to the damage value before mitigation
+			"01"
 			{
-				"RunScript"
+			"var_type"              "FIELD_INTEGER"
+			"bonus_attackspeed"     "150 250 350"
+			}
+			"02"
+			{
+			"var_type"              "FIELD_FLOAT"
+			"duration"              "2.0 3.0 4.0"
+			}
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"   "modifier_skeleton_thief_fury"
+				"Target"		
 				{
-					"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
-					"Function"		"OnAttackStart"
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"       "%duration"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"heroes\SkeletonThief\Fury.lua"
+				"Function"		"Purge"
+			}	
+		}
+		
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"modifier_skeleton_thief_fury"
+			{
+				"Passive"       "0"
+				"IsHidden"      "0"
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"		
+				"EffectName"	"particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attackspeed" 
+					//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"     "1"
+					//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"     "1"
+					//"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"     "1"
+					//"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"100"
+
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+					//"MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
+	}
 
-		"modifier_skeleton_thief_concentration_chance"	
+	"skeleton_thief_shield_of_death"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_lua"
+		"ScriptFile"			 "heroes\SkeletonThief\skeleton_thief_shield_of_death.lua"
+
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
+		"AbilityTextureName"     "custom/skeleton_thief_shield_of_death"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilitySpecial"
 		{
-			"IsHidden"	"1"
-			"ThinkInterval"  "1.0"
-			"OnIntervalThink"
+			"01"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
-					"Function"		"Recalculate"
-				}
+				"var_type"      				"FIELD_INTEGER"
+				"damage_return"  				"10 50 100"
 			}
-
-			"OnTakeDamage"
-			// "%attack_damage" is set to the damage value after mitigation
+			"02"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
-					"Function"		"OnTakeDamage"
-				}
+				"var_type"      				"FIELD_INTEGER"
+				"chance_additional_damage"   	"20"
+			}
+			"03"
+			{
+				"var_type"      				"FIELD_INTEGER"
+				"additional_damage"   			"100 150 200"
+			}
+		}
+	}
+
+	"skeleton_thief_concentration"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"  		"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"custom/skeleton_thief_shield_of_death"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"150 175 200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"7 10 13"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance_cap"			"50"
 			}
 		}
 
-		"modifier_skeleton_thief_concentration_crit"
+		"OnUpgrade"
 		{
-		    "IsHidden"  "1"
-		    "Properties"
-		    {
-		        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-		    }
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+				"Function"		"OnUpgrade"
+			}
+		}
 
-		    "OnAttackLanded"
-		    {
-		       "RunScript"
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_skeleton_thief_concentration_chance"
+				"Target" 		"CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_skeleton_thief_concentration_attack"	
+			{
+				"Passive"	"1"
+				"OnAttackStart"
+				// "%attack_damage" is set to the damage value before mitigation
 				{
-					"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
-					"Function"		"OnAttackLanded"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"OnAttackStart"
+					}
 				}
-		    }
+			}
+
+			"modifier_skeleton_thief_concentration_chance"	
+			{
+				"IsHidden"	"1"
+				"ThinkInterval"  "1.0"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"Recalculate"
+					}
+				}
+
+				"OnTakeDamage"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"OnTakeDamage"
+					}
+				}
+			}
+
+			"modifier_skeleton_thief_concentration_crit"
+			{
+				"IsHidden"  "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+				}
+
+				"OnAttackLanded"
+				{
+				"RunScript"
+					{
+						"ScriptFile"	"heroes/SkeletonThief/Concentration.lua"
+						"Function"		"OnAttackLanded"
+					}
+				}
+			}
+		}
+	}
+
+	"skeleton_thief_obsession"
+	{
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes\SkeletonThief\skeleton_thief_obsession.lua"
+
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     "custom/skeleton_thief_obsession"
+		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilityValues"
+		{
+			"bonus_damage"         "150 275 400"
+			"attacks_required"        "4"
 		}
 	}
 }
-
-"skeleton_thief_obsession"
-{
-	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes\SkeletonThief\skeleton_thief_obsession.lua"
-
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"     "custom/skeleton_thief_obsession"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-
-	"AbilityValues"
-	{
-		"bonus_damage"         "150 275 400"
-		"attacks_required"        "4"
-	}
-}
-

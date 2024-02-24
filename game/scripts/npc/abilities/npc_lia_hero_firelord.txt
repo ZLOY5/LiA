@@ -1,543 +1,544 @@
-"firelord_flame_strike"
+"DotaAbilities"
 {
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\Firelord\firelord_flame_strike.lua"
-
-	"AbilityTextureName"			"custom/firelord_flame_strike"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityCastAnimation"			"ACT_DOTA_CAST_CHAOS_METEOR"
-
-	"AbilityCastRange"				"800"
-	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"13"
-
-	"AbilityManaCost"				"150 170 190"
-	"AbilityChannelTime"			"1.33"
-	"AoERadius"						"175 200 225"
-
-	"HasScepterUpgrade"				"1"
-
-	"precache"
+	"firelord_flame_strike"
 	{
-		"particle"	"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
-		"particle"	"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
-		"particle" 	"particles/custom/phoenix_fire_spirit_ground.vpcf"
-		"particle" 	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_requiemofsouls_line_ground.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"first_strike_dps"		"50 100 150"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"first_strike_dps_scepter"		"150 200 250"
-			"RequiresScepter"		"1"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"first_strike_duration"	"2.8"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"burn_dps"				"4 6 8"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"burn_duration"			"6"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"175 200 225"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"delay"					"1.33"
-		}
-		"08"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"manacost_scepter"		"250 275 300"
-			"RequiresScepter"		"1"
-		}	
-	}
-}
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\Firelord\firelord_flame_strike.lua"
 
+		"AbilityTextureName"			"custom/firelord_flame_strike"
 
-"firelord_summon_lava_spawn"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"custom/firelord_summon_lava_spawn"
-	  "MaxLevel"               "3"
-	  "RequiredLevel"          "2"
-	  "LevelsBetweenUpgrades"  "2"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityCastAnimation"			"ACT_DOTA_RAZE_2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_CHAOS_METEOR"
 
-	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"20"
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"13"
 
-	"AbilityManaCost"				"120 180 240"
+		"AbilityManaCost"				"150 170 190"
+		"AbilityChannelTime"			"1.33"
+		"AoERadius"						"175 200 225"
 
-	"precache"
-	{
-		"particle" 	"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
-		"particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
-		"particle"  "particles/units/heroes/hero_invoker/invoker_forge_spirit_death.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
-		"model"		"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_count"			"1 1 2"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_damage"			"15 27 45"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_hp"				"450 600 750"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_duration"		"60"
-		}
-		"05"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"attacks_to_split"			"7"
-		}
-		"06"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_1_count"		"1 0 0"
-		}
-		"07"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_2_count"		"0 1 0"
-		}
-		"08"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"lava_spawn_3_count"		"0 0 2"
-		}
-		"09"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"spawn_distance"			"200"
-		}
-	}
+		"HasScepterUpgrade"				"1"
 
-	"OnSpellStart"
-	{
-		"FireSound"
+		"precache"
 		{
-			"EffectName"	"Hero_Invoker.ForgeSpirit"
-			"Target"		"CASTER"
-		}		
-
-		"SpawnUnit"
+			"particle"	"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+			"particle"	"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_ground.vpcf"
+			"particle" 	"particles/custom/phoenix_fire_spirit_ground.vpcf"
+			"particle" 	"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_requiemofsouls_line_ground.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		}
+		
+		"AbilitySpecial"
 		{
-			"UnitName"		"firelord_lava_spawn1"
-			"Target"
+			"01"
 			{
-				"Center"		    "CASTER"
-				"ScriptSelectPoints"
-				{
-					"ScriptFile"    "heroes/firelord/summon_lava_spawn.lua"
-					"Function"      "GetSummonPoints"
-					"Target"		"CASTER"
-					"Count"			"1"
-					"distance"		"%spawn_distance"
-				}
+				"var_type"				"FIELD_INTEGER"
+				"first_strike_dps"		"50 100 150"
 			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"first_strike_dps_scepter"		"150 200 250"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"first_strike_duration"	"2.8"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"burn_dps"				"4 6 8"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"burn_duration"			"6"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"175 200 225"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"delay"					"1.33"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"manacost_scepter"		"250 275 300"
+				"RequiresScepter"		"1"
+			}	
+		}
+	}
+
+	"firelord_summon_lava_spawn"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/firelord_summon_lava_spawn"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastAnimation"			"ACT_DOTA_RAZE_2"
+
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"20"
+
+		"AbilityManaCost"				"120 180 240"
+
+		"precache"
+		{
+			"particle" 	"particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+			"particle"  "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+			"particle"  "particles/units/heroes/hero_invoker/invoker_forge_spirit_death.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+			"model"		"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lava_spawn_count"			"1 1 2"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lava_spawn_damage"			"15 27 45"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lava_spawn_hp"				"450 600 750"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lava_spawn_duration"		"60"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attacks_to_split"			"7"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lava_spawn_1_count"		"1 0 0"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lava_spawn_2_count"		"0 1 0"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"lava_spawn_3_count"		"0 0 2"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"spawn_distance"			"200"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Invoker.ForgeSpirit"
+				"Target"		"CASTER"
+			}		
+
+			"SpawnUnit"
+			{
+				"UnitName"		"firelord_lava_spawn1"
+				"Target"
+				{
+					"Center"		    "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/firelord/summon_lava_spawn.lua"
+						"Function"      "GetSummonPoints"
+						"Target"		"CASTER"
+						"Count"			"1"
+						"distance"		"%spawn_distance"
+					}
+				}
+				
+				"Duration"		"%lava_spawn_duration"
+				"UnitCount"		"%lava_spawn_1_count"
+				//"GrantsGold"	"1"
+				//"GrantsXP"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Firelord/summon_lava_spawn.lua"
+						"Function"		"SetUnitsMoveForward"
+					}				
+
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_phased"
+						"Target"		"TARGET"
+						"Duration"		"0.03"
+					}
 			
-			"Duration"		"%lava_spawn_duration"
-			"UnitCount"		"%lava_spawn_1_count"
-			//"GrantsGold"	"1"
-			//"GrantsXP"		"1"
-			"SpawnRadius"	"10"
-			"OnSpawn"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/Firelord/summon_lava_spawn.lua"
-					"Function"		"SetUnitsMoveForward"
-				}				
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_lava_spawn"
+						"Target" 		"TARGET"
+					}
 
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-		
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_lava_spawn"
-					"Target" 		"TARGET"
-				}
-
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_lava_spawn_replicate"
-					"Target" 		"TARGET"
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_lava_spawn_replicate"
+						"Target" 		"TARGET"
+					}
 				}
 			}
-		}
 
-		"SpawnUnit"
-		{
-			"UnitName"		"firelord_lava_spawn2"
-			"Target"
+			"SpawnUnit"
 			{
-				"Center"		    "CASTER"
-				"ScriptSelectPoints"
+				"UnitName"		"firelord_lava_spawn2"
+				"Target"
 				{
-					"ScriptFile"    "heroes/Firelord/summon_lava_spawn.lua"
-					"Function"      "GetSummonPoints"
-					"Target"		"CASTER"
-					"Count"			"1"
-					"distance"		"%spawn_distance"
+					"Center"		    "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/Firelord/summon_lava_spawn.lua"
+						"Function"      "GetSummonPoints"
+						"Target"		"CASTER"
+						"Count"			"1"
+						"distance"		"%spawn_distance"
+					}
 				}
-			}
+				
+				"Duration"		"%lava_spawn_duration"
+				"UnitCount"		"%lava_spawn_2_count"
+				//"GrantsGold"	"1"
+				//"GrantsXP"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Firelord/summon_lava_spawn.lua"
+						"Function"		"SetUnitsMoveForward"
+					}				
+
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_phased"
+						"Target"		"TARGET"
+						"Duration"		"0.03"
+					}
 			
-			"Duration"		"%lava_spawn_duration"
-			"UnitCount"		"%lava_spawn_2_count"
-			//"GrantsGold"	"1"
-			//"GrantsXP"		"1"
-			"SpawnRadius"	"10"
-			"OnSpawn"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/Firelord/summon_lava_spawn.lua"
-					"Function"		"SetUnitsMoveForward"
-				}				
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_lava_spawn"
+						"Target" 		"TARGET"
+					}
 
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
-				}
-		
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_lava_spawn"
-					"Target" 		"TARGET"
-				}
-
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_lava_spawn_replicate"
-					"Target" 		"TARGET"
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_lava_spawn_replicate"
+						"Target" 		"TARGET"
+					}
 				}
 			}
-		}
 
-		"SpawnUnit"
-		{
-			"UnitName"		"firelord_lava_spawn3"
-			"Target"
+			"SpawnUnit"
 			{
-				"Center"		    "CASTER"
-				"ScriptSelectPoints"
+				"UnitName"		"firelord_lava_spawn3"
+				"Target"
 				{
-					"ScriptFile"    "heroes/Firelord/summon_lava_spawn.lua"
-					"Function"      "GetSummonPoints"
-					"Target"		"CASTER"
-					"Count"			"1"
-					"distance"		"%spawn_distance"
+					"Center"		    "CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "heroes/Firelord/summon_lava_spawn.lua"
+						"Function"      "GetSummonPoints"
+						"Target"		"CASTER"
+						"Count"			"1"
+						"distance"		"%spawn_distance"
+					}
 				}
-			}
+				
+				"Duration"		"%lava_spawn_duration"
+				"UnitCount"		"%lava_spawn_3_count"
+				//"GrantsGold"	"1"
+				//"GrantsXP"		"1"
+				"SpawnRadius"	"10"
+				"OnSpawn"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/firelord/summon_lava_spawn.lua"
+						"Function"		"SetUnitsMoveForward"
+					}				
+
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_phased"
+						"Target"		"TARGET"
+						"Duration"		"0.03"
+					}
 			
-			"Duration"		"%lava_spawn_duration"
-			"UnitCount"		"%lava_spawn_3_count"
-			//"GrantsGold"	"1"
-			//"GrantsXP"		"1"
-			"SpawnRadius"	"10"
-			"OnSpawn"
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_lava_spawn"
+						"Target" 		"TARGET"
+					}
+
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_lava_spawn_replicate"
+						"Target" 		"TARGET"
+					}
+				}
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_lava_spawn"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/firelord/summon_lava_spawn.lua"
-					"Function"		"SetUnitsMoveForward"
-				}				
+				"IsHidden"			"1"
 
-				"ApplyModifier"
+				"States"
 				{
-					"ModifierName"	"modifier_phased"
-					"Target"		"TARGET"
-					"Duration"		"0.03"
+					"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
-		
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_lava_spawn"
-					"Target" 		"TARGET"
-				}
+			
+				"EffectName"		"particles/units/heroes/hero_invoker/invoker_forge_spirit_ambient.vpcf"
+				"EffectAttachType"	"follow_origin"
 
-				"ApplyModifier"
+				"OnDeath"
 				{
-					"ModifierName"	"modifier_lava_spawn_replicate"
-					"Target" 		"TARGET"
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_invoker/invoker_forge_spirit_death.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"
+						{
+							"Center" "UNIT"
+							"Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+						"ControlPoints"
+						{
+							"03"	"1 0 0"
+						}
+					}
+				}
+			}
+
+			"modifier_lava_spawn_replicate"
+			{
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/firelord/summon_lava_spawn.lua"
+						"Function"		"LavaSpawnAttackCounter"
+					}
 				}
 			}
 		}
 	}
 
-	"Modifiers"
+	"firelord_fire_trap"
 	{
-		"modifier_lava_spawn"
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"custom/firelord_fire_trap"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+			
+		"AbilityCastRange"			"500"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"25"
+		"AbilityManaCost"			"150 200 250"
+			
+		"AbilitySpecial"
 		{
-			"IsHidden"			"1"
-
-			"States"
+			"01"
 			{
-				"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"60"
 			}
-		
-			"EffectName"		"particles/units/heroes/hero_invoker/invoker_forge_spirit_ambient.vpcf"
-			"EffectAttachType"	"follow_origin"
-
-			"OnDeath"
+			"02"
 			{
-				"AttachEffect"
-				{
-					"EffectName"        "particles/units/heroes/hero_invoker/invoker_forge_spirit_death.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"
-				    {
-				       "Center" "UNIT"
-				       "Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
-				   	}
-				   	"ControlPoints"
-				   	{
-				   		"03"	"1 0 0"
-				   	}
-				}
+				"var_type"		"FIELD_INTEGER"
+				"detonation_radius"			"300 350 400"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"stun_duration"				"3 5 7"
+			}
+			"04"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"stun_hero_duration"		"2 3 4"
+			}
+
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"activation_delay"			"3"
+			}
+
+			"06"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"detection_radius"			"250 275 300"
 			}
 		}
 
-		"modifier_lava_spawn_replicate"
+		"precache"
 		{
-			"IsHidden"	"1"
-			"OnAttackLanded"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+			"particle"  "particles/firelord_fire_trap.vpcf"
+			"particle"	"particles/firelord_fire_trap_explode_custom.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
 			{
-				"RunScript"
+				"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+				"Function"		"StasisStart"
+				"Target"		"POINT"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_stasis_ward"
+			{
+				"IsHidden"			"1"
+
+				"Duration"			"%activation_delay"
+				"OnDestroy"
 				{
-					"ScriptFile"	"heroes/firelord/summon_lava_spawn.lua"
-					"Function"		"LavaSpawnAttackCounter"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+						"Function"		"StasisSetup"
+					}
 				}
+			}
+
+			"modifier_stasis_ward_trigger"
+			{
+				"IsHidden"			"1"
+
+				"ThinkInterval"  "0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/Firelord/FireTrap.lua"
+						"Function"		"StasisThink"
+					}
+				}
+			}
+		}
+	}
+
+	"firelord_fire_serpent"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\Firelord\firelord_fire_serpent.lua"
+
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"		"custom/firelord_fire_serpent"
+		
+		"HasScepterUpgrade"			"1"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"20"
+		"AbilityManaCost"				"150 250 350"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_shadowshaman/shadow_shaman_ward_base_attack.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+		}
+			
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"serpent_health"  "250 500 750"
+			}
+			"02"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"serpent_health_scepter"  "500 750 1200"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"serpent_damage"  "20 40 60"
+			}
+			"04"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"serpent_damage_scepter"  "40 60 160"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+				"var_type"          "FIELD_FLOAT"
+				"duration"  "60"
+			}
+			"06"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"manacost_scepter"  "250 350 450"
+				"RequiresScepter"		"1"
+			}
+			"07"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"serpent_count"  "4"
 			}
 		}
 	}
 }
-
-"firelord_fire_trap"
-{
-	"BaseClass"					"ability_datadriven"
-	"AbilityTextureName"		"custom/firelord_fire_trap"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-		
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT"
-	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"SpellImmunityType"       	"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
-		
-	"AbilityCastRange"			"500"
-	"AbilityCastPoint"			"0"
-	"AbilityCooldown"			"25"
-	"AbilityManaCost"			"150 200 250"
-		
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"duration"		"60"
-		}
-		"02"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"detonation_radius"			"300 350 400"
-		}
-		"03"
-		{
-			"var_type"		"FIELD_FLOAT"
-			"stun_duration"				"3 5 7"
-		}
-		"04"
-		{
-			"var_type"		"FIELD_FLOAT"
-			"stun_hero_duration"		"2 3 4"
-		}
-		// Phew, I'm glad they balanced Techies.
-		"05"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"activation_delay"			"3"
-		}
-		// Wew, I'm sad they imbalanced Techies.
-		"06"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"detection_radius"			"250 275 300"
-		}
-	}
-
-	"precache"
-	{
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
-		"particle"  "particles/firelord_fire_trap.vpcf"
-		"particle"	"particles/firelord_fire_trap_explode_custom.vpcf"
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/Firelord/FireTrap.lua"
-			"Function"		"StasisStart"
-			"Target"		"POINT"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_stasis_ward"
-		{
-			"IsHidden"			"1"
-
-			"Duration"			"%activation_delay"
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/Firelord/FireTrap.lua"
-					"Function"		"StasisSetup"
-				}
-			}
-		}
-
-		"modifier_stasis_ward_trigger"
-		{
-			"IsHidden"			"1"
-
-			"ThinkInterval"  "0.1"
-			"OnIntervalThink"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/Firelord/FireTrap.lua"
-					"Function"		"StasisThink"
-				}
-			}
-		}
-	}
-}
-
-"firelord_fire_serpent"
-{
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\Firelord\firelord_fire_serpent.lua"
-
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "AbilityTextureName"		"custom/firelord_fire_serpent"
-	
-	"HasScepterUpgrade"			"1"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-    "MaxLevel"               "3"
-    "RequiredLevel"          "5"
-    "LevelsBetweenUpgrades"  "4"
-
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.3"
-	"AbilityCooldown"				"20"
-	"AbilityManaCost"				"150 250 350"
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_shadowshaman/shadow_shaman_ward_base_attack.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
-	}
-		
-	"AbilitySpecial"
-	{
-		"01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "serpent_health"  "250 500 750"
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "serpent_health_scepter"  "500 750 1200"
-			"RequiresScepter"		"1"
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "serpent_damage"  "20 40 60"
-        }
-        "04"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "serpent_damage_scepter"  "40 60 160"
-			"RequiresScepter"		"1"
-        }
-        "05"
-        {
-            "var_type"          "FIELD_FLOAT"
-            "duration"  "60"
-        }
-        "06"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "manacost_scepter"  "250 350 450"
-			"RequiresScepter"		"1"
-        }
-        "07"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "serpent_count"  "4"
-        }
-	}
-}
-

@@ -1,371 +1,322 @@
-"necromancer_stabbing_death"
+"DotaAbilities"
 {
-	"BaseClass"						"ability_lua"
-	"ScriptFile"					"heroes/Necromancer/necromancer_stabbing_death.lua"
-	"AbilityTextureName"			"custom/necromancer_stabbing_death"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"necromancer_stabbing_death"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/Necromancer/necromancer_stabbing_death.lua"
+		"AbilityTextureName"			"custom/necromancer_stabbing_death"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCastRange"				"550"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCooldown"				"15 14 13"
+		"AbilityManaCost"				"100 175 250"
+
+		"HasScepterUpgrade"			"1"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
+			"particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale_hit.vpcf"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"		"100 200 300"		
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_scepter"		"300 400 500"	
+				"RequiresScepter"		"1"	
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"stun_duration"	"2 3 4"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"width"				"125"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"length"		"550"		
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"speed"		"1833"		
+			}
+			"07"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"flight_duration"		"0.5"		
+			}
+			"08"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"manacost_scepter"		"200 300 400"	
+				"RequiresScepter"		"1"	
+			}
+		}
+	}
+
+	"necromancer_walking_corpses"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\Necromancer\necromancer_walking_corpses.lua"
+
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"    "custom/necromancer_deads"
+		
 	
-    "MaxLevel"               "3"
-    "RequiredLevel"          "1"
-    "LevelsBetweenUpgrades"  "2"
-	
-	"AbilityCastRange"				"550"
-	"AbilityCastPoint"				"0.4"
-	"AbilityCooldown"				"15 14 13"
-	"AbilityManaCost"				"100 175 250"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"HasScepterUpgrade"			"1"
 
-	"HasScepterUpgrade"			"1"
+		"AbilityCooldown"               "25"
+		"AbilityManaCost"               "100 200 300"
+		"AbilityCastPoint"              "0.3"
+		"AbilityCastRange"				"300"
 
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale.vpcf"
-		"particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale_hit.vpcf"
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
+		"precache"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"damage"		"100 200 300"		
+			"particle"  "particles/units/heroes/hero_undying/undying_zombie_spawn.vpcf"
 		}
-		"02"
+
+		"AbilitySpecial"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"damage_scepter"		"300 400 500"	
-			"RequiresScepter"		"1"	
-		}
-		"03"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"stun_duration"	"2 3 4"
-		}
-		"04"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"width"				"125"
-		}
-		"05"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"length"		"550"		
-		}
-		"06"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"speed"		"1833"		
-		}
-		"07"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"flight_duration"		"0.5"		
-		}
-		"08"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"manacost_scepter"		"200 300 400"	
-			"RequiresScepter"		"1"	
-		}
-	}
-}
-
-
-"necromancer_walking_corpses"
-{
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\Necromancer\necromancer_walking_corpses.lua"
-
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "AbilityTextureName"    "custom/necromancer_deads"
-    
- 
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-	
-	"HasScepterUpgrade"			"1"
-
-	"AbilityCooldown"               "25"
-    "AbilityManaCost"               "100 200 300"
-    "AbilityCastPoint"              "0.3"
-    "AbilityCastRange"				"300"
-
-    "precache"
-    {
-    	"particle"  "particles/units/heroes/hero_undying/undying_zombie_spawn.vpcf"
-    }
-
-	"AbilitySpecial"
-	{
-		"01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "skeleton_health"  "275 650 1250"
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "skeleton_health_scepter"  "650 1250 1500"
-			"RequiresScepter"		"1"
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "skeleton_damage"  "15 25 50"
-        }
-        "04"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "skeleton_damage_scepter"  "25 50 100"
-			"RequiresScepter"		"1"
-        }
-        "05"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "skeleton_count"  "2 3 4"
-        }
-        "06"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "duration"  "60"
-        }
-        "07"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "manacost_scepter"  "150 300 450"
-			"RequiresScepter"		"1"
-        }
-	}
-}
-
-"necromancer_reincarnation"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_lua"
-	"ScriptFile"					"heroes\Necromancer\necromancer_reincarnation.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	//"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-	//"FightRecapLevel"				"2"
-	"AbilityTextureName"			"custom/necromancer_reincarnation"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-	
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"120 100 80"
-
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"0"
-
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"reincarnate_time"		"3"
+			"01"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"skeleton_health"  "275 650 1250"
+			}
+			"02"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"skeleton_health_scepter"  "650 1250 1500"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"skeleton_damage"  "15 25 50"
+			}
+			"04"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"skeleton_damage_scepter"  "25 50 100"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"skeleton_count"  "2 3 4"
+			}
+			"06"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"duration"  "60"
+			}
+			"07"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"manacost_scepter"  "150 300 450"
+				"RequiresScepter"		"1"
+			}
 		}
 	}
 
-	"precache"
+	"necromancer_reincarnation"
 	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
-		"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
-		"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_death.vpcf"
-		//"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_slow_debuff.vpcf"
-	}
-}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes\Necromancer\necromancer_reincarnation.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		//"FightRecapLevel"				"2"
+		"AbilityTextureName"			"custom/necromancer_reincarnation"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"120 100 80"
 
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
 
-
-
-
-
-
-
-
-
-
-"necromancer_skel_return"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\Necromancer\necromancer_skel_return.lua"
-	"AbilityTextureName"			"custom/2_wave_thorns_aura"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" // | DOTA_ABILITY_BEHAVIOR_AURA
-	//"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-
-	//"AbilityCastRange"				"600"
-
-	"precache"
-	{
-	}
-	
-	"AbilitySpecial"
-	{
-
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"damage_return"				"50"		
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"reincarnate_time"		"3"
+			}
+		}
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+			"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+			"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_death.vpcf"
+			//"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_slow_debuff.vpcf"
+		}
+	}
+
+	"necromancer_skel_return"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\Necromancer\necromancer_skel_return.lua"
+		"AbilityTextureName"			"custom/2_wave_thorns_aura"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" // | DOTA_ABILITY_BEHAVIOR_AURA
+		//"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+		"AbilitySpecial"
+		{
+
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"50"		
+			}	
+		}
+	}
+
+	// Death Knight Animate Dead
+	// Author: Noya
+	// Date: 21.1.2015.
+
+	"necromancer_galvanization"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/necromancer_galvanization"
+		"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
+		
+		"MaxLevel"              "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+
+		"AbilityCastRange"				"1000"
+		"AbilityCastPoint"				"0.453"
+
+		"AbilityCooldown"			"200 170 140"
+		"AbilityManacost"			"250 300 350"
+
+		"precache"
+		{
+			"particle"	"particles/custom/abaddon_death_coil_explosion.vpcf"
+			"particle"	"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
+			"particle"  "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"					"25 30 35"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"1000"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"max_units_resurrected"		"7 10 13"
+			}		
+		}
+
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/Necromancer/galvanization.lua"
+				"Function"		"AnimateDeadPrecast"
+			}
 		}	
 
-
-	}
-
-}
-
-
-
-// Death Knight Animate Dead
-// Author: Noya
-// Date: 21.1.2015.
-
-"necromancer_galvanization"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"custom/necromancer_galvanization"
-	"AbilityType" 					"DOTA_ABILITY_TYPE_ULTIMATE"
-	
-	"MaxLevel"              "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-
-	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-
-	"AbilityCastRange"				"1000"
-	"AbilityCastPoint"				"0.453"
-
-	"AbilityCooldown"			"200 170 140"
-	"AbilityManacost"			"250 300 350"
-
-	"precache"
-	{
-		"particle"	"particles/custom/abaddon_death_coil_explosion.vpcf"
-		"particle"	"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
-		"particle"  "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
+		"OnSpellStart"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"duration"					"25 30 35"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"1000"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"max_units_resurrected"		"7 10 13"
-		}		
-	}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Abaddon.AphoticShield.Cast"
+				"Target"			"CASTER"
+			}
 
-	"OnAbilityPhaseStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/Necromancer/galvanization.lua"
-			"Function"		"AnimateDeadPrecast"
-		}
-	}
-	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+			}
 
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"		"Hero_Abaddon.AphoticShield.Cast"
-			"Target"			"CASTER"
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/Necromancer/galvanization.lua"
+				"Function"		"AnimateDead"
+			}		
 		}
 
-		"FireEffect"
+		"Modifiers"
 		{
-			"EffectName"        "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate_explode.vpcf"
-			"EffectAttachType"  "follow_origin"
-			"Target"            "CASTER"
-		}
+			"modifier_animate_dead"
+			{
+				"IsHidden"	"1"
+				"OnCreated"
+				{	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/custom/abaddon_death_coil_explosion.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
 
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/Necromancer/galvanization.lua"
-			"Function"		"AnimateDead"
-		}		
-	}
+						"ControlPointEntities"
+						{
+							"TARGET"    "attach_origin" // Control Point 0
+							"TARGET"    "attach_origin" // Control Point 1
+						}
+					}
+				}
 
-	"Modifiers"
-	{
-		"modifier_animate_dead"
-		{
-			"IsHidden"	"1"
-			"OnCreated"
-			{	
-				"AttachEffect"
+				"StatusEffectName" 			"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
+				"StatusEffectPriority" 		"15"
+
+				"States"
 				{
-				 	"EffectName"		"particles/custom/abaddon_death_coil_explosion.vpcf"
-				 	"EffectAttachType"	"follow_origin"
-				 	"Target"			"TARGET"
-
-				 	"ControlPointEntities"
-		            {
-		                "TARGET"    "attach_origin" // Control Point 0
-		                "TARGET"    "attach_origin" // Control Point 1
-		            }
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
-
-			"StatusEffectName" 			"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
-			"StatusEffectPriority" 		"15"
-
-			"States"
-			{
-				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
-			}
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

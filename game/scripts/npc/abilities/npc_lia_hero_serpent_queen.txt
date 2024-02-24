@@ -1,408 +1,410 @@
-"serpent_queen_ball_lightning"
+"DotaAbilities"
 {
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"custom/serpent_queen_ball_lightning"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
-
-	"AbilityCastRange"				"800"
-	"AbilityCastPoint"				"0.3"
-	"AbilityCooldown"				"35 30 25"
-
-	"AbilityManaCost"				"100 125 150"
-
-	"precache"
+	"serpent_queen_ball_lightning"
 	{
-		"particle"  "particles/units/heroes/hero_stormspirit/stormspirit_base_attack_glow.vpcf"
-		"particle"	"particles/units/heroes/hero_stormspirit/stormspirit_base_attack_explosion.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"800"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"locusts"				"9 12 15"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"20"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"locusts_speed"			"400"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"max_distance"			"2000"	//teleports
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"give_up_distance"		"900" //Max distance to follow a target acquired
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"delay_between_locusts"	"0.2"	//Means 4 seconds to spawn all 20 locusts
-		}
-		"08"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"locust_damage"			"20 40 60"	//Physical damage instance on each collision
-		}
-		"09"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"locust_heal_threshold"	"1 1 1"	//The amount of physical damage that needs to be done to return and heal the caster
-		}
-		"10"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"max_locusts_on_target"	"7"	//Max counter of units locked onto one target, find another or idle if this threshold is met
-		}
-	}
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/serpent_queen_ball_lightning"
 
-	"OnSpellStart"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"	"modifier_locust_swarm"
-			"Target" 		"CASTER"
-		}
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-		"ApplyModifier"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"35 30 25"
+
+		"AbilityManaCost"				"100 125 150"
+
+		"precache"
 		{
-			"ModifierName"	"modifier_locust_swarm"
-			"Target"
+			"particle"  "particles/units/heroes/hero_stormspirit/stormspirit_base_attack_glow.vpcf"
+			"particle"	"particles/units/heroes/hero_stormspirit/stormspirit_base_attack_explosion.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"800"
 			}
-			"Duration"		"%duration"
-		}
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_StormSpirit.StaticRemnantPlant"
-			"Target" 		"CASTER"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_locust_swarm"
-		{	
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"OnCreated"
+			"02"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
-					"Function"		"LocustSwarmStart"
-				}
+				"var_type"				"FIELD_INTEGER"
+				"locusts"				"9 12 15"
 			}
-
-			"OnDeath"
+			"03"
 			{
-				"FireSound"
-				{
-					"EffectName"	"Hero_StormSpirit.StaticRemnantExplode"
-					"Target" 		"CASTER"
-				}
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
-					"Function"		"LocustSwarmDeath"
-				}
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
 			}
-
-			"OnDestroy"
+			"04"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
-					"Function"		"LocustSwarmEnd"
-				}
+				"var_type"				"FIELD_INTEGER"
+				"locusts_speed"			"400"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_distance"			"2000"	//teleports
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"give_up_distance"		"900" //Max distance to follow a target acquired
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"delay_between_locusts"	"0.2"	//Means 4 seconds to spawn all 20 locusts
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"locust_damage"			"20 40 60"	//Physical damage instance on each collision
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"locust_heal_threshold"	"1 1 1"	//The amount of physical damage that needs to be done to return and heal the caster
+			}
+			"10"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_locusts_on_target"	"7"	//Max counter of units locked onto one target, find another or idle if this threshold is met
 			}
 		}
 
-		"modifier_locust"
-		{	
-			"OnCreated"
+		"OnSpellStart"
+		{
+			"RemoveModifier"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
-					"Function"		"LocustSwarmPhysics"
-				}
+				"ModifierName"	"modifier_locust_swarm"
+				"Target" 		"CASTER"
+			}
 
-				"AttachEffect"
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_locust_swarm"
+				"Target"
 				{
-					"EffectName"		"particles/units/heroes/hero_stormspirit/stormspirit_base_attack_glow.vpcf"
-					"EffectAttachType"	"follow_origin"
-					"Target"            "TARGET"
-					"ControlPointEntities"
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"		"%duration"
+			}
+
+			"FireSound"
+			{
+				"EffectName"	"Hero_StormSpirit.StaticRemnantPlant"
+				"Target" 		"CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_locust_swarm"
+			{	
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"OnCreated"
+				{
+					"RunScript"
 					{
-						"TARGET"	"attach_origin"
-						"TARGET"	"attach_origin"
-						"TARGET"	"attach_origin"
-						"TARGET"	"attach_origin"
+						"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
+						"Function"		"LocustSwarmStart"
+					}
+				}
+
+				"OnDeath"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_StormSpirit.StaticRemnantExplode"
+						"Target" 		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
+						"Function"		"LocustSwarmDeath"
+					}
+				}
+
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
+						"Function"		"LocustSwarmEnd"
 					}
 				}
 			}
 
-			"OnDeath"
-			{
-				"RunScript"
+			"modifier_locust"
+			{	
+				"OnCreated"
 				{
-					"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
-					"Function"		"LocustDeath"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
+						"Function"		"LocustSwarmPhysics"
+					}
+
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_stormspirit/stormspirit_base_attack_glow.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"            "TARGET"
+						"ControlPointEntities"
+						{
+							"TARGET"	"attach_origin"
+							"TARGET"	"attach_origin"
+							"TARGET"	"attach_origin"
+							"TARGET"	"attach_origin"
+						}
+					}
 				}
-			}
-	
-			"States"
-			{
-				"MODIFIER_STATE_INVULNERABLE"					"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NO_HEALTH_BAR"					"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NO_UNIT_COLLISION"				"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NOT_ON_MINIMAP"					"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_UNSELECTABLE"					"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_FLYING"							"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_DISARMED"						"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
-	}
-}
 
-"serpent_queen_heavenly_power"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityTextureName"			"custom/serpent_queen_heavenly_power"
-
-
-	"AbilityCooldown"				"20"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_agility"	"25 50 75"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"4 5 6"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName" "modifier_serpent_queen_heavenly_power"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}	
-	}
-	
-	"Modifiers"
-	{
-		"modifier_serpent_queen_heavenly_power"
-		{
-			"Duration"		"%duration"
-			"IsBuff"		"1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"Properties"
-	      		{	
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
-	      		}
-		      	"EffectName"        "particles/units/heroes/hero_invoker/invoker_alacrity.vpcf"
-			"EffectAttachType"  "follow_overhead"
-		}
-
-	}
-}
-
-"serpent_queen_accuracy"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"custom/serpent_queen_accuracy"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityDamage"					"30 45 60"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCooldown"		 "1"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"minibash_chance"			"50 65 80"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bash_stun"	"0.15 0.20 0.25"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_damage"	"30 45 60"
-		}
-	}
-
-	
-	"Modifiers"
-	{
-		"serpent_queen_accuracy"	
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-
-			"OnAttackLanded"
-			{
-
-				"RunScript"
+				"OnDeath"
 				{
-					"ScriptFile"	"heroes\SerpentQueen\Accuracy.lua"
-					"Function"		"Bash"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/SerpentQueen/BallLightning.lua"
+						"Function"		"LocustDeath"
+					}
+				}
+		
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"					"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FLYING"							"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"						"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
-
-	}
-}	
-
-"serpent_queen_anger"
-{
-
-	"BaseClass"					"ability_datadriven"
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityUnitDamageType"  	"DAMAGE_TYPE_PHYSICAL"
-	"SpellImmunityType"      	"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"		"custom/serpent_queen_anger"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	
-	"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
-		"particle"			"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
-		"particle"			"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
 	}
 
-	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
-	"AbilityCastRange"				"1000"
-	"AbilityCooldown"				"100"
-	"AbilityDuration"				"20 25 30"
-
-	"AbilityManaCost"				"100 125 150"
-
-	"AbilitySpecial"
+	"serpent_queen_heavenly_power"
 	{
-		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"bonus_damage"		"75 150 225"		
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"radius"	"1000"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"duration"	"20 25 30"
-		}
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"custom/serpent_queen_heavenly_power"
 
-	"OnSpellStart"
-	{
-		"ActOnTargets"
+
+		"AbilityCooldown"				"20"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilitySpecial"
 		{
-			"Target"
+			"01"
 			{
-				"Center" "CASTER"
-                "Radius" "%radius"
-                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"	"25 50 75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4 5 6"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_serpent_queen_heavenly_power"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}	
+		}
+		
+		"Modifiers"
+		{
+			"modifier_serpent_queen_heavenly_power"
+			{
+				"Duration"		"%duration"
+				"IsBuff"		"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"Properties"
+					{	
+						"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+					}
+					"EffectName"        "particles/units/heroes/hero_invoker/invoker_alacrity.vpcf"
+				"EffectAttachType"  "follow_overhead"
 			}
 
-			"Action"
+		}
+	}
+
+	"serpent_queen_accuracy"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"custom/serpent_queen_accuracy"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityDamage"					"30 45 60"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCooldown"		 "1"
+
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"ApplyModifier"
+				"var_type"				"FIELD_INTEGER"
+				"minibash_chance"			"50 65 80"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_stun"	"0.15 0.20 0.25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"	"30 45 60"
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"serpent_queen_accuracy"	
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackLanded"
 				{
-					"ModifierName"	"modifier_serpent_queen_anger"
-					"Target"		"TARGET"
+
+					"RunScript"
+					{
+						"ScriptFile"	"heroes\SerpentQueen\Accuracy.lua"
+						"Function"		"Bash"
+					}
 				}
 			}
 		}
+	}	
 
-		"FireSound"
+	"serpent_queen_anger"
+	{
+
+		"BaseClass"					"ability_datadriven"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"  	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"		"custom/serpent_queen_anger"
+		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		"precache"
 		{
-			"EffectName"	"Hero_Magnataur.Empower.Cast"
-			"Target"		"CASTER"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+			"particle"			"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
+			"particle"			"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
 		}
 
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+		"AbilityCastRange"				"1000"
+		"AbilityCooldown"				"100"
+		"AbilityDuration"				"20 25 30"
 
-	}
+		"AbilityManaCost"				"100 125 150"
 
-	"Modifiers"
-	{
-		"modifier_serpent_queen_anger"
+		"AbilitySpecial"
 		{
-			"IsBuff"	"1"
-			"Duration"	"%AbilityDuration"
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
-			"EffectAttachType"	"follow_origin"
-
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"		"75 150 225"		
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"	"1000"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"	"20 25 30"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" "CASTER"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+					"Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_serpent_queen_anger"
+						"Target"		"TARGET"
+					}
+				}
+			}
+
+			"FireSound"
+			{
+				"EffectName"	"Hero_Magnataur.Empower.Cast"
+				"Target"		"CASTER"
+			}
+
+
+		}
+
+		"Modifiers"
+		{
+			"modifier_serpent_queen_anger"
+			{
+				"IsBuff"	"1"
+				"Duration"	"%AbilityDuration"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
+				"EffectAttachType"	"follow_origin"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+				}
 			}
 		}
 	}

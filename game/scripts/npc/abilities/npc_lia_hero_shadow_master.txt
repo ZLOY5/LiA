@@ -1,346 +1,348 @@
-"shadow_master_shadow"
+"DotaAbilities"
 {
-	"BaseClass"               	"ability_datadriven"
-  	"AbilityBehavior"         	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  	"AbilityTextureName"      	"custom/shadow_master_shadow"
-
-  	"AbilityCooldown"			"12"
-	"AbilityManaCost"			"30 40 50"
-    "AbilityCastPoint"          "0.5"
-	
-    "MaxLevel"               	"3"
-	"RequiredLevel"          	"1"
-	"LevelsBetweenUpgrades"  	"2"
-
-	"precache"
-	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-        "particle"  "particles/status_fx/status_effect_terrorblade_reflection.vpcf"
-		"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_reflection_cast.vpcf"
-        "particle"  "particles/generic_gameplay/illusion_killed.vpcf"
-	}
-
-	"AbilitySpecial"
-  	{
-    	"01"
-    	{
-    		"var_type"      			"FIELD_INTEGER"
-      		"shadow_lifetime"  			"120"
-    	}
-    	"02"
-    	{
-    		"var_type"      			"FIELD_INTEGER"
-      		"shadow_attributes_perc"  	"75 125 175"
-    	}
-    }
-
-    "OnOwnerDied"
+    "shadow_master_shadow"
     {
-    	"RunScript"
-    	{
-    		"ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
-    		"Function"		"HeroDied"
-    	}
-    }
+        "BaseClass"               	"ability_datadriven"
+        "AbilityBehavior"         	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityTextureName"      	"custom/shadow_master_shadow"
 
-    "OnAbilityPhaseStart"
-    {
-        "RunScript"
+        "AbilityCooldown"			"12"
+        "AbilityManaCost"			"30 40 50"
+        "AbilityCastPoint"          "0.5"
+        
+        "MaxLevel"               	"3"
+        "RequiredLevel"          	"1"
+        "LevelsBetweenUpgrades"  	"2"
+
+        "precache"
         {
-            "ScriptFile"        "heroes\ShadowMaster\Shadow.lua"
-            "Function"          "ShadowCast"
+            "soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+            "particle"  "particles/status_fx/status_effect_terrorblade_reflection.vpcf"
+            "particle"	"particles/units/heroes/hero_terrorblade/terrorblade_reflection_cast.vpcf"
+            "particle"  "particles/generic_gameplay/illusion_killed.vpcf"
         }
-    }
 
-    "OnSpellStart"
-    {
-    	"RunScript"
-    	{
-    		"ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
-    		"Function"		"SpawnShadow"
-    	}
-    }
-}
-
-"shadow_master_steal_shadow"
-{
-    "BaseClass"                 "ability_datadriven"
-    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
-    "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-    "AbilityTextureName"        "custom/shadow_master_steal_shadow"
-
-    "AbilityCooldown"           "15"
-    "AbilityManaCost"           "60 70 80"
-    "AbilityCastPoint"          "0.3"
-    "AbilityCastRange"          "500"
-
-    "AoERadius"                 "250"
-    
-    "MaxLevel"                  "3"
-    "RequiredLevel"             "2"
-    "LevelsBetweenUpgrades"     "2"
-
-    "precache"
-    {
-        "particle"  "particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
-        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
-    }
-
-    "AbilitySpecial"
-    {
-        "01"
+        "AbilitySpecial"
         {
-            "var_type"                  "FIELD_INTEGER"
-            "damage_per_sec"            "12 24 36"
-        }
-        "02"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "damage_shadow"             "30 60 90"
-        }
-        "03"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "duration"                  "10"
-        }
-        "04"
-        {
-            "var_type"                  "FIELD_INTEGER"
-            "radius"                    "250"
-        }
-    }
-
-    "OnSpellStart"
-    {
-        "FireSound"
-        {
-            "EffectName"    "Hero_Terrorblade.Reflection"
-            "Target"         "CASTER"
-        }
-        "RunScript"
-        {
-            "ScriptFile"    "heroes/ShadowMaster/StealShadow.lua"
-            "Function"      "StealShadow"
-            "Target"
+            "01"
             {
-                "Center"     "POINT"
-                "Radius"     "%radius"
-                "Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                "Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                "var_type"      			"FIELD_INTEGER"
+                "shadow_lifetime"  			"120"
+            }
+            "02"
+            {
+                "var_type"      			"FIELD_INTEGER"
+                "shadow_attributes_perc"  	"75 125 175"
+            }
+        }
+
+        "OnOwnerDied"
+        {
+            "RunScript"
+            {
+                "ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
+                "Function"		"HeroDied"
+            }
+        }
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "heroes\ShadowMaster\Shadow.lua"
+                "Function"          "ShadowCast"
+            }
+        }
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"	"heroes\ShadowMaster\Shadow.lua"	
+                "Function"		"SpawnShadow"
             }
         }
     }
 
-    "Modifiers"
+    "shadow_master_steal_shadow"
     {
-        "modifier_steal_shadow"
+        "BaseClass"                 "ability_datadriven"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+        "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+        "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityTextureName"        "custom/shadow_master_steal_shadow"
+
+        "AbilityCooldown"           "15"
+        "AbilityManaCost"           "60 70 80"
+        "AbilityCastPoint"          "0.3"
+        "AbilityCastRange"          "500"
+
+        "AoERadius"                 "250"
+        
+        "MaxLevel"                  "3"
+        "RequiredLevel"             "2"
+        "LevelsBetweenUpgrades"     "2"
+
+        "precache"
         {
-            "IsDebuff"          "1"
-            "IsPurgable"        "1"
+            "particle"  "particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
+            "soundfile"         "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+        }
 
-            "EffectName"    "particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
-            "EffectAttachType"  "follow_origin"
-
-            "ThinkInterval"     "1"
-            "OnIntervalThink"
+        "AbilitySpecial"
+        {
+            "01"
             {
-                "Damage"
+                "var_type"                  "FIELD_INTEGER"
+                "damage_per_sec"            "12 24 36"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "damage_shadow"             "30 60 90"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "duration"                  "10"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "radius"                    "250"
+            }
+        }
+
+        "OnSpellStart"
+        {
+            "FireSound"
+            {
+                "EffectName"    "Hero_Terrorblade.Reflection"
+                "Target"         "CASTER"
+            }
+            "RunScript"
+            {
+                "ScriptFile"    "heroes/ShadowMaster/StealShadow.lua"
+                "Function"      "StealShadow"
+                "Target"
                 {
-                    "Target"        "TARGET"
-                    "Type"          "DAMAGE_TYPE_MAGICAL"
-                    "Damage"        "%damage_per_sec"
+                    "Center"     "POINT"
+                    "Radius"     "%radius"
+                    "Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                    "Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                }
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_steal_shadow"
+            {
+                "IsDebuff"          "1"
+                "IsPurgable"        "1"
+
+                "EffectName"    "particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
+                "EffectAttachType"  "follow_origin"
+
+                "ThinkInterval"     "1"
+                "OnIntervalThink"
+                {
+                    "Damage"
+                    {
+                        "Target"        "TARGET"
+                        "Type"          "DAMAGE_TYPE_MAGICAL"
+                        "Damage"        "%damage_per_sec"
+                    }
                 }
             }
         }
     }
-}
 
-"shadow_master_art_of_shadows"
-{
-	"BaseClass"                 "ability_datadriven"
-	"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_TOGGLE"
-	"AbilityTextureName"        "custom/shadow_master_art_of_shadows"
-
-	"MaxLevel"                  "3"
-	"RequiredLevel"             "2"
-	"LevelsBetweenUpgrades"     "2"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-		    "var_type"                  "FIELD_INTEGER"
-		    "max_shadows"               "4 5 6"
-		}
-		"02"
-		{
-		    "var_type"                  "FIELD_INTEGER"
-		    "shadow_lifetime"           "8 10 12"
-		}
-		"03"
-		{
-		    "var_type"                  "FIELD_INTEGER"
-		    "shadow_attributes_perc"    "75 100 125"
-		}
-		"04"
-		{
-		    "var_type"                  "FIELD_INTEGER"
-		    "spawn_chance"              "17"
-		}
-	}
-
-	"OnOwnerDied"
-	{
-		"RunScript"
-		{
-		    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
-		    "Function"          "HeroDied"
-		}
-	}
-    
-    	"OnToggleOn"
-	{
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_art_of_shadows"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-	}
-
-	"OnToggleOff"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"	"modifier_art_of_shadows"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}	
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_art_of_shadows"
-		{
-		    "Passive"           "0"
-
-		    "Orb"
-		    {
-			"Priority"            "DOTA_ORB_PRIORITY_ABILITY"
-		    }
-
-		    "OnOrbImpact"
-		    {
-			"Random"
-			{
-			    "Chance"            "%spawn_chance"
-			    "OnSuccess"
-			    {
-				"RunScript"
-				{
-				    "ScriptFile"    "heroes/ShadowMaster/ArtOfShadows.lua"
-				    "Function"      "ArtOfShadows"
-				}
-			    }
-			}
-		    }  
-		}
-
-		"modifier_art_of_shadows_shadow"
-		{
-		    "IsHidden"           "1"
-
-		    "OnDeath"
-		    {
-			"RunScript"
-			{
-			    "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
-			    "Function"          "ShadowDeath"
-			}
-		    }
-
-		}
-	}
-}
-
-"shadow_master_agility_of_shadows"
-{
-    "BaseClass"                 "ability_datadriven"
-    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"        "custom/shadow_master_agility_of_shadows"
- 
-    "AbilityType"               "DOTA_ABILITY_TYPE_ULTIMATE"    
-    "MaxLevel"                  "3"
-    "RequiredLevel"             "5"
-    "LevelsBetweenUpgrades"     "4"
-
-    "precache"
+    "shadow_master_art_of_shadows"
     {
-        "particle"  "particles/abaddon_frost_slow.vpcf"
-    }
+        "BaseClass"                 "ability_datadriven"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+        "AbilityTextureName"        "custom/shadow_master_art_of_shadows"
 
-    "AbilitySpecial"
-    {
-        "01"
+        "MaxLevel"                  "3"
+        "RequiredLevel"             "2"
+        "LevelsBetweenUpgrades"     "2"
+
+        "AbilitySpecial"
         {
-            "var_type"                  "FIELD_INTEGER"
-            "duration"                  "5 7 9"
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "max_shadows"               "4 5 6"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "shadow_lifetime"           "8 10 12"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "shadow_attributes_perc"    "75 100 125"
+            }
+            "04"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "spawn_chance"              "17"
+            }
         }
-        "02"
+
+        "OnOwnerDied"
         {
-            "var_type"                  "FIELD_INTEGER"
-            "bonus_attack_speed"        "60 120 180"
+            "RunScript"
+            {
+                "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
+                "Function"          "HeroDied"
+            }
         }
-        "03"
+        
+            "OnToggleOn"
         {
-            "var_type"                  "FIELD_INTEGER"
-            "chance"                    "20"
-        }
-    }
-
-
-    "Modifiers"
-    {
-        "modifier_agility_of_shadows"
-        {
-            "Passive"           "1"
-            "IsHidden"          "1"
-
-             "OnAttacked"
-             {
-                "Random"
+            "ApplyModifier"
+            {
+                "ModifierName"	"modifier_art_of_shadows"
+                "Target"
                 {
-                    "Chance"            "%chance"
-                    "OnSuccess"
+                    "Center"  	"CASTER"
+                    "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+                }
+            }
+        }
+
+        "OnToggleOff"
+        {
+            "RemoveModifier"
+            {
+                "ModifierName"	"modifier_art_of_shadows"
+                "Target"
+                {
+                    "Center"  	"CASTER"
+                    "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+                }	
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_art_of_shadows"
+            {
+                "Passive"           "0"
+
+                "Orb"
+                {
+                    "Priority"            "DOTA_ORB_PRIORITY_ABILITY"
+                }
+
+                "OnOrbImpact"
+                {
+                    "Random"
                     {
-                        "RunScript"
+                        "Chance"            "%spawn_chance"
+                        "OnSuccess"
                         {
-                            "ScriptFile"        "heroes/ShadowMaster/AgilityOfShadows.lua"
-                            "Function"          "ApplyBuffs"
+                            "RunScript"
+                            {
+                                "ScriptFile"    "heroes/ShadowMaster/ArtOfShadows.lua"
+                                "Function"      "ArtOfShadows"
+                            }
+                        }
+                    }
+                }  
+            }
+
+            "modifier_art_of_shadows_shadow"
+            {
+                "IsHidden"           "1"
+
+                "OnDeath"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "heroes/ShadowMaster/ArtOfShadows.lua"
+                        "Function"          "ShadowDeath"
+                    }
+                }
+
+            }
+        }
+    }
+
+    "shadow_master_agility_of_shadows"
+    {
+        "BaseClass"                 "ability_datadriven"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"        "custom/shadow_master_agility_of_shadows"
+    
+        "AbilityType"               "DOTA_ABILITY_TYPE_ULTIMATE"    
+        "MaxLevel"                  "3"
+        "RequiredLevel"             "5"
+        "LevelsBetweenUpgrades"     "4"
+
+        "precache"
+        {
+            "particle"  "particles/abaddon_frost_slow.vpcf"
+        }
+
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "duration"                  "5 7 9"
+            }
+            "02"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "bonus_attack_speed"        "60 120 180"
+            }
+            "03"
+            {
+                "var_type"                  "FIELD_INTEGER"
+                "chance"                    "20"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_agility_of_shadows"
+            {
+                "Passive"           "1"
+                "IsHidden"          "1"
+
+                "OnAttacked"
+                {
+                    "Random"
+                    {
+                        "Chance"            "%chance"
+                        "OnSuccess"
+                        {
+                            "RunScript"
+                            {
+                                "ScriptFile"        "heroes/ShadowMaster/AgilityOfShadows.lua"
+                                "Function"          "ApplyBuffs"
+                            }
                         }
                     }
                 }
-             }
-        }
+            }
 
-        "modifier_art_of_shadows_buff"
-        {
-            "IsBuff"            "1"
-            "IsPurgable"        "1"
-            
-            "EffectName"    "particles/abaddon_frost_slow.vpcf"
-            "EffectAttachType"  "follow_origin"
-
-            "Properties"
+            "modifier_art_of_shadows_buff"
             {
-                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+                "IsBuff"            "1"
+                "IsPurgable"        "1"
+                
+                "EffectName"    "particles/abaddon_frost_slow.vpcf"
+                "EffectAttachType"  "follow_origin"
+
+                "Properties"
+                {
+                    "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+                }
             }
         }
     }

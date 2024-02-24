@@ -1,111 +1,114 @@
-"spider_queen_killer_instinct"
+"DotaAbilities"
 {
-	"BaseClass"   "ability_lua"
-	"ScriptFile"    "heroes/SpiderQueen/spider_queen_killer_instinct.lua"
-
-	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
-	"AbilityTextureName"    "broodmother_incapacitating_bite"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastPoint"				"0.2 0.2 0.2"
-	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-
-	"AbilityCooldown"				"14 13 12"
-	"AbilityManaCost"				"40 50 60"
-
-	"AbilityValues"
+	"spider_queen_killer_instinct"
 	{
-		"damage"  "100 175 250"
-		"attacks_count"     "2 3 4"
-		"duration"	"6"
-		"full_radius"  "180"
-		"half_radius"  "240"
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/SpiderQueen/spider_queen_killer_instinct.lua"
+
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+		"AbilityTextureName"    "broodmother_incapacitating_bite"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastPoint"				"0.2 0.2 0.2"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+
+		"AbilityCooldown"				"14 13 12"
+		"AbilityManaCost"				"40 50 60"
+
+		"AbilityValues"
+		{
+			"damage"  "100 175 250"
+			"attacks_count"     "2 3 4"
+			"duration"	"6"
+			"full_radius"  "180"
+			"half_radius"  "240"
+		}
 	}
-}
 
-"spider_queen_spider_yarn"
-{
-	"BaseClass"              "ability_lua"
-	"ScriptFile"       "heroes/SpiderQueen/spider_queen_spider_yarn.lua"
-
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
-	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"     "broodmother_spin_web"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastRange"        "500"
-	"AbilityCastPoint"        "0.2"
-	"AbilityCastAnimation"	  "ACT_DOTA_CAST_ABILITY_2"
-	"AbilityCooldown"         "20"
-	"AbilityManaCost"         "40 60 80"
-	"AoERadius"               "300"
-
-	"AbilityValues"
+	"spider_queen_spider_yarn"
 	{
-		"damage_per_second" "15 30 45"
-		"miss_chance"	"10 20 30"
-		"movement_slow_percentage"	"-10 -20 -30"
-		"base_duration"	"8"
-		"bonus_duration_per_spider"	"2"
-		"radius"	"300"
-	} 
-}
+		"BaseClass"              "ability_lua"
+		"ScriptFile"       "heroes/SpiderQueen/spider_queen_spider_yarn.lua"
 
-"spider_queen_infection"
-{
-	"BaseClass"   "ability_lua"
-	"ScriptFile"    "heroes/SpiderQueen/spider_queen_infection.lua"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"     "broodmother_spin_web"
 
-	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"    "broodmother_spawn_spiderlings"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
+		"AbilityCastRange"        "500"
+		"AbilityCastPoint"        "0.2"
+		"AbilityCastAnimation"	  "ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"         "20"
+		"AbilityManaCost"         "40 60 80"
+		"AoERadius"               "300"
 
-	"AbilityCastPoint"				"0.2 0.2 0.2"
-	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-
-	"AbilityCooldown"				"20"
-	"AbilityManaCost"				"20 25 30"
-
-	"AbilityValues"
-	{
-		"infection_chance"	"40"
-		"spider_hp_tooltip"	"150 350 550"
-		"spider_dmg_tooltip"	"11 24 51"
-		"spider_duration"	"30"
-		"spider_max_count"	"2 4 6"
+		"AbilityValues"
+		{
+			"damage_per_second" "15 30 45"
+			"miss_chance"	"10 20 30"
+			"movement_slow_percentage"	"-10 -20 -30"
+			"base_duration"	"8"
+			"bonus_duration_per_spider"	"2"
+			"radius"	"300"
+		} 
 	}
-}	
 
-"spider_queen_thick_cover"
-{
-	"BaseClass"   "ability_lua"
-	"ScriptFile"    "heroes/SpiderQueen/spider_queen_thick_cover.lua"
-
-	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"      "broodmother_insatiable_hunger"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-
-	"AbilityValues"
+	"spider_queen_infection"
 	{
-		"bonus_health_regen"    "25 50 75"
-		"bonus_base_agility"	"10 20 30"
-	} 
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/SpiderQueen/spider_queen_infection.lua"
+
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"    "broodmother_spawn_spiderlings"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastPoint"				"0.2 0.2 0.2"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+
+		"AbilityCooldown"				"20"
+		"AbilityManaCost"				"20 25 30"
+
+		"AbilityValues"
+		{
+			"infection_chance"	"40"
+			"spider_hp_tooltip"	"150 350 550"
+			"spider_dmg_tooltip"	"11 24 51"
+			"spider_duration"	"30"
+			"spider_max_count"	"2 4 6"
+		}
+	}	
+
+	"spider_queen_thick_cover"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/SpiderQueen/spider_queen_thick_cover.lua"
+
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "broodmother_insatiable_hunger"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"AbilityValues"
+		{
+			"bonus_health_regen"    "25 50 75"
+			"bonus_base_agility"	"10 20 30"
+		} 
+	}
 }

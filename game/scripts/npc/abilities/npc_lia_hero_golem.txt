@@ -1,6 +1,8 @@
-"akron_explosion"
- {
-   // General
+"DotaAbilities"
+{
+  "akron_explosion"
+  {
+    // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
     "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -20,12 +22,12 @@
     "AbilityCastPoint"  "0.2"
     "AbilityCastRange"  "0"
 
-  "precache"
-  {
-     "particle" "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-     "particle"  "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
-     "soundfile"  "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
-  }
+    "precache"
+    {
+      "particle" "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+      "particle"  "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
+      "soundfile"  "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+    }
 
     // Special    
     //-------------------------------------------------------------------------------------------------------------
@@ -56,7 +58,6 @@
             "var_type"                "FIELD_INTEGER"
             "burn_damage_actual"             "5 10 15"
         }
-
     }
 
     "OnSpellStart"
@@ -106,9 +107,8 @@
     } 
   }
 
-
-"acron_battle_fevor"
-{
+  "acron_battle_fevor"
+  {
     // General  
     // ----------------------------------------------------------------------------------------
     "BaseClass"                 "ability_lua"
@@ -137,38 +137,35 @@
     //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"                          "FIELD_INTEGER"
-            "stack_armor"                       "2 4 6"
-        }
-        "02"
-        {
-            "var_type"                          "FIELD_INTEGER"
-            "stack_health_regen"                "3 6 9"
-        }
-        "03"
-        { 
-            "var_type"                          "FIELD_INTEGER"
-            "stack_duration"                    "5"
-        }
-        "04"
-        {
-            "var_type"                          "FIELD_INTEGER"
-            "radius"                            "500"
-        }
-        "05"
-        {
-            "var_type"                          "FIELD_INTEGER"
-            "magical_resistance_passive"        "20 30 40"
-        }
+      "01"
+      {
+          "var_type"                          "FIELD_INTEGER"
+          "stack_armor"                       "2 4 6"
+      }
+      "02"
+      {
+          "var_type"                          "FIELD_INTEGER"
+          "stack_health_regen"                "3 6 9"
+      }
+      "03"
+      { 
+          "var_type"                          "FIELD_INTEGER"
+          "stack_duration"                    "5"
+      }
+      "04"
+      {
+          "var_type"                          "FIELD_INTEGER"
+          "radius"                            "500"
+      }
+      "05"
+      {
+          "var_type"                          "FIELD_INTEGER"
+          "magical_resistance_passive"        "20 30 40"
+      }
     }
-}  
-
-
-
-   
-"akron_firerage"
+  }  
+  
+  "akron_firerage"
   {
     // General
     //-------------------------------------------------------------------------------------------------------------
@@ -177,354 +174,150 @@
     "AbilityUnitDamageType"  "DAMAGE_TYPE_PHYSICAL"
     "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_YES"
     "AbilityTextureName"     "earthshaker_aftershock"
-     "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"   
+    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"   
 
     "AoERadius"                "%radius"
-	 "AbilityCastRange"			"%radius"
+    "AbilityCastRange"			"%radius"
 
     "AbilityType"            "DOTA_ABILITY_TYPE_BASIC"
     "MaxLevel"               "3"
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
-   
+  
     "precache"
     {
         "particle"	"particles/units/heroes/hero_techies/techies_land_mine_explode.vpcf"
     }
 
-        // Special    
+    // Special    
     //-------------------------------------------------------------------------------------------------------------
     "AbilitySpecial"
     {
         "01"
         {
-            "var_type"                "FIELD_INTEGER"
-            "radius"                  "250"
+          "var_type"                "FIELD_INTEGER"
+          "radius"                  "250"
         }
         "02"
         {
-            "var_type"                "FIELD_INTEGER"
-            "damage"                  "60 120 180"
+          "var_type"                "FIELD_INTEGER"
+          "damage"                  "60 120 180"
         }
         "03"
         {
-            "var_type"                "FIELD_INTEGER"
-            "StackForExplosion"       "15"
+          "var_type"                "FIELD_INTEGER"
+          "StackForExplosion"       "15"
         }
         "04"
         {
-            "var_type"                "FIELD_INTEGER"
-            "stackTime"               "12"
+          "var_type"                "FIELD_INTEGER"
+          "stackTime"               "12"
         }
         "05"
         {
-            "var_type"                "FIELD_INTEGER"
-            "heroStacks"               "5"
+          "var_type"                "FIELD_INTEGER"
+          "heroStacks"               "5"
         }
     } 
-   
+  
     // Casting
     //-------------------------------------------------------------------------------------------------------------
     "Modifiers"
     {  
         "modifier_firerage_datadriven"
         {
-            "Passive"       "1"
-        
-            "OnAttacked"
-            { 
-                "RunScript"
-                {
-                    "ScriptFile"  "heroes/Acron/firerage.lua"
-                    "Function"    "StackCountIncrease"
-                    "Stack"       "%StackForExplosion"
-                }
-            } 
+          "Passive"       "1"       
+          "OnAttacked"
+          { 
+            "RunScript"
+            {
+              "ScriptFile"  "heroes/Acron/firerage.lua"
+              "Function"    "StackCountIncrease"
+              "Stack"       "%StackForExplosion"
+            }
+          } 
         }
 
         "modifier_firerage_explosion"
         {
-            "IsHidden"      "1"
-          
-            "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
+          "IsHidden"      "1"
+        
+          "OnCreated"     //THIS IS IMPORTANT, A MODIFIER EVENT ALLOWS FOR ACTIONS INSIDE IT
+          {
+            "AttachEffect"
             {
-                "AttachEffect"
-                {
-                    "EffectName"          "particles/units/heroes/hero_techies/techies_suicide.vpcf"
-                    "EffectAttachType"    "attach_origin"
-                    "Target"              "CASTER"
-                }
-                "FireSound"
-                {
-                    "EffectName"    "Hero_EarthShaker.EchoSlam"
-                    "Target"        "CASTER"
-                }
-                "Damage"
-                {
-                    "Type"   "DAMAGE_TYPE_PHYSICAL"
-                    "Damage" "%damage"
-                    "Target"
-                    {
-                        "Center"    "CASTER"
-                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-                        "Radius"    "%radius"
-                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-                        "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-                    }
-                }
+              "EffectName"          "particles/units/heroes/hero_techies/techies_suicide.vpcf"
+              "EffectAttachType"    "attach_origin"
+              "Target"              "CASTER"
             }
+            "FireSound"
+            {
+              "EffectName"    "Hero_EarthShaker.EchoSlam"
+              "Target"        "CASTER"
+            }
+            "Damage"
+            {
+              "Type"   "DAMAGE_TYPE_PHYSICAL"
+              "Damage" "%damage"
+              "Target"
+              {
+                  "Center"    "CASTER"
+                  "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                  "Radius"    "%radius"
+                  "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+                  "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+              }
+            }
+          }
         }
     } 
-}
-
-
-"acron_molten_fury"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"              "ability_datadriven"
-  "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-  "AbilityTextureName"     "custom/golem_ground_slam"
-
-  "AbilityCooldown" "40"
-  "AbilityCastRange"  "300"
-  "AbilityManaCost" "100 150 200"
-  "AoERadius"  "300"
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "5"
-    "LevelsBetweenUpgrades"  "4"
-
-  "AbilityCastPoint"  "0.2"
-  "AbilityCastRange"  "0"
-
-  "precache"
-  {
-    "particle" "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
-    "soundfile"  "soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
   }
 
-  "OnSpellStart"
+  "acron_molten_fury"
   {
-    "ApplyModifier"
-    {
-      "Target"        "CASTER"
-      "ModifierName"  "modifier_akron_battle_fevor_aura"
-    }
-
-    "RunScript"
-    {
-      "ScriptFile"  "heroes/Acron/BattleFevor.lua"
-      "Function"    "Sound"
-      "Target"
-      {
-        "Center"    "CASTER"
-        "Radius"  "%radius"
-        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-      }
-    }
-
-  }
-
-
-
-
-  // Special    
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"                "FIELD_INTEGER"
-      "bonus_attack_speed"      "40 60 80"
-    }
-    "02"
-    {
-      "var_type"                "FIELD_INTEGER"
-      "damage_reduction"        "-40 -60 -80"
-    }
-    "03"
-    {
-      "var_type"                "FIELD_FLOAT"
-      "duration"                "4 5 6"
-    }
-    "04"
-    {
-      "var_type"                "FIELD_INTEGER"
-      "radius"                  "300"
-    }
-  }
-
-  "Modifiers"
-  {
-    "modifier_akron_battle_fevor_aura"
-    {
-      "Passive"     "0"
-      "IsHidden"      "0"
-      "Duration"    "%duration"
-
-      "EffectName"    "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
-      "EffectAttachType"  "follow_origin"
-
-      "Aura"            "modifier_akron_battle_fevor"
-      "Aura_Radius"     "%radius"
-      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
-      "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-    }
-
-    "modifier_akron_battle_fevor"
-    {
-      "Passive"      "0"
-      "IsHidden"      "0"
-      "IsDebuff"      "1"
-  
-      "EffectName"    "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
-      "EffectAttachType"  "follow_origin"
-
-  
-      "Properties"
-      {
-        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-        "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%damage_reduction"
-      }
-
-      "States"
-      {
-        "MODIFIER_STATE_PASSIVES_DISABLED"    "MODIFIER_STATE_VALUE_ENABLED"
-      }
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- "akron_ground_slam"
-  {
-   // General
+    // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "AbilityTextureName"     "golem_ground_slam"
+    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+    "AbilityTextureName"     "custom/golem_ground_slam"
 
+    "AbilityCooldown" "40"
+    "AbilityCastRange"  "300"
+    "AbilityManaCost" "100 150 200"
+    "AoERadius"  "300"
     "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
     "MaxLevel"               "3"
     "RequiredLevel"          "5"
     "LevelsBetweenUpgrades"  "4"
 
-    "AbilityCooldown"         "80"
+    "AbilityCastPoint"  "0.2"
+    "AbilityCastRange"  "0"
 
-    "AbilityCastPoint"        "0.2"
-    "AbilityCastRange"        "1500"
+    "precache"
+    {
+      "particle" "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+      "soundfile"  "soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
+    }
 
-    "AbilityManaCost"        "120 140 160"
-
-    "AoERadius"              "%radius"
-    
-	"precache"
-	{
-	"particle"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
-	}
-
-    // Casting
-    //-------------------------------------------------------------------------------------------------------------
-        "OnSpellStart"
-       {
-         "ActOnTargets"
-        {
-          "Target"
-          {
-            "Center"  "CASTER"
-            "Radius"  "%radius"
-            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-          }
-          
-          "Action"
-          {
-            "Damage"
-             {
-              "Target"    "TARGET"
-              "Type"      "DAMAGE_TYPE_MAGICAL"
-              "Damage"    "%Damage"
-             }
-            
-            "ApplyModifier"
-             {
-              "Target"        "TARGET"
-              "ModifierName"  "modifier_eruption_datadriven"
-             }
-
-          }
-        }
-		"FireSound"
-		{
-			"EffectName"	"Hero_EarthShaker.EchoSlam"
-			"Target"		"CASTER"
-		}
-		"AttachEffect"
-		{
-		"EffectName"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
-		"EffectAttachType"	"start_at_customorigin"
-		"Target"		"CASTER"
-		"EffectRadius"				"%radius"
-		}
+    "OnSpellStart"
+    {
+      "ApplyModifier"
+      {
+        "Target"        "CASTER"
+        "ModifierName"  "modifier_akron_battle_fevor_aura"
       }
 
-
-    "Modifiers"
-    {
-      "modifier_eruption_datadriven"
+      "RunScript"
       {
-        "IsPurgable"      "1"
-        "IsDebuff"        "1"
-    
-        "Duration"        "%duration"
-      
-        "Properties"
+        "ScriptFile"  "heroes/Acron/BattleFevor.lua"
+        "Function"    "Sound"
+        "Target"
         {
-          "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_attack_and_movement"
-          //"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
+          "Center"    "CASTER"
+          "Radius"  "%radius"
+          "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+          "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         }
       }
     }
@@ -535,28 +328,226 @@
     {
       "01"
       {
-       "var_type"                           "FIELD_INTEGER"
-       "Damage"                      "150 300 450"
+        "var_type"                "FIELD_INTEGER"
+        "bonus_attack_speed"      "40 60 80"
       }
-     "02"
+      "02"
       {
-       "var_type"                            "FIELD_INTEGER"
-       "slow_speed_attack_and_movement"      "-40 -60 -80"
+        "var_type"                "FIELD_INTEGER"
+        "damage_reduction"        "-40 -60 -80"
       }
-	  "03"
+      "03"
       {
-       "var_type"                            "FIELD_INTEGER"
-       "slow_tooltip"      "-40 -60 -80"
+        "var_type"                "FIELD_FLOAT"
+        "duration"                "4 5 6"
       }
-	 "04"
-     {
-       "var_type"                            "FIELD_FLOAT"
-       "duration"                            "5 10 15"
-     }
-      "05"
+      "04"
       {
-       "var_type"                           "FIELD_INTEGER"
-       "radius"                             "1500"
+        "var_type"                "FIELD_INTEGER"
+        "radius"                  "300"
       }
-    }  
+    }
+
+    "Modifiers"
+    {
+      "modifier_akron_battle_fevor_aura"
+      {
+        "Passive"     "0"
+        "IsHidden"      "0"
+        "Duration"    "%duration"
+
+        "EffectName"    "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+        "EffectAttachType"  "follow_origin"
+
+        "Aura"            "modifier_akron_battle_fevor"
+        "Aura_Radius"     "%radius"
+        "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Aura_Types"      "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+      }
+
+      "modifier_akron_battle_fevor"
+      {
+        "Passive"      "0"
+        "IsHidden"      "0"
+        "IsDebuff"      "1"
+    
+        "EffectName"    "particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
+        "EffectAttachType"  "follow_origin"
+   
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+          "MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%damage_reduction"
+        }
+
+        "States"
+        {
+          "MODIFIER_STATE_PASSIVES_DISABLED"    "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "akron_ground_slam"
+    {
+    // General
+      //-------------------------------------------------------------------------------------------------------------
+      "BaseClass"              "ability_datadriven"
+      "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+      "AbilityTextureName"     "golem_ground_slam"
+
+      "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+      "MaxLevel"               "3"
+      "RequiredLevel"          "5"
+      "LevelsBetweenUpgrades"  "4"
+
+      "AbilityCooldown"         "80"
+
+      "AbilityCastPoint"        "0.2"
+      "AbilityCastRange"        "1500"
+
+      "AbilityManaCost"        "120 140 160"
+
+      "AoERadius"              "%radius"
+      
+    "precache"
+    {
+    "particle"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
+    }
+
+      // Casting
+      //-------------------------------------------------------------------------------------------------------------
+          "OnSpellStart"
+        {
+          "ActOnTargets"
+          {
+            "Target"
+            {
+              "Center"  "CASTER"
+              "Radius"  "%radius"
+              "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            }
+            
+            "Action"
+            {
+              "Damage"
+              {
+                "Target"    "TARGET"
+                "Type"      "DAMAGE_TYPE_MAGICAL"
+                "Damage"    "%Damage"
+              }
+              
+              "ApplyModifier"
+              {
+                "Target"        "TARGET"
+                "ModifierName"  "modifier_eruption_datadriven"
+              }
+
+            }
+          }
+      "FireSound"
+      {
+        "EffectName"	"Hero_EarthShaker.EchoSlam"
+        "Target"		"CASTER"
+      }
+      "AttachEffect"
+      {
+      "EffectName"	"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_egset.vpcf"
+      "EffectAttachType"	"start_at_customorigin"
+      "Target"		"CASTER"
+      "EffectRadius"				"%radius"
+      }
+        }
+
+
+      "Modifiers"
+      {
+        "modifier_eruption_datadriven"
+        {
+          "IsPurgable"      "1"
+          "IsDebuff"        "1"
+      
+          "Duration"        "%duration"
+        
+          "Properties"
+          {
+            "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_attack_and_movement"
+            //"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%slow_speed_attack_and_movement"
+          }
+        }
+      }
+
+      // Special    
+      //-------------------------------------------------------------------------------------------------------------
+      "AbilitySpecial"
+      {
+        "01"
+        {
+        "var_type"                           "FIELD_INTEGER"
+        "Damage"                      "150 300 450"
+        }
+      "02"
+        {
+        "var_type"                            "FIELD_INTEGER"
+        "slow_speed_attack_and_movement"      "-40 -60 -80"
+        }
+      "03"
+        {
+        "var_type"                            "FIELD_INTEGER"
+        "slow_tooltip"      "-40 -60 -80"
+        }
+    "04"
+      {
+        "var_type"                            "FIELD_FLOAT"
+        "duration"                            "5 10 15"
+      }
+        "05"
+        {
+        "var_type"                           "FIELD_INTEGER"
+        "radius"                             "1500"
+        }
+      }  
+    }
+}

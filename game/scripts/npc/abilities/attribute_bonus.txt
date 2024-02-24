@@ -1,37 +1,40 @@
-"attribute_bonuses"
- {
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilityTextureName"   "attribute_bonus"
-  "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "BaseClass"	"ability_datadriven" 
-
-  "MaxLevel"               "10"
-  "RequiredLevel"          "12"
-  "LevelsBetweenUpgrades"  "1"  
-  // Special
-  //-------------------------------------------------------------------------------------------------------------
-  "AbilitySpecial"
+"DotaAbilities"
+{
+  "attribute_bonuses"
   {
-   "01"
-   {
-    "var_type"      "FIELD_FLOAT"
-    "attribute_bonus_per_level"  "3 6 9 12 15 18 21 24 27 30"
-   }
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityTextureName"   "attribute_bonus"
+    "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"	"ability_datadriven" 
+
+    "MaxLevel"               "10"
+    "RequiredLevel"          "12"
+    "LevelsBetweenUpgrades"  "1"  
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"      "FIELD_FLOAT"
+        "attribute_bonus_per_level"  "3 6 9 12 15 18 21 24 27 30"
+      }
+    }
+    "Modifiers"
+    {
+      "modifier_attribute_bonuses"
+      {
+        "Passive"			"1"
+        "IsHidden"			"1"
+        
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%attribute_bonus_per_level"
+          "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%attribute_bonus_per_level"
+          "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%attribute_bonus_per_level"
+        }
+      }
+    }
   }
-	"Modifiers"
-	{
-		"modifier_attribute_bonuses"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%attribute_bonus_per_level"
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%attribute_bonus_per_level"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%attribute_bonus_per_level"
-			}
-		}
-	}
- }
+} 

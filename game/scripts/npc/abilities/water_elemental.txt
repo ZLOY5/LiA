@@ -1,81 +1,81 @@
-"water_elemental_4_orb"
+"DotaAbilities"
 {
-	"BaseClass"             "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"    "ghost_frost_attack"
-
-    "AbilityCooldown"           "0"
-    "AbilityManacost"           "0"
-
-    "MaxLevel"              "1"
-
-    "AbilitySpecial"
-  	{
-    	"01"
-    	{
-    		"var_type"      			"FIELD_INTEGER"
-      		"extra_dmg"  				"5"
-    	}
-    	"02"
-    	{
-    		"var_type"      			"FIELD_FLOAT"
-      		"duration"  				"4.0"
-    	}
-    	"03"
-    	{
-    		"var_type"      			"FIELD_INTEGER"
-      		"reduce_armor"  				"-9"
-    	}
-    }
-	
-	"Modifiers"
+	"water_elemental_4_orb"
 	{
-		"modifier_water_elemental_4_orb"
-		{
-			"Passive"          "1"    
-			"IsHidden"         "1"
-			//"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
- 
-			"Orb"
-			{
-				"Priority"  "DOTA_ORB_PRIORITY_ABILITY"
-				//"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
-			}
+		"BaseClass"             "ability_datadriven"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"    "ghost_frost_attack"
 
-			"OnOrbImpact"
+		"AbilityCooldown"           "0"
+		"AbilityManacost"           "0"
+
+		"MaxLevel"              "1"
+
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"ApplyModifier"
-				{
-					"Target"    "TARGET"
-					"ModifierName"  "modifier_water_elemental_4_orb_hit"
-					"Duration"  "%duration"
-				}
-				
-				"Damage"
-				{
-					"Target" 	"TARGET"
-					"Type" 		"DAMAGE_TYPE_PHYSICAL"
-					"Damage" 	"%extra_dmg"
-				}
-				
+				"var_type"      			"FIELD_INTEGER"
+				"extra_dmg"  				"5"
+			}
+			"02"
+			{
+				"var_type"      			"FIELD_FLOAT"
+				"duration"  				"4.0"
+			}
+			"03"
+			{
+				"var_type"      			"FIELD_INTEGER"
+				"reduce_armor"  				"-9"
 			}
 		}
-		"modifier_water_elemental_4_orb_hit" 
+		
+		"Modifiers"
 		{
-			"IsDebuff" "1"
-			//"Duration"  "3"
-			
-			"Properties"
+			"modifier_water_elemental_4_orb"
 			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%reduce_armor"
-			} 
-			
-			//"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
-			//"EffectAttachType" "attach_hitloc"
-			//"Target" "TARGET"
-
-		}
-	}
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				//"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 	
-}
+				"Orb"
+				{
+					"Priority"  "DOTA_ORB_PRIORITY_ABILITY"
+					//"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
+				}
 
+				"OnOrbImpact"
+				{
+					"ApplyModifier"
+					{
+						"Target"    "TARGET"
+						"ModifierName"  "modifier_water_elemental_4_orb_hit"
+						"Duration"  "%duration"
+					}
+					
+					"Damage"
+					{
+						"Target" 	"TARGET"
+						"Type" 		"DAMAGE_TYPE_PHYSICAL"
+						"Damage" 	"%extra_dmg"
+					}
+					
+				}
+			}
+			"modifier_water_elemental_4_orb_hit" 
+			{
+				"IsDebuff" "1"
+				//"Duration"  "3"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%reduce_armor"
+				} 
+				
+				//"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
+				//"EffectAttachType" "attach_hitloc"
+				//"Target" "TARGET"
+			}
+		}	
+	}
+}

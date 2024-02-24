@@ -1,623 +1,615 @@
-"wave_1_poison_extreme"
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_lua"
-	"ScriptFile"					"abilities/wave_1_poison_extreme"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"AbilityTextureName"			"sandking_caustic_finale"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-
-	"precache"
+	"wave_1_poison_extreme"
 	{
-		"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
-	}
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/wave_1_poison_extreme"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityTextureName"			"sandking_caustic_finale"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+
+		"precache"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"movement_slow"		"-25"
+			"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
 		}
-		"02"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"attack_slow"		"-25"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_per_second"		"10"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"		"4"
-		}
-
-	}
-}
-
-"wave_2_aura_of_vengeance_extreme"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/wave_2_aura_of_vengeance_extreme.lua"
-	"AbilityTextureName"			"custom/2_wave_thorns_aura"
-
-	"MaxLevel"               		"1"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-	"AbilityCastRange"				"1000"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"1000"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"damage_return"				"35"		
-		}	
-	}
-
-}
-
-"wave_2_centaurs_revenge_extreme"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/wave_2_centaurs_revenge_extreme.lua"
-	"AbilityTextureName"			"custom/brewmaster_punisment"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"damage_return"				"20"		
-		}	
-	}
-
-}
-
-"2_wave_centaur_chieftain_aura_extreme"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"centaur_khan_endurance_aura"
-	
-	// Casting
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"900"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_movement_speed_percentage"	"30"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"30"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_2_wave_centaur_chieftain_aura"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-	
-			"Aura"          	"modifier_2_wave_centaur_chieftain_aura_buff"
-			"Aura_Radius"   	"%radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-			"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES" 
-		}
-
-		"modifier_2_wave_centaur_chieftain_aura_buff"
-		{
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed_percentage"
+				"var_type"				"FIELD_INTEGER"
+				"movement_slow"		"-25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_slow"		"-25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"10"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"4"
 			}
 		}
 	}
-}
 
-"wave_2_centaur_chieftain_aura_extreme"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"BaseClass"					"ability_lua"
-	"AbilityTextureName"				"centaur_khan_endurance_aura"
-	"ScriptFile"					"abilities/wave_2_centaur_chieftain_aura_extreme.lua"
-	
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"900"
-	
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"wave_2_aura_of_vengeance_extreme"
 	{
-		"01"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities/wave_2_aura_of_vengeance_extreme.lua"
+		"AbilityTextureName"			"custom/2_wave_thorns_aura"
+
+		"MaxLevel"               		"1"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+		"AbilityCastRange"				"1000"
+		
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"aura_radius"				"900"
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"1000"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"35"		
+			}	
 		}
-		"02"
+	}
+
+	"wave_2_centaurs_revenge_extreme"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities/wave_2_centaurs_revenge_extreme.lua"
+		"AbilityTextureName"			"custom/brewmaster_punisment"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_movement_speed_percentage"	"30"
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"20"		
+			}	
 		}
-		"03"
+	}
+
+	"2_wave_centaur_chieftain_aura_extreme"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"centaur_khan_endurance_aura"
+		
+		// Casting
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"30"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed_percentage"	"30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"30"
+			}
 		}
 		
-	}
-}
-
-"wave_3_evasion_extreme"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/wave_3_evasion_extreme.lua"
-	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
-	{
-		"01"
+		"Modifiers"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"evasion"		"25"
-		}
-	}
-}
-
-"4_wave_true_hit_extreme"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"troll_warlord_berserkers_rage_active"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-
-	"precache"
-	{
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"strike_chance"			"25"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"	"40"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_4_wave_true_hit"	
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
-
-			"OnAttackStart"
+			"modifier_2_wave_centaur_chieftain_aura"
 			{
-				"Random"
-				{
-					"Chance"		"%strike_chance"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"Aura"          	"modifier_2_wave_centaur_chieftain_aura_buff"
+				"Aura_Radius"   	"%radius"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES" 
+			}
 
-					"OnSuccess"
+			"modifier_2_wave_centaur_chieftain_aura_buff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed_percentage"
+				}
+			}
+		}
+	}
+
+	"wave_2_centaur_chieftain_aura_extreme"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"BaseClass"					"ability_lua"
+		"AbilityTextureName"				"centaur_khan_endurance_aura"
+		"ScriptFile"					"abilities/wave_2_centaur_chieftain_aura_extreme.lua"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"900"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"				"900"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed_percentage"	"30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"30"
+			}			
+		}
+	}
+
+	"wave_3_evasion_extreme"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities/wave_3_evasion_extreme.lua"
+		"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"evasion"		"25"
+			}
+		}
+	}
+
+	"4_wave_true_hit_extreme"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"troll_warlord_berserkers_rage_active"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+
+		"precache"
+		{
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"strike_chance"			"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"	"40"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_4_wave_true_hit"	
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackStart"
+				{
+					"Random"
 					{
-						"ApplyModifier"
+						"Chance"		"%strike_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
+
+						"OnSuccess"
 						{
-							"ModifierName"	"modifier_4_wave_true_hit_damage"
-							"Target" 		"CASTER"
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_4_wave_true_hit_damage"
+								"Target" 		"CASTER"
+							}
+							
 						}
-						
+					}
+				}
+			}
+
+			"modifier_4_wave_true_hit_damage"
+			{
+				"IsHidden"	"1"
+				"IsPurgable"	"1"
+
+				"States"
+				{
+					"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"abilities/4_wave_true_hit"
+						"Function"		"DealDamageOrNot"
+					}
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_4_wave_true_hit_damage"
+						"Target" 		"CASTER"
+					}
+				}
+
+				"OnAttackFailed"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_4_wave_true_hit_damage"
+						"Target" 		"CASTER"
 					}
 				}
 			}
 		}
+	}
 
-		"modifier_4_wave_true_hit_damage"
+	"wave_6_assassin_extreme"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_lua"
+		"ScriptFile"					"abilities/wave_6_assassin_extreme.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"			"bounty_hunter_jinada"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"IsHidden"	"1"
-			"IsPurgable"	"1"
-
-			"States"
+			"01"
 			{
-				"MODIFIER_STATE_CANNOT_MISS"		"MODIFIER_STATE_VALUE_ENABLED"
+				"var_type"					"FIELD_INTEGER"
+				"crit_multiplier"					"200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"evasion"				"20"
+			}
+		}
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
+			"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_weapon_blur_critical.vpcf"
+		}
+	}
+
+	"7_wave_sharp_claws_extreme"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"			"ursa_fury_swipes"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"armor_reduction"			"-10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"0.01"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_7_wave_sharp_claws"
+			{
+				"Passive"   "1"
+				"IsHidden"  "1"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"abilities/7_wave_sharp_claws.lua"
+						"Function"		"SharpClaws"
+					}
+				}
+
 			}
 
-			"OnAttackLanded"
+			"modifier_7_wave_sharp_claws_debuff"
 			{
-				"RunScript"
+				"IsHidden"  "0"
+				"IsPurgable"	"1"
+				"Properties"
 				{
-					"ScriptFile"	"abilities/4_wave_true_hit"
-					"Function"		"DealDamageOrNot"
-				}
-				"RemoveModifier"
-				{
-					"ModifierName"	"modifier_4_wave_true_hit_damage"
-					"Target" 		"CASTER"
-				}
-			}
-
-			"OnAttackFailed"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName"	"modifier_4_wave_true_hit_damage"
-					"Target" 		"CASTER"
-				}
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor_reduction"
+				}   
 			}
 		}
 	}
-}
 
-"wave_6_assassin_extreme"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_lua"
-	"ScriptFile"					"abilities/wave_6_assassin_extreme.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"AbilityTextureName"			"bounty_hunter_jinada"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"wave_8_lifesteal_extreme"
 	{
-		"01"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"			"abilities/wave_8_lifesteal_extreme.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"custom/8_wave_vampiric_aura"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_multiplier"					"200"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"20"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"evasion"				"20"
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal_percent"		"50"
+			}
 		}
 	}
 
-	"precache"
+
+	"wave_9_incorporeity_extreme"
 	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_skeletonking.vsndevts"
-		"particle"	"particles/units/heroes/hero_skeletonking/skeleton_king_weapon_blur_critical.vpcf"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities/wave_9_incorporeity_extreme.lua"
+		"AbilityTextureName"			"morphling_morph_replicate"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"melee_damage_reduction"				"-25"		
+			}	
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ranged_damage_reduction"				"-40"		
+			}	
+		}
 	}
-}
 
-"7_wave_sharp_claws_extreme"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"AbilityTextureName"			"ursa_fury_swipes"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"wave_11_mana_break_extreme"
 	{
-		"01"
+		"BaseClass"				"ability_lua"
+		"ScriptFile"			"abilities/wave_11_mana_break_extreme.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"		
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"nyx_assassin_mana_burn"
+
+		"precache"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"armor_reduction"			"-10"
+			"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
 		}
-		"02"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"					"0.01"
+
+		"AbilitySpecial"
+		{	
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_hit"			"60"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_mana"		"1.0"
+			}
 		}
 	}
 
-	"Modifiers"
+	"wave_11_mana_break_extreme_creeps"
 	{
-		"modifier_7_wave_sharp_claws"
-		{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
-		    "OnAttackLanded"
-		    {
-		        "RunScript"
-		        {
-		        	"ScriptFile"	"abilities/7_wave_sharp_claws.lua"
-		        	"Function"		"SharpClaws"
-		        }
-		    }
+		"BaseClass"				"ability_lua"
+		"ScriptFile"			"abilities/wave_11_mana_break_extreme_creeps.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"		
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"nyx_assassin_mana_burn"
 
+		"precache"
+		{
+			"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
 		}
 
-		"modifier_7_wave_sharp_claws_debuff"
-		{
-		    "IsHidden"  "0"
-		    "IsPurgable"	"1"
-		    "Properties"
-		    {
-		        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor_reduction"
-		    }   
+		"AbilitySpecial"
+		{	
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_hit"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_mana"		"1.0"
+			}
 		}
 	}
-}
-
-"wave_8_lifesteal_extreme"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_lua"
-	"ScriptFile"			"abilities/wave_8_lifesteal_extreme.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"custom/8_wave_vampiric_aura"
 
 
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"wave_12_crit_extreme"
 	{
-		"02"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_lua"
+		"ScriptFile"					"abilities/wave_12_crit_extreme.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityTextureName"			"ursa_fury_swipes"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"lifesteal_percent"		"50"
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_multiplier"					"250"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"35"
+			}
 		}
 
 	}
 
-}
-
-
-"wave_9_incorporeity_extreme"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/wave_9_incorporeity_extreme.lua"
-	"AbilityTextureName"			"morphling_morph_replicate"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
+	"wave_13_command_aura_extreme"
 	{
-		"01"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_lua"
+		"ScriptFile"					"abilities/wave_13_command_aura_extreme.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"custom/golem_aura"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"1000"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"melee_damage_reduction"				"-25"		
-		}	
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"ranged_damage_reduction"				"-40"		
-		}	
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage_pct"	"60"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"aura_radius"		"1000"
+			}	
+		}
 	}
-}
 
-"wave_11_mana_break_extreme"
-{
-	"BaseClass"				"ability_lua"
-	"ScriptFile"			"abilities/wave_11_mana_break_extreme.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"		
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"nyx_assassin_mana_burn"
-
-	"precache"
+	"wave_16_evasion_extreme"
 	{
-		"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities/wave_16_evasion_extreme.lua"
+		"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"evasion"		"35"
+			}
+		}
 	}
 
-	"AbilitySpecial"
-	{	
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"mana_per_hit"			"60"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"damage_per_mana"		"1.0"
-		}
-	}
-}
-
-"wave_11_mana_break_extreme_creeps"
-{
-	"BaseClass"				"ability_lua"
-	"ScriptFile"			"abilities/wave_11_mana_break_extreme_creeps.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"		
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"nyx_assassin_mana_burn"
-
-	"precache"
+	"wave_17_evasion_extreme"
 	{
-		"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities/wave_17_evasion_extreme.lua"
+		"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"evasion"		"99"
+			}
+		}
 	}
 
-	"AbilitySpecial"
-	{	
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"mana_per_hit"			"50"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"damage_per_mana"		"1.0"
-		}
-	}
-}
 
-
-"wave_12_crit_extreme"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_lua"
-	"ScriptFile"					"abilities/wave_12_crit_extreme.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"AbilityTextureName"			"ursa_fury_swipes"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"wave_18_bash_extreme"
 	{
-		"01"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"abilities/wave_18_bash_extreme.lua"
+		"AbilityTextureName"			"faceless_void_time_lock"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_multiplier"					"250"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_duration"	"1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"			"100"
+			}
 		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"35"
-		}
+
 	}
-
-}
-
-"wave_13_command_aura_extreme"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_lua"
-	"ScriptFile"					"abilities/wave_13_command_aura_extreme.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"custom/golem_aura"
-
-
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"1000"
-	
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"bonus_damage_pct"	"60"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"aura_radius"		"1000"
-		}	
-	}
-}
-
-"wave_16_evasion_extreme"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/wave_16_evasion_extreme.lua"
-	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"evasion"		"35"
-		}
-	}
-}
-
-"wave_17_evasion_extreme"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/wave_17_evasion_extreme.lua"
-	"AbilityTextureName"			"blue_dragonspawn_sorcerer_evasion"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"evasion"		"99"
-		}
-	}
-}
-
-
-"wave_18_bash_extreme"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"abilities/wave_18_bash_extreme.lua"
-	"AbilityTextureName"			"faceless_void_time_lock"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_chance"			"100"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bash_duration"	"1"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_damage"			"100"
-		}
-	}
-
 }

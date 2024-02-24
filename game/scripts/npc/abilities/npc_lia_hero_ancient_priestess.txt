@@ -1,239 +1,241 @@
-"ancient_priestess_surge_of_intelligence" 
+"DotaAbilities"
 {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-    "AbilityTextureName"     "custom/ancient_priestess_surge_of_intelligence"
-  
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
+	"ancient_priestess_surge_of_intelligence" 
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"  "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"     "custom/ancient_priestess_surge_of_intelligence"
 	
-   "AbilityCooldown"        "16"
-   "AbilityManaCost"        "90 180 360"
-   "AbilityCastRange" 	    "500"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"AbilityCooldown"        "16"
+		"AbilityManaCost"        "90 180 360"
+		"AbilityCastRange" 	    "500"
 
-  	// Stats
-  	//-------------------------------------------------------------------------------------------------------------
-  	"AbilityCastPoint"  "0.5"
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"  "0.5"
 
-  	"precache"
-  	{
-  		"particle"  "particles/leshrac_diabolic_edict_custom.vpcf"
-  		"soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
-  	}	
+		"precache"
+		{
+			"particle"  "particles/leshrac_diabolic_edict_custom.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+		}	
 
-  	"AbilitySpecial"
-  	{
-    	"01"
-    	{
-      		"var_type"              "FIELD_INTEGER"
-      		"radius_damage"         "500"
-    	}
-    	"02"
-    	{
-      		"var_type"              "FIELD_INTEGER"
-      		"koef_damage"    		"3 6 9"
-    	}
-  	}
-    
-  	// Casting
-  	//-------------------------------------------------------------------------------------------------------------
-  	"OnSpellStart"
-  	{
-  		"RunScript"
-  		{
-  			"ScriptFile"	"heroes/AncientPriestess/surge_of_intelligence.lua"
-  			"Function"		"Damage"
-  			"Target"
-  			{
-				"Center"	"CASTER"
-				"Radius"	"%radius_damage"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"radius_damage"         "500"
 			}
-  		}
-
-    	"FireSound"
-    	{
-    		"EffectName"	"Hero_Leshrac.Pulse_Nova_Strike"
-    		"Target" 		"CASTER"
-    	}
-  	}
-  }
-
-
-"ancient_priestess_spirit_link"
-{
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\AncientPriestess\ancient_priestess_spirit_link.lua"
-	"AbilityTextureName"		"custom/ancient_priestess_spirit_link"
-
-  	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
+			"02"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"koef_damage"    		"3 6 9"
+			}
+		}
 		
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-	"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/AncientPriestess/surge_of_intelligence.lua"
+				"Function"		"Damage"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius_damage"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}
+
+			"FireSound"
+			{
+				"EffectName"	"Hero_Leshrac.Pulse_Nova_Strike"
+				"Target" 		"CASTER"
+			}
+		}
+	}
+
+
+	"ancient_priestess_spirit_link"
+	{
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\AncientPriestess\ancient_priestess_spirit_link.lua"
+		"AbilityTextureName"		"custom/ancient_priestess_spirit_link"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+			
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+			
+		"AbilityCastRange"			"800"
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"20"
+		"AbilityManaCost"			"60 70 80"
+
+		"precache"
+		{
+			"particle"	"particles/dazzle_shadow_wave_custom.vpcf"
+			"particle"  "particles/wisp_overcharge_custom.vpcf"
+		}
 		
-	"AbilityCastRange"			"800"
-	"AbilityCastPoint"			"0"
-	"AbilityCooldown"			"20"
-	"AbilityManaCost"			"60 70 80"
-
-	"precache"
-	{
-		"particle"	"particles/dazzle_shadow_wave_custom.vpcf"
-		"particle"  "particles/wisp_overcharge_custom.vpcf"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"800"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"distribution_factor"			"0.5"
+			}
+			"03"
+			{
+				"var_type"		"FIELD_FLOAT"
+				"distribution_tooltip"			"50"
+			}
+			"04"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"max_unit"		"3 6 9"
+			}
+			"05"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"heal_value"		"15 25 35"
+			}
+			"06"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"15"
+			}
+		}
 	}
-	
-	"AbilitySpecial"
+
+
+	"ancient_priestess_mana_shield"
 	{
-		"01"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\AncientPriestess\ancient_priestess_mana_shield.lua"
+		"AbilityTextureName"			"custom/ancient_priestess_mana_shield"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+
+		"AbilityManaCost"				"30 60 100"
+		"AbilityCooldown"				"15"
+
+		"HasScepterUpgrade"			"1"
+
+		"AbilitySpecial"
 		{
-			"var_type"		"FIELD_INTEGER"
-			"radius"		"800"
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_mana"		"1 2 3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_mana_scepter"		"2 3 4"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"absorption_percent"	"75"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"absorption_percent_scepter"	"100"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown_scepter"	"5"
+			}
 		}
-		"02"
+
+		"precache"
 		{
-			"var_type"		"FIELD_FLOAT"
-			"distribution_factor"			"0.5"
+			"particle" 	"particles/medusa_mana_shield_custom.vpcf"
+			"particle"	"particles/medusa_mana_shield_impact.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		}	
+	}
+
+
+	"ancient_priestess_ritual_protection"
+	{
+		"BaseClass"             	"ability_lua"
+		"ScriptFile"				"heroes\AncientPriestess\ancient_priestess_ritual_protection.lua"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"    "custom/ancient_priestess_ritual_protection"
+		
+		"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"               	"3"
+		"RequiredLevel"          	"5"
+		"LevelsBetweenUpgrades"  	"4"
+		
+		"AbilityCastPoint"              "0"
+		"AbilityCooldown"               "40 35 30"
+		"AbilityCastRange" "600"
+		"AbilityManaCost"               "150"
+
+		"HasScepterUpgrade"			"1"
+
+		"precache"
+		{
+			"particle"  "particles/mirana_moonlight_ray_custom.vpcf"
+			"particle"  "particles/lotus_orb_shell_custom.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
 		}
-		"03"
+
+		"AbilitySpecial"
 		{
-			"var_type"		"FIELD_FLOAT"
-			"distribution_tooltip"			"50"
-		}
-		"04"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"max_unit"		"3 6 9"
-		}
-		"05"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"heal_value"		"15 25 35"
-		}
-		"06"
-		{
-			"var_type"		"FIELD_INTEGER"
-			"duration"		"15"
+			"01"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"damage_absorb"     "400 500 600"        
+			}
+			"02"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"damage_absorb_scepter"      "800 1000 1200"
+				"RequiresScepter"		"1"        
+			}
+			"03"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"radius"    		"600"
+			}
+			"04"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"duration"  		"15"
+			}
 		}
 	}
 }
-
-
-"ancient_priestess_mana_shield"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\AncientPriestess\ancient_priestess_mana_shield.lua"
-	"AbilityTextureName"			"custom/ancient_priestess_mana_shield"
-
-  	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-
-	"AbilityManaCost"				"30 60 100"
-	"AbilityCooldown"				"15"
-
-	"HasScepterUpgrade"			"1"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"damage_per_mana"		"1 2 3"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"damage_per_mana_scepter"		"2 3 4"
-			"RequiresScepter"		"1"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"absorption_percent"	"75"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"absorption_percent_scepter"	"100"
-			"RequiresScepter"		"1"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"cooldown_scepter"	"5"
-		}
-	}
-
-	"precache"
-	{
-		"particle" 	"particles/medusa_mana_shield_custom.vpcf"
-		"particle"	"particles/medusa_mana_shield_impact.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
-	}	
-}
-
-
-"ancient_priestess_ritual_protection"
-{
-    "BaseClass"             	"ability_lua"
-    "ScriptFile"				"heroes\AncientPriestess\ancient_priestess_ritual_protection.lua"
-    "AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "AbilityTextureName"    "custom/ancient_priestess_ritual_protection"
-    
-	"AbilityType"            	"DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               	"3"
-    "RequiredLevel"          	"5"
-    "LevelsBetweenUpgrades"  	"4"
-    
-    "AbilityCastPoint"              "0"
-    "AbilityCooldown"               "40 35 30"
-    "AbilityCastRange" "600"
-    "AbilityManaCost"               "150"
-
-    "HasScepterUpgrade"			"1"
-
-	"precache"
-	{
-		"particle"  "particles/mirana_moonlight_ray_custom.vpcf"
-		"particle"  "particles/lotus_orb_shell_custom.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
-	}
-
-    "AbilitySpecial"
-    {
-        "01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "damage_absorb"     "400 500 600"        
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "damage_absorb_scepter"      "800 1000 1200"
-			"RequiresScepter"		"1"        
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "radius"    		"600"
-        }
-        "04"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "duration"  		"15"
-        }
-    }
-}
-

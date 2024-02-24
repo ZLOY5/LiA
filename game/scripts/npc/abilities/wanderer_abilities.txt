@@ -1,416 +1,406 @@
-
-"spirit_of_the_plains_fog"
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityTextureName"			"riki_smoke_screen"
-	"AOERadius"						"%radius"
-
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastPoint"				"0.2"
-	"AbilityCastRange"				"1000"
-	"AbilityCooldown"				"15.0"
-	"AbilityManaCost"				"50"
-	//"AbilityChannelTime"			"30.0"
-
-	"precache"
+	"spirit_of_the_plains_fog"
 	{
-		"particle"	 "particles/units/heroes/hero_riki/riki_smokebomb.vpcf"
-		//"particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning_trail_cloud.vpcf"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityTextureName"			"riki_smoke_screen"
+		"AOERadius"						"%radius"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCastRange"				"1000"
+		"AbilityCooldown"				"15.0"
+		"AbilityManaCost"				"50"
+		//"AbilityChannelTime"			"30.0"
+
+		"precache"
+		{
+			"particle"	 "particles/units/heroes/hero_riki/riki_smokebomb.vpcf"
+			//"particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning_trail_cloud.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"cloud_duration"	"7"
 		}
-		"02"
+		
+		"AbilitySpecial"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"radius"			"400"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"miss"			"100"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"slow_speed_movement"				"-45"
-		}
-	}
-
-
-	"OnSpellStart"
-	{
-	 	"CreateThinker"
-	 	{
-	 		"ModifierName"	"modifier_cloud_thinker"
-	 		"Target" 		"POINT"
-	 	}
-	} 
-
-	"Modifiers"
-	{
-		"modifier_cloud_thinker"
-		{
-			"Aura"					"modifier_cloud_miss"
-			"Aura_Radius"			"%radius"
-			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY" // 
-			"Aura_Types"			"DOTA_UNIT_TARGET_ALL"//"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC " //DOTA_UNIT_TARGET_MECHANICAL
-			"Duration"				"%cloud_duration"
-
-			"OnCreated"
+			"01"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes\Wanderer\fog.lua"
-					"Function"		"CloudSound"
-				}
+				"var_type"			"FIELD_INTEGER"
+				"cloud_duration"	"7"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"400"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"miss"			"100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_speed_movement"				"-45"
+			}
+		}
 
-				"AttachEffect"
+		"OnSpellStart"
+		{
+			"CreateThinker"
+			{
+				"ModifierName"	"modifier_cloud_thinker"
+				"Target" 		"POINT"
+			}
+		} 
+
+		"Modifiers"
+		{
+			"modifier_cloud_thinker"
+			{
+				"Aura"					"modifier_cloud_miss"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY" // 
+				"Aura_Types"			"DOTA_UNIT_TARGET_ALL"//"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC " //DOTA_UNIT_TARGET_MECHANICAL
+				"Duration"				"%cloud_duration"
+
+				"OnCreated"
 				{
-					"EffectName"		"particles/units/heroes/hero_riki/riki_smokebomb.vpcf"
-					"EffectAttachType"	"follow_origin"
-					"Target"			"TARGET"
-					"ControlPoints"
+					"RunScript"
 					{
-						"00" "0 0 0"
-						"01" "%radius 1 1"
-						"15" "25 150 25"
-						"16" "0 0 0"
+						"ScriptFile"	"heroes\Wanderer\fog.lua"
+						"Function"		"CloudSound"
+					}
+
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_riki/riki_smokebomb.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius 1 1"
+							"15" "25 150 25"
+							"16" "0 0 0"
+						}
 					}
 				}
 			}
-		}
 
-		"modifier_cloud_miss"
-		{
-			"IsDebuff"		"1"
-			//"ThinkInterval"	"%tick_rate"
-			"Properties"
+			"modifier_cloud_miss"
 			{
-				"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%miss"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_movement"
+				"IsDebuff"		"1"
+				//"ThinkInterval"	"%tick_rate"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%miss"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"    "%slow_speed_movement"
+				}
 			}
 		}
 	}
-}
 
-
-"spirit_of_the_plains_slow"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"			"spectre_dispersion"
-	
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"6"
-	"AbilityCastRange"				"600"
-	"AbilityCastPoint"				"0.0"
-	"AbilityManaCost"				"40"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"spirit_of_the_plains_slow"
 	{
-		"01"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"			"spectre_dispersion"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"6"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0"
+		"AbilityManaCost"				"40"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"						"FIELD_INTEGER"
-			"cripple_attack_slow"					"-45"
-		}
-		"02"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"cripple_movespeed_slow_pct"	"-70"
-		}
-		"03"
-		{
-			"var_type"						"FIELD_FLOAT"
-			"duration"						"7"
-		}
-	}
-	
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"		"DOTA_Item.RodOfAtos.Activate"
-			"Target"			"TARGET"
-		}
-			
-		"ApplyModifier"
-		{
-			"Target"			"TARGET"
-			"ModifierName"		"modifier_spirit_of_the_plains_slow"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_spirit_of_the_plains_slow"
-		{
-			"Duration"			"%duration"
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsBuff"			"0"
-			"IsDebuff"			"1"
-			"IsPurgable"		"1"
-			
-			"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
-			"EffectAttachType"		"follow_origin"
-			
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
+				"var_type"						"FIELD_INTEGER"
+				"cripple_attack_slow"					"-45"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cripple_movespeed_slow_pct"	"-70"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"7"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"		"DOTA_Item.RodOfAtos.Activate"
+				"Target"			"TARGET"
+			}
+				
+			"ApplyModifier"
+			{
+				"Target"			"TARGET"
+				"ModifierName"		"modifier_spirit_of_the_plains_slow"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_spirit_of_the_plains_slow"
+			{
+				"Duration"			"%duration"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
+				"EffectAttachType"		"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
+				}
 			}
 		}
 	}
-}
 
-
-"essence_of_the_ghost_aura1"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"razor_unstable_current"
-
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"essence_of_the_ghost_aura1"
 	{
-		"01"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"razor_unstable_current"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"1000"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"regen_hp"		"1.2"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"move_speed_bonus"		"5"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"1.2"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"5"
+			}
 		}
 
+		"Modifiers"
+		{
+			"modifier_essence_of_the_ghost_aura1"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+
+			"modifier_essence_of_the_ghost_aura1_mod"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
+			}
+		}
 	}
 
-	"Modifiers"
+	"essence_of_the_ghost_aura2"
 	{
-		"modifier_essence_of_the_ghost_aura1"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
-			"Aura_Radius" 		"%radius"
-			"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-		}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"razor_unstable_current"
 
-		"modifier_essence_of_the_ghost_aura1_mod"
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
-				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"2.4"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"10"
 			}
 
 		}
-	}
-}
 
-"essence_of_the_ghost_aura2"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"razor_unstable_current"
-
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"Modifiers"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"1000"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"regen_hp"		"2.4"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"move_speed_bonus"		"10"
-		}
-
-	}
-
-	"Modifiers"
-	{
-		"modifier_essence_of_the_ghost_aura1"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
-			"Aura_Radius" 		"%radius"
-			"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-		}
-
-		"modifier_essence_of_the_ghost_aura1_mod"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			
-			"Properties"
+			"modifier_essence_of_the_ghost_aura1"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
-				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+
+			"modifier_essence_of_the_ghost_aura1_mod"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
+
+			}
+		}
+	}
+
+
+	"essence_of_the_ghost_aura3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"razor_unstable_current"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"3.6"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"15"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_essence_of_the_ghost_aura1"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
+			}
+
+			"modifier_essence_of_the_ghost_aura1_mod"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
+			}
+		}
+	}
+
+	"essence_of_the_ghost_aura4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"razor_unstable_current"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"regen_hp"		"6"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed_bonus"		"20"
 			}
 
 		}
-	}
-}
 
-
-"essence_of_the_ghost_aura3"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"razor_unstable_current"
-
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"Modifiers"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"1000"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"regen_hp"		"3.6"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"move_speed_bonus"		"15"
-		}
-
-	}
-
-	"Modifiers"
-	{
-		"modifier_essence_of_the_ghost_aura1"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
-			"Aura_Radius" 		"%radius"
-			"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-		}
-
-		"modifier_essence_of_the_ghost_aura1_mod"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			
-			"Properties"
+			"modifier_essence_of_the_ghost_aura1"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
-				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
+				"Aura_Radius" 		"%radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
 			}
 
-		}
-	}
-}
-
-"essence_of_the_ghost_aura4"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"razor_unstable_current"
-
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"1000"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"regen_hp"		"6"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"move_speed_bonus"		"20"
-		}
-
-	}
-
-	"Modifiers"
-	{
-		"modifier_essence_of_the_ghost_aura1"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Aura"		  		"modifier_essence_of_the_ghost_aura1_mod"
-			"Aura_Radius" 		"%radius"
-			"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"		
-		}
-
-		"modifier_essence_of_the_ghost_aura1_mod"
-		{
-			"Passive"			"0"
-			"IsHidden"			"0"
-			
-			"Properties"
+			"modifier_essence_of_the_ghost_aura1_mod"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
-				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%regen_hp"
+				}
 			}
-
 		}
 	}
 }

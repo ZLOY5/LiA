@@ -1,97 +1,97 @@
-"royal_naga_guard_sea_wave"
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"FightRecapLevel"				"1"
-	"AbilityTextureName"			"naga_siren_rip_tide"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
+	"royal_naga_guard_sea_wave"
 	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
-		"particle"		"particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT"				   
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"naga_siren_rip_tide"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+			"particle"		"particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
+		}
 
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
 
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"13.0 12.0 11.0"
-	
-	// Damage.
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityDamage"					"80 160 320"
-	
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"45 60 75"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13.0 12.0 11.0"
+		
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"80 160 320"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"45 60 75"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"start_radius"			"90 90 90"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"start_radius"			"90 90 90"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"end_radius"			"100 100 100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"700 700 700"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"1050"
+			}					
 		}
-		"02"
+		
+		"OnSpellStart"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"end_radius"			"100 100 100"
+			"LinearProjectile"
+			{
+				"Target" "POINT"
+				"EffectName" "particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
+				"MoveSpeed" "%speed"
+				"StartRadius" "%start_radius"
+				"StartPosition" "attach_origin"
+				"EndRadius" "%end_radius"
+				"FixedDistance" "%range"
+				"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
+				"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone" "1"
+				"ProvidesVision" "0"
+			}
+			"FireSound"
+			{
+				"EffectName" "Hero_Morphling.Waveform"
+				"Target" "CASTER"
+			}
 		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"range"					"700 700 700"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"speed"					"1050"
-		}
-				
-	}
-	
-	"OnSpellStart"
-	{
-		"LinearProjectile"
-		{
-			"Target" "POINT"
-			"EffectName" "particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
-			"MoveSpeed" "%speed"
-			"StartRadius" "%start_radius"
-			"StartPosition" "attach_origin"
-			"EndRadius" "%end_radius"
-			"FixedDistance" "%range"
-			"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNITY_TARGET_MECHANICAL"
-			"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-			"HasFrontalCone" "1"
-			"ProvidesVision" "0"
-		}
-		"FireSound"
-		{
-			"EffectName" "Hero_Morphling.Waveform"
-			"Target" "CASTER"
-		}
-	}
 		"OnProjectileHitUnit"
 		{
 			"DeleteOnHit" "0"
@@ -102,210 +102,206 @@
 				"Damage" "%AbilityDamage"
 			}
 		}
-}
-
-"naga_royal_guard_persistence"
-{
-  "BaseClass"   "ability_lua"
-  "ScriptFile"    "heroes/NagaRoyalGuard/naga_royal_guard_persistence.lua"
-
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"      "slardar_sprint"
-
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "bonus_armor"  "3 6 9"
-    }
-    "02"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "bonus_strength"   "9 18 27"
-    }
-  } 
-}
-
-
-"naga_royal_guard_bash"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"slardar_bash"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	
-	"precache"
-	{
-	  "soundfile"   "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
-	  "particle"	"particles/generic_gameplay/generic_stunned.vpcf" 
 	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_chance"			"25"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bash_stun"	"1.0 1.5 2.0"
-		}
-	}
-	
-	
-	"Modifiers"
-	{
-		"modifier_naga_royal_guard_bash"	
-		{
-			"Passive"	"1"
-			"IsHidden"	"1"
 
-			"OnAttackLanded"
+	"naga_royal_guard_persistence"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/NagaRoyalGuard/naga_royal_guard_persistence.lua"
+
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "slardar_sprint"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"Random"
+				"var_type"      "FIELD_INTEGER"
+				"bonus_armor"  "3 6 9"
+			}
+			"02"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"bonus_strength"   "9 18 27"
+			}
+		} 
+	}
+
+
+	"naga_royal_guard_bash"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"slardar_bash"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		"precache"
+		{
+			"soundfile"   "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf" 
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_chance"			"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_stun"	"1.0 1.5 2.0"
+			}
+		}
+			
+		"Modifiers"
+		{
+			"modifier_naga_royal_guard_bash"	
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackLanded"
 				{
-					"Chance"		"%bash_chance"
-					"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
-
-					"OnSuccess"
+					"Random"
 					{
+						"Chance"		"%bash_chance"
+						"PseudoRandom"	"DOTA_PSEUDO_RANDOM_FACELESS_BASH"
 
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"ScriptFile"	"heroes\NagaRoyalGuard\Bash.lua"
+								"Function"		"Bash"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	"naga_royal_guard_crush"
+	{
+		"BaseClass"               "ability_datadriven"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"	
+		"AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"      "slardar_slithereen_crush"
+		
+		"AbilityCooldown"				"180 140 100"
+		"AbilityManaCost"				"100 120 140"
+		"AbilityCastRange"				"300"
+		
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"precache"
+		{
+			"particle" "particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"damage_per_second"  "100 150 200"
+			}
+			"02"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"str_tooltip"  "100"
+			}
+			"03"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"bonus_move_speed_percentage"  "25 50 75"
+			}
+			"04"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"duration"  "6.0 9.0 12.0"
+			}
+			"05"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"radius"  "300 300 300"
+			}
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"ModifierName"	"modifier_crush_bonus_movespeed"	
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_crush_bonus_movespeed"
+			{
+			"Duration"		"%duration"
+			"IsBuff"		"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_move_speed_percentage"
+			} 
+				"ThinkInterval" "0.25"
+				"OnIntervalThink"
+				{	
+					"FireEffect"
+					{
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+						"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+						"EffectAttachType"		"follow_origin"	
+					}
+					"FireSound"
+					{
+						"EffectName" "Hero_NagaSiren.Riptide.Cast"
+						"Target"
+						{
+							"Center"  	"CASTER"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+					}
 						"RunScript"
 						{
-							"ScriptFile"	"heroes\NagaRoyalGuard\Bash.lua"
-							"Function"		"Bash"
+							"ScriptFile"    "heroes/NagaRoyalGuard/crush.lua"
+							"Function"      "Immolation"
+							"Target"
+							{
+								"Center"	"CASTER"
+								"Radius"	"%radius"
+								"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+								"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							}
 						}
-
-					}
 				}
 			}
-		}
+		} 
 	}
-}
-
-"naga_royal_guard_crush"
-{
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"	
-  "AbilityUnitTargetTeam"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-  "AbilityTextureName"      "slardar_slithereen_crush"
-	
-	"AbilityCooldown"				"180 140 100"
-	"AbilityManaCost"				"100 120 140"
-	"AbilityCastRange"				"300"
-	
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-  
- "precache"
-	{
-		"particle" "particles/units/heroes/hero_slardar/slardar_crush.vpcf"
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
-	}
-  "AbilitySpecial"
-  {
-  	"01"
-    {
-      "var_type"      "FIELD_FLOAT"
-      "damage_per_second"  "100 150 200"
-    }
-	"02"
-    {
-      "var_type"      "FIELD_FLOAT"
-      "str_tooltip"  "100"
-    }
-    "03"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "bonus_move_speed_percentage"  "25 50 75"
-    }
-    "04"
-    {
-      "var_type"      "FIELD_FLOAT"
-      "duration"  "6.0 9.0 12.0"
-    }
-	"05"
-    {
-      "var_type"      "FIELD_INTEGER"
-      "radius"  "300 300 300"
-    }
-  }
-	"OnSpellStart"
-	{
-		"ApplyModifier"
-		{
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"ModifierName"	"modifier_crush_bonus_movespeed"	
-		}
-
-	}
-  "Modifiers"
-  {
-    "modifier_crush_bonus_movespeed"
-    {
-	"Duration"		"%duration"
-	"IsBuff"		"1"
-	"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-      "Properties"
-      {
-		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_move_speed_percentage"
-      } 
-		"ThinkInterval" "0.25"
-		"OnIntervalThink"
-		{	
-			"FireEffect"
-			{
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-				"EffectName"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
-				"EffectAttachType"		"follow_origin"	
-			}
-			"FireSound"
-			{
-				"EffectName" "Hero_NagaSiren.Riptide.Cast"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}
-				"RunScript"
-    			{
-			        "ScriptFile"    "heroes/NagaRoyalGuard/crush.lua"
-			        "Function"      "Immolation"
-					"Target"
-					{
-						"Center"	"CASTER"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}
-				}
-		}
-    }
-  } 
 }

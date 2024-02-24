@@ -1,224 +1,225 @@
-"shadow_return_to_owner"
+"DotaAbilities"
 {
-	"BaseClass"             "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"    "custom/shadow_return_to_owner"
-
-    "AbilityCooldown"           "0"
-    "AbilityManacost"           "0"
-
-    "MaxLevel"              "1"
-
-    "AbilitySpecial"
-  	{
-    	"01"
-    	{
-    		"var_type"      			"FIELD_INTEGER"
-      		"owner_health_restore"  	"200"
-    	}
-    }
-
-    "OnOwnerDied"
+    "shadow_return_to_owner"
     {
-    	"RunScript"
-    	{
-    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
-    		"Function"				"HealOwner"
-    		"owner_health_restore"	"%owner_health_restore"
-    	}
-    }
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityTextureName"    "custom/shadow_return_to_owner"
 
-    "OnSpellStart"
-    {
-    	"RunScript"
-    	{
-    		"ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
-    		"Function"				"KillShadow"
-    	}
-    }
-}
+        "AbilityCooldown"           "0"
+        "AbilityManacost"           "0"
 
-"shadow_shadow_mastery"
-{
-    "BaseClass"             "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"    "custom/shadow_shadow_mastery"
+        "MaxLevel"              "1"
 
-    "MaxLevel"              "1"
-
-    "AbilitySpecial"
-    {
-        "01"
+        "AbilitySpecial"
         {
-            "var_type"                  "FIELD_INTEGER"
-            "damage_agility_percent"    "150"
-        }
-    }
-
-    "Modifiers"
-    {
-        "modifier_shadow_mastery"
-        {
-            "Passive"   "1"
-            "IsHidden"  "1"
-            "OnAttackLanded"
+            "01"
             {
-               "RunScript"
-                {
-                    "ScriptFile"        "heroes/ShadowMaster/ShadowMastery.lua"
-                    "Function"          "OnAttackLanded"
-                } 
+                "var_type"      			"FIELD_INTEGER"
+                "owner_health_restore"  	"200"
+            }
+        }
+
+        "OnOwnerDied"
+        {
+            "RunScript"
+            {
+                "ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+                "Function"				"HealOwner"
+                "owner_health_restore"	"%owner_health_restore"
+            }
+        }
+
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"			"heroes\ShadowMaster\ReturnToOwner.lua"
+                "Function"				"KillShadow"
             }
         }
     }
-}
 
-"shadow_world_of_shadows" 
-  {
-    // General  
-    // ----------------------------------------------------------------------------------------
-    "BaseClass"                 "ability_datadriven"
-    "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"        "custom/shadow_world_of_shadows"
-    
-    "MaxLevel"                  "1"
-
-    
-    "AbilityCooldown"           "12"
-    "AbilityManaCost"           "60"
-    
-    "AbilitySpecial"
+    "shadow_shadow_mastery"
     {
-        "01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "bonus_movespeed"   "30"
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "bonus_damage"      "200"
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "duration"          "8"
-        }
-    }
+        "BaseClass"             "ability_datadriven"
+        "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"    "custom/shadow_shadow_mastery"
 
-    "OnSpellStart"
-    {
-        "FireEffect"
-        {
-            "Target"            "CASTER"
-            "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-            "EffectAttachType"  "attach_origin"
-        }
+        "MaxLevel"              "1"
 
-        "FireSound"
+        "AbilitySpecial"
         {
-            "Target"        "CASTER"
-            "EffectName"    "Hero_BountyHunter.WindWalk"
-        }
-
-        "ApplyModifier"
-        {
-            "ModifierName"  "modifier_world_of_shadows"
-            "Target"        
+            "01"
             {
-                "Center"    "CASTER"
-                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+                "var_type"                  "FIELD_INTEGER"
+                "damage_agility_percent"    "150"
             }
-            "Duration"      "%duration"
         }
-    }
 
-    "Modifiers"
-    {
-        "modifier_world_of_shadows"
+        "Modifiers"
         {
-            "IsBuff"            "1"
-            "IsHidden"          "1"
-            "Duration"          "%duration"
-            "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
-            "EffectAttachType"  "follow_origin"
-            "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-            
-            "OnCreated"
+            "modifier_shadow_mastery"
             {
-                "ApplyModifier"
+                "Passive"   "1"
+                "IsHidden"  "1"
+                "OnAttackLanded"
                 {
-                    "ModifierName"  "modifier_invisible"
-                    "Target"        
+                "RunScript"
                     {
-                        "Center"    "CASTER"
-                        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-                    }
-                    "Duration"      "%duration"
+                        "ScriptFile"        "heroes/ShadowMaster/ShadowMastery.lua"
+                        "Function"          "OnAttackLanded"
+                    } 
                 }
             }
-            
-            "Properties"
+        }
+    }
+
+    "shadow_world_of_shadows" 
+    {
+        // General  
+        // ----------------------------------------------------------------------------------------
+        "BaseClass"                 "ability_datadriven"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityTextureName"        "custom/shadow_world_of_shadows"
+        
+        "MaxLevel"                  "1"
+       
+        "AbilityCooldown"           "12"
+        "AbilityManaCost"           "60"
+        
+        "AbilitySpecial"
+        {
+            "01"
             {
-                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_movespeed"
+                "var_type"          "FIELD_INTEGER"
+                "bonus_movespeed"   "30"
             }
-            
-            "States"
+            "02"
             {
-                "MODIFIER_STATE_INVISIBLE"          "MODIFIER_STATE_VALUE_ENABLED"
-                "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+                "var_type"          "FIELD_INTEGER"
+                "bonus_damage"      "200"
             }
-            
-            "OnAttackLanded"
+            "03"
             {
-                "RemoveModifier"
-                {
-                    "ModifierName"  "modifier_invisible"
-                    "Target"        "CASTER"
-                }
+                "var_type"          "FIELD_INTEGER"
+                "duration"          "8"
+            }
+        }
 
-                "RemoveModifier"
-                {
-                    "ModifierName"  "modifier_world_of_shadows"
-                    "Target"        "CASTER"
-                }
+        "OnSpellStart"
+        {
+            "FireEffect"
+            {
+                "Target"            "CASTER"
+                "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+                "EffectAttachType"  "attach_origin"
+            }
 
-                "Damage"
-                {
-                    "Target"    "TARGET"
-                    "Type"      "DAMAGE_TYPE_PHYSICAL"
-                    "Damage"    "%bonus_damage"
-                }
+            "FireSound"
+            {
+                "Target"        "CASTER"
+                "EffectName"    "Hero_BountyHunter.WindWalk"
+            }
 
-                "FireEffect"
+            "ApplyModifier"
+            {
+                "ModifierName"  "modifier_world_of_shadows"
+                "Target"        
                 {
-                    "EffectName"        "particles/msg_fx/msg_crit.vpcf"
-                    "EffectAttachType"  "follow_overhead"
-                    "Target"            "TARGET"
-                    "ControlPoints"
+                    "Center"    "CASTER"
+                    "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+                }
+                "Duration"      "%duration"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_world_of_shadows"
+            {
+                "IsBuff"            "1"
+                "IsHidden"          "1"
+                "Duration"          "%duration"
+                "EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_windwalk.vpcf"
+                "EffectAttachType"  "follow_origin"
+                "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+                
+                "OnCreated"
+                {
+                    "ApplyModifier"
                     {
-                        "01"        "9 %bonus_damage 4" //pre number post
-                        "02"        "1 4 0"                 //lifetime digits
-                        "03"        "255 0 0"               //color
+                        "ModifierName"  "modifier_invisible"
+                        "Target"        
+                        {
+                            "Center"    "CASTER"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+                        }
+                        "Duration"      "%duration"
                     }
                 }
-            }
-
-            "OnAbilityExecuted"
-            {
-                "RemoveModifier"
+                
+                "Properties"
                 {
-                    "ModifierName"  "modifier_invisible"
-                    "Target"        "CASTER"
+                    "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%bonus_movespeed"
+                }
+                
+                "States"
+                {
+                    "MODIFIER_STATE_INVISIBLE"          "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+                }
+                
+                "OnAttackLanded"
+                {
+                    "RemoveModifier"
+                    {
+                        "ModifierName"  "modifier_invisible"
+                        "Target"        "CASTER"
+                    }
+
+                    "RemoveModifier"
+                    {
+                        "ModifierName"  "modifier_world_of_shadows"
+                        "Target"        "CASTER"
+                    }
+
+                    "Damage"
+                    {
+                        "Target"    "TARGET"
+                        "Type"      "DAMAGE_TYPE_PHYSICAL"
+                        "Damage"    "%bonus_damage"
+                    }
+
+                    "FireEffect"
+                    {
+                        "EffectName"        "particles/msg_fx/msg_crit.vpcf"
+                        "EffectAttachType"  "follow_overhead"
+                        "Target"            "TARGET"
+                        "ControlPoints"
+                        {
+                            "01"        "9 %bonus_damage 4" //pre number post
+                            "02"        "1 4 0"                 //lifetime digits
+                            "03"        "255 0 0"               //color
+                        }
+                    }
                 }
 
-                "RemoveModifier"
+                "OnAbilityExecuted"
                 {
-                    "ModifierName"  "modifier_world_of_shadows"
-                    "Target"        "CASTER"
+                    "RemoveModifier"
+                    {
+                        "ModifierName"  "modifier_invisible"
+                        "Target"        "CASTER"
+                    }
+
+                    "RemoveModifier"
+                    {
+                        "ModifierName"  "modifier_world_of_shadows"
+                        "Target"        "CASTER"
+                    }
                 }
             }
         }
     }
 }
-

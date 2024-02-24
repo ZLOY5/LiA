@@ -1,589 +1,582 @@
-"keeper_of_the_grove_roots"
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityTextureName"			"treant_natures_grasp"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
+	"keeper_of_the_grove_roots"
 	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"	
-		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
-		"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"		
-				
-	}
-	
-	//"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTextureName"			"treant_natures_grasp"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"	
+			"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_cast.vpcf"
+			"particle"		"particles/units/heroes/hero_treant/treant_overgrowth_vines_small.vpcf"						
+		}
 		
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AoERadius"	"%radius"
-	
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.0"
-
-	"AbilityCooldown"				"18 17 16"
-
-	"AbilityManaCost"				"80 180 280"	
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"damage_per_second"		"30 60 90"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"root_duration"		"2 3 4"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"root_hero_duration"	"1 2 3"
-		}
-		"04"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"radius"			"290"
-		}
-	}
-
-	"OnSpellStart"
-	{
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Furion.WrathOfNature_Cast"
-			"Target"		"CASTER"
-		}	
-
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/KeeperOfTheGrove/Roots.lua"
-			"Function"		"Roots"
-			"Target"
-			{
-				"Center"  	"POINT"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-		}	
-		"Damage"
-		{
-			"Target"
-			{
-				"Center"  	"POINT"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"Type" "DAMAGE_TYPE_MAGICAL"
-			"Damage" "%damage_per_second"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_keeper_of_the_grove_roots"
-		{
-			"IsPurgable"	"1"
-			"EffectName" 	"particles/units/heroes/hero_treant/treant_bramble_root.vpcf"
-			"EffectAttachType"  "follow_origin"
+		//"AbilityCastAnimation"   "ACT_DOTA_ATTACK"	
 			
-			"States"
-			{
-				"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
-			}
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-		}
-		"modifier_keeper_of_the_grove_roots_damage"
-		{	
-			"IsHidden"	"1"
-			"IsPurgable"	"1"
-
-			"ThinkInterval"	"1"
-			"OnIntervalThink"
-			{
-				"Damage"
-					{
-						"Target"	"TARGET"
-						"Type" "DAMAGE_TYPE_MAGICAL"
-						"Damage" "%damage_per_second"
-					}
-			}
-
-		}
-	}
-}
-
-"keeper_of_the_grove_treants"
-{
-    "BaseClass"                     "ability_datadriven"
-    "AbilityTextureName"            "furion_force_of_nature"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
-
-    "AbilityCastRange"              "400"
-    "AbilityCastPoint"              "0.5"
-    "AbilityCooldown"               "25"
-
-    "AbilityManaCost"               "100 150 200"
-
-    "precache"
-    {
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
-        "model"		"models/heroes/furion/treant.vmdl"
-        "particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
-        
-        //Goblin Ability
-        "particle"  "particles/units/heroes/hero_furion/furion_force_of_nature_cast.vpcf"
-        "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
-    }
-    
-    "AbilitySpecial"
-    {
-        "01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "treant_health"  "350 700 1400"
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "treant_damage"  "60 125 250"
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "unit_count"  	"2 2 2"
-        }
-    }
-
-    "OnSpellStart"
-    {
-        "FireSound"
-        {
-            "EffectName"    "Hero_Furion.ForceOfNature"
-            "Target"        "CASTER"
-        }
-        "RunScript"
-        {
-            "ScriptFile"    "heroes/KeeperOfTheGrove/Treants.lua"
-            "Function"      "SummonTreants"
-            "Target"        "POINT"
-        }
-    }
-}
-
-"keeper_of_the_grove_guardian_spirit"
- {
-   // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_lua"
-    "ScriptFile"			 "heroes\KeeperOfTheGrove\keeper_of_the_grove_guardian_spirit.lua"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"     "custom/keeper_of_the_grove_guardian_spirit"
-
-	"AbilityCooldown"				"40"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "2"
-    "LevelsBetweenUpgrades"  "2"
-
-    "HasScepterUpgrade"		 "1"
-
-    "precache"
-    {
-    	"model"		"models/heroes/leshrac/leshrac.vmdl"
-    	"model"		"models/heroes/leshrac/leshrac_armor.vmdl"
-    	"model"		"models/heroes/leshrac/leshrac_head.vmdl"
-    	"model"		"models/heroes/leshrac/leshrac_tail.vmdl"
-    	"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
-    }
-
-    "AbilitySpecial"
-    {
-    	"01"
-    	{
-    		"var_type"			"FIELD_INTEGER"
-    		"bonus_stats"		"15 30 45"
-    	}
-    	"02"
-    	{
-    		"var_type"			"FIELD_INTEGER"
-    		"bonus_stats_scepter"		"25 50 75"
-			"RequiresScepter"		"1"
-    	}
-    	"03"
-    	{
-    		"var_type"			"FIELD_FLOAT"
-    		"lifetime"			"10 15 20"
-    	}
-    	"04"
-    	{
-    		"var_type"			"FIELD_FLOAT"
-    		"lifetime_scepter"			"15 20 25"
-			"RequiresScepter"		"1"
-    	}
-    }
-
-}
-
-"keeper_of_the_grove_natures_curse"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"	"heroes/KeeperOfTheGrove/keeper_of_the_grove_natures_curse.lua"
-
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_NO"
-    "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
-    "AbilityTextureName"			"furion_sprout"
-
-    "AbilityCastRange"				"650"
-	"AbilityCastPoint"				"0.3"
-	"AbilityCooldown"				"220"
-	"AoERadius"						"350"
-	"AbilityManaCost"				"200 250 300"
-
-    "AOERadius"                     "300"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
-    "MaxLevel"               "3"
-    "RequiredLevel"          "5"
-    "LevelsBetweenUpgrades"  "4"
-
-    "HasScepterUpgrade"     "1"
-
-  	"precache"
-	{
-		"particle"			"particles/units/heroes/hero_furion/furion_wrath_of_nature.vpcf"
-		"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
-	}
-
-    "AbilitySpecial"
-    {           
-        "01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_per_second"		"60 90 120"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_per_second_scepter"		"90 120 150"
-			"RequiresScepter"		"1"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"10"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"hero_duration"			"5"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"350"
-		}  
-		"06"
-        {
-            "var_type"              "FIELD_FLOAT"
-            "cooldown_scepter"      "160"
-			"RequiresScepter"		"1"
-        }    
-    }
-}	
-
-
-
-"keeper_of_the_grove_treants_unity"
- {
-   // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "AbilityTextureName"     "furion_teleportation"
-
-	"AbilityCooldown"				"0"
-	"AbilityManaCost"				"0"	
-
-    "OnSpellStart"
-    {
-    	"RunScript"
-    	{
-			"ScriptFile"	"heroes/KeeperOfTheGrove/Unity.lua"
-			"Function"		"Unity"
-    	}
-    }
-}
-
-"keeper_of_the_grove_treants_reborn"
- {
-   // General
-    //-------------------------------------------------------------------------------------------------------------
-    "BaseClass"              "ability_datadriven"
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityTextureName"     "furion_force_of_nature"
-
-	"precache"
-	{
-	"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
-	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
-	}
-	
-    "OnOwnerDied"
-    {
-    	"RunScript"
-    	{
-			"ScriptFile"	"heroes/KeeperOfTheGrove/Reborn.lua"
-			"Function"		"Reborn"
-    	}
+		"AoERadius"	"%radius"
 		
-    }
-}
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
 
-"keeper_of_the_grove_treants_cyclone"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"invoker_tornado"
-	"MaxLevel"						"1"
+		"AbilityCooldown"				"18 17 16"
 
-	"AbilityCastRange"				"400"
+		"AbilityManaCost"				"80 180 280"	
 
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"40.0"		
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
-	}
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_FLOAT"
-			"duration"				"2.0"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"damage"					"200"
-		}
-		// Extra
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"cyclone_height"			"550"
-		}
-		"04"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"cyclone_min_height"		"500"
-		}
-		"05"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"cyclone_max_height"		"650"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
-			"Function"		"Cyclone"
-		}	
-
-	}
-
-	"Modifiers"
-	{
-		"modifier_keeper_of_the_grove_treants_cyclone"
-		{
-			"IsDebuff"			"1"
-			"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf"
-			"EffectAttachType"	"follow_origin"
-			"States"
-	        {   
-	        	"MODIFIER_STATE_FLYING"				"MODIFIER_STATE_VALUE_ENABLED"
-	        	"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_ROOTED"				"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_DISARMED"			"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
-	        }
-	
-			"OnCreated"
+			"01"
 			{
-				"RunScript"
-	        	{
-	        		"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
-	        		"Function"		"TornadoHeight"
-	        	}
+				"var_type"			"FIELD_INTEGER"
+				"damage_per_second"		"30 60 90"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"root_duration"		"2 3 4"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"root_hero_duration"	"1 2 3"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"290"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Furion.WrathOfNature_Cast"
+				"Target"		"CASTER"
 			}	
-			
-			"OnDestroy"
+
+			"RunScript"
 			{
-				"Damage"
+				"ScriptFile"	"heroes/KeeperOfTheGrove/Roots.lua"
+				"Function"		"Roots"
+				"Target"
 				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%damage"
+					"Center"  	"POINT"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}	
+			"Damage"
+			{
+				"Target"
+				{
+					"Center"  	"POINT"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				"Type" "DAMAGE_TYPE_MAGICAL"
+				"Damage" "%damage_per_second"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_keeper_of_the_grove_roots"
+			{
+				"IsPurgable"	"1"
+				"EffectName" 	"particles/units/heroes/hero_treant/treant_bramble_root.vpcf"
+				"EffectAttachType"  "follow_origin"
+				
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 
-				"RunScript"
-	        	{
-	        		"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
-	        		"Function"		"CycloneEnd"
-	        	}
 			}
+			"modifier_keeper_of_the_grove_roots_damage"
+			{	
+				"IsHidden"	"1"
+				"IsPurgable"	"1"
 
-	        "ThinkInterval"		"0.03"
-			"OnIntervalThink"
-            {
-                "RunScript"
-                {
-                    "ScriptFile"    "heroes/KeeperOfTheGrove/Cyclone.lua"
-                    "Function"      "Spin"
-                    "Angle"         "20"
-                }
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+						{
+							"Target"	"TARGET"
+							"Type" "DAMAGE_TYPE_MAGICAL"
+							"Damage" "%damage_per_second"
+						}
+				}
 			}
-
-			"OverrideAnimation"     "ACT_DOTA_FLAIL"
 		}
 	}
-}
 
-"keeper_of_the_grove_guardian_spirit_narure_forces"
-{
+	"keeper_of_the_grove_treants"
+	{
+		"BaseClass"                     "ability_datadriven"
+		"AbilityTextureName"            "furion_force_of_nature"
 
-    "BaseClass"             "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "AbilityTextureName"    "treant_living_armor"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 
-	"MaxLevel" "3"    
-    
-    "precache"
-    {
-        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
-        "particle"          "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
-    }
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT"
 
-    "AbilityCastPoint"              "0.0"
-	"AbilityCastRange"				"500"
-    "AbilityCooldown"               "7 14 21"
+		"AbilityCastRange"              "400"
+		"AbilityCastPoint"              "0.5"
+		"AbilityCooldown"               "25"
 
-    "AbilitySpecial"
-    {
-        "01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "bonus_armor"      "10 20 30"        
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "bonus_regen"      "75 100 125"        
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "radius"    		"500"
-        }
-        "04"
-        {
-            "var_type"          "FIELD_FLOAT"
-            "duration"  "3 4 5"
-        }
-    }
+		"AbilityManaCost"               "100 150 200"
 
-    "OnSpellStart"
-    {
-        "ActOnTargets"
-        {
-            "Target"
-            {
-                "Center" "CASTER"
-                "Radius" "%radius"
-                "Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
-                "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-            }
+		"precache"
+		{
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+			"model"		"models/heroes/furion/treant.vmdl"
+			"particle"  "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf"
+			
+			//Goblin Ability
+			"particle"  "particles/units/heroes/hero_furion/furion_force_of_nature_cast.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"treant_health"  "350 700 1400"
+			}
+			"02"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"treant_damage"  "60 125 250"
+			}
+			"03"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"unit_count"  	"2 2 2"
+			}
+		}
 
-            "Action"
-            {
-                "ApplyModifier"
-                {
-                    "ModifierName"  "modifier_guardian_spirit_narure_forces"
-                    "Target"
-                    {
-                        "Center" "TARGET"
-                        "Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-                    }
-                }
-            }
-        }
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"    "Hero_Furion.ForceOfNature"
+				"Target"        "CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"    "heroes/KeeperOfTheGrove/Treants.lua"
+				"Function"      "SummonTreants"
+				"Target"        "POINT"
+			}
+		}
+	}
 
-        "FireSound"
-        {
-            "EffectName"    "Hero_Treant.LivingArmor.Cast"
-            "Target"        "CASTER"
-        }
+	"keeper_of_the_grove_guardian_spirit"
+	{
+	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_lua"
+		"ScriptFile"			 "heroes\KeeperOfTheGrove\keeper_of_the_grove_guardian_spirit.lua"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"     "custom/keeper_of_the_grove_guardian_spirit"
 
+		"AbilityCooldown"				"40"
 
-    }
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
 
-    "Modifiers"
-    {
-        "modifier_guardian_spirit_narure_forces"
-        {
-            "IsBuff"    "1"
-            "Duration"  "%duration"
-            "Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-            "EffectName"    "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
-            "EffectAttachType"  "follow_origin"
+		"HasScepterUpgrade"		 "1"
 
-            "Properties"
-            {
-                "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"  "%bonus_armor"
-                "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%bonus_regen"
-            }
-        }
-    }
+		"precache"
+		{
+			"model"		"models/heroes/leshrac/leshrac.vmdl"
+			"model"		"models/heroes/leshrac/leshrac_armor.vmdl"
+			"model"		"models/heroes/leshrac/leshrac_head.vmdl"
+			"model"		"models/heroes/leshrac/leshrac_tail.vmdl"
+			"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_stats"		"15 30 45"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_stats_scepter"		"25 50 75"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"lifetime"			"10 15 20"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"lifetime_scepter"			"15 20 25"
+				"RequiresScepter"		"1"
+			}
+		}
+
+	}
+
+	"keeper_of_the_grove_natures_curse"
+	{
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/KeeperOfTheGrove/keeper_of_the_grove_natures_curse.lua"
+
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"     		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_3"
+		"AbilityTextureName"			"furion_sprout"
+
+		"AbilityCastRange"				"650"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"220"
+		"AoERadius"						"350"
+		"AbilityManaCost"				"200 250 300"
+
+		"AOERadius"                     "300"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+		"HasScepterUpgrade"     "1"
+
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_furion/furion_wrath_of_nature.vpcf"
+			"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
+		}
+
+		"AbilitySpecial"
+		{           
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"60 90 120"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second_scepter"		"90 120 150"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"10"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"hero_duration"			"5"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"350"
+			}  
+			"06"
+			{
+				"var_type"              "FIELD_FLOAT"
+				"cooldown_scepter"      "160"
+				"RequiresScepter"		"1"
+			}    
+		}
+	}	
+
+	"keeper_of_the_grove_treants_unity"
+	{
+	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"     "furion_teleportation"
+
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"	
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/KeeperOfTheGrove/Unity.lua"
+				"Function"		"Unity"
+			}
+		}
+	}
+
+	"keeper_of_the_grove_treants_reborn"
+	{
+	// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"     "furion_force_of_nature"
+
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_night_stalker/nightstalker_ulti.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+		}
+		
+		"OnOwnerDied"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/KeeperOfTheGrove/Reborn.lua"
+				"Function"		"Reborn"
+			}			
+		}
+	}
+
+	"keeper_of_the_grove_treants_cyclone"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"invoker_tornado"
+		"MaxLevel"						"1"
+
+		"AbilityCastRange"				"400"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"40.0"		
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"				"2.0"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"200"
+			}
+			// Extra
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cyclone_height"			"550"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cyclone_min_height"		"500"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cyclone_max_height"		"650"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
+				"Function"		"Cyclone"
+			}	
+		}
+
+		"Modifiers"
+		{
+			"modifier_keeper_of_the_grove_treants_cyclone"
+			{
+				"IsDebuff"			"1"
+				"EffectName"		"particles/units/heroes/hero_brewmaster/brewmaster_cyclone.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"States"
+				{   
+					"MODIFIER_STATE_FLYING"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ROOTED"				"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"			"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+		
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
+						"Function"		"TornadoHeight"
+					}
+				}	
+				
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage"
+					}
+
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/KeeperOfTheGrove/Cyclone.lua"
+						"Function"		"CycloneEnd"
+					}
+				}
+
+				"ThinkInterval"		"0.03"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "heroes/KeeperOfTheGrove/Cyclone.lua"
+						"Function"      "Spin"
+						"Angle"         "20"
+					}
+				}
+				"OverrideAnimation"     "ACT_DOTA_FLAIL"
+			}
+		}
+	}
+
+	"keeper_of_the_grove_guardian_spirit_narure_forces"
+	{
+
+		"BaseClass"             "ability_datadriven"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"    "treant_living_armor"
+
+		"MaxLevel" "3"    
+		
+		"precache"
+		{
+			"soundfile"         "soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
+			"particle"          "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+		}
+
+		"AbilityCastPoint"              "0.0"
+		"AbilityCastRange"				"500"
+		"AbilityCooldown"               "7 14 21"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"bonus_armor"      "10 20 30"        
+			}
+			"02"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"bonus_regen"      "75 100 125"        
+			}
+			"03"
+			{
+				"var_type"          "FIELD_INTEGER"
+				"radius"    		"500"
+			}
+			"04"
+			{
+				"var_type"          "FIELD_FLOAT"
+				"duration"  "3 4 5"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" "CASTER"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+					"Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"  "modifier_guardian_spirit_narure_forces"
+						"Target"
+						{
+							"Center" "TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+						}
+					}
+				}
+			}
+
+			"FireSound"
+			{
+				"EffectName"    "Hero_Treant.LivingArmor.Cast"
+				"Target"        "CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_guardian_spirit_narure_forces"
+			{
+				"IsBuff"    "1"
+				"Duration"  "%duration"
+				"Attributes"            "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"EffectName"    "particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+				"EffectAttachType"  "follow_origin"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"  "%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"  "%bonus_regen"
+				}
+			}
+		}
+	}
 }

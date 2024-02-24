@@ -1,350 +1,338 @@
-"fallen_champion_shell"
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"nyx_assassin_impale"
-
-
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"12 11 10"
-	"AbilityManaCost"				"90 130 170"
-	"AbilityCastPoint"      "0.2"
-  
-	"AbilityCastRange"				"600"
-
-    "MaxLevel"               "3"
-    "RequiredLevel"          "1"
-    "LevelsBetweenUpgrades"  "2"  
-  
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"fallen_champion_shell"
 	{
-		"01"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"pr_damage"						"15 20 25"
-		}
-		"02"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"radius"					"600"
-		}
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"nyx_assassin_impale"
 
-	"precache"
-	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts"
-		"particle"	"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray.vpcf"
-		//"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
-	}
 
-	"OnSpellStart"
-	{
-		"FireEffect"
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12 11 10"
+		"AbilityManaCost"				"90 130 170"
+		"AbilityCastPoint"      "0.2"
+	
+		"AbilityCastRange"				"600"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"  
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"EffectName"		"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray.vpcf"
-			"EffectAttachType" 	"follow_origin"
-			"EffectRadius"		"%radius"
-			"Target" 			"CASTER"
-			"ControlPoints"
+			"01"
 			{
-				"01"	"%radius 0 %radius"
+				"var_type"						"FIELD_INTEGER"
+				"pr_damage"						"15 20 25"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"					"600"
 			}
 		}
 
-		"FireSound"
+		"precache"
 		{
-			"EffectName"		"Hero_Bristleback.PistonProngs.QuillSpray.Cast"
-			"Target" 			"CASTER"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bristleback.vsndevts"
+			"particle"	"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray.vpcf"
+			//"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
 		}
 
-		"RunScript"
+		"OnSpellStart"
 		{
-			"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
-			"Function"		"shell_cast"
-			"Target"
+			"FireEffect"
 			{
-				"Center"	"CASTER"
-				"Radius"	"%radius"
-				"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			}
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_fallen_champion_shell"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-	
-			"OnCreated"
-			{
-				"RunScript"
+				"EffectName"		"particles/econ/items/bristleback/bristle_spikey_spray/bristle_spikey_quill_spray.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"EffectRadius"		"%radius"
+				"Target" 			"CASTER"
+				"ControlPoints"
 				{
-					"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
-					"Function"		"shell_create"
+					"01"	"%radius 0 %radius"
 				}
 			}
-	
-			"OnTakeDamage"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
-					"Function"		"shell"
-					"Dmg"			"%attack_damage"
-				}
-			} 
 
-			"OnDeath"
+			"FireSound"
 			{
-				"RunScript"
+				"EffectName"		"Hero_Bristleback.PistonProngs.QuillSpray.Cast"
+				"Target" 			"CASTER"
+			}
+
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+				"Function"		"shell_cast"
+				"Target"
 				{
-					"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
-					"Function"		"shell_cast"
-					"Target"
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_fallen_champion_shell"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"OnCreated"
+				{
+					"RunScript"
 					{
-						"Center"	"CASTER"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+						"Function"		"shell_create"
+					}
+				}
+		
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+						"Function"		"shell"
+						"Dmg"			"%attack_damage"
+					}
+				} 
+
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+						"Function"		"shell_cast"
+						"Target"
+						{
+							"Center"	"CASTER"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+							"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+					}
+				}
+
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
+						"Function"		"OnIntervalThink"
+					}
+				}
+		
+			}
+		}	
+	}
+
+	"fallen_champion_return"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes\FallenChampion\fallen_champion_return.lua"
+		"AbilityTextureName"			"nyx_assassin_spiked_carapace"
+
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"2"
+		"LevelsBetweenUpgrades"  		"2"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_return"				"6 12 18"		
+			}	
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"full_damage_chance"		"10 13 16"		
+			}	
+		}
+	}
+
+	"fallen_champion_absorption"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\FallenChampion\fallen_champion_absorption.lua"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"    	"custom/fallen_champion_absorption"
+
+		"MaxLevel"               	"3"
+		"RequiredLevel"          	"2"
+		"LevelsBetweenUpgrades"  	"2"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"kills_for_bonus_str"	"6 5 4"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"str_for_kill_boss_hero"				"1 2 3"
+			}
+		}
+	}
+
+	"fallen_champion_roar"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"			"nyx_assassin_vendetta"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+		
+		"AbilityCastRange"				"600 900 1200"
+
+		"AbilityCastAnimation" "ACT_DOTA_ATTACK"
+
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+			"particle"			"particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+			"particle"			"particles/status_fx/status_effect_beserkers_call.vpcf"
+		}
+
+		"AbilityCooldown"				"50"
+		"AbilityManaCost"				"80"	
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"600 900 1200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"5 7 9"
+			}
+		}
+		"OnSpellStart"
+		{
+
+			"FireSound"
+			{
+				"EffectName"	"Hero_Beastmaster.Primal_Roar"
+				"Target" 		"CASTER"
+			}
+
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"EffectRadius"		"%radius"
+				"Target" 			"CASTER"
+				"ControlPoints"
+				{
+					"01"	"%radius 0 %radius"
+				}
+			}
+
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_fallen_champion_roar_hero"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"		"%duration"
+			}
+			
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				}
+			
+				"Action"    
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_fallen_champion_roar"
+						"Target" 		"TARGET"
+						"Duration"		"%duration"
 					}
 				}
 			}
-
-			"ThinkInterval"	"1"
-			"OnIntervalThink"
+		}
+		"Modifiers"
+		{
+			"modifier_fallen_champion_roar_hero"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/FallenChampion/fallen_champion_shell.lua"
-					"Function"		"OnIntervalThink"
-				}
-			}
-	
-		}
-	}
-	
-}
-
-
-"fallen_champion_return"
-{
-	"BaseClass"             		"ability_lua"
-	"ScriptFile"					"heroes\FallenChampion\fallen_champion_return.lua"
-	"AbilityTextureName"			"nyx_assassin_spiked_carapace"
-
-	"MaxLevel"               		"3"
-	"RequiredLevel"          		"2"
-	"LevelsBetweenUpgrades"  		"2"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
-  	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-	"precache"
-	{
-
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"radius"					"10"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"damage_return"				"6 12 18"		
-		}	
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"full_damage_chance"		"10 13 16"		
-		}	
-
-	}
-
-}
-
-
-
-"fallen_champion_absorption"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\FallenChampion\fallen_champion_absorption.lua"
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"    	"custom/fallen_champion_absorption"
-
-	"MaxLevel"               	"3"
-	"RequiredLevel"          	"2"
-	"LevelsBetweenUpgrades"  	"2"
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"kills_for_bonus_str"	"6 5 4"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"str_for_kill_boss_hero"				"1 2 3"
-		}
-	}
-}
-
-
-"fallen_champion_roar"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"nyx_assassin_vendetta"
-
-    "AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-	
-	"AbilityCastRange"				"600 900 1200"
-
-	"AbilityCastAnimation" "ACT_DOTA_ATTACK"
-
-	"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
-		"particle"			"particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
-		"particle"			"particles/status_fx/status_effect_beserkers_call.vpcf"
-	}
-
-	"AbilityCooldown"				"50"
-
-	"AbilityManaCost"				"80"	
-
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"600 900 1200"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"5 7 9"
-		}
-	}
-	"OnSpellStart"
-	{
-
-		"FireSound"
-		{
-			"EffectName"	"Hero_Beastmaster.Primal_Roar"
-			"Target" 		"CASTER"
-		}
-
-		"FireEffect"
-		{
-			"EffectName"		"particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
-			"EffectAttachType" 	"follow_origin"
-			"EffectRadius"		"%radius"
-			"Target" 			"CASTER"
-			"ControlPoints"
-			{
-				"01"	"%radius 0 %radius"
-			}
-		}
-
-		"ApplyModifier"
-		{
-			"ModifierName"	"modifier_fallen_champion_roar_hero"
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-			"Duration"		"%duration"
-		}
-		
-
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center"  	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"IsHidden"	 	"0"
+				"IsPurgable"		"0"
 			}
 		
-			"Action"    
+			"modifier_fallen_champion_roar"
 			{
-				"ApplyModifier"
+				"IsPurgable"		"0"
+				"IsDebuff"			"1"
+
+				"States"
 				{
-					"ModifierName"	"modifier_fallen_champion_roar"
-					"Target" 		"TARGET"
-					"Duration"		"%duration"
+					"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MUTED" 			"MODIFIER_STATE_VALUE_ENABLED"
+
+				}	
+				
+				"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+				"StatusEffectPriority"  "10"
+
+				"ThinkInterval"  "0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/roar.lua"
+						"Function"		"Taunt"
+					}
 				}
-			}
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_fallen_champion_roar_hero"
-		{
-			"IsHidden"	 	"0"
-			"IsPurgable"		"0"
-		}
-	
-		"modifier_fallen_champion_roar"
-		{
-			"IsPurgable"		"0"
-			"IsDebuff"			"1"
 
-			"States"
-			{
-				"MODIFIER_STATE_SILENCED"		"MODIFIER_STATE_VALUE_ENABLED"
-				"MODIFIER_STATE_MUTED" 			"MODIFIER_STATE_VALUE_ENABLED"
-
-			}	
-			
-			"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
-			"StatusEffectPriority"  "10"
-
-			"ThinkInterval"  "0.1"
-			"OnIntervalThink"
-			{
-				"RunScript"
+				"OnDestroy"
 				{
-					"ScriptFile"	"heroes/FallenChampion/roar.lua"
-					"Function"		"Taunt"
-				}
-			}
-
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"heroes/FallenChampion/roar.lua"
-					"Function"		"TauntEnd"
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/FallenChampion/roar.lua"
+						"Function"		"TauntEnd"
+					}
 				}
 			}
 		}

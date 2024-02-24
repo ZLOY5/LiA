@@ -1,305 +1,303 @@
-
-"witch_doctor_negative_energy"
+"DotaAbilities"
 {
-	"BaseClass"		"ability_lua"
-	"ScriptFile"	"heroes/WitchDoctor/witch_doctor_negative_energy.lua"
-
-	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"          
-	"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
-	"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"      "custom/witch_doctor_negative_energy"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCastRange"      "650"
-	"AbilityCastPoint"      "0.3"
-	"AbilityCooldown"       "11 10 9"
-	"AbilityManaCost"       "100 175 250"
-
-	"HasScepterUpgrade"		"1"
-
-	"precache"
+	"witch_doctor_negative_energy"
 	{
-		"particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
-	}
+		"BaseClass"		"ability_lua"
+		"ScriptFile"	"heroes/WitchDoctor/witch_doctor_negative_energy.lua"
 
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"          
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"     
+		"AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"      "custom/witch_doctor_negative_energy"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastRange"      "650"
+		"AbilityCastPoint"      "0.3"
+		"AbilityCooldown"       "11 10 9"
+		"AbilityManaCost"       "100 175 250"
+
+		"HasScepterUpgrade"		"1"
+
+		"precache"
 		{
-		  	"var_type"    "FIELD_INTEGER"
-		  	"damage"      "100 200 300"
-		}
-		"02"
-		{
-		  	"var_type"    "FIELD_INTEGER"
-		  	"damage_scepter"      "300 400 500"
-			"RequiresScepter"		"1"
-		}
-		"03"
-		{
-		  	"var_type"        "FIELD_INTEGER"
-		  	"projectile_distance"    "650"
-		}
-		"04"
-		{
-		  	"var_type"        "FIELD_INTEGER"
-		  	"start_width"      "80"
-		}
-		"05"
-		{
-		  	"var_type"        "FIELD_INTEGER"
-		  	"end_width"      "200"
-		}
-		"06"
-		{
-		  	"var_type"        "FIELD_INTEGER"
-		  	"speed"         "1100"
-		}     
-	}
-}
-
-"witch_doctor_frost_armor"
-{
-  "BaseClass"   "ability_lua"
-  "ScriptFile"  "heroes/WitchDoctor/witch_doctor_frost_armor.lua"
-
-  "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
-  "SpellDispellableType"			"SPELL_DISPELLABLE_YES"
-  "AbilityTextureName"      "custom/witch_doctor_frost_armor"
-
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
-
-  "AbilityCastRange"        "800"
-  "AbilityCastPoint"        "0.4"
-  "AbilityCooldown"         "6.0"
-
-  "AbilityManaCost"       "100 125 150"
-
-  "HasScepterUpgrade"		"1"
-
-  "precache"
-	{
-		"particle"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
-		"particle"	"particles/status_fx/status_effect_frost_armor.vpcf"
-		"particle"	"particles/status_fx/status_effect_frost.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
-	}
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      	"var_type"        "FIELD_INTEGER"
-      	"armor_bonus"     "5 10 15"
-    }
-    "02"
-    {
-      	"var_type"        "FIELD_INTEGER"
-      	"armor_bonus_scepter"     "20 25 30"
-		"RequiresScepter"		"1"
-    }
-    "03"
-    {
-      	"var_type"        "FIELD_FLOAT"
-      	"duration"        "10 15 20"
-    }
-    "04"
-    {
-      	"var_type"        "FIELD_FLOAT"
-      	"duration_scepter"        "30"
-		"RequiresScepter"		"1"
-    }
-    "05"
-    {
-      	"var_type"        "FIELD_INTEGER"
-      	"movement_slow_percent" "-40"
-    }
-    "06"
-    {
-      	"var_type"        "FIELD_INTEGER"
-      	"attack_slow"   "-25"
-    }
-    "07"
-    {
-      	"var_type"        "FIELD_FLOAT"
-      	"slow_duration"     "5.0"
-    }
-    "08"
-    {
-      	"var_type"        "FIELD_INTEGER"
-      	"manacost_scepter"   "150 175 200"
-		"RequiresScepter"		"1"
-    }
-      
-  }
-}
-
-"witch_doctor_discharge"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"custom/witch_doctor_discharge"
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
-	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
-		"particle"		"particles/units/heroes/hero_invoker/invoker_emp.vpcf"
-	}
-
-
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"300"
-	"AbilityCastPoint"				"0.3"
-
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"16 15 14"
-	
-	
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"80 120 160"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"				"90 180 270"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"heal"					"150 300 450"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"300"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"distance"				"320"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"speed"					"300"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"air_time"				"1.2"
-		}			
-	}
-	
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_Invoker.EMP.Discharge"
-			"Target" 		"CASTER"
+			"particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
 		}
 
-		"Knockback"
+		"AbilitySpecial"
 		{
-			"Target"
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"var_type"    "FIELD_INTEGER"
+				"damage"      "100 200 300"
 			}
-			"Center" 	        "CASTER"
-			"Distance"	        "%distance"
-			"Duration"	        "%air_time"
-			"Height"	        "0"
-			"IsFixedDistance"	"1"
-			"ShouldStun"        "0"	
-		}
-		"RunScript"
-		{
-			"ScriptFile"	"heroes/WitchDoctor/Discharge.lua"
-			"Function"		"Discharge"
-			"Target"
+			"02"
 			{
-				"Center"  	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"var_type"    "FIELD_INTEGER"
+				"damage_scepter"      "300 400 500"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"projectile_distance"    "650"
+			}
+			"04"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"start_width"      "80"
+			}
+			"05"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"end_width"      "200"
+			}
+			"06"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"speed"         "1100"
+			}     
+		}
+	}
+
+	"witch_doctor_frost_armor"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"  "heroes/WitchDoctor/witch_doctor_frost_armor.lua"
+
+		"AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_2"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"AbilityTextureName"      "custom/witch_doctor_frost_armor"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastRange"        "800"
+		"AbilityCastPoint"        "0.4"
+		"AbilityCooldown"         "6.0"
+
+		"AbilityManaCost"       "100 125 150"
+
+		"HasScepterUpgrade"		"1"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_lich/lich_frost_armor.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost_armor.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"armor_bonus"     "5 10 15"
+			}
+			"02"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"armor_bonus_scepter"     "20 25 30"
+				"RequiresScepter"		"1"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"duration"        "10 15 20"
+			}
+			"04"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"duration_scepter"        "30"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"movement_slow_percent" "-40"
+			}
+			"06"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"attack_slow"   "-25"
+			}
+			"07"
+			{
+				"var_type"        "FIELD_FLOAT"
+				"slow_duration"     "5.0"
+			}
+			"08"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"manacost_scepter"   "150 175 200"
+				"RequiresScepter"		"1"
 			}
 		}
-
-	}
-}
-
-"witch_doctor_regeneration"
-{
-  "BaseClass"               "ability_datadriven"
-  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "AbilityTextureName"      "custom/witch_doctor_regeneration"
-	
-	"AbilityCooldown"				"120 90 60"
-	"AbilityManacost"				"200 250 300"
-	"AbilityCastPoint"				"0.1"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-  
- "precache"
-	{
-		"particle" "particles/items_fx/aegis_respawn_timer.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 	}
 
-	"OnSpellStart"
+	"witch_doctor_discharge"
 	{
-		"FireSound"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"custom/witch_doctor_discharge"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
 		{
-			"EffectName"	"Hero_Omniknight.Purification"
-			"Target" 		"CASTER"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+			"particle"		"particles/units/heroes/hero_invoker/invoker_emp.vpcf"
 		}
-		"RunScript"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"300"
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"16 15 14"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"80 120 160"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"ScriptFile"	"heroes/WitchDoctor/Regeneration.lua"
-			"Function"		"Regeneration"
-			"Target"
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Radius" 	"9999"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"90 180 270"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"150 300 450"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"300"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"distance"				"320"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"300"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"air_time"				"1.2"
+			}			
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Invoker.EMP.Discharge"
+				"Target" 		"CASTER"
+			}
+
+			"Knockback"
+			{
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+				"Center" 	        "CASTER"
+				"Distance"	        "%distance"
+				"Duration"	        "%air_time"
+				"Height"	        "0"
+				"IsFixedDistance"	"1"
+				"ShouldStun"        "0"	
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/WitchDoctor/Discharge.lua"
+				"Function"		"Discharge"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_BOTH"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+			}
+		}
+	}
+
+	"witch_doctor_regeneration"
+	{
+		"BaseClass"               "ability_datadriven"
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"      "custom/witch_doctor_regeneration"
+		
+		"AbilityCooldown"				"120 90 60"
+		"AbilityManacost"				"200 250 300"
+		"AbilityCastPoint"				"0.1"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+	
+		"precache"
+		{
+			"particle" "particles/items_fx/aegis_respawn_timer.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Omniknight.Purification"
+				"Target" 		"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/WitchDoctor/Regeneration.lua"
+				"Function"		"Regeneration"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Radius" 	"9999"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
 			}
 		}
 	}

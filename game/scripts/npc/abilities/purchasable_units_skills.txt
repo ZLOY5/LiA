@@ -1,558 +1,555 @@
+"DotaAbilities"
+{
 	"invulnerability"
-{
-	"BaseClass"             		"ability_datadriven"
-	"AbilityTextureName"			"modifier_invulnerable"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-	"Modifiers"
 	{
-		"invulnerability"
+		"BaseClass"             		"ability_datadriven"
+		"AbilityTextureName"			"modifier_invulnerable"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"Modifiers"
 		{
-			"Passive"	"1"
-			"States"
+			"invulnerability"
 			{
-				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
-		}
-	}
-}
-
-"troll_defender_armor_aura"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"troll_warlord_battle_trance"
-	
-	// Casting
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"7000"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_armor"	"30"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_troll_armor"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-	
-			"Aura"          	"modifier_troll_aura"
-			"Aura_Radius"   	"%radius"
-			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
-
-		}
-
-		"modifier_troll_aura"
-		{
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-			}
-		}
-	}
-}
-
-"doom_spawn_cripple"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"			"doom_bringer_lvl_death"
-	
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"10"
-	"AbilityCastRange"				"600"
-	"AbilityCastPoint"				"0.0"
-	"AbilityManaCost"				"175"
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"cripple_damage_decrease_pct"			"-40"
-		}
-		"02"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"cripple_attack_slow"					"-40"
-		}
-		"03"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"cripple_movespeed_slow_pct"	"-60"
-		}
-		"04"
-		{
-			"var_type"						"FIELD_FLOAT"
-			"duration"						"10"
-		}
-	}
-	
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"abilities/Cripple.lua"
-			"Function"		"Cripple"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_rod_of_atos_datadriven_cripple"
-		{
-			"Duration"			"%duration"
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsBuff"			"0"
-			"IsDebuff"			"1"
-			"IsPurgable"		"1"
-			
-			"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
-			"EffectAttachType"		"follow_origin"
-			
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
-				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"		"%cripple_damage_decrease_pct"
-			}
-		}
-	}
-}
-
-"doom_spawn_stomp"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"FightRecapLevel"				"1"
-	"AbilityTextureName"			"centaur_hoof_stomp"
-	
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"7.0"
-	"AbilityManaCost"				"100"
-	
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"radius"						"250"
-		}
-		"02"
-		{
-			"var_type"						"FIELD_FLOAT"
-			"stun_duration"					"3.0"
-		}
-		"03"
-		{
-			"var_type"						"FIELD_INTEGER"
-			"stomp_damage"					"100"
-		}
-	}
-
-	"precache"
-	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
-		"particle"	"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-		"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
-	}
-
-	"OnSpellStart"
-	{
-		"FireEffect"
-		{
-			"EffectName"		"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
-			"EffectAttachType" 	"follow_origin"
-			"EffectRadius"		"%radius"
-			"Target" 			"CASTER"
-			"ControlPoints"
-			{
-				"01"	"%radius 0 %radius"
-			}
-		}
-
-		"FireSound"
-		{
-			"EffectName"		"Hero_Centaur.HoofStomp"
-			"Target" 			"CASTER"
-		}
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center"  				"CASTER"
-				"Radius" 				"%radius"
-				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-
-			"Action"
-			{
-				"Damage"
+				"Passive"	"1"
+				"States"
 				{
-					"Target"	"TARGET"
-					"Type"		"DAMAGE_TYPE_MAGICAL"
-					"Damage"	"%stomp_damage"
-				}
-
-				"ApplyModifier"
-				{
-					"Target" 		"TARGET"
-					"ModifierName"	"modifier_doom_spawn_stomp"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
-		}		
-	}
-
-	"Modifiers"
-	{
-		"modifier_doom_spawn_stomp"
-		{
-			"IsDebuff"	"1"
-			"Duration"	"%stun_duration"
-			"States"
-			{
-				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
-			}
-			"OverrideAnimation"	"ACT_DOTA_DISABLED"
-			"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
-			"EffectAttachType"	"follow_overhead"
-		}
-	}
-}
-
-"hell_beast_bloodlust"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-
-	"AbilityTextureName"			"ogre_magi_bloodlust"
-
-	"AbilityCastRange"				"600"
-	"AbilityCastPoint"				"0.0"
-
-	"AbilityCooldown"				"9.0"
-
-	"AbilityManaCost"				"80"	
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
-	}
-	
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_attack_speed"	"50"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_movement_speed"	"10"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"20.0"
 		}
 	}
 
-	"OnSpellStart"
+	"troll_defender_armor_aura"
 	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
-			"Target"		"TARGET"
-		}
-		"ApplyModifier"
-		{
-		"ModifierName" "modifier_bloodlust_hell_beast"
-		"Target"	"TARGET"
-		"Duration"	"%duration"
-		}
-
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"troll_warlord_battle_trance"
 		
-	}
-	"Modifiers"
-	{
-		"modifier_bloodlust_hell_beast"
+		// Casting
+		"AbilitySpecial"
 		{
-			"IsPurgable"		"1"
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed"
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"7000"
 			}
-			"EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
-			"EffectAttachType"  "follow_origin"
-		}
-		"red_hellbeast"
-		{
-		"Passive"	"1"
-		"IsHidden"	"1"
-		"StatusEffectName"     "particles/status_fx/status_effect_gods_strength.vpcf"
-		}
-	}
-}
-
-"hell_beast_sleep"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_lua"
-	"ScriptFile"			"abilities\hell_beast_sleep.lua"
-	
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetFlag"			"DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP"	
-	"AbilityTextureName"			"bane_nightmare"
-
-	"AbilityCastRange"				"800"
-	"AbilityCastPoint"				"0.0"
-
-	"AbilityCooldown"				"12.0"
-
-	"AbilityManaCost"				"100"	
-
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration_hero"	"4"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration_creep"	"12"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration_invul"	"2"
-		}
-	}
-}
-
-"boar_poison"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
-	"AbilityTextureName"			"beastmaster_boar_poison"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-
-	"precache"
-	{
-	"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
-	}
-	
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"movement_slow"		"-25"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"attack_slow"		"-25"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"		"3"
-		}
-	}
-
-	"OnOwnerSpawned"
-	{
-		"ApplyModifier"	
-		{
-			"ModifierName"	"modifier_boar_poison"
-			"Target"	"CASTER"
-		}
-	}
-
-	"Modifiers"
-	{
-		"modifier_boar_poison"
-		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-	
-			"OnAttackLanded"
+			"02"
 			{
-				"ApplyModifier"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"	"30"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_troll_armor"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+		
+				"Aura"          	"modifier_troll_aura"
+				"Aura_Radius"   	"%radius"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+
+			}
+
+			"modifier_troll_aura"
+			{
+				"Properties"
 				{
-					"ModifierName"	"modifier_poisoned_weapon_debuff"
-					"Target"	
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+				}
+			}
+		}
+	}
+
+	"doom_spawn_cripple"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"			"doom_bringer_lvl_death"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"10"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0"
+		"AbilityManaCost"				"175"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cripple_damage_decrease_pct"			"-40"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cripple_attack_slow"					"-40"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"cripple_movespeed_slow_pct"	"-60"
+			}
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"10"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/Cripple.lua"
+				"Function"		"Cripple"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_rod_of_atos_datadriven_cripple"
+			{
+				"Duration"			"%duration"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"0"
+				"IsDebuff"			"1"
+				"IsPurgable"		"1"
+				
+				"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
+				"EffectAttachType"		"follow_origin"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%cripple_movespeed_slow_pct"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%cripple_attack_slow"
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"		"%cripple_damage_decrease_pct"
+				}
+			}
+		}
+	}
+
+	"doom_spawn_stomp"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"centaur_hoof_stomp"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"7.0"
+		"AbilityManaCost"				"100"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"250"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"stun_duration"					"3.0"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"stomp_damage"					"100"
+			}
+		}
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+			"particle"	"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+			"particle"	"particles/generic_gameplay/generic_stunned.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"EffectRadius"		"%radius"
+				"Target" 			"CASTER"
+				"ControlPoints"
+				{
+					"01"	"%radius 0 %radius"
+				}
+			}
+
+			"FireSound"
+			{
+				"EffectName"		"Hero_Centaur.HoofStomp"
+				"Target" 			"CASTER"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  				"CASTER"
+					"Radius" 				"%radius"
+					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+
+				"Action"
+				{
+					"Damage"
 					{
-					"Center"	"TARGET"
-					"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%stomp_damage"
+					}
+
+					"ApplyModifier"
+					{
+						"Target" 		"TARGET"
+						"ModifierName"	"modifier_doom_spawn_stomp"
+					}
+				}
+			}		
+		}
+
+		"Modifiers"
+		{
+			"modifier_doom_spawn_stomp"
+			{
+				"IsDebuff"	"1"
+				"Duration"	"%stun_duration"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"			
+				}
+				"OverrideAnimation"	"ACT_DOTA_DISABLED"
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"
+			}
+		}
+	}
+
+	"hell_beast_bloodlust"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+
+		"AbilityTextureName"			"ogre_magi_bloodlust"
+
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.0"
+
+		"AbilityCooldown"				"9.0"
+
+		"AbilityManaCost"				"80"	
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"	"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement_speed"	"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"20.0"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_OgreMagi.Bloodlust.Cast"
+				"Target"		"TARGET"
+			}
+			"ApplyModifier"
+			{
+			"ModifierName" "modifier_bloodlust_hell_beast"
+			"Target"	"TARGET"
+			"Duration"	"%duration"
+			}	
+		}
+		"Modifiers"
+		{
+			"modifier_bloodlust_hell_beast"
+			{
+				"IsPurgable"		"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_movement_speed"
+				}
+				"EffectName"        "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+				"EffectAttachType"  "follow_origin"
+			}
+			"red_hellbeast"
+			{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"StatusEffectName"     "particles/status_fx/status_effect_gods_strength.vpcf"
+			}
+		}
+	}
+
+	"hell_beast_sleep"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_lua"
+		"ScriptFile"			"abilities\hell_beast_sleep.lua"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetFlag"			"DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP"	
+		"AbilityTextureName"			"bane_nightmare"
+
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.0"
+
+		"AbilityCooldown"				"12.0"
+
+		"AbilityManaCost"				"100"	
+
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration_hero"	"4"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration_creep"	"12"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration_invul"	"2"
+			}
+		}
+	}
+
+	"boar_poison"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityTextureName"			"beastmaster_boar_poison"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+
+		"precache"
+		{
+		"particle"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_slow"		"-25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_slow"		"-25"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"3"
+			}
+		}
+
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"	
+			{
+				"ModifierName"	"modifier_boar_poison"
+				"Target"	"CASTER"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_boar_poison"
+			{
+				"Passive"               "1"
+				"IsHidden"				"1"
+		
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_poisoned_weapon_debuff"
+						"Target"	
+						{
+						"Center"	"TARGET"
+						"Teams" 	 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"					
+						}
 					}
 				}
 			}
-		}
-		
-		"modifier_poisoned_weapon_debuff"
-		{
-			"Passive"               "0"
-			"IsHidden"				"0"
-			"Duration"				"%duration"
 			
-			"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
-			"EffectAttachType"	"follow_origin"
-			
-			"Properties"
+			"modifier_poisoned_weapon_debuff"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_slow"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_slow"
-			}
-		}
-	}
-}
-
-"troll_healer_heal"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityTextureName"			"forest_troll_high_priest_heal"
-
-	"MaxLevel"               "1"
-
-	"AoERadius"               "400"	
-	"AbilityCastRange"				"500"
-	"AbilityCastPoint"				"0.3"
-	"AbilityCooldown"				"1.5"
-	"AbilityManaCost"				"5"	
-
-	"precache"
-	{
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
-		//"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-		"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
-
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"value_heal"			"50"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"value_heal_percent"	"5"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"400"
-		}
-	}
-
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"n_creep_ForestTrollHighPriest.Heal"
-			"Target"		"CASTER"
-		}
-
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center" "TARGET"
-				"Radius" "%radius"
-				"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-				"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-
-			"Action"
-			{
-				"FireEffect"
+				"Passive"               "0"
+				"IsHidden"				"0"
+				"Duration"				"%duration"
+				
+				"EffectName"	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				
+				"Properties"
 				{
-					"Target"			"TARGET"
-					"EffectName"		"particles/neutral_fx/troll_heal.vpcf"
-					"EffectAttachType"	"follow_origin"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_slow"
 				}
 			}
 		}
-		"RunScript"
-		{
-			"ScriptFile"	"abilities/TrollHealer.lua"
-			"Function"		"Heal"
-			"Target"
-			{
-				"Center" "TARGET"
-				"Radius" "%radius"
-				"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
-				"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
-		}
-		"Heal"
-		{
-			"Target"        "TARGET"
-			"HealAmount"	"%value_heal"
-		}
 	}
 
+	"troll_healer_heal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"forest_troll_high_priest_heal"
 
+		"MaxLevel"               "1"
 
+		"AoERadius"               "400"	
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"1.5"
+		"AbilityManaCost"				"5"	
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"value_heal"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"value_heal_percent"	"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"n_creep_ForestTrollHighPriest.Heal"
+				"Target"		"CASTER"
+			}
+
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center" "TARGET"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+					"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+
+				"Action"
+				{
+					"FireEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/neutral_fx/troll_heal.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/TrollHealer.lua"
+				"Function"		"Heal"
+				"Target"
+				{
+					"Center" "TARGET"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY" 
+					"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+			"Heal"
+			{
+				"Target"        "TARGET"
+				"HealAmount"	"%value_heal"
+			}
+		}
+	}
 }

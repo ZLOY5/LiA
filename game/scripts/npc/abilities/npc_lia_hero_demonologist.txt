@@ -1,352 +1,344 @@
-"demonologist_demonic_seal"
+"DotaAbilities"
 {
-    "BaseClass"     "ability_lua"
-    "ScriptFile"    "heroes/Demonologist/demonologist_demonic_seal.lua"
+  "demonologist_demonic_seal"
+  {
+      "BaseClass"     "ability_lua"
+      "ScriptFile"    "heroes/Demonologist/demonologist_demonic_seal.lua"
 
-    "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE" 
-    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
-    "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
-    "AbilityTextureName"     "shadow_demon_soul_catcher"        
+      "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE" 
+      "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+      "AbilityUnitDamageType" "DAMAGE_TYPE_MAGICAL"
+      "SpellImmunityType"      "SPELL_IMMUNITY_ENEMIES_NO"
+      "AbilityTextureName"     "shadow_demon_soul_catcher"        
 
-    "AbilityCastRange"        "700"
-    "AbilityCastPoint"        "0.3"
-    "AbilityCooldown"         "16 15 14"
-    "AbilityManaCost"         "100 125 150"
+      "AbilityCastRange"        "700"
+      "AbilityCastPoint"        "0.3"
+      "AbilityCooldown"         "16 15 14"
+      "AbilityManaCost"         "100 125 150"
 
-    "AoERadius"               "150 175 200"
+      "AoERadius"               "150 175 200"
 
-    "MaxLevel"               "3"
-    "RequiredLevel"          "1"
-    "LevelsBetweenUpgrades"  "2"
+      "MaxLevel"               "3"
+      "RequiredLevel"          "1"
+      "LevelsBetweenUpgrades"  "2"
 
-    "HasScepterUpgrade"     "1"
+      "HasScepterUpgrade"     "1"
 
-    "precache"
-    {
-        "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
-        "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
-    }
+      "precache"
+      {
+          "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+          "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
+      }
 
-    "AbilitySpecial"
-    {
-    	"01"
-        {
+      "AbilitySpecial"
+      {
+        "01"
+          {
             "var_type"        "FIELD_INTEGER"
             "initial_damage"          "10 20 30"
-        }
-        "02"
-        {
+          }
+          "02"
+          {
             "var_type"        "FIELD_INTEGER"
             "initial_damage_scepter"          "20 40 60"
             "RequiresScepter"   "1"
-        }
-        "03"
-        {
+          }
+          "03"
+          {
             "var_type"        "FIELD_INTEGER"
             "additional_damage"          "6"
-        }
-        "04"
-        {
+          }
+          "04"
+          {
             "var_type"        "FIELD_INTEGER"
             "additional_damage_scepter"          "12"
             "RequiresScepter"   "1"
-        }    
-        "05"
-        {
+          }    
+          "05"
+          {
             "var_type"        "FIELD_FLOAT"
             "initial_duration"        "2"
-        }
-        "06"
-        {
+          }
+          "06"
+          {
             "var_type"        "FIELD_FLOAT"
             "additional_duration"        "0.5"
-        }
-        "07"
-        {
+          }
+          "07"
+          {
             "var_type"        "FIELD_INTEGER"
             "radius"          "175"
-        } 
-        "08"
-        {
+          } 
+          "08"
+          {
             "var_type"              "FIELD_INTEGER"
             "manacost_scepter"      "125 175 225"
             "RequiresScepter"   "1"
-        }   
-    }
-}  
-
-
-"demonologist_touch_of_darkness"
-{
-  "BaseClass"                 "ability_datadriven"
-  "AbilityTextureName"      "shadow_demon_shadow_poison"
-
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
-
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
-  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
-  "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
-  "AbilityCastRange"        "450"
-
-  "AbilityManaCost"       "20 35 50"
-
-  "precache"
-  {
-    "particle"        "particles/custom/demonologist/rod_of_atos_attack.vpcf"
-    "particle"        "particles/custom/demonologist/shadow_demon_shadow_poison_impact_demionologist.vpcf"
-    "soundfile"       "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
-  }
-  
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"          "FIELD_INTEGER"
-      "damage_percentage"          "5 7 9"
-    }
-    "02"
-    {
-      "var_type"          "FIELD_INTEGER"
-      "radius"          "130"   
-    } 
-    "03"
-    {
-      "var_type"          "FIELD_INTEGER"
-      "mana"            "20 35 50"   
-    }     
-  }
-
-  "Modifiers"
-  { 
-    "modifier_demonologist_arrow_of_darkness"
-    {
-      "Passive"   "1"
-      "IsHidden"    "1"
-      "Orb"
-      {
-        "Priority"      "DOTA_ORB_PRIORITY_ABILITY"
-        "ProjectileName"    "particles/custom/demonologist/rod_of_atos_attack.vpcf"
-        "CastAttack"    "1"
+          }   
       }
+  }  
 
-      "OnOrbFire"
+  "demonologist_touch_of_darkness"
+  {
+    "BaseClass"                 "ability_datadriven"
+    "AbilityTextureName"      "shadow_demon_shadow_poison"
+
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
+
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+    "AbilityUnitDamageType"     "DAMAGE_TYPE_PHYSICAL"
+    "AbilityCastRange"        "450"
+
+    "AbilityManaCost"       "20 35 50"
+
+    "precache"
+    {
+      "particle"        "particles/custom/demonologist/rod_of_atos_attack.vpcf"
+      "particle"        "particles/custom/demonologist/shadow_demon_shadow_poison_impact_demionologist.vpcf"
+      "soundfile"       "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
+    }
+    
+    "AbilitySpecial"
+    {
+      "01"
       {
-        "SpendMana"
+        "var_type"          "FIELD_INTEGER"
+        "damage_percentage"          "5 7 9"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "radius"          "130"   
+      } 
+      "03"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "mana"            "20 35 50"   
+      }     
+    }
+
+    "Modifiers"
+    { 
+      "modifier_demonologist_arrow_of_darkness"
+      {
+        "Passive"   "1"
+        "IsHidden"    "1"
+        "Orb"
         {
-          "Mana"    "%AbilityManaCost"
+          "Priority"      "DOTA_ORB_PRIORITY_ABILITY"
+          "ProjectileName"    "particles/custom/demonologist/rod_of_atos_attack.vpcf"
+          "CastAttack"    "1"
         }
-      }
-      
-      "OnOrbImpact"
-      {
-        "RunScript"
+
+        "OnOrbFire"
         {
-          "ScriptFile"  "heroes/Demonologist/ArrowOfDarkness.lua"
-          "Function"    "ArrowOfDarkness"
-          "Target"
+          "SpendMana"
           {
-            "Center"    "TARGET"
-            "Radius"   "%radius"
-            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-            "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+            "Mana"    "%AbilityManaCost"
           }
         }
-        "FireSound"
+        
+        "OnOrbImpact"
         {
-          "EffectName"    "Hero_ShadowDemon.ShadowPoison.Impact"
-          "Target"      "CASTER"
-        }
-        "FireEffect"
-        {
-          "EffectName"        "particles/custom/demonologist/shadow_demon_shadow_poison_impact_demionologist.vpcf"
-          "EffectAttachType"  "follow_origin"
-          "Target"
+          "RunScript"
           {
-            "Center"    "TARGET"
-            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+            "ScriptFile"  "heroes/Demonologist/ArrowOfDarkness.lua"
+            "Function"    "ArrowOfDarkness"
+            "Target"
+            {
+              "Center"    "TARGET"
+              "Radius"   "%radius"
+              "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+              "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+            }
+          }
+          "FireSound"
+          {
+            "EffectName"    "Hero_ShadowDemon.ShadowPoison.Impact"
+            "Target"      "CASTER"
+          }
+          "FireEffect"
+          {
+            "EffectName"        "particles/custom/demonologist/shadow_demon_shadow_poison_impact_demionologist.vpcf"
+            "EffectAttachType"  "follow_origin"
+            "Target"
+            {
+              "Center"    "TARGET"
+              "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+              "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+            }
           }
         }
       }
     }
   }
-}
 
-"demonologist_mastery_of_demonology"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"       "ability_datadriven"
-  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-  "AbilityTextureName"      "shadow_demon_demonic_purge"
-  "CastFilterRejectCaster"    "1"
-
-  
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
-
-
-  "AbilityCastRange"        "700"
-  "AbilityCastPoint"        "0.3"
-
-  "AbilityCooldown"       "12"
-
-  "AbilityManaCost"       "0" 
-
-  "precache"
+  "demonologist_mastery_of_demonology"
   {
-    "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
-    "particle"  "particles/custom/demonologist/shadow_demon_demonic_purge_finale.vpcf"
-    //"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
-    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"       "ability_datadriven"
+    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityTextureName"      "shadow_demon_demonic_purge"
+    "CastFilterRejectCaster"    "1"
 
-  }
-  
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_health"        "100 200 300"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "25 50 75"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "hp_percent_transfer"        "25 35 45"
-    }
-  }
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
 
-  "OnSpellStart"
-  {
-    "RunScript"
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
+
+    "AbilityCooldown"       "12"
+
+    "AbilityManaCost"       "0" 
+
+    "precache"
     {
-      "ScriptFile"  "heroes/Demonologist/MasteryOfDemonology.lua"
-      "Function"    "OnSpellStart"
+      "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+      "particle"  "particles/custom/demonologist/shadow_demon_demonic_purge_finale.vpcf"
+      //"particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+      "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
     }
-  }
-
-  "Modifiers"
-  {
-    "modifier_mastery_of_demonology_aura_emitter"
+    
+    "AbilitySpecial"
     {
-      "Passive" "1"
-      "IsPurgable"  "0"
-      "IsHidden"      "1"
-      "Aura"            "modifier_mastery_of_demonology"
-      "Aura_Radius"     "4000"
-      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-      "Aura_Types"      "DOTA_UNIT_TARGET_BASIC"
-      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
-    }
-
-    "modifier_mastery_of_demonology"
-    {
-      "IsPurgable"  "0"
-      "IsHidden"      "1"
-
-      "OnCreated"
+      "01"
       {
-        "RunScript"
+        "var_type"        "FIELD_INTEGER"
+        "bonus_health"        "100 200 300"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "bonus_damage"      "25 50 75"
+      }
+      "03"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "hp_percent_transfer"        "25 35 45"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "heroes/Demonologist/MasteryOfDemonology.lua"
+        "Function"    "OnSpellStart"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_mastery_of_demonology_aura_emitter"
+      {
+        "Passive" "1"
+        "IsPurgable"  "0"
+        "IsHidden"      "1"
+        "Aura"            "modifier_mastery_of_demonology"
+        "Aura_Radius"     "4000"
+        "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "Aura_Types"      "DOTA_UNIT_TARGET_BASIC"
+        "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_NONE"
+      }
+
+      "modifier_mastery_of_demonology"
+      {
+        "IsPurgable"  "0"
+        "IsHidden"      "1"
+
+        "OnCreated"
         {
-          "ScriptFile"  "heroes/Demonologist/MasteryOfDemonology.lua"
-          "Function"    "GiveAbility"
+          "RunScript"
+          {
+            "ScriptFile"  "heroes/Demonologist/MasteryOfDemonology.lua"
+            "Function"    "GiveAbility"
+          }
         }
       }
     }
   }
 
-}
-
-"demonologist_mastery_of_demonology_creep"
-{
-  // General
-  //-------------------------------------------------------------------------------------------------------------
-  "BaseClass"       "ability_datadriven"
-  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-  "AbilityTextureName"      "shadow_demon_demonic_purge"
-  "CastFilterRejectCaster"    "1"
-
-  
-  "MaxLevel"               "3"
-  "RequiredLevel"          "2"
-  "LevelsBetweenUpgrades"  "2"
-
-
-  "AbilityCastRange"        "700"
-  "AbilityCastPoint"        "0.3"
-
-  "AbilityCooldown"       "12"
-
-  "AbilityManaCost"       "0" 
-
-  
-  "AbilitySpecial"
+  "demonologist_mastery_of_demonology_creep"
   {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_health"        "100 200 300"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "25 50 75"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "hp_percent_transfer"        "25 35 45"
-    }
-  }
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "BaseClass"       "ability_datadriven"
+    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityTextureName"      "shadow_demon_demonic_purge"
+    "CastFilterRejectCaster"    "1"
+ 
+    "MaxLevel"               "3"
+    "RequiredLevel"          "2"
+    "LevelsBetweenUpgrades"  "2"
 
-  "OnSpellStart"
-  {
-    "RunScript"
-    {
-      "ScriptFile"  "heroes/Demonologist/MasteryOfDemonology.lua"
-      "Function"    "OnSpellStart"
-    }
-  }
+    "AbilityCastRange"        "700"
+    "AbilityCastPoint"        "0.3"
 
-  "Modifiers"
-  {
-    "modifier_mastery_of_demonology_buff"
-    {
-      "IsPurgable"  "0"
-      "IsHidden"      "0"
-      "Passive" "1"
+    "AbilityCooldown"       "12"
 
-      "Properties"
+    "AbilityManaCost"       "0" 
+   
+    "AbilitySpecial"
+    {
+      "01"
       {
-        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
+        "var_type"        "FIELD_INTEGER"
+        "bonus_health"        "100 200 300"
+      }
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "bonus_damage"      "25 50 75"
+      }
+      "03"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "hp_percent_transfer"        "25 35 45"
       }
     }
 
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "heroes/Demonologist/MasteryOfDemonology.lua"
+        "Function"    "OnSpellStart"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_mastery_of_demonology_buff"
+      {
+        "IsPurgable"  "0"
+        "IsHidden"      "0"
+        "Passive" "1"
+
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
+        }
+      }
+    }
   }
 
-}
-
-"demonologist_ritual_of_summoning"
-{
+  "demonologist_ritual_of_summoning"
+  {
     "BaseClass"     "ability_lua"
     "ScriptFile"    "heroes/Demonologist/demonologist_ritual_of_summoning.lua"
 
@@ -378,53 +370,53 @@
 
     "AbilitySpecial"
     {
-        "01"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "unit_count"  "4 6 8"
-        }
-        "02"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "boss_count"  "0"
-        }
-        "03"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "boss_count_scepter"  "1"
-            "RequiresScepter"   "1"
-        }
-        "04"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "intelligence_for_unit"  "40"
-        }
-        "05"
-        {
-            "var_type"          "FIELD_FLOAT"
-            "delay"  "1.5"
-        }
-        "06"
-        {
-            "var_type"          "FIELD_FLOAT"
-            "max_health_loss_percent_per_second"  "2"
-        }
-        "07"
-        {
-            "var_type"          "FIELD_FLOAT"
-            "health_loss_interval"  "0.25"
-        }
-        "08"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "spawn_radius"  "245"
-        } 
-        "09"
-        {
-            "var_type"          "FIELD_INTEGER"
-            "manacost_scepter"  "250 300 350"
-            "RequiresScepter"   "1"
-        } 
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "unit_count"  "4 6 8"
+      }
+      "02"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "boss_count"  "0"
+      }
+      "03"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "boss_count_scepter"  "1"
+        "RequiresScepter"   "1"
+      }
+      "04"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "intelligence_for_unit"  "40"
+      }
+      "05"
+      {
+        "var_type"          "FIELD_FLOAT"
+        "delay"  "1.5"
+      }
+      "06"
+      {
+        "var_type"          "FIELD_FLOAT"
+        "max_health_loss_percent_per_second"  "2"
+      }
+      "07"
+      {
+        "var_type"          "FIELD_FLOAT"
+        "health_loss_interval"  "0.25"
+      }
+      "08"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "spawn_radius"  "245"
+      } 
+      "09"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "manacost_scepter"  "250 300 350"
+        "RequiresScepter"   "1"
+      } 
     }
-}  
-
+  }  
+}

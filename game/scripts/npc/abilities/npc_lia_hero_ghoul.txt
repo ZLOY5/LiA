@@ -1,314 +1,317 @@
-"ghoul_blood_thirst" 
+"DotaAbilities"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"              "ability_datadriven"
-	"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"     "life_stealer_rage"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "1"
-	"LevelsBetweenUpgrades"  "2"
-
-	"AbilityCooldown"        "18 16 14"
-	"AbilityManaCost"        "40 45 50"
-
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastPoint"  "0"
-
-	"precache"
+	"ghoul_blood_thirst" 
 	{
-		"particle"	"particles/status_fx/status_effect_life_stealer_rage.vpcf"
-		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
-	}
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              "ability_datadriven"
+		"AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"     "life_stealer_rage"
 
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"              "FIELD_INTEGER"
-			"bonus_damage"          "20 40 60"
-		}
-		"02"
-		{
-			"var_type"              "FIELD_INTEGER"
-			"bonus_armor"           "5 10 15"
-		}
-		"03"
-		{
-			"var_type"              "FIELD_INTEGER"
-			"bonus_health"           "100 200 300"
-		}
-		"04"
-		{
-			"var_type"              "FIELD_FLOAT"
-			"duration"              "4 5 6"
-		}
-	}
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
 
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"OnSpellStart"
-	{
-		"FireSound"
+		"AbilityCooldown"        "18 16 14"
+		"AbilityManaCost"        "40 45 50"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"  "0"
+
+		"precache"
 		{
-			"EffectName"	"Hero_LifeStealer.Rage"
-			"Target"
+			"particle"	"particles/status_fx/status_effect_life_stealer_rage.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"              "FIELD_INTEGER"
+				"bonus_damage"          "20 40 60"
+			}
+			"02"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"bonus_armor"           "5 10 15"
+			}
+			"03"
+			{
+				"var_type"              "FIELD_INTEGER"
+				"bonus_health"           "100 200 300"
+			}
+			"04"
+			{
+				"var_type"              "FIELD_FLOAT"
+				"duration"              "4 5 6"
 			}
 		}
-		"ApplyModifier"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"OnSpellStart"
 		{
-			"ModifierName"   "modifier_ghoul_blood_thirst"
-			"Target"
+			"FireSound"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"EffectName"	"Hero_LifeStealer.Rage"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
 			}
-			"Duration"       "%duration"
-		}
-		"RunScript"
-		{
-			"ScriptFile"	"heroes\Ghoul\BloodThirst.lua"
-			"Function"		"Purge"
-		}	
-	}
-
-	// Modifiers
-	//-------------------------------------------------------------------------------------------------------------
-	"Modifiers"
-	{
-		"modifier_ghoul_blood_thirst"
-		{
-			"Passive"       "0"
-			"IsHidden"      "0"
-			"IsBuff"        "1"
-
-			"Properties"
+			"ApplyModifier"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
-				"MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
+				"ModifierName"   "modifier_ghoul_blood_thirst"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"Duration"       "%duration"
 			}
-
-			"States"
+			"RunScript"
 			{
-				"MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+				"ScriptFile"	"heroes\Ghoul\BloodThirst.lua"
+				"Function"		"Purge"
+			}	
+		}
+
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"modifier_ghoul_blood_thirst"
+			{
+				"Passive"       "0"
+				"IsHidden"      "0"
+				"IsBuff"        "1"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"   "%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"           "%bonus_health"
+				}
+
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"  "MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"StatusEffectName" 		"particles/status_fx/status_effect_life_stealer_rage.vpcf" 	   
+				"StatusEffectPriority"  "10"
 			}
-
-			"StatusEffectName" 		"particles/status_fx/status_effect_life_stealer_rage.vpcf" 	   
-			"StatusEffectPriority"  "10"
 		}
 	}
-}
 
-"ghoul_devour"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"				"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
-    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"	
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"			"life_stealer_feast"
-
-	// Precache
-	//-------------------------------------------------------------------------------------------------------------
-	"precache"
+	"ghoul_devour"
 	{
-		"particle"		"particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf"
-		"particle"  	"particles/units/heroes/hero_life_stealer/life_stealer_infested_unit.vpcf"
-	}
-	
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-	
-	// Casting
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"100"
-	"AbilityCastPoint"				"0.0"
-	
-	// Time		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				"4.0"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"life_stealer_feast"
 
-	// Cost
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"20 30 40"
-
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
 		{
-			"var_type"				"FIELD_FLOAT"
-			"instant_heal"	"50 100 150"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"heal_per_second"	"10 20 30"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"heal_duration"	"10"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"movement_slow"	"-10 -20 -30"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"attack_slow"	"-10 -20 -30"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"slow_duration"	"8.0"
-		}
-	}
-	
-	"OnSpellStart"
-	{
-		"FireSound"
-		{
-			"EffectName"	"Hero_LifeStealer.Infest"
-			"Target" 		"TARGET"
-		}
-
-		"FireEffect"
-		{
-			"EffectName"        "particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf"
-			"EffectAttachType"  "follow_origin"
-			"Target"            "TARGET"
+			"particle"		"particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf"
+			"particle"  	"particles/units/heroes/hero_life_stealer/life_stealer_infested_unit.vpcf"
 		}
 		
-		"RunScript"
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"4.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"20 30 40"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"ScriptFile"	"heroes/Ghoul/Devour.lua"
-			"Function"		"Devour"
-			"instant_heal"	"%instant_heal"
-		}		
-	}
-
-	
-	"Modifiers"
-	{
-		"modifier_ghoul_devour_heal"
-		{
-			"Passive"               "0"
-			"IsHidden"				"0"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-			"Duration"	"%heal_duration"
-
-			"ThinkInterval"  "1.0"
-			"OnIntervalThink"
+			"01"
 			{
-				"Heal"
+				"var_type"				"FIELD_FLOAT"
+				"instant_heal"	"50 100 150"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_per_second"	"10 20 30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"heal_duration"	"10"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_slow"	"-10 -20 -30"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_slow"	"-10 -20 -30"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_duration"	"8.0"
+			}
+		}
+		
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_LifeStealer.Infest"
+				"Target" 		"TARGET"
+			}
+
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_life_stealer/life_stealer_infest_emerge_bloody.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "TARGET"
+			}
+			
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/Ghoul/Devour.lua"
+				"Function"		"Devour"
+				"instant_heal"	"%instant_heal"
+			}		
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_ghoul_devour_heal"
+			{
+				"Passive"               "0"
+				"IsHidden"				"0"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Duration"	"%heal_duration"
+
+				"ThinkInterval"  "1.0"
+				"OnIntervalThink"
 				{
-					"Target"        "CASTER"
-					"HealAmount"	"%heal_per_second"
+					"Heal"
+					{
+						"Target"        "CASTER"
+						"HealAmount"	"%heal_per_second"
+					}
+				}
+			}
+
+			"modifier_ghoul_devour_slow"
+			{
+				"IsDebuff"  "1"
+				"Duration"  "%slow_duration"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"	
+
+				"EffectName"	"particles/units/heroes/hero_life_stealer/life_stealer_infested_unit.vpcf"
+				"EffectAttachType"	"follow_overhead"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%movement_slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%attack_slow" 
 				}
 			}
 		}
-
-		"modifier_ghoul_devour_slow"
-		{
-	      "IsDebuff"  "1"
-	      "Duration"  "%slow_duration"
-		  "Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"	
-
-	      "EffectName"	"particles/units/heroes/hero_life_stealer/life_stealer_infested_unit.vpcf"
-		  "EffectAttachType"	"follow_overhead"
-
-	      "Properties"
-	      {
-	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%movement_slow"
-	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%attack_slow" 
-	      }
-		}
-	}
-}
-
-"ghoul_mortal_strike"
-{
-	"BaseClass"		"ability_lua"
-	"ScriptFile"		"heroes/Ghoul/ghoul_mortal_strike.lua"
-
-	"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
-	"AbilityTextureName"    "life_stealer_open_wounds"
-
-	"MaxLevel"               "3"
-	"RequiredLevel"          "2"
-	"LevelsBetweenUpgrades"  "2"
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
 	}
 
-	"AbilitySpecial"
+	"ghoul_mortal_strike"
 	{
-		"01"
+		"BaseClass"		"ability_lua"
+		"ScriptFile"		"heroes/Ghoul/ghoul_mortal_strike.lua"
+
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"    "life_stealer_open_wounds"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"precache"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_multiplier"					"200 300 400"
+			"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
 		}
-		"02"
+
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"13"
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_multiplier"					"200 300 400"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"13"
+			}
 		}
 	}
-}
 
-"ghoul_persistence"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"ability_lua"
-	"ScriptFile"					"heroes\Ghoul\ghoul_persistence.lua"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
-	"AbilityTextureName"			"life_stealer_infest"
-
-	"AbilityCastRange"				"500"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE"	
-	"MaxLevel"               		"3"
-	"RequiredLevel"          		"5"
-	"LevelsBetweenUpgrades"  		"4"
-	
-	"AbilitySpecial"
+	"ghoul_persistence"
 	{
-		"01"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes\Ghoul\ghoul_persistence.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+		"AbilityTextureName"			"life_stealer_infest"
+
+		"AbilityCastRange"				"500"
+
+		"AbilityType"            		"DOTA_ABILITY_TYPE_ULTIMATE"	
+		"MaxLevel"               		"3"
+		"RequiredLevel"          		"5"
+		"LevelsBetweenUpgrades"  		"4"
+		
+		"AbilitySpecial"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"bonus_strength"	"25 50 75"
-		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"radius"			"500"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_FLOAT"
-			"regen_mult"		"0.5"
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_strength"	"25 50 75"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"500"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"regen_mult"		"0.5"
+			}
 		}
 	}
 }
