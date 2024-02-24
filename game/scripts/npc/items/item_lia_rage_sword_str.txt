@@ -1,82 +1,74 @@
-"item_recipe_lia_blade_of_rage_str"
-
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1330"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"600"	
-	"ItemShopTags"					"str;damage;attack_speed"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_blade_of_rage_str"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_blade_of_rage_str"
 	{
-		"01"						"item_lia_steel_sword;item_lia_runed_gloves;item_lia_gloves_of_strength"
-	}
-}
+		"ID"							"1330"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"600"	
+		"ItemShopTags"					"str;damage;attack_speed"
 
-"item_lia_blade_of_rage_str"
-{
-	"ID"							"1331"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_blade_of_rage_str.lua"
-	"ItemCost"						"1065"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"мгс;меч гнева сила;rss;rage sword strength"
-	"AbilityTextureName"			"custom/lia_blade_of_rage_str"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityCooldown"				"16"
-	"AbilityManacost"				"90"
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_blade_of_rage_str"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_steel_sword;item_lia_runed_gloves;item_lia_gloves_of_strength"
+		}
 	}
 
-
-
-
-	"AbilitySpecial"
+	"item_lia_blade_of_rage_str"
 	{
-		"01"
+		"ID"							"1331"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_blade_of_rage_str.lua"
+		"ItemCost"						"1065"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"мгс;меч гнева сила;rss;rage sword strength"
+		"AbilityTextureName"			"custom/lia_blade_of_rage_str"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"				"16"
+		"AbilityManacost"				"90"
+
+		"precache"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_attack_speed" "55"
+			"particle"  "particles/units/heroes/hero_morphling/morphling_morph_str.vpcf"
 		}
-		"02"
+
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "50"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_strength" "25"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"duration" "5"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"str_percent" "75"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "55"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "50"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_strength" "25"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "5"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"str_percent" "75"
+			}
 		}
 	}
 }
-

@@ -1,28 +1,24 @@
-"item_recipe_ultimate_scepter"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1360"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"1000"	
-	"ItemShopTags"					"int;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_ultimate_scepter"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_ultimate_scepter"
 	{
-		"01"						"item_lia_hell_mask;item_lia_staff"
+		"ID"							"1360"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"1000"	
+		"ItemShopTags"					"int;hard_to_tag"
+
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_ultimate_scepter"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_hell_mask;item_lia_staff"
+		}
 	}
-}
 
 	"item_ultimate_scepter"
 	{
@@ -44,7 +40,7 @@
 		"ItemDeclarations"				""
 		"ShouldBeSuggested"				"0"
 		
-	 	"AbilityCastRange" 				"800"
+		"AbilityCastRange" 				"800"
 		"AbilityCooldown"				"45.0"
 		"AbilityManaCost"				"250"
 		//
@@ -87,3 +83,4 @@
 		}
 		
 	}
+}

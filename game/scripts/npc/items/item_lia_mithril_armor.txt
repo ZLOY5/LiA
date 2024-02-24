@@ -1,94 +1,81 @@
-"item_recipe_lia_mithril_armor"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1429"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"330"	
-	"ItemShopTags"					"health;armor;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_mithril_armor"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_mithril_armor"
 	{
-		"01"						"item_lia_dwarf_armor;item_lia_ring_of_protection;item_lia_ring_of_protection"
-	}
-}
+		"ID"							"1429"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"330"	
+		"ItemShopTags"					"health;armor;hard_to_tag"
 
-
-
-"item_lia_mithril_armor"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"item_lua"
-	"ScriptFile"					"items\item_lia_mithril_armor.lua"
-	"ID"							"1430"  //Valve's version of this item uses the ID "135".
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
-	"Model"							"models/props_gameplay/red_box.vmdl" 
-	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
-	"AbilityTextureName"			"custom/lia_mithril_armor"
-	"ItemKillable" 					"0" 
-	
-	"precache"
-	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-		"particle"			"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
-		"particle"			"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_mithril_armor"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_dwarf_armor;item_lia_ring_of_protection;item_lia_ring_of_protection"
+		}
 	}
 
-	"AbilityCooldown"				"14.0"
-
-	"AbilityManaCost"				"80"	
-
-	"AbilityCastRange"   				  "400"
-
-	"AbilitySharedCooldown" "Taunt"
-
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"1045"
-	"ItemShopTags"					"health;armor;hard_to_tag"
-	"ItemQuality"					"epic"
-	"ItemAliases"					"мд;мифриловый доспех;ma;mithril armor"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"item_lia_mithril_armor"
 	{
-		"01"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_mithril_armor.lua"
+		"ID"							"1430"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			"custom/lia_mithril_armor"
+		"ItemKillable" 					"0" 
+		
+		"precache"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_armor"	"16"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"particle"			"particles/units/heroes/hero_sven/sven_spell_warcry.vpcf"
+			"particle"			"particles/units/heroes/hero_sven/sven_warcry_buff.vpcf"
 		}
 
-		"02"
+		"AbilityCooldown"				"14.0"
+		"AbilityManaCost"				"80"	
+		"AbilityCastRange"   				  "400"
+		"AbilitySharedCooldown" "Taunt"
+
+		"ItemCost"						"1045"
+		"ItemShopTags"					"health;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"мд;мифриловый доспех;ma;mithril armor"
+		
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health" "250"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_blocked"			"45"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"400"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"				"5.0"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"	"16"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health" "250"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_blocked"			"45"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"5.0"
+			}
 		}
 	}
 }

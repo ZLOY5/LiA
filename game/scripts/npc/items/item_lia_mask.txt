@@ -1,6 +1,7 @@
-"item_lia_mask"
+"DotaItems"  
+{ 
+	"item_lia_mask"
 	{
-
 		"ID"							"1114"
 		"BaseClass" "item_datadriven"
 		"ItemCost"						"70"
@@ -15,29 +16,29 @@
 
 		"AbilityTextureName"			"custom/lia_mask"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"					"FIELD_FLOAT"
-			"bonus_mana_regen"			"0.2"
-		}
-	}
 	
-	"Modifiers"
-	{
-		"modifier_item_lia_mask"
+		"AbilitySpecial"
 		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
+				"var_type"					"FIELD_FLOAT"
+				"bonus_mana_regen"			"0.2"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_mask"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
+				}
 			}
 		}
 	}
-	}
+}

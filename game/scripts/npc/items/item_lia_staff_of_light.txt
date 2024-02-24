@@ -1,236 +1,230 @@
-"item_recipe_lia_staff_of_light"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1350"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"700"	
-	"ItemShopTags"					"int"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_staff_of_light"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_staff_of_light"
 	{
-		"01"						"item_lia_magic_staff;item_lia_ring_of_regeneration"
-	}
-}
-
-"item_lia_staff_of_light"
-{
-	"ID"							"1351"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1545"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"посох света;пс;sol;staff of light"
-	"AbilityTextureName"			"custom/lia_staff_of_light"
-	"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-    "AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-    "AbilityUnitDamageType" 		"DAMAGE_TYPE_PURE"
-
-    "AbilityCastRange" "600"   
-    "AbilityCooldown"  "15"       
-    "AbilityManaCost"  "300"
-	"AoERadius"						"%ability_radius"
-	"precache"
-	{
-		"soundfile"			"sounds/items/item_mjoll_on.vsnd"
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-		"particle"			"particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf"
-		"particle"			"particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
-	}
-	"OnSpellStart"
-	{
-		"RunScript"
-		{
-			"ScriptFile"			"items\StaffOfLight.lua"
-			"Function"				"OnSpellStart"	
-			"Target"
-			{
-			    "Center"    	"POINT"
-			    "Radius"    	"%ability_radius"
-			    "Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-			    "Types"  	    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			    "Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			}
-		}
-	}
-	"Modifiers"
-	{
-		"modifier_item_lia_staff_of_light"
-		{
-			"Passive"           "1"    
-		    "IsHidden"          "1"
-		    "Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "Aura"        		"item_staff_of_light_aura_modifier"
-        	"Aura_Radius" 		"%aura_radius"
-        	"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-        	"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-
-        	
-        	"Properties"
-		    {
-		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intelligence"
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
-		    }  
-		}
-		"item_staff_of_light_ability_heal_modifier"
-		{
-			"IsHidden"          "1"
-			"Duration"			"%ability_duration"
-			"ThinkInterval" 	"1"
-			"OnIntervalThink"
-			{
-				"Heal"
-				{
-					"Target"
-					{
-					    "Center"    	"CASTER"
-					    "Radius"    	"%aura_radius"
-					    "Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-					    "Types"  	    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-					}	
-					"HealAmount"	"%ability_damage"
-				}
-				"FireEffect"
-				{
-					"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"            "CASTER"
-					"ControlPoints"
-					{
-						"01"	"%ability_radius %ability_radius %ability_radius"
-					}
-				}
-			}
-		}
-		"item_staff_of_light_ability_damage_modifier"
-		{
-			"Duration"			"%ability_duration"
-			"ThinkInterval" 	"1"
-			"OnIntervalThink"
-			{
-				"Damage"
-				{
-					"Target"
-					{
-						"Center"	"TARGET"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-					"Type"		"DAMAGE_TYPE_PURE"
-					"Damage"	"%ability_damage"
-				}
-				"FireEffect"
-				{
-					"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
-					"EffectAttachType"  "follow_overhead"
-					"Target"
-					{
-						"Center"	"TARGET"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-					}
-					"ControlPoints"
-					{
-						"01"	"50 50 50"
-					}
-				}
-			}
-			"OnDestroy"
-			{
-				"RunScript"
-				{
-					"ScriptFile"	"items\StaffOfLight.lua"
-					"Function"		"OnAbilityModifierDestroy"	
-				}
-			}
-		}
-		"item_staff_of_light_aura_modifier"
-		{
-			"IsHidden"          "1"
-			"ThinkInterval"		"0.5"
-    		"OnIntervalThink"
-    		{
-	    		"RunScript"	
-				{
-					"ScriptFile"			"items\StaffOfLight.lua"
-					"Function"				"OnIntervalThinkAura"
-					"aura_health_perc_max" 	"%aura_health_perc_max"
-				}
-    		}
-    		"OnDestroy"
-    		{
-    			"RemoveModifier"
-    			{
-    				"Target"		"TARGET"
-    				"ModifierName"	"item_staff_of_light_aura_regen_modifier"
-    			}
-    		}
-		}
-		"item_staff_of_light_aura_regen_modifier"
-		{
-			"Properties"
-		    {
-		    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%aura_health_regen"
-		    }
-		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_intelligence" "35"
-		}
-		"02"
-		{
-			"var_type" "FIELD_FLOAT"
-			"bonus_mana_regen" "1.2"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"ability_radius" "300"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"ability_damage" "50"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"ability_duration" "10"
-		}
-		"06"
-		{
-			"var_type" "FIELD_INTEGER"
-			"aura_radius" "550"
-		}
-		"07"
-		{
-			"var_type" "FIELD_INTEGER"
-			"aura_health_regen" "40"
-		}
-		"08"
-		{
-			"var_type" "FIELD_INTEGER"
-			"aura_health_perc_max" "50"
-		}
+		"ID"							"1350"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
 		
+		"ItemCost"						"700"	
+		"ItemShopTags"					"int"
 
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_staff_of_light"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_magic_staff;item_lia_ring_of_regeneration"
+		}
+	}
+
+	"item_lia_staff_of_light"
+	{
+		"ID"							"1351"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1545"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"посох света;пс;sol;staff of light"
+		"AbilityTextureName"			"custom/lia_staff_of_light"
+		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType" 		"DAMAGE_TYPE_PURE"
+
+		"AbilityCastRange" "600"   
+		"AbilityCooldown"  "15"       
+		"AbilityManaCost"  "300"
+		"AoERadius"						"%ability_radius"
+		"precache"
+		{
+			"soundfile"			"sounds/items/item_mjoll_on.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+			"particle"			"particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf"
+			"particle"			"particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"items\StaffOfLight.lua"
+				"Function"				"OnSpellStart"	
+				"Target"
+				{
+					"Center"    	"POINT"
+					"Radius"    	"%ability_radius"
+					"Teams"  		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"  	    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_item_lia_staff_of_light"
+			{
+				"Passive"           "1"    
+				"IsHidden"          "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Aura"        		"item_staff_of_light_aura_modifier"
+				"Aura_Radius" 		"%aura_radius"
+				"Aura_Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"  		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_intelligence"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
+				}  
+			}
+			"item_staff_of_light_ability_heal_modifier"
+			{
+				"IsHidden"          "1"
+				"Duration"			"%ability_duration"
+				"ThinkInterval" 	"1"
+				"OnIntervalThink"
+				{
+					"Heal"
+					{
+						"Target"
+						{
+							"Center"    	"CASTER"
+							"Radius"    	"%aura_radius"
+							"Teams"  		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+							"Types"  	    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}	
+						"HealAmount"	"%ability_damage"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_h.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "CASTER"
+						"ControlPoints"
+						{
+							"01"	"%ability_radius %ability_radius %ability_radius"
+						}
+					}
+				}
+			}
+			"item_staff_of_light_ability_damage_modifier"
+			{
+				"Duration"			"%ability_duration"
+				"ThinkInterval" 	"1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"Type"		"DAMAGE_TYPE_PURE"
+						"Damage"	"%ability_damage"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_light_b.vpcf"
+						"EffectAttachType"  "follow_overhead"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+						}
+						"ControlPoints"
+						{
+							"01"	"50 50 50"
+						}
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items\StaffOfLight.lua"
+						"Function"		"OnAbilityModifierDestroy"	
+					}
+				}
+			}
+			"item_staff_of_light_aura_modifier"
+			{
+				"IsHidden"          "1"
+				"ThinkInterval"		"0.5"
+				"OnIntervalThink"
+				{
+					"RunScript"	
+					{
+						"ScriptFile"			"items\StaffOfLight.lua"
+						"Function"				"OnIntervalThinkAura"
+						"aura_health_perc_max" 	"%aura_health_perc_max"
+					}
+				}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"Target"		"TARGET"
+						"ModifierName"	"item_staff_of_light_aura_regen_modifier"
+					}
+				}
+			}
+			"item_staff_of_light_aura_regen_modifier"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 		"%aura_health_regen"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "35"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"bonus_mana_regen" "1.2"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"ability_radius" "300"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"ability_damage" "50"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"ability_duration" "10"
+			}
+			"06"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_radius" "550"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_health_regen" "40"
+			}
+			"08"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_health_perc_max" "50"
+			}
+		}
 	}
 }

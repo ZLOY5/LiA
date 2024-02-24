@@ -1,51 +1,41 @@
-"item_lia_mana_elixir"
-{
-	"ID"							"1133"
-
-	"BaseClass"						"item_lua"
-	"ScriptFile"					"items\item_lia_mana_elixir.lua"
-
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"AbilitySharedCooldown" "ReplenishMana"
-
-	
-	
-	"AbilityTextureName"			"custom/lia_mana_elixir"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"100"
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"40"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"45"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemAliases"					"эликсир маны;эм;mana elixir;mana salve;me"
-	"ItemStackable"					"1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemPermanent"					"0"
-	"ItemInitialCharges"			"2"
-
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+"DotaItems"  
+{ 
+	"item_lia_mana_elixir"
 	{
-		"01"
+		"ID"							"1133"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_mana_elixir.lua"
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilitySharedCooldown" "ReplenishMana"
+		
+		"AbilityTextureName"			"custom/lia_mana_elixir"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"40"
+		
+		"ItemCost"						"45"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemAliases"					"эликсир маны;эм;mana elixir;mana salve;me"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"mana_amount"				"500"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_amount"				"500"
+			}
 		}
 	}
-
 }

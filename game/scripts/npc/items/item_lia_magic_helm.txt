@@ -1,69 +1,65 @@
-"item_recipe_lia_magic_helm"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1314"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"280"	
-	"ItemShopTags"					"armor"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_magic_helm"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_magic_helm"
 	{
-		"01"						"item_lia_helm"
-	}
-}
+		"ID"							"1314"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"280"	
+		"ItemShopTags"					"armor"
 
-"item_lia_magic_helm"
-{
-	"ID"							"1315"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"475"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"magic helm;mh;магический шлем;мш"
-	"AbilityTextureName"			"custom/lia_magic_helm"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Modifiers"
-	{
-		"modifier_item_lia_magic_helm"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_magic_helm"
+		"ItemRequirements"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-		    	"MODIFIER_PROPERTY_EVASION_CONSTANT"	 "%evasion_percent"
-		    }  
+			"01"						"item_lia_helm"
 		}
 	}
-	"AbilitySpecial"
+
+	"item_lia_magic_helm"
 	{
-		"01"
+		"ID"							"1315"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"475"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"magic helm;mh;магический шлем;мш"
+		"AbilityTextureName"			"custom/lia_magic_helm"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_armor" "8"
+			"modifier_item_lia_magic_helm"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"	 "%evasion_percent"
+				}  
+			}
 		}
-		"02"
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"evasion_percent" "15"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "8"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"evasion_percent" "15"
+			}
 		}
 	}
 }
-

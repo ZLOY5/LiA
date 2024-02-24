@@ -1,75 +1,71 @@
-"item_recipe_lia_magic_bow"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1326"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"650"	
-	"ItemShopTags"					"damage;attack_speed;agi"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_magic_bow"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_magic_bow"
 	{
-		"01"						"item_lia_runed_gloves;item_lia_spear;item_lia_thugs_dagger"
-	}
-}
+		"ID"							"1326"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"650"	
+		"ItemShopTags"					"damage;attack_speed;agi"
 
-"item_lia_magic_bow"
-{
-	"ID"							"1327"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1180"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"волшебный лук;вл;mb;magic bow"
-	"AbilityTextureName"			"custom/lia_magic_bow"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Modifiers"
-	{
-		"modifier_item_lia_magic_bow"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_magic_bow"
+		"ItemRequirements"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
-		    	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
-			}  
+			"01"						"item_lia_runed_gloves;item_lia_spear;item_lia_thugs_dagger"
 		}
 	}
-	"AbilitySpecial"
+
+	"item_lia_magic_bow"
 	{
-		"01"
+		"ID"							"1327"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1180"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"волшебный лук;вл;mb;magic bow"
+		"AbilityTextureName"			"custom/lia_magic_bow"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_attack_speed" "40"
+			"modifier_item_lia_magic_bow"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%bonus_attack_speed"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%bonus_agility"
+				}  
+			}
 		}
-		"02"
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "50"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_agility" "30"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "40"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "50"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_agility" "30"
+			}
 		}
 	}
 }
-

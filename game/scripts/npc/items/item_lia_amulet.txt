@@ -1,15 +1,13 @@
-"item_lia_amulet"
+"DotaItems"  
+{ 
+	"item_lia_amulet"
 	{
-                // General
-	        //-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"item_datadriven"
 		"ID"							"1110"
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Model"							"models/props_gameplay/red_box.vmdl"
 		"AbilityTextureName"			"custom/lia_amulet"
 		
-		// Item Info
-	        //-------------------------------------------------------------------------------------------------------------
 		"ItemCost"					"120"
 		"ItemShopTags"					"health_pool"
 		"ItemQuality"					"component"
@@ -21,9 +19,6 @@
 		"ItemSellable"                                  "1"
 		"ItemPurchasable"		                "1"
 		
- 
-        	// Special	
-	        //-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
 			"01"
@@ -32,21 +27,20 @@
 				"bonus_health" "100"
 			}
 		}
-		
-	       // Modifiers	
-	       //-------------------------------------------------------------------------------------------------------------
+
 		"Modifiers"
-	        {
-		  "modifier_item_lia_amulet"
-		  {
-			  "Passive"			"1"
-			  "IsHidden"			"1"
-			  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			  "AllowIllusionDuplicate"    "1"
-			  "Properties"
-			  {
-			    "MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
-			  }
-	  	   }
-	        }
+		{
+			"modifier_item_lia_amulet"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_BONUS"		"%bonus_health"
+				}
+			}
+		}
 	}
+}

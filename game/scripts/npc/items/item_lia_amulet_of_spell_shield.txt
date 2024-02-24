@@ -1,70 +1,71 @@
-"item_lia_amulet_of_spell_shield"
-{
-
-	"ID"							"1117"
-	"BaseClass" "item_datadriven"
-
-	"ItemCost"						"300"
-	"ItemKillable" "0" 
-	"ItemDroppable" "1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 "1"
-	"ItemQuality"					"component"
-	"ItemAliases"					"амулет защиты;аз;amulet of spell shield;aoss"
-	"AbilityCooldown"				"30.0"	
-	"AbilityTextureName"			"custom/lia_amulet_of_spell_shield"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	
-	"AbilitySpecial"
+"DotaItems"  
+{ 
+	"item_lia_amulet_of_spell_shield"
 	{
-		"01"
-		{
-			"var_type" "FIELD_FLOAT"
-			"block_cooldown" "30.0"
-		}
-	}
+		"ID"							"1117"
+		"BaseClass" "item_datadriven"
 
-	"Modifiers"
-	{
-		"modifier_item_lia_amulet_of_spell_shield"
+		"ItemCost"						"300"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"component"
+		"ItemAliases"					"амулет защиты;аз;amulet of spell shield;aoss"
+		"AbilityCooldown"				"30.0"	
+		"AbilityTextureName"			"custom/lia_amulet_of_spell_shield"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"AbilitySpecial"
 		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			
-			"OnCreated"
-			{			
-				"RunScript"
-				{
-					"ScriptFile"		"items/SpellShield.lua"
-					"Function"			"modifier_item_lia_amulet_of_spell_shield_on_created"
-					"Duration"			"%block_cooldown"
-				}
-			}
-			
-			"OnDestroy"
+			"01"
 			{
-				"RunScript"
-				{
-					"ScriptFile"		"items/SpellShield.lua"
-					"Function"			"modifier_item_lia_amulet_of_spell_shield_on_destroy"
-					"Duration"			"%block_cooldown"
-				}
-			}
-			
-			"ThinkInterval" 		".03"
-			"OnIntervalThink"
-			{
-				//Check if the caster has the correct number of Linken's modifiers on them.  If they have less than they are
-				//supposed to, we can assume that a sphere was popped due to an enemy's targeted spell, and put the player's 
-				//Linken's Spheres on cooldown.
-				"RunScript"
-				{
-					"ScriptFile"			"items/SpellShield.lua"
-					"Function"				"modifier_item_lia_amulet_of_spell_shield_on_interval_think"
-				}
+				"var_type" "FIELD_FLOAT"
+				"block_cooldown" "30.0"
 			}
 		}
 
+		"Modifiers"
+		{
+			"modifier_item_lia_amulet_of_spell_shield"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				
+				"OnCreated"
+				{			
+					"RunScript"
+					{
+						"ScriptFile"		"items/SpellShield.lua"
+						"Function"			"modifier_item_lia_amulet_of_spell_shield_on_created"
+						"Duration"			"%block_cooldown"
+					}
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/SpellShield.lua"
+						"Function"			"modifier_item_lia_amulet_of_spell_shield_on_destroy"
+						"Duration"			"%block_cooldown"
+					}
+				}
+				
+				"ThinkInterval" 		".03"
+				"OnIntervalThink"
+				{
+					//Check if the caster has the correct number of Linken's modifiers on them.  If they have less than they are
+					//supposed to, we can assume that a sphere was popped due to an enemy's targeted spell, and put the player's 
+					//Linken's Spheres on cooldown.
+					"RunScript"
+					{
+						"ScriptFile"			"items/SpellShield.lua"
+						"Function"				"modifier_item_lia_amulet_of_spell_shield_on_interval_think"
+					}
+				}
+			}
+		}
 	}
 }

@@ -1,69 +1,65 @@
-"item_recipe_lia_magic_staff"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1419"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"300"	
-	"ItemShopTags"					"int"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_magic_staff"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_magic_staff"
 	{
-		"01"						"item_lia_staff;item_lia_staff;item_lia_mask"
-	}
-}
+		"ID"							"1419"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"300"	
+		"ItemShopTags"					"int"
 
-"item_lia_magic_staff"
-{
-	"ID"							"1420"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"770"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"ms;magic staff;мп;магический посох"
-	"AbilityTextureName"			"custom/lia_magic_staff"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Modifiers"
-	{
-		"modifier_item_lia_magic_staff"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_magic_staff"
+		"ItemRequirements"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen_percentage"
-		    }  
+			"01"						"item_lia_staff;item_lia_staff;item_lia_mask"
 		}
 	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_intelligence" "24"
-		}
-		"02"
-		{
-			"var_type" "FIELD_FLOAT"
-			"bonus_mana_regen" "0.4"
-		}
 
+	"item_lia_magic_staff"
+	{
+		"ID"							"1420"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"770"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"ms;magic staff;мп;магический посох"
+		"AbilityTextureName"			"custom/lia_magic_staff"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"modifier_item_lia_magic_staff"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen_percentage"
+				}  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "24"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"bonus_mana_regen" "0.4"
+			}
+		}
 	}
 }

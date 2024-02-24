@@ -1,61 +1,58 @@
-"item_recipe_lia_hammer_of_titans"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1501"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"650"	
-	"ItemShopTags"					"str;damage;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_hammer_of_titans"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_hammer_of_titans"
 	{
-		"01"						"item_lia_huge_axe;item_lia_hammer"
+		"ID"							"1501"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"650"	
+		"ItemShopTags"					"str;damage;hard_to_tag"
+
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_hammer_of_titans"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_huge_axe;item_lia_hammer"
+		}
 	}
-}
 
-"item_lia_hammer_of_titans"
-{
-	"ID"							"1502"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_hammer_of_titans.lua"
-	"ItemCost"						"2130"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"мт;молот титанов;hot;hammer of titans"
-	"AbilityTextureName"			"custom/lia_hammer_of_titans"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-	"AbilityValues"
+	"item_lia_hammer_of_titans"
 	{
-		"bonus_damage" "80"
-		"bonus_strength"	"25"
-		"bonus_agility"	"25"
-		"bonus_intelligence"	"25"
-		"minibash_chance"			"30"
-		"bash_damage"			"275"
-		"bash_stun"				"0.01"
-		"cleave_percent" "50"
-		"splash_percent_ranged" "20"
-		"cleave_start_width" "150"
-		"cleave_end_width" "200"
-		"cleave_length" "200"
-		"splash_radius" "200"
-		"attack_speed_slow" "-30"
-		"movement_slow_percentage" "-30"
-		"slow_duration"			"3"
+		"ID"							"1502"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_hammer_of_titans.lua"
+		"ItemCost"						"2130"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"мт;молот титанов;hot;hammer of titans"
+		"AbilityTextureName"			"custom/lia_hammer_of_titans"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilityValues"
+		{
+			"bonus_damage" "80"
+			"bonus_strength"	"25"
+			"bonus_agility"	"25"
+			"bonus_intelligence"	"25"
+			"minibash_chance"			"30"
+			"bash_damage"			"275"
+			"bash_stun"				"0.01"
+			"cleave_percent" "50"
+			"splash_percent_ranged" "20"
+			"cleave_start_width" "150"
+			"cleave_end_width" "200"
+			"cleave_length" "200"
+			"splash_radius" "200"
+			"attack_speed_slow" "-30"
+			"movement_slow_percentage" "-30"
+			"slow_duration"			"3"
+		}
 	}
 }

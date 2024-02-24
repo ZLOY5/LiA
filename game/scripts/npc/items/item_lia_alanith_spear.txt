@@ -1,49 +1,46 @@
-"item_recipe_lia_alanith_spear"
-{
-	"AbilityTextureName"			"recipe"
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1310"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"180"	
-	"ItemShopTags"					"damage;lifesteal"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_alanith_spear"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_alanith_spear"
 	{
-		"01"						"item_lia_spear;item_lia_mask_of_death"
+		"AbilityTextureName"			"recipe"
+		"ID"							"1310"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"180"	
+		"ItemShopTags"					"damage;lifesteal"
+
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_alanith_spear"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_spear;item_lia_mask_of_death"
+		}
 	}
-}
 
-"item_lia_alanith_spear"
-{
-	"ID"							"1311"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items/item_lia_alanith_spear"
-
-	"ItemCost"						"490"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"ка;копье аланита;копьё аланита;as"
-	"AbilityTextureName"			"custom/lia_alanith_spear"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
-
-	"AbilityValues"
+	"item_lia_alanith_spear"
 	{
-		"bonus_damage"			"25"
-		"lifesteal_percent"		"17"
+		"ID"							"1311"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items/item_lia_alanith_spear"
+
+		"ItemCost"						"490"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"ка;копье аланита;копьё аланита;as"
+		"AbilityTextureName"			"custom/lia_alanith_spear"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
+
+		"AbilityValues"
+		{
+			"bonus_damage"			"25"
+			"lifesteal_percent"		"17"
+		}
 	}
 }

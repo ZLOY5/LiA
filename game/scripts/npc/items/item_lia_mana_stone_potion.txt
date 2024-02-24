@@ -1,57 +1,44 @@
+"DotaItems"  
+{ 
 	"item_lia_mana_stone_potion"
-{
-	"ID"							"1131"
-
-	"BaseClass"						"item_lua"
-	"ScriptFile"					"items\item_lia_mana_stone_potion.lua"
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"AbilitySharedCooldown" "ReplenishMana"
-
-//	"Model"							"models/props_gameplay/halloween_candy.vmdl"
-
-	
-	
-	"AbilityTextureName"			"custom/lia_mana_stone_potion"
-
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"100"
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"40.0"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"15"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemAliases"					"ом;отвар маны;msp;mana stone potion"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemStackable"					"1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemPermanent"					"0"
-	"ItemInitialCharges"			"2"
-
-
-// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
 	{
-		"01"
+		"ID"							"1131"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_mana_stone_potion.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilitySharedCooldown" "ReplenishMana"
+
+		"AbilityTextureName"			"custom/lia_mana_stone_potion"
+
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"40.0"
+		
+		"ItemCost"						"15"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemAliases"					"ом;отвар маны;msp;mana stone potion"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_FLOAT"
-			"bonus_mana_regen"			"0.25"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"mana_amount"				"250"
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen"			"0.25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_amount"				"250"
+			}
 		}
 	}
-		
-
 }

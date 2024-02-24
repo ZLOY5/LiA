@@ -1,47 +1,44 @@
-"item_lia_spear"
+"DotaItems"  
+{ 
+	"item_lia_spear"
    {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"item_datadriven"
-	"ID"							"1105"  //Valve's version of this item uses the ID "2".
-	"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Model"							"models/props_gameplay/red_box.vmdl" 
-	"AbilityTextureName"		                	"custom/lia_spear"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"					"110"
-	"ItemShopTags"					"damage"
-	"ItemAliases"					"spear;копьё;копье"
-	"ItemDroppable"                                 "1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-	"ItemSellable"                                  "1"
-	"ItemPurchasable"		                "1"
-	"ItemKillable" 					"0" 
-	"ItemQuality"					"component"
+		"BaseClass"						"item_datadriven"
+		"ID"							"1105"  //Valve's version of this item uses the ID "2".
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"AbilityTextureName"		                	"custom/lia_spear"
+		
+		"ItemCost"					"110"
+		"ItemShopTags"					"damage"
+		"ItemAliases"					"spear;копьё;копье"
+		"ItemDroppable"                                 "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                                  "1"
+		"ItemPurchasable"		                "1"
+		"ItemKillable" 					"0" 
+		"ItemQuality"					"component"
 
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_damage"			        "24"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_spear"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			        "24"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_spear"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+				}
 			}
 		}
 	}

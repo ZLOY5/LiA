@@ -1,54 +1,45 @@
-"item_lia_health_elixir"
-{       
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1132"
+"DotaItems"  
+{ 
+	"item_lia_health_elixir"
+	{       
+		"ID"							"1132"
 
-    "BaseClass"						"item_lua"
-    "ScriptFile"					"items\item_lia_health_elixir.lua"
-	
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_health_elixir.lua"
+		
+		"AbilityBehavior"                                       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		
+		"AbilitySharedCooldown" "Heal"
+		
+		"AbilityTextureName"	        "custom/lia_health_elixir"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
 
-    
-    "AbilityBehavior"                                       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	
-	"AbilitySharedCooldown" "Heal"
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"40.0"
+		
+		"ItemCost"					"45"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemAliases"					"he;hs;health elixir;healing salve;эз;эликсир здоровья"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			        "2"
 
-	
-	"AbilityTextureName"	        "custom/lia_health_elixir"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"100"
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"40.0"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"					"45"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemAliases"					"he;hs;health elixir;healing salve;эз;эликсир здоровья"
-	"ItemStackable"					"1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemPermanent"					"0"
-	"ItemInitialCharges"			        "2"
-
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"heal_amount"				"800"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"800"
+			}
 		}
-	}
 
+	}
 }

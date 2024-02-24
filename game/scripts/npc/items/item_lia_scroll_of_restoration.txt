@@ -1,87 +1,89 @@
-"item_lia_scroll_of_restoration"
-{
-	"BaseClass"                     "item_datadriven"
-	"ID"							"1511"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityTextureName"            "custom/lia_scroll_of_restoration"
-	"AbilityCooldown"               "25"
-		
-	
-	"ItemCost"                      "70"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE"		
-	"ItemShopTags"					"rare"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"scroll of restoration;sor;свиток восстановления;св"
-	"ItemPermanent"					"0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"1"
-	
-	"AbilitySpecial"
+"DotaItems"  
+{ 
+	"item_lia_scroll_of_restoration"
 	{
-		"01"
+		"BaseClass"                     "item_datadriven"
+		"ID"							"1511"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"            "custom/lia_scroll_of_restoration"
+		"AbilityCooldown"               "25"		
+		
+		"ItemCost"                      "70"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"		
+		"ItemShopTags"					"rare"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"scroll of restoration;sor;свиток восстановления;св"
+		"ItemPermanent"					"0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"AbilitySpecial"
 		{
-			"var_type"			"FIELD_INTEGER"
-			"health_restored"	"500"
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"health_restored"	"500"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"mana_restored"		"250"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1000"
+			}
 		}
-		"02"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"mana_restored"		"250"
-		}
-		"03"
-		{
-			"var_type"			"FIELD_INTEGER"
-			"radius"			"1000"
-		}
-	}
 
-	"OnSpellStart"
-	{
-		"FireEffect"
+		"OnSpellStart"
 		{
-			"Target" 			"CASTER"
-			"EffectName"		"particles/items_fx/buckler.vpcf"
-			"EffectAttachType" 	"follow_origin"
-		}
-		"ActOnTargets"
-		{
-			"Target"
+			"FireEffect"
 			{
-				"Center" 	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"Target" 			"CASTER"
+				"EffectName"		"particles/items_fx/buckler.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
-		
-			"Action"    
+			"ActOnTargets"
 			{
-				"Heal"
+				"Target"
 				{
-					"Target"        "TARGET"
-					"HealAmount"	"%health_restored"
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
-				"RunScript"
-				{
-					"ScriptFile"	"items/mana.lua"
-					"Function"		"GiveMana"
-					"mana_amount"	"%mana_restored"
-				}
-			}
-		}
 			
-		"FireSound"
-		{
-			"EffectName"	"DOTA_Item.Mekansm.Activate"
-			"Target" 		"CASTER"
-		}
+				"Action"    
+				{
+					"Heal"
+					{
+						"Target"        "TARGET"
+						"HealAmount"	"%health_restored"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"items/mana.lua"
+						"Function"		"GiveMana"
+						"mana_amount"	"%mana_restored"
+					}
+				}
+			}
+				
+			"FireSound"
+			{
+				"EffectName"	"DOTA_Item.Mekansm.Activate"
+				"Target" 		"CASTER"
+			}
 
-		"SpendCharge"
-		{}
+			"SpendCharge"
+			{}
+		}
 	}
 }

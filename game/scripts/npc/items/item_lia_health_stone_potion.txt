@@ -1,56 +1,45 @@
-"item_lia_health_stone_potion"
-{
-	"ID"							"1130"
-
-	"BaseClass"						"item_lua"
-	"ScriptFile"					"items\item_lia_health_stone_potion.lua"
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"AbilitySharedCooldown" "Heal"
-
-//	"Model"							"models/props_gameplay/halloween_candy.vmdl"
-
-	
-	"AbilityTextureName"			"custom/lia_health_stone_potion"
-
-	// Stats
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCastRange"				"100"
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"40.0"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"15"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemAliases"					"hsp;health stone potion;оз;отвар здоровья"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemStackable"					"1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemPermanent"					"0"
-	"ItemInitialCharges"			"2"
-
-
-
-// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+"DotaItems"  
+{ 
+	"item_lia_health_stone_potion"
 	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health_regen"			"5"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"heal_amount"				"400"
-		}
-	}	
+		"ID"							"1130"
 
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_health_stone_potion.lua"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilitySharedCooldown" "Heal"
+		"AbilityTextureName"			"custom/lia_health_stone_potion"
+
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"40.0"
+		
+		"ItemCost"						"15"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemAliases"					"hsp;health stone potion;оз;отвар здоровья"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"400"
+			}
+		}	
+	}
 }

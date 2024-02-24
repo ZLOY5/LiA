@@ -1,51 +1,48 @@
-"item_recipe_lia_magician_armor"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1507"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"800"	
-	"ItemShopTags"					"int;health;armor;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_magician_armor"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_magician_armor"
 	{
-		"01"						"item_lia_dwarf_armor;item_lia_magic_staff;item_lia_amulet"
+		"ID"							"1507"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"800"	
+		"ItemShopTags"					"int;health;armor;hard_to_tag"
+
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_magician_armor"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_dwarf_armor;item_lia_magic_staff;item_lia_amulet"
+		}
 	}
-}
 
-"item_lia_magician_armor"
-{
-	"ID"							"1508"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_magician_armor.lua"
-	"ItemCost"						"2205"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"дз;доспехи заклинателя;броня заклинателя;ma;magician armor"
-	"AbilityTextureName"			"custom/lia_magician_armor"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-	"AbilityValues"
+	"item_lia_magician_armor"
 	{
-		"bonus_armor" "15"
-		"bonus_health"	"450"
-		"bonus_intelligence"	"40"
-		"bonus_mana_regeneration"			"4"
-		"bonus_spell_damage_percentage"			"15"
-		"bonus_debuff_duration_percentage"				"10"
+		"ID"							"1508"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_magician_armor.lua"
+		"ItemCost"						"2205"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"дз;доспехи заклинателя;броня заклинателя;ma;magician armor"
+		"AbilityTextureName"			"custom/lia_magician_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilityValues"
+		{
+			"bonus_armor" "15"
+			"bonus_health"	"450"
+			"bonus_intelligence"	"40"
+			"bonus_mana_regeneration"			"4"
+			"bonus_spell_damage_percentage"			"15"
+			"bonus_debuff_duration_percentage"				"10"
+		}
 	}
 }

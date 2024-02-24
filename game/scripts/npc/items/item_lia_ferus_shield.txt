@@ -1,91 +1,87 @@
-"item_recipe_lia_ferus_shield"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1365"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"750"	
-	"ItemShopTags"					"damage;armor;lifesteal"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_ferus_shield"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_ferus_shield"
 	{
-		"01"						"item_lia_shield_of_endurance;item_lia_banner_of_victory"
-	}
-}
+		"ID"							"1365"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"750"	
+		"ItemShopTags"					"damage;armor;lifesteal"
 
-"item_lia_ferus_shield"
-{
-	"ID"							"1366"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_ferus_shield.lua"
-	"ItemCost"						"2090"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"ferus shield;fs;lifesteal;щф;щит феруса"
-	"AbilityTextureName"			"custom/lia_ferus_shield"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
-	"AoERadius"						"350"
-	"AbilityCooldown"				"25"
-	"AbilityManacost"				"250"
-	"AbilityCastRange"   				  "350"
-
-	"precache"
-	{
-		"particle"  "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_ferus_shield"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_shield_of_endurance;item_lia_banner_of_victory"
+		}
 	}
 
-
-	"AbilitySpecial"
+	"item_lia_ferus_shield"
 	{
-		"01"
+		"ID"							"1366"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_ferus_shield.lua"
+		"ItemCost"						"2090"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"ferus shield;fs;lifesteal;щф;щит феруса"
+		"AbilityTextureName"			"custom/lia_ferus_shield"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AoERadius"						"350"
+		"AbilityCooldown"				"25"
+		"AbilityManacost"				"250"
+		"AbilityCastRange"   				  "350"
+
+		"precache"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_health" "550"
+			"particle"  "particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
 		}
-		"02"
+
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"aura_radius" "800"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"aura_lifesteal_percent" "15"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"aura_regen" "15"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"aura_armor" "13"
-		}
-		"06"
-		{
-			"var_type" "FIELD_INTEGER"
-			"panic_duration" "4"
-		}
-		"07"
-		{
-			"var_type" "FIELD_INTEGER"
-			"panic_radius" "350"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "550"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_radius" "800"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_lifesteal_percent" "15"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_regen" "15"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"aura_armor" "13"
+			}
+			"06"
+			{
+				"var_type" "FIELD_INTEGER"
+				"panic_duration" "4"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"panic_radius" "350"
+			}
 		}
 	}
 }

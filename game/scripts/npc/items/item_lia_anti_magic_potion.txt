@@ -1,66 +1,69 @@
-"item_lia_anti_magic_potion"
-{
-	"BaseClass"						"item_datadriven"
-	"ID"							"1495"	
-	"AbilityTextureName"			"custom/lia_anti_magic_potion"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-
-	"AbilityCooldown"				"18"
-	
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-	"ItemPermanent"					"0"
-	"ItemAliases"					"аэ;антимагический эликсир;ame;ae;antimagic exlixir;anti-magic elixir"
-	"ItemCost"						"80"
-	"ItemShopTags"					"common"
-	"ItemQuality"					"common"
-	"ItemStackable"					"1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemInitialCharges"			"1"
-
-	"AbilitySpecial"
+"DotaItems"  
+{ 
+	"item_lia_anti_magic_potion"
 	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"6"
-		}
-	}
+		"BaseClass"						"item_datadriven"
+		"ID"							"1495"	
+		"AbilityTextureName"			"custom/lia_anti_magic_potion"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 
-	"OnSpellStart"
-	{
-		"ApplyModifier"
+		"AbilityCooldown"				"18"
+		
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemPermanent"					"0"
+		"ItemAliases"					"аэ;антимагический эликсир;ame;ae;antimagic exlixir;anti-magic elixir"
+		"ItemCost"						"80"
+		"ItemShopTags"					"common"
+		"ItemQuality"					"common"
+		"ItemStackable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemInitialCharges"			"1"
+
+		"AbilitySpecial"
 		{
-			"Target"
+			"01"
 			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"6"
 			}
-			"ModifierName"	"modifier_item_lia_anti_magic_potion"
-			"Duration"		"%duration"
 		}
-		"RunScript"
-		{
-			"ScriptFile"	"items\AntimagicPotion.lua"
-			"Function"		"Purge"
-		}	
-		"SpendCharge"
-		{}	
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_anti_magic_potion"
-		{
-			"EffectName"		"particles/items_fx/black_king_bar_avatar.vpcf"
-			"EffectAttachType"	"follow_origin"
 
-			"States"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
 			{
-				"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"	
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"ModifierName"	"modifier_item_lia_anti_magic_potion"
+				"Duration"		"%duration"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\AntimagicPotion.lua"
+				"Function"		"Purge"
+			}	
+			"SpendCharge"
+			{}	
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_anti_magic_potion"
+			{
+				"EffectName"		"particles/items_fx/black_king_bar_avatar.vpcf"
+				"EffectAttachType"	"follow_origin"
+
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"	
+				}
 			}
 		}
 	}

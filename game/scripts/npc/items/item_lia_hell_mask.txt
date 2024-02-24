@@ -1,88 +1,84 @@
-"item_recipe_lia_hell_mask"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1474"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"265"	
-	"ItemShopTags"					"int"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_hell_mask"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_hell_mask"
 	{
-		"01"						"item_lia_mask;item_lia_mantle"
-	}
-}
+		"ID"							"1474"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"265"	
+		"ItemShopTags"					"int"
 
-"item_lia_hell_mask"
-{
-	"ID"							"1475"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"420"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"hell mask;hm;адская маска;ам"
-	"AbilityTextureName"			"custom/lia_hell_mask"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	
-	"AbilityCooldown"				"30.0"
-	"AbilityManaCost"				"100"
-	
-	"OnSpellStart"
-	{
-		"RunScript"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_hell_mask"
+		"ItemRequirements"
 		{
-			"ScriptFile"	"items\HellMask.lua"
-			"Function"		"SpawnHellBeast"
+			"01"						"item_lia_mask;item_lia_mantle"
+		}
+	}
+
+	"item_lia_hell_mask"
+	{
+		"ID"							"1475"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"420"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"hell mask;hm;адская маска;ам"
+		"AbilityTextureName"			"custom/lia_hell_mask"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		
+		"AbilityCooldown"				"30.0"
+		"AbilityManaCost"				"100"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items\HellMask.lua"
+				"Function"		"SpawnHellBeast"
+			}
+			
 		}
 		
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_hell_mask"
+		"Modifiers"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
-		    }  
+			"modifier_item_lia_hell_mask"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				}  
+			}
 		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_FLOAT"
-			"bonus_mana_regen" "0.6"
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"bonus_mana_regen" "0.6"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "8"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"creep_duration" "80"
+			}
 		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_intelligence" "8"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"creep_duration" "80"
-		}
-
 	}
 }

@@ -1,4 +1,6 @@
-"item_lia_steel_sword"
+"DotaItems"  
+{ 
+	"item_lia_steel_sword"
 	{
 
 		"ID"							"1106"
@@ -13,29 +15,28 @@
 		"AbilityTextureName"			"custom/lia_steel_sword"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" "item_datadriven"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_damage"			"12"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_steel_sword"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"12"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_steel_sword"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+				}
 			}
 		}
 	}
-	}
+}

@@ -1,4 +1,6 @@
-"item_lia_helm"
+"DotaItems"  
+{ 
+	"item_lia_helm"
 	{
 
 		"ID"							"1108"
@@ -14,29 +16,29 @@
 		"AbilityTextureName"			"custom/lia_helm"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" "item_datadriven"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_armor"			"6"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_helm"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"6"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_helm"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+				}
 			}
 		}
 	}
-	}
+}

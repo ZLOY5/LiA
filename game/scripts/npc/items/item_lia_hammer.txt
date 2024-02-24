@@ -1,124 +1,116 @@
-"item_recipe_lia_hammer"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1400"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"600"	
-	"ItemShopTags"					"str;damage;health_pool;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_hammer"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_hammer"
 	{
-		"01"						"item_lia_spear;item_lia_axe;item_lia_necklace;item_lia_mantle"
-	}
-}
+		"ID"							"1400"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"600"	
+		"ItemShopTags"					"str;damage;health_pool;hard_to_tag"
 
-
-"item_lia_hammer"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"item_datadriven"
-	"ID"							"1401"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Model"							"models/props_gameplay/red_box.vmdl" 
-	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
-	"AbilityTextureName"			"custom/lia_hammer"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"965"
-	"ItemShopTags"					"str;agi;int;damage;hard_to_tag"
-	"ItemQuality"					"epic"
-	"ItemAliases"					"basher;молот;hammer"
-	"ItemKillable" 					"0" 
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_hammer"
+		"ItemRequirements"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_damage"			"35"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_strength"	"15"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_agility"	"15"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_intelligence"	"15"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"minibash_chance"			"30"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bash_damage"			"175"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bash_stun"				"0.01"
+			"01"						"item_lia_spear;item_lia_axe;item_lia_necklace;item_lia_mantle"
 		}
 	}
-	
-	"Modifiers"
+
+
+	"item_lia_hammer"
 	{
-		"modifier_item_lia_hammer"
+		"BaseClass"						"item_datadriven"
+		"ID"							"1401"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			"custom/lia_hammer"
+		
+		"ItemCost"						"965"
+		"ItemShopTags"					"str;agi;int;damage;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"basher;молот;hammer"
+		"ItemKillable" 					"0" 
+		
+		"AbilitySpecial"
 		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"35"
 			}
-			
-			"OnAttackLanded"
+			"02"
 			{
-				"Random"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"	"15"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agility"	"15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intelligence"	"15"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"minibash_chance"			"30"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_damage"			"175"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bash_stun"				"0.01"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_hammer"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
 				{
-					"Chance"			"%minibash_chance"
-					"PseudoRandom"		"DOTA_PSEUDO_RANDOM_ITEM_MKB"
-					"OnSuccess"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				}
+				
+				"OnAttackLanded"
+				{
+					"Random"
 					{
-						
-						"RunScript"
+						"Chance"			"%minibash_chance"
+						"PseudoRandom"		"DOTA_PSEUDO_RANDOM_ITEM_MKB"
+						"OnSuccess"
 						{
-							"ScriptFile"	"items\Hammer.lua"
-							"Function"		"Bash"
-						}
-						
-						"FireSound"
-						{
-							"EffectName"		"DOTA_Item.MKB.Minibash"
-							"Target"			"TARGET"
+							
+							"RunScript"
+							{
+								"ScriptFile"	"items\Hammer.lua"
+								"Function"		"Bash"
+							}
+							
+							"FireSound"
+							{
+								"EffectName"		"DOTA_Item.MKB.Minibash"
+								"Target"			"TARGET"
+							}
 						}
 					}
 				}

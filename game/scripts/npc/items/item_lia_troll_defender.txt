@@ -1,43 +1,46 @@
+"DotaItems"  
+{ 
     "item_lia_troll_defender"
-{
-	"ID"                            "1526"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"            "custom/lia_troll_defender"
-	
-	"ItemStockInitial" "1" 
-	"ItemStockMax" "1"
-	"ItemStockTime" "30"
-	"ItemAliases"					"troll defender;td;тролль-защитник;тз"
-	"ItemCost"                      "125" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "20"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"1"
-	
-	"OnSpellStart"
 	{
-		"SpendCharge"
-		{}
-		"RunScript"
-		{
-			"ScriptFile"	"items\TrollDefender.lua"
-			"Function"		"SpawnTroll"
-		}
+		"ID"                            "1526"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"            "custom/lia_troll_defender"
 		
-	}
-	"AbilitySpecial"
-	{
-		"01"
+		"ItemStockInitial" "1" 
+		"ItemStockMax" "1"
+		"ItemStockTime" "30"
+		"ItemAliases"					"troll defender;td;тролль-защитник;тз"
+		"ItemCost"                      "125" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "20"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"OnSpellStart"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"45"
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"	"items\TrollDefender.lua"
+				"Function"		"SpawnTroll"
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"45"
+			}
 		}
 	}
 }

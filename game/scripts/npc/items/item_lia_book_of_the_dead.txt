@@ -1,45 +1,48 @@
+"DotaItems"  
+{ 
     "item_lia_book_of_the_dead"
-{
-	"ID"                            "1470"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"            "custom/lia_book_of_the_dead"
+	{
+		"ID"                            "1470"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"            "custom/lia_book_of_the_dead"
 
-	"ItemStockMax" "1" 
-	"ItemStockTime" "20"
-	"ItemStockInitial" "1"
-	
-	"ItemCost"                      "40" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"epic"
-	"ItemQuality"					"epic"
-	"ItemAliases"					"botd;bd;book of the dead;км;книга мертвых"
-	"ItemPermanent"					"0"
-	"AbilityCastRange"              "400"
-	"AbilityCooldown"               "20"
-	"AbilityManaCost"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"1"
-	
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"RunScript"
+		"ItemStockMax" "1" 
+		"ItemStockTime" "20"
+		"ItemStockInitial" "1"
+		
+		"ItemCost"                      "40" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"epic"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"botd;bd;book of the dead;км;книга мертвых"
+		"ItemPermanent"					"0"
+		"AbilityCastRange"              "400"
+		"AbilityCooldown"               "20"
+		"AbilityManaCost"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"OnSpellStart"
 		{
-			"ScriptFile"	"items\BookOfTheDeath.lua"
-			"Function"		"SpawnSkeletons"
-		}			
-	}
-	"AbilitySpecial"
-	{
-		"01"
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"	"items\BookOfTheDeath.lua"
+				"Function"		"SpawnSkeletons"
+			}			
+		}
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"30"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
 		}
 	}
 }

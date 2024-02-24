@@ -1,62 +1,51 @@
-"item_lia_healing_ward"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"							"item_lua"
-    "ScriptFile"						"items\item_lia_healing_ward.lua"
-	"ID"						          "1804"  //Valve's version of this item uses the ID "34".
-	"AbilityBehavior"				      "DOTA_ABILITY_BEHAVIOR_POINT"
-	"Model"						       	  "models/props_gameplay/red_box.vmdl"
-	"AbilityTextureName"			      "custom/lia_healing_ward"
-	"AbilityCastRange"   				  "500"
-  	
-	
-
-        // Stats		
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilityCooldown"				  "0"
-	"AbilityCastPoint"				  "0.0"
-	"AbilityManaCost"				  "0"
-	
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"					      	"30"
-	"ItemShopTags"				      	"regen_health"
-	"ItemQuality"					  	"consumable"
-	"ItemAliases"					  	"healing ward;hw;дц;духи-целители;вард"
-    "ItemStackable"				   		"1"
-	"ItemPermanent"				       	"0"
-	"ItemKillable" 						"0" 
-	"ItemInitialCharges"	            "1"
-	"ItemRequiresCharges"               "1"
-
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+"DotaItems"  
+{ 
+	"item_lia_healing_ward"
 	{
-		"01"
+		"BaseClass"							"item_lua"
+		"ScriptFile"						"items\item_lia_healing_ward.lua"
+		"ID"						          "1804"  //Valve's version of this item uses the ID "34".
+		"AbilityBehavior"				      "DOTA_ABILITY_BEHAVIOR_POINT"
+		"Model"						       	  "models/props_gameplay/red_box.vmdl"
+		"AbilityTextureName"			      "custom/lia_healing_ward"
+		"AbilityCastRange"   				  "500"
+		
+		"AbilityCooldown"				  "0"
+		"AbilityCastPoint"				  "0.0"
+		"AbilityManaCost"				  "0"
+		
+		"ItemCost"					      	"30"
+		"ItemShopTags"				      	"regen_health"
+		"ItemQuality"					  	"consumable"
+		"ItemAliases"					  	"healing ward;hw;дц;духи-целители;вард"
+		"ItemStackable"				   		"1"
+		"ItemPermanent"				       	"0"
+		"ItemKillable" 						"0" 
+		"ItemInitialCharges"	            "1"
+		"ItemRequiresCharges"               "1"
+
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"heal_percent_tooltip"	"3"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"			    "30"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_percent_tooltip"	"3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"			    "30"
+			}
 		}
 
-	}
-
-	"OnSpellStart"
-	{
-        "RunScript"
-        {
-        	"ScriptFile"	"items\HealingWard.lua"
-        	"Function"		"SpawnWard"
-        }
-        "SpendCharge" {}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items\HealingWard.lua"
+				"Function"		"SpawnWard"
+			}
+			"SpendCharge" {}
+		}
 	}
 }
-
-

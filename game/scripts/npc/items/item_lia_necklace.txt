@@ -1,28 +1,23 @@
-"item_lia_necklace"
+"DotaItems"  
+{ 
+	"item_lia_necklace"
 	{    
-	        // General
-	        //-------------------------------------------------------------------------------------------------------------
-                "BaseClass"						"item_datadriven"
-                "ID"							"1101"
+		"BaseClass"						"item_datadriven"
+		"ID"							"1101"
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Model"							"models/props_gameplay/red_box.vmdl" 
 		"AbilityTextureName"		                	"custom/lia_necklace"
 		
-		// Item Info
-	        //-------------------------------------------------------------------------------------------------------------
 		"ItemCost"					"85"
 		"ItemQuality"					"component"
-                "ItemAliases"					"necklace"
-                
-                
+		"ItemAliases"					"necklace; ожерелье"
+						
 		"ItemKillable"                                  "0" 
 		"ItemDroppable"                                 "1"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"ItemSellable"                                  "1"
 		"ItemPurchasable"		                "1"
 		
-		// Special	
-	        //-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
 			"01"
@@ -33,17 +28,18 @@
 		}
 		
 		"Modifiers"
-	        {
-		        "modifier_item_lia_necklace"
-		        {
-			  "Passive"			"1"
-			  "IsHidden"			"1"
-			  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			  "AllowIllusionDuplicate"    "1"
-			  "Properties"
-			  {
-			   "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
-			  }
-		        }
-	        }
+		{
+			"modifier_item_lia_necklace"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
+				}
+			}
+		}
 	}
+}

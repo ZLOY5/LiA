@@ -1,15 +1,13 @@
-"item_lia_thugs_dagger"
-	{    
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-        "BaseClass"						"item_datadriven"
+"DotaItems"  
+{ 
+	"item_lia_thugs_dagger"
+	{  
+		"BaseClass"						"item_datadriven"
         "ID"							"1490"
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Model"							"models/props_gameplay/red_box.vmdl" 
 		"AbilityTextureName"		    "custom/lia_thugs_dagger"
 		
-		// Item Info
-	        //-------------------------------------------------------------------------------------------------------------
 		"ItemCost"					"200"
 		"ItemQuality"					"component"
         "ItemAliases"					"td;thugs dagger;кинжал разбойника;кр"        
@@ -20,8 +18,6 @@
 		"ItemSellable"                                  "1"
 		"ItemPurchasable"		                "1"
 		
-		// Special	
-	        //-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
 			"01"
@@ -32,17 +28,18 @@
 		}
 		
 		"Modifiers"
-	        {
-		        "modifier_item_lia_thugs_dagger"
-		        {
-				  "Passive"			"1"
-				  "IsHidden"			"1"
-				  "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+		{
+			"modifier_item_lia_thugs_dagger"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 
-				  "Properties"
-				  {
-				   "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
-				  }
-		        }
-	        }
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%bonus_agility"
+				}
+			}
+		}
 	}
+}

@@ -1,63 +1,59 @@
-"item_recipe_lia_demon_edge"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1373"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"230"	
-	"ItemShopTags"					"damage"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_demon_edge"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_demon_edge"
 	{
-		"01"						"item_lia_steel_sword;item_lia_claws;item_lia_spear"
-	}
-}
+		"ID"							"1373"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"230"	
+		"ItemShopTags"					"damage"
 
-"item_lia_demon_edge"
-{
-	"ID"							"1374"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"550"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"de;demon edge;лезвие демона;лд"
-	"AbilityTextureName"			"custom/lia_demon_edge"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Modifiers"
-	{
-		"modifier_item_lia_demon_edge"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_demon_edge"
+		"ItemRequirements"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-		    }  
+			"01"						"item_lia_steel_sword;item_lia_claws;item_lia_spear"
 		}
 	}
-	"AbilitySpecial"
+
+	"item_lia_demon_edge"
 	{
-		"01"
+		"ID"							"1374"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"550"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"de;demon edge;лезвие демона;лд"
+		"AbilityTextureName"			"custom/lia_demon_edge"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "55"
+			"modifier_item_lia_demon_edge"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+				}  
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "55"
+			}
 		}
 	}
 }
-

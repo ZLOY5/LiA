@@ -1,79 +1,82 @@
+"DotaItems"  
+{ 
     "item_lia_rune_of_mana"
-{
-	"ID"                            "1602"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	
-	"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
-	"Effect"						"particles/rune_mana.vpcf"
-	"ItemCost"                      "0" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
-	
-	"precache"
 	{
-		"particle"  "particles/rune_mana.vpcf"
-	}
+		"ID"                            "1602"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		
+		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
+		"Effect"						"particles/rune_mana.vpcf"
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+		
+		"precache"
+		{
+			"particle"  "particles/rune_mana.vpcf"
+		}
 
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"ActOnTargets"
+		"OnSpellStart"
 		{
-			"Target"
+			"SpendCharge"
+			{}
+			"ActOnTargets"
 			{
-				"Center" 	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/mana.lua"
+						"Function"		"GiveMana"
+						"mana_amount"	"%mana"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/items3_fx/mango_active.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+					}
+				}
 			}
-		
-			"Action"    
+			
+			"FireSound"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"items/mana.lua"
-					"Function"		"GiveMana"
-					"mana_amount"	"%mana"
-				}
-				"FireEffect"
-				{
-					"EffectName"        "particles/items3_fx/mango_active.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"            "TARGET"
-				}
+				"EffectName"	"Rune.Regen"
+				"Target" 		"CASTER"
 			}
 		}
-		
-		"FireSound"
+		"AbilitySpecial"
 		{
-			"EffectName"	"Rune.Regen"
-			"Target" 		"CASTER"
-		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"mana"					"250"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"2000"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana"					"250"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"2000"
+			}
 		}
 	}
 }

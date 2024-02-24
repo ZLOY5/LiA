@@ -1,52 +1,48 @@
-"item_recipe_lia_huge_axe"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1300"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"265"	
-	"ItemShopTags"					"str;damage;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_huge_axe"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_huge_axe"
 	{
-		"01"						"item_lia_axe;item_lia_claws;item_lia_orb_of_fire"
+		"ID"							"1300"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"265"	
+		"ItemShopTags"					"str;damage;hard_to_tag"
+
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_huge_axe"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_axe;item_lia_claws;item_lia_orb_of_fire"
+		}
+	}
+
+	"item_lia_huge_axe"
+	{
+		"ID"							"1301"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_huge_axe.lua"
+		"ItemCost"						"515"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"ha;huge axe;cleave;огромный топор;от"
+		"AbilityTextureName"			"custom/lia_huge_axe"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilityValues"
+		{
+			"bonus_damage" "32"
+			"bonus_strength"	"15"
+			"cleave_percent" "25"
+			"cleave_start_width" "150"
+			"cleave_end_width" "200"
+			"cleave_length" "200"
+		}
 	}
 }
-
-"item_lia_huge_axe"
-{
-	"ID"							"1301"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_huge_axe.lua"
-	"ItemCost"						"515"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"ha;huge axe;cleave;огромный топор;от"
-	"AbilityTextureName"			"custom/lia_huge_axe"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-	"AbilityValues"
-	{
-		"bonus_damage" "32"
-		"bonus_strength"	"15"
-		"cleave_percent" "25"
-		"cleave_start_width" "150"
-		"cleave_end_width" "200"
-		"cleave_length" "200"
-	}
-}
-

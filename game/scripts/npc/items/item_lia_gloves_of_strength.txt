@@ -1,4 +1,6 @@
-"item_lia_gloves_of_strength"
+"DotaItems"  
+{ 
+	"item_lia_gloves_of_strength"
 	{
 
 		"ID"							"1103"
@@ -10,34 +12,32 @@
 		"ItemPurchasable"		 "1"
 		"ItemQuality"					"component"
 		"ItemAliases"					"пс;перчатки силы;gos;gloves of strength"
-
-		
+	
 		"AbilityTextureName"			"custom/lia_gloves_of_strength"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" "item_datadriven"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_strength"		"12"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_gloves_of_strength"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_strength"		"12"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_gloves_of_strength"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strength"
+				}
 			}
 		}
 	}
-	}
+}

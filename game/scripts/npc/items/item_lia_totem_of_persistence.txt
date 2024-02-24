@@ -1,122 +1,119 @@
-"item_recipe_lia_totem_of_persistence"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1463"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"330"	
-	"ItemShopTags"					"armor"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_totem_of_persistence"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_totem_of_persistence"
 	{
-		"01"						"item_lia_dwarf_armor;item_lia_staff_of_power;item_lia_runed_bracers"
-	}
-}
+		"ID"							"1463"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"330"	
+		"ItemShopTags"					"armor"
 
-"item_lia_totem_of_persistence"
-{
-
-	"BaseClass" "item_datadriven"
-	"ID"							"1464"
-	"ItemCost"						"1635"
-	"ItemKillable" "0" 
-	"ItemDroppable" "1"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 "1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"тотем стойкости;тс;totem of persistence;top"
-	"AbilityCooldown"				"22.0"
-	
-	"AbilityTextureName"			"custom/lia_totem_of_persistence"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	
-
-	"AbilitySpecial"
-	{
-		"01"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_totem_of_persistence"
+		"ItemRequirements"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_magic_resist_percentage" "40"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"bonus_mana_regen"		"1.75"
-		}	
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_armor" "15"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_health" "250"
-		}		
-		"05"
-		{
-			"var_type" "FIELD_FLOAT"
-			"duration" "6.0"
+			"01"						"item_lia_dwarf_armor;item_lia_staff_of_power;item_lia_runed_bracers"
 		}
 	}
 
-	"OnSpellStart"
+	"item_lia_totem_of_persistence"
 	{
-		"ApplyModifier"
+
+		"BaseClass" "item_datadriven"
+		"ID"							"1464"
+		"ItemCost"						"1635"
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 "1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"тотем стойкости;тс;totem of persistence;top"
+		"AbilityCooldown"				"22.0"
+		
+		"AbilityTextureName"			"custom/lia_totem_of_persistence"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		
+
+		"AbilitySpecial"
 		{
-			"ModifierName"	"modifier_item_totem_of_persistence_active"
-			"Target"		
+			"01"
 			{
-				"Center"	"CASTER"
-				"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"var_type" "FIELD_INTEGER"
+				"bonus_magic_resist_percentage" "40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen"		"1.75"
+			}	
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "15"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "250"
+			}		
+			"05"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration" "6.0"
 			}
 		}
-		"RunScript"
-		{
-			"ScriptFile"	"items\TotemOfPersistence.lua"
-			"Function"		"Purge"
-		}	
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_totem_of_persistence"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 
-			"Properties"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
 			{
-				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
-			    "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
-		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
-		    }
+				"ModifierName"	"modifier_item_totem_of_persistence_active"
+				"Target"		
+				{
+					"Center"	"CASTER"
+					"Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"items\TotemOfPersistence.lua"
+				"Function"		"Purge"
+			}	
 		}
-
-		"modifier_item_totem_of_persistence_active"
+		
+		"Modifiers"
 		{
-			"Duration"              	"%duration"
-			"Attributes"				"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-			"EffectName"            	"particles/items_fx/black_king_bar_avatar.vpcf"
-			"EffectAttachType"      	"follow_origin"
-			
-			"States"
+			"modifier_item_lia_totem_of_persistence"
 			{
-				"MODIFIER_STATE_MAGIC_IMMUNE" 			"MODIFIER_STATE_VALUE_ENABLED"
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"		 "%bonus_health"
+				}
+			}
+
+			"modifier_item_totem_of_persistence_active"
+			{
+				"Duration"              	"%duration"
+				"Attributes"				"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"EffectName"            	"particles/items_fx/black_king_bar_avatar.vpcf"
+				"EffectAttachType"      	"follow_origin"
+				
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE" 			"MODIFIER_STATE_VALUE_ENABLED"
+				}
 			}
 		}
 	}

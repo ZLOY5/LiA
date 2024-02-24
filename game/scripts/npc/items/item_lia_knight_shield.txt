@@ -1,61 +1,57 @@
-"item_recipe_lia_knight_shield"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1322"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"300"	
-	"ItemShopTags"					"armor;health_pool;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_knight_shield"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_knight_shield"
 	{
-		"01"						"item_lia_claws;item_lia_ring_of_protection;item_lia_amulet"
+		"ID"							"1322"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"300"	
+		"ItemShopTags"					"armor;health_pool;hard_to_tag"
+
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_knight_shield"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_claws;item_lia_ring_of_protection;item_lia_amulet"
+		}
 	}
-}
 
-"item_lia_knight_shield"
-{
-	"ID"							"1323"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_knight_shield.lua"
-	"ItemCost"						"565"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"рыцарский щит;рщ;ks;knights shield"
-	"AbilityTextureName"			"custom/lia_knight_shield"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-	"AbilitySpecial"
+	"item_lia_knight_shield"
 	{
-		"01"
+		"ID"							"1323"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_knight_shield.lua"
+		"ItemCost"						"565"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"рыцарский щит;рщ;ks;knights shield"
+		"AbilityTextureName"			"custom/lia_knight_shield"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_armor" "5"
-		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_health" "200"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"damage_return" "20"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "5"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "200"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"damage_return" "20"
+			}
 		}
 	}
 }
-

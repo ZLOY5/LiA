@@ -1,145 +1,141 @@
-"item_recipe_lia_orb_of_frost"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1465"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"400"	
-	"ItemShopTags"					"int"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_orb_of_frost"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_orb_of_frost"
 	{
-		"01"						"item_lia_mana_stone;item_lia_stormwind_horn"
-	}
-}
+		"ID"							"1465"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"400"	
+		"ItemShopTags"					"int"
 
-"item_lia_orb_of_frost"
-{
-	"ID"							"1466"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"770"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"oof;orb of frost;сл;сфера льда"
-	"AbilityTextureName"			"custom/lia_orb_of_frost"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-
-	"Modifiers"
-	{
-		"modifier_item_lia_orb_of_frost"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_orb_of_frost"
+		"ItemRequirements"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+			"01"						"item_lia_mana_stone;item_lia_stormwind_horn"
+		}
+	}
 
-		    "Aura" "orb_of_frost_aura_armor"
-    		"Aura_Radius" "900"
-    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+	"item_lia_orb_of_frost"
+	{
+		"ID"							"1466"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"770"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"oof;orb of frost;сл;сфера льда"
+		"AbilityTextureName"			"custom/lia_orb_of_frost"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		    "Properties"
-		    {
-				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-		    }  
-			
-			  "Orb"
+		"Modifiers"
+		{
+			"modifier_item_lia_orb_of_frost"
 			{
-				"Priority"  "DOTA_ORB_PRIORITY_ITEM"
-				"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
-			}
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 
-			"OnOrbImpact"
-			{
-				"ApplyModifier"
+				"Aura" "orb_of_frost_aura_armor"
+				"Aura_Radius" "900"
+				"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+
+				"Properties"
 				{
-					"Target"    "TARGET"
-					"ModifierName"  "modifier_orb_of_frost_slow"
-					"Duration"  "%slow_duration"
-				}   
-			} 
-		}
-		"modifier_orb_of_frost_slow" 
-		{
-			"IsDebuff" "1"
-			"Duration"  "3"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
-			}
-			"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
-			"EffectAttachType" "attach_hitloc"
-		}
-		"orb_of_frost_aura_armor"
-   		{
-    	
-	    	"IsBuff" "1"
-	    	"IsPurgable" "0"
+					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
+				}  
+				
+				"Orb"
+				{
+					"Priority"  "DOTA_ORB_PRIORITY_ITEM"
+					"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
+				}
 
-	    	"Properties"
-	    	{
-	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
-	     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-	    	}
-	    }
-	}
-	"AbilitySpecial"
-	{
-		"01"
+				"OnOrbImpact"
+				{
+					"ApplyModifier"
+					{
+						"Target"    "TARGET"
+						"ModifierName"  "modifier_orb_of_frost_slow"
+						"Duration"  "%slow_duration"
+					}   
+				} 
+			}
+			"modifier_orb_of_frost_slow" 
+			{
+				"IsDebuff" "1"
+				"Duration"  "3"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
+				}
+				"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
+				"EffectAttachType" "attach_hitloc"
+			}
+			"orb_of_frost_aura_armor"
+			{
+			
+				"IsBuff" "1"
+				"IsPurgable" "0"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				}
+			}
+		}
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_mana" "400"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana" "400"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "30"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius" "900"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "20"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_movement_speed_percent" "10"
+			}
+			"06"
+			{
+				"var_type" "FIELD_INTEGER"
+				"slow_duration" "3"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"move_speed_slow" "-40"
+			}
+			"08"
+			{
+				"var_type" "FIELD_INTEGER"
+				"attack_speed_slow" "-25"
+			}
 		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "30"
-		}
-	   	"03"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "radius" "900"
-	   	}
-		"04"
-	   	{
-			"var_type" "FIELD_INTEGER"
-			"bonus_attack_speed" "20"
-		}
-		"05"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "bonus_movement_speed_percent" "10"
-	   	}
-		"06"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "slow_duration" "3"
-	   	}
-		"07"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "move_speed_slow" "-40"
-	   	}
-		"08"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "attack_speed_slow" "-25"
-	   	}
 	}
 }

@@ -1,59 +1,56 @@
-"item_recipe_lia_battle_javelin"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1367"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"415"	
-	"ItemShopTags"					"damage;attack_speed"
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    		"recipe"
-	"ItemResult"					"item_lia_battle_javelin"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_battle_javelin"
 	{
-		"01"						"item_lia_runed_gloves;item_lia_spear;item_lia_gloves_of_haste"
+		ID"							"1367"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"415"	
+		"ItemShopTags"					"damage;attack_speed"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    		"recipe"
+		"ItemResult"					"item_lia_battle_javelin"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_runed_gloves;item_lia_spear;item_lia_gloves_of_haste"
+		}
 	}
-}
 
-"item_lia_battle_javelin"
-{
-	"ID"							"1368"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_battle_javelin.lua"
-	"ItemCost"						"800"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"bj;battle javelin;бд;боевой дротик"
-	"AbilityTextureName"			"custom/lia_battle_javelin"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-	"AbilitySpecial"
+	"item_lia_battle_javelin"
 	{
-		"01"
+		"ID"							"1368"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_battle_javelin.lua"
+		"ItemCost"						"800"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"bj;battle javelin;бд;боевой дротик"
+		"AbilityTextureName"			"custom/lia_battle_javelin"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "45"
-		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_attack_speed" "35"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"pierce_chance" "15"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "45"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "35"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"pierce_chance" "15"
+			}
 		}
 	}
 }

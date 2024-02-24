@@ -1,195 +1,192 @@
-"item_recipe_lia_glove_of_pain"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1452"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"800"	
-	"ItemShopTags"					"int"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_glove_of_pain"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_glove_of_pain"
 	{
-		"01"						"item_lia_mana_staff;item_lia_mask"
-	}
-}
+		"ID"							"1452"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"800"	
+		"ItemShopTags"					"int"
 
-"item_lia_glove_of_pain"
-{
-	"ID"							"1453"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1590"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"gop;glove of pain;перчатка боли;пб"
-	"AbilityTextureName"			"custom/lia_glove_of_pain"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-	
-	"AbilityCastRange"				"800"
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"25.0"
-	"AbilityManaCost"				"350"
-	
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_glove_of_pain"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_mana_staff;item_lia_mask"
+		}
+	}
+
+	"item_lia_glove_of_pain"
+	{
+		"ID"							"1453"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1590"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"gop;glove of pain;перчатка боли;пб"
+		"AbilityTextureName"			"custom/lia_glove_of_pain"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		
+		"AbilityCastRange"				"800"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"25.0"
+		"AbilityManaCost"				"350"
+		
 		"precache"
-	{
-		"soundfile"			"sounds/items/item_mjoll_on.vsnd"
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-		"particle"			"particles/items2_fx/mjollnir_shield.vpcf"
-		"particle"			"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
-	}
-
-	"OnSpellStart"
-	{
-		"ApplyModifier"
 		{
-			"ModifierName"	"modifier_heavenly_punishment"
-			"Target" 		"TARGET"
-			"Duration"		"%duration"
+			"soundfile"			"sounds/items/item_mjoll_on.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+			"particle"			"particles/items2_fx/mjollnir_shield.vpcf"
+			"particle"			"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
 		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_glove_of_pain"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
 
-			"Aura" 					"modifier_item_glove_of_pain_aura"
-			"Aura_Radius" 			"%aura_radius"
-			"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-			"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			"Aura_Flags" 			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-			"Aura_ApplyToCaster" 	"1"
-			
-			"Properties"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
 			{
-				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				"ModifierName"	"modifier_heavenly_punishment"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
 			}
 		}
-
-		"modifier_item_glove_of_pain_aura"
+		
+		"Modifiers"
 		{
-			"Passive"			"1"
-			"IsHidden"			"0"
+			"modifier_item_lia_glove_of_pain"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
 
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"						"8.0"  //This is hardcoded due to an obscure engine bug.
-			}
-		}
-		"modifier_heavenly_punishment"
-		{
-			"IsBuff"		"1"
-			"IsPurgable"	"1"
-	
-			"OnCreated"
-			{
-				"FireSound"
+				"Aura" 					"modifier_item_glove_of_pain_aura"
+				"Aura_Radius" 			"%aura_radius"
+				"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" 			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"Aura_Flags" 			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Aura_ApplyToCaster" 	"1"
+				
+				"Properties"
 				{
-					"EffectName"	"DOTA_Item.Mjollnir.Activate"
-					"Target" 		"TARGET"
+					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				}
+			}
+
+			"modifier_item_glove_of_pain_aura"
+			{
+				"Passive"			"1"
+				"IsHidden"			"0"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT_UNIQUE"	"8.0"  
+				}
+			}
+			"modifier_heavenly_punishment"
+			{
+				"IsBuff"		"1"
+				"IsPurgable"	"1"
+		
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"DOTA_Item.Mjollnir.Activate"
+						"Target" 		"TARGET"
+					}
+
+					"AttachEffect"
+					{
+						"EffectName"        "particles/items2_fx/mjollnir_shield.vpcf"
+						"EffectAttachType"  "attach_hitloc"
+						"Target"            "TARGET"
+
+						"ControlPoints"
+						{
+							"01"	"100 100 100"
+						}
+					}
 				}
 
-				"AttachEffect"
+				"OnDestroy"
 				{
-					"EffectName"        "particles/items2_fx/mjollnir_shield.vpcf"
-					"EffectAttachType"  "attach_hitloc"
-					"Target"            "TARGET"
-
-					"ControlPoints"
+					"FireSound"
 					{
-						"01"	"100 100 100"
+						"EffectName"	"DOTA_Item.Mjollnir.DeActivate"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
+						}
+					}
+				}
+
+				"ThinkInterval"  "%think_interval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/GloveOfPain.lua"
+						"Function"		"HeavenlyPunishment"
+						"ion_particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
 					}
 				}
 			}
-
-			"OnDestroy"
+		}
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"FireSound"
-				{
-					"EffectName"	"DOTA_Item.Mjollnir.DeActivate"
-					"Target"
-					{
-						"Center"	"TARGET"
-						"Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-					}
-				}
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"400"
 			}
-
-			"ThinkInterval"  "%think_interval"
-			"OnIntervalThink"
+			"02"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"items/GloveOfPain.lua"
-					"Function"		"HeavenlyPunishment"
-					"ion_particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
-				}
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "20"
 			}
-		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_mana"			"400"
-		}
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_intelligence" "20"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"aura_radius"			"1000"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"aura_mana_regen"		"8"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"duration" "8"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage"			"175"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"		"275"
-		}
-		"08"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"think_interval"		"1.0"
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"			"1000"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_mana_regen"		"8"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "8"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"			"175"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"		"275"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"think_interval"		"1.0"
+			}
 		}
 	}
 }

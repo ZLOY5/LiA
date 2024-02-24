@@ -1,79 +1,81 @@
+"DotaItems"  
+{ 
     "item_lia_rune_of_healing"
-{
-	"ID"                            "1601"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-
-	
-	"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
-	"Effect"						"particles/generic_gameplay/rune_regeneration.vpcf"
-	
-	"ItemCost"                      "0" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
-	
-	"precache"
 	{
-		"particle"  "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal.vpcf"
-	}
-
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center" 	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-			}
+		"ID"                            "1601"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		
-			"Action"    
+		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
+		"Effect"						"particles/generic_gameplay/rune_regeneration.vpcf"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+		
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ActOnTargets"
 			{
-				"Heal"
+				"Target"
 				{
-					"Target"        "TARGET"
-					"HealAmount"	"%heal"
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 				}
-				"FireEffect"
+			
+				"Action"    
 				{
-					"EffectName"        "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"            "TARGET"
+					"Heal"
+					{
+						"Target"        "TARGET"
+						"HealAmount"	"%heal"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_bloodseeker/bloodseeker_bloodbath_heal.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+					}
 				}
 			}
+			"FireSound"
+			{
+				"EffectName"	"Rune.Regen"
+				"Target" 		"CASTER"
+			}
 		}
-		"FireSound"
+		"AbilitySpecial"
 		{
-			"EffectName"	"Rune.Regen"
-			"Target" 		"CASTER"
-		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"heal"					"450"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"2000"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"450"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"2000"
+			}
 		}
 	}
 }

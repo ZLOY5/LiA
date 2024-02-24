@@ -1,49 +1,49 @@
+"DotaItems"  
+{ 
     "item_lia_rune_of_strength"
-{
-	"ID"                            "1605"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	
-	"Model"							"models/gameplay/attrib_tome_str.vmdl"
-	"Effect"						"particles/rune_lifeinarena_red.vpcf"
-
-	"precache"
 	{
-		"particle"  "particles/rune_lifeinarena_red.vpcf"
-	}
+		"ID"                            "1605"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		
-	"ItemCost"                      "0" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
+		"Model"							"models/gameplay/attrib_tome_str.vmdl"
+		"Effect"						"particles/rune_lifeinarena_red.vpcf"
 
-
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"RunScript"
+		"precache"
 		{
-			"ScriptFile" 	"items\runes.lua"
-			"Function"		"RuneOfStrength"
+			"particle"  "particles/rune_lifeinarena_red.vpcf"
 		}
-		
-		"FireSound"
+			
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+
+
+		"OnSpellStart"
 		{
-			"EffectName"	"Rune.Illusion"
-			"Target" 		"CASTER"
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfStrength"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Illusion"
+				"Target" 		"CASTER"
+			}
 		}
 	}
-
-
-
 }

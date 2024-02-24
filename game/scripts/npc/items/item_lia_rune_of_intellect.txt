@@ -1,49 +1,48 @@
+"DotaItems"  
+{ 
     "item_lia_rune_of_intellect"
-{
-	"ID"                            "1607"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	
-	"Model"							"models/gameplay/attrib_tome_int.vmdl"
-	"Effect"						"particles/rune_lifeinarena_blue.vpcf"
-
-	"precache"
 	{
-		"particle"  "particles/rune_lifeinarena_blue.vpcf"
-	}
-	
-	"ItemCost"                      "0" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
+		"ID"                            "1607"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		
+		"Model"							"models/gameplay/attrib_tome_int.vmdl"
+		"Effect"						"particles/rune_lifeinarena_blue.vpcf"
 
-
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"RunScript"
+		"precache"
 		{
-			"ScriptFile" 	"items\runes.lua"
-			"Function"		"RuneOfIntellect"
+			"particle"  "particles/rune_lifeinarena_blue.vpcf"
 		}
 		
-		"FireSound"
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+
+		"OnSpellStart"
 		{
-			"EffectName"	"Rune.Illusion"
-			"Target" 		"CASTER"
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfIntellect"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Illusion"
+				"Target" 		"CASTER"
+			}
 		}
 	}
-
-
-
 }

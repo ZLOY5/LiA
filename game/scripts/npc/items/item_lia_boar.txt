@@ -1,44 +1,47 @@
+"DotaItems"  
+{ 
     "item_lia_boar"
-{
-	"ID"                            "1520"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"            "custom/lia_boar"
-	
- 	//"ItemStockInitial" "1"
-	//"ItemStockMax" "1"
-	//"ItemStockTime" "30"	
-
-	"ItemCost"                      "75" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemAliases"					"кабан;boar"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "20"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"1"
-	
-	"OnSpellStart"
 	{
-		"SpendCharge"
-		{}
-		"RunScript"
-		{
-			"ScriptFile"	"items\Boar.lua"
-			"Function"		"SpawnBoar"
-		}
+		"ID"                            "1520"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"            "custom/lia_boar"
 		
-	}
-	"AbilitySpecial"
-	{
-		"01"
+		//"ItemStockInitial" "1"
+		//"ItemStockMax" "1"
+		//"ItemStockTime" "30"	
+
+		"ItemCost"                      "75" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemAliases"					"кабан;boar"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "20"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"OnSpellStart"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"35"
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile"	"items\Boar.lua"
+				"Function"		"SpawnBoar"
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"35"
+			}
 		}
 	}
 }

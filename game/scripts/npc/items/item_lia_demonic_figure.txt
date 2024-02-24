@@ -1,57 +1,60 @@
-    "item_lia_demonic_figurine"
-{
-	"ID"                            "1472"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityTextureName"            "custom/lia_demonic_figurine"
+"DotaItems"  
+{ 
+	"item_lia_demonic_figurine"
+	{
+		"ID"                            "1472"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"            "custom/lia_demonic_figurine"
 
-	"ItemStockMax" "1" 
-	"ItemStockTime" "30"
-	"ItemStockInitial" "1"
-	
-	"ItemCost"                      "150" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"epic"
-	"ItemQuality"					"epic"
-	"ItemAliases"					"статуэтка демона;сд;дум;demonic figurine;df;doom"
-	"ItemPermanent"					"0"
-	"AbilityCastRange"              "400"
-	"AbilityCooldown"               "30"
-	"AbilityManaCost"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"1"
-	
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"SpawnUnit"
-		{
-			"Target"
-			{
-				"Center"				"CASTER"
-				"ScriptSelectPoints"
-				{
-					"ScriptFile"    "abilities/SummonLocation.lua"
-        			"Function"      "SummonLocation"
-					"Target"		"CASTER"
-				}
-			}
-			"UnitName"              "npc_doom_guard_spawn"
-			"UnitCount"             "1"
-			"Duration"				"60"
-		}
+		"ItemStockMax" "1" 
+		"ItemStockTime" "30"
+		"ItemStockInitial" "1"
 		
-	}
-	"AbilitySpecial"
-	{
-		"01"
+		"ItemCost"                      "150" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"epic"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"статуэтка демона;сд;дум;demonic figurine;df;doom"
+		"ItemPermanent"					"0"
+		"AbilityCastRange"              "400"
+		"AbilityCooldown"               "30"
+		"AbilityManaCost"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"1"
+		
+		"OnSpellStart"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"duration"				"60"
+			"SpendCharge"
+			{}
+			"SpawnUnit"
+			{
+				"Target"
+				{
+					"Center"				"CASTER"
+					"ScriptSelectPoints"
+					{
+						"ScriptFile"    "abilities/SummonLocation.lua"
+						"Function"      "SummonLocation"
+						"Target"		"CASTER"
+					}
+				}
+				"UnitName"              "npc_doom_guard_spawn"
+				"UnitCount"             "1"
+				"Duration"				"60"
+			}
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"60"
+			}
 		}
 	}
 }

@@ -1,79 +1,75 @@
-"item_lia_stormwind_horn"
-{
-	"ID"							"1121"
-	"BaseClass" 					"item_datadriven"
-	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_ALL"
-	"AbilityTextureName" 			"custom/lia_stormwind_horn"
-	
+"DotaItems"  
+{ 
+	"item_lia_stormwind_horn"
+	{
+		"ID"							"1121"
+		"BaseClass" 					"item_datadriven"
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_ALL"
+		"AbilityTextureName" 			"custom/lia_stormwind_horn"
+		"AbilityCastPoint"    			"0.0"
+		"AbilityCastRange"    			"900"
+		//"AbilityCooldown"    			"0"
+		//"AbilityManaCost"    			"0"
 
-
-	"AbilityCastPoint"    			"0.0"
-	"AbilityCastRange"    			"900"
-	//"AbilityCooldown"    			"0"
-	//"AbilityManaCost"    			"0"
-
-	"ItemCost"                      "250"
-	"ItemShareability"				"ITEM_NOT_SHAREABLE"		
-	"ItemQuality"					"component"
-	"ItemAliases"					"рог ветров;рв;stormwind horn;sh"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "1"
+		"ItemCost"                      "250"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"		
+		"ItemQuality"					"component"
+		"ItemAliases"					"рог ветров;рв;stormwind horn;sh"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "1"
 		"ItemPurchasable"		 "1"
 
-	
-	"AbilitySpecial"
-	{
-	   	"01"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "radius" "900"
-	   	}
-		"02"
-	   	{
-			"var_type" "FIELD_INTEGER"
-			"bonus_attack_speed" "15"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"radius" "900"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "15"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_movement_speed_percent" "10"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"regen" "0"
+			}
 		}
-		"03"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "bonus_movement_speed_percent" "10"
-	   	}
-		"04"
-	   	{
-		    "var_type" "FIELD_INTEGER"
-		    "regen" "0"
-	   	}
-  	}
-
 	
-  	"Modifiers"
-  	{
-   		"modifier_item_lia_stormwind_horn"
-   		{
-    		"Passive" "1"
-    		"IsHidden" "1"
-    		"Aura" "horn_aura_armor"
-    		"Aura_Radius" "900"
-    		"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    		"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-			"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
-   		}
- 
-   		"horn_aura_armor"
-   		{
-  	  		"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  	
-	    	"IsBuff" "1"
-	    	"IsPurgable" "0"
+		"Modifiers"
+		{
+			"modifier_item_lia_stormwind_horn"
+			{
+				"Passive" "1"
+				"IsHidden" "1"
+				"Aura" "horn_aura_armor"
+				"Aura_Radius" "900"
+				"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types" "DOTA_UNIT_TARGET_ALL"
+				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
+			}
+	
+			"horn_aura_armor"
+			{
+				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  	
+				"IsBuff" "1"
+				"IsPurgable" "0"
 
-	    	"Properties"
-	    	{
-	     		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
-	     		"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-	    	}
-	    }
-
-   	}
-
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
+				}
+			}
+		}
+	}
 }

@@ -1,94 +1,87 @@
-"item_recipe_lia_lunar_necklace"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1450"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"500"	
-	"ItemShopTags"					"agi;str;int"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_lunar_necklace"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_lunar_necklace"
 	{
-		"01"						"item_lia_magic_necklace;item_lia_amulet;item_lia_mana_stone"
+		"ID"							"1450"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"500"	
+		"ItemShopTags"					"agi;str;int"
+
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_lunar_necklace"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_magic_necklace;item_lia_amulet;item_lia_mana_stone"
+		}
 	}
-}
 
-
-
-"item_lia_lunar_necklace"
-{
-	"ID"							"1451"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_lunar_necklace.lua"
-	"ItemCost"						"1690"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"ln;lunar necklace;лк;лунное колье"
-	"AbilityTextureName"			"custom/lia_lunar_necklace"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-	"AbilityCooldown"				"24"
-	"AbilityManacost"				"60"
-	
-	
-	"precache"
+	"item_lia_lunar_necklace"
 	{
-		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
-		"particle"			"particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
-	}
-	
-
-	"AbilitySpecial"
-	{
-		"01"
+		"ID"							"1451"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_lunar_necklace.lua"
+		"ItemCost"						"1690"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"ln;lunar necklace;лк;лунное колье"
+		"AbilityTextureName"			"custom/lia_lunar_necklace"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityCooldown"				"24"
+		"AbilityManacost"				"60"
+			
+		"precache"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_health" "300"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+			"particle"			"particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
 		}
-		"02"
+		
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_mana" "300"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_all_stats" "35"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"duration" "6"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"stat_percent" "75"
-		}
-		"06"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_magic_resist_percentage_active" "20"
-		}
-		"07"
-		{
-			"var_type" "FIELD_INTEGER"
-			"stat_bonus_max" "75"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "300"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana" "300"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_all_stats" "35"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "6"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"stat_percent" "75"
+			}
+			"06"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_magic_resist_percentage_active" "20"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"stat_bonus_max" "75"
+			}
 		}
 	}
 }

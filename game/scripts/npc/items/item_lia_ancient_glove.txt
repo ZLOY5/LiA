@@ -1,15 +1,13 @@
-"item_lia_ancient_glove"
+"DotaItems"  
+{ 
+	"item_lia_ancient_glove"
 	{
-                // General
-	        //-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"item_datadriven"
+        "BaseClass"						"item_datadriven"
 		"ID"							"1413"
 		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"Model"							"models/props_gameplay/red_box.vmdl"
 		"AbilityTextureName"			                "custom/lia_ancient_glove"
 		
-		// Item Info
-	        //-------------------------------------------------------------------------------------------------------------
 		"ItemCost"					"150"
 		"ItemShopTags"					"hard_to_tag"
 		"ItemQuality"					"component"
@@ -21,9 +19,6 @@
 		"ItemSellable"                                  "1"
 		"ItemPurchasable"		                "1"
 		
- 
-        	// Special	
-	        //-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
 		{
 			"01"
@@ -39,62 +34,60 @@
 
 		}
 		
-	       // Modifiers	
-	       //-------------------------------------------------------------------------------------------------------------
 		"Modifiers"
-	        {
-				"modifier_item_lia_ancient_glove"
+	    {
+			"modifier_item_lia_ancient_glove"
+			{
+				"Passive"   "1"
+				"IsHidden"  "1"
+				"AllowIllusionDuplicate"    "1"
+				"OnAttackStart"
 				{
-					"Passive"   "1"
-					"IsHidden"  "1"
-					"AllowIllusionDuplicate"    "1"
-					"OnAttackStart"
+					"RemoveModifier"
 					{
-						"RemoveModifier"
+						"ModifierName" "modifier_item_lia_ancient_glove_crit"
+						"Target" "CASTER"
+					}
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"OnSuccess"
 						{
-							"ModifierName" "modifier_item_lia_ancient_glove_crit"
-							"Target" "CASTER"
-						}
-						"Random"
-						{
-							"Chance" "%crit_chance"
-							"OnSuccess"
+							"ApplyModifier"
 							{
-								"ApplyModifier"
-								{
-									"ModifierName" "modifier_item_lia_ancient_glove_crit"
-									"Target"    "CASTER"    
-								}        
-							}
+								"ModifierName" "modifier_item_lia_ancient_glove_crit"
+								"Target"    "CASTER"    
+							}        
 						}
 					}
 				}
+			}
 
-				"modifier_item_lia_ancient_glove_crit"
+			"modifier_item_lia_ancient_glove_crit"
+			{
+				"IsHidden"  "1"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
 				{
-					"IsHidden"  "1"
-					"AllowIllusionDuplicate"    "1"
-					"Properties"
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+				}
+
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
 					{
-						"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+						"ModifierName"  "modifier_item_lia_ancient_glove_crit"
+						"Target"    "CASTER"    
 					}
 
-					"OnAttackLanded"
+					"FireEffect"
 					{
-						"RemoveModifier"
-						{
-							"ModifierName"  "modifier_item_lia_ancient_glove_crit"
-							"Target"    "CASTER"    
-						}
-
-						// Basic blood particle effect
-						"FireEffect"
-						{
 						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-							"EffectAttachType"  "follow_origin"
-							"Target"    "TARGET"
-						}
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
 					}
 				}
-	        }
+			}
+		}
 	}
+}

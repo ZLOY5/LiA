@@ -1,49 +1,48 @@
+"DotaItems"  
+{ 
     "item_lia_rune_of_agility"
-{
-	"ID"                            "1606"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	
-	"Model"							"models/gameplay/attrib_tome_agi.vmdl"
-	"Effect"						"particles/rune_lifeinarena_green.vpcf"
-
-	"precache"
 	{
-		"particle"  "particles/rune_lifeinarena_green.vpcf"
-	}
-	
-	"ItemCost"                      "99999" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
+		"ID"                            "1606"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		
+		"Model"							"models/gameplay/attrib_tome_agi.vmdl"
+		"Effect"						"particles/rune_lifeinarena_green.vpcf"
 
-
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"RunScript"
+		"precache"
 		{
-			"ScriptFile" 	"items\runes.lua"
-			"Function"		"RuneOfAgility"
+			"particle"  "particles/rune_lifeinarena_green.vpcf"
 		}
 		
-		"FireSound"
+		"ItemCost"                      "99999" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+
+		"OnSpellStart"
 		{
-			"EffectName"	"Rune.Illusion"
-			"Target" 		"CASTER"
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfAgility"
+			}
+			
+			"FireSound"
+			{
+				"EffectName"	"Rune.Illusion"
+				"Target" 		"CASTER"
+			}
 		}
 	}
-
-
-
 }

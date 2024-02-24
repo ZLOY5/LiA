@@ -285,52 +285,53 @@
 	}
 
 
-"shaman_resourcefulness"
-{
-	"BaseClass"					"ability_lua"
-	"ScriptFile"				"heroes\Shaman\shaman_resourcefulness.lua"
-	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"    	"custom/shaman_madness"
-
-	"MaxLevel"               	"3"
-	"RequiredLevel"          	"2"
-	"LevelsBetweenUpgrades"  	"2"
-
-	"AbilitySpecial"
+	"shaman_resourcefulness"
 	{
-		"01"
+		"BaseClass"					"ability_lua"
+		"ScriptFile"				"heroes\Shaman\shaman_resourcefulness.lua"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"    	"custom/shaman_madness"
+
+		"MaxLevel"               	"3"
+		"RequiredLevel"          	"2"
+		"LevelsBetweenUpgrades"  	"2"
+
+		"AbilitySpecial"
 		{
-			"var_type"					"FIELD_INTEGER"
-			"ms_percentage"				"5 10 15"
-		}
-		"02"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"kills_for_bonus_agility"	"6 5 4"
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"ms_percentage"				"5 10 15"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"kills_for_bonus_agility"	"6 5 4"
+			}
 		}
 	}
-}
 
-"shaman_ancient_forces"
-{
-	"BaseClass"   "ability_lua"
-	"ScriptFile"    "heroes/Shaman/shaman_ancient_forces.lua"
-
-	"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"      "custom/shaman_ancient_forces"
-
-	"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
-	"MaxLevel"               "3"
-	"RequiredLevel"          "5"
-	"LevelsBetweenUpgrades"  "4"
-
-
-	"AbilitySpecial"
+	"shaman_ancient_forces"
 	{
-		"01"
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/Shaman/shaman_ancient_forces.lua"
+
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "custom/shaman_ancient_forces"
+
+		"AbilityType"            "DOTA_ABILITY_TYPE_ULTIMATE" 
+		"MaxLevel"               "3"
+		"RequiredLevel"          "5"
+		"LevelsBetweenUpgrades"  "4"
+
+
+		"AbilitySpecial"
 		{
-			"var_type"    "FIELD_INTEGER"
-			"bonus_damage_percentage"       "50 75 100"
-		}
-  	} 
+			"01"
+			{
+				"var_type"    "FIELD_INTEGER"
+				"bonus_damage_percentage"       "50 75 100"
+			}
+		} 
+	}
 }

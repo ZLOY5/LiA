@@ -1,169 +1,166 @@
-"item_recipe_lia_lightning_spear"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1354"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"230"	
-	"ItemShopTags"					"crit;damage;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_lightning_spear"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_lightning_spear"
 	{
-		"01"						"item_lia_fire_sword;item_lia_ancient_glove;item_lia_spear"
-	}
-}
+		"ID"							"1354"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"230"	
+		"ItemShopTags"					"crit;damage;hard_to_tag"
 
-"item_lia_lightning_spear"
-{
-	"ID"							"1355"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"880"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"ls;lightning spear;км;копье молний;копьё молний"
-	"AbilityTextureName"			"custom/lia_lightning_spear"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
-
-	"AbilityCastRange"				"700"
-	//"AbilityCastPoint"				"0.2"
-	"AbilityCooldown"				"8.0"
-	"AbilityManaCost"				"100"
-
-	"AbilitySharedCooldown" 		"ItemChainLigtning"
-
-	"precache"
-	{
-		"particle" 	"particles/items_fx/chain_lightning.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
-	}
-
-	"AbilitySpecial"
-	{
-		"01"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_lightning_spear"
+		"ItemRequirements"
 		{
-			"var_type" 				"FIELD_INTEGER"
-			"bonus_damage" 			"45"
-		}
-	
-		"02"
-		{
-			"var_type" 				"FIELD_INTEGER"
-			"crit_chance" 			"22"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"crit_mult"				"190"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_damage"		"400"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_bounces"		"8"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bounce_range"			"700"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"lightning_decay"		"0"
-		}
-		"08"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"time_between_bounces"	"0.2"
+			"01"						"item_lia_fire_sword;item_lia_ancient_glove;item_lia_spear"
 		}
 	}
 
-	"OnSpellStart"
+	"item_lia_lightning_spear"
 	{
-		"RunScript"
-		{
-			"ScriptFile"	"items/LightningSpear.lua"
-			"Function"		"ChainLightning"
-		}
-	}
+		"ID"							"1355"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"880"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"ls;lightning spear;км;копье молний;копьё молний"
+		"AbilityTextureName"			"custom/lia_lightning_spear"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
-	"Modifiers"
-	{
-		"modifier_item_lia_lightning_spear"
+		"AbilityCastRange"				"700"
+		//"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"8.0"
+		"AbilityManaCost"				"100"
+
+		"AbilitySharedCooldown" 		"ItemChainLigtning"
+
+		"precache"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-		    }  
-			"OnAttackStart"
+			"particle" 	"particles/items_fx/chain_lightning.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"RemoveModifier"
+				"var_type" 				"FIELD_INTEGER"
+				"bonus_damage" 			"45"
+			}
+		
+			"02"
+			{
+				"var_type" 				"FIELD_INTEGER"
+				"crit_chance" 			"22"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_mult"				"190"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_damage"		"400"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_bounces"		"8"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_range"			"700"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lightning_decay"		"0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_between_bounces"	"0.2"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/LightningSpear.lua"
+				"Function"		"ChainLightning"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_item_lia_lightning_spear"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
 				{
-					"ModifierName" "modifier_item_lia_lightning_spear_crit"
-					"Target" "CASTER"
-				}
-				"Random"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+				}  
+				"OnAttackStart"
 				{
-					"Chance" "%crit_chance"
-					"OnSuccess"
+					"RemoveModifier"
 					{
-						"ApplyModifier"
+						"ModifierName" "modifier_item_lia_lightning_spear_crit"
+						"Target" "CASTER"
+					}
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"OnSuccess"
 						{
-							"ModifierName" "modifier_item_lia_lightning_spear_crit"
-							"Target"    "CASTER"    
-						}        
+							"ApplyModifier"
+							{
+								"ModifierName" "modifier_item_lia_lightning_spear_crit"
+								"Target"    "CASTER"    
+							}        
+						}
 					}
 				}
 			}
-		}
-		
-		"modifier_item_lia_lightning_spear_crit"
-		{
-			"IsHidden"  "1"
-			"Properties"
+			
+			"modifier_item_lia_lightning_spear_crit"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-			}
-
-			"OnAttackLanded"
-			{
-				"RemoveModifier"
+				"IsHidden"  "1"
+				"Properties"
 				{
-					"ModifierName"  "modifier_item_lia_lightning_spear_crit"
-					"Target"    "CASTER"    
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
 				}
 
-				// Basic blood particle effect
-				"FireEffect"
+				"OnAttackLanded"
 				{
-				"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"    "TARGET"
+					"RemoveModifier"
+					{
+						"ModifierName"  "modifier_item_lia_lightning_spear_crit"
+						"Target"    "CASTER"    
+					}
+
+					// TODO: change to lightning crit particles
+					"FireEffect"
+					{
+						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
+					}
 				}
 			}
 		}

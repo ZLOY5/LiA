@@ -1,184 +1,177 @@
-"item_recipe_lia_poleaxe_of_rage"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1421"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"600"	
-	"ItemShopTags"					"int"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_poleaxe_of_rage"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_poleaxe_of_rage"
 	{
-		"01"						"item_lia_fire_sword;item_lia_fire_sword"
-	}
-}
+		"ID"							"1421"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"600"	
+		"ItemShopTags"					"int"
 
-"item_lia_poleaxe_of_rage"
-{
-	"ID"							"1422"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1390"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"AbilityTextureName"			"custom/lia_poleaxe_of_rage"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-	"ItemAliases"					"секира ярости;ся;poleaxe of rage;por"
-
-	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"16.0"
-	"AbilityManaCost"				"90"
-	
-	"OnSpellStart"
-	{
-		"ApplyModifier"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_poleaxe_of_rage"
+		"ItemRequirements"
 		{
-			"Target"
+			"01"						"item_lia_fire_sword;item_lia_fire_sword"
+		}
+	}
+
+	"item_lia_poleaxe_of_rage"
+	{
+		"ID"							"1422"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1390"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"custom/lia_poleaxe_of_rage"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"ItemAliases"					"секира ярости;ся;poleaxe of rage;por"
+
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"16.0"
+		"AbilityManaCost"				"90"
+		
+		"OnSpellStart"
+		{
+			"ApplyModifier"
 			{
-				"Center"  	"CASTER"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+				"ModifierName"		"modifier_item_poleaxe_of_rage_berserk"
 			}
-			"ModifierName"		"modifier_item_poleaxe_of_rage_berserk"
+			
+			"FireSound"
+			{
+				"EffectName"		"DOTA_Item.MaskOfMadness.Activate"
+				"Target"			"CASTER"
+			}
 		}
 		
-		"FireSound"
+		"Modifiers"
 		{
-			"EffectName"		"DOTA_Item.MaskOfMadness.Activate"
-			"Target"			"CASTER"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_poleaxe_of_rage"
-		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-		    }  
-			
-			"OnAttackStart"
+			"modifier_item_lia_poleaxe_of_rage"
 			{
-				"RemoveModifier"
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
 				{
-					"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
-					"Target" "CASTER"
-				}
-				"Random"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
+				}  
+				
+				"OnAttackStart"
 				{
-					"Chance" "%crit_chance"
-					"OnSuccess"
+					"RemoveModifier"
 					{
-						"ApplyModifier"
+						"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
+						"Target" "CASTER"
+					}
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"OnSuccess"
 						{
-							"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
-							"Target"    "CASTER"    
-						}        
+							"ApplyModifier"
+							{
+								"ModifierName" "modifier_item_lia_poleaxe_of_rage_crit"
+								"Target"    "CASTER"    
+							}        
+						}
 					}
 				}
 			}
-		}
-		
-		"modifier_item_lia_poleaxe_of_rage_crit"
-		{
-			"IsHidden"  "1"
-			"Properties"
-			{
-				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
-			}
-
-			"OnAttackLanded"
-			{
-				"RemoveModifier"
-				{
-					"ModifierName"  "modifier_item_lia_poleaxe_of_rage_crit"
-					"Target"    "CASTER"    
-				}
-
-				// Basic blood particle effect
-				"FireEffect"
-				{
-					"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"    "TARGET"
-				}
-			}
-		}
-	
-		"modifier_item_poleaxe_of_rage_berserk"
-		{
-			"Duration"			"%berserk_duration"
-			"Passive"			"0"
-			"IsHidden"			"0"
 			
-			"EffectName"			"particles/items2_fx/mask_of_madness.vpcf"
-			"EffectAttachType"		"follow_origin"
-				
-			"Properties"
+			"modifier_item_lia_poleaxe_of_rage_crit"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%berserk_bonus_movement_speed_percentage"
-				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%berserk_bonus_attack_speed"
-				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"		"%berserk_extra_incoming_damage_percentage"
+				"IsHidden"  "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%crit_mult"
+				}
+
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"  "modifier_item_lia_poleaxe_of_rage_crit"
+						"Target"    "CASTER"    
+					}
+
+					"FireEffect"
+					{
+						"EffectName" "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"    "TARGET"
+					}
+				}
+			}
+		
+			"modifier_item_poleaxe_of_rage_berserk"
+			{
+				"Duration"			"%berserk_duration"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				
+				"EffectName"			"particles/items2_fx/mask_of_madness.vpcf"
+				"EffectAttachType"		"follow_origin"
+					
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%berserk_bonus_movement_speed_percentage"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%berserk_bonus_attack_speed"
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"		"%berserk_extra_incoming_damage_percentage"
+				}
 			}
 		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "40"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "40"
+			}
+		
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"crit_chance" "25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_mult"					"220"
+			}
+			"04"
+			{
+				"var_type"										"FIELD_INTEGER"
+				"berserk_bonus_attack_speed"					"250"
+			}
+			"05"
+			{
+				"var_type"										"FIELD_INTEGER"
+				"berserk_bonus_movement_speed_percentage"		"20"
+			}
+			"06"
+			{
+				"var_type"										"FIELD_INTEGER"
+				"berserk_extra_incoming_damage_percentage"		"10"
+			}
+			"07"
+			{
+				"var_type"										"FIELD_FLOAT"
+				"berserk_duration"								"8.0"
+			}
 		}
-	
-		"02"
-		{
-			"var_type" "FIELD_INTEGER"
-			"crit_chance" "25"
-		}
-		"03"
-		{
-			"var_type"					"FIELD_INTEGER"
-			"crit_mult"					"220"
-		}
-		"04"
-		{
-			"var_type"										"FIELD_INTEGER"
-			"berserk_bonus_attack_speed"					"250"
-		}
-		"05"
-		{
-			"var_type"										"FIELD_INTEGER"
-			"berserk_bonus_movement_speed_percentage"		"20"
-		}
-		"06"
-		{
-			"var_type"										"FIELD_INTEGER"
-			"berserk_extra_incoming_damage_percentage"		"10"
-		}
-		"07"
-		{
-			"var_type"										"FIELD_FLOAT"
-			"berserk_duration"								"8.0"
-		}
-
 	}
 }

@@ -1,4 +1,6 @@
-"item_lia_staff"
+"DotaItems"  
+{ 
+	"item_lia_staff"
 	{
 
 		"ID"							"1102"
@@ -14,29 +16,28 @@
 		"AbilityTextureName"			"custom/lia_staff"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" "item_datadriven"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_intelligence"	"12"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_staff"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intelligence"	"12"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_staff"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%bonus_intelligence"
+				}
 			}
 		}
 	}
-	}
+}

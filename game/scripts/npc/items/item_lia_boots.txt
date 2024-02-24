@@ -1,4 +1,6 @@
-"item_lia_boots"
+"DotaItems"  
+{ 
+	"item_lia_boots"
 	{
 
 		"ID"							"1112"
@@ -15,29 +17,29 @@
 		"AbilityTextureName"			"custom/lia_boots"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" "item_datadriven"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+
+		"AbilitySpecial"
 		{
-			"var_type"						"FIELD_INTEGER"
-			"bonus_movement_speed"			"50"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_boots"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"		"%bonus_movement_speed"
+				"var_type"						"FIELD_INTEGER"
+				"bonus_movement_speed"			"50"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_item_lia_boots"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"		"%bonus_movement_speed"
+				}
 			}
 		}
 	}
-	}
+}

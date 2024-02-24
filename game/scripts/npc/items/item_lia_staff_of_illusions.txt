@@ -1,111 +1,108 @@
-"item_recipe_lia_staff_of_illusions"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1358"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"600"	
-	"ItemShopTags"					"int;mana;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_staff_of_illusions"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_staff_of_illusions"
 	{
-		"01"						"item_lia_magic_staff;item_lia_mana_stone"
-	}
-}
+		"ID"							"1358"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"600"	
+		"ItemShopTags"					"int;mana;hard_to_tag"
 
-"item_lia_staff_of_illusions"
-{
-	"ID"							"1359"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1490"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"посох иллюзий;пп;soi;staff of illusions"
-	"AbilityTextureName"			"custom/lia_staff_of_illusions"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
-
-	"AbilityCastRange"				"600"
-
-	"AbilityCooldown"				"18.0"
-	"AbilityManaCost"				"240"
-
-	"OnSpellStart"
-	{
-		"RunScript"
-		{	
-			"ScriptFile"	"items\StaffOfIllusions"
-			"Function"		"MakeIllusion"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_staff_of_illusions"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_magic_staff;item_lia_mana_stone"
 		}
 	}
-	"Modifiers"
+
+	"item_lia_staff_of_illusions"
 	{
-		"modifier_item_lia_staff_of_illusions"
+		"ID"							"1359"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1490"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"посох иллюзий;пп;soi;staff of illusions"
+		"AbilityTextureName"			"custom/lia_staff_of_illusions"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+
+		"AbilityCastRange"				"600"
+
+		"AbilityCooldown"				"18.0"
+		"AbilityManaCost"				"240"
+
+		"OnSpellStart"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-		    "Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-		    "AllowIllusionDuplicate"    "1"
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
-				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
-				"MODIFIER_PROPERTY_MANA_BONUS"				"%bonus_mana"
-		    }  
+			"RunScript"
+			{	
+				"ScriptFile"	"items\StaffOfIllusions"
+				"Function"		"MakeIllusion"
+			}
 		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
+		"Modifiers"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_intelligence" "28"
+			"modifier_item_lia_staff_of_illusions"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%bonus_mana_regen"
+					"MODIFIER_PROPERTY_MANA_BONUS"				"%bonus_mana"
+				}  
+			}
 		}
-		"02"
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_FLOAT"
-			"bonus_mana_regen" "1.4"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_mana" "250"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"illusion_outgoing_damage" "100"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"illusion_incoming_damage" "200"
-		}
-		"06"
-		{
-			"var_type" "FIELD_INTEGER"
-			"illusion_outgoing_damage_tooltip" "100"
-		}
-		"07"
-		{
-			"var_type" "FIELD_INTEGER"
-			"illusion_duration" "10"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_intelligence" "28"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"bonus_mana_regen" "1.4"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_mana" "250"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"illusion_outgoing_damage" "100"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"illusion_incoming_damage" "200"
+			}
+			"06"
+			{
+				"var_type" "FIELD_INTEGER"
+				"illusion_outgoing_damage_tooltip" "100"
+			}
+			"07"
+			{
+				"var_type" "FIELD_INTEGER"
+				"illusion_duration" "10"
+			}
 		}
 	}
 }

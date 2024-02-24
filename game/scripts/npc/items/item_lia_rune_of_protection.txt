@@ -1,47 +1,48 @@
-"item_lia_rune_of_protection"
-{
-	"ID"                            "1612"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	"AbilityTextureName"			"rune_arcane"
-	
-	"Model"							"models/props_gameplay/rune_arcane.vmdl"
-	"Effect"						"particles/generic_gameplay/rune_arcane.vpcf"
-
-	
-	"ItemCost"                      "99999" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
-
-
-	"OnSpellStart"
+"DotaItems"  
+{ 
+	"item_lia_rune_of_protection"
 	{
-		"SpendCharge"
-		{}
-		"RunScript"
-		{
-			"ScriptFile" 	"items\runes.lua"
-			"Function"		"RuneOfProtection"
-		}
-	}
+		"ID"                            "1612"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityTextureName"			"rune_arcane"
+		
+		"Model"							"models/props_gameplay/rune_arcane.vmdl"
+		"Effect"						"particles/generic_gameplay/rune_arcane.vpcf"
+		
+		"ItemCost"                      "99999" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
 
-	"AbilitySpecial"
-	{
-		"01"
+
+		"OnSpellStart"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"1400"
+			"SpendCharge"
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneOfProtection"
+			}
 		}
 
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1400"
+			}
+		}
 	}
 }

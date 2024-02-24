@@ -1,6 +1,7 @@
-"item_lia_runed_bracers"
+"DotaItems"  
+{ 
+	"item_lia_runed_bracers"
 	{
-
 		"ID"							"1116"
 		"ItemCost"						"220"
 		"ItemKillable" "0" 
@@ -14,29 +15,29 @@
 		"AbilityTextureName"			"custom/lia_runed_bracers"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" "item_datadriven"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"							"FIELD_INTEGER"
-			"bonus_magic_resist_percentage"		"20"
-		}
-	}
-	
-	"Modifiers"
-	{
-		"modifier_item_lia_runed_bracers"
-		{
-			"Passive"			"1"
-			"IsHidden"			"1"
-			"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
 
-			"Properties"
+		"AbilitySpecial"
+		{
+			"01"
 			{
-				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
-		    }
+				"var_type"							"FIELD_INTEGER"
+				"bonus_magic_resist_percentage"		"20"
+			}
+		}
+		
+		"Modifiers"
+		{
+			"modifier_item_lia_runed_bracers"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%bonus_magic_resist_percentage"
+				}
+			}
 		}
 	}
-	}
+}

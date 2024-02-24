@@ -1,160 +1,139 @@
-"item_recipe_lia_enchanted_shield"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1409"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"275"	
-	"ItemShopTags"					"health;armor;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_enchanted_shield"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_enchanted_shield"
 	{
-		"01"						"item_lia_dwarf_armor;item_lia_amulet"
-	}
-}
+		"ID"							"1409"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"275"	
+		"ItemShopTags"					"health;armor;hard_to_tag"
 
-"item_recipe_lia_enchanted_shield_2"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1410"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"0"	
-	"ItemShopTags"					"health;armor;hard_to_tag"
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_enchanted_shield_2"
-	"ItemRequirements"
-	{
-		"01"						"item_recipe_lia_enchanted_shield;item_lia_enchanted_shield"
-	}
-}
-
-"item_lia_enchanted_shield"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"item_lua"
-	"ScriptFile"					"items\item_lia_enchanted_shield.lua"
-	"ID"							"1411"  //Valve's version of this item uses the ID "135".
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Model"							"models/props_gameplay/red_box.vmdl" 
-	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
-	"AbilityTextureName"			"custom/lia_enchanted_shield"
-	
-	"UpgradesItems"					"item_lia_enchanted_shield;item_lia_enchanted_shield_2"
-	"UpgradeRecipe"					"item_recipe_lia_enchanted_shield"
-
-	"ItemKillable" 					"0" 
-	
-	"MaxUpgradeLevel"				"2"
-	"ItemBaseLevel"					"1"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"910"
-	"ItemShopTags"					"health;armor;hard_to_tag"
-	"ItemQuality"					"epic"
-	"ItemAliases"					"es;enchanted shield;зщ;заколдованный щит"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_enchanted_shield"
+		"ItemRequirements"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_armor"			"13 16"
-		}
-
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health" 			"325 525"
-		}
-
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"block_chance"			"50"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_block"			"75 100"
+			"01"						"item_lia_dwarf_armor;item_lia_amulet"
 		}
 	}
-}
 
-
-"item_lia_enchanted_shield_2"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"item_lua"
-	"ScriptFile"					"items\item_lia_enchanted_shield.lua"
-	"ID"							"1412"  //Valve's version of this item uses the ID "135".
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Model"							"models/props_gameplay/red_box.vmdl" 
-	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
-	"AbilityTextureName"			"custom/lia_enchanted_shield_2"
-
-	"ItemKillable" 					"0" 
-
-	"UpgradesItems"					"item_lia_enchanted_shield;item_lia_enchanted_shield_2"
-	"UpgradeRecipe"					"item_recipe_lia_enchanted_shield"
-	
-	"MaxUpgradeLevel"				"2"
-	"ItemBaseLevel"					"2"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"1185"
-	"ItemShopTags"					"health;armor;hard_to_tag"
-	"ItemQuality"					"epic"
-	"ItemAliases"					"es;enchanted shield;зщ;заколдованный щит"
-	// Special	
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
+	"item_recipe_lia_enchanted_shield_2"
 	{
-		"01"
+		"ID"							"1410"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"0"	
+		"ItemShopTags"					"health;armor;hard_to_tag"
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_enchanted_shield_2"
+		"ItemRequirements"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_armor"			"16"
+			"01"						"item_recipe_lia_enchanted_shield;item_lia_enchanted_shield"
 		}
+	}
 
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health" 			"525"
-		}
+	"item_lia_enchanted_shield"
+	{
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_enchanted_shield.lua"
+		"ID"							"1411"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			"custom/lia_enchanted_shield"
+		
+		"UpgradesItems"					"item_lia_enchanted_shield;item_lia_enchanted_shield_2"
+		"UpgradeRecipe"					"item_recipe_lia_enchanted_shield"
 
-		"03"
+		"ItemKillable" 					"0" 
+		
+		"MaxUpgradeLevel"				"2"
+		"ItemBaseLevel"					"1"
+		
+		"ItemCost"						"910"
+		"ItemShopTags"					"health;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"es;enchanted shield;зщ;заколдованный щит"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"block_chance"			"50"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"13 16"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health" 			"325 525"
+			}
+
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block"			"75 100"
+			}
 		}
-		"04"
+	}
+
+
+	"item_lia_enchanted_shield_2"
+	{
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items\item_lia_enchanted_shield.lua"
+		"ID"							"1412"  //Valve's version of this item uses the ID "135".
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+		"AbilityTextureName"			"custom/lia_enchanted_shield_2"
+
+		"ItemKillable" 					"0" 
+
+		"UpgradesItems"					"item_lia_enchanted_shield;item_lia_enchanted_shield_2"
+		"UpgradeRecipe"					"item_recipe_lia_enchanted_shield"
+		
+		"MaxUpgradeLevel"				"2"
+		"ItemBaseLevel"					"2"
+		
+		"ItemCost"						"1185"
+		"ItemShopTags"					"health;armor;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"es;enchanted shield;зщ;заколдованный щит"
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_block"			"100"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"16"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health" 			"525"
+			}
+
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_chance"			"50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block"			"100"
+			}
 		}
 	}
 }

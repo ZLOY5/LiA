@@ -1,256 +1,247 @@
-"item_recipe_lia_sword_of_solidarity"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1457"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"550"	
-	"ItemShopTags"					"damage;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_sword_of_solidarity"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_sword_of_solidarity"
 	{
-		"01"						"item_lia_steel_sword;item_lia_ring_of_regeneration;item_lia_ring_of_protection"
-	}
-}
+		"ID"							"1457"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"550"	
+		"ItemShopTags"					"damage;hard_to_tag"
 
-"item_recipe_lia_sword_of_solidarity_2"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1458"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"0"	
-	"ItemShopTags"					"damage;hard_to_tag"
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_sword_of_solidarity_2"
-	"ItemRequirements"
-	{
-		"01"						"item_lia_sword_of_solidarity;item_recipe_lia_sword_of_solidarity"
-	}
-}
-
-"item_lia_sword_of_solidarity"
-{
-	"ID"							"1459"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"750"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"AbilityTextureName"			"custom/lia_sword_of_solidarity"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
-    "AbilityCooldown"        		"28"
-    "ItemAliases"					"меч единства;ме;sword of solidarity;sos"
-	"AbilitySharedCooldown" "Salvation"
-	
-	"UpgradesItems"					"item_lia_sword_of_solidarity;item_lia_sword_of_solidaritys_2"
-	"UpgradeRecipe"					"item_recipe_lia_sword_of_solidarity"
-	
-	"MaxUpgradeLevel"				"2"
-	"ItemBaseLevel"					"1"
-	
-	"OnSpellStart"
-	{
-	"RunScript"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_sword_of_solidarity"
+		"ItemRequirements"
 		{
-			"ScriptFile"			"items/SwordOfSolidarity.lua"
-			"Function"				"Salvation"
-			"HealAmount"			"%replenish_amount"
-			"HealRadius"			"%replenish_radius"
+			"01"						"item_lia_steel_sword;item_lia_ring_of_regeneration;item_lia_ring_of_protection"
 		}
 	}
 
-
-	"Modifiers"
+	"item_recipe_lia_sword_of_solidarity_2"
 	{
-		"modifier_item_lia_sword_of_solidarity"
+		"ID"							"1458"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"0"	
+		"ItemShopTags"					"damage;hard_to_tag"
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_sword_of_solidarity_2"
+		"ItemRequirements"
 		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"01"						"item_lia_sword_of_solidarity;item_recipe_lia_sword_of_solidarity"
+		}
+	}
 
-			"Properties"
+	"item_lia_sword_of_solidarity"
+	{
+		"ID"							"1459"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"750"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"custom/lia_sword_of_solidarity"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
+		"AbilityCooldown"        		"28"
+		"ItemAliases"					"меч единства;ме;sword of solidarity;sos"
+		"AbilitySharedCooldown" "Salvation"
+		
+		"UpgradesItems"					"item_lia_sword_of_solidarity;item_lia_sword_of_solidaritys_2"
+		"UpgradeRecipe"					"item_recipe_lia_sword_of_solidarity"
+		
+		"MaxUpgradeLevel"				"2"
+		"ItemBaseLevel"					"1"
+		
+		"OnSpellStart"
+		{
+		"RunScript"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
-				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_health_regen"
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%bonus_armor"
+				"ScriptFile"			"items/SwordOfSolidarity.lua"
+				"Function"				"Salvation"
+				"HealAmount"			"%replenish_amount"
+				"HealRadius"			"%replenish_radius"
 			}
 		}
-		"modifier_sword_or_solidarity_armor"
+
+
+		"Modifiers"
 		{
-			"Duration"			"%duration"
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsBuff"			"1"
-			"IsDebuff"			"0"
-			"IsPurgable"		"1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
-			"Properties"
+			"modifier_item_lia_sword_of_solidarity"
 			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"
+				"Passive"               "1"
+				"IsHidden"				"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_health_regen"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%bonus_armor"
+				}
+			}
+			"modifier_sword_or_solidarity_armor"
+			{
+				"Duration"			"%duration"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsDebuff"			"0"
+				"IsPurgable"		"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"
+				}
 			}
 		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
+		"AbilitySpecial"
 		{
-			"var_type"     "FIELD_INTEGER"
-			"bonus_damage" "50 90"
-		}
-		"02"
-		{
-			"var_type"  "FIELD_INTEGER"
-			"bonus_armor" "5 10"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health_regen"	"5 15"				
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"replenish_amount"			"200 400"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"active_armor"					"14 24"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"replenish_radius"			"800"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"	"16.0"
-		}
-	}
-}
-
-"item_lia_sword_of_solidarity_2"
-{
-	"ID"							"1460"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1300"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"AbilityTextureName"			"custom/lia_sword_of_solidarity_2"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
-    "AbilityCooldown"        		"28"
-    "ItemAliases"					"меч единства;ме;sword of solidarity;sos"
-	"AbilitySharedCooldown" "Salvation"
-	
-	"UpgradesItems"					"item_lia_sword_of_solidarity;item_lia_sword_of_solidaritys_2"
-	"UpgradeRecipe"					"item_recipe_lia_sword_of_solidarity"
-	
-	"MaxUpgradeLevel"				"2"
-	"ItemBaseLevel"					"2"
-	
-	"OnSpellStart"
-	{
-	"RunScript"
-		{
-			"ScriptFile"			"items/SwordOfSolidarity.lua"
-			"Function"				"SalvationSecond"
-			"HealAmount"			"%replenish_amount"
-			"HealRadius"			"%replenish_radius"
-		}
-	}
-
-
-	"Modifiers"
-	{
-		"modifier_item_lia_sword_of_solidarity_2"
-		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"Properties"
+			"01"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
-				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_health_regen"
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%bonus_armor"
+				"var_type"     "FIELD_INTEGER"
+				"bonus_damage" "50 90"
 			}
-		}
-		"modifier_sword_or_solidarity_armor_2"
-		{
-			"Duration"			"%duration"
-			"Passive"			"0"
-			"IsHidden"			"0"
-			"IsBuff"			"1"
-			"IsDebuff"			"0"
-			"IsPurgable"		"1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
-			"Properties"
+			"02"
 			{
-				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"
+				"var_type"  "FIELD_INTEGER"
+				"bonus_armor" "5 10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"5 15"				
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_amount"			"200 400"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"active_armor"					"14 24"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_radius"			"800"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"	"16.0"
 			}
 		}
 	}
-	"AbilitySpecial"
+
+	"item_lia_sword_of_solidarity_2"
 	{
-		"01"
+		"ID"							"1460"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1300"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"AbilityTextureName"			"custom/lia_sword_of_solidarity_2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
+		"AbilityCooldown"        		"28"
+		"ItemAliases"					"меч единства;ме;sword of solidarity;sos"
+		"AbilitySharedCooldown" "Salvation"
+		
+		"UpgradesItems"					"item_lia_sword_of_solidarity;item_lia_sword_of_solidaritys_2"
+		"UpgradeRecipe"					"item_recipe_lia_sword_of_solidarity"
+		
+		"MaxUpgradeLevel"				"2"
+		"ItemBaseLevel"					"2"
+		
+		"OnSpellStart"
 		{
-			"var_type"     "FIELD_INTEGER"
-			"bonus_damage" "90"
+		"RunScript"
+			{
+				"ScriptFile"			"items/SwordOfSolidarity.lua"
+				"Function"				"SalvationSecond"
+				"HealAmount"			"%replenish_amount"
+				"HealRadius"			"%replenish_radius"
+			}
 		}
-		"02"
+
+		"Modifiers"
 		{
-			"var_type"  "FIELD_INTEGER"
-			"bonus_armor" "10"
+			"modifier_item_lia_sword_of_solidarity_2"
+			{
+				"Passive"               "1"
+				"IsHidden"				"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%bonus_health_regen"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%bonus_armor"
+				}
+			}
+			"modifier_sword_or_solidarity_armor_2"
+			{
+				"Duration"			"%duration"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsDebuff"			"0"
+				"IsPurgable"		"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE_ACTIVE"		"%active_armor"
+				}
+			}
 		}
-		"03"
+
+		"AbilitySpecial"
 		{
-			"var_type"				"FIELD_INTEGER"
-			"replenish_radius"			"800"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"bonus_health_regen"	"15"		
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"replenish_amount"					"400"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"active_armor"					"24"
-		}
-		"07"
-		{
-			"var_type"				"FIELD_FLOAT"
-			"duration"	"16.0"
+			"01"
+			{
+				"var_type"     "FIELD_INTEGER"
+				"bonus_damage" "90"
+			}
+			"02"
+			{
+				"var_type"  "FIELD_INTEGER"
+				"bonus_armor" "10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_radius"			"800"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_health_regen"	"15"		
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"replenish_amount"					"400"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"active_armor"					"24"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"	"16.0"
+			}
 		}
 	}
 }

@@ -1,80 +1,74 @@
-"item_recipe_lia_blade_of_rage_agi"
-
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1328"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"600"	
-	"ItemShopTags"					"agi;damage;attack_speed"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_blade_of_rage_agi"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_blade_of_rage_agi"
 	{
-		"01"						"item_lia_steel_sword;item_lia_runed_gloves;item_lia_thugs_dagger"
-	}
-}
+		"ID"							"1328"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"600"	
+		"ItemShopTags"					"agi;damage;attack_speed"
 
-"item_lia_blade_of_rage_agi"
-{
-	"ID"							"1329"
-	"BaseClass" 					"item_lua"
-	"ScriptFile"					"items\item_lia_blade_of_rage_agi.lua"
-	"ItemCost"						"1065"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"мгл;меч гнева ловкость;rsa;rage sword agility"
-	"AbilityTextureName"			"custom/lia_blade_of_rage_agi"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	"AbilityCooldown"				"16"
-	"AbilityManacost"				"90"
-
-	"precache"
-	{
-		"particle"  "particles/units/heroes/hero_morphling/morphling_morph_agi.vpcf"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_blade_of_rage_agi"
+		"ItemRequirements"
+		{
+			"01"						"item_lia_steel_sword;item_lia_runed_gloves;item_lia_thugs_dagger"
+		}
 	}
 
-
-	"AbilitySpecial"
+	"item_lia_blade_of_rage_agi"
 	{
-		"01"
+		"ID"							"1329"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items\item_lia_blade_of_rage_agi.lua"
+		"ItemCost"						"1065"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"мгл;меч гнева ловкость;rsa;rage sword agility"
+		"AbilityTextureName"			"custom/lia_blade_of_rage_agi"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"				"16"
+		"AbilityManacost"				"90"
+
+		"precache"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_attack_speed" "55"
+			"particle"  "particles/units/heroes/hero_morphling/morphling_morph_agi.vpcf"
 		}
-		"02"
+
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_damage" "50"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_agility" "25"
-		}
-		"04"
-		{
-			"var_type" "FIELD_INTEGER"
-			"duration" "5"
-		}
-		"05"
-		{
-			"var_type" "FIELD_INTEGER"
-			"agi_percent" "75"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_attack_speed" "55"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_damage" "50"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_agility" "25"
+			}
+			"04"
+			{
+				"var_type" "FIELD_INTEGER"
+				"duration" "5"
+			}
+			"05"
+			{
+				"var_type" "FIELD_INTEGER"
+				"agi_percent" "75"
+			}
 		}
 	}
 }
-

@@ -1,75 +1,71 @@
-"item_recipe_lia_shield_of_endurance"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1318"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"350"	
-	"ItemShopTags"					"armor;regen_health;health_pool"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_shield_of_endurance"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_shield_of_endurance"
 	{
-		"01"						"item_lia_ring_of_protection;item_lia_ring_of_regeneration;item_lia_amulet"
-	}
-}
+		"ID"							"1318"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"350"	
+		"ItemShopTags"					"armor;regen_health;health_pool"
 
-"item_lia_shield_of_endurance"
-{
-	"ID"							"1319"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"625"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"common"
-	"ItemAliases"					"щв;щит выносливости;soe;shield of endurance"
-	"AbilityTextureName"			"custom/lia_shield_of_endurance"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"Modifiers"
-	{
-		"modifier_item_lia_shield_of_endurance"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_shield_of_endurance"
+		"ItemRequirements"
 		{
-			"Passive"          "1"    
-		    "IsHidden"         "1"
-			"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-		    "Properties"
-		    {
-		    	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
-		    	"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
-		    	"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-		    }  
+			"01"						"item_lia_ring_of_protection;item_lia_ring_of_regeneration;item_lia_amulet"
 		}
 	}
-	"AbilitySpecial"
+
+	"item_lia_shield_of_endurance"
 	{
-		"01"
+		"ID"							"1319"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"625"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"common"
+		"ItemAliases"					"щв;щит выносливости;soe;shield of endurance"
+		"AbilityTextureName"			"custom/lia_shield_of_endurance"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_armor" "5"
+			"modifier_item_lia_shield_of_endurance"
+			{
+				"Passive"          "1"    
+				"IsHidden"         "1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 	"%bonus_armor"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"		 	"%bonus_health"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
+				}  
+			}
 		}
-		"02"
+		"AbilitySpecial"
 		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_health" "250"
-		}
-		"03"
-		{
-			"var_type" "FIELD_INTEGER"
-			"bonus_health_regen" "10"
+			"01"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_armor" "5"
+			}
+			"02"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health" "250"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"bonus_health_regen" "10"
+			}
 		}
 	}
 }
-

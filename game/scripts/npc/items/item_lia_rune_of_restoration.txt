@@ -1,91 +1,94 @@
+"DotaItems"  
+{ 
     "item_lia_rune_of_restoration"
-{
-	"ID"                            "1603"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	
-	"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
-	"Effect"						"particles/rune_restoretion.vpcf"
-	"ItemCost"                      "0" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
-	
-	"precache"
 	{
-		"particle"  "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf"
-		"particle"	"particles/rune_restoretion.vpcf"
-		"soundfile" "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
-	}
-
-	"OnSpellStart"
-	{
-		"SpendCharge"
-		{}
-		"ActOnTargets"
+		"ID"                            "1603"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		
+		"Model"							"models/props_gameplay/rune_regeneration01.vmdl"
+		"Effect"						"particles/rune_restoretion.vpcf"
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+		
+		"precache"
 		{
-			"Target"
+			"particle"  "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf"
+			"particle"	"particles/rune_restoretion.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+		}
+
+		"OnSpellStart"
+		{
+			"SpendCharge"
+			{}
+			"ActOnTargets"
 			{
-				"Center" 	"CASTER"
-				"Radius" 	"%radius"
-				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-				"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"Target"
+				{
+					"Center" 	"CASTER"
+					"Radius" 	"%radius"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+					"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				}
+			
+				"Action"    
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/mana.lua"
+						"Function"		"GiveMana"
+						"mana_amount"	"%mana"
+					}
+					"Heal"
+					{
+						"Target"        "TARGET"
+						"HealAmount"	"%heal"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+					}
+				}
 			}
 		
-			"Action"    
+			"FireSound"
 			{
-				"RunScript"
-				{
-					"ScriptFile"	"items/mana.lua"
-					"Function"		"GiveMana"
-					"mana_amount"	"%mana"
-				}
-				"Heal"
-				{
-					"Target"        "TARGET"
-					"HealAmount"	"%heal"
-				}
-				"FireEffect"
-				{
-					"EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_chakra_magic.vpcf"
-					"EffectAttachType"  "follow_origin"
-					"Target"            "TARGET"
-				}
+				"EffectName"	"Rune.Regen"
+				"Target" 		"CASTER"
 			}
 		}
-	
-		"FireSound"
+		"AbilitySpecial"
 		{
-			"EffectName"	"Rune.Regen"
-			"Target" 		"CASTER"
-		}
-	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"mana"					"300"
-		}
-		"02"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"heal"					"300"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"				"2000"
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana"					"300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal"					"300"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"2000"
+			}
 		}
 	}
 }

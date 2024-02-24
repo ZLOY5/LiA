@@ -1,43 +1,42 @@
+"DotaItems"  
+{ 
     "item_lia_rune_gold"
-{
-	"ID"                            "1608"
-	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	
-	"Model"							"models/props_gameplay/gold_coin001.vmdl"
-	
-	"ItemCost"                      "0" 
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemShopTags"					"consumable"
-	"ItemQuality"					"consumable"
-	"ItemPermanent"					"0"
-	"AbilityCooldown"               "0"
-	"ItemKillable"                  "0"
-	"ItemSellable"                  "0"
-	"ItemDroppable"                 "1"
-	"ItemInitialCharges"            "1"
-	"ItemStackable"					"0"
-	"ItemCastOnPickup" 				"1"	
-	"ItemPurchasable"				"0"
-
-
-	"OnSpellStart"
 	{
-		"SpendCharge" 
-		{}
-		"RunScript"
+		"ID"                            "1608"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		
+		"ItemCost"                      "0" 
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemPermanent"					"0"
+		"AbilityCooldown"               "0"
+		"ItemKillable"                  "0"
+		"ItemSellable"                  "0"
+		"ItemDroppable"                 "1"
+		"ItemInitialCharges"            "1"
+		"ItemStackable"					"0"
+		"ItemCastOnPickup" 				"1"	
+		"ItemPurchasable"				"0"
+
+		"OnSpellStart"
 		{
-			"ScriptFile" 	"items\runes.lua"
-			"Function"		"RuneGold"
+			"SpendCharge" 
+			{}
+			"RunScript"
+			{
+				"ScriptFile" 	"items\runes.lua"
+				"Function"		"RuneGold"
+			}
+
+			//"FireSound"
+			//{
+			//	"EffectName"	"Rune.Bounty"
+			//	"Target" 		"CASTER"
+			//}	
 		}
-
-		//"FireSound"
-		//{
-		//	"EffectName"	"Rune.Bounty"
-		//	"Target" 		"CASTER"
-		//}	
 	}
-
-
-
 }

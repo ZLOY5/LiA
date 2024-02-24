@@ -1,178 +1,174 @@
-"item_recipe_lia_fire_rod"
-{
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"ID"							"1455"						
-	"Model"							"models/props_gameplay/recipe.vmdl"
-	"BaseClass"                     "item_datadriven"
-	
-	// Item Info
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"730"	
-	"ItemShopTags"					"damage;hard_to_tag"
-
-	"ItemKillable" 					"0" 
-	
-	// Recipe
-	//-------------------------------------------------------------------------------------------------------------
-	"ItemRecipe"					"1"
-    "AbilityTextureName"    "recipe"
-	"ItemResult"					"item_lia_fire_rod"
-	"ItemRequirements"
+"DotaItems"  
+{ 
+	"item_recipe_lia_fire_rod"
 	{
-		"01"						"item_lia_orb_of_fire;item_lia_spear;item_lia_mana_stone"
-	}
-}
+		"ID"							"1455"						
+		"Model"							"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     "item_datadriven"
+		
+		"ItemCost"						"730"	
+		"ItemShopTags"					"damage;hard_to_tag"
 
-"item_lia_fire_rod"
-{
-	"ID"							"1456"
-	"BaseClass" 					"item_datadriven"
-	"ItemCost"						"1070"
-	"ItemKillable" 					"0" 
-	"ItemDroppable" 				"1"
-	"ItemSellable"                  "1"
-	"ItemPurchasable"		 		"1"
-	"ItemQuality"					"rare"
-	"ItemAliases"					"жо;жезл огня;fr;fire rod"
-	"AbilityTextureName"			"custom/lia_fire_rod"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
-	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
-	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"AbilityManaCost"         		"400"
-    "AbilityCooldown"        		"18"
-	"AbilityCastRange"				"700"
-	"AbilityCastPoint"				"0.0"
-	"AbilityDamage"					"600"	
-
-	"precache"
-	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
-		"particle"		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
-		"particle"  "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
-	}
-
-
-	"OnSpellStart"
-	{
-		"LinearProjectile"
+		"ItemKillable" 					"0" 
+		
+		"ItemRecipe"					"1"
+		"AbilityTextureName"    "recipe"
+		"ItemResult"					"item_lia_fire_rod"
+		"ItemRequirements"
 		{
-			"Target" "POINT"
-			"EffectName" "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
-			"MoveSpeed" "%speed"
-			"StartRadius" "%start_radius"
-			"StartPosition" "attach_origin"
-			"EndRadius" "%start_radius"
-			"FixedDistance" "%range"
-			"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-			"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_MECHANICAL"
-			"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-			"HasFrontalCone" "1"
-			"ProvidesVision" "0"
-		}
-		"FireSound"
-		{
-			"EffectName" "Hero_DragonKnight.BreathFire"
-			"Target" "CASTER"
+			"01"						"item_lia_orb_of_fire;item_lia_spear;item_lia_mana_stone"
 		}
 	}
-		"OnProjectileHitUnit"
+
+	"item_lia_fire_rod"
+	{
+		"ID"							"1456"
+		"BaseClass" 					"item_datadriven"
+		"ItemCost"						"1070"
+		"ItemKillable" 					"0" 
+		"ItemDroppable" 				"1"
+		"ItemSellable"                  "1"
+		"ItemPurchasable"		 		"1"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"жо;жезл огня;fr;fire rod"
+		"AbilityTextureName"			"custom/lia_fire_rod"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"				   
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	   
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityManaCost"         		"400"
+		"AbilityCooldown"        		"18"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+		"AbilityDamage"					"600"	
+
+		"precache"
 		{
-			"DeleteOnHit" "0"
-			"Damage"
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+			"particle"		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+			"particle"  "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
+		}
+
+		"OnSpellStart"
+		{
+			"LinearProjectile"
 			{
-				"Target" "TARGET"
-				"Type" "DAMAGE_TYPE_MAGICAL"
-				"Damage" "%AbilityDamage"
+				"Target" "POINT"
+				"EffectName" "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+				"MoveSpeed" "%speed"
+				"StartRadius" "%start_radius"
+				"StartPosition" "attach_origin"
+				"EndRadius" "%start_radius"
+				"FixedDistance" "%range"
+				"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_MECHANICAL"
+				"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone" "1"
+				"ProvidesVision" "0"
+			}
+			"FireSound"
+			{
+				"EffectName" "Hero_DragonKnight.BreathFire"
+				"Target" "CASTER"
 			}
 		}
-	"Modifiers"
-	{
-		"modifier_item_lia_fire_rod"
-		{
-			"Passive"               "1"
-			"IsHidden"				"1"
-			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"AllowIllusionDuplicate"    "1"
-			"Properties"
+			"OnProjectileHitUnit"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
-				"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-			}
-
-			"Orb"
-			{
-				"Priority"			"DOTA_ORB_PRIORITY_ITEM"
-				"ProjectileName"    "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
-			}
-			"OnOrbFire"
-			{
-				"FireSound"
+				"DeleteOnHit" "0"
+				"Damage"
 				{
-					"EffectName"	"Hero_Jakiro.Attack"
-					"Target"		"CASTER"
+					"Target" "TARGET"
+					"Type" "DAMAGE_TYPE_MAGICAL"
+					"Damage" "%AbilityDamage"
 				}
 			}
-			
-			"OnOrbImpact"
+		"Modifiers"
+		{
+			"modifier_item_lia_fire_rod"
 			{
-				"RunScript"
-    			{
-			        "ScriptFile"    "items/OrbOfFire.lua"
-			        "Function"      "OnOrbImpact"
-					"Target"
+				"Passive"               "1"
+				"IsHidden"				"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"AllowIllusionDuplicate"    "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
+					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
+				}
+
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ITEM"
+					"ProjectileName"    "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
+				}
+				"OnOrbFire"
+				{
+					"FireSound"
 					{
-						"Center"	"TARGET"
-						"Radius"	"%radius"
-						"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						"EffectName"	"Hero_Jakiro.Attack"
+						"Target"		"CASTER"
 					}
-					"Damage"	"%bonus_damage"
+				}
+				
+				"OnOrbImpact"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "items/OrbOfFire.lua"
+						"Function"      "OnOrbImpact"
+						"Target"
+						{
+							"Center"	"TARGET"
+							"Radius"	"%radius"
+							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						}
+						"Damage"	"%bonus_damage"
+					}
 				}
 			}
-		}
 
-	}
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"     "FIELD_INTEGER"
-			"bonus_damage" "75"
 		}
-		"02"
+		"AbilitySpecial"
 		{
-			"var_type"  "FIELD_INTEGER"
-			"bonus_mana" "350"
-		}
-		"03"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"start_radius"			"200"
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"range"					"700"
-		}
-		"05"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"speed"					"900"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"radius"					"180"
-		}
-		"06"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"damage_tooltip"					"600"
+			"01"
+			{
+				"var_type"     "FIELD_INTEGER"
+				"bonus_damage" "75"
+			}
+			"02"
+			{
+				"var_type"  "FIELD_INTEGER"
+				"bonus_mana" "350"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"start_radius"			"200"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"700"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"speed"					"900"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"					"180"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_tooltip"					"600"
+			}
 		}
 	}
 }
