@@ -1,92 +1,93 @@
-"orn_megaboss" 
-{
-
-"BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/juggernaut/juggernaut.vmdl" 
-"SoundSet" "Hero_Juggernaut" 
-"ModelScale" 		"1.6" 
-"RingRadius"        "105"
-"Level" "1" 
-				"precache"
-		{
-			"model"	"models/heroes/juggernaut/juggernaut.vmdl"
-			"model"	"models/items/juggernaut/thousand_faces_hakama/thousand_faces_hakama.vmdl"
-			"model"	"models/items/juggernaut/thousand_faces_vest/thousand_faces_vest.vmdl"
-			"model"	"models/items/juggernaut/thousand_faces_mask/thousand_faces_mask.vmdl"
-			"model"	"models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.vmdl"
-			"model"	"models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.vmdl"
-			"model"	"models/items/juggernaut/dc_legsupdate5/dc_legsupdate5.vmdl"
-			"model"	"models/items/juggernaut/dc_armsupdate/dc_armsupdate.vmdl"
-			"model"	"models/items/juggernaut/dc_headupdate/dc_headupdate.vmdl"
-			"model"	"models/items/juggernaut/dc_backupdate4/dc_backupdate4.vmdl"
-			"model"	"models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.vmdl"
-			"particle"  "particles/econ/items/juggernaut/bladekeeper_swordglow.vpcf"
-			"particle"  "particles/econ/items/juggernaut/bladekeeper_headglow.vpcf"
-		}
-		
-"Creature"
-{
-	"DisableResistance"            "50.0"
-	"AttachWearables"
+"DotaUnits"
+{	
+	"orn_megaboss" 
 	{
-		"Wearable1"		{	"ItemDef"		"7164"		} 
-		"Wearable2" 	{	"ItemDef"		"7075"		} 
-		"Wearable3"		{	"ItemDef"		"7079"		} 
-		"Wearable4"		{	"ItemDef"		"7077"		} 
-		"Wearable5"		{	"ItemDef"		"7076"		} 
+	"BaseClass" "npc_dota_creature" 
+	"Model" "models/heroes/juggernaut/juggernaut.vmdl" 
+	"SoundSet" "Hero_Juggernaut" 
+	"ModelScale" 		"1.6" 
+	"RingRadius"        "105"
+	"Level" "1" 
+
+	"precache"
+	{
+		"model"	"models/heroes/juggernaut/juggernaut.vmdl"
+		"model"	"models/items/juggernaut/thousand_faces_hakama/thousand_faces_hakama.vmdl"
+		"model"	"models/items/juggernaut/thousand_faces_vest/thousand_faces_vest.vmdl"
+		"model"	"models/items/juggernaut/thousand_faces_mask/thousand_faces_mask.vmdl"
+		"model"	"models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.vmdl"
+		"model"	"models/items/juggernaut/thousand_faces_wraps/thousand_faces_wraps.vmdl"
+		"model"	"models/items/juggernaut/dc_legsupdate5/dc_legsupdate5.vmdl"
+		"model"	"models/items/juggernaut/dc_armsupdate/dc_armsupdate.vmdl"
+		"model"	"models/items/juggernaut/dc_headupdate/dc_headupdate.vmdl"
+		"model"	"models/items/juggernaut/dc_backupdate4/dc_backupdate4.vmdl"
+		"model"	"models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.vmdl"
+		"particle"  "particles/econ/items/juggernaut/bladekeeper_swordglow.vpcf"
+		"particle"  "particles/econ/items/juggernaut/bladekeeper_headglow.vpcf"
 	}
-}
+			
+	"Creature"
+	{
+		"DisableResistance"            "50.0"
+		"AttachWearables"
+		{
+			"Wearable1"		{	"ItemDef"		"7164"		} 
+			"Wearable2" 	{	"ItemDef"		"7075"		} 
+			"Wearable3"		{	"ItemDef"		"7079"		} 
+			"Wearable4"		{	"ItemDef"		"7077"		} 
+			"Wearable5"		{	"ItemDef"		"7076"		} 
+		}
+	}
 
-"Ability1" "true_sight" 
-"Ability2" "orn_all_bonuses" 
-"Ability3" "orn_cleave_manabreak_lifesteal" 
-"Ability4" "orn_return" 
-"Ability5" "orn_bash" 
-"Ability6" "orn_crit" 
-"Ability7" "orn_mana_break" 
-"Ability8" "" 
+	"Ability1" "true_sight" 
+	"Ability2" "orn_all_bonuses" 
+	"Ability3" "orn_cleave_manabreak_lifesteal" 
+	"Ability4" "orn_return" 
+	"Ability5" "orn_bash" 
+	"Ability6" "orn_crit" 
+	"Ability7" "orn_mana_break" 
+	"Ability8" "" 
 
-"AbilityLayout"	"7"
+	"AbilityLayout"	"7"
 
-"ArmorPhysical" "80" 
-"MagicalResistance" "25" 
+	"ArmorPhysical" "80" 
+	"MagicalResistance" "25" 
 
+	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" "675" 
+	"AttackDamageMax" "725" 
+	"AttackRate" "0.4" 
+	"AttackAnimationPoint" "0.3" 
+	"AttackAcquisitionRange" "5000" 
+	"AttackRange" "180" 
+	"ProjectileModel" "" 
+	"ProjectileSpeed" "" 
 
-"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "675" 
-"AttackDamageMax" "725" 
-"AttackRate" "0.4" 
-"AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "5000" 
-"AttackRange" "180" 
-"ProjectileModel" "" 
-"ProjectileSpeed" "" 
+	"BountyXP" "0" 
+	"BountyGoldMin" "0" 
+	"BountyGoldMax" "0" 
 
-"BountyXP" "0" 
-"BountyGoldMin" "0" 
-"BountyGoldMax" "0" 
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	"MovementSpeed" "450" 
+	"MovementTurnRate" "0.6"
 
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-"MovementSpeed" "450" 
-"MovementTurnRate" "0.6"
+	"StatusHealth" "20000" 
+	"StatusHealthRegen" "50" 
+	"StatusMana" "3000" 
+	"StatusManaRegen" "1" 
 
+	"TeamName" "DOTA_TEAM_BADGUYS" 
+	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	"AttackType"    "hero"
+	"ArmorType"     "heavy" 
 
-"StatusHealth" "20000" 
-"StatusHealthRegen" "50" 
-"StatusMana" "3000" 
-"StatusManaRegen" "1" 
+	"VisionDaytimeRange" "2000" 
+	"VisionNighttimeRange" "2000" 
 
-"TeamName" "DOTA_TEAM_BADGUYS" 
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-"AttackType"    "hero"
-"ArmorType"     "heavy" 
+	"HasInventory" "0" 
 
-"VisionDaytimeRange" "2000" 
-"VisionNighttimeRange" "2000" 
-
-"HasInventory" "0" 
-
-"vscripts"           "units\MegabossOrnStats.lua"
+	"vscripts"           "units\MegabossOrnStats.lua"
+	}
 }

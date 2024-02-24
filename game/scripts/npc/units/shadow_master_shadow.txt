@@ -1,75 +1,75 @@
-"shadow_master_shadow"
-{
-	// General
-	//----------------------------------------------------------------
-	"BaseClass"			"npc_dota_creature"
-	"Model"				"models/heroes/terrorblade/terrorblade.vmdl"
-	"ModelScale"		"1"
-	"Level"				"0"
-	
-	// Abilities
-	//----------------------------------------------------------------
-	"Ability1"			"shadow_return_to_owner" 
-	"Ability2"			"shadow_shadow_mastery"
-	"Ability3"			"shadow_world_of_shadows"
-
-	"ArmorPhysical" "0"   
-	"MagicalResistance" "25" 
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "2" 
-	"AttackDamageMax" "24" 
-	"AttackRate" "1.75" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "800" 
-	"AttackRange" "100" 
-
-	"BountyXP" "0"
-	"BountyGoldMin" "0" 
-	"BountyGoldMax" "0" 
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "275" 
-	"MovementTurnRate" "0.5" 
-
-	"StatusHealth" "530"
-	"StatusHealthRegen" "1.0" 
-	"StatusMana" "75" 
-	"StatusManaRegen" "0.05" 
-
-	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
-	"AttackType"    "hero"
-	"ArmorType"     "hero" 
-
-	"VisionDaytimeRange" "900"
-	"VisionNighttimeRange" "800"
-
-	"ConsideredHero"        "1"
-
-	"vscripts"	"heroes/ShadowMaster/PaintBlack.lua"
-
-	"precache"
+"DotaUnits"
+{	
+	"shadow_master_shadow"
 	{
-		"model"	"models/heroes/terrorblade/terrorblade.vmdl"
-		"model"	"models/heroes/terrorblade/wings.vmdl"
-		"model"	"models/heroes/terrorblade/weapon.vmdl"
-		"model"	"models/heroes/terrorblade/armor.vmdl"
-		"model"	"models/heroes/terrorblade/horns.vmdl"
-		"particle"	"particles/units/heroes/hero_terrorblade.vpcf"	
-	}
 
-	"Creature"
-	{
-		"AttachWearables"
+		"BaseClass"			"npc_dota_creature"
+		"Model"				"models/heroes/terrorblade/terrorblade.vmdl"
+		"ModelScale"		"1"
+		"Level"				"0"
+
+		"Ability1"			"shadow_return_to_owner" 
+		"Ability2"			"shadow_shadow_mastery"
+		"Ability3"			"shadow_world_of_shadows"
+
+		"ArmorPhysical" "0"   
+		"MagicalResistance" "25" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "2" 
+		"AttackDamageMax" "24" 
+		"AttackRate" "1.75" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "800" 
+		"AttackRange" "100" 
+
+		"BountyXP" "0"
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "275" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "530"
+		"StatusHealthRegen" "1.0" 
+		"StatusMana" "75" 
+		"StatusManaRegen" "0.05" 
+
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_HERO"
+		"AttackType"    "hero"
+		"ArmorType"     "hero" 
+
+		"VisionDaytimeRange" "900"
+		"VisionNighttimeRange" "800"
+
+		"ConsideredHero"        "1"
+
+		"vscripts"	"heroes/ShadowMaster/PaintBlack.lua"
+
+		"precache"
 		{
-			"Wearable1"	{ "ItemDef" "306" } 
-			"Wearable2"	{ "ItemDef"	"307" } 
-			"Wearable3" { "ItemDef"	"476" } 
-			"Wearable4" { "ItemDef"	"478" } 
-			"Wearable5" { "ItemDef"	"540" }  
+			"model"	"models/heroes/terrorblade/terrorblade.vmdl"
+			"model"	"models/heroes/terrorblade/wings.vmdl"
+			"model"	"models/heroes/terrorblade/weapon.vmdl"
+			"model"	"models/heroes/terrorblade/armor.vmdl"
+			"model"	"models/heroes/terrorblade/horns.vmdl"
+			"particle"	"particles/units/heroes/hero_terrorblade.vpcf"	
+		}
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{ "ItemDef" "306" } 
+				"Wearable2"	{ "ItemDef"	"307" } 
+				"Wearable3" { "ItemDef"	"476" } 
+				"Wearable4" { "ItemDef"	"478" } 
+				"Wearable5" { "ItemDef"	"540" }  
+			}
 		}
 	}
-}
+}	

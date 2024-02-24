@@ -1,81 +1,66 @@
-	"orn_mutant_boss" //
+"DotaUnits"
+{	
+	"orn_mutant_boss" 
 	{
-	// 
-	//
-	"BaseClass" "npc_dota_creature" // 
+	"BaseClass" "npc_dota_creature" /
 	"Model" "models/heroes/undying/undying_minion.vmdl" 
-//	"Model" "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl" 	//Halloween
-	"SoundSet" "n_creep_Melee" // 
-	"ModelScale" "1.6" // 
-	"Level" "1" // 
-		"precache"
-			{
-				"model" "models/heroes/undying/undying_minion.vmdl"
-			}
+	//	"Model" "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl" 	Halloween
+	"SoundSet" "n_creep_Melee" 
+	"ModelScale" "1.6" 
+	"Level" "1" 
+
+	"precache"
+	{
+		"model" "models/heroes/undying/undying_minion.vmdl"
+	}
 	
-	// 
-	//----------------------------------------------------------------
+	"Ability1" "" 
+	"Ability2" "" 
+	"Ability3" "" 
+	"Ability4" ""  
+	"Ability5" ""  
+	"Ability6" ""  
+	"Ability7" ""  
+	"Ability8" ""  
 	
-	"Ability1" "" // 
-	"Ability2" "" // 
-	"Ability3" "" // 
-	"Ability4" "" // 
-	"Ability5" "" // 
-	"Ability6" "" // 
-	"Ability7" "" // 
-	"Ability8" "" // 
+	"ArmorPhysical" "50" 
+	"MagicalResistance" "0" 
 	
-	// 
-	//----------------------------------------------------------------
-	"ArmorPhysical" "50" // 
-	"MagicalResistance" "0" // 
-	
-	// 
-	//----------------------------------------------------------------
 	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "2000" // 
-	"AttackDamageMax" "2000" // 
-	"AttackRate" "1.2" // 
-	"AttackAnimationPoint" "0.3" // 
-	"AttackAcquisitionRange" "2000" // 
-	"AttackRange" "90" // 
-	"ProjectileModel" "" // 
-	"ProjectileSpeed" "" // 
+	"AttackDamageMin" "2000"  
+	"AttackDamageMax" "2000"  
+	"AttackRate" "1.2"  
+	"AttackAnimationPoint" "0.3"  
+	"AttackAcquisitionRange" "2000"  
+	"AttackRange" "90"  
+	"ProjectileModel" ""  
+	"ProjectileSpeed" ""  
+
+	"BountyXP" "100"  
+	"BountyGoldMin" "20"  
+	"BountyGoldMax" "20"  
 	
-	// 
-	//----------------------------------------------------------------
-	"BountyXP" "100" // 
-	"BountyGoldMin" "20" // 
-	"BountyGoldMax" "20" // 
-	
-	// 
-	//----------------------------------------------------------------
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // 
-	"MovementSpeed" "300" // 
-	"MovementTurnRate" "0.5" // 
-	
-	// 
-	//----------------------------------------------------------------
-	"StatusHealth" "2000" // 
-	"StatusHealthRegen" "250.0" // 
-	"StatusMana" "0" // 
-	"StatusManaRegen" "0" // 
-	
-	// 
-	//----------------------------------------------------------------
-	"TeamName" "DOTA_TEAM_BADGUYS" // 
+	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND"  
+	"MovementSpeed" "300"  
+	"MovementTurnRate" "0.5"  
+
+	"StatusHealth" "2000"  
+	"StatusHealthRegen" "250.0"  
+	"StatusMana" "0"  
+	"StatusManaRegen" "0"  
+
+	"TeamName" "DOTA_TEAM_BADGUYS"  
 	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
 	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
 	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	"AttackType"    "chaos"
 	"ArmorType"     "heavy" 
-	// 
-	//----------------------------------------------------------------
-	"VisionDaytimeRange" "2000" // 
-	"VisionNighttimeRange" "2000" // 
-	
-	//----------------------------------------------------------------
+
+	"VisionDaytimeRange" "2000"  
+	"VisionNighttimeRange" "2000"  
+
 	//"vscripts"	"AI\orn_mutant_boss_slow.lua"
-	//
-	"HasInventory" "0" // 
+	
+	"HasInventory" "0" 
 	}
+}

@@ -1,657 +1,559 @@
-"book_of_the_dead_skeleton_melee" 
-{
-	"BaseClass" 	"npc_dota_creature" 
-	"Model" 		"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl" 
-	"SoundSet" 		"n_creep_Melee" 
-	"ModelScale" 	"1" 
-	"Level" 		"1" 
-
-	"Ability1" "" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-	"ArmorPhysical" 			"1" 
-	
-	"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-	"AttackDamageMin" 			"22" 
-	"AttackDamageMax" 			"22" 
-	"AttackRate" 				"1.5" 
-	"AttackAnimationPoint" 		"0.4" 
-	"AttackAcquisitionRange" 	"500" 
-	"AttackRange" 				"128" 
-	"ProjectileModel" 			"" 
-	"ProjectileSpeed" 			"" 
-
-	"BountyXP" 					"100" 
-	"BountyGoldMin" 			"5" 
-	"BountyGoldMax" 			"5" 
-
-	"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" 			"180" 
-	"MovementTurnRate" 			"0.4" 
-
-	"StatusHealth" 				"250" 
-	"StatusHealthRegen" 		"0.1" 
-	"StatusMana" 				"0" 
-	"StatusManaRegen" 			"0" 
-
-	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
-	"HealthBarOffset"			"150"
-
-	"TeamName" 					"DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-	"VisionDaytimeRange" 		"900" 
-	"VisionNighttimeRange" 		"800" 
-
-	"HasInventory" 				"0" 
-}
-
-"book_of_the_dead_skeleton_melee_ranged" 
-{
-	"BaseClass"					"npc_dota_creature"	
-	"Model"						"models/heroes/clinkz/clinkz.vmdl"	
-	"ModelScale"				"0.5"
-	"SoundSet"                  "Hero_Clinkz"			
-	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
-	"VoiceFile"					"soundevents/voscripts/game_sounds_heroes/game_sounds_clinkz.vsndevts"
-	"Level"						"1"
-
-	"UseNeutralCreepBehavior" 	"0"
-
-	"Ability1"					""			
-	"Ability2"					""			
-			
-	"ArmorPhysical"				"1"			
-
-	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-	"AttackDamageMin"			"18"								
-	"AttackDamageMax"			"18"								
-	"AttackRate"				"1.2"								
-	"AttackAnimationPoint"		"0.3"								
-	"AttackAcquisitionRange"	"500"								
-	"AttackRange"				"500"								
-	"ProjectileModel"			"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"				
-	"ProjectileSpeed"			"900"								
-
-	"BountyXP"					"100"		
-	"BountyGoldMin"				"5"		
-	"BountyGoldMax"				"5"		
-
-	"HealthBarOffset"			"140"
-	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
-
-	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			
-	"MovementSpeed"				"180"		
-	"MovementTurnRate"			"0.4"		
-
-	"StatusHealth"				"210"			
-	"StatusHealthRegen"			"0.5"			
-	"StatusMana"				"0"			
-	"StatusManaRegen"			"0.75"			
-
-	"TeamName"					"DOTA_TEAM_GOODGUYS"			
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "pierce"
-	"ArmorType"     "heavy" 
-
-	"VisionDaytimeRange"		"1400"		
-	"VisionNighttimeRange"		"1400"		
-
-	"precache"
+"DotaUnits"
+{	
+	"book_of_the_dead_skeleton_melee" 
 	{
-		"model"	"models/heroes/clinkz/clinkz_head.vmdl"
-		"model"	"models/heroes/clinkz/clinkz.vmdl"
-		"model"	"models/heroes/clinkz/clinkz_back.vmdl"
-		"model"	"models/items/clinkz/demonspinerecurve_lod1/demonspinerecurve_lod1.vmdl"
-		"model"	"models/items/clinkz/clinkz_hands_goc/clinkz_hands_goc.vmdl"
-		"model"	"models/items/clinkz/clinkz_shoulders_goc/clinkz_shoulders_goc.vmdl"
-		"model"	"models/items/clinkz/clinkz_helmet01_goc/clinkz_helmet01_goc.vmdl"
-		"particle"	"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"	
-		"particle"	"particles/units/heroes/hero_clinkz/clinkz_body_fire.vpcf"
-		"particle"	"particles/units/heroes/hero_clinkz/clinkz_bow.vpcf"
-		"particle"	"particles/units/heroes/hero_clinkz/clinkz_body_arm_fire.vpcf"
-	}
-
-	"Creature"
-	{
-		"AttachWearables"
-		{
-			"Wearable1"	{ "ItemDef" "4600" } 
-			"Wearable2"	{ "ItemDef"	"56" } 
-			"Wearable3" { "ItemDef"	"4972" } 
-			"Wearable4" { "ItemDef"	"59" } 
-			"Wearable5" { "ItemDef"	"4742" } 
-			"Wearable6" { "ItemDef"	"4971" } 
-		}
-	}
-}
-
-"npc_lia_troll_defender" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/troll_warlord/troll_warlord.vmdl" 
-	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "0.9" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "invulnerability" 
-	"Ability2" "troll_defender_armor_aura" 
-
-
-
-
-	"ArmorPhysical" "1" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-	"AttackDamageMin" "30" 
-	"AttackDamageMax" "30" 
-	"AttackRate" "1.6" 
-	"AttackAnimationPoint" "0.4" 
-	"AttackAcquisitionRange" "500" 
-	"AttackRange" "500" 
-	"ProjectileModel" "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf" 
-	"ProjectileSpeed" "1200" 
-
-
-
-	"BountyXP" "100" 
-	"BountyGoldMin" "5" 
-	"BountyGoldMax" "5" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "290" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "100" 
-	"StatusHealthRegen" "0" 
-	"StatusMana" "100" 
-	"StatusManaRegen" "0" 
-
-
-
-	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "pierce"
-	"ArmorType"     "heavy" 
-
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "900" 
-
-
-
-	"HasInventory" "0" 
-
-	"precache"
-	{
-		"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
-		"model"	"models/heroes/troll_warlord/troll_warlord_axe_ranged_r.vmdl"
-		"model"	"models/heroes/troll_warlord/troll_warlord_axe_ranged_l.vmdl"
-	}
-	"Creature"
-	{
-			
-		"AttachWearables"
-		{
-			"Wearable1"	{ "ItemDef" "373" } 
-			"Wearable2"	{ "ItemDef"	"374" } 
-		}
-	}
-}
-
-"npc_lia_troll_healer" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_high_priest.vmdl" 
-	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "0.9" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "spell_immunity" 
-	"Ability2" "troll_healer_heal"
-
-
-
-
-	"ArmorPhysical" "15" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
-	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-	"AttackDamageMin" "0" 
-	"AttackDamageMax" "0" 
-	"AttackRate" "1.8" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "500" 
-	"AttackRange" "600" 
-	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf"
-	"ProjectileSpeed" "1200" 
-
-
-
-	"BountyXP" "0" 
-	"BountyGoldMin" "0" 
-	"BountyGoldMax" "0" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "290" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "700" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "100" 
-	"StatusManaRegen" "0.5" 
-
-
-
-	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "pierce"
-	"ArmorType"     "heavy" 
-
-
-
-	"VisionDaytimeRange" "1000" 
-	"VisionNighttimeRange" "1000" 
-
-
-
-	"HasInventory" "0" 
-
-	"vscripts"	"AI\TrollHealer.lua"
-}
-
-
-"npc_doom_guard_spawn"
-{
-
-
-"BaseClass"					"npc_dota_creature"	
-"Model"						"models/heroes/doom/doom.vmdl"	
-"ModelScale"				"0.9"
-"Level"						"6"
-"Portrait"					"vgui/hud/heroportraits/portrait_doom_bringer"
-"SoundSet"					"Hero_DoomBringer"			
-"IdleSoundLoop"				"Hero_DoomBringer.IdleLoop"
-"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
-
-
-"UseNeutralCreepBehavior" 	"0"
-
-
-
-"Ability1"					"doom_spawn_cripple"			
-"Ability2"					"doom_spawn_stomp"			
-"Ability3"					""			
-"Ability4"					""			
-
-
-
-"ArmorPhysical"				"7"			
-
-
-
-
-"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin"			"140"		
-"AttackDamageMax"			"140"		
-"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-"AttackRate"				"1.30"			
-"AttackAnimationPoint"		"0.467"		
-"AttackAcquisitionRange"	"1000"		
-"AttackRange"				"128"		
-"ProjectileModel"			""			
-"ProjectileSpeed"			""			
-
-
-
-"BountyXP"					"100"		
-"BountyGoldMin"				"0"		
-"BountyGoldMax"				"0"		
-
-
-
-"StatusHealth"				"1700"		
-"StatusHealthRegen"			"0.5"		
-"StatusMana"				"500"			
-"StatusManaRegen"			"1.25"			
-
-
-
-"TeamName"					"DOTA_TEAM_GOODGUYS"			
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-"AttackType"    "chaos"
-"ArmorType"     "heavy"
-
-
-
-"VisionDaytimeRange"		"1400"									
-"VisionNighttimeRange"		"1400"									
-
-
-
-"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			
-"MovementSpeed"				"270"									
-"MovementTurnRate"			"0.4"									
-
-"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
-"HealthBarOffset"			"250"
-
-"precache"
-{
-	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
-	"soundfile"	"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
-	"model"	"models/heroes/doom/doom.vmdl"
-	"model"	"models/items/doom/impending_transgressions_back/impending_transgressions_back.vmdl"
-	"model"	"models/items/doom/crown_of_omoz/crown_of_omoz.vmdl"
-	"model"	"models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.vmdl"
-	"model"	"models/items/doom/impending_transgressions_arms/impending_transgressions_arms.vmdl"
-	"model"	"models/items/doom/impending_transgressions_tail/impending_transgressions_tail.vmdl"
-	"model"	"models/items/doom/impending_transgressions_shoulders/impending_transgressions_shoulders.vmdl"
-	"model"	"models/items/doom/impending_transgressions_belt/impending_transgressions_belt.vmdl"
-	"particle"	"particles/units/heroes/hero_doom_bringer/doom_loadout.vpcf"
-	"particle_folder" "particles/units/heroes/hero_doom_bringer"
-}
-
-
-
-"Creature"
-{					
-	"AttachWearables"
-	{
-		"Wearable1"		{	"ItemDef"	"5121"		}
-		"Wearable2"		{	"ItemDef"	"5574"		}
-		"Wearable3"		{	"ItemDef"	"4905"		}
-		"Wearable4"		{	"ItemDef"	"5122"		}
-		"Wearable5"		{	"ItemDef"	"5123"		}
-		"Wearable6"		{	"ItemDef"	"5124"		}
-		"Wearable7"		{	"ItemDef"	"5126"		}
+		"BaseClass" 	"npc_dota_creature" 
+		"Model" 		"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl" 
+		"SoundSet" 		"n_creep_Melee" 
+		"ModelScale" 	"1" 
+		"Level" 		"1" 
+
+		"Ability1" "" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" 			"1" 
 		
-	}
-}
-}
+		"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin" 			"22" 
+		"AttackDamageMax" 			"22" 
+		"AttackRate" 				"1.5" 
+		"AttackAnimationPoint" 		"0.4" 
+		"AttackAcquisitionRange" 	"500" 
+		"AttackRange" 				"128" 
+		"ProjectileModel" 			"" 
+		"ProjectileSpeed" 			"" 
 
-"hell_beast" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/faceless_void/faceless_void.vmdl" 
-	"SoundSet" "Hero_FacelessVoid" 
-	"ModelScale" "1.0" 
-	"Level" "1" 
-	"precache"
-	{	
-		"model"	"models/heroes/faceless_void/faceless_void.vmdl"
-		"model"	"models/items/faceless_void/timelord_bracers/timelord_bracers.vmdl"
-		"model"	"models/items/faceless_void/timelord_head/timelord_head.vmdl"
-		"model"	"models/items/faceless_void/timelord_shoulders/timelord_shoulders.vmdl"
-		"model"	"models/items/faceless_void/timelord_skirt/timelord_skirt.vmdl"
-		"model"	"models/items/faceless_void/timelord_weapon/timelord_weapon.vmdl"
-		"particle_folder" "particles/units/heroes/hero_faceless_void"
+		"BountyXP" 					"100" 
+		"BountyGoldMin" 			"5" 
+		"BountyGoldMax" 			"5" 
+
+		"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" 			"180" 
+		"MovementTurnRate" 			"0.4" 
+
+		"StatusHealth" 				"250" 
+		"StatusHealthRegen" 		"0.1" 
+		"StatusMana" 				"0" 
+		"StatusManaRegen" 			"0" 
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"150"
+
+		"TeamName" 					"DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" 		"900" 
+		"VisionNighttimeRange" 		"800" 
+
+		"HasInventory" 				"0" 
 	}
-				
-	"Creature"
+
+	"book_of_the_dead_skeleton_melee_ranged" 
 	{
-		"AttachWearables"
+		"BaseClass"					"npc_dota_creature"	
+		"Model"						"models/heroes/clinkz/clinkz.vmdl"	
+		"ModelScale"				"0.5"
+		"SoundSet"                  "Hero_Clinkz"			
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+		"VoiceFile"					"soundevents/voscripts/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+		"Level"						"1"
+
+		"UseNeutralCreepBehavior" 	"0"
+
+		"Ability1"					""			
+		"Ability2"					""			
+				
+		"ArmorPhysical"				"1"			
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin"			"18"								
+		"AttackDamageMax"			"18"								
+		"AttackRate"				"1.2"								
+		"AttackAnimationPoint"		"0.3"								
+		"AttackAcquisitionRange"	"500"								
+		"AttackRange"				"500"								
+		"ProjectileModel"			"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"				
+		"ProjectileSpeed"			"900"								
+
+		"BountyXP"					"100"		
+		"BountyGoldMin"				"5"		
+		"BountyGoldMax"				"5"		
+
+		"HealthBarOffset"			"140"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			
+		"MovementSpeed"				"180"		
+		"MovementTurnRate"			"0.4"		
+
+		"StatusHealth"				"210"			
+		"StatusHealthRegen"			"0.5"			
+		"StatusMana"				"0"			
+		"StatusManaRegen"			"0.75"			
+
+		"TeamName"					"DOTA_TEAM_GOODGUYS"			
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "pierce"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange"		"1400"		
+		"VisionNighttimeRange"		"1400"		
+
+		"precache"
 		{
-			"Wearable1"		{	"ItemDef"		"5861"		} 
-			"Wearable2" 	{	"ItemDef"		"5868"		} 
-			"Wearable3"		{	"ItemDef"		"5896"		} 
-			"Wearable4"		{	"ItemDef"		"5897"		} 
-			"Wearable5"		{	"ItemDef"		"5898"		} 
+			"model"	"models/heroes/clinkz/clinkz_head.vmdl"
+			"model"	"models/heroes/clinkz/clinkz.vmdl"
+			"model"	"models/heroes/clinkz/clinkz_back.vmdl"
+			"model"	"models/items/clinkz/demonspinerecurve_lod1/demonspinerecurve_lod1.vmdl"
+			"model"	"models/items/clinkz/clinkz_hands_goc/clinkz_hands_goc.vmdl"
+			"model"	"models/items/clinkz/clinkz_shoulders_goc/clinkz_shoulders_goc.vmdl"
+			"model"	"models/items/clinkz/clinkz_helmet01_goc/clinkz_helmet01_goc.vmdl"
+			"particle"	"particles/units/heroes/hero_clinkz/clinkz_base_attack.vpcf"	
+			"particle"	"particles/units/heroes/hero_clinkz/clinkz_body_fire.vpcf"
+			"particle"	"particles/units/heroes/hero_clinkz/clinkz_bow.vpcf"
+			"particle"	"particles/units/heroes/hero_clinkz/clinkz_body_arm_fire.vpcf"
+		}
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"	{ "ItemDef" "4600" } 
+				"Wearable2"	{ "ItemDef"	"56" } 
+				"Wearable3" { "ItemDef"	"4972" } 
+				"Wearable4" { "ItemDef"	"59" } 
+				"Wearable5" { "ItemDef"	"4742" } 
+				"Wearable6" { "ItemDef"	"4971" } 
+			}
 		}
 	}
 
-
-
-	"Ability1" "hell_beast_bloodlust" 
-	"Ability2" "hell_beast_sleep" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "5" 
-	"MagicalResistance" "0" 
-
-	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
-	"HealthBarOffset"			"250"
-
-	"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	//"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-	//"AttackDamageType"			"DAMAGE_TYPE_MAGICAL"
-	"AttackDamageMin" "60" 
-	"AttackDamageMax" "65" 
-	"AttackRate" "0.9" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "500" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "0" 
-	"BountyGoldMin" "0" 
-	"BountyGoldMax" "0" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "300" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "900" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "300" 
-	"StatusManaRegen" "1" 
-
-
-
-	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "chaos"
-	"ArmorType"     "heavy"
-
-
-
-	"VisionDaytimeRange" "900" 
-	"VisionNighttimeRange" "800" 
-
-
-
-	"HasInventory" "0" 
-}
-
-"spherical_staff_fire_golem" 
-{
-	"BaseClass" 				"npc_dota_creature" 
-						//
-	"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 	
-	//"Model" 				"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
-	"SoundSet"				"Hero_WarlockGolem"
-	"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
-	"ModelScale" "1" 
-	"Level" "1" 
-
-	"precache"
+	"npc_lia_troll_defender" 
 	{
-		"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
-		"model"	"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/heroes/troll_warlord/troll_warlord.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "0.9" 
+		"Level" "1" 
+
+		"Ability1" "invulnerability" 
+		"Ability2" "troll_defender_armor_aura" 
+
+		"ArmorPhysical" "1" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin" "30" 
+		"AttackDamageMax" "30" 
+		"AttackRate" "1.6" 
+		"AttackAnimationPoint" "0.4" 
+		"AttackAcquisitionRange" "500" 
+		"AttackRange" "500" 
+		"ProjectileModel" "particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf" 
+		"ProjectileSpeed" "1200" 
+
+		"BountyXP" "100" 
+		"BountyGoldMin" "5" 
+		"BountyGoldMax" "5" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "290" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "100" 
+		"StatusHealthRegen" "0" 
+		"StatusMana" "100" 
+		"StatusManaRegen" "0" 
+
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "pierce"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "900" 
+
+		"HasInventory" "0" 
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf"
+			"model"	"models/heroes/troll_warlord/troll_warlord_axe_ranged_r.vmdl"
+			"model"	"models/heroes/troll_warlord/troll_warlord_axe_ranged_l.vmdl"
+		}
+
+		"Creature"
+		{
+				
+			"AttachWearables"
+			{
+				"Wearable1"	{ "ItemDef" "373" } 
+				"Wearable2"	{ "ItemDef"	"374" } 
+			}
+		}
 	}
 
-	"Ability1" "spell_immunity" // 
-	"Ability2" "spherical_staff_fire_golem_immolation" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-	"ArmorPhysical" 		"16" 
-	"MagicalResistance" 		"100" 
-
-	"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" 			"100" 
-	"AttackDamageMax" 			"120" 
-	"AttackRate" 				"0.95" 
-	"AttackAnimationPoint" 		"0.26" 
-	"AttackAcquisitionRange" 	"500" 
-	"AttackRange" 				"100" 
-
-	//"ProjectileModel"			""			
-	//"ProjectileSpeed"			"0"
-
-	"HealthBarOffset"			"260"
-
-	"BountyXP" 				"0" 
-	"BountyGoldMin" 			"0" 
-	"BountyGoldMax" 			"0" 
-
-	"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" 			"320" 
-	"MovementTurnRate" 			"0.4" 
-
-	"StatusHealth" 				"1800" 
-	"StatusHealthRegen" 			"1" 
-	"StatusMana" 				"0" 
-	"StatusManaRegen" 			"0" 
-
-	"TeamName" 			"DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "chaos"
-	"ArmorType"     "heavy"
-
-	"VisionDaytimeRange" 		"900" 
-	"VisionNighttimeRange" 		"800" 
-
-	"HasInventory" 				"0" 		
-}
-
-"npc_lia_boar" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/beastmaster/beastmaster_beast.vmdl" 
-	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "0.9" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "invulnerability" 
-	"Ability2" "boar_poison" 
-
-
-
-
-	"ArmorPhysical" "0" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-	"AttackDamageMin" "16" 
-	"AttackDamageMax" "17" 
-	"AttackRate" "1.25" 
-	"AttackAnimationPoint" "0.33" 
-	"AttackAcquisitionRange" "500" 
-	"AttackRange" "500" 
-	"ProjectileModel" "particles/units/heroes/hero_beastmaster/beastmaster_boar_attack.vpcf" 
-	"ProjectileSpeed" "1050" 
-
-
-
-	"BountyXP" "100" 
-	"BountyGoldMin" "5" 
-	"BountyGoldMax" "5" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "310" 
-	"MovementTurnRate" "0.6" 
-
-
-
-	"StatusHealth" "100" 
-	"StatusHealthRegen" "0" 
-	"StatusMana" "100" 
-	"StatusManaRegen" "0" 
-
-
-
-	"TeamName" "DOTA_TEAM_GOODGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "pierce"
-	"ArmorType"     "heavy" 
-
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "900" 
-
-
-
-	"HasInventory" "0" 
-
-	"precache"
+	"npc_lia_troll_healer" 
 	{
-		"particle"	"particles/units/heroes/hero_beastmaster/beastmaster_boar_attack.vpcf"
-		"model"	"models/heroes/beastmaster/beastmaster_beast.vmdl"
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_high_priest.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "0.9" 
+		"Level" "1" 
+
+		"Ability1" "spell_immunity" 
+		"Ability2" "troll_healer_heal"
+
+		"ArmorPhysical" "15" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin" "0" 
+		"AttackDamageMax" "0" 
+		"AttackRate" "1.8" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "500" 
+		"AttackRange" "600" 
+		"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf"
+		"ProjectileSpeed" "1200" 
+
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "290" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "700" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "100" 
+		"StatusManaRegen" "0.5" 
+
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "pierce"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "1000" 
+		"VisionNighttimeRange" "1000" 
+
+		"HasInventory" "0" 
+
+		"vscripts"	"AI\TrollHealer.lua"
+	}
+
+
+	"npc_doom_guard_spawn"
+	{
+		"BaseClass"					"npc_dota_creature"	
+		"Model"						"models/heroes/doom/doom.vmdl"	
+		"ModelScale"				"0.9"
+		"Level"						"6"
+		"Portrait"					"vgui/hud/heroportraits/portrait_doom_bringer"
+		"SoundSet"					"Hero_DoomBringer"			
+		"IdleSoundLoop"				"Hero_DoomBringer.IdleLoop"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
+
+		"UseNeutralCreepBehavior" 	"0"
+
+		"Ability1"					"doom_spawn_cripple"			
+		"Ability2"					"doom_spawn_stomp"			
+		"Ability3"					""			
+		"Ability4"					""			
+
+		"ArmorPhysical"				"7"			
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"140"		
+		"AttackDamageMax"			"140"		
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.30"			
+		"AttackAnimationPoint"		"0.467"		
+		"AttackAcquisitionRange"	"1000"		
+		"AttackRange"				"128"		
+		"ProjectileModel"			""			
+		"ProjectileSpeed"			""			
+
+		"BountyXP"					"100"		
+		"BountyGoldMin"				"0"		
+		"BountyGoldMax"				"0"		
+
+		"StatusHealth"				"1700"		
+		"StatusHealthRegen"			"0.5"		
+		"StatusMana"				"500"			
+		"StatusManaRegen"			"1.25"			
+
+		"TeamName"					"DOTA_TEAM_GOODGUYS"			
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "chaos"
+		"ArmorType"     "heavy"
+
+		"VisionDaytimeRange"		"1400"									
+		"VisionNighttimeRange"		"1400"									
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			
+		"MovementSpeed"				"270"									
+		"MovementTurnRate"			"0.4"									
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"250"
+
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
+			"model"	"models/heroes/doom/doom.vmdl"
+			"model"	"models/items/doom/impending_transgressions_back/impending_transgressions_back.vmdl"
+			"model"	"models/items/doom/crown_of_omoz/crown_of_omoz.vmdl"
+			"model"	"models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.vmdl"
+			"model"	"models/items/doom/impending_transgressions_arms/impending_transgressions_arms.vmdl"
+			"model"	"models/items/doom/impending_transgressions_tail/impending_transgressions_tail.vmdl"
+			"model"	"models/items/doom/impending_transgressions_shoulders/impending_transgressions_shoulders.vmdl"
+			"model"	"models/items/doom/impending_transgressions_belt/impending_transgressions_belt.vmdl"
+			"particle"	"particles/units/heroes/hero_doom_bringer/doom_loadout.vpcf"
+			"particle_folder" "particles/units/heroes/hero_doom_bringer"
+		}
+
+		"Creature"
+		{					
+			"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"	"5121"		}
+				"Wearable2"		{	"ItemDef"	"5574"		}
+				"Wearable3"		{	"ItemDef"	"4905"		}
+				"Wearable4"		{	"ItemDef"	"5122"		}
+				"Wearable5"		{	"ItemDef"	"5123"		}
+				"Wearable6"		{	"ItemDef"	"5124"		}
+				"Wearable7"		{	"ItemDef"	"5126"		}
+				
+			}
+		}
+	}
+
+	"hell_beast" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/heroes/faceless_void/faceless_void.vmdl" 
+		"SoundSet" "Hero_FacelessVoid" 
+		"ModelScale" "1.0" 
+		"Level" "1" 
+		"precache"
+		{	
+			"model"	"models/heroes/faceless_void/faceless_void.vmdl"
+			"model"	"models/items/faceless_void/timelord_bracers/timelord_bracers.vmdl"
+			"model"	"models/items/faceless_void/timelord_head/timelord_head.vmdl"
+			"model"	"models/items/faceless_void/timelord_shoulders/timelord_shoulders.vmdl"
+			"model"	"models/items/faceless_void/timelord_skirt/timelord_skirt.vmdl"
+			"model"	"models/items/faceless_void/timelord_weapon/timelord_weapon.vmdl"
+			"particle_folder" "particles/units/heroes/hero_faceless_void"
+		}
+					
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"5861"		} 
+				"Wearable2" 	{	"ItemDef"		"5868"		} 
+				"Wearable3"		{	"ItemDef"		"5896"		} 
+				"Wearable4"		{	"ItemDef"		"5897"		} 
+				"Wearable5"		{	"ItemDef"		"5898"		} 
+			}
+		}
+
+		"Ability1" "hell_beast_bloodlust" 
+		"Ability2" "hell_beast_sleep" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "5" 
+		"MagicalResistance" "0" 
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"HealthBarOffset"			"250"
+
+		"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		//"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		//"AttackDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AttackDamageMin" "60" 
+		"AttackDamageMax" "65" 
+		"AttackRate" "0.9" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "500" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "0" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "300" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "900" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "300" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "chaos"
+		"ArmorType"     "heavy"
+
+		"VisionDaytimeRange" "900" 
+		"VisionNighttimeRange" "800" 
+
+		"HasInventory" "0" 
+	}
+
+	"spherical_staff_fire_golem" 
+	{
+		"BaseClass" 				"npc_dota_creature" 
+		"Model" 				"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl" 	
+		//"Model" 				"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
+		"SoundSet"				"Hero_WarlockGolem"
+		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
+		"ModelScale" "1" 
+		"Level" "1" 
+
+		"precache"
+		{
+			"model"	"models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
+			"model"	"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
+		}
+
+		"Ability1" "spell_immunity" 
+		"Ability2" "spherical_staff_fire_golem_immolation" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" 		"16" 
+		"MagicalResistance" 		"100" 
+
+		"AttackCapabilities" 		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" 			"100" 
+		"AttackDamageMax" 			"120" 
+		"AttackRate" 				"0.95" 
+		"AttackAnimationPoint" 		"0.26" 
+		"AttackAcquisitionRange" 	"500" 
+		"AttackRange" 				"100" 
+
+		"HealthBarOffset"			"260"
+
+		"BountyXP" 				"0" 
+		"BountyGoldMin" 			"0" 
+		"BountyGoldMax" 			"0" 
+
+		"MovementCapabilities" 		"DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" 			"320" 
+		"MovementTurnRate" 			"0.4" 
+
+		"StatusHealth" 				"1800" 
+		"StatusHealthRegen" 			"1" 
+		"StatusMana" 				"0" 
+		"StatusManaRegen" 			"0" 
+
+		"TeamName" 			"DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO" 
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "chaos"
+		"ArmorType"     "heavy"
+
+		"VisionDaytimeRange" 		"900" 
+		"VisionNighttimeRange" 		"800" 
+
+		"HasInventory" 				"0" 		
+	}
+
+	"npc_lia_boar" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/heroes/beastmaster/beastmaster_beast.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "0.9" 
+		"Level" "1" 
+
+		"Ability1" "invulnerability" 
+		"Ability2" "boar_poison" 
+
+		"ArmorPhysical" "0" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackDamageMin" "16" 
+		"AttackDamageMax" "17" 
+		"AttackRate" "1.25" 
+		"AttackAnimationPoint" "0.33" 
+		"AttackAcquisitionRange" "500" 
+		"AttackRange" "500" 
+		"ProjectileModel" "particles/units/heroes/hero_beastmaster/beastmaster_boar_attack.vpcf" 
+		"ProjectileSpeed" "1050" 
+
+		"BountyXP" "100" 
+		"BountyGoldMin" "5" 
+		"BountyGoldMax" "5" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "310" 
+		"MovementTurnRate" "0.6" 
+
+		"StatusHealth" "100" 
+		"StatusHealthRegen" "0" 
+		"StatusMana" "100" 
+		"StatusManaRegen" "0" 
+
+		"TeamName" "DOTA_TEAM_GOODGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "pierce"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "900" 
+
+		"HasInventory" "0" 
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_beastmaster/beastmaster_boar_attack.vpcf"
+			"model"	"models/heroes/beastmaster/beastmaster_beast.vmdl"
+		}
 	}
 }

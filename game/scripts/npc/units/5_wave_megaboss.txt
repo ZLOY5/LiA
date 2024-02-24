@@ -1,136 +1,121 @@
-"5_wave_megaboss" 
-{
-
-
-"BaseClass" "npc_dota_creature" 
-"Model" "models/heroes/ursa/ursa.vmdl" 
-"SoundSet" "Hero_Ursa" 
-"ModelScale" "1.3" 
-"RingRadius"         "90"
-"Level" "1" 
-
-"precache"
-{
-	"model" "models/heroes/ursa/ursa.vmdl" 
-}
-
-
-
-
-"Ability1" "5_megaboss_firestorm" 
-"Ability2" "5_megaboss_stomp" 
-"Ability3" "megaboss_5_bash" 
-"Ability4" "megaboss_5_crit" 
-"Ability5" "true_sight" 
-"Ability6" "" 
-"Ability7" "" 
-"Ability8" "" 
-
-"AbilityLayout"     "5"	
-
-"ArmorPhysical" "20" 
-"MagicalResistance" "0" 
-
-
-
-"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-"AttackDamageMin" "181" 
-"AttackDamageMax" "187" 
-"AttackRate" "0.07" 
-"AttackAnimationPoint" "0.3" 
-"AttackAcquisitionRange" "2000" 
-"AttackRange" "150" 
-"ProjectileModel" "" 
-"ProjectileSpeed" "" 
-
-
-
-"BountyXP" "500" 
-"BountyGoldMin" "0" 
-"BountyGoldMax" "0" 
-
-
-
-"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-"MovementSpeed" "350" 
-"MovementTurnRate" "0.5" 
-"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
-
-
-"StatusHealth" "4000" 
-"StatusHealthRegen" "1" 
-"StatusMana" "1000" 
-"StatusManaRegen" "1" 
-
-
-
-"TeamName" 					"DOTA_TEAM_BADGUYS" 
-"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-"AttackType"    "chaos"
-"ArmorType"     "heavy" 
-
-
-
-"VisionDaytimeRange" "1800" 
-"VisionNighttimeRange" "1800" 
-
-
-
-"HasInventory" "0" 
-
-"vscripts"           "units\Megaboss5Stats.lua"
-
-"Creature"
-{
-	"DisableResistance"            "50.0"
-	"DefaultState"			"Invade"
-
-	"AttachWearables"
+"DotaUnits"
+{	
+	"5_wave_megaboss" 
 	{
-		"Wearable1"		{	"ItemDef"		"7650"		} 
-		"Wearable2" 	{	"ItemDef"		"7651"		} 
-		"Wearable3"		{	"ItemDef"		"7652"		} 
-		"Wearable4"		{	"ItemDef"		"7653"		} 
-		"Wearable5"		{	"ItemDef"		"7654"		} 
-	}
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/heroes/ursa/ursa.vmdl" 
+		"SoundSet" "Hero_Ursa" 
+		"ModelScale" "1.3" 
+		"RingRadius"         "90"
+		"Level" "1" 
 
-//	"AttachWearables"
-//	{
-//		"Wearable1"		{	"ItemDef"		"4212"		} 
-//		"Wearable2" 	{	"ItemDef"		"4213"		} 
-//		"Wearable3"		{	"ItemDef"		"4214"		} 
-//		"Wearable4"		{	"ItemDef"		"4215"		} 
-//	}
-
-	"States"	
-	{
-		"Invade"
+		"precache"
 		{
-			"Name"				"Invade"
-			"Aggression"		"100.0" //cast offensive spells whenever
-			"Avoidance"			"0.0" //dont flee
-			"Support"			"0.0" //start buffing
+			"model" "models/heroes/ursa/ursa.vmdl" 
+		}
+
+		"Ability1" "5_megaboss_firestorm" 
+		"Ability2" "5_megaboss_stomp" 
+		"Ability3" "megaboss_5_bash" 
+		"Ability4" "megaboss_5_crit" 
+		"Ability5" "true_sight" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"AbilityLayout"     "5"	
+
+		"ArmorPhysical" "20" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "181" 
+		"AttackDamageMax" "187" 
+		"AttackRate" "0.07" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "2000" 
+		"AttackRange" "150" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "500" 
+		"BountyGoldMin" "0" 
+		"BountyGoldMax" "0" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "350" 
+		"MovementTurnRate" "0.5" 
+		"BoundsHullName"        "DOTA_HULL_SIZE_HUGE"
+
+		"StatusHealth" "4000" 
+		"StatusHealthRegen" "1" 
+		"StatusMana" "1000" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" 					"DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" 	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "chaos"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "1800" 
+		"VisionNighttimeRange" "1800" 
+
+		"HasInventory" "0" 
+
+		"vscripts"           "units\Megaboss5Stats.lua"
+
+		"Creature"
+		{
+			"DisableResistance"            "50.0"
+			"DefaultState"			"Invade"
+
+			"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"7650"		} 
+				"Wearable2" 	{	"ItemDef"		"7651"		} 
+				"Wearable3"		{	"ItemDef"		"7652"		} 
+				"Wearable4"		{	"ItemDef"		"7653"		} 
+				"Wearable5"		{	"ItemDef"		"7654"		} 
+			}
+
+		//	"AttachWearables"
+		//	{
+		//		"Wearable1"		{	"ItemDef"		"4212"		} 
+		//		"Wearable2" 	{	"ItemDef"		"4213"		} 
+		//		"Wearable3"		{	"ItemDef"		"4214"		} 
+		//		"Wearable4"		{	"ItemDef"		"4215"		} 
+		//	}
+
+			"States"	
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0" //cast offensive spells whenever
+					"Avoidance"			"0.0" //dont flee
+					"Support"			"0.0" //start buffing
+				}
+			}
+			
+			"OffensiveAbilities"
+			{
+				"Ability1"
+				{
+					"Name"				"5_megaboss_stomp"
+					"AOE"                "1"
+					"Radius"             "190"
+					"MinimumTargets"     "1"
+				}
+				"Ability2"
+				{
+					"Name"				"5_megaboss_firestorm"
+					"AOE"                "1"
+					"Radius"             "800"
+					"MinimumTargets"     "1"
+				}
+			}
 		}
 	}
-	
-	"OffensiveAbilities"
-	{
-		"Ability1"
-		{
-			"Name"				"5_megaboss_stomp"
-			"AOE"                "1"
-			"Radius"             "190"
-			"MinimumTargets"     "1"
-		}
-		"Ability2"
-		{
-			"Name"				"5_megaboss_firestorm"
-			"AOE"                "1"
-			"Radius"             "800"
-			"MinimumTargets"     "1"
-		}
-	}
-}
 }

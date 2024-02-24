@@ -1,1223 +1,999 @@
-"1_wave_creep_extreme" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
-	"Level" "1" 
-	 
+"DotaUnits"
+{	
+	"1_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "1" 
+		"Level" "1" 
 
-	"Ability1" "wave_1_poison_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-	 
-	"ArmorPhysical" "2" 
-	"MagicalResistance" "0" 
-	 
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "16" 
-	"AttackDamageMax" "17" 
-	"AttackRate" "1.55" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" //"10000"
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-	 
-	"BountyXP" "25" 
-	"BountyGoldMin" "4" 
-	"BountyGoldMax" "4" 
-	 
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "300" 
-	"MovementTurnRate" "0.5" 
-	 
-	"StatusHealth" "130" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "0" 
-	"StatusManaRegen" "0" 
-	 
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-	"VisionDaytimeRange" "800" //"10000"
-	"VisionNighttimeRange" "800" //"10000"
-	 
-	"HasInventory" "0" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-	
-	"vscripts"	"AI\attack_wave_only.lua" //
-	
-
-}
+		"Ability1" "wave_1_poison_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
 		
-"2_wave_creep_extreme" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_centaur_med/n_creep_centaur_med.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.85" 
-	"Level" "1" 
-
-	"Ability1" "wave_2_centaurs_revenge_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-	"ArmorPhysical" "0" 
-	"MagicalResistance" "0" 
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "31" 
-	"AttackDamageMax" "32" 
-	"AttackRate" "1.55" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-	"BountyXP" "25" 
-	"BountyGoldMin" "4" 
-	"BountyGoldMax" "4" 
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "350" 
-	"MovementTurnRate" "0.5" 
-
-	"StatusHealth" "220" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "0" 
-	"StatusManaRegen" "0" 
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"HasInventory" "0" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-	
-	"vscripts"	"AI\attack_wave_only.lua" //
-}
-
-"3_wave_creep_extreme" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.75" 
-	"Level" "1" 
-	"precache"
-	{
-		"model" "models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl"
-	}
-
-	"Ability1" "wave_3_evasion_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-	"ArmorPhysical" "0" 
-	"MagicalResistance" "0" 
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "51" 
-	"AttackDamageMax" "57" 
-	"AttackRate" "1.5" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-	"BountyXP" "25" 
-	"BountyGoldMin" "5" 
-	"BountyGoldMax" "5" 
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.6" 
-
-	"StatusHealth" "375" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "200" 
-	"StatusManaRegen" "1" 
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "medium" 
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"HasInventory" "0" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-	
-	"vscripts"	"AI\attack_wave_only.lua" //
-}
-
-"4_wave_creep_extreme" 
-{
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_troll_dark_a/n_creep_troll_dark_a.vmdl" 
-	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "0.8" 
-	"Level" "1" 
+		"ArmorPhysical" "2" 
+		"MagicalResistance" "0" 
 		
-	"precache"
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "16" 
+		"AttackDamageMax" "17" 
+		"AttackRate" "1.55" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" //"10000"
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+		
+		"BountyXP" "25" 
+		"BountyGoldMin" "4" 
+		"BountyGoldMax" "4" 
+		
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "300" 
+		"MovementTurnRate" "0.5" 
+		
+		"StatusHealth" "130" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "0" 
+		"StatusManaRegen" "0" 
+		
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" //"10000"
+		"VisionNighttimeRange" "800" //"10000"
+		
+		"HasInventory" "0" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+		
+		"vscripts"	"AI\attack_wave_only.lua" //
+	}
+			
+	"2_wave_creep_extreme" 
 	{
-		"particle" "particles/base_attacks/ranged_badguy.vpcf"
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_centaur_med/n_creep_centaur_med.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "0.85" 
+		"Level" "1" 
+
+		"Ability1" "wave_2_centaurs_revenge_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "0" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "31" 
+		"AttackDamageMax" "32" 
+		"AttackRate" "1.55" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "25" 
+		"BountyGoldMin" "4" 
+		"BountyGoldMax" "4" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "350" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "220" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "0" 
+		"StatusManaRegen" "0" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"HasInventory" "0" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+		
+		"vscripts"	"AI\attack_wave_only.lua" //
 	}
 
-
-	"Ability1" "4_wave_true_hit_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-	"ArmorPhysical" "0" 
-	"MagicalResistance" "0" 
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "41" 
-	"AttackDamageMax" "44" 
-	"AttackRate" "1.3" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "450" 
-	"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" 
-	"ProjectileSpeed" "1200" 
-
-	"BountyXP" "25" 
-	"BountyGoldMin" "5" 
-	"BountyGoldMax" "5" 
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.5" 
-
-	"StatusHealth" "400" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "0" 
-	"StatusManaRegen" "0" 
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "pierce"
-	"ArmorType"     "heavy" 
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"HasInventory" "0" 
-	
-	"PathfindingSearchDepthScale" "0.5" //0.3
-	
-	"vscripts"	"AI\attack_wave_only.lua" //
-}
-
-"6_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/thief/thief_01.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.85" 
-	"Level" "1" 
-
-
-	"Ability1" "wave_6_assassin_extreme" 
-	"Ability2" "wave_6_invisibility" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "2" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "76" 
-	"AttackDamageMax" "78" 
-	"AttackRate" "0.85" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "33" 
-	"BountyGoldMin" "6" 
-	"BountyGoldMax" "6" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "320" 
-	"MovementTurnRate" "0.6" 
-
-
-
-	"StatusHealth" "750" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "300" 
-	"StatusManaRegen" "0.75" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" 
-
-	"vscripts"	"AI\6_wave_creeps.lua" 
-
-	"HasInventory" "0" 
-}
-
-"7_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/items/furion/treant_stump.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "7_wave_plague" 
-	"Ability2" "7_wave_sharp_claws_extreme" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "1" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "111" 
-	"AttackDamageMax" "115" 
-	"AttackRate" "1.05" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "33" 
-	"BountyGoldMin" "6" 
-	"BountyGoldMax" "6" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "400" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "800" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "250" 
-	"StatusManaRegen" "1" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\attack_wave_only.lua" //
-
-	"HasInventory" "0" 
-}
-
-"8_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl" 
-	"SoundSet" "Hero_Sven" 
-	"ModelScale" "1.25" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "wave_8_cleave" 
-	"Ability2" "neutral_spell_immunity" 
-	"Ability3" "wave_8_lifesteal_extreme" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "1" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "126" 
-	"AttackDamageMax" "129" 
-	"AttackRate" "1.05" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "33" 
-	"BountyGoldMin" "7" 
-	"BountyGoldMax" "7" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.6" 
-
-
-
-	"StatusHealth" "950" 
-	"StatusHealthRegen" "0.25" 
-	"StatusMana" "300" 
-	"StatusManaRegen" "0.75" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\attack_wave_only.lua" //
-
-	"HasInventory" "0" 
-}
-
-"9_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/morphling/morphling.vmdl" 
-	"SoundSet" "Hero_Morphling" 
-	"ModelScale" "0.7" 
-	"Level" "1" 
-	"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" 
-	"ProjectileSpeed"           "1300" 	
-			"precache"
-				{
-					"model"	"models/heroes/morphling/morphling.vmdl" 
-					"particle" "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
-				}
-
-
-
-	"Ability1" "" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "1" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "141" 
-	"AttackDamageMax" "150" 
-	"AttackRate" "1.0" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "450" 
-
-
-
-	"BountyXP" "33" 
-	"BountyGoldMin" "7" 
-	"BountyGoldMax" "7" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "220" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "975" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "0" 
-	"StatusManaRegen" "0" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "pierce"
-	"ArmorType"     "medium" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\attack_wave_only.lua" //
-
-
-	"HasInventory" "0" 
-}
-
-"11_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/items/beastmaster/boar/beast_deming/beast_deming.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.8" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "11_wave_immolation_extreme" 
-	"Ability2" "wave_11_mana_break_extreme_creeps" 
-	"Ability3" "wave_11_cleave" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "15" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "221" 
-	"AttackDamageMax" "226" 
-	"AttackRate" "0.55" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "48" 
-	"BountyGoldMin" "8" 
-	"BountyGoldMax" "8" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "420" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "1250" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "300" 
-	"StatusManaRegen" "0" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "chaos"
-	"ArmorType"     "medium"
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\11_wave_creeps_extreme.lua" //
-
-
-	"HasInventory" "0" 
-}
-
-"12_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "0.8" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "12_wave_stomp" 
-	"Ability2" "wave_12_crit_extreme" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "8" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "241" 
-	"AttackDamageMax" "244" 
-	"AttackRate" "0.65" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "48" 
-	"BountyGoldMin" "8" 
-	"BountyGoldMax" "8" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "300" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "1400" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "400" 
-	"StatusManaRegen" "0" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-
-
-	"HasInventory" "0" 
-
-	"vscripts"	"AI\12_wave_creeps.lua"
-}
-
-"13_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
-	"Level" "1" 
-
-
-
-
-	"Ability1" "spell_immunity" 
-	"Ability2" "13_wave_hurl_boulder" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "10" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "281" 
-	"AttackDamageMax" "285" 
-	"AttackRate" "0.75" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "48" 
-	"BountyGoldMin" "9" 
-	"BountyGoldMax" "9" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "1600" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "100" 
-	"StatusManaRegen" "1" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\13_wave_creeps.lua" 
-
-
-	"HasInventory" "0" 
-
-
-
-}
-
-"14_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_small.vmdl" 
-	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "0.7" 
-	"Level" "1" 
-	"ProjectileModel"           "particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf" 
-	"ProjectileSpeed"           "1500" 
-
-
-
-	"Ability1" "14_wave_shadow_strike_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "15" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "191" 
-	"AttackDamageMax" "200" 
-	"AttackRate" "0.8" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "500" 
-
-	"SplashAttack"				"1"
-	"SplashFullDamageRadius"	"75" 		// FArea, full damage radius
-	"SplashMediumRadius"		"150" 		// HArea
-	"SplashMediumDamage"		"0.5" 		// HFact
-	"SplashSmallRadius"			"225"		// QArea
-	"SplashSmallDamage"			"0.25"		// QFact
-
-
-
-
-	"BountyXP" "48" 
-	"BountyGoldMin" "10" 
-	"BountyGoldMax" "10" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "1500" 
-	"StatusHealthRegen" "1.50" 
-	"StatusMana" "500" 
-	"StatusManaRegen" "1.50" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "chaos"
-	"ArmorType"     "heavy" 
-
-
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\14_wave_creeps_extreme.lua" //
-
-
-	"HasInventory" "0" 
-}
-
-"16_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl" 
-	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "1" 
-	"Level" "1" 
-	"ProjectileModel"           "particles/neutral_fx/ghost_base_attack.vpcf" 
-	"ProjectileSpeed"           "900" 
-
-
-
-	"Ability1" "wave_16_mana_burn_extreme" 
-	"Ability2" "wave_16_evasion_extreme" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "20" 
-	"MagicalResistance" "0" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "376" 
-	"AttackDamageMax" "386" 
-	"AttackRate" "0.8" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "400" 
-
-
-
-
-	"BountyXP" "63" 
-	"BountyGoldMin" "11" 
-	"BountyGoldMax" "11" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "270" 
-	"MovementTurnRate" "0.6" 
-
-
-
-	"StatusHealth" "2000" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "400" 
-	"StatusManaRegen" "1" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "magic"
-	"ArmorType"     "heavy" 	
-
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\16_wave_creeps_extreme.lua" //
-
-
-	"HasInventory" "0" 
-}
-
-"17_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
-	"Level" "1" 
-
-
-
-	"Ability1" "17_wave_purge_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "40" 
-	"MagicalResistance" "75" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "451" 
-	"AttackDamageMax" "455" 
-	"AttackRate" "1.05" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "110" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "63" 
-	"BountyGoldMin" "11" 
-	"BountyGoldMax" "11" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "350" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "2500" 
-	"StatusHealthRegen" "0.5" 
-	"StatusMana" "300" 
-	"StatusManaRegen" "1" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "normal"
-	"ArmorType"     "heavy" 
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\17_wave_creeps_extreme.lua" //
-
-
-	"HasInventory" "0" 
-}
-
-"18_wave_creep_extreme" 
-{
-
-
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/heroes/enigma/eidelon.vmdl" 
-	"SoundSet" "n_creep_Ranged" 
-	"ModelScale" "1.1" 
-	"Level" "1" 
-
-	"precache"
+	"3_wave_creep_extreme" 
 	{
-		"model"	"models/heroes/enigma/eidelon.vmdl"
-		"particle" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf"
-	}
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "0.75" 
+		"Level" "1" 
 
-
-	"Ability1" "18_wave_silence_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
-
-
-
-	"ArmorPhysical" "10" 
-	"MagicalResistance" "50" 
-
-
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" "451" 
-	"AttackDamageMax" "455" 
-	"AttackRate" "1.1" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "250" 
-	"ProjectileModel" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf" 
-	"ProjectileSpeed" "1900" 
-
-
-
-	"BountyXP" "63" 
-	"BountyGoldMin" "11" 
-	"BountyGoldMax" "11" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "350" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "2600" 
-	"StatusHealthRegen" "1" 
-	"StatusMana" "150" 
-	"StatusManaRegen" "1" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "pierce"
-	"ArmorType"     "medium"
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\18_wave_creeps_extreme.lua" //
-
-
-	"HasInventory" "0" 
-
-	"Creature"
-	{
-		"AttachWearables"
+		"precache"
 		{
-			"Wearable1"		{	"ItemDef"		"498"		} 
+			"model" "models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl"
+		}
+
+		"Ability1" "wave_3_evasion_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "0" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "51" 
+		"AttackDamageMax" "57" 
+		"AttackRate" "1.5" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "25" 
+		"BountyGoldMin" "5" 
+		"BountyGoldMax" "5" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "270" 
+		"MovementTurnRate" "0.6" 
+
+		"StatusHealth" "375" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "200" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "medium" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"HasInventory" "0" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+		
+		"vscripts"	"AI\attack_wave_only.lua" //
+	}
+
+	"4_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_troll_dark_a/n_creep_troll_dark_a.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "0.8" 
+		"Level" "1" 
+			
+		"precache"
+		{
+			"particle" "particles/base_attacks/ranged_badguy.vpcf"
+		}
+
+		"Ability1" "4_wave_true_hit_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "0" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "41" 
+		"AttackDamageMax" "44" 
+		"AttackRate" "1.3" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "450" 
+		"ProjectileModel" "particles/base_attacks/ranged_badguy.vpcf" 
+		"ProjectileSpeed" "1200" 
+
+		"BountyXP" "25" 
+		"BountyGoldMin" "5" 
+		"BountyGoldMax" "5" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "270" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "400" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "0" 
+		"StatusManaRegen" "0" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "pierce"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"HasInventory" "0" 
+		
+		"PathfindingSearchDepthScale" "0.5" //0.3
+		
+		"vscripts"	"AI\attack_wave_only.lua" //
+	}
+
+	"6_wave_creep_extreme" 
+	{
+
+
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/thief/thief_01.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "0.85" 
+		"Level" "1" 
+
+		"Ability1" "wave_6_assassin_extreme" 
+		"Ability2" "wave_6_invisibility" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "2" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "76" 
+		"AttackDamageMax" "78" 
+		"AttackRate" "0.85" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "33" 
+		"BountyGoldMin" "6" 
+		"BountyGoldMax" "6" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "320" 
+		"MovementTurnRate" "0.6" 
+
+		"StatusHealth" "750" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "300" 
+		"StatusManaRegen" "0.75" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" 
+
+		"vscripts"	"AI\6_wave_creeps.lua" 
+
+		"HasInventory" "0" 
+	}
+
+	"7_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/items/furion/treant_stump.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "1" 
+		"Level" "1" 
+
+		"Ability1" "7_wave_plague" 
+		"Ability2" "7_wave_sharp_claws_extreme" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "1" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "111" 
+		"AttackDamageMax" "115" 
+		"AttackRate" "1.05" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "33" 
+		"BountyGoldMin" "6" 
+		"BountyGoldMax" "6" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "400" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "800" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "250" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\attack_wave_only.lua" //
+
+		"HasInventory" "0" 
+	}
+
+	"8_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl" 
+		"SoundSet" "Hero_Sven" 
+		"ModelScale" "1.25" 
+		"Level" "1" 
+
+		"Ability1" "wave_8_cleave" 
+		"Ability2" "neutral_spell_immunity" 
+		"Ability3" "wave_8_lifesteal_extreme" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "1" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "126" 
+		"AttackDamageMax" "129" 
+		"AttackRate" "1.05" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "33" 
+		"BountyGoldMin" "7" 
+		"BountyGoldMax" "7" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "270" 
+		"MovementTurnRate" "0.6" 
+
+		"StatusHealth" "950" 
+		"StatusHealthRegen" "0.25" 
+		"StatusMana" "300" 
+		"StatusManaRegen" "0.75" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\attack_wave_only.lua" //
+
+		"HasInventory" "0" 
+	}
+
+	"9_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/heroes/morphling/morphling.vmdl" 
+		"SoundSet" "Hero_Morphling" 
+		"ModelScale" "0.7" 
+		"Level" "1" 
+		"ProjectileModel"           "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf" 
+		"ProjectileSpeed"           "1300" 	
+
+		"precache"
+		{
+			"model"	"models/heroes/morphling/morphling.vmdl" 
+			"particle" "particles/units/heroes/hero_morphling/morphling_base_attack.vpcf"
+		}
+
+		"Ability1" "" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "1" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "141" 
+		"AttackDamageMax" "150" 
+		"AttackRate" "1.0" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "450" 
+
+		"BountyXP" "33" 
+		"BountyGoldMin" "7" 
+		"BountyGoldMax" "7" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "220" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "975" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "0" 
+		"StatusManaRegen" "0" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "pierce"
+		"ArmorType"     "medium" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\attack_wave_only.lua" //
+
+		"HasInventory" "0" 
+	}
+
+	"11_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/items/beastmaster/boar/beast_deming/beast_deming.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "0.8" 
+		"Level" "1" 
+
+		"Ability1" "11_wave_immolation_extreme" 
+		"Ability2" "wave_11_mana_break_extreme_creeps" 
+		"Ability3" "wave_11_cleave" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "15" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "221" 
+		"AttackDamageMax" "226" 
+		"AttackRate" "0.55" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "48" 
+		"BountyGoldMin" "8" 
+		"BountyGoldMax" "8" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "420" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "1250" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "300" 
+		"StatusManaRegen" "0" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "chaos"
+		"ArmorType"     "medium"
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\11_wave_creeps_extreme.lua" //
+
+		"HasInventory" "0" 
+	}
+
+	"12_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "0.8" 
+		"Level" "1" 
+
+		"Ability1" "12_wave_stomp" 
+		"Ability2" "wave_12_crit_extreme" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "8" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "241" 
+		"AttackDamageMax" "244" 
+		"AttackRate" "0.65" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "48" 
+		"BountyGoldMin" "8" 
+		"BountyGoldMax" "8" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "300" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "1400" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "400" 
+		"StatusManaRegen" "0" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800"
+
+		"HasInventory" "0" 
+
+		"vscripts"	"AI\12_wave_creeps.lua"
+	}
+
+	"13_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "1" 
+		"Level" "1" 
+
+		"Ability1" "spell_immunity" 
+		"Ability2" "13_wave_hurl_boulder" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "10" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "281" 
+		"AttackDamageMax" "285" 
+		"AttackRate" "0.75" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "48" 
+		"BountyGoldMin" "9" 
+		"BountyGoldMax" "9" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "270" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "1600" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "100" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\13_wave_creeps.lua" 
+
+		"HasInventory" "0" 
+	}
+
+	"14_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_small.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "0.7" 
+		"Level" "1" 
+		"ProjectileModel"           "particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf" 
+		"ProjectileSpeed"           "1500" 
+
+		"Ability1" "14_wave_shadow_strike_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "15" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "191" 
+		"AttackDamageMax" "200" 
+		"AttackRate" "0.8" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "500" 
+
+		"SplashAttack"				"1"
+		"SplashFullDamageRadius"	"75" 		// FArea, full damage radius
+		"SplashMediumRadius"		"150" 		// HArea
+		"SplashMediumDamage"		"0.5" 		// HFact
+		"SplashSmallRadius"			"225"		// QArea
+		"SplashSmallDamage"			"0.25"		// QFact
+
+		"BountyXP" "48" 
+		"BountyGoldMin" "10" 
+		"BountyGoldMax" "10" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "270" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "1500" 
+		"StatusHealthRegen" "1.50" 
+		"StatusMana" "500" 
+		"StatusManaRegen" "1.50" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "chaos"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\14_wave_creeps_extreme.lua" //
+
+		"HasInventory" "0" 
+	}
+
+	"16_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_b.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "1" 
+		"Level" "1" 
+		"ProjectileModel"           "particles/neutral_fx/ghost_base_attack.vpcf" 
+		"ProjectileSpeed"           "900" 
+
+		"Ability1" "wave_16_mana_burn_extreme" 
+		"Ability2" "wave_16_evasion_extreme" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "20" 
+		"MagicalResistance" "0" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "376" 
+		"AttackDamageMax" "386" 
+		"AttackRate" "0.8" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "400" 
+
+		"BountyXP" "63" 
+		"BountyGoldMin" "11" 
+		"BountyGoldMax" "11" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "270" 
+		"MovementTurnRate" "0.6" 
+
+		"StatusHealth" "2000" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "400" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "magic"
+		"ArmorType"     "heavy" 	
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\16_wave_creeps_extreme.lua" //
+
+		"HasInventory" "0" 
+	}
+
+	"17_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "1" 
+		"Level" "1" 
+
+		"Ability1" "17_wave_purge_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "40" 
+		"MagicalResistance" "75" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "451" 
+		"AttackDamageMax" "455" 
+		"AttackRate" "1.05" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "110" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
+
+		"BountyXP" "63" 
+		"BountyGoldMin" "11" 
+		"BountyGoldMax" "11" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "350" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "2500" 
+		"StatusHealthRegen" "0.5" 
+		"StatusMana" "300" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "normal"
+		"ArmorType"     "heavy" 
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\17_wave_creeps_extreme.lua" //
+
+		"HasInventory" "0" 
+	}
+
+	"18_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/heroes/enigma/eidelon.vmdl" 
+		"SoundSet" "n_creep_Ranged" 
+		"ModelScale" "1.1" 
+		"Level" "1" 
+
+		"precache"
+		{
+			"model"	"models/heroes/enigma/eidelon.vmdl"
+			"particle" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf"
+		}
+
+		"Ability1" "18_wave_silence_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
+
+		"ArmorPhysical" "10" 
+		"MagicalResistance" "50" 
+
+		"AttackCapabilities" "DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" "451" 
+		"AttackDamageMax" "455" 
+		"AttackRate" "1.1" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "250" 
+		"ProjectileModel" "particles/econ/items/enigma/enigma_geodesic/enigma_base_attack_eidolon_geodesic.vpcf" 
+		"ProjectileSpeed" "1900" 
+
+		"BountyXP" "63" 
+		"BountyGoldMin" "11" 
+		"BountyGoldMax" "11" 
+
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "350" 
+		"MovementTurnRate" "0.5" 
+
+		"StatusHealth" "2600" 
+		"StatusHealthRegen" "1" 
+		"StatusMana" "150" 
+		"StatusManaRegen" "1" 
+
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "pierce"
+		"ArmorType"     "medium"
+
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
+
+		"PathfindingSearchDepthScale" "0.5" //0.3
+
+		"vscripts"	"AI\18_wave_creeps_extreme.lua" //
+
+		"HasInventory" "0" 
+
+		"Creature"
+		{
+			"AttachWearables"
+			{
+				"Wearable1"		{	"ItemDef"		"498"		} 
+			}
 		}
 	}
-}
 
-"19_wave_creep_extreme" 
-{
+	"19_wave_creep_extreme" 
+	{
+		"BaseClass" "npc_dota_creature" 
+		"Model" "models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl" 
+		"SoundSet" "n_creep_Melee" 
+		"ModelScale" "1" 
+		"Level" "1" 
 
+		"Ability1" "19_wave_faerie_fire_extreme" 
+		"Ability2" "" 
+		"Ability3" "" 
+		"Ability4" "" 
+		"Ability5" "" 
+		"Ability6" "" 
+		"Ability7" "" 
+		"Ability8" "" 
 
-	"BaseClass" "npc_dota_creature" 
-	"Model" "models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl" 
-	"SoundSet" "n_creep_Melee" 
-	"ModelScale" "1" 
-	"Level" "1" 
+		"ArmorPhysical" "25" 
+		"MagicalResistance" "0" 
 
+		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" "666" 
+		"AttackDamageMax" "666" 
+		"AttackRate" "1.75" 
+		"AttackAnimationPoint" "0.3" 
+		"AttackAcquisitionRange" "0" 
+		"AttackRange" "100" 
+		"ProjectileModel" "" 
+		"ProjectileSpeed" "" 
 
+		"BountyXP" "63" 
+		"BountyGoldMin" "12" 
+		"BountyGoldMax" "12" 
 
+		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+		"MovementSpeed" "320" 
+		"MovementTurnRate" "0.5" 
 
-	"Ability1" "19_wave_faerie_fire_extreme" 
-	"Ability2" "" 
-	"Ability3" "" 
-	"Ability4" "" 
-	"Ability5" "" 
-	"Ability6" "" 
-	"Ability7" "" 
-	"Ability8" "" 
+		"StatusHealth" "3000" 
+		"StatusHealthRegen" "1" 
+		"StatusMana" "500" 
+		"StatusManaRegen" "1.25" 
 
+		"TeamName" "DOTA_TEAM_BADGUYS" 
+		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
+		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		"AttackType"    "chaos"
+		"ArmorType"     "heavy"
 
+		"VisionDaytimeRange" "800" 
+		"VisionNighttimeRange" "800" 
 
-	"ArmorPhysical" "25" 
-	"MagicalResistance" "0" 
+		"PathfindingSearchDepthScale" "0.5" //0.3
 
+		"vscripts"	"AI\19_wave_creeps_extreme.lua" 
 
-
-	"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" "666" 
-	"AttackDamageMax" "666" 
-	"AttackRate" "1.75" 
-	"AttackAnimationPoint" "0.3" 
-	"AttackAcquisitionRange" "0" 
-	"AttackRange" "100" 
-	"ProjectileModel" "" 
-	"ProjectileSpeed" "" 
-
-
-
-	"BountyXP" "63" 
-	"BountyGoldMin" "12" 
-	"BountyGoldMax" "12" 
-
-
-
-	"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-	"MovementSpeed" "320" 
-	"MovementTurnRate" "0.5" 
-
-
-
-	"StatusHealth" "3000" 
-	"StatusHealthRegen" "1" 
-	"StatusMana" "500" 
-	"StatusManaRegen" "1.25" 
-
-
-
-	"TeamName" "DOTA_TEAM_BADGUYS" 
-	"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_HERO"
-	"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	"AttackType"    "chaos"
-	"ArmorType"     "heavy"
-
-
-	"VisionDaytimeRange" "800" 
-	"VisionNighttimeRange" "800" 
-
-	"PathfindingSearchDepthScale" "0.5" //0.3
-
-	"vscripts"	"AI\19_wave_creeps_extreme.lua" //
-
-
-	"HasInventory" "0" 
+		"HasInventory" "0" 
+	}
 }
