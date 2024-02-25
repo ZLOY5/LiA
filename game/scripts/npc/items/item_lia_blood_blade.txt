@@ -23,7 +23,10 @@
 	"item_lia_blood_blade"
 	{
 		"ID"							"1313"
-		"BaseClass" 					"item_datadriven"
+
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items/item_lia_blood_blade"
+
 		"ItemCost"						"900"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -35,94 +38,21 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityManaCost"         		"100"
 		"AbilityCooldown"        		"13"
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	 "items\blood_blade"
-				"Function" 		 "OnSpellStart"
-				"stealperc" 	 "%stealperc"
-				"radius" 		 "%radius"
-				"maxheal"        "%maxheal"
-				"max_damage"	 "%max_damage"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_item_lia_blood_blade"
-			{
-				"Passive"          "1"    
-				"IsHidden"         "1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Orb"
-				{
-					"Priority"		"DOTA_ORB_PRIORITY_ITEM"
-				}
 
-				"OnOrbImpact"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"items\blood_blade.lua"
-						"Function"				"modifier_item_blood_blade_datadriven_on_orb_impact"
-					}
-				}
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%bonus_damage"
-				}  
-			}
-			"modifier_item_blood_blade_datadriven_lifesteal"
-			{
-				"Passive"			"0"
-				"IsHidden"			"1"
-				"OnDealDamage"
-				{
-					"Lifesteal"
-					{
-						"Target"			
-						{
-							"Center"	"ATTACKER"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-						}
-						"LifestealPercent"	"%lifesteal_percent"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
+		"precache"
 		{
-			"01"
-			{
-				"var_type"     "FIELD_INTEGER"
-				"bonus_damage" "70"
-			}
-			"02"
-			{
-				"var_type"  "FIELD_INTEGER"
-				"lifesteal_percent" "22"
-			}
-			"03"
-			{
-				"var_type"  "FIELD_INTEGER"
-				"stealperc" "8"
-			}
-			"04"
-			{
-				"var_type" "FIELD_INTEGER"
-				"radius"   "525"
-			}
-			"05"
-			{
-				"var_type" "FIELD_INTEGER"
-				"maxheal"   "1500"
-			}
-			"06"
-			{
-				"var_type" "FIELD_INTEGER"
-				"max_damage"   "250"
-			}
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_bloodseeker.vsndevts"
+			"particle"		"particles/econ/items/bloodseeker/bloodseeker_eztzhok_weapon/bloodseeker_bloodbath_eztzhok.vpcf"
+		}
+
+		"AbilityValues"
+		{
+			"bonus_damage"			"70"
+			"lifesteal_percent"		"22"
+			"healtsteal_percent"	"8"
+			"healtsteal_radius"		"525"
+			"healtsteal_limit"		"1500"
+			"healtsteal_max_damage"	"250"
 		}
 	}
 }

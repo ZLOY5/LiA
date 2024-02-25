@@ -3,7 +3,9 @@
 	"item_lia_mask_of_death"
 	{
 		"ID"							"1488"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items/item_lia_mask_of_death"
+
 		"ItemCost"						"200"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -13,52 +15,10 @@
 		"ItemAliases"					"mod;mask of death;lifesteal;маска смерти;мс"
 		"AbilityTextureName"			"custom/lia_mask_of_death"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
-		"Modifiers"
-		{
-			"modifier_item_mask_of_death"
-			{
-				"Passive"          "1"    
-				"IsHidden"         "1"
-				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Orb"
-				{
-					"Priority"		"DOTA_ORB_PRIORITY_ITEM"
-				}
 
-				"OnOrbImpact"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"items\mask_of_death.lua"
-						"Function"				"modifier_item_mask_of_death_on_orb_impact"
-					}
-				}
-			}
-			"modifier_item_mask_of_death_lifesteal"
-			{
-				"Passive"			"0"
-				"IsHidden"			"1"		
-				"OnDealDamage"
-				{
-					"Lifesteal"
-					{
-						"Target"			
-						{
-							"Center"	"ATTACKER"
-							"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-						}
-						"LifestealPercent"	"%lifesteal_percent"
-					}
-				}
-			}
-		}
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type" "FIELD_INTEGER"
-				"lifesteal_percent" "10"
-			}
+			"lifesteal_percent"		"10"
 		}
 	}
 }
