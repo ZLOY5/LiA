@@ -23,7 +23,8 @@
 	"item_lia_fire_rod"
 	{
 		"ID"							"1456"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_lia_fire_rod"
 		"ItemCost"						"1070"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -51,124 +52,15 @@
 			"particle"  "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
 		}
 
-		"OnSpellStart"
+		"AbilityValues"
 		{
-			"LinearProjectile"
-			{
-				"Target" "POINT"
-				"EffectName" "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
-				"MoveSpeed" "%speed"
-				"StartRadius" "%start_radius"
-				"StartPosition" "attach_origin"
-				"EndRadius" "%start_radius"
-				"FixedDistance" "%range"
-				"TargetTeams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_MECHANICAL"
-				"TargetFlags" "DOTA_UNIT_TARGET_FLAG_NONE"
-				"HasFrontalCone" "1"
-				"ProvidesVision" "0"
-			}
-			"FireSound"
-			{
-				"EffectName" "Hero_DragonKnight.BreathFire"
-				"Target" "CASTER"
-			}
-		}
-			"OnProjectileHitUnit"
-			{
-				"DeleteOnHit" "0"
-				"Damage"
-				{
-					"Target" "TARGET"
-					"Type" "DAMAGE_TYPE_MAGICAL"
-					"Damage" "%AbilityDamage"
-				}
-			}
-		"Modifiers"
-		{
-			"modifier_item_lia_fire_rod"
-			{
-				"Passive"               "1"
-				"IsHidden"				"1"
-				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"AllowIllusionDuplicate"    "1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	    "%bonus_damage"
-					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-				}
-
-				"Orb"
-				{
-					"Priority"			"DOTA_ORB_PRIORITY_ITEM"
-					"ProjectileName"    "particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf"
-				}
-				"OnOrbFire"
-				{
-					"FireSound"
-					{
-						"EffectName"	"Hero_Jakiro.Attack"
-						"Target"		"CASTER"
-					}
-				}
-				
-				"OnOrbImpact"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "items/OrbOfFire.lua"
-						"Function"      "OnOrbImpact"
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"%radius"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"Damage"	"%bonus_damage"
-					}
-				}
-			}
-
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"     "FIELD_INTEGER"
-				"bonus_damage" "75"
-			}
-			"02"
-			{
-				"var_type"  "FIELD_INTEGER"
-				"bonus_mana" "350"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"start_radius"			"200"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"range"					"700"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"900"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"					"180"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_tooltip"					"600"
-			}
-		}
+			"bonus_damage"		"75"
+			"bonus_mana" 		"350"
+			"radius"			"180"
+			"wave_width"		"200"
+			"wave_range"		"700"
+			"wave_speed"		"900"
+			"wave_damage"		"600"
+		}		
 	}
 }
