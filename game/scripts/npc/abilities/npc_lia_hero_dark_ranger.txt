@@ -2,7 +2,8 @@
 {
 	"dark_ranger_black_arrow"
 	{
-		"BaseClass"             		"ability_datadriven"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes/DarkRanger/dark_ranger_black_arrow"
 		"AbilityTextureName"			"custom/dark_ranger_black_arrow"
 
 		"MaxLevel"               "3"
@@ -17,7 +18,7 @@
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityCastRange"				"550"
 
-		"AbilityManaCost"				"6 12 18"
+		"AbilityManaCost"			"6 12 18"
 		"AbilityDamage"					"25 50 75"
 
 		"precache"
@@ -27,23 +28,10 @@
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"2"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"lifetime"					"4 5 6"		
-			}	
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"mana"						"6 12 18"		
-			}			
+			"duration"					"2"
+			"lifetime"					"4 5 6"
 		}
 
 		"Modifiers"
@@ -571,24 +559,6 @@
 				"EffectAttachType"  "follow_origin"
 
 				"AllowsIllusionDuplicate"	"1"
-
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes\DarkRanger\Fury.lua"
-						"Function"		"OnCreated"
-					}
-				}
-
-				"OnDestroy"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"heroes\DarkRanger\Fury.lua"
-						"Function"		"OnDestroy"
-					}
-				}
 
 				"Properties"
 				{

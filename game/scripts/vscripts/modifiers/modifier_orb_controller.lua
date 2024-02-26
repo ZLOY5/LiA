@@ -12,6 +12,7 @@ function modifier_orb_controller:DeclareFunctions()
 	return {
 		MODIFIER_EVENT_ON_ATTACK_START,
 		MODIFIER_EVENT_ON_ATTACK_RECORD,
+		MODIFIER_EVENT_ON_ATTACK,
 		MODIFIER_EVENT_ON_ATTACK_LANDED,
 		--MODIFIER_EVENT_ON_TAKEDAMAGE,
 		MODIFIER_EVENT_ON_ATTACK_RECORD_DESTROY,
@@ -52,17 +53,17 @@ function modifier_orb_controller:SortOrbsByPriority()
 		return a:GetCreationTime() < b:GetCreationTime()
 	end)
 
-	for k,v in ipairs(self.orb_modifiers) do print(k,v:GetName()) end
+	--for k,v in ipairs(self.orb_modifiers) do print(k,v:GetName()) end
 end
 
-function modifier_orb_controller:GetActiveOrb()
+function modifier_orb_controller:GetActiveOrb(event)
 	self:SortOrbsByPriority()
 
 	local active_orb
 
 	for k, modifier in ipairs(self.orb_modifiers) do
 		if modifier.IsOrbActive then
-			local success, result = pcall(modifier.IsOrbActive, modifier)
+			local success, result = xpcall(modifier.IsOrbActive, error, modifier, event)
 			if success and result then 
 				active_orb = modifier 
 				break
@@ -79,7 +80,7 @@ end
 function modifier_orb_controller:OnAttackStart(event)
 	if self.parent ~= event.attacker then return end
 
-	local active_orb = self:GetActiveOrb()
+	local active_orb = self:GetActiveOrb(event)
 
 	--print("modifier_orb_controller:OnAttackStart")
 	--print(active_orb and active_orb:GetName() or "NIL")
@@ -102,7 +103,7 @@ function modifier_orb_controller:OnAttack(event)
 	local orb_modifier = self.orb_record[event.record]
 	
 	if orb_modifier and not orb_modifier:IsNull() and orb_modifier.OnOrbFire then
-		pcall(orb_modifier.OnOrbFire, orb_modifier, event)
+		orb_modifier:OnOrbFire(event)
 	end
 end
 
@@ -113,7 +114,7 @@ function modifier_orb_controller:OnAttackLanded(event)
 	local orb_modifier = self.orb_record[event.record]
 
 	if orb_modifier and not orb_modifier:IsNull() and orb_modifier.OnOrbImpact then
-		pcall(orb_modifier.OnOrbImpact, orb_modifier, event)
+		orb_modifier:OnOrbImpact(event)
 	end
 end
 
@@ -121,7 +122,7 @@ function modifier_orb_controller:OnTakeDamage(event)
 	local orb_modifier = self.orb_record[event.record]
 
 	if orb_modifier and not orb_modifier:IsNull() and orb_modifier.OnOrbDamage then
-		pcall(orb_modifier.OnOrbDamage, orb_modifier, event)
+		orb_modifier:OnOrbDamage(event)
 	end
 end
 
@@ -134,7 +135,7 @@ end
 
 function modifier_orb_controller:GetModifierProjectileName(event)
 	if self.active_orb and self.active_orb.GetOrbProjectileName then 
-		local success, result = pcall(self.active_orb.GetOrbProjectileName, self.active_orb)
+		local success, result = xpcall(self.active_orb.GetOrbProjectileName, error, self.active_orb)
 		if success then return result end
 	end
 end
