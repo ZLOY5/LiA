@@ -12,7 +12,7 @@
 		"ItemKillable" 					"0" 
 		
 		"ItemRecipe"					"1"
-		"AbilityTextureName"    "recipe"
+		"AbilityTextureName"   			"recipe"
 		"ItemResult"					"item_lia_orb_of_frost"
 		"ItemRequirements"
 		{
@@ -23,7 +23,8 @@
 	"item_lia_orb_of_frost"
 	{
 		"ID"							"1466"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items/item_lia_orb_of_frost"
 		"ItemCost"						"770"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -34,108 +35,16 @@
 		"AbilityTextureName"			"custom/lia_orb_of_frost"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 
-		"Modifiers"
+		"AbilityValues"
 		{
-			"modifier_item_lia_orb_of_frost"
-			{
-				"Passive"          "1"    
-				"IsHidden"         "1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-
-				"Aura" "orb_of_frost_aura_armor"
-				"Aura_Radius" "900"
-				"Aura_Teams" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types" "DOTA_UNIT_TARGET_ALL"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-				}  
-				
-				"Orb"
-				{
-					"Priority"  "DOTA_ORB_PRIORITY_ITEM"
-					"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
-				}
-
-				"OnOrbImpact"
-				{
-					"ApplyModifier"
-					{
-						"Target"    "TARGET"
-						"ModifierName"  "modifier_orb_of_frost_slow"
-						"Duration"  "%slow_duration"
-					}   
-				} 
-			}
-			"modifier_orb_of_frost_slow" 
-			{
-				"IsDebuff" "1"
-				"Duration"  "3"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
-				}
-				"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
-				"EffectAttachType" "attach_hitloc"
-			}
-			"orb_of_frost_aura_armor"
-			{
-			
-				"IsBuff" "1"
-				"IsPurgable" "0"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				}
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_mana" "400"
-			}
-			"02"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_damage" "30"
-			}
-			"03"
-			{
-				"var_type" "FIELD_INTEGER"
-				"radius" "900"
-			}
-			"04"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_attack_speed" "20"
-			}
-			"05"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_movement_speed_percent" "10"
-			}
-			"06"
-			{
-				"var_type" "FIELD_INTEGER"
-				"slow_duration" "3"
-			}
-			"07"
-			{
-				"var_type" "FIELD_INTEGER"
-				"move_speed_slow" "-40"
-			}
-			"08"
-			{
-				"var_type" "FIELD_INTEGER"
-				"attack_speed_slow" "-25"
-			}
+			"bonus_mana"		"400"
+			"bonus_damage"			"30"
+			"aura_radius"	"900"
+			"aura_attack_speed"	"20"
+			"aura_movement_speed"	"10"
+			"orb_movespeed_slow"	"-40"
+			"orb_attack_slow"	"-25"
+			"orb_duration"	"3"
 		}
 	}
 }
