@@ -1,12 +1,8 @@
 modifier_valkyrie_rage = class({})
 
-function modifier_valkyrie_rage:IsHidden()
-	return false
-end
-
-function modifier_valkyrie_rage:IsPurgable()
-	return false
-end
+function modifier_valkyrie_rage:IsHidden() return false end
+function modifier_valkyrie_rage:IsPurgable() return false end
+function modifier_valkyrie_rage:GetOrbPriority() return DOTA_ORB_PRIORITY_ABILITY end
 
 function modifier_valkyrie_rage:OnCreated(kv)
 	self.ability = self:GetAbility()
@@ -51,10 +47,10 @@ function modifier_valkyrie_rage:OnAttackLanded( params )
 	return 0.0
 end
 
-function modifier_valkyrie_rage:GetEffectName()
-	return "particles/units/heroes/hero_bloodseeker/bloodseeker_rupture_trail03.vpcf"
-end
+-- function modifier_valkyrie_rage:GetEffectName()
+-- 	return "particles/units/heroes/hero_bloodseeker/bloodseeker_rupture_trail03.vpcf"
+-- end
 
-function modifier_valkyrie_rage:GetEffectAttachType()
-	return PATTACH_ABSORIGIN_FOLLOW
-end
+-- function modifier_valkyrie_rage:GetEffectAttachType()
+-- 	return PATTACH_ABSORIGIN_FOLLOW
+-- end

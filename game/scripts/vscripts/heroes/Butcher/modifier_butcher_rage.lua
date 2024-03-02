@@ -1,17 +1,19 @@
 modifier_butcher_rage = class({})
 
-function modifier_butcher_rage:IsHidden()
-	return false
-end
+function modifier_butcher_rage:IsHidden() return false end
+function modifier_butcher_rage:IsPurgable() return false end
+function modifier_butcher_rage:GetOrbPriority() return DOTA_ORB_PRIORITY_ABILITY end
 
-function modifier_butcher_rage:IsPurgable()
-	return false
-end
-
-function modifier_butcher_rage:OnCreated(kv)
+function modifier_butcher_rage:OnCreated()
+	if IsServer() then RegisterOrbEffectModifier(self) end
+	
 	self.ability = self:GetAbility()
 	self.parent = self:GetParent()
 
+	self:OnRefresh()
+end
+
+function modifier_butcher_rage:OnRefresh()
 	self.hp_pct_to_dmg = self.ability:GetSpecialValueFor("hp_pct_to_dmg") * 0.01
 	self.radius = self.ability:GetSpecialValueFor("radius")
 end
@@ -25,11 +27,11 @@ function modifier_butcher_rage:DeclareFunctions()
 	return funcs
 end
 
-function modifier_butcher_rage:OnAttackLanded( params )
+function modifier_butcher_rage:OnOrbImpact(event)
 	if IsServer() then
-		if self:GetParent() == params.attacker then
-			local hTarget = params.target
-			local hAttacker = params.attacker
+		if self:GetParent() == event.attacker then
+			local hTarget = event.target
+			local hAttacker = event.attacker
 			
 			local damage_to_deal = hAttacker:GetHealth() * self.hp_pct_to_dmg
 
@@ -43,15 +45,13 @@ function modifier_butcher_rage:OnAttackLanded( params )
 
 
 				for _,v in pairs (targets) do	
-					ApplyDamage({ victim = v, attacker = params.attacker, damage = damage_to_deal, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })
+					ApplyDamage({ victim = v, attacker = event.attacker, damage = damage_to_deal, damage_type = DAMAGE_TYPE_PHYSICAL, ability = self:GetAbility() })
 					local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_pudge/pudge_dismember.vpcf", PATTACH_ABSORIGIN_FOLLOW, v)
 					ParticleManager:SetParticleControl(particle, 1, v:GetAbsOrigin())
 				end
 			end
 		end
 	end
-
-	return 0.0
 end
 
 function modifier_butcher_rage:GetAttackSound()
