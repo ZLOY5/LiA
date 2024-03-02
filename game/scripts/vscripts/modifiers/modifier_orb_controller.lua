@@ -1,8 +1,8 @@
 modifier_orb_controller = class({})
 
-DOTA_ORB_PRIORITY_DEFAULT = 0
-DOTA_ORB_PRIORITY_ITEM = 1
-DOTA_ORB_PRIORITY_ABILITY = 2
+_G.DOTA_ORB_PRIORITY_DEFAULT = 0
+_G.DOTA_ORB_PRIORITY_ITEM = 1
+_G.DOTA_ORB_PRIORITY_ABILITY = 2
 
 function modifier_orb_controller:IsPurgable() return false end
 function modifier_orb_controller:IsHidden() return true end
