@@ -12,7 +12,7 @@
 		"ItemKillable" 					"0" 
 		
 		"ItemRecipe"					"1"
-		"AbilityTextureName"    "recipe"
+		"AbilityTextureName"    		"recipe"
 		"ItemResult"					"item_lia_ice_sword"
 		"ItemRequirements"
 		{
@@ -23,7 +23,8 @@
 	"item_lia_ice_sword"
 	{
 		"ID"							"1468"
-		"BaseClass" 					"item_datadriven"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items/item_lia_ice_sword"
 		"ItemCost"						"1315"
 		"ItemKillable" 					"0" 
 		"ItemDroppable" 				"1"
@@ -47,177 +48,19 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ancient_apparition.vsndevts"
 		}
 
-		"OnSpellStart"
+		"AbilityValues"
 		{
-			"FireSound"
-			{
-				"EffectName"		"Hero_Ancient_Apparition.ColdFeetTick"
-				"Target" 			"CASTER"
-			}
-			
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"  				"CASTER"
-					"Radius" 				"%stun_radius"
-					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				}
-
-				"Action"
-				{
-					"Damage"
-					{
-						"Target"	"TARGET"
-						"Type"		"DAMAGE_TYPE_MAGICAL"
-						"Damage"	"%stun_damage"
-					}
-
-					"ApplyModifier"
-					{
-						"Target" 		"TARGET"
-						"ModifierName"	"modifier_ice_sword_stun"
-					}
-				}
-			}		
-		}	
-		
-		"Modifiers"
-		{
-			"modifier_item_lia_ice_sword"
-			{
-				"Passive"          "1"    
-				"IsHidden"         "1"
-				"Attributes" 		        "MODIFIER_ATTRIBUTE_MULTIPLE"
-
-				"Aura" 				"modifier_ice_sword_aura_effect"
-				"Aura_Radius" 		"900"
-				"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types" 		"DOTA_UNIT_TARGET_ALL"
-				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE" 
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_BONUS"			"%bonus_mana"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%bonus_damage"
-				}  
-				
-				"Orb"
-				{
-					"Priority"  "DOTA_ORB_PRIORITY_ITEM"
-					"ProjectileName" "particles\items2_fx\skadi_projectile.vpcf"
-				}
-
-				"OnOrbImpact"
-				{
-					"ApplyModifier"
-					{
-						"Target"    "TARGET"
-						"ModifierName"  "modifier_ice_sword_slow"
-						"Duration"  "%slow_duration"
-					}   
-				} 
-			}
-
-			"modifier_ice_sword_slow" 
-			{
-				"IsDebuff" "1"
-				"Duration"  "3"
-
-				"EffectName"    "particles/generic_gameplay/generic_slowed_cold.vpcf"
-				"EffectAttachType" "attach_hitloc"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"  "%move_speed_slow"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_slow"
-				}
-			}
-
-			"modifier_ice_sword_aura_effect"
-			{
-				"IsBuff" 			"1"
-				"IsPurgable" 		"0"
-
-				"Attributes"		"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE" "%bonus_movement_speed_percent"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%bonus_attack_speed"
-				}
-			}
-
-			"modifier_ice_sword_stun"
-			{
-				"IsDebuff"	"1"
-				"Duration"	"%stun_duration"
-				"States"
-				{
-					"MODIFIER_STATE_STUNNED" 	"MODIFIER_STATE_VALUE_ENABLED"	
-					"MODIFIER_STATE_FROZEN"		"MODIFIER_STATE_VALUE_ENABLED"	
-				}
-				"EffectName"		"particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_mana" "600"
-			}
-			"02"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_damage" "60"
-			}
-			"03"
-			{
-				"var_type" "FIELD_INTEGER"
-				"radius" "900"
-			}
-			"04"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_attack_speed" "25"
-			}
-			"05"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_movement_speed_percent" "15"
-			}
-			"06"
-			{
-				"var_type" "FIELD_INTEGER"
-				"slow_duration" "3"
-			}
-			"07"
-			{
-				"var_type" "FIELD_INTEGER"
-				"move_speed_slow" "-40"
-			}
-			"08"
-			{
-				"var_type" "FIELD_INTEGER"
-				"attack_speed_slow" "-25"
-			}
-			"09"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"stun_duration"					"3.0"
-			}
-			"10"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"stun_damage"					"200"
-			}
-			"11"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"stun_radius"					"500"
-			}
+			"bonus_mana"		"600"
+			"bonus_damage"			"60"
+			"aura_radius"	"900"
+			"aura_attack_speed"	"25"
+			"aura_movement_speed"	"15"
+			"orb_movespeed_slow"	"-40"
+			"orb_attack_slow"	"-25"
+			"orb_duration"	"3"
+			"freeze_duration"	"3"
+			"freeze_damage"		"200"
+			"freeze_radius"		"500"
 		}
 	}
 }
