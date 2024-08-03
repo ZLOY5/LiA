@@ -33,36 +33,22 @@
       "soundfile"   "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"        
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "damage_per_second"    "40 80 120"
-      }
-      "02"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "damage_per_second_scepter"    "100 140 180"
-        "RequiresScepter"   "1"
-      }
-      "03"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "duration"  "4"
-      }
-      "04"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "radius"      "150 175 200"
-      }
-      "05"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "manacost_scepter"        "100 200 300"
-        "RequiresScepter"   "1"
-      }   
-    }
+    "AbilityValues"
+		{
+			"damage_per_second"				"40 80 120"
+			"damage_per_second_scepter"
+			{
+				"value"						"100 140 180"
+				"RequiresScepter"			"1"
+			}
+			"duration"						"4"
+			"radius"						"150 175 200"
+			"manacost_scepter"
+			{
+				"value"						"100 200 300"
+				"RequiresScepter"			"1"
+			}
+		}
   }
 
   "earth_lord_split_earth"
@@ -98,36 +84,22 @@
       "particle"    "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"        
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "damage"        "100 200 300"
-      }
-      "02"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "stun_duration"  "1 2 3"
-      }
-      "03"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "radius"        "175 200 225"
-      } 
-      "04"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "cooldown_scepter"  "15 14 13"
-        "RequiresScepter"   "1"
-      }
-      "05"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "manacost_scepter"        "150 250 350"
-        "RequiresScepter"   "1"
-      } 
-    }
+    "AbilityValues"
+		{
+			"damage"					"100 200 300"
+			"stun_duration"				"1 2 3"
+			"radius"					"175 200 225"
+			"cooldown_scepter"
+			{
+				"value"					"15 14 13"
+				"RequiresScepter"		"1"
+			}
+			"manacost_scepter"
+			{
+				"value"					"150 250 350"
+				"RequiresScepter"		"1"
+			}
+		}
   }
 
   "earth_lord_stone_skin"
@@ -161,39 +133,15 @@
 
       // Special    
       //-------------------------------------------------------------------------------------------------------------
-      "AbilitySpecial"
-      {
-          "01"
-          {
-              "var_type"                            "FIELD_INTEGER"
-              "bonus_armor"                         "10 15 20"
-          }
-          "02"
-          {
-              "var_type"                            "FIELD_INTEGER"
-              "magical_resistance"                  "20 30 40"
-          }
-          "03"
-          {
-              "var_type"                            "FIELD_INTEGER"
-              "chance"                              "10"
-          }
-          "04"
-          {
-              "var_type"                            "FIELD_INTEGER"
-              "damage_reduction"                    "-40"
-          }
-          "05"
-          {
-              "var_type"                            "FIELD_INTEGER"
-              "debuff_duration"                     "4"
-          }
-          "06"
-          {
-              "var_type"                            "FIELD_INTEGER"
-              "duration"                            "12 15 18"
-          }
-      }   
+      "AbilityValues"
+		{
+			"bonus_armor"				"10 15 20"
+			"magical_resistance"		"20 30 40"
+			"chance"					"10"
+			"damage_reduction"			"-40"
+			"debuff_duration"			"4"
+			"duration"					"12 15 18"
+		}   
 
       // Casting
       //-------------------------------------------------------------------------------------------------------------
@@ -288,29 +236,13 @@
 
   // Special    
   //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                           "FIELD_INTEGER"
-        "Damage"                      "300 600 900"
-      }
-      "02"
-      {
-        "var_type"                            "FIELD_INTEGER"
-        "armor_reduction"         "-10 -20 -30"
-      }
-      "03"
-      {
-        "var_type"                            "FIELD_FLOAT"
-        "duration"                            "10"
-      }
-      "04"
-      {
-        "var_type"                           "FIELD_INTEGER"
-        "radius"                             "600"
-      }
-    }  
+    "AbilityValues"
+		{
+			"Damage"				"300 600 900"
+			"armor_reduction"		"-10 -20 -30"
+			"duration"				"10"
+			"radius"				"600"
+		}  
 
     // Casting
   //-------------------------------------------------------------------------------------------------------------

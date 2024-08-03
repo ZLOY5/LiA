@@ -55,29 +55,13 @@
         "AbilityCastRange"              "400"
         "AbilityManaCost"               "80 90 100"
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "bonus_attack_speed"      "30 50 70"        
-            }
-            "02"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "bonus_movement_speed"      "5 10 15"        
-            }
-            "03"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "radius"    "400"
-            }
-            "04"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "duration"  "8"
-            }
-        }
+        "AbilityValues"
+		{
+			"bonus_attack_speed"		"30 50 70"
+			"bonus_movement_speed"		"5 10 15"
+			"radius"					"400"
+			"duration"					"8"
+		}
 
         "OnSpellStart"
         {
@@ -143,14 +127,10 @@
         "RequiredLevel"          "2"
         "LevelsBetweenUpgrades"  "2"
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "heal_percent"      "15 30 45"        
-            }
-        }
+        "AbilityValues"
+		{
+			"heal_percent"		"15 30 45"
+		}
     }
 
     "beastmaster_beasts"
@@ -182,14 +162,10 @@
             "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
         }
         
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "unit_count"  "2 3 4"
-            }
-        }
+        "AbilityValues"
+		{
+			"unit_count"		"2 3 4"
+		}
 
         "OnSpellStart"
         {
@@ -228,24 +204,12 @@
         "AbilityCastRange" "500"
         "AbilityManaCost"               "100"
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "bonus_damage"      "30"        
-            }
-            "02"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "radius"    "500"
-            }
-            "03"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "duration"  "15"
-            }
-        }
+        "AbilityValues"
+		{
+			"bonus_damage"		"30"
+			"radius"			"500"
+			"duration"			"15"
+		}
 
         "OnSpellStart"
         {
@@ -311,19 +275,11 @@
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "crit_mult"                 "200"
-            }
-            "02"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "crit_chance"               "20"
-            }
-        }
+        "AbilityValues"
+		{
+			"crit_mult"			"200"
+			"crit_chance"		"20"
+		}
 
         "precache"
         {
@@ -398,19 +354,11 @@
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
-        "AbilitySpecial"
-        {
-            "01"
-            {
-            "var_type"            "FIELD_INTEGER"
-            "heal"              "500"
-            }
-            "02"
-            {
-            "var_type"            "FIELD_FLOAT"
-            "duration"            "9"
-            }
-        }
+        "AbilityValues"
+		{
+			"heal"			"500"
+			"duration"		"9"
+		}
 
 
         "OnSpellStart"
@@ -462,19 +410,11 @@
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "crit_mult"                 "250"
-            }
-            "02"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "crit_chance"               "30"
-            }
-        }
+        "AbilityValues"
+		{
+			"crit_mult"			"250"
+			"crit_chance"		"30"
+		}
 
         "precache"
         {
@@ -602,34 +542,14 @@
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"      "FIELD_INTEGER"
-                "damage"    "20"
-            }
-            "02"
-            {
-                "var_type"      "FIELD_INTEGER"
-                "damage_per_second"    "2"
-            }
-            "03"
-            {
-                "var_type"      "FIELD_FLOAT"
-                "duration_creep"    "10"
-            }
-            "04"
-            {
-                "var_type"      "FIELD_FLOAT"
-                "duration_hero"  "7"
-            }
-            "05"
-            {
-                "var_type"      "FIELD_FLOAT"
-                "radius"      "600"
-            }
-        }
+        "AbilityValues"
+		{
+			"damage"				"20"
+			"damage_per_second"		"2"
+			"duration_creep"		"10"
+			"duration_hero"			"7"
+			"radius"				"600"
+		}
 
         "Modifiers"
         {

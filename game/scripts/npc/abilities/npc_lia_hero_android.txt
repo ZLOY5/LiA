@@ -25,23 +25,11 @@
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"						"500"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"stun_duration"					"1.5 2 2.5"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"					"60 120 240"
-			}
+			"radius"			"500"
+			"stun_duration"		"1.5 2 2.5"
+			"damage"			"60 120 240"
 		}
 
 		"precache"
@@ -139,23 +127,11 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"factory_duration"	"18"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"goblin_hp"	"125 400 700"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"goblin_damage"	"10 43 76"
-			}
+			"factory_duration"		"18"
+			"goblin_hp"				"125 400 700"
+			"goblin_damage"			"10 43 76"
 		}
 
 		"OnSpellStart"
@@ -185,18 +161,10 @@
 
 		"AbilityCooldown"				"2.0"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"goblin_duration"	"10"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"spawn_ratio"		"2.0"
-			}
+			"goblin_duration"		"10"
+			"spawn_ratio"			"2.0"
 		}
 
 		"Modifiers"
@@ -235,25 +203,11 @@
 
 		"AbilityDamage"			"30 60 80"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"small_radius"		"100"
-			}
-
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"big_radius"		"250"
-			}
-
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"big_radius_dmg"	"0.5"
-			}
+			"small_radius"			"100"
+			"big_radius"			"250"
+			"big_radius_dmg"		"0.5"
 		}
 		
 		"OnOwnerDied"
@@ -302,18 +256,10 @@
 		"LevelsBetweenUpgrades"  "2" 
 
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_block"			"20 40 80"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"min_damage"			"15"
-			}
+			"damage_block"		"20 40 80"
+			"min_damage"		"15"
 		}
 	}
 
@@ -352,43 +298,15 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"60 120 240"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"projectile_count"		"6 12 18"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"stun_duration"			"1"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"250 300 350"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"projectile_speed"		"700"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"projectile_radius"		"100"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"projectile_interval"		"0.16 0.084 0.056"
-			}
+			"damage"					"60 120 240"
+			"projectile_count"			"6 12 18"
+			"stun_duration"				"1"
+			"radius"					"250 300 350"
+			"projectile_speed"			"700"
+			"projectile_radius"			"100"
+			"projectile_interval"		"0.16 0.084 0.056"
 		}
 
 		"OnSpellStart"
@@ -526,18 +444,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"8"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_hero_duration"	"0.5"
-			}
+			"bash_chance"				"8"
+			"stun_hero_duration"		"0.5"
 		}
 
 		"Modifiers"
@@ -587,18 +497,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"10"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_hero_duration"	"0.5"
-			}
+			"bash_chance"				"10"
+			"stun_hero_duration"		"0.5"
 		}
 
 		"Modifiers"
@@ -648,18 +550,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"12"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_hero_duration"	"0.5"
-			}
+			"bash_chance"				"12"
+			"stun_hero_duration"		"0.5"
 		}
 
 		"Modifiers"

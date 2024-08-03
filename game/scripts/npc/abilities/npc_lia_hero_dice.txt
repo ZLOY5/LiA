@@ -27,23 +27,11 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"30 60 90"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"100 200 300"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"15.0 20.0 25.0"
-			}
+			"bonus_attack_speed"		"30 60 90"
+			"bonus_health"				"100 200 300"
+			"duration"					"15.0 20.0 25.0"
 		}
 
 		"OnSpellStart"
@@ -92,23 +80,11 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"15 20 25"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bash_stun"	"1.0"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_damage"	"70 140 210"
-			}
+			"bash_chance"		"15 20 25"
+			"bash_stun"			"1.0"
+			"bash_damage"		"70 140 210"
 		}
 	
 		"Modifiers"
@@ -152,23 +128,11 @@
 		"LevelsBetweenUpgrades"  "2"
 		"AbilityCastRange" "800"
 		// Casting
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"800"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_speed"	"10 20 30"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_speed_tooltip"	"10 20 30"
-			}
+			"radius"					"800"
+			"bonus_speed"				"10 20 30"
+			"bonus_speed_tooltip"		"10 20 30"
 		}
 
 		"OnRespawn"
@@ -229,23 +193,11 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"steelstorm_damage_tick"	"0.06"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"steelstorm_radius"			"300"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"6.0 8.0 10.0"
-			}
+			"steelstorm_damage_tick"		"0.06"
+			"steelstorm_radius"				"300"
+			"duration"						"6.0 8.0 10.0"
 		}
 
 		"OnSpellStart"

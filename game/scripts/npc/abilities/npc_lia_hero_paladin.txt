@@ -27,51 +27,28 @@
 
 		"HasScepterUpgrade"		 "1"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"wave_damage"				"30 60 120"
+			"wave_damage_scepter"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"wave_damage"				"30 60 120"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"wave_damage_scepter"		"60 120 180"
+				"value"					"60 120 180"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"wave_count_scepter"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"wave_count_scepter"		"8 10 12"
+				"value"					"8 10 12"
 				"RequiresScepter"		"1"
 			}
-			"04"
+			"stun"						"0.25"
+			"wave_interval"				"1.0"
+			"wave_count"				"6 8 10"
+			"radius"					"175 200 225"
+			"manacost_scepter"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"stun"						"0.25"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"wave_interval"				"1.0"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"wave_count"				"6 8 10"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"175 200 225"
-			}		
-			"08"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"manacost_scepter"			"200 275 300"
+				"value"					"200 275 300"
 				"RequiresScepter"		"1"
-			}	
+			}
 		}
 
 		"precache"
@@ -113,34 +90,20 @@
 
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"primary_target_heal"				"200 500 800"
+			"primary_target_heal_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"primary_target_heal"				"200 500 800"
+				"value"							"800 1000 1200"
+				"RequiresScepter"				"1"
 			}
-			"02"
+			"nearby_allies_heal"				"150 300 450"
+			"radius"							"400"
+			"manacost_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"primary_target_heal_scepter"				"800 1000 1200"
-				"RequiresScepter"		"1"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"nearby_allies_heal"			"150 300 450"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"400"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"manacost_scepter"				"160 180 200"
-				"RequiresScepter"		"1"
+				"value"							"160 180 200"
+				"RequiresScepter"				"1"
 			}
 		} 
 	}
@@ -160,23 +123,11 @@
 
 		"AbilityCastRange"	"800"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"constant_regen"       "10 0 0"
-			}
-			"02"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"regen_percentage"    "0 1 2"
-			}
-			"03"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"aura_radius"       "800"
-			}
+			"constant_regen"		"10 0 0"
+			"regen_percentage"		"0 1 2"
+			"aura_radius"			"800"
 		} 
 	}
 
@@ -212,28 +163,12 @@
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"2400"
-			}		
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_per_sec"				"40 60 80"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"tick"						"0.5"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"8 14 20"
-			}
+			"radius"				"2400"
+			"damage_per_sec"		"40 60 80"
+			"tick"					"0.5"
+			"duration"				"8 14 20"
 		}
 	
 		"precache"

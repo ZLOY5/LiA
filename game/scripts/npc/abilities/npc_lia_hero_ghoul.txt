@@ -25,28 +25,12 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"bonus_damage"          "20 40 60"
-			}
-			"02"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"bonus_armor"           "5 10 15"
-			}
-			"03"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"bonus_health"           "100 200 300"
-			}
-			"04"
-			{
-				"var_type"              "FIELD_FLOAT"
-				"duration"              "4 5 6"
-			}
+			"bonus_damage"		"20 40 60"
+			"bonus_armor"		"5 10 15"
+			"bonus_health"		"100 200 300"
+			"duration"			"4 5 6"
 		}
 
 		// Casting
@@ -146,38 +130,14 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"instant_heal"	"50 100 150"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"heal_per_second"	"10 20 30"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"heal_duration"	"10"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"movement_slow"	"-10 -20 -30"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"attack_slow"	"-10 -20 -30"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"slow_duration"	"8.0"
-			}
+			"instant_heal"			"50 100 150"
+			"heal_per_second"		"10 20 30"
+			"heal_duration"			"10"
+			"movement_slow"			"-10 -20 -30"
+			"attack_slow"			"-10 -20 -30"
+			"slow_duration"			"8.0"
 		}
 		
 		"OnSpellStart"
@@ -262,18 +222,10 @@
 			"particle"	"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_multiplier"					"200 300 400"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_chance"				"13"
-			}
+			"crit_multiplier"		"200 300 400"
+			"crit_chance"			"13"
 		}
 	}
 
@@ -295,23 +247,11 @@
 		"RequiredLevel"          		"5"
 		"LevelsBetweenUpgrades"  		"4"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_strength"	"25 50 75"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"500"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"regen_mult"		"0.5"
-			}
+			"bonus_strength"		"25 50 75"
+			"radius"				"500"
+			"regen_mult"			"0.5"
 		}
 	}
 }

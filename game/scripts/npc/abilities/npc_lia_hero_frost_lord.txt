@@ -30,67 +30,35 @@
 			"particle"  	"particles/status_fx/status_effect_frost_lich.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage"						"70 140 210"
+			"damage_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"70 140 210"
+				"value"						"225 300 375"
+				"RequiresScepter"			"1"
 			}
-			"02"
+			"damage_per_second"				"9 18 36"
+			"damage_per_second_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_scepter"				"225 300 375"
-				"RequiresScepter"		"1"
+				"value"						"15 30 45"
+				"RequiresScepter"			"1"
 			}
-			"03"
+			"start_width"					"150"
+			"end_width"						"150"
+			"projectile_distance"			"650 700 750"
+			"speed"							"950"
+			"duration"						"4 5 6"
+			"duration_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"9 18 36"
+				"value"						"6 7 8"
+				"RequiresScepter"			"1"
 			}
-			"04"
+			"manacost_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second_scepter"		"15 30 45"
-				"RequiresScepter"		"1"
+				"value"						"130 160 190"
+				"RequiresScepter"			"1"
 			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"start_width"			"150"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"end_width"			"150"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"projectile_distance"					"650 700 750"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"950"
-			}
-			"09"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"4 5 6"
-			}   
-			"10"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration_scepter"				"6 7 8"
-				"RequiresScepter"		"1"
-			}  
-			"11"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"manacost_scepter"				"130 160 190"
-				"RequiresScepter"		"1"
-			}   
 		}
 	}	
 
@@ -129,38 +97,14 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"			"20 30 40"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"add_damage"		"10 20 30"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"movement_speed_slow"		"-20 -30 -40"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"attack_speed_slow"		"-10 -20 -30"
-			}
-			"05"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"			"8"
-			}
-			"06"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"300"
-			}
+			"damage"					"20 30 40"
+			"add_damage"				"10 20 30"
+			"movement_speed_slow"		"-20 -30 -40"
+			"attack_speed_slow"			"-10 -20 -30"
+			"duration"					"8"
+			"radius"					"300"
 		}
 
 		"OnSpellStart"
@@ -256,23 +200,11 @@
 			"particle"        "particles/units/heroes/hero_crystalmaiden/maiden_frostbite.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"freezing_chance"     "18"
-			}
-			"02"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"stun_duration"  "0.5 1.0 1.5"
-			}
-			"03"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"damage"       "50 100 150"
-			}
+			"freezing_chance"		"18"
+			"stun_duration"			"0.5 1.0 1.5"
+			"damage"				"50 100 150"
 		} 
 	}
 
@@ -309,56 +241,29 @@
 		"particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_frosty_dire.vpcf" 
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage"					"100 250 400"
+			"damage_scepter"
 			{
-				"var_type"      "FIELD_INTEGER"
-				"damage"    "100 250 400"
-			}
-			"02"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"damage_scepter"    "175 325 475"
+				"value"					"175 325 475"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"duration"					"3 4 5"
+			"duration_scepter"
 			{
-				"var_type"      "FIELD_FLOAT"
-				"duration"  "3 4 5"
-			}
-			"04"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"duration_scepter"  "4 5 6"
+				"value"					"4 5 6"
 				"RequiresScepter"		"1"
 			}
-			"05"
+			"movement_slow"				"-50"
+			"slow_duration"				"4"
+			"radius"					"500"
+			"damage_radius"				"190"
+			"manacost_scepter"
 			{
-				"var_type"      "FIELD_INTEGER"
-				"movement_slow"    "-50"
-			}
-			"06"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"slow_duration"  "4"
-			}
-			"07"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"radius"      "500"
-			}
-			"08"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"damage_radius"      "190"
-			}  
-			"09"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"manacost_scepter"				"325 375 425"
+				"value"					"325 375 425"
 				"RequiresScepter"		"1"
-			}   
+			}
 		}
 	}
 }

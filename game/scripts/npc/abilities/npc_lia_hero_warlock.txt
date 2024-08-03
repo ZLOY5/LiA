@@ -30,30 +30,20 @@
 			"particle"      "particles/units/heroes/hero_zuus/zuus_lightning_bolt_child_b.vpcf"
 		} 
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage"					"50 100 150"
+			"damage_scepter"
 			{
-				"var_type"              "FIELD_INTEGER"
-				"damage"         		"50 100 150"
-			}
-			"02"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"damage_scepter"        "150 200 250"
+				"value"					"150 200 250"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"radius"					"250"
+			"manacost_scepter"
 			{
-				"var_type"              "FIELD_INTEGER"
-				"radius"                "250"
-			}  
-			"04"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"manacost_scepter"      "100 125 150"
+				"value"					"100 125 150"
 				"RequiresScepter"		"1"
-			}   
+			}
 		}
 	}	
 
@@ -145,33 +135,13 @@
 			}
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"radius"                "9999"
-			}
-			"02"
-			{
-				"var_type"              "FIELD_FLOAT"
-				"tick_interval"         ".05"
-			}
-			"03"
-			{
-				"var_type"               "FIELD_FLOAT"
-				"duration_invulnerable"  "3.0 6.0 9.0"
-			}
-			"04"
-			{
-				"var_type"               "FIELD_FLOAT"
-				"barrier_reduction"      "2.7"
-			}
-			"05"
-			{
-				"var_type"               "FIELD_FLOAT"
-				"change_per_teak"        "2.5"
-			}
+			"radius"					"9999"
+			"tick_interval"				".05"
+			"duration_invulnerable"		"3.0 6.0 9.0"
+			"barrier_reduction"			"2.7"
+			"change_per_teak"			"2.5"
 		}
 	}
 
@@ -190,18 +160,10 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"damage"                "60 120 180"
-			}
-			"02"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"radius"                "400 450 500"
-			}
+			"damage"		"60 120 180"
+			"radius"		"400 450 500"
 		}
 
 		"precache"
@@ -261,72 +223,36 @@
 			"particle"  "particles/custom/neutral/firestorm_wave.vpcf"
 		}
 
-		"AbilitySpecial"
-		{           
-			"01"
+		"AbilityValues"
+		{
+			"wave_damage"				"90 120 150"
+			"wave_damage_scepter"
 			{
-				"var_type"              "FIELD_INTEGER"
-				"wave_damage"           "90 120 150"
-			}
-			"02"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"wave_damage_scepter"           "180 210 240"
+				"value"					"180 210 240"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"burn_damage"				"20 40 60"
+			"burn_damage_scepter"
 			{
-				"var_type"              "FIELD_INTEGER"
-				"burn_damage"           "20 40 60"
-			}
-			"04"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"burn_damage_scepter"           "40 60 80"
+				"value"					"40 60 80"
 				"RequiresScepter"		"1"
 			}
-			"05"
+			"burn_interval"				"1.0"
+			"wave_interval"				"1.0"
+			"burn_duration"				"10"
+			"wave_count"				"6"
+			"channel_time"				"6.1"
+			"radius"					"280 290 300"
+			"radius_scepter"
 			{
-				"var_type"              "FIELD_FLOAT"
-				"burn_interval"         "1.0"
-			}
-			"06"
-			{
-				"var_type"              "FIELD_FLOAT"
-				"wave_interval"         "1.0"
-			}
-			"07"
-			{
-				"var_type"              "FIELD_FLOAT"
-				"burn_duration"         "10"
-			}
-			"08"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"wave_count"            "6"
-			}
-			"09"
-			{
-				"var_type"              "FIELD_FLOAT"
-				"channel_time"         "6.1"
-			}
-			"10"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"radius"                "280 290 300"
-			}
-			"11"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"radius_scepter"                "325"
+				"value"					"325"
 				"RequiresScepter"		"1"
-			}    
-			"12"
+			}
+			"manacost_scepter"
 			{
-				"var_type"              "FIELD_INTEGER"
-				"manacost_scepter"                "350 400 450"
+				"value"					"350 400 450"
 				"RequiresScepter"		"1"
-			}      
+			}
 		}
 	}	
 } 

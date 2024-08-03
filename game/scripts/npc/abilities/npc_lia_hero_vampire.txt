@@ -40,28 +40,12 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"5 10 15"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_multiplier"		"2"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"375"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"				"6 7 8"
-			}			
+			"damage_per_second"		"5 10 15"
+			"damage_multiplier"		"2"
+			"radius"				"375"
+			"duration"				"6 7 8"
 		}
 		
 		"OnSpellStart"
@@ -132,18 +116,10 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"     			"FIELD_INTEGER"
-				"lifesteal_percentage" 	"20 25 30"
-			}
-			"02"
-			{
-				"var_type"  			"FIELD_INTEGER"
-				"thirst_points_max" 	"10 15 20"
-			}
+			"lifesteal_percentage"		"20 25 30"
+			"thirst_points_max"			"10 15 20"
 		}
 	}
 
@@ -161,28 +137,12 @@
 		{
 			"particle"	"particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf"
 		}
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"     				"FIELD_INTEGER"
-				"thirst_points_bonus" 		"3 5 7"
-			}
-			"02"
-			{
-				"var_type"  				"FIELD_INTEGER"
-				"attack_speed_bonus" 		"20 50 80"
-			}
-			"03"
-			{
-				"var_type"     				"FIELD_INTEGER"
-				"radius" 					"500"
-			}
-			"04"
-			{
-				"var_type"     				"FIELD_INTEGER"
-				"activation_health_percent" "30"
-			}
+			"thirst_points_bonus"			"3 5 7"
+			"attack_speed_bonus"			"20 50 80"
+			"radius"						"500"
+			"activation_health_percent"		"30"
 		}
 
 		"Modifiers"
@@ -255,73 +215,21 @@
 
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"transformation_time"	"0.35"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"base_attack_time"		"1.6"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bonus_movement_speed"		"50"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_range"			"250"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tooltip_attack_range"			"350"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tp_regen_mult"			"3 4 5"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tp_aoe_dmg_mult"		"10 20 30"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tp_transformation_dmg_mult"	"16 32 48"
-			}
-			"09"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tp_attack_heal_mult"			"6 8 10"
-			}
-			"10"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"aoe_dmg_radius"			"150"
-			}
-			"11"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"100 200 300"
-			}
-			"12"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"20"
-			}
-			"13"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"init_dmg_aoe"			"300"
-			}
+			"transformation_time"				"0.35"
+			"base_attack_time"					"1.6"
+			"bonus_movement_speed"				"50"
+			"bonus_range"						"250"
+			"tooltip_attack_range"				"350"
+			"tp_regen_mult"						"3 4 5"
+			"tp_aoe_dmg_mult"					"10 20 30"
+			"tp_transformation_dmg_mult"		"16 32 48"
+			"tp_attack_heal_mult"				"6 8 10"
+			"aoe_dmg_radius"					"150"
+			"bonus_health"						"100 200 300"
+			"duration"							"20"
+			"init_dmg_aoe"						"300"
 		}
 
 		"precache"

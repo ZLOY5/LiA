@@ -29,62 +29,37 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"lightning_damage"				"85 135 200"
+			"lightning_bounces"				"8 9 10"
+			"lightning_bounces_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_damage"		"85 135 200"
+				"value"						"12 13 14"
+				"RequiresScepter"			"1"
 			}
-			"02"
+			"bounce_range"					"500"
+			"lightning_decay"				"-10 -10 -10"
+			"lightning_decay_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_bounces"		"8 9 10"
+				"value"						"-15 -15 -15"
+				"RequiresScepter"			"1"
 			}
-			"03"
+			"time_between_bounces"			"0.2"
+			"lightning_damage_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_bounces_scepter"		"12 13 14"
-				"RequiresScepter"		"1"
+				"value"						"85 135 200"
+				"RequiresScepter"			"1"
 			}
-			"04"
+			"cooldown_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bounce_range"			"500"
+				"value"						"9 8 7"
+				"RequiresScepter"			"1"
 			}
-			"05"
+			"manacost_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_decay"		"-10 -10 -10"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_decay_scepter"		"-15 -15 -15"
-				"RequiresScepter"		"1"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"time_between_bounces"	"0.2"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lightning_damage_scepter"		"85 135 200"
-				"RequiresScepter"		"1"
-			}
-			"09"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"cooldown_scepter"		"9 8 7"
-				"RequiresScepter"		"1"
-			}
-			"10"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"manacost_scepter"		"150 225 300"
-				"RequiresScepter"		"1"
+				"value"						"150 225 300"
+				"RequiresScepter"			"1"
 			}
 		}
 	}
@@ -123,40 +98,22 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage_per_second"				"20 40 80"
+			"damage_per_second_scepter"
 			{
-				"var_type"							"FIELD_INTEGER"
-				"damage_per_second"					"20 40 80"
+				"value"						"40 70 100"
+				"RequiresScepter"			"1"
 			}
-			"02"
+			"think_interval"				"0.33"
+			"radius"						"200"
+			"duration"						"8"
+			"manacost_scepter"
 			{
-				"var_type"							"FIELD_INTEGER"
-				"damage_per_second_scepter"			"40 70 100"
-				"RequiresScepter"		"1"
+				"value"						"200 240 280"
+				"RequiresScepter"			"1"
 			}
-			"03"
-			{
-				"var_type"							"FIELD_FLOAT"
-				"think_interval"					"0.33"
-			}
-			"04"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"radius"							"200"
-			}
-			"05"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"duration"							"8"
-			}
-			"06"
-			{
-				"var_type"							"FIELD_INTEGER"
-				"manacost_scepter"					"200 240 280"
-				"RequiresScepter"		"1"
-			}	
 		}
 	}
 
@@ -183,28 +140,12 @@
 		//"AbilityManaCost"			"200 240 280"
 			
 		//"AOERadius"					"800"
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"chance_dmg"		"11 12 13"
-			}
-			"02"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"radius"		"800"
-			}
-			"03"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"damage_per_int"			"3 4 5"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius_dop_dmg"		"200"
-			}
+			"chance_dmg"			"11 12 13"
+			"radius"				"800"
+			"damage_per_int"		"3 4 5"
+			"radius_dop_dmg"		"200"
 		}
 		
 		"precache"
@@ -297,48 +238,16 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_disruptor.vsndevts"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"reduce_spell_damage_pct"	"-25"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"phys_damage_resist"	"60"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"magic_attacks_vulnerability"	"50"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"movement_slow_percentage"		"-20"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"attack_slow"		"-50"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"6 8 10"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"disarm_duration"				"2 3 4"
-			}
-			"08"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"500"
-			}
+			"reduce_spell_damage_pct"			"-25"
+			"phys_damage_resist"				"60"
+			"magic_attacks_vulnerability"		"50"
+			"movement_slow_percentage"			"-20"
+			"attack_slow"						"-50"
+			"duration"							"6 8 10"
+			"disarm_duration"					"2 3 4"
+			"radius"							"500"
 		}
 	}	
 }	

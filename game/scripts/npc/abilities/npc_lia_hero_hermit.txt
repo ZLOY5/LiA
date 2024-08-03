@@ -16,57 +16,33 @@
 
 		"HasScepterUpgrade"			"1"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"hit_points"				"300 550 800"
+			"hit_points_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"hit_points"			"300 550 800"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"hit_points_scepter"	"550 800 1450"
+				"value"					"550 800 1450"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"damage"					"15 30 60"
+			"damage_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"15 30 60"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_scepter"		"30 60 120"
+				"value"					"30 60 120"
 				"RequiresScepter"		"1"
 			}
-			"05"
+			"unit_count"				"2"
+			"unit_count_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"unit_count"			"2"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"unit_count_scepter"	"3"
+				"value"					"3"
 				"RequiresScepter"		"1"
 			}
-			"07"
+			"duration"					"60"
+			"manacost_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"				"60"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"manacost_scepter"			"150 200 250"
+				"value"					"150 200 250"
 				"RequiresScepter"		"1"
-			}	
-			"09"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"spawn_radius"			"200"
 			}
+			"spawn_radius"				"200"
 		}
 
 		"precache"
@@ -109,28 +85,12 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"reduce_spell_damage_pct"	"-40"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"reduce_movement_speed"		"-10 -20 -30"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration_hero"				"3 4 5"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration_other"			"4 5 6"
-			}
+			"reduce_spell_damage_pct"		"-40"
+			"reduce_movement_speed"			"-10 -20 -30"
+			"duration_hero"					"3 4 5"
+			"duration_other"				"4 5 6"
 		}
 
 		"precache"
@@ -176,23 +136,11 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_movement_speed"	"-10 -20 -30"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_attack_speed"		"-20 -30 -40"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"frost_arrows_duration"			"3.0 3.0 3.0"
-			}
+			"frost_arrows_movement_speed"		"-10 -20 -30"
+			"frost_arrows_attack_speed"			"-20 -30 -40"
+			"frost_arrows_duration"				"3.0 3.0 3.0"
 		}
 		
 		// Data driven
@@ -306,23 +254,11 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_movement_speed"	"-20 -30 -40"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"frost_arrows_attack_speed"		"-50 -60 -70"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"frost_arrows_duration"			"4.0 4.0 4.0"
-			}
+			"frost_arrows_movement_speed"		"-20 -30 -40"
+			"frost_arrows_attack_speed"			"-50 -60 -70"
+			"frost_arrows_duration"				"4.0 4.0 4.0"
 		}
 		
 		// Data driven
@@ -433,60 +369,22 @@
 			"particle"		"particles/units/heroes/hero_morphling/morphling_waveform.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"wave_damage"				"90 190 290"
+			"waves_per_second"			"2 3 4"
+			"duration"					"8 12 16"
+			"hits_for_elemental"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"wave_damage"		"90 190 290"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"waves_per_second"		"2 3 4"
-			}
-			"03"
-			{
-				"var_type"		"FIELD_FLOAT"
-				"duration"		"8 12 16"
-			}	
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"hits_for_elemental"		"10"
+				"value"					"10"
 				"RequiresScepter"		"1"
-			}	
-			"05"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"wave_speed"		"1150.0"
 			}
-			"06"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"wave_width"		"50"
-			}
-			"07"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"vision_aoe"		"400"
-			}	
-			"08"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_radius"		"200"
-			}
-			"09"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"delay_cause"		"0.20"
-			}
-			"10"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"		"800"
-			}
-			
+			"wave_speed"				"1150.0"
+			"wave_width"				"50"
+			"vision_aoe"				"400"
+			"damage_radius"				"200"
+			"delay_cause"				"0.20"
+			"radius"					"800"
 		}
 	}
 
@@ -545,53 +443,17 @@
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"wave_speed"		"1150.0"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"wave_width"		"55 48 48"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"vision_aoe"		"400"
-			}	
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"num_in_sec"		"3 4 5"
-			}
-			"05"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius_cause"		"200"
-			}
-			"06"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"delay_cause"		"0.20"
-			}
-			"07"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"for_tick"		"0.33 0.25 0.2"
-			}
-			"08"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"		"400"
-			}
-			"09"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"		"8 12 16"
-			}			
+			"wave_speed"		"1150.0"
+			"wave_width"		"55 48 48"
+			"vision_aoe"		"400"
+			"num_in_sec"		"3 4 5"
+			"radius_cause"		"200"
+			"delay_cause"		"0.20"
+			"for_tick"			"0.33 0.25 0.2"
+			"radius"			"400"
+			"duration"			"8 12 16"
 		}
 	
 		"OnSpellStart"

@@ -16,33 +16,13 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"stomp_damage"          "250"
-			}
-			"02"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"slow_movement_and_attack_speed"          "-40"
-			}
-			"03"
-			{
-				"var_type"                                "FIELD_INTEGER"
-				"slow_tooltip"          "-40"
-			}
-			"04"
-			{
-				"var_type"            "FIELD_INTEGER"
-				"radius"              "250"
-			}
-			"05"
-			{
-				"var_type"            "FIELD_FLOAT"
-				"duration"            "8"
-			}
+			"stomp_damage"							"250"
+			"slow_movement_and_attack_speed"		"-40"
+			"slow_tooltip"							"-40"
+			"radius"								"250"
+			"duration"								"8"
 		}
 
 		"precache"
@@ -138,23 +118,11 @@
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"damage"						"100"
-			}	
-			"02"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"stun_duration"					"2"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"						"300"
-			}
+			"damage"			"100"
+			"stun_duration"		"2"
+			"radius"			"300"
 		}
 
 		"precache"
@@ -250,35 +218,13 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"attack_speed"               "1050"
-			}
-			
-			"02"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"attack_width_initial"    "150"
-			}
-			"03"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"attack_width_end"        "150"
-			}
-			
-			"04"
-			{
-				"var_type"                  "FIELD_INTEGER"
-				"attack_distance"         "1150"
-			}
-			"05"
-			{
-				"var_type"              "FIELD_INTEGER"
-				"max_health_damage"           "25"
-			}
+			"attack_speed"				"1050"
+			"attack_width_initial"		"150"
+			"attack_width_end"			"150"
+			"attack_distance"			"1150"
+			"max_health_damage"			"25"
 		}
 	}
 
@@ -297,23 +243,11 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"            "FIELD_INTEGER"
-				"heal"              "167"
-			}
-			"02"
-			{
-				"var_type"            "FIELD_FLOAT"
-				"duration"            "6"
-			}
-			"03"
-			{
-				"var_type"            "FIELD_INTEGER"
-				"heal_tooltip"              "1000"
-			}
+			"heal"				"167"
+			"duration"			"6"
+			"heal_tooltip"		"1000"
 		}
 
 		"precache"
@@ -385,23 +319,11 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"4"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"creep_duration"			"15"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"net_speed"					"1500"
-			}
+			"duration"				"4"
+			"creep_duration"		"15"
+			"net_speed"				"1500"
 		}
 
 		// Data driven
@@ -496,18 +418,10 @@
 		}
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"miss"			"40"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"duration"						"10"
-			}
+			"miss"			"40"
+			"duration"		"10"
 		}
 		
 		"OnSpellStart"
@@ -559,23 +473,11 @@
 			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
 		}
 		
-			"AbilitySpecial"
+			"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_penalty_percentage"	"-75"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"			"10.0"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"800"
-			}
+			"damage_penalty_percentage"		"-75"
+			"duration"						"10.0"
+			"radius"						"800"
 		}
 		
 		"OnSpellStart"
@@ -650,23 +552,11 @@
 		
 		// Special  
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"damage_per_second"   "90"
-			}
-			"02"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"mana_cost_per_second"  "25"
-			}
-			"03"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"radius"        "220"
-			}
+			"damage_per_second"			"90"
+			"mana_cost_per_second"		"25"
+			"radius"					"220"
 		}
 
 		"OnToggleOn"
@@ -744,23 +634,11 @@
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"200"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"hero_duration"			"5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"creep_duration"		"5"
-			}
+			"damage_per_second"		"200"
+			"hero_duration"			"5"
+			"creep_duration"		"5"
 		}
 
 		"OnSpellStart"
@@ -842,23 +720,11 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"180"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_movement_speed"	"50"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"15.0"
-			}
+			"bonus_attack_speed"		"180"
+			"bonus_movement_speed"		"50"
+			"duration"					"15.0"
 		}
 
 		"OnSpellStart"
@@ -926,28 +792,12 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"6"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"initial_damage"	"150"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"damage_every_3sec"	"150"
-			}
-			"04"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"all_slow"	"-20"
-			}
+			"duration"				"6"
+			"initial_damage"		"150"
+			"damage_every_3sec"		"150"
+			"all_slow"				"-20"
 		}
 
 		"OnAbilityPhaseStart"
@@ -1069,23 +919,11 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"projectile_speed"	"1000"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"	"4.0"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"damage"	"950"
-			}
+			"projectile_speed"		"1000"
+			"duration"				"4.0"
+			"damage"				"950"
 		}
 		
 		"OnSpellStart"
@@ -1147,18 +985,10 @@
 			"particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn.vpcf"
 		}
 
-		"AbilitySpecial"
-		{ 
-			"01"
-			{
-			"var_type"      "FIELD_INTEGER"
-			"mana_burn"     "350"
-			}
-			"02"
-			{
-			"var_type"      "FIELD_INTEGER"
-			"damage_per_mana" "1"
-			}
+		"AbilityValues"
+		{
+			"mana_burn"				"350"
+			"damage_per_mana"		"1"
 		}
 	}
 
@@ -1186,28 +1016,12 @@
 		}
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"attack_slow"					"-75"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"movespeed_slow_pct"	"-75"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"hero_duration"						"10"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"duration"						"20"
-			}
+			"attack_slow"				"-75"
+			"movespeed_slow_pct"		"-75"
+			"hero_duration"				"10"
+			"duration"					"20"
 		}
 		
 		"OnSpellStart"
@@ -1264,38 +1078,14 @@
 		"AbilityCooldown"			"12"
 		"AbilityManaCost"			"75"
 			
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"duration"		"10"
-			}
-			"02"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"duration_hero"	"10"
-			}
-			"03"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"summoned_unit_damage"			"2000"
-			}
-			"04"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"slow_per_stack"	"-20"	
-			}
-			"05"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"stack_multi"	"5"	
-			}
-			"06"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"think_interval"	"1"	
-			}
+			"duration"					"10"
+			"duration_hero"				"10"
+			"summoned_unit_damage"		"2000"
+			"slow_per_stack"			"-20"
+			"stack_multi"				"5"
+			"think_interval"			"1"
 		}
 
 		"precache"
@@ -1384,18 +1174,10 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"            "FIELD_INTEGER"
-				"radius"              "300"
-			}
-			"02"
-			{
-				"var_type"            "FIELD_FLOAT"
-				"duration"            "7"
-			}
+			"radius"		"300"
+			"duration"		"7"
 		}
 
 		"precache"
@@ -1474,23 +1256,11 @@
 		"AbilityCooldown"			"4"
 		"AbilityManaCost"			"100"
 			
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"10"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"hero_duration"		"10"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"armor_reduction"	"-60"
-			}
+			"duration"				"10"
+			"hero_duration"			"10"
+			"armor_reduction"		"-60"
 		}
 
 		"precache"
@@ -1556,18 +1326,10 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
 			"model"			"models/props_gameplay/frog.vmdl"
 		}
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"8"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"movespeed"				"100"
-			}
+			"duration"		"8"
+			"movespeed"		"100"
 		}
 
 		"OnSpellStart"
@@ -1663,23 +1425,11 @@
 
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"cripple_attack_slow"					"-25"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"cripple_movespeed_slow_pct"				"-75"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"duration"						"10"
-			}
+			"cripple_attack_slow"				"-25"
+			"cripple_movespeed_slow_pct"		"-75"
+			"duration"							"10"
 		}
 
 		"OnSpellStart"

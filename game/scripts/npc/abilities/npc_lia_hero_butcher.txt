@@ -51,18 +51,10 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 	
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"     	 	"FIELD_INTEGER"
-				"bonus_armor"  		"5 10 15"
-			}
-			"02"
-			{
-				"var_type"      	"FIELD_INTEGER"
-				"damage_return"   	"4 8 12"
-			}
+			"bonus_armor"		"5 10 15"
+			"damage_return"		"4 8 12"
 		} 
 	}
 
@@ -89,43 +81,15 @@
 			"particle"  "particles/units/heroes/hero_undying/undying_zombie_spawn.vpcf"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"zombie_base_health"		"200 300 400"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"zombie_butcher_heath_percent"		"10 15 20"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"zombie_base_damage"	"15 40 70"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"health_precent_for_zombie"			"20 15 10"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"zombie_limit"			"4 5 6"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"zombie_replenish_time"		"20"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"circle_radius"			"100"
-			}
+			"zombie_base_health"				"200 300 400"
+			"zombie_butcher_heath_percent"		"10 15 20"
+			"zombie_base_damage"				"15 40 70"
+			"health_precent_for_zombie"			"20 15 10"
+			"zombie_limit"						"4 5 6"
+			"zombie_replenish_time"				"20"
+			"circle_radius"						"100"
 		}
 	}
 
@@ -155,23 +119,11 @@
 			"particle"			"particles/units/heroes/hero_lycan/lycan_howl_buff.vpcf"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_penalty_percentage"	"-50 -60 -70"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"			"14 17 20"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"1500"
-			}
+			"damage_penalty_percentage"		"-50 -60 -70"
+			"duration"						"14 17 20"
+			"radius"						"1500"
 		}
 		
 		"OnSpellStart"
@@ -244,23 +196,11 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"10"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bash_duration"	"0.5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_damage"			"50"
-			}
+			"bash_chance"		"10"
+			"bash_duration"		"0.5"
+			"bash_damage"		"50"
 		}
 	}
 }

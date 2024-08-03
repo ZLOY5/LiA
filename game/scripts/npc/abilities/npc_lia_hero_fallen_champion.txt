@@ -24,18 +24,10 @@
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"pr_damage"						"15 20 25"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"					"600"
-			}
+			"pr_damage"		"15 20 25"
+			"radius"		"600"
 		}
 
 		"precache"
@@ -152,23 +144,11 @@
 		"SpellImmunityType"       		"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"10"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_return"				"6 12 18"		
-			}	
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"full_damage_chance"		"10 13 16"		
-			}	
+			"radius"					"10"
+			"damage_return"				"6 12 18"
+			"full_damage_chance"		"10 13 16"
 		}
 	}
 
@@ -185,18 +165,10 @@
 		"RequiredLevel"          	"2"
 		"LevelsBetweenUpgrades"  	"2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"kills_for_bonus_str"	"6 5 4"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"str_for_kill_boss_hero"				"1 2 3"
-			}
+			"kills_for_bonus_str"			"6 5 4"
+			"str_for_kill_boss_hero"		"1 2 3"
 		}
 	}
 
@@ -228,18 +200,10 @@
 		"AbilityCooldown"				"50"
 		"AbilityManaCost"				"80"	
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"600 900 1200"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"5 7 9"
-			}
+			"radius"		"600 900 1200"
+			"duration"		"5 7 9"
 		}
 		"OnSpellStart"
 		{

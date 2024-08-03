@@ -83,33 +83,13 @@
 		
 		// Special    
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"                "FIELD_INTEGER"
-				"radius"                  "400 500 600"
-			}
-			"02"
-			{
-				"var_type"                "FIELD_INTEGER"
-				"full_damage_radius"      "150"
-			}	
-			"03"
-			{
-				"var_type"                "FIELD_INTEGER"
-				"damage"                   "100 200 400"
-			}
-			"04"
-			{
-				"var_type"                "FIELD_INTEGER"
-				"stun_chance"             "50"
-			}
-			"05"
-			{
-				"var_type"                "FIELD_FLOAT"
-				"stun_duration"            "2"
-			}
+			"radius"					"400 500 600"
+			"full_damage_radius"		"150"
+			"damage"					"100 200 400"
+			"stun_chance"				"50"
+			"stun_duration"				"2"
 		}
 	}
 
@@ -125,18 +105,10 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"incoming_damage_percentage"  "-10 -15 -20"
-			}
-			"02"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"bonus_armor"  "4 8 12"
-			}
+			"incoming_damage_percentage"		"-10 -15 -20"
+			"bonus_armor"						"4 8 12"
 		} 
 	}
 
@@ -155,18 +127,10 @@
 
 		"AbilityCastRange"	"800"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"800"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage_percentage"	"20 30 40"
-			}
+			"radius"						"800"
+			"bonus_damage_percentage"		"20 30 40"
 		} 
 	}
 
@@ -193,33 +157,13 @@
 			"particle"			"particles/units/heroes/hero_night_stalker/nightstalker_void.vpcf"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"50 70 90"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_move_speed"		"30 50 70"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_attack"		"20 30 40"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_stack_max"		"11 13 15"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"sum_damage_tooltip"	"220 420 600"
-			}
+			"bonus_attack_speed"		"50 70 90"
+			"bonus_move_speed"			"30 50 70"
+			"damage_per_attack"			"20 30 40"
+			"damage_stack_max"			"11 13 15"
+			"sum_damage_tooltip"		"220 420 600"
 		}
 	}
 }	

@@ -27,20 +27,15 @@
             "particle"  "particles/units/heroes/hero_silencer/silencer_curse_cast.vpcf"
         }
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"        "FIELD_INTEGER"
-                "radius"          "150 175 200"
-            }  
-            "02"
-            {
-                "var_type"              "FIELD_INTEGER"
-                "cooldown_scepter"      "11 10 9"
-                "RequiresScepter"       "1"
-            }   
-        }
+        "AbilityValues"
+		{
+			"radius"					"150 175 200"
+			"cooldown_scepter"
+			{
+				"value"					"11 10 9"
+				"RequiresScepter"		"1"
+			}
+		}
     }   
 
     "time_lord_timelapse"
@@ -73,30 +68,17 @@
             "particle"  "particles/units/heroes/hero_weaver/weaver_timelapse.vpcf"
         }
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"              "FIELD_INTEGER"
-                "damage_radius"         "300"
-            }
-            "02"
-            {
-                "var_type"              "FIELD_INTEGER"
-                "damage"                "50 100 150"
-            }
-            "03"
-            {
-                "var_type"              "FIELD_INTEGER"
-                "cooldown_scepter"      "8 7 6"
-                "RequiresScepter"       "1"
-            }
-            "04"
-            {
-                "var_type"              "FIELD_INTEGER"
-                "time"                  "5"
-            }
-        }    
+        "AbilityValues"
+		{
+			"damage_radius"				"300"
+			"damage"					"50 100 150"
+			"cooldown_scepter"
+			{
+				"value"					"8 7 6"
+				"RequiresScepter"		"1"
+			}
+			"time"						"5"
+		}    
     }
 
     "time_lord_wisdom_flow"
@@ -116,19 +98,11 @@
         //-------------------------------------------------------------------------------------------------------------
         "AbilityCooldown"         "%stack_interval"
     
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                    "FIELD_INTEGER"
-                "bonus_intellect"             "1"
-            }
-            "02"
-            {
-                "var_type"                    "FIELD_FLOAT"
-                "stack_interval"              "60 40 20"
-            }
-        }
+        "AbilityValues"
+		{
+			"bonus_intellect"		"1"
+			"stack_interval"		"60 40 20"
+		}
 
         "Modifiers"
         {
@@ -242,33 +216,13 @@
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                          "FIELD_INTEGER"
-                "hero_stop"                         "3 4 5"
-            }
-            "02"
-            {
-                "var_type"                          "FIELD_INTEGER"
-                "other_stop"                        "4 6 8"
-            }
-            "03"
-            {
-                "var_type"                          "FIELD_INTEGER"
-                "bonus_movespeed_percentage"        "20 40 60"
-            }
-            "04"
-            {
-                "var_type"                          "FIELD_INTEGER"
-                "bonus_attackspeed"                 "200 250 300"
-            }
-            "05"
-            {
-                "var_type"                          "FIELD_INTEGER"
-                "bonus_duration"                    "4 6 8"
-            }
-        }
+        "AbilityValues"
+		{
+			"hero_stop"							"3 4 5"
+			"other_stop"						"4 6 8"
+			"bonus_movespeed_percentage"		"20 40 60"
+			"bonus_attackspeed"					"200 250 300"
+			"bonus_duration"					"4 6 8"
+		}
     }
 }

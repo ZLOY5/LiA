@@ -30,18 +30,10 @@
 		"AbilityTextureName"			"troll_warlord_battle_trance"
 		
 		// Casting
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"7000"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"	"30"
-			}
+			"radius"			"7000"
+			"bonus_armor"		"30"
 		}
 
 		"Modifiers"
@@ -87,28 +79,12 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"cripple_damage_decrease_pct"			"-40"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"cripple_attack_slow"					"-40"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"cripple_movespeed_slow_pct"	"-60"
-			}
-			"04"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"duration"						"10"
-			}
+			"cripple_damage_decrease_pct"		"-40"
+			"cripple_attack_slow"				"-40"
+			"cripple_movespeed_slow_pct"		"-60"
+			"duration"							"10"
 		}
 		
 		"OnSpellStart"
@@ -163,23 +139,11 @@
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"radius"						"250"
-			}
-			"02"
-			{
-				"var_type"						"FIELD_FLOAT"
-				"stun_duration"					"3.0"
-			}
-			"03"
-			{
-				"var_type"						"FIELD_INTEGER"
-				"stomp_damage"					"100"
-			}
+			"radius"			"250"
+			"stun_duration"		"3.0"
+			"stomp_damage"		"100"
 		}
 
 		"precache"
@@ -277,23 +241,11 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"50"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_movement_speed"	"10"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"20.0"
-			}
+			"bonus_attack_speed"		"50"
+			"bonus_movement_speed"		"10"
+			"duration"					"20.0"
 		}
 
 		"OnSpellStart"
@@ -353,23 +305,11 @@
 		"AbilityManaCost"				"100"	
 
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration_hero"	"4"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration_creep"	"12"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration_invul"	"2"
-			}
+			"duration_hero"			"4"
+			"duration_creep"		"12"
+			"duration_invul"		"2"
 		}
 	}
 
@@ -390,23 +330,11 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"movement_slow"		"-25"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"attack_slow"		"-25"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"		"3"
-			}
+			"movement_slow"		"-25"
+			"attack_slow"		"-25"
+			"duration"			"3"
 		}
 
 		"OnOwnerSpawned"
@@ -484,23 +412,11 @@
 
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"value_heal"			"50"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"value_heal_percent"	"5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"400"
-			}
+			"value_heal"				"50"
+			"value_heal_percent"		"5"
+			"radius"					"400"
 		}
 
 		"OnSpellStart"

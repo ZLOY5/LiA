@@ -11,14 +11,10 @@
 
         "MaxLevel"              "1"
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"      			"FIELD_INTEGER"
-                "owner_health_restore"  	"200"
-            }
-        }
+        "AbilityValues"
+		{
+			"owner_health_restore"		"200"
+		}
 
         "OnOwnerDied"
         {
@@ -48,14 +44,10 @@
 
         "MaxLevel"              "1"
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "damage_agility_percent"    "150"
-            }
-        }
+        "AbilityValues"
+		{
+			"damage_agility_percent"		"150"
+		}
 
         "Modifiers"
         {
@@ -88,24 +80,12 @@
         "AbilityCooldown"           "12"
         "AbilityManaCost"           "60"
         
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "bonus_movespeed"   "30"
-            }
-            "02"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "bonus_damage"      "200"
-            }
-            "03"
-            {
-                "var_type"          "FIELD_INTEGER"
-                "duration"          "8"
-            }
-        }
+        "AbilityValues"
+		{
+			"bonus_movespeed"		"30"
+			"bonus_damage"			"200"
+			"duration"				"8"
+		}
 
         "OnSpellStart"
         {

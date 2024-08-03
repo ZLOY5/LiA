@@ -67,58 +67,18 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_templar_assassin.vsndevts"		
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"reduce_armor"				"-4 -8 -12"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"main_damage"				"120 200 280"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"other_damage"				"80 160 240"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"dps_main"				"15 25 35"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"dps_secondary"			"10 20 30"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"8.0"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"tick"					"0.5"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_speed"				"1250.0"
-			}
-			"09"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_vision"				"300.0"
-			}
-			"10"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"250"
-			}
+			"reduce_armor"		"-4 -8 -12"
+			"main_damage"		"120 200 280"
+			"other_damage"		"80 160 240"
+			"dps_main"			"15 25 35"
+			"dps_secondary"		"10 20 30"
+			"duration"			"8.0"
+			"tick"				"0.5"
+			"acid_speed"		"1250.0"
+			"acid_vision"		"300.0"
+			"radius"			"250"
 		}
 
 		"OnSpellStart"
@@ -237,18 +197,10 @@
 
 		"AbilityCastRange"				"600"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"600"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_return"				"10 15 20"		
-			}	
+			"radius"			"600"
+			"damage_return"		"10 15 20"
 		}
 
 	}
@@ -280,38 +232,14 @@
 
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"transformation_time"	"0.35"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bonus_damage"			"30"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_range"			"300"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tooltip_attack_range"			"850"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_health"			"100 200 300"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"20 25 30"
-			}
+			"transformation_time"		"0.35"
+			"bonus_damage"				"30"
+			"bonus_range"				"300"
+			"tooltip_attack_range"		"850"
+			"bonus_health"				"100 200 300"
+			"duration"					"20 25 30"
 		}
 
 		"precache"

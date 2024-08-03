@@ -45,28 +45,12 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"start_radius"			"90 90 90"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"end_radius"			"100 100 100"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"range"					"700 700 700"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"1050"
-			}					
+			"start_radius"		"90 90 90"
+			"end_radius"		"100 100 100"
+			"range"				"700 700 700"
+			"speed"				"1050"
 		}
 		
 		"OnSpellStart"
@@ -116,18 +100,10 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"bonus_armor"  "3 6 9"
-			}
-			"02"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"bonus_strength"   "9 18 27"
-			}
+			"bonus_armor"			"3 6 9"
+			"bonus_strength"		"9 18 27"
 		} 
 	}
 
@@ -150,18 +126,10 @@
 			"particle"	"particles/generic_gameplay/generic_stunned.vpcf" 
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"25"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bash_stun"	"1.0 1.5 2.0"
-			}
+			"bash_chance"		"25"
+			"bash_stun"			"1.0 1.5 2.0"
 		}
 			
 		"Modifiers"
@@ -215,33 +183,13 @@
 			"particle" "particles/units/heroes/hero_slardar/slardar_crush.vpcf"
 			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
 		}
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"damage_per_second"  "100 150 200"
-			}
-			"02"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"str_tooltip"  "100"
-			}
-			"03"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"bonus_move_speed_percentage"  "25 50 75"
-			}
-			"04"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"duration"  "6.0 9.0 12.0"
-			}
-			"05"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"radius"  "300 300 300"
-			}
+			"damage_per_second"					"100 150 200"
+			"str_tooltip"						"100"
+			"bonus_move_speed_percentage"		"25 50 75"
+			"duration"							"6.0 9.0 12.0"
+			"radius"							"300 300 300"
 		}
 		"OnSpellStart"
 		{

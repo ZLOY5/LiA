@@ -31,34 +31,14 @@
 
     // Special    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-        "01"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "radius"                  "225"
-        }
-        "02"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "hp_prc_dmg"              "10"
-        }
-        "03"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "burn_damage"             "20 40 60"
-        }
-        "04"
-        {
-            "var_type"                "FIELD_FLOAT"
-            "duration"                "3"
-        }
-        "05"
-        {
-            "var_type"                "FIELD_INTEGER"
-            "burn_damage_actual"             "5 10 15"
-        }
-    }
+    "AbilityValues"
+		{
+			"radius"					"225"
+			"hp_prc_dmg"				"10"
+			"burn_damage"				"20 40 60"
+			"duration"					"3"
+			"burn_damage_actual"		"5 10 15"
+		}
 
     "OnSpellStart"
     {
@@ -135,34 +115,14 @@
   
     // Special    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-          "var_type"                          "FIELD_INTEGER"
-          "stack_armor"                       "2 4 6"
-      }
-      "02"
-      {
-          "var_type"                          "FIELD_INTEGER"
-          "stack_health_regen"                "3 6 9"
-      }
-      "03"
-      { 
-          "var_type"                          "FIELD_INTEGER"
-          "stack_duration"                    "5"
-      }
-      "04"
-      {
-          "var_type"                          "FIELD_INTEGER"
-          "radius"                            "500"
-      }
-      "05"
-      {
-          "var_type"                          "FIELD_INTEGER"
-          "magical_resistance_passive"        "20 30 40"
-      }
-    }
+    "AbilityValues"
+		{
+			"stack_armor"						"2 4 6"
+			"stack_health_regen"				"3 6 9"
+			"stack_duration"					"5"
+			"radius"							"500"
+			"magical_resistance_passive"		"20 30 40"
+		}
   }  
   
   "akron_firerage"
@@ -191,34 +151,14 @@
 
     // Special    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-        "01"
-        {
-          "var_type"                "FIELD_INTEGER"
-          "radius"                  "250"
-        }
-        "02"
-        {
-          "var_type"                "FIELD_INTEGER"
-          "damage"                  "60 120 180"
-        }
-        "03"
-        {
-          "var_type"                "FIELD_INTEGER"
-          "StackForExplosion"       "15"
-        }
-        "04"
-        {
-          "var_type"                "FIELD_INTEGER"
-          "stackTime"               "12"
-        }
-        "05"
-        {
-          "var_type"                "FIELD_INTEGER"
-          "heroStacks"               "5"
-        }
-    } 
+    "AbilityValues"
+		{
+			"radius"				"250"
+			"damage"				"60 120 180"
+			"StackForExplosion"		"15"
+			"stackTime"				"12"
+			"heroStacks"			"5"
+		} 
   
     // Casting
     //-------------------------------------------------------------------------------------------------------------
@@ -324,29 +264,13 @@
 
     // Special    
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "bonus_attack_speed"      "40 60 80"
-      }
-      "02"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "damage_reduction"        "-40 -60 -80"
-      }
-      "03"
-      {
-        "var_type"                "FIELD_FLOAT"
-        "duration"                "4 5 6"
-      }
-      "04"
-      {
-        "var_type"                "FIELD_INTEGER"
-        "radius"                  "300"
-      }
-    }
+    "AbilityValues"
+		{
+			"bonus_attack_speed"		"40 60 80"
+			"damage_reduction"			"-40 -60 -80"
+			"duration"					"4 5 6"
+			"radius"					"300"
+		}
 
     "Modifiers"
     {
@@ -521,33 +445,13 @@
 
       // Special    
       //-------------------------------------------------------------------------------------------------------------
-      "AbilitySpecial"
-      {
-        "01"
-        {
-        "var_type"                           "FIELD_INTEGER"
-        "Damage"                      "150 300 450"
-        }
-      "02"
-        {
-        "var_type"                            "FIELD_INTEGER"
-        "slow_speed_attack_and_movement"      "-40 -60 -80"
-        }
-      "03"
-        {
-        "var_type"                            "FIELD_INTEGER"
-        "slow_tooltip"      "-40 -60 -80"
-        }
-    "04"
-      {
-        "var_type"                            "FIELD_FLOAT"
-        "duration"                            "5 10 15"
-      }
-        "05"
-        {
-        "var_type"                           "FIELD_INTEGER"
-        "radius"                             "1500"
-        }
-      }  
+      "AbilityValues"
+		{
+			"Damage"								"150 300 450"
+			"slow_speed_attack_and_movement"		"-40 -60 -80"
+			"slow_tooltip"							"-40 -60 -80"
+			"duration"								"5 10 15"
+			"radius"								"1500"
+		}  
     }
 }

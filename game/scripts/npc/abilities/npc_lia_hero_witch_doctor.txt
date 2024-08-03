@@ -28,39 +28,18 @@
 			"particle"    "particles/units/heroes/hero_shadow_demon/shadow_demon_shadow_poison_projectile.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage"					"100 200 300"
+			"damage_scepter"
 			{
-				"var_type"    "FIELD_INTEGER"
-				"damage"      "100 200 300"
-			}
-			"02"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"damage_scepter"      "300 400 500"
+				"value"					"300 400 500"
 				"RequiresScepter"		"1"
 			}
-			"03"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"projectile_distance"    "650"
-			}
-			"04"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"start_width"      "80"
-			}
-			"05"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"end_width"      "200"
-			}
-			"06"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"speed"         "1100"
-			}     
+			"projectile_distance"		"650"
+			"start_width"				"80"
+			"end_width"					"200"
+			"speed"						"1100"
 		}
 	}
 
@@ -96,49 +75,26 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"armor_bonus"				"5 10 15"
+			"armor_bonus_scepter"
 			{
-				"var_type"        "FIELD_INTEGER"
-				"armor_bonus"     "5 10 15"
-			}
-			"02"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"armor_bonus_scepter"     "20 25 30"
+				"value"					"20 25 30"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"duration"					"10 15 20"
+			"duration_scepter"
 			{
-				"var_type"        "FIELD_FLOAT"
-				"duration"        "10 15 20"
-			}
-			"04"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"duration_scepter"        "30"
+				"value"					"30"
 				"RequiresScepter"		"1"
 			}
-			"05"
+			"movement_slow_percent"		"-40"
+			"attack_slow"				"-25"
+			"slow_duration"				"5.0"
+			"manacost_scepter"
 			{
-				"var_type"        "FIELD_INTEGER"
-				"movement_slow_percent" "-40"
-			}
-			"06"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"attack_slow"   "-25"
-			}
-			"07"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"slow_duration"     "5.0"
-			}
-			"08"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"manacost_scepter"   "150 175 200"
+				"value"					"150 175 200"
 				"RequiresScepter"		"1"
 			}
 		}
@@ -183,38 +139,14 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"				"90 180 270"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"heal"					"150 300 450"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"300"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"distance"				"320"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"speed"					"300"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"air_time"				"1.2"
-			}			
+			"damage"		"90 180 270"
+			"heal"			"150 300 450"
+			"radius"		"300"
+			"distance"		"320"
+			"speed"			"300"
+			"air_time"		"1.2"
 		}
 		
 		"OnSpellStart"

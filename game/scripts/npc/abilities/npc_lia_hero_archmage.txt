@@ -40,84 +40,43 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "initial_damage"  "100 150 200"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "initial_damage_scepter"  "150 200 250"
-        "RequiresScepter"   "1"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "damage_per_charge" "20 30 40"
-      }
-      "04"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "damage_per_charge_scepter" "30 40 50"
-        "RequiresScepter"   "1"
-      }
-      "05"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "manacost_per_charge" "10 15 20"
-      }
-      "06"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "manacost_per_charge_scepter" "20 25 30"
-        "RequiresScepter"   "1"
-      }
-      "07"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "charge_duration"  "35.0"
-      }
-      "08"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "charge_limit"  "4 6 8"
-      }   
-      "09"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "starfall_delay"  "0.57"
-      }
-      "10"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "initial_manacost"  "50 100 150"
-      }
-      "11"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "initial_manacost_scepter"  "100 150 200"
-        "RequiresScepter"   "1"
-      }
-      "12"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "half_damage_radius"  "125"
-      }
-      "13"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "anomaly_radius"  "450"
-      }
-      "14"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "cooldown_scepter"  "2.5"
-        "RequiresScepter"   "1"
-      }
-    }
+    "AbilityValues"
+		{
+			"initial_damage"					"100 150 200"
+			"initial_damage_scepter"
+			{
+				"value"							"150 200 250"
+				"RequiresScepter"				"1"
+			}
+			"damage_per_charge"					"20 30 40"
+			"damage_per_charge_scepter"
+			{
+				"value"							"30 40 50"
+				"RequiresScepter"				"1"
+			}
+			"manacost_per_charge"				"10 15 20"
+			"manacost_per_charge_scepter"
+			{
+				"value"							"20 25 30"
+				"RequiresScepter"				"1"
+			}
+			"charge_duration"					"35.0"
+			"charge_limit"						"4 6 8"
+			"starfall_delay"					"0.57"
+			"initial_manacost"					"50 100 150"
+			"initial_manacost_scepter"
+			{
+				"value"							"100 150 200"
+				"RequiresScepter"				"1"
+			}
+			"half_damage_radius"				"125"
+			"anomaly_radius"					"450"
+			"cooldown_scepter"
+			{
+				"value"							"2.5"
+				"RequiresScepter"				"1"
+			}
+		}
   }
 
   "archmage_polymorph"
@@ -146,34 +105,14 @@
       "soundfile" "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
       "model"     "models/items/hex/sheep_hex/sheep_hex.vmdl"
     }
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "duration"        "2 3 4"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "hero_duration"    "1 1.5 2"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "movespeed"       "100"
-      }
-      "04"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "anomaly_radius"  "450"
-      }
-      "05"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "illusion_damage"  "500 1000 1500"
-      }
-    }
+    "AbilityValues"
+		{
+			"duration"				"2 3 4"
+			"hero_duration"			"1 1.5 2"
+			"movespeed"				"100"
+			"anomaly_radius"		"450"
+			"illusion_damage"		"500 1000 1500"
+		}
 
     "OnSpellStart"
     {
@@ -278,31 +217,21 @@
       "soundfile"   "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"        
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "duration"      "6 8 10"
-      }
-      "02"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "duration_scepter"      "8 10 12"
-        "RequiresScepter"   "1"
-      }
-      "03"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "radius"        "450"
-      }
-      "04"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "manacost_scepter"        "300 350 400"
-        "RequiresScepter"   "1"
-      }
-    } 
+    "AbilityValues"
+		{
+			"duration"					"6 8 10"
+			"duration_scepter"
+			{
+				"value"					"8 10 12"
+				"RequiresScepter"		"1"
+			}
+			"radius"					"450"
+			"manacost_scepter"
+			{
+				"value"					"300 350 400"
+				"RequiresScepter"		"1"
+			}
+		} 
   }
 
 
@@ -345,18 +274,10 @@
 
       // Special
       //-------------------------------------------------------------------------------------------------------------
-      "AbilitySpecial"
-      {
-          "01"
-          {
-              "var_type"        "FIELD_INTEGER"
-              "lol"             "45 65 85"
-          }
-          "02"
-          {
-              "var_type"        "FIELD_INTEGER"
-              "lol1"            "5"
-          }
-      }
+      "AbilityValues"
+		{
+			"lol"		"45 65 85"
+			"lol1"		"5"
+		}
   }
 }  

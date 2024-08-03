@@ -38,28 +38,12 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_per_second"		"30 60 90"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"root_duration"		"2 3 4"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"root_hero_duration"	"1 2 3"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"290"
-			}
+			"damage_per_second"			"30 60 90"
+			"root_duration"				"2 3 4"
+			"root_hero_duration"		"1 2 3"
+			"radius"					"290"
 		}
 
 		"OnSpellStart"
@@ -157,23 +141,11 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"treant_health"  "350 700 1400"
-			}
-			"02"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"treant_damage"  "60 125 250"
-			}
-			"03"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"unit_count"  	"2 2 2"
-			}
+			"treant_health"		"350 700 1400"
+			"treant_damage"		"60 125 250"
+			"unit_count"		"2 2 2"
 		}
 
 		"OnSpellStart"
@@ -218,28 +190,18 @@
 			"particle"  "particles/status_fx/status_effect_ancestral_spirit.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"bonus_stats"				"15 30 45"
+			"bonus_stats_scepter"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_stats"		"15 30 45"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_stats_scepter"		"25 50 75"
+				"value"					"25 50 75"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"lifetime"					"10 15 20"
+			"lifetime_scepter"
 			{
-				"var_type"			"FIELD_FLOAT"
-				"lifetime"			"10 15 20"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"lifetime_scepter"			"15 20 25"
+				"value"					"15 20 25"
 				"RequiresScepter"		"1"
 			}
 		}
@@ -280,40 +242,22 @@
 			"particle"			"particles/units/heroes/hero_enchantress/enchantress_untouchable.vpcf"
 		}
 
-		"AbilitySpecial"
-		{           
-			"01"
+		"AbilityValues"
+		{
+			"damage_per_second"				"60 90 120"
+			"damage_per_second_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"60 90 120"
+				"value"						"90 120 150"
+				"RequiresScepter"			"1"
 			}
-			"02"
+			"duration"						"10"
+			"hero_duration"					"5"
+			"radius"						"350"
+			"cooldown_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second_scepter"		"90 120 150"
-				"RequiresScepter"		"1"
+				"value"						"160"
+				"RequiresScepter"			"1"
 			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"10"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"hero_duration"			"5"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"350"
-			}  
-			"06"
-			{
-				"var_type"              "FIELD_FLOAT"
-				"cooldown_scepter"      "160"
-				"RequiresScepter"		"1"
-			}    
 		}
 	}	
 
@@ -387,34 +331,13 @@
 		}
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"				"2.0"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"200"
-			}
-			// Extra
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"cyclone_height"			"550"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"cyclone_min_height"		"500"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"cyclone_max_height"		"650"
-			}
+			"duration"					"2.0"
+			"damage"					"200"
+			"cyclone_height"			"550"
+			"cyclone_min_height"		"500"
+			"cyclone_max_height"		"650"
 		}
 
 		"OnSpellStart"
@@ -503,28 +426,12 @@
 		"AbilityCastRange"				"500"
 		"AbilityCooldown"               "7 14 21"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"bonus_armor"      "10 20 30"        
-			}
-			"02"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"bonus_regen"      "75 100 125"        
-			}
-			"03"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"radius"    		"500"
-			}
-			"04"
-			{
-				"var_type"          "FIELD_FLOAT"
-				"duration"  "3 4 5"
-			}
+			"bonus_armor"		"10 20 30"
+			"bonus_regen"		"75 100 125"
+			"radius"			"500"
+			"duration"			"3 4 5"
 		}
 
 		"OnSpellStart"

@@ -69,23 +69,11 @@
 
 		"AbilityManaCost"               "100 150 200"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"spirit_health"  "500 800 1100"
-			}
-			"02"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"spirit_damage"  "25 45 100"
-			}
-			"03"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"duration"  "20 25 30"
-			}
+			"spirit_health"		"500 800 1100"
+			"spirit_damage"		"25 45 100"
+			"duration"			"20 25 30"
 		}
 
 		"OnSpellStart"
@@ -127,40 +115,25 @@
 		"AbilityCooldown"			"10"
 		"AbilityManaCost"			"100 150 200"
 			
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"bonus_health_regen"				"20 40 80"
+			"bonus_health_regen_scepter"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"bonus_health_regen"	"20 40 80"
+				"value"							"40 80 160"
+				"RequiresScepter"				"1"
 			}
-			"02"
+			"bonus_mana_regen"					"20 30 40"
+			"bonus_mana_regen_scepter"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"bonus_health_regen_scepter"	"40 80 160"
-				"RequiresScepter"		"1"
+				"value"							"40 60 80"
+				"RequiresScepter"				"1"
 			}
-			"03"
+			"duration"							"5"
+			"cooldown_scepter"
 			{
-				"var_type"		"FIELD_INTEGER"
-				"bonus_mana_regen"	"20 30 40"
-			}
-			"04"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"bonus_mana_regen_scepter"	"40 60 80"
-				"RequiresScepter"		"1"
-			}
-			"05"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"duration"		"5"
-			}
-			"06"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"cooldown_scepter"		"7"
-				"RequiresScepter"		"1"
+				"value"							"7"
+				"RequiresScepter"				"1"
 			}
 		}
 
@@ -194,43 +167,15 @@
 			"particle"  "particles/econ/items/silencer/silencer_ti6/silencer_last_word_status_ti6_ring_mist.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"regen_mana_constant"    "2 4 0"
-			}
-			"02"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"regen_mana_percent"    "0 0 1"
-			}
-			"03"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"damage"      "100 200 300"
-			}
-			"04"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"movement_slow_percentage"    "-50"
-			}
-			"05"
-			{
-				"var_type"        "FIELD_FLOAT"
-				"slow_duration"    "4"
-			}
-			"06"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"enemy_effect_radius"   "550"
-			}
-			"07"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"aura_radius"    "800"
-			}
+			"regen_mana_constant"			"2 4 0"
+			"regen_mana_percent"			"0 0 1"
+			"damage"						"100 200 300"
+			"movement_slow_percentage"		"-50"
+			"slow_duration"					"4"
+			"enemy_effect_radius"			"550"
+			"aura_radius"					"800"
 		} 
 	}
 
@@ -254,46 +199,27 @@
 		"AbilityCastPoint"              "0.3"
 		"AbilityCastRange"				"300"
 			
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"ghost_health"				"1000 1500 2000"
+			"ghost_health_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"ghost_health"  "1000 1500 2000"
-			}
-			"02"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"ghost_health_scepter"  "1500 2000 2500"
+				"value"					"1500 2000 2500"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"ghost_damage"				"135 185 255"
+			"ghost_damage_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"ghost_damage"  "135 185 255"
-			}
-			"04"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"ghost_damage_scepter"  "185 255 325"
+				"value"					"185 255 325"
 				"RequiresScepter"		"1"
 			}
-			"05"
+			"duration"					"120"
+			"manacost_scepter"
 			{
-				"var_type"          "FIELD_FLOAT"
-				"duration"  "120"
-			}
-			"06"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"manacost_scepter"  "600 700 800"
+				"value"					"600 700 800"
 				"RequiresScepter"		"1"
 			}
-			"07"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"ghosts_count"  "2"
-			}
+			"ghosts_count"				"2"
 		}
 	}
 }

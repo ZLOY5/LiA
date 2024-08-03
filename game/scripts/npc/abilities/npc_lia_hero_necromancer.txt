@@ -28,49 +28,23 @@
 			"particle"  "particles/units/heroes/hero_nyx_assassin/nyx_assassin_impale_hit.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage"					"100 200 300"
+			"damage_scepter"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"		"100 200 300"		
+				"value"					"300 400 500"
+				"RequiresScepter"		"1"
 			}
-			"02"
+			"stun_duration"				"2 3 4"
+			"width"						"125"
+			"length"					"550"
+			"speed"						"1833"
+			"flight_duration"			"0.5"
+			"manacost_scepter"
 			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_scepter"		"300 400 500"	
-				"RequiresScepter"		"1"	
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"stun_duration"	"2 3 4"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"width"				"125"
-			}
-			"05"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"length"		"550"		
-			}
-			"06"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"speed"		"1833"		
-			}
-			"07"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"flight_duration"		"0.5"		
-			}
-			"08"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"manacost_scepter"		"200 300 400"	
-				"RequiresScepter"		"1"	
+				"value"					"200 300 400"
+				"RequiresScepter"		"1"
 			}
 		}
 	}
@@ -100,45 +74,26 @@
 			"particle"  "particles/units/heroes/hero_undying/undying_zombie_spawn.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"skeleton_health"				"275 650 1250"
+			"skeleton_health_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"skeleton_health"  "275 650 1250"
+				"value"						"650 1250 1500"
+				"RequiresScepter"			"1"
 			}
-			"02"
+			"skeleton_damage"				"15 25 50"
+			"skeleton_damage_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"skeleton_health_scepter"  "650 1250 1500"
-				"RequiresScepter"		"1"
+				"value"						"25 50 100"
+				"RequiresScepter"			"1"
 			}
-			"03"
+			"skeleton_count"				"2 3 4"
+			"duration"						"60"
+			"manacost_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"skeleton_damage"  "15 25 50"
-			}
-			"04"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"skeleton_damage_scepter"  "25 50 100"
-				"RequiresScepter"		"1"
-			}
-			"05"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"skeleton_count"  "2 3 4"
-			}
-			"06"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"duration"  "60"
-			}
-			"07"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"manacost_scepter"  "150 300 450"
-				"RequiresScepter"		"1"
+				"value"						"150 300 450"
+				"RequiresScepter"			"1"
 			}
 		}
 	}
@@ -165,13 +120,9 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"0"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"reincarnate_time"		"3"
-			}
+			"reincarnate_time"		"3"
 		}
 
 		"precache"
@@ -193,14 +144,9 @@
 		//"AbilityUnitTargetTeam" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_return"				"50"		
-			}	
+			"damage_return"		"50"
 		}
 	}
 
@@ -236,23 +182,11 @@
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"duration"					"25 30 35"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"1000"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"max_units_resurrected"		"7 10 13"
-			}		
+			"duration"					"25 30 35"
+			"radius"					"1000"
+			"max_units_resurrected"		"7 10 13"
 		}
 
 		"OnAbilityPhaseStart"

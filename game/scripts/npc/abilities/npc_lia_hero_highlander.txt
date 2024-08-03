@@ -22,38 +22,14 @@
 
 		"AbilityManaCost"				"55 70 85"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bolt_speed"			"1000"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_main_target_duration"	"1.0 2.0 3.0"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"stun_radius_duration"	"1.0 1.5 2.0"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_main_target_tooltip"	"150 200 250"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_radius"			"75 125 175"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"			"250"
-			}
+			"bolt_speed"						"1000"
+			"stun_main_target_duration"			"1.0 2.0 3.0"
+			"stun_radius_duration"				"1.0 1.5 2.0"
+			"damage_main_target_tooltip"		"150 200 250"
+			"damage_radius"						"75 125 175"
+			"radius"							"250"
 		}
 
 		"precache"
@@ -118,23 +94,11 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"		"50 100 150"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_movement_speed_percentage"		"10 15 20"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"		"8"
-			}
+			"bonus_damage"							"50 100 150"
+			"bonus_movement_speed_percentage"		"10 15 20"
+			"duration"								"8"
 		}
 		
 		"OnSpellStart"
@@ -193,28 +157,12 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_armor"			"3 6 9"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"armor_per_attack"	"3"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"			"2 3 4"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"max_armor"			"21 24 27"
-			}
+			"bonus_armor"			"3 6 9"
+			"armor_per_attack"		"3"
+			"duration"				"2 3 4"
+			"max_armor"				"21 24 27"
 		}
 	}
 
@@ -258,33 +206,13 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"		"250 500 750"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"movement_speed_slow"		"-70 -80 -90"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"	"5 6 7"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"350"
-			}
-			"05"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"aoe_tooltip"			"700"
-			}
+			"damage"					"250 500 750"
+			"movement_speed_slow"		"-70 -80 -90"
+			"duration"					"5 6 7"
+			"radius"					"350"
+			"aoe_tooltip"				"700"
 		}
 
 		"OnSpellStart"

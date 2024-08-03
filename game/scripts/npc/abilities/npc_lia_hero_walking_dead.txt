@@ -31,48 +31,16 @@
 			"particle"		"particles/custom/walking_dead/walking_dead_decay.vpcf"	   
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"damage_per_second"    "15 25 35"
-			}
-			"02"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"movespeed_slow_percentage"    "20 30 40"
-			}
-			"03"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"decay_duration"  "9"
-			}
-			"04"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"active_regeneration_reduction_percentage"    "-100"
-			}
-			"05"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"health_regeneration"    "30 50 70"
-			}
-			"06"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"regeneration_duration"  "6"
-			}
-			"07"
-			{
-				"var_type"      "FIELD_INTEGER"
-				"radius"      "275"
-			} 
-			"08"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"tick_interval"  "0.25"
-			}
+			"damage_per_second"								"15 25 35"
+			"movespeed_slow_percentage"						"20 30 40"
+			"decay_duration"								"9"
+			"active_regeneration_reduction_percentage"		"-100"
+			"health_regeneration"							"30 50 70"
+			"regeneration_duration"							"6"
+			"radius"										"275"
+			"tick_interval"									"0.25"
 		}
 	}
 
@@ -137,23 +105,11 @@
 			"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_fire_ambient.vpcf"
 		}
 	
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"                          "FIELD_INTEGER"
-				"incoming_damage_reduction"         "-10 -15 -20"
-			}
-			"02"
-			{
-				"var_type"                          "FIELD_INTEGER"
-				"health_regen_per_charge"           "2 4 6"
-			}
-			"03"
-			{ 
-				"var_type"                          "FIELD_INTEGER"
-				"charge_duration"                    "5"
-			}
+			"incoming_damage_reduction"		"-10 -15 -20"
+			"health_regen_per_charge"		"2 4 6"
+			"charge_duration"				"5"
 		}
 	}  
 
@@ -184,28 +140,12 @@
 			"particle"  "particles/custom/tauren_champion/modifier_tauren_champion_accumulated_rage_damage.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"bonus_base_strength"      "30 40 50"
-			}
-			"02"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"heal_to_damage_percentage"     "40 50 60"
-			}
-			"03"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"radius"      "350"
-			}
-			"04"
-			{
-				"var_type"      "FIELD_FLOAT"
-				"duration"      "10"
-			}
+			"bonus_base_strength"			"30 40 50"
+			"heal_to_damage_percentage"		"40 50 60"
+			"radius"						"350"
+			"duration"						"10"
 		} 
 	}
 }	

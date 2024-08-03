@@ -26,28 +26,12 @@
 			"particle"  		"particles/units/heroes/hero_huskar_temp/huskar_burning_spear_debuff.vpcf"		
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"stat_percentage"		"30 50 70"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"constant_damage"		"10 20 30"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"		"250"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"		"10.0 12.5 15.0"
-			}
+			"stat_percentage"		"30 50 70"
+			"constant_damage"		"10 20 30"
+			"radius"				"250"
+			"duration"				"10.0 12.5 15.0"
 		}
 		"OnSpellStart"
 		{
@@ -133,13 +117,9 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"heal_percentage"		"10 15 20"
-			}
+			"heal_percentage"		"10 15 20"
 		}
 		"Modifiers"
 		{
@@ -172,23 +152,11 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"evasion"   "5 10 15"
-			}
-			"02"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"crit_chance"   "15 30 45"
-			}
-			"03"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"crit_multiplier"   "150"
-			}
+			"evasion"				"5 10 15"
+			"crit_chance"			"15 30 45"
+			"crit_multiplier"		"150"
 		} 
 	}
 
@@ -219,18 +187,10 @@
 		"AbilityManaCost"				"80 100 120"	
 
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"650"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"4 5 6"
-			}
+			"radius"		"650"
+			"duration"		"4 5 6"
 		}
 		"OnSpellStart"
 		{

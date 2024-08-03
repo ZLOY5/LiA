@@ -29,51 +29,28 @@
 			"particle"  "particles/custom/bloodwoven/bloodwoven_bloodworm_heal.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"damage"					"75 150 300"
+			"damage_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"		"75 150 300"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_scepter"		"150 300 600"
+				"value"					"150 300 600"
 				"RequiresScepter"		"1"
 			}
-			"03"
+			"heal_per_target"			"45"
+			"bounces"					"5 7 9"
+			"bounces_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"heal_per_target"		"45"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bounces"		"5 7 9"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bounces_scepter"		"6 8 10"
+				"value"					"6 8 10"
 				"RequiresScepter"		"1"
 			}
-			"06"
+			"bounce_range"				"800"
+			"manacost_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bounce_range"			"800"
-			}
-			"07"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"manacost_scepter"		"200 250 300"
+				"value"					"200 250 300"
 				"RequiresScepter"		"1"
 			}
-			"08"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"projectile_speed"	"800"
-			}
+			"projectile_speed"			"800"
 		}
 	}
 
@@ -107,40 +84,25 @@
 			"particle"	"particles/units/heroes/hero_legion_commander/legion_commander_press.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"bonus_damage_percentage"				"25 50 75"
+			"bonus_damage_percentage_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage_percentage"	"25 50 75"
+				"value"								"50 75 100"
+				"RequiresScepter"					"1"
 			}
-			"02"
+			"bonus_health_regen"					"10 20 30"
+			"bonus_health_regen_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage_percentage_scepter"	"50 75 100"
-				"RequiresScepter"		"1"
+				"value"								"20 40 60"
+				"RequiresScepter"					"1"
 			}
-			"03"
+			"duration"								"20"
+			"manacost_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_health_regen"	"10 20 30"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_health_regen_scepter"	"20 40 60"
-				"RequiresScepter"		"1"
-			}
-			"05"
-			{
-				"var_type"		"FIELD_FLOAT"
-				"duration"		"20"
-			}
-			"06"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"manacost_scepter"		"200 250 300"
-				"RequiresScepter"		"1"
+				"value"								"200 250 300"
+				"RequiresScepter"					"1"
 			}
 		}
 	}
@@ -174,38 +136,14 @@
 		{
 		"particle"	"particles/units/heroes/hero_phoenix/phoenix_fire_spirit_burn.vpcf"
 		}
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"		"10 20 40"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_penalty_percentage"		"-20 -30 -40"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_attack_speed"		"400"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"buff_duration"	"2 3 4"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration_hero"			"4"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration_creep"		"10"
-			}
+			"damage"						"10 20 40"
+			"damage_penalty_percentage"		"-20 -30 -40"
+			"bonus_attack_speed"			"400"
+			"buff_duration"					"2 3 4"
+			"duration_hero"					"4"
+			"duration_creep"				"10"
 		}
 
 		"OnSpellStart"
@@ -302,28 +240,12 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage"		"300 600 900"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_penalty_percentage"		"-60 -70 -80"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"	"10"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"			"475"
-			}
+			"damage"						"300 600 900"
+			"damage_penalty_percentage"		"-60 -70 -80"
+			"duration"						"10"
+			"radius"						"475"
 		}
 
 		"OnSpellStart"

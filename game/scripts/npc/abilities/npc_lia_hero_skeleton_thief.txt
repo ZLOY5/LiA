@@ -17,23 +17,11 @@
 		"AbilityCooldown"       "15 14 13"
 		"AbilityManaCost"		"40 50 60"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_movespeed"	"10 20 30"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_damage"		"80 160 240"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"			"8"
-			}
+			"bonus_movespeed"		"10 20 30"
+			"bonus_damage"			"80 160 240"
+			"duration"				"8"
 		}
 
 		"OnSpellStart"
@@ -208,18 +196,10 @@
 			"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_ghosts_ambient.vpcf"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-			"var_type"              "FIELD_INTEGER"
-			"bonus_attackspeed"     "150 250 350"
-			}
-			"02"
-			{
-			"var_type"              "FIELD_FLOAT"
-			"duration"              "2.0 3.0 4.0"
-			}
+			"bonus_attackspeed"		"150 250 350"
+			"duration"				"2.0 3.0 4.0"
 		}
 		
 		// Casting
@@ -289,23 +269,11 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"      				"FIELD_INTEGER"
-				"damage_return"  				"10 50 100"
-			}
-			"02"
-			{
-				"var_type"      				"FIELD_INTEGER"
-				"chance_additional_damage"   	"20"
-			}
-			"03"
-			{
-				"var_type"      				"FIELD_INTEGER"
-				"additional_damage"   			"100 150 200"
-			}
+			"damage_return"					"10 50 100"
+			"chance_additional_damage"		"20"
+			"additional_damage"				"100 150 200"
 		}
 	}
 
@@ -322,23 +290,11 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_mult"					"150 175 200"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_chance"				"7 10 13"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_chance_cap"			"50"
-			}
+			"crit_mult"				"150 175 200"
+			"crit_chance"			"7 10 13"
+			"crit_chance_cap"		"50"
 		}
 
 		"OnUpgrade"

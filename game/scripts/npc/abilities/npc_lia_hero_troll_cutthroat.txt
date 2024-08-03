@@ -28,43 +28,15 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_percentage"			"50"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"strength_into_damage_percentage"			"150"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"max_targets"			"6 7 8"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"axe_speed"				"600"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"600"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"return_speed"				"1000"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"ability_cast_range"				"300 400 500"
-			}
+			"damage_percentage"						"50"
+			"strength_into_damage_percentage"		"150"
+			"max_targets"							"6 7 8"
+			"axe_speed"								"600"
+			"radius"								"600"
+			"return_speed"							"1000"
+			"ability_cast_range"					"300 400 500"
 		}
 	}
 
@@ -124,28 +96,12 @@
 			"particle"	"particles/custom/troll_cutthroat/troll_cutthroat_vulnerability.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_multiplier"			"200"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_chance"				"14 17 20"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"armor_reduction"			"-4 -7 -10"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"5"
-			}
+			"crit_multiplier"		"200"
+			"crit_chance"			"14 17 20"
+			"armor_reduction"		"-4 -7 -10"
+			"duration"				"5"
 		}
 	}
 
@@ -182,64 +138,19 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"50 100 150"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"str_prc_dmg"				"75"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"hit_radius"				"100"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"max_range"					"450.0"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"axe_movement_speed"		"1400"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_movement_speed"		"30"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"blind_pct"					"60 60 60 60"
-			}
-			"08"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"whirl_duration"			"3.0"
-			}
-			// Extra
-			"09"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"axe_turn_rate"				"360"
-			}
-			"10"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"start_radius"				"1"
-			}
-			"11"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"think_interval"			"0.06"
-			}		
+			"damage"					"50 100 150"
+			"str_prc_dmg"				"75"
+			"hit_radius"				"100"
+			"max_range"					"450.0"
+			"axe_movement_speed"		"1400"
+			"bonus_movement_speed"		"30"
+			"blind_pct"					"60 60 60 60"
+			"whirl_duration"			"3.0"
+			"axe_turn_rate"				"360"
+			"start_radius"				"1"
+			"think_interval"			"0.06"
 		}
 
 		"OnUpgrade"
@@ -366,28 +277,12 @@
 		"AbilityCooldown"				"80"
 		"AbilityManaCost"				"170 200 230"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"50 100 150"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_reduction"		"-25"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_strength"		"20 40 60"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"9 12 15"
-			}
+			"bonus_attack_speed"		"50 100 150"
+			"damage_reduction"			"-25"
+			"bonus_strength"			"20 40 60"
+			"duration"					"9 12 15"
 		} 
 	}
 }

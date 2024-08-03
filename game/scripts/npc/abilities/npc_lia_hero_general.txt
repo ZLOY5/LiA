@@ -24,29 +24,13 @@
     
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"            "FIELD_INTEGER"
-        "radius"              "275 275 300"
-      }
-      "02"
-      {
-        "var_type"            "FIELD_FLOAT"
-        "duration"            "6.0"
-      }
-      "03"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "stomp_damage"          "40 120 240"
-      }
-      "04"
-      {
-        "var_type"                                "FIELD_INTEGER"
-        "attack_slow"          "-30 -50 -70"
-      }
-    }
+    "AbilityValues"
+		{
+			"radius"			"275 275 300"
+			"duration"			"6.0"
+			"stomp_damage"		"40 120 240"
+			"attack_slow"		"-30 -50 -70"
+		}
 
     "precache"
     {
@@ -163,34 +147,14 @@
 
     // Special
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"				"FIELD_INTEGER"
-        "projectile_speed"	"1250"
-      }
-      "02"
-      {
-        "var_type"				"FIELD_FLOAT"
-        "projectile_stun"	"2.0 2.5 3.0"
-      }
-      "03"
-      {
-        "var_type"				"FIELD_INTEGER"
-        "bonus_armor"	"5 10 15"
-      }
-      "04"
-      {
-        "var_type"				"FIELD_FLOAT"
-        "duration"	"7.0"
-      }
-      "05"
-      {
-        "var_type"				"FIELD_INTEGER"
-        "damage"	"100 200 300"
-      }		
-    }
+    "AbilityValues"
+		{
+			"projectile_speed"		"1250"
+			"projectile_stun"		"2.0 2.5 3.0"
+			"bonus_armor"			"5 10 15"
+			"duration"				"7.0"
+			"damage"				"100 200 300"
+		}
     
     "OnSpellStart"
     {
@@ -264,19 +228,11 @@
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "bonus_damage"    "60 120 180"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "radius"    "150"
-      }
-    }
+    "AbilityValues"
+		{
+			"bonus_damage"		"60 120 180"
+			"radius"			"150"
+		}
   }
 
   "general_magic_armor"
@@ -292,13 +248,9 @@
     "RequiredLevel"          "5"
     "LevelsBetweenUpgrades"  "4"
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"      "FIELD_INTEGER"
-        "incoming_damage_percentage"  "-15 -30 -45"
-      }
-    }
+    "AbilityValues"
+		{
+			"incoming_damage_percentage"		"-15 -30 -45"
+		}
   }
 }

@@ -22,19 +22,11 @@
             "particle"  "particles/generic_gameplay/illusion_killed.vpcf"
         }
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"      			"FIELD_INTEGER"
-                "shadow_lifetime"  			"120"
-            }
-            "02"
-            {
-                "var_type"      			"FIELD_INTEGER"
-                "shadow_attributes_perc"  	"75 125 175"
-            }
-        }
+        "AbilityValues"
+		{
+			"shadow_lifetime"				"120"
+			"shadow_attributes_perc"		"75 125 175"
+		}
 
         "OnOwnerDied"
         {
@@ -89,29 +81,13 @@
             "soundfile"         "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
         }
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "damage_per_sec"            "12 24 36"
-            }
-            "02"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "damage_shadow"             "30 60 90"
-            }
-            "03"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "duration"                  "10"
-            }
-            "04"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "radius"                    "250"
-            }
-        }
+        "AbilityValues"
+		{
+			"damage_per_sec"		"12 24 36"
+			"damage_shadow"			"30 60 90"
+			"duration"				"10"
+			"radius"				"250"
+		}
 
         "OnSpellStart"
         {
@@ -168,29 +144,13 @@
         "RequiredLevel"             "2"
         "LevelsBetweenUpgrades"     "2"
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "max_shadows"               "4 5 6"
-            }
-            "02"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "shadow_lifetime"           "8 10 12"
-            }
-            "03"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "shadow_attributes_perc"    "75 100 125"
-            }
-            "04"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "spawn_chance"              "17"
-            }
-        }
+        "AbilityValues"
+		{
+			"max_shadows"					"4 5 6"
+			"shadow_lifetime"				"8 10 12"
+			"shadow_attributes_perc"		"75 100 125"
+			"spawn_chance"					"17"
+		}
 
         "OnOwnerDied"
         {
@@ -288,24 +248,12 @@
             "particle"  "particles/abaddon_frost_slow.vpcf"
         }
 
-        "AbilitySpecial"
-        {
-            "01"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "duration"                  "5 7 9"
-            }
-            "02"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "bonus_attack_speed"        "60 120 180"
-            }
-            "03"
-            {
-                "var_type"                  "FIELD_INTEGER"
-                "chance"                    "20"
-            }
-        }
+        "AbilityValues"
+		{
+			"duration"					"5 7 9"
+			"bonus_attack_speed"		"60 120 180"
+			"chance"					"20"
+		}
 
         "Modifiers"
         {

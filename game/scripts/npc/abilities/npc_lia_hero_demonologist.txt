@@ -30,52 +30,29 @@
           "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
       }
 
-      "AbilitySpecial"
-      {
-        "01"
-          {
-            "var_type"        "FIELD_INTEGER"
-            "initial_damage"          "10 20 30"
-          }
-          "02"
-          {
-            "var_type"        "FIELD_INTEGER"
-            "initial_damage_scepter"          "20 40 60"
-            "RequiresScepter"   "1"
-          }
-          "03"
-          {
-            "var_type"        "FIELD_INTEGER"
-            "additional_damage"          "6"
-          }
-          "04"
-          {
-            "var_type"        "FIELD_INTEGER"
-            "additional_damage_scepter"          "12"
-            "RequiresScepter"   "1"
-          }    
-          "05"
-          {
-            "var_type"        "FIELD_FLOAT"
-            "initial_duration"        "2"
-          }
-          "06"
-          {
-            "var_type"        "FIELD_FLOAT"
-            "additional_duration"        "0.5"
-          }
-          "07"
-          {
-            "var_type"        "FIELD_INTEGER"
-            "radius"          "175"
-          } 
-          "08"
-          {
-            "var_type"              "FIELD_INTEGER"
-            "manacost_scepter"      "125 175 225"
-            "RequiresScepter"   "1"
-          }   
-      }
+      "AbilityValues"
+		{
+			"initial_damage"				"10 20 30"
+			"initial_damage_scepter"
+			{
+				"value"						"20 40 60"
+				"RequiresScepter"			"1"
+			}
+			"additional_damage"				"6"
+			"additional_damage_scepter"
+			{
+				"value"						"12"
+				"RequiresScepter"			"1"
+			}
+			"initial_duration"				"2"
+			"additional_duration"			"0.5"
+			"radius"						"175"
+			"manacost_scepter"
+			{
+				"value"						"125 175 225"
+				"RequiresScepter"			"1"
+			}
+		}
   }  
 
   "demonologist_touch_of_darkness"
@@ -104,24 +81,12 @@
       "soundfile"       "soundevents/game_sounds_heroes/game_sounds_shadow_demon.vsndevts"
     }
     
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "damage_percentage"          "5 7 9"
-      }
-      "02"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "radius"          "130"   
-      } 
-      "03"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "mana"            "20 35 50"   
-      }     
-    }
+    "AbilityValues"
+		{
+			"damage_percentage"		"5 7 9"
+			"radius"				"130"
+			"mana"					"20 35 50"
+		}
 
     "Modifiers"
     { 
@@ -211,24 +176,12 @@
       "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
     }
     
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "bonus_health"        "100 200 300"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "bonus_damage"      "25 50 75"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "hp_percent_transfer"        "25 35 45"
-      }
-    }
+    "AbilityValues"
+		{
+			"bonus_health"				"100 200 300"
+			"bonus_damage"				"25 50 75"
+			"hp_percent_transfer"		"25 35 45"
+		}
 
     "OnSpellStart"
     {
@@ -293,24 +246,12 @@
 
     "AbilityManaCost"       "0" 
    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "bonus_health"        "100 200 300"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "bonus_damage"      "25 50 75"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "hp_percent_transfer"        "25 35 45"
-      }
-    }
+    "AbilityValues"
+		{
+			"bonus_health"				"100 200 300"
+			"bonus_damage"				"25 50 75"
+			"hp_percent_transfer"		"25 35 45"
+		}
 
     "OnSpellStart"
     {
@@ -368,55 +309,25 @@
         "particle"  "particles/custom/demonologist/lia_demonologist_ritual_of_summoning.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "unit_count"  "4 6 8"
-      }
-      "02"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "boss_count"  "0"
-      }
-      "03"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "boss_count_scepter"  "1"
-        "RequiresScepter"   "1"
-      }
-      "04"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "intelligence_for_unit"  "40"
-      }
-      "05"
-      {
-        "var_type"          "FIELD_FLOAT"
-        "delay"  "1.5"
-      }
-      "06"
-      {
-        "var_type"          "FIELD_FLOAT"
-        "max_health_loss_percent_per_second"  "2"
-      }
-      "07"
-      {
-        "var_type"          "FIELD_FLOAT"
-        "health_loss_interval"  "0.25"
-      }
-      "08"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "spawn_radius"  "245"
-      } 
-      "09"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "manacost_scepter"  "250 300 350"
-        "RequiresScepter"   "1"
-      } 
-    }
+    "AbilityValues"
+		{
+			"unit_count"								"4 6 8"
+			"boss_count"								"0"
+			"boss_count_scepter"
+			{
+				"value"									"1"
+				"RequiresScepter"						"1"
+			}
+			"intelligence_for_unit"						"40"
+			"delay"										"1.5"
+			"max_health_loss_percent_per_second"		"2"
+			"health_loss_interval"						"0.25"
+			"spawn_radius"								"245"
+			"manacost_scepter"
+			{
+				"value"									"250 300 350"
+				"RequiresScepter"						"1"
+			}
+		}
   }  
 }

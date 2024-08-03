@@ -38,50 +38,24 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"first_strike_dps"				"50 100 150"
+			"first_strike_dps_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"first_strike_dps"		"50 100 150"
+				"value"						"150 200 250"
+				"RequiresScepter"			"1"
 			}
-			"02"
+			"first_strike_duration"			"2.8"
+			"burn_dps"						"4 6 8"
+			"burn_duration"					"6"
+			"radius"						"175 200 225"
+			"delay"							"1.33"
+			"manacost_scepter"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"first_strike_dps_scepter"		"150 200 250"
-				"RequiresScepter"		"1"
+				"value"						"250 275 300"
+				"RequiresScepter"			"1"
 			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"first_strike_duration"	"2.8"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"burn_dps"				"4 6 8"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"burn_duration"			"6"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"175 200 225"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"delay"					"1.33"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"manacost_scepter"		"250 275 300"
-				"RequiresScepter"		"1"
-			}	
 		}
 	}
 
@@ -110,53 +84,17 @@
 			"model"		"models/items/invoker/forge_spirit/cadenza_spirit/cadenza_spirit.vmdl"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_count"			"1 1 2"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_damage"			"15 27 45"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_hp"				"450 600 750"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_duration"		"60"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"attacks_to_split"			"7"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_1_count"		"1 0 0"
-			}
-			"07"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_2_count"		"0 1 0"
-			}
-			"08"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lava_spawn_3_count"		"0 0 2"
-			}
-			"09"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"spawn_distance"			"200"
-			}
+			"lava_spawn_count"			"1 1 2"
+			"lava_spawn_damage"			"15 27 45"
+			"lava_spawn_hp"				"450 600 750"
+			"lava_spawn_duration"		"60"
+			"attacks_to_split"			"7"
+			"lava_spawn_1_count"		"1 0 0"
+			"lava_spawn_2_count"		"0 1 0"
+			"lava_spawn_3_count"		"0 0 2"
+			"spawn_distance"			"200"
 		}
 
 		"OnSpellStart"
@@ -386,40 +324,14 @@
 		"AbilityCooldown"			"25"
 		"AbilityManaCost"			"150 200 250"
 			
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"duration"		"60"
-			}
-			"02"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"detonation_radius"			"300 350 400"
-			}
-			"03"
-			{
-				"var_type"		"FIELD_FLOAT"
-				"stun_duration"				"3 5 7"
-			}
-			"04"
-			{
-				"var_type"		"FIELD_FLOAT"
-				"stun_hero_duration"		"2 3 4"
-			}
-
-			"05"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"activation_delay"			"3"
-			}
-
-			"06"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"detection_radius"			"250 275 300"
-			}
+			"duration"					"60"
+			"detonation_radius"			"300 350 400"
+			"stun_duration"				"3 5 7"
+			"stun_hero_duration"		"2 3 4"
+			"activation_delay"			"3"
+			"detection_radius"			"250 275 300"
 		}
 
 		"precache"
@@ -499,46 +411,27 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
 		}
 			
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
+			"serpent_health"				"250 500 750"
+			"serpent_health_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"serpent_health"  "250 500 750"
+				"value"						"500 750 1200"
+				"RequiresScepter"			"1"
 			}
-			"02"
+			"serpent_damage"				"20 40 60"
+			"serpent_damage_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"serpent_health_scepter"  "500 750 1200"
-				"RequiresScepter"		"1"
+				"value"						"40 60 160"
+				"RequiresScepter"			"1"
 			}
-			"03"
+			"duration"						"60"
+			"manacost_scepter"
 			{
-				"var_type"          "FIELD_INTEGER"
-				"serpent_damage"  "20 40 60"
+				"value"						"250 350 450"
+				"RequiresScepter"			"1"
 			}
-			"04"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"serpent_damage_scepter"  "40 60 160"
-				"RequiresScepter"		"1"
-			}
-			"05"
-			{
-				"var_type"          "FIELD_FLOAT"
-				"duration"  "60"
-			}
-			"06"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"manacost_scepter"  "250 350 450"
-				"RequiresScepter"		"1"
-			}
-			"07"
-			{
-				"var_type"          "FIELD_INTEGER"
-				"serpent_count"  "4"
-			}
+			"serpent_count"					"4"
 		}
 	}
 }

@@ -20,29 +20,13 @@
     "AbilityCastPoint"  "0.0"
 
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"              "FIELD_FLOAT"
-        "duration"              "15"
-      }
-      "02"
-      {
-        "var_type"                      "FIELD_INTEGER"
-        "bonus_movespeed_percentage"    "5 10 20"
-      }
-      "03"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "bonus_attackspeed"           "10 20 40"
-      }
-      "04"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "bonus_strength"           "15 30 45"
-      }
-    }
+    "AbilityValues"
+		{
+			"duration"							"15"
+			"bonus_movespeed_percentage"		"5 10 20"
+			"bonus_attackspeed"					"10 20 40"
+			"bonus_strength"					"15 30 45"
+		}
       
     // Casting
     //-------------------------------------------------------------------------------------------------------------
@@ -105,19 +89,11 @@
       
     // Special  
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "bonus_strength"        "1 2 3"
-      }
-      "02"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "radius"                "375"
-      }
-    }
+    "AbilityValues"
+		{
+			"bonus_strength"		"1 2 3"
+			"radius"				"375"
+		}
   }
   
   "brewmaster_punisment"
@@ -157,19 +133,11 @@
 
     // Special  
     //-------------------------------------------------------------------------------------------------------------
-    "AbilitySpecial"
-    {
-      "01"
-      { 
-        "var_type"                          "FIELD_FLOAT"
-        "strength_percentage_return"        "0.6 0.8 1.0"
-      }
-      "02"
-      { 
-        "var_type"                          "FIELD_INTEGER"
-        "strength_percentage_return_tooltip"        "60 80 100"
-      }
-    }
+    "AbilityValues"
+		{
+			"strength_percentage_return"				"0.6 0.8 1.0"
+			"strength_percentage_return_tooltip"		"60 80 100"
+		}
   }
 
   "brewmaster_avatar" 
@@ -198,29 +166,13 @@
       "particle"	"particles/units/heroes/hero_brewmaster/brewmaster_earth_ambient.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "bonus_damage"          "60 120 180"
-      }
-      "02"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "bonus_armor"           "10 20 30"
-      }
-      "03"
-      {
-        "var_type"              "FIELD_INTEGER"
-        "bonus_health"           "400 700 1000"
-      }
-      "04"
-      {
-        "var_type"              "FIELD_FLOAT"
-        "duration"              "10"
-      }
-  }
+    "AbilityValues"
+		{
+			"bonus_damage"		"60 120 180"
+			"bonus_armor"		"10 20 30"
+			"bonus_health"		"400 700 1000"
+			"duration"			"10"
+		}
     
   // Casting
   //-------------------------------------------------------------------------------------------------------------

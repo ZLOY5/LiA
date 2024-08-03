@@ -51,33 +51,13 @@
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"starfall_radius"	"350 375 400"		
-			}
-			"02"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"starfall_delay"	"0.60"  //"0.57"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"regen_percentage"	"8 10 12"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"tick"				"0.10"
-			}
-			"05"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"			"3"
-			}
+			"starfall_radius"		"350 375 400"
+			"starfall_delay"		"0.60"
+			"regen_percentage"		"8 10 12"
+			"tick"					"0.10"
+			"duration"				"3"
 		}
 	
 		"OnSpellStart"
@@ -230,23 +210,11 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"  "0.2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-			"var_type"                      "FIELD_INTEGER"
-			"bonus_movespeed_percentage"    "20 40 60"
-			}
-			"02"
-			{
-			"var_type"                      "FIELD_INTEGER"
-			"bonus_attackspeed"             "50 100 150"
-			}
-			"03"
-			{
-			"var_type"                      "FIELD_FLOAT"
-			"duration"                      "10"
-			}
+			"bonus_movespeed_percentage"		"20 40 60"
+			"bonus_attackspeed"					"50 100 150"
+			"duration"							"10"
 		}
 		
 		// Casting
@@ -296,18 +264,10 @@
 		"RequiredLevel"          	"2"
 		"LevelsBetweenUpgrades"  	"2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"ms_percentage"				"5 10 15"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"kills_for_bonus_agility"	"6 5 4"
-			}
+			"ms_percentage"					"5 10 15"
+			"kills_for_bonus_agility"		"6 5 4"
 		}
 	}
 
@@ -325,13 +285,9 @@
 		"LevelsBetweenUpgrades"  "4"
 
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"    "FIELD_INTEGER"
-				"bonus_damage_percentage"       "50 75 100"
-			}
+			"bonus_damage_percentage"		"50 75 100"
 		} 
 	}
 }

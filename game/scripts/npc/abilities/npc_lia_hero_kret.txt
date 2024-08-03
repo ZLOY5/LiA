@@ -31,53 +31,17 @@
 			"particle" 	"particles/units/heroes/hero_viper/viper_poison_debuff.vpcf"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"reduce_armor"				"-6 -8 -10"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"main_damage"				"140 280 420"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"other_damage"				"120 240 360"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"reduce_ms"				"-25"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"8.0"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"tick"					"0.5"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_speed"				"1400.0"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_vision"				"300.0"
-			}
-			"09"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"250"
-			}
+			"reduce_armor"		"-6 -8 -10"
+			"main_damage"		"140 280 420"
+			"other_damage"		"120 240 360"
+			"reduce_ms"			"-25"
+			"duration"			"8.0"
+			"tick"				"0.5"
+			"acid_speed"		"1400.0"
+			"acid_vision"		"300.0"
+			"radius"			"250"
 		}
 
 		"OnSpellStart"
@@ -200,23 +164,11 @@
 			"particle"			"particles/custom/kret/kret_poisonous_scales.vpcf"
 		}
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"chance"					"33"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"50 100 150"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"mana_burn"					"50 100 150"
-			}
+			"chance"		"33"
+			"damage"		"50 100 150"
+			"mana_burn"		"50 100 150"
 		} 
 	}
 
@@ -232,23 +184,11 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_health"				"100 200 300"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"health_threshold"			"10" 
-			}
-			"03"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"health_regen_percent"		"0.15 0.25 0.35" 
-			}
+			"bonus_health"				"100 200 300"
+			"health_threshold"			"10"
+			"health_regen_percent"		"0.15 0.25 0.35"
 		} 
 	}
 
@@ -287,43 +227,15 @@
 			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_viper.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"main_damage"			"150 300 450"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"other_damage"			"100 200 300"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"reduce_ms"				"-50"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"4.5"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_speed"			"1300.0"
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"acid_vision"			"500.0"
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"450"
-			}
+			"main_damage"		"150 300 450"
+			"other_damage"		"100 200 300"
+			"reduce_ms"			"-50"
+			"duration"			"4.5"
+			"acid_speed"		"1300.0"
+			"acid_vision"		"500.0"
+			"radius"			"450"
 		}
 
 		"OnSpellStart"

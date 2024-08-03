@@ -63,28 +63,12 @@
 			"particle"			"particles/pa_arcana_phantom_strike_end_custom.vpcf"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"20 40 60"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"			"15 30 45"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"260"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"8.0 12.0 16.0"
-			}
+			"bonus_damage"		"20 40 60"
+			"bonus_agility"		"15 30 45"
+			"radius"			"260"
+			"duration"			"8.0 12.0 16.0"
 		}
 		"OnSpellStart"
 		{
@@ -185,23 +169,11 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"main_target_percent"		"2 4 6"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"secondary_target_percent"		"2"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"		"275"
-			}
+			"main_target_percent"			"2 4 6"
+			"secondary_target_percent"		"2"
+			"radius"						"275"
 		}
 		
 			"OnRespawn"
@@ -252,18 +224,10 @@
 
 		"AbilityCastRange"	"700"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"aura_radius"        "700"
-			}
-			"02"
-			{
-				"var_type"        "FIELD_INTEGER"
-				"bonus_attack_speed"  "15 30 45"
-			}
+			"aura_radius"				"700"
+			"bonus_attack_speed"		"15 30 45"
 		} 
 	}
 
@@ -294,18 +258,10 @@
 			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"150 200 250"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"10.0"
-			}
+			"bonus_attack_speed"		"150 200 250"
+			"duration"					"10.0"
 		}
 
 		"OnSpellStart"

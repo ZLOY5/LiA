@@ -30,58 +30,18 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"800"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"locusts"				"9 12 15"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"				"20"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"locusts_speed"			"400"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"max_distance"			"2000"	//teleports
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"give_up_distance"		"900" //Max distance to follow a target acquired
-			}
-			"07"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"delay_between_locusts"	"0.2"	//Means 4 seconds to spawn all 20 locusts
-			}
-			"08"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"locust_damage"			"20 40 60"	//Physical damage instance on each collision
-			}
-			"09"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"locust_heal_threshold"	"1 1 1"	//The amount of physical damage that needs to be done to return and heal the caster
-			}
-			"10"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"max_locusts_on_target"	"7"	//Max counter of units locked onto one target, find another or idle if this threshold is met
-			}
+			"radius"					"800"
+			"locusts"					"9 12 15"
+			"duration"					"20"
+			"locusts_speed"				"400"
+			"max_distance"				"2000"
+			"give_up_distance"			"900"
+			"delay_between_locusts"		"0.2"
+			"locust_damage"				"20 40 60"
+			"locust_heal_threshold"		"1 1 1"
+			"max_locusts_on_target"		"7"
 		}
 
 		"OnSpellStart"
@@ -211,18 +171,10 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"	"25 50 75"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"4 5 6"
-			}
+			"bonus_agility"		"25 50 75"
+			"duration"			"4 5 6"
 		}
 
 		"OnSpellStart"
@@ -272,23 +224,11 @@
 
 		"AbilityCooldown"		 "1"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"minibash_chance"			"50 65 80"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bash_stun"	"0.15 0.20 0.25"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_damage"	"30 45 60"
-			}
+			"minibash_chance"		"50 65 80"
+			"bash_stun"				"0.15 0.20 0.25"
+			"bash_damage"			"30 45 60"
 		}
 
 		
@@ -340,23 +280,11 @@
 
 		"AbilityManaCost"				"100 125 150"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_damage"		"75 150 225"		
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"	"1000"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"duration"	"20 25 30"
-			}
+			"bonus_damage"		"75 150 225"
+			"radius"			"1000"
+			"duration"			"20 25 30"
 		}
 
 		"OnSpellStart"

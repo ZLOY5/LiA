@@ -39,33 +39,13 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_magic_resist_percentage" "40"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bonus_mana_regen"		"1.75"
-			}	
-			"03"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_armor" "15"
-			}
-			"04"
-			{
-				"var_type" "FIELD_INTEGER"
-				"bonus_health" "250"
-			}		
-			"05"
-			{
-				"var_type" "FIELD_FLOAT"
-				"duration" "6.0"
-			}
+			"bonus_magic_resist_percentage"		"40"
+			"bonus_mana_regen"					"1.75"
+			"bonus_armor"						"15"
+			"bonus_health"						"250"
+			"duration"							"6.0"
 		}
 
 		"OnSpellStart"

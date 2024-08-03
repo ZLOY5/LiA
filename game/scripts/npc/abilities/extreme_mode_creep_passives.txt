@@ -18,28 +18,12 @@
 		
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"movement_slow"		"-25"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"attack_slow"		"-25"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"		"10"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"duration"		"4"
-			}
+			"movement_slow"			"-25"
+			"attack_slow"			"-25"
+			"damage_per_second"		"10"
+			"duration"				"4"
 		}
 	}
 
@@ -57,18 +41,10 @@
 
 		"AbilityCastRange"				"1000"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"radius"					"1000"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_return"				"35"		
-			}	
+			"radius"			"1000"
+			"damage_return"		"35"
 		}
 	}
 
@@ -80,13 +56,9 @@
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_return"				"20"		
-			}	
+			"damage_return"		"20"
 		}
 	}
 
@@ -100,23 +72,11 @@
 		"AbilityTextureName"			"centaur_khan_endurance_aura"
 		
 		// Casting
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"900"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_movement_speed_percentage"	"30"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"30"
-			}
+			"radius"								"900"
+			"bonus_movement_speed_percentage"		"30"
+			"bonus_attack_speed"					"30"
 		}
 		
 		"Modifiers"
@@ -160,23 +120,11 @@
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"aura_radius"				"900"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_movement_speed_percentage"	"30"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_attack_speed"	"30"
-			}			
+			"aura_radius"							"900"
+			"bonus_movement_speed_percentage"		"30"
+			"bonus_attack_speed"					"30"
 		}
 	}
 
@@ -188,13 +136,9 @@
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"evasion"		"25"
-			}
+			"evasion"		"25"
 		}
 	}
 
@@ -211,18 +155,10 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
 		}
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"strike_chance"			"25"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage"	"40"
-			}
+			"strike_chance"		"25"
+			"damage"			"40"
 		}
 		
 		"Modifiers"
@@ -301,23 +237,11 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_multiplier"					"200"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_chance"				"20"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"evasion"				"20"
-			}
+			"crit_multiplier"		"200"
+			"crit_chance"			"20"
+			"evasion"				"20"
 		}
 
 		"precache"
@@ -339,18 +263,10 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"armor_reduction"			"-10"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"duration"					"0.01"
-			}
+			"armor_reduction"		"-10"
+			"duration"				"0.01"
 		}
 
 		"Modifiers"
@@ -393,13 +309,9 @@
 
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"lifesteal_percent"		"50"
-			}
+			"lifesteal_percent"		"50"
 		}
 	}
 
@@ -412,18 +324,10 @@
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"melee_damage_reduction"				"-25"		
-			}	
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"ranged_damage_reduction"				"-40"		
-			}	
+			"melee_damage_reduction"		"-25"
+			"ranged_damage_reduction"		"-40"
 		}
 	}
 
@@ -441,18 +345,10 @@
 			"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
 		}
 
-		"AbilitySpecial"
-		{	
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"mana_per_hit"			"60"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"damage_per_mana"		"1.0"
-			}
+		"AbilityValues"
+		{
+			"mana_per_hit"			"60"
+			"damage_per_mana"		"1.0"
 		}
 	}
 
@@ -470,18 +366,10 @@
 			"particle"	"particles/generic_gameplay/generic_manaburn.vpcf"
 		}
 
-		"AbilitySpecial"
-		{	
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"mana_per_hit"			"50"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"damage_per_mana"		"1.0"
-			}
+		"AbilityValues"
+		{
+			"mana_per_hit"			"50"
+			"damage_per_mana"		"1.0"
 		}
 	}
 
@@ -499,18 +387,10 @@
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_multiplier"					"250"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"crit_chance"				"35"
-			}
+			"crit_multiplier"		"250"
+			"crit_chance"			"35"
 		}
 
 	}
@@ -531,18 +411,10 @@
 		
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"bonus_damage_pct"	"60"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"aura_radius"		"1000"
-			}	
+			"bonus_damage_pct"		"60"
+			"aura_radius"			"1000"
 		}
 	}
 
@@ -554,13 +426,9 @@
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"evasion"		"35"
-			}
+			"evasion"		"35"
 		}
 	}
 
@@ -572,13 +440,9 @@
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"		"FIELD_INTEGER"
-				"evasion"		"99"
-			}
+			"evasion"		"99"
 		}
 	}
 
@@ -592,23 +456,11 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_chance"			"100"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bash_duration"	"1"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bash_damage"			"100"
-			}
+			"bash_chance"		"100"
+			"bash_duration"		"1"
+			"bash_damage"		"100"
 		}
 
 	}

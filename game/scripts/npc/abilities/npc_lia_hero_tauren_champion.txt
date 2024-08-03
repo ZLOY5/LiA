@@ -68,34 +68,14 @@
       "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_leap_impact.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "land_damage"      "100 175 250"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "max_distance"     "400"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "radius"      "225"
-      }
-      "04"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "stun_duration"     "1.5"
-      }
-      "05"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "duration"     "0.5"
-      }
-    } 
+    "AbilityValues"
+		{
+			"land_damage"		"100 175 250"
+			"max_distance"		"400"
+			"radius"			"225"
+			"stun_duration"		"1.5"
+			"duration"			"0.5"
+		} 
   }
 
   "tauren_champion_accumulated_rage"
@@ -119,39 +99,15 @@
       "particle"  "particles/units/heroes/hero_pangolier/pangolier_tailthump_shield_impact.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "max_damage_blocked_percent"      "5 10 15"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "min_damage_blocked_percent"     "5"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "absorption_count"      "3 4 5"
-      }
-      "04"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "health_lost_threshold_percent"     "12"
-      }
-      "05"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "damage_per_stack"      "7 14 21"
-      }
-      "06"
-      {
-        "var_type"      "FIELD_FLOAT"
-        "shield_cooldown"      "12"
-      }
-    } 
+    "AbilityValues"
+		{
+			"max_damage_blocked_percent"		"5 10 15"
+			"min_damage_blocked_percent"		"5"
+			"absorption_count"					"3 4 5"
+			"health_lost_threshold_percent"		"12"
+			"damage_per_stack"					"7 14 21"
+			"shield_cooldown"					"12"
+		} 
   }
 
   "tauren_champion_finish_off"
@@ -174,23 +130,11 @@
       "particle"  "particles/units/heroes/hero_earthshaker/earthshaker_totem_buff.vpcf"
     }
 
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "crit_multiplier"      "250 275 300"
-      }
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "attack_count"     "3"
-      }
-      "03"
-      {
-        "var_type"        "FIELD_FLOAT"
-        "duration"     "15"
-      }
-    } 
+    "AbilityValues"
+		{
+			"crit_multiplier"		"250 275 300"
+			"attack_count"			"3"
+			"duration"				"15"
+		} 
   }
 }

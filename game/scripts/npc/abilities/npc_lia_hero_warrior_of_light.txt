@@ -30,28 +30,12 @@
 	
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"penalty_ms"			"-20 -30 -40"
-			}
-			"02"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"damage_for_attack"		"30 60 120"
-			}
-			"03"
-			{
-				"var_type"			"FIELD_FLOAT"
-				"duration"	"9.0"
-			}
-			"04"
-			{
-				"var_type"			"FIELD_INTEGER"
-				"radius"	"300"
-			}
+			"penalty_ms"			"-20 -30 -40"
+			"damage_for_attack"		"30 60 120"
+			"duration"				"9.0"
+			"radius"				"300"
 		}
 	
 		"OnSpellStart"
@@ -118,24 +102,12 @@
 	  
 	  	"AbilityCastRange"	"500"
 	  
-	  	"AbilitySpecial"
-	  	{
-	    	"01"
-	    	{
-	      		"var_type"      			"FIELD_FLOAT"
-	      		"absord_proc"  				"0.10 0.20 0.30"
-	    	}
-	    	"02"
-	    	{
-	      		"var_type"      			"FIELD_INTEGER"
-	      		"AuraRadius"   				"500"
-	    	}
-			"03"
-	    	{
-	      		"var_type"      			"FIELD_FLOAT"
-	      		"absord_proc_tooltip"  		"10 20 30"
-	    	}
-	  	}
+	  	"AbilityValues"
+		{
+			"absord_proc"				"0.10 0.20 0.30"
+			"AuraRadius"				"500"
+			"absord_proc_tooltip"		"10 20 30"
+		}
 	}
 
 	"warrior_of_light_holy_power"
@@ -150,13 +122,9 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		"AbilitySpecial"
+		"AbilityValues"
 		{
-			"01"
-			{
-			"var_type"        "FIELD_INTEGER"
-			"block_chance"    "15 20 25"
-			}
+			"block_chance"		"15 20 25"
 		} 
 	}
 	
@@ -189,29 +157,13 @@
 
 	    // Special    
 	    //-------------------------------------------------------------------------------------------------------------
-	    "AbilitySpecial"
-	    {
-			"01"
-			{
-				"var_type"                            "FIELD_INTEGER"
-				"armor"      "1000"
-			}
-			"02"
-			{
-				"var_type"                            "FIELD_INTEGER"
-				"attack_damage_proc"      "0"
-			}
-			"03"
-			{
-				"var_type"                            "FIELD_FLOAT"
-				"duration"                            "8 10 12"
-			}
-			"04"
-			{
-				"var_type"                           "FIELD_INTEGER"
-				"radius"                             "1000"
-			}
-	    }  	
+	    "AbilityValues"
+		{
+			"armor"						"1000"
+			"attack_damage_proc"		"0"
+			"duration"					"8 10 12"
+			"radius"					"1000"
+		}  	
 
 	    "OnSpellStart"
 	    {
