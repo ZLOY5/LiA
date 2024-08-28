@@ -31,7 +31,7 @@ function SpawnShadow(event)
 
 	local strength = caster:GetStrength() * attrPerc
 	local agility = caster:GetAgility() * attrPerc
-	local intellect = caster:GetIntellect() * attrPerc
+	local intellect = caster:GetIntellect(false) * attrPerc
 
 	ability.shadow = CreateShadow(caster,spawnPos,casterForwardVec,lifetime,strength,agility,intellect,abiLevel)
 

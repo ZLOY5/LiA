@@ -1,6 +1,3 @@
-
-LinkLuaModifier( "modifier_attribute_bonus_custom", "heroes/modifier_attribute_bonus_custom.lua", LUA_MODIFIER_MOTION_NONE)
-
 function Survival:OnNPCSpawned(event)
     local spawnedUnit = EntIndexToHScript( event.entindex )
 

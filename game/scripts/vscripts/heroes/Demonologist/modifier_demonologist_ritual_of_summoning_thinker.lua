@@ -36,7 +36,7 @@ function modifier_demonologist_ritual_of_summoning_thinker:OnDestroy()
 		local caster = ability:GetCaster()
 		local target = ability.target
 		local default_creeps = ability:GetSpecialValueFor("unit_count")
-		local additional_creeps = caster:GetIntellect() / ability:GetSpecialValueFor("intelligence_for_unit")
+		local additional_creeps = caster:GetIntellect(false) / ability:GetSpecialValueFor("intelligence_for_unit")
 		local boss_count = 0
 
 		if caster:HasScepter() then

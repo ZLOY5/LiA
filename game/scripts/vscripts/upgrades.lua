@@ -2,8 +2,6 @@ if not Upgrades then
 	Upgrades = {}
 	Upgrades.info = LoadKeyValues("scripts/kv/upgrades.kv")
 
-	LinkLuaModifier("modifier_upgrades","upgrades.lua",LUA_MODIFIER_MOTION_NONE)
-
 	if IsServer() then 
 		Upgrades.playersData = {}
 	end

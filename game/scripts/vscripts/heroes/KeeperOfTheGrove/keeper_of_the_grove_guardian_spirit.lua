@@ -22,7 +22,7 @@ function keeper_of_the_grove_guardian_spirit:OnSpellStart()
     
     local agility = caster:GetAgility() + bonusStats
     local strength = caster:GetStrength() + bonusStats
-    local intellect = caster:GetIntellect() + bonusStats
+    local intellect = caster:GetIntellect(false) + bonusStats
 
     local healthBonus = strength * HERO_STATS_HEALTH_BONUS
     local armorBonus = agility * HERO_STATS_ARMOR_BONUS

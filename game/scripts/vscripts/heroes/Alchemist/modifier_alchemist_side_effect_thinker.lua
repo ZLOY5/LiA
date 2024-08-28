@@ -92,7 +92,7 @@ end
 function modifier_alchemist_side_effect_thinker:SideEffectExplosion()
 	if IsServer() then
 		self.fBaseStrengthDamage = self.caster:GetBaseStrength() * self:GetAbility():GetSpecialValueFor( "base_strength_burn_damage_percentage" ) * 0.01
-		self.fBonusIntelligenceDamage = (self.caster:GetIntellect() - self.caster:GetBaseIntellect()) * self:GetAbility():GetSpecialValueFor( "bonus_intelligence_explosion_damage_percentage" ) * 0.01
+		self.fBonusIntelligenceDamage = (self.caster:GetIntellect(false) - self.caster:GetBaseIntellect()) * self:GetAbility():GetSpecialValueFor( "bonus_intelligence_explosion_damage_percentage" ) * 0.01
 
 		local targets = FindUnitsInRadius(self.caster:GetTeamNumber(), 
 												self:GetParent():GetAbsOrigin(), 

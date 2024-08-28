@@ -26,7 +26,7 @@ function ArtOfShadows(event)
 
 	local strength = caster:GetStrength() * attrPerc
 	local agility = caster:GetAgility() * attrPerc
-	local intellect = caster:GetIntellect() * attrPerc
+	local intellect = caster:GetIntellect(false) * attrPerc
 
 	local shadow = CreateShadow(caster,spawnPos,casterForwardVec,lifetime,strength,agility,intellect,2)
 	ability:ApplyDataDrivenModifier(caster, shadow, "modifier_art_of_shadows_shadow", nil)

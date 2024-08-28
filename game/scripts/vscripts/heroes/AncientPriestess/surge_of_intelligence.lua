@@ -5,7 +5,7 @@ function Damage( event )
 	local koef_damage = ability:GetSpecialValueFor('koef_damage') 
 	-- рассчитаем урон который необходимо нанести
 	local intBase = caster:GetBaseIntellect()
-	local intOther = caster:GetIntellect()-intBase
+	local intOther = caster:GetIntellect(false)-intBase
 	local dmg = (intBase+intOther/2)*koef_damage
 	
 	for _,v in pairs(targets) do

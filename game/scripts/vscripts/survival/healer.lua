@@ -8,8 +8,6 @@ function OnEndTouch(trigger)
 	ent:RemoveModifierByName("modifier_lia_healer_effect")
 end
 
-LinkLuaModifier("modifier_lia_healer_effect", "survival/healer.lua" ,LUA_MODIFIER_MOTION_NONE)
-
 modifier_lia_healer_effect = class({})
 
 function modifier_lia_healer_effect:IsHidden()
