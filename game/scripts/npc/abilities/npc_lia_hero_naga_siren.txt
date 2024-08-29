@@ -4,19 +4,21 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
-		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityTextureName"			                "custom/naga_siren_fury"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/NagaSiren/naga_siren_fury.lua"
 
-		"MaxLevel"               "3"
-		"RequiredLevel"          "1"
-		"LevelsBetweenUpgrades"  "2"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"custom/naga_siren_fury"
+
+		"MaxLevel"					"3"
+		"RequiredLevel"				"1"
+		"LevelsBetweenUpgrades"		"2"
 		
 		"AbilityCooldown"				"20"	
-		"AbilityDuration"	"10.0 12.5 15.0"
-		"AbilityCastRange"	"250"
+		"AbilityDuration"				"10.0 12.5 15.0"
+		"AbilityCastRange"				"250"
 		"AbilityManaCost"				"60 70 80"	
 		
 		"precache"
@@ -32,76 +34,6 @@
 			"constant_damage"		"10 20 30"
 			"radius"				"250"
 			"duration"				"10.0 12.5 15.0"
-		}
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"ModifierName" "modifier_naga_siren_fury"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-				"Duration"	"%AbilityDuration"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_naga_siren_fury"
-			{
-				"Passive"               "0"
-				"IsHidden"				"0"		
-				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-							
-				"Orb"
-				{
-					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
-				}		
-				"OnOrbImpact"
-				{
-					"RunScript"
-					{
-						"ScriptFile"    "heroes/NagaSiren/Fury.lua"
-						"Function"      "DealDamage"
-						"Target"
-						{
-							"Center"	"TARGET"
-							"Radius"	"%radius"
-							"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-						}
-						"Damage"	"%bonus_damage"
-					}
-					"ActOnTargets"
-					{
-						"Target"
-						{
-							"Center"  	"TARGET"
-							"Radius" 	"%radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-							"Flags" 		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-					
-						"Action"    
-						{
-							"FireEffect"
-							{
-								"EffectName"        "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf"
-								"EffectAttachType"  "follow_origin"
-								"Target"
-								{
-									"Center"	"TARGET"
-									"Flags" 	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_DEAD"
-								}
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 
