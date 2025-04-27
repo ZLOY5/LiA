@@ -12,9 +12,7 @@ function berserker_fire_spear:GetChannelTime()
     if IsServer() then 
         self._channelFullTime = self:GetSpecialValueFor("original_channel")
         local mad = self:GetCaster():FindModifierByName("modifier_berserker_madness")
-        print(mad)
         if mad and mad.GetChannelReduction then
-            print("aaaa")
             self._channelFullTime = mad:GetChannelReduction()
         end
         return self._channelFullTime

@@ -1,3 +1,37 @@
 "DotaAbilities"
 {
+    "ranger_steel_hail"
+    {
+        "BaseClass"           "ability_lua"
+        "ScriptFile"          "heroes/Ranger/ranger_steel_hail.lua"
+        "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityCastPoint"    "0.3"
+        "AbilityCastRange"    "700"
+        "AbilityCooldown"     "16 12 8"
+        "AbilityManaCost"     "50 55 60"
+        "AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"windrunner_powershot"
+		
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+        
+        "precache"
+        {
+            "particle"  "particles/custom/ranger/ranger_steel_hail_arrow.vpcf"
+            "soundfile"	"soundevents/custom/game_sounds_ranger.vsndevts"
+        }
+
+        "AbilityValues"
+        {
+            "arrow_count"   "6"
+            "interval"      "0.33"
+            "attack_ratio"  "20 30 40"
+            "damage_base"   "20 30 40"
+            "arrow_speed"   "1200"
+            "arrow_width"   "125"
+            "arrow_range"   "700"
+        }
+    }
 }
