@@ -34,4 +34,25 @@
             "arrow_range"   "700"
         }
     }
+
+    "ranger_aimed_shot"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/Ranger/ranger_aimed_shot.lua"
+
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "custom/ranger_aimed_shot"
+
+        "AbilityCastRange"    "700"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityValues"
+		{
+			"bonus_damage_pct"				"25 35 45"
+            "aura_radius"               "700"
+		} 
+	}
 }

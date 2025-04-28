@@ -1,8 +1,6 @@
-if ranger_steel_hail == nil then ranger_steel_hail = class({}) end
-
+---@class ranger_steel_hail:CDOTA_Ability_Lua
+ranger_steel_hail = class({})
 LinkLuaModifier("modifier_ranger_steel_hail_debuff", "heroes/Ranger/ranger_steel_hail.lua", LUA_MODIFIER_MOTION_NONE)
-
-
 
 function ranger_steel_hail:OnSpellStart()
     local caster = self:GetCaster()
@@ -77,7 +75,8 @@ function ranger_steel_hail:OnProjectileHit(target, _)
     return false  
 end
 
-if modifier_ranger_steel_hail_debuff == nil then modifier_ranger_steel_hail_debuff = class({}) end
+---@class modifier_ranger_steel_hail_debuff:CDOTA_Modifier_Lua
+modifier_ranger_steel_hail_debuff = class({})
 
 function modifier_ranger_steel_hail_debuff:IsHidden()      return false end
 function modifier_ranger_steel_hail_debuff:IsDebuff()      return true  end
