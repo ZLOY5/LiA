@@ -28,7 +28,13 @@ function ranger_steel_hail:OnSpellStart()
     -- schedule each arrow
     for i = 0, count - 1 do
         caster:SetContextThink("steel_hail_"..i, function()
-            if not caster:IsAlive() then return nil end
+            if not caster:IsAlive()
+            or caster:IsStunned()
+            or caster:IsSilenced()
+            then
+                caster:RemoveModifierByName("modifier_ranger_steel_hail_debuff")
+                return nil
+            end
 
             local dir = caster:GetForwardVector()
 
@@ -62,7 +68,13 @@ function ranger_steel_hail:OnProjectileHit(target, _)
     local atk = caster:GetAverageTrueAttackDamage(caster)
     local ratio = self:GetSpecialValueFor("attack_ratio") * 0.01
     local base = self:GetSpecialValueFor("damage_base")
+
     local totalDmg = base + atk * ratio
+
+    local trapped = self:GetCaster():FindModifierByName("ranger_trap")
+    if trapped then
+        totalDmg = totalDmg + (totalDmg * self:GetSpecialValueFor("extra_trap_dmg_pct") / 100)
+    end
 
     ApplyDamage({
         victim      = target,

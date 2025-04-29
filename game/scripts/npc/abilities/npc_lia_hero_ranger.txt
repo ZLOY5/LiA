@@ -32,8 +32,51 @@
             "arrow_speed"   "1200"
             "arrow_width"   "125"
             "arrow_range"   "700"
+            "extra_trap_dmg_pct"    "25"
         }
     }
+
+    "ranger_trap"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/Ranger/ranger_trap"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+        "AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+        
+		"AbilityTextureName"			"meepo_earthbind"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+	
+		"AbilityCastPoint"    "0.3"
+        "AbilityCastRange"    "700"
+        "AbilityCooldown"     "20"
+        "AbilityManaCost"     "55 65 75"
+
+        "AoERadius"               "150"
+		
+		"precache"
+		{
+			"particle"  				"particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+			"particle"  				"particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+			
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
+		}
+		
+		"AbilityValues"
+		{
+			"damage"				"50 100 150"
+            "duration"              "6 8 10"
+            "projectile_speed"      "900"
+            "damage_to_release"     "150 300 450"
+            "radius"        "150"
+            "extra_sh_dmg_pct"    "25"
+		} 
+	}
 
     "ranger_aimed_shot"
 	{
@@ -55,4 +98,41 @@
             "aura_radius"               "700"
 		} 
 	}
+
+    "ranger_volley_of_arrows"
+    {
+        "BaseClass"           "ability_lua"
+        "ScriptFile"          "heroes/Ranger/ranger_volley_of_arrows.lua"
+        "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityCastPoint"    "0.3"
+        "AbilityCastRange"    "700"
+        "AbilityCooldown"     "40 35 30"
+        "AbilityManaCost"     "50"
+        "AbilityUnitDamageType" "DAMAGE_TYPE_PHYSICAL"
+        "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
+        "AbilityTextureName"    "windrunner_focusfire"
+
+        "AbilityType"         "DOTA_ABILITY_TYPE_ULTIMATE"
+        "MaxLevel"            "3"
+        "RequiredLevel"       "5"
+        "LevelsBetweenUpgrades" "4"
+
+        "Precache"
+        {
+            "particle"   "particles/custom/ranger/ranger_volley_arrow.vpcf"
+            "soundfile"  "soundevents/custom/game_sounds_ranger.vsndevts"
+        }
+
+        "AbilityValues"
+        {
+            "arrow_count"       "5"
+            "cone_angle"        "60"
+            "damage_base"       "150 250 350"
+            "knockback_dist"    "200"
+            "knockback_dur"     "0.3"
+            "arrow_speed"       "1200"
+            "arrow_width"       "50"
+            "arrow_range"       "700"
+        }
+    }
 }
