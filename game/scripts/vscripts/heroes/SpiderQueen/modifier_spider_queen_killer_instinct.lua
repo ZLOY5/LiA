@@ -21,7 +21,7 @@ function modifier_spider_queen_killer_instinct:OnCreated( kv )
 	end
 end
 
-function modifier_frost_lord_freezing:OnRefresh( kv )
+function modifier_spider_queen_killer_instinct:OnRefresh( kv )
 	self.damage = self:GetAbility():GetSpecialValueFor( "damage" )
 	self.full_damage_radius = self:GetAbility():GetSpecialValueFor( "full_radius" )
 	self.half_damage_radius = self:GetAbility():GetSpecialValueFor( "half_radius" )
