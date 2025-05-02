@@ -2,11 +2,9 @@
  	<styles>
 		<include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
 	</styles> 
-
-	<script>
-		var tipCount = 14
-		$("#Tip").text = $.Localize("#lia_tip" + Math.floor( ( Math.random() * tipCount ) + 1) )
-	</script>
+	<scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_loading_screen.js" />
+    </scripts>
 
 	<Panel>
 		

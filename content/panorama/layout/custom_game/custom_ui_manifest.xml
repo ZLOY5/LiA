@@ -3,61 +3,9 @@
         <include src="file://{resources}/styles/custom_game/precache.css" />
     </styles>
     <scripts>
+        <include src="file://{resources}/scripts/custom_game/manifest_init.js" />
         <include src="file://{resources}/scripts/custom_game/custom_game_ui.js" />
     </scripts>
-    <script>
-        
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, false );
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_PROTECT, false ); 
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS, false );
-        //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_CLOCK, false );
-        //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_GAME_NAME, false );
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ENDGAME, false );   
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );
-        GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_KILLCAM, false );
-
-
-    GameUI.CustomUIConfig().players_color = ["#ff0303","#3375ff","#1ce6b9","#BF00BF","#F3F00B","#FF6B00","#20c000","#FE86C2"];
-
-    var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent()
-    var customUI = dotaHud.FindChildTraverse("PreGame")
-    var heroSelection
-        
-    function OnStateChanged() {
-        if ( Game.GameStateIs( DOTA_GameState.DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD ) ) {
-            if (heroSelection == null) { 
-                heroSelection = $.CreatePanel( "Panel", customUI, "customHeroSelection" )
-                heroSelection.BLoadLayout( "file://{resources}/layout/custom_game/lia_hero_select_overlay.xml", false, false )
-                heroSelection.style.visibility = "visible"
-
-                customUI.FindChildTraverse("ConnectingLabelContainer").style.marginLeft = "1150px"
-            }
-        }
-        else if ( Game.GameStateIs( DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION ) ) {
-            if (heroSelection == null) { 
-                heroSelection = $.CreatePanel( "Panel", customUI, "customHeroSelection" )
-                heroSelection.BLoadLayout( "file://{resources}/layout/custom_game/lia_hero_select_overlay.xml", false, false )
-                heroSelection.style.visibility = "visible"
-            }
-        }
-        else if ( Game.GameStateIs( DOTA_GameState.DOTA_GAMERULES_STATE_GAME_IN_PROGRESS ) ) {
-            if (typeof(heroSelection) !== "undefined")
-            {
-                heroSelection.style.visibility = "collapse"
-                heroSelection.DeleteAsync(0)
-            }
-        }
-
-    }
-    GameEvents.Subscribe("game_rules_state_change", OnStateChanged);
-    OnStateChanged()
-
-    GameEvents.Subscribe( "DedicatedKey", function(event) {
-        $.Msg(event.key)
-    })
-
-    </script>
 	<Panel>
         <!--<CustomUIElement type="HeroSelection"   layoutfile="file://{resources}/layout/custom_game/lia_hero_select_overlay.xml" />-->
         <!--<CustomUIElement type="GameInfo"    layoutfile="file://{resources}/layout/custom_game/game_info.xml" />-->
