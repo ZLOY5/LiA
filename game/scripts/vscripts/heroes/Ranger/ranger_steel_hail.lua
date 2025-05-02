@@ -42,7 +42,7 @@ function ranger_steel_hail:OnSpellStart()
 
             ProjectileManager:CreateLinearProjectile({
                 Ability           = self,
-                EffectName        = "particles/custom/ranger/ranger_steel_hail_arrow.vpcf",
+                EffectName        = "particles/custom/ranger/ranger_steel_hail_arrow.vcpf",
                 vSpawnOrigin      = self._origin,
                 fDistance         = range,
                 fStartRadius      = width,
@@ -71,7 +71,7 @@ function ranger_steel_hail:OnProjectileHit(target, _)
 
     local totalDmg = base + atk * ratio
 
-    local trapped = self:GetCaster():FindModifierByName("ranger_trap")
+    local trapped = target:FindModifierByName("modifier_ranger_trap_debuff")
     if trapped then
         totalDmg = totalDmg + (totalDmg * self:GetSpecialValueFor("extra_trap_dmg_pct") / 100)
     end

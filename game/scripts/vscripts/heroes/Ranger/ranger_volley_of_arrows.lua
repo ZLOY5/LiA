@@ -34,7 +34,7 @@ function ranger_volley_of_arrows:OnSpellStart()
 
         ProjectileManager:CreateLinearProjectile({
             Ability           = self,
-            EffectName        = "particles/custom/ranger/ranger_volley_arrow.vpcf",
+            EffectName        = "particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf",
             vSpawnOrigin      = origin,
             fDistance         = range,
             fStartRadius      = width,

@@ -23,7 +23,7 @@ function ranger_trap:ThrowNet(vLocation)
 	self.net_dummy = CreateUnitByName("dummy_unit", vLocation, false, self.caster, self.caster, self.caster:GetTeam())
 
 	local info = {
-        EffectName = "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf",
+        EffectName = "particles/custom/ranger/ranger_trap_projectile.vpcf",
         Ability = self,
         iMoveSpeed = speed,
         Source = self.caster,
@@ -33,14 +33,16 @@ function ranger_trap:ThrowNet(vLocation)
     }
 
     ProjectileManager:CreateTrackingProjectile( info )
+
+    self.caster:EmitSound("Hero_Meepo.Earthbind.Cast")
 end
 
 function ranger_trap:OnProjectileHit(hTarget, vLocation)
 	local radius = self:GetSpecialValueFor("radius")
     local damage = self:GetSpecialValueFor("damage")
 
-
 	if hTarget then
+        hTarget:EmitSound("Hero_Meepo.Earthbind.Target")
 		local targets = FindUnitsInRadius(self.caster:GetTeamNumber(),
 										hTarget:GetAbsOrigin(),
 										nil,
@@ -85,8 +87,6 @@ function modifier_ranger_trap_debuff:OnCreated(table)
 
         self.break_damage = self:GetAbility():GetSpecialValueFor("damage_to_release")
         self.accum_damage = 0
-
-		EmitSoundOn("Hero_Wisp.Overcharge", self:GetParent())
 	end
 end
 
@@ -114,6 +114,6 @@ function modifier_ranger_trap_debuff:OnTakeDamage(params)
 end
 
 function modifier_ranger_trap_debuff:GetEffectName()
-	return "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+	return "particles/custom/ranger/ranger_trap.vpcf"
 end
 

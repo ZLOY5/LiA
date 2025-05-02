@@ -1,0 +1,243 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf61:version{39d3ce1d-9442-4407-9b78-8317145b1732} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 32
+	m_flConstantRadius = 12.0
+	m_ConstantColor = [ 240, 187, 119, 255 ]
+	m_nBehaviorVersion = 12
+	m_nFirstMultipleOverride_BackwardCompat = 2
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 5
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 6
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 7
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 8
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 9
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 10
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 11
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 12
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 60
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 255.0, 255.0, 255.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 61
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 62
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+		},
+	]
+	m_Emitters = 
+	[
+		{
+			_class = "C_OP_InstantaneousEmitter"
+			m_nParticlesToEmit = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 32.0
+			}
+		},
+	]
+	m_Initializers = 
+	[
+		{
+			_class = "C_INIT_InitFloat"
+			m_InputValue = 
+			{
+				m_nType = "PF_TYPE_LITERAL"
+				m_flLiteralValue = 0.45
+			}
+			m_nOutputField = 1
+		},
+		{
+			_class = "C_INIT_CreateInEpitrochoid"
+			m_bUseCount = true
+			m_flParticleDensity = 5.0
+			m_flOffset = 120.0
+			m_flRadius2 = -23.4
+			m_flRadius1 = 17.0
+		},
+		{
+			_class = "C_INIT_CreateInEpitrochoid"
+			m_bOffsetExistingPos = true
+			m_bUseCount = true
+			m_flParticleDensity = 0.21
+			m_flRadius2 = -17.0
+			m_flRadius1 = 70.0
+			m_nComponent1 = 2
+			m_nComponent2 = -1
+			m_flOffset = 60.0
+		},
+		{
+			_class = "C_INIT_SetHitboxToClosest"
+			m_vecHitBoxScale = 
+			{
+				m_nType = "PVEC_TYPE_LITERAL"
+				m_vLiteralValue = [ 0.9, 0.9, 0.9 ]
+			}
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_nInputMax = 2
+			m_nFieldOutput = 7
+			m_bActiveRange = true
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+		},
+		{
+			_class = "C_INIT_RemapParticleCountToScalar"
+			m_nInputMin = 29
+			m_nInputMax = 31
+			m_nFieldOutput = 7
+			m_flOutputMin = 1.0
+			m_flOutputMax = 0.0
+			m_bActiveRange = true
+			m_nSetMethod = "PARTICLE_SET_SCALE_INITIAL_VALUE"
+		},
+	]
+	m_Operators = 
+	[
+		{
+			_class = "C_OP_BasicMovement"
+			m_fDrag = 0.4
+		},
+		{
+			_class = "C_OP_Decay"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_ON"
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.5
+		},
+		{
+			_class = "C_OP_InterpolateRadius"
+			m_nOpEndCapState = "PARTICLE_ENDCAP_ENDCAP_OFF"
+			m_flEndScale = 1.4
+			m_flBias = 0.15
+		},
+		{
+			_class = "C_OP_OscillateScalar"
+			m_FrequencyMax = 16.0
+			m_FrequencyMin = 3.0
+			m_RateMax = -5.0
+			m_RateMin = -3.0
+			m_nField = 16
+		},
+		{
+			_class = "C_OP_MoveToHitbox"
+			m_flLifeTimeLerpEnd = 0.25
+		},
+		{
+			_class = "C_OP_LockToBone"
+		},
+	]
+	m_Renderers = 
+	[
+		{
+			_class = "C_OP_RenderRopes"
+			m_flOverbrightFactor = 2.0
+			m_flRadiusScale = 0.5
+			m_flTextureVWorldSize = 580.046387
+			m_flTextureVScrollRate = 580.046387
+			m_nMaxTesselation = 8
+			m_nMinTesselation = 8
+			m_nHSVShiftControlPoint = 62
+			m_vecTexturesInput = 
+			[
+				{
+					m_hTexture = resource:"materials/particle/beam_hotwhite.vtex"
+					m_TextureControls = 
+					{
+						m_flFinalTextureScaleU = 
+						{
+							m_nType = "PF_TYPE_LITERAL"
+							m_flLiteralValue = -1.0
+						}
+					}
+				},
+			]
+			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_flash.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_proj.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_proj_b.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_parent.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_flash_b.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_flash_c.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_model_catch.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_model_catch_sparkles_b.vpcf"
+		},
+		{
+			m_bEndCap = true
+			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_model_collapse.vpcf"
+		},
+	]
+}
