@@ -42,7 +42,7 @@ function ranger_steel_hail:OnSpellStart()
 
             ProjectileManager:CreateLinearProjectile({
                 Ability           = self,
-                EffectName        = "particles/custom/ranger/ranger_steel_hail_arrow.vcpf",
+                EffectName        = "particles/custom/ranger/ranger_steel_hail_arrow.vpcf",
                 vSpawnOrigin      = self._origin,
                 fDistance         = range,
                 fStartRadius      = width,
@@ -55,7 +55,7 @@ function ranger_steel_hail:OnSpellStart()
                 bProvidesVision   = false,
             })
 
-            caster:EmitSoundParams("Ability.Powershot", 1, 0.4, 0)
+            caster:EmitSoundParams("Hero_Windrunner.Attack", 1, 1.6, 0)
 
         end, interval * i)
     end

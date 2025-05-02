@@ -13,10 +13,6 @@
 			m_drivers = 
 			[
 				{
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
 					m_iControlPoint = 3
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_entityName = "self"
@@ -33,6 +29,7 @@
 	[
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_spell_powershot_trail_g.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_spell_powershot_trail_f.vpcf"
@@ -43,6 +40,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_spell_powershot_trail_b.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_bEndCap = true
@@ -59,9 +57,11 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_spell_powershot_trail_h.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_windrunner/windrunner_spell_powershot_trail_light.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }
