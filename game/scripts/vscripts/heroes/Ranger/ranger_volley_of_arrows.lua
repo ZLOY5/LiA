@@ -1,29 +1,25 @@
 ---@class ranger_volley_of_arrows:CDOTA_Ability_Lua
 ranger_volley_of_arrows = class({})
-LinkLuaModifier("modifier_ranger_volley_trap", "heroes/Ranger/ranger_volley_of_arrows.lua", LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_ranger_fan_of_arrows_pull", "heroes/Ranger/ranger_volley_of_arrows.lua", LUA_MODIFIER_MOTION_HORIZONTAL)
 
 function ranger_volley_of_arrows:OnSpellStart()
-    local caster = self:GetCaster()
-    local origin = caster:GetAbsOrigin()
+    self.caster = self:GetCaster()
+    self.origin = self.caster:GetAbsOrigin()
 
-    -- load KV
     local count     = self:GetSpecialValueFor("arrow_count")
     local coneDeg   = self:GetSpecialValueFor("cone_angle")
-    self.baseDmg    = self:GetSpecialValueFor("damage_base")
-    self.kbDist     = self:GetSpecialValueFor("knockback_dist")
-    self.kbDur      = self:GetSpecialValueFor("knockback_dur")
-    self.trapDur    = self:GetSpecialValueFor("trap_root_dur")
-    local speed     = self:GetSpecialValueFor("arrow_speed")
-    local width     = self:GetSpecialValueFor("arrow_width")
-    local range     = self:GetSpecialValueFor("arrow_range")
+    self.damage    = self:GetSpecialValueFor("damage")
+    self.speed     = self:GetSpecialValueFor("arrow_speed")
+    self.width     = self:GetSpecialValueFor("arrow_width")
+    self.range     = self:GetSpecialValueFor("arrow_range")
 
-    -- compute cone
-    local forward = (self:GetCursorPosition() - origin):Normalized()
+    local forward = (self:GetCursorPosition() - self.origin):Normalized()
     local coneRad = math.rad(coneDeg)
     local step    = coneRad / (count - 1)
     local start   = -coneRad * 0.5
 
-    -- fire each arrow in that cone
+    self._hitTargets = {}
+
     for i = 0, count - 1 do
         local theta = start + step * i
         local dir = Vector(
@@ -35,66 +31,102 @@ function ranger_volley_of_arrows:OnSpellStart()
         ProjectileManager:CreateLinearProjectile({
             Ability           = self,
             EffectName        = "particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf",
-            vSpawnOrigin      = origin,
-            fDistance         = range,
-            fStartRadius      = width,
-            fEndRadius        = width,
-            Source            = caster,
-            vVelocity         = dir * speed,
+            vSpawnOrigin      = self.origin,
+            fDistance         = self.range,
+            fStartRadius      = self.width,
+            fEndRadius        = self.width,
+            Source            = self.caster,
+            vVelocity         = dir * self.speed,
             iUnitTargetTeam   = DOTA_UNIT_TARGET_TEAM_ENEMY,
             iUnitTargetType   = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
             iUnitTargetFlags  = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
-            bDeleteOnHit      = false,  -- pierce
+            bDeleteOnHit      = false,  
             bProvidesVision   = false,
+            ExtraData         = { dir_x = dir.x, dir_y = dir.y },
         })
     end
 
-    caster:StartGesture(ACT_DOTA_CAST_ABILITY_4)
-    caster:EmitSound("Hero_Windrunner.Windrun")  -- choose an appropriate sound
+    self.caster:EmitSound("Ability.Powershot")
 end
 
-function ranger_volley_of_arrows:OnProjectileHit(target, _)
+function ranger_volley_of_arrows:OnProjectileHit_ExtraData(target, loc, extraData)
     if not target then return false end
 
-    local caster = self:GetCaster()
-    -- damage
+    if self._hitTargets[target:entindex()] then
+        return false
+    end
+    self._hitTargets[target:entindex()] = true
+
     ApplyDamage({
         victim      = target,
-        attacker    = caster,
-        damage      = self.baseDmg,
+        attacker    = self.caster,
+        damage      = self.damage,
         damage_type = DAMAGE_TYPE_PHYSICAL,
         ability     = self,
     })
 
-    -- knockback away from caster
-    local knockback = {
-        should_stun        = 0,
-        knockback_duration = self.kbDur,
-        duration           = self.kbDur,
-        knockback_distance = self.kbDist,
-        knockback_height   = 0,
-        center_x           = caster:GetAbsOrigin().x,
-        center_y           = caster:GetAbsOrigin().y
-    }
-    target:AddNewModifier(caster, self, "modifier_knockback", knockback)
+    -- apply pull modifier along remaining path
+    local dir       = Vector(extraData.dir_x, extraData.dir_y, 0)
+    local traveled  = (target:GetAbsOrigin() - self.origin):Dot(dir)
+    local remain    = math.max(0, self.range - traveled)
+    local duration  = remain / self.speed
 
-    -- trap root
-    target:AddNewModifier(caster, self, "modifier_ranger_volley_trap", { duration = self.trapDur })
+    print(duration)
 
-    return false  -- continue piercing
+    target:AddNewModifier(self.caster, self, "modifier_ranger_fan_of_arrows_pull", {
+        duration = duration,
+        dir_x    = dir.x,
+        dir_y    = dir.y,
+        speed    = self.speed,
+    })
+
+    return false 
 end
 
 
----@class modifier_ranger_volley_trap:CDOTA_Modifier_Lua
-modifier_ranger_volley_trap = class({})
+---@class modifier_ranger_fan_of_arrows_pull:CDOTA_Modifier_Lua
+modifier_ranger_fan_of_arrows_pull = class({})
 
-function modifier_ranger_volley_trap:IsHidden()    return false end
-function modifier_ranger_volley_trap:IsDebuff()    return true  end
-function modifier_ranger_volley_trap:IsPurgable()  return false end
+function modifier_ranger_fan_of_arrows_pull:IsHidden()   return false end
+function modifier_ranger_fan_of_arrows_pull:IsDebuff()   return true  end
+function modifier_ranger_fan_of_arrows_pull:IsPurgable() return false end
 
-function modifier_ranger_volley_trap:CheckState()
+function modifier_ranger_fan_of_arrows_pull:IsMotionController() return true end
+function modifier_ranger_fan_of_arrows_pull:GetMotionControllerPriority() return DOTA_MOTION_CONTROLLER_PRIORITY_MEDIUM end
+
+function modifier_ranger_fan_of_arrows_pull:OnCreated(kv)
+    if not IsServer() then return end
+    self.dir   = Vector(kv.dir_x, kv.dir_y, 0)
+    self.speed = kv.speed or 0
+
+    if not self:ApplyHorizontalMotionController() then
+        self:Destroy()
+    end
+end
+
+function modifier_ranger_fan_of_arrows_pull:OnDestroy()
+    if IsServer() then
+        self:GetParent():RemoveHorizontalMotionController(self) 
+        local trapAbility = self:GetCaster():FindAbilityByName("ranger_trap")
+        if trapAbility and trapAbility:GetLevel() > 0 then
+            trapAbility:ApplyTrap(self:GetParent())
+        end
+    end
+end
+
+function modifier_ranger_fan_of_arrows_pull:UpdateHorizontalMotion(me, dt)
+    local newPos = me:GetAbsOrigin() + self.dir * self.speed * dt
+    me:SetAbsOrigin(newPos)
+end
+
+function modifier_ranger_fan_of_arrows_pull:CheckState()
     return {
-        [MODIFIER_STATE_ROOTED]   = true,
-        [MODIFIER_STATE_DISARMED] = true,
+        [MODIFIER_STATE_STUNNED]   = true,
+        [MODIFIER_STATE_DISARMED]  = true,
     }
+end
+
+function modifier_ranger_fan_of_arrows_pull:OnHorizontalMotionInterrupted()
+    local newPos = me:GetAbsOrigin() + self.dir * self.speed * dt
+    me:SetAbsOrigin(newPos)
 end

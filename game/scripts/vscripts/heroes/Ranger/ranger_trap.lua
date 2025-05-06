@@ -49,7 +49,7 @@ function ranger_trap:OnProjectileHit(hTarget, vLocation)
 										radius,
 										DOTA_UNIT_TARGET_TEAM_ENEMY, 
 										DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO, 
-										DOTA_UNIT_TARGET_FLAG_NONE, 
+										DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, 
 										FIND_ANY_ORDER, 
 										false)
 
@@ -79,6 +79,7 @@ modifier_ranger_trap_debuff = class({})
 
 function modifier_ranger_trap_debuff:IsDebuff() return true end
 function modifier_ranger_trap_debuff:IsPurgable() return true end
+function modifier_ranger_trap_debuff:IsHidden() return false end
 
 function modifier_ranger_trap_debuff:OnCreated(table)
 	if IsServer() then
@@ -117,3 +118,6 @@ function modifier_ranger_trap_debuff:GetEffectName()
 	return "particles/custom/ranger/ranger_trap.vpcf"
 end
 
+function modifier_ranger_trap_debuff:GetEffectAttachType()
+    return PATTACH_ABSORIGIN_FOLLOW
+end

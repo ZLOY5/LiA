@@ -51,6 +51,7 @@ function ranger_steel_hail:OnSpellStart()
                 vVelocity         = dir * speed,
                 iUnitTargetTeam   = DOTA_UNIT_TARGET_TEAM_ENEMY,
                 iUnitTargetType   = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+                iUnitTargetFlags  = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
                 bDeleteOnHit      = false,
                 bProvidesVision   = false,
             })

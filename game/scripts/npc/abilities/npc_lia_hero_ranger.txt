@@ -11,7 +11,7 @@
         "AbilityManaCost"     "50 55 60"
         "AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
-		"AbilityTextureName"			"windrunner_powershot"
+		"AbilityTextureName"			"custom/ranger_steel_hail"
 		
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
@@ -25,10 +25,10 @@
 
         "AbilityValues"
         {
-            "arrow_count"   "5"
+            "arrow_count"   "6"
             "interval"      "0.33"
             "attack_ratio"  "20 30 40"
-            "damage_base"   "20 30 40"
+            "damage_base"   "15 25 35"
             "arrow_speed"   "1200"
             "arrow_width"   "125"
             "arrow_range"   "700"
@@ -46,14 +46,14 @@
         "AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
         
-		"AbilityTextureName"			"meepo_earthbind"
+		"AbilityTextureName"			"custom/ranger_trap"
 
 		"MaxLevel"               "3"
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 	
 		"AbilityCastPoint"    "0.3"
-        "AbilityCastRange"    "700"
+        "AbilityCastRange"    "1000"
         "AbilityCooldown"     "20"
         "AbilityManaCost"     "55 65 75"
 
@@ -105,12 +105,14 @@
         "ScriptFile"          "heroes/Ranger/ranger_volley_of_arrows.lua"
         "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_POINT"
         "AbilityCastPoint"    "0.3"
-        "AbilityCastRange"    "700"
+        "AbilityCastRange"    "800"
         "AbilityCooldown"     "40 35 30"
         "AbilityManaCost"     "50"
         "AbilityUnitDamageType" "DAMAGE_TYPE_PHYSICAL"
         "SpellImmunityType"     "SPELL_IMMUNITY_ENEMIES_YES"
-        "AbilityTextureName"    "windrunner_focusfire"
+        "AbilityTextureName"			"custom/ranger_volley_of_arrows"
+
+        "AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_2"
 
         "AbilityType"         "DOTA_ABILITY_TYPE_ULTIMATE"
         "MaxLevel"            "3"
@@ -120,18 +122,19 @@
         "precache"
         {
             "particle"   "particles/units/heroes/hero_windrunner/windrunner_spell_powershot.vpcf"
-            "soundfile"  "soundevents/custom/game_sounds_ranger.vsndevts"
+            "particle"   "particles/custom/ranger/ranger_trap.vpcf"
+			"particle"   "particles/custom/ranger/ranger_trap_projectile.vpcf"
+			
+			"soundfile"	 "soundevents/game_sounds_heroes/game_sounds_meepo.vsndevts"
         }
 
         "AbilityValues"
         {
             "arrow_count"       "5"
-            "cone_angle"        "60"
-            "damage_base"       "150 250 350"
-            "knockback_dist"    "200"
-            "knockback_dur"     "0.3"
+            "cone_angle"        "64"
+            "damage"       "150 250 350"
             "arrow_speed"       "1200"
-            "arrow_width"       "50"
+            "arrow_width"       "120"
             "arrow_range"       "700"
         }
     }
