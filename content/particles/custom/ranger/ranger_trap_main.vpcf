@@ -3,7 +3,7 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 32
-	m_flConstantRadius = 12.0
+	m_flConstantRadius = 6.0
 	m_ConstantColor = [ 240, 187, 119, 255 ]
 	m_nBehaviorVersion = 12
 	m_nFirstMultipleOverride_BackwardCompat = 2
@@ -18,46 +18,6 @@
 					m_entityName = "self"
 				},
 				{
-					m_iControlPoint = 5
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 6
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 7
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 8
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 9
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 10
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 11
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 12
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
 					m_iControlPoint = 60
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_vecOffset = [ 255.0, 255.0, 255.0 ]
@@ -65,11 +25,6 @@
 				},
 				{
 					m_iControlPoint = 61
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 62
 					m_iAttachType = "PATTACH_WORLDORIGIN"
 					m_entityName = "self"
 				},
@@ -205,6 +160,7 @@
 				},
 			]
 			m_nOutputBlendMode = "PARTICLE_OUTPUT_BLEND_MODE_ADD"
+			m_bDisableOperator = true
 		},
 	]
 	m_Children = 
@@ -215,12 +171,15 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_proj.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_proj_b.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_parent.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_flash_b.vpcf"
@@ -228,16 +187,18 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_flash_c.vpcf"
+			m_bDisableChild = true
 		},
 		{
-			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_model_catch.vpcf"
+			m_ChildRef = resource:"particles/custom/ranger/ranger_trap_model_catch.vpcf"
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_model_catch_sparkles_b.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_bEndCap = true
-			m_ChildRef = resource:"particles/units/heroes/hero_meepo/meepo_earthbind_model_collapse.vpcf"
+			m_ChildRef = resource:"particles/custom/ranger/ranger_trap_model_collapse.vpcf"
 		},
 	]
 }
