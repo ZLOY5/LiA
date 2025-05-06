@@ -19,7 +19,10 @@ var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent(
 	dotaHud.FindChildTraverse("quickstats").style.visibility = "collapse";
 
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeaderCenter").style.marginLeft = "1150px";
+	dotaHud.FindChildTraverse("PreGame").FindChildrenWithClassTraverse("SectionHealthMana")[0].style.marginTop = "366px";
 	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("TeamPurchasesStrategyControl").style.visibility =
+		"collapse";
+	dotaHud.FindChildTraverse("PreGame").FindChildTraverse("HeroPortraitContainer").FindChildrenWithClassTraverse("HeroFacetOuter")[0].style.visibility =
 		"collapse";
 
 	var onUpdateHeroSelection = function (data) {
@@ -30,6 +33,7 @@ var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent(
 			.FindChildTraverse("HeroAbilities");
 		for (var panel of heroPickAbi.Children()) {
 			if (panel.BHasClass("StatBranch")) panel.style.visibility = "collapse";
+			if (panel.BHasClass("InnateAbility")) panel.style.visibility = "collapse";
 		}
 	};
 
