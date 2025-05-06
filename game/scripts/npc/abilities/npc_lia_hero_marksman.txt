@@ -1,0 +1,111 @@
+"DotaAbilities"
+{
+    "marksman_explosive_rounds"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/marksman/marksman_marksmans_mastery.lua"
+
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "sniper_shrapnel_muh_keen_gun"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "1"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityValues"
+		{
+			"dmg_per_shot"			"15 30 45"
+			"explosion_damage"		"40 140 240"
+            "duration"              "10"
+			"shots_limit"			"4"
+			"damage_radius"			"200"
+		} 
+	}
+
+    "marksman_ricochet"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/marksman/marksman_ricochet.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		"AbilityTextureName"			"sniper_headshot"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityCastPoint"    "0.3"
+		"AbilityCastRange"    "700"
+		"AbilityCooldown"     "15 14 13"
+		"AbilityManaCost"     "40 60 80"
+
+		"AbilityValues"
+		{
+			"damage"				"50 100 150"
+			"attack_reduction"		"30 50 70"
+			"attack_reduction_duration" "5"
+			"bounce_count"			"6 8 10"
+			"bounce_damage_pct"		"50 60 70"
+			"projectile_speed"		"700"
+			"bounce_range"			"500"
+		}
+	}
+
+    "marksman_marksmans_mastery"
+	{
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/marksman/marksman_marksmans_mastery.lua"
+
+		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"      "sniper_headshot_immortal"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
+		"AbilityValues"
+		{
+			"bonus_damage_pct_creeps"	"4 7 10"
+			"bonus_damage_pct_heroes"	"10 15 20"
+            "bonus_range"               "75 150 225"
+		} 
+	}
+
+    "marksman_dragon_breath"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"heroes/marksman/marksman_dragon_breath.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"      		"SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+
+		"AbilityTextureName"			"sniper_assassinate_muh_keen_gun"
+
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"						"3"
+		"RequiredLevel"					"5"
+		"LevelsBetweenUpgrades"			"4"
+
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"450"
+		"AbilityCooldown"				"60"
+		"AbilityManaCost"				"125"
+
+		"AbilityValues"
+		{
+			"damage"					"200 350 500"
+			"armor_reduction"			"10 20 30"
+			"move_slow_pct"				"60 70 80"
+			"slow_duration"				"5"
+			"aoe_radius"				"450"
+		}
+	}
+}
