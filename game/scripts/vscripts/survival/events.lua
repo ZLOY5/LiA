@@ -382,6 +382,11 @@ function Survival:OnPlayerChat(event)
             hero:AddNewModifier(nil, nil, "modifier_test_no_cooldown", nil)
         end
 
+        if event.text == "god" then
+            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+            hero:AddNewModifier(nil, nil, "modifier_test_god_mode", nil)
+        end
+
         if event.text == "dmg" then
             local hero = PlayerResource:GetSelectedHeroEntity(playerID)
             ApplyDamage({ victim = hero, attacker = hero, damage = 500, damage_type = DAMAGE_TYPE_PURE, ability = nil })
