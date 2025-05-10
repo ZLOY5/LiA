@@ -34,11 +34,18 @@ function modifier_marksman_marksmans_mastery:OnRefresh()
 end
 
 function modifier_marksman_marksmans_mastery:GetModifierAttackRangeBonus()
+    if self:GetParent():PassivesDisabled() then
+        return 0
+    end
     return self.bonus_range or 0
 end
 
 function modifier_marksman_marksmans_mastery:GetModifierProcAttack_BonusDamage_Physical(keys)
     if keys.attacker ~= self:GetParent() then
+        return 0
+    end
+
+    if keys.attacker:PassivesDisabled() then
         return 0
     end
 

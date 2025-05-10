@@ -96,9 +96,7 @@ function modifier_marksman_explosive_rounds:OnAttackLanded(event)
 
     -- If target died immediately, trigger explosion and exit
     if not target:IsAlive() then
-        if not (target:IsRealHero() or target:IsBoss() or target:IsMegaboss()) then
             ability:Explode(target)
-        end
         return
     end
 
@@ -167,13 +165,11 @@ function modifier_marksman_explosive_rounds_debuff:OnDeath(event)
 
     local ability = self:GetAbility()
     local caster  = ability:GetCaster()
-    if event.attacker ~= caster or caster:PassivesDisabled() then
+    if caster:PassivesDisabled() then
         self:Destroy()
         return
     end
 
-    if not (event.unit:IsRealHero() or event.unit:IsBoss() or event.unit:IsMegaboss()) then
-        ability:Explode(event.unit)
-    end
+    ability:Explode(event.unit)
     self:Destroy()
 end

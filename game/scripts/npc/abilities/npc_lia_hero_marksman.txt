@@ -3,7 +3,7 @@
     "marksman_explosive_rounds"
 	{
 		"BaseClass"   "ability_lua"
-		"ScriptFile"    "heroes/marksman/marksman_marksmans_mastery.lua"
+		"ScriptFile"    "heroes/Marksman/marksman_explosive_rounds.lua"
 
 		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"      "sniper_shrapnel_muh_keen_gun"
@@ -11,6 +11,14 @@
 		"MaxLevel"               "3"
 		"RequiredLevel"          "1"
 		"LevelsBetweenUpgrades"  "2"
+
+		"precache"
+        {
+            "particle"  "particles/custom/marksman/marksman_explosive_rounds_stack_count.vpcf"
+			"particle"	"particles/econ/items/alchemist/alchemist_smooth_criminal/alchemist_smooth_criminal_unstable_concoction_explosion.vpcf"
+
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
+        }
 
 		"AbilityValues"
 		{
@@ -25,7 +33,7 @@
     "marksman_ricochet"
 	{
 		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/marksman/marksman_ricochet.lua"
+		"ScriptFile"					"heroes/Marksman/marksman_ricochet.lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -59,7 +67,7 @@
     "marksman_marksmans_mastery"
 	{
 		"BaseClass"   "ability_lua"
-		"ScriptFile"    "heroes/marksman/marksman_marksmans_mastery.lua"
+		"ScriptFile"    "heroes/Marksman/marksman_marksmans_mastery.lua"
 
 		"AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"      "sniper_headshot_immortal"
@@ -79,7 +87,7 @@
     "marksman_dragon_breath"
 	{
 		"BaseClass"						"ability_lua"
-		"ScriptFile"					"heroes/marksman/marksman_dragon_breath.lua"
+		"ScriptFile"					"heroes/Marksman/marksman_dragon_breath.lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -101,11 +109,15 @@
 
 		"AbilityValues"
 		{
-			"damage"					"200 350 500"
-			"armor_reduction"			"10 20 30"
-			"move_slow_pct"				"60 70 80"
-			"slow_duration"				"5"
-			"aoe_radius"				"450"
+			"damage"			"200 350 500"
+			"armor_reduction"	"10 20 30"
+			"move_slow_pct"		"60 70 80"
+			"slow_duration"		"5"
+			"aoe_radius"		"450"
+			"distance"			"450"
+			"speed"				"900"
+			"start_radius"		"150"
+			"end_radius"		"300"
 		}
 	}
 }
