@@ -81,14 +81,66 @@ function modifier_ranger_trap_debuff:IsDebuff() return true end
 function modifier_ranger_trap_debuff:IsPurgable() return true end
 function modifier_ranger_trap_debuff:IsHidden() return false end
 
-function modifier_ranger_trap_debuff:OnCreated(table)
-	if IsServer() then
-		local caster = self:GetCaster()
-		local parent = self:GetParent()
+function modifier_ranger_trap_debuff:OnCreated(kv)
+    if not IsServer() then return end
 
-        self.break_damage = self:GetAbility():GetSpecialValueFor("damage_to_release")
-        self.accum_damage = 0
-	end
+    local parent = self:GetParent()
+
+    parent:InterruptMotionControllers(false)
+
+    -- spawn the trap VFX and attach to the unit
+    self.pidx = ParticleManager:CreateParticle(
+        "particles/custom/ranger/ranger_trap.vpcf",
+        PATTACH_ABSORIGIN_FOLLOW,
+        parent
+    )
+
+    -- initialize break‐damage tracking
+    self.break_damage = self:GetAbility():GetSpecialValueFor("damage_to_release")
+    self.accum_damage = 0
+
+    self:StartIntervalThink(0.05)
+end
+
+function modifier_ranger_trap_debuff:OnRefresh(kv)
+    if not IsServer() then return end
+
+    -- destroy the old particle immediately
+    if self.pidx then
+        ParticleManager:DestroyParticle(self.pidx, true)
+        ParticleManager:ReleaseParticleIndex(self.pidx)
+    end
+
+    -- spawn a fresh one
+    local parent = self:GetParent()
+    self.pidx = ParticleManager:CreateParticle(
+        "particles/custom/ranger/ranger_trap.vpcf",
+        PATTACH_ABSORIGIN_FOLLOW,
+        parent
+    )
+    ParticleManager:SetParticleControl(self.pidx, 0, parent:GetAbsOrigin())
+
+    -- reset break‐damage tracking
+    self.break_damage = self:GetAbility():GetSpecialValueFor("damage_to_release")
+    self.accum_damage = 0
+end
+
+function modifier_ranger_trap_debuff:OnIntervalThink()
+    if not IsServer() then return end
+    local parent = self:GetParent()
+    if not parent:IsAlive() then
+        self:Destroy()
+        return
+    end
+    ParticleManager:SetParticleControl(self.pidx, 0, parent:GetAbsOrigin())
+end
+
+function modifier_ranger_trap_debuff:OnDestroy()
+    if IsServer() and self.pidx then
+        ParticleManager:DestroyParticle(self.pidx, true)
+        ParticleManager:ReleaseParticleIndex(self.pidx)
+        self.pidx = nil
+    end
 end
 
 function modifier_ranger_trap_debuff:CheckState()
@@ -114,10 +166,10 @@ function modifier_ranger_trap_debuff:OnTakeDamage(params)
     end
 end
 
-function modifier_ranger_trap_debuff:GetEffectName()
-	return "particles/custom/ranger/ranger_trap.vpcf"
-end
+-- function modifier_ranger_trap_debuff:GetEffectName()
+-- 	return "particles/custom/ranger/ranger_trap.vpcf"
+-- end
 
-function modifier_ranger_trap_debuff:GetEffectAttachType()
-    return PATTACH_ABSORIGIN_FOLLOW
-end
+-- function modifier_ranger_trap_debuff:GetEffectAttachType()
+--     return PATTACH_CUSTOMORIGIN_FOLLOW 
+-- end

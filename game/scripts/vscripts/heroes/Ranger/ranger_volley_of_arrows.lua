@@ -71,7 +71,10 @@ function ranger_volley_of_arrows:OnProjectileHit_ExtraData(target, loc, extraDat
     local remain    = math.max(0, self.range - traveled)
     local duration  = remain / self.speed
 
-    print(duration)
+    local trapped = target:FindModifierByName("modifier_ranger_trap_debuff")
+    if trapped then
+        trapped:Destroy()
+    end
 
     target:AddNewModifier(self.caster, self, "modifier_ranger_fan_of_arrows_pull", {
         duration = duration,
@@ -106,6 +109,7 @@ end
 
 function modifier_ranger_fan_of_arrows_pull:OnDestroy()
     if IsServer() then
+        self:GetParent():InterruptMotionControllers(true)
         self:GetParent():RemoveHorizontalMotionController(self) 
         local trapAbility = self:GetCaster():FindAbilityByName("ranger_trap")
         if trapAbility and trapAbility:GetLevel() > 0 then
@@ -124,9 +128,4 @@ function modifier_ranger_fan_of_arrows_pull:CheckState()
         [MODIFIER_STATE_STUNNED]   = true,
         [MODIFIER_STATE_DISARMED]  = true,
     }
-end
-
-function modifier_ranger_fan_of_arrows_pull:OnHorizontalMotionInterrupted()
-    local newPos = me:GetAbsOrigin() + self.dir * self.speed * dt
-    me:SetAbsOrigin(newPos)
 end

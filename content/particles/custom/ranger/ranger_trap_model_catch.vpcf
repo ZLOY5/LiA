@@ -3,11 +3,11 @@
 	_class = "CParticleSystemDefinition"
 	m_bShouldHitboxesFallbackToRenderBounds = false
 	m_nMaxParticles = 1
-	m_flConstantRadius = 2.0
+	m_flConstantRadius = 2.5
 	m_nConstantSequenceNumber1 = 2
 	m_flNoDrawTimeToGoToSleep = 32.0
 	m_bShouldSort = false
-	m_nBehaviorVersion = 6
+	m_nBehaviorVersion = 12
 	m_nFirstMultipleOverride_BackwardCompat = 3
 	m_controlPointConfigurations = 
 	[
@@ -110,6 +110,9 @@
 				m_flOutput0 = 0.0
 				m_flOutput1 = 1.0
 			}
+		},
+		{
+			_class = "C_OP_PositionLock"
 		},
 	]
 	m_Renderers = 
