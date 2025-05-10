@@ -7,33 +7,33 @@ function marksman_marksmans_mastery:GetIntrinsicModifierName()
 end
 
 
----@class marksman_marksmans_mastery:CDOTA_Modifier_Lua
-marksman_marksmans_mastery = class({})
+---@class modifier_marksman_marksmans_mastery:CDOTA_Modifier_Lua
+modifier_marksman_marksmans_mastery = class({})
 
-function marksman_marksmans_mastery:IsHidden()      return true  end
-function marksman_marksmans_mastery:IsPurgable()    return false end
-function marksman_marksmans_mastery:RemoveOnDeath() return false end
+function modifier_marksman_marksmans_mastery:IsHidden()      return true  end
+function modifier_marksman_marksmans_mastery:IsPurgable()    return false end
+function modifier_marksman_marksmans_mastery:RemoveOnDeath() return false end
 
-function marksman_marksmans_mastery:DeclareFunctions()
+function modifier_marksman_marksmans_mastery:DeclareFunctions()
     return {
         MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
         MODIFIER_PROPERTY_PROCATTACK_BONUS_DAMAGE_PHYSICAL
     }
 end
 
-function marksman_marksmans_mastery:OnCreated()
+function modifier_marksman_marksmans_mastery:OnCreated()
     if not IsServer() then return end
     self:OnRefresh()
 end
 
-function marksman_marksmans_mastery:OnRefresh()
+function modifier_marksman_marksmans_mastery:OnRefresh()
     local ability = self:GetAbility()
     self.bonus_range      = ability:GetSpecialValueFor("bonus_range")
     self.bonus_dmg_creeps = ability:GetSpecialValueFor("bonus_damage_pct_creeps")
     self.bonus_dmg_heroes = ability:GetSpecialValueFor("bonus_damage_pct_heroes")
 end
 
-function marksman_marksmans_mastery:GetModifierAttackRangeBonus()
+function modifier_marksman_marksmans_mastery:GetModifierAttackRangeBonus()
     return self.bonus_range or 0
 end
 

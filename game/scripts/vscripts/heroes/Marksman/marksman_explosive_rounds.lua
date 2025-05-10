@@ -1,126 +1,179 @@
 ---@class marksman_explosive_rounds:CDOTA_Ability_Lua
-marksman_explosive_rounds = class({})
-LinkLuaModifier("modifier_marksman_explosive_rounds", "heroes/Marksman/marksman_explosive_rounds.lua", LUA_MODIFIER_MOTION_NONE)
-LinkLuaModifier("modifier_marksman_explosive_rounds_debuff", "heroes/Marksman/marksman_explosive_rounds.lua", LUA_MODIFIER_MOTION_NONE)
+if marksman_explosive_rounds == nil then marksman_explosive_rounds = class({}) end
+
+LinkLuaModifier("modifier_marksman_explosive_rounds","heroes/Marksman/marksman_explosive_rounds.lua",LUA_MODIFIER_MOTION_NONE)
+LinkLuaModifier("modifier_marksman_explosive_rounds_debuff","heroes/Marksman/marksman_explosive_rounds.lua",LUA_MODIFIER_MOTION_NONE)
 
 function marksman_explosive_rounds:GetIntrinsicModifierName()
     return "modifier_marksman_explosive_rounds"
 end
 
+------------------------------------------------------
+-- Ability: Explosion handler
+------------------------------------------------------
+function marksman_explosive_rounds:Explode(target)
+    if not IsServer() then return end
+    local caster  = self:GetCaster()
+    -- Don't explode if passives are disabled
+    if caster:PassivesDisabled() then return end
 
+    local ability = self
+    local pos     = target:GetAbsOrigin()
+
+    local damage = ability:GetSpecialValueFor("explosion_damage")
+    local radius = ability:GetSpecialValueFor("damage_radius")
+
+    target:EmitSound("Hero_Sniper.ConcussiveGrenade")
+
+    -- Explosion particle effect
+    local pfx = ParticleManager:CreateParticle(
+        "particles/econ/items/alchemist/alchemist_smooth_criminal/alchemist_smooth_criminal_unstable_concoction_explosion.vpcf",
+        PATTACH_WORLDORIGIN,
+        nil
+    )
+    ParticleManager:SetParticleControl(pfx, 0, pos)
+    ParticleManager:SetParticleControl(pfx, 1, Vector(radius, 0, 0))
+    ParticleManager:ReleaseParticleIndex(pfx)
+
+    -- Damage all enemy units in radius
+    local enemies = FindUnitsInRadius(
+        caster:GetTeamNumber(), pos, nil, radius,
+        DOTA_UNIT_TARGET_TEAM_ENEMY,
+        DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+        DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
+        FIND_ANY_ORDER, false)
+
+    for _,enemy in pairs(enemies) do
+        ApplyDamage({
+            victim = enemy,
+            attacker = caster,
+            damage = damage,
+            damage_type = DAMAGE_TYPE_PHYSICAL,
+            ability = ability
+        })
+    end
+end
+
+------------------------------------------------------
+-- Modifier: Internal stack tracker + attack listener
+------------------------------------------------------
 ---@class modifier_marksman_explosive_rounds:CDOTA_Modifier_Lua
 modifier_marksman_explosive_rounds = class({})
-function modifier_marksman_explosive_rounds:IsHidden() return true end
-function modifier_marksman_explosive_rounds:IsPurgable() return false end
+
+function modifier_marksman_explosive_rounds:IsHidden()      return true  end
+function modifier_marksman_explosive_rounds:IsPurgable()    return false end
 function modifier_marksman_explosive_rounds:RemoveOnDeath() return false end
-
-function modifier_marksman_explosive_rounds:OnCreated(kv)
-    if not IsServer() then return end
-    self:OnRefresh(kv)
-end
-
-function modifier_marksman_explosive_rounds:OnRefresh(kv)
-    if not IsServer() then return end
-    self.ability = self:GetAbility()
-    local lvl = self.ability:GetLevel() - 1
-
-    self.dmg_per_shot  = self.ability:GetLevelSpecialValueFor("dmg_per_shot", lvl)
-    self.duration      = self.ability:GetSpecialValueFor("duration")
-    self.shots_limit   = self.ability:GetSpecialValueFor("shots_limit")
-end
 
 function modifier_marksman_explosive_rounds:DeclareFunctions()
     return { MODIFIER_EVENT_ON_ATTACK_LANDED }
 end
 
-function modifier_marksman_explosive_rounds:OnAttackLanded(params)
+function modifier_marksman_explosive_rounds:OnCreated()
     if not IsServer() then return end
-    local parent = self:GetParent()
-    if params.attacker ~= parent then return end
+    local ability = self:GetAbility()
+    self.dmg_per_shot = ability:GetSpecialValueFor("dmg_per_shot")
+    self.shots_limit = ability:GetSpecialValueFor("shots_limit")
+    self.duration    = ability:GetSpecialValueFor("duration")
+end
 
-    local target = params.target
-    if not target or not target:IsAlive() then return end
+function modifier_marksman_explosive_rounds:OnRefresh()
+    if not IsServer() then return end
+    self.dmg_per_shot = self:GetAbility():GetSpecialValueFor("dmg_per_shot")
+end
+
+function modifier_marksman_explosive_rounds:OnAttackLanded(event)
+    if not IsServer() then return end
+    local caster  = self:GetParent()
+    local ability = self:GetAbility()
+
+    -- Only count if attacker is caster and passives active
+    if event.attacker ~= caster or caster:PassivesDisabled() then return end
+    -- Only count basic attacks
+    if event.inflictor then return end
+
+    local target = event.target
+    if not target or target:IsNull() or target:IsOther() then return end
+
+    -- If target died immediately, trigger explosion and exit
+    if not target:IsAlive() then
+        if not (target:IsRealHero() or target:IsBoss() or target:IsMegaboss()) then
+            ability:Explode(target)
+        end
+        return
+    end
+
+    -- Track stacks for explosion
+    local debuff = target:AddNewModifier(caster, ability, "modifier_marksman_explosive_rounds_debuff", {duration = self.duration})
+    if not debuff then return end
+    local stacks = debuff:GetStackCount() or 0
+    stacks = stacks + 1
+    debuff:SetStackCount(stacks)
+
+    -- Apply extra damage per shot
+    ApplyDamage({
+        victim      = target,
+        attacker    = caster,
+        damage      = self.dmg_per_shot * stacks,
+        damage_type = DAMAGE_TYPE_PHYSICAL,
+        ability     = ability
+    })
 
     
 
-    -- 2) Apply or refresh debuff stacks
-    local debuff = target:FindModifierByName("modifier_marksman_explosive_rounds_debuff")
-    if not debuff then
-        debuff = target:AddNewModifier(parent, self.ability, "modifier_marksman_explosive_rounds_debuff", { duration = self.duration })
-        debuff:SetStackCount(1)
-    else
-        debuff:IncrementStackCount()
-        debuff:SetDuration(self.duration, true)
-    end
-
-    ApplyDamage({
-        victim      = target,
-        attacker    = parent,
-        damage      = self.dmg_per_shot * debuff:GetStackCount(),
-        damage_type = DAMAGE_TYPE_PHYSICAL,
-        ability     = self.ability,
-    })
-
-    -- 3) Trigger explosion via debuff when limit reached
-    if debuff:GetStackCount() >= self.shots_limit then
-        debuff:Explode()
+    if stacks >= self.shots_limit then
+        if not (target:IsRealHero() or target:IsBoss() or target:IsMegaboss()) then
+            ability:Explode(target)
+        end
+        debuff:Destroy()
     end
 end
 
+------------------------------------------------------
+-- Debuff: handles explosion on death
+------------------------------------------------------
 ---@class modifier_marksman_explosive_rounds_debuff:CDOTA_Modifier_Lua
 modifier_marksman_explosive_rounds_debuff = class({})
 
-function modifier_marksman_explosive_rounds_debuff:IsHidden()      return false end
-function modifier_marksman_explosive_rounds_debuff:IsPurgable()    return true  end
-function modifier_marksman_explosive_rounds_debuff:RemoveOnDeath() return true  end
+function modifier_marksman_explosive_rounds_debuff:IsHidden()   return false end
+function modifier_marksman_explosive_rounds_debuff:IsPurgable() return true end
 
-function modifier_marksman_explosive_rounds_debuff:OnCreated(kv)
-    if not IsServer() then return end
-    self:OnRefresh(kv)
+function modifier_marksman_explosive_rounds_debuff:DeclareFunctions()
+    return { MODIFIER_EVENT_ON_DEATH }
 end
 
-function modifier_marksman_explosive_rounds_debuff:OnRefresh(kv)
+function modifier_marksman_explosive_rounds_debuff:OnStackCountChanged(iStackCount)
     if not IsServer() then return end
-    self.ability = self:GetAbility()
-    local lvl     = self.ability:GetLevel() - 1
-
-    -- Cache explosion parameters
-    self.explosion_damage = self.ability:GetLevelSpecialValueFor("explosion_damage", lvl)
-    self.damage_radius    = self.ability:GetSpecialValueFor("damage_radius")
-    self.shots_limit      = self.ability:GetSpecialValueFor("shots_limit")
+  
+    if not self.pfx then
+      self.pfx = ParticleManager:CreateParticle("particles/custom/marksman/marksman_explosive_rounds_stack_count.vpcf", PATTACH_OVERHEAD_FOLLOW, self:GetParent())
+    end
+  
+    ParticleManager:SetParticleControl(self.pfx, 2, Vector(self:GetStackCount(), 0 , 0))
+    ParticleManager:SetParticleControlEnt(self.pfx, 3, self:GetParent(), PATTACH_OVERHEAD_FOLLOW, nil , self:GetParent():GetAbsOrigin(), true )
 end
 
---- Triggers the explosion and destroys this debuff
-function modifier_marksman_explosive_rounds_debuff:Explode()
+function modifier_marksman_explosive_rounds_debuff:OnDestroy()
     if not IsServer() then return end
 
-    local parent  = self:GetParent()
-    local caster  = self:GetCaster()
-    local self.ability = self:GetAbility()
-    local pos     = parent:GetAbsOrigin()
-    local team    = caster:GetTeamNumber()
+    if self.pfx then
+        ParticleManager:DestroyParticle(self.pfx, false)
+        ParticleManager:ReleaseParticleIndex(self.pfx)
+    end
+end
 
-    local enemies = FindUnitsInRadius(
-        team,
-        pos,
-        nil,
-        self.damage_radius,
-        DOTA_UNIT_TARGET_TEAM_ENEMY,
-        DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-        DOTA_UNIT_TARGET_FLAG_NONE,
-        FIND_ANY_ORDER,
-        false
-    )
+function modifier_marksman_explosive_rounds_debuff:OnDeath(event)
+    if not IsServer() then return end
+    if event.unit ~= self:GetParent() then return end
 
-    for _, enemy in pairs(enemies) do
-        ApplyDamage({
-            victim      = enemy,
-            attacker    = caster,
-            damage      = self.explosion_damage,
-            damage_type = DAMAGE_TYPE_PHYSICAL,
-            ability     = self.ability,
-        })
+    local ability = self:GetAbility()
+    local caster  = ability:GetCaster()
+    if event.attacker ~= caster or caster:PassivesDisabled() then
+        self:Destroy()
+        return
     end
 
+    if not (event.unit:IsRealHero() or event.unit:IsBoss() or event.unit:IsMegaboss()) then
+        ability:Explode(event.unit)
+    end
     self:Destroy()
 end
