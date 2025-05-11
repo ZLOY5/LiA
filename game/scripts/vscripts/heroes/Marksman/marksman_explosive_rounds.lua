@@ -93,12 +93,13 @@ function modifier_marksman_explosive_rounds:OnAttackLanded(event)
 
     local target = event.target
     if not target or target:IsNull() or target:IsOther() then return end
+    if not (target:IsRealHero() or target:IsCreature()) then return end
 
-    -- If target died immediately, trigger explosion and exit
-    if not target:IsAlive() then
-            ability:Explode(target)
-        return
-    end
+    -- -- If target died immediately, trigger explosion and exit
+    -- if not target:IsAlive() then
+    --         ability:Explode(target)
+    --     return
+    -- end
 
     -- Track stacks for explosion
     local debuff = target:AddNewModifier(caster, ability, "modifier_marksman_explosive_rounds_debuff", {duration = self.duration})
@@ -120,7 +121,7 @@ function modifier_marksman_explosive_rounds:OnAttackLanded(event)
 
     if stacks >= self.shots_limit then
         if not (target:IsRealHero() or target:IsBoss() or target:IsMegaboss()) then
-            ability:Explode(target)
+            target:Kill(ability, caster)
         end
         debuff:Destroy()
     end
@@ -159,17 +160,11 @@ function modifier_marksman_explosive_rounds_debuff:OnDestroy()
     end
 end
 
-function modifier_marksman_explosive_rounds_debuff:OnDeath(event)
+function modifier_marksman_explosive_rounds_debuff:OnDeath(params)
     if not IsServer() then return end
-    if event.unit ~= self:GetParent() then return end
 
-    local ability = self:GetAbility()
-    local caster  = ability:GetCaster()
-    if caster:PassivesDisabled() then
-        self:Destroy()
-        return
+    if params.unit == self:GetParent() and not params.unit:IsIllusion() then
+        self:GetAbility():Explode(params.unit)
     end
-
-    ability:Explode(event.unit)
     self:Destroy()
 end

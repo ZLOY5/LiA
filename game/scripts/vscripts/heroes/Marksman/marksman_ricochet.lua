@@ -25,13 +25,13 @@ function marksman_ricochet:OnSpellStart()
         Target               = target,
         Source               = caster,
         Ability              = self,
-        EffectName           = "particles/units/heroes/hero_sniper/sniper_assassinate_projectile.vpcf",
+        EffectName           = "particles/units/heroes/hero_sniper/sniper_assassinate.vpcf",
         iMoveSpeed           = self.projectile_speed,
         bDodgeable           = false,
         bProvidesVision      = false,
         iSourceAttachment    = DOTA_PROJECTILE_ATTACHMENT_ATTACK_1,
     })
-    EmitSoundOn("Hero_Sniper.AssassinateProjectile", caster)
+    caster:EmitSound("Hero_Sniper.AssassinateProjectile")
 end
 
 function marksman_ricochet:OnProjectileHit(hTarget, vLocation)
@@ -42,16 +42,21 @@ function marksman_ricochet:OnProjectileHit(hTarget, vLocation)
     table.insert(self.targets_table, hTarget)
     self.jumps = self.jumps + 1
 
-    -- 1) Deal base or bounce damage
-    local isFirst = (self.jumps == 1)
-    local dmg = isFirst and self.damage or (self.damage * self.bounce_damage_pct / 100)
+    -- 1) Deal damage
+    local atk = caster:GetAverageTrueAttackDamage(caster)
+    local ratio = self:GetSpecialValueFor("bounce_damage_pct") * 0.01
+    local base = self:GetSpecialValueFor("damage")
+
+    local totalDmg = base + atk * ratio
     ApplyDamage({
         victim      = hTarget,
         attacker    = caster,
-        damage      = dmg,
+        damage      = totalDmg,
         damage_type = DAMAGE_TYPE_PHYSICAL,
         ability     = self,
     })
+
+    hTarget:EmitSound("Hero_Sniper.AssassinateDamage")
 
     -- 2) Apply slow debuff
     hTarget:AddNewModifier(caster, self, "modifier_marksman_ricochet_slow", {
@@ -61,7 +66,9 @@ function marksman_ricochet:OnProjectileHit(hTarget, vLocation)
     -- 3) Trigger Explosive Rounds if present
     local expl = hTarget:FindModifierByName("modifier_marksman_explosive_rounds_debuff")
     if expl then
-        expl:Explode()
+        if not (hTarget:IsRealHero() or hTarget:IsBoss() or hTarget:IsMegaboss()) then
+            hTarget:Kill(ability, caster)
+        end
     end
 
     -- 4) Bounce to next valid target
@@ -73,7 +80,7 @@ function marksman_ricochet:OnProjectileHit(hTarget, vLocation)
             self.bounce_range,
             DOTA_UNIT_TARGET_TEAM_ENEMY,
             DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-            DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE,
+            DOTA_UNIT_TARGET_FLAG_NO_INVIS + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,
             FIND_CLOSEST,
             false
         )
@@ -91,7 +98,7 @@ function marksman_ricochet:OnProjectileHit(hTarget, vLocation)
                     Target               = enemy,
                     Source               = hTarget,
                     Ability              = self,
-                    EffectName           = "particles/units/heroes/hero_sniper/sniper_assassinate_projectile.vpcf",
+                    EffectName           = "particles/units/heroes/hero_sniper/sniper_assassinate.vpcf",
                     iMoveSpeed           = self.projectile_speed,
                     bDodgeable           = false,
                     bProvidesVision      = false,
@@ -113,16 +120,24 @@ function modifier_marksman_ricochet_slow:IsDebuff()    return true  end
 function modifier_marksman_ricochet_slow:IsPurgable()  return true  end
 
 function modifier_marksman_ricochet_slow:OnCreated(kv)
-    if not IsServer() then return end
     local ability = self:GetAbility()
-    -- Cache the slow amount once on creation
     self.attack_reduction = ability:GetSpecialValueFor("attack_reduction")
 end
 
 function modifier_marksman_ricochet_slow:DeclareFunctions()
-    return { MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT }
+    return {
+        MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,     
+    }
 end
 
-function modifier_marksman_ricochet_slow:GetModifierAttackSpeedBonus_Constant()
+function modifier_marksman_ricochet_slow:GetModifierBaseDamageOutgoing_Percentage()
     return -self.attack_reduction
+end
+
+function modifier_marksman_ricochet_slow:GetEffectName()
+	return "particles/units/heroes/hero_snapfire/hero_snapfire_burn_debuff.vpcf"
+end
+
+function modifier_marksman_ricochet_slow:GetEffectAttachType()
+    return PATTACH_CUSTOMORIGIN_FOLLOW 
 end

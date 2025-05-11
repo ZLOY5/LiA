@@ -206,6 +206,8 @@ function Precache( context )
 		PrecacheModel("models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_diretide_ancient_hulk.vmdl", context)
 
 		--Неоригинальные модели крипов
+		PrecacheModel("models/items/beastmaster/boar/beast_deming/beast_deming.vmdl", context)
+		PrecacheModel("models/items/furion/treant_stump.vmdl", context)
 		PrecacheModel("models/creeps/thief/thief_01_leader.vmdl", context)
 		PrecacheModel("models/creeps/thief/thief_01.vmdl", context)
 		

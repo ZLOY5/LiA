@@ -1,7 +1,15 @@
 ---@class marksman_dragon_breath:CDOTA_Ability_Lua
 marksman_dragon_breath = class({})
-
 LinkLuaModifier("modifier_marksman_dragon_breath_debuff", "heroes/Marksman/marksman_dragon_breath.lua", LUA_MODIFIER_MOTION_NONE)
+
+function marksman_dragon_breath:OnAbilityPhaseStart()
+    EmitSoundOn("Hero_Snapfire.Shotgun.Load", self:GetCaster())
+    return true
+end
+
+function marksman_dragon_breath:OnAbilityPhaseInterrupted()
+    StopSoundOn("Hero_Snapfire.Shotgun.Load", self:GetCaster())
+end
 
 function marksman_dragon_breath:OnSpellStart()
     local caster = self:GetCaster()
@@ -13,10 +21,10 @@ function marksman_dragon_breath:OnSpellStart()
     self.armor_reduction  = self:GetLevelSpecialValueFor("armor_reduction", lvl)
     self.move_slow_pct    = self:GetLevelSpecialValueFor("move_slow_pct",   lvl)
     self.slow_duration    = self:GetSpecialValueFor("slow_duration")
-    self.distance         = 450
-    self.speed            = 900
-    self.start_radius     = 150
-    self.end_radius       = 300
+    self.distance         = self:GetSpecialValueFor("distance")
+    self.speed            = self:GetSpecialValueFor("speed")
+    self.start_radius     = self:GetSpecialValueFor("start_radius")
+    self.end_radius       = self:GetSpecialValueFor("end_radius")
 
     -- Direction of the breath
     local dir = (point - caster:GetAbsOrigin()):Normalized()
@@ -24,7 +32,7 @@ function marksman_dragon_breath:OnSpellStart()
     -- Create the linear projectile
     ProjectileManager:CreateLinearProjectile({
         Ability             = self,
-        EffectName          = "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf",
+        EffectName          = "particles/units/heroes/hero_snapfire/hero_snapfire_shotgun.vpcf",
         vSpawnOrigin        = caster:GetAbsOrigin(),
         fDistance           = self.distance,
         fStartRadius        = self.start_radius,
@@ -38,7 +46,7 @@ function marksman_dragon_breath:OnSpellStart()
         vVelocity           = dir * self.speed,
     })
 
-    EmitSoundOn("Hero_DragonKnight.BreatheFire", caster)
+    EmitSoundOn("Hero_Snapfire.Shotgun.Fire", self:GetCaster())
 end
 
 function marksman_dragon_breath:OnProjectileHit(target, location)
@@ -50,7 +58,7 @@ function marksman_dragon_breath:OnProjectileHit(target, location)
         victim      = target,
         attacker    = caster,
         damage      = self.damage,
-        damage_type = DAMAGE_TYPE_PHYSICAL,
+        damage_type = DAMAGE_TYPE_MAGICAL,
         ability     = self,
     })
 
@@ -75,8 +83,8 @@ function modifier_marksman_dragon_breath_debuff:IsPurgable()  return true  end
 function modifier_marksman_dragon_breath_debuff:OnCreated(kv)
     if not IsServer() then return end
     -- Read custom kv params (fall back to ability values)
-    self.armor_reduction = kv.armor_reduction or self:GetAbility():GetLevelSpecialValueFor("armor_reduction", self:GetAbility():GetLevel() - 1)
-    self.move_slow_pct   = kv.move_slow_pct   or self:GetAbility():GetLevelSpecialValueFor("move_slow_pct",   self:GetAbility():GetLevel() - 1)
+    self.armor_reduction = kv.armor_reduction
+    self.move_slow_pct   = kv.move_slow_pct
 end
 
 function modifier_marksman_dragon_breath_debuff:DeclareFunctions()
@@ -92,4 +100,12 @@ end
 
 function modifier_marksman_dragon_breath_debuff:GetModifierMoveSpeedBonus_Percentage()
     return -self.move_slow_pct
+end
+
+function modifier_marksman_dragon_breath_debuff:GetEffectName()
+	return "particles/custom/marksman/modifier_marksman_dragon_breath_debuffvpcf.vpcf"	
+end
+
+function modifier_marksman_dragon_breath_debuff:GetEffectAttachType()
+	return PATTACH_OVERHEAD_FOLLOW
 end
