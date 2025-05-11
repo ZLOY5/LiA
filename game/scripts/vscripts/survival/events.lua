@@ -368,13 +368,9 @@ function Survival:OnPlayerChat(event)
             hero:RespawnHero(false,false)
         end
 
-        if event.text == "lumber" then
+        if event.text == "gl" then
             PlayerResource:ModifyLumber(playerID,350)
-        end
-
-        if event.text == "gold" then
-            local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-            PlayerResource:ModifyGold(hero:GetPlayerID() ,50000, false, DOTA_ModifyGold_Unspecified)
+            PlayerResource:ModifyGold(playerID,50000, false, DOTA_ModifyGold_Unspecified)
         end
 
         if event.text == "cd" then
