@@ -1,7 +1,7 @@
 modifier_test_god_mode = class({})
 
-function modifier_test_god_mode:IsPurgeException()
-	return true 
+function modifier_test_god_mode:IsPurgable()
+	return false
 end
 
 function modifier_test_god_mode:IsHidden()
