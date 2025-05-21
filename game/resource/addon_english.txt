@@ -309,6 +309,7 @@
 		"npc_dota_hero_ursa" "Furbolg Champion"
 		"npc_dota_hero_windrunner" "Gamekeeper"
 		"npc_dota_hero_sniper" "Marksman"
+		"npc_dota_hero_faceless_void" "Speedwarden"
 
 		"DOTA_AbilityTooltip_Scepter_Upgrade" "Spherical Staff"
 		"DOTA_AbilityTooltip_Aghs_Scepter" "Spherical Staff"
@@ -2156,8 +2157,9 @@
 		"DOTA_Tooltip_modifier_dark_ranger_magic_arrow_all_target_Description"	"This unit is taking damage over time and has his armor reduced."
 
 		"DOTA_Tooltip_ability_dark_ranger_spiked_charm"	"Spiked Talisman"
-		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_Description"	"An aura that gives friendly units in a 600 radius from Dark Ranger a damage shield, which wounds enemy melee attackers."
+		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_Description"	"Allies of Sheal within a %radius% are affected by an aura that reflects melee damage back to attackers. Also deals a small amount of base damage."
 		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_damage_return"	"%DAMAGE RETURN:"
+		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_damage_return_constant"	"BASE DAMAGE:"
 
 		"DOTA_Tooltip_modifier_dark_ranger_spiked_charm_aura"	"Spiked Talisman"
 		"DOTA_Tooltip_modifier_dark_ranger_spiked_charm_aura_Description"	"This unit returns damage from melee attacks."
@@ -2884,6 +2886,32 @@
 		"DOTA_Tooltip_ability_speedwarden_speed_burst_Description" "Speedwarden deals damage to enemies in a %radius% radius based on the difference between the target’s movement speed and his own."
 		"DOTA_Tooltip_ability_speedwarden_speed_burst_base_damage" "BASE DAMAGE:"
 		"DOTA_Tooltip_ability_speedwarden_speed_burst_damage_pct" "%DAMAGE FROM SPEED DIFFERENCE:"
+
+		"DOTA_Tooltip_ability_speedwarden_mad_charge" "Mad Charge"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_Description" "Axel accumulates charges by traveling the required distance, each charge increasing his movement speed."
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_distance_per_charge" "DISTANCE PER CHARGE:"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_speed_pct" "%MOVEMENT SPEED PER CHARGE:"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_max_charges" "MAXIMUM CHARGES:"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_charge_duration" "EFFECT DURATION:"
+
+		"DOTA_Tooltip_modifier_speedwarden_mad_charge_buff"	"Mad Charge"
+		"DOTA_Tooltip_modifier_speedwarden_mad_charge_buff_Description"	"Movement speed increased by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
+
+		"DOTA_Tooltip_ability_speedwarden_time_strike"	"Time Strike"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_Description"	"Time flows differently around the Warden of Speed. Enemies within %radius% lose movement speed. Attacks against them have a chance to deal bonus magic damage based on Aksel’s movement speed. This chance increases with each Mad Charge stack."
+		"DOTA_Tooltip_ability_speedwarden_time_strike_slow_pct"	"%MOVEMENT SPEED REDUCTION:"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_damage_pct"	"%DAMAGE FROM MOVEMENT SPEED:"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_base_chance"	"%BASE CHANCE:"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_chance_per_charge"	"%CHANCE PER MAD CHARGE:"
+
+		"DOTA_Tooltip_modifier_speedwarden_time_strike_slow"	"Time Strike"
+		"DOTA_Tooltip_modifier_speedwarden_time_strike_slow_Description"	"Movement speed reduced by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
+
+		"DOTA_Tooltip_ability_speedwarden_wardens_swiftness"	"Warden’s Swiftness"
+		"DOTA_Tooltip_ability_speedwarden_wardens_swiftness_Description"	"The Warden gains the ability to phase through enemies, striking each with a Time Strike attack. Also reduces the minimum distance for Mad Charge to %distance_per_charge_red% units, and causes Burst of Speed to recharge twice as fast."
+		"DOTA_Tooltip_ability_speedwarden_wardens_swiftness_duration"	"DURATION:"
+
+		"DOTA_Tooltip_speedwarden_wardens_swiftness"	"Warden’s Swiftness"
 
 
 

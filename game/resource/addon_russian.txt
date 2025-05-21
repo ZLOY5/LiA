@@ -303,6 +303,7 @@
 		"npc_dota_hero_ursa" "Беорн-Воитель"
 		"npc_dota_hero_windrunner" "Егерь"
 		"npc_dota_hero_sniper" "Стрелок"
+		"npc_dota_hero_faceless_void" "Хранитель Скорости"
 
 		"DOTA_AbilityTooltip_Scepter_Upgrade" "Сферический Посох"
 		"DOTA_AbilityTooltip_Aghs_Scepter" "Сферический Посох"
@@ -2128,8 +2129,9 @@
 		"DOTA_Tooltip_modifier_dark_ranger_magic_arrow_all_target_Description"	"Броня этого воина снижена, и он получает урон каждую секнду."
 
 		"DOTA_Tooltip_ability_dark_ranger_spiked_charm"	"Шипастый Оберег"
-		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_Description"	"Вокруг Шеал на всех союзников распространяется аура, возвращающая атакующим врагам ближнего боя урон."
+		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_Description"	"На союзников Шеал в радиусе %radius% распространяется аура, возвращающая атакующим врагам ближнего боя урон. Также наносит небольшой базовый урон."
 		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_damage_return"	"%ВОЗВРАТ УРОНА:"
+		"DOTA_Tooltip_ability_dark_ranger_spiked_charm_damage_return_constant"	"БАЗОВЫЙ УРОН:"
 
 		"DOTA_Tooltip_modifier_dark_ranger_spiked_charm_aura"	"Шипастый Оберег"
 		"DOTA_Tooltip_modifier_dark_ranger_spiked_charm_aura_Description"	"Этот воин возвращает урон."
@@ -2833,7 +2835,7 @@
 		"DOTA_Tooltip_ability_marksman_ricochet_damage"	"БАЗОВЫЙ УРОН:"
 		"DOTA_Tooltip_ability_marksman_ricochet_bounce_damage_pct"	"%УРОН ОТ СИЛЫ АТАКИ:"
 		"DOTA_Tooltip_ability_marksman_ricochet_bounce_count"	"КОЛИЧЕСТВО ЦЕЛЕЙ:"
-		"DOTA_Tooltip_ability_marksman_ricochet_attack_reduction"	"%СНИЖКНИЕ СИЛЫ АТАКИ:"
+		"DOTA_Tooltip_ability_marksman_ricochet_attack_reduction"	"%СНИЖЕНИЕ СИЛЫ АТАКИ:"
 		"DOTA_Tooltip_ability_marksman_ricochet_attack_reduction_duration"	"ДЛИТЕЛЬНОСТЬ ЭФФЕКТА:"
 
 		"DOTA_Tooltip_modifier_marksman_ricochet_slow"	"Рикошет"
@@ -2858,6 +2860,45 @@
 		"DOTA_Tooltip_ability_speedwarden_speed_burst_Description"	"Хранитель наносит врагам а радиусе %radius% урон, который рассчитывается из разности скорости врага и героя."
 		"DOTA_Tooltip_ability_speedwarden_speed_burst_base_damage"	"БАЗОВЫЙ УРОН:"
 		"DOTA_Tooltip_ability_speedwarden_speed_burst_damage_pct"	"%УРОН ОТ РАЗНОСТИ СКОРОСТИ:"
+
+		"DOTA_Tooltip_ability_speedwarden_mad_charge"	"Шальной заряд"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_Description"	"Аксель, преодолевая необходимое расстояние, накапливает заряд, который увеличивает скорость перемещения героя."
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_distance_per_charge"	"РАССТОЯНИЕ ДЛЯ ОДНОГО ЗАРЯДА:"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_speed_pct"	"%СКОРОСТЬ ПЕРЕДВИЖЕНИЯ ЗА ЗАРЯД:"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_max_charges"	"МАКСИМУМ ЗАРЯДОВ:"
+		"DOTA_Tooltip_ability_speedwarden_mad_charge_charge_duration"	"ДЛИТЕЛЬНОСТЬ ЭФФЕКТА:"
+
+		"DOTA_Tooltip_modifier_speedwarden_mad_charge_buff"	"Шальной заряд"
+		"DOTA_Tooltip_modifier_speedwarden_mad_charge_buff_Description"	"Скорость передвижения увеличена на %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
+
+		"DOTA_Tooltip_ability_speedwarden_time_strike"	"Удар времени"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_Description"	"Вокруг Хранителя Скорости время течёт иначе. Враги в радиусе %radius% теряют скорость передвижения. Атаки по таким врагам имеют шанс дополнительно нанести магический урон, зависящий от скорости передвижения Акселя. Шанс увеличивается с каждым Шальным Зарядом."
+		"DOTA_Tooltip_ability_speedwarden_time_strike_slow_pct"	"%СНИЖЕНИЕ ПЕРЕДВИЖЕНИЯ:"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_damage_pct"	"%УРОН ОТ СКОРОСТИ:"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_base_chance"	"%БАЗОВЫЙ ШАНС:"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_chance_per_charge"	"%ДОП. ШАНС ЗА ШАЛЬНОЙ ЗАРЯД:"
+
+		"DOTA_Tooltip_modifier_speedwarden_time_strike_slow"	"Удар времени"
+		"DOTA_Tooltip_modifier_speedwarden_time_strike_slow_Description"	"Скорость передвижения снижена на %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
+
+		"DOTA_Tooltip_ability_speedwarden_time_strike"	"Прыткость Хранителя"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_Description"	"Хранитель получает возможность проходить сквозь врагов, нанося каждому из них по атаке с Ударом Времени. Также уменьшается минимальная дистанция в Шальном Заряде до %distance_per_charge_red% единиц, а Вспышка Скорости начинает перезаряжаться в два раза быстрее."
+		"DOTA_Tooltip_ability_speedwarden_time_strike_slow_pct"	"%СНИЖЕНИЕ ПЕРЕДВИЖЕНИЯ:"
+		"DOTA_Tooltip_ability_speedwarden_time_strike_damage_pct"	"%УРОН ОТ СКОРОСТИ:"
+
+		"DOTA_Tooltip_speedwarden_wardens_swiftness"	"Прыткость Хранителя"
+		
+
+
+
+
+
+
+
+
+
+
+		
 
 
 

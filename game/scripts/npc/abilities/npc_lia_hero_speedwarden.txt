@@ -1,0 +1,115 @@
+"DotaAbilities"
+{
+    "speedwarden_speed_burst"
+    {
+        "BaseClass"           "ability_lua"
+        "ScriptFile"          "heroes/Speedwarden/speedwarden_speed_burst.lua"
+        "AbilityBehavior"        "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+        "AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"SpellDispellableType"      "SPELL_DISPELLABLE_YES"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityCastPoint"    "0.3"
+        "AbilityCastRange"    "250"
+        "AbilityCooldown"     "9 8 7"
+        "AbilityManaCost"     "50 55 60"
+        "AbilityTextureName"  "faceless_void_time_dilation"
+
+        "MaxLevel"               "3"
+        "RequiredLevel"          "1"
+        "LevelsBetweenUpgrades"  "1"
+
+        "AbilityCastAnimation" "ACT_DOTA_CAST_ABILITY_2"
+
+        "precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+			"particle"			"particles/units/heroes/hero_faceless_void/faceless_void_timedialate.vpcf"
+		}
+
+        "AbilityValues"
+        {
+            "radius"       "250"
+            "base_damage"  "50 150 250"
+            "damage_pct"   "30 45 60"
+        }
+    }
+
+	"speedwarden_mad_charge"
+    {
+        "BaseClass"           "ability_lua"
+        "ScriptFile"          "heroes/Speedwarden/speedwarden_mad_charge.lua"
+        "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"  "faceless_void_time_walk"
+
+        "MaxLevel"               "3"
+        "RequiredLevel"          "2"
+        "LevelsBetweenUpgrades"  "2"
+
+        "AbilityValues"
+        {
+            "distance_per_charge" "1000"
+            "distance_per_charge_swiftness" "500"
+            "speed_pct"           "10 20 30"
+            "max_charges"         "5"
+            "charge_duration"     "20"
+        }
+    }
+
+    "speedwarden_time_strike"
+    {
+        "BaseClass"           "ability_lua"
+        "ScriptFile"          "heroes/Speedwarden/speedwarden_time_strike.lua"
+        "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityTextureName"  "faceless_void_time_lock"
+
+        "MaxLevel"               "3"
+        "RequiredLevel"          "2"
+        "LevelsBetweenUpgrades"  "1"
+
+        "precache"
+		{
+            "particle"          "particles/units/heroes/hero_faceless_void/faceless_void_time_lock_bash.vpcf"
+		}
+
+        "AbilityValues"
+        {
+            "radius"      "325"
+            "slow_pct"    "15 20 25"
+            "damage_pct"  "15 20 25"
+            "base_chance" "30 40 50"
+            "chance_per_charge" "10"
+            "strike_delay"       "0.3"
+        }
+    }
+
+    "speedwarden_wardens_swiftness"
+    {
+        "BaseClass"           "ability_lua"
+        "ScriptFile"          "heroes/Speedwarden/speedwarden_wardens_swiftness.lua"
+        "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityCastPoint"    "0.5"
+        "AbilityCooldown"     "30"
+        "AbilityManaCost"     "90"
+        "AbilityTextureName"  "faceless_void_backtrack"
+
+        "AbilityType"         "DOTA_ABILITY_TYPE_ULTIMATE"
+        "MaxLevel"            "3"
+        "RequiredLevel"       "5"
+        "LevelsBetweenUpgrades" "4"
+
+        "precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
+			"particle"			"particles/custom/speedwarden/speedwarden_swiftness2.vpcf"
+		}
+
+        "AbilityValues"
+        {
+            "duration"  "6 8 10"
+			"distance_per_charge_red"	"500"
+			"burst_cd_red_pct"	"50"
+        }
+    }
+}
