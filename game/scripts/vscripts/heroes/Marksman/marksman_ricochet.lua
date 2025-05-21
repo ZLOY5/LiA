@@ -43,7 +43,7 @@ function marksman_ricochet:OnProjectileHit(hTarget, vLocation)
     self.jumps = self.jumps + 1
 
     -- 1) Deal damage
-    local atk = caster:GetAverageTrueAttackDamage(caster)
+    local atk = caster:GetAverageTrueAttackDamage(hTarget)
     local ratio = self:GetSpecialValueFor("bounce_damage_pct") * 0.01
     local base = self:GetSpecialValueFor("damage")
 
