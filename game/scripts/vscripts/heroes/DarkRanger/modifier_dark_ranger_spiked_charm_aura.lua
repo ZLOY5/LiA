@@ -35,7 +35,7 @@ function modifier_dark_ranger_spiked_charm_aura:OnTakeDamage(params)
 			return
 		end
 		
-		local return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage
+		local return_damage = self:GetAbility():GetSpecialValueFor("damage_return")*0.01*params.original_damage + self:GetAbility():GetSpecialValueFor("damage_return_constant")
 		
 		ApplyDamage(
 		{
