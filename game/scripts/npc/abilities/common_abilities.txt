@@ -1,0 +1,30 @@
+"DotaAbilities"
+{
+  "custom_spell_immunity"
+  {
+    "AbilityTextureName"   "custom/custom_spell_immunity"
+    "AbilityBehavior"    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "BaseClass"	"ability_datadriven" 
+
+    "MaxLevel"						"1"
+    "Modifiers"
+    {
+      "modifier_custom_spell_immunity"
+      {
+        "Passive"			"1"
+        "IsHidden"		"1"
+        "IsPurgable"  "0"
+
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"100"
+        }
+
+        "States"
+        {
+          "MODIFIER_STATE_MAGIC_IMMUNE" 			"MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+    }
+  }
+} 
