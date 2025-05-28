@@ -36,6 +36,7 @@ end
 
 function marksman_ricochet:OnProjectileHit(hTarget, vLocation)
     if not hTarget or hTarget:IsNull() then return end
+    if hTarget:TriggerSpellAbsorb(self) then return end
     local caster = self:GetCaster()
 
     -- Count this hit
