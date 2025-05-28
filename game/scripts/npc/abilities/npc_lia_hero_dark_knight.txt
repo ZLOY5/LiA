@@ -141,10 +141,10 @@
 
 	"dark_knight_incinerate"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"				"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"BaseClass"   "ability_lua"
+		"ScriptFile"    "heroes/DarkKnight/dark_knight_incinerate.lua"
+
+		"AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"custom/dark_knight_incinerate"
@@ -153,16 +153,6 @@
 		"RequiredLevel"          "2"
 		"LevelsBetweenUpgrades"  "2"
 
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"bonus_reset_time"			"6"
-			"damage_per_stack"			"6 12 24"
-			"incineration_damage"		"50 100 200"
-			"incineration_radius"		"100"
-		}
-		
 		"precache"
 		{
 			"particle" 	"particles/ogre_magi_unr_fireblast_blue.vpcf"
@@ -170,102 +160,17 @@
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
 			"soundfile" "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
 		}
-		
-		"OnToggleOn"
+
+		"AbilityValues"
 		{
-			"ApplyModifier"
-			{
-				"ModifierName"	"modifier_dark_knight_incinerate"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}
-			}
-		}
-
-		"OnToggleOff"
-		{
-			"RemoveModifier"
-			{
-				"ModifierName"	"modifier_dark_knight_incinerate"
-				"Target"
-				{
-					"Center"  	"CASTER"
-					"Flags"     "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				}	
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_dark_knight_incinerate"
-			{
-				"Passive"						"0"
-				"IsHidden"						"1"
-				"IsPurgable"					"0"
-				"Attributes"			"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"			
-				"Orb"
-				{
-					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
-				}
-
-				"OnOrbImpact"
-				{
-					"RunScript"
-					{
-						"ScriptFile"			"heroes/DarkKnight/Incinerate.lua"
-						"Function"				"Incinerate"
-					}
-				}
-			}
-			
-			"modifier_dark_knight_incinerate_target"
-			{
-				"IsHidden"					"0"
-				"IsPurgable"				"0"
-				"IsDebuff"					"1"
-
-				"EffectName"	"particles/ogre_magi_ignite_debuff_d_blue.vpcf"
-				"EffectAttachType"	"follow_origin"
-				"OnDeath"
-				{
-					"FireEffect"
-					{
-						"EffectName"        "particles/ogre_magi_unr_fireblast_blue.vpcf"
-						"EffectAttachType"  "follow_origin"
-						"Target"
-						{
-						"Center" "UNIT"
-						"Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-					}
-					"FireSound"
-					{
-						"EffectName"	"Hero_OgreMagi.Fireblast.Cast"
-						"Target"
-						{
-						"Center" "UNIT"
-						"Flags"	"DOTA_UNIT_TARGET_FLAG_DEAD"
-						}
-					}
-
-					"Damage"
-					{
-						"Target"
-						{
-							"Center"  	"UNIT"
-							"Radius" 	"%incineration_radius"
-							"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"Type"			"DAMAGE_TYPE_MAGICAL"
-						"Damage"		"%incineration_damage"
-					}
-				}
-			}
+			"damage_per_stack"			"6 12 24"
+			"incineration_damage"		"50 100 200"
+			"incineration_radius"		"100"
+			"kill_mana_per_stack"		"10"
+			"duration"			"6"
 		}
 	}
-
+  
 	"dark_knight_speed"
 	{
 		"BaseClass"						"ability_lua"

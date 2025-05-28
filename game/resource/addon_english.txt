@@ -2123,12 +2123,13 @@
 		"DOTA_Tooltip_modifier_dark_knight_dark_energy_zone_effect_Description"	"Mana loss reduction increased by 100%%. When the effect is destroyedm the unit will lose %dMODIFIER_PROPERTY_TOOLTIP% mana."
 
 		"DOTA_Tooltip_ability_dark_knight_incinerate"	"Devouring Shadow"
-		"DOTA_Tooltip_ability_dark_knight_incinerate_Description"	"Dark Knight's consecutive attacks to the same enemy deal more damage. When the affected enemy dies, nearby enemies take damage.<br>Incinerate is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers"
+		"DOTA_Tooltip_ability_dark_knight_incinerate_Description"	"Dark Knight's consecutive attacks to the same enemy deal more damage. When the affected enemy dies, nearby enemies take damage. Upon killing an enemy, Mort gains %kill_mana_per_stack% mana per effect collected.<br><br><font color='#f57b7a'>Devouring Shadow is a unique attack modifier, and does not stack with other Unique Attack Modifiers.</font>"
 		"DOTA_Tooltip_ability_dark_knight_incinerate_damage_per_stack"	"DAMAGE PER STACK:"
 		"DOTA_Tooltip_ability_dark_knight_incinerate_incineration_damage"	"EXPLOSION DAMAGE:"
+		"DOTA_Tooltip_ability_dark_knight_incinerate_duration"           "EFFECT DURATION:"
 
-		"DOTA_Tooltip_modifier_dark_knight_incinerate_target"	"Devouring Shadow"
-		"DOTA_Tooltip_modifier_dark_knight_incinerate_target_Description"	"This unit takes additional damage by Dark Knight. This unit will also explode on death."
+		"DOTA_Tooltip_modifier_dark_knight_incinerate_debuff"	"Devouring Shadow"
+		"DOTA_Tooltip_modifier_dark_knight_incinerate_debuff_Description"	"This unit takes additional damage by Dark Knight. This unit will also explode on death."
 
 		"DOTA_Tooltip_ability_dark_knight_speed"	"Ruthless Onslaught"
 		"DOTA_Tooltip_ability_dark_knight_speed_Description"	"Dark Knight gains bonus attack speed. He also increases his attack speed with each attack by 9. The limit of such attack speed is 45."
@@ -3390,13 +3391,23 @@
 		"DOTA_Tooltip_modifier_item_staff_of_help_armor_2_Description"	"Armor is increased by 8."
 
 		"DOTA_Tooltip_ability_item_lia_orb_of_fire"	"Orb of Fire"
-		"DOTA_Tooltip_ability_item_lia_orb_of_fire_Description"	"<h1>Passive: Fire Attack</h1>Each attack deals %bonus_damage% fire damage to enemues around the taget.<br><br>Fire Attack is a Unique Attack Modifier, and does not stack with other Unique Attack Modifiers."			
+		"DOTA_Tooltip_ability_item_lia_orb_of_fire_Description"	"<h1>Passive: Fire Attack</h1>Each attack deals %bonus_damage% fire damage to enemues around the taget.<br><br>Fire Attack is a Unique Attack Modifier and does not stack with other Unique Attack Modifiers."			
 		"DOTA_Tooltip_ability_item_lia_orb_of_fire_bonus_damage"	"+$damage"
 		"DOTA_Tooltip_ability_item_lia_orb_of_fire_Note0"	"Stacks with Cleaving Attack."	
 
+		"DOTA_Tooltip_ability_item_lia_spider_ring"	"Spider Ring"
+		"DOTA_Tooltip_ability_item_lia_spider_ring_Description"	"<h1>Passive: Weakening</h1>The hero’s attacks reduce the target’s armor by %armor_reduction% for %duration% seconds.<br><br>Weakening is a Unique Attack Modifier and does not stack with other Unique Attack Modifiers."
+
+		"DOTA_Tooltip_modifier_item_lia_spider_ring_debuff"	"Spider Ring"
+		"DOTA_Tooltip_modifier_item_lia_spider_ring_debuff_Description"	"This unit’s armor is reduced by %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS%."
+
+
 		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility"	"Boots of Invisibility"
 		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility_Description"	"<h1>Active: Wind Walk</h1>Makes the caster invisible and increases his movements speed by %invis_movespeed_percent%%% for %duration% seconds or until he attacks."	
-		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility_bonus_movement_speed"	"+$move_speed"	
+		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility_bonus_movement_speed"	"+$bonus_movement_speed"	
+
+		"DOTA_Tooltip_modifier_item_lia_boots_of_invisibility_active"	"Boots of Invisibility"
+		"DOTA_Tooltip_modifier_item_lia_boots_of_invisibility_active_Description"	"The hero is invisible and has their movespeed increased."
 
 		"DOTA_Tooltip_ability_item_lia_lunar_necklace"	"Lunar Necklace"
 		"DOTA_Tooltip_ability_item_lia_lunar_necklace_Description"	"<h1>Active: Elune's Blessing</h1>Increases all attributes of a target hero by %stat_percent%%% and gives him %bonus_magic_resist_percentage_active%%% magic resistance.<br>Can't give more that %stat_bonus_max% of each attribute.<br>Lasts %duration% seconds."

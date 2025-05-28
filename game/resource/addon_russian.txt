@@ -2095,12 +2095,13 @@
 		"DOTA_Tooltip_modifier_dark_knight_dark_energy_zone_effect_Description"	"Снижение потери маны увеличено до 100%%. При исчезновении эффекта герой лишится %dMODIFIER_PROPERTY_TOOLTIP% маны."
 
 		"DOTA_Tooltip_ability_dark_knight_incinerate"	"Поглощающий Мрак"
-		"DOTA_Tooltip_ability_dark_knight_incinerate_Description"	"Атаки по одному и тому же врагу наносят больше урона с каждым разом. При смерти враг взрывается, нанося ближайшим противникам Темного Рыцаря урон.<br>Оживший Огонь — уникальный модификатор атаки, он не будет сочетаться с другими уникальными модификаторами атаки."
+		"DOTA_Tooltip_ability_dark_knight_incinerate_Description"	"Атаки по одному и тому же врагу наносят больше урона с каждым разом. При смерти враг взрывается, нанося ближайшим противникам Темного Рыцаря урон. При смерти врага Морт получает %kill_mana_per_stack% единиц маны за каждый эффект.<br><br><font color='#f57b7a'>Поглощающий Мрак — уникальный модификатор атаки, он не будет сочетаться с другими уникальными модификаторами атаки.</font>"
 		"DOTA_Tooltip_ability_dark_knight_incinerate_damage_per_stack"	"УВЕЛИЧЕНИЕ УРОНА ЗА УДАР:"
 		"DOTA_Tooltip_ability_dark_knight_incinerate_incineration_damage"	"УРОН ПРИ ВЗРЫВЕ:"
+		"DOTA_Tooltip_ability_dark_knight_incinerate_duration"	"ДЛИТЕЛЬНОСТЬ ЭФФЕКТА:"
 
-		"DOTA_Tooltip_modifier_dark_knight_incinerate_target"	"Поглощающий Мрак"
-		"DOTA_Tooltip_modifier_dark_knight_incinerate_target_Description"	"Этот воин получает дополнительный урон от Темного Рыцаря. Он также взорвется при смерти."
+		"DOTA_Tooltip_modifier_dark_knight_incinerate_debuff"	"Поглощающий Мрак"
+		"DOTA_Tooltip_modifier_dark_knight_incinerate_debuff_Description"	"Этот воин получает дополнительный урон от Темного Рыцаря. Он также взорвется при смерти."
 
 		"DOTA_Tooltip_ability_dark_knight_speed"	"Безжалостный Натиск"
 		"DOTA_Tooltip_ability_dark_knight_speed_Description"	"Темный Рыцарь получает дополнительную скорость атаки. Он также увеличивает ее с каждым ударом на 9 единиц. Лимит такой скорости - 45 единиц."
@@ -3367,9 +3368,18 @@
 		"DOTA_Tooltip_ability_item_lia_orb_of_fire_bonus_damage"	"+$damage"		
 		"DOTA_Tooltip_ability_item_lia_orb_of_fire_Note0"	"Атака по нескольким целям складывается с Огромным Топором или Кровавой Луной."	
 
+		"DOTA_Tooltip_ability_item_lia_spider_ring"	"Кольцо Паука"
+		"DOTA_Tooltip_ability_item_lia_spider_ring_Description"	"<h1>Пассивная: Ослабление</h1>Атаки героя снижают защиту врага на %armor_reduction% единицы на %duration% секунд.<br><br>Запутывание — уникальный модификатор атаки, он не будет сочетаться с другими уникальными модификаторами атаки."
+
+		"DOTA_Tooltip_modifier_item_lia_spider_ring_debuff"	"Кольцо Паука"
+		"DOTA_Tooltip_modifier_item_lia_spider_ring_debuff_Description"	"Броня этого воина снижена на %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% единиц."	
+
 		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility"	"Сапоги-Невидимки"
 		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility_Description"	"<h1>Активируемая: Стремительность</h1>Герой становится невидимым, и у него увеличивается скорость передвижения на %invis_movespeed_percent%%%.<br><br>Время действия: %duration% сек."		
-		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility_bonus_movement_speed"	"%+$move_speed"	
+		"DOTA_Tooltip_ability_item_lia_boots_of_invisibility_bonus_movement_speed"	"+$bonus_movement_speed"	
+
+		"DOTA_Tooltip_modifier_item_lia_boots_of_invisibility_active"	"Сапоги-Невидимки"
+		"DOTA_Tooltip_modifier_item_lia_boots_of_invisibility_active_Description"	"Герой невидим, а его скорость передвижения увеличена."
 
 		"DOTA_Tooltip_ability_item_lia_lunar_necklace"	"Лунное Колье"
 		"DOTA_Tooltip_ability_item_lia_lunar_necklace_Description"	"<h1>Активируемая: Благословление Элуны</h1>У указанного союзного героя временно увеличиваются все характеристики на %stat_percent%%% и защита от магии на %bonus_magic_resist_percentage_active%%%.<br><br>Характеристики увеличиваются не более чем на %stat_bonus_max% ед.<br><br>Длительность: %duration% сек."
