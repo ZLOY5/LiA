@@ -70,7 +70,8 @@ function Precache( context )
 		--Дайс
 		PrecacheResource("particle", "particles/status_fx/status_effect_beserkers_call.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts", context)	
-
+		--Повелитель Огня
+		PrecacheModel("models/items/shadowshaman/serpent_ward/fiery_ward_of_eki_bukaw/fiery_ward_of_eki_bukaw.vmdl", context)
 		--Пивовар
 		PrecacheResource("particle", "particles/units/heroes/hero_brewmaster/brewmaster_drunken_haze_debuff.vpcf", context)
 		PrecacheResource("particle", "particles/units/heroes/hero_kunkka/kunkka_spell_tidebringer.vpcf", context)	
