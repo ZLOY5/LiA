@@ -1,0 +1,64 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:vpcf62:version{c135a90d-ef52-47fa-a9b8-83a382a77471} -->
+{
+	_class = "CParticleSystemDefinition"
+	m_bShouldHitboxesFallbackToRenderBounds = false
+	m_nMaxParticles = 0
+	m_nBehaviorVersion = 12
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_previewModel = "models/heroes/shadow_demon/shadow_demon.vmdl"
+				m_nModSpecificData = 396
+				m_sequenceName = "idle"
+				m_hitboxSetName = "default"
+			}
+		},
+	]
+	m_Children = 
+	[
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_disseminate_proj_dark.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_disseminate_spiral.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_disseminate_aoe_ring_target.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff_v3_spiral.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff_v3_shadow.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff_glow.vpcf"
+			m_bDisableChild = true
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff_v3_icon.vpcf"
+		},
+		{
+			m_ChildRef = resource:"particles/units/heroes/hero_shadow_demon/shadow_demon_disseminate_gather.vpcf"
+			m_bDisableChild = true
+		},
+	]
+}

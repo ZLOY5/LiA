@@ -35,7 +35,7 @@ function modifier_demonologist_demonic_seal_debuff:OnCreated(kv)
 end
 
 function modifier_demonologist_demonic_seal_debuff:GetEffectName()
-	return "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+	return "particles/custom/demonologist/demonologist_demonic_seal_debuff.vpcf"
 end
 
 function modifier_demonologist_demonic_seal_debuff:GetEffectAttachType()

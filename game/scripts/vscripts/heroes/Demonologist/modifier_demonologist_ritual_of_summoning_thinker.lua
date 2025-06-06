@@ -74,18 +74,23 @@ function modifier_demonologist_ritual_of_summoning_thinker:OnDestroy()
 		StopSoundOn("Hero_AbyssalUnderlord.DarkRift.Cast", self:GetParent())
 		self:GetParent():EmitSound("Hero_AbyssalUnderlord.DarkRift.Complete")
 
+		local function RemoveActivesDelayed(unit)
+			Timers:CreateTimer(FrameTime(), function()
+				if not IsValidEntity(unit) then return end
+				for i = 0, unit:GetAbilityCount() - 1 do
+					local ab = unit:GetAbilityByIndex(i)
+					if ab and not ab:IsPassive() then
+						unit:RemoveAbility(ab:GetAbilityName())
+					end
+				end
+			end)
+		end
+
 		if self.demonologistUltimateBossCount > 0 then
 		    for i=1,self.demonologistUltimateBossCount do
 		        local demonologistBoss = CreateUnitByName(boss_name, target, true, caster, caster, caster:GetTeam())
 	        	demonologistBoss:AddNewModifier(caster, ability, "modifier_demonologist_ritual_of_summoning_creep_debuff", nil)
-		        for k=0,15 do
-					local abilityToRemove = demonologistBoss:GetAbilityByIndex(k)
-					if abilityToRemove then
-						if not abilityToRemove:IsPassive() then
-							demonologistBoss:RemoveAbility(abilityToRemove:GetAbilityName())
-						end
-					end
-				end
+		        RemoveActivesDelayed(demonologistBoss)
 		        demonologistBoss.demonologistRitualCreep = true
 				demonologistBoss:SetControllableByPlayer(caster:GetPlayerID(), true)
 				ResolveNPCPositions(demonologistBoss:GetAbsOrigin(),100)
@@ -95,18 +100,12 @@ function modifier_demonologist_ritual_of_summoning_thinker:OnDestroy()
 
     	local points = self.demonologistUltimateCreepCount
 		
+		
 		for i=1,points do
 	        local position = self:GetPositionOnCircle(target,Vector(1,0,0),self.radius,i,points)
 	        local demonologistCreep = CreateUnitByName(creep_name, target, true, caster, caster, caster:GetTeam())
 	        demonologistCreep:AddNewModifier(caster, ability, "modifier_demonologist_ritual_of_summoning_creep_debuff", nil)
-	        for k=0,15 do
-				local abilityToRemove = demonologistCreep:GetAbilityByIndex(k)
-				if abilityToRemove then
-					if not abilityToRemove:IsPassive() then
-						demonologistCreep:RemoveAbility(abilityToRemove:GetAbilityName())
-					end
-				end
-			end
+	        RemoveActivesDelayed(demonologistCreep)
 	        demonologistCreep.demonologistRitualCreep = true
 			demonologistCreep:SetControllableByPlayer(caster:GetPlayerID(), true)
 			ResolveNPCPositions(demonologistCreep:GetAbsOrigin(),100)

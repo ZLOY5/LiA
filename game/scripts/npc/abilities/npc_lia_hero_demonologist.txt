@@ -26,7 +26,7 @@
 
       "precache"
       {
-          "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_debuff.vpcf"
+          "particle"  "particles/custom/demonologist/demonologist_demonic_seal_debuff.vpcf"
           "particle"  "particles/units/heroes/hero_shadow_demon/shadow_demon_soul_catcher_new.vpcf"
       }
 
@@ -56,11 +56,12 @@
   }  
 
   "demonologist_touch_of_darkness"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"      "shadow_demon_shadow_poison"
+	{
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes/Demonologist/demonologist_touch_of_darkness.lua"
+		"AbilityTextureName"			"shadow_demon_shadow_poison"
 
-    "MaxLevel"               "3"
+		"MaxLevel"               "3"
     "RequiredLevel"          "2"
     "LevelsBetweenUpgrades"  "2"
 
@@ -74,7 +75,7 @@
 
     "AbilityManaCost"       "20 35 50"
 
-    "precache"
+		"precache"
     {
       "particle"        "particles/custom/demonologist/rod_of_atos_attack.vpcf"
       "particle"        "particles/custom/demonologist/shadow_demon_shadow_poison_impact_demionologist.vpcf"
@@ -87,63 +88,7 @@
 			"radius"				"130"
 			"mana"					"20 35 50"
 		}
-
-    "Modifiers"
-    { 
-      "modifier_demonologist_arrow_of_darkness"
-      {
-        "Passive"   "1"
-        "IsHidden"    "1"
-        "Orb"
-        {
-          "Priority"      "DOTA_ORB_PRIORITY_ABILITY"
-          "ProjectileName"    "particles/custom/demonologist/rod_of_atos_attack.vpcf"
-          "CastAttack"    "1"
-        }
-
-        "OnOrbFire"
-        {
-          "SpendMana"
-          {
-            "Mana"    "%AbilityManaCost"
-          }
-        }
-        
-        "OnOrbImpact"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "heroes/Demonologist/ArrowOfDarkness.lua"
-            "Function"    "ArrowOfDarkness"
-            "Target"
-            {
-              "Center"    "TARGET"
-              "Radius"   "%radius"
-              "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-              "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-              "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-            }
-          }
-          "FireSound"
-          {
-            "EffectName"    "Hero_ShadowDemon.ShadowPoison.Impact"
-            "Target"      "CASTER"
-          }
-          "FireEffect"
-          {
-            "EffectName"        "particles/custom/demonologist/shadow_demon_shadow_poison_impact_demionologist.vpcf"
-            "EffectAttachType"  "follow_origin"
-            "Target"
-            {
-              "Center"    "TARGET"
-              "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-              "Flags"     "DOTA_UNIT_TARGET_FLAG_DEAD"
-            }
-          }
-        }
-      }
-    }
-  }
+	}
 
   "demonologist_mastery_of_demonology"
   {
