@@ -18,26 +18,7 @@ function OnEquip(event)
 		-- bane
 		-- 3 frost arrows
 		-- remember cooldown
-		if name == "npc_dota_hero_bane" then
-			par = {
-				unit = caster,
-				oldAbi = "hermit_frost_arrows",
-				newAbi = "hermit_frost_arrows_staff",
-				tPassiveModifiers_by_oldAbi = {"modifier_frost_arrows_caster_datadriven"},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "hermit_summon_water_elemental_new",
-				newAbi = "hermit_summon_water_elemental_new_staff",
-				tPassiveModifiers_by_oldAbi = {},
-			}
-			ReplaceAbi(par)
-			--
-			caster.STupgrades = true
-		end
-		--
+
 		if name == "npc_dota_hero_chen" then
 			par = {
 				unit = caster,
@@ -330,14 +311,6 @@ function OnUnequip(event)
 				oldAbi = "hermit_frost_arrows_staff",
 				newAbi = "hermit_frost_arrows",
 				tPassiveModifiers_by_oldAbi = {"modifier_frost_arrows_caster_datadriven"},
-			}
-			ReplaceAbi(par)
-			--
-			par = {
-				unit = caster,
-				oldAbi = "hermit_summon_water_elemental_new_staff",
-				newAbi = "hermit_summon_water_elemental_new",
-				tPassiveModifiers_by_oldAbi = {},
 			}
 			ReplaceAbi(par)
 			--

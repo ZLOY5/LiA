@@ -102,49 +102,23 @@
 
 	"hermit_frost_arrows"
 	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"// "ability_lua"
-		//"ScriptFile"					"heroes/Hermit/hermit_frost_arrows.lua"
+		"BaseClass"             		"ability_lua"
+		"ScriptFile"					"heroes/Hermit/hermit_frost_arrows.lua"
+		"AbilityTextureName"			"custom/hermit_frost_arrows"
+
+		"MaxLevel"               "3"
+		"RequiredLevel"          "2"
+		"LevelsBetweenUpgrades"  "2"
+
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"custom/hermit_frost_arrows"
-
-		// Casting
-		"MaxLevel" 						"3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"475"
-		"AbilityCastPoint"				"0.0 0.0 0.0"
 
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.0 0.0 0.0"
-		"AbilityDuration"				"3 3 3"
+		"AbilityManaCost"				"15 30 40"
 
-		// Damage.
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"20 40 60"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"15 30 45"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityValues"
-		{
-			"frost_arrows_movement_speed"		"-10 -20 -30"
-			"frost_arrows_attack_speed"			"-20 -30 -40"
-			"frost_arrows_duration"				"3.0 3.0 3.0"
-		}
-		
-		// Data driven
-		//-------------------------------------------------------------------------------------------------------------
 		"precache"
 		{
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
@@ -152,190 +126,39 @@
 			"particle"				"particles/generic_gameplay/generic_slowed_cold.vpcf"
 		}
 		
-		"Modifiers"
-		{
-			"modifier_frost_arrows_caster_datadriven"
-			{
-				"Passive"               		"1"
-				"IsHidden"						"1"
-				"IsPurgable"					"0"
-				
-				"Orb"
-				{
-					"Priority"					"DOTA_ORB_PRIORITY_ABILITY"
-					"ProjectileName"			"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
-					"CastAttack"				"1"
-				}
-
-				"OnOrbFire"
-				{
-					"SpendMana"
-					{
-						"Mana"					"%AbilityManaCost"
-					}
-					"FireSound"
-					{
-						"EffectName"			"Hero_DrowRanger.FrostArrows"
-						"Target"				"CASTER"
-					}
-				}
-
-				"OnOrbImpact"
-				{
-					"ApplyModifier"
-					{
-						"Target"
-						{
-							"Center"			"TARGET"
-							"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"ModifierName"			"modifier_frost_arrows_slow"
-						"Duration"				"%AbilityDuration"
-					}
-					
-					"Damage"
-					{
-						"Target" 	"TARGET"
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Damage" 	"%AbilityDamage"
-					}
-					
-				}
-			}
-			
-			"modifier_frost_arrows_slow"
-			{
-				"IsHidden"						"0"
-			
-				"EffectName"					"particles/generic_gameplay/generic_slowed_cold.vpcf"
-			
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%frost_arrows_movement_speed"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%frost_arrows_attack_speed"
-				}
-			}
-		}
-	}
-
-	"hermit_frost_arrows_staff"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass"						"ability_datadriven"// "ability_lua"
-		//"ScriptFile"					"heroes/Hermit/hermit_frost_arrows.lua"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"     	"DAMAGE_TYPE_MAGICAL" 
-		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"custom/hermit_frost_arrows"
-
-		// Casting
-		"MaxLevel" 						"3"
-		"RequiredLevel"          "2"
-		"LevelsBetweenUpgrades"  "2"
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"475"
-		"AbilityCastPoint"				"0.0 0.0 0.0"
-
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.0 0.0 0.0"
-		"AbilityDuration"				"4 4 4"
-
-		// Damage.
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"					"50 100 150"
-
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"45 60 75"
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityValues"
 		{
-			"frost_arrows_movement_speed"		"-20 -30 -40"
-			"frost_arrows_attack_speed"			"-50 -60 -70"
-			"frost_arrows_duration"				"4.0 4.0 4.0"
-		}
-		
-		// Data driven
-		//-------------------------------------------------------------------------------------------------------------
-		"precache"
-		{
-			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
-			"particle"				"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
-			"particle"				"particles/generic_gameplay/generic_slowed_cold.vpcf"
-		}
-		
-		"Modifiers"
-		{
-			"modifier_frost_arrows_caster_datadriven"
+			"damage"					"20 40 60"
+			"damage_scepter"
 			{
-				"Passive"               		"1"
-				"IsHidden"						"1"
-				"IsPurgable"					"0"
-				
-				"Orb"
-				{
-					"Priority"					"DOTA_ORB_PRIORITY_ABILITY"
-					"ProjectileName"			"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
-					"CastAttack"				"1"
-				}
-
-				"OnOrbFire"
-				{
-					"SpendMana"
-					{
-						"Mana"					"%AbilityManaCost"
-					}
-					"FireSound"
-					{
-						"EffectName"			"Hero_DrowRanger.FrostArrows"
-						"Target"				"CASTER"
-					}
-				}
-
-				"OnOrbImpact"
-				{
-					"ApplyModifier"
-					{
-						"Target"
-						{
-							"Center"			"TARGET"
-							"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-						}
-						"ModifierName"			"modifier_frost_arrows_slow"
-						"Duration"				"%AbilityDuration"
-					}
-					
-					"Damage"
-					{
-						"Target" 	"TARGET"
-						"Type" 		"DAMAGE_TYPE_MAGICAL"
-						"Damage" 	"%AbilityDamage"
-					}
-					
-				}
+				"value"					"50 100 150"
+				"RequiresScepter"		"1"
 			}
-			
-			"modifier_frost_arrows_slow"
+			"duration"					"3"
+			"duration_scepter"
 			{
-				"IsHidden"						"0"
-			
-				"EffectName"					"particles/generic_gameplay/generic_slowed_cold.vpcf"
-			
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%frost_arrows_movement_speed"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%frost_arrows_attack_speed"
-				}
+				"value"					"4"
+				"RequiresScepter"		"1"
+			}
+			"movespeed_slow_pct"		"-10 -20 -30"
+			"movespeed_slow_scepter"
+			{
+				"value"					"-20 -30 -40"
+				"RequiresScepter"		"1"
+			}
+			"attack_slow"				"-20 -30 -40"
+			"attack_slow_scepter"
+			{
+				"value"					"-40 -50 -60"
+				"RequiresScepter"		"1"
+			}
+			"manacost_scepter"
+			{
+				"value"					"45 60 75"
+				"RequiresScepter"		"1"
 			}
 		}
 	}
-
 
 	"hermit_storm"
 	{

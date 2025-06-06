@@ -239,6 +239,18 @@ function Survival:OrderFilter(filterTable)
         end
     end
 
+    if filterTable.order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+        local attackTarget = EntIndexToHScript(filterTable.entindex_target)
+        local attacker = EntIndexToHScript(filterTable.units["0"])
+
+        if attackTarget:HasModifier("modifier_hermit_decrepify") then
+            if attacker:GetAttackType() ~= "magic" then 
+                SendErrorMessage(hero:GetPlayerID(), "#lia_hud_error_cant_attack_banished_units")
+                return false 
+            end
+        end
+    end
+
 
     return true
 end

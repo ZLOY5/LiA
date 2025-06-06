@@ -19,8 +19,10 @@ function modifier_hermit_decrepify:DeclareFunctions()
 end
 
 function modifier_hermit_decrepify:CheckState()
+	self.disarm = true
+	if self:GetParent:GetAttackType() == "magic" then self.disarm = false end
 	local state = {
-		[MODIFIER_STATE_DISARMED] = true,
+		[MODIFIER_STATE_DISARMED] = self.disarm,
 		[MODIFIER_STATE_LOW_ATTACK_PRIORITY] = true,
 	}
  
