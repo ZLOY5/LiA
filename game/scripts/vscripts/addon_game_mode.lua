@@ -198,6 +198,11 @@ function Precache( context )
 		PrecacheResource("particle", "particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf", context)	
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts", context)
 		PrecacheResource("particle_folder", "particles/units/heroes/hero_faceless_void", context)		
+		--Руны
+		PrecacheModel("models/props_gameplay/gold_coin001.vmdl", context)
+		PrecacheModel("models/gameplay/attrib_tome_str.vmdl", context)
+		PrecacheModel("models/gameplay/attrib_tome_agi.vmdl", context)
+		PrecacheModel("models/gameplay/attrib_tome_int.vmdl", context)
 
 		PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts", context)
 		PrecacheResource("particle_folder", "particles/units/heroes/hero_weaver/weaver_timelapse.vpcf", context)	
