@@ -27,7 +27,7 @@ function speedwarden_time_strike:DealTimeStrikeDamage(caster, target, ultimate)
     if not ultimate then
         local mad_charge = caster:HasModifier("modifier_speedwarden_mad_charge_buff")
         if mad_charge then
-            chance = chance + mad_charge:GetStackCount()
+            chance = chance + chance_per_charge * mad_charge:GetStackCount()
         end
         if RollPercentage(chance) then 
             if not target:IsMagicImmune() then
