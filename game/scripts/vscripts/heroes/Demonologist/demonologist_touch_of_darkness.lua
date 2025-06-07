@@ -47,13 +47,10 @@ function modifier_demonologist_touch_of_darkness:OnOrbImpact(event)
     local caster = self.parent
     local target = event.target
 
-    -- чуть безопасности (на всякий, хотя event.target точно жив)
     if not target or target:IsNull() then return end
 
-    -- 1) Считаем боль: основной урон = hp кастера * процент
     local full_damage = caster:GetHealth() * self.damage_percentage * 0.01
 
-    -- 2) Спавним партикл именно в том виде, как было в KV блока "FireEffect"
     local particleName = "particles/custom/demonologist/shadow_demon_shadow_poison_impact_demionologist.vpcf"
     local pfx = ParticleManager:CreateParticle(
         particleName,
@@ -62,10 +59,8 @@ function modifier_demonologist_touch_of_darkness:OnOrbImpact(event)
     )
     ParticleManager:ReleaseParticleIndex(pfx)
 
-    -- 3) Звук при попадании
-    	:EmitSound("Hero_ShadowDemon.ShadowPoison.Impact")
+    target:EmitSound("Hero_ShadowDemon.ShadowPoison.Impact")
 
-    -- 4) Собираем всех врагов в радиусе вокруг target (basic + hero)
     local enemies = FindUnitsInRadius(
         caster:GetTeamNumber(),
         target:GetAbsOrigin(),
@@ -78,10 +73,8 @@ function modifier_demonologist_touch_of_darkness:OnOrbImpact(event)
         false
     )
 
-    -- 5) Применяем физ-урон: основному full_damage, другим половину
     for _, enemy in pairs(enemies) do
         if not enemy or enemy:IsNull() then
-            -- если вдруг unit пропал между FindUnitsInRadius и ApplyDamage
             goto continue
         end
 
