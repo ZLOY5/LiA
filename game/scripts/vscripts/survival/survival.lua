@@ -119,6 +119,7 @@ function Survival:InitSurvival()
     GameMode:SetExecuteOrderFilter(Dynamic_Wrap(Survival, "OrderFilter"), self)
     GameMode:SetItemAddedToInventoryFilter(Dynamic_Wrap(Survival, "ItemAddFilter"), self)
     GameMode:SetTPScrollSlotItemOverride("item_lia_healing_ward")
+    GameMode:SetRandomHeroBonusItemGrantDisabled(true)
 
 
     ListenToGameEvent('entity_killed', Dynamic_Wrap(Survival, 'OnEntityKilled'), self)
@@ -148,11 +149,11 @@ function Survival:InitSurvival()
 
     FightRecap:Init()
 
-    --GameMode:SetContextThink("RandomGold",ThinkGoldGuard,0.1)
-    --PlayerResource.RandomGoldReduced = {}
+    GameMode:SetContextThink("RandomGold",ThinkGoldGuard,0.1)
+    PlayerResource.RandomGoldReduced = {}
 end
 
---[[function ThinkGoldGuard()
+function ThinkGoldGuard()
     for i = 0, DOTA_MAX_PLAYERS-1 do
         if PlayerResource:IsValidTeamPlayerID(i) and PlayerResource:GetSelectedHeroName(i) ~= "" and not PlayerResource.RandomGoldReduced[i] then
             if PlayerResource:HasRandomed(i) then
@@ -165,7 +166,7 @@ end
     end
     
     return 0.1
-end]]
+end
 
 function AIThink()
     --print("CleanAICasts")
