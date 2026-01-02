@@ -1,8 +1,8 @@
-﻿
+
 
 function firestormWave_castpoint(keys)
-	keys.ability.castPoint = keys.target_points[1]
-
+	local ability = keys.ability
+	keys.ability.castPoint = ability:GetCursorPosition()
 end
 
 
@@ -10,7 +10,7 @@ function firestormWave(keys)
 
 	--local heroCaster = keys.heroCaster
 	local caster = keys.caster
-	local ability = keys.ability
+	
 	local radius = ability:GetLevelSpecialValueFor( "radius", ( ability:GetLevel() - 1 ) )
 	local exp_radius = ability:GetLevelSpecialValueFor( "exp_radius", ( ability:GetLevel() - 1 ) )
 	--local castPoint = keys.pointCast   --caster:GetCastPoint(false)

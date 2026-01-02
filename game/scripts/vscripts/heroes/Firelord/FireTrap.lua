@@ -2,7 +2,7 @@
 function StasisStart( event )
 	local caster = event.caster
 	local ability = event.ability
-	local target_point = event.target_points[1]
+	local target_point = ability:GetCursorPosition()
 	local duration = ability:GetSpecialValueFor('duration') 
 	local stasis = CreateUnitByName('fire_trap_unit', target_point, true, caster, caster, caster:GetTeamNumber())
 	stasis:AddNewModifier(stasis, nil, "modifier_kill", {duration = duration})

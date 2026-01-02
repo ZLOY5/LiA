@@ -1,7 +1,7 @@
 function SummonTreants(event)
-	local point = event.target_points[1]
-	local caster = event.caster
 	local ability = event.ability
+	local point = ability:GetCursorPosition()
+	local caster = event.caster
 	local ability_level = ability:GetLevel()
 	local unit_name = "keeper_of_the_grove_treant_"..ability_level
 	local count = ability:GetSpecialValueFor("unit_count")

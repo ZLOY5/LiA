@@ -31,7 +31,12 @@ function TauntEnd( keys )
 	local target = keys.target
 
 	target:SetForceAttackTarget(nil)
-	target:MoveToPositionAggressive(target:GetAbsOrigin()+target:GetForwardVector()*50)
+	ExecuteOrderFromTable({
+		UnitIndex = target:entindex(),
+		OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+		Position = target:GetAbsOrigin() + target:GetForwardVector()*50,
+		Queue = false,
+	})
 end
 
 function StopSound(keys)

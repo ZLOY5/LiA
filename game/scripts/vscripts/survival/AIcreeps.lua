@@ -1,4 +1,4 @@
-﻿
+
 --[[
 
 	USES
@@ -534,8 +534,13 @@ function AICreepsAttackEachUnit(params)
 		--else
 			--print("3")
 	local fv = target:GetForwardVector()
-    local front_position = absTarget + fv * 100
-			unit:MoveToPositionAggressive(front_position)
+	local front_position = absTarget + fv * 100
+	ExecuteOrderFromTable({
+		UnitIndex = unit:entindex(),
+		OrderType = DOTA_UNIT_ORDER_ATTACK_MOVE,
+		Position = front_position,
+		Queue = false,
+	})
 		--
 		
 	--end

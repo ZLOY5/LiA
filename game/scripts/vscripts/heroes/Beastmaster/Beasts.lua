@@ -1,8 +1,9 @@
 function SummonBeasts(event)
-	local point = event.target_points[1]
+	local ability = event.ability
+	local point = ability:GetCursorPosition()
 
 	local unit_name = {"white_wolf_bm","jungle_stalker_bm","phoenix_bm","bear_bm"}
-	local ability = event.ability
+	
 	local count = ability:GetLevelSpecialValueFor("unit_count" , ability:GetLevel() - 1  )
 	local level = ability:GetLevel()
 	for i=1,count do

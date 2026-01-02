@@ -7,7 +7,7 @@ function BuildPocketFactory( event )
 	-- Variables
 	local caster = event.caster
 	local ability = event.ability
-	local point = event.target_points[1]
+	local point = event.ability:GetCursorPosition()
 	local factory_duration =  ability:GetLevelSpecialValueFor( "factory_duration" , ability:GetLevel() - 1  )
 	local ability_level = ability:GetLevel()
 	local building_name = "android_pocket_factory_building"..ability_level
