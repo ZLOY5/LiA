@@ -1,0 +1,64 @@
+"DotaItems"
+{
+	"item_recipe_lia_widow_boots"
+	{
+		"Model"						"models/props_gameplay/recipe.vmdl"
+		"BaseClass"					"item_datadriven"
+
+		"ItemCost"					"200"
+		"ItemShopTags"				"damage;boots"
+
+		"ItemKillable"				"0"
+
+		"ItemRecipe"				"1"
+		"AbilityTextureName"		"recipe"
+		"ItemResult"				"item_lia_widow_boots"
+		"ItemRequirements"
+		{
+			"01"					"item_lia_boots_of_invisibility"
+			"02"					"item_lia_demon_edge"
+			"03"					"item_lia_spider_ring"
+		}
+	}
+
+	"item_lia_widow_boots"
+	{
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"items/item_lia_widow_boots.lua"
+
+		"ItemCost"					"1300"
+		"ItemKillable"				"0"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemPurchasable"			"1"
+		"ItemQuality"				"rare"
+		"ItemAliases"				"wb;widow boots;сапоги вдовы;св"
+		"AbilityTextureName"		"custom/lia_widow_boots"
+
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
+
+		"AbilityCastPoint"			"0"
+		"AbilityCooldown"			"18.0"
+		"AbilityManaCost"			"70"
+
+		"precache"
+		{
+			"particle"	"particles/custom/items/spider_ring_projectile.vpcf"
+			"particle"	"particles/custom/items/spider_ring_debuff.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+		}
+
+		"AbilityValues"
+		{
+			"bonus_attack_damage"		"60"
+			"bonus_movement_speed"		"60"
+			"armor_reduction"			"3"
+			"max_stacks"				"5"
+			"debuff_duration"			"6"
+			"invis_duration"			"6"
+			"invis_movespeed_percent"	"30"
+			"invis_bonus_damage"		"100"
+		}
+	}
+}

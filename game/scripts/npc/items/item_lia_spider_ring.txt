@@ -1,0 +1,33 @@
+"DotaItems"  
+{ 
+	"item_lia_spider_ring"
+	{
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/item_lia_spider_ring.lua"
+
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Model"							"models/props_gameplay/red_box.vmdl" 
+		"AbilityTextureName"			                "custom/lia_spider_ring"
+		
+		"ItemCost"						"160"
+		"ItemQuality"					"component"
+		"ItemAliases"					"spider ring;sr;кольцо паука;кп"
+		
+		"ItemKillable" "0" 
+		"ItemDroppable" "1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemSellable"                                  "1"
+		"ItemPurchasable"		                "1"
+			
+		"AbilityValues"
+		{
+			"armor_reduction"		"3"
+			"duration"			"6"
+		}
+		
+		"precache"
+		{
+			"particle"  "particles/custom/items/spider_ring_projectile.vpcf"
+		}
+	}
+}

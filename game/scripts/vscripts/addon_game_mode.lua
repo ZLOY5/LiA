@@ -209,7 +209,7 @@ function Precache( context )
 		PrecacheResource("particle_folder", "particles/units/heroes/hero_weaver/weaver_timelapse.vpcf", context)	
 		PrecacheResource("particle","particles/econ/events/nexon_hero_compendium_2014/blink_dagger_end_nexon_hero_cp_2014.vpcf", context) --партикл для спавна крипов на волнах
 		PrecacheResource("particle","particles/units/heroes/hero_treant/treant_livingarmor.vpcf", context)
-
+		PrecacheResource("particle","particles/custom/items/spider_ring_projectile.vpcf", context)
 		PrecacheResource("particle","particles/black_screen.vpcf", context)
 
 		PrecacheModel("models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl", context)

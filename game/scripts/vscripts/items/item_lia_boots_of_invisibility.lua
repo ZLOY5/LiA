@@ -12,6 +12,14 @@ function item_lia_boots_of_invisibility:OnSpellStart()
 	local caster = self:GetCaster()
 	local duration = self:GetSpecialValueFor("duration")
 	caster:AddNewModifier(caster, self, "modifier_item_lia_boots_of_invisibility_active", { duration = duration })
+	local cd = self:GetCooldown(self:GetLevel())
+	for slot = 0, 5 do
+		local item = caster:GetItemInSlot(slot)
+		if item and item:GetName() == "item_lia_widow_boots" then
+			item:StartCooldown(cd)
+			break
+		end
+	end
 end
 
 ---@class modifier_item_lia_boots_of_invisibility: CDOTA_Modifier_Lua
