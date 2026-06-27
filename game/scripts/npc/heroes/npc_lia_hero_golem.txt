@@ -1,14 +1,26 @@
 "DotaHeroes"  
 {
-	"npc_dota_hero_tiny"
+	"npc_dota_hero_phoenix"
 	{
-		"override_hero"				"npc_dota_hero_tiny"
+		"override_hero"				"npc_dota_hero_phoenix"
 		
 		"Role"		"Nuker,Durable"
 		"Rolelevels"	"1,3"
 		"Complexity"	"1"
+
+		"precache"
+		{
+			"model"		"models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl" 
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts"
+		}
 		
-		"ModelScale"				"1.4"
+		"Model"         "models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl"
+
+		"ModelScale"	"0.8"
+
+		"SoundSet" "Hero_WarlockGolem"
+		"IdleSoundLoop"				"Hero_WarlockGolem.Spawn_Loop"
+		"VoiceFile"     "soundevents/voscripts/game_sounds_vo_warlock_golem.vsndevts"
 
 		"Ability1" "akron_explosion"	
 		"Ability2" "acron_battle_fevor" 		
@@ -75,6 +87,6 @@
 
 		"HasInventory" "1" 
 
-		"vscripts"	"heroes/Acron/grow_model.lua"
+		"DisableWearables"    "1"
 	}	
 }
