@@ -13,15 +13,17 @@ function alchemist_swiftness_potion:OnSpellStart()
 	self.vCasterPosition = self:GetCaster():GetAbsOrigin()
 	self.vPos = self:GetCursorPosition()
 
-	self.fDistance = (self.vPos - self.vCasterPosition):Length2D()
-	self.fDistanceLeft = self.fDistanceToTravel - self.fDistance
 	self.fMoveDuration = self.fDistanceToTravel / self.iSpeed
 
+	local vDirection = self.vPos - self.vCasterPosition
+	vDirection.z = 0.0
+	if vDirection:Length2D() < 1 then
+		local vForward = self:GetCaster():GetForwardVector()
+		vDirection = Vector(vForward.x, vForward.y, 0)
+	end
+	vDirection = vDirection:Normalized()
 
-	self.relation = self.fDistanceLeft / self.fDistance
-	self.fTargetPositionX = self.vPos.x + (self.vPos.x - self.vCasterPosition.x) * self.relation
-	self.fTargetPositionY = self.vPos.y + (self.vPos.y - self.vCasterPosition.y) * self.relation
-	self.vTargetPosition = Vector(self.fTargetPositionX, self.fTargetPositionY, self.vCasterPosition.z)
+	self.vTargetPosition = self.vCasterPosition + vDirection * self.fDistanceToTravel
 	self.fDistancePerTick = self.iSpeed * 0.03
 
 

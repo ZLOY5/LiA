@@ -4,8 +4,3 @@ LinkLuaModifier("modifier_alchemist_unity","heroes/Alchemist/modifier_alchemist_
 function alchemist_unity:GetIntrinsicModifierName()
 	return "modifier_alchemist_unity"
 end
-
-function alchemist_unity:OnHeroLevelUp()
-	local modiffier = self:GetCaster():FindModifierByName("modifier_alchemist_unity")
-	if modiffier then modiffier:ForceRefresh() end
-end

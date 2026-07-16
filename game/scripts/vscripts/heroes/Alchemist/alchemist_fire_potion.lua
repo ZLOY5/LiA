@@ -49,7 +49,7 @@ function alchemist_fire_potion:OnSpellStart()
 	for i = 1,self.wave_count do
 		Timers:CreateTimer({
             useGameTime = false,
-            endTime = self.delay_between_waves,
+            endTime = self.delay_between_waves * (i - 1),
             callback = function()
 				ProjectileManager:CreateLinearProjectile( info )
 				EmitSoundOn( "Hero_Jakiro.DualBreath.Cast", self.caster )

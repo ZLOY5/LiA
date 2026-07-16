@@ -22,11 +22,13 @@ function modifier_alchemist_swiftness_potion_enemy:OnCreated( kv )
 		self.unit_origin = self.unit:GetAbsOrigin()
 		self.unit_position_x = self.unit_origin.x
 		self.unit_position_y = self.unit_origin.y
-		self.distance_from_center = (self.unit_origin - Vector(kv.center_x, kv.center_y, kv.center_z)):Length2D()
-		self.relation = kv.knockback_distance / self.distance_from_center
-		self.target_position_x = self.unit_position_x + (self.unit_position_x - self.caster_position_x) * self.relation
-		self.target_position_y = self.unit_position_y + (self.unit_position_y - self.caster_position_y) * self.relation
-		self.target = Vector(self.target_position_x, self.target_position_y, kv.center_z)
+		local vDirection = Vector(self.unit_position_x - kv.center_x, self.unit_position_y - kv.center_y, 0)
+		if vDirection:Length2D() < 1 then
+			local vForward = self.unit:GetForwardVector()
+			vDirection = Vector(-vForward.x, -vForward.y, 0)
+		end
+		vDirection = vDirection:Normalized()
+		self.target = Vector(self.unit_position_x, self.unit_position_y, kv.center_z) + vDirection * kv.knockback_distance
 		self.old_position = self.unit_origin
 	end
 end
