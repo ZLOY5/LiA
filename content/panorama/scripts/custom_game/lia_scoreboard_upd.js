@@ -146,7 +146,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel(scoreboardConfig, playersContainer
 					{
 						bufName = bufName.replace( "_2", "" );
 					}*/
-					var item_image_name = "file://{images}/items/" + bufName.replace("custom/", "") + ".png";
+					var item_image_name = "file://{images}/items/" + bufName.replace("", "") + ".png";
 
 					//$.Msg( "		item_image_name = ", item_image_name );
 				}

@@ -1,32 +1,29 @@
 <root>
-    <styles>
-        <include src="file://{resources}/styles/custom_game/precache.css" />
-    </styles>
-    <scripts>
-        <include src="file://{resources}/scripts/custom_game/manifest_init.js" />
-        <include src="file://{resources}/scripts/custom_game/custom_game_ui.js" />
-    </scripts>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/precache.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/manifest_init.js" />
+		<include src="file://{resources}/scripts/custom_game/custom_game_ui.js" />
+	</scripts>
 	<Panel>
-        <!--<CustomUIElement type="HeroSelection"   layoutfile="file://{resources}/layout/custom_game/lia_hero_select_overlay.xml" />-->
-        <!--<CustomUIElement type="GameInfo"    layoutfile="file://{resources}/layout/custom_game/game_info.xml" />-->
+		<!--<CustomUIElement type="HeroSelection"   layoutfile="file://{resources}/layout/custom_game/lia_hero_select_overlay.xml" />-->
+		<!--<CustomUIElement type="GameInfo"    layoutfile="file://{resources}/layout/custom_game/game_info.xml" />-->
 		<CustomUIElement type="FlyoutScoreboard"    layoutfile="file://{resources}/layout/custom_game/lia_scoreboard.xml" /> 
-        <CustomUIElement type="EndScreen"           layoutfile="file://{resources}/layout/custom_game/lia_end_screen.xml" />
-        
-        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/killbosses.xml" />
-        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game//top_scoreboard/top_scoreboard.xml" />       
+		<CustomUIElement type="EndScreen"           layoutfile="file://{resources}/layout/custom_game/lia_end_screen.xml" />
+		
+		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/killbosses.xml" />
+		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game//top_scoreboard/top_scoreboard.xml" />       
 		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/notifications.xml" />
 		<CustomUIElement type="Hud" 	layoutfile="file://{resources}/layout/custom_game/upgrades.xml" />
-        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/trade/trade_bar.xml" />
-        <!--<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/glyph.xml" />-->
-        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/game_time_clock.xml" />
+		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/trade/trade_bar.xml" />
+		<!--<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/glyph.xml" />-->
+		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/game_time_clock.xml" />
 
-        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/lia_timer.xml" />
+		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/lia_timer.xml" />
 
-        <CustomUIElement type="GameInfo"     layoutfile="file://{resources}/layout/custom_game/hudFix.xml" />
+		<CustomUIElement type="GameInfo"     layoutfile="file://{resources}/layout/custom_game/hudFix.xml" />
 
-        <CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/combat_events.xml" />
-
-        <!--<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/imageCompiler.xml" />-->
-
+		<CustomUIElement type="Hud"     layoutfile="file://{resources}/layout/custom_game/combat_events.xml" />
 	</Panel>
 </root>
