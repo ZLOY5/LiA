@@ -14,7 +14,7 @@ var dotaHud = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent(
 
 	dotaHud.FindChildTraverse("CourierControls").style.visibility = "collapse";
 	dotaHud.FindChildTraverse("CommonItems").style.visibility = "collapse";
-	dotaHud.FindChildTraverse("QuickBuySlot8").style.visibility = "collapse";
+
 	dotaHud.FindChildTraverse("GlyphScanContainer").style.visibility = "collapse";
 	dotaHud.FindChildTraverse("quickstats").style.visibility = "collapse";
 

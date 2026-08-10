@@ -12,6 +12,7 @@ if (Game.GetMapInfo().map_display_name.indexOf("extreme") != -1) {
 }
 
 function SetFlyoutScoreboardVisible(bVisible) {
+	$.Msg("WOOOOOOOOOW");
 	$.GetContextPanel().SetHasClass("flyout_scoreboard_visible", bVisible);
 }
 
@@ -56,7 +57,7 @@ function OnUpdatePlayerData(data) {
 		teamXmlName: "file://{resources}/layout/custom_game/lia_scoreboard_team.xml",
 		playerXmlName: "file://{resources}/layout/custom_game/lia_scoreboard_player.xml",
 	};
-
+	$.Msg(scoreboardConfig);
 	g_ScoreboardHandle = ScoreboardUpdater_InitializeScoreboard(scoreboardConfig, $("#TeamsContainer")); //
 
 	//SetFlyoutScoreboardVisible( false );

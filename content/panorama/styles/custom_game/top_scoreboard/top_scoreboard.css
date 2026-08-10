@@ -19,7 +19,7 @@
 	margin-right: -4px;
 }
 
-DOTAHeroImage {
+DOTAHeroImage, .TopBarHeroImage {
 	transition-property: wash-color, saturation, brightness, contrast;
 	transition-duration: 0.4s;
 	z-index: 3;
@@ -134,7 +134,7 @@ DOTAHeroImage {
 	transform: translateY(0px);
 }
 
-.Dead DOTAHeroImage {
+.Dead DOTAHeroImage, .Dead .TopBarHeroImage {
 	wash-color: #898989;
 	saturation: 0;
 }
@@ -170,7 +170,7 @@ DOTAHeroImage {
 	opacity: 1;
 }
 
-.EnemyHeroMissing DOTAHeroImage {
+.EnemyHeroMissing DOTAHeroImage, .EnemyHeroMissing .TopBarHeroImage {
 	opacity: 1;
 }
 
@@ -224,7 +224,7 @@ DOTAHeroImage {
 	background-position: 5px 0px;
 }
 
-.Disconnected DOTAHeroImage {
+.Disconnected DOTAHeroImage, .Disconnected .TopBarHeroImage {
 	opacity: 0.5;
 }
 

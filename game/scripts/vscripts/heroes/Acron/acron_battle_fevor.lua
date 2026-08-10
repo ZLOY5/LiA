@@ -32,7 +32,7 @@ function modifier_acron_battle_fevor:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS,
 	}
- 
+
 	return funcs
 end
 

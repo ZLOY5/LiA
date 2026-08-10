@@ -1,3 +1,5 @@
+"use strict";
+
 function ToggleMute()
 {
     var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );

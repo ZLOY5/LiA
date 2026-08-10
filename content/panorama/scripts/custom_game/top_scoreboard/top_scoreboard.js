@@ -22,7 +22,11 @@ function UpdatePlayerPanel(playerID) {
 	playerPanel.AddClass("Slot" + playerID);
 
 	var heroImage = playerPanel.FindChildTraverse("HeroImage");
-	heroImage.heroname = Players.GetPlayerSelectedHero(playerID);
+	var heroName = Players.GetPlayerSelectedHero(playerID);
+	if (heroName && heroImage.__lia_hero !== heroName) {
+		heroImage.__lia_hero = heroName;
+		heroImage.SetImage("file://{images}/heroes/" + heroName + ".png");
+	}
 
 	var hero = Players.GetPlayerHeroEntityIndex(playerID);
 

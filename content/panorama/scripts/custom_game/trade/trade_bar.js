@@ -6,6 +6,8 @@ function OpenButtonClick() {
 	var TradeMain = $.FindChildInContext("#TradeMain");
 	TradeMain.ToggleClass("Open");
 
+	$.Msg(TradeMain);
+
 	if (TradeMain.BHasClass("Open")) schedule = $.Schedule(0.1, RecalculateTradeResource);
 	else {
 		if (schedule != null) {
@@ -110,8 +112,5 @@ function TradeRequest() {
 		}
 	}
 
-	if (isOnePlayer) {
-		$.FindChildInContext("#OpenButton").visible = false;
-		return;
-	}
+	
 })();

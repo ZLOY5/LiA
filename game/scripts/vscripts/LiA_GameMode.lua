@@ -237,8 +237,18 @@ end
 
 function LiA:OnNPCSpawned( event )
     local spawnedUnit = EntIndexToHScript( event.entindex )
-    if spawnedUnit:IsHero() then 
+    if spawnedUnit:IsHero() then
         spawnedUnit:AddNewModifier(spawnedUnit,nil,"modifier_upgrades",nil)
+
+        if spawnedUnit:GetUnitName() == "npc_dota_hero_wisp" then
+            local golemModel = "models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl"
+            Timers:CreateTimer(0, function()
+                if spawnedUnit:IsNull() then return end
+                spawnedUnit:SetModel("models/development/invisiblebox.vmdl")
+                spawnedUnit:SetOriginalModel(golemModel)
+                spawnedUnit:SetModel(golemModel)
+            end)
+        end
    end
 
     if self.GameMode == LIA_MODE_SURVIVAL then
