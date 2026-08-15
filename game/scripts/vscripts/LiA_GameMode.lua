@@ -244,7 +244,7 @@ function LiA:OnNPCSpawned( event )
             local golemModel = "models/items/warlock/golem/ti9_cache_warlock_tribal_warlock_golem/ti9_cache_warlock_tribal_golem_alt.vmdl"
             Timers:CreateTimer(0, function()
                 if spawnedUnit:IsNull() then return end
-                spawnedUnit:SetModel("models/development/invisiblebox.vmdl")
+                spawnedUnit:SetModel("models/heroes/wisp/wisp.vmdl")
                 spawnedUnit:SetOriginalModel(golemModel)
                 spawnedUnit:SetModel(golemModel)
             end)
