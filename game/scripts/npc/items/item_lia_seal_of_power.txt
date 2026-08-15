@@ -1,18 +1,17 @@
-"DotaItems"  
-{ 
+"DotaItems"
+{
 	"item_recipe_lia_seal_of_power_shop"
 	{
-
 		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
-		
-		"ItemCost"						"850"	
+
+		"ItemCost"						"850"
 		"ItemShopTags"					"damage;armor"
 
-		"ItemKillable" 					"0" 
-		
+		"ItemKillable" 					"0"
+
 		"ItemRecipe"					"1"
-		"AbilityTextureName"    "recipe"
+		"AbilityTextureName"			"recipe"
 		"ItemResult"					"item_lia_seal_of_power_shop"
 		"ItemRequirements"
 		{
@@ -22,88 +21,18 @@
 
 	"item_lia_seal_of_power_shop"
 	{
-
-		"BaseClass" 					"item_datadriven"
-		"ScriptFile"					"items\SealOfPower.lua"
+		"BaseClass" 					"item_lua"
+		"ScriptFile"					"items/SealOfPower.lua"
 		"ItemCost"						"1155"
-		"ItemKillable" 					"0" 
+		"ItemKillable" 					"0"
 		"ItemDroppable" 				"1"
 		"ItemSellable"                  "1"
 		"ItemPurchasable"		 		"1"
-		"ItemCastOnPickup" 				"1"	
 		"ItemQuality"					"rare"
+		"ItemShopTags"					"damage;armor"
 		"ItemAliases"					"seal of power;sop;пс;печать силы"
 		"AbilityTextureName"			"lia_seal_of_power_shop"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
-
-		"AbilityValues"
-		{
-			"bonus_damage"						"50"
-			"bonus_armor"						"15"
-			"damage_needed_for_one_armor"		"20"
-			"armor_needed_for_one_damage"		"0.5"
-			"damage_limit"						"200"
-			"armor_limit"						"30"
-			"stats_lose_percent"				"25"
-			"armor_for_dmg_tooltip"				"1"
-			"dmg_tooltip"						"2"
-			"armor_tooltip"						"2"
-		}
-
-		"OnEquip"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items\SealOfPower.lua"
-				"Function"		"OnEquip"
-			}
-		}
-	}
-
-	"item_lia_seal_of_power_armor"
-	{
-
-		"BaseClass" 					"item_lua"
-		"ScriptFile"					"items\SealOfPower.lua"
-		"ItemCost"						"855"
-		"ItemKillable" 					"0" 
-		"ItemDroppable" 				"1"
-		"ItemSellable"                  "1"
-		"ItemPurchasable"		 		"0"
-		"ItemQuality"					"rare"
-		"AbilityTextureName"			"lia_seal_of_power_armor"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
-
-		"AbilityValues"
-		{
-			"bonus_damage"						"50"
-			"bonus_armor"						"15"
-			"damage_needed_for_one_armor"		"20"
-			"armor_needed_for_one_damage"		"0.5"
-			"damage_limit"						"200"
-			"armor_limit"						"30"
-			"stats_lose_percent"				"25"
-			"armor_for_dmg_tooltip"				"1"
-			"dmg_tooltip"						"2"
-			"armor_tooltip"						"2"
-		}
-	}
-
-	"item_lia_seal_of_power_damage"
-	{
-
-		"BaseClass" 					"item_lua"
-		"ScriptFile"					"items\SealOfPower.lua"
-		"ItemCost"						"855"
-		"ItemKillable" 					"0" 
-		"ItemDroppable" 				"1"
-		"ItemSellable"                  "1"
-		"ItemPurchasable"		 		"0"
-		"ItemQuality"					"rare"
-		"AbilityTextureName"			"lia_seal_of_power_damage"
-
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"				   
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
 		"AbilityValues"
 		{
