@@ -57,7 +57,7 @@ function modifier_item_lia_spider_ring_debuff:GetModifierPhysicalArmorBonus()
 end
 
 function modifier_item_lia_spider_ring_debuff:GetEffectName()
-	return "particles/items_fx/desolator_projectile.vpcf"	
+	return "particles/custom/items/spider_ring_debuff.vpcf"
 end
 
 function modifier_item_lia_spider_ring_debuff:GetEffectAttachType()
